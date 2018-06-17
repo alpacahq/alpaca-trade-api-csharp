@@ -73,6 +73,28 @@ namespace Alpaca.Markets
                 return serializer.Deserialize<JsonAsset>(reader);
             }
         }
+
+        public async Task<IEnumerable<IPosition>> GetPositionsAsync()
+        {
+            using (var stream = await _httpClient.GetStreamAsync("v1/positions"))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<List<JsonPosition>>(reader);
+            }
+        }
+
+        public async Task<IPosition> GetPositionAsync(
+            String symbol)
+        {
+            using (var stream = await _httpClient.GetStreamAsync($"v1/positions/{symbol}"))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<JsonPosition>(reader);
+            }
+        }
+
         public async Task<IClock> GetClockAsync()
         {
             using (var stream = await _httpClient.GetStreamAsync("v1/clock"))

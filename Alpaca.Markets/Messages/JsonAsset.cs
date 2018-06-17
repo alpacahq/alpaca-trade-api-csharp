@@ -6,7 +6,7 @@ namespace Alpaca.Markets
     internal sealed class JsonAsset : IAsset
     {
         [JsonProperty(PropertyName = "id", Required = Required.Always)]
-        public Guid Id { get; set; }
+        public Guid AssetId { get; set; }
 
         [JsonProperty(PropertyName = "name", Required = Required.Default)]
         public String Name { get; set; }

@@ -4,7 +4,7 @@ namespace Alpaca.Markets
 {
     public interface IAccount
     {
-        Guid Id { get; }
+        Guid AccountId { get; }
 
         AccountStatus Status { get; }
 

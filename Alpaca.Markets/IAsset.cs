@@ -4,7 +4,7 @@ namespace Alpaca.Markets
 {
     public interface IAsset
     {
-        Guid Id { get; }
+        Guid AssetId { get; }
 
         String Name { get; }
 

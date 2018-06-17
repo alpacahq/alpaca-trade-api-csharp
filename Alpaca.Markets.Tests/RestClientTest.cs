@@ -21,6 +21,24 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
+        public async void GetPositionsWorks()
+        {
+            var positions = await _restClient.GetPositionsAsync();
+
+            Assert.NotNull(positions);
+            // Assert.NotEmpty(positions);
+        }
+
+        [Fact(Skip = "Do not have position now")]
+        public async void GetPositionWorks()
+        {
+            var position = await _restClient.GetPositionAsync("AAPL");
+
+            Assert.NotNull(position);
+            Assert.Equal("AAPL", position.Symbol);
+        }
+
+        [Fact]
         public async void GetAssetsWorks()
         {
             var assets = await _restClient.GetAssetsAsync();
