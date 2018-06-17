@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpaca.Markets", "Alpaca.Markets\Alpaca.Markets.csproj", "{F339D73B-347F-47D4-9BFB-EBEA010FC6F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpaca.Markets.Tests", "Alpaca.Markets.Tests\Alpaca.Markets.Tests.csproj", "{3E3EBACE-944D-4C84-BB43-71760869604F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F339D73B-347F-47D4-9BFB-EBEA010FC6F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F339D73B-347F-47D4-9BFB-EBEA010FC6F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F339D73B-347F-47D4-9BFB-EBEA010FC6F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E3EBACE-944D-4C84-BB43-71760869604F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E3EBACE-944D-4C84-BB43-71760869604F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E3EBACE-944D-4C84-BB43-71760869604F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E3EBACE-944D-4C84-BB43-71760869604F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
