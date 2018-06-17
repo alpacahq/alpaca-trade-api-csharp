@@ -74,6 +74,74 @@ namespace Alpaca.Markets
             }
         }
 
+        public async Task<IEnumerable<IOrder>> GetOrdersAsync(
+            OrderStatusFilter? orderStatusFilter = null,
+            DateTime? untilDateTime = null,
+            Int64? limitOrderNumber = null)
+        {
+            var queryParameters = new Dictionary<String, String>();
+            if (orderStatusFilter.HasValue)
+            {
+                queryParameters.Add("status", orderStatusFilter.Value.ToEnumString());
+            }
+            if (untilDateTime.HasValue)
+            {
+                queryParameters.Add("until", untilDateTime.Value
+                    .ToString("O", CultureInfo.InvariantCulture));
+            }
+            if (limitOrderNumber.HasValue)
+            {
+                queryParameters.Add("limit", limitOrderNumber.Value
+                    .ToString("D", CultureInfo.InvariantCulture));
+            }
+
+            var builder = new UriBuilder(_httpClient.BaseAddress)
+            {
+                Path = "v1/orders",
+                Query = getFormattedQueryParameters(queryParameters)
+            };
+
+            using (var stream = await _httpClient.GetStreamAsync(builder.Uri))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<List<JsonOrder>>(reader);
+            }
+        }
+
+        public async Task<IEnumerable<IOrder>> GetOrderAsync(
+            String clientOrderId)
+        {
+            var queryParameters = new Dictionary<String, String>
+            {
+                {"client_order_id", clientOrderId.Trim()}
+            };
+
+            var builder = new UriBuilder(_httpClient.BaseAddress)
+            {
+                Path = "v1/orders:by_client_order_id",
+                Query = getFormattedQueryParameters(queryParameters)
+            };
+
+            using (var stream = await _httpClient.GetStreamAsync(builder.Uri))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<List<JsonOrder>>(reader);
+            }
+        }
+
+        public async Task<IEnumerable<IOrder>> GetOrderAsync(
+            Guid orderId)
+        {
+            using (var stream = await _httpClient.GetStreamAsync($"v1/orders{orderId:D}"))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<List<JsonOrder>>(reader);
+            }
+        }
+
         public async Task<IEnumerable<IPosition>> GetPositionsAsync()
         {
             using (var stream = await _httpClient.GetStreamAsync("v1/positions"))
@@ -143,5 +211,12 @@ namespace Alpaca.Markets
                 return content.ReadAsStringAsync().Result;
             }
         }
+    }
+
+    public enum OrderStatusFilter
+    {
+        open,
+        closed,
+        all
     }
 }

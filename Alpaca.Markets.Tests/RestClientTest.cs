@@ -21,6 +21,15 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
+        public async void GetOrderWorks()
+        {
+            var order = await _restClient.GetOrderAsync(Guid.NewGuid());
+
+            Assert.NotNull(order);
+            // Assert.NotEmpty(orders);
+        }
+
+        [Fact]
         public async void GetPositionsWorks()
         {
             var positions = await _restClient.GetPositionsAsync();
