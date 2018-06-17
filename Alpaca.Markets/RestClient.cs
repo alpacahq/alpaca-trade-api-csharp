@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -32,9 +35,53 @@ namespace Alpaca.Markets
             }
         }
 
-        public IAccount GetAccount()
+        public async Task<IClock> GetClockAsync()
         {
-            return GetAccountAsync().Result;
+            using (var stream = await _httpClient.GetStreamAsync("v1/clock"))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<JsonClock>(reader);
+            }
+        }
+
+        public async Task<IEnumerable<ICalendar>> GetCalendarAsync(
+            DateTime? startDateInclusive = null,
+            DateTime? endDateInclusive = null)
+        {
+            var queryParameters = new Dictionary<String, String>();
+            if (startDateInclusive.HasValue)
+            {
+                queryParameters.Add("start", startDateInclusive.Value
+                    .ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
+            };
+            if (endDateInclusive.HasValue)
+            {
+                queryParameters.Add("end", endDateInclusive.Value
+                    .ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
+            };
+
+            var builder = new UriBuilder(_httpClient.BaseAddress)
+            {
+                Path = "v1/calendar",
+                Query = getFormattedQueryParameters(queryParameters)
+            };
+
+            using (var stream = await _httpClient.GetStreamAsync(builder.Uri))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<List<JsonCalendar>>(reader);
+            }
+        }
+
+        private String getFormattedQueryParameters(
+            IEnumerable<KeyValuePair<String, String>> queryParameters)
+        {
+            using (var content = new FormUrlEncodedContent(queryParameters))
+            {
+                return content.ReadAsStringAsync().Result;
+            }
         }
     }
 }
