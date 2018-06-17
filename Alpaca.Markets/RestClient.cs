@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
+using Alpaca.Markets.Helpers;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -35,6 +35,44 @@ namespace Alpaca.Markets
             }
         }
 
+        public async Task<IEnumerable<IAsset>> GetAssetsAsync(
+            AssetStatus? assetStatus = null,
+            AssetClass? assetClass = null)
+        {
+            var queryParameters = new Dictionary<String, String>();
+            if (assetStatus.HasValue)
+            {
+                queryParameters.Add("status", assetStatus.Value.ToEnumString());
+            }
+            if (assetClass.HasValue)
+            {
+                queryParameters.Add("asset_class", assetClass.Value.ToEnumString());
+            }
+
+            var builder = new UriBuilder(_httpClient.BaseAddress)
+            {
+                Path = "v1/assets",
+                Query = getFormattedQueryParameters(queryParameters)
+            };
+
+            using (var stream = await _httpClient.GetStreamAsync(builder.Uri))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<List<JsonAsset>>(reader);
+            }
+        }
+
+        public async Task<IAsset> GetAssetAsync(
+            String symbol)
+        {
+            using (var stream = await _httpClient.GetStreamAsync($"v1/assets/{symbol}"))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<JsonAsset>(reader);
+            }
+        }
         public async Task<IClock> GetClockAsync()
         {
             using (var stream = await _httpClient.GetStreamAsync("v1/clock"))
@@ -54,12 +92,12 @@ namespace Alpaca.Markets
             {
                 queryParameters.Add("start", startDateInclusive.Value
                     .ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
-            };
+            }
             if (endDateInclusive.HasValue)
             {
                 queryParameters.Add("end", endDateInclusive.Value
                     .ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
-            };
+            }
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {

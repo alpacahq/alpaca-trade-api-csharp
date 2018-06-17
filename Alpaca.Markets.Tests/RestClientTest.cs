@@ -21,6 +21,24 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
+        public async void GetAssetsWorks()
+        {
+            var assets = await _restClient.GetAssetsAsync();
+
+            Assert.NotNull(assets);
+            Assert.NotEmpty(assets);
+        }
+
+        [Fact]
+        public async void GetAssetWorks()
+        {
+            var asset = await _restClient.GetAssetAsync("AAPL");
+
+            Assert.NotNull(asset);
+            Assert.Equal("AAPL", asset.Symbol);
+        }
+
+        [Fact]
         public async void GetClockWorks()
         {
             var clock = await _restClient.GetClockAsync();

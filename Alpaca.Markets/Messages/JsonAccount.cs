@@ -12,7 +12,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "status", Required = Required.Always)]
         public AccountStatus Status { get; set; }
 
-        [JsonProperty(PropertyName = "currency")]
+        [JsonProperty(PropertyName = "currency", Required = Required.Default)]
         public String Currency { get; set; }
 
         [JsonProperty(PropertyName = "cash", Required = Required.Always)]
