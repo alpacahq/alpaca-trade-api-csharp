@@ -8,6 +8,9 @@ namespace Alpaca.Markets
 {
     internal sealed class JsonCalendar : ICalendar
     {
+        private static readonly TimeZoneInfo _easternTimeZone =
+            TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+
         private sealed class DateConverter : IsoDateTimeConverter
         {
             public DateConverter()
@@ -44,10 +47,17 @@ namespace Alpaca.Markets
         {
             TradingDate = DateTime.SpecifyKind(
                 TradingDate.Date, DateTimeKind.Utc);
-            TradingOpenTime = TradingDate.Add(
-                TradingOpenTime.TimeOfDay);
-            TradingCloseTime = TradingDate.Add(
-                TradingCloseTime.TimeOfDay);
+
+            var estTradingDate = TimeZoneInfo.ConvertTimeFromUtc(
+                DateTime.SpecifyKind(TradingDate.Date, DateTimeKind.Utc),
+                _easternTimeZone).Date;
+
+            TradingOpenTime = TimeZoneInfo.ConvertTimeToUtc(
+                estTradingDate.Add(TradingOpenTime.TimeOfDay),
+                _easternTimeZone);
+            TradingCloseTime = TimeZoneInfo.ConvertTimeToUtc(
+                estTradingDate.Add(TradingCloseTime.TimeOfDay),
+                _easternTimeZone);
         }
     }
 }
