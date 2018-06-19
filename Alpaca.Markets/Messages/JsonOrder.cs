@@ -38,19 +38,19 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; }
 
-        [JsonProperty(PropertyName = "exchange", Required = Required.Always)]
+        [JsonProperty(PropertyName = "exchange", Required = Required.Default)]
         public Exchange Exchange { get; set; }
 
         [JsonProperty(PropertyName = "asset_class", Required = Required.Always)]
         public AssetClass AssetClass { get; set; }
 
         [JsonProperty(PropertyName = "qty", Required = Required.Always)]
-        public Int32 Quantity { get; set; }
+        public Int64 Quantity { get; set; }
 
         [JsonProperty(PropertyName = "filled_qty", Required = Required.Always)]
-        public Int32 FilledQuantity { get; set; }
+        public Int64 FilledQuantity { get; set; }
 
-        [JsonProperty(PropertyName = "type", Required = Required.Always)]
+        [JsonProperty(PropertyName = "order_type", Required = Required.Always)]
         public OrderType OrderType { get; set; }
 
         [JsonProperty(PropertyName = "side", Required = Required.Always)]

@@ -30,9 +30,9 @@ namespace Alpaca.Markets
 
         AssetClass AssetClass { get; }
 
-        Int32 Quantity { get; }
+        Int64 Quantity { get; }
 
-        Int32 FilledQuantity { get; }
+        Int64 FilledQuantity { get; }
 
         OrderType OrderType { get; }
 

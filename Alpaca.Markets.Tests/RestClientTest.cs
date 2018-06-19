@@ -12,7 +12,7 @@ namespace Alpaca.Markets.Tests
             new Uri("https://staging-api.tradetalk.us"));
 
         [Fact]
-        public async void GetAccountsWorks()
+        public async void GetAccountWorks()
         {
             var account = await _restClient.GetAccountAsync();
 
@@ -21,12 +21,33 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
+        public async void GetOrdersWorks()
+        {
+            var orders = await _restClient.GetOrdersAsync();
+
+            Assert.NotNull(orders);
+            // Assert.NotEmpty(orders);
+        }
+
+        [Fact]
         public async void GetOrderWorks()
         {
-            var order = await _restClient.GetOrderAsync(Guid.NewGuid());
+            var orders = await _restClient.GetOrdersAsync(OrderStatusFilter.All);
 
-            Assert.NotNull(order);
-            // Assert.NotEmpty(orders);
+            Assert.NotNull(orders);
+
+            var ordersList = orders.ToList();
+            Assert.NotEmpty(ordersList);
+            var first = ordersList.First();
+
+            var orderById = await _restClient.GetOrderAsync(first.OrderId);
+            var orderByClientId = await _restClient.GetOrderAsync(first.ClientOrderId);
+
+            Assert.NotNull(orderById);
+            Assert.NotNull(orderByClientId);
+
+            Assert.Equal(orderById.OrderId, orderByClientId.OrderId);
+            Assert.Equal(orderById.ClientOrderId, orderByClientId.ClientOrderId);
         }
 
         [Fact]
@@ -72,7 +93,7 @@ namespace Alpaca.Markets.Tests
 
             Assert.NotNull(clock);
             Assert.True(clock.NextOpen > clock.Timestamp);
-            Assert.True(clock.NextClose > clock.NextOpen);
+            Assert.True(clock.NextClose > clock.Timestamp);
         }
 
         [Fact]
