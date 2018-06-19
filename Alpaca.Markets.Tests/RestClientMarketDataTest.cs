@@ -5,6 +5,7 @@ namespace Alpaca.Markets.Tests
     public sealed class RestClientMarketDataTest
     {
         private readonly RestClient _restClient = RestClientFactory.GetRestClient();
+
         [Fact]
         public async void GetQuotesWorks()
         {
@@ -36,6 +37,25 @@ namespace Alpaca.Markets.Tests
 
             Assert.NotNull(quote);
             Assert.Equal("AAPL", quote.Symbol);
+        }
+
+        [Fact]
+        public async void GetFundamentalsWorks()
+        {
+            var fundamentals = await _restClient.GetFundamentalsAsync(
+                new[] { "AAPL", "GOOG", "MSFT" });
+
+            Assert.NotNull(fundamentals);
+            Assert.NotEmpty(fundamentals);
+        }
+
+        [Fact]
+        public async void GetFundamentalWorks()
+        {
+            var fundamental = await _restClient.GetFundamentalAsync("AAPL");
+
+            Assert.NotNull(fundamental);
+            Assert.Equal("AAPL", fundamental.Symbol);
         }
     }
 }
