@@ -6,8 +6,6 @@ namespace Alpaca.Markets
     {
         Guid AssetId { get; }
 
-        String Name { get; }
-
         AssetClass Class { get; }
 
         Exchange Exchange { get; }
