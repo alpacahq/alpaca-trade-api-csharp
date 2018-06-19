@@ -153,7 +153,7 @@ namespace Alpaca.Markets
         {
             var queryParameters = new Dictionary<String, String>
             {
-                {"client_order_id", clientOrderId.Trim()}
+                { "client_order_id", clientOrderId.Trim() }
             };
 
             var builder = new UriBuilder(_httpClient.BaseAddress)

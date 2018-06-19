@@ -4,12 +4,9 @@ using Xunit;
 
 namespace Alpaca.Markets.Tests
 {
-    public sealed class RestClientTest
+    public sealed class RestClientGeneralTest
     {
-        private readonly RestClient _restClient = new RestClient(
-            "AKEW7ZBQUSNUHOJNQ5MS",
-            "Yr2Tms89rQ6foRLNu4pz3w/yXOrxQGDmXctU1BCn",
-            new Uri("https://staging-api.tradetalk.us"));
+        private readonly RestClient _restClient = RestClientFactory.GetRestClient();
 
         [Fact]
         public async void GetAccountWorks()

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
@@ -18,6 +21,39 @@ namespace Alpaca.Markets
             _httpClient.DefaultRequestHeaders.Add(
                 "APCA-API-SECRET-KEY", secretKey);
             _httpClient.BaseAddress = restApi;
+        }
+
+        public async Task<IEnumerable<IQuote>> GetQuotesAsync(
+            IEnumerable<String> symbol)
+        {
+            var queryParameters = new Dictionary<String, String>
+            {
+                { "symbols", String.Join(",", symbol) }
+            };
+
+            var builder = new UriBuilder(_httpClient.BaseAddress)
+            {
+                Path = "v1/quotes",
+                Query = getFormattedQueryParameters(queryParameters)
+            };
+
+            using (var stream = await _httpClient.GetStreamAsync(builder.Uri))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<List<JsonQuote>>(reader);
+            }
+        }
+
+        public async Task<IQuote> GetQuoteAsync(
+            String symbol)
+        {
+            using (var stream = await _httpClient.GetStreamAsync($"v1/assets/{symbol}/quote"))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<JsonQuote>(reader);
+            }
         }
 
         private String getFormattedQueryParameters(
