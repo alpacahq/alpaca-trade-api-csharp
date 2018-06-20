@@ -11,14 +11,9 @@ namespace Alpaca.Markets
 {
     public sealed partial class RestClient
     {
-        public async Task<IAccount> GetAccountAsync()
+        public Task<IAccount> GetAccountAsync()
         {
-            using (var stream = await _httpClient.GetStreamAsync("v1/account"))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<JsonAccount>(reader);
-            }
+            return getSingleObjectAsync<IAccount, JsonAccount>("v1/account");
         }
 
         public async Task<IEnumerable<IAsset>> GetAssetsAsync(
@@ -50,15 +45,10 @@ namespace Alpaca.Markets
             }
         }
 
-        public async Task<IAsset> GetAssetAsync(
+        public Task<IAsset> GetAssetAsync(
             String symbol)
         {
-            using (var stream = await _httpClient.GetStreamAsync($"v1/assets/{symbol}"))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<JsonAsset>(reader);
-            }
+            return getSingleObjectAsync<IAsset, JsonAsset>($"v1/assets/{symbol}");
         }
 
         public async Task<IEnumerable<IOrder>> GetOrdersAsync(
@@ -170,15 +160,10 @@ namespace Alpaca.Markets
             }
         }
 
-        public async Task<IOrder> GetOrderAsync(
+        public Task<IOrder> GetOrderAsync(
             Guid orderId)
         {
-            using (var stream = await _httpClient.GetStreamAsync($"v1/orders/{orderId:D}"))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<JsonOrder>(reader);
-            }
+            return getSingleObjectAsync<IOrder, JsonOrder>($"v1/orders/{orderId:D}");
         }
 
         public async Task<Boolean> DeleteOrderAsync(
@@ -200,15 +185,10 @@ namespace Alpaca.Markets
             }
         }
 
-        public async Task<IPosition> GetPositionAsync(
+        public Task<IPosition> GetPositionAsync(
             String symbol)
         {
-            using (var stream = await _httpClient.GetStreamAsync($"v1/positions/{symbol}"))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<JsonPosition>(reader);
-            }
+            return getSingleObjectAsync<IPosition, JsonPosition>($"v1/positions/{symbol}");
         }
 
         public async Task<IClock> GetClockAsync()
