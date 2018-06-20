@@ -1,112 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Threading.Tasks;
 using Alpaca.Markets.Helpers;
-using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
     public sealed partial class RestClient
     {
-        public async Task<IEnumerable<IAssetBars>> GetBarsAsync(
+        public Task<IEnumerable<IAssetBars>> GetBarsAsync(
             IEnumerable<String> symbol,
             BarDuration barDuration,
             DateTime? startTimeInclusive = null,
             DateTime? endTimeInclusive = null)
         {
-            var queryParameters = new Dictionary<String, String>
-            {
-                {"symbols", String.Join(",", symbol)},
-                {"timeframe ", barDuration.ToEnumString()}
-            };
-
-            if (startTimeInclusive.HasValue)
-            {
-                queryParameters.Add("start_dt", startTimeInclusive.Value
-                    .ToString("O", CultureInfo.InvariantCulture));
-            }
-
-            if (endTimeInclusive.HasValue)
-            {
-                queryParameters.Add("end_dt", endTimeInclusive.Value
-                    .ToString("O", CultureInfo.InvariantCulture));
-            }
-
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = "v1/bars",
-                Query = getFormattedQueryParameters(queryParameters)
+                Query = new QueryBuilder()
+                    .AddParameter("symbols", String.Join(",", symbol))
+                    .AddParameter("timeframe", barDuration.ToEnumString())
+                    .AddParameter("start_dt", startTimeInclusive)
+                    .AddParameter("end_dt", endTimeInclusive)
             };
 
-            using (var stream = await _httpClient.GetStreamAsync(builder.Uri))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<List<JsonAssetBars>>(reader);
-            }
+            return getObjectsListAsync<IAssetBars, JsonAssetBars>(builder);
         }
 
-        public async Task<IAssetBars> GetBarsAsync(
+        public Task<IAssetBars> GetBarsAsync(
             String symbol,
             BarDuration barDuration,
             DateTime? startTimeInclusive = null,
             DateTime? endTimeInclusive = null)
         {
-            var queryParameters = new Dictionary<String, String>
-            {
-                {"timeframe ", barDuration.ToEnumString()}
-            };
-
-            if (startTimeInclusive.HasValue)
-            {
-                queryParameters.Add("start_dt", startTimeInclusive.Value
-                    .ToString("O", CultureInfo.InvariantCulture));
-            }
-
-            if (endTimeInclusive.HasValue)
-            {
-                queryParameters.Add("end_dt", endTimeInclusive.Value
-                    .ToString("O", CultureInfo.InvariantCulture));
-            }
-
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = $"v1/assets/{symbol}/bars",
-                Query = getFormattedQueryParameters(queryParameters)
+                Query = new QueryBuilder()
+                    .AddParameter("timeframe ", barDuration.ToEnumString())
+                    .AddParameter("start_dt", startTimeInclusive)
+                    .AddParameter("end_dt", endTimeInclusive)
             };
 
-            var res = await _httpClient.GetStringAsync(builder.Uri);
-
-            using (var stream = await _httpClient.GetStreamAsync(builder.Uri))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<JsonAssetBars>(reader);
-            }
+            return getSingleObjectAsync<IAssetBars, JsonAssetBars>(builder);
         }
 
-        public async Task<IEnumerable<IQuote>> GetQuotesAsync(
+        public Task<IEnumerable<IQuote>> GetQuotesAsync(
             IEnumerable<String> symbol)
         {
-            var queryParameters = new Dictionary<String, String>
-            {
-                {"symbols", String.Join(",", symbol)}
-            };
-
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = "v1/quotes",
-                Query = getFormattedQueryParameters(queryParameters)
+                Query = new QueryBuilder()
+                    .AddParameter("symbols", String.Join(",", symbol))
             };
 
-            using (var stream = await _httpClient.GetStreamAsync(builder.Uri))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<List<JsonQuote>>(reader);
-            }
+            return getObjectsListAsync<IQuote, JsonQuote>(builder);
         }
 
         public Task<IQuote> GetQuoteAsync(
@@ -115,26 +63,17 @@ namespace Alpaca.Markets
             return getSingleObjectAsync<IQuote, JsonQuote>($"v1/assets/{symbol}/quote");
         }
 
-        public async Task<IEnumerable<IFundamental>> GetFundamentalsAsync(
+        public Task<IEnumerable<IFundamental>> GetFundamentalsAsync(
             IEnumerable<String> symbol)
         {
-            var queryParameters = new Dictionary<String, String>
-            {
-                {"symbols", String.Join(",", symbol)}
-            };
-
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = "v1/fundamentals",
-                Query = getFormattedQueryParameters(queryParameters)
+                Query = new QueryBuilder()
+                    .AddParameter("symbols", String.Join(",", symbol))
             };
 
-            using (var stream = await _httpClient.GetStreamAsync(builder.Uri))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<List<JsonFundamental>>(reader);
-            }
+            return getObjectsListAsync<IFundamental, JsonFundamental>(builder);
         }
 
         public Task<IFundamental> GetFundamentalAsync(

@@ -23,15 +23,6 @@ namespace Alpaca.Markets
             _httpClient.BaseAddress = restApi;
         }
 
-        private String getFormattedQueryParameters(
-            IEnumerable<KeyValuePair<String, String>> queryParameters)
-        {
-            using (var content = new FormUrlEncodedContent(queryParameters))
-            {
-                return content.ReadAsStringAsync().Result;
-            }
-        }
-
         private async Task<TApi> getSingleObjectAsync<TApi, TJson>(
             String endpointUri)
             where TJson : TApi
@@ -42,6 +33,29 @@ namespace Alpaca.Markets
                 var serializer = new JsonSerializer();
                 return serializer.Deserialize<TJson>(reader);
             }
+        }
+
+        private Task<TApi> getSingleObjectAsync<TApi, TJson>(
+            UriBuilder uriBuilder)
+            where TJson : TApi
+        {
+            return getSingleObjectAsync<TApi, TJson>(uriBuilder.ToString());
+        }
+
+        private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
+            String endpointUri)
+            where TJson : TApi
+        {
+            return (IEnumerable<TApi>) await
+                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(endpointUri);
+        }
+
+        private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
+            UriBuilder uriBuilder)
+            where TJson : TApi
+        {
+            return (IEnumerable<TApi>) await
+                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(uriBuilder);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -16,33 +15,19 @@ namespace Alpaca.Markets
             return getSingleObjectAsync<IAccount, JsonAccount>("v1/account");
         }
 
-        public async Task<IEnumerable<IAsset>> GetAssetsAsync(
+        public Task<IEnumerable<IAsset>> GetAssetsAsync(
             AssetStatus? assetStatus = null,
             AssetClass? assetClass = null)
         {
-            var queryParameters = new Dictionary<String, String>();
-            if (assetStatus.HasValue)
-            {
-                queryParameters.Add("status", assetStatus.Value.ToEnumString());
-            }
-
-            if (assetClass.HasValue)
-            {
-                queryParameters.Add("asset_class", assetClass.Value.ToEnumString());
-            }
-
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = "v1/assets",
-                Query = getFormattedQueryParameters(queryParameters)
+                Query = new QueryBuilder()
+                    .AddParameter("status", assetStatus)
+                    .AddParameter("asset_class", assetClass)
             };
 
-            using (var stream = await _httpClient.GetStreamAsync(builder.Uri))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<List<JsonAsset>>(reader);
-            }
+            return getObjectsListAsync<IAsset, JsonAsset>(builder);
         }
 
         public Task<IAsset> GetAssetAsync(
@@ -51,41 +36,21 @@ namespace Alpaca.Markets
             return getSingleObjectAsync<IAsset, JsonAsset>($"v1/assets/{symbol}");
         }
 
-        public async Task<IEnumerable<IOrder>> GetOrdersAsync(
+        public Task<IEnumerable<IOrder>> GetOrdersAsync(
             OrderStatusFilter? orderStatusFilter = null,
             DateTime? untilDateTime = null,
             Int64? limitOrderNumber = null)
         {
-            var queryParameters = new Dictionary<String, String>();
-            if (orderStatusFilter.HasValue)
-            {
-                queryParameters.Add("status", orderStatusFilter.Value.ToEnumString());
-            }
-
-            if (untilDateTime.HasValue)
-            {
-                queryParameters.Add("until", untilDateTime.Value
-                    .ToString("O", CultureInfo.InvariantCulture));
-            }
-
-            if (limitOrderNumber.HasValue)
-            {
-                queryParameters.Add("limit", limitOrderNumber.Value
-                    .ToString("D", CultureInfo.InvariantCulture));
-            }
-
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = "v1/orders",
-                Query = getFormattedQueryParameters(queryParameters)
+                Query = new QueryBuilder()
+                    .AddParameter("status", orderStatusFilter)
+                    .AddParameter("until", untilDateTime)
+                    .AddParameter("limit", limitOrderNumber)
             };
 
-            using (var stream = await _httpClient.GetStreamAsync(builder.Uri))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<List<JsonOrder>>(reader);
-            }
+            return getObjectsListAsync<IOrder, JsonOrder>(builder);
         }
 
         public async Task<IOrder> PostOrderAsync(
@@ -138,26 +103,17 @@ namespace Alpaca.Markets
             }
         }
 
-        public async Task<IOrder> GetOrderAsync(
+        public Task<IOrder> GetOrderAsync(
             String clientOrderId)
         {
-            var queryParameters = new Dictionary<String, String>
-            {
-                { "client_order_id", clientOrderId.Trim() }
-            };
-
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = "v1/orders:by_client_order_id",
-                Query = getFormattedQueryParameters(queryParameters)
+                Query = new QueryBuilder()
+                    .AddParameter("client_order_id", clientOrderId)
             };
 
-            using (var stream = await _httpClient.GetStreamAsync(builder.Uri))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<JsonOrder>(reader);
-            }
+            return getSingleObjectAsync<IOrder, JsonOrder>(builder);
         }
 
         public Task<IOrder> GetOrderAsync(
@@ -175,14 +131,9 @@ namespace Alpaca.Markets
             }
         }
 
-        public async Task<IEnumerable<IPosition>> GetPositionsAsync()
+        public Task<IEnumerable<IPosition>> GetPositionsAsync()
         {
-            using (var stream = await _httpClient.GetStreamAsync("v1/positions"))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<List<JsonPosition>>(reader);
-            }
+            return getObjectsListAsync<IPosition, JsonPosition>("v1/positions");
         }
 
         public Task<IPosition> GetPositionAsync(
@@ -191,45 +142,24 @@ namespace Alpaca.Markets
             return getSingleObjectAsync<IPosition, JsonPosition>($"v1/positions/{symbol}");
         }
 
-        public async Task<IClock> GetClockAsync()
+        public Task<IClock> GetClockAsync()
         {
-            using (var stream = await _httpClient.GetStreamAsync("v1/clock"))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<JsonClock>(reader);
-            }
+            return getSingleObjectAsync<IClock, JsonClock>("v1/clock");
         }
 
-        public async Task<IEnumerable<ICalendar>> GetCalendarAsync(
+        public Task<IEnumerable<ICalendar>> GetCalendarAsync(
             DateTime? startDateInclusive = null,
             DateTime? endDateInclusive = null)
         {
-            var queryParameters = new Dictionary<String, String>();
-            if (startDateInclusive.HasValue)
-            {
-                queryParameters.Add("start", startDateInclusive.Value
-                    .ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
-            }
-
-            if (endDateInclusive.HasValue)
-            {
-                queryParameters.Add("end", endDateInclusive.Value
-                    .ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
-            }
-
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = "v1/calendar",
-                Query = getFormattedQueryParameters(queryParameters)
+                Query = new QueryBuilder()
+                    .AddParameter("start", startDateInclusive, "yyyy-MM-dd")
+                    .AddParameter("end", endDateInclusive, "yyyy-MM-dd")
             };
 
-            using (var stream = await _httpClient.GetStreamAsync(builder.Uri))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<List<JsonCalendar>>(reader);
-            }
+            return getObjectsListAsync<ICalendar, JsonCalendar>(builder);
         }
     }
 }
