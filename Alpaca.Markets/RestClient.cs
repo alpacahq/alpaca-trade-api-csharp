@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -13,6 +14,8 @@ namespace Alpaca.Markets
 
         private readonly HttpClient _polygonHttpClient = new HttpClient();
 
+        private readonly String _polygonApiKey;
+
         public RestClient(
             String keyId,
             String secretKey,
@@ -22,10 +25,14 @@ namespace Alpaca.Markets
                 "APCA-API-KEY-ID", keyId);
             _alpacaHttpClient.DefaultRequestHeaders.Add(
                 "APCA-API-SECRET-KEY", secretKey);
+            _alpacaHttpClient.DefaultRequestHeaders.Accept
+                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _alpacaHttpClient.BaseAddress = restApi;
 
-            _polygonHttpClient.DefaultRequestHeaders.Add(
-                "api-key", keyId);
+            // TODO: olegra - provide correct key and probably endpoint here
+            _polygonApiKey = keyId;
+            _polygonHttpClient.DefaultRequestHeaders.Accept
+                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _polygonHttpClient.BaseAddress = 
                 new Uri("https://api.polygon.io");
         }
