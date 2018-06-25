@@ -1,4 +1,5 @@
 using System;
+using Alpaca.Markets.Enums;
 using Xunit;
 
 namespace Alpaca.Markets.Tests
@@ -7,7 +8,7 @@ namespace Alpaca.Markets.Tests
     {
         private readonly RestClient _restClient = RestClientFactory.GetRestClient();
 
-        [Fact(Skip = "Invalid API key")]
+        [Fact]
         public async void GetExchangesWorks()
         {
             var exchanges = await _restClient.GetExchangesAsync();
@@ -16,7 +17,7 @@ namespace Alpaca.Markets.Tests
             Assert.NotEmpty(exchanges);
         }
 
-        [Fact(Skip = "Invalid API key")]
+        [Fact]
         public async void GetSymbolTypeMapWorks()
         {
             var symbolTypeMap = await _restClient.GetSymbolTypeMapAsync();
@@ -47,6 +48,18 @@ namespace Alpaca.Markets.Tests
 
             Assert.NotNull(historicalItems.Items);
             Assert.NotEmpty(historicalItems.Items);
+        }
+
+        [Theory]
+        [InlineData(TickType.Trades)]
+        [InlineData(TickType.Quotes)]
+        public async void GetConditionMapForQuotesWorks(
+            TickType tickType)
+        {
+            var conditionMap = await _restClient.GetConditionMapAsync(tickType);
+
+            Assert.NotNull(conditionMap);
+            Assert.NotEmpty(conditionMap);
         }
     }
 }

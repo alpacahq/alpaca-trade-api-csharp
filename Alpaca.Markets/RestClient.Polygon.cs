@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
+using Alpaca.Markets.Enums;
 
 namespace Alpaca.Markets
 {
@@ -12,8 +14,7 @@ namespace Alpaca.Markets
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
             {
                 Path = "v1/meta/exchanges",
-                Query = new QueryBuilder()
-                    .AddParameter("apiKey", _polygonApiKey)
+                Query = getDefaultPolygonApiQueryBuilder()
             };
 
             return getObjectsListAsync<IExchange, JsonExchange>(_polygonHttpClient, builder);
@@ -23,10 +24,11 @@ namespace Alpaca.Markets
         {
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
             {
-                Path = "v1/meta/exchanges",
-                Query = new QueryBuilder()
-                    .AddParameter("apiKey", _polygonApiKey)
+                Path = "v1/meta/symbol-types",
+                Query = getDefaultPolygonApiQueryBuilder()
             };
+
+            var res = _polygonHttpClient.GetStringAsync(builder.Uri).Result;
 
             return getSingleObjectAsync
                 <IDictionary<String,String>,Dictionary <String, String>>(
@@ -43,8 +45,7 @@ namespace Alpaca.Markets
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
             {
                 Path = $"v1//v1/historic/trades/{symbol}/{dateAsString}",
-                Query = new QueryBuilder()
-                    .AddParameter("apiKey", _polygonApiKey)
+                Query = getDefaultPolygonApiQueryBuilder()
                     .AddParameter("offset", offset)
                     .AddParameter("limit", limit)
             };
@@ -64,8 +65,7 @@ namespace Alpaca.Markets
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
             {
                 Path = $"v1//v1/historic/quotes/{symbol}/{dateAsString}",
-                Query = new QueryBuilder()
-                    .AddParameter("apiKey", _polygonApiKey)
+                Query = getDefaultPolygonApiQueryBuilder()
                     .AddParameter("offset", offset)
                     .AddParameter("limit", limit)
             };
@@ -73,6 +73,33 @@ namespace Alpaca.Markets
             return getSingleObjectAsync
                 <IHistoricalItems<IHistoricalQuote>, JsonHistoricalItems<IHistoricalQuote, JsonHistoricalQuote>>(
                     _polygonHttpClient, builder);
+        }
+
+        public async Task<IDictionary<Int64, String>> GetConditionMapAsync(
+            TickType tickType = TickType.Trades)
+        {
+            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            {
+                Path = $"v1/meta/conditions/{tickType.ToEnumString()}",
+                Query = getDefaultPolygonApiQueryBuilder()
+            };
+
+            var dictionary = await getSingleObjectAsync
+                <IDictionary<String, String>, Dictionary<String, String>>(
+                    _polygonHttpClient, builder);
+
+            return dictionary
+                .ToDictionary(
+                    kvp => Int64.Parse(kvp.Key,
+                        NumberStyles.Integer, CultureInfo.InvariantCulture),
+                    kvp => kvp.Value);
+        }
+
+        private QueryBuilder getDefaultPolygonApiQueryBuilder()
+        {
+            return new QueryBuilder()
+                .AddParameter("apiKey", _polygonApiKey)
+                .AddParameter("staging", "true");
         }
     }
 }

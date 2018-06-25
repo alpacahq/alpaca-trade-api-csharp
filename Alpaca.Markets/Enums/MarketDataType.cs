@@ -11,6 +11,9 @@ namespace Alpaca.Markets
         Equities,
 
         [EnumMember(Value = "indecies")]
-        Indexes
+        Indexes,
+
+        [EnumMember(Value = "currencies")]
+        Currencies
     }
 }

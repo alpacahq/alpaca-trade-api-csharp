@@ -10,6 +10,9 @@ namespace Alpaca.Markets
         [EnumMember(Value = "exchange")]
         Exchange,
 
+        [EnumMember(Value = "banking")]
+        Banking,
+
         [EnumMember(Value = "TRF")]
         TradeReportingFacility
     }
