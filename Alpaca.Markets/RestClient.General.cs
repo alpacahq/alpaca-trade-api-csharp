@@ -12,14 +12,14 @@ namespace Alpaca.Markets
     {
         public Task<IAccount> GetAccountAsync()
         {
-            return getSingleObjectAsync<IAccount, JsonAccount>("v1/account");
+            return getSingleObjectAsync<IAccount, JsonAccount>(_alpacaHttpClient, "v1/account");
         }
 
         public Task<IEnumerable<IAsset>> GetAssetsAsync(
             AssetStatus? assetStatus = null,
             AssetClass? assetClass = null)
         {
-            var builder = new UriBuilder(_httpClient.BaseAddress)
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
                 Path = "v1/assets",
                 Query = new QueryBuilder()
@@ -27,13 +27,13 @@ namespace Alpaca.Markets
                     .AddParameter("asset_class", assetClass)
             };
 
-            return getObjectsListAsync<IAsset, JsonAsset>(builder);
+            return getObjectsListAsync<IAsset, JsonAsset>(_alpacaHttpClient, builder);
         }
 
         public Task<IAsset> GetAssetAsync(
             String symbol)
         {
-            return getSingleObjectAsync<IAsset, JsonAsset>($"v1/assets/{symbol}");
+            return getSingleObjectAsync<IAsset, JsonAsset>(_alpacaHttpClient, $"v1/assets/{symbol}");
         }
 
         public Task<IEnumerable<IOrder>> GetOrdersAsync(
@@ -41,7 +41,7 @@ namespace Alpaca.Markets
             DateTime? untilDateTime = null,
             Int64? limitOrderNumber = null)
         {
-            var builder = new UriBuilder(_httpClient.BaseAddress)
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
                 Path = "v1/orders",
                 Query = new QueryBuilder()
@@ -50,7 +50,7 @@ namespace Alpaca.Markets
                     .AddParameter("limit", limitOrderNumber)
             };
 
-            return getObjectsListAsync<IOrder, JsonOrder>(builder);
+            return getObjectsListAsync<IOrder, JsonOrder>(_alpacaHttpClient, builder);
         }
 
         public async Task<IOrder> PostOrderAsync(
@@ -87,7 +87,7 @@ namespace Alpaca.Markets
                 serializer.Serialize(stringWriter, newOrder);
 
                 using (var content = new StringContent(stringWriter.ToString()))
-                using (var response = await _httpClient.PostAsync("v1/orders", content))
+                using (var response = await _alpacaHttpClient.PostAsync("v1/orders", content))
                 using (var stream = await response.Content.ReadAsStreamAsync())
                 using (var textReader = new StreamReader(stream))
                 using (var reader = new JsonTextReader(textReader))
@@ -106,26 +106,26 @@ namespace Alpaca.Markets
         public Task<IOrder> GetOrderAsync(
             String clientOrderId)
         {
-            var builder = new UriBuilder(_httpClient.BaseAddress)
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
                 Path = "v1/orders:by_client_order_id",
                 Query = new QueryBuilder()
                     .AddParameter("client_order_id", clientOrderId)
             };
 
-            return getSingleObjectAsync<IOrder, JsonOrder>(builder);
+            return getSingleObjectAsync<IOrder, JsonOrder>(_alpacaHttpClient, builder);
         }
 
         public Task<IOrder> GetOrderAsync(
             Guid orderId)
         {
-            return getSingleObjectAsync<IOrder, JsonOrder>($"v1/orders/{orderId:D}");
+            return getSingleObjectAsync<IOrder, JsonOrder>(_alpacaHttpClient, $"v1/orders/{orderId:D}");
         }
 
         public async Task<Boolean> DeleteOrderAsync(
             Guid orderId)
         {
-            using (var response = await _httpClient.DeleteAsync($"v1/orders/{orderId:D}"))
+            using (var response = await _alpacaHttpClient.DeleteAsync($"v1/orders/{orderId:D}"))
             {
                 return response.IsSuccessStatusCode;
             }
@@ -133,25 +133,25 @@ namespace Alpaca.Markets
 
         public Task<IEnumerable<IPosition>> GetPositionsAsync()
         {
-            return getObjectsListAsync<IPosition, JsonPosition>("v1/positions");
+            return getObjectsListAsync<IPosition, JsonPosition>(_alpacaHttpClient, "v1/positions");
         }
 
         public Task<IPosition> GetPositionAsync(
             String symbol)
         {
-            return getSingleObjectAsync<IPosition, JsonPosition>($"v1/positions/{symbol}");
+            return getSingleObjectAsync<IPosition, JsonPosition>(_alpacaHttpClient, $"v1/positions/{symbol}");
         }
 
         public Task<IClock> GetClockAsync()
         {
-            return getSingleObjectAsync<IClock, JsonClock>("v1/clock");
+            return getSingleObjectAsync<IClock, JsonClock>(_alpacaHttpClient, "v1/clock");
         }
 
         public Task<IEnumerable<ICalendar>> GetCalendarAsync(
             DateTime? startDateInclusive = null,
             DateTime? endDateInclusive = null)
         {
-            var builder = new UriBuilder(_httpClient.BaseAddress)
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
                 Path = "v1/calendar",
                 Query = new QueryBuilder()
@@ -159,7 +159,7 @@ namespace Alpaca.Markets
                     .AddParameter("end", endDateInclusive, "yyyy-MM-dd")
             };
 
-            return getObjectsListAsync<ICalendar, JsonCalendar>(builder);
+            return getObjectsListAsync<ICalendar, JsonCalendar>(_alpacaHttpClient, builder);
         }
     }
 }

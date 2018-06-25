@@ -9,25 +9,33 @@ namespace Alpaca.Markets
 {
     public sealed partial class RestClient
     {
-        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly HttpClient _alpacaHttpClient = new HttpClient();
+
+        private readonly HttpClient _polygonHttpClient = new HttpClient();
 
         public RestClient(
             String keyId,
             String secretKey,
             Uri restApi)
         {
-            _httpClient.DefaultRequestHeaders.Add(
+            _alpacaHttpClient.DefaultRequestHeaders.Add(
                 "APCA-API-KEY-ID", keyId);
-            _httpClient.DefaultRequestHeaders.Add(
+            _alpacaHttpClient.DefaultRequestHeaders.Add(
                 "APCA-API-SECRET-KEY", secretKey);
-            _httpClient.BaseAddress = restApi;
+            _alpacaHttpClient.BaseAddress = restApi;
+
+            _polygonHttpClient.DefaultRequestHeaders.Add(
+                "api-key", keyId);
+            _polygonHttpClient.BaseAddress = 
+                new Uri("https://api.polygon.io");
         }
 
         private async Task<TApi> getSingleObjectAsync<TApi, TJson>(
+            HttpClient httpClient,
             String endpointUri)
             where TJson : TApi
         {
-            using (var stream = await _httpClient.GetStreamAsync(endpointUri))
+            using (var stream = await httpClient.GetStreamAsync(endpointUri))
             using (var reader = new JsonTextReader(new StreamReader(stream)))
             {
                 var serializer = new JsonSerializer();
@@ -36,26 +44,29 @@ namespace Alpaca.Markets
         }
 
         private Task<TApi> getSingleObjectAsync<TApi, TJson>(
+            HttpClient httpClient,
             UriBuilder uriBuilder)
             where TJson : TApi
         {
-            return getSingleObjectAsync<TApi, TJson>(uriBuilder.ToString());
+            return getSingleObjectAsync<TApi, TJson>(httpClient, uriBuilder.ToString());
         }
 
         private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
+            HttpClient httpClient,
             String endpointUri)
             where TJson : TApi
         {
             return (IEnumerable<TApi>) await
-                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(endpointUri);
+                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, endpointUri);
         }
 
         private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
+            HttpClient httpClient,
             UriBuilder uriBuilder)
             where TJson : TApi
         {
             return (IEnumerable<TApi>) await
-                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(uriBuilder);
+                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, uriBuilder);
         }
     }
 }

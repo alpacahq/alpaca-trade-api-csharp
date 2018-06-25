@@ -13,7 +13,7 @@ namespace Alpaca.Markets
             DateTime? startTimeInclusive = null,
             DateTime? endTimeInclusive = null)
         {
-            var builder = new UriBuilder(_httpClient.BaseAddress)
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
                 Path = "v1/bars",
                 Query = new QueryBuilder()
@@ -23,7 +23,7 @@ namespace Alpaca.Markets
                     .AddParameter("end_dt", endTimeInclusive)
             };
 
-            return getObjectsListAsync<IAssetBars, JsonAssetBars>(builder);
+            return getObjectsListAsync<IAssetBars, JsonAssetBars>(_alpacaHttpClient, builder);
         }
 
         public Task<IAssetBars> GetBarsAsync(
@@ -32,7 +32,7 @@ namespace Alpaca.Markets
             DateTime? startTimeInclusive = null,
             DateTime? endTimeInclusive = null)
         {
-            var builder = new UriBuilder(_httpClient.BaseAddress)
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
                 Path = $"v1/assets/{symbol}/bars",
                 Query = new QueryBuilder()
@@ -41,45 +41,47 @@ namespace Alpaca.Markets
                     .AddParameter("end_dt", endTimeInclusive)
             };
 
-            return getSingleObjectAsync<IAssetBars, JsonAssetBars>(builder);
+            return getSingleObjectAsync<IAssetBars, JsonAssetBars>(_alpacaHttpClient, builder);
         }
 
         public Task<IEnumerable<IQuote>> GetQuotesAsync(
             IEnumerable<String> symbol)
         {
-            var builder = new UriBuilder(_httpClient.BaseAddress)
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
                 Path = "v1/quotes",
                 Query = new QueryBuilder()
                     .AddParameter("symbols", String.Join(",", symbol))
             };
 
-            return getObjectsListAsync<IQuote, JsonQuote>(builder);
+            return getObjectsListAsync<IQuote, JsonQuote>(_alpacaHttpClient, builder);
         }
 
         public Task<IQuote> GetQuoteAsync(
             String symbol)
         {
-            return getSingleObjectAsync<IQuote, JsonQuote>($"v1/assets/{symbol}/quote");
+            return getSingleObjectAsync<IQuote, JsonQuote>(
+                _alpacaHttpClient, $"v1/assets/{symbol}/quote");
         }
 
         public Task<IEnumerable<IFundamental>> GetFundamentalsAsync(
             IEnumerable<String> symbol)
         {
-            var builder = new UriBuilder(_httpClient.BaseAddress)
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
                 Path = "v1/fundamentals",
                 Query = new QueryBuilder()
                     .AddParameter("symbols", String.Join(",", symbol))
             };
 
-            return getObjectsListAsync<IFundamental, JsonFundamental>(builder);
+            return getObjectsListAsync<IFundamental, JsonFundamental>(_alpacaHttpClient, builder);
         }
 
         public Task<IFundamental> GetFundamentalAsync(
             String symbol)
         {
-            return getSingleObjectAsync<IFundamental, JsonFundamental>($"v1/assets/{symbol}/fundamental");
+            return getSingleObjectAsync<IFundamental, JsonFundamental>(
+                _alpacaHttpClient, $"v1/assets/{symbol}/fundamental");
         }
     }
 }
