@@ -1,29 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace Alpaca.Markets
 {
-    public sealed class JsonHistoricTrades : IHistoricTrades
+    public sealed class JsonHistoricalItems<TApi, TJson>
+        : IHistoricalItems<TApi> where TJson : TApi
     {
-        private static readonly TimeZoneInfo _easternTimeZone =
-            TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-
-        private sealed class DateConverter : IsoDateTimeConverter
-        {
-            public DateConverter()
-            {
-                DateTimeStyles = DateTimeStyles.AssumeLocal;
-                DateTimeFormat = "yyyy-MM-dd";
-            }
-        }
-
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty(PropertyName = "day", Required = Required.Always)]
-        public DateTime TradesDay { get; set; }
+        public DateTime ItemsDay { get; set; }
 
         [JsonProperty(PropertyName = "msLatency", Required = Required.Always)]
         public Int64 LatencyInMs { get; set; }
@@ -35,21 +22,22 @@ namespace Alpaca.Markets
         public String Symbol { get; set; }
 
         [JsonProperty(PropertyName = "ticks", Required = Required.Always)]
-        public List<JsonHistoricTrade> TradesList { get; set; }
+        public List<TJson> TradesList { get; set; }
 
         [JsonIgnore]
-        public IReadOnlyCollection<IHistoricTrade> Trades => TradesList;
+        public IReadOnlyCollection<TApi> Items =>
+            (IReadOnlyCollection<TApi>)TradesList;
 
         [OnDeserialized]
         internal void OnDeserializedMethod(
             StreamingContext context)
         {
-            TradesDay = DateTime.SpecifyKind(
-                TradesDay.Date, DateTimeKind.Utc);
+            ItemsDay = DateTime.SpecifyKind(
+                ItemsDay.Date, DateTimeKind.Utc);
 
             var estTradingDate = TimeZoneInfo.ConvertTimeFromUtc(
-                DateTime.SpecifyKind(TradesDay.Date, DateTimeKind.Utc),
-                _easternTimeZone).Date;
+                DateTime.SpecifyKind(ItemsDay.Date, DateTimeKind.Utc),
+                CustomTimeZone.Est).Date;
         }
     }
 }

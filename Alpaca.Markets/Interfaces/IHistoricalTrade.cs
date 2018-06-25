@@ -2,7 +2,7 @@
 
 namespace Alpaca.Markets
 {
-    public interface IHistoricTrade
+    public interface IHistoricalTrade
     {
         String Exchange { get; }
 

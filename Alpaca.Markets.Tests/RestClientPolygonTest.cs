@@ -26,15 +26,27 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact(Skip = "Invalid API key and response format")]
-        public async void GetHistoricTradesWorks()
+        public async void GetHistoricalTradesWorks()
         {
-            var historicTrades = await _restClient
-                .GetHistoricTradesAsync("AAPL", DateTime.Today);
+            var historicalItems = await _restClient
+                .GetHistoricalTradesAsync("AAPL", DateTime.Today);
 
-            Assert.NotNull(historicTrades);
+            Assert.NotNull(historicalItems);
 
-            Assert.NotNull(historicTrades.Trades);
-            Assert.NotEmpty(historicTrades.Trades);
+            Assert.NotNull(historicalItems.Items);
+            Assert.NotEmpty(historicalItems.Items);
+        }
+
+        [Fact(Skip = "Invalid API key and response format")]
+        public async void GetHistoricalQuotesWorks()
+        {
+            var historicalItems = await _restClient
+                .GetHistoricalQuotesAsync("AAPL", DateTime.Today);
+
+            Assert.NotNull(historicalItems);
+
+            Assert.NotNull(historicalItems.Items);
+            Assert.NotEmpty(historicalItems.Items);
         }
     }
 }

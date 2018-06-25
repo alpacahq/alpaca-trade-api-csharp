@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Alpaca.Markets.Helpers
+namespace Alpaca.Markets
 {
     internal static class EnumExtensions
     {

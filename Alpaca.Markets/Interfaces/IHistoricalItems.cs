@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Alpaca.Markets
 {
-    public interface IHistoricTrades
+    public interface IHistoricalItems<TItem>
     {
-        DateTime TradesDay { get; }
+        DateTime ItemsDay { get; }
 
         Int64 LatencyInMs { get; }
 
@@ -13,6 +13,6 @@ namespace Alpaca.Markets
 
         String Symbol { get; }
 
-        IReadOnlyCollection<IHistoricTrade> Trades { get; }
+        IReadOnlyCollection<TItem> Items { get; }
     }
 }

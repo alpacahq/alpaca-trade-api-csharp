@@ -1,34 +1,11 @@
 ﻿using System;
-using System.Globalization;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace Alpaca.Markets
 {
     internal sealed class JsonCalendar : ICalendar
     {
-        private static readonly TimeZoneInfo _easternTimeZone =
-            TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-
-        private sealed class DateConverter : IsoDateTimeConverter
-        {
-            public DateConverter()
-            {
-                DateTimeStyles = DateTimeStyles.AssumeLocal;
-                DateTimeFormat = "yyyy-MM-dd";
-            }
-        }
-
-        private sealed class TimeConverter : IsoDateTimeConverter
-        {
-            public TimeConverter()
-            {
-                DateTimeStyles = DateTimeStyles.AssumeLocal;
-                DateTimeFormat = "HH:mm";
-            }
-        }
-
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty(PropertyName = "date", Required = Required.Always)]
         public DateTime TradingDate { get; set; }
@@ -50,14 +27,14 @@ namespace Alpaca.Markets
 
             var estTradingDate = TimeZoneInfo.ConvertTimeFromUtc(
                 DateTime.SpecifyKind(TradingDate.Date, DateTimeKind.Utc),
-                _easternTimeZone).Date;
+                CustomTimeZone.Est).Date;
 
             TradingOpenTime = TimeZoneInfo.ConvertTimeToUtc(
                 estTradingDate.Add(TradingOpenTime.TimeOfDay),
-                _easternTimeZone);
+                CustomTimeZone.Est);
             TradingCloseTime = TimeZoneInfo.ConvertTimeToUtc(
                 estTradingDate.Add(TradingCloseTime.TimeOfDay),
-                _easternTimeZone);
+                CustomTimeZone.Est);
         }
     }
 }

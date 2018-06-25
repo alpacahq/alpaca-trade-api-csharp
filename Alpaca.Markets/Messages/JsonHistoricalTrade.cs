@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    public class JsonHistoricTrade : IHistoricTrade
+    public class JsonHistoricalTrade : IHistoricalTrade
     {
         [JsonProperty(PropertyName = "e", Required = Required.Always)]
         public String Exchange { get; set; }

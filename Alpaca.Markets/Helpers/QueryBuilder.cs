@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Net.Http;
 
-namespace Alpaca.Markets.Helpers
+namespace Alpaca.Markets
 {
     internal sealed class QueryBuilder
     {

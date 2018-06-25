@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
-using Alpaca.Markets.Helpers;
 
 namespace Alpaca.Markets
 {
@@ -29,14 +28,12 @@ namespace Alpaca.Markets
                     .AddParameter("apiKey", _polygonApiKey)
             };
 
-            var res = _polygonHttpClient.GetStringAsync(builder.Uri).Result;
-
             return getSingleObjectAsync
                 <IDictionary<String,String>,Dictionary <String, String>>(
                     _polygonHttpClient, builder);
         }
 
-        public Task<IHistoricTrades> GetHistoricTradesAsync(
+        public Task<IHistoricalItems<IHistoricalTrade>> GetHistoricalTradesAsync(
             String symbol,
             DateTime date,
             Int64? offset = null,
@@ -52,8 +49,30 @@ namespace Alpaca.Markets
                     .AddParameter("limit", limit)
             };
 
-            return getSingleObjectAsync<IHistoricTrades, JsonHistoricTrades>(
+            return getSingleObjectAsync
+                <IHistoricalItems<IHistoricalTrade>, JsonHistoricalItems<IHistoricalTrade, JsonHistoricalTrade>>(
                 _polygonHttpClient, builder);
+        }
+
+        public Task<IHistoricalItems<IHistoricalQuote>> GetHistoricalQuotesAsync(
+            String symbol,
+            DateTime date,
+            Int64? offset = null,
+            Int32? limit = null)
+        {
+            var dateAsString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            {
+                Path = $"v1//v1/historic/quotes/{symbol}/{dateAsString}",
+                Query = new QueryBuilder()
+                    .AddParameter("apiKey", _polygonApiKey)
+                    .AddParameter("offset", offset)
+                    .AddParameter("limit", limit)
+            };
+
+            return getSingleObjectAsync
+                <IHistoricalItems<IHistoricalQuote>, JsonHistoricalItems<IHistoricalQuote, JsonHistoricalQuote>>(
+                    _polygonHttpClient, builder);
         }
     }
 }
