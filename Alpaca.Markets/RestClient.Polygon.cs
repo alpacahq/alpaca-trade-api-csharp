@@ -28,8 +28,6 @@ namespace Alpaca.Markets
                 Query = getDefaultPolygonApiQueryBuilder()
             };
 
-            var res = _polygonHttpClient.GetStringAsync(builder.Uri).Result;
-
             return getSingleObjectAsync
                 <IDictionary<String,String>,Dictionary <String, String>>(
                     _polygonHttpClient, builder);
@@ -44,7 +42,7 @@ namespace Alpaca.Markets
             var dateAsString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
             {
-                Path = $"v1//v1/historic/trades/{symbol}/{dateAsString}",
+                Path = $"v1/historic/trades/{symbol}/{dateAsString}",
                 Query = getDefaultPolygonApiQueryBuilder()
                     .AddParameter("offset", offset)
                     .AddParameter("limit", limit)
@@ -64,7 +62,7 @@ namespace Alpaca.Markets
             var dateAsString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
             {
-                Path = $"v1//v1/historic/quotes/{symbol}/{dateAsString}",
+                Path = $"v1/historic/quotes/{symbol}/{dateAsString}",
                 Query = getDefaultPolygonApiQueryBuilder()
                     .AddParameter("offset", offset)
                     .AddParameter("limit", limit)

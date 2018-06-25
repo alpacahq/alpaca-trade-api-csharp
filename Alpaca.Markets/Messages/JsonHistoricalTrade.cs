@@ -14,7 +14,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "p", Required = Required.Always)]
         public Decimal Price { get; set; }
 
-        [JsonProperty(PropertyName = "s", Required = Required.Always)]
+        [JsonProperty(PropertyName = "s", Required = Required.Default)]
         public Int64 Size { get; set; }
     }
 }

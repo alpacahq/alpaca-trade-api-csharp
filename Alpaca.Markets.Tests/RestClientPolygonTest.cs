@@ -26,7 +26,7 @@ namespace Alpaca.Markets.Tests
             Assert.NotEmpty(symbolTypeMap);
         }
 
-        [Fact(Skip = "Invalid API key and response format")]
+        [Fact]
         public async void GetHistoricalTradesWorks()
         {
             var historicalItems = await _restClient
@@ -38,7 +38,7 @@ namespace Alpaca.Markets.Tests
             Assert.NotEmpty(historicalItems.Items);
         }
 
-        [Fact(Skip = "Invalid API key and response format")]
+        [Fact]
         public async void GetHistoricalQuotesWorks()
         {
             var historicalItems = await _restClient
