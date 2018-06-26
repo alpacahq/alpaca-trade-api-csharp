@@ -50,6 +50,30 @@ namespace Alpaca.Markets.Tests
             Assert.NotEmpty(historicalItems.Items);
         }
 
+        [Fact]
+        public async void GetDayAggregatesWorks()
+        {
+            var historicalItems = await _restClient
+                .GetDayAggregatesAsync("AAPL");
+
+            Assert.NotNull(historicalItems);
+
+            Assert.NotNull(historicalItems.Items);
+            Assert.NotEmpty(historicalItems.Items);
+        }
+
+        [Fact]
+        public async void GetMinuteAggregatesWorks()
+        {
+            var historicalItems = await _restClient
+                .GetMinuteAggregatesAsync("AAPL");
+
+            Assert.NotNull(historicalItems);
+
+            Assert.NotNull(historicalItems.Items);
+            Assert.NotEmpty(historicalItems.Items);
+        }
+
         [Theory]
         [InlineData(TickType.Trades)]
         [InlineData(TickType.Quotes)]

@@ -33,7 +33,7 @@ namespace Alpaca.Markets
                     _polygonHttpClient, builder);
         }
 
-        public Task<IHistoricalItems<IHistoricalTrade>> GetHistoricalTradesAsync(
+        public Task<IDayHistoricalItems<IHistoricalTrade>> GetHistoricalTradesAsync(
             String symbol,
             DateTime date,
             Int64? offset = null,
@@ -49,11 +49,12 @@ namespace Alpaca.Markets
             };
 
             return getSingleObjectAsync
-                <IHistoricalItems<IHistoricalTrade>, JsonHistoricalItems<IHistoricalTrade, JsonHistoricalTrade>>(
+                <IDayHistoricalItems<IHistoricalTrade>,
+                    JsonDayHistoricalItems<IHistoricalTrade, JsonHistoricalTrade>>(
                 _polygonHttpClient, builder);
         }
 
-        public Task<IHistoricalItems<IHistoricalQuote>> GetHistoricalQuotesAsync(
+        public Task<IDayHistoricalItems<IHistoricalQuote>> GetHistoricalQuotesAsync(
             String symbol,
             DateTime date,
             Int64? offset = null,
@@ -69,8 +70,51 @@ namespace Alpaca.Markets
             };
 
             return getSingleObjectAsync
-                <IHistoricalItems<IHistoricalQuote>, JsonHistoricalItems<IHistoricalQuote, JsonHistoricalQuote>>(
-                    _polygonHttpClient, builder);
+                <IDayHistoricalItems<IHistoricalQuote>,
+                    JsonDayHistoricalItems<IHistoricalQuote, JsonHistoricalQuote>>(
+                _polygonHttpClient, builder);
+        }
+
+        public Task<IAggHistoricalItems<IBar>> GetDayAggregatesAsync(
+            String symbol,
+            DateTime? dateFromInclusive = null,
+            DateTime? dateIntoInclusive = null,
+            Int32? limit = null)
+        {
+            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            {
+                Path = $"v1/historic/agg/day/{symbol}",
+                Query = getDefaultPolygonApiQueryBuilder()
+                    .AddParameter("from", dateFromInclusive, "dd-MM-yyyy")
+                    .AddParameter("to", dateIntoInclusive, "dd-MM-yyyy")
+                    .AddParameter("limit", limit)
+            };
+
+            return getSingleObjectAsync
+                <IAggHistoricalItems<IBar>,
+                    JsonAggHistoricalItems<IBar, JsonDayBar>>(
+                _polygonHttpClient, builder);
+        }
+
+        public Task<IAggHistoricalItems<IBar>> GetMinuteAggregatesAsync(
+            String symbol,
+            DateTime? dateFromInclusive = null,
+            DateTime? dateIntoInclusive = null,
+            Int32? limit = null)
+        {
+            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            {
+                Path = $"v1/historic/agg/minute/{symbol}",
+                Query = getDefaultPolygonApiQueryBuilder()
+                    .AddParameter("from", dateFromInclusive, "dd-MM-yyyy")
+                    .AddParameter("to", dateIntoInclusive, "dd-MM-yyyy")
+                    .AddParameter("limit", limit)
+            };
+
+            return getSingleObjectAsync
+            <IAggHistoricalItems<IBar>,
+                JsonAggHistoricalItems<IBar, JsonMinuteBar>>(
+                _polygonHttpClient, builder);
         }
 
         public async Task<IDictionary<Int64, String>> GetConditionMapAsync(
