@@ -117,6 +117,31 @@ namespace Alpaca.Markets
                 _polygonHttpClient, builder);
         }
 
+        public Task<ILastTrade> GetLastTradeAsync(
+            String symbol)
+        {
+            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            {
+                Path = $"v1/last/stocks/{symbol}",
+                Query = getDefaultPolygonApiQueryBuilder()
+            };
+
+            return getSingleObjectAsync<ILastTrade, JsonLastTrade>(
+                _polygonHttpClient, builder);
+        }
+
+        public Task<ILastQuote> GetLastQuoteAsync(
+            String symbol)
+        {
+            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            {
+                Path = $"v1/last_quote/stocks/{symbol}",
+                Query = getDefaultPolygonApiQueryBuilder()
+            };
+
+            return getSingleObjectAsync<ILastQuote, JsonLastQuote>(
+                _polygonHttpClient, builder);
+        }
         public async Task<IDictionary<Int64, String>> GetConditionMapAsync(
             TickType tickType = TickType.Trades)
         {
