@@ -10,6 +10,9 @@ namespace Alpaca.Markets
         [EnumMember(Value = "active")]
         Active,
 
+        [EnumMember(Value = "inactive")]
+        Inactive,
+
         [EnumMember(Value = "delisted")]
         Delisted
     }

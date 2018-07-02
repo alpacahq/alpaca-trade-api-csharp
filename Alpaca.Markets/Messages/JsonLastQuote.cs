@@ -9,10 +9,10 @@ namespace Alpaca.Markets
         public sealed class Last
         {
             [JsonProperty(PropertyName = "bidexchange", Required = Required.Always)]
-            public String BidExchange { get; set; }
+            public Int64 BidExchange { get; set; }
 
             [JsonProperty(PropertyName = "askexchange", Required = Required.Always)]
-            public String AskExchange { get; set; }
+            public Int64 AskExchange { get; set; }
 
             [JsonProperty(PropertyName = "bidprice", Required = Required.Default)]
             public Decimal BidPrice { get; set; }
@@ -40,10 +40,10 @@ namespace Alpaca.Markets
         public String Symbol { get; set; }
 
         [JsonIgnore]
-        public String BidExchange => Nested.BidExchange;
+        public Int64 BidExchange => Nested.BidExchange;
 
         [JsonIgnore]
-        public String AskExchange => Nested.AskExchange;
+        public Int64 AskExchange => Nested.AskExchange;
 
         [JsonIgnore]
         public Decimal BidPrice => Nested.BidPrice;

@@ -32,7 +32,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "last_timestamp", Required = Required.Always)]
         public DateTime LastTime { get; set; }
 
-        [JsonProperty(PropertyName = "day_change", Required = Required.Always)]
+        [JsonProperty(PropertyName = "day_change", Required = Required.Default)]
         public Decimal DayChange { get; set; }
     }
 }

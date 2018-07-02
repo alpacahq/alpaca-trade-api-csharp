@@ -17,6 +17,15 @@ namespace Alpaca.Markets
         Nyse,
 
         [EnumMember(Value = "NASDAQ")]
-        Nasdaq
+        Nasdaq,
+
+        [EnumMember(Value = "BATS")]
+        Bats,
+
+        [EnumMember(Value = "AMEX")]
+        Amex,
+
+        [EnumMember(Value = "ARCA")]
+        Arca
     }
 }

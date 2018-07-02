@@ -5,7 +5,7 @@ namespace Alpaca.Markets
 {
     internal sealed class JsonPosition : IPosition
     {
-        [JsonProperty(PropertyName = "account_id", Required = Required.Always)]
+        [JsonProperty(PropertyName = "account_id", Required = Required.Default)]
         public Guid AccountId { get; set; }
 
         [JsonProperty(PropertyName = "asset_id", Required = Required.Always)]
@@ -47,7 +47,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "unrealized_intraday_plpc", Required = Required.Always)]
         public Decimal IntradayUnrealizedProfitLossPercent { get; set; }
 
-        [JsonProperty(PropertyName = "current_price ", Required = Required.Always)]
+        [JsonProperty(PropertyName = "current_price ", Required = Required.Default)]
         public Decimal AssetCurrentPrice { get; set; }
 
         [JsonProperty(PropertyName = "lastday_price", Required = Required.Always)]

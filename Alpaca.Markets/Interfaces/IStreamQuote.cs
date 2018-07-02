@@ -2,10 +2,8 @@
 
 namespace Alpaca.Markets
 {
-    public interface ILastQuote
+    public interface IStreamQuote
     {
-        String Status { get; }
-
         String Symbol { get; }
 
         Int64 BidExchange { get; }
