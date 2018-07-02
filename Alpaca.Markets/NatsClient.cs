@@ -27,31 +27,7 @@ namespace Alpaca.Markets
                 $"nats://{keyId}@nats3.polygon.io:31103"
             };
 
-            _options.AsyncErrorEventHandler += (sender, args) =>
-            {
-                Console.WriteLine("Error: ");
-                Console.WriteLine("   Server: " + args.Conn.ConnectedUrl);
-                Console.WriteLine("   Message: " + args.Error);
-                Console.WriteLine("   Subject: " + args.Subscription.Subject);
-            };
-
-            _options.ServerDiscoveredEventHandler += (sender, args) =>
-            {
-                Console.WriteLine("A new server has joined the cluster:");
-                Console.WriteLine("    " + String.Join(", ", args.Conn.DiscoveredServers));
-            };
-
-            _options.ClosedEventHandler += (sender, args) =>
-            {
-                Console.WriteLine("Connection Closed: ");
-                Console.WriteLine("   Server: " + args.Conn.ConnectedUrl);
-            };
-
-            _options.DisconnectedEventHandler += (sender, args) =>
-            {
-                Console.WriteLine("Connection Disconnected: ");
-                Console.WriteLine("   Server: " + args.Conn.ConnectedUrl);
-            };
+            _options.AsyncErrorEventHandler += (sender, args) => OnError?.Invoke(args.Error);
         }
 
         public event Action<IStreamTrade> TradeReceived;
@@ -59,6 +35,8 @@ namespace Alpaca.Markets
         public event Action<IStreamQuote> QuoteReceived;
 
         public event Action<IStreamBar> BarReceived;
+
+        public event Action<String> OnError;
 
         public void Open()
         {

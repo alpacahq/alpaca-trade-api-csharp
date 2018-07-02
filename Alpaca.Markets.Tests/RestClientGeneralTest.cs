@@ -53,10 +53,10 @@ namespace Alpaca.Markets.Tests
             var positions = await _restClient.GetPositionsAsync();
 
             Assert.NotNull(positions);
-            // Assert.NotEmpty(positions);
+            Assert.NotEmpty(positions);
         }
 
-        [Fact(Skip = "Do not have position now")]
+        [Fact]
         public async void GetPositionWorks()
         {
             var position = await _restClient.GetPositionAsync("AAPL");
