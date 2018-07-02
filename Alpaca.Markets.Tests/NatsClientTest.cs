@@ -6,10 +6,12 @@ namespace Alpaca.Markets.Tests
 {
     public sealed class NatsClientTest
     {
+        private readonly RestClient _restClient = ClientsFactory.GetRestClient();
+
         [Fact]
         public void NatsTradesSubscriptionWorks()
         {
-            using (var client = GetClient())
+            using (var client = ClientsFactory.GetNatsClient())
             {
                 client.Open();
 
@@ -22,8 +24,11 @@ namespace Alpaca.Markets.Tests
 
                 client.SubscribeTrade("AAPL");
 
-                Assert.True(waitObject.WaitOne(
-                    TimeSpan.FromSeconds(10)));
+                if (_restClient.GetClockAsync().Result.IsOpen)
+                {
+                    Assert.True(waitObject.WaitOne(
+                        TimeSpan.FromSeconds(10)));
+                }
 
                 client.Close();
             }
@@ -32,7 +37,7 @@ namespace Alpaca.Markets.Tests
         [Fact]
         public void NatsQuotesSubscriptionWorks()
         {
-            using (var client = GetClient())
+            using (var client = ClientsFactory.GetNatsClient())
             {
                 client.Open();
 
@@ -45,8 +50,11 @@ namespace Alpaca.Markets.Tests
 
                 client.SubscribeQuote("AAPL");
 
-                Assert.True(waitObject.WaitOne(
-                    TimeSpan.FromSeconds(10)));
+                if (_restClient.GetClockAsync().Result.IsOpen)
+                {
+                    Assert.True(waitObject.WaitOne(
+                        TimeSpan.FromSeconds(10)));
+                }
 
                 client.Close();
             }
@@ -55,7 +63,7 @@ namespace Alpaca.Markets.Tests
         [Fact]
         public void NatsSecondBarSubscriptionWorks()
         {
-            using (var client = GetClient())
+            using (var client = ClientsFactory.GetNatsClient())
             {
                 client.Open();
 
@@ -68,8 +76,11 @@ namespace Alpaca.Markets.Tests
 
                 client.SubscribeSecondBar("AAPL");
 
-                Assert.True(waitObject.WaitOne(
-                    TimeSpan.FromSeconds(10)));
+                if (_restClient.GetClockAsync().Result.IsOpen)
+                {
+                    Assert.True(waitObject.WaitOne(
+                        TimeSpan.FromSeconds(10)));
+                }
 
                 client.Close();
             }
@@ -78,7 +89,7 @@ namespace Alpaca.Markets.Tests
         [Fact(Skip="Too long running")]
         public void NatsMinuteBarSubscriptionWorks()
         {
-            using (var client = GetClient())
+            using (var client = ClientsFactory.GetNatsClient())
             {
                 client.Open();
 
@@ -91,8 +102,11 @@ namespace Alpaca.Markets.Tests
 
                 client.SubscribeMinuteBar("AAPL");
 
-                Assert.True(waitObject.WaitOne(
-                    TimeSpan.FromSeconds(120)));
+                if (_restClient.GetClockAsync().Result.IsOpen)
+                {
+                    Assert.True(waitObject.WaitOne(
+                        TimeSpan.FromSeconds(120)));
+                }
 
                 client.Close();
             }
@@ -101,7 +115,7 @@ namespace Alpaca.Markets.Tests
         [Fact]
         public void NatsSeveralSubscriptionWorks()
         {
-            using (var client = GetClient())
+            using (var client = ClientsFactory.GetNatsClient())
             {
                 client.Open();
 
@@ -126,13 +140,14 @@ namespace Alpaca.Markets.Tests
                 client.SubscribeTrade("AAPL");
                 client.SubscribeQuote("AAPL");
 
-                Assert.True(WaitHandle.WaitAll(
-                    waitObjects, TimeSpan.FromSeconds(10)));
+                if (_restClient.GetClockAsync().Result.IsOpen)
+                {
+                    Assert.True(WaitHandle.WaitAll(
+                        waitObjects, TimeSpan.FromSeconds(10)));
+                }
 
                 client.Close();
             }
         }
-
-        private NatsClient GetClient() => new NatsClient("AKEW7ZBQUSNUHOJNQ5MS-staging");
     }
 }

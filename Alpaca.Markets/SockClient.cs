@@ -40,6 +40,10 @@ namespace Alpaca.Markets
             _webSocket.Error += (sender, args) => OnError?.Invoke(args.Exception);
         }
 
+        public event Action<IAccountUpdate> OnAccountUpdate;
+
+        public event Action<ITradeUpdate> OnTradeUpdate;
+
         public event Action<AuthStatus> Connected;
 
         public event Action<Exception> OnError;
@@ -104,9 +108,13 @@ namespace Alpaca.Markets
                     break;
 
                 case "trade_updates":
+                    handleTradeUpdates(
+                        data.ToObject<JsonTradeUpdate>());
                     break;
 
                 case "account_updates":
+                    handleAccountUpdates(
+                        data.ToObject<JsonAccountUpdate>());
                     break;
             }
         }
@@ -135,6 +143,18 @@ namespace Alpaca.Markets
             {
                 Connected?.Invoke(response.Status);
             }
+        }
+
+        private void handleTradeUpdates(
+            JsonTradeUpdate update)
+        {
+            OnTradeUpdate?.Invoke(update);
+        }
+
+        private void handleAccountUpdates(
+            JsonAccountUpdate update)
+        {
+            OnAccountUpdate?.Invoke(update);
         }
 
         private void sendAsJsonString(

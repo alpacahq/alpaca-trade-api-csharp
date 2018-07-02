@@ -6,7 +6,7 @@ namespace Alpaca.Markets.Tests
 {
     public sealed class RestClientPolygonTest
     {
-        private readonly RestClient _restClient = RestClientFactory.GetRestClient();
+        private readonly RestClient _restClient = ClientsFactory.GetRestClient();
 
         [Fact]
         public async void GetExchangesWorks()

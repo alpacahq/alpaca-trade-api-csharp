@@ -9,7 +9,7 @@ namespace Alpaca.Markets.Tests
         [Fact]
         public async void ConnectWorks()
         {
-            using (var client = getClient())
+            using (var client = ClientsFactory.GetSockClient())
             {
                 await client.ConnectAsync();
 
@@ -25,14 +25,6 @@ namespace Alpaca.Markets.Tests
 
                 await client.DisconnectAsync();
             }
-        }
-
-        private SockClient getClient()
-        {
-            return new SockClient(
-                "AKEW7ZBQUSNUHOJNQ5MS",
-                "Yr2Tms89rQ6foRLNu4pz3w/yXOrxQGDmXctU1BCn",
-                new Uri("https://staging-api.tradetalk.us"));
         }
     }
 }

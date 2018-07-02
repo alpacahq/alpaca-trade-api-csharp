@@ -6,7 +6,7 @@ namespace Alpaca.Markets.Tests
 {
     public sealed class RestClientMarketDataTest
     {
-        private readonly RestClient _restClient = RestClientFactory.GetRestClient();
+        private readonly RestClient _restClient = ClientsFactory.GetRestClient();
 
         [Theory]
         [InlineData(BarDuration.OneMinute, 4)]
