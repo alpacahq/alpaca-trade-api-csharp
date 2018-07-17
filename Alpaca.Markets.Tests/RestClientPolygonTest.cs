@@ -84,6 +84,16 @@ namespace Alpaca.Markets.Tests
             Assert.True(lastTrade.Time.Kind == DateTimeKind.Utc);
         }
 
+        [Fact]
+        public async void GetLastQuoteWorks()
+        {
+            var lastQuote = await _restClient
+                .GetLastQuoteAsync("AAPL");
+
+            Assert.NotNull(lastQuote);
+            Assert.True(lastQuote.Time.Kind == DateTimeKind.Utc);
+        }
+
         [Theory]
         [InlineData(TickType.Trades)]
         [InlineData(TickType.Quotes)]
