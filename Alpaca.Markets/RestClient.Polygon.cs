@@ -9,7 +9,7 @@ namespace Alpaca.Markets
 {
     public sealed partial class RestClient
     {
-        public Task<IEnumerable<IExchange>> GetExchangesAsync()
+        public Task<IEnumerable<IExchange>> ListExchangesAsync()
         {
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
             {
@@ -33,7 +33,7 @@ namespace Alpaca.Markets
                     _polygonHttpClient, builder);
         }
 
-        public Task<IDayHistoricalItems<IHistoricalTrade>> GetHistoricalTradesAsync(
+        public Task<IDayHistoricalItems<IHistoricalTrade>> ListHistoricalTradesAsync(
             String symbol,
             DateTime date,
             Int64? offset = null,
@@ -54,7 +54,7 @@ namespace Alpaca.Markets
                 _polygonHttpClient, builder);
         }
 
-        public Task<IDayHistoricalItems<IHistoricalQuote>> GetHistoricalQuotesAsync(
+        public Task<IDayHistoricalItems<IHistoricalQuote>> ListHistoricalQuotesAsync(
             String symbol,
             DateTime date,
             Int64? offset = null,
@@ -75,7 +75,7 @@ namespace Alpaca.Markets
                 _polygonHttpClient, builder);
         }
 
-        public Task<IAggHistoricalItems<IBar>> GetDayAggregatesAsync(
+        public Task<IAggHistoricalItems<IBar>> ListDayAggregatesAsync(
             String symbol,
             DateTime? dateFromInclusive = null,
             DateTime? dateIntoInclusive = null,
@@ -96,7 +96,7 @@ namespace Alpaca.Markets
                 _polygonHttpClient, builder);
         }
 
-        public Task<IAggHistoricalItems<IBar>> GetMinuteAggregatesAsync(
+        public Task<IAggHistoricalItems<IBar>> ListMinuteAggregatesAsync(
             String symbol,
             DateTime? dateFromInclusive = null,
             DateTime? dateIntoInclusive = null,
@@ -142,6 +142,7 @@ namespace Alpaca.Markets
             return getSingleObjectAsync<ILastQuote, JsonLastQuote>(
                 _polygonHttpClient, builder);
         }
+
         public async Task<IDictionary<Int64, String>> GetConditionMapAsync(
             TickType tickType = TickType.Trades)
         {

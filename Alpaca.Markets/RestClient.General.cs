@@ -14,7 +14,7 @@ namespace Alpaca.Markets
             return getSingleObjectAsync<IAccount, JsonAccount>(_alpacaHttpClient, "v1/account");
         }
 
-        public Task<IEnumerable<IAsset>> GetAssetsAsync(
+        public Task<IEnumerable<IAsset>> ListAssetsAsync(
             AssetStatus? assetStatus = null,
             AssetClass? assetClass = null)
         {
@@ -35,7 +35,7 @@ namespace Alpaca.Markets
             return getSingleObjectAsync<IAsset, JsonAsset>(_alpacaHttpClient, $"v1/assets/{symbol}");
         }
 
-        public Task<IEnumerable<IOrder>> GetOrdersAsync(
+        public Task<IEnumerable<IOrder>> ListOrdersAsync(
             OrderStatusFilter? orderStatusFilter = null,
             DateTime? untilDateTime = null,
             Int64? limitOrderNumber = null)
@@ -130,7 +130,7 @@ namespace Alpaca.Markets
             }
         }
 
-        public Task<IEnumerable<IPosition>> GetPositionsAsync()
+        public Task<IEnumerable<IPosition>> ListPositionsAsync()
         {
             return getObjectsListAsync<IPosition, JsonPosition>(_alpacaHttpClient, "v1/positions");
         }
@@ -146,7 +146,7 @@ namespace Alpaca.Markets
             return getSingleObjectAsync<IClock, JsonClock>(_alpacaHttpClient, "v1/clock");
         }
 
-        public Task<IEnumerable<ICalendar>> GetCalendarAsync(
+        public Task<IEnumerable<ICalendar>> ListCalendarAsync(
             DateTime? startDateInclusive = null,
             DateTime? endDateInclusive = null)
         {

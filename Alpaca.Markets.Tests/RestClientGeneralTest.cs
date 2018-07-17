@@ -18,9 +18,9 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public async void GetOrdersWorks()
+        public async void ListOrdersWorks()
         {
-            var orders = await _restClient.GetOrdersAsync();
+            var orders = await _restClient.ListOrdersAsync();
 
             Assert.NotNull(orders);
             // Assert.NotEmpty(orders);
@@ -29,7 +29,7 @@ namespace Alpaca.Markets.Tests
         [Fact]
         public async void GetOrderWorks()
         {
-            var orders = await _restClient.GetOrdersAsync(OrderStatusFilter.All);
+            var orders = await _restClient.ListOrdersAsync(OrderStatusFilter.All);
 
             Assert.NotNull(orders);
 
@@ -48,9 +48,9 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public async void GetPositionsWorks()
+        public async void ListPositionsWorks()
         {
-            var positions = await _restClient.GetPositionsAsync();
+            var positions = await _restClient.ListPositionsAsync();
 
             Assert.NotNull(positions);
             Assert.NotEmpty(positions);
@@ -66,9 +66,9 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public async void GetAssetsWorks()
+        public async void ListAssetsWorks()
         {
-            var assets = await _restClient.GetAssetsAsync();
+            var assets = await _restClient.ListAssetsAsync();
 
             Assert.NotNull(assets);
             Assert.NotEmpty(assets);
@@ -94,9 +94,9 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public async void GetCalendarWorks()
+        public async void ListCalendarWorks()
         {
-            var calendars = await _restClient.GetCalendarAsync(
+            var calendars = await _restClient.ListCalendarAsync(
                 DateTime.Today.AddDays(-14),
                 DateTime.Today.AddDays(14));
 

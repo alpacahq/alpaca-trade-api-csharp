@@ -9,9 +9,9 @@ namespace Alpaca.Markets.Tests
         private readonly RestClient _restClient = ClientsFactory.GetRestClient();
 
         [Fact]
-        public async void GetExchangesWorks()
+        public async void ListExchangesWorks()
         {
-            var exchanges = await _restClient.GetExchangesAsync();
+            var exchanges = await _restClient.ListExchangesAsync();
 
             Assert.NotNull(exchanges);
             Assert.NotEmpty(exchanges);
@@ -27,10 +27,10 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public async void GetHistoricalTradesWorks()
+        public async void ListHistoricalTradesWorks()
         {
             var historicalItems = await _restClient
-                .GetHistoricalTradesAsync("AAPL", DateTime.Today);
+                .ListHistoricalTradesAsync("AAPL", DateTime.Today);
 
             Assert.NotNull(historicalItems);
 
@@ -39,10 +39,10 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public async void GetHistoricalQuotesWorks()
+        public async void ListHistoricalQuotesWorks()
         {
             var historicalItems = await _restClient
-                .GetHistoricalQuotesAsync("AAPL", DateTime.Today);
+                .ListHistoricalQuotesAsync("AAPL", DateTime.Today);
 
             Assert.NotNull(historicalItems);
 
@@ -51,10 +51,10 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public async void GetDayAggregatesWorks()
+        public async void ListDayAggregatesWorks()
         {
             var historicalItems = await _restClient
-                .GetDayAggregatesAsync("AAPL");
+                .ListDayAggregatesAsync("AAPL");
 
             Assert.NotNull(historicalItems);
 
@@ -63,10 +63,10 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public async void GetMinuteAggregatesWorks()
+        public async void ListMinuteAggregatesWorks()
         {
             var historicalItems = await _restClient
-                .GetMinuteAggregatesAsync("AAPL");
+                .ListMinuteAggregatesAsync("AAPL");
 
             Assert.NotNull(historicalItems);
 
@@ -90,7 +90,8 @@ namespace Alpaca.Markets.Tests
         public async void GetConditionMapForQuotesWorks(
             TickType tickType)
         {
-            var conditionMap = await _restClient.GetConditionMapAsync(tickType);
+            var conditionMap = await _restClient
+                .GetConditionMapAsync(tickType);
 
             Assert.NotNull(conditionMap);
             Assert.NotEmpty(conditionMap);

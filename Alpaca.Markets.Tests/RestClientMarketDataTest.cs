@@ -14,7 +14,7 @@ namespace Alpaca.Markets.Tests
         [InlineData(BarDuration.FifteenMinutes, 7)]
         [InlineData(BarDuration.OneHour, 7)]
         [InlineData(BarDuration.OneDay, 14)]
-        public async void GetMultiAssetBarsWorks(
+        public async void ListMultiAssetBarsWorks(
             BarDuration barDuration,
             Int32 daysLookback)
         {
@@ -22,7 +22,7 @@ namespace Alpaca.Markets.Tests
             var startTimeInclusive = endTimeInclusive
                 .Subtract(TimeSpan.FromDays(daysLookback));
 
-            var collection = await _restClient.GetBarsAsync(
+            var collection = await _restClient.ListBarsAsync(
                 new [] { "AAPL", "GOOG", "MSFT" },
                 barDuration, startTimeInclusive, endTimeInclusive);
 
@@ -40,7 +40,7 @@ namespace Alpaca.Markets.Tests
         [InlineData(BarDuration.FifteenMinutes, 7)]
         [InlineData(BarDuration.OneHour, 7)]
         [InlineData(BarDuration.OneDay, 14)]
-        public async void GetSingleAssetBarsWorks(
+        public async void ListSingleAssetBarsWorks(
             BarDuration barDuration,
             Int32 daysLookback)
         {
@@ -48,7 +48,7 @@ namespace Alpaca.Markets.Tests
             var startTimeInclusive = endTimeInclusive
                 .Subtract(TimeSpan.FromDays(daysLookback));
 
-            var bars = await _restClient.GetBarsAsync(
+            var bars = await _restClient.ListBarsAsync(
                 "AAPL", barDuration,
                 startTimeInclusive, endTimeInclusive);
 
@@ -65,7 +65,7 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public async void GetQuotesWorks()
+        public async void ListQuotesWorks()
         {
             var clock = await _restClient.GetClockAsync();
 
@@ -74,7 +74,7 @@ namespace Alpaca.Markets.Tests
                 return;
             }
 
-            var quotes = await _restClient.GetQuotesAsync(
+            var quotes = await _restClient.ListQuotesAsync(
                 new [] { "AAPL", "GOOG", "MSFT" });
 
             Assert.NotNull(quotes);
@@ -98,9 +98,9 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public async void GetFundamentalsWorks()
+        public async void ListFundamentalsWorks()
         {
-            var fundamentals = await _restClient.GetFundamentalsAsync(
+            var fundamentals = await _restClient.ListFundamentalsAsync(
                 new[] { "AAPL", "GOOG", "MSFT" });
 
             Assert.NotNull(fundamentals);

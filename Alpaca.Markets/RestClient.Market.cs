@@ -6,7 +6,7 @@ namespace Alpaca.Markets
 {
     public sealed partial class RestClient
     {
-        public Task<IEnumerable<IAssetBars>> GetBarsAsync(
+        public Task<IEnumerable<IAssetBars>> ListBarsAsync(
             IEnumerable<String> symbol,
             BarDuration barDuration,
             DateTime? startTimeInclusive = null,
@@ -25,7 +25,7 @@ namespace Alpaca.Markets
             return getObjectsListAsync<IAssetBars, JsonAssetBars>(_alpacaHttpClient, builder);
         }
 
-        public Task<IAssetBars> GetBarsAsync(
+        public Task<IAssetBars> ListBarsAsync(
             String symbol,
             BarDuration barDuration,
             DateTime? startTimeInclusive = null,
@@ -43,7 +43,7 @@ namespace Alpaca.Markets
             return getSingleObjectAsync<IAssetBars, JsonAssetBars>(_alpacaHttpClient, builder);
         }
 
-        public Task<IEnumerable<IQuote>> GetQuotesAsync(
+        public Task<IEnumerable<IQuote>> ListQuotesAsync(
             IEnumerable<String> symbol)
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
@@ -63,7 +63,7 @@ namespace Alpaca.Markets
                 _alpacaHttpClient, $"v1/assets/{symbol}/quote");
         }
 
-        public Task<IEnumerable<IFundamental>> GetFundamentalsAsync(
+        public Task<IEnumerable<IFundamental>> ListFundamentalsAsync(
             IEnumerable<String> symbol)
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
