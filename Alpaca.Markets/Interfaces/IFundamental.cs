@@ -12,7 +12,13 @@ namespace Alpaca.Markets
 
         String Industry { get; }
 
+        String IndustryGroup { get; }
+
         String Sector { get; }
+
+        String ShortDescription { get; }
+
+        String LongDescription { get; }
 
         Decimal pe_ratio { get; }
 
@@ -22,13 +28,17 @@ namespace Alpaca.Markets
 
         Decimal eps { get; }
 
-        Decimal market_cap { get; }
+        Decimal MarketCapitalization { get; }
 
-        Decimal shares_outstanding { get; }
+        Decimal SharesOutstanding { get; }
 
-        Decimal avg_vol { get; }
+        Decimal AvgVolume { get; }
 
-        Decimal div_rate { get; }
+        Decimal FiftyTwoWeekHigh { get; }
+
+        Decimal FiftyTwoWeekLow { get;  }
+
+        Decimal DividentsRate { get; }
 
         Decimal roa { get; }
 
@@ -38,6 +48,6 @@ namespace Alpaca.Markets
 
         Decimal pc { get; }
 
-        Decimal gross_margin { get; }
+        Decimal GrossMargin { get; }
     }
 }

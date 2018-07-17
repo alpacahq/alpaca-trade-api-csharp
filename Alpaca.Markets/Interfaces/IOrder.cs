@@ -26,8 +26,6 @@ namespace Alpaca.Markets
 
         String Symbol { get; }
 
-        Exchange Exchange { get; }
-
         AssetClass AssetClass { get; }
 
         Int64 Quantity { get; }

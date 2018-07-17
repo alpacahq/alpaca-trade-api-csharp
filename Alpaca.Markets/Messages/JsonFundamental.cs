@@ -17,8 +17,17 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "industry_name", Required = Required.Always)]
         public String Industry { get; set; }
 
+        [JsonProperty(PropertyName = "industry_group", Required = Required.Always)]
+        public String IndustryGroup { get; set; }
+
         [JsonProperty(PropertyName = "sector", Required = Required.Always)]
         public String Sector { get; set; }
+
+        [JsonProperty(PropertyName = "short_description", Required = Required.Always)]
+        public String ShortDescription { get; set; }
+
+        [JsonProperty(PropertyName = "long_description", Required = Required.Always)]
+        public String LongDescription { get; set; }
 
         [JsonProperty(PropertyName = "pe_ratio", Required = Required.Always)]
         public Decimal pe_ratio { get; set; }
@@ -33,16 +42,22 @@ namespace Alpaca.Markets
         public Decimal eps { get; set; }
 
         [JsonProperty(PropertyName = "market_cap", Required = Required.Always)]
-        public Decimal market_cap { get; set; }
+        public Decimal MarketCapitalization { get; set; }
 
         [JsonProperty(PropertyName = "shares_outstanding", Required = Required.Always)]
-        public Decimal shares_outstanding { get; set; }
+        public Decimal SharesOutstanding { get; set; }
 
         [JsonProperty(PropertyName = "avg_vol", Required = Required.Always)]
-        public Decimal avg_vol { get; set; }
+        public Decimal AvgVolume { get; set; }
+
+        [JsonProperty(PropertyName = "fifty_two_week_high", Required = Required.Always)]
+        public Decimal FiftyTwoWeekHigh { get; set; }
+
+        [JsonProperty(PropertyName = "fifty_two_week_low", Required = Required.Always)]
+        public Decimal FiftyTwoWeekLow { get; set; }
 
         [JsonProperty(PropertyName = "div_rate", Required = Required.Always)]
-        public Decimal div_rate { get; set; }
+        public Decimal DividentsRate { get; set; }
 
         [JsonProperty(PropertyName = "roa", Required = Required.Always)]
         public Decimal roa { get; set; }
@@ -57,6 +72,6 @@ namespace Alpaca.Markets
         public Decimal pc { get; set; }
 
         [JsonProperty(PropertyName = "gross_margin", Required = Required.Always)]
-        public Decimal gross_margin { get; set; }
+        public Decimal GrossMargin { get; set; }
     }
 }

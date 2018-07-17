@@ -38,9 +38,6 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; }
 
-        [JsonProperty(PropertyName = "exchange", Required = Required.Default)]
-        public Exchange Exchange { get; set; }
-
         [JsonProperty(PropertyName = "asset_class", Required = Required.Always)]
         public AssetClass AssetClass { get; set; }
 
