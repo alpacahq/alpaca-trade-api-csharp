@@ -5,6 +5,15 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>1.0.0-alpha</Version>
+    <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
+    <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
+    <Copyright>© 2018 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <Company>Alpaca Securities LLC</Company>
+    <Authors>Alpaca Securities LLC</Authors>
+    <Product>.NET SDK for Alpaca Trade API</Product>
+    <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Alpaca.Markets.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
