@@ -142,6 +142,7 @@ namespace Alpaca.Markets.Tests
 
                 if (_restClient.GetClockAsync().Result.IsOpen)
                 {
+                    // ReSharper disable once CoVariantArrayConversion
                     Assert.True(WaitHandle.WaitAll(
                         waitObjects, TimeSpan.FromSeconds(10)));
                 }

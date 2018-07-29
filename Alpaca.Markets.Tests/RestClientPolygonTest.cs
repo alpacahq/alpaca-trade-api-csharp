@@ -1,5 +1,4 @@
 using System;
-using Alpaca.Markets.Enums;
 using Xunit;
 
 namespace Alpaca.Markets.Tests

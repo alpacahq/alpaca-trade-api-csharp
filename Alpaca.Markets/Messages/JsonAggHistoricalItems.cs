@@ -2,7 +2,7 @@
 
 namespace Alpaca.Markets
 {
-    public sealed class JsonAggHistoricalItems<TApi, TJson>
+    internal sealed class JsonAggHistoricalItems<TApi, TJson>
         : JsonHistoricalItems<TApi, TJson>, IAggHistoricalItems<TApi> where TJson : TApi
     {
         [JsonProperty(PropertyName = "aggType", Required = Required.Always)]

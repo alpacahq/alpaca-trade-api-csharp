@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    public sealed class JsonDayHistoricalItems<TApi, TJson>
+    internal sealed class JsonDayHistoricalItems<TApi, TJson>
         : JsonHistoricalItems<TApi, TJson> , IDayHistoricalItems<TApi> where TJson : TApi
     {
         [JsonConverter(typeof(DateConverter))]

@@ -1,5 +1,7 @@
 ﻿using System;
 
+// ReSharper disable InconsistentNaming
+
 namespace Alpaca.Markets
 {
     public interface IFundamental

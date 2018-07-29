@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    public sealed class JsonHistoricalQuote : IHistoricalQuote
+    internal sealed class JsonHistoricalQuote : IHistoricalQuote
     {
         [JsonProperty(PropertyName = "bE", Required = Required.Always)]
         public String BidExchange { get; set; }

@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    public sealed class JsonLastQuote : ILastQuote
+    internal sealed class JsonLastQuote : ILastQuote
     {
-        public sealed class Last
+        internal sealed class Last
         {
             [JsonProperty(PropertyName = "bidexchange", Required = Required.Always)]
             public Int64 BidExchange { get; set; }

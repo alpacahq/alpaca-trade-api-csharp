@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    public sealed class JsonExchange : IExchange
+    internal sealed class JsonExchange : IExchange
     {
         [JsonProperty(PropertyName = "id", Required = Required.Always)]
         public Int64 ExchangeId { get; set; }

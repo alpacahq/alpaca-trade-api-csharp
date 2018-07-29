@@ -6,7 +6,7 @@ namespace Alpaca.Markets
 {
     internal sealed class JsonListenRequest
     {
-        public sealed class JsonData
+        internal sealed class JsonData
         {
             [JsonProperty(PropertyName = "streams", Required = Required.Always)]
             public List<String> Streams { get; set; }

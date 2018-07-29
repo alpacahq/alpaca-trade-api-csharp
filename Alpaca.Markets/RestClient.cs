@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
+    /// <summary>
+    /// Provides unified type-safe access for Alpaca REST API and Polygon REST API endpoints.
+    /// </summary>
     public sealed partial class RestClient
     {
         private readonly HttpClient _alpacaHttpClient = new HttpClient();
@@ -16,6 +19,12 @@ namespace Alpaca.Markets
 
         private readonly String _polygonApiKey;
 
+        /// <summary>
+        /// Creates new instance of <see cref="RestClient"/> object.
+        /// </summary>
+        /// <param name="keyId">Application key identifier.</param>
+        /// <param name="secretKey">Application secret key.</param>
+        /// <param name="restApi">REST API endpoint URL.</param>
         public RestClient(
             String keyId,
             String secretKey,

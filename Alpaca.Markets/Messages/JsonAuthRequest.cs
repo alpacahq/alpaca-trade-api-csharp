@@ -5,7 +5,7 @@ namespace Alpaca.Markets
 {
     internal sealed class JsonAuthRequest
     {
-        public sealed class JsonData
+        internal sealed class JsonData
         {
             [JsonProperty(PropertyName = "key_id", Required = Required.Always)]
             public String KeyId { get; set; }

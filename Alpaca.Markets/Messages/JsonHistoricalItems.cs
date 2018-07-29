@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    public abstract class JsonHistoricalItems<TApi, TJson> where TJson : TApi
+    internal abstract class JsonHistoricalItems<TApi, TJson> where TJson : TApi
     {
         [JsonProperty(PropertyName = "status", Required = Required.Default)]
         public String Status { get; set; }

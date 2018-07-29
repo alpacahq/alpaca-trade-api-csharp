@@ -9,11 +9,21 @@ namespace Alpaca.Markets
 {
     public sealed partial class RestClient
     {
+        /// <summary>
+        /// Gets account information from Alpaca REST API endpoint.
+        /// </summary>
+        /// <returns>Read-only account information.</returns>
         public Task<IAccount> GetAccountAsync()
         {
             return getSingleObjectAsync<IAccount, JsonAccount>(_alpacaHttpClient, "v1/account");
         }
 
+        /// <summary>
+        /// Gets list of available assets from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="assetStatus">Asset status for filtering.</param>
+        /// <param name="assetClass">Asset class for filtering.</param>
+        /// <returns>Read-only list of asset information objects.</returns>
         public Task<IEnumerable<IAsset>> ListAssetsAsync(
             AssetStatus? assetStatus = null,
             AssetClass? assetClass = null)
@@ -29,12 +39,24 @@ namespace Alpaca.Markets
             return getObjectsListAsync<IAsset, JsonAsset>(_alpacaHttpClient, builder);
         }
 
+        /// <summary>
+        /// Get single asset information by asset name from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">Asset name for seaching.</param>
+        /// <returns>Read-only asset information.</returns>
         public Task<IAsset> GetAssetAsync(
             String symbol)
         {
             return getSingleObjectAsync<IAsset, JsonAsset>(_alpacaHttpClient, $"v1/assets/{symbol}");
         }
 
+        /// <summary>
+        /// Gets list of available orders from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="orderStatusFilter">Order status for filtering.</param>
+        /// <param name="untilDateTime">Returns only orders untill specified date.</param>
+        /// <param name="limitOrderNumber">Maximal number of orders in response.</param>
+        /// <returns>Read-only list of order information objects.</returns>
         public Task<IEnumerable<IOrder>> ListOrdersAsync(
             OrderStatusFilter? orderStatusFilter = null,
             DateTime? untilDateTime = null,
@@ -52,6 +74,18 @@ namespace Alpaca.Markets
             return getObjectsListAsync<IOrder, JsonOrder>(_alpacaHttpClient, builder);
         }
 
+        /// <summary>
+        /// Creates new order for execution using Alpaca REST API endopoint.
+        /// </summary>
+        /// <param name="symbol">Order asset name.</param>
+        /// <param name="quantity">Order quantity.</param>
+        /// <param name="side">Order size (buy or sell).</param>
+        /// <param name="type">Order type.</param>
+        /// <param name="duration">Order duration.</param>
+        /// <param name="limitPrice">Order limit price.</param>
+        /// <param name="stopPrice">Orfer stop price.</param>
+        /// <param name="clientOrderId">Client order ID.</param>
+        /// <returns>Read-only order information object for newly created order.</returns>
         public async Task<IOrder> PostOrderAsync(
             String symbol,
             Int64 quantity,
@@ -102,6 +136,11 @@ namespace Alpaca.Markets
             }
         }
 
+        /// <summary>
+        /// Get single order information by client order ID from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="clientOrderId">Client order ID for searching.</param>
+        /// <returns>Read-only order information object.</returns>
         public Task<IOrder> GetOrderAsync(
             String clientOrderId)
         {
@@ -115,12 +154,22 @@ namespace Alpaca.Markets
             return getSingleObjectAsync<IOrder, JsonOrder>(_alpacaHttpClient, builder);
         }
 
+        /// <summary>
+        /// Get single order information by server order ID from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="orderId">Server order ID for searching.</param>
+        /// <returns>Read-only order information object.</returns>
         public Task<IOrder> GetOrderAsync(
             Guid orderId)
         {
             return getSingleObjectAsync<IOrder, JsonOrder>(_alpacaHttpClient, $"v1/orders/{orderId:D}");
         }
 
+        /// <summary>
+        /// Deletes/cancel order on server by server order ID using Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="orderId">Server order ID for cancelling.</param>
+        /// <returns><c>True</c> if order deleted/cancelled successfully.</returns>
         public async Task<Boolean> DeleteOrderAsync(
             Guid orderId)
         {
@@ -130,22 +179,41 @@ namespace Alpaca.Markets
             }
         }
 
+        /// <summary>
+        /// Gets list of available positions from Alpaca REST API endpoint.
+        /// </summary>
+        /// <returns>Read-only list of position information objects.</returns>
         public Task<IEnumerable<IPosition>> ListPositionsAsync()
         {
             return getObjectsListAsync<IPosition, JsonPosition>(_alpacaHttpClient, "v1/positions");
         }
 
+        /// <summary>
+        /// Gets position information by asset name from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <returns>Read-only position information object.</returns>
         public Task<IPosition> GetPositionAsync(
             String symbol)
         {
             return getSingleObjectAsync<IPosition, JsonPosition>(_alpacaHttpClient, $"v1/positions/{symbol}");
         }
 
+        /// <summary>
+        /// Get current time information from Alpaca REST API endpoint.
+        /// </summary>
+        /// <returns>Read-only clock information object.</returns>
         public Task<IClock> GetClockAsync()
         {
             return getSingleObjectAsync<IClock, JsonClock>(_alpacaHttpClient, "v1/clock");
         }
 
+        /// <summary>
+        /// Gets list of trading days from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="startDateInclusive"></param>
+        /// <param name="endDateInclusive"></param>
+        /// <returns>Read-only list of trading date information object.</returns>
         public Task<IEnumerable<ICalendar>> ListCalendarAsync(
             DateTime? startDateInclusive = null,
             DateTime? endDateInclusive = null)

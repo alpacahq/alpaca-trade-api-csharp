@@ -9,6 +9,9 @@ using WebSocket4Net;
 
 namespace Alpaca.Markets
 {
+    /// <summary>
+    /// Provides unified type-safe access for Alpaca streaming API.
+    /// </summary>
     public sealed class SockClient : IDisposable
     {
         private readonly WebSocket _webSocket;
@@ -17,6 +20,12 @@ namespace Alpaca.Markets
 
         private readonly String _secretKey;
 
+        /// <summary>
+        /// Creates new instance of <see cref="SockClient"/> object.
+        /// </summary>
+        /// <param name="keyId">Application key identifier.</param>
+        /// <param name="secretKey">Application secret key.</param>
+        /// <param name="restApi">REST API endpoint URL.</param>
         public SockClient(
             String keyId,
             String secretKey,
@@ -40,24 +49,45 @@ namespace Alpaca.Markets
             _webSocket.Error += (sender, args) => OnError?.Invoke(args.Exception);
         }
 
+        /// <summary>
+        /// Occurrs when new account update received from stream.
+        /// </summary>
         public event Action<IAccountUpdate> OnAccountUpdate;
 
+        /// <summary>
+        /// Occurrs when new trade update received from stream.
+        /// </summary>
         public event Action<ITradeUpdate> OnTradeUpdate;
 
+        /// <summary>
+        /// Occurrs when stream successfully connected.
+        /// </summary>
         public event Action<AuthStatus> Connected;
 
+        /// <summary>
+        /// Occurrs when any error happened in stream.
+        /// </summary>
         public event Action<Exception> OnError;
 
+        /// <summary>
+        /// Opens connection to Alpaca streaming API.
+        /// </summary>
+        /// <returns>Waitable task object for handling action completion in asyncronious mode.</returns>
         public Task ConnectAsync()
         {
             return _webSocket.OpenAsync();
         }
 
+        /// <summary>
+        /// Closes connection to Alpaca streaming API.
+        /// </summary>
+        /// <returns>Waitable task object for handling action completion in asyncronious mode.</returns>
         public Task DisconnectAsync()
         {
             return _webSocket.CloseAsync();
         }
 
+        /// <inheritdoc />
         public void Dispose()
         {
             _webSocket?.Dispose();

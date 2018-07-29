@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
+    /// <summary>
+    /// Provides unified type-safe access for Polygon streaming API.
+    /// </summary>
     public sealed class NatsClient : IDisposable
     {
         private readonly IDictionary<String, IAsyncSubscription> _subscriptions =
@@ -15,6 +18,10 @@ namespace Alpaca.Markets
 
         private IConnection _connection;
 
+        /// <summary>
+        /// Creates new instance of <see cref="NatsClient"/> object.
+        /// </summary>
+        /// <param name="keyId">Application key identifier.</param>
         public NatsClient(
             String keyId)
         {
@@ -30,68 +37,126 @@ namespace Alpaca.Markets
             _options.AsyncErrorEventHandler += (sender, args) => OnError?.Invoke(args.Error);
         }
 
+        /// <summary>
+        /// Occurrs when new trade received from stream.
+        /// </summary>
         public event Action<IStreamTrade> TradeReceived;
 
+        /// <summary>
+        /// Occurrs when new quote received from stream.
+        /// </summary>
         public event Action<IStreamQuote> QuoteReceived;
 
+        /// <summary>
+        /// Occurrs when new bar received from stream.
+        /// </summary>
         public event Action<IStreamBar> BarReceived;
 
+        /// <summary>
+        /// Occurrs when any error happened in stream.
+        /// </summary>
         public event Action<String> OnError;
 
+        /// <summary>
+        /// Opens connection to Polygon streaming API.
+        /// </summary>
         public void Open()
         {
             _connection = new ConnectionFactory()
                 .CreateConnection(_options);
         }
 
+        /// <summary>
+        /// Subscribes for the trade updates via <see cref="TradeReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeTrade(
             String symbol)
         {
             subscribe($"T.{symbol}", handleTradeMessage);
         }
 
+        /// <summary>
+        /// Subscribes for the quote updates via <see cref="QuoteReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeQuote(
             String symbol)
         {
             subscribe($"Q.{symbol}", handleQuoteMessage);
         }
 
+        /// <summary>
+        /// Subscribes for the second bar updates via <see cref="BarReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeSecondBar(
             String symbol)
         {
             subscribe($"A.{symbol}", handleBarMessage);
         }
 
+        /// <summary>
+        /// Subscribes for the minute bar updates via <see cref="BarReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeMinuteBar(
             String symbol)
         {
             subscribe($"AM.{symbol}", handleBarMessage);
         }
 
+        /// <summary>
+        /// Unsubscribes from the trade updates via <see cref="TradeReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeTrade(
             String symbol)
         {
             unsubscribe($"T.{symbol}");
         }
 
+        /// <summary>
+        /// Unsubscribes from the quote updates via <see cref="QuoteReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeQuote(
             String symbol)
         {
             unsubscribe($"Q.{symbol}");
         }
 
+        /// <summary>
+        /// Unsubscribes from the second bar updates via <see cref="BarReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeSecondBar(
             String symbol)
         {
             unsubscribe($"A.{symbol}");
         }
 
+        /// <summary>
+        /// Unsubscribes from the minute bar updates via <see cref="BarReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeMinuteBar(
             String symbol)
         {
             unsubscribe($"AM.{symbol}");
         }
 
+        /// <summary>
+        /// Closes connection to Polygon streaming API.
+        /// </summary>
         public void Close()
         {
             foreach (var subscription in _subscriptions.Values)
@@ -102,6 +167,7 @@ namespace Alpaca.Markets
             _connection?.Close();
         }
 
+        /// <inheritdoc />
         public void Dispose()
         {
             foreach (var subscription in _subscriptions.Values)

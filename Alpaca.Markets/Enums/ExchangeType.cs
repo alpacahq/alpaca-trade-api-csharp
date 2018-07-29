@@ -4,15 +4,27 @@ using Newtonsoft.Json.Converters;
 
 namespace Alpaca.Markets
 {
+    /// <summary>
+    /// Supported exchange types in Polygon REST API.
+    /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum ExchangeType
     {
+        /// <summary>
+        /// Ordinal exchange.
+        /// </summary>
         [EnumMember(Value = "exchange")]
         Exchange,
 
+        /// <summary>
+        /// Banking organization.
+        /// </summary>
         [EnumMember(Value = "banking")]
         Banking,
 
+        /// <summary>
+        /// Trade reporting facility.
+        /// </summary>
         [EnumMember(Value = "TRF")]
         TradeReportingFacility
     }
