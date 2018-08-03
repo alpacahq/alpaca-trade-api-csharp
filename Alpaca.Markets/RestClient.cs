@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -22,6 +23,20 @@ namespace Alpaca.Markets
         /// <summary>
         /// Creates new instance of <see cref="RestClient"/> object.
         /// </summary>
+        /// <param name="configuration">Application configuration.</param>
+        public RestClient(
+            IConfiguration configuration)
+            : this(
+                configuration["keyId"],
+                configuration["secretKey"],
+                configuration["alpacaRestApi"],
+                configuration["polygonRestApi"])
+        {
+        }
+
+        /// <summary>
+        /// Creates new instance of <see cref="RestClient"/> object.
+        /// </summary>
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
@@ -29,9 +44,32 @@ namespace Alpaca.Markets
         public RestClient(
             String keyId,
             String secretKey,
-            Uri alpacaRestApi = null,
-            Uri polygonRestApi = null)
+            String alpacaRestApi = null,
+            String polygonRestApi = null)
+            : this(
+                keyId,
+                secretKey,
+                new Uri(alpacaRestApi ?? "https://api.alpaca.markets"),
+                new Uri(polygonRestApi ?? "https://api.polygon.io"))
         {
+        }
+
+        /// <summary>
+        /// Creates new instance of <see cref="RestClient"/> object.
+        /// </summary>
+        /// <param name="keyId">Application key identifier.</param>
+        /// <param name="secretKey">Application secret key.</param>
+        /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
+        /// <param name="polygonRestApi">Polygon REST API ennpoint URL.</param>
+        public RestClient(
+            String keyId,
+            String secretKey,
+            Uri alpacaRestApi,
+            Uri polygonRestApi)
+        {
+            keyId = keyId ?? throw new ArgumentException(nameof(keyId));
+            secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
+
             _alpacaHttpClient.DefaultRequestHeaders.Add(
                 "APCA-API-KEY-ID", keyId);
             _alpacaHttpClient.DefaultRequestHeaders.Add(

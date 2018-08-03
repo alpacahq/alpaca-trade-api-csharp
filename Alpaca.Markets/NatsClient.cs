@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
 using NATS.Client;
 using Newtonsoft.Json;
 
@@ -22,23 +23,41 @@ namespace Alpaca.Markets
         /// <summary>
         /// Creates new instance of <see cref="NatsClient"/> object.
         /// </summary>
+        /// <param name="configuration">Application configuration.</param>
+        public NatsClient(
+            IConfiguration configuration)
+            : this(
+                configuration["keyId"],
+                configuration.GetSection("natsServers")
+                    .GetChildren().Select(_ => _.Value))
+        {
+        }
+
+        /// <summary>
+        /// Creates new instance of <see cref="NatsClient"/> object.
+        /// </summary>
         /// <param name="keyId">Application key identifier.</param>
-        /// <param name="servers">List of NATS servers/ports.</param>
+        /// <param name="natsServers">List of NATS servers/ports.</param>
         public NatsClient(
             String keyId,
-            IEnumerable<String> servers = null)
+            IEnumerable<String> natsServers = null)
         {
             _options = ConnectionFactory.GetDefaultOptions();
             _options.MaxReconnect = 3;
 
-            servers = servers ?? new[]
-            {
-                "nats1.polygon.io:31101",
-                "nats2.polygon.io:31102",
-                "nats3.polygon.io:31103"
-            };
+            natsServers = (natsServers ?? new String [0]).ToArray();
 
-            _options.Servers = servers
+            if (!natsServers.Any())
+            {
+                natsServers = new[]
+                {
+                    "nats1.polygon.io:31101",
+                    "nats2.polygon.io:31102",
+                    "nats3.polygon.io:31103"
+                };
+            }
+
+            _options.Servers = natsServers
                 .Select(server => $"nats://{keyId}@{server}")
                 .ToArray();
 

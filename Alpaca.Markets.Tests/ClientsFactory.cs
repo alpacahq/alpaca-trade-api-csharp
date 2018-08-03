@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 
 namespace Alpaca.Markets.Tests
 {
@@ -6,17 +8,31 @@ namespace Alpaca.Markets.Tests
     {
         private const String KEY_ID = "AKEW7ZBQUSNUHOJNQ5MS";
 
-        private const String SECRET_KEY = "Yr2Tms89rQ6foRLNu4pz3w/yXOrxQGDmXctU1BCn";
+        private static readonly IConfigurationRoot _configuration;
 
-        private const String API_URL = "https://staging-api.tradetalk.us";
+        static ClientsFactory()
+        {
+            var data = new Dictionary<String, String>
+            {
+                { "keyId", KEY_ID },
+                { "nats:keyId", KEY_ID + "-staging" },
+                { "secretKey", "Yr2Tms89rQ6foRLNu4pz3w/yXOrxQGDmXctU1BCn" },
+                { "alpacaRestApi",  "https://staging-api.tradetalk.us"},
+            };
+
+            var builder = new ConfigurationBuilder();
+            builder.AddInMemoryCollection(data);
+
+            _configuration = builder.Build();
+        }
 
         public static RestClient GetRestClient() =>
-            new RestClient(KEY_ID, SECRET_KEY, new Uri(API_URL));
+            new RestClient(_configuration);
 
         public static SockClient GetSockClient() =>
-            new SockClient(KEY_ID, SECRET_KEY, new Uri(API_URL));
+            new SockClient(_configuration);
 
         public static NatsClient GetNatsClient() =>
-            new NatsClient(KEY_ID + "-staging");
+            new NatsClient(_configuration.GetSection("nats"));
     }
 }
