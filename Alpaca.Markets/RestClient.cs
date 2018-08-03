@@ -24,11 +24,13 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="secretKey">Application secret key.</param>
-        /// <param name="restApi">REST API endpoint URL.</param>
+        /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
+        /// <param name="polygonRestApi">Polygon REST API ennpoint URL.</param>
         public RestClient(
             String keyId,
             String secretKey,
-            Uri restApi)
+            Uri alpacaRestApi = null,
+            Uri polygonRestApi = null)
         {
             _alpacaHttpClient.DefaultRequestHeaders.Add(
                 "APCA-API-KEY-ID", keyId);
@@ -36,14 +38,14 @@ namespace Alpaca.Markets
                 "APCA-API-SECRET-KEY", secretKey);
             _alpacaHttpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _alpacaHttpClient.BaseAddress = restApi;
+            _alpacaHttpClient.BaseAddress =
+                alpacaRestApi ?? new Uri("https://api.alpaca.markets");
 
-            // TODO: olegra - provide correct key and probably endpoint here
             _polygonApiKey = keyId;
             _polygonHttpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _polygonHttpClient.BaseAddress = 
-                new Uri("https://api.polygon.io");
+            _polygonHttpClient.BaseAddress =
+                polygonRestApi ?? new Uri("https://api.polygon.io");
         }
 
         private async Task<TApi> getSingleObjectAsync<TApi, TJson>(

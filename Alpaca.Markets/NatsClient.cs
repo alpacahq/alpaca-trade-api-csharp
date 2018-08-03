@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using NATS.Client;
 using Newtonsoft.Json;
 
@@ -22,17 +23,24 @@ namespace Alpaca.Markets
         /// Creates new instance of <see cref="NatsClient"/> object.
         /// </summary>
         /// <param name="keyId">Application key identifier.</param>
+        /// <param name="servers">List of NATS servers/ports.</param>
         public NatsClient(
-            String keyId)
+            String keyId,
+            IEnumerable<String> servers = null)
         {
             _options = ConnectionFactory.GetDefaultOptions();
             _options.MaxReconnect = 3;
-            _options.Servers = new[]
+
+            servers = servers ?? new[]
             {
-                $"nats://{keyId}@nats1.polygon.io:31101",
-                $"nats://{keyId}@nats2.polygon.io:31102",
-                $"nats://{keyId}@nats3.polygon.io:31103"
+                "nats1.polygon.io:31101",
+                "nats2.polygon.io:31102",
+                "nats3.polygon.io:31103"
             };
+
+            _options.Servers = servers
+                .Select(server => $"nats://{keyId}@{server}")
+                .ToArray();
 
             _options.AsyncErrorEventHandler += (sender, args) => OnError?.Invoke(args.Error);
         }

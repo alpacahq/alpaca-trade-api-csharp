@@ -25,18 +25,20 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="secretKey">Application secret key.</param>
-        /// <param name="restApi">REST API endpoint URL.</param>
+        /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         public SockClient(
             String keyId,
             String secretKey,
-            Uri restApi)
+            Uri alpacaRestApi = null)
         {
             _keyId = keyId;
             _secretKey = secretKey;
 
-            var uriBuilder = new UriBuilder(restApi)
+            alpacaRestApi = alpacaRestApi ?? new Uri("https://api.alpaca.markets");
+
+            var uriBuilder = new UriBuilder(alpacaRestApi)
             {
-                Scheme = restApi.Scheme == "http" ? "ws" : "wss"
+                Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
             };
             uriBuilder.Path += "/stream";
 
