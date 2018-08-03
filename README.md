@@ -18,3 +18,7 @@ if (clock != null)
 ```
 4. Replace `KEY_ID`, `SECRET_KEY` and `API_URL` values with data from web console.
 5. Run sample application using `dotnet run` command and check output
+
+## Use .NET Core configuration
+
+Starting form version [1.1.0](https://github.com/alpacahq/alpaca-trade-api-csharp/releases/tag/v1.1.0) you can use [IConfiguration](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.iconfiguration) interface for providing configuration data into constructors. You can read more about new .NET Core configuration approach in [this](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1) article. Read appropriate Wiki pages about expected configuration parameters for each constructor.
