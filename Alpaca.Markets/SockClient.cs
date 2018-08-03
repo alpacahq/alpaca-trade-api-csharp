@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WebSocket4Net;
@@ -23,20 +24,51 @@ namespace Alpaca.Markets
         /// <summary>
         /// Creates new instance of <see cref="SockClient"/> object.
         /// </summary>
+        /// <param name="configuration">Application configuration.</param>
+        public SockClient(
+            IConfiguration configuration)
+            : this(
+                configuration["keyId"],
+                configuration["secretKey"],
+                configuration["alpacaRestApi"])
+        {
+        }
+        /// <summary>
+        /// Creates new instance of <see cref="SockClient"/> object.
+        /// </summary>
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="secretKey">Application secret key.</param>
-        /// <param name="restApi">REST API endpoint URL.</param>
+        /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         public SockClient(
             String keyId,
             String secretKey,
-            Uri restApi)
+            String alpacaRestApi = null)
+            :this (
+                keyId,
+                secretKey,
+                new Uri(alpacaRestApi ?? "https://api.alpaca.markets"))
         {
-            _keyId = keyId;
-            _secretKey = secretKey;
+        }
 
-            var uriBuilder = new UriBuilder(restApi)
+        /// <summary>
+        /// Creates new instance of <see cref="SockClient"/> object.
+        /// </summary>
+        /// <param name="keyId">Application key identifier.</param>
+        /// <param name="secretKey">Application secret key.</param>
+        /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
+        public SockClient(
+            String keyId,
+            String secretKey,
+            Uri alpacaRestApi)
+        {
+            _keyId = keyId ?? throw new ArgumentException(nameof(keyId));
+            _secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
+
+            alpacaRestApi = alpacaRestApi ?? new Uri("https://api.alpaca.markets");
+
+            var uriBuilder = new UriBuilder(alpacaRestApi)
             {
-                Scheme = restApi.Scheme == "http" ? "ws" : "wss"
+                Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
             };
             uriBuilder.Path += "/stream";
 
