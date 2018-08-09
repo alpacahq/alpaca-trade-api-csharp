@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WebSocket4Net;
@@ -13,7 +12,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca streaming API.
     /// </summary>
-    public sealed class SockClient : IDisposable
+    public sealed partial class SockClient : IDisposable
     {
         private readonly WebSocket _webSocket;
 
@@ -21,18 +20,6 @@ namespace Alpaca.Markets
 
         private readonly String _secretKey;
 
-        /// <summary>
-        /// Creates new instance of <see cref="SockClient"/> object.
-        /// </summary>
-        /// <param name="configuration">Application configuration.</param>
-        public SockClient(
-            IConfiguration configuration)
-            : this(
-                configuration["keyId"],
-                configuration["secretKey"],
-                configuration["alpacaRestApi"])
-        {
-        }
         /// <summary>
         /// Creates new instance of <see cref="SockClient"/> object.
         /// </summary>
@@ -107,7 +94,11 @@ namespace Alpaca.Markets
         /// <returns>Waitable task object for handling action completion in asyncronious mode.</returns>
         public Task ConnectAsync()
         {
+#if NET45
+            return Task.Run(() => _webSocket.Open());
+#else
             return _webSocket.OpenAsync();
+#endif
         }
 
         /// <summary>
@@ -116,7 +107,11 @@ namespace Alpaca.Markets
         /// <returns>Waitable task object for handling action completion in asyncronious mode.</returns>
         public Task DisconnectAsync()
         {
+#if NET45
+            return Task.Run(() => _webSocket.Close());
+#else
             return _webSocket.CloseAsync();
+#endif
         }
 
         /// <inheritdoc />

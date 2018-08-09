@@ -4,7 +4,6 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -19,20 +18,6 @@ namespace Alpaca.Markets
         private readonly HttpClient _polygonHttpClient = new HttpClient();
 
         private readonly String _polygonApiKey;
-
-        /// <summary>
-        /// Creates new instance of <see cref="RestClient"/> object.
-        /// </summary>
-        /// <param name="configuration">Application configuration.</param>
-        public RestClient(
-            IConfiguration configuration)
-            : this(
-                configuration["keyId"],
-                configuration["secretKey"],
-                configuration["alpacaRestApi"],
-                configuration["polygonRestApi"])
-        {
-        }
 
         /// <summary>
         /// Creates new instance of <see cref="RestClient"/> object.

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Microsoft.Extensions.Configuration;
 using NATS.Client;
 using Newtonsoft.Json;
 
@@ -11,7 +10,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API.
     /// </summary>
-    public sealed class NatsClient : IDisposable
+    public sealed partial class NatsClient : IDisposable
     {
         private readonly IDictionary<String, IAsyncSubscription> _subscriptions =
             new Dictionary<String, IAsyncSubscription>(StringComparer.Ordinal);
@@ -19,19 +18,6 @@ namespace Alpaca.Markets
         private readonly Options _options;
 
         private IConnection _connection;
-
-        /// <summary>
-        /// Creates new instance of <see cref="NatsClient"/> object.
-        /// </summary>
-        /// <param name="configuration">Application configuration.</param>
-        public NatsClient(
-            IConfiguration configuration)
-            : this(
-                configuration["keyId"],
-                configuration.GetSection("natsServers")
-                    .GetChildren().Select(_ => _.Value))
-        {
-        }
 
         /// <summary>
         /// Creates new instance of <see cref="NatsClient"/> object.
