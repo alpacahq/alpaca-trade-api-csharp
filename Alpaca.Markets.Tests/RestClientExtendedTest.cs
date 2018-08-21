@@ -18,5 +18,35 @@ namespace Alpaca.Markets.Tests
             Assert.NotNull(historicalItems.Items);
             Assert.Empty(historicalItems.Items);
         }
+
+        [Fact]
+        public async void ListDayAggregatesForSpecificDatesWorks()
+        {
+            var dateInto = DateTime.Today;
+            var dateFrom = dateInto.AddDays(-7);
+
+            var historicalItems = await _restClient
+                .ListDayAggregatesAsync("AAPL", dateFrom, dateInto);
+
+            Assert.NotNull(historicalItems);
+
+            Assert.NotNull(historicalItems.Items);
+            Assert.NotEmpty(historicalItems.Items);
+        }
+
+        [Fact]
+        public async void ListMinuteAggregatesForSpecificDatesWorks()
+        {
+            var dateInto = DateTime.Today;
+            var dateFrom = dateInto.AddDays(-7);
+
+            var historicalItems = await _restClient
+                .ListMinuteAggregatesAsync("AAPL", dateFrom, dateInto, 100);
+
+            Assert.NotNull(historicalItems);
+
+            Assert.NotNull(historicalItems.Items);
+            Assert.NotEmpty(historicalItems.Items);
+        }
     }
 }
