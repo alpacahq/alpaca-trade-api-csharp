@@ -13,6 +13,11 @@ namespace Alpaca.Markets.Tests
         {
             using (var sockClient = ClientsFactory.GetSockClient())
             {
+                sockClient.OnError += (ex) =>
+                {
+                    Assert.Null(ex.Message);
+                };
+
                 await sockClient.ConnectAsync();
 
                 var waitObject = new AutoResetEvent(false);
@@ -47,9 +52,8 @@ namespace Alpaca.Markets.Tests
 
                 Assert.True(result);
 
-                // TODO: olegra - why cancellation not reported here?
-                //Assert.True(waitObject.WaitOne(
-                //    TimeSpan.FromSeconds(10)));
+                Assert.True(waitObject.WaitOne(
+                    TimeSpan.FromSeconds(10)));
 
                 await sockClient.DisconnectAsync();
             }
