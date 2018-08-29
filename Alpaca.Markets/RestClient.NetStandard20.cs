@@ -1,5 +1,6 @@
 ﻿#if NETSTANDARD2_0
 
+using System;
 using Microsoft.Extensions.Configuration;
 
 namespace Alpaca.Markets
@@ -16,7 +17,8 @@ namespace Alpaca.Markets
                 configuration["keyId"],
                 configuration["secretKey"],
                 configuration["alpacaRestApi"],
-                configuration["polygonRestApi"])
+                configuration["polygonRestApi"],
+                Convert.ToBoolean(configuration["staging"] ?? "false"))
         {
         }
     }

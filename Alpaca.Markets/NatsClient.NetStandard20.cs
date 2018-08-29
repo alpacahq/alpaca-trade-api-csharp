@@ -1,5 +1,6 @@
 ﻿#if NETSTANDARD2_0
 
+using System;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
 
@@ -16,6 +17,7 @@ namespace Alpaca.Markets
             IConfiguration configuration)
             : this(
                 configuration["keyId"],
+                Convert.ToBoolean(configuration["staging"] ?? "false"),
                 configuration.GetSection("natsServers")
                     .GetChildren().Select(_ => _.Value))
         {
