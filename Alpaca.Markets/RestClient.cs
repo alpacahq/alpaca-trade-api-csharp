@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -78,7 +79,12 @@ namespace Alpaca.Markets
                 polygonRestApi ?? new Uri("https://api.polygon.io");
             _isPolygonStaging = isStagingEnvironment ||
                 _alpacaHttpClient.BaseAddress.Host.Contains("staging");
-         }
+
+#if NET45
+            ServicePointManager.SecurityProtocol =
+                SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
+#endif
+        }
 
         private async Task<TApi> getSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
