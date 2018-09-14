@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Alpaca.Markets.Tests
@@ -47,6 +50,19 @@ namespace Alpaca.Markets.Tests
 
             Assert.NotNull(historicalItems.Items);
             Assert.NotEmpty(historicalItems.Items);
+        }
+
+        [Fact]
+        public void AlpacaRestApiThrottlingWorks()
+        {
+            var tasks = new Task[300];
+            for (var i = 0; i < tasks.Length; ++i)
+            {
+                tasks[i] = _restClient.GetClockAsync();
+            }
+
+            Task.WaitAll(tasks);
+            Assert.DoesNotContain(tasks, task => task.IsFaulted);
         }
     }
 }

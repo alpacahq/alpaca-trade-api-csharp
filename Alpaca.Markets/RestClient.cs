@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+#if NET45
 using System.Net;
+#endif
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -21,6 +24,9 @@ namespace Alpaca.Markets
         private readonly Boolean _isPolygonStaging;
 
         private readonly String _polygonApiKey;
+
+        private static readonly IThrottler _alpacaRestApiThrottler =
+            new RateThrottler(200, 5, TimeSpan.FromMinutes(1));
 
         /// <summary>
         /// Creates new instance of <see cref="RestClient"/> object.
@@ -88,41 +94,61 @@ namespace Alpaca.Markets
 
         private async Task<TApi> getSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
+            IThrottler throttler,
             String endpointUri)
             where TJson : TApi
         {
-            using (var stream = await httpClient.GetStreamAsync(endpointUri))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            Queue<Exception> exceptions = new Queue<Exception>();
+
+            for(var attempts = 0; attempts < throttler.MaxAttempts; ++attempts)
             {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<TJson>(reader);
+                throttler.WaitToProceed();
+
+                try
+                {
+                    using (var stream = await httpClient.GetStreamAsync(endpointUri))
+                    using (var reader = new JsonTextReader(new StreamReader(stream)))
+                    {
+                        var serializer = new JsonSerializer();
+                        return serializer.Deserialize<TJson>(reader);
+                    }
+                }
+                catch (HttpRequestException ex)
+                {
+                    exceptions.Enqueue(ex);
+                }
             }
+
+            throw new AggregateException(exceptions);
         }
 
         private Task<TApi> getSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
+            IThrottler throttler,
             UriBuilder uriBuilder)
             where TJson : TApi
         {
-            return getSingleObjectAsync<TApi, TJson>(httpClient, uriBuilder.ToString());
+            return getSingleObjectAsync<TApi, TJson>(httpClient, throttler, uriBuilder.ToString());
         }
 
         private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
+            IThrottler throttler,
             String endpointUri)
             where TJson : TApi
         {
             return (IEnumerable<TApi>) await
-                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, endpointUri);
+                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, endpointUri);
         }
 
         private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
+            IThrottler throttler,
             UriBuilder uriBuilder)
             where TJson : TApi
         {
             return (IEnumerable<TApi>) await
-                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, uriBuilder);
+                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, uriBuilder);
         }
     }
 }

@@ -30,7 +30,8 @@ namespace Alpaca.Markets
                     .AddParameter("end_dt", endTimeInclusive)
             };
 
-            return getObjectsListAsync<IAssetBars, JsonAssetBars>(_alpacaHttpClient, builder);
+            return getObjectsListAsync<IAssetBars, JsonAssetBars>(
+                _alpacaHttpClient, _alpacaRestApiThrottler, builder);
         }
 
         /// <summary>
@@ -56,7 +57,8 @@ namespace Alpaca.Markets
                     .AddParameter("end_dt", endTimeInclusive)
             };
 
-            return getSingleObjectAsync<IAssetBars, JsonAssetBars>(_alpacaHttpClient, builder);
+            return getSingleObjectAsync<IAssetBars, JsonAssetBars>(
+                _alpacaHttpClient, _alpacaRestApiThrottler, builder);
         }
 
         /// <summary>
@@ -74,7 +76,8 @@ namespace Alpaca.Markets
                     .AddParameter("symbols", String.Join(",", symbols))
             };
 
-            return getObjectsListAsync<IQuote, JsonQuote>(_alpacaHttpClient, builder);
+            return getObjectsListAsync<IQuote, JsonQuote>(
+                _alpacaHttpClient, _alpacaRestApiThrottler, builder);
         }
 
         /// <summary>
@@ -86,7 +89,7 @@ namespace Alpaca.Markets
             String symbol)
         {
             return getSingleObjectAsync<IQuote, JsonQuote>(
-                _alpacaHttpClient, $"v1/assets/{symbol}/quote");
+                _alpacaHttpClient, _alpacaRestApiThrottler, $"v1/assets/{symbol}/quote");
         }
 
         /// <summary>
@@ -104,7 +107,8 @@ namespace Alpaca.Markets
                     .AddParameter("symbols", String.Join(",", symbols))
             };
 
-            return getObjectsListAsync<IFundamental, JsonFundamental>(_alpacaHttpClient, builder);
+            return getObjectsListAsync<IFundamental, JsonFundamental>(
+                _alpacaHttpClient, _alpacaRestApiThrottler, builder);
         }
 
         /// <summary>
@@ -116,7 +120,7 @@ namespace Alpaca.Markets
             String symbol)
         {
             return getSingleObjectAsync<IFundamental, JsonFundamental>(
-                _alpacaHttpClient, $"v1/assets/{symbol}/fundamental");
+                _alpacaHttpClient, _alpacaRestApiThrottler, $"v1/assets/{symbol}/fundamental");
         }
     }
 }
