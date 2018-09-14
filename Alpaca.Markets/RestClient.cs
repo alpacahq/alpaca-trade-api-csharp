@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace Alpaca.Markets
 
         private readonly HttpClient _polygonHttpClient = new HttpClient();
 
+        private readonly Boolean _isPolygonStaging;
+
         private readonly String _polygonApiKey;
 
         /// <summary>
@@ -26,16 +29,19 @@ namespace Alpaca.Markets
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         /// <param name="polygonRestApi">Polygon REST API ennpoint URL.</param>
+        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         public RestClient(
             String keyId,
             String secretKey,
             String alpacaRestApi = null,
-            String polygonRestApi = null)
+            String polygonRestApi = null,
+            Boolean? isStagingEnvironment = null)
             : this(
                 keyId,
                 secretKey,
                 new Uri(alpacaRestApi ?? "https://api.alpaca.markets"),
-                new Uri(polygonRestApi ?? "https://api.polygon.io"))
+                new Uri(polygonRestApi ?? "https://api.polygon.io"),
+                isStagingEnvironment ?? false)
         {
         }
 
@@ -46,11 +52,13 @@ namespace Alpaca.Markets
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         /// <param name="polygonRestApi">Polygon REST API ennpoint URL.</param>
+        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         public RestClient(
             String keyId,
             String secretKey,
             Uri alpacaRestApi,
-            Uri polygonRestApi)
+            Uri polygonRestApi,
+            Boolean isStagingEnvironment)
         {
             keyId = keyId ?? throw new ArgumentException(nameof(keyId));
             secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
@@ -69,6 +77,13 @@ namespace Alpaca.Markets
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _polygonHttpClient.BaseAddress =
                 polygonRestApi ?? new Uri("https://api.polygon.io");
+            _isPolygonStaging = isStagingEnvironment ||
+                _alpacaHttpClient.BaseAddress.Host.Contains("staging");
+
+#if NET45
+            ServicePointManager.SecurityProtocol =
+                SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
+#endif
         }
 
         private async Task<TApi> getSingleObjectAsync<TApi, TJson>(

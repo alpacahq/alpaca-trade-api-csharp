@@ -11,6 +11,11 @@ namespace Alpaca.Markets.Tests
         {
             using (var client = ClientsFactory.GetSockClient())
             {
+                client.OnError += (ex) =>
+                {
+                    Assert.Null(ex.Message);
+                };
+
                 await client.ConnectAsync();
 
                 var waitObject = new AutoResetEvent(false);

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WebSocket4Net;
+using System.Security.Authentication;
 
 namespace Alpaca.Markets
 {
@@ -59,7 +60,8 @@ namespace Alpaca.Markets
             };
             uriBuilder.Path += "/stream";
 
-            _webSocket = new WebSocket(uriBuilder.Uri.ToString());
+            _webSocket = new WebSocket(uriBuilder.Uri.ToString(),
+                sslProtocols: SslProtocols.Tls11 | SslProtocols.Tls12);
 
             _webSocket.Opened += handleOpened;
             _webSocket.Closed += handleClosed;
@@ -172,6 +174,11 @@ namespace Alpaca.Markets
                 case "account_updates":
                     handleAccountUpdates(
                         data.ToObject<JsonAccountUpdate>());
+                    break;
+
+                default:
+                    OnError?.Invoke(new InvalidOperationException(
+                        $"Unexpected message type '{stream}' received."));
                     break;
             }
         }

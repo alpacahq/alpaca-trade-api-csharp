@@ -6,18 +6,16 @@ namespace Alpaca.Markets.Tests
 {
     internal static class ClientsFactory
     {
-        private const String KEY_ID = "AKEW7ZBQUSNUHOJNQ5MS";
-
         private static readonly IConfigurationRoot _configuration;
 
         static ClientsFactory()
         {
             var data = new Dictionary<String, String>
             {
-                { "keyId", KEY_ID },
-                { "nats:keyId", KEY_ID + "-staging" },
+                { "staging", "true" },
+                { "keyId", "AKEW7ZBQUSNUHOJNQ5MS" },
                 { "secretKey", "Yr2Tms89rQ6foRLNu4pz3w/yXOrxQGDmXctU1BCn" },
-                { "alpacaRestApi",  "https://staging-api.tradetalk.us"},
+                { "alpacaRestApi",  "https://staging-api.tradetalk.us" },
             };
 
             var builder = new ConfigurationBuilder();
@@ -33,6 +31,6 @@ namespace Alpaca.Markets.Tests
             new SockClient(_configuration);
 
         public static NatsClient GetNatsClient() =>
-            new NatsClient(_configuration.GetSection("nats"));
+            new NatsClient(_configuration);
     }
 }
