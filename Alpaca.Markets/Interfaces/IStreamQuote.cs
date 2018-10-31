@@ -3,7 +3,7 @@
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates quote infromation from Polygon streaming API.
+    /// Encapsulates quote information from Polygon streaming API.
     /// </summary>
     public interface IStreamQuote
     {

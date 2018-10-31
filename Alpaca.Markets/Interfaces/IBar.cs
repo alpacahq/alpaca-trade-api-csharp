@@ -3,7 +3,7 @@
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates bar infromation from Polygon REST API.
+    /// Encapsulates bar information from Polygon REST API.
     /// </summary>
     public interface IBar
     {
