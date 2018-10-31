@@ -96,24 +96,5 @@ namespace Alpaca.Markets.Tests
             Assert.NotNull(quote);
             Assert.Equal("AAPL", quote.Symbol);
         }
-
-        [Fact]
-        public async void ListFundamentalsWorks()
-        {
-            var fundamentals = await _restClient.ListFundamentalsAsync(
-                new[] { "AAPL", "GOOG", "MSFT" });
-
-            Assert.NotNull(fundamentals);
-            Assert.NotEmpty(fundamentals);
-        }
-
-        [Fact]
-        public async void GetFundamentalWorks()
-        {
-            var fundamental = await _restClient.GetFundamentalAsync("AAPL");
-
-            Assert.NotNull(fundamental);
-            Assert.Equal("AAPL", fundamental.Symbol);
-        }
     }
 }

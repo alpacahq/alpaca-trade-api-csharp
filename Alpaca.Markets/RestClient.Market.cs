@@ -91,36 +91,5 @@ namespace Alpaca.Markets
             return getSingleObjectAsync<IQuote, JsonQuote>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, $"v1/assets/{symbol}/quote");
         }
-
-        /// <summary>
-        /// Gets list of fundamental data for several assets from Alpaca REST API endpoint.
-        /// </summary>
-        /// <param name="symbols">List of asset names for data retrieval.</param>
-        /// <returns>Read-only list of fundamental data for specified assets.</returns>
-        public Task<IEnumerable<IFundamental>> ListFundamentalsAsync(
-            IEnumerable<String> symbols)
-        {
-            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
-            {
-                Path = "v1/fundamentals",
-                Query = new QueryBuilder()
-                    .AddParameter("symbols", String.Join(",", symbols))
-            };
-
-            return getObjectsListAsync<IFundamental, JsonFundamental>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, builder);
-        }
-
-        /// <summary>
-        /// Gets fundamental data for singe asset from Alpaca REST API endpoint.
-        /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
-        /// <returns>Read-only fundamental data information.</returns>
-        public Task<IFundamental> GetFundamentalAsync(
-            String symbol)
-        {
-            return getSingleObjectAsync<IFundamental, JsonFundamental>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, $"v1/assets/{symbol}/fundamental");
-        }
     }
 }
