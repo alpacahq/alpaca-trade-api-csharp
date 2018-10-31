@@ -63,38 +63,5 @@ namespace Alpaca.Markets.Tests
 
             Assert.True(first.Time < last.Time);
         }
-
-        [Fact]
-        public async void ListQuotesWorks()
-        {
-            var clock = await _restClient.GetClockAsync();
-
-            if (!clock.IsOpen)
-            {
-                return;
-            }
-
-            var quotes = await _restClient.ListQuotesAsync(
-                new [] { "AAPL", "GOOG", "MSFT" });
-
-            Assert.NotNull(quotes);
-            Assert.NotEmpty(quotes);
-        }
-
-        [Fact]
-        public async void GetQuoteWorks()
-        {
-            var clock = await _restClient.GetClockAsync();
-
-            if (!clock.IsOpen)
-            {
-                return;
-            }
-
-            var quote = await _restClient.GetQuoteAsync("AAPL");
-
-            Assert.NotNull(quote);
-            Assert.Equal("AAPL", quote.Symbol);
-        }
     }
 }

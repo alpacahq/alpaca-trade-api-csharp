@@ -60,36 +60,5 @@ namespace Alpaca.Markets
             return getSingleObjectAsync<IAssetBars, JsonAssetBars>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, builder);
         }
-
-        /// <summary>
-        /// Gets list of current quotes for several assets from Alpaca REST API endpoint.
-        /// </summary>
-        /// <param name="symbols">List of asset names for data retrieval.</param>
-        /// <returns>Read-only list of current quotes lists for specified assets.</returns>
-        public Task<IEnumerable<IQuote>> ListQuotesAsync(
-            IEnumerable<String> symbols)
-        {
-            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
-            {
-                Path = "v1/quotes",
-                Query = new QueryBuilder()
-                    .AddParameter("symbols", String.Join(",", symbols))
-            };
-
-            return getObjectsListAsync<IQuote, JsonQuote>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, builder);
-        }
-
-        /// <summary>
-        /// Gets current quote for singe asset from Alpaca REST API endpoint.
-        /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
-        /// <returns>Read-only current quote information.</returns>
-        public Task<IQuote> GetQuoteAsync(
-            String symbol)
-        {
-            return getSingleObjectAsync<IQuote, JsonQuote>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, $"v1/assets/{symbol}/quote");
-        }
     }
 }
