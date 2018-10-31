@@ -20,7 +20,8 @@ namespace Alpaca.Markets
                 Query = getDefaultPolygonApiQueryBuilder()
             };
 
-            return getObjectsListAsync<IExchange, JsonExchange>(_polygonHttpClient, builder);
+            return getObjectsListAsync<IExchange, JsonExchange>(
+                _polygonHttpClient, FakeThrottler.Instance, builder);
         }
 
         /// <summary>
@@ -40,7 +41,7 @@ namespace Alpaca.Markets
 
             return getSingleObjectAsync
                 <IReadOnlyDictionary<String,String>, Dictionary<String, String>>(
-                    _polygonHttpClient, builder);
+                    _polygonHttpClient, FakeThrottler.Instance, builder);
         }
 
         /// <summary>
@@ -69,7 +70,7 @@ namespace Alpaca.Markets
             return getSingleObjectAsync
                 <IDayHistoricalItems<IHistoricalTrade>,
                     JsonDayHistoricalItems<IHistoricalTrade, JsonHistoricalTrade>>(
-                _polygonHttpClient, builder);
+                _polygonHttpClient, FakeThrottler.Instance, builder);
         }
 
         /// <summary>
@@ -98,7 +99,7 @@ namespace Alpaca.Markets
             return getSingleObjectAsync
                 <IDayHistoricalItems<IHistoricalQuote>,
                     JsonDayHistoricalItems<IHistoricalQuote, JsonHistoricalQuote>>(
-                _polygonHttpClient, builder);
+                _polygonHttpClient, FakeThrottler.Instance, builder);
         }
 
         /// <summary>
@@ -127,7 +128,7 @@ namespace Alpaca.Markets
             return getSingleObjectAsync
                 <IAggHistoricalItems<IBar>,
                     JsonAggHistoricalItems<IBar, JsonDayBar>>(
-                _polygonHttpClient, builder);
+                _polygonHttpClient, FakeThrottler.Instance, builder);
         }
 
         /// <summary>
@@ -156,7 +157,7 @@ namespace Alpaca.Markets
             return getSingleObjectAsync
             <IAggHistoricalItems<IBar>,
                 JsonAggHistoricalItems<IBar, JsonMinuteBar>>(
-                _polygonHttpClient, builder);
+                _polygonHttpClient, FakeThrottler.Instance, builder);
         }
 
         /// <summary>
@@ -174,7 +175,7 @@ namespace Alpaca.Markets
             };
 
             return getSingleObjectAsync<ILastTrade, JsonLastTrade>(
-                _polygonHttpClient, builder);
+                _polygonHttpClient, FakeThrottler.Instance, builder);
         }
 
         /// <summary>
@@ -192,7 +193,7 @@ namespace Alpaca.Markets
             };
 
             return getSingleObjectAsync<ILastQuote, JsonLastQuote>(
-                _polygonHttpClient, builder);
+                _polygonHttpClient, FakeThrottler.Instance, builder);
         }
 
         /// <summary>
@@ -214,7 +215,7 @@ namespace Alpaca.Markets
 
             var dictionary = await getSingleObjectAsync
                 <IDictionary<String, String>, Dictionary<String, String>>(
-                    _polygonHttpClient, builder);
+                    _polygonHttpClient, FakeThrottler.Instance, builder);
 
             return dictionary
                 .ToDictionary(
