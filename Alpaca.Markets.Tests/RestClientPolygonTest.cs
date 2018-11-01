@@ -5,6 +5,8 @@ namespace Alpaca.Markets.Tests
 {
     public sealed class RestClientPolygonTest
     {
+        private const String SYMBOL = "AAPL";
+
         private readonly RestClient _restClient = ClientsFactory.GetRestClient();
 
         [Fact]
@@ -29,7 +31,8 @@ namespace Alpaca.Markets.Tests
         public async void ListHistoricalTradesWorks()
         {
             var historicalItems = await _restClient
-                .ListHistoricalTradesAsync("AAPL", DateTime.Today);
+                .ListHistoricalTradesAsync(
+                    SYMBOL, DateTime.Today.AddDays(-1));
 
             Assert.NotNull(historicalItems);
 
@@ -41,7 +44,8 @@ namespace Alpaca.Markets.Tests
         public async void ListHistoricalQuotesWorks()
         {
             var historicalItems = await _restClient
-                .ListHistoricalQuotesAsync("AAPL", DateTime.Today);
+                .ListHistoricalQuotesAsync(
+                    SYMBOL, DateTime.Today.AddDays(-1));
 
             Assert.NotNull(historicalItems);
 
@@ -53,7 +57,7 @@ namespace Alpaca.Markets.Tests
         public async void ListDayAggregatesWorks()
         {
             var historicalItems = await _restClient
-                .ListDayAggregatesAsync("AAPL");
+                .ListDayAggregatesAsync(SYMBOL);
 
             Assert.NotNull(historicalItems);
 
@@ -65,7 +69,7 @@ namespace Alpaca.Markets.Tests
         public async void ListMinuteAggregatesWorks()
         {
             var historicalItems = await _restClient
-                .ListMinuteAggregatesAsync("AAPL");
+                .ListMinuteAggregatesAsync(SYMBOL);
 
             Assert.NotNull(historicalItems);
 
@@ -77,7 +81,7 @@ namespace Alpaca.Markets.Tests
         public async void GetLastTradeWorks()
         {
             var lastTrade = await _restClient
-                .GetLastTradeAsync("AAPL");
+                .GetLastTradeAsync(SYMBOL);
 
             Assert.NotNull(lastTrade);
             Assert.True(lastTrade.Time.Kind == DateTimeKind.Utc);
@@ -87,7 +91,7 @@ namespace Alpaca.Markets.Tests
         public async void GetLastQuoteWorks()
         {
             var lastQuote = await _restClient
-                .GetLastQuoteAsync("AAPL");
+                .GetLastQuoteAsync(SYMBOL);
 
             Assert.NotNull(lastQuote);
             Assert.True(lastQuote.Time.Kind == DateTimeKind.Utc);
