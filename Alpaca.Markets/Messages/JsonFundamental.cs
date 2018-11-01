@@ -57,7 +57,7 @@ namespace Alpaca.Markets
         public Decimal FiftyTwoWeekLow { get; set; }
 
         [JsonProperty(PropertyName = "div_rate", Required = Required.Always)]
-        public Decimal DividentsRate { get; set; }
+        public Decimal DividendsRate { get; set; }
 
         [JsonProperty(PropertyName = "roa", Required = Required.Always)]
         public Decimal roa { get; set; }

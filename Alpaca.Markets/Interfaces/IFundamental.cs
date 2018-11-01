@@ -85,7 +85,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets divident rate.
         /// </summary>
-        Decimal DividentsRate { get; }
+        Decimal DividendsRate { get; }
 
         Decimal roa { get; }
 
