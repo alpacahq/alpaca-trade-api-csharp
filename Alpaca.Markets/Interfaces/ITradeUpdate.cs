@@ -10,7 +10,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade update reason.
         /// </summary>
-        String Event { get; }
+        OrderStatus Event { get; }
 
         /// <summary>
         /// Gets updated trade price level.

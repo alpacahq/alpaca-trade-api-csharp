@@ -7,7 +7,7 @@ namespace Alpaca.Markets
     {
         // TODO: olegra - convert it into enum instead of free string
         [JsonProperty(PropertyName = "event", Required = Required.Always)]
-        public String Event { get; set; }
+        public OrderStatus Event { get; set; }
 
         [JsonProperty(PropertyName = "price", Required = Required.Default)]
         public Decimal? Price { get; set; }
