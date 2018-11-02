@@ -78,6 +78,21 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
+        public async void ListMinuteAggregatesForDateRangeWorks()
+        {
+            var dateInto = DateTime.UtcNow.AddDays(-1);
+            var dateFrom = dateInto.AddHours(-20);
+
+            var historicalItems = await _restClient
+                .ListMinuteAggregatesAsync(SYMBOL, dateFrom, dateInto);
+
+            Assert.NotNull(historicalItems);
+
+            Assert.NotNull(historicalItems.Items);
+            Assert.NotEmpty(historicalItems.Items);
+        }
+
+        [Fact]
         public async void GetLastTradeWorks()
         {
             var lastTrade = await _restClient

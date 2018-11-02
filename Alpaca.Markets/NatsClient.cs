@@ -59,22 +59,22 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// Occurrs when new trade received from stream.
+        /// Occured when new trade received from stream.
         /// </summary>
         public event Action<IStreamTrade> TradeReceived;
 
         /// <summary>
-        /// Occurrs when new quote received from stream.
+        /// Occured when new quote received from stream.
         /// </summary>
         public event Action<IStreamQuote> QuoteReceived;
 
         /// <summary>
-        /// Occurrs when new bar received from stream.
+        /// Occured when new bar received from stream.
         /// </summary>
         public event Action<IStreamAgg> AggReceived;
 
         /// <summary>
-        /// Occurrs when any error happened in stream.
+        /// Occured when any error happened in stream.
         /// </summary>
         public event Action<String> OnError;
 
@@ -217,6 +217,7 @@ namespace Alpaca.Markets
             if (_subscriptions.TryGetValue(
                 topic, out var subscription))
             {
+                _subscriptions.Remove(topic);
                 subscription?.Unsubscribe();
                 subscription?.Dispose();
             }

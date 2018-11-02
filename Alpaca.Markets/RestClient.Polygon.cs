@@ -149,14 +149,14 @@ namespace Alpaca.Markets
             {
                 Path = $"v1/historic/agg/minute/{symbol}",
                 Query = getDefaultPolygonApiQueryBuilder()
-                    .AddParameter("from", dateFromInclusive, "yyyy-MM-dd")
-                    .AddParameter("to", dateIntoInclusive, "yyyy-MM-dd")
+                    .AddParameter("from", dateFromInclusive)
+                    .AddParameter("to", dateIntoInclusive)
                     .AddParameter("limit", limit)
             };
 
             return getSingleObjectAsync
-            <IAggHistoricalItems<IAgg>,
-                JsonAggHistoricalItems<IAgg, JsonMinuteAgg>>(
+                <IAggHistoricalItems<IAgg>,
+                    JsonAggHistoricalItems<IAgg, JsonMinuteAgg>>(
                 _polygonHttpClient, FakeThrottler.Instance, builder);
         }
 
