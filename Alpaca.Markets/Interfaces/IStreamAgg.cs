@@ -5,7 +5,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates bar information from Polygon streaming API.
     /// </summary>
-    public interface IStreamBar : IBarBase
+    public interface IStreamAgg : IAggBase
     {
         /// <summary>
         /// Gets asset name.

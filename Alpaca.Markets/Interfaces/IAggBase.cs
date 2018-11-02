@@ -5,7 +5,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates basic bar information for Polygon APIs.
     /// </summary>
-    public interface IBarBase
+    public interface IAggBase
     {
         /// <summary>
         /// Gets bar open price.

@@ -61,20 +61,20 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public void NatsSecondBarSubscriptionWorks()
+        public void NatsSecondAggSubscriptionWorks()
         {
             using (var client = ClientsFactory.GetNatsClient())
             {
                 client.Open();
 
                 var waitObject = new AutoResetEvent(false);
-                client.BarReceived += (bar) =>
+                client.AggReceived += (agg) =>
                 {
-                    Assert.Equal("AAPL", bar.Symbol);
+                    Assert.Equal("AAPL", agg.Symbol);
                     waitObject.Set();
                 };
 
-                client.SubscribeSecondBar("AAPL");
+                client.SubscribeSecondAgg("AAPL");
 
                 if (_restClient.GetClockAsync().Result.IsOpen)
                 {
@@ -87,20 +87,20 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact(Skip="Too long running")]
-        public void NatsMinuteBarSubscriptionWorks()
+        public void NatsMinuteAggSubscriptionWorks()
         {
             using (var client = ClientsFactory.GetNatsClient())
             {
                 client.Open();
 
                 var waitObject = new AutoResetEvent(false);
-                client.BarReceived += (bar) =>
+                client.AggReceived += (agg) =>
                 {
-                    Assert.Equal("AAPL", bar.Symbol);
+                    Assert.Equal("AAPL", agg.Symbol);
                     waitObject.Set();
                 };
 
-                client.SubscribeMinuteBar("AAPL");
+                client.SubscribeMinuteAgg("AAPL");
 
                 if (_restClient.GetClockAsync().Result.IsOpen)
                 {

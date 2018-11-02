@@ -5,7 +5,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates bar information from Polygon REST API.
     /// </summary>
-    public interface IBar : IBarBase
+    public interface IAgg : IAggBase
     {
         /// <summary>
         /// Gets bar timestamp.
