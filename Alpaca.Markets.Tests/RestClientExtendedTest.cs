@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -8,13 +6,15 @@ namespace Alpaca.Markets.Tests
 {
     public sealed class RestClientExtendedTest
     {
+        private const String SYMBOL = "AAPL";
+
         private readonly RestClient _restClient = ClientsFactory.GetRestClient();
 
         [Fact]
         public async void ListHistoricalQuotesReturnsEmptyListForSunday()
         {
             var historicalItems = await _restClient
-                .ListHistoricalQuotesAsync("AAPL", new DateTime(2018, 8, 5));
+                .ListHistoricalQuotesAsync(SYMBOL, new DateTime(2018, 8, 5));
 
             Assert.NotNull(historicalItems);
 
@@ -29,7 +29,7 @@ namespace Alpaca.Markets.Tests
             var dateFrom = dateInto.AddDays(-7);
 
             var historicalItems = await _restClient
-                .ListDayAggregatesAsync("AAPL", dateFrom, dateInto);
+                .ListDayAggregatesAsync(SYMBOL, dateFrom, dateInto);
 
             Assert.NotNull(historicalItems);
 
@@ -44,12 +44,26 @@ namespace Alpaca.Markets.Tests
             var dateFrom = dateInto.AddDays(-7);
 
             var historicalItems = await _restClient
-                .ListMinuteAggregatesAsync("AAPL", dateFrom, dateInto, 100);
+                .ListMinuteAggregatesAsync(SYMBOL, dateFrom, dateInto, 100);
 
             Assert.NotNull(historicalItems);
 
             Assert.NotNull(historicalItems.Items);
             Assert.NotEmpty(historicalItems.Items);
+        }
+
+        [Fact]
+        public async void ListMinuteAggregatesWithLimitWorks()
+        {
+            var historicalItems = await _restClient
+                .ListMinuteAggregatesAsync(SYMBOL, limit: 100);
+
+            Assert.NotNull(historicalItems);
+
+            Assert.NotNull(historicalItems.Items);
+            Assert.NotEmpty(historicalItems.Items);
+
+            Assert.Equal(100, historicalItems.Items.Count);
         }
 
         [Fact]

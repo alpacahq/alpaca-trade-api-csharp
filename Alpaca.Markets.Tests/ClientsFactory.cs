@@ -1,11 +1,20 @@
 ﻿using System;
+#if NETSTANDARD2_0
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
+#endif
 
 namespace Alpaca.Markets.Tests
 {
     internal static class ClientsFactory
     {
+        private const String KEY_ID = "AKEW7ZBQUSNUHOJNQ5MS";
+
+        private const String SECRET_KEY = "Yr2Tms89rQ6foRLNu4pz3w/yXOrxQGDmXctU1BCn";
+
+        private const String ALPACA_REST_API = "https://staging-api.tradetalk.us";
+
+#if NETSTANDARD2_0
         private static readonly IConfigurationRoot _configuration;
 
         static ClientsFactory()
@@ -13,9 +22,9 @@ namespace Alpaca.Markets.Tests
             var data = new Dictionary<String, String>
             {
                 { "staging", "true" },
-                { "keyId", "AKEW7ZBQUSNUHOJNQ5MS" },
-                { "secretKey", "Yr2Tms89rQ6foRLNu4pz3w/yXOrxQGDmXctU1BCn" },
-                { "alpacaRestApi",  "https://staging-api.tradetalk.us" },
+                { "keyId", KEY_ID },
+                { "secretKey",  SECRET_KEY },
+                { "alpacaRestApi", ALPACA_REST_API },
             };
 
             var builder = new ConfigurationBuilder();
@@ -32,5 +41,15 @@ namespace Alpaca.Markets.Tests
 
         public static NatsClient GetNatsClient() =>
             new NatsClient(_configuration);
+#else
+        public static RestClient GetRestClient() =>
+            new RestClient(KEY_ID, SECRET_KEY, ALPACA_REST_API, isStagingEnvironment: true);
+
+        public static SockClient GetSockClient() =>
+            new SockClient(KEY_ID, SECRET_KEY, ALPACA_REST_API);
+
+        public static NatsClient GetNatsClient() =>
+            new NatsClient(KEY_ID, true);
+#endif
     }
 }
