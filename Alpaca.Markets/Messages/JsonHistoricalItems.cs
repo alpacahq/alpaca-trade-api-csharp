@@ -6,7 +6,7 @@ namespace Alpaca.Markets
 {
     internal abstract class JsonHistoricalItems<TApi, TJson> where TJson : TApi
     {
-        private static readonly IReadOnlyCollection<TApi> _empty = new TApi[0];
+        private static readonly IReadOnlyList<TApi> _empty = new TApi[0];
 
         [JsonProperty(PropertyName = "status", Required = Required.Default)]
         public String Status { get; set; }
@@ -18,7 +18,7 @@ namespace Alpaca.Markets
         public List<TJson> ItemsList { get; set; }
 
         [JsonIgnore]
-        public IReadOnlyCollection<TApi> Items =>
-            (IReadOnlyCollection<TApi>)ItemsList ?? _empty;
+        public IReadOnlyList<TApi> Items =>
+            (IReadOnlyList<TApi>)ItemsList ?? _empty;
     }
 }
