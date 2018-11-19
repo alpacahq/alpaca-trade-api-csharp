@@ -131,12 +131,12 @@ namespace Alpaca.Markets.Tests
         {
             var calendars = await _restClient
                 .ListCalendarAsync(
-                    DateTime.Today.AddDays(-14),
-                    DateTime.Today.AddDays(-1));
+                    DateTime.UtcNow.Date.AddDays(-14),
+                    DateTime.UtcNow.Date.AddDays(-1));
 
             Assert.NotNull(calendars);
 
-            return calendars.Last().TradingDate;
+            return calendars.Last().TradingCloseTime;
         }
     }
 }

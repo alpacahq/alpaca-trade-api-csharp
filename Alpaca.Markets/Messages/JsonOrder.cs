@@ -62,7 +62,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "stop_price", Required = Required.Default)]
         public Decimal? StopPrice { get; set; }
 
-        [JsonProperty(PropertyName = "filled_avg_price ", Required = Required.Default)]
+        [JsonProperty(PropertyName = "filled_avg_price", Required = Required.Default)]
         public Decimal? AverageFillPrice { get; set; }
 
         [JsonProperty(PropertyName = "status", Required = Required.Always)]
