@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Alpaca.Markets.Tests
@@ -32,7 +34,7 @@ namespace Alpaca.Markets.Tests
         {
             var historicalItems = await _restClient
                 .ListHistoricalTradesAsync(
-                    SYMBOL, DateTime.Today.AddDays(-1));
+                    SYMBOL, await getLastTradingDay());
 
             Assert.NotNull(historicalItems);
 
@@ -45,7 +47,7 @@ namespace Alpaca.Markets.Tests
         {
             var historicalItems = await _restClient
                 .ListHistoricalQuotesAsync(
-                    SYMBOL, DateTime.Today.AddDays(-1));
+                    SYMBOL, await getLastTradingDay());
 
             Assert.NotNull(historicalItems);
 
@@ -80,7 +82,7 @@ namespace Alpaca.Markets.Tests
         [Fact]
         public async void ListMinuteAggregatesForDateRangeWorks()
         {
-            var dateInto = DateTime.UtcNow.AddDays(-1);
+            var dateInto = await getLastTradingDay();
             var dateFrom = dateInto.AddHours(-20);
 
             var historicalItems = await _restClient
@@ -123,6 +125,18 @@ namespace Alpaca.Markets.Tests
 
             Assert.NotNull(conditionMap);
             Assert.NotEmpty(conditionMap);
+        }
+
+        private async Task<DateTime> getLastTradingDay()
+        {
+            var calendars = await _restClient
+                .ListCalendarAsync(
+                    DateTime.Today.AddDays(-14),
+                    DateTime.Today.AddDays(-1));
+
+            Assert.NotNull(calendars);
+
+            return calendars.Last().TradingDate;
         }
     }
 }

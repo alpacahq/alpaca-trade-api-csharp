@@ -6,6 +6,8 @@ namespace Alpaca.Markets.Tests
 {
     public sealed class RestClientGeneralTest
     {
+        private const String SYMBOL = "AAPL";
+
         private readonly RestClient _restClient = ClientsFactory.GetRestClient();
 
         [Fact]
@@ -59,10 +61,10 @@ namespace Alpaca.Markets.Tests
         [Fact]
         public async void GetPositionWorks()
         {
-            var position = await _restClient.GetPositionAsync("AAPL");
+            var position = await _restClient.GetPositionAsync(SYMBOL);
 
             Assert.NotNull(position);
-            Assert.Equal("AAPL", position.Symbol);
+            Assert.Equal(SYMBOL, position.Symbol);
         }
 
         [Fact]
@@ -77,10 +79,10 @@ namespace Alpaca.Markets.Tests
         [Fact]
         public async void GetAssetWorks()
         {
-            var asset = await _restClient.GetAssetAsync("AAPL");
+            var asset = await _restClient.GetAssetAsync(SYMBOL);
 
             Assert.NotNull(asset);
-            Assert.Equal("AAPL", asset.Symbol);
+            Assert.Equal(SYMBOL, asset.Symbol);
         }
 
         [Fact]

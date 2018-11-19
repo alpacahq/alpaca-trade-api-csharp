@@ -19,7 +19,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Indexes.
         /// </summary>
-        [EnumMember(Value = "indecies")]
+        [EnumMember(Value = "index")]
         Indexes,
 
         /// <summary>
