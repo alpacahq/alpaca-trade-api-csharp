@@ -31,7 +31,7 @@ namespace Alpaca.Markets
             String keyId,
             String secretKey,
             String alpacaRestApi = null)
-            :this (
+            : this(
                 keyId,
                 secretKey,
                 new Uri(alpacaRestApi ?? "https://api.alpaca.markets"))
@@ -71,22 +71,22 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// Occurrs when new account update received from stream.
+        /// Occured when new account update received from stream.
         /// </summary>
         public event Action<IAccountUpdate> OnAccountUpdate;
 
         /// <summary>
-        /// Occurrs when new trade update received from stream.
+        /// Occured when new trade update received from stream.
         /// </summary>
         public event Action<ITradeUpdate> OnTradeUpdate;
 
         /// <summary>
-        /// Occurrs when stream successfully connected.
+        /// Occured when stream successfully connected.
         /// </summary>
         public event Action<AuthStatus> Connected;
 
         /// <summary>
-        /// Occurrs when any error happened in stream.
+        /// Occured when any error happened in stream.
         /// </summary>
         public event Action<Exception> OnError;
 

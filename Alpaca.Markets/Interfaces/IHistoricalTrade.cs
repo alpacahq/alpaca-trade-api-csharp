@@ -3,7 +3,7 @@
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates historical trade infromation from Polygon REST API.
+    /// Encapsulates historical trade information from Polygon REST API.
     /// </summary>
     public interface IHistoricalTrade
     {

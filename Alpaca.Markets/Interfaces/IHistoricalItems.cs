@@ -20,8 +20,8 @@ namespace Alpaca.Markets
         String Symbol { get; }
 
         /// <summary>
-        /// Gets read-only collection of histrical items.
+        /// Gets read-only collection of historical items.
         /// </summary>
-        IReadOnlyCollection<TItem> Items { get; }
+        IReadOnlyList<TItem> Items { get; }
     }
 }
