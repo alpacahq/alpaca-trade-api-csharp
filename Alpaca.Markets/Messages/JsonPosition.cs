@@ -47,7 +47,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "unrealized_intraday_plpc", Required = Required.Always)]
         public Decimal IntradayUnrealizedProfitLossPercent { get; set; }
 
-        [JsonProperty(PropertyName = "current_price ", Required = Required.Default)]
+        [JsonProperty(PropertyName = "current_price", Required = Required.Default)]
         public Decimal AssetCurrentPrice { get; set; }
 
         [JsonProperty(PropertyName = "lastday_price", Required = Required.Always)]
