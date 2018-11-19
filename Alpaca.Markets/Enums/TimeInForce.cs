@@ -11,21 +11,33 @@ namespace Alpaca.Markets
     public enum TimeInForce
     {
         /// <summary>
-        /// Daily order.
+        /// The order is good for the day, and it will be canceled automatically at the end of market hours.
         /// </summary>
         [EnumMember(Value = "day")]
         Day,
 
         /// <summary>
-        /// Good-till-cancal order.
+        /// The order is good until canceled.
         /// </summary>
         [EnumMember(Value = "gtc")]
         Gtc,
 
         /// <summary>
-        /// Market-on-open order.
+        /// The order is placed at the time the market opens.
         /// </summary>
         [EnumMember(Value = "opg")]
-        Opg
+        Opg,
+
+        /// <summary>
+        /// The order is immediately filled or canceled after being placed (may partial fill).
+        /// </summary>
+        [EnumMember(Value = "ioc")]
+        Ioc,
+
+        /// <summary>
+        /// The order is immediately filled or canceled after being placed (may not partial fill).
+        /// </summary>
+        [EnumMember(Value = "fok")]
+        Fok
     }
 }
