@@ -80,7 +80,7 @@ namespace Alpaca.Markets
         /// Initial new order request pending.
         /// </summary>
         [EnumMember(Value = "pending_new")]
-        PendingMew,
+        PendingNew,
 
         /// <summary>
         /// Order information calculated by server.
