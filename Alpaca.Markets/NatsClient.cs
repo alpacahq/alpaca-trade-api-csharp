@@ -59,22 +59,22 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// Occurrs when new trade received from stream.
+        /// Occured when new trade received from stream.
         /// </summary>
         public event Action<IStreamTrade> TradeReceived;
 
         /// <summary>
-        /// Occurrs when new quote received from stream.
+        /// Occured when new quote received from stream.
         /// </summary>
         public event Action<IStreamQuote> QuoteReceived;
 
         /// <summary>
-        /// Occurrs when new bar received from stream.
+        /// Occured when new bar received from stream.
         /// </summary>
-        public event Action<IStreamBar> BarReceived;
+        public event Action<IStreamAgg> AggReceived;
 
         /// <summary>
-        /// Occurrs when any error happened in stream.
+        /// Occured when any error happened in stream.
         /// </summary>
         public event Action<String> OnError;
 
@@ -110,25 +110,25 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// Subscribes for the second bar updates via <see cref="BarReceived"/>
+        /// Subscribes for the second bar updates via <see cref="AggReceived"/>
         /// event for specific asset from Polygon streaming API.
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
-        public void SubscribeSecondBar(
+        public void SubscribeSecondAgg(
             String symbol)
         {
-            subscribe($"A.{symbol}", handleBarMessage);
+            subscribe($"A.{symbol}", handleAggMessage);
         }
 
         /// <summary>
-        /// Subscribes for the minute bar updates via <see cref="BarReceived"/>
+        /// Subscribes for the minute bar updates via <see cref="AggReceived"/>
         /// event for specific asset from Polygon streaming API.
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
-        public void SubscribeMinuteBar(
+        public void SubscribeMinuteAgg(
             String symbol)
         {
-            subscribe($"AM.{symbol}", handleBarMessage);
+            subscribe($"AM.{symbol}", handleAggMessage);
         }
 
         /// <summary>
@@ -154,22 +154,22 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// Unsubscribes from the second bar updates via <see cref="BarReceived"/>
+        /// Unsubscribes from the second bar updates via <see cref="AggReceived"/>
         /// event for specific asset from Polygon streaming API.
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
-        public void UnsubscribeSecondBar(
+        public void UnsubscribeSecondAgg(
             String symbol)
         {
             unsubscribe($"A.{symbol}");
         }
 
         /// <summary>
-        /// Unsubscribes from the minute bar updates via <see cref="BarReceived"/>
+        /// Unsubscribes from the minute bar updates via <see cref="AggReceived"/>
         /// event for specific asset from Polygon streaming API.
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
-        public void UnsubscribeMinuteBar(
+        public void UnsubscribeMinuteAgg(
             String symbol)
         {
             unsubscribe($"AM.{symbol}");
@@ -217,6 +217,7 @@ namespace Alpaca.Markets
             if (_subscriptions.TryGetValue(
                 topic, out var subscription))
             {
+                _subscriptions.Remove(topic);
                 subscription?.Unsubscribe();
                 subscription?.Dispose();
             }
@@ -240,13 +241,13 @@ namespace Alpaca.Markets
             QuoteReceived?.Invoke(message);
         }
 
-        private void handleBarMessage(
+        private void handleAggMessage(
             Object sender,
             MsgHandlerEventArgs eventArgs)
         {
-            var message = deserializeBytes<JsonStreamBar>(
+            var message = deserializeBytes<JsonStreamAgg>(
                 eventArgs.Message.Data);
-            BarReceived?.Invoke(message);
+            AggReceived?.Invoke(message);
         }
 
         private static T deserializeBytes<T>(
@@ -254,10 +255,10 @@ namespace Alpaca.Markets
         {
             using (var stream = new MemoryStream(bytes))
             using (var textReader = new StreamReader(stream))
-            using (var jsonreader = new JsonTextReader(textReader))
+            using (var jsonReader = new JsonTextReader(textReader))
             {
                 var serializer = new JsonSerializer();
-                return serializer.Deserialize<T>(jsonreader);
+                return serializer.Deserialize<T>(jsonReader);
             }
         }
     }

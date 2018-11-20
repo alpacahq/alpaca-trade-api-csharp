@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     public interface IPosition
     {
         /// <summary>
-        /// Gets unique account indentifier.
+        /// Gets unique account identifier.
         /// </summary>
         Guid AccountId { get; }
 
@@ -43,12 +43,12 @@ namespace Alpaca.Markets
         Int32 Quantity { get; }
 
         /// <summary>
-        /// Get poristion side (short or long).
+        /// Get position side (short or long).
         /// </summary>
         PositionSide Side { get; }
 
         /// <summary>
-        /// Get current postion market value.
+        /// Get current position market value.
         /// </summary>
         Decimal MarketValue { get; }
 
@@ -58,22 +58,22 @@ namespace Alpaca.Markets
         Decimal CostBasis { get; }
 
         /// <summary>
-        /// Get postion unrealized profit loss.
+        /// Get position unrealized profit loss.
         /// </summary>
         Decimal UnrealizedProfitLoss { get; }
 
         /// <summary>
-        /// Get postion unrealized profit loss in percent.
+        /// Get position unrealized profit loss in percent.
         /// </summary>
         Decimal UnrealizedProfitLossPercent { get; }
 
         /// <summary>
-        /// Get postion intraday unrealized profit loss.
+        /// Get position intraday unrealized profit loss.
         /// </summary>
-        Decimal IntadayUnrealizedProfitLoss { get; }
+        Decimal IntradayUnrealizedProfitLoss { get; }
 
         /// <summary>
-        /// Get postion intraday unrealized profit loss in percent.
+        /// Get position intraday unrealized profit loss in percent.
         /// </summary>
         Decimal IntradayUnrealizedProfitLossPercent { get; }
 

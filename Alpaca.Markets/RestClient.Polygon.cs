@@ -110,7 +110,7 @@ namespace Alpaca.Markets
         /// <param name="dateIntoInclusive">End time for filtering (inclusive).</param>
         /// <param name="limit">Maximal number of daily bars in data response.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
-        public Task<IAggHistoricalItems<IBar>> ListDayAggregatesAsync(
+        public Task<IAggHistoricalItems<IAgg>> ListDayAggregatesAsync(
             String symbol,
             DateTime? dateFromInclusive = null,
             DateTime? dateIntoInclusive = null,
@@ -126,8 +126,8 @@ namespace Alpaca.Markets
             };
 
             return getSingleObjectAsync
-                <IAggHistoricalItems<IBar>,
-                    JsonAggHistoricalItems<IBar, JsonDayBar>>(
+                <IAggHistoricalItems<IAgg>,
+                    JsonAggHistoricalItems<IAgg, JsonDayAgg>>(
                 _polygonHttpClient, FakeThrottler.Instance, builder);
         }
 
@@ -139,7 +139,7 @@ namespace Alpaca.Markets
         /// <param name="dateIntoInclusive">End time for filtering (inclusive).</param>
         /// <param name="limit">Maximal number of minute bars in data response.</param>
         /// <returns>Read-only list of minute bars for specified asset.</returns>
-        public Task<IAggHistoricalItems<IBar>> ListMinuteAggregatesAsync(
+        public Task<IAggHistoricalItems<IAgg>> ListMinuteAggregatesAsync(
             String symbol,
             DateTime? dateFromInclusive = null,
             DateTime? dateIntoInclusive = null,
@@ -149,14 +149,14 @@ namespace Alpaca.Markets
             {
                 Path = $"v1/historic/agg/minute/{symbol}",
                 Query = getDefaultPolygonApiQueryBuilder()
-                    .AddParameter("from", dateFromInclusive, "yyyy-MM-dd")
-                    .AddParameter("to", dateIntoInclusive, "yyyy-MM-dd")
+                    .AddParameter("from", dateFromInclusive)
+                    .AddParameter("to", dateIntoInclusive)
                     .AddParameter("limit", limit)
             };
 
             return getSingleObjectAsync
-            <IAggHistoricalItems<IBar>,
-                JsonAggHistoricalItems<IBar, JsonMinuteBar>>(
+                <IAggHistoricalItems<IAgg>,
+                    JsonAggHistoricalItems<IAgg, JsonMinuteAgg>>(
                 _polygonHttpClient, FakeThrottler.Instance, builder);
         }
 

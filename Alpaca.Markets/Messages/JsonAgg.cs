@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    internal sealed class JsonBar : IBar
+    internal sealed class JsonAgg : IAgg
     {
         [JsonProperty(PropertyName = "open", Required = Required.Always)]
         public Decimal Open { get; set; }

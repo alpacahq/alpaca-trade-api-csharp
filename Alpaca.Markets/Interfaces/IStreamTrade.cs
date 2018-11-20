@@ -3,7 +3,7 @@
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates trade infromation from Polygon streaming API.
+    /// Encapsulates trade information from Polygon streaming API.
     /// </summary>
     public interface IStreamTrade
     {

@@ -6,6 +6,8 @@ namespace Alpaca.Markets.Tests
 {
     public sealed class OrderActionsTest
     {
+        private const String SYMBOL = "AAPL";
+
         private readonly RestClient _restClient = ClientsFactory.GetRestClient();
 
         [Fact]
@@ -25,7 +27,7 @@ namespace Alpaca.Markets.Tests
                 {
                     Assert.NotNull(update);
                     Assert.NotNull(update.Order);
-                    Assert.Equal("AAPL", update.Order.Symbol);
+                    Assert.Equal(SYMBOL, update.Order.Symbol);
                     waitObject.Set();
                 };
 
@@ -34,12 +36,12 @@ namespace Alpaca.Markets.Tests
                 var clock = await _restClient.GetClockAsync();
 
                 var order = await _restClient.PostOrderAsync(
-                    "AAPL", 1, OrderSide.Buy, OrderType.Market,
+                    SYMBOL, 1, OrderSide.Buy, OrderType.Market,
                     clock.IsOpen ? TimeInForce.Day : TimeInForce.Opg,
                     clientOrderId: clientOrderId);
 
                 Assert.NotNull(order);
-                Assert.Equal("AAPL", order.Symbol);
+                Assert.Equal(SYMBOL, order.Symbol);
                 Assert.Equal(clientOrderId, order.ClientOrderId);
 
                 var orderById = await _restClient.GetOrderAsync(order.OrderId);

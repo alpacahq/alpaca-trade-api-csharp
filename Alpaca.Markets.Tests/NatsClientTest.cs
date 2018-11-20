@@ -6,6 +6,8 @@ namespace Alpaca.Markets.Tests
 {
     public sealed class NatsClientTest
     {
+        private const String SYMBOL = "AAPL";
+
         private readonly RestClient _restClient = ClientsFactory.GetRestClient();
 
         [Fact]
@@ -18,11 +20,11 @@ namespace Alpaca.Markets.Tests
                 var waitObject = new AutoResetEvent(false);
                 client.TradeReceived += (trade) =>
                 {
-                    Assert.Equal("AAPL", trade.Symbol);
+                    Assert.Equal(SYMBOL, trade.Symbol);
                     waitObject.Set();
                 };
 
-                client.SubscribeTrade("AAPL");
+                client.SubscribeTrade(SYMBOL);
 
                 if (_restClient.GetClockAsync().Result.IsOpen)
                 {
@@ -44,11 +46,11 @@ namespace Alpaca.Markets.Tests
                 var waitObject = new AutoResetEvent(false);
                 client.QuoteReceived += (quote) =>
                 {
-                    Assert.Equal("AAPL", quote.Symbol);
+                    Assert.Equal(SYMBOL, quote.Symbol);
                     waitObject.Set();
                 };
 
-                client.SubscribeQuote("AAPL");
+                client.SubscribeQuote(SYMBOL);
 
                 if (_restClient.GetClockAsync().Result.IsOpen)
                 {
@@ -61,20 +63,20 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public void NatsSecondBarSubscriptionWorks()
+        public void NatsSecondAggSubscriptionWorks()
         {
             using (var client = ClientsFactory.GetNatsClient())
             {
                 client.Open();
 
                 var waitObject = new AutoResetEvent(false);
-                client.BarReceived += (bar) =>
+                client.AggReceived += (agg) =>
                 {
-                    Assert.Equal("AAPL", bar.Symbol);
+                    Assert.Equal(SYMBOL, agg.Symbol);
                     waitObject.Set();
                 };
 
-                client.SubscribeSecondBar("AAPL");
+                client.SubscribeSecondAgg(SYMBOL);
 
                 if (_restClient.GetClockAsync().Result.IsOpen)
                 {
@@ -87,20 +89,20 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact(Skip="Too long running")]
-        public void NatsMinuteBarSubscriptionWorks()
+        public void NatsMinuteAggSubscriptionWorks()
         {
             using (var client = ClientsFactory.GetNatsClient())
             {
                 client.Open();
 
                 var waitObject = new AutoResetEvent(false);
-                client.BarReceived += (bar) =>
+                client.AggReceived += (agg) =>
                 {
-                    Assert.Equal("AAPL", bar.Symbol);
+                    Assert.Equal(SYMBOL, agg.Symbol);
                     waitObject.Set();
                 };
 
-                client.SubscribeMinuteBar("AAPL");
+                client.SubscribeMinuteAgg(SYMBOL);
 
                 if (_restClient.GetClockAsync().Result.IsOpen)
                 {
@@ -127,18 +129,18 @@ namespace Alpaca.Markets.Tests
 
                 client.TradeReceived += (trade) =>
                 {
-                    Assert.Equal("AAPL", trade.Symbol);
+                    Assert.Equal(SYMBOL, trade.Symbol);
                     waitObjects[0].Set();
                 };
 
                 client.QuoteReceived += (quote) =>
                 {
-                    Assert.Equal("AAPL", quote.Symbol);
+                    Assert.Equal(SYMBOL, quote.Symbol);
                     waitObjects[1].Set();
                 };
 
-                client.SubscribeTrade("AAPL");
-                client.SubscribeQuote("AAPL");
+                client.SubscribeTrade(SYMBOL);
+                client.SubscribeQuote(SYMBOL);
 
                 if (_restClient.GetClockAsync().Result.IsOpen)
                 {

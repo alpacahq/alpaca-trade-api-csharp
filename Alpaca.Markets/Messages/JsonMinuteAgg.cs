@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    internal sealed class JsonMinuteBar : IBar
+    internal sealed class JsonMinuteAgg : IAgg
     {
         [JsonProperty(PropertyName = "o", Required = Required.Always)]
         public Decimal Open { get; set; }
@@ -25,7 +25,7 @@ namespace Alpaca.Markets
         public Int64 TimeOffset { get; set; }
 
         [JsonIgnore]
-        public DateTime Time { get; set; }
+        public DateTime Time { get; private set; }
 
         [OnDeserialized]
         internal void OnDeserializedMethod(

@@ -3,9 +3,9 @@
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates bar infromation from Polygon REST API.
+    /// Encapsulates basic bar information for Polygon APIs.
     /// </summary>
-    public interface IBar
+    public interface IAggBase
     {
         /// <summary>
         /// Gets bar open price.
@@ -31,10 +31,5 @@ namespace Alpaca.Markets
         /// Gets bar trading volume.
         /// </summary>
         Int64 Volume { get; }
-
-        /// <summary>
-        /// Gets bar timestamp.
-        /// </summary>
-        DateTime Time { get; }
     }
 }

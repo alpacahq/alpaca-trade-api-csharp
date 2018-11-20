@@ -44,7 +44,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Get single asset information by asset name from Alpaca REST API endpoint.
         /// </summary>
-        /// <param name="symbol">Asset name for seaching.</param>
+        /// <param name="symbol">Asset name for searching.</param>
         /// <returns>Read-only asset information.</returns>
         public Task<IAsset> GetAssetAsync(
             String symbol)
@@ -57,7 +57,7 @@ namespace Alpaca.Markets
         /// Gets list of available orders from Alpaca REST API endpoint.
         /// </summary>
         /// <param name="orderStatusFilter">Order status for filtering.</param>
-        /// <param name="untilDateTime">Returns only orders untill specified date.</param>
+        /// <param name="untilDateTime">Returns only orders until specified date.</param>
         /// <param name="limitOrderNumber">Maximal number of orders in response.</param>
         /// <returns>Read-only list of order information objects.</returns>
         public Task<IEnumerable<IOrder>> ListOrdersAsync(
@@ -79,7 +79,7 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// Creates new order for execution using Alpaca REST API endopoint.
+        /// Creates new order for execution using Alpaca REST API endpoint.
         /// </summary>
         /// <param name="symbol">Order asset name.</param>
         /// <param name="quantity">Order quantity.</param>
@@ -87,7 +87,7 @@ namespace Alpaca.Markets
         /// <param name="type">Order type.</param>
         /// <param name="duration">Order duration.</param>
         /// <param name="limitPrice">Order limit price.</param>
-        /// <param name="stopPrice">Orfer stop price.</param>
+        /// <param name="stopPrice">Order stop price.</param>
         /// <param name="clientOrderId">Client order ID.</param>
         /// <returns>Read-only order information object for newly created order.</returns>
         public async Task<IOrder> PostOrderAsync(

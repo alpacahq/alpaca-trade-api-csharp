@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    internal sealed class JsonStreamBar : IStreamBar
+    internal sealed class JsonStreamAgg : IStreamAgg
     {
         [JsonProperty(PropertyName = "sym", Required = Required.Always)]
         public String Symbol { get; set; }

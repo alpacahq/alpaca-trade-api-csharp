@@ -64,6 +64,7 @@ namespace Alpaca.Markets.Tests
             Assert.NotEmpty(historicalItems.Items);
 
             Assert.Equal(100, historicalItems.Items.Count);
+            Assert.True(historicalItems.Items[0].Time < DateTime.UtcNow);
         }
 
         [Fact]
