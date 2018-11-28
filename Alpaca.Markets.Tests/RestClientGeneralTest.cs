@@ -115,5 +115,19 @@ namespace Alpaca.Markets.Tests
             Assert.True(first.TradingOpenTime < first.TradingCloseTime);
             Assert.True(last.TradingOpenTime < last.TradingCloseTime);
         }
+
+        [Fact]
+        public async void ListBarsWorks()
+        {
+            var barsLookup = await _restClient.ListBarsAsync(
+                new []{ SYMBOL }, TimeFrame.Day);
+
+            Assert.NotNull(barsLookup);
+            Assert.Equal(1, barsLookup.Count);
+
+            Assert.True(barsLookup.Contains(SYMBOL));
+            Assert.NotNull(barsLookup[SYMBOL]);
+            Assert.NotEmpty(barsLookup[SYMBOL]);
+        }
     }
 }

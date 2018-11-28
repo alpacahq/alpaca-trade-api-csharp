@@ -19,6 +19,8 @@ namespace Alpaca.Markets
     {
         private readonly HttpClient _alpacaHttpClient = new HttpClient();
 
+        private readonly HttpClient _alpacaDataClient = new HttpClient();
+
         private readonly HttpClient _polygonHttpClient = new HttpClient();
 
         private readonly Boolean _isPolygonStaging;
@@ -34,19 +36,22 @@ namespace Alpaca.Markets
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
-        /// <param name="polygonRestApi">Polygon REST API ennpoint URL.</param>
+        /// <param name="polygonRestApi">Polygon REST API endpoint URL.</param>
+        /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         public RestClient(
             String keyId,
             String secretKey,
             String alpacaRestApi = null,
             String polygonRestApi = null,
+            String alpacaDataApi = null,
             Boolean? isStagingEnvironment = null)
             : this(
                 keyId,
                 secretKey,
                 new Uri(alpacaRestApi ?? "https://api.alpaca.markets"),
                 new Uri(polygonRestApi ?? "https://api.polygon.io"),
+                new Uri(alpacaDataApi ?? "https://data.alpaca.markets"),
                 isStagingEnvironment ?? false)
         {
         }
@@ -58,12 +63,14 @@ namespace Alpaca.Markets
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         /// <param name="polygonRestApi">Polygon REST API ennpoint URL.</param>
+        /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         public RestClient(
             String keyId,
             String secretKey,
             Uri alpacaRestApi,
             Uri polygonRestApi,
+            Uri alpacaDataApi,
             Boolean isStagingEnvironment)
         {
             keyId = keyId ?? throw new ArgumentException(nameof(keyId));
@@ -77,6 +84,11 @@ namespace Alpaca.Markets
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _alpacaHttpClient.BaseAddress =
                 alpacaRestApi ?? new Uri("https://api.alpaca.markets");
+
+            _alpacaDataClient.DefaultRequestHeaders.Accept
+                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _alpacaDataClient.BaseAddress =
+                alpacaDataApi ?? new Uri("https://data.alpaca.markets");
 
             _polygonApiKey = keyId;
             _polygonHttpClient.DefaultRequestHeaders.Accept
@@ -98,7 +110,7 @@ namespace Alpaca.Markets
             String endpointUri)
             where TJson : TApi
         {
-            Queue<Exception> exceptions = new Queue<Exception>();
+            var exceptions = new Queue<Exception>();
 
             for(var attempts = 0; attempts < throttler.MaxAttempts; ++attempts)
             {

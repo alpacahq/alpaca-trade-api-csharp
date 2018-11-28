@@ -12,5 +12,11 @@ namespace Alpaca.Markets
         {
             return _epoch.Add(TimeSpan.FromMilliseconds(linuxTimeStamp));
         }
+
+        public static DateTime FromUnixTimeSeconds(
+            Int64 linuxTimeStamp)
+        {
+            return _epoch.Add(TimeSpan.FromSeconds(linuxTimeStamp));
+        }
     }
 }

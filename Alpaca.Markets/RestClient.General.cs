@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -202,7 +203,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets position information by asset name from Alpaca REST API endpoint.
         /// </summary>
-        /// <param name="symbol"></param>
+        /// <param name="symbol">Position asset name.</param>
         /// <returns>Read-only position information object.</returns>
         public Task<IPosition> GetPositionAsync(
             String symbol)
@@ -224,8 +225,8 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of trading days from Alpaca REST API endpoint.
         /// </summary>
-        /// <param name="startDateInclusive"></param>
-        /// <param name="endDateInclusive"></param>
+        /// <param name="startDateInclusive">Start time for filtering (inclusive).</param>
+        /// <param name="endDateInclusive">End time for filtering (inclusive).</param>
         /// <returns>Read-only list of trading date information object.</returns>
         public Task<IEnumerable<ICalendar>> ListCalendarAsync(
             DateTime? startDateInclusive = null,
@@ -241,6 +242,44 @@ namespace Alpaca.Markets
 
             return getObjectsListAsync<ICalendar, JsonCalendar>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, builder);
+        }
+
+        /// <summary>
+        /// Gets list of historical daily bars for single asset from Polygon REST API endpoint.
+        /// </summary>
+        /// <param name="symbols">>Asset names for data retrieval.</param>
+        /// <param name="timeFrame">Type of time bars for retrieval.</param>
+        /// <param name="areTimesInclusive">
+        /// If <c>true</c> - both <paramref name="startTime"/> and <paramref name="endTime"/> parameters are treated as inclusive.
+        /// </param>
+        /// <param name="startTime">Start time for filtering.</param>
+        /// <param name="endTime">End time for filtering.</param>
+        /// <param name="limit">Maximal number of daily bars in data response.</param>
+        /// <returns>Read-only list of daily bars for specified asset.</returns>
+        public async Task<ILookup<string, IEnumerable<IAgg>>> ListBarsAsync(
+            IEnumerable<String> symbols,
+            TimeFrame timeFrame,
+            Boolean areTimesInclusive = true,
+            DateTime? startTime = null,
+            DateTime? endTime = null,
+            Int32? limit = 100)
+        {
+            var builder = new UriBuilder(_alpacaDataClient.BaseAddress)
+            {
+                Path = "v1/bars/" + timeFrame.ToEnumString(),
+                Query = new QueryBuilder()
+                    .AddParameter("symbols", String.Join(",", symbols))
+                    .AddParameter((areTimesInclusive ? "start" : "after"), startTime)
+                    .AddParameter((areTimesInclusive ? "end" : "until"), endTime)
+                    .AddParameter("limit", limit)
+            };
+
+            var response = await getSingleObjectAsync
+                <IReadOnlyDictionary<String, List<JsonBarAgg>>,
+                    Dictionary<String, List<JsonBarAgg>>>(
+                _alpacaHttpClient, FakeThrottler.Instance, builder);
+
+            return response.ToLookup(kvp => kvp.Key, kvp => kvp.Value.AsEnumerable<IAgg>());
         }
     }
 }

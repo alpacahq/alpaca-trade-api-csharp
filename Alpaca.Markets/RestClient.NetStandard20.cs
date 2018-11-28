@@ -18,6 +18,7 @@ namespace Alpaca.Markets
                 configuration["secretKey"],
                 configuration["alpacaRestApi"],
                 configuration["polygonRestApi"],
+                configuration["alpacaDataApi"],
                 Convert.ToBoolean(configuration["staging"] ?? "false"))
         {
         }
