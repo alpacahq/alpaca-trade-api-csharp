@@ -245,7 +245,7 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// Gets list of historical daily bars for single asset from Polygon REST API endpoint.
+        /// Gets lookup table of historical daily bars lists for all assets from Alpaca REST API endpoint.
         /// </summary>
         /// <param name="symbols">>Asset names for data retrieval.</param>
         /// <param name="timeFrame">Type of time bars for retrieval.</param>
@@ -256,13 +256,13 @@ namespace Alpaca.Markets
         /// <param name="endTime">End time for filtering.</param>
         /// <param name="limit">Maximal number of daily bars in data response.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
-        public async Task<ILookup<string, IEnumerable<IAgg>>> ListBarsAsync(
+        public async Task<ILookup<string, IEnumerable<IAgg>>> GetBarSetAsync(
             IEnumerable<String> symbols,
             TimeFrame timeFrame,
+            Int32? limit = 100,
             Boolean areTimesInclusive = true,
             DateTime? startTime = null,
-            DateTime? endTime = null,
-            Int32? limit = 100)
+            DateTime? endTime = null)
         {
             var builder = new UriBuilder(_alpacaDataClient.BaseAddress)
             {

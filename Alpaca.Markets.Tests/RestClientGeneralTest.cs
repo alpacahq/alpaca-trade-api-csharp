@@ -117,17 +117,17 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public async void ListBarsWorks()
+        public async void GetBarSetWorks()
         {
-            var barsLookup = await _restClient.ListBarsAsync(
-                new []{ SYMBOL }, TimeFrame.Day);
+            var barSet = await _restClient.GetBarSetAsync(
+                new [] { SYMBOL }, TimeFrame.Day);
 
-            Assert.NotNull(barsLookup);
-            Assert.Equal(1, barsLookup.Count);
+            Assert.NotNull(barSet);
+            Assert.Equal(1, barSet.Count);
 
-            Assert.True(barsLookup.Contains(SYMBOL));
-            Assert.NotNull(barsLookup[SYMBOL]);
-            Assert.NotEmpty(barsLookup[SYMBOL]);
+            Assert.True(barSet.Contains(SYMBOL));
+            Assert.NotNull(barSet[SYMBOL]);
+            Assert.NotEmpty(barSet[SYMBOL]);
         }
     }
 }
