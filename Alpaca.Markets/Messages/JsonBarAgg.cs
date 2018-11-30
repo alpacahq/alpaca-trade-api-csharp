@@ -21,7 +21,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "v", Required = Required.Always)]
         public Int64 Volume { get; set; }
 
-        [JsonProperty(PropertyName = "d", Required = Required.Default)]
+        [JsonProperty(PropertyName = "t", Required = Required.Default)]
         public Int64 TimeOffset { get; set; }
 
         [JsonIgnore]

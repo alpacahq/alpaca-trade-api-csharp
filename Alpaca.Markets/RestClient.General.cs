@@ -250,27 +250,27 @@ namespace Alpaca.Markets
         /// <param name="symbols">>Asset names for data retrieval.</param>
         /// <param name="timeFrame">Type of time bars for retrieval.</param>
         /// <param name="areTimesInclusive">
-        /// If <c>true</c> - both <paramref name="startTime"/> and <paramref name="endTime"/> parameters are treated as inclusive.
+        /// If <c>true</c> - both <paramref name="timeFrom"/> and <paramref name="timeInto"/> parameters are treated as inclusive.
         /// </param>
-        /// <param name="startTime">Start time for filtering.</param>
-        /// <param name="endTime">End time for filtering.</param>
+        /// <param name="timeFrom">Start time for filtering.</param>
+        /// <param name="timeInto">End time for filtering.</param>
         /// <param name="limit">Maximal number of daily bars in data response.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
-        public async Task<ILookup<string, IEnumerable<IAgg>>> GetBarSetAsync(
+        public async Task<IReadOnlyDictionary<string, IEnumerable<IAgg>>> GetBarSetAsync(
             IEnumerable<String> symbols,
             TimeFrame timeFrame,
             Int32? limit = 100,
             Boolean areTimesInclusive = true,
-            DateTime? startTime = null,
-            DateTime? endTime = null)
+            DateTime? timeFrom = null,
+            DateTime? timeInto = null)
         {
             var builder = new UriBuilder(_alpacaDataClient.BaseAddress)
             {
                 Path = "v1/bars/" + timeFrame.ToEnumString(),
                 Query = new QueryBuilder()
                     .AddParameter("symbols", String.Join(",", symbols))
-                    .AddParameter((areTimesInclusive ? "start" : "after"), startTime)
-                    .AddParameter((areTimesInclusive ? "end" : "until"), endTime)
+                    .AddParameter((areTimesInclusive ? "start" : "after"), timeFrom)
+                    .AddParameter((areTimesInclusive ? "end" : "until"), timeInto)
                     .AddParameter("limit", limit)
             };
 
@@ -279,7 +279,7 @@ namespace Alpaca.Markets
                     Dictionary<String, List<JsonBarAgg>>>(
                 _alpacaHttpClient, FakeThrottler.Instance, builder);
 
-            return response.ToLookup(kvp => kvp.Key, kvp => kvp.Value.AsEnumerable<IAgg>());
+            return response.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.AsEnumerable<IAgg>());
         }
     }
 }

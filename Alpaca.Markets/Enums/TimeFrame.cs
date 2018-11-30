@@ -20,13 +20,13 @@ namespace Alpaca.Markets
         /// Five minutes bars.
         /// </summary>
         [EnumMember(Value = "5Min")]
-        FiveMinute,
+        FiveMinutes,
 
         /// <summary>
         /// Fifteen minutes bars.
         /// </summary>
         [EnumMember(Value = "15Min")]
-        FiftyMinute,
+        FifteenMinutes,
 
         /// <summary>
         /// Daily bars.
