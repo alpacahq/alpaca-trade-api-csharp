@@ -11,7 +11,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
         public Int64 TimeOffset { get; set; }
 
-        [JsonProperty(PropertyName = "p", Required = Required.Always)]
+        [JsonProperty(PropertyName = "p", Required = Required.Default)]
         public Decimal Price { get; set; }
 
         [JsonProperty(PropertyName = "s", Required = Required.Default)]

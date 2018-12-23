@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Alpaca.Markets.Tests
@@ -114,6 +115,84 @@ namespace Alpaca.Markets.Tests
             Assert.True(first.TradingDate <= last.TradingDate);
             Assert.True(first.TradingOpenTime < first.TradingCloseTime);
             Assert.True(last.TradingOpenTime < last.TradingCloseTime);
+        }
+
+        [Fact]
+        public async void GetBarSetWorks()
+        {
+            var barSet = await _restClient.GetBarSetAsync(
+                new [] { SYMBOL }, TimeFrame.Day);
+
+            Assert.NotNull(barSet);
+            Assert.Equal(1, barSet.Count);
+
+            Assert.True(barSet.ContainsKey(SYMBOL));
+
+            var bars = barSet[SYMBOL];
+            Assert.NotNull(bars);
+            Assert.NotEmpty(bars);
+        }
+
+        [Fact]
+        public async void GetBarSetForTimeScopeWorks()
+        {
+            var dateInto = await getLastTradingDay();
+            var dateFrom = dateInto.AddHours(-20);
+
+            var barSet = await _restClient.GetBarSetAsync(
+                new[] { SYMBOL }, TimeFrame.FifteenMinutes,
+                timeFrom: dateFrom, timeInto: dateInto);
+
+            Assert.NotNull(barSet);
+            Assert.Equal(1, barSet.Count);
+
+            Assert.True(barSet.ContainsKey(SYMBOL));
+
+            var bars = barSet[SYMBOL];
+            Assert.NotNull(bars);
+
+            var barsList = bars.ToList();
+            Assert.NotEmpty(barsList);
+            Assert.True(barsList.Count >= 2);
+
+            Assert.True(barsList.First().Time >= dateFrom);
+            Assert.True(barsList.Last().Time <= dateInto);
+        }
+
+        [Fact]
+        public async void GetBarSetForTwoSymbolsWorks()
+        {
+            const Int32 limit = 10;
+            var symbols = new[] { SYMBOL, "MSFT" };
+            var barSet = await _restClient.GetBarSetAsync(
+                symbols, TimeFrame.Minute, limit: limit);
+
+            Assert.NotNull(barSet);
+            Assert.Equal(symbols.Length, barSet.Count);
+
+            foreach (var symbol in symbols)
+            {
+                Assert.True(barSet.ContainsKey(symbol));
+
+                var bars = barSet[SYMBOL];
+                Assert.NotNull(bars);
+
+                var barsList = bars.ToList();
+                Assert.NotEmpty(barsList);
+                Assert.Equal(limit, barsList.Count);
+            }
+        }
+
+        private async Task<DateTime> getLastTradingDay()
+        {
+            var calendars = await _restClient
+                .ListCalendarAsync(
+                    DateTime.UtcNow.Date.AddDays(-14),
+                    DateTime.UtcNow.Date.AddDays(-1));
+
+            Assert.NotNull(calendars);
+
+            return calendars.Last().TradingCloseTime;
         }
     }
 }

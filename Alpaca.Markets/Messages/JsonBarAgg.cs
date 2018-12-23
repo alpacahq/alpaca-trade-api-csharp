@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    internal sealed class JsonMinuteAgg : IAgg
+    internal sealed class JsonBarAgg : IAgg
     {
         [JsonProperty(PropertyName = "o", Required = Required.Always)]
         public Decimal Open { get; set; }
@@ -32,10 +32,10 @@ namespace Alpaca.Markets
             StreamingContext context)
         {
 #if NET45
-            Time = DateTimeHelper.FromUnixTimeMilliseconds(TimeOffset);
+            Time = DateTimeHelper.FromUnixTimeSeconds(TimeOffset);
 #else
             Time = DateTime.SpecifyKind(
-                DateTimeOffset.FromUnixTimeMilliseconds(TimeOffset)
+                DateTimeOffset.FromUnixTimeSeconds(TimeOffset)
                     .DateTime, DateTimeKind.Utc);
 #endif
         }
