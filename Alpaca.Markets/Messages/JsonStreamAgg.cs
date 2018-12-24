@@ -9,9 +9,6 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "sym", Required = Required.Always)]
         public String Symbol { get; set; }
 
-        [JsonProperty(PropertyName = "x", Required = Required.Always)]
-        public Int64 Exchange { get; set; }
-
         [JsonProperty(PropertyName = "o", Required = Required.Always)]
         public Decimal Open { get; set; }
 

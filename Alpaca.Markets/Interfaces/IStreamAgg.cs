@@ -10,12 +10,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets asset name.
         /// </summary>
-        String Symbol { get; }
-
-        /// <summary>
-        /// Gets asset's exchange identifier.
-        /// </summary>
-        Int64 Exchange { get; }
+        String Symbol { get; } 
 
         /// <summary>
         /// Gets bar average price.
