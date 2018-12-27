@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Alpaca.Markets.Tests
 {
-    public sealed class RestClientExtendedTest
+    public sealed class RestClientExtendedTest : IDisposable
     {
         private const String SYMBOL = "AAPL";
 
@@ -78,6 +78,11 @@ namespace Alpaca.Markets.Tests
 
             Task.WaitAll(tasks);
             Assert.DoesNotContain(tasks, task => task.IsFaulted);
+        }
+
+        public void Dispose()
+        {
+            _restClient?.Dispose();
         }
     }
 }

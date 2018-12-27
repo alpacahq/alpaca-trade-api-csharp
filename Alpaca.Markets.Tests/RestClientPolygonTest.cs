@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Alpaca.Markets.Tests
 {
-    public sealed class RestClientPolygonTest
+    public sealed class RestClientPolygonTest : IDisposable
     {
         private const String SYMBOL = "AAPL";
 
@@ -137,6 +137,11 @@ namespace Alpaca.Markets.Tests
             Assert.NotNull(calendars);
 
             return calendars.Last().TradingCloseTime;
+        }
+
+        public void Dispose()
+        {
+            _restClient?.Dispose();
         }
     }
 }
