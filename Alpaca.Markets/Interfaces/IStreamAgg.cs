@@ -13,6 +13,12 @@ namespace Alpaca.Markets
         String Symbol { get; } 
 
         /// <summary>
+        /// Gets asset's exchange identifier.
+        /// </summary>
+        [Obsolete("Exchange is deprecated and will be removed in a future version of the SDK.")]
+        Int64 Exchange { get; }
+        
+        /// <summary>
         /// Gets bar average price.
         /// </summary>
         Decimal Average { get; }
