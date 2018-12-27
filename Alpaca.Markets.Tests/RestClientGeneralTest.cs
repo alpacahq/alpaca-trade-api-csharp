@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Alpaca.Markets.Tests
 {
-    public sealed class RestClientGeneralTest
+    public sealed class RestClientGeneralTest : IDisposable
     {
         private readonly RestClient _restClient = ClientsFactory.GetRestClient();
 
@@ -112,6 +112,11 @@ namespace Alpaca.Markets.Tests
             Assert.True(first.TradingDate <= last.TradingDate);
             Assert.True(first.TradingOpenTime < first.TradingCloseTime);
             Assert.True(last.TradingOpenTime < last.TradingCloseTime);
+        }
+
+        public void Dispose()
+        {
+            _restClient?.Dispose();
         }
     }
 }

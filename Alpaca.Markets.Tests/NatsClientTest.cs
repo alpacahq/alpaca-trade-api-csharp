@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Alpaca.Markets.Tests
 {
-    public sealed class NatsClientTest
+    public sealed class NatsClientTest : IDisposable
     {
         private readonly RestClient _restClient = ClientsFactory.GetRestClient();
 
@@ -149,6 +149,11 @@ namespace Alpaca.Markets.Tests
 
                 client.Close();
             }
+        }
+
+        public void Dispose()
+        {
+            _restClient?.Dispose();
         }
     }
 }

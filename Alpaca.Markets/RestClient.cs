@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 #if NET45
 using System.Net;
@@ -15,7 +14,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca REST API and Polygon REST API endpoints.
     /// </summary>
-    public sealed partial class RestClient
+    public sealed partial class RestClient : IDisposable
     {
         private readonly HttpClient _alpacaHttpClient = new HttpClient();
 
@@ -90,6 +89,13 @@ namespace Alpaca.Markets
             ServicePointManager.SecurityProtocol =
                 SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
 #endif
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            _alpacaHttpClient?.Dispose();
+            _polygonHttpClient?.Dispose();
         }
 
         private async Task<TApi> getSingleObjectAsync<TApi, TJson>(
