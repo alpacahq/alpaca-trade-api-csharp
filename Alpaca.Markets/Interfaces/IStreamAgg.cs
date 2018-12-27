@@ -15,7 +15,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets asset's exchange identifier.
         /// </summary>
-        [Obsolete("Exchange is deprecated and will be removed in a future version of the SDK.")]
+        [Obsolete("This property will be removed in upcoming major SDK release.")]
         Int64 Exchange { get; }
         
         /// <summary>
