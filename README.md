@@ -5,7 +5,7 @@
 3. Change `Main` method in auto-generated `Programm.cs` file using next code snippet:
 ```cs
 var client = new Alpaca.Markets.RestClient(
-    KEY_ID, SECRET_KEY, new Uri(API_URL));
+    KEY_ID, SECRET_KEY, API_URL);
 
 var clock = client.GetClockAsync().Result;
 
