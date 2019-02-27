@@ -104,6 +104,12 @@ namespace Alpaca.Markets
         /// Order replacement request pending.
         /// </summary>
         [EnumMember(Value = "pending_replace")]
-        PendingReplace
+        PendingReplace,
+
+        /// <summary>
+        /// Order completely filled.
+        /// </summary>
+        [EnumMember(Value = "fill")]
+        Fill
     }
 }
