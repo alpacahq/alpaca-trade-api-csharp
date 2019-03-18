@@ -26,12 +26,12 @@
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Alpaca.Markets.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Alpaca.Markets.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
