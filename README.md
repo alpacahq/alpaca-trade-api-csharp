@@ -1,8 +1,8 @@
 # .NET SDK for Alpaca Markets API
 ## .NET Core Usage Example
-1. Create new console application using command `dotnet new console` in new empty folder.
-2. Add reference for Alpaca .NET SDK using `dotnet add package Alpaca.Markets` command.
-3. Change `Main` method in auto-generated `Programm.cs` file using next code snippet:
+1. Create a new console application in a new, empty folder by running `dotnet new console`.
+2. Add a reference for Alpaca .NET SDK with `dotnet add package Alpaca.Markets`.
+3. Change `Main` method in auto-generated `Programm.cs` file to this code snippet:
 ```cs
 var client = new Alpaca.Markets.RestClient(
     KEY_ID, SECRET_KEY, API_URL);
@@ -16,13 +16,13 @@ if (clock != null)
         clock.Timestamp, clock.NextOpen, clock.NextClose);
 }
 ```
-4. Replace `KEY_ID`, `SECRET_KEY` and `API_URL` values with data from web console.
-5. Run sample application using `dotnet run` command and check output
+4. Replace `KEY_ID`, `SECRET_KEY` and `API_URL` values with your own data from the Alpaca dashboard.
+5. Run the sample application using `dotnet run` command and check the output. You should see information about the current market timestamp and the times that the market will open and close next.
 
 ## Use .NET Core configuration
 
-Starting form version [1.1.0](https://github.com/alpacahq/alpaca-trade-api-csharp/releases/tag/v1.1.0) you can use [IConfiguration](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.iconfiguration) interface for providing configuration data into constructors. You can read more about new .NET Core configuration approach in [this](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1) article. Read appropriate Wiki pages about expected configuration parameters for each constructor.
+Starting from version [1.1.0](https://github.com/alpacahq/alpaca-trade-api-csharp/releases/tag/v1.1.0) you can use the [IConfiguration](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.iconfiguration) interface for providing configuration data to constructors. You can read more about the new .NET Core configuration approach in [this](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1) article. Please also read the appropriate Wiki pages about expected configuration parameters for each constructor.
 
 ## Assembly signing in NuGet package
 
-Starting from version [1.2.3](https://github.com/alpacahq/alpaca-trade-api-csharp/releases/tag/v1.1.0) and [2.0.0](https://github.com/alpacahq/alpaca-trade-api-csharp/releases/tag/v2.0.0) NuGet packages contains strongly signed assemblies only for .NET Standard 1.6 and 2.0 targets, .NET Framework 4.5 version of `Alpaca.Markets.dll` packaged unsigned because dependent assembly `NATS.Client.dll` also shipped unsigned.
+Starting from version [1.2.3](https://github.com/alpacahq/alpaca-trade-api-csharp/releases/tag/v1.1.0) and [2.0.0](https://github.com/alpacahq/alpaca-trade-api-csharp/releases/tag/v2.0.0) NuGet packages contains strongly signed assemblies only for .NET Standard 1.6 and 2.0 targets. .NET Framework 4.5 version of `Alpaca.Markets.dll` is packaged unsigned because a dependent assembly, `NATS.Client.dll`, also shipped unsigned.
