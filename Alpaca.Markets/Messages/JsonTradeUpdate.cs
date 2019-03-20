@@ -5,9 +5,8 @@ namespace Alpaca.Markets
 {
     internal sealed class JsonTradeUpdate : ITradeUpdate
     {
-        // TODO: olegra - convert it into enum instead of free string
         [JsonProperty(PropertyName = "event", Required = Required.Always)]
-        public OrderStatus Event { get; set; }
+        public TradeEvent Event { get; set; }
 
         [JsonProperty(PropertyName = "price", Required = Required.Default)]
         public Decimal? Price { get; set; }

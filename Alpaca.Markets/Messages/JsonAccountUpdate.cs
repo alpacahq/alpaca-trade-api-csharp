@@ -18,7 +18,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "cash", Required = Required.Always)]
         public Decimal TradableCash { get; set; }
 
-        [JsonProperty(PropertyName = "cash_withdrawable", Required = Required.Always)]
+        [JsonProperty(PropertyName = "cash_withdrawable", Required = Required.Default)]
         public Decimal WithdrawableCash { get; set; }
 
         [JsonProperty(PropertyName = "created_at", Required = Required.Always)]

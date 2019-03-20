@@ -23,13 +23,13 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "tradable", Required = Required.Always)]
         public Boolean IsTradable { get; set; }
 
-        [JsonProperty(PropertyName = "marginable", Required = Required.Always)]
+        [JsonProperty(PropertyName = "marginable", Required = Required.Default)]
         public Boolean Marginable { get; set; }
 
-        [JsonProperty(PropertyName = "shortable", Required = Required.Always)]
+        [JsonProperty(PropertyName = "shortable", Required = Required.Default)]
         public Boolean Shortable { get; set; }
 
-        [JsonProperty(PropertyName = "easy_to_borrow", Required = Required.Always)]
+        [JsonProperty(PropertyName = "easy_to_borrow", Required = Required.Default)]
         public Boolean EasyToBorrow { get; set; }
     }
 }
