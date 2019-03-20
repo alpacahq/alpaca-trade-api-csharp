@@ -7,7 +7,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets flag indicating we are currently being rate limited.
         /// </summary>
-        Int32 MaxAttempts { get; }
+        Int32 MaxAttempts { get; set;  }
 
         /// <summary>
         /// Blocks the current thread indefinitely until allowed to proceed.

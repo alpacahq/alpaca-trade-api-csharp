@@ -19,7 +19,8 @@ namespace Alpaca.Markets
                 configuration["alpacaRestApi"],
                 configuration["polygonRestApi"],
                 configuration["alpacaDataApi"],
-                Convert.ToBoolean(configuration["staging"] ?? "false"))
+                Convert.ToBoolean(configuration["staging"] ?? "false"),
+                Convert.ToInt32(configuration["maxAttempts"] ?? "5"))
         {
         }
     }

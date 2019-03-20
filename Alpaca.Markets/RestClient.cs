@@ -38,20 +38,23 @@ namespace Alpaca.Markets
         /// <param name="polygonRestApi">Polygon REST API endpoint URL.</param>
         /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
+        /// <param name="maxAttempts">When an HTTP request fails, the client will retry up to this number of times before throwing an exception</param>
         public RestClient(
             String keyId,
             String secretKey,
             String alpacaRestApi = null,
             String polygonRestApi = null,
             String alpacaDataApi = null,
-            Boolean? isStagingEnvironment = null)
+            Boolean? isStagingEnvironment = null,
+            Int32 maxAttempts = 5)
             : this(
                 keyId,
                 secretKey,
                 new Uri(alpacaRestApi ?? "https://api.alpaca.markets"),
                 new Uri(polygonRestApi ?? "https://api.polygon.io"),
                 new Uri(alpacaDataApi ?? "https://data.alpaca.markets"),
-                isStagingEnvironment ?? false)
+                isStagingEnvironment ?? false,
+                maxAttempts)
         {
         }
 
@@ -64,16 +67,21 @@ namespace Alpaca.Markets
         /// <param name="polygonRestApi">Polygon REST API ennpoint URL.</param>
         /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
+        /// <param name="maxAttempts">When an HTTP request fails, the client will retry up to this number of times before throwing an exception</param>
         public RestClient(
             String keyId,
             String secretKey,
             Uri alpacaRestApi,
             Uri polygonRestApi,
             Uri alpacaDataApi,
-            Boolean isStagingEnvironment)
+            Boolean isStagingEnvironment,
+            Int32 maxAttempts)
         {
             keyId = keyId ?? throw new ArgumentException(nameof(keyId));
             secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
+            if (maxAttempts < 1) throw new ArgumentException(nameof(maxAttempts));
+
+            _alpacaRestApiThrottler.MaxAttempts = maxAttempts;
 
             _alpacaHttpClient.DefaultRequestHeaders.Add(
                 "APCA-API-KEY-ID", keyId);
@@ -96,6 +104,7 @@ namespace Alpaca.Markets
                 polygonRestApi ?? new Uri("https://api.polygon.io");
             _isPolygonStaging = isStagingEnvironment ||
                 _alpacaHttpClient.BaseAddress.Host.Contains("staging");
+
 
 #if NET45
             ServicePointManager.SecurityProtocol =

@@ -6,7 +6,7 @@ namespace Alpaca.Markets
 {
     internal sealed class RateThrottler : IThrottler, IDisposable
     {
-        public Int32 MaxAttempts { get; }
+        public Int32 MaxAttempts { get; set;  }
 
         /// <summary>
         /// Times (in millisecond ticks) at which the semaphore should be exited.

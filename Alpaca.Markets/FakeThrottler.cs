@@ -8,7 +8,7 @@ namespace Alpaca.Markets
 
         public static IThrottler Instance { get; } = new FakeThrottler();
 
-        public Int32 MaxAttempts => 1;
+        public Int32 MaxAttempts { get; set; } = 1;
 
         public void WaitToProceed() { }
     }
