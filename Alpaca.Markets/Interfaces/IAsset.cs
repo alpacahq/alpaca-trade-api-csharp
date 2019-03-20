@@ -36,5 +36,21 @@ namespace Alpaca.Markets
         /// Returns <c>true</c> if asset is tradable.
         /// </summary>
         Boolean IsTradable { get; }
+
+        /// <summary>
+        /// Asset is marginable or not
+        /// </summary>
+        Boolean Marginable { get; }
+
+        /// <summary>
+        /// Asset is shortable or not
+        /// </summary>
+        Boolean Shortable { get; }
+
+        /// <summary>
+        /// Asset is easy-to-borrow or not
+        /// </summary>
+        Boolean EasyToBorrow { get; }
+
     }
 }

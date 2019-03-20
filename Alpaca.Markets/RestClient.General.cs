@@ -17,7 +17,7 @@ namespace Alpaca.Markets
         public Task<IAccount> GetAccountAsync()
         {
             return getSingleObjectAsync<IAccount, JsonAccount>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, "v1/account");
+                _alpacaHttpClient, _alpacaRestApiThrottler, "v2/account");
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Alpaca.Markets
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
-                Path = "v1/assets",
+                Path = "v2/assets",
                 Query = new QueryBuilder()
                     .AddParameter("status", assetStatus)
                     .AddParameter("asset_class", assetClass)
@@ -51,7 +51,7 @@ namespace Alpaca.Markets
             String symbol)
         {
             return getSingleObjectAsync<IAsset, JsonAsset>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, $"v1/assets/{symbol}");
+                _alpacaHttpClient, _alpacaRestApiThrottler, $"v2/assets/{symbol}");
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Alpaca.Markets
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
-                Path = "v1/orders",
+                Path = "v2/orders",
                 Query = new QueryBuilder()
                     .AddParameter("status", orderStatusFilter)
                     .AddParameter("until", untilDateTime)
@@ -127,7 +127,7 @@ namespace Alpaca.Markets
                 serializer.Serialize(stringWriter, newOrder);
 
                 using (var content = new StringContent(stringWriter.ToString()))
-                using (var response = await _alpacaHttpClient.PostAsync("v1/orders", content))
+                using (var response = await _alpacaHttpClient.PostAsync("v2/orders", content))
                 using (var stream = await response.Content.ReadAsStreamAsync())
                 using (var textReader = new StreamReader(stream))
                 using (var reader = new JsonTextReader(textReader))
@@ -153,7 +153,7 @@ namespace Alpaca.Markets
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
-                Path = "v1/orders:by_client_order_id",
+                Path = "v2/orders:by_client_order_id",
                 Query = new QueryBuilder()
                     .AddParameter("client_order_id", clientOrderId)
             };
@@ -171,7 +171,7 @@ namespace Alpaca.Markets
             Guid orderId)
         {
             return getSingleObjectAsync<IOrder, JsonOrder>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, $"v1/orders/{orderId:D}");
+                _alpacaHttpClient, _alpacaRestApiThrottler, $"v2/orders/{orderId:D}");
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Alpaca.Markets
         {
             _alpacaRestApiThrottler.WaitToProceed();
 
-            using (var response = await _alpacaHttpClient.DeleteAsync($"v1/orders/{orderId:D}"))
+            using (var response = await _alpacaHttpClient.DeleteAsync($"v2/orders/{orderId:D}"))
             {
                 return response.IsSuccessStatusCode;
             }
@@ -197,7 +197,7 @@ namespace Alpaca.Markets
         public Task<IEnumerable<IPosition>> ListPositionsAsync()
         {
             return getObjectsListAsync<IPosition, JsonPosition>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, "v1/positions");
+                _alpacaHttpClient, _alpacaRestApiThrottler, "v2/positions");
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace Alpaca.Markets
             String symbol)
         {
             return getSingleObjectAsync<IPosition, JsonPosition>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, $"v1/positions/{symbol}");
+                _alpacaHttpClient, _alpacaRestApiThrottler, $"v2/positions/{symbol}");
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace Alpaca.Markets
         public Task<IClock> GetClockAsync()
         {
             return getSingleObjectAsync<IClock, JsonClock>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, "v1/clock");
+                _alpacaHttpClient, _alpacaRestApiThrottler, "v2/clock");
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace Alpaca.Markets
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
-                Path = "v1/calendar",
+                Path = "v2/calendar",
                 Query = new QueryBuilder()
                     .AddParameter("start", startDateInclusive, "yyyy-MM-dd")
                     .AddParameter("end", endDateInclusive, "yyyy-MM-dd")
@@ -266,7 +266,7 @@ namespace Alpaca.Markets
         {
             var builder = new UriBuilder(_alpacaDataClient.BaseAddress)
             {
-                Path = "v1/bars/" + timeFrame.ToEnumString(),
+                Path = "v2/bars/" + timeFrame.ToEnumString(),
                 Query = new QueryBuilder()
                     .AddParameter("symbols", String.Join(",", symbols))
                     .AddParameter((areTimesInclusive ? "start" : "after"), timeFrom)
