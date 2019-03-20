@@ -16,7 +16,7 @@ namespace Alpaca.Markets
         public NatsClient(
             IConfiguration configuration)
             : this(
-                configuration["polygonKeyId"],
+                configuration["keyId"],
                 Convert.ToBoolean(configuration["staging"] ?? "false"),
                 configuration.GetSection("natsServers")
                     .GetChildren().Select(_ => _.Value))
