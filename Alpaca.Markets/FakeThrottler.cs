@@ -10,6 +10,8 @@ namespace Alpaca.Markets
 
         public Int32 MaxAttempts { get; set; } = 1;
 
+        public void AllStop(int milliseconds) { }
+
         public void WaitToProceed() { }
     }
 }

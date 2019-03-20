@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
@@ -16,7 +17,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Semaphore used to count and limit the number of occurrences per unit time.
         /// </summary>
-        private readonly SemaphoreSlim _semaphore;
+        private readonly SemaphoreSlim _throttleSemaphore;
 
         /// <summary>
         /// Timer used to trigger exiting the semaphore.
@@ -27,6 +28,22 @@ namespace Alpaca.Markets
         /// The length of the time unit, in milliseconds.
         /// </summary>
         private readonly Int32 _timeUnitMilliseconds;
+
+        /// <summary>
+        /// Semaphore used to exact thread control over all-stop
+        /// </summary>
+        private readonly SemaphoreSlim _allStopSemaphore;
+
+        /// <summary>
+        /// Flag that all-stop is in effect
+        /// </summary>
+        private bool _allStop = false;
+
+        /// <summary>
+        /// Ticks at which all stop is over
+        /// </summary>
+        private Int32 _allStopUntil = 0;
+
 
         /// <summary>
         /// Initializes a <see cref="RateThrottler" /> with a rate of <paramref name="occurrences" />
@@ -65,8 +82,11 @@ namespace Alpaca.Markets
             _timeUnitMilliseconds = (Int32) timeUnit.TotalMilliseconds;
             MaxAttempts = maxAttempts;
 
-            // Create the semaphore, with the number of occurrences as the maximum count.
-            _semaphore = new SemaphoreSlim(occurrences, occurrences);
+            // Create the all stop semaphore, limited to 1 thread at a time
+            _allStopSemaphore = new SemaphoreSlim(1);
+
+            // Create the throttle semaphore, with the number of occurrences as the maximum count.
+            _throttleSemaphore = new SemaphoreSlim(occurrences, occurrences);
 
             // Create a queue to hold the semaphore exit times.
             _exitTimes = new ConcurrentQueue<Int32>();
@@ -79,7 +99,7 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public void Dispose()
         {
-            _semaphore.Dispose();
+            _throttleSemaphore.Dispose();
             _exitTimer.Dispose();
         }
 
@@ -87,8 +107,18 @@ namespace Alpaca.Markets
         public void WaitToProceed()
         {
 
+            // Block until any all stops are over
+            while (_allStop && unchecked(_allStopUntil - Environment.TickCount) > 0)
+            {
+                Task.Delay(unchecked(_allStopUntil - Environment.TickCount)).Wait();
+            }
+            if (_allStop)
+            {
+                endAllStop();
+            }
+
             // Block until we can enter the semaphore or until the timeout expires.
-            var entered = _semaphore.Wait(Timeout.Infinite);
+            var entered = _throttleSemaphore.Wait(Timeout.Infinite);
 
             // If we entered the semaphore, compute the corresponding exit time 
             // and add it to the queue.
@@ -103,13 +133,26 @@ namespace Alpaca.Markets
         // in the queue and then sets the timer for the nextexit time.
         private void exitTimerCallback(Object state)
         {
+            // Block until any all stops are over
+            Int32 timeUntilNextCheck;
+            if (_allStop && unchecked(_allStopUntil - Environment.TickCount) > 0)
+            {
+                timeUntilNextCheck = unchecked(_allStopUntil - Environment.TickCount);
+                _exitTimer.Change(timeUntilNextCheck, -1);
+                return;
+            }
+            if (_allStop)
+            {
+                endAllStop();
+            }
+
             // While there are exit times that are passed due still in the queue,
             // exit the semaphore and dequeue the exit time.
             Int32 exitTime;
             while (_exitTimes.TryPeek(out exitTime)
                    && unchecked(exitTime - Environment.TickCount) <= 0)
             {
-                _semaphore.Release();
+                _throttleSemaphore.Release();
                 _exitTimes.TryDequeue(out exitTime);
             }
 
@@ -117,7 +160,6 @@ namespace Alpaca.Markets
             // the time until the next check should take place. If the 
             // queue is empty, then no exit times will occur until at least
             // one time unit has passed.
-            Int32 timeUntilNextCheck;
             if (_exitTimes.TryPeek(out exitTime))
             {
                 timeUntilNextCheck = unchecked(exitTime - Environment.TickCount);
@@ -130,5 +172,33 @@ namespace Alpaca.Markets
             // Set the timer.
             _exitTimer.Change(timeUntilNextCheck, -1);
         }
+
+        /// <inheritdoc />
+        public void AllStop(Int32 milliseconds)
+        {
+            _allStopSemaphore.Wait();
+            try
+            {
+                _allStopUntil = unchecked(Environment.TickCount + milliseconds);
+                _allStop = true;
+            }
+            finally { _allStopSemaphore.Release(); }
+        }
+
+        /// <summary>
+        /// Thread-safe removal of all stop flag when duration of all stop has concluded
+        /// </summary>
+        private void endAllStop()
+        {
+            _allStopSemaphore.Wait();
+            try
+            {
+                // End if no other request has come in for a longer all stop
+                if (unchecked(_allStopUntil - Environment.TickCount) <= 0)
+                    _allStop = false;
+            }
+            finally { _allStopSemaphore.Release(); }
+        }
+
     }
 }
