@@ -35,7 +35,7 @@ namespace Alpaca.Markets
         private static readonly IEnumerable<String> _supportedApiVersions = new[] { "1", "2" };
 
         private static readonly IThrottler _alpacaRestApiThrottler =
-            new RateThrottler(200, 5, TimeSpan.FromMinutes(1));
+            new RateThrottler(200, TimeSpan.FromMinutes(1), 5);
 
         /// <summary>
         /// Creates new instance of <see cref="RestClient"/> object.
@@ -99,10 +99,11 @@ namespace Alpaca.Markets
             secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
             if (maxRetryAttempts < 1) throw new ArgumentException(nameof(maxRetryAttempts));
             _alpacaApiVersion = apiVersion ?? "1";
-            if (!_supportedApiVersions.Contains(apiVersion)) throw new ArgumentException(nameof(apiVersion));
-
-            _alpacaRestApiThrottler.MaxAttempts = maxRetryAttempts;
+            if (!_supportedApiVersions.Contains(_alpacaApiVersion)) throw new ArgumentException(nameof(apiVersion));
             _retryHttpStatuses = retryHttpStatuses ?? new Int32[] { };
+
+            _alpacaRestApiThrottler.MaxRetryAttempts = maxRetryAttempts;
+            _alpacaRestApiThrottler.RetryHttpStatuses = _retryHttpStatuses;
 
             _alpacaHttpClient.DefaultRequestHeaders.Add(
                 "APCA-API-KEY-ID", keyId);
@@ -149,34 +150,17 @@ namespace Alpaca.Markets
         {
             var exceptions = new Queue<Exception>();
 
-            for(var attempts = 0; attempts < throttler.MaxAttempts; ++attempts)
+            for(var attempts = 0; attempts < throttler.MaxRetryAttempts; ++attempts)
             {
                 throttler.WaitToProceed();
-                HttpStatusCode statusCode = HttpStatusCode.OK;
                 try
                 {
                     using (HttpResponseMessage response = await httpClient.GetAsync(endpointUri, HttpCompletionOption.ResponseHeadersRead))
                     {
-                        // Adhere to server reported instructions
-                        statusCode = response.StatusCode;
-                        if (statusCode != HttpStatusCode.OK)
+                        // Check response for server and caller specified waits and retries
+                        if(!throttler.CheckHttpResponse(response))
                         {
-                            if (_retryHttpStatuses.Contains((int)statusCode))
-                            {
-                                // Accomodate Retry-After header
-                                var retryAfter = response.Headers.RetryAfter?.Delta?.TotalMilliseconds ?? (response.Headers.RetryAfter?.Date?.LocalDateTime - DateTime.Now)?.TotalMilliseconds;
-                                if (retryAfter != null)
-                                {
-                                    throttler.AllStop((Int32)retryAfter);
-                                }
-                                // Server unavailable, or Too many requests (429 can happen when this client competes with another client, e.g. mobile app)
-                                else if (statusCode == (HttpStatusCode)429 || statusCode == (HttpStatusCode)503)
-                                {
-                                    // TODO: If server logic fixed to provide Retry-After, this will be dead code to remove
-                                    throttler.AllStop(3000);
-                                }
-                            }
-                            response.EnsureSuccessStatusCode();
+                            continue;
                         }
 
                         using (var stream = await response.Content.ReadAsStreamAsync())
@@ -190,8 +174,7 @@ namespace Alpaca.Markets
                 catch (HttpRequestException ex)
                 {
                     exceptions.Enqueue(ex);
-                    if (!_retryHttpStatuses.Contains((int)statusCode))
-                        break;
+                    break;
                 }
             }
 

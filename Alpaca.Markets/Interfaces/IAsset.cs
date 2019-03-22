@@ -51,6 +51,5 @@ namespace Alpaca.Markets
         /// Asset is easy-to-borrow or not
         /// </summary>
         Boolean EasyToBorrow { get; }
-
     }
 }

@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -7,7 +11,14 @@ namespace Alpaca.Markets
 {
     internal sealed class RateThrottler : IThrottler, IDisposable
     {
-        public Int32 MaxAttempts { get; set;  }
+        public Int32 MaxRetryAttempts { get; set; }
+
+        public IEnumerable<Int32> RetryHttpStatuses { get; set; }
+
+        /// <summary>
+        /// Used to create a random length delay when server responds with a Http status like 503, but provides no Retry-After header.
+        /// </summary>
+        private readonly Random _randomRetryWait;
 
         /// <summary>
         /// Times (in millisecond ticks) at which the semaphore should be exited.
@@ -44,30 +55,31 @@ namespace Alpaca.Markets
         /// </summary>
         private Int32 _allStopUntil = 0;
 
-
         /// <summary>
         /// Initializes a <see cref="RateThrottler" /> with a rate of <paramref name="occurrences" />
         /// per <paramref name="timeUnit" />.
         /// </summary>
         /// <param name="occurrences">Number of occurrences allowed per unit of time.</param>
-        /// <param name="maxAttempts">Number of maximal retry attampts in case of any HTTP error.</param>
         /// <param name="timeUnit">Length of the time unit.</param>
+        /// <param name="maxRetryAttempts">Number of times to retry an Http request, if the status code is one of the <paramref name="retryHttpStatuses"/></param>
+        /// <param name="retryHttpStatuses">Http status codes that trigger a retry, up to the <paramref name="maxRetryAttempts"/></param>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// If <paramref name="occurrences" />, <paramref name="maxAttempts"/> or <paramref name="timeUnit" /> is negative.
+        /// If <paramref name="occurrences" />, <paramref name="maxRetryAttempts"/> or <paramref name="timeUnit" /> is negative.
         /// </exception>
         public RateThrottler(
             Int32 occurrences,
-            Int32 maxAttempts,
-            TimeSpan timeUnit)
+            TimeSpan timeUnit,
+            Int32 maxRetryAttempts,
+            IEnumerable<Int32> retryHttpStatuses = null)
         {
             if (occurrences <= 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(occurrences),
                     "Number of occurrences must be a positive integer");
             }
-            if (maxAttempts <= 0)
+            if (maxRetryAttempts <= 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(maxAttempts),
+                throw new ArgumentOutOfRangeException(nameof(maxRetryAttempts),
                     "Number of maximal retry attempts must be a positive integer");
             }
             if (timeUnit != timeUnit.Duration())
@@ -80,7 +92,11 @@ namespace Alpaca.Markets
             }
 
             _timeUnitMilliseconds = (Int32) timeUnit.TotalMilliseconds;
-            MaxAttempts = maxAttempts;
+            MaxRetryAttempts = maxRetryAttempts;
+            RetryHttpStatuses = retryHttpStatuses ?? new Int32[] { };
+
+            // TODO: If server logic fixed to provide Retry-After, this will be dead code to remove
+            _randomRetryWait = new Random();
 
             // Create the all stop semaphore, limited to 1 thread at a time
             _allStopSemaphore = new SemaphoreSlim(1);
@@ -100,6 +116,7 @@ namespace Alpaca.Markets
         public void Dispose()
         {
             _throttleSemaphore.Dispose();
+            _allStopSemaphore.Dispose();
             _exitTimer.Dispose();
         }
 
@@ -108,9 +125,10 @@ namespace Alpaca.Markets
         {
 
             // Block until any all stops are over
-            while (_allStop && unchecked(_allStopUntil - Environment.TickCount) > 0)
+            Int32 stopTicks;
+            while (_allStop && (stopTicks = unchecked(_allStopUntil - Environment.TickCount)) > 0)
             {
-                Task.Delay(unchecked(_allStopUntil - Environment.TickCount)).Wait();
+                Task.Delay(stopTicks).Wait();
             }
             if (_allStop)
             {
@@ -135,9 +153,8 @@ namespace Alpaca.Markets
         {
             // Block until any all stops are over
             Int32 timeUntilNextCheck;
-            if (_allStop && unchecked(_allStopUntil - Environment.TickCount) > 0)
+            if (_allStop && (timeUntilNextCheck = unchecked(_allStopUntil - Environment.TickCount)) > 0)
             {
-                timeUntilNextCheck = unchecked(_allStopUntil - Environment.TickCount);
                 _exitTimer.Change(timeUntilNextCheck, -1);
                 return;
             }
@@ -194,11 +211,47 @@ namespace Alpaca.Markets
             try
             {
                 // End if no other request has come in for a longer all stop
-                if (unchecked(_allStopUntil - Environment.TickCount) <= 0)
+                if (_allStop && unchecked(_allStopUntil - Environment.TickCount) <= 0)
                     _allStop = false;
             }
             finally { _allStopSemaphore.Release(); }
         }
 
+        /// <inheritdoc />
+        public bool CheckHttpResponse(HttpResponseMessage response)
+        {
+            // Adhere to server reported instructions
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return true;
+            }
+
+            // Accomodate server specified delays in Retry-After headers
+            var retryAfter = response.Headers.RetryAfter?.Delta?.TotalMilliseconds ?? (response.Headers.RetryAfter?.Date?.LocalDateTime - DateTime.Now)?.TotalMilliseconds;
+            if (retryAfter != null)
+            {
+                AllStop((Int32)retryAfter);
+                return false;
+            }
+
+            // Server unavailable, or Too many requests (429 can happen when this client competes with another client, e.g. mobile app)
+            if (response.StatusCode == (HttpStatusCode)429 || response.StatusCode == (HttpStatusCode)503)
+            {
+                // TODO: If server logic fixed to provide Retry-After, this whole IF block will be dead code to remove
+                AllStop(_randomRetryWait.Next(1000, 5000));
+                return false;
+            }
+
+            // Accomodate retries on statuses indicated by caller
+            if (RetryHttpStatuses.Contains((int)response.StatusCode))
+            {
+                return false;
+            }
+
+            // Allow framework to throw the exception
+            response.EnsureSuccessStatusCode();
+
+            return true;
+        }
     }
 }

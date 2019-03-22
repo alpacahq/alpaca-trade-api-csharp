@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
 
 namespace Alpaca.Markets
 {
@@ -8,10 +10,14 @@ namespace Alpaca.Markets
 
         public static IThrottler Instance { get; } = new FakeThrottler();
 
-        public Int32 MaxAttempts { get; set; } = 1;
+        public Int32 MaxRetryAttempts { get; set; } = 1;
+
+        public IEnumerable<int> RetryHttpStatuses { get; set; } = new Int32[] { };
 
         public void AllStop(int milliseconds) { }
 
         public void WaitToProceed() { }
+
+        public bool CheckHttpResponse(HttpResponseMessage response) => true;
     }
 }
