@@ -12,7 +12,7 @@ namespace Alpaca.Markets
 
         public Int32 MaxRetryAttempts { get; set; } = 1;
 
-        public IEnumerable<int> RetryHttpStatuses { get; set; } = new Int32[] { };
+        public HashSet<int> RetryHttpStatuses { get; set; } = new HashSet<Int32>();
 
         public void AllStop(int milliseconds) { }
 

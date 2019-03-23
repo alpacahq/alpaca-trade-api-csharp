@@ -14,7 +14,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of Http status codes which when recieved should initiate a retry of the affected request
         /// </summary>
-        IEnumerable<Int32> RetryHttpStatuses { get; set; }
+        HashSet<Int32> RetryHttpStatuses { get; set; }
 
         /// <summary>
         /// Blocks the current thread indefinitely until allowed to proceed.

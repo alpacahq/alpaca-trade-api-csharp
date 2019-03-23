@@ -13,7 +13,7 @@ namespace Alpaca.Markets
     {
         public Int32 MaxRetryAttempts { get; set; }
 
-        public IEnumerable<Int32> RetryHttpStatuses { get; set; }
+        public HashSet<Int32> RetryHttpStatuses { get; set; }
 
         /// <summary>
         /// Used to create a random length delay when server responds with a Http status like 503, but provides no Retry-After header.
@@ -70,7 +70,7 @@ namespace Alpaca.Markets
             Int32 occurrences,
             TimeSpan timeUnit,
             Int32 maxRetryAttempts,
-            IEnumerable<Int32> retryHttpStatuses = null)
+            HashSet<Int32> retryHttpStatuses = null)
         {
             if (occurrences <= 0)
             {
@@ -93,7 +93,7 @@ namespace Alpaca.Markets
 
             _timeUnitMilliseconds = (Int32) timeUnit.TotalMilliseconds;
             MaxRetryAttempts = maxRetryAttempts;
-            RetryHttpStatuses = retryHttpStatuses ?? new Int32[] { };
+            RetryHttpStatuses = retryHttpStatuses ?? new HashSet<Int32>();
 
             // TODO: If server logic fixed to provide Retry-After, this will be dead code to remove
             _randomRetryWait = new Random();

@@ -28,11 +28,11 @@ namespace Alpaca.Markets
 
         private readonly String _polygonApiKey;
 
-        private readonly IEnumerable<Int32> _retryHttpStatuses;
+        private readonly HashSet<Int32> _retryHttpStatuses;
 
         private readonly String _alpacaApiVersion;
 
-        private static readonly IEnumerable<String> _supportedApiVersions = new[] { "1", "2" };
+        private static readonly HashSet<String> _supportedApiVersions = new HashSet<string>() { "1", "2" };
 
         private static readonly IThrottler _alpacaRestApiThrottler =
             new RateThrottler(200, TimeSpan.FromMinutes(1), 5);
@@ -57,7 +57,7 @@ namespace Alpaca.Markets
             String alpacaDataApi = null,
             Boolean? isStagingEnvironment = null,
             Int32 maxRetryAttempts = 5,
-            IEnumerable<Int32> retryHttpStatuses = null,
+            HashSet<Int32> retryHttpStatuses = null,
             String apiVersion = "1")
             : this(
                 keyId,
@@ -92,7 +92,7 @@ namespace Alpaca.Markets
             Uri alpacaDataApi,
             Boolean isStagingEnvironment,
             Int32 maxRetryAttempts,
-            IEnumerable<Int32> retryHttpStatuses,
+            HashSet<Int32> retryHttpStatuses,
             String apiVersion)
         {
             keyId = keyId ?? throw new ArgumentException(nameof(keyId));
@@ -100,7 +100,7 @@ namespace Alpaca.Markets
             if (maxRetryAttempts < 1) throw new ArgumentException(nameof(maxRetryAttempts));
             _alpacaApiVersion = apiVersion ?? "1";
             if (!_supportedApiVersions.Contains(_alpacaApiVersion)) throw new ArgumentException(nameof(apiVersion));
-            _retryHttpStatuses = retryHttpStatuses ?? new Int32[] { };
+            _retryHttpStatuses = retryHttpStatuses ?? new HashSet<int>();
 
             _alpacaRestApiThrottler.MaxRetryAttempts = maxRetryAttempts;
             _alpacaRestApiThrottler.RetryHttpStatuses = _retryHttpStatuses;
