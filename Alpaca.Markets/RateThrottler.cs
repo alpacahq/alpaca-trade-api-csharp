@@ -48,7 +48,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Flag that all-stop is in effect
         /// </summary>
-        private bool _allStop = false;
+        private Boolean _allStop = false;
 
         /// <summary>
         /// Ticks at which all stop is over
@@ -86,7 +86,7 @@ namespace Alpaca.Markets
             {
                 throw new ArgumentOutOfRangeException(nameof(timeUnit), "Time unit must be a positive span of time");
             }
-            if (timeUnit >= TimeSpan.FromMilliseconds(UInt32.MaxValue))
+            if (timeUnit >= TimeSpan.FromMilliseconds(uint.MaxValue))
             {
                 throw new ArgumentOutOfRangeException(nameof(timeUnit), "Time unit must be less than 2^32 milliseconds");
             }
@@ -218,7 +218,7 @@ namespace Alpaca.Markets
         }
 
         /// <inheritdoc />
-        public bool CheckHttpResponse(HttpResponseMessage response)
+        public Boolean CheckHttpResponse(HttpResponseMessage response)
         {
             // Adhere to server reported instructions
             if (response.StatusCode == HttpStatusCode.OK)
@@ -243,7 +243,7 @@ namespace Alpaca.Markets
             }
 
             // Accomodate retries on statuses indicated by caller
-            if (RetryHttpStatuses.Contains((int)response.StatusCode))
+            if (RetryHttpStatuses.Contains((Int32)response.StatusCode))
             {
                 return false;
             }

@@ -38,6 +38,6 @@ namespace Alpaca.Markets
         /// <exception cref="HttpRequestException">
         /// The HTTP response is unsuccessful, and caller did not indicate that requests with this StatusCode should be retried.
         /// </exception>
-        bool CheckHttpResponse(HttpResponseMessage response);
+        Boolean CheckHttpResponse(HttpResponseMessage response);
     }
 }

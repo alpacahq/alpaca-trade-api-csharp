@@ -12,12 +12,12 @@ namespace Alpaca.Markets
 
         public Int32 MaxRetryAttempts { get; set; } = 1;
 
-        public HashSet<int> RetryHttpStatuses { get; set; } = new HashSet<Int32>();
+        public HashSet<Int32> RetryHttpStatuses { get; set; } = new HashSet<Int32>();
 
-        public void AllStop(int milliseconds) { }
+        public void AllStop(Int32 milliseconds) { }
 
         public void WaitToProceed() { }
 
-        public bool CheckHttpResponse(HttpResponseMessage response) => true;
+        public Boolean CheckHttpResponse(HttpResponseMessage response) => true;
     }
 }

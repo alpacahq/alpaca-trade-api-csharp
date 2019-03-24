@@ -101,7 +101,7 @@ namespace Alpaca.Markets
             Decimal? stopPrice = null,
             String clientOrderId = null)
         {
-            if (!String.IsNullOrEmpty(clientOrderId) &&
+            if (!string.IsNullOrEmpty(clientOrderId) &&
                 clientOrderId.Length > 48)
             {
                 clientOrderId = clientOrderId.Substring(0, 48);
@@ -256,7 +256,7 @@ namespace Alpaca.Markets
         /// <param name="timeInto">End time for filtering.</param>
         /// <param name="limit">Maximal number of daily bars in data response.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
-        public async Task<IReadOnlyDictionary<string, IEnumerable<IAgg>>> GetBarSetAsync(
+        public async Task<IReadOnlyDictionary<String, IEnumerable<IAgg>>> GetBarSetAsync(
             IEnumerable<String> symbols,
             TimeFrame timeFrame,
             Int32? limit = 100,
@@ -268,7 +268,7 @@ namespace Alpaca.Markets
             {
                 Path = $"v{_alpacaApiVersion}/bars/" + timeFrame.ToEnumString(),
                 Query = new QueryBuilder()
-                    .AddParameter("symbols", String.Join(",", symbols))
+                    .AddParameter("symbols", string.Join(",", symbols))
                     .AddParameter((areTimesInclusive ? "start" : "after"), timeFrom)
                     .AddParameter((areTimesInclusive ? "end" : "until"), timeInto)
                     .AddParameter("limit", limit)

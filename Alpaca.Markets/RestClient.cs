@@ -32,7 +32,7 @@ namespace Alpaca.Markets
 
         private readonly String _alpacaApiVersion;
 
-        private static readonly HashSet<String> _supportedApiVersions = new HashSet<string>() { "1", "2" };
+        private static readonly HashSet<String> _supportedApiVersions = new HashSet<String>() { "1", "2" };
 
         private static readonly IThrottler _alpacaRestApiThrottler =
             new RateThrottler(200, TimeSpan.FromMinutes(1), 5);
@@ -97,10 +97,12 @@ namespace Alpaca.Markets
         {
             keyId = keyId ?? throw new ArgumentException(nameof(keyId));
             secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
+
             if (maxRetryAttempts < 1) throw new ArgumentException(nameof(maxRetryAttempts));
+            _retryHttpStatuses = retryHttpStatuses ?? new HashSet<Int32>();
+
             _alpacaApiVersion = apiVersion ?? "1";
             if (!_supportedApiVersions.Contains(_alpacaApiVersion)) throw new ArgumentException(nameof(apiVersion));
-            _retryHttpStatuses = retryHttpStatuses ?? new HashSet<int>();
 
             _alpacaRestApiThrottler.MaxRetryAttempts = maxRetryAttempts;
             _alpacaRestApiThrottler.RetryHttpStatuses = _retryHttpStatuses;
