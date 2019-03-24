@@ -152,7 +152,7 @@ namespace Alpaca.Markets
 
             for(var attempts = 0; attempts < throttler.MaxRetryAttempts; ++attempts)
             {
-                throttler.WaitToProceed();
+                await throttler.WaitToProceed();
                 try
                 {
                     using (var response = await httpClient.GetAsync(endpointUri, HttpCompletionOption.ResponseHeadersRead))

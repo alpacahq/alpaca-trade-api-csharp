@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
     internal sealed class FakeThrottler : IThrottler
     {
+#if NET45
+        private static readonly Lazy<Task> _completedTask = new Lazy<Task>(()=>Task.Run(()=>{}));
+#endif
+
         private FakeThrottler() { }
 
         public static IThrottler Instance { get; } = new FakeThrottler();
@@ -14,9 +19,11 @@ namespace Alpaca.Markets
 
         public HashSet<Int32> RetryHttpStatuses { get; set; } = new HashSet<Int32>();
 
-        public void AllStop(Int32 milliseconds) { }
-
-        public void WaitToProceed() { }
+#if NET45
+        public Task WaitToProceed() { return _completedTask.Value; }
+#else
+        public Task WaitToProceed() { return Task.CompletedTask; }
+#endif
 
         public Boolean CheckHttpResponse(HttpResponseMessage response) => true;
     }

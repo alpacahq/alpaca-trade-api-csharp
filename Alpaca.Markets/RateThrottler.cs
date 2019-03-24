@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -11,14 +10,77 @@ namespace Alpaca.Markets
 {
     internal sealed class RateThrottler : IThrottler, IDisposable
     {
-        public Int32 MaxRetryAttempts { get; set; }
+        private sealed class NextRetryGuard : IDisposable
+        {
+            private readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
 
-        public HashSet<Int32> RetryHttpStatuses { get; set; }
+            /// <summary>
+            /// Used to create a random length delay when server responds with a Http status like 503, but provides no Retry-After header.
+            /// </summary>
+            private readonly Random _randomRetryWait = new Random();
 
-        /// <summary>
-        /// Used to create a random length delay when server responds with a Http status like 503, but provides no Retry-After header.
-        /// </summary>
-        private readonly Random _randomRetryWait;
+            private DateTime _nextRetryTime = DateTime.MinValue;
+
+            public async Task WaitToProceed()
+            {
+                var delay = GetDelayTillNextRetryTime();
+
+                if (delay.TotalMilliseconds < 0)
+                {
+                    return;
+                }
+
+                await Task.Delay(delay);
+            }
+
+            public void SetNextRetryTimeRandom()
+            {
+                // TODO: If server logic fixed to provide Retry-After, this whole IF block will be dead code to remove
+                SetNextRetryTime(DateTime.UtcNow.AddMilliseconds(
+                    _randomRetryWait.Next(1000, 5000)));
+            }
+
+            public void SetNextRetryTime(DateTime nextRetryTime)
+            {
+                if (nextRetryTime < DateTime.UtcNow)
+                {
+                    return;
+                }
+
+                _lock.EnterWriteLock();
+                try
+                {
+                    if (nextRetryTime > _nextRetryTime)
+                    {
+                        _nextRetryTime = nextRetryTime;
+                    }
+                }
+                finally
+                {
+                    _lock.ExitWriteLock();
+                }
+            }
+
+            public TimeSpan GetDelayTillNextRetryTime()
+            {
+                _lock.EnterReadLock();
+                try
+                {
+                    return _nextRetryTime.Subtract(DateTime.UtcNow);
+                }
+                finally
+                {
+                    _lock.ExitReadLock();
+                }
+            }
+
+            public void Dispose()
+            {
+                _lock?.Dispose();
+            }
+        }
+
+        private readonly NextRetryGuard _nextRetryGuard = new NextRetryGuard();
 
         /// <summary>
         /// Times (in millisecond ticks) at which the semaphore should be exited.
@@ -39,21 +101,6 @@ namespace Alpaca.Markets
         /// The length of the time unit, in milliseconds.
         /// </summary>
         private readonly Int32 _timeUnitMilliseconds;
-
-        /// <summary>
-        /// Semaphore used to exact thread control over all-stop
-        /// </summary>
-        private readonly SemaphoreSlim _allStopSemaphore;
-
-        /// <summary>
-        /// Flag that all-stop is in effect
-        /// </summary>
-        private Boolean _allStop = false;
-
-        /// <summary>
-        /// Ticks at which all stop is over
-        /// </summary>
-        private Int32 _allStopUntil = 0;
 
         /// <summary>
         /// Initializes a <see cref="RateThrottler" /> with a rate of <paramref name="occurrences" />
@@ -95,12 +142,6 @@ namespace Alpaca.Markets
             MaxRetryAttempts = maxRetryAttempts;
             RetryHttpStatuses = retryHttpStatuses ?? new HashSet<Int32>();
 
-            // TODO: If server logic fixed to provide Retry-After, this will be dead code to remove
-            _randomRetryWait = new Random();
-
-            // Create the all stop semaphore, limited to 1 thread at a time
-            _allStopSemaphore = new SemaphoreSlim(1);
-
             // Create the throttle semaphore, with the number of occurrences as the maximum count.
             _throttleSemaphore = new SemaphoreSlim(occurrences, occurrences);
 
@@ -116,24 +157,20 @@ namespace Alpaca.Markets
         public void Dispose()
         {
             _throttleSemaphore.Dispose();
-            _allStopSemaphore.Dispose();
+            _nextRetryGuard.Dispose();
             _exitTimer.Dispose();
         }
 
         /// <inheritdoc />
-        public void WaitToProceed()
-        {
+        public Int32 MaxRetryAttempts { get; set; }
 
-            // Block until any all stops are over
-            Int32 stopTicks;
-            while (_allStop && (stopTicks = unchecked(_allStopUntil - Environment.TickCount)) > 0)
-            {
-                Task.Delay(stopTicks).Wait();
-            }
-            if (_allStop)
-            {
-                endAllStop();
-            }
+        /// <inheritdoc />
+        public HashSet<Int32> RetryHttpStatuses { get; set; }
+
+        /// <inheritdoc />
+        public async Task WaitToProceed()
+        {
+            await _nextRetryGuard.WaitToProceed();
 
             // Block until we can enter the semaphore or until the timeout expires.
             var entered = _throttleSemaphore.Wait(Timeout.Infinite);
@@ -148,19 +185,14 @@ namespace Alpaca.Markets
         }
 
         // Callback for the exit timer that exits the semaphore based on exit times 
-        // in the queue and then sets the timer for the nextexit time.
+        // in the queue and then sets the timer for the next exit time.
         private void exitTimerCallback(Object state)
         {
-            // Block until any all stops are over
-            Int32 timeUntilNextCheck;
-            if (_allStop && (timeUntilNextCheck = unchecked(_allStopUntil - Environment.TickCount)) > 0)
+            var nextRetryDelay = _nextRetryGuard.GetDelayTillNextRetryTime().TotalMilliseconds;
+            if (nextRetryDelay > 0)
             {
-                _exitTimer.Change(timeUntilNextCheck, -1);
+                _exitTimer.Change((Int32)nextRetryDelay, Timeout.Infinite);
                 return;
-            }
-            if (_allStop)
-            {
-                endAllStop();
             }
 
             // While there are exit times that are passed due still in the queue,
@@ -177,44 +209,12 @@ namespace Alpaca.Markets
             // the time until the next check should take place. If the 
             // queue is empty, then no exit times will occur until at least
             // one time unit has passed.
-            if (_exitTimes.TryPeek(out exitTime))
-            {
-                timeUntilNextCheck = unchecked(exitTime - Environment.TickCount);
-            }
-            else
-            {
-                timeUntilNextCheck = _timeUnitMilliseconds;
-            }
+            var timeUntilNextCheck = _exitTimes.TryPeek(out exitTime)
+                ? unchecked(exitTime - Environment.TickCount)
+                :_timeUnitMilliseconds;
 
             // Set the timer.
-            _exitTimer.Change(timeUntilNextCheck, -1);
-        }
-
-        /// <inheritdoc />
-        public void AllStop(Int32 milliseconds)
-        {
-            _allStopSemaphore.Wait();
-            try
-            {
-                _allStopUntil = unchecked(Environment.TickCount + milliseconds);
-                _allStop = true;
-            }
-            finally { _allStopSemaphore.Release(); }
-        }
-
-        /// <summary>
-        /// Thread-safe removal of all stop flag when duration of all stop has concluded
-        /// </summary>
-        private void endAllStop()
-        {
-            _allStopSemaphore.Wait();
-            try
-            {
-                // End if no other request has come in for a longer all stop
-                if (_allStop && unchecked(_allStopUntil - Environment.TickCount) <= 0)
-                    _allStop = false;
-            }
-            finally { _allStopSemaphore.Release(); }
+            _exitTimer.Change(timeUntilNextCheck, Timeout.Infinite);
         }
 
         /// <inheritdoc />
@@ -227,18 +227,26 @@ namespace Alpaca.Markets
             }
 
             // Accomodate server specified delays in Retry-After headers
-            var retryAfter = response.Headers.RetryAfter?.Delta?.TotalMilliseconds ?? (response.Headers.RetryAfter?.Date?.LocalDateTime - DateTime.Now)?.TotalMilliseconds;
-            if (retryAfter != null)
+            var retryAfterHeader = response.Headers.RetryAfter;
+            if (retryAfterHeader != null)
             {
-                AllStop((Int32)retryAfter);
-                return false;
+                if (retryAfterHeader.Delta.HasValue)
+                {
+                    _nextRetryGuard.SetNextRetryTime(DateTime.UtcNow.Add(retryAfterHeader.Delta.Value));
+                    return false;
+                }
+
+                if (retryAfterHeader.Date.HasValue)
+                {
+                    _nextRetryGuard.SetNextRetryTime(retryAfterHeader.Date.Value.UtcDateTime);
+                }
             }
 
             // Server unavailable, or Too many requests (429 can happen when this client competes with another client, e.g. mobile app)
-            if (response.StatusCode == (HttpStatusCode)429 || response.StatusCode == (HttpStatusCode)503)
+            if (response.StatusCode == (HttpStatusCode)429 ||
+                response.StatusCode == (HttpStatusCode)503)
             {
-                // TODO: If server logic fixed to provide Retry-After, this whole IF block will be dead code to remove
-                AllStop(_randomRetryWait.Next(1000, 5000));
+                _nextRetryGuard.SetNextRetryTimeRandom();
                 return false;
             }
 

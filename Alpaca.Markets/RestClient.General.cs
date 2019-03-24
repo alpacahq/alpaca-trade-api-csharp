@@ -119,7 +119,7 @@ namespace Alpaca.Markets
                 ClientOrderId = clientOrderId
             };
 
-            _alpacaRestApiThrottler.WaitToProceed();
+            await _alpacaRestApiThrottler.WaitToProceed();
 
             var serializer = new JsonSerializer();
             using (var stringWriter = new StringWriter())
@@ -182,7 +182,7 @@ namespace Alpaca.Markets
         public async Task<Boolean> DeleteOrderAsync(
             Guid orderId)
         {
-            _alpacaRestApiThrottler.WaitToProceed();
+            await _alpacaRestApiThrottler.WaitToProceed();
 
             using (var response = await _alpacaHttpClient.DeleteAsync($"orders/{orderId:D}"))
             {
