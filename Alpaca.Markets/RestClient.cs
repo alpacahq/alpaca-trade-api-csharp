@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 #if NET45
 using System.Net;
 #endif
@@ -18,6 +17,15 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed partial class RestClient : IDisposable
     {
+        private const Int32 DEFAULT_API_VERSION_NUMBER = 1;
+        
+        private const Int32 DEFAULT_MAX_RETRY_ATTEMPT = 5;
+        
+        private static readonly HashSet<Int32> _supportedApiVersions = new HashSet<Int32> { 1, 2 };
+
+        private static readonly IThrottler _alpacaRestApiThrottler =
+            new RateThrottler(200, TimeSpan.FromMinutes(1), 5);
+
         private readonly HttpClient _alpacaHttpClient = new HttpClient();
 
         private readonly HttpClient _alpacaDataClient = new HttpClient();
@@ -28,15 +36,6 @@ namespace Alpaca.Markets
 
         private readonly String _polygonApiKey;
 
-        private readonly HashSet<Int32> _retryHttpStatuses;
-
-        private readonly String _alpacaApiVersion;
-
-        private static readonly HashSet<String> _supportedApiVersions = new HashSet<String>() { "1", "2" };
-
-        private static readonly IThrottler _alpacaRestApiThrottler =
-            new RateThrottler(200, TimeSpan.FromMinutes(1), 5);
-
         /// <summary>
         /// Creates new instance of <see cref="RestClient"/> object.
         /// </summary>
@@ -45,30 +44,30 @@ namespace Alpaca.Markets
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         /// <param name="polygonRestApi">Polygon REST API endpoint URL.</param>
         /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
-        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="maxRetryAttempts">Number of times to retry an Http request, if the status code is one of the <paramref name="retryHttpStatuses"/></param>
-        /// <param name="retryHttpStatuses">Http status codes that trigger a retry, up to the <paramref name="maxRetryAttempts"/></param>
         /// <param name="apiVersion">Version of Alpaca api to call.  Valid values are "1" or "2".</param>
+        /// <param name="maxRetryAttempts">Number of times to retry an Http request, if the status code is one of the <paramref name="retryHttpStatuses"/></param>
+        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
+        /// <param name="retryHttpStatuses">Http status codes that trigger a retry, up to the <paramref name="maxRetryAttempts"/></param>
         public RestClient(
             String keyId,
             String secretKey,
             String alpacaRestApi = null,
             String polygonRestApi = null,
             String alpacaDataApi = null,
+            Int32? apiVersion = null,
+            Int32? maxRetryAttempts = null,
             Boolean? isStagingEnvironment = null,
-            Int32 maxRetryAttempts = 5,
-            HashSet<Int32> retryHttpStatuses = null,
-            String apiVersion = "1")
+            IEnumerable<Int32> retryHttpStatuses = null)
             : this(
                 keyId,
                 secretKey,
                 new Uri(alpacaRestApi ?? "https://api.alpaca.markets"),
                 new Uri(polygonRestApi ?? "https://api.polygon.io"),
                 new Uri(alpacaDataApi ?? "https://data.alpaca.markets"),
+                apiVersion ?? DEFAULT_API_VERSION_NUMBER,
+                maxRetryAttempts ?? DEFAULT_MAX_RETRY_ATTEMPT,
                 isStagingEnvironment ?? false,
-                maxRetryAttempts,
-                retryHttpStatuses,
-                apiVersion)
+                retryHttpStatuses)
         {
         }
 
@@ -80,32 +79,31 @@ namespace Alpaca.Markets
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         /// <param name="polygonRestApi">Polygon REST API ennpoint URL.</param>
         /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
-        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="maxRetryAttempts">Number of times to retry an Http request, if the status code is one of the <paramref name="retryHttpStatuses"/></param>
-        /// <param name="retryHttpStatuses">Http status codes that trigger a retry, up to the <paramref name="maxRetryAttempts"/></param>
         /// <param name="apiVersion">Version of Alpaca api to call.  Valid values are "1" or "2".</param>
+        /// <param name="maxRetryAttempts">Number of times to retry an Http request, if the status code is one of the <paramref name="retryHttpStatuses"/></param>
+        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
+        /// <param name="retryHttpStatuses">Http status codes that trigger a retry, up to the <paramref name="maxRetryAttempts"/></param>
         public RestClient(
             String keyId,
             String secretKey,
             Uri alpacaRestApi,
             Uri polygonRestApi,
             Uri alpacaDataApi,
-            Boolean isStagingEnvironment,
+            Int32 apiVersion,
             Int32 maxRetryAttempts,
-            HashSet<Int32> retryHttpStatuses,
-            String apiVersion)
+            Boolean isStagingEnvironment,
+            IEnumerable<Int32> retryHttpStatuses)
         {
             keyId = keyId ?? throw new ArgumentException(nameof(keyId));
             secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
 
             if (maxRetryAttempts < 1) throw new ArgumentException(nameof(maxRetryAttempts));
-            _retryHttpStatuses = retryHttpStatuses ?? new HashSet<Int32>();
-
-            _alpacaApiVersion = apiVersion ?? "1";
-            if (!_supportedApiVersions.Contains(_alpacaApiVersion)) throw new ArgumentException(nameof(apiVersion));
+            if (!_supportedApiVersions.Contains(apiVersion))
+                throw new ArgumentException(nameof(apiVersion));
 
             _alpacaRestApiThrottler.MaxRetryAttempts = maxRetryAttempts;
-            _alpacaRestApiThrottler.RetryHttpStatuses = _retryHttpStatuses;
+            _alpacaRestApiThrottler.RetryHttpStatuses = 
+                new HashSet<Int32>(retryHttpStatuses ?? Enumerable.Empty<Int32>());
 
             _alpacaHttpClient.DefaultRequestHeaders.Add(
                 "APCA-API-KEY-ID", keyId);
@@ -113,13 +111,13 @@ namespace Alpaca.Markets
                 "APCA-API-SECRET-KEY", secretKey);
             _alpacaHttpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _alpacaHttpClient.BaseAddress =
-                alpacaRestApi ?? new Uri("https://api.alpaca.markets");
+            _alpacaHttpClient.BaseAddress = addApiVersionNumberSafe(
+                alpacaRestApi ?? new Uri("https://api.alpaca.markets"), apiVersion);
 
             _alpacaDataClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _alpacaDataClient.BaseAddress =
-                alpacaDataApi ?? new Uri("https://data.alpaca.markets");
+            _alpacaDataClient.BaseAddress = addApiVersionNumberSafe(
+                alpacaDataApi ?? new Uri("https://data.alpaca.markets"), apiVersion);
 
             _polygonApiKey = keyId;
             _polygonHttpClient.DefaultRequestHeaders.Accept
@@ -157,13 +155,15 @@ namespace Alpaca.Markets
                 throttler.WaitToProceed();
                 try
                 {
-                    using (HttpResponseMessage response = await httpClient.GetAsync(endpointUri, HttpCompletionOption.ResponseHeadersRead))
+                    using (var response = await httpClient.GetAsync(endpointUri, HttpCompletionOption.ResponseHeadersRead))
                     {
                         // Check response for server and caller specified waits and retries
                         if(!throttler.CheckHttpResponse(response))
                         {
                             continue;
                         }
+
+                        var test = await response.Content.ReadAsStringAsync();
 
                         using (var stream = await response.Content.ReadAsStreamAsync())
                         using (var reader = new JsonTextReader(new StreamReader(stream)))
@@ -210,6 +210,22 @@ namespace Alpaca.Markets
         {
             return (IEnumerable<TApi>) await
                 getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, uriBuilder);
+        }
+
+        private static Uri addApiVersionNumberSafe(Uri baseUri, Int32 apiVersion)
+        {
+            var builder = new UriBuilder(baseUri);
+
+            if (builder.Path.Equals("/", StringComparison.Ordinal))
+            {
+                builder.Path = $"v{apiVersion}/";
+            }
+            if (!builder.Path.EndsWith("/", StringComparison.Ordinal))
+            {
+                builder.Path += "/";
+            }
+
+            return builder.Uri;
         }
     }
 }

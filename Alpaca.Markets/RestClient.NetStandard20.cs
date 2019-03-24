@@ -1,7 +1,6 @@
 ﻿#if NETSTANDARD2_0
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
 
@@ -21,12 +20,22 @@ namespace Alpaca.Markets
                 configuration["alpacaRestApi"],
                 configuration["polygonRestApi"],
                 configuration["alpacaDataApi"],
-                Convert.ToBoolean(configuration["staging"] ?? "false"),
-                Convert.ToInt32(configuration["maxRetryAttempts"] ?? "5"),
-                new HashSet<Int32>(configuration.GetSection("retryHttpStatuses")
-                    .GetChildren().ToList().ConvertAll<Int32>((ci) => Convert.ToInt32(ci.Value))),
-                configuration["apiVersion"])
+                toInt32OrNull(configuration["apiVersion"]),
+                toInt32OrNull(configuration["maxRetryAttempts"]),
+                toBooleanOrNull(configuration["staging"]),
+                configuration.GetSection("retryHttpStatuses")
+                    .GetChildren().Select(item => Convert.ToInt32(item.Value)))
         {
+        }
+
+        private static Int32? toInt32OrNull(String value)
+        {
+            return value != null ? Convert.ToInt32(value) : (Int32?)null;
+        }
+
+        private static Boolean? toBooleanOrNull(String value)
+        {
+            return value != null ? Convert.ToBoolean(value) : (Boolean?)null;
         }
     }
 }
