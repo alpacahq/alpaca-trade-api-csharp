@@ -229,7 +229,10 @@ namespace Alpaca.Markets
         {
             var message = deserializeBytes<JsonStreamTrade>(
                 eventArgs.Message.Data);
-            TradeReceived?.Invoke(message);
+            if (message != null)
+            {
+                TradeReceived?.Invoke(message);
+            }
         }
 
         private void handleQuoteMessage(
@@ -238,7 +241,10 @@ namespace Alpaca.Markets
         {
             var message = deserializeBytes<JsonStreamQuote>(
                 eventArgs.Message.Data);
-            QuoteReceived?.Invoke(message);
+            if (message != null)
+            {
+                QuoteReceived?.Invoke(message);
+            }
         }
 
         private void handleAggMessage(
@@ -247,18 +253,29 @@ namespace Alpaca.Markets
         {
             var message = deserializeBytes<JsonStreamAgg>(
                 eventArgs.Message.Data);
-            AggReceived?.Invoke(message);
+            if (message != null)
+            {
+                AggReceived?.Invoke(message);
+            }
         }
 
-        private static T deserializeBytes<T>(
+        private T deserializeBytes<T>(
             Byte[] bytes)
         {
-            using (var stream = new MemoryStream(bytes))
-            using (var textReader = new StreamReader(stream))
-            using (var jsonReader = new JsonTextReader(textReader))
+            try
             {
-                var serializer = new JsonSerializer();
-                return serializer.Deserialize<T>(jsonReader);
+                using (var stream = new MemoryStream(bytes))
+                using (var textReader = new StreamReader(stream))
+                using (var jsonReader = new JsonTextReader(textReader))
+                {
+                    var serializer = new JsonSerializer();
+                    return serializer.Deserialize<T>(jsonReader);
+                }
+            }
+            catch (Exception ex)
+            {
+                OnError?.Invoke(ex.Message);
+                return default(T);
             }
         }
     }
