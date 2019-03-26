@@ -43,7 +43,7 @@ namespace Alpaca.Markets
         /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
         /// <param name="apiVersion">Version of Alpaca api to call.  Valid values are "1" or "2".</param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="throttleParameters"></param>
+        /// <param name="throttleParameters">Parameters for requests throttling.</param>
         public RestClient(
             String keyId,
             String secretKey,
@@ -75,7 +75,7 @@ namespace Alpaca.Markets
         /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
         /// <param name="apiVersion">Version of Alpaca api to call.  Valid values are "1" or "2".</param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="throttleParameters"></param>
+        /// <param name="throttleParameters">Parameters for requests throttling.</param>
         public RestClient(
             String keyId,
             String secretKey,
