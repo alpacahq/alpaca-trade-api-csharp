@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -103,47 +104,25 @@ namespace Alpaca.Markets
         private readonly Int32 _timeUnitMilliseconds;
 
         /// <summary>
-        /// Initializes a <see cref="RateThrottler" /> with a rate of <paramref name="occurrences" />
-        /// per <paramref name="timeUnit" />.
+        /// List of HTTP status codes which when received should initiate a retry of the affected request.
         /// </summary>
-        /// <param name="occurrences">Number of occurrences allowed per unit of time.</param>
-        /// <param name="timeUnit">Length of the time unit.</param>
-        /// <param name="maxRetryAttempts">Number of times to retry an Http request, if the status code is one of the <paramref name="retryHttpStatuses"/></param>
-        /// <param name="retryHttpStatuses">Http status codes that trigger a retry, up to the <paramref name="maxRetryAttempts"/></param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// If <paramref name="occurrences" />, <paramref name="maxRetryAttempts"/> or <paramref name="timeUnit" /> is negative.
-        /// </exception>
-        public RateThrottler(
-            Int32 occurrences,
-            TimeSpan timeUnit,
-            Int32 maxRetryAttempts,
-            HashSet<Int32> retryHttpStatuses = null)
-        {
-            if (occurrences <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(occurrences),
-                    "Number of occurrences must be a positive integer");
-            }
-            if (maxRetryAttempts <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(maxRetryAttempts),
-                    "Number of maximal retry attempts must be a positive integer");
-            }
-            if (timeUnit != timeUnit.Duration())
-            {
-                throw new ArgumentOutOfRangeException(nameof(timeUnit), "Time unit must be a positive span of time");
-            }
-            if (timeUnit >= TimeSpan.FromMilliseconds(uint.MaxValue))
-            {
-                throw new ArgumentOutOfRangeException(nameof(timeUnit), "Time unit must be less than 2^32 milliseconds");
-            }
+        private readonly ISet<Int32> _retryHttpStatuses;
 
-            _timeUnitMilliseconds = (Int32) timeUnit.TotalMilliseconds;
-            MaxRetryAttempts = maxRetryAttempts;
-            RetryHttpStatuses = retryHttpStatuses ?? new HashSet<Int32>();
+        /// <summary>
+        /// Creates new instance of <see cref="RateThrottler"/> object with parameters
+        /// specified in <paramref name="throttleParameters"/> parameter.
+        /// </summary>
+        /// <param name="throttleParameters"></param>
+        public RateThrottler(
+            ThrottleParameters throttleParameters)
+        {
+            _timeUnitMilliseconds = (Int32)throttleParameters.TimeUnit.TotalMilliseconds;
+            MaxRetryAttempts = throttleParameters.MaxRetryAttempts;
+            _retryHttpStatuses = new HashSet<Int32>(
+                throttleParameters.RetryHttpStatuses ?? Enumerable.Empty<Int32>());
 
             // Create the throttle semaphore, with the number of occurrences as the maximum count.
-            _throttleSemaphore = new SemaphoreSlim(occurrences, occurrences);
+            _throttleSemaphore = new SemaphoreSlim(throttleParameters.Occurrences, throttleParameters.Occurrences);
 
             // Create a queue to hold the semaphore exit times.
             _exitTimes = new ConcurrentQueue<Int32>();
@@ -162,10 +141,7 @@ namespace Alpaca.Markets
         }
 
         /// <inheritdoc />
-        public Int32 MaxRetryAttempts { get; set; }
-
-        /// <inheritdoc />
-        public HashSet<Int32> RetryHttpStatuses { get; set; }
+        public Int32 MaxRetryAttempts { get;}
 
         /// <inheritdoc />
         public async Task WaitToProceed()
@@ -251,7 +227,7 @@ namespace Alpaca.Markets
             }
 
             // Accomodate retries on statuses indicated by caller
-            if (RetryHttpStatuses.Contains((Int32)response.StatusCode))
+            if (_retryHttpStatuses.Contains((Int32)response.StatusCode))
             {
                 return false;
             }

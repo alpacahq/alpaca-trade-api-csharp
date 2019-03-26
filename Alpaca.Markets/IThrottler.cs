@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -8,14 +7,9 @@ namespace Alpaca.Markets
     internal interface IThrottler
     {
         /// <summary>
-        /// Gets flag indicating we are currently being rate limited.
+        /// Gets maximal number of retry attempts for single request.
         /// </summary>
-        Int32 MaxRetryAttempts { get; set;  }
-
-        /// <summary>
-        /// Gets list of Http status codes which when recieved should initiate a retry of the affected request
-        /// </summary>
-        HashSet<Int32> RetryHttpStatuses { get; set; }
+        Int32 MaxRetryAttempts { get; }
 
         /// <summary>
         /// Blocks the current thread indefinitely until allowed to proceed.

@@ -21,10 +21,11 @@ namespace Alpaca.Markets
                 configuration["polygonRestApi"],
                 configuration["alpacaDataApi"],
                 toInt32OrNull(configuration["apiVersion"]),
-                toInt32OrNull(configuration["maxRetryAttempts"]),
                 toBooleanOrNull(configuration["staging"]),
-                configuration.GetSection("retryHttpStatuses")
-                    .GetChildren().Select(item => Convert.ToInt32(item.Value)))
+                new ThrottleParameters(null, null,
+                    toInt32OrNull(configuration["maxRetryAttempts"]),
+                    configuration.GetSection("retryHttpStatuses")
+                    .GetChildren().Select(item => Convert.ToInt32(item.Value))))
         {
         }
 

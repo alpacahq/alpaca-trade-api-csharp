@@ -19,18 +19,15 @@ namespace Alpaca.Markets
     {
         private const Int32 DEFAULT_API_VERSION_NUMBER = 1;
         
-        private const Int32 DEFAULT_MAX_RETRY_ATTEMPT = 5;
-        
         private static readonly HashSet<Int32> _supportedApiVersions = new HashSet<Int32> { 1, 2 };
-
-        private static readonly IThrottler _alpacaRestApiThrottler =
-            new RateThrottler(200, TimeSpan.FromMinutes(1), 5);
 
         private readonly HttpClient _alpacaHttpClient = new HttpClient();
 
         private readonly HttpClient _alpacaDataClient = new HttpClient();
 
         private readonly HttpClient _polygonHttpClient = new HttpClient();
+
+        private static IThrottler _alpacaRestApiThrottler;
 
         private readonly Boolean _isPolygonStaging;
 
@@ -45,9 +42,8 @@ namespace Alpaca.Markets
         /// <param name="polygonRestApi">Polygon REST API endpoint URL.</param>
         /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
         /// <param name="apiVersion">Version of Alpaca api to call.  Valid values are "1" or "2".</param>
-        /// <param name="maxRetryAttempts">Number of times to retry an Http request, if the status code is one of the <paramref name="retryHttpStatuses"/></param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="retryHttpStatuses">Http status codes that trigger a retry, up to the <paramref name="maxRetryAttempts"/></param>
+        /// <param name="throttleParameters"></param>
         public RestClient(
             String keyId,
             String secretKey,
@@ -55,9 +51,8 @@ namespace Alpaca.Markets
             String polygonRestApi = null,
             String alpacaDataApi = null,
             Int32? apiVersion = null,
-            Int32? maxRetryAttempts = null,
             Boolean? isStagingEnvironment = null,
-            IEnumerable<Int32> retryHttpStatuses = null)
+            ThrottleParameters throttleParameters = null)
             : this(
                 keyId,
                 secretKey,
@@ -65,9 +60,8 @@ namespace Alpaca.Markets
                 new Uri(polygonRestApi ?? "https://api.polygon.io"),
                 new Uri(alpacaDataApi ?? "https://data.alpaca.markets"),
                 apiVersion ?? DEFAULT_API_VERSION_NUMBER,
-                maxRetryAttempts ?? DEFAULT_MAX_RETRY_ATTEMPT,
                 isStagingEnvironment ?? false,
-                retryHttpStatuses)
+                throttleParameters ?? ThrottleParameters.Default)
         {
         }
 
@@ -77,12 +71,11 @@ namespace Alpaca.Markets
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
-        /// <param name="polygonRestApi">Polygon REST API ennpoint URL.</param>
+        /// <param name="polygonRestApi">Polygon REST API endpoint URL.</param>
         /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
         /// <param name="apiVersion">Version of Alpaca api to call.  Valid values are "1" or "2".</param>
-        /// <param name="maxRetryAttempts">Number of times to retry an Http request, if the status code is one of the <paramref name="retryHttpStatuses"/></param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="retryHttpStatuses">Http status codes that trigger a retry, up to the <paramref name="maxRetryAttempts"/></param>
+        /// <param name="throttleParameters"></param>
         public RestClient(
             String keyId,
             String secretKey,
@@ -90,20 +83,16 @@ namespace Alpaca.Markets
             Uri polygonRestApi,
             Uri alpacaDataApi,
             Int32 apiVersion,
-            Int32 maxRetryAttempts,
             Boolean isStagingEnvironment,
-            IEnumerable<Int32> retryHttpStatuses)
+            ThrottleParameters throttleParameters)
         {
             keyId = keyId ?? throw new ArgumentException(nameof(keyId));
             secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
 
-            if (maxRetryAttempts < 1) throw new ArgumentException(nameof(maxRetryAttempts));
             if (!_supportedApiVersions.Contains(apiVersion))
                 throw new ArgumentException(nameof(apiVersion));
 
-            _alpacaRestApiThrottler.MaxRetryAttempts = maxRetryAttempts;
-            _alpacaRestApiThrottler.RetryHttpStatuses = 
-                new HashSet<Int32>(retryHttpStatuses ?? Enumerable.Empty<Int32>());
+            _alpacaRestApiThrottler = throttleParameters.GetThrottler();
 
             _alpacaHttpClient.DefaultRequestHeaders.Add(
                 "APCA-API-KEY-ID", keyId);
@@ -126,7 +115,6 @@ namespace Alpaca.Markets
                 polygonRestApi ?? new Uri("https://api.polygon.io");
             _isPolygonStaging = isStagingEnvironment ||
                 _alpacaHttpClient.BaseAddress.Host.Contains("staging");
-
 
 #if NET45
             ServicePointManager.SecurityProtocol =
@@ -162,8 +150,6 @@ namespace Alpaca.Markets
                         {
                             continue;
                         }
-
-                        var test = await response.Content.ReadAsStringAsync();
 
                         using (var stream = await response.Content.ReadAsStreamAsync())
                         using (var reader = new JsonTextReader(new StreamReader(stream)))
