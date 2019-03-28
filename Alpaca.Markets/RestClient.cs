@@ -155,7 +155,13 @@ namespace Alpaca.Markets
                         using (var reader = new JsonTextReader(new StreamReader(stream)))
                         {
                             var serializer = new JsonSerializer();
-                            return serializer.Deserialize<TJson>(reader);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                return serializer.Deserialize<TJson>(reader);
+                            }
+
+                            var error = serializer.Deserialize<JsonError>(reader);
+                            throw new RestClientErrorException(error);
                         }
                     }
                 }
