@@ -234,12 +234,11 @@ namespace Alpaca.Markets
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
-                Path = _alpacaHttpClient.BaseAddress + "calendar",
+                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "calendar",
                 Query = new QueryBuilder()
                     .AddParameter("start", startDateInclusive, "yyyy-MM-dd")
                     .AddParameter("end", endDateInclusive, "yyyy-MM-dd")
             };
-
             return getObjectsListAsync<ICalendar, JsonCalendar>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, builder);
         }

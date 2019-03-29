@@ -80,6 +80,12 @@ namespace Alpaca.Markets
         /// Order expired.
         /// </summary>
         [EnumMember(Value = "expired")]
-        Expired
+        Expired,
+
+        /// <summary>
+        /// Order cancellation was rejected.
+        /// </summary>
+        [EnumMember(Value = "order_cancel_rejected")]
+        OrderCancelRejected
     }
 }
