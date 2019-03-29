@@ -40,8 +40,6 @@ namespace Examples
             var closingTime = calendars.First().TradingCloseTime;
             closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 
-            Console.WriteLine("The market will close at " + closingTime);
-
             // Get the first group of bars from today if the market has already been open.
             var bars = restClient.ListMinuteAggregatesAsync(symbol: symbol, limit: 20).Result.Items;
             foreach (var bar in bars)
