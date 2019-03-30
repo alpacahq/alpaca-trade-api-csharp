@@ -23,31 +23,25 @@ namespace Alpaca.Markets
             StreamingContext context)
         {
             TradingDate = DateTime.SpecifyKind(
-                TradingDate.Date, DateTimeKind.Utc);
+                TradingDate.Date, DateTimeKind.Unspecified).Date;
 
 #if NETSTANDARD1_6
-            var estTradingDate = TimeZoneInfo.ConvertTime(
-                DateTime.SpecifyKind(TradingDate.Date, DateTimeKind.Utc),
-                TimeZoneInfo.Utc, CustomTimeZone.Est).Date;
-
             TradingOpenTime = TimeZoneInfo.ConvertTime(
-                estTradingDate.Add(TradingOpenTime.TimeOfDay),
+                TradingDate.Add(TradingOpenTime.TimeOfDay),
                 CustomTimeZone.Est, TimeZoneInfo.Utc);
             TradingCloseTime = TimeZoneInfo.ConvertTime(
-                estTradingDate.Add(TradingCloseTime.TimeOfDay),
+                TradingDate.Add(TradingCloseTime.TimeOfDay),
                 CustomTimeZone.Est, TimeZoneInfo.Utc);
 #else
-            var estTradingDate = TimeZoneInfo.ConvertTimeFromUtc(
-                DateTime.SpecifyKind(TradingDate.Date, DateTimeKind.Utc),
-                CustomTimeZone.Est).Date;
-
             TradingOpenTime = TimeZoneInfo.ConvertTimeToUtc(
-                estTradingDate.Add(TradingOpenTime.TimeOfDay),
+                TradingDate.Add(TradingOpenTime.TimeOfDay),
                 CustomTimeZone.Est);
             TradingCloseTime = TimeZoneInfo.ConvertTimeToUtc(
-                estTradingDate.Add(TradingCloseTime.TimeOfDay),
+                TradingDate.Add(TradingCloseTime.TimeOfDay),
                 CustomTimeZone.Est);
 #endif
+            TradingDate = DateTime.SpecifyKind(
+                TradingDate.Date, DateTimeKind.Utc);
         }
     }
 }
