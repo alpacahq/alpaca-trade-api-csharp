@@ -2,11 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace Examples
+namespace UsageExamples
 {
     class MeanReversionPower
     {
@@ -25,7 +23,7 @@ namespace Examples
 
         public async void Run()
         {
-            restClient = new RestClient(API_KEY, API_SECRET, API_URL, apiVersion:2);
+            restClient = new RestClient(API_KEY, API_SECRET, API_URL, apiVersion: 2);
 
             // First, cancel any existing orders so they don't impact our buying power.
             var orders = restClient.ListOrdersAsync().Result;
@@ -61,7 +59,7 @@ namespace Examples
             natsClient.AggReceived += (agg) =>
             {
                 // If the market's close to closing, exit position and stop trading.
-                TimeSpan minutesUntilClose = closingTime - DateTime.Now;
+                TimeSpan minutesUntilClose = closingTime - DateTime.UtcNow;
                 if (minutesUntilClose.TotalMinutes < 15)
                 {
                     Console.WriteLine("Reached the end of trading window.");
@@ -250,7 +248,8 @@ namespace Examples
                 var order = restClient.PostOrderAsync(symbol, quantity, side, OrderType.Limit, TimeInForce.Day, price).Result;
                 lastTradeId = order.OrderId;
                 lastTradeOpen = true;
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine("Warning: " + e.Message);
             }

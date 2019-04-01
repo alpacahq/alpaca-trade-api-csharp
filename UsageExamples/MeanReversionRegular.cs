@@ -2,13 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace Examples
+namespace UsageExamples
 {
-    class MeanReversionPaperOnly
+    class MeanReversionRegular
     {
         private string API_KEY = "REPLACEME";
         private string API_SECRET = "REPLACEME";
@@ -20,6 +18,7 @@ namespace Examples
         private RestClient restClient;
 
         private Guid lastTradeId = Guid.NewGuid();
+        private bool lastTradeOpen = false;
         private List<Decimal> closingPrices = new List<Decimal>();
 
         public async void Run()
@@ -39,23 +38,89 @@ namespace Examples
             var closingTime = calendars.First().TradingCloseTime;
             closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 
+            // Get the first group of bars from today if the market has already been open.
+            var bars = restClient.ListMinuteAggregatesAsync(symbol: symbol, limit: 20).Result.Items;
+            foreach (var bar in bars)
+            {
+                if (bar.Time.Date == DateTime.Now.Date)
+                {
+                    closingPrices.Add(bar.Close);
+                }
+            }
+
             Console.WriteLine("Waiting for market open...");
             AwaitMarketOpen();
             Console.WriteLine("Market opened.");
 
-            // Check every minute for price updates.
-            TimeSpan timeUntilClose = closingTime - DateTime.Now;
-            while (timeUntilClose.TotalMinutes > 15)
+            // Connect to Polygon and listen for price updates.
+            var natsClient = new NatsClient(API_KEY, false);
+            natsClient.Open();
+            Console.WriteLine("Polygon client opened.");
+            natsClient.AggReceived += (agg) =>
             {
-                // Cancel old order if it's not already been filled.
-                restClient.DeleteOrderAsync(lastTradeId);
+                // If the market's close to closing, exit position and stop trading.
+                TimeSpan minutesUntilClose = closingTime - DateTime.UtcNow;
+                if (minutesUntilClose.TotalMinutes < 15)
+                {
+                    Console.WriteLine("Reached the end of trading window.");
+                    ClosePositionAtMarket();
+                    natsClient.Close();
+                }
+                else
+                {
+                    // Decide whether to buy or sell and submit orders.
+                    HandleMinuteAgg(agg);
+                }
+            };
+            natsClient.SubscribeMinuteAgg(symbol);
 
-                // Get information about current account value.
+            // Connect to Alpaca and listen for updates on our orders.
+            var sockClient = new SockClient(API_KEY, API_SECRET, API_URL);
+            await sockClient.ConnectAsync();
+            Console.WriteLine("Socket client opened.");
+            sockClient.OnTradeUpdate += (trade) =>
+            {
+                HandleTradeUpdate(trade);
+            };
+        }
+
+        // Waits until the clock says the market is open.
+        // Note: if you wanted the algorithm to start trading right at market open, you would instead
+        // use the method restClient.GetCalendarAsync() to get the open time and schedule execution
+        // of your code based on that. However, this algorithm does not start trading until at least
+        // 20 minutes after the market opens.
+        private void AwaitMarketOpen()
+        {
+            while (!restClient.GetClockAsync().Result.IsOpen)
+            {
+                Thread.Sleep(60000);
+            }
+        }
+
+        // Determine whether our position should grow or shrink and submit orders.
+        private void HandleMinuteAgg(IStreamAgg agg)
+        {
+            closingPrices.Add(agg.Close);
+            if (closingPrices.Count > 20)
+            {
+                closingPrices.RemoveAt(0);
+
+                Decimal avg = closingPrices.Average();
+                Decimal diff = avg - agg.Close;
+
+                // If the last trade hasn't filled yet, we'd rather replace
+                // it than have two orders open at once.
+                if (lastTradeOpen)
+                {
+                    restClient.DeleteOrderAsync(lastTradeId);
+                }
+
+                // Make sure we know how much we should spend on our position.
                 var account = restClient.GetAccountAsync().Result;
                 Decimal buyingPower = account.BuyingPower;
                 Decimal portfolioValue = account.PortfolioValue;
 
-                // Get information about our existing position.
+                // Check how much we currently have in this position.
                 int positionQuantity = 0;
                 Decimal positionValue = 0;
                 try
@@ -69,19 +134,13 @@ namespace Examples
                     // No position exists. This exception can be safely ignored.
                 }
 
-                var barSet = restClient.GetBarSetAsync(new String[] { symbol }, TimeFrame.Minute, 20).Result;
-                var bars = barSet[symbol];
-                Decimal avg = bars.Average(item => item.Close);
-                Decimal currentPrice = bars.Last().Close;
-                Decimal diff = avg - currentPrice;
-
                 if (diff <= 0)
                 {
                     // Above the 20 minute average - exit any existing long position.
                     if (positionQuantity > 0)
                     {
                         Console.WriteLine("Setting position to zero.");
-                        SubmitOrder(positionQuantity, currentPrice, OrderSide.Sell);
+                        SubmitOrder(positionQuantity, agg.Close, OrderSide.Sell);
                     }
                     else
                     {
@@ -91,7 +150,7 @@ namespace Examples
                 else
                 {
                     // Allocate a percent of our portfolio to this position.
-                    Decimal portfolioShare = diff / currentPrice * scale;
+                    Decimal portfolioShare = diff / agg.Close * scale;
                     Decimal targetPositionValue = portfolioValue * portfolioShare;
                     Decimal amountToAdd = targetPositionValue - positionValue;
 
@@ -104,9 +163,10 @@ namespace Examples
                         {
                             amountToAdd = buyingPower;
                         }
-                        int qtyToBuy = (int)(amountToAdd / currentPrice);
+                        int qtyToBuy = (int)(amountToAdd / agg.Close);
 
-                        SubmitOrder(qtyToBuy, currentPrice, OrderSide.Buy);
+                        SubmitOrder(qtyToBuy, agg.Close, OrderSide.Buy);
+                        Console.WriteLine(String.Format("Adding {0:C2} to position.", qtyToBuy * agg.Close));
                     }
                     else
                     {
@@ -114,30 +174,38 @@ namespace Examples
 
                         // Make sure we're not trying to sell more than we have.
                         amountToAdd *= -1;
-                        int qtyToSell = (int)(amountToAdd / currentPrice);
+                        int qtyToSell = (int)(amountToAdd / agg.Close);
                         if (qtyToSell > positionQuantity)
                         {
                             qtyToSell = positionQuantity;
                         }
 
-                        SubmitOrder(qtyToSell, currentPrice, OrderSide.Sell);
+                        SubmitOrder(qtyToSell, agg.Close, OrderSide.Sell);
+                        Console.WriteLine(String.Format("Removing {0:C2} from position", qtyToSell * agg.Close));
                     }
                 }
-
-                // Wait another minute.
-                Thread.Sleep(60000);
-                timeUntilClose = closingTime - DateTime.Now;
             }
-
-            Console.WriteLine("Market nearing close; closing position.");
-            ClosePositionAtMarket();
+            else
+            {
+                Console.WriteLine("Waiting on more data.");
+            }
         }
 
-        private void AwaitMarketOpen()
+        // Update our information about the last order we placed.
+        // This is done so that we know whether or not we need to submit a cancel for
+        // that order before we place another.
+        private void HandleTradeUpdate(ITradeUpdate trade)
         {
-            while (!restClient.GetClockAsync().Result.IsOpen)
+            if (trade.Order.OrderId == lastTradeId)
             {
-                Thread.Sleep(60000);
+                switch (trade.Event)
+                {
+                    case TradeEvent.Fill:
+                    case TradeEvent.Rejected:
+                    case TradeEvent.Canceled:
+                        lastTradeOpen = false;
+                        break;
+                }
             }
         }
 
@@ -146,12 +214,11 @@ namespace Examples
         {
             if (quantity == 0)
             {
-                Console.WriteLine("No order necessary.");
                 return;
             }
-            Console.WriteLine($"Submitting {side} order for {quantity} shares at ${price}.");
             var order = restClient.PostOrderAsync(symbol, quantity, side, OrderType.Limit, TimeInForce.Day, price).Result;
             lastTradeId = order.OrderId;
+            lastTradeOpen = true;
         }
 
         private void ClosePositionAtMarket()
