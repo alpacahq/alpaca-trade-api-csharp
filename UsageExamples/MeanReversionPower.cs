@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace UsageExamples
 {
-    class MeanReversionPower
+    internal sealed class MeanReversionPower
     {
         private string API_KEY = "REPLACEME";
         private string API_SECRET = "REPLACEME";
