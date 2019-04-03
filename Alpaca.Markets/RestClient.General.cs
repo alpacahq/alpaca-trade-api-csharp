@@ -239,7 +239,6 @@ namespace Alpaca.Markets
                     .AddParameter("start", startDateInclusive, "yyyy-MM-dd")
                     .AddParameter("end", endDateInclusive, "yyyy-MM-dd")
             };
-
             return getObjectsListAsync<ICalendar, JsonCalendar>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, builder);
         }
