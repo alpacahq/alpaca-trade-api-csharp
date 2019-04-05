@@ -149,37 +149,44 @@ namespace Alpaca.Markets
             Object sender,
             DataReceivedEventArgs e)
         {
-            var message = Encoding.UTF8.GetString(e.Data);
-            var root = JObject.Parse(message);
-
-            var data = root["data"];
-            var stream = root["stream"].ToString();
-
-            switch (stream)
+            try
             {
-                case "authorization":
-                    handleAuthorization(
-                        data.ToObject<JsonAuthResponse>());
-                    break;
+                var message = Encoding.UTF8.GetString(e.Data);
+                var root = JObject.Parse(message);
 
-                case "listening":
-                    Connected?.Invoke(AuthStatus.Authorized);
-                    break;
+                var data = root["data"];
+                var stream = root["stream"].ToString();
 
-                case "trade_updates":
-                    handleTradeUpdates(
-                        data.ToObject<JsonTradeUpdate>());
-                    break;
+                switch (stream)
+                {
+                    case "authorization":
+                        handleAuthorization(
+                            data.ToObject<JsonAuthResponse>());
+                        break;
 
-                case "account_updates":
-                    handleAccountUpdates(
-                        data.ToObject<JsonAccountUpdate>());
-                    break;
+                    case "listening":
+                        Connected?.Invoke(AuthStatus.Authorized);
+                        break;
 
-                default:
-                    OnError?.Invoke(new InvalidOperationException(
-                        $"Unexpected message type '{stream}' received."));
-                    break;
+                    case "trade_updates":
+                        handleTradeUpdates(
+                            data.ToObject<JsonTradeUpdate>());
+                        break;
+
+                    case "account_updates":
+                        handleAccountUpdates(
+                            data.ToObject<JsonAccountUpdate>());
+                        break;
+
+                    default:
+                        OnError?.Invoke(new InvalidOperationException(
+                            $"Unexpected message type '{stream}' received."));
+                        break;
+                }
+            }
+            catch (Exception exception)
+            {
+                OnError?.Invoke(exception);
             }
         }
 
@@ -210,13 +217,13 @@ namespace Alpaca.Markets
         }
 
         private void handleTradeUpdates(
-            JsonTradeUpdate update)
+            ITradeUpdate update)
         {
             OnTradeUpdate?.Invoke(update);
         }
 
         private void handleAccountUpdates(
-            JsonAccountUpdate update)
+            IAccountUpdate update)
         {
             OnAccountUpdate?.Invoke(update);
         }
