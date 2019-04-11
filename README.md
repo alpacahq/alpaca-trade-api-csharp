@@ -1,3 +1,5 @@
+[![Master build status](https://ci.appveyor.com/api/projects/status/github/alpacahq/alpaca-trade-api-csharp?svg=true&branch=master&passingText=master%20-%20OK&failedText=master%20-%20FAIL&pendingText=master%20-%20Pending)](https://ci.appveyor.com/project/alpacahq-bot/alpaca-trade-api-csharp) [![Develop build status](https://ci.appveyor.com/api/projects/status/github/alpacahq/alpaca-trade-api-csharp?svg=true&branch=develop&passingText=develop%20-%20OK&failedText=develop%20-%20FAIL&pendingText=develop%20-%20Pending)](https://ci.appveyor.com/project/alpacahq-bot/alpaca-trade-api-csharp)
+
 # .NET SDK for Alpaca Markets API
 ## .NET Core Usage Example
 1. Create a new console application in a new, empty folder by running `dotnet new console`.
