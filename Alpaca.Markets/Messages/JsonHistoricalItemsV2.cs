@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    internal abstract class JsonHistoricalItemsV2<TApi, TJson> where TJson : TApi
+    internal abstract class JsonHistoricalItemsV2<TApi, TJson> : IHistoricalItemsV2<TApi> where TJson : TApi
     {
         private static readonly IReadOnlyList<TApi> _empty = new TApi[0];
 
@@ -12,7 +12,7 @@ namespace Alpaca.Markets
         public String Status { get; set; }
 
         [JsonProperty(PropertyName = "ticker", Required = Required.Always)]
-        public String Ticker { get; set; }
+        public String Symbol { get; set; }
 
         [JsonProperty(PropertyName = "results", Required = Required.Always)]
         public List<TJson> ItemsList { get; set; }
@@ -21,10 +21,10 @@ namespace Alpaca.Markets
         public Boolean Adjusted { get; set; }
 
         [JsonProperty(PropertyName = "queryCount", Required = Required.Always)]
-        public Decimal QueryCount { get; set; }
+        public Int64 QueryCount { get; set; }
 
         [JsonProperty(PropertyName = "resultsCount", Required = Required.Always)]
-        public Decimal ResultsCount { get; set; }
+        public Int64 ResultsCount { get; set; }
 
         [JsonIgnore]
         public IReadOnlyList<TApi> Items =>

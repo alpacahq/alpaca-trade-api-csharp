@@ -179,8 +179,8 @@ namespace Alpaca.Markets
             Boolean unadjusted = false)
         {
 
-            Int32 unixFrom = (Int32)(dateFromInclusive.Subtract(new  DateTime(1970, 1, 1, 0, 0 ,0))).TotalMilliseconds;
-            Int32 unixTo = (Int32)(dateFromInclusive.Subtract(new  DateTime(1970, 1, 1, 0, 0 ,0))).TotalMilliseconds;
+            Int32 unixFrom = (Int32)(dateFromInclusive.Subtract(new DateTime(1970, 1, 1, 0, 0 ,0))).TotalMilliseconds;
+            Int32 unixTo = (Int32)(dateFromInclusive.Subtract(new DateTime(1970, 1, 1, 0, 0 ,0))).TotalMilliseconds;
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
             {
                 Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/{timespan}/{unixFrom}/{unixTo}/",
@@ -190,7 +190,7 @@ namespace Alpaca.Markets
 
             return getSingleObjectAsync
                 <IHistoricalItemsV2<IAgg>,
-                    JsonAggHistoricalItems<IAgg, JsonAggV2>>(
+                    JsonHistoricalItemsV2<IAgg, JsonAggV2>>(
                 _polygonHttpClient, FakeThrottler.Instance, builder);
         }
 
