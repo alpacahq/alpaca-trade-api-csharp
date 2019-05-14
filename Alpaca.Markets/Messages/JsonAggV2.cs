@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    internal sealed class JsonMinuteAgg : JsonAggBase
+    internal sealed class JsonAggV2 : JsonAggBase
     {
 
         [JsonProperty(PropertyName = "t", Required = Required.Default)]

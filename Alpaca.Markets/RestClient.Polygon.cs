@@ -161,6 +161,40 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
+        /// Gets list of historical minute bars for single asset from Polygon REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">>Asset name for data retrieval.</param>
+        /// <param name="timespan">>Base length of bars. ("minute" or "day".)</param>
+        /// <param name="multiplier">>Number of bars to combine in each result.</param>
+        /// <param name="dateFromInclusive">Start time for filtering (inclusive).</param>
+        /// <param name="dateToInclusive">End time for filtering (inclusive).</param>
+        /// <param name="unadjusted">Set to true if the results should not be adjusted for splits.</param>
+        /// <returns>Read-only list of minute bars for specified asset.</returns>
+        public Task<IHistoricalItemsV2<IAgg>> ListAggregatesAsyncV2(
+            String symbol,
+            String timespan,
+            Int32 multiplier,
+            DateTime? dateFromInclusive,
+            DateTime? dateToInclusive,
+            Boolean unadjusted = false)
+        {
+
+            long unixFrom = ((DateTimeOffset)dateFromInclusive).ToUnixTimeMilliseconds();
+            long unixTo = ((DateTimeOffset)dateToInclusive).ToUnixTimeMilliseconds();
+            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            {
+                Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/{timespan}/{unixFrom}/{unixTo}/",
+                Query = getDefaultPolygonApiQueryBuilder()
+                    .AddParameter("unadjusted", unadjusted.ToString())
+            };
+
+            return getSingleObjectAsync
+                <IHistoricalItemsV2<IAgg>,
+                    JsonAggHistoricalItems<IAgg, JsonAggV2>>(
+                _polygonHttpClient, FakeThrottler.Instance, builder);
+        }
+
+        /// <summary>
         /// Gets last trade for singe asset from Polygon REST API endpoint.
         /// </summary>
         /// <param name="symbol">Asset name for data retrieval.</param>
