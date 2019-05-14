@@ -174,13 +174,13 @@ namespace Alpaca.Markets
             String symbol,
             String timespan,
             Int32 multiplier,
-            DateTime? dateFromInclusive,
-            DateTime? dateToInclusive,
+            DateTime dateFromInclusive,
+            DateTime dateToInclusive,
             Boolean unadjusted = false)
         {
 
-            long unixFrom = ((DateTimeOffset)dateFromInclusive).ToUnixTimeMilliseconds();
-            long unixTo = ((DateTimeOffset)dateToInclusive).ToUnixTimeMilliseconds();
+            Int32 unixFrom = (Int32)(dateFromInclusive.Subtract(new  DateTime(1970, 1, 1, 0, 0 ,0))).TotalMilliseconds;
+            Int32 unixTo = (Int32)(dateFromInclusive.Subtract(new  DateTime(1970, 1, 1, 0, 0 ,0))).TotalMilliseconds;
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
             {
                 Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/{timespan}/{unixFrom}/{unixTo}/",
