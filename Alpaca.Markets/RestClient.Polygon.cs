@@ -177,11 +177,11 @@ namespace Alpaca.Markets
             Boolean unadjusted = false)
         {
 
-            Int32 unixFrom = DateTimeHelper.GetUnixTimeMillis(dateFromInclusive);
-            Int32 unixTo = DateTimeHelper.GetUnixTimeMillis(dateToInclusive);
+            Int64 unixFrom = DateTimeHelper.GetUnixTimeMillis(dateFromInclusive);
+            Int64 unixTo = DateTimeHelper.GetUnixTimeMillis(dateToInclusive);
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
             {
-                Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/minute/{unixFrom}/{unixTo}/",
+                Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/minute/{unixFrom}/{unixTo}",
                 Query = getDefaultPolygonApiQueryBuilder()
                     .AddParameter("unadjusted", unadjusted.ToString())
             };
@@ -209,11 +209,11 @@ namespace Alpaca.Markets
             Boolean unadjusted = false)
         {
 
-            Int32 unixFrom = DateTimeHelper.GetUnixTimeMillis(dateFromInclusive);
-            Int32 unixTo = DateTimeHelper.GetUnixTimeMillis(dateToInclusive);
+            Int64 unixFrom = DateTimeHelper.GetUnixTimeMillis(dateFromInclusive);
+            Int64 unixTo = DateTimeHelper.GetUnixTimeMillis(dateToInclusive);
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
             {
-                Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/day/{unixFrom}/{unixTo}/",
+                Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/day/{unixFrom}/{unixTo}",
                 Query = getDefaultPolygonApiQueryBuilder()
                     .AddParameter("unadjusted", unadjusted.ToString())
             };

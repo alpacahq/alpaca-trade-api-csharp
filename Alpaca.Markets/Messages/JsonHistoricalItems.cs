@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    internal abstract class JsonHistoricalItems<TApi, TJson> : IHistoricalItems<TApi> where TJson : TApi
+    internal class JsonHistoricalItems<TApi, TJson> : IHistoricalItems<TApi> where TJson : TApi
     {
         private static readonly IReadOnlyList<TApi> _empty = new TApi[0];
 
