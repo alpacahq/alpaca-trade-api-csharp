@@ -6,6 +6,7 @@ namespace Alpaca.Markets
 {
     internal sealed class JsonDayAgg : IAgg
     {
+
         [JsonProperty(PropertyName = "o", Required = Required.Always)]
         public Decimal Open { get; set; }
 
@@ -20,6 +21,9 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "v", Required = Required.Always)]
         public Int64 Volume { get; set; }
+
+        [JsonProperty(PropertyName = "n", Required = Required.Default)]
+        public Int32 ItemsInWindow { get; set; }
 
         [JsonConverter(typeof(DateConverter), "yyyy-M-d")]
         [JsonProperty(PropertyName = "d", Required = Required.Default)]

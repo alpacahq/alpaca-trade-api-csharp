@@ -33,6 +33,9 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "e", Required = Required.Always)]
         public Int64 EndTimeOffset { get; set; }
 
+        [JsonProperty(PropertyName = "n", Required = Required.Default)]
+        public Int32 ItemsInWindow { get; set; }
+
         [JsonIgnore]
         public DateTime StartTime { get; set; }
 

@@ -6,6 +6,7 @@ namespace Alpaca.Markets
 {
     internal sealed class JsonMinuteAgg : IAgg
     {
+
         [JsonProperty(PropertyName = "o", Required = Required.Always)]
         public Decimal Open { get; set; }
 
@@ -24,8 +25,11 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "t", Required = Required.Default)]
         public Int64 TimeOffset { get; set; }
 
+        [JsonProperty(PropertyName = "n", Required = Required.Default)]
+        public Int32 ItemsInWindow { get; set; }
+
         [JsonIgnore]
-        public DateTime Time { get; private set; }
+        public DateTime Time { get; set; }
 
         [OnDeserialized]
         internal void OnDeserializedMethod(

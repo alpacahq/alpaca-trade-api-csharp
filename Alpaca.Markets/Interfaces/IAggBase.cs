@@ -31,5 +31,11 @@ namespace Alpaca.Markets
         /// Gets bar trading volume.
         /// </summary>
         Int64 Volume { get; }
+
+        /// <summary>
+        /// Number of items in aggregate window.
+        /// Polygon v2 API only.
+        /// </summary>
+        Int32 ItemsInWindow { get; }
     }
 }
