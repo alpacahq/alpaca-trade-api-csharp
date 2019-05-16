@@ -18,5 +18,9 @@ namespace Alpaca.Markets
         {
             return _epoch.Add(TimeSpan.FromSeconds(linuxTimeStamp));
         }
+
+        public static Int32 GetUnixTimeMillis(DateTime dateTime) {
+            return (Int32)(dateTime.Subtract(_epoch)).TotalMilliseconds;
+        }
     }
 }

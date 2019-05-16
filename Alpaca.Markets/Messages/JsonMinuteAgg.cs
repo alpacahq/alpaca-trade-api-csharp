@@ -4,14 +4,34 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    internal sealed class JsonMinuteAgg : JsonAggBase
+    internal sealed class JsonMinuteAgg : IAgg
     {
+
+        [JsonProperty(PropertyName = "o", Required = Required.Always)]
+        public Decimal Open { get; set; }
+
+        [JsonProperty(PropertyName = "c", Required = Required.Always)]
+        public Decimal Close { get; set; }
+
+        [JsonProperty(PropertyName = "l", Required = Required.Always)]
+        public Decimal Low { get; set; }
+
+        [JsonProperty(PropertyName = "h", Required = Required.Always)]
+        public Decimal High { get; set; }
+
+        [JsonProperty(PropertyName = "v", Required = Required.Always)]
+        public Int64 Volume { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Default)]
         public Int64 TimeOffset { get; set; }
 
+        [JsonProperty(PropertyName = "n", Required = Required.Default)]
+        public Int32 ItemsInWindow { get; set; }
+
+        public DateTime Time { get; set; }
+
         [OnDeserialized]
-        internal override void OnDeserializedMethod(
+        internal void OnDeserializedMethod(
             StreamingContext context)
         {
 #if NET45
