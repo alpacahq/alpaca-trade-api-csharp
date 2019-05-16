@@ -110,6 +110,7 @@ namespace Alpaca.Markets
         /// <param name="dateIntoInclusive">End time for filtering (inclusive).</param>
         /// <param name="limit">Maximal number of daily bars in data response.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
+        [Obsolete("This version of ListDayAggregatesAsync will be deprecated in a future release.")]
         public Task<IAggHistoricalItems<IAgg>> ListDayAggregatesAsync(
             String symbol,
             DateTime? dateFromInclusive = null,
@@ -139,6 +140,7 @@ namespace Alpaca.Markets
         /// <param name="dateIntoInclusive">End time for filtering (inclusive).</param>
         /// <param name="limit">Maximal number of minute bars in data response.</param>
         /// <returns>Read-only list of minute bars for specified asset.</returns>
+        [Obsolete("This version of ListMinuteAggregatesAsync will be deprecated in a future release.")]
         public Task<IAggHistoricalItems<IAgg>> ListMinuteAggregatesAsync(
             String symbol,
             DateTime? dateFromInclusive = null,
@@ -161,7 +163,7 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// Gets list of historical minute bars for single asset from Polygon REST API endpoint.
+        /// Gets list of historical minute bars for single asset from Polygon's v2 REST API endpoint.
         /// </summary>
         /// <param name="symbol">>Asset name for data retrieval.</param>
         /// <param name="multiplier">>Number of bars to combine in each result.</param>
@@ -169,7 +171,7 @@ namespace Alpaca.Markets
         /// <param name="dateToInclusive">End time for filtering (inclusive).</param>
         /// <param name="unadjusted">Set to true if the results should not be adjusted for splits.</param>
         /// <returns>Read-only list of minute bars for specified asset.</returns>
-        public Task<IHistoricalItems<IAgg>> ListMinuteAggregatesAsyncV2(
+        public Task<IHistoricalItems<IAgg>> ListMinuteAggregatesAsync(
             String symbol,
             Int32 multiplier,
             DateTime dateFromInclusive,
@@ -193,7 +195,7 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// Gets list of historical minute bars for single asset from Polygon REST API endpoint.
+        /// Gets list of historical minute bars for single asset from Polygon's v2 REST API endpoint.
         /// </summary>
         /// <param name="symbol">>Asset name for data retrieval.</param>
         /// <param name="multiplier">>Number of bars to combine in each result.</param>
@@ -201,7 +203,7 @@ namespace Alpaca.Markets
         /// <param name="dateToInclusive">End time for filtering (inclusive).</param>
         /// <param name="unadjusted">Set to true if the results should not be adjusted for splits.</param>
         /// <returns>Read-only list of day bars for specified asset.</returns>
-        public Task<IHistoricalItems<IAgg>> ListDayAggregatesAsyncV2(
+        public Task<IHistoricalItems<IAgg>> ListDayAggregatesAsync(
             String symbol,
             Int32 multiplier,
             DateTime dateFromInclusive,
