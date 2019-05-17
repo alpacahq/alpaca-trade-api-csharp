@@ -1,17 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace UsageExamples
 {
-    internal sealed class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            var algo = new MeanReversionPaperOnly();
-            algo.Run();
+            try
+            {
+                var algo = new MeanReversionPaperOnly();
+                await algo.Run();
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e);
+            }
+
             Console.Read();
         }
     }
