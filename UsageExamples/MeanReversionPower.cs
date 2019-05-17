@@ -2,74 +2,81 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
+using System.Threading.Tasks;
 
 namespace UsageExamples
 {
     internal sealed class MeanReversionPower
     {
         private string API_KEY = "REPLACEME";
+
         private string API_SECRET = "REPLACEME";
+
         private string API_URL = "https://paper-api.alpaca.markets";
 
         private string symbol = "SPY";
+
         private Decimal scale = 200;
 
         private RestClient restClient;
 
         private Guid lastTradeId = Guid.NewGuid();
-        private bool lastTradeOpen = false;
-        private List<Decimal> closingPrices = new List<Decimal>();
 
-        public async void Run()
+        private bool lastTradeOpen = false;
+
+        private readonly List<Decimal> closingPrices = new List<Decimal>();
+
+        public async Task Run()
         {
             restClient = new RestClient(API_KEY, API_SECRET, API_URL, apiVersion: 2);
 
             // First, cancel any existing orders so they don't impact our buying power.
-            var orders = restClient.ListOrdersAsync().Result;
+            var orders = await restClient.ListOrdersAsync();
             foreach (var order in orders)
             {
-                restClient.DeleteOrderAsync(order.OrderId);
+                await restClient.DeleteOrderAsync(order.OrderId);
             }
 
             // Figure out when the market will close so we can prepare to sell beforehand.
-            var calendars = restClient.ListCalendarAsync(DateTime.Today).Result;
+            var calendars = (await restClient.ListCalendarAsync(DateTime.Today)).ToList();
             var calendarDate = calendars.First().TradingDate;
             var closingTime = calendars.First().TradingCloseTime;
+
             closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 
+            var today = DateTime.Today;
             // Get the first group of bars from today if the market has already been open.
-            var bars = restClient.ListMinuteAggregatesAsync(symbol: symbol, limit: 20).Result.Items;
-            foreach (var bar in bars)
+            var bars = await restClient.ListMinuteAggregatesAsync(symbol, 1, today.AddDays(-5), today);
+            foreach (var bar in bars.Items)
             {
-                if (bar.Time.Date == DateTime.Now.Date)
+                if (bar.Time.Date == today)
                 {
                     closingPrices.Add(bar.Close);
                 }
             }
 
             Console.WriteLine("Waiting for market open...");
-            AwaitMarketOpen();
+            await AwaitMarketOpen();
             Console.WriteLine("Market opened.");
 
             // Connect to Polygon and listen for price updates.
             var natsClient = new NatsClient(API_KEY, false);
             natsClient.Open();
             Console.WriteLine("Polygon client opened.");
-            natsClient.AggReceived += (agg) =>
+            natsClient.AggReceived += async (agg) =>
             {
                 // If the market's close to closing, exit position and stop trading.
                 TimeSpan minutesUntilClose = closingTime - DateTime.UtcNow;
                 if (minutesUntilClose.TotalMinutes < 15)
                 {
                     Console.WriteLine("Reached the end of trading window.");
-                    ClosePositionAtMarket();
+                    await ClosePositionAtMarket();
                     natsClient.Close();
                 }
                 else
                 {
                     // Decide whether to buy or sell and submit orders.
-                    HandleMinuteAgg(agg);
+                    await HandleMinuteAgg(agg);
                 }
             };
             natsClient.SubscribeMinuteAgg(symbol);
@@ -78,10 +85,8 @@ namespace UsageExamples
             var sockClient = new SockClient(API_KEY, API_SECRET, API_URL);
             await sockClient.ConnectAsync();
             Console.WriteLine("Socket client opened.");
-            sockClient.OnTradeUpdate += (trade) =>
-            {
-                HandleTradeUpdate(trade);
-            };
+
+            sockClient.OnTradeUpdate += HandleTradeUpdate;
         }
 
         // Waits until the clock says the market is open.
@@ -89,16 +94,16 @@ namespace UsageExamples
         // use the method restClient.GetCalendarAsync() to get the open time and schedule execution
         // of your code based on that. However, this algorithm does not start trading until at least
         // 20 minutes after the market opens.
-        private void AwaitMarketOpen()
+        private async Task AwaitMarketOpen()
         {
-            while (!restClient.GetClockAsync().Result.IsOpen)
+            while (!(await restClient.GetClockAsync()).IsOpen)
             {
-                Thread.Sleep(60000);
+                await Task.Delay(60000);
             }
         }
 
         // Determine whether our position should grow or shrink and submit orders.
-        private void HandleMinuteAgg(IStreamAgg agg)
+        private async Task HandleMinuteAgg(IStreamAgg agg)
         {
             closingPrices.Add(agg.Close);
             if (closingPrices.Count > 20)
@@ -114,11 +119,11 @@ namespace UsageExamples
                 {
                     // We need to wait for the cancel to process in order to avoid
                     // having long and short orders open at the same time.
-                    bool res = restClient.DeleteOrderAsync(lastTradeId).Result;
+                    bool res = await restClient.DeleteOrderAsync(lastTradeId);
                 }
 
                 // Make sure we know how much we should spend on our position.
-                var account = restClient.GetAccountAsync().Result;
+                var account = await restClient.GetAccountAsync();
                 Decimal buyingPower = account.BuyingPower;
                 Decimal equity = account.Equity;
                 long multiplier = account.Multiplier;
@@ -128,11 +133,11 @@ namespace UsageExamples
                 Decimal positionValue = 0;
                 try
                 {
-                    var currentPosition = restClient.GetPositionAsync(symbol).Result;
+                    var currentPosition = await restClient.GetPositionAsync(symbol);
                     positionQuantity = currentPosition.Quantity;
                     positionValue = currentPosition.MarketValue;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     // No position exists. This exception can be safely ignored.
                 }
@@ -143,8 +148,8 @@ namespace UsageExamples
                     if (positionQuantity > 0)
                     {
                         // There is an existing long position we need to dispose of first
-                        Console.WriteLine(String.Format("Removing {0:C2} long position.", positionValue));
-                        SubmitOrder(positionQuantity, agg.Close, OrderSide.Sell);
+                        Console.WriteLine($"Removing {positionValue:C2} long position.");
+                        await SubmitOrder(positionQuantity, agg.Close, OrderSide.Sell);
                     }
                     else
                     {
@@ -162,8 +167,8 @@ namespace UsageExamples
                                 amountToShort = buyingPower;
                             }
                             int qty = (int)(amountToShort / agg.Close);
-                            Console.WriteLine(String.Format("Adding {0:C2} to short position.", qty * agg.Close));
-                            SubmitOrder(qty, agg.Close, OrderSide.Sell);
+                            Console.WriteLine($"Adding {qty * agg.Close:C2} to short position.");
+                            await SubmitOrder(qty, agg.Close, OrderSide.Sell);
                         }
                         else
                         {
@@ -173,8 +178,8 @@ namespace UsageExamples
                             {
                                 qty = -1 * positionQuantity;
                             }
-                            Console.WriteLine(String.Format("Removing {0:C2} from short position", qty * agg.Close));
-                            SubmitOrder(qty, agg.Close, OrderSide.Buy);
+                            Console.WriteLine($"Removing {qty * agg.Close:C2} from short position");
+                            await SubmitOrder(qty, agg.Close, OrderSide.Buy);
                         }
                     }
                 }
@@ -194,8 +199,8 @@ namespace UsageExamples
                         }
                         int qty = (int)(amountToLong / agg.Close);
 
-                        SubmitOrder(qty, agg.Close, OrderSide.Buy);
-                        Console.WriteLine(String.Format("Adding {0:C2} to long position.", qty * agg.Close));
+                        await SubmitOrder(qty, agg.Close, OrderSide.Buy);
+                        Console.WriteLine($"Adding {qty * agg.Close:C2} to long position.");
                     }
                     else
                     {
@@ -207,8 +212,8 @@ namespace UsageExamples
                             qty = positionQuantity;
                         }
 
-                        SubmitOrder(qty, agg.Close, OrderSide.Sell);
-                        Console.WriteLine(String.Format("Removing {0:C2} from long position", qty * agg.Close));
+                        await SubmitOrder(qty, agg.Close, OrderSide.Sell);
+                        Console.WriteLine($"Removing {qty * agg.Close:C2} from long position");
                     }
                 }
             }
@@ -237,7 +242,7 @@ namespace UsageExamples
         }
 
         // Submit an order if quantity is not zero.
-        private void SubmitOrder(int quantity, Decimal price, OrderSide side)
+        private async Task SubmitOrder(int quantity, Decimal price, OrderSide side)
         {
             if (quantity == 0)
             {
@@ -245,7 +250,7 @@ namespace UsageExamples
             }
             try
             {
-                var order = restClient.PostOrderAsync(symbol, quantity, side, OrderType.Limit, TimeInForce.Day, price).Result;
+                var order = await restClient.PostOrderAsync(symbol, quantity, side, OrderType.Limit, TimeInForce.Day, price);
                 lastTradeId = order.OrderId;
                 lastTradeOpen = true;
             }
@@ -255,14 +260,14 @@ namespace UsageExamples
             }
         }
 
-        private void ClosePositionAtMarket()
+        private async Task ClosePositionAtMarket()
         {
             try
             {
-                var positionQuantity = restClient.GetPositionAsync(symbol).Result.Quantity;
-                restClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
+                var positionQuantity = (await restClient.GetPositionAsync(symbol)).Quantity;
+                await restClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // No position to exit.
             }

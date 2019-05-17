@@ -56,37 +56,13 @@ namespace Alpaca.Markets.Tests
         }
 
         [Fact]
-        public async void ListDayAggregatesWorks()
-        {
-            var historicalItems = await _restClient
-                .ListDayAggregatesAsync(SYMBOL);
-
-            Assert.NotNull(historicalItems);
-
-            Assert.NotNull(historicalItems.Items);
-            Assert.NotEmpty(historicalItems.Items);
-        }
-
-        [Fact]
-        public async void ListMinuteAggregatesWorks()
-        {
-            var historicalItems = await _restClient
-                .ListMinuteAggregatesAsync(SYMBOL);
-
-            Assert.NotNull(historicalItems);
-
-            Assert.NotNull(historicalItems.Items);
-            Assert.NotEmpty(historicalItems.Items);
-        }
-
-        [Fact]
         public async void ListMinuteAggregatesForDateRangeWorks()
         {
             var dateInto = await getLastTradingDay();
             var dateFrom = dateInto.AddHours(-20);
 
             var historicalItems = await _restClient
-                .ListMinuteAggregatesAsync(SYMBOL, dateFrom, dateInto);
+                .ListMinuteAggregatesAsync(SYMBOL, 1, dateFrom, dateInto);
 
             Assert.NotNull(historicalItems);
 

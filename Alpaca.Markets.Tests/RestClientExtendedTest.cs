@@ -29,7 +29,7 @@ namespace Alpaca.Markets.Tests
             var dateFrom = dateInto.AddDays(-7);
 
             var historicalItems = await _restClient
-                .ListDayAggregatesAsync(SYMBOL, dateFrom, dateInto);
+                .ListDayAggregatesAsync(SYMBOL, 1, dateFrom, dateInto);
 
             Assert.NotNull(historicalItems);
 
@@ -44,27 +44,12 @@ namespace Alpaca.Markets.Tests
             var dateFrom = dateInto.AddDays(-7);
 
             var historicalItems = await _restClient
-                .ListMinuteAggregatesAsync(SYMBOL, dateFrom, dateInto, 100);
+                .ListMinuteAggregatesAsync(SYMBOL, 1, dateFrom, dateInto, true);
 
             Assert.NotNull(historicalItems);
 
             Assert.NotNull(historicalItems.Items);
             Assert.NotEmpty(historicalItems.Items);
-        }
-
-        [Fact]
-        public async void ListMinuteAggregatesWithLimitWorks()
-        {
-            var historicalItems = await _restClient
-                .ListMinuteAggregatesAsync(SYMBOL, limit: 100);
-
-            Assert.NotNull(historicalItems);
-
-            Assert.NotNull(historicalItems.Items);
-            Assert.NotEmpty(historicalItems.Items);
-
-            Assert.Equal(100, historicalItems.Items.Count);
-            Assert.True(historicalItems.Items[0].Time < DateTime.UtcNow);
         }
 
         [Fact]
