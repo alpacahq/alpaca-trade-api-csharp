@@ -38,11 +38,12 @@ namespace UsageExamples
             var closingTime = calendars.First().TradingCloseTime;
             closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 
+            var today = DateTime.Today;
             // Get the first group of bars from today if the market has already been open.
-            var bars = restClient.ListMinuteAggregatesAsync(symbol: symbol, limit: 20).Result.Items;
+            var bars = restClient.ListMinuteAggregatesAsync(symbol, 1, today.AddDays(-5), today).Result.Items;
             foreach (var bar in bars)
             {
-                if (bar.Time.Date == DateTime.Now.Date)
+                if (bar.Time.Date == today)
                 {
                     closingPrices.Add(bar.Close);
                 }
@@ -118,7 +119,7 @@ namespace UsageExamples
                 // Make sure we know how much we should spend on our position.
                 var account = restClient.GetAccountAsync().Result;
                 Decimal buyingPower = account.BuyingPower;
-                Decimal portfolioValue = account.PortfolioValue;
+                Decimal portfolioValue = account.Equity;
 
                 // Check how much we currently have in this position.
                 int positionQuantity = 0;
@@ -129,7 +130,7 @@ namespace UsageExamples
                     positionQuantity = currentPosition.Quantity;
                     positionValue = currentPosition.MarketValue;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     // No position exists. This exception can be safely ignored.
                 }
@@ -228,7 +229,7 @@ namespace UsageExamples
                 var positionQuantity = restClient.GetPositionAsync(symbol).Result.Quantity;
                 restClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // No position to exit.
             }

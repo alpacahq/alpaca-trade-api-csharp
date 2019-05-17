@@ -51,7 +51,7 @@ namespace UsageExamples
                 // Get information about current account value.
                 var account = restClient.GetAccountAsync().Result;
                 Decimal buyingPower = account.BuyingPower;
-                Decimal portfolioValue = account.PortfolioValue;
+                Decimal portfolioValue = account.Equity;
 
                 // Get information about our existing position.
                 int positionQuantity = 0;
@@ -62,7 +62,7 @@ namespace UsageExamples
                     positionQuantity = currentPosition.Quantity;
                     positionValue = currentPosition.MarketValue;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     // No position exists. This exception can be safely ignored.
                 }
@@ -159,7 +159,7 @@ namespace UsageExamples
                 var positionQuantity = restClient.GetPositionAsync(symbol).Result.Quantity;
                 restClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // No position to exit.
             }
