@@ -41,7 +41,8 @@ namespace Alpaca.Markets
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         /// <param name="polygonRestApi">Polygon REST API endpoint URL.</param>
         /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
-        /// <param name="apiVersion">Version of Alpaca api to call.  Valid values are "1" or "2".</param>
+        /// <param name="apiVersion">Version of Alpaca API to call.  Valid values are "1" or "2".</param>
+        /// <param name="dataApiVersion">Version of Alpaca data API to call.  The only valid value is currently "1".</param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         /// <param name="throttleParameters">Parameters for requests throttling.</param>
         public RestClient(
@@ -51,6 +52,7 @@ namespace Alpaca.Markets
             String polygonRestApi = null,
             String alpacaDataApi = null,
             Int32? apiVersion = null,
+            Int32? dataApiVersion = null,
             Boolean? isStagingEnvironment = null,
             ThrottleParameters throttleParameters = null)
             : this(
@@ -60,6 +62,7 @@ namespace Alpaca.Markets
                 new Uri(polygonRestApi ?? "https://api.polygon.io"),
                 new Uri(alpacaDataApi ?? "https://data.alpaca.markets"),
                 apiVersion ?? DEFAULT_API_VERSION_NUMBER,
+                dataApiVersion ?? DEFAULT_API_VERSION_NUMBER,
                 isStagingEnvironment ?? false,
                 throttleParameters ?? ThrottleParameters.Default)
         {
@@ -74,6 +77,7 @@ namespace Alpaca.Markets
         /// <param name="polygonRestApi">Polygon REST API endpoint URL.</param>
         /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
         /// <param name="apiVersion">Version of Alpaca api to call.  Valid values are "1" or "2".</param>
+        /// <param name="dataApiVersion">Version of Alpaca data API to call.  The only valid value is currently "1".</param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         /// <param name="throttleParameters">Parameters for requests throttling.</param>
         public RestClient(
@@ -83,6 +87,7 @@ namespace Alpaca.Markets
             Uri polygonRestApi,
             Uri alpacaDataApi,
             Int32 apiVersion,
+            Int32 dataApiVersion,
             Boolean isStagingEnvironment,
             ThrottleParameters throttleParameters)
         {
@@ -106,7 +111,7 @@ namespace Alpaca.Markets
             _alpacaDataClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _alpacaDataClient.BaseAddress = addApiVersionNumberSafe(
-                alpacaDataApi ?? new Uri("https://data.alpaca.markets"), apiVersion);
+                alpacaDataApi ?? new Uri("https://data.alpaca.markets"), dataApiVersion);
 
             _polygonApiKey = keyId;
             _polygonHttpClient.DefaultRequestHeaders.Accept
