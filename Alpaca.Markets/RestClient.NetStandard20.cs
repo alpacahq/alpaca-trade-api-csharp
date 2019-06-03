@@ -21,6 +21,7 @@ namespace Alpaca.Markets
                 configuration["polygonRestApi"],
                 configuration["alpacaDataApi"],
                 toInt32OrNull(configuration["apiVersion"]),
+                toInt32OrNull(configuration["dataApiVersion"]),
                 toBooleanOrNull(configuration["staging"]),
                 new ThrottleParameters(null, null,
                     toInt32OrNull(configuration["maxRetryAttempts"]),
