@@ -28,5 +28,8 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "client_order_id", Required = Required.Default)]
         public String ClientOrderId { get; set; }
+
+        [JsonProperty(PropertyName = "extended_hours", Required = Required.Default)]
+        public Boolean ExtendedHours { get; set; }
     }
 }
