@@ -30,6 +30,6 @@ namespace Alpaca.Markets
         public String ClientOrderId { get; set; }
 
         [JsonProperty(PropertyName = "extended_hours", Required = Required.Default)]
-        public Boolean ExtendedHours { get; set; }
+        public Boolean? ExtendedHours { get; set; }
     }
 }
