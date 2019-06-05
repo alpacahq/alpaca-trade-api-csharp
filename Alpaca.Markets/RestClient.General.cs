@@ -90,6 +90,7 @@ namespace Alpaca.Markets
         /// <param name="limitPrice">Order limit price.</param>
         /// <param name="stopPrice">Order stop price.</param>
         /// <param name="clientOrderId">Client order ID.</param>
+        /// <param name="extendedHours">Whether or not this order should be allowed to execute during extended hours trading.</param>
         /// <returns>Read-only order information object for newly created order.</returns>
         public async Task<IOrder> PostOrderAsync(
             String symbol,
@@ -99,7 +100,8 @@ namespace Alpaca.Markets
             TimeInForce duration,
             Decimal? limitPrice = null,
             Decimal? stopPrice = null,
-            String clientOrderId = null)
+            String clientOrderId = null,
+            Boolean? extendedHours = null)
         {
             if (!string.IsNullOrEmpty(clientOrderId) &&
                 clientOrderId.Length > 48)
@@ -116,7 +118,8 @@ namespace Alpaca.Markets
                 TimeInForce = duration,
                 LimitPrice = limitPrice,
                 StopPrice = stopPrice,
-                ClientOrderId = clientOrderId
+                ClientOrderId = clientOrderId,
+                ExtendedHours = extendedHours
             };
 
             await _alpacaRestApiThrottler.WaitToProceed();
