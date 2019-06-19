@@ -35,16 +35,16 @@ namespace Alpaca.Markets
 
         /// <summary>
         /// Called when the json message is deserialized.
-        /// We adjust the milliseconds by deviding it by 10,000 to reduce the time stamp
+        /// We adjust the milliseconds by dividing it by 1,000,000 to reduce the time stamp from nanoseconds to milliseconds
         /// </summary>
         /// <param name="context">The context.</param>
         [OnDeserialized]
         internal void OnDeserializedMethod(StreamingContext context)
         {
 #if NET45
-            Time = DateTimeHelper.FromUnixTimeMilliseconds((Int64)(Timestamp / 10000));
+            Time = DateTimeHelper.FromUnixTimeMilliseconds((Int64)(Timestamp / 1000000));
 #else
-            Time = DateTime.SpecifyKind(DateTimeOffset.FromUnixTimeMilliseconds((Int64)(Timestamp / 10000)).DateTime, DateTimeKind.Utc);
+            Time = DateTime.SpecifyKind(DateTimeOffset.FromUnixTimeMilliseconds((Int64)(Timestamp / 1000000)).DateTime, DateTimeKind.Utc);
 #endif
         }
     }
