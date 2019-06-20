@@ -55,7 +55,7 @@ namespace Alpaca.Markets
                     .DateTime, DateTimeKind.Utc);
 
             EndTime = DateTime.SpecifyKind(
-                DateTimeOffset.FromUnixTimeMilliseconds(StartTimeOffset)
+                DateTimeOffset.FromUnixTimeMilliseconds(EndTimeOffset)
                     .DateTime, DateTimeKind.Utc);
 #endif
         }
