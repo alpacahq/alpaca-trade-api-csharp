@@ -38,11 +38,9 @@ namespace Alpaca.Markets
             StreamingContext context)
         {
 #if NET45
-            Time = DateTimeHelper.FromUnixTimeMilliseconds(Timestamp);
+            Time = DateTimeHelper.FromUnixTimeMilliseconds(Timestamp / 1000000);
 #else
-            Time = DateTime.SpecifyKind(
-                DateTimeOffset.FromUnixTimeMilliseconds(Timestamp)
-                    .DateTime, DateTimeKind.Utc);
+            Time = DateTime.SpecifyKind(DateTimeOffset.FromUnixTimeMilliseconds(Timestamp / 1000000).DateTime, DateTimeKind.Utc);
 #endif
         }
     }
