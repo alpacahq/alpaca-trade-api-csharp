@@ -4,23 +4,50 @@ namespace Alpaca.Markets
 {
     internal static class DateTimeHelper
     {
+#if NET45
         private static readonly DateTime _epoch =
             new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+#endif
+
+        private const Int64 NANOSECONDS_IN_MILLISECONDS = 1_000_000;
+
+        public static DateTime FromUnixTimeNanoseconds(
+            Int64 linuxTimeStamp)
+        {
+            return FromUnixTimeMilliseconds(linuxTimeStamp / NANOSECONDS_IN_MILLISECONDS);
+        }
 
         public static DateTime FromUnixTimeMilliseconds(
             Int64 linuxTimeStamp)
         {
+#if NET45
             return _epoch.Add(TimeSpan.FromMilliseconds(linuxTimeStamp));
+#else
+            return DateTime.SpecifyKind(
+                DateTimeOffset.FromUnixTimeMilliseconds(linuxTimeStamp)
+                    .DateTime, DateTimeKind.Utc);
+#endif
         }
 
         public static DateTime FromUnixTimeSeconds(
             Int64 linuxTimeStamp)
         {
+#if NET45
             return _epoch.Add(TimeSpan.FromSeconds(linuxTimeStamp));
+#else
+            return DateTime.SpecifyKind(
+                DateTimeOffset.FromUnixTimeSeconds(linuxTimeStamp)
+                    .DateTime, DateTimeKind.Utc);
+#endif
         }
 
-        public static Int64 GetUnixTimeMillis(DateTime dateTime) {
+        public static Int64 GetUnixTimeMilliseconds(DateTime dateTime) 
+        {
+#if NET45
             return (Int64)(dateTime.Subtract(_epoch)).TotalMilliseconds;
+#else
+            return new DateTimeOffset(dateTime).ToUnixTimeMilliseconds();
+#endif
         }
     }
 }

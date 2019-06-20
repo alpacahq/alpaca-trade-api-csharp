@@ -46,18 +46,8 @@ namespace Alpaca.Markets
         internal void OnDeserializedMethod(
             StreamingContext context)
         {
-#if NET45
             StartTime = DateTimeHelper.FromUnixTimeMilliseconds(StartTimeOffset);
             EndTime = DateTimeHelper.FromUnixTimeMilliseconds(EndTimeOffset);
-#else
-            StartTime = DateTime.SpecifyKind(
-                DateTimeOffset.FromUnixTimeMilliseconds(StartTimeOffset)
-                    .DateTime, DateTimeKind.Utc);
-
-            EndTime = DateTime.SpecifyKind(
-                DateTimeOffset.FromUnixTimeMilliseconds(EndTimeOffset)
-                    .DateTime, DateTimeKind.Utc);
-#endif
         }
     }
 }

@@ -28,13 +28,7 @@ namespace Alpaca.Markets
         internal void OnDeserializedMethod(
             StreamingContext context)
         {
-#if NET45
             Time = DateTimeHelper.FromUnixTimeMilliseconds(Timestamp);
-#else
-            Time = DateTime.SpecifyKind(
-                DateTimeOffset.FromUnixTimeMilliseconds(Timestamp)
-                    .DateTime, DateTimeKind.Utc);
-#endif
         }
     }
 }
