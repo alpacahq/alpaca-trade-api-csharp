@@ -11,10 +11,15 @@ namespace Alpaca.Markets
 
         private const Int64 NANOSECONDS_IN_MILLISECONDS = 1_000_000;
 
+        private static readonly Int64 _timeSpanMaxValueMilliseconds =
+            (Int64)TimeSpan.MaxValue.TotalMilliseconds;
+
         public static DateTime FromUnixTimeNanoseconds(
             Int64 linuxTimeStamp)
         {
-            return FromUnixTimeMilliseconds(linuxTimeStamp / NANOSECONDS_IN_MILLISECONDS);
+            return linuxTimeStamp > _timeSpanMaxValueMilliseconds
+                ? FromUnixTimeMilliseconds(linuxTimeStamp / NANOSECONDS_IN_MILLISECONDS)
+                : FromUnixTimeMilliseconds(linuxTimeStamp);
         }
 
         public static DateTime FromUnixTimeMilliseconds(
