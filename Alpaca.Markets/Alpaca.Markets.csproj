@@ -52,6 +52,10 @@
     <PackageReference Include="System.Net.Security" Version="4.3.2" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <PackageReference Include="WebSocketSharpFork" Version="1.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>compile;analyzers</IncludeAssets>
+    </PackageReference>
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 </Project>

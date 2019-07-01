@@ -1,63 +1,55 @@
-﻿using System;
+﻿#if NET45
+
+using System;
 using System.Security.Authentication;
 using System.Threading.Tasks;
-using SuperSocket.ClientEngine;
-using WebSocket4Net;
+using WebSocketSharp;
 
 namespace Alpaca.Markets
 {
-    internal sealed class WebSocket4NetFactory : IWebSocketFactory
+    internal sealed class WebSocketSharpFactory : IWebSocketFactory
     {
-        public IWebSocket CreateWebSocket(Uri url)
-        {
-            return new WebSocketWrapper(url);
-        }
-
         private sealed class WebSocketWrapper : IWebSocket
         {
             private readonly WebSocket _webSocket;
 
             public WebSocketWrapper(Uri url)
             {
-                _webSocket = new WebSocket(url.ToString(),
-                    sslProtocols: SslProtocols.Tls11 | SslProtocols.Tls12);
+                _webSocket = new WebSocket(url.ToString());
+                _webSocket.SslConfiguration.EnabledSslProtocols = SslProtocols.Tls11 | SslProtocols.Tls12;
 
-                _webSocket.Opened += handleOpened;
-                _webSocket.Closed += handleClosed;
+                _webSocket.OnOpen += handleOpened;
+                _webSocket.OnClose += handleClosed;
 
-                _webSocket.DataReceived += handleDataReceived;
-                _webSocket.Error += handleError;
+                _webSocket.OnMessage += handleDataReceived;
+                _webSocket.OnError += handleError;
             }
 
             public void Dispose()
             {
-                if (_webSocket == null) return;
+                if (_webSocket == null)
+                {
+                    return;
+                }
 
-                _webSocket.Opened -= handleOpened;
-                _webSocket.Closed -= handleClosed;
+                _webSocket.OnOpen -= handleOpened;
+                _webSocket.OnClose -= handleClosed;
 
-                _webSocket.DataReceived -= handleDataReceived;
-                _webSocket.Error -= handleError;
+                _webSocket.OnMessage -= handleDataReceived;
+                _webSocket.OnError -= handleError;
 
-                _webSocket?.Dispose();
+                var disposable = _webSocket as IDisposable;
+                disposable?.Dispose();
             }
 
             public Task OpenAsync()
             {
-#if NET45
-                return Task.Run(() => _webSocket.Open());
-#else
-                return _webSocket.OpenAsync();
-#endif
+                return Task.Run(() => _webSocket.Connect());
             }
 
             public Task CloseAsync()
             {
-#if NET45
                 return Task.Run(() => _webSocket.Close());
-#else
-                return _webSocket.CloseAsync();
-#endif
             }
 
             public void Send(String message)
@@ -83,9 +75,9 @@ namespace Alpaca.Markets
                 Closed?.Invoke();
             }
 
-            private void handleDataReceived(Object sender, DataReceivedEventArgs eventArgs)
+            private void handleDataReceived(Object sender, MessageEventArgs eventArgs)
             {
-                DataReceived?.Invoke(eventArgs.Data);
+                DataReceived?.Invoke(eventArgs.RawData);
             }
 
             private void handleError(Object sender, ErrorEventArgs eventArgs)
@@ -93,5 +85,12 @@ namespace Alpaca.Markets
                 Error?.Invoke(eventArgs.Exception);
             }
         }
+
+        public IWebSocket CreateWebSocket(Uri url)
+        {
+            return new WebSocketWrapper(url);
+        }
     }
 }
+
+#endif
