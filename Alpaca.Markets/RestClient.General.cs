@@ -58,12 +58,16 @@ namespace Alpaca.Markets
         /// Gets list of available orders from Alpaca REST API endpoint.
         /// </summary>
         /// <param name="orderStatusFilter">Order status for filtering.</param>
-        /// <param name="untilDateTime">Returns only orders until specified date.</param>
+        /// <param name="orderListSorting">The chronological order of response based on the submission time.</param>
+        /// <param name="untilDateTimeExclusive">Returns only orders until specified timestamp (exclusive).</param>
+        /// <param name="afterDateTimeExclusive">Returns only orders after specified timestamp (exclusive).</param>
         /// <param name="limitOrderNumber">Maximal number of orders in response.</param>
         /// <returns>Read-only list of order information objects.</returns>
         public Task<IEnumerable<IOrder>> ListOrdersAsync(
             OrderStatusFilter? orderStatusFilter = null,
-            DateTime? untilDateTime = null,
+            OrderListSorting? orderListSorting = null,
+            DateTime? untilDateTimeExclusive = null,
+            DateTime? afterDateTimeExclusive = null,
             Int64? limitOrderNumber = null)
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
@@ -71,7 +75,9 @@ namespace Alpaca.Markets
                 Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "orders",
                 Query = new QueryBuilder()
                     .AddParameter("status", orderStatusFilter)
-                    .AddParameter("until", untilDateTime)
+                    .AddParameter("direction", orderListSorting)
+                    .AddParameter("until", untilDateTimeExclusive, "O")
+                    .AddParameter("after", afterDateTimeExclusive, "O")
                     .AddParameter("limit", limitOrderNumber)
             };
 
@@ -271,8 +277,8 @@ namespace Alpaca.Markets
                 Path = _alpacaDataClient.BaseAddress.AbsolutePath + $"bars/{timeFrame.ToEnumString()}",
                 Query = new QueryBuilder()
                     .AddParameter("symbols", string.Join(",", symbols))
-                    .AddParameter((areTimesInclusive ? "start" : "after"), timeFrom)
-                    .AddParameter((areTimesInclusive ? "end" : "until"), timeInto)
+                    .AddParameter((areTimesInclusive ? "start" : "after"), timeFrom, "O")
+                    .AddParameter((areTimesInclusive ? "end" : "until"), timeInto, "O")
                     .AddParameter("limit", limit)
             };
 
