@@ -8,16 +8,12 @@ namespace Alpaca.Markets
 {
     internal sealed class WebSocket4NetFactory : IWebSocketFactory
     {
-        public IWebSocket CreateWebSocket(Uri url)
-        {
-            return new WebSocketWrapper(url);
-        }
-
         private sealed class WebSocketWrapper : IWebSocket
         {
             private readonly WebSocket _webSocket;
 
-            public WebSocketWrapper(Uri url)
+            public WebSocketWrapper(
+                Uri url)
             {
                 _webSocket = new WebSocket(url.ToString(),
                     sslProtocols: SslProtocols.Tls11 | SslProtocols.Tls12);
@@ -60,7 +56,8 @@ namespace Alpaca.Markets
 #endif
             }
 
-            public void Send(String message)
+            public void Send(
+                String message)
             {
                 _webSocket.Send(message);
             }
@@ -73,25 +70,39 @@ namespace Alpaca.Markets
 
             public event Action<Exception> Error;
 
-            private void handleOpened(Object sender, EventArgs eventArgs)
+            private void handleOpened(
+                Object sender,
+                EventArgs eventArgs)
             {
                 Opened?.Invoke();
             }
 
-            private void handleClosed(Object sender, EventArgs eventArgs)
+            private void handleClosed(
+                Object sender,
+                EventArgs eventArgs)
             {
                 Closed?.Invoke();
             }
 
-            private void handleDataReceived(Object sender, DataReceivedEventArgs eventArgs)
+            private void handleDataReceived(
+                Object sender,
+                DataReceivedEventArgs eventArgs)
             {
                 DataReceived?.Invoke(eventArgs.Data);
             }
 
-            private void handleError(Object sender, ErrorEventArgs eventArgs)
+            private void handleError(
+                Object sender,
+                ErrorEventArgs eventArgs)
             {
                 Error?.Invoke(eventArgs.Exception);
             }
+        }
+
+        public IWebSocket CreateWebSocket(
+            Uri url)
+        {
+            return new WebSocketWrapper(url);
         }
     }
 }

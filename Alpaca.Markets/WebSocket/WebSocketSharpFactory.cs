@@ -13,7 +13,8 @@ namespace Alpaca.Markets
         {
             private readonly WebSocket _webSocket;
 
-            public WebSocketWrapper(Uri url)
+            public WebSocketWrapper(
+                Uri url)
             {
                 _webSocket = new WebSocket(url.ToString());
                 _webSocket.SslConfiguration.EnabledSslProtocols = SslProtocols.Tls11 | SslProtocols.Tls12;
@@ -52,7 +53,8 @@ namespace Alpaca.Markets
                 return Task.Run(() => _webSocket.Close());
             }
 
-            public void Send(String message)
+            public void Send(
+                String message)
             {
                 _webSocket.Send(message);
             }
@@ -65,28 +67,37 @@ namespace Alpaca.Markets
 
             public event Action<Exception> Error;
 
-            private void handleOpened(Object sender, EventArgs eventArgs)
+            private void handleOpened
+                (Object sender,
+                EventArgs eventArgs)
             {
                 Opened?.Invoke();
             }
 
-            private void handleClosed(Object sender, EventArgs eventArgs)
+            private void handleClosed(
+                Object sender,
+                EventArgs eventArgs)
             {
                 Closed?.Invoke();
             }
 
-            private void handleDataReceived(Object sender, MessageEventArgs eventArgs)
+            private void handleDataReceived(
+                Object sender,
+                MessageEventArgs eventArgs)
             {
                 DataReceived?.Invoke(eventArgs.RawData);
             }
 
-            private void handleError(Object sender, ErrorEventArgs eventArgs)
+            private void handleError(
+                Object sender
+                , ErrorEventArgs eventArgs)
             {
                 Error?.Invoke(eventArgs.Exception);
             }
         }
 
-        public IWebSocket CreateWebSocket(Uri url)
+        public IWebSocket CreateWebSocket(
+            Uri url)
         {
             return new WebSocketWrapper(url);
         }
