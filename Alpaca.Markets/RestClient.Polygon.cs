@@ -151,8 +151,8 @@ namespace Alpaca.Markets
             {
                 Path = $"v1/historic/agg/minute/{symbol}",
                 Query = getDefaultPolygonApiQueryBuilder()
-                    .AddParameter("from", dateFromInclusive)
-                    .AddParameter("to", dateIntoInclusive)
+                    .AddParameter("from", dateFromInclusive, "O")
+                    .AddParameter("to", dateIntoInclusive, "O")
                     .AddParameter("limit", limit)
             };
 

@@ -17,7 +17,7 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed partial class RestClient : IDisposable
     {
-        private const Int32 DEFAULT_API_VERSION_NUMBER = 1;
+        private const Int32 DEFAULT_API_VERSION_NUMBER = 2;
         
         private static readonly HashSet<Int32> _supportedApiVersions = new HashSet<Int32> { 1, 2 };
 

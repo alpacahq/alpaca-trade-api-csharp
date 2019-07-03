@@ -64,6 +64,16 @@ namespace Alpaca.Markets.Tests
             Task.WaitAll(tasks);
             Assert.DoesNotContain(tasks, task => task.IsFaulted);
         }
+        
+        [Fact]
+        public async void ListOrdersForDatesWorks()
+        {
+            var orders = await _restClient.ListOrdersAsync(
+                untilDateTimeExclusive: DateTime.Today.AddDays(-5));
+
+            Assert.NotNull(orders);
+            // Assert.NotEmpty(orders);
+        }
 
         public void Dispose()
         {

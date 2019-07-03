@@ -31,10 +31,17 @@ namespace Alpaca.Markets
         public QueryBuilder AddParameter(
             String name,
             DateTime? value,
-            String format = "O")
+            String format)
         {
             return addParameter(name, value,
-                time => time.ToString(format, CultureInfo.InvariantCulture));
+                time =>
+                {
+                    if (time.Kind == DateTimeKind.Unspecified)
+                    {
+                        time = DateTime.SpecifyKind(time, DateTimeKind.Utc);
+                    }
+                    return time.ToString(format, CultureInfo.InvariantCulture);
+                });
         }
 
         public QueryBuilder AddParameter(
