@@ -51,9 +51,8 @@ deploy:
       secure: YYlVeoqkOM5F7xNXiPB52zZITqMG7WAcnqJwRbqFyuJjksrMV+olBl01RN9uFyyA
     artifact: /.*\.nupkg/           # upload all NuGet packages to NuGet
     on:
-      branch: master
+      APPVEYOR_REPO_TAG: true       # deploy on tag push only
 
-    # Deploy to GitHub Releases
   - provider: GitHub
     auth_token:
       secure: 0Gv+Vf6G1OTXyPjYQEPbAS3Ppf3JjVAwXuqCF+lvXfJ5+2EyzbSYUQKmburDzqlM
@@ -62,5 +61,4 @@ deploy:
     draft: true
     prerelease: false
     on:
-      branch: master                # release from master branch only
       APPVEYOR_REPO_TAG: true       # deploy on tag push only
