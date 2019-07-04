@@ -29,6 +29,12 @@ build_script:
   - dotnet build -c Release
 
 #---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+test: off
+
+#---------------------------------#
 #      artifacts configuration    #
 #---------------------------------#
 
