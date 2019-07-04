@@ -25,7 +25,7 @@ nuget:
 
 configuration: Release
 
-build_sript:
+build_script:
   - dotnet build -c Release
 
 #---------------------------------#
@@ -51,7 +51,7 @@ deploy:
   - provider: GitHub
     auth_token:
       secure: 0Gv+Vf6G1OTXyPjYQEPbAS3Ppf3JjVAwXuqCF+lvXfJ5+2EyzbSYUQKmburDzqlM
-    description: Draft release
+    description: Draft release {APPVEYOR_REPO_TAG_NAME}
     artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
     draft: true
     prerelease: false
