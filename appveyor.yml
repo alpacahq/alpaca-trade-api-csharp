@@ -23,19 +23,10 @@ nuget:
 #       build configuration       #
 #---------------------------------#
 
-before_build:
-  - nuget restore
-
 configuration: Release
 
-build:
-  parallel: true                  # enable MSBuild parallel builds
-  project: Alpaca.Markets.sln     # path to Visual Studio solution or project
-#  publish_core_console: true      # Package .NET Core console projects
-#  publish_nuget: true             # package projects with .nuspec files and push to artifacts
-#  publish_nuget_symbols: true     # generate and publish NuGet symbol packages
-#  include_nuget_references: true  # add -IncludeReferencedProjects option while packaging NuGet artifacts
-#  verbosity: quiet|minimal|normal|detailed
+build_sript:
+  - dotnet build -c Release
 
 #---------------------------------#
 #      artifacts configuration    #
