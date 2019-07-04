@@ -23,6 +23,9 @@ nuget:
 #       build configuration       #
 #---------------------------------#
 
+before_build:
+  - nuget restore
+
 configuration: Release
 
 build:
