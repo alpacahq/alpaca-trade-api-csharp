@@ -25,7 +25,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Order partially filled.
         /// </summary>
-        [EnumMember(Value = "partially_filled")]
+        [EnumMember(Value = "partial_fill")]
         PartiallyFilled,
 
         /// <summary>
