@@ -4,7 +4,7 @@
 
 version: 3.2.{build}
 
-skip_non_tags: true
+# skip_non_tags: true
 
 #---------------------------------#
 #    environment configuration    #
