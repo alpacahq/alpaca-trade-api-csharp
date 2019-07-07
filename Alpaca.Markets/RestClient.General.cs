@@ -90,7 +90,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Order asset name.</param>
         /// <param name="quantity">Order quantity.</param>
-        /// <param name="side">Order size (buy or sell).</param>
+        /// <param name="side">Order side (buy or sell).</param>
         /// <param name="type">Order type.</param>
         /// <param name="duration">Order duration.</param>
         /// <param name="limitPrice">Order limit price.</param>
