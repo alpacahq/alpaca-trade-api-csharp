@@ -18,8 +18,12 @@ namespace Alpaca.Markets
     public sealed partial class RestClient : IDisposable
     {
         private const Int32 DEFAULT_API_VERSION_NUMBER = 2;
-        
+
+        private const Int32 DEFAULT_DATA_API_VERSION_NUMBER = 1;
+
         private static readonly HashSet<Int32> _supportedApiVersions = new HashSet<Int32> { 1, 2 };
+
+        private static readonly HashSet<Int32> _supportedDataApiVersions = new HashSet<Int32> { 1 };
 
         private readonly HttpClient _alpacaHttpClient = new HttpClient();
 
@@ -62,7 +66,7 @@ namespace Alpaca.Markets
                 new Uri(polygonRestApi ?? "https://api.polygon.io"),
                 new Uri(alpacaDataApi ?? "https://data.alpaca.markets"),
                 apiVersion ?? DEFAULT_API_VERSION_NUMBER,
-                dataApiVersion ?? DEFAULT_API_VERSION_NUMBER,
+                dataApiVersion ?? DEFAULT_DATA_API_VERSION_NUMBER,
                 isStagingEnvironment ?? false,
                 throttleParameters ?? ThrottleParameters.Default)
         {
@@ -96,6 +100,8 @@ namespace Alpaca.Markets
 
             if (!_supportedApiVersions.Contains(apiVersion))
                 throw new ArgumentException(nameof(apiVersion));
+            if (!_supportedDataApiVersions.Contains(dataApiVersion))
+                throw new ArgumentException(nameof(dataApiVersion));
 
             _alpacaRestApiThrottler = throttleParameters.GetThrottler();
 
