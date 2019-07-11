@@ -48,14 +48,14 @@ artifacts:
 deploy:
   - provider: NuGet
     api_key:
-      secure: YYlVeoqkOM5F7xNXiPB52zZITqMG7WAcnqJwRbqFyuJjksrMV+olBl01RN9uFyyA
+      secure: dOHsapcNmgo9wYl3WZ7bMNYSHxsSoevt93gVUvXpsM0Q/T7Pwb+735XDoMiFybhM
     artifact: /.*\.nupkg/           # upload all NuGet packages to NuGet
     on:
       APPVEYOR_REPO_TAG: true       # deploy on tag push only
 
   - provider: GitHub
     auth_token:
-      secure: 0Gv+Vf6G1OTXyPjYQEPbAS3Ppf3JjVAwXuqCF+lvXfJ5+2EyzbSYUQKmburDzqlM
+      secure: 1vgrwXCK2yVSpvRrKMBTJiHtjceoS6czEauI4krHevc23B7iZ5wixYiDV9Lrf1Bj
     description: Draft release {APPVEYOR_REPO_TAG_NAME}
     artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
     draft: true

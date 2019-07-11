@@ -10,12 +10,15 @@ namespace Alpaca.Markets
         /// Creates new instance of <see cref="SockClient"/> object.
         /// </summary>
         /// <param name="configuration">Application configuration.</param>
+        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
         public SockClient(
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IWebSocketFactory webSocketFactory = null)
             : this(
                 configuration["keyId"],
                 configuration["secretKey"],
-                configuration["alpacaRestApi"])
+                configuration["alpacaRestApi"],
+                webSocketFactory)
         {
         }
     }
