@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UsageExamples
 {
-    internal sealed class MeanReversionPower
+    internal sealed class MeanReversionPower : IDisposable
     {
         private string API_KEY = "REPLACEME";
 
@@ -87,6 +87,11 @@ namespace UsageExamples
             Console.WriteLine("Socket client opened.");
 
             sockClient.OnTradeUpdate += HandleTradeUpdate;
+        }
+
+        public void Dispose()
+        {
+            restClient?.Dispose();
         }
 
         // Waits until the clock says the market is open.

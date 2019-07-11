@@ -124,7 +124,7 @@ namespace Alpaca.Markets
             _webSocket.DataReceived -= handleDataReceived;
             _webSocket.Error -= handleError;
 
-            _webSocket?.Dispose();
+            _webSocket.Dispose();
         }
 
         private void handleOpened()

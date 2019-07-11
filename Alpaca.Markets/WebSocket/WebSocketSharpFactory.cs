@@ -9,7 +9,7 @@ namespace Alpaca.Markets
 {
     internal sealed class WebSocketSharpFactory : IWebSocketFactory
     {
-        private sealed class WebSocketWrapper : IWebSocket
+        private sealed class WebSocketWrapper : IWebSocket //-V3073
         {
             private readonly WebSocket _webSocket;
 

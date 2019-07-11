@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UsageExamples
 {
-    internal sealed class MeanReversionPaperOnly
+    internal sealed class MeanReversionPaperOnly : IDisposable
     {
         private string API_KEY = "REPLACEME";
 
@@ -133,6 +133,11 @@ namespace UsageExamples
 
             Console.WriteLine("Market nearing close; closing position.");
             await ClosePositionAtMarket();
+        }
+
+        public void Dispose()
+        {
+            restClient?.Dispose();
         }
 
         private async Task AwaitMarketOpen()

@@ -6,7 +6,7 @@ using Alpaca.Markets;
 
 namespace UsageExamples
 {
-    internal sealed class MeanReversionRegular
+    internal sealed class MeanReversionRegular : IDisposable
     {
         private string API_KEY = "REPLACEME";
 
@@ -88,6 +88,11 @@ namespace UsageExamples
             Console.WriteLine("Socket client opened.");
 
             sockClient.OnTradeUpdate += HandleTradeUpdate;
+        }
+
+        public void Dispose()
+        {
+            restClient?.Dispose();
         }
 
         // Waits until the clock says the market is open.

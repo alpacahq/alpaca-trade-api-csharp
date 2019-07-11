@@ -27,7 +27,10 @@ namespace Alpaca.Markets
 
             public void Dispose()
             {
-                if (_webSocket == null) return;
+                if (_webSocket == null)
+                {
+                    return;
+                }
 
                 _webSocket.Opened -= handleOpened;
                 _webSocket.Closed -= handleClosed;
@@ -35,7 +38,7 @@ namespace Alpaca.Markets
                 _webSocket.DataReceived -= handleDataReceived;
                 _webSocket.Error -= handleError;
 
-                _webSocket?.Dispose();
+                _webSocket.Dispose();
             }
 
             public Task OpenAsync()
