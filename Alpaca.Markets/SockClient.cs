@@ -13,10 +13,8 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca streaming API.
     /// </summary>
-    public sealed partial class SockClient : IDisposable
+    public sealed partial class SockClient : SockClientBase
     {
-        private readonly WebSocket _webSocket;
-
         private readonly String _keyId;
 
         private readonly String _secretKey;
@@ -60,13 +58,7 @@ namespace Alpaca.Markets
             };
             uriBuilder.Path += "/stream";
 
-            _webSocket = new WebSocket(uriBuilder.Uri.ToString(),
-                sslProtocols: SslProtocols.Tls11 | SslProtocols.Tls12);
-
-            _webSocket.Opened += handleOpened;
-            _webSocket.Closed += handleClosed;
-
-            _webSocket.DataReceived += handleDataReceived;
+            setupWebSocket(uriBuilder.Uri.ToString());
             _webSocket.Error += (sender, args) => OnError?.Invoke(args.Exception);
         }
 
@@ -81,52 +73,18 @@ namespace Alpaca.Markets
         public event Action<ITradeUpdate> OnTradeUpdate;
 
         /// <summary>
-        /// Occured when stream successfully connected.
-        /// </summary>
-        public event Action<AuthStatus> Connected;
-
-        /// <summary>
         /// Occured when any error happened in stream.
         /// </summary>
         public event Action<Exception> OnError;
 
         /// <summary>
-        /// Opens connection to Alpaca streaming API.
+        /// Occured when stream successfully connected.
         /// </summary>
-        /// <returns>Waitable task object for handling action completion in asyncronious mode.</returns>
-        public Task ConnectAsync()
-        {
-#if NET45
-            return Task.Run(() => _webSocket.Open());
-#else
-            return _webSocket.OpenAsync();
-#endif
-        }
+        public event Action<AuthStatus> Connected;
 
-        /// <summary>
-        /// Closes connection to Alpaca streaming API.
-        /// </summary>
-        /// <returns>Waitable task object for handling action completion in asyncronious mode.</returns>
-        public Task DisconnectAsync()
+        override private protected JsonAuthRequest getAuthRequest()
         {
-#if NET45
-            return Task.Run(() => _webSocket.Close());
-#else
-            return _webSocket.CloseAsync();
-#endif
-        }
-
-        /// <inheritdoc />
-        public void Dispose()
-        {
-            _webSocket?.Dispose();
-        }
-
-        private void handleOpened(
-            Object sender,
-            EventArgs e)
-        {
-            var authenticateRequest = new JsonAuthRequest
+            return new JsonAuthRequest
             {
                 Action = JsonAction.Authenticate,
                 Data = new JsonAuthRequest.JsonData()
@@ -135,17 +93,9 @@ namespace Alpaca.Markets
                     SecretKey = _secretKey
                 }
             };
-
-            sendAsJsonString(authenticateRequest);
         }
 
-        private void handleClosed(
-            Object sender,
-            EventArgs e)
-        {
-        }
-
-        private void handleDataReceived(
+        override private protected void handleDataReceived(
             Object sender,
             DataReceivedEventArgs e)
         {
@@ -226,17 +176,6 @@ namespace Alpaca.Markets
             IAccountUpdate update)
         {
             OnAccountUpdate?.Invoke(update);
-        }
-
-        private void sendAsJsonString(
-            Object value)
-        {
-            using (var textWriter = new StringWriter())
-            {
-                var serializer = new JsonSerializer();
-                serializer.Serialize(textWriter, value);
-                _webSocket.Send(textWriter.ToString());
-            }
         }
     }
 }

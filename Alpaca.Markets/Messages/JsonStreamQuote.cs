@@ -6,6 +6,9 @@ namespace Alpaca.Markets
 {
     internal class JsonStreamQuote : IStreamQuote
     {
+        [JsonProperty(PropertyName = "ev", Required = Required.Default)]
+        public String EventType { get; set; }
+
         [JsonProperty(PropertyName = "sym", Required = Required.Always)]
         public String Symbol { get; set; }
 
