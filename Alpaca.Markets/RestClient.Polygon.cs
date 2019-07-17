@@ -178,7 +178,6 @@ namespace Alpaca.Markets
             DateTime dateToInclusive,
             Boolean unadjusted = false)
         {
-
             Int64 unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(dateFromInclusive);
             Int64 unixTo = DateTimeHelper.GetUnixTimeMilliseconds(dateToInclusive);
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)

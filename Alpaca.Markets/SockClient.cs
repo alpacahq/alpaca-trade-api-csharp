@@ -56,7 +56,11 @@ namespace Alpaca.Markets
             {
                 Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
             };
-            uriBuilder.Path += "/stream";
+            if (uriBuilder.Path.Substring(uriBuilder.Path.Length - 1, 1) != "/")
+            {
+                uriBuilder.Path += "/";
+            }
+            uriBuilder.Path += "stream";
 
             setupWebSocket(uriBuilder.Uri.ToString());
             _webSocket.Error += (sender, args) => OnError?.Invoke(args.Exception);
