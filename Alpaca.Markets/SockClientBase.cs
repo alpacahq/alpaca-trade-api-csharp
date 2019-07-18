@@ -24,8 +24,6 @@ namespace Alpaca.Markets
 
             _webSocket.Opened += handleOpened;
             _webSocket.Closed += handleClosed;
-
-            _webSocket.DataReceived += handleDataReceived;
         }
 
         private protected abstract JsonAuthRequest getAuthRequest();
@@ -42,10 +40,6 @@ namespace Alpaca.Markets
             EventArgs e)
         {
         }
-
-        private protected abstract void handleDataReceived(
-            Object sender,
-            DataReceivedEventArgs e);
 
 
         /// <summary>

@@ -76,30 +76,30 @@ namespace Alpaca.Markets
 
             setupWebSocket(uriBuilder.Uri.ToString());
             _webSocket.Error += (sender, args) => OnError?.Invoke(args.Exception);
+            _webSocket.MessageReceived += handleMessageReceived;
         }
 
         override private protected JsonAuthRequest getAuthRequest()
         {
             return new JsonAuthRequest
             {
-                Action = JsonAction.Authenticate,
+                Action = JsonAction.PolygonAuthenticate,
                 Params = _keyId
             };
         }
 
-        override private protected void handleDataReceived(
+        private void handleMessageReceived(
             Object sender,
-            DataReceivedEventArgs e)
+            MessageReceivedEventArgs e)
         {
             try
             {
-                var messageArray = Encoding.UTF8.GetString(e.Data);
-                var rootArray = JArray.Parse(messageArray);
+                var rootArray = JArray.Parse(e.Message);
 
-                foreach(JObject root in rootArray)
+                foreach (JObject root in rootArray)
                 {
                     var stream = root["ev"].ToString();
-                    switch(stream)
+                    switch (stream)
                     {
                         case "T":
                             handleTradeReceived(root.ToObject<JsonStreamTrade>());

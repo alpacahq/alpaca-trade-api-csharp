@@ -63,6 +63,7 @@ namespace Alpaca.Markets
             uriBuilder.Path += "stream";
 
             setupWebSocket(uriBuilder.Uri.ToString());
+            _webSocket.DataReceived += handleDataReceived;
             _webSocket.Error += (sender, args) => OnError?.Invoke(args.Exception);
         }
 
@@ -99,7 +100,7 @@ namespace Alpaca.Markets
             };
         }
 
-        override private protected void handleDataReceived(
+        private void handleDataReceived(
             Object sender,
             DataReceivedEventArgs e)
         {

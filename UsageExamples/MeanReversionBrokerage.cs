@@ -18,7 +18,7 @@ namespace UsageExamples
 
         private string API_URL = "https://paper-api.alpaca.markets";
 
-        private string symbol = "SPY";
+        private string symbol = "AAPL";
 
         private Decimal scale = 200;
 
@@ -36,7 +36,7 @@ namespace UsageExamples
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
             var sockClient = new SockClient(API_KEY, API_SECRET, API_URL);
-            await sockClient.ConnectAsync();
+            sockClient.ConnectAsync().Wait();
 
             sockClient.OnTradeUpdate += HandleTradeUpdate;
 
@@ -72,7 +72,7 @@ namespace UsageExamples
 
             // Connect to Polygon's websocket and listen for price updates.
             var polygonSockClient = new PolygonSockClient(API_KEY);
-            await polygonSockClient.ConnectAsync();
+            polygonSockClient.ConnectAsync().Wait();
             Console.WriteLine("Polygon client opened.");
             polygonSockClient.MinuteAggReceived += async (agg) =>
             {
@@ -90,7 +90,7 @@ namespace UsageExamples
                     await HandleMinuteAgg(agg);
                 }
             };
-            polygonSockClient.SubscribeSecondAgg(symbol);
+            polygonSockClient.SubscribeMinuteAgg(symbol);
         }
 
         // Waits until the clock says the market is open.
@@ -238,14 +238,20 @@ namespace UsageExamples
         // that order before we place another.
         private void HandleTradeUpdate(ITradeUpdate trade)
         {
-            Console.WriteLine("Trade update received");
             if (trade.Order.OrderId == lastTradeId)
             {
                 switch (trade.Event)
                 {
                     case TradeEvent.Fill:
+                        Console.WriteLine("Trade filled.");
+                        lastTradeOpen = false;
+                        break;
                     case TradeEvent.Rejected:
+                        Console.WriteLine("Trade rejected.");
+                        lastTradeOpen = false;
+                        break;
                     case TradeEvent.Canceled:
+                        Console.WriteLine("Trade canceled.");
                         lastTradeOpen = false;
                         break;
                 }
