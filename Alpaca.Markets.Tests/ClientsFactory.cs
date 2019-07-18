@@ -1,7 +1,9 @@
 ﻿using System;
 #if NETSTANDARD2_0
+
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
+
 #endif
 
 namespace Alpaca.Markets.Tests
@@ -15,6 +17,7 @@ namespace Alpaca.Markets.Tests
         private const String ALPACA_REST_API = "https://staging-api.tradetalk.us";
 
 #if NETSTANDARD2_0
+
         private static readonly IConfigurationRoot _configuration;
 
         static ClientsFactory()
@@ -39,17 +42,24 @@ namespace Alpaca.Markets.Tests
         public static SockClient GetSockClient() =>
             new SockClient(_configuration);
 
+#pragma warning disable 618
         public static NatsClient GetNatsClient() =>
             new NatsClient(_configuration);
+#pragma warning restore 618
+
 #else
+
         public static RestClient GetRestClient() =>
             new RestClient(KEY_ID, SECRET_KEY, ALPACA_REST_API, isStagingEnvironment: true);
 
         public static SockClient GetSockClient() =>
             new SockClient(KEY_ID, SECRET_KEY, ALPACA_REST_API);
 
+#pragma warning disable 618
         public static NatsClient GetNatsClient() =>
             new NatsClient(KEY_ID, true);
+#pragma warning restore 618
+
 #endif
     }
 }

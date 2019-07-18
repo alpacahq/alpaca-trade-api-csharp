@@ -46,26 +46,10 @@ namespace Alpaca.Markets
             String secretKey,
             Uri alpacaRestApi,
             IWebSocketFactory webSocketFactory)
+            : base(getUriBuilder(alpacaRestApi), webSocketFactory)
         {
             _keyId = keyId ?? throw new ArgumentException(nameof(keyId));
             _secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
-
-            alpacaRestApi = alpacaRestApi ?? new Uri("https://api.alpaca.markets");
-
-            var uriBuilder = new UriBuilder(alpacaRestApi)
-            {
-                Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
-            };
-
-            if (!uriBuilder.Path.EndsWith("/"))
-            {
-                uriBuilder.Path += "/";
-            }
-            uriBuilder.Path += "stream";
-
-            setupWebSocket(uriBuilder, webSocketFactory);
-            _webSocket.DataReceived += handleDataReceived;
-            _webSocket.Error += handleError;
         }
 
         /// <summary>
@@ -79,16 +63,11 @@ namespace Alpaca.Markets
         public event Action<ITradeUpdate> OnTradeUpdate;
 
         /// <summary>
-        /// Occured when any error happened in stream.
-        /// </summary>
-        public event Action<Exception> OnError;
-
-        /// <summary>
         /// Occured when stream successfully connected.
         /// </summary>
         public event Action<AuthStatus> Connected;
 
-        override internal JsonAuthRequest getAuthRequest()
+        internal override JsonAuthRequest GetAuthRequest()
         {
             return new JsonAuthRequest
             {
@@ -101,7 +80,8 @@ namespace Alpaca.Markets
             };
         }
 
-        private void handleDataReceived(
+        /// <inheritdoc/>
+        protected override void OnDataReceived(
             Byte[] binaryData)
         {
             try
@@ -134,20 +114,34 @@ namespace Alpaca.Markets
                         break;
 
                     default:
-                        OnError?.Invoke(new InvalidOperationException(
+                        HandleError(new InvalidOperationException(
                             $"Unexpected message type '{stream}' received."));
                         break;
                 }
             }
             catch (Exception exception)
             {
-                OnError?.Invoke(exception);
+                HandleError(exception);
             }
         }
-        
-        private void handleError(Exception exception)
+
+        private static UriBuilder getUriBuilder(
+            Uri alpacaRestApi)
         {
-            OnError?.Invoke(exception);
+            alpacaRestApi = alpacaRestApi ?? new Uri("https://api.alpaca.markets");
+
+            var uriBuilder = new UriBuilder(alpacaRestApi)
+            {
+                Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
+            };
+
+            if (!uriBuilder.Path.EndsWith("/"))
+            {
+                uriBuilder.Path += "/";
+            }
+
+            uriBuilder.Path += "stream";
+            return uriBuilder;
         }
 
         private void handleAuthorization(
@@ -168,7 +162,7 @@ namespace Alpaca.Markets
                     }
                 };
 
-                sendAsJsonString(listenRequest);
+                SendAsJsonString(listenRequest);
             }
             else
             {

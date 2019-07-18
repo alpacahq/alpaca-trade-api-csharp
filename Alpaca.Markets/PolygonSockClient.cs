@@ -8,13 +8,16 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed partial class PolygonSockClient : SockClientBase
     {
-        private readonly String _keyId;
-
         // Subscribable Polygon channels
         private const String TradesChannel = "T";
+
         private const String QuotesChannel = "Q";
+
         private const String MinuteAggChannel = "AM";
+
         private const String SecondAggChannel = "A";
+
+        private readonly String _keyId;
 
         /// <summary>
         /// Occured when new trade received from stream.
@@ -35,11 +38,6 @@ namespace Alpaca.Markets
         /// Occured when new bar received from stream.
         /// </summary>
         public event Action<IStreamAgg> SecondAggReceived;
-
-        /// <summary>
-        /// Occured when any error happened in stream.
-        /// </summary>
-        public event Action<Exception> OnError;
 
         /// <summary>
         /// Creates new instance of <see cref="PolygonSockClient"/> object.
@@ -69,69 +67,9 @@ namespace Alpaca.Markets
             String keyId,
             Uri polygonWebsocketApi,
             IWebSocketFactory webSocketFactory)
+            : base(getUriBuilder(polygonWebsocketApi), webSocketFactory)
         {
             _keyId = keyId ?? throw new ArgumentException(nameof(keyId));
-
-            polygonWebsocketApi = polygonWebsocketApi ?? new Uri("wss://alpaca.socket.polygon.io/stocks");
-
-            var uriBuilder = new UriBuilder(polygonWebsocketApi)
-            {
-                Scheme = polygonWebsocketApi.Scheme == "http" ? "ws" : "wss"
-            };
-
-            setupWebSocket(uriBuilder, webSocketFactory);
-            _webSocket.Error += handleError;
-            _webSocket.MessageReceived += handleMessageReceived;
-        }
-
-        override internal JsonAuthRequest getAuthRequest()
-        {
-            return new JsonAuthRequest
-            {
-                Action = JsonAction.PolygonAuthenticate,
-                Params = _keyId
-            };
-        }
-
-        private void handleError(Exception exception)
-        {
-            OnError?.Invoke(exception);
-        }
-
-        private void handleMessageReceived(String message)
-        {
-            try
-            {
-                var rootArray = JArray.Parse(message);
-
-                foreach (var root in rootArray)
-                {
-                    var stream = root["ev"].ToString();
-                    switch (stream)
-                    {
-                        case TradesChannel:
-                            TradeReceived?.Invoke(root.ToObject<JsonStreamTrade>());
-                            break;
-                        case QuotesChannel:
-                            QuoteReceived?.Invoke(root.ToObject<JsonStreamQuote>());
-                            break;
-                        case MinuteAggChannel:
-                            MinuteAggReceived?.Invoke(root.ToObject<JsonStreamAgg>());
-                            break;
-                        case SecondAggChannel:
-                            SecondAggReceived?.Invoke(root.ToObject<JsonStreamAgg>());
-                            break;
-                        default:
-                            OnError?.Invoke(new InvalidOperationException(
-                                $"Unexpected message type '{stream}' received."));
-                            break;
-                    }
-                }
-            }
-            catch (Exception exception)
-            {
-                OnError?.Invoke(exception);
-            }
         }
 
         /// <summary>
@@ -222,6 +160,69 @@ namespace Alpaca.Markets
             unsubscribe(MinuteAggChannel, symbol);
         }
 
+        internal override JsonAuthRequest GetAuthRequest()
+        {
+            return new JsonAuthRequest
+            {
+                Action = JsonAction.PolygonAuthenticate,
+                Params = _keyId
+            };
+        }
+
+        /// <inheritdoc/>
+        protected override void OnMessageReceived(
+            String message)
+        {
+            try
+            {
+                var rootArray = JArray.Parse(message);
+
+                foreach (var root in rootArray)
+                {
+                    var stream = root["ev"].ToString();
+                    switch (stream)
+                    {
+                        case TradesChannel:
+                            TradeReceived?.Invoke(root.ToObject<JsonStreamTrade>());
+                            break;
+
+                        case QuotesChannel:
+                            QuoteReceived?.Invoke(root.ToObject<JsonStreamQuote>());
+                            break;
+
+                        case MinuteAggChannel:
+                            MinuteAggReceived?.Invoke(root.ToObject<JsonStreamAgg>());
+                            break;
+
+                        case SecondAggChannel:
+                            SecondAggReceived?.Invoke(root.ToObject<JsonStreamAgg>());
+                            break;
+
+                        default:
+                            HandleError(new InvalidOperationException(
+                                $"Unexpected message type '{stream}' received."));
+                            break;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                HandleError(exception);
+            }
+        }
+
+        private static UriBuilder getUriBuilder(
+            Uri polygonWebsocketApi)
+        {
+            polygonWebsocketApi = polygonWebsocketApi ?? new Uri("wss://alpaca.socket.polygon.io/stocks");
+
+            var uriBuilder = new UriBuilder(polygonWebsocketApi)
+            {
+                Scheme = polygonWebsocketApi.Scheme == "http" ? "ws" : "wss"
+            };
+            return uriBuilder;
+        }
+
         private void subscribe(
             String channel,
             String symbol)
@@ -232,7 +233,7 @@ namespace Alpaca.Markets
                 Params = $"{channel}.{symbol}"
             };
 
-            sendAsJsonString(listenRequest);
+            SendAsJsonString(listenRequest);
         }
 
         private void unsubscribe(
@@ -245,7 +246,7 @@ namespace Alpaca.Markets
                 Params = $"{channel}.{symbol}"
             };
 
-            sendAsJsonString(unsubscribeRequest);
+            SendAsJsonString(unsubscribeRequest);
         }
     }
 }
