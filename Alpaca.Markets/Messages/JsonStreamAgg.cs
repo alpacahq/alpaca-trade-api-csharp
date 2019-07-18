@@ -6,9 +6,6 @@ namespace Alpaca.Markets
 {
     internal sealed class JsonStreamAgg : IStreamAgg
     {
-        [JsonProperty(PropertyName = "ev", Required = Required.Default)]
-        public String EventType { get; set; }
-
         [JsonProperty(PropertyName = "sym", Required = Required.Always)]
         public String Symbol { get; set; }
 
