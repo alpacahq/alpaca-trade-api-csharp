@@ -10,7 +10,7 @@ namespace UsageExamples
     // is available to users who have a funded Alpaca brokerage account. By default, it
     // is configured to use the paper trading API, but you can change it to use the live
     // trading API by setting the API_URL.
-    internal sealed class MeanReversionBrokerage
+    internal sealed class MeanReversionBrokerage : IDisposable
     {
         private string API_KEY = "REPLACEME";
 
@@ -23,6 +23,8 @@ namespace UsageExamples
         private Decimal scale = 200;
 
         private RestClient restClient;
+        private SockClient sockClient;
+        private PolygonSockClient polygonSockClient;
 
         private Guid lastTradeId = Guid.NewGuid();
 
@@ -35,7 +37,7 @@ namespace UsageExamples
             restClient = new RestClient(API_KEY, API_SECRET, API_URL, apiVersion: 2);
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
-            var sockClient = new SockClient(API_KEY, API_SECRET, API_URL);
+            sockClient = new SockClient(API_KEY, API_SECRET, API_URL);
             sockClient.ConnectAsync().Wait();
 
             sockClient.OnTradeUpdate += HandleTradeUpdate;
@@ -71,7 +73,7 @@ namespace UsageExamples
             Console.WriteLine("Market opened.");
 
             // Connect to Polygon's websocket and listen for price updates.
-            var polygonSockClient = new PolygonSockClient(API_KEY);
+            polygonSockClient = new PolygonSockClient(API_KEY);
             polygonSockClient.ConnectAsync().Wait();
             Console.WriteLine("Polygon client opened.");
             polygonSockClient.MinuteAggReceived += async (agg) =>
@@ -91,6 +93,13 @@ namespace UsageExamples
                 }
             };
             polygonSockClient.SubscribeMinuteAgg(symbol);
+        }
+
+        public void Dispose()
+        {
+            restClient?.Dispose();
+            sockClient?.Dispose();
+            polygonSockClient?.Dispose();
         }
 
         // Waits until the clock says the market is open.

@@ -171,8 +171,15 @@ namespace Alpaca.Markets
                                 return serializer.Deserialize<TJson>(reader);
                             }
 
-                            var error = serializer.Deserialize<JsonError>(reader);
-                            throw new RestClientErrorException(error);
+                            try
+                            {
+                                throw new RestClientErrorException(
+                                    serializer.Deserialize<JsonError>(reader));
+                            }
+                            catch (Exception exception)
+                            {
+                                throw new RestClientErrorException(response, exception);
+                            }
                         }
                     }
                 }

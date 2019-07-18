@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using WebSocket4Net;
-using System.Security.Authentication;
 
 namespace Alpaca.Markets
 {
@@ -25,14 +23,17 @@ namespace Alpaca.Markets
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
+        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
         public SockClient(
             String keyId,
             String secretKey,
-            String alpacaRestApi = null)
+            String alpacaRestApi = null,
+            IWebSocketFactory webSocketFactory = null)
             : this(
                 keyId,
                 secretKey,
-                new Uri(alpacaRestApi ?? "https://api.alpaca.markets"))
+                new Uri(alpacaRestApi ?? "https://api.alpaca.markets"),
+                webSocketFactory ?? new WebSocket4NetFactory())
         {
         }
 
@@ -42,10 +43,12 @@ namespace Alpaca.Markets
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
+        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
         public SockClient(
             String keyId,
             String secretKey,
-            Uri alpacaRestApi)
+            Uri alpacaRestApi,
+            IWebSocketFactory webSocketFactory)
         {
             _keyId = keyId ?? throw new ArgumentException(nameof(keyId));
             _secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
@@ -56,15 +59,16 @@ namespace Alpaca.Markets
             {
                 Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
             };
+
             if (uriBuilder.Path.Substring(uriBuilder.Path.Length - 1, 1) != "/")
             {
                 uriBuilder.Path += "/";
             }
             uriBuilder.Path += "stream";
 
-            setupWebSocket(uriBuilder.Uri.ToString());
+            setupWebSocket(uriBuilder, webSocketFactory);
             _webSocket.DataReceived += handleDataReceived;
-            _webSocket.Error += (sender, args) => OnError?.Invoke(args.Exception);
+            _webSocket.Error += handleError;
         }
 
         /// <summary>
@@ -101,12 +105,11 @@ namespace Alpaca.Markets
         }
 
         private void handleDataReceived(
-            Object sender,
-            DataReceivedEventArgs e)
+            Byte[] binaryData)
         {
             try
             {
-                var message = Encoding.UTF8.GetString(e.Data);
+                var message = Encoding.UTF8.GetString(binaryData);
                 var root = JObject.Parse(message);
 
                 var data = root["data"];
@@ -143,6 +146,11 @@ namespace Alpaca.Markets
             {
                 OnError?.Invoke(exception);
             }
+        }
+        
+        private void handleError(Exception exception)
+        {
+            OnError?.Invoke(exception);
         }
 
         private void handleAuthorization(

@@ -47,12 +47,16 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="polygonWebsocketApi">Polygon websocket API endpoint URL.</param>
+        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
         public PolygonSockClient(
             String keyId,
-            String polygonWebsocketApi = null)
+            String polygonWebsocketApi = null,
+            IWebSocketFactory webSocketFactory = null
+            )
             : this(
                 keyId,
-                new Uri(polygonWebsocketApi ?? "wss://alpaca.socket.polygon.io/stocks"))
+                new Uri(polygonWebsocketApi ?? "wss://alpaca.socket.polygon.io/stocks"),
+                webSocketFactory ?? new WebSocket4NetFactory())
         {
         }
 
@@ -61,9 +65,11 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="polygonWebsocketApi">Polygon websocket API endpoint URL.</param>
+        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
         public PolygonSockClient(
             String keyId,
-            Uri polygonWebsocketApi)
+            Uri polygonWebsocketApi,
+            IWebSocketFactory webSocketFactory)
         {
             _keyId = keyId ?? throw new ArgumentException(nameof(keyId));
 
@@ -74,8 +80,8 @@ namespace Alpaca.Markets
                 Scheme = polygonWebsocketApi.Scheme == "http" ? "ws" : "wss"
             };
 
-            setupWebSocket(uriBuilder.Uri.ToString());
-            _webSocket.Error += (sender, args) => OnError?.Invoke(args.Exception);
+            setupWebSocket(uriBuilder, webSocketFactory);
+            _webSocket.Error += handleError;
             _webSocket.MessageReceived += handleMessageReceived;
         }
 
@@ -88,13 +94,16 @@ namespace Alpaca.Markets
             };
         }
 
-        private void handleMessageReceived(
-            Object sender,
-            MessageReceivedEventArgs e)
+        private void handleError(Exception exception)
+        {
+            OnError?.Invoke(exception);
+        }
+
+        private void handleMessageReceived(String message)
         {
             try
             {
-                var rootArray = JArray.Parse(e.Message);
+                var rootArray = JArray.Parse(message);
 
                 foreach (JObject root in rootArray)
                 {

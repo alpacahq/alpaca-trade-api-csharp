@@ -10,11 +10,14 @@ namespace Alpaca.Markets
         /// Creates new instance of <see cref="PolygonSockClient"/> object.
         /// </summary>
         /// <param name="configuration">Application configuration.</param>
+        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
         public PolygonSockClient(
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IWebSocketFactory webSocketFactory = null)
             : this(
                 configuration["keyId"],
-                configuration["polygonWebsocketApi"])
+                configuration["polygonWebsocketApi"],
+                webSocketFactory)
         {
         }
     }

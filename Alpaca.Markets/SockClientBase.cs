@@ -15,12 +15,11 @@ namespace Alpaca.Markets
     /// </summary>
     public abstract partial class SockClientBase : IDisposable
     {
-        private protected WebSocket _webSocket;
+        private protected IWebSocket _webSocket;
 
-        private protected void setupWebSocket(String endpointUri)
+        private protected void setupWebSocket(UriBuilder endpointUri, IWebSocketFactory webSocketFactory)
         {
-            _webSocket = new WebSocket(endpointUri,
-                sslProtocols: SslProtocols.Tls11 | SslProtocols.Tls12);
+            _webSocket = webSocketFactory.CreateWebSocket(endpointUri.Uri);
 
             _webSocket.Opened += handleOpened;
             _webSocket.Closed += handleClosed;
@@ -28,19 +27,14 @@ namespace Alpaca.Markets
 
         private protected abstract JsonAuthRequest getAuthRequest();
 
-        private void handleOpened(
-            Object sender,
-            EventArgs e)
+        private void handleOpened()
         {
             sendAsJsonString(getAuthRequest());
         }
 
-        private void handleClosed(
-            Object sender,
-            EventArgs e)
+        private void handleClosed()
         {
         }
-
 
         /// <summary>
         /// Opens connection to a streaming API.
@@ -48,11 +42,7 @@ namespace Alpaca.Markets
         /// <returns>Waitable task object for handling action completion in asyncronious mode.</returns>
         public Task ConnectAsync()
         {
-#if NET45
-            return Task.Run(() => _webSocket.Open());
-#else
             return _webSocket.OpenAsync();
-#endif
         }
 
         /// <summary>
@@ -61,17 +51,21 @@ namespace Alpaca.Markets
         /// <returns>Waitable task object for handling action completion in asyncronious mode.</returns>
         public Task DisconnectAsync()
         {
-#if NET45
-            return Task.Run(() => _webSocket.Close());
-#else
             return _webSocket.CloseAsync();
-#endif
         }
 
         /// <inheritdoc />
         public void Dispose()
         {
-            _webSocket?.Dispose();
+            if (_webSocket == null)
+            {
+                return;
+            }
+
+            _webSocket.Opened -= handleOpened;
+            _webSocket.Closed -= handleClosed;
+
+            _webSocket.Dispose();
         }
 
         private protected void sendAsJsonString(
