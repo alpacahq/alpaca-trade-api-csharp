@@ -40,9 +40,14 @@ namespace Alpaca.Markets
         event Action Closed;
 
         /// <summary>
-        /// Occurred on each new completed web socket message receiving (text or data).
+        /// Occurred on each new completed web socket message receiving data or text.
         /// </summary>
         event Action<Byte[]> DataReceived;
+
+        /// <summary>
+        /// Occurred on each new completed web socket message receiving text.
+        /// </summary>
+        event Action<String> MessageReceived;
 
         /// <summary>
         /// Occurred in case of any communication errors (on opening/close/listening/send).

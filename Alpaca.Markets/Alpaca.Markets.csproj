@@ -16,6 +16,7 @@
     <FileVersion>3.2.0.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn>8002;NU5125</NoWarn>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

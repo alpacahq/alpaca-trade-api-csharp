@@ -23,6 +23,7 @@ namespace Alpaca.Markets
                 _webSocket.OnClose += handleClosed;
 
                 _webSocket.OnMessage += handleDataReceived;
+                _webSocket.OnMessage += handleMessageReceived;
                 _webSocket.OnError += handleError;
             }
 
@@ -37,6 +38,7 @@ namespace Alpaca.Markets
                 _webSocket.OnClose -= handleClosed;
 
                 _webSocket.OnMessage -= handleDataReceived;
+                _webSocket.OnMessage -= handleMessageReceived;
                 _webSocket.OnError -= handleError;
 
                 var disposable = _webSocket as IDisposable;
@@ -65,6 +67,8 @@ namespace Alpaca.Markets
 
             public event Action<Byte[]> DataReceived;
 
+            public event Action<String> MessageReceived;
+
             public event Action<Exception> Error;
 
             private void handleOpened
@@ -86,6 +90,13 @@ namespace Alpaca.Markets
                 MessageEventArgs eventArgs)
             {
                 DataReceived?.Invoke(eventArgs.RawData);
+            }
+
+            private void handleMessageReceived(
+                Object sender,
+                MessageEventArgs eventArgs)
+            {
+                MessageReceived?.Invoke(eventArgs.Data);
             }
 
             private void handleError(

@@ -8,8 +8,9 @@ using Newtonsoft.Json;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Provides unified type-safe access for Polygon streaming API.
+    /// Provides unified type-safe access for Polygon streaming API via NATS.
     /// </summary>
+    [Obsolete("NATS connections will soon be deprecated by Polygon. Please use websockets via PolygonSockClient instead.", false)]
     public sealed partial class NatsClient : IDisposable
     {
         private readonly IDictionary<String, IAsyncSubscription> _subscriptions =
