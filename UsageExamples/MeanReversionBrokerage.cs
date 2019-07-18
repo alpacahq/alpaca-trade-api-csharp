@@ -1,6 +1,7 @@
 ﻿using Alpaca.Markets;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,9 @@ namespace UsageExamples
     // is available to users who have a funded Alpaca brokerage account. By default, it
     // is configured to use the paper trading API, but you can change it to use the live
     // trading API by setting the API_URL.
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("ReSharper", "UnusedVariable")]
+    [SuppressMessage("ReSharper", "RedundantDefaultMemberInitializer")]
     internal sealed class MeanReversionBrokerage : IDisposable
     {
         private string API_KEY = "REPLACEME";
@@ -64,7 +68,7 @@ namespace UsageExamples
             {
                 if (bar.Time.Date == today)
                 {
-                    this.closingPrices.Add(bar.Close);
+                    closingPrices.Add(bar.Close);
                 }
             }
 
@@ -118,8 +122,8 @@ namespace UsageExamples
         // Determine whether our position should grow or shrink and submit orders.
         private async Task HandleMinuteAgg(IStreamAgg agg)
         {
-            this.closingPrices.Add(agg.Close);
-            if (this.closingPrices.Count > 20)
+            closingPrices.Add(agg.Close);
+            if (closingPrices.Count > 20)
             {
                 closingPrices.RemoveAt(0);
 

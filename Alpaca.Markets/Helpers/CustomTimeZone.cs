@@ -1,5 +1,7 @@
 ﻿using System;
+#if !NETFRAMEWORK
 using System.Runtime.InteropServices;
+#endif
 
 namespace Alpaca.Markets
 {

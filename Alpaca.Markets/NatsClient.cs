@@ -11,6 +11,7 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Polygon streaming API via NATS.
     /// </summary>
     [Obsolete("NATS connections will soon be deprecated by Polygon. Please use websockets via PolygonSockClient instead.", false)]
+    // ReSharper disable once PartialTypeWithSinglePart
     public sealed partial class NatsClient : IDisposable
     {
         private readonly IDictionary<String, IAsyncSubscription> _subscriptions =

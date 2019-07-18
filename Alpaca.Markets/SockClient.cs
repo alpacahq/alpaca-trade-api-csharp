@@ -8,6 +8,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca streaming API.
     /// </summary>
+    // ReSharper disable once PartialTypeWithSinglePart
     public sealed partial class SockClient : SockClientBase
     {
         private readonly String _keyId;

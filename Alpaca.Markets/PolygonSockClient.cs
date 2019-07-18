@@ -6,9 +6,13 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API via websockets.
     /// </summary>
+    // ReSharper disable once PartialTypeWithSinglePart
     public sealed partial class PolygonSockClient : SockClientBase
     {
-        // Subscribable Polygon channels
+        // Available Polygon channels
+
+        // ReSharper disable InconsistentNaming
+
         private const String TradesChannel = "T";
 
         private const String QuotesChannel = "Q";
@@ -16,6 +20,8 @@ namespace Alpaca.Markets
         private const String MinuteAggChannel = "AM";
 
         private const String SecondAggChannel = "A";
+
+        // ReSharper restore InconsistentNaming
 
         private readonly String _keyId;
 
@@ -180,6 +186,7 @@ namespace Alpaca.Markets
                 foreach (var root in rootArray)
                 {
                     var stream = root["ev"].ToString();
+
                     switch (stream)
                     {
                         case TradesChannel:
