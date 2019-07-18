@@ -1,23 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using WebSocket4Net;
-using System.Security.Authentication;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Provides unified type-safe access for websocket streaming APIs.
     /// </summary>
-    public abstract partial class SockClientBase : IDisposable
+    public abstract class SockClientBase : IDisposable
     {
-        private protected IWebSocket _webSocket;
+        internal IWebSocket _webSocket;
 
-        private protected void setupWebSocket(UriBuilder endpointUri, IWebSocketFactory webSocketFactory)
+        internal void setupWebSocket(UriBuilder endpointUri, IWebSocketFactory webSocketFactory)
         {
             _webSocket = webSocketFactory.CreateWebSocket(endpointUri.Uri);
 
@@ -25,7 +20,7 @@ namespace Alpaca.Markets
             _webSocket.Closed += handleClosed;
         }
 
-        private protected abstract JsonAuthRequest getAuthRequest();
+        internal abstract JsonAuthRequest getAuthRequest();
 
         private void handleOpened()
         {
@@ -68,7 +63,7 @@ namespace Alpaca.Markets
             _webSocket.Dispose();
         }
 
-        private protected void sendAsJsonString(
+        internal void sendAsJsonString(
             Object value)
         {
             using (var textWriter = new StringWriter())

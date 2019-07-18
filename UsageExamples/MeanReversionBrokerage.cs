@@ -92,7 +92,7 @@ namespace UsageExamples
                     await HandleMinuteAgg(agg);
                 }
             };
-            polygonSockClient.SubscribeMinuteAgg(symbol);
+            polygonSockClient.SubscribeSecondAgg(symbol);
         }
 
         public void Dispose()

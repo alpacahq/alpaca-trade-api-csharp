@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using WebSocket4Net;
-using System.Security.Authentication;
 
 namespace Alpaca.Markets
 {
@@ -85,7 +78,7 @@ namespace Alpaca.Markets
             _webSocket.MessageReceived += handleMessageReceived;
         }
 
-        override private protected JsonAuthRequest getAuthRequest()
+        override internal JsonAuthRequest getAuthRequest()
         {
             return new JsonAuthRequest
             {
@@ -105,22 +98,22 @@ namespace Alpaca.Markets
             {
                 var rootArray = JArray.Parse(message);
 
-                foreach (JObject root in rootArray)
+                foreach (var root in rootArray)
                 {
                     var stream = root["ev"].ToString();
                     switch (stream)
                     {
                         case "T":
-                            handleTradeReceived(root.ToObject<JsonStreamTrade>());
+                            TradeReceived?.Invoke(root.ToObject<JsonStreamTrade>());
                             break;
                         case "Q":
-                            handleQuoteReceived(root.ToObject<JsonStreamQuote>());
+                            QuoteReceived?.Invoke(root.ToObject<JsonStreamQuote>());
                             break;
                         case "AM":
-                            handleMinuteAggReceived(root.ToObject<JsonStreamAgg>());
+                            MinuteAggReceived?.Invoke(root.ToObject<JsonStreamAgg>());
                             break;
                         case "A":
-                            handleSecondAggReceived(root.ToObject<JsonStreamAgg>());
+                            SecondAggReceived?.Invoke(root.ToObject<JsonStreamAgg>());
                             break;
                         default:
                             OnError?.Invoke(new InvalidOperationException(
@@ -135,30 +128,6 @@ namespace Alpaca.Markets
             }
         }
 
-        private void handleTradeReceived(
-            IStreamTrade update)
-        {
-            TradeReceived?.Invoke(update);
-        }
-
-        private void handleQuoteReceived(
-            IStreamQuote update)
-        {
-            QuoteReceived?.Invoke(update);
-        }
-
-        private void handleMinuteAggReceived(
-            IStreamAgg update)
-        {
-            MinuteAggReceived?.Invoke(update);
-        }
-
-        private void handleSecondAggReceived(
-            IStreamAgg update)
-        {
-            SecondAggReceived?.Invoke(update);
-        }
-
         /// <summary>
         /// Subscribes for the trade updates via <see cref="TradeReceived"/>
         /// event for specific asset from Polygon streaming API.
@@ -167,7 +136,7 @@ namespace Alpaca.Markets
         public void SubscribeTrade(
             String symbol)
         {
-            subscribe($"T.{symbol}");
+            subscribe("T", symbol);
         }
 
         /// <summary>
@@ -178,7 +147,7 @@ namespace Alpaca.Markets
         public void SubscribeQuote(
             String symbol)
         {
-            subscribe($"Q.{symbol}");
+            subscribe("Q", symbol);
         }
 
         /// <summary>
@@ -189,7 +158,7 @@ namespace Alpaca.Markets
         public void SubscribeSecondAgg(
             String symbol)
         {
-            subscribe($"A.{symbol}");
+            subscribe("A", symbol);
         }
 
         /// <summary>
@@ -200,7 +169,7 @@ namespace Alpaca.Markets
         public void SubscribeMinuteAgg(
             String symbol)
         {
-            subscribe($"AM.{symbol}");
+            subscribe("AM", symbol);
         }
 
         /// <summary>
@@ -211,7 +180,7 @@ namespace Alpaca.Markets
         public void UnsubscribeTrade(
             String symbol)
         {
-            unsubscribe($"T.{symbol}");
+            unsubscribe("T", symbol);
         }
 
         /// <summary>
@@ -222,7 +191,7 @@ namespace Alpaca.Markets
         public void UnsubscribeQuote(
             String symbol)
         {
-            unsubscribe($"Q.{symbol}");
+            unsubscribe("Q", symbol);
         }
 
         /// <summary>
@@ -233,7 +202,7 @@ namespace Alpaca.Markets
         public void UnsubscribeSecondAgg(
             String symbol)
         {
-            unsubscribe($"A.{symbol}");
+            unsubscribe("A", symbol);
         }
 
         /// <summary>
@@ -244,31 +213,33 @@ namespace Alpaca.Markets
         public void UnsubscribeMinuteAgg(
             String symbol)
         {
-            unsubscribe($"AM.{symbol}");
+            unsubscribe("AM", symbol);
         }
 
         private void subscribe(
-            String topic)
+            String channel,
+            String symbol)
         {
             var listenRequest = new JsonListenRequest
             {
                 Action = JsonAction.PolygonSubscribe,
-                Params = topic
+                Params = $"{channel}.{symbol}"
             };
 
             sendAsJsonString(listenRequest);
         }
 
         private void unsubscribe(
-            String topic)
+            String channel,
+            String symbol)
         {
-            var listenRequest = new JsonUnsubscribeRequest
+            var unsubscribeRequest = new JsonUnsubscribeRequest
             {
                 Action = JsonAction.PolygonUnsubscribe,
-                Params = topic
+                Params = $"{channel}.{symbol}"
             };
 
-            sendAsJsonString(listenRequest);
+            sendAsJsonString(unsubscribeRequest);
         }
     }
 }

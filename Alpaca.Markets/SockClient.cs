@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
@@ -60,7 +57,7 @@ namespace Alpaca.Markets
                 Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
             };
 
-            if (uriBuilder.Path.Substring(uriBuilder.Path.Length - 1, 1) != "/")
+            if (!uriBuilder.Path.EndsWith("/"))
             {
                 uriBuilder.Path += "/";
             }
@@ -91,7 +88,7 @@ namespace Alpaca.Markets
         /// </summary>
         public event Action<AuthStatus> Connected;
 
-        override private protected JsonAuthRequest getAuthRequest()
+        override internal JsonAuthRequest getAuthRequest()
         {
             return new JsonAuthRequest
             {
