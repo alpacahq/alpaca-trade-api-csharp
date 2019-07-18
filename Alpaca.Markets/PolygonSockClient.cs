@@ -10,6 +10,12 @@ namespace Alpaca.Markets
     {
         private readonly String _keyId;
 
+        // Subscribable Polygon channels
+        private const String TradesChannel = "T";
+        private const String QuotesChannel = "Q";
+        private const String MinuteAggChannel = "AM";
+        private const String SecondAggChannel = "A";
+
         /// <summary>
         /// Occured when new trade received from stream.
         /// </summary>
@@ -103,16 +109,16 @@ namespace Alpaca.Markets
                     var stream = root["ev"].ToString();
                     switch (stream)
                     {
-                        case "T":
+                        case TradesChannel:
                             TradeReceived?.Invoke(root.ToObject<JsonStreamTrade>());
                             break;
-                        case "Q":
+                        case QuotesChannel:
                             QuoteReceived?.Invoke(root.ToObject<JsonStreamQuote>());
                             break;
-                        case "AM":
+                        case MinuteAggChannel:
                             MinuteAggReceived?.Invoke(root.ToObject<JsonStreamAgg>());
                             break;
-                        case "A":
+                        case SecondAggChannel:
                             SecondAggReceived?.Invoke(root.ToObject<JsonStreamAgg>());
                             break;
                         default:
@@ -136,7 +142,7 @@ namespace Alpaca.Markets
         public void SubscribeTrade(
             String symbol)
         {
-            subscribe("T", symbol);
+            subscribe(TradesChannel, symbol);
         }
 
         /// <summary>
@@ -147,7 +153,7 @@ namespace Alpaca.Markets
         public void SubscribeQuote(
             String symbol)
         {
-            subscribe("Q", symbol);
+            subscribe(QuotesChannel, symbol);
         }
 
         /// <summary>
@@ -158,7 +164,7 @@ namespace Alpaca.Markets
         public void SubscribeSecondAgg(
             String symbol)
         {
-            subscribe("A", symbol);
+            subscribe(SecondAggChannel, symbol);
         }
 
         /// <summary>
@@ -169,7 +175,7 @@ namespace Alpaca.Markets
         public void SubscribeMinuteAgg(
             String symbol)
         {
-            subscribe("AM", symbol);
+            subscribe(MinuteAggChannel, symbol);
         }
 
         /// <summary>
@@ -180,7 +186,7 @@ namespace Alpaca.Markets
         public void UnsubscribeTrade(
             String symbol)
         {
-            unsubscribe("T", symbol);
+            unsubscribe(TradesChannel, symbol);
         }
 
         /// <summary>
@@ -191,7 +197,7 @@ namespace Alpaca.Markets
         public void UnsubscribeQuote(
             String symbol)
         {
-            unsubscribe("Q", symbol);
+            unsubscribe(QuotesChannel, symbol);
         }
 
         /// <summary>
@@ -202,7 +208,7 @@ namespace Alpaca.Markets
         public void UnsubscribeSecondAgg(
             String symbol)
         {
-            unsubscribe("A", symbol);
+            unsubscribe(SecondAggChannel, symbol);
         }
 
         /// <summary>
@@ -213,7 +219,7 @@ namespace Alpaca.Markets
         public void UnsubscribeMinuteAgg(
             String symbol)
         {
-            unsubscribe("AM", symbol);
+            unsubscribe(MinuteAggChannel, symbol);
         }
 
         private void subscribe(
