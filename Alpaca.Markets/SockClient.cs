@@ -58,17 +58,35 @@ namespace Alpaca.Markets
             {
                 Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
             };
-            uriBuilder.Path += "/stream";
+            uriBuilder.Path += "stream";
 
-            _webSocket = new WebSocket(uriBuilder.Uri.ToString(),
-                sslProtocols: SslProtocols.Tls11 | SslProtocols.Tls12);
+            _webSocket = new WebSocket(uriBuilder.Uri.ToString());
 
             _webSocket.Opened += handleOpened;
-            _webSocket.Closed += handleClosed;
-
+            _webSocket.Closed += handleClosed;            
             _webSocket.DataReceived += handleDataReceived;
-            _webSocket.Error += (sender, args) => OnError?.Invoke(args.Exception);
+            _webSocket.Error += _webSocket_Error;
+            _webSocket.MessageReceived += _webSocket_MessageReceived;
         }
+
+        private void _webSocket_MessageReceived(object sender, MessageReceivedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public bool IsConnected()
+        {
+            return _webSocket.State == WebSocketState.Open;
+        }
+
+        private void _webSocket_Error(object sender, SuperSocket.ClientEngine.ErrorEventArgs e)
+        {
+            OnError?.Invoke(e.Exception);
+        }
+
 
         /// <summary>
         /// Occured when new account update received from stream.
@@ -94,12 +112,19 @@ namespace Alpaca.Markets
         /// Opens connection to Alpaca streaming API.
         /// </summary>
         /// <returns>Waitable task object for handling action completion in asyncronious mode.</returns>
-        public Task ConnectAsync()
+        public Task<bool> ConnectAsync()
         {
 #if NET45
-            return Task.Run(() => _webSocket.Open());
+            return Task.Run(() => {
+                _webSocket.Open();
+                return true;
+            });
 #else
-            return _webSocket.OpenAsync();
+            //return _webSocket.OpenAsync();
+            return Task.Run(() => {
+                _webSocket.Open();
+                return true;
+            });
 #endif
         }
 
@@ -112,7 +137,8 @@ namespace Alpaca.Markets
 #if NET45
             return Task.Run(() => _webSocket.Close());
 #else
-            return _webSocket.CloseAsync();
+            return Task.Run(() => _webSocket.Close());
+            //return _webSocket.CloseAsync();
 #endif
         }
 

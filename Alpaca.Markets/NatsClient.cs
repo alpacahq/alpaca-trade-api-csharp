@@ -51,10 +51,13 @@ namespace Alpaca.Markets
                 keyId += "-staging";
             }
 
+            //_options.Servers = natsServers
+            //    .Select(server => $"nats://{keyId}@{server}")
+            //    .ToArray();
             _options.Servers = natsServers
-                .Select(server => $"nats://{keyId}@{server}")
+                .Select(server => $"nats://{server}")
                 .ToArray();
-
+            _options.Token = keyId;
             _options.AsyncErrorEventHandler += (sender, args) => OnError?.Invoke(args.Error);
         }
 
@@ -82,7 +85,7 @@ namespace Alpaca.Markets
         /// Opens connection to Polygon streaming API.
         /// </summary>
         public void Open()
-        {
+        {           
             _connection = new ConnectionFactory()
                 .CreateConnection(_options);
         }

@@ -16,9 +16,14 @@
     <FileVersion>3.1.2.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn>8002;NU5125</NoWarn>
+    <Configurations>Debug;Release;HFT</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\Alpaca.Markets.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='HFT|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard2.0\Alpaca.Markets.xml</DocumentationFile>
   </PropertyGroup>
 
@@ -41,8 +46,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NATS.Client" Version="0.8.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="NATS.Client" Version="0.9.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="WebSocket4Net" Version="0.15.2" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
