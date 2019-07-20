@@ -14,11 +14,9 @@ namespace Alpaca.Markets
         /// Gets account information from Alpaca REST API endpoint.
         /// </summary>
         /// <returns>Read-only account information.</returns>
-        public Task<IAccount> GetAccountAsync()
-        {
-            return getSingleObjectAsync<IAccount, JsonAccount>(
+        public Task<IAccount> GetAccountAsync() =>
+            getSingleObjectAsync<IAccount, JsonAccount>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, "account");
-        }
 
         /// <summary>
         /// Gets list of available assets from Alpaca REST API endpoint.
@@ -48,11 +46,9 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for searching.</param>
         /// <returns>Read-only asset information.</returns>
         public Task<IAsset> GetAssetAsync(
-            String symbol)
-        {
-            return getSingleObjectAsync<IAsset, JsonAsset>(
+            String symbol) =>
+            getSingleObjectAsync<IAsset, JsonAsset>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, $"assets/{symbol}");
-        }
 
         /// <summary>
         /// Gets list of available orders from Alpaca REST API endpoint.
@@ -177,11 +173,9 @@ namespace Alpaca.Markets
         /// <param name="orderId">Server order ID for searching.</param>
         /// <returns>Read-only order information object.</returns>
         public Task<IOrder> GetOrderAsync(
-            Guid orderId)
-        {
-            return getSingleObjectAsync<IOrder, JsonOrder>(
+            Guid orderId) =>
+            getSingleObjectAsync<IOrder, JsonOrder>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, $"orders/{orderId:D}");
-        }
 
         /// <summary>
         /// Deletes/cancel order on server by server order ID using Alpaca REST API endpoint.
@@ -203,11 +197,9 @@ namespace Alpaca.Markets
         /// Gets list of available positions from Alpaca REST API endpoint.
         /// </summary>
         /// <returns>Read-only list of position information objects.</returns>
-        public Task<IEnumerable<IPosition>> ListPositionsAsync()
-        {
-            return getObjectsListAsync<IPosition, JsonPosition>(
+        public Task<IEnumerable<IPosition>> ListPositionsAsync() =>
+            getObjectsListAsync<IPosition, JsonPosition>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, "positions");
-        }
 
         /// <summary>
         /// Gets position information by asset name from Alpaca REST API endpoint.
@@ -215,21 +207,17 @@ namespace Alpaca.Markets
         /// <param name="symbol">Position asset name.</param>
         /// <returns>Read-only position information object.</returns>
         public Task<IPosition> GetPositionAsync(
-            String symbol)
-        {
-            return getSingleObjectAsync<IPosition, JsonPosition>(
+            String symbol) =>
+            getSingleObjectAsync<IPosition, JsonPosition>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, $"positions/{symbol}");
-        }
 
         /// <summary>
         /// Get current time information from Alpaca REST API endpoint.
         /// </summary>
         /// <returns>Read-only clock information object.</returns>
-        public Task<IClock> GetClockAsync()
-        {
-            return getSingleObjectAsync<IClock, JsonClock>(
+        public Task<IClock> GetClockAsync() =>
+            getSingleObjectAsync<IClock, JsonClock>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, "clock");
-        }
 
         /// <summary>
         /// Gets list of trading days from Alpaca REST API endpoint.
@@ -248,6 +236,7 @@ namespace Alpaca.Markets
                     .AddParameter("start", startDateInclusive, "yyyy-MM-dd")
                     .AddParameter("end", endDateInclusive, "yyyy-MM-dd")
             };
+
             return getObjectsListAsync<ICalendar, JsonCalendar>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, builder);
         }

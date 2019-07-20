@@ -83,11 +83,9 @@ namespace Alpaca.Markets
         /// <summary>
         /// Opens connection to Polygon streaming API.
         /// </summary>
-        public void Open()
-        {
+        public void Open() =>
             _connection = new ConnectionFactory()
                 .CreateConnection(_options);
-        }
 
         /// <summary>
         /// Subscribes for the trade updates via <see cref="TradeReceived"/>
@@ -95,10 +93,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeTrade(
-            String symbol)
-        {
+            String symbol) =>
             subscribe($"T.{symbol}", handleTradeMessage);
-        }
 
         /// <summary>
         /// Subscribes for the quote updates via <see cref="QuoteReceived"/>
@@ -106,10 +102,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeQuote(
-            String symbol)
-        {
+            String symbol) =>
             subscribe($"Q.{symbol}", handleQuoteMessage);
-        }
 
         /// <summary>
         /// Subscribes for the second bar updates via <see cref="AggReceived"/>
@@ -117,10 +111,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeSecondAgg(
-            String symbol)
-        {
+            String symbol) =>
             subscribe($"A.{symbol}", handleAggMessage);
-        }
 
         /// <summary>
         /// Subscribes for the minute bar updates via <see cref="AggReceived"/>
@@ -128,10 +120,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeMinuteAgg(
-            String symbol)
-        {
+            String symbol) =>
             subscribe($"AM.{symbol}", handleAggMessage);
-        }
 
         /// <summary>
         /// Unsubscribes from the trade updates via <see cref="TradeReceived"/>
@@ -139,10 +129,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeTrade(
-            String symbol)
-        {
+            String symbol) =>
             unsubscribe($"T.{symbol}");
-        }
 
         /// <summary>
         /// Unsubscribes from the quote updates via <see cref="QuoteReceived"/>
@@ -150,10 +138,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeQuote(
-            String symbol)
-        {
+            String symbol) =>
             unsubscribe($"Q.{symbol}");
-        }
 
         /// <summary>
         /// Unsubscribes from the second bar updates via <see cref="AggReceived"/>
@@ -161,10 +147,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeSecondAgg(
-            String symbol)
-        {
+            String symbol) =>
             unsubscribe($"A.{symbol}");
-        }
 
         /// <summary>
         /// Unsubscribes from the minute bar updates via <see cref="AggReceived"/>
@@ -172,10 +156,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeMinuteAgg(
-            String symbol)
-        {
+            String symbol) =>
             unsubscribe($"AM.{symbol}");
-        }
 
         /// <summary>
         /// Closes connection to Polygon streaming API.

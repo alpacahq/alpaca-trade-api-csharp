@@ -73,10 +73,8 @@ namespace Alpaca.Markets
             String keyId,
             Uri polygonWebsocketApi,
             IWebSocketFactory webSocketFactory)
-            : base(getUriBuilder(polygonWebsocketApi), webSocketFactory)
-        {
+            : base(getUriBuilder(polygonWebsocketApi), webSocketFactory) =>
             _keyId = keyId ?? throw new ArgumentException(nameof(keyId));
-        }
 
         /// <summary>
         /// Subscribes for the trade updates via <see cref="TradeReceived"/>
@@ -84,10 +82,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeTrade(
-            String symbol)
-        {
+            String symbol) =>
             subscribe(TradesChannel, symbol);
-        }
 
         /// <summary>
         /// Subscribes for the quote updates via <see cref="QuoteReceived"/>
@@ -95,10 +91,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeQuote(
-            String symbol)
-        {
+            String symbol) =>
             subscribe(QuotesChannel, symbol);
-        }
 
         /// <summary>
         /// Subscribes for the second bar updates via <see cref="SecondAggReceived"/>
@@ -106,10 +100,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeSecondAgg(
-            String symbol)
-        {
+            String symbol) =>
             subscribe(SecondAggChannel, symbol);
-        }
 
         /// <summary>
         /// Subscribes for the minute bar updates via <see cref="MinuteAggReceived"/>
@@ -117,10 +109,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeMinuteAgg(
-            String symbol)
-        {
+            String symbol) =>
             subscribe(MinuteAggChannel, symbol);
-        }
 
         /// <summary>
         /// Unsubscribes from the trade updates via <see cref="TradeReceived"/>
@@ -128,10 +118,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeTrade(
-            String symbol)
-        {
+            String symbol) =>
             unsubscribe(TradesChannel, symbol);
-        }
 
         /// <summary>
         /// Unsubscribes from the quote updates via <see cref="QuoteReceived"/>
@@ -139,10 +127,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeQuote(
-            String symbol)
-        {
+            String symbol) =>
             unsubscribe(QuotesChannel, symbol);
-        }
 
         /// <summary>
         /// Unsubscribes from the second bar updates via <see cref="SecondAggReceived"/>
@@ -150,10 +136,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeSecondAgg(
-            String symbol)
-        {
+            String symbol) =>
             unsubscribe(SecondAggChannel, symbol);
-        }
 
         /// <summary>
         /// Unsubscribes from the minute bar updates via <see cref="MinuteAggReceived"/>
@@ -161,19 +145,15 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeMinuteAgg(
-            String symbol)
-        {
+            String symbol) =>
             unsubscribe(MinuteAggChannel, symbol);
-        }
 
-        internal override JsonAuthRequest GetAuthRequest()
-        {
-            return new JsonAuthRequest
+        internal override JsonAuthRequest GetAuthRequest() =>
+            new JsonAuthRequest
             {
                 Action = JsonAction.PolygonAuthenticate,
                 Params = _keyId
             };
-        }
 
         /// <inheritdoc/>
         protected override void OnMessageReceived(

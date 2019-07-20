@@ -40,18 +40,14 @@ namespace Alpaca.Markets
 
         internal RestClientErrorException(
             JsonError error)
-            : base(error.Message)
-        {
+            : base(error.Message) =>
             ErrorCode = error.Code;
-        }
 
         internal RestClientErrorException(
             HttpResponseMessage message,
             Exception innerException)
-            : base(message.ReasonPhrase ?? String.Empty, innerException)
-        {
+            : base(message.ReasonPhrase ?? String.Empty, innerException) =>
             ErrorCode = (Int32)message.StatusCode;
-        }
 
         /// <summary>
         /// Original error code returned by REST API endpoint.

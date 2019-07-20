@@ -75,10 +75,7 @@ namespace Alpaca.Markets
                 }
             }
 
-            public void Dispose()
-            {
-                _lock?.Dispose();
-            }
+            public void Dispose() => _lock?.Dispose();
         }
 
         private readonly NextRetryGuard _nextRetryGuard = new NextRetryGuard();

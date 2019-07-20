@@ -68,9 +68,8 @@ namespace Alpaca.Markets
         /// </summary>
         public event Action<AuthStatus> Connected;
 
-        internal override JsonAuthRequest GetAuthRequest()
-        {
-            return new JsonAuthRequest
+        internal override JsonAuthRequest GetAuthRequest() =>
+            new JsonAuthRequest
             {
                 Action = JsonAction.Authenticate,
                 Data = new JsonAuthRequest.JsonData()
@@ -79,7 +78,6 @@ namespace Alpaca.Markets
                     SecretKey = _secretKey
                 }
             };
-        }
 
         /// <inheritdoc/>
         protected override void OnDataReceived(

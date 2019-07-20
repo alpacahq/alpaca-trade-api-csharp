@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     internal sealed class FakeThrottler : IThrottler
     {
 #if NET45
-        private static readonly Lazy<Task> _completedTask = new Lazy<Task>(()=>Task.Run(()=>{}));
+        private static readonly Lazy<Task> _completedTask = new Lazy<Task>(() => Task.Run(() => {}));
 #endif
 
         private FakeThrottler() { }
@@ -20,9 +20,9 @@ namespace Alpaca.Markets
         public HashSet<Int32> RetryHttpStatuses { get; set; } = new HashSet<Int32>();
 
 #if NET45
-        public Task WaitToProceed() { return _completedTask.Value; }
+        public Task WaitToProceed() => _completedTask.Value;
 #else
-        public Task WaitToProceed() { return Task.CompletedTask; }
+        public Task WaitToProceed() => Task.CompletedTask;
 #endif
 
         public Boolean CheckHttpResponse(HttpResponseMessage response) => true;

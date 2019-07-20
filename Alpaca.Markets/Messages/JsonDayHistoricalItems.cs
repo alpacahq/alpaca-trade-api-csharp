@@ -16,10 +16,8 @@ namespace Alpaca.Markets
 
         [OnDeserialized]
         internal void OnDeserializedMethod(
-            StreamingContext context)
-        {
+            StreamingContext context) =>
             ItemsDay = DateTime.SpecifyKind(
                 ItemsDay.Date, DateTimeKind.Utc);
-        }
     }
 }

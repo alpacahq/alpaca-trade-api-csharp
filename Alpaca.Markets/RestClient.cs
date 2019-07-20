@@ -193,30 +193,24 @@ namespace Alpaca.Markets
             HttpClient httpClient,
             IThrottler throttler,
             UriBuilder uriBuilder)
-            where TJson : TApi
-        {
-            return getSingleObjectAsync<TApi, TJson>(httpClient, throttler, uriBuilder.ToString());
-        }
+            where TJson : TApi =>
+            getSingleObjectAsync<TApi, TJson>(httpClient, throttler, uriBuilder.ToString());
 
         private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
             String endpointUri)
-            where TJson : TApi
-        {
-            return (IEnumerable<TApi>) await
+            where TJson : TApi =>
+            (IEnumerable<TApi>) await
                 getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, endpointUri);
-        }
 
         private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
             UriBuilder uriBuilder)
-            where TJson : TApi
-        {
-            return (IEnumerable<TApi>) await
+            where TJson : TApi =>
+            (IEnumerable<TApi>) await
                 getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, uriBuilder);
-        }
 
         private static Uri addApiVersionNumberSafe(Uri baseUri, Int32 apiVersion)
         {

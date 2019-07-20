@@ -10,6 +10,5 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "message", Required = Required.Always)]
         public String Message { get; set; }
-
     }
 }

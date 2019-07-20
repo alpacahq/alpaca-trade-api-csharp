@@ -43,19 +43,13 @@ namespace Alpaca.Markets
         /// Opens connection to a streaming API.
         /// </summary>
         /// <returns>Awaitable task object for handling action completion in asynchronous mode.</returns>
-        public Task ConnectAsync()
-        {
-            return _webSocket.OpenAsync();
-        }
+        public Task ConnectAsync() => _webSocket.OpenAsync();
 
         /// <summary>
         /// Closes connection to a streaming API.
         /// </summary>
         /// <returns>Awaitable task object for handling action completion in asynchronous mode.</returns>
-        public Task DisconnectAsync()
-        {
-            return _webSocket.CloseAsync();
-        }
+        public Task DisconnectAsync() => _webSocket.CloseAsync();
 
         /// <inheritdoc />
         public void Dispose()
@@ -69,10 +63,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Handles <see cref="IWebSocket.Opened"/> event.
         /// </summary>
-        protected virtual void OnOpened()
-        {
-            SendAsJsonString(GetAuthRequest());
-        }
+        protected virtual void OnOpened() => SendAsJsonString(GetAuthRequest());
 
         /// <summary>
         /// Handles <see cref="IWebSocket.Closed"/> event.

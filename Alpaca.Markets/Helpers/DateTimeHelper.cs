@@ -15,44 +15,37 @@ namespace Alpaca.Markets
             (Int64)TimeSpan.MaxValue.TotalMilliseconds;
 
         public static DateTime FromUnixTimeNanoseconds(
-            Int64 linuxTimeStamp)
-        {
-            return linuxTimeStamp > _timeSpanMaxValueMilliseconds
+            Int64 linuxTimeStamp) =>
+            linuxTimeStamp > _timeSpanMaxValueMilliseconds
                 ? FromUnixTimeMilliseconds(linuxTimeStamp / NANOSECONDS_IN_MILLISECONDS)
                 : FromUnixTimeMilliseconds(linuxTimeStamp);
-        }
 
         public static DateTime FromUnixTimeMilliseconds(
-            Int64 linuxTimeStamp)
-        {
+            Int64 linuxTimeStamp) =>
 #if NET45
-            return _epoch.Add(TimeSpan.FromMilliseconds(linuxTimeStamp));
+            _epoch.Add(TimeSpan.FromMilliseconds(linuxTimeStamp));
 #else
-            return DateTime.SpecifyKind(
+            DateTime.SpecifyKind(
                 DateTimeOffset.FromUnixTimeMilliseconds(linuxTimeStamp)
                     .DateTime, DateTimeKind.Utc);
 #endif
-        }
 
         public static DateTime FromUnixTimeSeconds(
-            Int64 linuxTimeStamp)
-        {
+            Int64 linuxTimeStamp) =>
 #if NET45
-            return _epoch.Add(TimeSpan.FromSeconds(linuxTimeStamp));
+            _epoch.Add(TimeSpan.FromSeconds(linuxTimeStamp));
 #else
-            return DateTime.SpecifyKind(
+            DateTime.SpecifyKind(
                 DateTimeOffset.FromUnixTimeSeconds(linuxTimeStamp)
                     .DateTime, DateTimeKind.Utc);
 #endif
-        }
 
-        public static Int64 GetUnixTimeMilliseconds(DateTime dateTime) 
-        {
+        public static Int64 GetUnixTimeMilliseconds(
+            DateTime dateTime) =>
 #if NET45
-            return (Int64)(dateTime.Subtract(_epoch)).TotalMilliseconds;
+            (Int64)(dateTime.Subtract(_epoch)).TotalMilliseconds;
 #else
-            return new DateTimeOffset(dateTime).ToUnixTimeMilliseconds();
+            new DateTimeOffset(dateTime).ToUnixTimeMilliseconds();
 #endif
-        }
     }
 }

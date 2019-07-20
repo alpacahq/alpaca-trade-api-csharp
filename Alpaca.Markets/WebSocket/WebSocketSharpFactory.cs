@@ -24,6 +24,7 @@ namespace Alpaca.Markets
 
                 _webSocket.OnMessage += handleDataReceived;
                 _webSocket.OnMessage += handleMessageReceived;
+
                 _webSocket.OnError += handleError;
             }
 
@@ -39,27 +40,20 @@ namespace Alpaca.Markets
 
                 _webSocket.OnMessage -= handleDataReceived;
                 _webSocket.OnMessage -= handleMessageReceived;
+
                 _webSocket.OnError -= handleError;
 
                 var disposable = _webSocket as IDisposable;
                 disposable?.Dispose();
             }
 
-            public Task OpenAsync()
-            {
-                return Task.Run(() => _webSocket.Connect());
-            }
+            public Task OpenAsync() => Task.Run(() => _webSocket.Connect());
 
-            public Task CloseAsync()
-            {
-                return Task.Run(() => _webSocket.Close());
-            }
+            public Task CloseAsync() => Task.Run(() => _webSocket.Close());
 
             public void Send(
-                String message)
-            {
+                String message) =>
                 _webSocket.Send(message);
-            }
 
             public event Action Opened;
 
@@ -73,45 +67,33 @@ namespace Alpaca.Markets
 
             private void handleOpened
                 (Object sender,
-                EventArgs eventArgs)
-            {
+                EventArgs eventArgs) =>
                 Opened?.Invoke();
-            }
 
             private void handleClosed(
                 Object sender,
-                EventArgs eventArgs)
-            {
+                EventArgs eventArgs) =>
                 Closed?.Invoke();
-            }
 
             private void handleDataReceived(
                 Object sender,
-                MessageEventArgs eventArgs)
-            {
+                MessageEventArgs eventArgs) =>
                 DataReceived?.Invoke(eventArgs.RawData);
-            }
 
             private void handleMessageReceived(
                 Object sender,
-                MessageEventArgs eventArgs)
-            {
+                MessageEventArgs eventArgs) =>
                 MessageReceived?.Invoke(eventArgs.Data);
-            }
 
             private void handleError(
                 Object sender
-                , ErrorEventArgs eventArgs)
-            {
+                , ErrorEventArgs eventArgs) =>
                 Error?.Invoke(eventArgs.Exception);
-            }
         }
 
         public IWebSocket CreateWebSocket(
-            Uri url)
-        {
-            return new WebSocketWrapper(url);
-        }
+            Uri url) =>
+            new WebSocketWrapper(url);
     }
 }
 
