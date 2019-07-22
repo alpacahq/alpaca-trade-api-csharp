@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 
 namespace Alpaca.Markets
 {
-
     public sealed partial class NatsClient
     {
         /// <summary>

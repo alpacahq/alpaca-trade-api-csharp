@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-#if NET45
-using System.Net;
-#endif
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -128,8 +124,8 @@ namespace Alpaca.Markets
                 _alpacaHttpClient.BaseAddress.Host.Contains("staging");
 
 #if NET45
-            ServicePointManager.SecurityProtocol =
-                SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
+            System.Net.ServicePointManager.SecurityProtocol =
+                System.Net.SecurityProtocolType.Tls12 | System.Net.SecurityProtocolType.Tls11;
 #endif
         }
 
@@ -171,8 +167,15 @@ namespace Alpaca.Markets
                                 return serializer.Deserialize<TJson>(reader);
                             }
 
-                            var error = serializer.Deserialize<JsonError>(reader);
-                            throw new RestClientErrorException(error);
+                            try
+                            {
+                                throw new RestClientErrorException(
+                                    serializer.Deserialize<JsonError>(reader));
+                            }
+                            catch (Exception exception)
+                            {
+                                throw new RestClientErrorException(response, exception);
+                            }
                         }
                     }
                 }
@@ -190,30 +193,24 @@ namespace Alpaca.Markets
             HttpClient httpClient,
             IThrottler throttler,
             UriBuilder uriBuilder)
-            where TJson : TApi
-        {
-            return getSingleObjectAsync<TApi, TJson>(httpClient, throttler, uriBuilder.ToString());
-        }
+            where TJson : TApi =>
+            getSingleObjectAsync<TApi, TJson>(httpClient, throttler, uriBuilder.ToString());
 
         private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
             String endpointUri)
-            where TJson : TApi
-        {
-            return (IEnumerable<TApi>) await
+            where TJson : TApi =>
+            (IEnumerable<TApi>) await
                 getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, endpointUri);
-        }
 
         private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
             UriBuilder uriBuilder)
-            where TJson : TApi
-        {
-            return (IEnumerable<TApi>) await
+            where TJson : TApi =>
+            (IEnumerable<TApi>) await
                 getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, uriBuilder);
-        }
 
         private static Uri addApiVersionNumberSafe(Uri baseUri, Int32 apiVersion)
         {

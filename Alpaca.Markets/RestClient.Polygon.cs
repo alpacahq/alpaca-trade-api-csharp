@@ -178,9 +178,9 @@ namespace Alpaca.Markets
             DateTime dateToInclusive,
             Boolean unadjusted = false)
         {
+            var unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(dateFromInclusive);
+            var unixTo = DateTimeHelper.GetUnixTimeMilliseconds(dateToInclusive);
 
-            Int64 unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(dateFromInclusive);
-            Int64 unixTo = DateTimeHelper.GetUnixTimeMilliseconds(dateToInclusive);
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
             {
                 Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/minute/{unixFrom}/{unixTo}",
@@ -210,9 +210,9 @@ namespace Alpaca.Markets
             DateTime dateToInclusive,
             Boolean unadjusted = false)
         {
+            var unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(dateFromInclusive);
+            var unixTo = DateTimeHelper.GetUnixTimeMilliseconds(dateToInclusive);
 
-            Int64 unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(dateFromInclusive);
-            Int64 unixTo = DateTimeHelper.GetUnixTimeMilliseconds(dateToInclusive);
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
             {
                 Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/day/{unixFrom}/{unixTo}",

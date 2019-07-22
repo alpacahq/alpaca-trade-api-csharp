@@ -8,9 +8,7 @@ namespace Alpaca.Markets
         private static readonly Char[] _doubleQuotes = { '"' };
 
         public static String ToEnumString<T>(
-            this T enumValue)
-        {
-            return JsonConvert.SerializeObject(enumValue).Trim(_doubleQuotes);
-        }
+            this T enumValue) =>
+            JsonConvert.SerializeObject(enumValue).Trim(_doubleQuotes);
     }
 }

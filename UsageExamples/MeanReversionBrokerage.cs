@@ -1,12 +1,20 @@
 ﻿using Alpaca.Markets;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace UsageExamples
 {
-    internal sealed class MeanReversionPower
+    // This version of the mean reversion example algorithm utilizes Polygon data that
+    // is available to users who have a funded Alpaca brokerage account. By default, it
+    // is configured to use the paper trading API, but you can change it to use the live
+    // trading API by setting the API_URL.
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("ReSharper", "UnusedVariable")]
+    [SuppressMessage("ReSharper", "RedundantDefaultMemberInitializer")]
+    internal sealed class MeanReversionBrokerage : IDisposable
     {
         private string API_KEY = "REPLACEME";
 
@@ -14,11 +22,13 @@ namespace UsageExamples
 
         private string API_URL = "https://paper-api.alpaca.markets";
 
-        private string symbol = "SPY";
+        private string symbol = "AAPL";
 
         private Decimal scale = 200;
 
         private RestClient restClient;
+        private SockClient sockClient;
+        private PolygonSockClient polygonSockClient;
 
         private Guid lastTradeId = Guid.NewGuid();
 
@@ -29,6 +39,12 @@ namespace UsageExamples
         public async Task Run()
         {
             restClient = new RestClient(API_KEY, API_SECRET, API_URL, apiVersion: 2);
+
+            // Connect to Alpaca's websocket and listen for updates on our orders.
+            sockClient = new SockClient(API_KEY, API_SECRET, API_URL);
+            sockClient.ConnectAsync().Wait();
+
+            sockClient.OnTradeUpdate += HandleTradeUpdate;
 
             // First, cancel any existing orders so they don't impact our buying power.
             var orders = await restClient.ListOrdersAsync();
@@ -46,8 +62,9 @@ namespace UsageExamples
 
             var today = DateTime.Today;
             // Get the first group of bars from today if the market has already been open.
-            var bars = await restClient.ListMinuteAggregatesAsync(symbol, 1, today.AddDays(-5), today);
-            foreach (var bar in bars.Items)
+            var bars = await restClient.ListMinuteAggregatesAsync(symbol, 1, today, today.AddDays(1));
+            var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count() - 20));
+            foreach (var bar in lastBars)
             {
                 if (bar.Time.Date == today)
                 {
@@ -59,11 +76,11 @@ namespace UsageExamples
             await AwaitMarketOpen();
             Console.WriteLine("Market opened.");
 
-            // Connect to Polygon and listen for price updates.
-            var natsClient = new NatsClient(API_KEY, false);
-            natsClient.Open();
+            // Connect to Polygon's websocket and listen for price updates.
+            polygonSockClient = new PolygonSockClient(API_KEY);
+            polygonSockClient.ConnectAsync().Wait();
             Console.WriteLine("Polygon client opened.");
-            natsClient.AggReceived += async (agg) =>
+            polygonSockClient.MinuteAggReceived += async (agg) =>
             {
                 // If the market's close to closing, exit position and stop trading.
                 TimeSpan minutesUntilClose = closingTime - DateTime.UtcNow;
@@ -71,7 +88,7 @@ namespace UsageExamples
                 {
                     Console.WriteLine("Reached the end of trading window.");
                     await ClosePositionAtMarket();
-                    natsClient.Close();
+                    await polygonSockClient.DisconnectAsync();
                 }
                 else
                 {
@@ -79,14 +96,14 @@ namespace UsageExamples
                     await HandleMinuteAgg(agg);
                 }
             };
-            natsClient.SubscribeMinuteAgg(symbol);
+            polygonSockClient.SubscribeSecondAgg(symbol);
+        }
 
-            // Connect to Alpaca and listen for updates on our orders.
-            var sockClient = new SockClient(API_KEY, API_SECRET, API_URL);
-            await sockClient.ConnectAsync();
-            Console.WriteLine("Socket client opened.");
-
-            sockClient.OnTradeUpdate += HandleTradeUpdate;
+        public void Dispose()
+        {
+            restClient?.Dispose();
+            sockClient?.Dispose();
+            polygonSockClient?.Dispose();
         }
 
         // Waits until the clock says the market is open.
@@ -190,7 +207,13 @@ namespace UsageExamples
                     Decimal targetPositionValue = equity * multiplier * portfolioShare;
                     Decimal amountToLong = targetPositionValue - positionValue;
 
-                    if (amountToLong > 0)
+                    if (positionQuantity < 0)
+                    {
+                        // There is an existing short position we need to dispose of first
+                        Console.WriteLine($"Removing {positionValue:C2} short position.");
+                        await SubmitOrder(positionQuantity * -1, agg.Close, OrderSide.Buy);
+                    }
+                    else if (amountToLong > 0)
                     {
                         // We want to expand our existing long position.
                         if (amountToLong > buyingPower)
@@ -233,8 +256,15 @@ namespace UsageExamples
                 switch (trade.Event)
                 {
                     case TradeEvent.Fill:
+                        Console.WriteLine("Trade filled.");
+                        lastTradeOpen = false;
+                        break;
                     case TradeEvent.Rejected:
+                        Console.WriteLine("Trade rejected.");
+                        lastTradeOpen = false;
+                        break;
                     case TradeEvent.Canceled:
+                        Console.WriteLine("Trade canceled.");
                         lastTradeOpen = false;
                         break;
                 }
@@ -265,7 +295,14 @@ namespace UsageExamples
             try
             {
                 var positionQuantity = (await restClient.GetPositionAsync(symbol)).Quantity;
-                await restClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
+                Console.WriteLine("Closing position at market price.");
+                if (positionQuantity > 0)
+                {
+                    await restClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
+                } else
+                {
+                    await restClient.PostOrderAsync(symbol, positionQuantity * -1, OrderSide.Buy, OrderType.Market, TimeInForce.Day);
+                }
             }
             catch (Exception)
             {

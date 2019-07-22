@@ -30,15 +30,13 @@ namespace Alpaca.Markets
         {
         }
 
-        private static Int32? toInt32OrNull(String value)
-        {
-            return value != null ? Convert.ToInt32(value) : (Int32?)null;
-        }
+        private static Int32? toInt32OrNull(
+            String value) => 
+            value != null ? Convert.ToInt32(value) : (Int32?)null;
 
-        private static Boolean? toBooleanOrNull(String value)
-        {
-            return value != null ? Convert.ToBoolean(value) : (Boolean?)null;
-        }
+        private static Boolean? toBooleanOrNull(
+            String value) =>
+            value != null ? Convert.ToBoolean(value) : (Boolean?)null;
     }
 }
 

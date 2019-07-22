@@ -52,6 +52,7 @@ namespace Alpaca.Markets
         public Int32 Occurrences
         {
             get => _occurrences;
+            // ReSharper disable once MemberCanBePrivate.Global
             set
             {
                 checkIfNotTooLateToConfigure();
@@ -72,6 +73,7 @@ namespace Alpaca.Markets
         public TimeSpan TimeUnit
         {
             get => _timeUnit;
+            // ReSharper disable once MemberCanBePrivate.Global
             set
             {
                 checkIfNotTooLateToConfigure();
@@ -101,6 +103,7 @@ namespace Alpaca.Markets
         public Int32 MaxRetryAttempts
         {
             get => _maxRetryAttempts;
+            // ReSharper disable once MemberCanBePrivate.Global
             set
             {
                 checkIfNotTooLateToConfigure();
@@ -121,18 +124,17 @@ namespace Alpaca.Markets
         public IEnumerable<Int32> RetryHttpStatuses
         {
             get => _retryHttpStatuses;
+            // ReSharper disable once MemberCanBePrivate.Global
             set
             {
                 checkIfNotTooLateToConfigure();
+
                 _retryHttpStatuses = new HashSet<Int32>(
                     value ?? Enumerable.Empty<Int32>());
             }
         }
 
-        internal IThrottler GetThrottler()
-        {
-            return _rateThrottler.Value;
-        }
+        internal IThrottler GetThrottler() => _rateThrottler.Value;
 
         /// <summary>
         /// Gets throttle parameters initialized with default values or from configuration file.

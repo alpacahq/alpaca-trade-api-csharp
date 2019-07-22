@@ -1,22 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using WebSocket4Net;
-using System.Security.Authentication;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Provides unified type-safe access for Alpaca streaming API.
     /// </summary>
-    public sealed partial class SockClient : IDisposable
+    // ReSharper disable once PartialTypeWithSinglePart
+    public sealed partial class SockClient : SockClientBase
     {
-        private readonly WebSocket _webSocket;
-
         private readonly String _keyId;
 
         private readonly String _secretKey;
@@ -27,14 +21,17 @@ namespace Alpaca.Markets
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
+        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
         public SockClient(
             String keyId,
             String secretKey,
-            String alpacaRestApi = null)
+            String alpacaRestApi = null,
+            IWebSocketFactory webSocketFactory = null)
             : this(
                 keyId,
                 secretKey,
-                new Uri(alpacaRestApi ?? "https://api.alpaca.markets"))
+                new Uri(alpacaRestApi ?? "https://api.alpaca.markets"),
+                webSocketFactory ?? new WebSocket4NetFactory())
         {
         }
 
@@ -44,10 +41,13 @@ namespace Alpaca.Markets
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
+        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
         public SockClient(
             String keyId,
             String secretKey,
-            Uri alpacaRestApi)
+            Uri alpacaRestApi,
+            IWebSocketFactory webSocketFactory)
+            : base(getUriBuilder(alpacaRestApi), webSocketFactory)
         {
             _keyId = keyId ?? throw new ArgumentException(nameof(keyId));
             _secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
@@ -58,35 +58,17 @@ namespace Alpaca.Markets
             {
                 Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
             };
-            uriBuilder.Path += "stream";
+            uriBuilder.Path += "/stream";
 
-            _webSocket = new WebSocket(uriBuilder.Uri.ToString());
+            _webSocket = new WebSocket(uriBuilder.Uri.ToString(),
+                sslProtocols: SslProtocols.Tls11 | SslProtocols.Tls12);
 
             _webSocket.Opened += handleOpened;
-            _webSocket.Closed += handleClosed;            
+            _webSocket.Closed += handleClosed;
+
             _webSocket.DataReceived += handleDataReceived;
-            _webSocket.Error += _webSocket_Error;
-            _webSocket.MessageReceived += _webSocket_MessageReceived;
+            _webSocket.Error += (sender, args) => OnError?.Invoke(args.Exception);
         }
-
-        private void _webSocket_MessageReceived(object sender, MessageReceivedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public bool IsConnected()
-        {
-            return _webSocket.State == WebSocketState.Open;
-        }
-
-        private void _webSocket_Error(object sender, SuperSocket.ClientEngine.ErrorEventArgs e)
-        {
-            OnError?.Invoke(e.Exception);
-        }
-
 
         /// <summary>
         /// Occured when new account update received from stream.
@@ -112,19 +94,12 @@ namespace Alpaca.Markets
         /// Opens connection to Alpaca streaming API.
         /// </summary>
         /// <returns>Waitable task object for handling action completion in asyncronious mode.</returns>
-        public Task<bool> ConnectAsync()
+        public Task ConnectAsync()
         {
 #if NET45
-            return Task.Run(() => {
-                _webSocket.Open();
-                return true;
-            });
+            return Task.Run(() => _webSocket.Open());
 #else
-            //return _webSocket.OpenAsync();
-            return Task.Run(() => {
-                _webSocket.Open();
-                return true;
-            });
+            return _webSocket.OpenAsync();
 #endif
         }
 
@@ -137,8 +112,7 @@ namespace Alpaca.Markets
 #if NET45
             return Task.Run(() => _webSocket.Close());
 #else
-            return Task.Run(() => _webSocket.Close());
-            //return _webSocket.CloseAsync();
+            return _webSocket.CloseAsync();
 #endif
         }
 
@@ -162,22 +136,13 @@ namespace Alpaca.Markets
                 }
             };
 
-            sendAsJsonString(authenticateRequest);
-        }
-
-        private void handleClosed(
-            Object sender,
-            EventArgs e)
-        {
-        }
-
-        private void handleDataReceived(
-            Object sender,
-            DataReceivedEventArgs e)
+        /// <inheritdoc/>
+        protected override void OnDataReceived(
+            Byte[] binaryData)
         {
             try
             {
-                var message = Encoding.UTF8.GetString(e.Data);
+                var message = Encoding.UTF8.GetString(binaryData);
                 var root = JObject.Parse(message);
 
                 var data = root["data"];
@@ -205,15 +170,34 @@ namespace Alpaca.Markets
                         break;
 
                     default:
-                        OnError?.Invoke(new InvalidOperationException(
+                        HandleError(new InvalidOperationException(
                             $"Unexpected message type '{stream}' received."));
                         break;
                 }
             }
             catch (Exception exception)
             {
-                OnError?.Invoke(exception);
+                HandleError(exception);
             }
+        }
+
+        private static UriBuilder getUriBuilder(
+            Uri alpacaRestApi)
+        {
+            alpacaRestApi = alpacaRestApi ?? new Uri("https://api.alpaca.markets");
+
+            var uriBuilder = new UriBuilder(alpacaRestApi)
+            {
+                Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
+            };
+
+            if (!uriBuilder.Path.EndsWith("/"))
+            {
+                uriBuilder.Path += "/";
+            }
+
+            uriBuilder.Path += "stream";
+            return uriBuilder;
         }
 
         private void handleAuthorization(
@@ -234,7 +218,7 @@ namespace Alpaca.Markets
                     }
                 };
 
-                sendAsJsonString(listenRequest);
+                SendAsJsonString(listenRequest);
             }
             else
             {
@@ -252,17 +236,6 @@ namespace Alpaca.Markets
             IAccountUpdate update)
         {
             OnAccountUpdate?.Invoke(update);
-        }
-
-        private void sendAsJsonString(
-            Object value)
-        {
-            using (var textWriter = new StringWriter())
-            {
-                var serializer = new JsonSerializer();
-                serializer.Serialize(textWriter, value);
-                _webSocket.Send(textWriter.ToString());
-            }
         }
     }
 }

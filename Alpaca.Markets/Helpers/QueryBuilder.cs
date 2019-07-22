@@ -23,34 +23,29 @@ namespace Alpaca.Markets
         public QueryBuilder AddParameter<TValue>(
             String name,
             TValue? value)
-            where TValue : struct
-        {
-            return addParameter(name, value, EnumExtensions.ToEnumString);
-        }
+            where TValue : struct =>
+            addParameter(name, value, EnumExtensions.ToEnumString);
 
         public QueryBuilder AddParameter(
             String name,
             DateTime? value,
-            String format)
-        {
-            return addParameter(name, value,
+            String format) =>
+            addParameter(name, value,
                 time =>
                 {
                     if (time.Kind == DateTimeKind.Unspecified)
                     {
                         time = DateTime.SpecifyKind(time, DateTimeKind.Utc);
                     }
+
                     return time.ToString(format, CultureInfo.InvariantCulture);
                 });
-        }
 
         public QueryBuilder AddParameter(
             String name,
-            Int64? value)
-        {
-            return addParameter(name, value,
+            Int64? value) =>
+            addParameter(name, value,
                 time => time.ToString("D", CultureInfo.InvariantCulture));
-        }
 
         public override String ToString()
         {
@@ -64,9 +59,7 @@ namespace Alpaca.Markets
             String name,
             TValue? value,
             Func<TValue, String> converter)
-            where TValue : struct
-        {
-            return value.HasValue ? AddParameter(name, converter(value.Value)) : this;
-        }
+            where TValue : struct =>
+            value.HasValue ? AddParameter(name, converter(value.Value)) : this;
     }
 }

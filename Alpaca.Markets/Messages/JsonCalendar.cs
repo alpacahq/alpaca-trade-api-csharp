@@ -25,21 +25,11 @@ namespace Alpaca.Markets
             TradingDate = DateTime.SpecifyKind(
                 TradingDate.Date, DateTimeKind.Unspecified).Date;
 
-#if NETSTANDARD1_6
-            TradingOpenTime = TimeZoneInfo.ConvertTime(
-                TradingDate.Add(TradingOpenTime.TimeOfDay),
-                CustomTimeZone.Est, TimeZoneInfo.Utc);
-            TradingCloseTime = TimeZoneInfo.ConvertTime(
-                TradingDate.Add(TradingCloseTime.TimeOfDay),
-                CustomTimeZone.Est, TimeZoneInfo.Utc);
-#else
-            TradingOpenTime = TimeZoneInfo.ConvertTimeToUtc(
-                TradingDate.Add(TradingOpenTime.TimeOfDay),
-                CustomTimeZone.Est);
-            TradingCloseTime = TimeZoneInfo.ConvertTimeToUtc(
-                TradingDate.Add(TradingCloseTime.TimeOfDay),
-                CustomTimeZone.Est);
-#endif
+            TradingOpenTime = CustomTimeZone.ConvertFromEstToUtc(
+                TradingDate, TradingOpenTime);
+            TradingCloseTime = CustomTimeZone.ConvertFromEstToUtc(
+                TradingDate, TradingCloseTime);
+
             TradingDate = DateTime.SpecifyKind(
                 TradingDate.Date, DateTimeKind.Utc);
         }

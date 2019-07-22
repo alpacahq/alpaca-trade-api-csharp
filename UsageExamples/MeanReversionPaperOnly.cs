@@ -1,12 +1,16 @@
 ﻿using Alpaca.Markets;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace UsageExamples
 {
-    internal sealed class MeanReversionPaperOnly
+    // This version of the mean reversion example algorithm uses only API features which
+    // are available to users with a free account that can only be used for paper trading.
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
+    internal sealed class MeanReversionPaperOnly : IDisposable
     {
         private string API_KEY = "REPLACEME";
 
@@ -133,6 +137,11 @@ namespace UsageExamples
 
             Console.WriteLine("Market nearing close; closing position.");
             await ClosePositionAtMarket();
+        }
+
+        public void Dispose()
+        {
+            restClient?.Dispose();
         }
 
         private async Task AwaitMarketOpen()
