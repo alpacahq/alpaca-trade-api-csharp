@@ -181,13 +181,27 @@ namespace Alpaca.Markets
         /// Deletes/cancel order on server by server order ID using Alpaca REST API endpoint.
         /// </summary>
         /// <param name="orderId">Server order ID for cancelling.</param>
-        /// <returns><c>True</c> if order deleted/cancelled successfully.</returns>
+        /// <returns><c>True</c> if order cancellation was accepted.</returns>
         public async Task<Boolean> DeleteOrderAsync(
             Guid orderId)
         {
             await _alpacaRestApiThrottler.WaitToProceed();
 
             using (var response = await _alpacaHttpClient.DeleteAsync($"orders/{orderId:D}"))
+            {
+                return response.IsSuccessStatusCode;
+            }
+        }
+
+        /// <summary>
+        /// Deletes/cancel all open orders using Alpaca REST API endpoint.
+        /// </summary>
+        /// <returns><c>True</c> if order deleted/cancelled successfully.</returns>
+        public async Task<Boolean> DeleteAllOrdersAsync()
+        {
+            await _alpacaRestApiThrottler.WaitToProceed();
+
+            using (var response = await _alpacaHttpClient.DeleteAsync($"orders"))
             {
                 return response.IsSuccessStatusCode;
             }
