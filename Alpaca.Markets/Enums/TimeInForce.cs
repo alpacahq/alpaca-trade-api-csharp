@@ -43,13 +43,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// The order will become a market order at market close.
         /// </summary>
-        [EnumMember(Value = "moc")]
+        [EnumMember(Value = "cls")]
         Moc,
 
         /// <summary>
         /// The order will become a limit order at the market's closing price at market close.
         /// </summary>
-        [EnumMember(Value = "loc")]
+        [EnumMember(Value = "cls")]
         Loc,
     }
 }
