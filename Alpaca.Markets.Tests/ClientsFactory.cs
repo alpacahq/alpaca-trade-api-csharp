@@ -42,10 +42,8 @@ namespace Alpaca.Markets.Tests
         public static SockClient GetSockClient() =>
             new SockClient(_configuration);
 
-#pragma warning disable 618
-        public static NatsClient GetNatsClient() =>
-            new NatsClient(_configuration);
-#pragma warning restore 618
+        public static PolygonSockClient GetPolygonSockClient() =>
+            new PolygonSockClient(_configuration);
 
 #else
 
@@ -55,10 +53,8 @@ namespace Alpaca.Markets.Tests
         public static SockClient GetSockClient() =>
             new SockClient(KEY_ID, SECRET_KEY, ALPACA_REST_API);
 
-#pragma warning disable 618
-        public static NatsClient GetNatsClient() =>
-            new NatsClient(KEY_ID, true);
-#pragma warning restore 618
+        public static PolygonSockClient GetPolygonSockClient() =>
+            new PolygonSockClient(KEY_ID);
 
 #endif
     }

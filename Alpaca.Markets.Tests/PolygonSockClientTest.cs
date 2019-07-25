@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Alpaca.Markets.Tests
 {
-    public sealed class NatsClientTest : IDisposable
+    public sealed class PolygonSockClientTest : IDisposable
     {
         private const String SYMBOL = "AAPL";
 
         private readonly RestClient _restClient = ClientsFactory.GetRestClient();
 
         [Fact]
-        public void NatsTradesSubscriptionWorks()
+        public async Task TradesSubscriptionWorks()
         {
-            using (var client = ClientsFactory.GetNatsClient())
+            using (var client = ClientsFactory.GetPolygonSockClient())
             {
-                client.Open();
+                await client.ConnectAsync();
 
                 var waitObject = new AutoResetEvent(false);
                 client.TradeReceived += (trade) =>
@@ -32,16 +33,16 @@ namespace Alpaca.Markets.Tests
                         TimeSpan.FromSeconds(10)));
                 }
 
-                client.Close();
+                await client.DisconnectAsync();
             }
         }
 
         [Fact]
-        public void NatsQuotesSubscriptionWorks()
+        public async Task QuotesSubscriptionWorks()
         {
-            using (var client = ClientsFactory.GetNatsClient())
+            using (var client = ClientsFactory.GetPolygonSockClient())
             {
-                client.Open();
+                await client.ConnectAsync();
 
                 var waitObject = new AutoResetEvent(false);
                 client.QuoteReceived += (quote) =>
@@ -58,19 +59,19 @@ namespace Alpaca.Markets.Tests
                         TimeSpan.FromSeconds(10)));
                 }
 
-                client.Close();
+                await client.DisconnectAsync();
             }
         }
 
         [Fact]
-        public void NatsSecondAggSubscriptionWorks()
+        public async Task SecondAggSubscriptionWorks()
         {
-            using (var client = ClientsFactory.GetNatsClient())
+            using (var client = ClientsFactory.GetPolygonSockClient())
             {
-                client.Open();
+                await client.ConnectAsync();
 
                 var waitObject = new AutoResetEvent(false);
-                client.AggReceived += (agg) =>
+                client.SecondAggReceived += (agg) =>
                 {
                     Assert.Equal(SYMBOL, agg.Symbol);
                     waitObject.Set();
@@ -84,19 +85,19 @@ namespace Alpaca.Markets.Tests
                         TimeSpan.FromSeconds(10)));
                 }
 
-                client.Close();
+                await client.DisconnectAsync();
             }
         }
 
         [Fact(Skip="Too long running")]
-        public void NatsMinuteAggSubscriptionWorks()
+        public async Task MinuteAggSubscriptionWorks()
         {
-            using (var client = ClientsFactory.GetNatsClient())
+            using (var client = ClientsFactory.GetPolygonSockClient())
             {
-                client.Open();
+                await client.ConnectAsync();
 
                 var waitObject = new AutoResetEvent(false);
-                client.AggReceived += (agg) =>
+                client.MinuteAggReceived += (agg) =>
                 {
                     Assert.Equal(SYMBOL, agg.Symbol);
                     waitObject.Set();
@@ -110,16 +111,16 @@ namespace Alpaca.Markets.Tests
                         TimeSpan.FromSeconds(120)));
                 }
 
-                client.Close();
+                await client.DisconnectAsync();
             }
         }
 
         [Fact]
-        public void NatsSeveralSubscriptionWorks()
+        public async Task SeveralSubscriptionWorks()
         {
-            using (var client = ClientsFactory.GetNatsClient())
+            using (var client = ClientsFactory.GetPolygonSockClient())
             {
-                client.Open();
+                await client.ConnectAsync();
 
                 var waitObjects = new []
                 {
@@ -149,7 +150,7 @@ namespace Alpaca.Markets.Tests
                         waitObjects, TimeSpan.FromSeconds(10)));
                 }
 
-                client.Close();
+                await client.DisconnectAsync();
             }
         }
 
