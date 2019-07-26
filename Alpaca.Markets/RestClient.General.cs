@@ -111,6 +111,13 @@ namespace Alpaca.Markets
                 clientOrderId = clientOrderId.Substring(0, 48);
             }
 
+            if (side != OrderSide.Buy &&
+                side != OrderSide.Sell)
+            {
+                throw new ArgumentException(
+                    "Only Sell and Buy order side supported during order placement.", nameof(side));
+            }
+
             var newOrder = new JsonNewOrder
             {
                 Symbol = symbol,
