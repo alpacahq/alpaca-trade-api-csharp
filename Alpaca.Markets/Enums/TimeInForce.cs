@@ -38,6 +38,12 @@ namespace Alpaca.Markets
         /// The order is immediately filled or canceled after being placed (may not partial fill).
         /// </summary>
         [EnumMember(Value = "fok")]
-        Fok
+        Fok,
+
+        /// <summary>
+        /// The order will become a limit order if a limit price is specified or a market order otherwise at market close.
+        /// </summary>
+        [EnumMember(Value = "cls")]
+        Cls
     }
 }
