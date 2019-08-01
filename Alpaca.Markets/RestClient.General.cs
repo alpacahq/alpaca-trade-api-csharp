@@ -236,6 +236,36 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
+        /// Liquidates all open positions at market price using Alpaca REST API endpoint.
+        /// </summary>
+        /// <returns><c>True</c> if positions deleted/liquidated successfully.</returns>
+        public async Task<Boolean> DeleteAllPositions()
+        {
+            await _alpacaRestApiThrottler.WaitToProceed();
+
+            using (var response = await _alpacaHttpClient.DeleteAsync($"positions"))
+            {
+                return response.IsSuccessStatusCode;
+            }
+        }
+
+        /// <summary>
+        /// Liquidate an open position at market price using Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">Symbol for liquidation.</param>
+        /// <returns><c>True</c> if position liquidation was accepted.</returns>
+        public async Task<Boolean> DeletePositionAsync(
+            String symbol)
+        {
+            await _alpacaRestApiThrottler.WaitToProceed();
+
+            using (var response = await _alpacaHttpClient.DeleteAsync($"positions/{symbol}"))
+            {
+                return response.IsSuccessStatusCode;
+            }
+        }
+
+        /// <summary>
         /// Get current time information from Alpaca REST API endpoint.
         /// </summary>
         /// <returns>Read-only clock information object.</returns>
