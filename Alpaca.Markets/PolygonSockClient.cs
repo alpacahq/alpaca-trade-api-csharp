@@ -7,6 +7,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API via websockets.
     /// </summary>
+    [SuppressMessage(
+        "Globalization","CA1303:Do not pass literals as localized parameters",
+        Justification = "We do not plan to support localized exception messages in this SDK.")]
     // ReSharper disable once PartialTypeWithSinglePart
     public sealed partial class PolygonSockClient : SockClientBase
     {
@@ -75,7 +78,8 @@ namespace Alpaca.Markets
             Uri polygonWebsocketApi,
             IWebSocketFactory webSocketFactory)
             : base(getUriBuilder(polygonWebsocketApi), webSocketFactory) =>
-            _keyId = keyId ?? throw new ArgumentException(nameof(keyId));
+            _keyId = keyId ?? throw new ArgumentException(
+                         "Application key id should not be null", nameof(keyId));
 
         /// <summary>
         /// Subscribes for the trade updates via <see cref="TradeReceived"/>

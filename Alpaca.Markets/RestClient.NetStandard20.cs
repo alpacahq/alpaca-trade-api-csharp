@@ -15,17 +15,17 @@ namespace Alpaca.Markets
         public RestClient(
             IConfiguration configuration)
             : this(
-                configuration["keyId"],
-                configuration["secretKey"],
-                configuration["alpacaRestApi"],
-                configuration["polygonRestApi"],
-                configuration["alpacaDataApi"],
-                toInt32OrNull(configuration["apiVersion"]),
-                toInt32OrNull(configuration["dataApiVersion"]),
-                toBooleanOrNull(configuration["staging"]),
+                configuration?["keyId"],
+                configuration?["secretKey"],
+                configuration?["alpacaRestApi"],
+                configuration?["polygonRestApi"],
+                configuration?["alpacaDataApi"],
+                toInt32OrNull(configuration?["apiVersion"]),
+                toInt32OrNull(configuration?["dataApiVersion"]),
+                toBooleanOrNull(configuration?["staging"]),
                 new ThrottleParameters(null, null,
-                    toInt32OrNull(configuration["maxRetryAttempts"]),
-                    configuration.GetSection("retryHttpStatuses")
+                    toInt32OrNull(configuration?["maxRetryAttempts"]),
+                    configuration?.GetSection("retryHttpStatuses")
                     .GetChildren().Select(item => Convert.ToInt32(item.Value))))
         {
         }
