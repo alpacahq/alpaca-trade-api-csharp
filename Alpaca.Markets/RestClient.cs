@@ -147,10 +147,12 @@ namespace Alpaca.Markets
 
             for(var attempts = 0; attempts < throttler.MaxRetryAttempts; ++attempts)
             {
-                await throttler.WaitToProceed();
+                await throttler.WaitToProceed().ConfigureAwait(false);
                 try
                 {
-                    using (var response = await httpClient.GetAsync(endpointUri, HttpCompletionOption.ResponseHeadersRead))
+                    using (var response = await httpClient
+                        .GetAsync(endpointUri, HttpCompletionOption.ResponseHeadersRead)
+                        .ConfigureAwait(false))
                     {
                         // Check response for server and caller specified waits and retries
                         if(!throttler.CheckHttpResponse(response))
@@ -158,7 +160,7 @@ namespace Alpaca.Markets
                             continue;
                         }
 
-                        using (var stream = await response.Content.ReadAsStreamAsync())
+                        using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
                         using (var reader = new JsonTextReader(new StreamReader(stream)))
                         {
                             var serializer = new JsonSerializer();
@@ -202,7 +204,8 @@ namespace Alpaca.Markets
             String endpointUri)
             where TJson : TApi =>
             (IEnumerable<TApi>) await
-                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, endpointUri);
+                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, endpointUri)
+                    .ConfigureAwait(false);
 
         private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
@@ -210,7 +213,8 @@ namespace Alpaca.Markets
             UriBuilder uriBuilder)
             where TJson : TApi =>
             (IEnumerable<TApi>) await
-                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, uriBuilder);
+                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, uriBuilder)
+                    .ConfigureAwait(false);
 
         private static Uri addApiVersionNumberSafe(Uri baseUri, Int32 apiVersion)
         {

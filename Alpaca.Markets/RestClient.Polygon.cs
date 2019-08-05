@@ -281,7 +281,8 @@ namespace Alpaca.Markets
 
             var dictionary = await getSingleObjectAsync
                 <IDictionary<String, String>, Dictionary<String, String>>(
-                    _polygonHttpClient, FakeThrottler.Instance, builder);
+                    _polygonHttpClient, FakeThrottler.Instance, builder)
+                .ConfigureAwait(false);
 
             return dictionary
                 .ToDictionary(
