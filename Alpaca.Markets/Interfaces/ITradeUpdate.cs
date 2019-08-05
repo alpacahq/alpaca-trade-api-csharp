@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
@@ -10,6 +11,9 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade update reason.
         /// </summary>
+        [SuppressMessage(
+            "Naming", "CA1716:Identifiers should not match keywords",
+            Justification = "Already used by clients and creates conflict only in VB.NET")]
         TradeEvent Event { get; }
 
         /// <summary>
