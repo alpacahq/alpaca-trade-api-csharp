@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Newtonsoft.Json.Linq;
 
@@ -80,6 +81,9 @@ namespace Alpaca.Markets
             };
 
         /// <inheritdoc/>
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
         protected override void OnDataReceived(
             Byte[] binaryData)
         {

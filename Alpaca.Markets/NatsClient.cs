@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using NATS.Client;
@@ -243,6 +244,9 @@ namespace Alpaca.Markets
             }
         }
 
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
         private T deserializeBytes<T>(
             Byte[] bytes)
         {
