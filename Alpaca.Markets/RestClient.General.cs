@@ -132,7 +132,8 @@ namespace Alpaca.Markets
                 serializer.Serialize(stringWriter, newOrder);
 
                 using (var content = new StringContent(stringWriter.ToString()))
-                using (var response = await _alpacaHttpClient.PostAsync("orders", content).ConfigureAwait(false))
+                using (var response = await _alpacaHttpClient.PostAsync(
+                    new Uri("orders", UriKind.RelativeOrAbsolute), content).ConfigureAwait(false))
                 using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
                 using (var textReader = new StreamReader(stream))
                 using (var reader = new JsonTextReader(textReader))
@@ -187,7 +188,8 @@ namespace Alpaca.Markets
         {
             await _alpacaRestApiThrottler.WaitToProceed().ConfigureAwait(false);
 
-            using (var response = await _alpacaHttpClient.DeleteAsync($"orders/{orderId:D}")
+            using (var response = await _alpacaHttpClient.DeleteAsync(
+                    new Uri($"orders/{orderId:D}", UriKind.RelativeOrAbsolute))
                 .ConfigureAwait(false))
             {
                 return response.IsSuccessStatusCode;
@@ -202,7 +204,8 @@ namespace Alpaca.Markets
         {
             await _alpacaRestApiThrottler.WaitToProceed().ConfigureAwait(false);
 
-            using (var response = await _alpacaHttpClient.DeleteAsync($"orders")
+            using (var response = await _alpacaHttpClient.DeleteAsync(
+                    new Uri($"orders", UriKind.RelativeOrAbsolute))
                 .ConfigureAwait(false))
             {
                 return response.IsSuccessStatusCode;
@@ -235,7 +238,8 @@ namespace Alpaca.Markets
         {
             await _alpacaRestApiThrottler.WaitToProceed().ConfigureAwait(false);
 
-            using (var response = await _alpacaHttpClient.DeleteAsync($"positions")
+            using (var response = await _alpacaHttpClient.DeleteAsync(
+                    new Uri($"positions", UriKind.RelativeOrAbsolute))
                 .ConfigureAwait(false))
             {
                 return response.IsSuccessStatusCode;
@@ -252,7 +256,8 @@ namespace Alpaca.Markets
         {
             await _alpacaRestApiThrottler.WaitToProceed().ConfigureAwait(false);
 
-            using (var response = await _alpacaHttpClient.DeleteAsync($"positions/{symbol}")
+            using (var response = await _alpacaHttpClient.DeleteAsync(
+                    new Uri($"positions/{symbol}", UriKind.RelativeOrAbsolute))
                 .ConfigureAwait(false))
             {
                 return response.IsSuccessStatusCode;

@@ -42,7 +42,7 @@ namespace Alpaca.Markets
             _options = ConnectionFactory.GetDefaultOptions();
             _options.MaxReconnect = 3;
 
-            natsServers = (natsServers ?? new String [0]).ToArray();
+            natsServers = (natsServers ?? Enumerable.Empty<String>()).ToArray();
 
             if (!natsServers.Any())
             {

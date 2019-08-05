@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Net.Http;
+#if !NETSTANDARD1_6
+using System.Runtime.Serialization;
+#endif
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Represents Alpaca/Polygon REST API specific error information.
     /// </summary>
+    [Serializable]
     public sealed class RestClientErrorException : Exception
     {
         /// <summary>
@@ -37,6 +41,15 @@ namespace Alpaca.Markets
             : base(message, inner)
         {
         }
+
+#if !NETSTANDARD1_6
+        private RestClientErrorException(
+            SerializationInfo info,
+            StreamingContext context)
+            : base(info, context)
+        {
+        }
+#endif
 
         internal RestClientErrorException(
             JsonError error)

@@ -138,7 +138,9 @@ namespace Alpaca.Markets
 
 #if NET45
             System.Net.ServicePointManager.SecurityProtocol =
+#pragma warning disable CA5364 // Do Not Use Deprecated Security Protocols
                 System.Net.SecurityProtocolType.Tls12 | System.Net.SecurityProtocolType.Tls11;
+#pragma warning restore CA5364 // Do Not Use Deprecated Security Protocols
 #endif
         }
 
@@ -164,7 +166,7 @@ namespace Alpaca.Markets
                 try
                 {
                     using (var response = await httpClient
-                        .GetAsync(endpointUri, HttpCompletionOption.ResponseHeadersRead)
+                        .GetAsync(new Uri(endpointUri, UriKind.RelativeOrAbsolute), HttpCompletionOption.ResponseHeadersRead)
                         .ConfigureAwait(false))
                     {
                         // Check response for server and caller specified waits and retries
