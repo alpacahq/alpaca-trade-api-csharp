@@ -48,7 +48,7 @@ namespace Alpaca.Markets
             }
 
             if (isStagingEnvironment &&
-                !keyId.EndsWith("-staging"))
+                !keyId.EndsWith("-staging", StringComparison.Ordinal))
             {
                 keyId += "-staging";
             }

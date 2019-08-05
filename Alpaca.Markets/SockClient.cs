@@ -134,7 +134,7 @@ namespace Alpaca.Markets
                 Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
             };
 
-            if (!uriBuilder.Path.EndsWith("/"))
+            if (!uriBuilder.Path.EndsWith("/", StringComparison.Ordinal))
             {
                 uriBuilder.Path += "/";
             }
