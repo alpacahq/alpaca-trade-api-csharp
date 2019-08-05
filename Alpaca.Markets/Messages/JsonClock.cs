@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
+    [SuppressMessage(
+        "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonClock : IClock
     {
         [JsonProperty(PropertyName = "timestamp", Required = Required.Always)]

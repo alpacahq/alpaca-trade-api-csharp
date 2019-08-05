@@ -1,12 +1,15 @@
 ﻿#if NET45
-
 using System;
 using System.Security.Authentication;
 using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 using WebSocketSharp;
 
 namespace Alpaca.Markets
 {
+    [SuppressMessage(
+        "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class WebSocketSharpFactory : IWebSocketFactory
     {
         private sealed class WebSocketWrapper : IWebSocket //-V3073
