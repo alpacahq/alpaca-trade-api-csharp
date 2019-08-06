@@ -25,9 +25,16 @@ namespace Alpaca.Markets
 
         private const String SecondAggChannel = "A";
 
+        private const String StatusMessage = "status";
+
         // ReSharper restore InconsistentNaming
 
         private readonly String _keyId;
+        
+        /// <summary>
+        /// Occured when stream successfully connected.
+        /// </summary>
+        public event Action<AuthStatus> Connected;
 
         /// <summary>
         /// Occured when new trade received from stream.
@@ -54,15 +61,18 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="polygonWebsocketApi">Polygon websocket API endpoint URL.</param>
+        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
         public PolygonSockClient(
             String keyId,
             String polygonWebsocketApi = null,
+            Boolean isStagingEnvironment = false,
             IWebSocketFactory webSocketFactory = null
             )
             : this(
                 keyId,
                 new Uri(polygonWebsocketApi ?? "wss://alpaca.socket.polygon.io/stocks"),
+                isStagingEnvironment,
                 webSocketFactory ?? new WebSocket4NetFactory())
         {
         }
@@ -72,14 +82,24 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="keyId">Application key identifier.</param>
         /// <param name="polygonWebsocketApi">Polygon websocket API endpoint URL.</param>
+        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
         public PolygonSockClient(
             String keyId,
             Uri polygonWebsocketApi,
+            Boolean isStagingEnvironment,
             IWebSocketFactory webSocketFactory)
-            : base(getUriBuilder(polygonWebsocketApi), webSocketFactory) =>
+            : base(getUriBuilder(polygonWebsocketApi), webSocketFactory)
+        {
             _keyId = keyId ?? throw new ArgumentException(
                          "Application key id should not be null", nameof(keyId));
+
+            if (isStagingEnvironment &&
+                !_keyId.EndsWith("-staging", StringComparison.Ordinal))
+            {
+                _keyId += "-staging";
+            }
+        }
 
         /// <summary>
         /// Subscribes for the trade updates via <see cref="TradeReceived"/>
@@ -153,13 +173,6 @@ namespace Alpaca.Markets
             String symbol) =>
             unsubscribe(MinuteAggChannel, symbol);
 
-        internal override JsonAuthRequest GetAuthRequest() =>
-            new JsonAuthRequest
-            {
-                Action = JsonAction.PolygonAuthenticate,
-                Params = _keyId
-            };
-
         /// <inheritdoc/>
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
@@ -193,6 +206,10 @@ namespace Alpaca.Markets
                             SecondAggReceived?.Invoke(root.ToObject<JsonStreamAgg>());
                             break;
 
+                        case StatusMessage:
+                            handleAuthorization(root.ToObject<JsonConnectionStatus>());
+                            break;
+
                         default:
                             HandleError(new InvalidOperationException(
                                 $"Unexpected message type '{stream}' received."));
@@ -216,6 +233,33 @@ namespace Alpaca.Markets
                 Scheme = polygonWebsocketApi.Scheme == "http" ? "ws" : "wss"
             };
             return uriBuilder;
+        }
+
+        private void handleAuthorization(
+            JsonConnectionStatus connectionStatus)
+        {
+            switch (connectionStatus.Status)
+            {
+                case ConnectionStatus.Connected:
+                    SendAsJsonString(new JsonAuthRequest
+                    {
+                        Action = JsonAction.PolygonAuthenticate,
+                        Params = _keyId
+                    });
+                    break;
+
+                case ConnectionStatus.Success:
+                    Connected?.Invoke(AuthStatus.Authorized);
+                    break;
+
+                case ConnectionStatus.AuthenticationRequired:
+                    HandleError(new InvalidOperationException(connectionStatus.Message));
+                    break;
+
+                case ConnectionStatus.AuthenticationFailed:
+                    HandleError(new InvalidOperationException(connectionStatus.Message));
+                    break;
+            }
         }
 
         private void subscribe(

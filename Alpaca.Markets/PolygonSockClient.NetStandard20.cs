@@ -1,5 +1,7 @@
 ﻿#if NETSTANDARD2_0
 
+using System;
+using System.Globalization;
 using Microsoft.Extensions.Configuration;
 
 namespace Alpaca.Markets
@@ -17,6 +19,7 @@ namespace Alpaca.Markets
             : this(
                 configuration?["keyId"],
                 configuration?["polygonWebsocketApi"],
+                Convert.ToBoolean(configuration?["staging"] ?? "false", CultureInfo.InvariantCulture),
                 webSocketFactory)
         {
         }

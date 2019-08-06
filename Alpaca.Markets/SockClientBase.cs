@@ -66,12 +66,12 @@ namespace Alpaca.Markets
             GC.SuppressFinalize(this);
         }
 
-        internal abstract JsonAuthRequest GetAuthRequest();
-
         /// <summary>
         /// Handles <see cref="IWebSocket.Opened"/> event.
         /// </summary>
-        protected virtual void OnOpened() => SendAsJsonString(GetAuthRequest());
+        protected virtual void OnOpened()
+        {
+        }
 
         /// <summary>
         /// Handles <see cref="IWebSocket.Closed"/> event.

@@ -16,15 +16,17 @@ namespace Alpaca.Markets.Tests
         {
             using (var client = ClientsFactory.GetPolygonSockClient())
             {
-                await client.ConnectAsync();
+                await connectAndAuthenticate(client);
 
                 var waitObject = new AutoResetEvent(false);
+
                 client.TradeReceived += (trade) =>
                 {
                     Assert.Equal(SYMBOL, trade.Symbol);
                     waitObject.Set();
                 };
 
+                waitObject.Reset();
                 client.SubscribeTrade(SYMBOL);
 
                 if (_restClient.GetClockAsync().Result.IsOpen)
@@ -42,7 +44,7 @@ namespace Alpaca.Markets.Tests
         {
             using (var client = ClientsFactory.GetPolygonSockClient())
             {
-                await client.ConnectAsync();
+                await connectAndAuthenticate(client);
 
                 var waitObject = new AutoResetEvent(false);
                 client.QuoteReceived += (quote) =>
@@ -68,7 +70,7 @@ namespace Alpaca.Markets.Tests
         {
             using (var client = ClientsFactory.GetPolygonSockClient())
             {
-                await client.ConnectAsync();
+                await connectAndAuthenticate(client);
 
                 var waitObject = new AutoResetEvent(false);
                 client.SecondAggReceived += (agg) =>
@@ -94,7 +96,7 @@ namespace Alpaca.Markets.Tests
         {
             using (var client = ClientsFactory.GetPolygonSockClient())
             {
-                await client.ConnectAsync();
+                await connectAndAuthenticate(client);
 
                 var waitObject = new AutoResetEvent(false);
                 client.MinuteAggReceived += (agg) =>
@@ -120,7 +122,7 @@ namespace Alpaca.Markets.Tests
         {
             using (var client = ClientsFactory.GetPolygonSockClient())
             {
-                await client.ConnectAsync();
+                await connectAndAuthenticate(client);
 
                 var waitObjects = new []
                 {
@@ -157,6 +159,22 @@ namespace Alpaca.Markets.Tests
         public void Dispose()
         {
             _restClient?.Dispose();
+        }
+
+        private static async Task connectAndAuthenticate(
+            PolygonSockClient client)
+        {
+            var waitObject = new AutoResetEvent(false);
+
+            client.Connected += (status) =>
+            {
+                Assert.Equal(AuthStatus.Authorized, status);
+                waitObject.Set();
+            };
+
+            await client.ConnectAsync();
+            Assert.True(waitObject.WaitOne(
+                TimeSpan.FromSeconds(10)));
         }
     }
 }

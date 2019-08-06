@@ -1,4 +1,5 @@
 ﻿#if NETSTANDARD2_0
+
 using System;
 using System.Linq;
 using System.Globalization;
