@@ -54,7 +54,7 @@ namespace Alpaca.Markets.Tests
             new SockClient(KEY_ID, SECRET_KEY, ALPACA_REST_API);
 
         public static PolygonSockClient GetPolygonSockClient() =>
-            new PolygonSockClient(KEY_ID);
+            new PolygonSockClient(KEY_ID, isStagingEnvironment: true);
 
 #endif
     }
