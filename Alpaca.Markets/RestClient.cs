@@ -45,6 +45,7 @@ namespace Alpaca.Markets
         /// <param name="dataApiVersion">Version of Alpaca data API to call.  The only valid value is currently "1".</param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         /// <param name="throttleParameters">Parameters for requests throttling.</param>
+        /// <param name="oauthKey">Key for alternative authentication via oauth. keyId and secretKey will be ignored if provided.</param>
         public RestClient(
             String keyId,
             String secretKey,
@@ -54,7 +55,8 @@ namespace Alpaca.Markets
             Int32? apiVersion = null,
             Int32? dataApiVersion = null,
             Boolean? isStagingEnvironment = null,
-            ThrottleParameters throttleParameters = null)
+            ThrottleParameters throttleParameters = null,
+            String oauthKey = null)
             : this(
                 keyId,
                 secretKey,
@@ -64,7 +66,8 @@ namespace Alpaca.Markets
                 apiVersion ?? DEFAULT_API_VERSION_NUMBER,
                 dataApiVersion ?? DEFAULT_DATA_API_VERSION_NUMBER,
                 isStagingEnvironment ?? false,
-                throttleParameters ?? ThrottleParameters.Default)
+                throttleParameters ?? ThrottleParameters.Default,
+                oauthKey ?? "")
         {
         }
 
@@ -80,6 +83,7 @@ namespace Alpaca.Markets
         /// <param name="dataApiVersion">Version of Alpaca data API to call.  The only valid value is currently "1".</param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         /// <param name="throttleParameters">Parameters for requests throttling.</param>
+        /// <param name="oauthKey">Key for alternative authentication via oauth. keyId and secretKey will be ignored if provided.</param>
         public RestClient(
             String keyId,
             String secretKey,
@@ -89,7 +93,8 @@ namespace Alpaca.Markets
             Int32 apiVersion,
             Int32 dataApiVersion,
             Boolean isStagingEnvironment,
-            ThrottleParameters throttleParameters)
+            ThrottleParameters throttleParameters,
+            String oauthKey)
         {
             keyId = keyId ?? throw new ArgumentException(nameof(keyId));
             secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
@@ -101,10 +106,18 @@ namespace Alpaca.Markets
 
             _alpacaRestApiThrottler = throttleParameters.GetThrottler();
 
-            _alpacaHttpClient.DefaultRequestHeaders.Add(
-                "APCA-API-KEY-ID", keyId);
-            _alpacaHttpClient.DefaultRequestHeaders.Add(
-                "APCA-API-SECRET-KEY", secretKey);
+            if (string.IsNullOrEmpty(oauthKey))
+            {
+                _alpacaHttpClient.DefaultRequestHeaders.Add(
+                    "APCA-API-KEY-ID", keyId);
+                _alpacaHttpClient.DefaultRequestHeaders.Add(
+                    "APCA-API-SECRET-KEY", secretKey);
+            }
+            else
+            {
+                _alpacaHttpClient.DefaultRequestHeaders.Add(
+                    "Authorization", "Bearer " + oauthKey);
+            }
             _alpacaHttpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _alpacaHttpClient.BaseAddress = addApiVersionNumberSafe(
