@@ -124,7 +124,7 @@ namespace Alpaca.Markets
                 ExtendedHours = extendedHours
             };
 
-            await _alpacaRestApiThrottler.WaitToProceed();
+            await _alpacaRestApiThrottler.WaitToProceed().ConfigureAwait(false);
 
             var serializer = new JsonSerializer();
             using (var stringWriter = new StringWriter())
@@ -132,8 +132,9 @@ namespace Alpaca.Markets
                 serializer.Serialize(stringWriter, newOrder);
 
                 using (var content = new StringContent(stringWriter.ToString()))
-                using (var response = await _alpacaHttpClient.PostAsync("orders", content))
-                using (var stream = await response.Content.ReadAsStreamAsync())
+                using (var response = await _alpacaHttpClient.PostAsync(
+                    new Uri("orders", UriKind.RelativeOrAbsolute), content).ConfigureAwait(false))
+                using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
                 using (var textReader = new StreamReader(stream))
                 using (var reader = new JsonTextReader(textReader))
                 {
@@ -185,9 +186,11 @@ namespace Alpaca.Markets
         public async Task<Boolean> DeleteOrderAsync(
             Guid orderId)
         {
-            await _alpacaRestApiThrottler.WaitToProceed();
+            await _alpacaRestApiThrottler.WaitToProceed().ConfigureAwait(false);
 
-            using (var response = await _alpacaHttpClient.DeleteAsync($"orders/{orderId:D}"))
+            using (var response = await _alpacaHttpClient.DeleteAsync(
+                    new Uri($"orders/{orderId:D}", UriKind.RelativeOrAbsolute))
+                .ConfigureAwait(false))
             {
                 return response.IsSuccessStatusCode;
             }
@@ -199,9 +202,11 @@ namespace Alpaca.Markets
         /// <returns><c>True</c> if order deleted/cancelled successfully.</returns>
         public async Task<Boolean> DeleteAllOrdersAsync()
         {
-            await _alpacaRestApiThrottler.WaitToProceed();
+            await _alpacaRestApiThrottler.WaitToProceed().ConfigureAwait(false);
 
-            using (var response = await _alpacaHttpClient.DeleteAsync($"orders"))
+            using (var response = await _alpacaHttpClient.DeleteAsync(
+                    new Uri($"orders", UriKind.RelativeOrAbsolute))
+                .ConfigureAwait(false))
             {
                 return response.IsSuccessStatusCode;
             }
@@ -231,9 +236,11 @@ namespace Alpaca.Markets
         /// <returns><c>True</c> if positions deleted/liquidated successfully.</returns>
         public async Task<Boolean> DeleteAllPositions()
         {
-            await _alpacaRestApiThrottler.WaitToProceed();
+            await _alpacaRestApiThrottler.WaitToProceed().ConfigureAwait(false);
 
-            using (var response = await _alpacaHttpClient.DeleteAsync($"positions"))
+            using (var response = await _alpacaHttpClient.DeleteAsync(
+                    new Uri($"positions", UriKind.RelativeOrAbsolute))
+                .ConfigureAwait(false))
             {
                 return response.IsSuccessStatusCode;
             }
@@ -247,9 +254,11 @@ namespace Alpaca.Markets
         public async Task<Boolean> DeletePositionAsync(
             String symbol)
         {
-            await _alpacaRestApiThrottler.WaitToProceed();
+            await _alpacaRestApiThrottler.WaitToProceed().ConfigureAwait(false);
 
-            using (var response = await _alpacaHttpClient.DeleteAsync($"positions/{symbol}"))
+            using (var response = await _alpacaHttpClient.DeleteAsync(
+                    new Uri($"positions/{symbol}", UriKind.RelativeOrAbsolute))
+                .ConfigureAwait(false))
             {
                 return response.IsSuccessStatusCode;
             }
@@ -318,7 +327,8 @@ namespace Alpaca.Markets
             var response = await getSingleObjectAsync
                 <IReadOnlyDictionary<String, List<JsonBarAgg>>,
                     Dictionary<String, List<JsonBarAgg>>>(
-                _alpacaHttpClient, FakeThrottler.Instance, builder);
+                _alpacaHttpClient, FakeThrottler.Instance, builder)
+                .ConfigureAwait(false);
 
             return response.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.AsEnumerable<IAgg>());
         }

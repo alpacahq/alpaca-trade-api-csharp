@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     /// Authorization status for Alpaca streaming API.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum ConnectionStatus
+    internal enum ConnectionStatus
     {
         /// <summary>
         /// Client successfully connected.

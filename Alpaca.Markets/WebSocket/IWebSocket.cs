@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
 namespace Alpaca.Markets
@@ -52,6 +53,9 @@ namespace Alpaca.Markets
         /// <summary>
         /// Occurred in case of any communication errors (on opening/close/listening/send).
         /// </summary>
+        [SuppressMessage(
+            "Naming", "CA1716:Identifiers should not match keywords",
+            Justification = "Already used by clients and creates conflict only in VB.NET")]
         event Action<Exception> Error;
     }
 }

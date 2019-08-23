@@ -31,7 +31,7 @@ namespace Alpaca.Markets
                     return;
                 }
 
-                await Task.Delay(delay);
+                await Task.Delay(delay).ConfigureAwait(false);
             }
 
             public void SetNextRetryTimeRandom()
@@ -143,7 +143,7 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public async Task WaitToProceed()
         {
-            await _nextRetryGuard.WaitToProceed();
+            await _nextRetryGuard.WaitToProceed().ConfigureAwait(false);
 
             // Block until we can enter the semaphore or until the timeout expires.
             var entered = _throttleSemaphore.Wait(Timeout.Infinite);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Newtonsoft.Json.Linq;
 
@@ -8,6 +9,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca streaming API.
     /// </summary>
+    [SuppressMessage(
+        "Globalization","CA1303:Do not pass literals as localized parameters",
+        Justification = "We do not plan to support localized exception messages in this SDK.")]
     // ReSharper disable once PartialTypeWithSinglePart
     public sealed partial class SockClient : SockClientBase
     {
@@ -49,8 +53,10 @@ namespace Alpaca.Markets
             IWebSocketFactory webSocketFactory)
             : base(getUriBuilder(alpacaRestApi), webSocketFactory)
         {
-            _keyId = keyId ?? throw new ArgumentException(nameof(keyId));
-            _secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
+            _keyId = keyId ?? throw new ArgumentException(
+                         "Application key id should not be null", nameof(keyId));
+            _secretKey = secretKey ?? throw new ArgumentException(
+                             "Application secret key should not be null", nameof(secretKey));
         }
 
         /// <summary>
@@ -85,6 +91,9 @@ namespace Alpaca.Markets
         }
 
         /// <inheritdoc/>
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
         protected override void OnDataReceived(
             Byte[] binaryData)
         {
@@ -139,7 +148,7 @@ namespace Alpaca.Markets
                 Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
             };
 
-            if (!uriBuilder.Path.EndsWith("/"))
+            if (!uriBuilder.Path.EndsWith("/", StringComparison.Ordinal))
             {
                 uriBuilder.Path += "/";
             }

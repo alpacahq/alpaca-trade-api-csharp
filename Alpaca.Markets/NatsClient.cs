@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using NATS.Client;
@@ -11,6 +12,9 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Polygon streaming API via NATS.
     /// </summary>
     [Obsolete("NATS connections will soon be deprecated by Polygon. Please use websockets via PolygonSockClient instead.", false)]
+    [SuppressMessage(
+        "Globalization","CA1303:Do not pass literals as localized parameters",
+        Justification = "We do not plan to support localized exception messages in this SDK.")]
     // ReSharper disable once PartialTypeWithSinglePart
     public sealed partial class NatsClient : IDisposable
     {
@@ -32,10 +36,13 @@ namespace Alpaca.Markets
             Boolean isStagingEnvironment,
             IEnumerable<String> natsServers = null)
         {
+            keyId = keyId ?? throw new ArgumentException(
+                         "Application key id should not be null", nameof(keyId));
+
             _options = ConnectionFactory.GetDefaultOptions();
             _options.MaxReconnect = 3;
 
-            natsServers = (natsServers ?? new String [0]).ToArray();
+            natsServers = (natsServers ?? Enumerable.Empty<String>()).ToArray();
 
             if (!natsServers.Any())
             {
@@ -48,7 +55,7 @@ namespace Alpaca.Markets
             }
 
             if (isStagingEnvironment &&
-                !keyId.EndsWith("-staging"))
+                !keyId.EndsWith("-staging", StringComparison.Ordinal))
             {
                 keyId += "-staging";
             }
@@ -243,6 +250,9 @@ namespace Alpaca.Markets
             }
         }
 
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
         private T deserializeBytes<T>(
             Byte[] bytes)
         {

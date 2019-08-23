@@ -1,7 +1,8 @@
-﻿#if NETSTANDARD2_0
-
+﻿
+#if NETSTANDARD2_0
 using System;
 using System.Linq;
+using System.Globalization;
 using Microsoft.Extensions.Configuration;
 
 namespace Alpaca.Markets
@@ -15,28 +16,28 @@ namespace Alpaca.Markets
         public RestClient(
             IConfiguration configuration)
             : this(
-                configuration["keyId"],
-                configuration["secretKey"],
-                configuration["alpacaRestApi"],
-                configuration["polygonRestApi"],
-                configuration["alpacaDataApi"],
-                toInt32OrNull(configuration["apiVersion"]),
-                toInt32OrNull(configuration["dataApiVersion"]),
-                toBooleanOrNull(configuration["staging"]),
+                configuration?["keyId"],
+                configuration?["secretKey"],
+                configuration?["alpacaRestApi"],
+                configuration?["polygonRestApi"],
+                configuration?["alpacaDataApi"],
+                toInt32OrNull(configuration?["apiVersion"]),
+                toInt32OrNull(configuration?["dataApiVersion"]),
+                toBooleanOrNull(configuration?["staging"]),
                 new ThrottleParameters(null, null,
-                    toInt32OrNull(configuration["maxRetryAttempts"]),
-                    configuration.GetSection("retryHttpStatuses")
-                    .GetChildren().Select(item => Convert.ToInt32(item.Value))))
+                    toInt32OrNull(configuration?["maxRetryAttempts"]),
+                    configuration?.GetSection("retryHttpStatuses")
+                    .GetChildren().Select(item => Convert.ToInt32(item.Value, CultureInfo.InvariantCulture))))
         {
         }
 
         private static Int32? toInt32OrNull(
             String value) => 
-            value != null ? Convert.ToInt32(value) : (Int32?)null;
+            value != null ? Convert.ToInt32(value, CultureInfo.InvariantCulture) : (Int32?)null;
 
         private static Boolean? toBooleanOrNull(
             String value) =>
-            value != null ? Convert.ToBoolean(value) : (Boolean?)null;
+            value != null ? Convert.ToBoolean(value, CultureInfo.InvariantCulture) : (Boolean?)null;
     }
 }
 

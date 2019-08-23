@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
@@ -12,9 +13,13 @@ namespace Alpaca.Markets
         /// </summary>
         Guid AssetId { get; }
 
+
         /// <summary>
         /// Gets asset class.
         /// </summary>
+        [SuppressMessage(
+            "Naming", "CA1716:Identifiers should not match keywords",
+            Justification = "Already used by clients and creates conflict only in VB.NET")]
         AssetClass Class { get; }
 
         /// <summary>

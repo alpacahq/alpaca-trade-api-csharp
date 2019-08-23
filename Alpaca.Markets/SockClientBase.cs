@@ -10,6 +10,9 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for websocket streaming APIs.
     /// </summary>
     [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
+    [SuppressMessage(
+        "Globalization","CA1303:Do not pass literals as localized parameters",
+        Justification = "We do not plan to support localized exception messages in this SDK.")]
     public abstract class SockClientBase : IDisposable
     {
         private readonly IWebSocket _webSocket;
@@ -23,6 +26,11 @@ namespace Alpaca.Markets
             UriBuilder endpointUri,
             IWebSocketFactory webSocketFactory)
         {
+            endpointUri = endpointUri ?? throw new ArgumentException(
+                        "Endpoint URL should not be null", nameof(endpointUri));
+            webSocketFactory = webSocketFactory ?? throw new ArgumentException(
+                            "Web Socket factory should not be null", nameof(webSocketFactory));
+
             _webSocket = webSocketFactory.CreateWebSocket(endpointUri.Uri);
 
             _webSocket.Opened += OnOpened;

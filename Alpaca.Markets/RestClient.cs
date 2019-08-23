@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -11,6 +12,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca REST API and Polygon REST API endpoints.
     /// </summary>
+    [SuppressMessage(
+        "Globalization","CA1303:Do not pass literals as localized parameters",
+        Justification = "We do not plan to support localized exception messages in this SDK.")]
     public sealed partial class RestClient : IDisposable
     {
         private const Int32 DEFAULT_API_VERSION_NUMBER = 2;
@@ -79,7 +83,7 @@ namespace Alpaca.Markets
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         /// <param name="polygonRestApi">Polygon REST API endpoint URL.</param>
         /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
-        /// <param name="apiVersion">Version of Alpaca api to call.  Valid values are "1" or "2".</param>
+        /// <param name="apiVersion">Version of Alpaca API to call.  Valid values are "1" or "2".</param>
         /// <param name="dataApiVersion">Version of Alpaca data API to call.  The only valid value is currently "1".</param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         /// <param name="throttleParameters">Parameters for requests throttling.</param>
@@ -96,14 +100,23 @@ namespace Alpaca.Markets
             ThrottleParameters throttleParameters,
             String oauthKey)
         {
-            keyId = keyId ?? throw new ArgumentException(nameof(keyId));
-            secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
+            keyId = keyId ?? throw new ArgumentException(
+                        "Application key id should not be null", nameof(keyId));
+            secretKey = secretKey ?? throw new ArgumentException(
+                            "Application secret key id should not be null", nameof(secretKey));
 
             if (!_supportedApiVersions.Contains(apiVersion))
-                throw new ArgumentException(nameof(apiVersion));
+            {
+                throw new ArgumentException(
+                    "Supported REST API versions are '1' and '2' only", nameof(apiVersion));
+            }
             if (!_supportedDataApiVersions.Contains(dataApiVersion))
-                throw new ArgumentException(nameof(dataApiVersion));
+            {
+                throw new ArgumentException(
+                    "Supported Data REST API versions are '1' and '2' only", nameof(dataApiVersion));
+            }
 
+            throttleParameters = throttleParameters ?? ThrottleParameters.Default;
             _alpacaRestApiThrottler = throttleParameters.GetThrottler();
 
             if (string.IsNullOrEmpty(oauthKey))
@@ -138,7 +151,9 @@ namespace Alpaca.Markets
 
 #if NET45
             System.Net.ServicePointManager.SecurityProtocol =
+#pragma warning disable CA5364 // Do Not Use Deprecated Security Protocols
                 System.Net.SecurityProtocolType.Tls12 | System.Net.SecurityProtocolType.Tls11;
+#pragma warning restore CA5364 // Do Not Use Deprecated Security Protocols
 #endif
         }
 
@@ -160,10 +175,12 @@ namespace Alpaca.Markets
 
             for(var attempts = 0; attempts < throttler.MaxRetryAttempts; ++attempts)
             {
-                await throttler.WaitToProceed();
+                await throttler.WaitToProceed().ConfigureAwait(false);
                 try
                 {
-                    using (var response = await httpClient.GetAsync(endpointUri, HttpCompletionOption.ResponseHeadersRead))
+                    using (var response = await httpClient
+                        .GetAsync(new Uri(endpointUri, UriKind.RelativeOrAbsolute), HttpCompletionOption.ResponseHeadersRead)
+                        .ConfigureAwait(false))
                     {
                         // Check response for server and caller specified waits and retries
                         if(!throttler.CheckHttpResponse(response))
@@ -171,7 +188,7 @@ namespace Alpaca.Markets
                             continue;
                         }
 
-                        using (var stream = await response.Content.ReadAsStreamAsync())
+                        using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
                         using (var reader = new JsonTextReader(new StreamReader(stream)))
                         {
                             var serializer = new JsonSerializer();
@@ -215,7 +232,8 @@ namespace Alpaca.Markets
             String endpointUri)
             where TJson : TApi =>
             (IEnumerable<TApi>) await
-                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, endpointUri);
+                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, endpointUri)
+                    .ConfigureAwait(false);
 
         private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
@@ -223,7 +241,8 @@ namespace Alpaca.Markets
             UriBuilder uriBuilder)
             where TJson : TApi =>
             (IEnumerable<TApi>) await
-                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, uriBuilder);
+                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, uriBuilder)
+                    .ConfigureAwait(false);
 
         private static Uri addApiVersionNumberSafe(Uri baseUri, Int32 apiVersion)
         {

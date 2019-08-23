@@ -185,7 +185,7 @@ namespace Alpaca.Markets
             {
                 Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/minute/{unixFrom}/{unixTo}",
                 Query = getDefaultPolygonApiQueryBuilder()
-                    .AddParameter("unadjusted", unadjusted.ToString())
+                    .AddParameter("unadjusted", unadjusted ? Boolean.TrueString : Boolean.FalseString)
             };
 
             return getSingleObjectAsync
@@ -217,7 +217,7 @@ namespace Alpaca.Markets
             {
                 Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/day/{unixFrom}/{unixTo}",
                 Query = getDefaultPolygonApiQueryBuilder()
-                    .AddParameter("unadjusted", unadjusted.ToString())
+                    .AddParameter("unadjusted", unadjusted ? Boolean.TrueString : Boolean.FalseString)
             };
 
             return getSingleObjectAsync
@@ -281,7 +281,8 @@ namespace Alpaca.Markets
 
             var dictionary = await getSingleObjectAsync
                 <IDictionary<String, String>, Dictionary<String, String>>(
-                    _polygonHttpClient, FakeThrottler.Instance, builder);
+                    _polygonHttpClient, FakeThrottler.Instance, builder)
+                .ConfigureAwait(false);
 
             return dictionary
                 .ToDictionary(

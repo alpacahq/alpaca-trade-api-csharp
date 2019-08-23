@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
@@ -6,6 +7,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API via websockets.
     /// </summary>
+    [SuppressMessage(
+        "Globalization","CA1303:Do not pass literals as localized parameters",
+        Justification = "We do not plan to support localized exception messages in this SDK.")]
     // ReSharper disable once PartialTypeWithSinglePart
     public sealed partial class PolygonSockClient : SockClientBase
     {
@@ -87,10 +91,11 @@ namespace Alpaca.Markets
             IWebSocketFactory webSocketFactory)
             : base(getUriBuilder(polygonWebsocketApi), webSocketFactory)
         {
-            _keyId = keyId ?? throw new ArgumentException(nameof(keyId));
+            _keyId = keyId ?? throw new ArgumentException(
+                         "Application key id should not be null", nameof(keyId));
 
             if (isStagingEnvironment &&
-                !_keyId.EndsWith("-staging"))
+                !_keyId.EndsWith("-staging", StringComparison.Ordinal))
             {
                 _keyId += "-staging";
             }
@@ -169,6 +174,9 @@ namespace Alpaca.Markets
             unsubscribe(MinuteAggChannel, symbol);
 
         /// <inheritdoc/>
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
         protected override void OnMessageReceived(
             String message)
         {
