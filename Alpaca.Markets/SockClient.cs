@@ -15,6 +15,22 @@ namespace Alpaca.Markets
     // ReSharper disable once PartialTypeWithSinglePart
     public sealed partial class SockClient : SockClientBase
     {
+        // Available Alpaca message types
+
+        // ReSharper disable InconsistentNaming
+
+        private const String TradeUpdates = "trade_updates";
+
+        private const String AccountUpdates = "account_updates";
+
+        private const String Authorization = "authorization";
+
+        private const String Listening = "listening";
+
+        // ReSharper restore InconsistentNaming
+
+        private readonly IDictionary<String, Action<JToken>> _handlers;
+
         private readonly String _keyId;
 
         private readonly String _secretKey;
@@ -57,6 +73,14 @@ namespace Alpaca.Markets
                          "Application key id should not be null", nameof(keyId));
             _secretKey = secretKey ?? throw new ArgumentException(
                              "Application secret key should not be null", nameof(secretKey));
+
+            _handlers = new Dictionary<string, Action<JToken>>(StringComparer.Ordinal)
+            {
+                { Listening, _ => { } },
+                { Authorization, handleAuthorization },
+                { AccountUpdates, handleAccountUpdate },
+                { TradeUpdates, handleTradeUpdate }
+            };
         }
 
         /// <summary>
@@ -99,38 +123,8 @@ namespace Alpaca.Markets
         {
             try
             {
-                var message = Encoding.UTF8.GetString(binaryData);
-                var root = JObject.Parse(message);
-
-                var data = root["data"];
-                var stream = root["stream"].ToString();
-
-                switch (stream)
-                {
-                    case "authorization":
-                        handleAuthorization(
-                            data.ToObject<JsonAuthResponse>());
-                        break;
-
-                    case "listening":
-                        Connected?.Invoke(AuthStatus.Authorized);
-                        break;
-
-                    case "trade_updates":
-                        handleTradeUpdates(
-                            data.ToObject<JsonTradeUpdate>());
-                        break;
-
-                    case "account_updates":
-                        handleAccountUpdates(
-                            data.ToObject<JsonAccountUpdate>());
-                        break;
-
-                    default:
-                        HandleError(new InvalidOperationException(
-                            $"Unexpected message type '{stream}' received."));
-                        break;
-                }
+                var token = JObject.Parse(Encoding.UTF8.GetString(binaryData));
+                HandleMessage(_handlers, token["stream"].ToString(), token["data"]);
             }
             catch (Exception exception)
             {
@@ -158,8 +152,10 @@ namespace Alpaca.Markets
         }
 
         private void handleAuthorization(
-            JsonAuthResponse response)
+            JToken token)
         {
+            var response = token.ToObject<JsonAuthResponse>();
+
             if (response.Status == AuthStatus.Authorized)
             {
                 var listenRequest = new JsonListenRequest
@@ -169,8 +165,8 @@ namespace Alpaca.Markets
                     {
                         Streams = new List<String>
                         {
-                            "trade_updates",
-                            "account_updates"
+                            TradeUpdates,
+                            AccountUpdates
                         }
                     }
                 };
@@ -183,16 +179,12 @@ namespace Alpaca.Markets
             }
         }
 
-        private void handleTradeUpdates(
-            ITradeUpdate update)
-        {
-            OnTradeUpdate?.Invoke(update);
-        }
+        private void handleTradeUpdate(
+            JToken token) =>
+            OnTradeUpdate.Invoke<ITradeUpdate, JsonTradeUpdate>(token);
 
-        private void handleAccountUpdates(
-            IAccountUpdate update)
-        {
-            OnAccountUpdate?.Invoke(update);
-        }
+        private void handleAccountUpdate(
+            JToken token) =>
+            OnAccountUpdate.Invoke<IAccountUpdate, JsonAccountUpdate>(token);
     }
 }

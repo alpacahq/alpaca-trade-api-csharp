@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
 {
@@ -99,9 +101,9 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// 
+        /// Implement <see cref="IDisposable"/> pattern for inheritable classes.
         /// </summary>
-        /// <param name="disposing"></param>
+        /// <param name="disposing">If <c>true</c> - dispose managed objects.</param>
         protected virtual void Dispose(
             Boolean disposing)
         {
@@ -120,6 +122,43 @@ namespace Alpaca.Markets
             _webSocket.Error -= HandleError;
 
             _webSocket.Dispose();
+        }
+
+        /// <summary>
+        /// Handles single incoming message. Select handler from generic handlers map
+        /// <paramref name="handlers"/> using <paramref name="messageType"/> parameter
+        /// as a key and pass <paramref name="message"/> parameter as value into the
+        /// selected handler. All exceptions are caught inside this method and reported
+        /// to client via standard <see cref="OnError"/> event.
+        /// </summary>
+        /// <param name="handlers">Message handlers map.</param>
+        /// <param name="messageType">Message type for selecting handler from map.</param>
+        /// <param name="message">Message data for processing by selected handler.</param>
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
+        protected void HandleMessage<TKey>(
+            IDictionary<TKey, Action<JToken>> handlers,
+            TKey messageType,
+            JToken message)
+        {
+            try
+            {
+                if (handlers != null &&
+                    handlers.TryGetValue(messageType, out var handler))
+                {
+                    handler(message);
+                }
+                else
+                {
+                    HandleError(new InvalidOperationException(
+                        $"Unexpected message type '{messageType}' received."));
+                }
+            }
+            catch (Exception exception)
+            {
+                HandleError(exception);
+            }
         }
 
         /// <summary>
