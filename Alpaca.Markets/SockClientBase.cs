@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -43,6 +44,11 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
+        /// Occured when stream successfully connected.
+        /// </summary>
+        public event Action<AuthStatus> Connected;
+
+        /// <summary>
         /// Occured when any error happened in stream.
         /// </summary>
         public event Action<Exception> OnError;
@@ -52,6 +58,25 @@ namespace Alpaca.Markets
         /// </summary>
         /// <returns>Awaitable task object for handling action completion in asynchronous mode.</returns>
         public Task ConnectAsync() => _webSocket.OpenAsync();
+
+        /// <summary>
+        /// Opens connection to a streaming API and awaits for authentication response.
+        /// </summary>
+        /// <returns>Awaitable task object for handling client authentication event in asynchronous mode.</returns>
+        public async Task<AuthStatus> ConnectAndAuthenticateAsync()
+        {
+            var tcs = new TaskCompletionSource<AuthStatus>();
+            Connected += handleConnected;
+
+            await ConnectAsync().ConfigureAwait(false);
+            return await tcs.Task.ConfigureAwait(false);
+
+            void handleConnected(AuthStatus authStatus)
+            {
+                Connected -= handleConnected;
+                tcs.SetResult(authStatus);
+            }
+        }
 
         /// <summary>
         /// Closes connection to a streaming API.
@@ -121,6 +146,14 @@ namespace Alpaca.Markets
 
             _webSocket.Dispose();
         }
+
+        /// <summary>
+        /// Raises <see cref="Connected"/> event with specified <paramref name="authStatus"/> value.
+        /// </summary>
+        /// <param name="authStatus">Authentication status (protocol level) of client.</param>
+        protected void OnConnected(
+            AuthStatus authStatus) =>
+            Connected?.Invoke(authStatus);
 
         /// <summary>
         /// Handles <see cref="IWebSocket.Error"/> event.
