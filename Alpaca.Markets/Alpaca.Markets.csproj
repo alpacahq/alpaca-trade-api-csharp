@@ -19,7 +19,8 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIconUrl>https://alpaca.markets/static/favicon-32x32.png</PackageIconUrl>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Method `ConnectAndAuthenticateAsync` added into both Web Socket clients</PackageReleaseNotes>
+    <PackageReleaseNotes>- Method `ConnectAndAuthenticateAsync` added into both Web Socket clients
+- Class `PolygonSockClient` now contains methods for batch (un)subscription</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
