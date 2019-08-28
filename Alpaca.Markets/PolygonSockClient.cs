@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 
@@ -13,7 +14,7 @@ namespace Alpaca.Markets
     // ReSharper disable once PartialTypeWithSinglePart
     public sealed partial class PolygonSockClient : SockClientBase
     {
-        // Available Polygon channels
+        // Available Polygon message types
 
         // ReSharper disable InconsistentNaming
 
@@ -28,6 +29,8 @@ namespace Alpaca.Markets
         private const String StatusMessage = "status";
 
         // ReSharper restore InconsistentNaming
+
+        private readonly IDictionary<String, Action<JToken>> _handlers;
 
         private readonly String _keyId;
 
@@ -94,6 +97,15 @@ namespace Alpaca.Markets
             {
                 _keyId += "-staging";
             }
+
+            _handlers = new Dictionary<string, Action<JToken>>(StringComparer.Ordinal)
+            {
+                { StatusMessage, handleAuthorization },
+                { TradesChannel, handleTradesChannel },
+                { QuotesChannel, handleQuotesChannel },
+                { MinuteAggChannel, handleMinuteAggChannel },
+                { SecondAggChannel, handleSecondAggChannel }
+            };
         }
 
         /// <summary>
@@ -177,39 +189,9 @@ namespace Alpaca.Markets
         {
             try
             {
-                var rootArray = JArray.Parse(message);
-
-                foreach (var root in rootArray)
+                foreach (var token in JArray.Parse(message))
                 {
-                    var stream = root["ev"].ToString();
-
-                    switch (stream)
-                    {
-                        case TradesChannel:
-                            TradeReceived?.Invoke(root.ToObject<JsonStreamTrade>());
-                            break;
-
-                        case QuotesChannel:
-                            QuoteReceived?.Invoke(root.ToObject<JsonStreamQuote>());
-                            break;
-
-                        case MinuteAggChannel:
-                            MinuteAggReceived?.Invoke(root.ToObject<JsonStreamAgg>());
-                            break;
-
-                        case SecondAggChannel:
-                            SecondAggReceived?.Invoke(root.ToObject<JsonStreamAgg>());
-                            break;
-
-                        case StatusMessage:
-                            handleAuthorization(root.ToObject<JsonConnectionStatus>());
-                            break;
-
-                        default:
-                            HandleError(new InvalidOperationException(
-                                $"Unexpected message type '{stream}' received."));
-                            break;
-                    }
+                    HandleMessage(_handlers, token["ev"].ToString(), token);
                 }
             }
             catch (Exception exception)
@@ -231,8 +213,10 @@ namespace Alpaca.Markets
         }
 
         private void handleAuthorization(
-            JsonConnectionStatus connectionStatus)
+            JToken token)
         {
+            var connectionStatus = token.ToObject<JsonConnectionStatus>();
+
             switch (connectionStatus.Status)
             {
                 case ConnectionStatus.Connected:
@@ -282,5 +266,21 @@ namespace Alpaca.Markets
 
             SendAsJsonString(unsubscribeRequest);
         }
+
+        private void handleTradesChannel(
+            JToken token) =>
+            TradeReceived.Invoke<IStreamTrade, JsonStreamTrade>(token);
+
+        private void handleQuotesChannel(
+            JToken token) =>
+            QuoteReceived.Invoke<IStreamQuote, JsonStreamQuote>(token);
+
+        private void handleMinuteAggChannel(
+            JToken token) =>
+            MinuteAggReceived.Invoke<IStreamAgg, JsonStreamAgg>(token);
+
+        private void handleSecondAggChannel(
+            JToken token) =>
+            SecondAggReceived.Invoke<IStreamAgg, JsonStreamAgg>(token);
     }
 }
