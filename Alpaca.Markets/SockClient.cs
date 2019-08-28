@@ -63,11 +63,6 @@ namespace Alpaca.Markets
         /// </summary>
         public event Action<ITradeUpdate> OnTradeUpdate;
 
-        /// <summary>
-        /// Occured when stream successfully connected.
-        /// </summary>
-        public event Action<AuthStatus> Connected;
-
         /// <inheritdoc/>
         protected override void OnOpened()
         {
@@ -104,7 +99,7 @@ namespace Alpaca.Markets
                         break;
 
                     case "listening":
-                        Connected?.Invoke(AuthStatus.Authorized);
+                        OnConnected(AuthStatus.Authorized);
                         break;
 
                     case "trade_updates":
@@ -151,6 +146,8 @@ namespace Alpaca.Markets
         private void handleAuthorization(
             JsonAuthResponse response)
         {
+            OnConnected(response.Status);
+
             if (response.Status == AuthStatus.Authorized)
             {
                 var listenRequest = new JsonListenRequest
@@ -167,10 +164,6 @@ namespace Alpaca.Markets
                 };
 
                 SendAsJsonString(listenRequest);
-            }
-            else
-            {
-                Connected?.Invoke(response.Status);
             }
         }
 
