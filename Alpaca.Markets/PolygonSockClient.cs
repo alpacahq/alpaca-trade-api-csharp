@@ -30,11 +30,6 @@ namespace Alpaca.Markets
         // ReSharper restore InconsistentNaming
 
         private readonly String _keyId;
-        
-        /// <summary>
-        /// Occured when stream successfully connected.
-        /// </summary>
-        public event Action<AuthStatus> Connected;
 
         /// <summary>
         /// Occured when new trade received from stream.
@@ -249,7 +244,7 @@ namespace Alpaca.Markets
                     break;
 
                 case ConnectionStatus.Success:
-                    Connected?.Invoke(AuthStatus.Authorized);
+                    OnConnected(AuthStatus.Authorized);
                     break;
 
                 case ConnectionStatus.AuthenticationRequired:
