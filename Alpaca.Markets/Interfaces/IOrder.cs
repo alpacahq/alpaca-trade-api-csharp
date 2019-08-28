@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     public interface IOrder
     {
         /// <summary>
-        /// Gests unique server-side order identifier.
+        /// Gets unique server-side order identifier.
         /// </summary>
         Guid OrderId { get; }
 

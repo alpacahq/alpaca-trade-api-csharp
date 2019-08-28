@@ -14,9 +14,16 @@ namespace Alpaca.Markets
         /// Gets account information from Alpaca REST API endpoint.
         /// </summary>
         /// <returns>Read-only account information.</returns>
-        public Task<IAccount> GetAccountAsync() =>
-            getSingleObjectAsync<IAccount, JsonAccount>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, "account");
+        public Task<IAccount> GetAccountAsync()
+        {
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            {
+                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "account",
+            };
+
+            return getSingleObjectAsync<IAccount, JsonAccount>(
+                _alpacaHttpClient, _alpacaRestApiThrottler, builder);
+        }
 
         /// <summary>
         /// Gets list of available assets from Alpaca REST API endpoint.
@@ -46,9 +53,16 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for searching.</param>
         /// <returns>Read-only asset information.</returns>
         public Task<IAsset> GetAssetAsync(
-            String symbol) =>
-            getSingleObjectAsync<IAsset, JsonAsset>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, $"assets/{symbol}");
+            String symbol)
+        {
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            {
+                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + $"assets/{symbol}",
+            };
+
+            return getSingleObjectAsync<IAsset, JsonAsset>(
+                _alpacaHttpClient, _alpacaRestApiThrottler, builder);
+        }
 
         /// <summary>
         /// Gets list of available orders from Alpaca REST API endpoint.
@@ -133,18 +147,11 @@ namespace Alpaca.Markets
 
                 using (var content = new StringContent(stringWriter.ToString()))
                 using (var response = await _alpacaHttpClient.PostAsync(
-                    new Uri("orders", UriKind.RelativeOrAbsolute), content).ConfigureAwait(false))
-                using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                using (var textReader = new StreamReader(stream))
-                using (var reader = new JsonTextReader(textReader))
+                    new Uri("orders", UriKind.RelativeOrAbsolute), content)
+                    .ConfigureAwait(false))
                 {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        return serializer.Deserialize<JsonOrder>(reader);
-                    }
-
-                    var error = serializer.Deserialize<JsonError>(reader);
-                    throw new RestClientErrorException(error);
+                    return await deserializeAsync<IOrder, JsonOrder>(response)
+                        .ConfigureAwait(false);
                 }
             }
         }
@@ -174,9 +181,16 @@ namespace Alpaca.Markets
         /// <param name="orderId">Server order ID for searching.</param>
         /// <returns>Read-only order information object.</returns>
         public Task<IOrder> GetOrderAsync(
-            Guid orderId) =>
-            getSingleObjectAsync<IOrder, JsonOrder>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, $"orders/{orderId:D}");
+            Guid orderId)
+        {
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            {
+                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + $"orders/{orderId:D}",
+            };
+
+            return getSingleObjectAsync<IOrder, JsonOrder>(
+                _alpacaHttpClient, _alpacaRestApiThrottler, builder);
+        }
 
         /// <summary>
         /// Deletes/cancel order on server by server order ID using Alpaca REST API endpoint.
@@ -200,25 +214,32 @@ namespace Alpaca.Markets
         /// Deletes/cancel all open orders using Alpaca REST API endpoint.
         /// </summary>
         /// <returns><c>True</c> if order deleted/cancelled successfully.</returns>
-        public async Task<Boolean> DeleteAllOrdersAsync()
+        public async Task<IEnumerable<IOrderActionStatus>> DeleteAllOrdersAsync()
         {
-            await _alpacaRestApiThrottler.WaitToProceed().ConfigureAwait(false);
-
-            using (var response = await _alpacaHttpClient.DeleteAsync(
-                    new Uri($"orders", UriKind.RelativeOrAbsolute))
-                .ConfigureAwait(false))
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
-                return response.IsSuccessStatusCode;
-            }
+                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "orders",
+            };
+
+            return await deleteObjectsListAsync<IOrderActionStatus, JsonOrderActionStatus>(
+                    _alpacaHttpClient, _alpacaRestApiThrottler, builder)
+                .ConfigureAwait(false);
         }
 
         /// <summary>
         /// Gets list of available positions from Alpaca REST API endpoint.
         /// </summary>
         /// <returns>Read-only list of position information objects.</returns>
-        public Task<IEnumerable<IPosition>> ListPositionsAsync() =>
-            getObjectsListAsync<IPosition, JsonPosition>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, "positions");
+        public Task<IEnumerable<IPosition>> ListPositionsAsync()
+        {
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            {
+                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "positions",
+            };
+
+            return getObjectsListAsync<IPosition, JsonPosition>(
+                _alpacaHttpClient, _alpacaRestApiThrottler, builder);
+        }
 
         /// <summary>
         /// Gets position information by asset name from Alpaca REST API endpoint.
@@ -226,9 +247,16 @@ namespace Alpaca.Markets
         /// <param name="symbol">Position asset name.</param>
         /// <returns>Read-only position information object.</returns>
         public Task<IPosition> GetPositionAsync(
-            String symbol) =>
-            getSingleObjectAsync<IPosition, JsonPosition>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, $"positions/{symbol}");
+            String symbol)
+        {
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            {
+                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + $"positions/{symbol}",
+            };
+
+            return getSingleObjectAsync<IPosition, JsonPosition>(
+                _alpacaHttpClient, _alpacaRestApiThrottler, builder);
+        }
 
         /// <summary>
         /// Liquidates all open positions at market price using Alpaca REST API endpoint.
@@ -268,9 +296,16 @@ namespace Alpaca.Markets
         /// Get current time information from Alpaca REST API endpoint.
         /// </summary>
         /// <returns>Read-only clock information object.</returns>
-        public Task<IClock> GetClockAsync() =>
-            getSingleObjectAsync<IClock, JsonClock>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, "clock");
+        public Task<IClock> GetClockAsync()
+        {
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            {
+                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "clock",
+            };
+
+            return getSingleObjectAsync<IClock, JsonClock>(
+                _alpacaHttpClient, _alpacaRestApiThrottler, builder);
+        }
 
         /// <summary>
         /// Gets list of trading days from Alpaca REST API endpoint.

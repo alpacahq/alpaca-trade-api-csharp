@@ -20,7 +20,8 @@
     <PackageIconUrl>https://alpaca.markets/static/favicon-32x32.png</PackageIconUrl>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <PackageReleaseNotes>- Method `ConnectAndAuthenticateAsync` added into both Web Socket clients
-- Class `PolygonSockClient` now contains methods for batch (un)subscription</PackageReleaseNotes>
+- Class `PolygonSockClient` now contains methods for batch (un)subscription
+- Method `DeleteAllOrdersAsync` returns deletion status for each order now</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

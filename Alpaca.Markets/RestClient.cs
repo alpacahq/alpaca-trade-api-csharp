@@ -165,10 +165,11 @@ namespace Alpaca.Markets
             _polygonHttpClient?.Dispose();
         }
 
-        private async Task<TApi> getSingleObjectAsync<TApi, TJson>(
+        private async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
-            String endpointUri)
+            Uri endpointUri,
+            HttpMethod method = null)
             where TJson : TApi
         {
             var exceptions = new Queue<Exception>();
@@ -178,35 +179,18 @@ namespace Alpaca.Markets
                 await throttler.WaitToProceed().ConfigureAwait(false);
                 try
                 {
+                    using (var request = new HttpRequestMessage(method ?? HttpMethod.Get, endpointUri))
                     using (var response = await httpClient
-                        .GetAsync(new Uri(endpointUri, UriKind.RelativeOrAbsolute), HttpCompletionOption.ResponseHeadersRead)
+                        .SendAsync(request, HttpCompletionOption.ResponseHeadersRead)
                         .ConfigureAwait(false))
                     {
                         // Check response for server and caller specified waits and retries
-                        if(!throttler.CheckHttpResponse(response))
+                        if (!throttler.CheckHttpResponse(response))
                         {
                             continue;
                         }
 
-                        using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                        using (var reader = new JsonTextReader(new StreamReader(stream)))
-                        {
-                            var serializer = new JsonSerializer();
-                            if (response.IsSuccessStatusCode)
-                            {
-                                return serializer.Deserialize<TJson>(reader);
-                            }
-
-                            try
-                            {
-                                throw new RestClientErrorException(
-                                    serializer.Deserialize<JsonError>(reader));
-                            }
-                            catch (Exception exception)
-                            {
-                                throw new RestClientErrorException(response, exception);
-                            }
-                        }
+                        return await deserializeAsync<TApi, TJson>(response).ConfigureAwait(false);
                     }
                 }
                 catch (HttpRequestException ex)
@@ -219,30 +203,54 @@ namespace Alpaca.Markets
             throw new AggregateException(exceptions);
         }
 
+        private static async Task<TApi> deserializeAsync<TApi, TJson>(
+            HttpResponseMessage response)
+            where TJson : TApi
+        {
+            using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                if (response.IsSuccessStatusCode)
+                {
+                    return serializer.Deserialize<TJson>(reader);
+                }
+
+                try
+                {
+                    throw new RestClientErrorException(
+                        serializer.Deserialize<JsonError>(reader));
+                }
+                catch (Exception exception)
+                {
+                    throw new RestClientErrorException(response, exception);
+                }
+            }
+        }
+
         private Task<TApi> getSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
             UriBuilder uriBuilder)
             where TJson : TApi =>
-            getSingleObjectAsync<TApi, TJson>(httpClient, throttler, uriBuilder.ToString());
-
-        private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
-            HttpClient httpClient,
-            IThrottler throttler,
-            String endpointUri)
-            where TJson : TApi =>
-            (IEnumerable<TApi>) await
-                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, endpointUri)
-                    .ConfigureAwait(false);
+            callAndDeserializeSingleObjectAsync<TApi, TJson>(httpClient, throttler, uriBuilder.Uri);
 
         private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
             UriBuilder uriBuilder)
             where TJson : TApi =>
-            (IEnumerable<TApi>) await
-                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, uriBuilder)
-                    .ConfigureAwait(false);
+            (IEnumerable<TApi>) await callAndDeserializeSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(
+                httpClient, throttler, uriBuilder.Uri)
+                .ConfigureAwait(false);
+        private async Task<IEnumerable<TApi>> deleteObjectsListAsync<TApi, TJson>(
+            HttpClient httpClient,
+            IThrottler throttler,
+            UriBuilder uriBuilder)
+            where TJson : TApi =>
+            (IEnumerable<TApi>) await callAndDeserializeSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(
+                    httpClient, throttler, uriBuilder.Uri, HttpMethod.Delete)
+                .ConfigureAwait(false);
 
         private static Uri addApiVersionNumberSafe(Uri baseUri, Int32 apiVersion)
         {
