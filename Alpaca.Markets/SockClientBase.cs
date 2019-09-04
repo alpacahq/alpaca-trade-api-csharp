@@ -58,19 +58,24 @@ namespace Alpaca.Markets
         /// <summary>
         /// Opens connection to a streaming API.
         /// </summary>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Awaitable task object for handling action completion in asynchronous mode.</returns>
-        public Task ConnectAsync() => _webSocket.OpenAsync();
+        public Task ConnectAsync(
+            CancellationToken cancellationToken = default)
+            => _webSocket.OpenAsync(cancellationToken);
 
         /// <summary>
         /// Opens connection to a streaming API and awaits for authentication response.
         /// </summary>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Awaitable task object for handling client authentication event in asynchronous mode.</returns>
-        public async Task<AuthStatus> ConnectAndAuthenticateAsync()
+        public async Task<AuthStatus> ConnectAndAuthenticateAsync(
+            CancellationToken cancellationToken = default)
         {
             var tcs = new TaskCompletionSource<AuthStatus>();
             Connected += handleConnected;
 
-            await ConnectAsync().ConfigureAwait(false);
+            await ConnectAsync(cancellationToken).ConfigureAwait(false);
             return await tcs.Task.ConfigureAwait(false);
 
             void handleConnected(AuthStatus authStatus)
@@ -83,8 +88,11 @@ namespace Alpaca.Markets
         /// <summary>
         /// Closes connection to a streaming API.
         /// </summary>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Awaitable task object for handling action completion in asynchronous mode.</returns>
-        public Task DisconnectAsync() => _webSocket.CloseAsync();
+        public Task DisconnectAsync(
+            CancellationToken cancellationToken = default)
+            => _webSocket.CloseAsync(cancellationToken);
 
         /// <inheritdoc />
         public void Dispose()
