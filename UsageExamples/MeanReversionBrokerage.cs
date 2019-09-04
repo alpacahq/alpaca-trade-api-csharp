@@ -42,7 +42,7 @@ namespace UsageExamples
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
             sockClient = new SockClient(API_KEY, API_SECRET, API_URL);
-            sockClient.ConnectAsync().Wait();
+            sockClient.ConnectAndAuthenticateAsync().Wait();
 
             sockClient.OnTradeUpdate += HandleTradeUpdate;
 
@@ -78,7 +78,7 @@ namespace UsageExamples
 
             // Connect to Polygon's websocket and listen for price updates.
             polygonSockClient = new PolygonSockClient(API_KEY);
-            polygonSockClient.ConnectAsync().Wait();
+            polygonSockClient.ConnectAndAuthenticateAsync().Wait();
             Console.WriteLine("Polygon client opened.");
             polygonSockClient.MinuteAggReceived += async (agg) =>
             {
