@@ -173,10 +173,10 @@ namespace Alpaca.Markets
 
         private void handleTradeUpdate(
             JToken token) =>
-            OnTradeUpdate.Invoke<ITradeUpdate, JsonTradeUpdate>(token);
+            OnTradeUpdate.DeserializeAndInvoke<ITradeUpdate, JsonTradeUpdate>(token);
 
         private void handleAccountUpdate(
             JToken token) =>
-            OnAccountUpdate.Invoke<IAccountUpdate, JsonAccountUpdate>(token);
+            OnAccountUpdate.DeserializeAndInvoke<IAccountUpdate, JsonAccountUpdate>(token);
     }
 }

@@ -300,15 +300,13 @@ namespace Alpaca.Markets
                     });
                     break;
 
-                case ConnectionStatus.Success:
+                case ConnectionStatus.AuthenticationSuccess:
                     OnConnected(AuthStatus.Authorized);
                     break;
 
-                case ConnectionStatus.AuthenticationRequired:
-                    HandleError(new InvalidOperationException(connectionStatus.Message));
-                    break;
-
+                case ConnectionStatus.Failed:
                 case ConnectionStatus.AuthenticationFailed:
+                case ConnectionStatus.AuthenticationRequired:
                     HandleError(new InvalidOperationException(connectionStatus.Message));
                     break;
             }
@@ -342,18 +340,18 @@ namespace Alpaca.Markets
 
         private void handleTradesChannel(
             JToken token) =>
-            TradeReceived.Invoke<IStreamTrade, JsonStreamTrade>(token);
+            TradeReceived.DeserializeAndInvoke<IStreamTrade, JsonStreamTrade>(token);
 
         private void handleQuotesChannel(
             JToken token) =>
-            QuoteReceived.Invoke<IStreamQuote, JsonStreamQuote>(token);
+            QuoteReceived.DeserializeAndInvoke<IStreamQuote, JsonStreamQuote>(token);
 
         private void handleMinuteAggChannel(
             JToken token) =>
-            MinuteAggReceived.Invoke<IStreamAgg, JsonStreamAgg>(token);
+            MinuteAggReceived.DeserializeAndInvoke<IStreamAgg, JsonStreamAgg>(token);
 
         private void handleSecondAggChannel(
             JToken token) =>
-            SecondAggReceived.Invoke<IStreamAgg, JsonStreamAgg>(token);
+            SecondAggReceived.DeserializeAndInvoke<IStreamAgg, JsonStreamAgg>(token);
     }
 }

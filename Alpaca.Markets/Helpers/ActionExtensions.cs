@@ -5,7 +5,7 @@ namespace Alpaca.Markets
 {
     internal static class ActionExtensions
     {
-        public static void Invoke<TApi, TJson>(
+        public static void DeserializeAndInvoke<TApi, TJson>(
             this Action<TApi> eventHandler,
             JToken eventArg)
             where TJson : class, TApi
