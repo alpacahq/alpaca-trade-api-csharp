@@ -235,15 +235,13 @@ namespace Alpaca.Markets
                     });
                     break;
 
-                case ConnectionStatus.Success:
+                case ConnectionStatus.AuthenticationSuccess:
                     OnConnected(AuthStatus.Authorized);
                     break;
 
-                case ConnectionStatus.AuthenticationRequired:
-                    HandleError(new InvalidOperationException(connectionStatus.Message));
-                    break;
-
+                case ConnectionStatus.Failed:
                 case ConnectionStatus.AuthenticationFailed:
+                case ConnectionStatus.AuthenticationRequired:
                     HandleError(new InvalidOperationException(connectionStatus.Message));
                     break;
             }
