@@ -9,6 +9,9 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "id", Required = Required.Always)]
         public Guid AccountId { get; set; }
 
+        [JsonProperty(PropertyName = "account_number", Required = Required.Default)]
+        public String AccountNumber { get; set; }
+
         [JsonProperty(PropertyName = "status", Required = Required.Always)]
         public AccountStatus Status { get; set; }
 
@@ -48,6 +51,12 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "buying_power", Required = Required.Always)]
         public Decimal BuyingPower { get; set; }
 
+        [JsonProperty(PropertyName = "daytrading_buying_power", Required = Required.Default)]
+        public Decimal DayTradingBuyingPower { get; set; }
+
+        [JsonProperty(PropertyName = "regt_buying_power", Required = Required.Default)]
+        public Decimal RegulationBuyingPower { get; set; }
+
         [JsonProperty(PropertyName = "long_market_value", Required = Required.Default)]
         public Decimal LongMarketValue { get; set; }
 
@@ -66,8 +75,11 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "maintenance_margin", Required = Required.Default)]
         public Decimal MaintenanceMargin { get; set; }
 
+        [JsonProperty(PropertyName = "last_maintenance_margin", Required = Required.Default)]
+        public Decimal LastMaintenanceMargin { get; set; }
+
         [JsonProperty(PropertyName = "daytrade_count", Required = Required.Default)]
-        public Int64 DaytradeCount { get; set; }
+        public Int64 DayTradeCount { get; set; }
 
         [JsonProperty(PropertyName = "sma", Required = Required.Default)]
         public Decimal Sma { get; set; }
