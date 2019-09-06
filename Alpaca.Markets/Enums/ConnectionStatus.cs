@@ -15,12 +15,12 @@ namespace Alpaca.Markets
         /// </summary>
         [EnumMember(Value = "connected")]
         Connected,
-
+        
         /// <summary>
         /// Client successfully authorized.
         /// </summary>
         [EnumMember(Value = "auth_success")]
-        Success,
+        AuthenticationSuccess,
 
         /// <summary>
         /// Client authentication required.
@@ -32,6 +32,18 @@ namespace Alpaca.Markets
         /// Client authentication failed.
         /// </summary>
         [EnumMember(Value = "auth_failed")]
-        AuthenticationFailed
+        AuthenticationFailed,
+
+        /// <summary>
+        /// Requested operation successfully completed.
+        /// </summary>
+        [EnumMember(Value = "success")]
+        Success,
+
+        /// <summary>
+        /// Requested operation failed.
+        /// </summary>
+        [EnumMember(Value = "failed")]
+        Failed
     }
 }
