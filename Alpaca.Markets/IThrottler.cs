@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Alpaca.Markets
@@ -14,7 +15,9 @@ namespace Alpaca.Markets
         /// <summary>
         /// Blocks the current thread indefinitely until allowed to proceed.
         /// </summary>
-        Task WaitToProceed();
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        Task WaitToProceed(
+            CancellationToken cancellationToken);
 
         /// <summary>
         /// Evaluates the StatusCode of <paramref name="response"/>, initiates any server requested delays, 
@@ -27,6 +30,7 @@ namespace Alpaca.Markets
         /// <exception cref="HttpRequestException">
         /// The HTTP response is unsuccessful, and caller did not indicate that requests with this StatusCode should be retried.
         /// </exception>
-        Boolean CheckHttpResponse(HttpResponseMessage response);
+        Boolean CheckHttpResponse(
+            HttpResponseMessage response);
     }
 }

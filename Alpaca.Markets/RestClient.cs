@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -169,6 +170,7 @@ namespace Alpaca.Markets
             HttpClient httpClient,
             IThrottler throttler,
             Uri endpointUri,
+            CancellationToken cancellationToken,
             HttpMethod method = null)
             where TJson : TApi
         {
@@ -176,12 +178,12 @@ namespace Alpaca.Markets
 
             for(var attempts = 0; attempts < throttler.MaxRetryAttempts; ++attempts)
             {
-                await throttler.WaitToProceed().ConfigureAwait(false);
+                await throttler.WaitToProceed(cancellationToken).ConfigureAwait(false);
                 try
                 {
                     using (var request = new HttpRequestMessage(method ?? HttpMethod.Get, endpointUri))
                     using (var response = await httpClient
-                        .SendAsync(request, HttpCompletionOption.ResponseHeadersRead)
+                        .SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
                         .ConfigureAwait(false))
                     {
                         // Check response for server and caller specified waits and retries
@@ -231,25 +233,29 @@ namespace Alpaca.Markets
         private Task<TApi> getSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
-            UriBuilder uriBuilder)
+            UriBuilder uriBuilder,
+            CancellationToken cancellationToken)
             where TJson : TApi =>
-            callAndDeserializeSingleObjectAsync<TApi, TJson>(httpClient, throttler, uriBuilder.Uri);
+            callAndDeserializeSingleObjectAsync<TApi, TJson>(
+                httpClient, throttler, uriBuilder.Uri, cancellationToken);
 
         private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
-            UriBuilder uriBuilder)
+            UriBuilder uriBuilder,
+            CancellationToken cancellationToken)
             where TJson : TApi =>
             (IEnumerable<TApi>) await callAndDeserializeSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(
-                httpClient, throttler, uriBuilder.Uri)
+                httpClient, throttler, uriBuilder.Uri, cancellationToken)
                 .ConfigureAwait(false);
         private async Task<IEnumerable<TApi>> deleteObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
-            UriBuilder uriBuilder)
+            UriBuilder uriBuilder,
+            CancellationToken cancellationToken)
             where TJson : TApi =>
             (IEnumerable<TApi>) await callAndDeserializeSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(
-                    httpClient, throttler, uriBuilder.Uri, HttpMethod.Delete)
+                    httpClient, throttler, uriBuilder.Uri, cancellationToken, HttpMethod.Delete)
                 .ConfigureAwait(false);
 
         private static Uri addApiVersionNumberSafe(Uri baseUri, Int32 apiVersion)
