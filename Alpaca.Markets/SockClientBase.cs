@@ -51,6 +51,16 @@ namespace Alpaca.Markets
         public event Action<AuthStatus> Connected;
 
         /// <summary>
+        /// Occured when underlying web socket successfully opened.
+        /// </summary>
+        public event Action SocketOpened;
+
+        /// <summary>
+        /// Occured when underlying web socket successfully closed.
+        /// </summary>
+        public event Action SocketClosed;
+
+        /// <summary>
         /// Occured when any error happened in stream.
         /// </summary>
         public event Action<Exception> OnError;
@@ -104,16 +114,12 @@ namespace Alpaca.Markets
         /// <summary>
         /// Handles <see cref="IWebSocket.Opened"/> event.
         /// </summary>
-        protected virtual void OnOpened()
-        {
-        }
+        protected virtual void OnOpened() => SocketOpened?.Invoke();
 
         /// <summary>
         /// Handles <see cref="IWebSocket.Closed"/> event.
         /// </summary>
-        protected virtual void OnClosed()
-        {
-        }
+        protected virtual void OnClosed() => SocketClosed?.Invoke();
 
         /// <summary>
         /// Handles <see cref="IWebSocket.MessageReceived"/> event.
