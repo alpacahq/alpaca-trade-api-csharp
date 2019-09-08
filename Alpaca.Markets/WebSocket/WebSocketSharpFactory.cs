@@ -1,12 +1,16 @@
 ﻿#if NET45
-
 using System;
 using System.Security.Authentication;
 using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 using WebSocketSharp;
+using System.Threading;
 
 namespace Alpaca.Markets
 {
+    [SuppressMessage(
+        "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class WebSocketSharpFactory : IWebSocketFactory
     {
         private sealed class WebSocketWrapper : IWebSocket //-V3073
@@ -47,9 +51,13 @@ namespace Alpaca.Markets
                 disposable?.Dispose();
             }
 
-            public Task OpenAsync() => Task.Run(() => _webSocket.Connect());
+            public Task OpenAsync(
+                CancellationToken cancellationToken)
+                => Task.Run(() => _webSocket.Connect(), cancellationToken);
 
-            public Task CloseAsync() => Task.Run(() => _webSocket.Close());
+            public Task CloseAsync(
+                CancellationToken cancellationToken)
+                => Task.Run(() => _webSocket.Close(), cancellationToken);
 
             public void Send(
                 String message) =>

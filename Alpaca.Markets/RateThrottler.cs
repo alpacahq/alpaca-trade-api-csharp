@@ -22,7 +22,8 @@ namespace Alpaca.Markets
 
             private DateTime _nextRetryTime = DateTime.MinValue;
 
-            public async Task WaitToProceed()
+            public async Task WaitToProceed(
+                CancellationToken cancellationToken)
             {
                 var delay = GetDelayTillNextRetryTime();
 
@@ -31,7 +32,7 @@ namespace Alpaca.Markets
                     return;
                 }
 
-                await Task.Delay(delay);
+                await Task.Delay(delay, cancellationToken).ConfigureAwait(false);
             }
 
             public void SetNextRetryTimeRandom()
@@ -41,7 +42,8 @@ namespace Alpaca.Markets
                     _randomRetryWait.Next(1000, 5000)));
             }
 
-            public void SetNextRetryTime(DateTime nextRetryTime)
+            public void SetNextRetryTime(
+                DateTime nextRetryTime)
             {
                 if (nextRetryTime < DateTime.UtcNow)
                 {
@@ -141,9 +143,10 @@ namespace Alpaca.Markets
         public Int32 MaxRetryAttempts { get;}
 
         /// <inheritdoc />
-        public async Task WaitToProceed()
+        public async Task WaitToProceed(
+            CancellationToken cancellationToken)
         {
-            await _nextRetryGuard.WaitToProceed();
+            await _nextRetryGuard.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             // Block until we can enter the semaphore or until the timeout expires.
             var entered = _throttleSemaphore.Wait(Timeout.Infinite);
@@ -159,7 +162,8 @@ namespace Alpaca.Markets
 
         // Callback for the exit timer that exits the semaphore based on exit times 
         // in the queue and then sets the timer for the next exit time.
-        private void exitTimerCallback(Object state)
+        private void exitTimerCallback(
+            Object state)
         {
             var nextRetryDelay = _nextRetryGuard.GetDelayTillNextRetryTime().TotalMilliseconds;
             if (nextRetryDelay > 0)
@@ -191,7 +195,8 @@ namespace Alpaca.Markets
         }
 
         /// <inheritdoc />
-        public Boolean CheckHttpResponse(HttpResponseMessage response)
+        public Boolean CheckHttpResponse(
+            HttpResponseMessage response)
         {
             // Adhere to server reported instructions
             if (response.StatusCode == HttpStatusCode.OK)

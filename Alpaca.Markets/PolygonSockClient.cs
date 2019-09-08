@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
@@ -6,10 +9,13 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API via websockets.
     /// </summary>
+    [SuppressMessage(
+        "Globalization","CA1303:Do not pass literals as localized parameters",
+        Justification = "We do not plan to support localized exception messages in this SDK.")]
     // ReSharper disable once PartialTypeWithSinglePart
     public sealed partial class PolygonSockClient : SockClientBase
     {
-        // Available Polygon channels
+        // Available Polygon message types
 
         // ReSharper disable InconsistentNaming
 
@@ -24,6 +30,8 @@ namespace Alpaca.Markets
         private const String StatusMessage = "status";
 
         // ReSharper restore InconsistentNaming
+
+        private readonly IDictionary<String, Action<JToken>> _handlers;
 
         private readonly String _keyId;
 
@@ -82,13 +90,23 @@ namespace Alpaca.Markets
             IWebSocketFactory webSocketFactory)
             : base(getUriBuilder(polygonWebsocketApi), webSocketFactory)
         {
-            _keyId = keyId ?? throw new ArgumentException(nameof(keyId));
+            _keyId = keyId ?? throw new ArgumentException(
+                         "Application key id should not be null", nameof(keyId));
 
             if (isStagingEnvironment &&
-                !_keyId.EndsWith("-staging"))
+                !_keyId.EndsWith("-staging", StringComparison.Ordinal))
             {
                 _keyId += "-staging";
             }
+
+            _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
+            {
+                { StatusMessage, handleAuthorization },
+                { TradesChannel, handleTradesChannel },
+                { QuotesChannel, handleQuotesChannel },
+                { MinuteAggChannel, handleMinuteAggChannel },
+                { SecondAggChannel, handleSecondAggChannel }
+            };
         }
 
         /// <summary>
@@ -98,7 +116,7 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeTrade(
             String symbol) =>
-            subscribe(TradesChannel, symbol);
+            subscribe(getParams(TradesChannel, symbol));
 
         /// <summary>
         /// Subscribes for the quote updates via <see cref="QuoteReceived"/>
@@ -107,7 +125,7 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeQuote(
             String symbol) =>
-            subscribe(QuotesChannel, symbol);
+            subscribe(getParams(QuotesChannel, symbol));
 
         /// <summary>
         /// Subscribes for the second bar updates via <see cref="SecondAggReceived"/>
@@ -116,7 +134,7 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeSecondAgg(
             String symbol) =>
-            subscribe(SecondAggChannel, symbol);
+            subscribe(getParams(SecondAggChannel, symbol));
 
         /// <summary>
         /// Subscribes for the minute bar updates via <see cref="MinuteAggReceived"/>
@@ -125,7 +143,43 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for subscription change.</param>
         public void SubscribeMinuteAgg(
             String symbol) =>
-            subscribe(MinuteAggChannel, symbol);
+            subscribe(getParams(MinuteAggChannel, symbol));
+
+        /// <summary>
+        /// Subscribes for the trade updates via <see cref="TradeReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbols">List of asset names for subscription change.</param>
+        public void SubscribeTrade(
+            IEnumerable<String> symbols) =>
+            subscribe(getParams(TradesChannel, symbols));
+
+        /// <summary>
+        /// Subscribes for the quote updates via <see cref="QuoteReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbols">List of asset names for subscription change.</param>
+        public void SubscribeQuote(
+            IEnumerable<String> symbols) =>
+            subscribe(getParams(QuotesChannel, symbols));
+
+        /// <summary>
+        /// Subscribes for the second bar updates via <see cref="SecondAggReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbols">List of asset names for subscription change.</param>
+        public void SubscribeSecondAgg(
+            IEnumerable<String> symbols) =>
+            subscribe(getParams(SecondAggChannel, symbols));
+
+        /// <summary>
+        /// Subscribes for the minute bar updates via <see cref="MinuteAggReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbols">List of asset names for subscription change.</param>
+        public void SubscribeMinuteAgg(
+            IEnumerable<String> symbols) =>
+            subscribe(getParams(MinuteAggChannel, symbols));
 
         /// <summary>
         /// Unsubscribes from the trade updates via <see cref="TradeReceived"/>
@@ -134,7 +188,7 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeTrade(
             String symbol) =>
-            unsubscribe(TradesChannel, symbol);
+            unsubscribe(getParams(TradesChannel, symbol));
 
         /// <summary>
         /// Unsubscribes from the quote updates via <see cref="QuoteReceived"/>
@@ -143,7 +197,7 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeQuote(
             String symbol) =>
-            unsubscribe(QuotesChannel, symbol);
+            unsubscribe(getParams(QuotesChannel, symbol));
 
         /// <summary>
         /// Unsubscribes from the second bar updates via <see cref="SecondAggReceived"/>
@@ -152,7 +206,7 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeSecondAgg(
             String symbol) =>
-            unsubscribe(SecondAggChannel, symbol);
+            unsubscribe(getParams(SecondAggChannel, symbol));
 
         /// <summary>
         /// Unsubscribes from the minute bar updates via <see cref="MinuteAggReceived"/>
@@ -161,47 +215,56 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for subscription change.</param>
         public void UnsubscribeMinuteAgg(
             String symbol) =>
-            unsubscribe(MinuteAggChannel, symbol);
+            unsubscribe(getParams(MinuteAggChannel, symbol));
+
+        /// <summary>
+        /// Unsubscribes from the trade updates via <see cref="TradeReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbols">List of asset names for subscription change.</param>
+        public void UnsubscribeTrade(
+            IEnumerable<String> symbols) =>
+            unsubscribe(getParams(TradesChannel, symbols));
+
+        /// <summary>
+        /// Unsubscribes from the quote updates via <see cref="QuoteReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbols">List of asset names for subscription change.</param>
+        public void UnsubscribeQuote(
+            IEnumerable<String> symbols) =>
+            unsubscribe(getParams(QuotesChannel, symbols));
+
+        /// <summary>
+        /// Unsubscribes from the second bar updates via <see cref="SecondAggReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbols">List of asset names for subscription change.</param>
+        public void UnsubscribeSecondAgg(
+            IEnumerable<String> symbols) =>
+            unsubscribe(getParams(SecondAggChannel, symbols));
+
+        /// <summary>
+        /// Unsubscribes from the minute bar updates via <see cref="MinuteAggReceived"/>
+        /// event for specific asset from Polygon streaming API.
+        /// </summary>
+        /// <param name="symbols">List of asset names for subscription change.</param>
+        public void UnsubscribeMinuteAgg(
+            IEnumerable<String> symbols) =>
+            unsubscribe(getParams(MinuteAggChannel, symbols));
 
         /// <inheritdoc/>
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
         protected override void OnMessageReceived(
             String message)
         {
             try
             {
-                var rootArray = JArray.Parse(message);
-
-                foreach (var root in rootArray)
+                foreach (var token in JArray.Parse(message))
                 {
-                    var stream = root["ev"].ToString();
-
-                    switch (stream)
-                    {
-                        case TradesChannel:
-                            TradeReceived?.Invoke(root.ToObject<JsonStreamTrade>());
-                            break;
-
-                        case QuotesChannel:
-                            QuoteReceived?.Invoke(root.ToObject<JsonStreamQuote>());
-                            break;
-
-                        case MinuteAggChannel:
-                            MinuteAggReceived?.Invoke(root.ToObject<JsonStreamAgg>());
-                            break;
-
-                        case SecondAggChannel:
-                            SecondAggReceived?.Invoke(root.ToObject<JsonStreamAgg>());
-                            break;
-
-                        case StatusMessage:
-                            handleAuthorization(root.ToObject<JsonConnectionStatus>());
-                            break;
-
-                        default:
-                            HandleError(new InvalidOperationException(
-                                $"Unexpected message type '{stream}' received."));
-                            break;
-                    }
+                    HandleMessage(_handlers, token["ev"].ToString(), token);
                 }
             }
             catch (Exception exception)
@@ -223,8 +286,10 @@ namespace Alpaca.Markets
         }
 
         private void handleAuthorization(
-            JsonConnectionStatus connectionStatus)
+            JToken token)
         {
+            var connectionStatus = token.ToObject<JsonConnectionStatus>();
+
             switch (connectionStatus.Status)
             {
                 case ConnectionStatus.Connected:
@@ -248,29 +313,45 @@ namespace Alpaca.Markets
         }
 
         private void subscribe(
-            String channel,
-            String symbol)
-        {
-            var listenRequest = new JsonListenRequest
+            String parameters) =>
+            SendAsJsonString(new JsonListenRequest
             {
                 Action = JsonAction.PolygonSubscribe,
-                Params = $"{channel}.{symbol}"
-            };
-
-            SendAsJsonString(listenRequest);
-        }
+                Params = parameters
+            });
 
         private void unsubscribe(
-            String channel,
-            String symbol)
-        {
-            var unsubscribeRequest = new JsonUnsubscribeRequest
+            String parameters) =>
+            SendAsJsonString(new JsonUnsubscribeRequest
             {
                 Action = JsonAction.PolygonUnsubscribe,
-                Params = $"{channel}.{symbol}"
-            };
+                Params = parameters
+            });
 
-            SendAsJsonString(unsubscribeRequest);
-        }
+        private static String getParams(
+            String channel,
+            String symbol) =>
+            $"{channel}.{symbol}";
+
+        private static String getParams(
+            String channel,
+            IEnumerable<String> symbols) =>
+            String.Join(",",symbols.Select(symbol => getParams(channel, symbol)));
+
+        private void handleTradesChannel(
+            JToken token) =>
+            TradeReceived.DeserializeAndInvoke<IStreamTrade, JsonStreamTrade>(token);
+
+        private void handleQuotesChannel(
+            JToken token) =>
+            QuoteReceived.DeserializeAndInvoke<IStreamQuote, JsonStreamQuote>(token);
+
+        private void handleMinuteAggChannel(
+            JToken token) =>
+            MinuteAggReceived.DeserializeAndInvoke<IStreamAgg, JsonStreamAgg>(token);
+
+        private void handleSecondAggChannel(
+            JToken token) =>
+            SecondAggReceived.DeserializeAndInvoke<IStreamAgg, JsonStreamAgg>(token);
     }
 }

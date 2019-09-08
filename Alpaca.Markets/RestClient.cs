@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -11,6 +13,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca REST API and Polygon REST API endpoints.
     /// </summary>
+    [SuppressMessage(
+        "Globalization","CA1303:Do not pass literals as localized parameters",
+        Justification = "We do not plan to support localized exception messages in this SDK.")]
     public sealed partial class RestClient : IDisposable
     {
         private const Int32 DEFAULT_API_VERSION_NUMBER = 2;
@@ -79,7 +84,7 @@ namespace Alpaca.Markets
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         /// <param name="polygonRestApi">Polygon REST API endpoint URL.</param>
         /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
-        /// <param name="apiVersion">Version of Alpaca api to call.  Valid values are "1" or "2".</param>
+        /// <param name="apiVersion">Version of Alpaca API to call.  Valid values are "1" or "2".</param>
         /// <param name="dataApiVersion">Version of Alpaca data API to call.  The only valid value is currently "1".</param>
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         /// <param name="throttleParameters">Parameters for requests throttling.</param>
@@ -96,14 +101,23 @@ namespace Alpaca.Markets
             ThrottleParameters throttleParameters,
             String oauthKey)
         {
-            keyId = keyId ?? throw new ArgumentException(nameof(keyId));
-            secretKey = secretKey ?? throw new ArgumentException(nameof(secretKey));
+            keyId = keyId ?? throw new ArgumentException(
+                        "Application key id should not be null", nameof(keyId));
+            secretKey = secretKey ?? throw new ArgumentException(
+                            "Application secret key id should not be null", nameof(secretKey));
 
             if (!_supportedApiVersions.Contains(apiVersion))
-                throw new ArgumentException(nameof(apiVersion));
+            {
+                throw new ArgumentException(
+                    "Supported REST API versions are '1' and '2' only", nameof(apiVersion));
+            }
             if (!_supportedDataApiVersions.Contains(dataApiVersion))
-                throw new ArgumentException(nameof(dataApiVersion));
+            {
+                throw new ArgumentException(
+                    "Supported Data REST API versions are '1' and '2' only", nameof(dataApiVersion));
+            }
 
+            throttleParameters = throttleParameters ?? ThrottleParameters.Default;
             _alpacaRestApiThrottler = throttleParameters.GetThrottler();
 
             if (string.IsNullOrEmpty(oauthKey))
@@ -138,7 +152,9 @@ namespace Alpaca.Markets
 
 #if NET45
             System.Net.ServicePointManager.SecurityProtocol =
+#pragma warning disable CA5364 // Do Not Use Deprecated Security Protocols
                 System.Net.SecurityProtocolType.Tls12 | System.Net.SecurityProtocolType.Tls11;
+#pragma warning restore CA5364 // Do Not Use Deprecated Security Protocols
 #endif
         }
 
@@ -150,46 +166,33 @@ namespace Alpaca.Markets
             _polygonHttpClient?.Dispose();
         }
 
-        private async Task<TApi> getSingleObjectAsync<TApi, TJson>(
+        private async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
-            String endpointUri)
+            Uri endpointUri,
+            CancellationToken cancellationToken,
+            HttpMethod method = null)
             where TJson : TApi
         {
             var exceptions = new Queue<Exception>();
 
             for(var attempts = 0; attempts < throttler.MaxRetryAttempts; ++attempts)
             {
-                await throttler.WaitToProceed();
+                await throttler.WaitToProceed(cancellationToken).ConfigureAwait(false);
                 try
                 {
-                    using (var response = await httpClient.GetAsync(endpointUri, HttpCompletionOption.ResponseHeadersRead))
+                    using (var request = new HttpRequestMessage(method ?? HttpMethod.Get, endpointUri))
+                    using (var response = await httpClient
+                        .SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
+                        .ConfigureAwait(false))
                     {
                         // Check response for server and caller specified waits and retries
-                        if(!throttler.CheckHttpResponse(response))
+                        if (!throttler.CheckHttpResponse(response))
                         {
                             continue;
                         }
 
-                        using (var stream = await response.Content.ReadAsStreamAsync())
-                        using (var reader = new JsonTextReader(new StreamReader(stream)))
-                        {
-                            var serializer = new JsonSerializer();
-                            if (response.IsSuccessStatusCode)
-                            {
-                                return serializer.Deserialize<TJson>(reader);
-                            }
-
-                            try
-                            {
-                                throw new RestClientErrorException(
-                                    serializer.Deserialize<JsonError>(reader));
-                            }
-                            catch (Exception exception)
-                            {
-                                throw new RestClientErrorException(response, exception);
-                            }
-                        }
+                        return await deserializeAsync<TApi, TJson>(response).ConfigureAwait(false);
                     }
                 }
                 catch (HttpRequestException ex)
@@ -202,28 +205,58 @@ namespace Alpaca.Markets
             throw new AggregateException(exceptions);
         }
 
+        private static async Task<TApi> deserializeAsync<TApi, TJson>(
+            HttpResponseMessage response)
+            where TJson : TApi
+        {
+            using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                if (response.IsSuccessStatusCode)
+                {
+                    return serializer.Deserialize<TJson>(reader);
+                }
+
+                try
+                {
+                    throw new RestClientErrorException(
+                        serializer.Deserialize<JsonError>(reader));
+                }
+                catch (Exception exception)
+                {
+                    throw new RestClientErrorException(response, exception);
+                }
+            }
+        }
+
         private Task<TApi> getSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
-            UriBuilder uriBuilder)
+            UriBuilder uriBuilder,
+            CancellationToken cancellationToken)
             where TJson : TApi =>
-            getSingleObjectAsync<TApi, TJson>(httpClient, throttler, uriBuilder.ToString());
+            callAndDeserializeSingleObjectAsync<TApi, TJson>(
+                httpClient, throttler, uriBuilder.Uri, cancellationToken);
 
         private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
-            String endpointUri)
+            UriBuilder uriBuilder,
+            CancellationToken cancellationToken)
             where TJson : TApi =>
-            (IEnumerable<TApi>) await
-                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, endpointUri);
-
-        private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
+            (IEnumerable<TApi>) await callAndDeserializeSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(
+                httpClient, throttler, uriBuilder.Uri, cancellationToken)
+                .ConfigureAwait(false);
+        private async Task<IEnumerable<TApi>> deleteObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
-            UriBuilder uriBuilder)
+            UriBuilder uriBuilder,
+            CancellationToken cancellationToken)
             where TJson : TApi =>
-            (IEnumerable<TApi>) await
-                getSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(httpClient, throttler, uriBuilder);
+            (IEnumerable<TApi>) await callAndDeserializeSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(
+                    httpClient, throttler, uriBuilder.Uri, cancellationToken, HttpMethod.Delete)
+                .ConfigureAwait(false);
 
         private static Uri addApiVersionNumberSafe(Uri baseUri, Int32 apiVersion)
         {

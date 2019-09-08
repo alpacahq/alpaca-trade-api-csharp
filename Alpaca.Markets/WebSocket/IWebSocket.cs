@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Alpaca.Markets
@@ -12,15 +14,19 @@ namespace Alpaca.Markets
         /// Opens web socket communication channel. Connection state changes will be reported
         /// using <see cref="Opened"/> event and errors - using <see cref="Error"/> event.
         /// </summary>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Connection opening task for awaiting (if needed).</returns>
-        Task OpenAsync();
+        Task OpenAsync(
+            CancellationToken cancellationToken);
 
         /// <summary>
         /// Closes web socket communication channel. Connection state changes will be reported
         /// using <see cref="Closed"/> event and errors - using <see cref="Error"/> event.
         /// </summary>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Connection closing task for awaiting (if needed).</returns>
-        Task CloseAsync();
+        Task CloseAsync(
+            CancellationToken cancellationToken);
 
         /// <summary>
         /// Sends text message into opened web socket connection.
@@ -52,6 +58,9 @@ namespace Alpaca.Markets
         /// <summary>
         /// Occurred in case of any communication errors (on opening/close/listening/send).
         /// </summary>
+        [SuppressMessage(
+            "Naming", "CA1716:Identifiers should not match keywords",
+            Justification = "Already used by clients and creates conflict only in VB.NET")]
         event Action<Exception> Error;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Authentication;
+using System.Threading;
 using System.Threading.Tasks;
 using SuperSocket.ClientEngine;
 using WebSocket4Net;
@@ -45,16 +46,18 @@ namespace Alpaca.Markets
                 _webSocket.Dispose();
             }
 
-            public Task OpenAsync() =>
+            public Task OpenAsync(
+                CancellationToken cancellationToken) =>
 #if NET45
-                Task.Run(() => _webSocket.Open());
+                Task.Run(() => _webSocket.Open(), cancellationToken);
 #else
                 _webSocket.OpenAsync();
 #endif
 
-            public Task CloseAsync() =>
+            public Task CloseAsync(
+                CancellationToken cancellationToken) =>
 #if NET45
-                Task.Run(() => _webSocket.Close());
+                Task.Run(() => _webSocket.Close(), cancellationToken);
 #else
                 _webSocket.CloseAsync();
 #endif

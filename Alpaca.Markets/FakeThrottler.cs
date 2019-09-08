@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Alpaca.Markets
@@ -20,9 +21,9 @@ namespace Alpaca.Markets
         public HashSet<Int32> RetryHttpStatuses { get; set; } = new HashSet<Int32>();
 
 #if NET45
-        public Task WaitToProceed() => _completedTask.Value;
+        public Task WaitToProceed(CancellationToken _) => _completedTask.Value;
 #else
-        public Task WaitToProceed() => Task.CompletedTask;
+        public Task WaitToProceed(CancellationToken _) => Task.CompletedTask;
 #endif
 
         public Boolean CheckHttpResponse(HttpResponseMessage response) => true;
