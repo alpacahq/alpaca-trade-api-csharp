@@ -286,7 +286,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>List of position cancellation status objects.</returns>
-        public async Task<IEnumerable<IPositionActionStatus>> DeleteAllPositions(
+        public async Task<IEnumerable<IPositionActionStatus>> DeleteAllPositionsAsync(
             CancellationToken cancellationToken = default)
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
