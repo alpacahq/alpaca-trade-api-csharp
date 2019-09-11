@@ -7,10 +7,10 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonOrderActionStatus : IOrderActionStatus
+    internal sealed class JsonPositionActionStatus : IPositionActionStatus
     {
-        [JsonProperty(PropertyName = "id", Required = Required.Always)]
-        public Guid OrderId { get; set; }
+        [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
+        public String Symbol { get; set; }
 
         [JsonIgnore]
         public Boolean IsSuccess => StatusCode.IsSuccessHttpStatusCode();

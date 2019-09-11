@@ -231,9 +231,9 @@ namespace Alpaca.Markets
         /// Deletes/cancel all open orders using Alpaca REST API endpoint.
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns><c>True</c> if order deleted/cancelled successfully.</returns>
+        /// <returns>List of order cancellation status objects.</returns>
         public async Task<IEnumerable<IOrderActionStatus>> DeleteAllOrdersAsync(
-        CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default)
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
@@ -251,7 +251,7 @@ namespace Alpaca.Markets
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of position information objects.</returns>
         public Task<IEnumerable<IPosition>> ListPositionsAsync(
-        CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default)
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
@@ -285,18 +285,18 @@ namespace Alpaca.Markets
         /// Liquidates all open positions at market price using Alpaca REST API endpoint.
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns><c>True</c> if positions deleted/liquidated successfully.</returns>
-        public async Task<Boolean> DeleteAllPositions(
+        /// <returns>List of position cancellation status objects.</returns>
+        public async Task<IEnumerable<IPositionActionStatus>> DeleteAllPositions(
             CancellationToken cancellationToken = default)
         {
-            await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
-
-            using (var response = await _alpacaHttpClient.DeleteAsync(
-                    new Uri($"positions", UriKind.RelativeOrAbsolute), cancellationToken)
-                .ConfigureAwait(false))
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
-                return response.IsSuccessStatusCode;
-            }
+                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "positions",
+            };
+
+            return await deleteObjectsListAsync<IPositionActionStatus, JsonPositionActionStatus>(
+                    _alpacaHttpClient, _alpacaRestApiThrottler, builder, cancellationToken)
+                .ConfigureAwait(false);
         }
 
         /// <summary>

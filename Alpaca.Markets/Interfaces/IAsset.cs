@@ -13,7 +13,6 @@ namespace Alpaca.Markets
         /// </summary>
         Guid AssetId { get; }
 
-
         /// <summary>
         /// Gets asset class.
         /// </summary>
@@ -28,7 +27,7 @@ namespace Alpaca.Markets
         Exchange Exchange { get; }
 
         /// <summary>
-        /// Gest asset name.
+        /// Gets asset name.
         /// </summary>
         String Symbol { get; }
 
