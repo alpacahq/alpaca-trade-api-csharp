@@ -19,6 +19,54 @@ namespace Alpaca.Markets
                 _alpacaHttpClient, _alpacaRestApiThrottler, "account");
 
         /// <summary>
+        /// Gets account configuration settings from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Mutable version of account configuration object.</returns>
+        public Task<IAccountConfiguration> GetAccountConfigurationAsync(
+            CancellationToken cancellationToken = default)
+        {
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            {
+                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "account/configurations",
+            };
+
+            return getSingleObjectAsync<IAccountConfiguration, JsonAccountConfiguration>(
+                _alpacaHttpClient, _alpacaRestApiThrottler, builder, cancellationToken);
+        }
+
+        /// <summary>
+        /// Updates account configuration settings using Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="accountConfiguration">New account configuration object for updating.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Mutable version of updated account configuration object.</returns>
+        public async Task<IAccountConfiguration> PatchAccountConfigurationAsync(
+            IAccountConfiguration accountConfiguration,
+            CancellationToken cancellationToken = default)
+        {
+            await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
+
+            using (var request = new HttpRequestMessage(_httpMethodPatch,
+                new Uri("account/configurations", UriKind.RelativeOrAbsolute)))
+            {
+                var serializer = new JsonSerializer();
+                using (var stringWriter = new StringWriter())
+                {
+                    serializer.Serialize(stringWriter, accountConfiguration);
+                    request.Content = new StringContent(stringWriter.ToString());
+                }
+
+                using (var response = await _alpacaHttpClient.SendAsync(request, cancellationToken)
+                    .ConfigureAwait(false))
+                {
+                    return await deserializeAsync<IAccountConfiguration, JsonAccountConfiguration>(response)
+                        .ConfigureAwait(false);
+                }
+            }
+        }
+
+        /// <summary>
         /// Gets list of available assets from Alpaca REST API endpoint.
         /// </summary>
         /// <param name="assetStatus">Asset status for filtering.</param>
