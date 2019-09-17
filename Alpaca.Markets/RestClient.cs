@@ -174,25 +174,7 @@ namespace Alpaca.Markets
                             continue;
                         }
 
-                        using (var stream = await response.Content.ReadAsStreamAsync())
-                        using (var reader = new JsonTextReader(new StreamReader(stream)))
-                        {
-                            var serializer = new JsonSerializer();
-                            if (response.IsSuccessStatusCode)
-                            {
-                                return serializer.Deserialize<TJson>(reader);
-                            }
-
-                            try
-                            {
-                                throw new RestClientErrorException(
-                                    serializer.Deserialize<JsonError>(reader));
-                            }
-                            catch (Exception exception)
-                            {
-                                throw new RestClientErrorException(response, exception);
-                            }
-                        }
+                        return await deserializeAsync<TApi, TJson>(response).ConfigureAwait(false);
                     }
                 }
                 catch (HttpRequestException ex)
@@ -205,6 +187,30 @@ namespace Alpaca.Markets
             throw new AggregateException(exceptions);
         }
 
+        private static async Task<TApi> deserializeAsync<TApi, TJson>(
+            HttpResponseMessage response)
+            where TJson : TApi
+        {
+            using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+            using (var reader = new JsonTextReader(new StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                if (response.IsSuccessStatusCode)
+                {
+                    return serializer.Deserialize<TJson>(reader);
+                }
+
+                try
+                {
+                    throw new RestClientErrorException(
+                        serializer.Deserialize<JsonError>(reader));
+                }
+                catch (Exception exception)
+                {
+                    throw new RestClientErrorException(response, exception);
+                }
+            }
+        }
         private Task<TApi> getSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,

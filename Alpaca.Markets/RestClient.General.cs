@@ -21,10 +21,8 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets account configuration settings from Alpaca REST API endpoint.
         /// </summary>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Mutable version of account configuration object.</returns>
-        public Task<IAccountConfiguration> GetAccountConfigurationAsync(
-            CancellationToken cancellationToken = default)
+        public Task<IAccountConfiguration> GetAccountConfigurationAsync()
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
@@ -32,20 +30,18 @@ namespace Alpaca.Markets
             };
 
             return getSingleObjectAsync<IAccountConfiguration, JsonAccountConfiguration>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, builder, cancellationToken);
+                _alpacaHttpClient, _alpacaRestApiThrottler, builder);
         }
 
         /// <summary>
         /// Updates account configuration settings using Alpaca REST API endpoint.
         /// </summary>
         /// <param name="accountConfiguration">New account configuration object for updating.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Mutable version of updated account configuration object.</returns>
         public async Task<IAccountConfiguration> PatchAccountConfigurationAsync(
-            IAccountConfiguration accountConfiguration,
-            CancellationToken cancellationToken = default)
+            IAccountConfiguration accountConfiguration)
         {
-            await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
+            await _alpacaRestApiThrottler.WaitToProceed().ConfigureAwait(false);
 
             using (var request = new HttpRequestMessage(_httpMethodPatch,
                 new Uri("account/configurations", UriKind.RelativeOrAbsolute)))
@@ -57,7 +53,7 @@ namespace Alpaca.Markets
                     request.Content = new StringContent(stringWriter.ToString());
                 }
 
-                using (var response = await _alpacaHttpClient.SendAsync(request, cancellationToken)
+                using (var response = await _alpacaHttpClient.SendAsync(request)
                     .ConfigureAwait(false))
                 {
                     return await deserializeAsync<IAccountConfiguration, JsonAccountConfiguration>(response)
@@ -181,17 +177,8 @@ namespace Alpaca.Markets
 
                 using (var content = new StringContent(stringWriter.ToString()))
                 using (var response = await _alpacaHttpClient.PostAsync("orders", content))
-                using (var stream = await response.Content.ReadAsStreamAsync())
-                using (var textReader = new StreamReader(stream))
-                using (var reader = new JsonTextReader(textReader))
                 {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        return serializer.Deserialize<JsonOrder>(reader);
-                    }
-
-                    var error = serializer.Deserialize<JsonError>(reader);
-                    throw new RestClientErrorException(error);
+                    return await deserializeAsync<IOrder, JsonOrder>(response);
                 }
             }
         }
