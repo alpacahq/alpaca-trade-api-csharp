@@ -22,6 +22,9 @@ namespace Alpaca.Markets
 
         private const Int32 DEFAULT_DATA_API_VERSION_NUMBER = 1;
 
+        // TODO: olegra - use built-in HttpMethod.Patch property in .NET Standard 2.1
+        private static readonly HttpMethod _httpMethodPatch = new HttpMethod("PATCH");
+
         private static readonly HashSet<Int32> _supportedApiVersions = new HashSet<Int32> { 1, 2 };
 
         private static readonly HashSet<Int32> _supportedDataApiVersions = new HashSet<Int32> { 1 };
