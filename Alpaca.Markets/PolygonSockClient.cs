@@ -309,6 +309,10 @@ namespace Alpaca.Markets
                 case ConnectionStatus.AuthenticationRequired:
                     HandleError(new InvalidOperationException(connectionStatus.Message));
                     break;
+
+                default:
+                    // Just ignore other statuses for now
+                    break;
             }
         }
 
