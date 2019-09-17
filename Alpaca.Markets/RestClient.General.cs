@@ -192,7 +192,6 @@ namespace Alpaca.Markets
         /// <param name="limitPrice">Updated order limit price or <c>null</c> if limit price is not changed.</param>
         /// <param name="stopPrice">Updated order stop price or <c>null</c> if stop price is not changed.</param>
         /// <param name="clientOrderId">Updated client order ID or <c>null</c> if client order ID is not changed.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for updated order.</returns>
         public async Task<IOrder> PatchOrderAsync(
             Guid orderId,
@@ -200,8 +199,7 @@ namespace Alpaca.Markets
             TimeInForce? duration = null,
             Decimal? limitPrice = null,
             Decimal? stopPrice = null,
-            String clientOrderId = null,
-            CancellationToken cancellationToken = default)
+            String clientOrderId = null)
         {
             if (!string.IsNullOrEmpty(clientOrderId) &&
                 clientOrderId.Length > 48)
@@ -218,7 +216,7 @@ namespace Alpaca.Markets
                 ClientOrderId = clientOrderId,
             };
 
-            await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
+            await _alpacaRestApiThrottler.WaitToProceed().ConfigureAwait(false);
 
             using (var request = new HttpRequestMessage(_httpMethodPatch,
                 new Uri($"orders/{orderId:D}", UriKind.RelativeOrAbsolute)))
@@ -230,7 +228,7 @@ namespace Alpaca.Markets
                     request.Content = new StringContent(stringWriter.ToString());
                 }
 
-                using (var response = await _alpacaHttpClient.SendAsync(request, cancellationToken)
+                using (var response = await _alpacaHttpClient.SendAsync(request)
                     .ConfigureAwait(false))
                 {
                     return await deserializeAsync<IOrder, JsonOrder>(response)
