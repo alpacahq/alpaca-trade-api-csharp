@@ -1,15 +1,20 @@
 ﻿using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Exchanges supported by Alpaca REST API.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(ExchangeEnumConverter))]
     public enum Exchange
     {
+        /// <summary>
+        /// Unknown exchange (not supported by this version of SDK).
+        /// </summary>
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown,
+
         /// <summary>
         /// NYSE American Stock Exchange.
         /// </summary>
@@ -47,9 +52,15 @@ namespace Alpaca.Markets
         Amex,
 
         /// <summary>
-        /// Archipelago Stock Exchagne (ARCA).
+        /// Archipelago Stock Exchange (ARCA).
         /// </summary>
         [EnumMember(Value = "ARCA")]
-        Arca
+        Arca,
+
+        /// <summary>
+        /// International Exchange (IEX).
+        /// </summary>
+        [EnumMember(Value = "IEX")]
+        Iex
     }
 }
