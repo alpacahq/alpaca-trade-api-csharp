@@ -242,22 +242,22 @@ namespace Alpaca.Markets
             callAndDeserializeSingleObjectAsync<TApi, TJson>(
                 httpClient, throttler, uriBuilder.Uri, cancellationToken);
 
-        private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
+        private async Task<IReadOnlyList<TApi>> getObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
             UriBuilder uriBuilder,
             CancellationToken cancellationToken)
             where TJson : TApi =>
-            (IEnumerable<TApi>) await callAndDeserializeSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(
+            (IReadOnlyList<TApi>) await callAndDeserializeSingleObjectAsync<IReadOnlyList<TJson>, List<TJson>>(
                 httpClient, throttler, uriBuilder.Uri, cancellationToken)
                 .ConfigureAwait(false);
-        private async Task<IEnumerable<TApi>> deleteObjectsListAsync<TApi, TJson>(
+        private async Task<IReadOnlyList<TApi>> deleteObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
             UriBuilder uriBuilder,
             CancellationToken cancellationToken)
             where TJson : TApi =>
-            (IEnumerable<TApi>) await callAndDeserializeSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(
+            (IReadOnlyList<TApi>) await callAndDeserializeSingleObjectAsync<IReadOnlyList<TJson>, List<TJson>>(
                     httpClient, throttler, uriBuilder.Uri, cancellationToken, HttpMethod.Delete)
                 .ConfigureAwait(false);
 

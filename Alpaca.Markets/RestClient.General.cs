@@ -83,7 +83,7 @@ namespace Alpaca.Markets
         /// <param name="assetClass">Asset class for filtering.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of asset information objects.</returns>
-        public Task<IEnumerable<IAsset>> ListAssetsAsync(
+        public Task<IReadOnlyList<IAsset>> ListAssetsAsync(
             AssetStatus? assetStatus = null,
             AssetClass? assetClass = null,
             CancellationToken cancellationToken = default)
@@ -129,7 +129,7 @@ namespace Alpaca.Markets
         /// <param name="limitOrderNumber">Maximal number of orders in response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of order information objects.</returns>
-        public Task<IEnumerable<IOrder>> ListOrdersAsync(
+        public Task<IReadOnlyList<IOrder>> ListOrdersAsync(
             OrderStatusFilter? orderStatusFilter = null,
             OrderListSorting? orderListSorting = null,
             DateTime? untilDateTimeExclusive = null,
@@ -336,7 +336,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>List of order cancellation status objects.</returns>
-        public async Task<IEnumerable<IOrderActionStatus>> DeleteAllOrdersAsync(
+        public async Task<IReadOnlyList<IOrderActionStatus>> DeleteAllOrdersAsync(
             CancellationToken cancellationToken = default)
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
@@ -354,7 +354,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of position information objects.</returns>
-        public Task<IEnumerable<IPosition>> ListPositionsAsync(
+        public Task<IReadOnlyList<IPosition>> ListPositionsAsync(
             CancellationToken cancellationToken = default)
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
@@ -390,7 +390,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>List of position cancellation status objects.</returns>
-        public async Task<IEnumerable<IPositionActionStatus>> DeleteAllPositionsAsync(
+        public async Task<IReadOnlyList<IPositionActionStatus>> DeleteAllPositionsAsync(
             CancellationToken cancellationToken = default)
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
@@ -447,7 +447,7 @@ namespace Alpaca.Markets
         /// <param name="endDateInclusive">End time for filtering (inclusive).</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of trading date information object.</returns>
-        public Task<IEnumerable<ICalendar>> ListCalendarAsync(
+        public Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
             DateTime? startDateInclusive = null,
             DateTime? endDateInclusive = null,
             CancellationToken cancellationToken = default)

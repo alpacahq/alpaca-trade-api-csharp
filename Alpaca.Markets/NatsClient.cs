@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API via NATS.
     /// </summary>
-    [Obsolete("NATS connections will soon be deprecated by Polygon. Please use websockets via PolygonSockClient instead.", false)]
+    [Obsolete("NATS connections will soon be deprecated by Polygon. Please use websockets via PolygonSockClient instead.")]
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]

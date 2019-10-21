@@ -14,7 +14,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of exchange information objects.</returns>
-        public Task<IEnumerable<IExchange>> ListExchangesAsync(
+        public Task<IReadOnlyList<IExchange>> ListExchangesAsync(
             CancellationToken cancellationToken = default)
         {
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
