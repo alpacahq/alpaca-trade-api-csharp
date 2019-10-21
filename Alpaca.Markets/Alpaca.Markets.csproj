@@ -4,23 +4,23 @@
     <TargetFrameworks>netstandard2.0;netstandard1.6;net45</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>3.3.3</Version>
+    <Version>3.4.0-alpha</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2019 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>3.3.3.0</AssemblyVersion>
-    <FileVersion>3.3.3.0</FileVersion>
+    <AssemblyVersion>3.4.0.0</AssemblyVersion>
+    <FileVersion>3.4.0.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn>8002;NU5125</NoWarn>
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIconUrl>https://alpaca.markets/static/favicon-32x32.png</PackageIconUrl>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- New enum value `Iex` added into `Exchange` enum (mapped to `IEX` input string).
-- Parsing for `Exchange` enum updated - fallback value `Unknown` returns in case of errors.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Class `NatsClient` marked with `Obsolete` attribute with error level - `PolygonSockClient` is a new way of receiving streaming data from Polygon.io connection.
+- All  REST API methods which return lists use `IReadOnlyList&lt;T&gt;` interface instead of `IEnumberable&lt;T&gt;` interface now.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
