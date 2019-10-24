@@ -21,6 +21,14 @@ if (clock != null)
 4. Replace `KEY_ID`, `SECRET_KEY` and `API_URL` values with your own data from the Alpaca dashboard.
 5. Run the sample application using `dotnet run` command and check the output. You should see information about the current market timestamp and the times that the market will open and close next.
 
+## Mapping between branches and SDK versions
+| Branch                                       | Version | Description                    |
+| -------------------------------------------- | ------- | ------------------------------ |
+| [develop](../../tree/develop)                | 3.4.*   | New features, breaking changes |
+| [master](../../tree/master)                  | 3.3.*   | All new features and hot-fixes |
+| [support/v3.2.x](../../tree/support/v3.2.x)  | 3.2.*   | Hot fixes only, some features  |
+
+# Release-specific changes in SDK
 ## Use .NET Core configuration
 
 Starting from version [1.1.0](https://github.com/alpacahq/alpaca-trade-api-csharp/releases/tag/v1.1.0) you can use the [IConfiguration](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.iconfiguration) interface for providing configuration data to constructors. You can read more about the new .NET Core configuration approach in [this](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1) article. Please also read the appropriate Wiki pages about expected configuration parameters for each constructor.
