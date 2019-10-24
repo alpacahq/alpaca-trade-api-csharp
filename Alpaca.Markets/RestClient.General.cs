@@ -98,6 +98,11 @@ namespace Alpaca.Markets
             String pageToken = null,
             CancellationToken cancellationToken = default)
         {
+            if (date.HasValue && (until.HasValue || after.HasValue))
+            {
+                throw new ArgumentException("You unable to specify 'date' and 'until'/'after' arguments in same call.");
+            }
+
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
             {
                 Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "account/activities",
