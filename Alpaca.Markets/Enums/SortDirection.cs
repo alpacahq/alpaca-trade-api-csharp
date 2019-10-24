@@ -5,21 +5,21 @@ using Newtonsoft.Json.Converters;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Order statuses sorting direction for <see cref="RestClient.ListOrdersAsync"/> call from Alpaca REST API.
+    /// Supported sort directions in Alpaca REST API.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum OrderListSorting
+    public enum SortDirection
     {
         /// <summary>
-        /// Returns only open orders.
+        /// Descending sort order
         /// </summary>
         [EnumMember(Value = "desc")]
         Descending,
 
         /// <summary>
-        /// Returns only closed orders.
+        /// Ascending sort order
         /// </summary>
         [EnumMember(Value = "asc")]
-        Ascending
+        Ascending,
     }
 }
