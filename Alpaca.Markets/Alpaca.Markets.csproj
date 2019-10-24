@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.0;netstandard1.6;net45</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>3.4.0-alpha</Version>
+    <Version>3.4.0-alpha2</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2019 Alpaca Securities LLC. All rights reserved.</Copyright>
@@ -19,8 +19,8 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIconUrl>https://alpaca.markets/static/favicon-32x32.png</PackageIconUrl>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Class `NatsClient` marked with `Obsolete` attribute with error level - `PolygonSockClient` is a new way of receiving streaming data from Polygon.io connection.
-- All  REST API methods which return lists use `IReadOnlyList&lt;T&gt;` interface instead of `IEnumberable&lt;T&gt;` interface now.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added new method 'ListAccountActivitiesAsync` and related interfaces/classes for it support
+- New enum 'SortDirection' added, the enum `OrderListSorting` marked as obsolete with error level</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
