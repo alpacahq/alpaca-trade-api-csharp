@@ -1,16 +1,14 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Order statuses sorting direction for old <see cref="RestClient.ListOrdersAsync"/> call from Alpaca REST API.
+    /// Supported sort directions in Alpaca REST API.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    [Obsolete("Use SortDirection enum instead of this one.", false)]
-    public enum OrderListSorting
+    public enum SortDirection
     {
         /// <summary>
         /// Descending sort order
