@@ -2,7 +2,7 @@
 #      general configuration      #
 #---------------------------------#
 
-version: 3.3.{build}
+version: 3.4.{build}
 
 # skip_non_tags: true
 
