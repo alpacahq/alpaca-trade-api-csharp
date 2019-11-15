@@ -83,14 +83,14 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default)
         {
             var tcs = new TaskCompletionSource<AuthStatus>();
-            Connected += handleConnected;
+            Connected += HandleConnected;
 
             await ConnectAsync(cancellationToken).ConfigureAwait(false);
             return await tcs.Task.ConfigureAwait(false);
 
-            void handleConnected(AuthStatus authStatus)
+            void HandleConnected(AuthStatus authStatus)
             {
-                Connected -= handleConnected;
+                Connected -= HandleConnected;
                 tcs.SetResult(authStatus);
             }
         }

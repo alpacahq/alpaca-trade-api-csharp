@@ -105,7 +105,8 @@ namespace Alpaca.Markets
             {
                 Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "account/activities",
                 Query = new QueryBuilder()
-                    .AddParameter("activity_types", string.Join(",", activityTypes))
+                    .AddParameter("activity_types",
+                        string.Join(",", activityTypes ?? Enumerable.Empty<AccountActivityType>()))
                     .AddParameter("date", date)
                     .AddParameter("until", until)
                     .AddParameter("after", after)

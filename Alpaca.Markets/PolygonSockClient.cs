@@ -290,7 +290,7 @@ namespace Alpaca.Markets
         {
             var connectionStatus = token.ToObject<JsonConnectionStatus>();
 
-            switch (connectionStatus.Status)
+            switch (connectionStatus.Status) //-V3002
             {
                 case ConnectionStatus.Connected:
                     SendAsJsonString(new JsonAuthRequest
@@ -308,10 +308,6 @@ namespace Alpaca.Markets
                 case ConnectionStatus.AuthenticationFailed:
                 case ConnectionStatus.AuthenticationRequired:
                     HandleError(new InvalidOperationException(connectionStatus.Message));
-                    break;
-
-                default:
-                    // Just ignore other statuses for now
                     break;
             }
         }
