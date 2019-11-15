@@ -225,12 +225,11 @@ namespace Alpaca.Markets
         protected void SendAsJsonString(
             Object value)
         {
-            using (var textWriter = new StringWriter())
-            {
-                var serializer = new JsonSerializer();
-                serializer.Serialize(textWriter, value);
-                _webSocket.Send(textWriter.ToString());
-            }
+            using var textWriter = new StringWriter();
+
+            var serializer = new JsonSerializer();
+            serializer.Serialize(textWriter, value);
+            _webSocket.Send(textWriter.ToString());
         }
     }
 }

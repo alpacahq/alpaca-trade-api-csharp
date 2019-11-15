@@ -57,23 +57,21 @@ namespace Alpaca.Markets
         {
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using (var request = new HttpRequestMessage(_httpMethodPatch,
-                new Uri("account/configurations", UriKind.RelativeOrAbsolute)))
-            {
-                var serializer = new JsonSerializer();
-                using (var stringWriter = new StringWriter())
-                {
-                    serializer.Serialize(stringWriter, accountConfiguration);
-                    request.Content = new StringContent(stringWriter.ToString());
-                }
+            using var request = new HttpRequestMessage(_httpMethodPatch,
+                new Uri("account/configurations", UriKind.RelativeOrAbsolute));
 
-                using (var response = await _alpacaHttpClient.SendAsync(request, cancellationToken)
-                    .ConfigureAwait(false))
-                {
-                    return await deserializeAsync<IAccountConfiguration, JsonAccountConfiguration>(response)
-                        .ConfigureAwait(false);
-                }
+            var serializer = new JsonSerializer();
+            using (var stringWriter = new StringWriter())
+            {
+                serializer.Serialize(stringWriter, accountConfiguration);
+                request.Content = new StringContent(stringWriter.ToString());
             }
+
+            using var response = await _alpacaHttpClient.SendAsync(request, cancellationToken)
+                .ConfigureAwait(false);
+
+            return await deserializeAsync<IAccountConfiguration, JsonAccountConfiguration>(response)
+                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -244,19 +242,17 @@ namespace Alpaca.Markets
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             var serializer = new JsonSerializer();
-            using (var stringWriter = new StringWriter())
-            {
-                serializer.Serialize(stringWriter, newOrder);
+            using var stringWriter = new StringWriter();
 
-                using (var content = new StringContent(stringWriter.ToString()))
-                using (var response = await _alpacaHttpClient.PostAsync(
+            serializer.Serialize(stringWriter, newOrder);
+
+            using var content = new StringContent(stringWriter.ToString());
+            using var response = await _alpacaHttpClient.PostAsync(
                     new Uri("orders", UriKind.RelativeOrAbsolute), content, cancellationToken)
-                    .ConfigureAwait(false))
-                {
-                    return await deserializeAsync<IOrder, JsonOrder>(response)
-                        .ConfigureAwait(false);
-                }
-            }
+                .ConfigureAwait(false);
+
+            return await deserializeAsync<IOrder, JsonOrder>(response)
+                .ConfigureAwait(false);
         }
         
         /// <summary>
@@ -296,23 +292,21 @@ namespace Alpaca.Markets
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using (var request = new HttpRequestMessage(_httpMethodPatch,
-                new Uri($"orders/{orderId:D}", UriKind.RelativeOrAbsolute)))
-            {
-                using (var stringWriter = new StringWriter())
-                {
-                    var serializer = new JsonSerializer();
-                    serializer.Serialize(stringWriter, changeOrder);
-                    request.Content = new StringContent(stringWriter.ToString());
-                }
+            using var request = new HttpRequestMessage(_httpMethodPatch,
+                new Uri($"orders/{orderId:D}", UriKind.RelativeOrAbsolute));
 
-                using (var response = await _alpacaHttpClient.SendAsync(request, cancellationToken)
-                    .ConfigureAwait(false))
-                {
-                    return await deserializeAsync<IOrder, JsonOrder>(response)
-                        .ConfigureAwait(false);
-                }
+            using (var stringWriter = new StringWriter())
+            {
+                var serializer = new JsonSerializer();
+                serializer.Serialize(stringWriter, changeOrder);
+                request.Content = new StringContent(stringWriter.ToString());
             }
+
+            using var response = await _alpacaHttpClient.SendAsync(request, cancellationToken)
+                .ConfigureAwait(false);
+
+            return await deserializeAsync<IOrder, JsonOrder>(response)
+                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -367,12 +361,11 @@ namespace Alpaca.Markets
         {
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using (var response = await _alpacaHttpClient.DeleteAsync(
+            using var response = await _alpacaHttpClient.DeleteAsync(
                     new Uri($"orders/{orderId:D}", UriKind.RelativeOrAbsolute), cancellationToken)
-                .ConfigureAwait(false))
-            {
-                return response.IsSuccessStatusCode;
-            }
+                .ConfigureAwait(false);
+
+            return response.IsSuccessStatusCode;
         }
 
         /// <summary>
@@ -459,12 +452,11 @@ namespace Alpaca.Markets
         {
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using (var response = await _alpacaHttpClient.DeleteAsync(
+            using var response = await _alpacaHttpClient.DeleteAsync(
                     new Uri($"positions/{symbol}", UriKind.RelativeOrAbsolute), cancellationToken)
-                .ConfigureAwait(false))
-            {
-                return response.IsSuccessStatusCode;
-            }
+                .ConfigureAwait(false);
+
+            return response.IsSuccessStatusCode;
         }
 
         /// <summary>

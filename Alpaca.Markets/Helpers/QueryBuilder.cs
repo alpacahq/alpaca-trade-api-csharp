@@ -49,10 +49,8 @@ namespace Alpaca.Markets
 
         public override String ToString()
         {
-            using (var content = new FormUrlEncodedContent(_queryParameters))
-            {
-                return content.ReadAsStringAsync().Result;
-            }
+            using var content = new FormUrlEncodedContent(_queryParameters);
+            return content.ReadAsStringAsync().Result;
         }
 
         private QueryBuilder addParameter<TValue>(

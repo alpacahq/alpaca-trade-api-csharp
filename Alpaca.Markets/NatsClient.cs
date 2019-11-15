@@ -258,13 +258,12 @@ namespace Alpaca.Markets
         {
             try
             {
-                using (var stream = new MemoryStream(bytes))
-                using (var textReader = new StreamReader(stream))
-                using (var jsonReader = new JsonTextReader(textReader))
-                {
-                    var serializer = new JsonSerializer();
-                    return serializer.Deserialize<T>(jsonReader);
-                }
+                using var stream = new MemoryStream(bytes);
+                using var textReader = new StreamReader(stream);
+                using var jsonReader = new JsonTextReader(textReader);
+
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<T>(jsonReader);
             }
             catch (Exception ex)
             {

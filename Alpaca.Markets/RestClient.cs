@@ -188,19 +188,18 @@ namespace Alpaca.Markets
                 await throttler.WaitToProceed(cancellationToken).ConfigureAwait(false);
                 try
                 {
-                    using (var request = new HttpRequestMessage(method ?? HttpMethod.Get, endpointUri))
-                    using (var response = await httpClient
-                        .SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
-                        .ConfigureAwait(false))
-                    {
-                        // Check response for server and caller specified waits and retries
-                        if (!throttler.CheckHttpResponse(response))
-                        {
-                            continue;
-                        }
+                    using var request = new HttpRequestMessage(method ?? HttpMethod.Get, endpointUri);
+                    using var response = await httpClient
+.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
+.ConfigureAwait(false);
 
-                        return await deserializeAsync<TApi, TJson>(response).ConfigureAwait(false);
+                    // Check response for server and caller specified waits and retries
+                    if (!throttler.CheckHttpResponse(response))
+                    {
+                        continue;
                     }
+
+                    return await deserializeAsync<TApi, TJson>(response).ConfigureAwait(false);
                 }
                 catch (HttpRequestException ex)
                 {
@@ -216,24 +215,24 @@ namespace Alpaca.Markets
             HttpResponseMessage response)
             where TJson : TApi
         {
-            using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                if (response.IsSuccessStatusCode)
-                {
-                    return serializer.Deserialize<TJson>(reader);
-                }
+            // TODO: olegra - consider using `await using` here later
+            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            using var reader = new JsonTextReader(new StreamReader(stream));
 
-                try
-                {
-                    throw new RestClientErrorException(
-                        serializer.Deserialize<JsonError>(reader));
-                }
-                catch (Exception exception)
-                {
-                    throw new RestClientErrorException(response, exception);
-                }
+            var serializer = new JsonSerializer();
+            if (response.IsSuccessStatusCode)
+            {
+                return serializer.Deserialize<TJson>(reader);
+            }
+
+            try
+            {
+                throw new RestClientErrorException(
+                    serializer.Deserialize<JsonError>(reader));
+            }
+            catch (Exception exception)
+            {
+                throw new RestClientErrorException(response, exception);
             }
         }
 
