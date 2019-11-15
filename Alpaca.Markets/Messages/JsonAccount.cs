@@ -95,7 +95,7 @@ namespace Alpaca.Markets
         internal void OnDeserializedMethod(
             StreamingContext context)
         {
-            if (string.IsNullOrEmpty(Currency))
+            if (String.IsNullOrEmpty(Currency))
             {
                 Currency = "USD";
             }

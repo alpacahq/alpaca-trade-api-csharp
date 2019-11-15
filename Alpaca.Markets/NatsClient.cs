@@ -268,7 +268,7 @@ namespace Alpaca.Markets
             catch (Exception ex)
             {
                 OnError?.Invoke(ex.Message);
-                return default(T);
+                return default;
             }
         }
     }

@@ -106,7 +106,7 @@ namespace Alpaca.Markets
                 Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "account/activities",
                 Query = new QueryBuilder()
                     .AddParameter("activity_types",
-                        string.Join(",", activityTypes ?? Enumerable.Empty<AccountActivityType>()))
+                        String.Join(",", activityTypes ?? Enumerable.Empty<AccountActivityType>()))
                     .AddParameter("date", date)
                     .AddParameter("until", until)
                     .AddParameter("after", after)
@@ -221,7 +221,7 @@ namespace Alpaca.Markets
             Boolean? extendedHours = null,
             CancellationToken cancellationToken = default)
         {
-            if (!string.IsNullOrEmpty(clientOrderId) &&
+            if (!String.IsNullOrEmpty(clientOrderId) &&
                 clientOrderId.Length > 48)
             {
                 clientOrderId = clientOrderId.Substring(0, 48);
@@ -276,7 +276,7 @@ namespace Alpaca.Markets
             String clientOrderId = null,
             CancellationToken cancellationToken = default)
         {
-            if (!string.IsNullOrEmpty(clientOrderId) &&
+            if (!String.IsNullOrEmpty(clientOrderId) &&
                 clientOrderId.Length > 48)
             {
                 clientOrderId = clientOrderId.Substring(0, 48);
@@ -527,7 +527,7 @@ namespace Alpaca.Markets
             {
                 Path = _alpacaDataClient.BaseAddress.AbsolutePath + $"bars/{timeFrame.ToEnumString()}",
                 Query = new QueryBuilder()
-                    .AddParameter("symbols", string.Join(",", symbols))
+                    .AddParameter("symbols", String.Join(",", symbols))
                     .AddParameter((areTimesInclusive ? "start" : "after"), timeFrom, "O")
                     .AddParameter((areTimesInclusive ? "end" : "until"), timeInto, "O")
                     .AddParameter("limit", limit)

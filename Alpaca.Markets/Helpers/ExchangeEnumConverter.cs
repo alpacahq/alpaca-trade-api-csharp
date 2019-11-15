@@ -10,10 +10,10 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class ExchangeEnumConverter : StringEnumConverter
     {
-        public override object ReadJson(
+        public override Object ReadJson(
             JsonReader reader,
             Type objectType,
-            object existingValue,
+            Object existingValue,
             JsonSerializer serializer)
         {
             try

@@ -123,7 +123,7 @@ namespace Alpaca.Markets
             throttleParameters = throttleParameters ?? ThrottleParameters.Default;
             _alpacaRestApiThrottler = throttleParameters.GetThrottler();
 
-            if (string.IsNullOrEmpty(oauthKey))
+            if (String.IsNullOrEmpty(oauthKey))
             {
                 _alpacaHttpClient.DefaultRequestHeaders.Add(
                     "APCA-API-KEY-ID", keyId);

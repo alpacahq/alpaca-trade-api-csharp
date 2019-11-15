@@ -309,7 +309,7 @@ namespace Alpaca.Markets
 
             return dictionary
                 .ToDictionary(
-                    kvp => long.Parse(kvp.Key,
+                    kvp => Int64.Parse(kvp.Key,
                         NumberStyles.Integer, CultureInfo.InvariantCulture),
                     kvp => kvp.Value);
         }

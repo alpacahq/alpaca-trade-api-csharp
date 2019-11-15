@@ -87,7 +87,7 @@ namespace Alpaca.Markets
                     throw new ArgumentOutOfRangeException(nameof(TimeUnit),
                         "Time unit must be a positive span of time");
                 }
-                if (value >= TimeSpan.FromMilliseconds(uint.MaxValue))
+                if (value >= TimeSpan.FromMilliseconds(UInt32.MaxValue))
                 {
                     throw new ArgumentOutOfRangeException(nameof(TimeUnit),
                         "Time unit must be less than 2^32 milliseconds");
