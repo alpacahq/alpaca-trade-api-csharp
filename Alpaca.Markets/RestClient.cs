@@ -151,7 +151,11 @@ namespace Alpaca.Markets
             _polygonHttpClient.BaseAddress =
                 polygonRestApi ?? new Uri("https://api.polygon.io");
             _isPolygonStaging = isStagingEnvironment ||
+#if NETSTANDARD2_1
+                _alpacaHttpClient.BaseAddress.Host.Contains("staging", StringComparison.Ordinal);
+#else
                 _alpacaHttpClient.BaseAddress.Host.Contains("staging");
+#endif
 
 #if NET45
             System.Net.ServicePointManager.SecurityProtocol =
@@ -169,7 +173,7 @@ namespace Alpaca.Markets
             _polygonHttpClient?.Dispose();
         }
 
-        private async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(
+        private static async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
             Uri endpointUri,

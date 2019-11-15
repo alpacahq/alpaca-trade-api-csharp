@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard1.6;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.6;net45</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>3.4.0-alpha2</Version>
@@ -17,7 +17,7 @@
     <NoWarn>8002;NU5125</NoWarn>
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageIconUrl>https://alpaca.markets/static/favicon-32x32.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <PackageReleaseNotes>- Added new method 'ListAccountActivitiesAsync` and related interfaces/classes for it support
 - New enum 'SortDirection' added, the enum `OrderListSorting` marked as obsolete with error level</PackageReleaseNotes>
@@ -46,6 +46,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\Icon.png" Pack="true" PackagePath=""/>
     <None Remove="Alpaca.Markets.csproj.DotSettings" />
   </ItemGroup>
 
