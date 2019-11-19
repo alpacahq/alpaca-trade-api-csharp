@@ -23,7 +23,7 @@ namespace Alpaca.Markets
         public QueryBuilder AddParameter<TValue>(
             String name,
             TValue? value)
-            where TValue : struct =>
+            where TValue : struct, Enum =>
             addParameter(name, value, EnumExtensions.ToEnumString);
 
         public QueryBuilder AddParameter(

@@ -107,9 +107,9 @@ namespace Alpaca.Markets
                 Query = new QueryBuilder()
                     .AddParameter("activity_types",
                         String.Join(",", activityTypes ?? Enumerable.Empty<AccountActivityType>()))
-                    .AddParameter("date", date)
-                    .AddParameter("until", until)
-                    .AddParameter("after", after)
+                    .AddParameter("date", date, "yyyy-MM-dd")
+                    .AddParameter("until", until, "O")
+                    .AddParameter("after", after, "O")
                     .AddParameter("direction", direction)
                     .AddParameter("pageSize", pageSize)
                     .AddParameter("pageToken", pageToken)
