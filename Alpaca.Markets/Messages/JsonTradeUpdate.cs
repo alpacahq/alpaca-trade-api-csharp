@@ -11,7 +11,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "price", Required = Required.Default)]
         public Decimal? Price { get; set; }
 
-        [JsonProperty(PropertyName = "qty", Required = Required.Default)]
+        [JsonProperty(PropertyName = "position_qty", Required = Required.Default)]
         public Int64? Quantity { get; set; }
 
         [JsonProperty(PropertyName = "timestamp", Required = Required.Default)]
