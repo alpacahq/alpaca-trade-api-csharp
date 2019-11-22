@@ -45,7 +45,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\Icon.png" Pack="true" PackagePath="" />
+    <None Include="..\Icon.png" Pack="true" PackagePath="icon.png" />
     <None Remove="Alpaca.Markets.csproj.DotSettings" />
   </ItemGroup>
 
