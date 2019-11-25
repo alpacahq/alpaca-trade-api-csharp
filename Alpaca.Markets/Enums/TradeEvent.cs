@@ -86,6 +86,12 @@ namespace Alpaca.Markets
         /// Order cancellation was rejected.
         /// </summary>
         [EnumMember(Value = "order_cancel_rejected")]
-        OrderCancelRejected
+        OrderCancelRejected,
+
+        /// <summary>
+        /// Order was replaced.
+        /// </summary>
+        [EnumMember(Value = "replaced")]
+        Replaced
     }
 }
