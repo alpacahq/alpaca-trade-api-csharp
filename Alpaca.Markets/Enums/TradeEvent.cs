@@ -89,7 +89,7 @@ namespace Alpaca.Markets
         OrderCancelRejected,
 
         /// <summary>
-        /// Order was replaced.
+        /// Requested replacement of an order was processed.
         /// </summary>
         [EnumMember(Value = "replaced")]
         Replaced
