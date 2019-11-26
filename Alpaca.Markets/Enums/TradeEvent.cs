@@ -98,6 +98,12 @@ namespace Alpaca.Markets
         /// The order is awaiting replacement.
         /// </summary>
         [EnumMember(Value = "pending_replace")]
-        PendingReplace
+        PendingReplace,
+        
+        /// <summary>
+        /// The order replace has been rejected.
+        /// </summary>
+        [EnumMember(Value = "order_replace_rejected")]
+        ReplaceRejected
     }
 }
