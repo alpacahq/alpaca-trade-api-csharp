@@ -92,6 +92,12 @@ namespace Alpaca.Markets
         /// Requested replacement of an order was processed.
         /// </summary>
         [EnumMember(Value = "replaced")]
-        Replaced
+        Replaced,
+        
+        /// <summary>
+        /// The order is awaiting replacement.
+        /// </summary>
+        [EnumMember(Value = "pending_replace")]
+        PendingReplace
     }
 }
