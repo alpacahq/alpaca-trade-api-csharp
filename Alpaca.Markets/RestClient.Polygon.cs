@@ -14,7 +14,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of exchange information objects.</returns>
-        public Task<IEnumerable<IExchange>> ListExchangesAsync(
+        public Task<IReadOnlyList<IExchange>> ListExchangesAsync(
             CancellationToken cancellationToken = default)
         {
             var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
@@ -120,7 +120,7 @@ namespace Alpaca.Markets
         /// <param name="limit">Maximal number of daily bars in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
-        [Obsolete("This version of ListDayAggregatesAsync will be deprecated in a future release.")]
+        [Obsolete("This version of ListDayAggregatesAsync will be deprecated in a future release.", true)]
         public Task<IAggHistoricalItems<IAgg>> ListDayAggregatesAsync(
             String symbol,
             DateTime? dateFromInclusive = null,
@@ -152,7 +152,7 @@ namespace Alpaca.Markets
         /// <param name="limit">Maximal number of minute bars in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of minute bars for specified asset.</returns>
-        [Obsolete("This version of ListMinuteAggregatesAsync will be deprecated in a future release.")]
+        [Obsolete("This version of ListMinuteAggregatesAsync will be deprecated in a future release.", true)]
         public Task<IAggHistoricalItems<IAgg>> ListMinuteAggregatesAsync(
             String symbol,
             DateTime? dateFromInclusive = null,
@@ -309,7 +309,7 @@ namespace Alpaca.Markets
 
             return dictionary
                 .ToDictionary(
-                    kvp => long.Parse(kvp.Key,
+                    kvp => Int64.Parse(kvp.Key,
                         NumberStyles.Integer, CultureInfo.InvariantCulture),
                     kvp => kvp.Value);
         }

@@ -23,7 +23,7 @@ namespace Alpaca.Markets
         public QueryBuilder AddParameter<TValue>(
             String name,
             TValue? value)
-            where TValue : struct =>
+            where TValue : struct, Enum =>
             addParameter(name, value, EnumExtensions.ToEnumString);
 
         public QueryBuilder AddParameter(
@@ -49,10 +49,8 @@ namespace Alpaca.Markets
 
         public override String ToString()
         {
-            using (var content = new FormUrlEncodedContent(_queryParameters))
-            {
-                return content.ReadAsStringAsync().Result;
-            }
+            using var content = new FormUrlEncodedContent(_queryParameters);
+            return content.ReadAsStringAsync().Result;
         }
 
         private QueryBuilder addParameter<TValue>(

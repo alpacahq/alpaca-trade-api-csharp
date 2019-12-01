@@ -74,7 +74,7 @@ namespace Alpaca.Markets
             _secretKey = secretKey ?? throw new ArgumentException(
                              "Application secret key should not be null", nameof(secretKey));
 
-            _handlers = new Dictionary<string, Action<JToken>>(StringComparer.Ordinal)
+            _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
                 { Listening, _ => { } },
                 { Authorization, handleAuthorization },

@@ -2,7 +2,7 @@
 #      general configuration      #
 #---------------------------------#
 
-version: 3.3.{build}
+version: 3.4.{build}
 
 # skip_non_tags: true
 
@@ -10,7 +10,7 @@ version: 3.3.{build}
 #    environment configuration    #
 #---------------------------------#
 
-image: Visual Studio 2017
+image: Visual Studio 2019
 
 clone_depth: 5                      # clone entire repository history if not defined
 

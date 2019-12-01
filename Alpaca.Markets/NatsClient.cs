@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API via NATS.
     /// </summary>
-    [Obsolete("NATS connections will soon be deprecated by Polygon. Please use websockets via PolygonSockClient instead.", false)]
+    [Obsolete("NATS connections will soon be deprecated by Polygon. Please use websockets via PolygonSockClient instead.", true)]
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
@@ -258,18 +258,17 @@ namespace Alpaca.Markets
         {
             try
             {
-                using (var stream = new MemoryStream(bytes))
-                using (var textReader = new StreamReader(stream))
-                using (var jsonReader = new JsonTextReader(textReader))
-                {
-                    var serializer = new JsonSerializer();
-                    return serializer.Deserialize<T>(jsonReader);
-                }
+                using var stream = new MemoryStream(bytes);
+                using var textReader = new StreamReader(stream);
+                using var jsonReader = new JsonTextReader(textReader);
+
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<T>(jsonReader);
             }
             catch (Exception ex)
             {
                 OnError?.Invoke(ex.Message);
-                return default(T);
+                return default;
             }
         }
     }

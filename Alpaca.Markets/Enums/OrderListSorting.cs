@@ -9,7 +9,7 @@ namespace Alpaca.Markets
     /// Order statuses sorting direction for old <see cref="RestClient.ListOrdersAsync"/> call from Alpaca REST API.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    [Obsolete("Use SortDirection enum instead of this one.", false)]
+    [Obsolete("Use SortDirection enum instead of this one.", true)]
     public enum OrderListSorting
     {
         /// <summary>

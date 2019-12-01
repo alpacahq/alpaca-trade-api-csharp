@@ -57,23 +57,21 @@ namespace Alpaca.Markets
         {
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using (var request = new HttpRequestMessage(_httpMethodPatch,
-                new Uri("account/configurations", UriKind.RelativeOrAbsolute)))
-            {
-                var serializer = new JsonSerializer();
-                using (var stringWriter = new StringWriter())
-                {
-                    serializer.Serialize(stringWriter, accountConfiguration);
-                    request.Content = new StringContent(stringWriter.ToString());
-                }
+            using var request = new HttpRequestMessage(_httpMethodPatch,
+                new Uri("account/configurations", UriKind.RelativeOrAbsolute));
 
-                using (var response = await _alpacaHttpClient.SendAsync(request, cancellationToken)
-                    .ConfigureAwait(false))
-                {
-                    return await deserializeAsync<IAccountConfiguration, JsonAccountConfiguration>(response)
-                        .ConfigureAwait(false);
-                }
+            var serializer = new JsonSerializer();
+            using (var stringWriter = new StringWriter())
+            {
+                serializer.Serialize(stringWriter, accountConfiguration);
+                request.Content = new StringContent(stringWriter.ToString());
             }
+
+            using var response = await _alpacaHttpClient.SendAsync(request, cancellationToken)
+                .ConfigureAwait(false);
+
+            return await deserializeAsync<IAccountConfiguration, JsonAccountConfiguration>(response)
+                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -88,7 +86,7 @@ namespace Alpaca.Markets
         /// <param name="pageToken">The ID of the end of your current page of results.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of asset information objects.</returns>
-        public Task<IEnumerable<IAsset>> ListAccountActivitiesAsync(
+        public Task<IReadOnlyList<IAsset>> ListAccountActivitiesAsync(
             IEnumerable<AccountActivityType> activityTypes = null,
             DateTime? date = null,
             DateTime? until = null,
@@ -107,10 +105,11 @@ namespace Alpaca.Markets
             {
                 Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "account/activities",
                 Query = new QueryBuilder()
-                    .AddParameter("activity_types", string.Join(",", activityTypes))
-                    .AddParameter("date", date)
-                    .AddParameter("until", until)
-                    .AddParameter("after", after)
+                    .AddParameter("activity_types",
+                        String.Join(",", activityTypes ?? Enumerable.Empty<AccountActivityType>()))
+                    .AddParameter("date", date, "yyyy-MM-dd")
+                    .AddParameter("until", until, "O")
+                    .AddParameter("after", after, "O")
                     .AddParameter("direction", direction)
                     .AddParameter("pageSize", pageSize)
                     .AddParameter("pageToken", pageToken)
@@ -127,7 +126,7 @@ namespace Alpaca.Markets
         /// <param name="assetClass">Asset class for filtering.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of asset information objects.</returns>
-        public Task<IEnumerable<IAsset>> ListAssetsAsync(
+        public Task<IReadOnlyList<IAsset>> ListAssetsAsync(
             AssetStatus? assetStatus = null,
             AssetClass? assetClass = null,
             CancellationToken cancellationToken = default)
@@ -173,7 +172,7 @@ namespace Alpaca.Markets
         /// <param name="limitOrderNumber">Maximal number of orders in response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of order information objects.</returns>
-        public Task<IEnumerable<IOrder>> ListOrdersAsync(
+        public Task<IReadOnlyList<IOrder>> ListOrdersAsync(
             OrderStatusFilter? orderStatusFilter = null,
             SortDirection? orderListSorting = null,
             DateTime? untilDateTimeExclusive = null,
@@ -222,7 +221,7 @@ namespace Alpaca.Markets
             Boolean? extendedHours = null,
             CancellationToken cancellationToken = default)
         {
-            if (!string.IsNullOrEmpty(clientOrderId) &&
+            if (!String.IsNullOrEmpty(clientOrderId) &&
                 clientOrderId.Length > 48)
             {
                 clientOrderId = clientOrderId.Substring(0, 48);
@@ -244,19 +243,17 @@ namespace Alpaca.Markets
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             var serializer = new JsonSerializer();
-            using (var stringWriter = new StringWriter())
-            {
-                serializer.Serialize(stringWriter, newOrder);
+            using var stringWriter = new StringWriter();
 
-                using (var content = new StringContent(stringWriter.ToString()))
-                using (var response = await _alpacaHttpClient.PostAsync(
+            serializer.Serialize(stringWriter, newOrder);
+
+            using var content = new StringContent(stringWriter.ToString());
+            using var response = await _alpacaHttpClient.PostAsync(
                     new Uri("orders", UriKind.RelativeOrAbsolute), content, cancellationToken)
-                    .ConfigureAwait(false))
-                {
-                    return await deserializeAsync<IOrder, JsonOrder>(response)
-                        .ConfigureAwait(false);
-                }
-            }
+                .ConfigureAwait(false);
+
+            return await deserializeAsync<IOrder, JsonOrder>(response)
+                .ConfigureAwait(false);
         }
         
         /// <summary>
@@ -279,7 +276,7 @@ namespace Alpaca.Markets
             String clientOrderId = null,
             CancellationToken cancellationToken = default)
         {
-            if (!string.IsNullOrEmpty(clientOrderId) &&
+            if (!String.IsNullOrEmpty(clientOrderId) &&
                 clientOrderId.Length > 48)
             {
                 clientOrderId = clientOrderId.Substring(0, 48);
@@ -296,23 +293,21 @@ namespace Alpaca.Markets
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using (var request = new HttpRequestMessage(_httpMethodPatch,
-                new Uri($"orders/{orderId:D}", UriKind.RelativeOrAbsolute)))
-            {
-                using (var stringWriter = new StringWriter())
-                {
-                    var serializer = new JsonSerializer();
-                    serializer.Serialize(stringWriter, changeOrder);
-                    request.Content = new StringContent(stringWriter.ToString());
-                }
+            using var request = new HttpRequestMessage(_httpMethodPatch,
+                new Uri($"orders/{orderId:D}", UriKind.RelativeOrAbsolute));
 
-                using (var response = await _alpacaHttpClient.SendAsync(request, cancellationToken)
-                    .ConfigureAwait(false))
-                {
-                    return await deserializeAsync<IOrder, JsonOrder>(response)
-                        .ConfigureAwait(false);
-                }
+            using (var stringWriter = new StringWriter())
+            {
+                var serializer = new JsonSerializer();
+                serializer.Serialize(stringWriter, changeOrder);
+                request.Content = new StringContent(stringWriter.ToString());
             }
+
+            using var response = await _alpacaHttpClient.SendAsync(request, cancellationToken)
+                .ConfigureAwait(false);
+
+            return await deserializeAsync<IOrder, JsonOrder>(response)
+                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -367,12 +362,11 @@ namespace Alpaca.Markets
         {
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using (var response = await _alpacaHttpClient.DeleteAsync(
+            using var response = await _alpacaHttpClient.DeleteAsync(
                     new Uri($"orders/{orderId:D}", UriKind.RelativeOrAbsolute), cancellationToken)
-                .ConfigureAwait(false))
-            {
-                return response.IsSuccessStatusCode;
-            }
+                .ConfigureAwait(false);
+
+            return response.IsSuccessStatusCode;
         }
 
         /// <summary>
@@ -380,7 +374,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>List of order cancellation status objects.</returns>
-        public async Task<IEnumerable<IOrderActionStatus>> DeleteAllOrdersAsync(
+        public async Task<IReadOnlyList<IOrderActionStatus>> DeleteAllOrdersAsync(
             CancellationToken cancellationToken = default)
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
@@ -398,7 +392,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of position information objects.</returns>
-        public Task<IEnumerable<IPosition>> ListPositionsAsync(
+        public Task<IReadOnlyList<IPosition>> ListPositionsAsync(
             CancellationToken cancellationToken = default)
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
@@ -434,7 +428,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>List of position cancellation status objects.</returns>
-        public async Task<IEnumerable<IPositionActionStatus>> DeleteAllPositionsAsync(
+        public async Task<IReadOnlyList<IPositionActionStatus>> DeleteAllPositionsAsync(
             CancellationToken cancellationToken = default)
         {
             var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
@@ -459,12 +453,11 @@ namespace Alpaca.Markets
         {
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using (var response = await _alpacaHttpClient.DeleteAsync(
+            using var response = await _alpacaHttpClient.DeleteAsync(
                     new Uri($"positions/{symbol}", UriKind.RelativeOrAbsolute), cancellationToken)
-                .ConfigureAwait(false))
-            {
-                return response.IsSuccessStatusCode;
-            }
+                .ConfigureAwait(false);
+
+            return response.IsSuccessStatusCode;
         }
 
         /// <summary>
@@ -491,7 +484,7 @@ namespace Alpaca.Markets
         /// <param name="endDateInclusive">End time for filtering (inclusive).</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of trading date information object.</returns>
-        public Task<IEnumerable<ICalendar>> ListCalendarAsync(
+        public Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
             DateTime? startDateInclusive = null,
             DateTime? endDateInclusive = null,
             CancellationToken cancellationToken = default)
@@ -534,7 +527,7 @@ namespace Alpaca.Markets
             {
                 Path = _alpacaDataClient.BaseAddress.AbsolutePath + $"bars/{timeFrame.ToEnumString()}",
                 Query = new QueryBuilder()
-                    .AddParameter("symbols", string.Join(",", symbols))
+                    .AddParameter("symbols", String.Join(",", symbols))
                     .AddParameter((areTimesInclusive ? "start" : "after"), timeFrom, "O")
                     .AddParameter((areTimesInclusive ? "end" : "until"), timeInto, "O")
                     .AddParameter("limit", limit)

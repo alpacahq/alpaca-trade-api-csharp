@@ -123,7 +123,7 @@ namespace Alpaca.Markets
             throttleParameters = throttleParameters ?? ThrottleParameters.Default;
             _alpacaRestApiThrottler = throttleParameters.GetThrottler();
 
-            if (string.IsNullOrEmpty(oauthKey))
+            if (String.IsNullOrEmpty(oauthKey))
             {
                 _alpacaHttpClient.DefaultRequestHeaders.Add(
                     "APCA-API-KEY-ID", keyId);
@@ -151,7 +151,11 @@ namespace Alpaca.Markets
             _polygonHttpClient.BaseAddress =
                 polygonRestApi ?? new Uri("https://api.polygon.io");
             _isPolygonStaging = isStagingEnvironment ||
+#if NETSTANDARD2_1
+                _alpacaHttpClient.BaseAddress.Host.Contains("staging", StringComparison.Ordinal);
+#else
                 _alpacaHttpClient.BaseAddress.Host.Contains("staging");
+#endif
 
 #if NET45
             System.Net.ServicePointManager.SecurityProtocol =
@@ -169,7 +173,7 @@ namespace Alpaca.Markets
             _polygonHttpClient?.Dispose();
         }
 
-        private async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(
+        private static async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
             Uri endpointUri,
@@ -184,19 +188,18 @@ namespace Alpaca.Markets
                 await throttler.WaitToProceed(cancellationToken).ConfigureAwait(false);
                 try
                 {
-                    using (var request = new HttpRequestMessage(method ?? HttpMethod.Get, endpointUri))
-                    using (var response = await httpClient
-                        .SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
-                        .ConfigureAwait(false))
-                    {
-                        // Check response for server and caller specified waits and retries
-                        if (!throttler.CheckHttpResponse(response))
-                        {
-                            continue;
-                        }
+                    using var request = new HttpRequestMessage(method ?? HttpMethod.Get, endpointUri);
+                    using var response = await httpClient
+.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
+.ConfigureAwait(false);
 
-                        return await deserializeAsync<TApi, TJson>(response).ConfigureAwait(false);
+                    // Check response for server and caller specified waits and retries
+                    if (!throttler.CheckHttpResponse(response))
+                    {
+                        continue;
                     }
+
+                    return await deserializeAsync<TApi, TJson>(response).ConfigureAwait(false);
                 }
                 catch (HttpRequestException ex)
                 {
@@ -212,24 +215,24 @@ namespace Alpaca.Markets
             HttpResponseMessage response)
             where TJson : TApi
         {
-            using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-            using (var reader = new JsonTextReader(new StreamReader(stream)))
-            {
-                var serializer = new JsonSerializer();
-                if (response.IsSuccessStatusCode)
-                {
-                    return serializer.Deserialize<TJson>(reader);
-                }
+            // TODO: olegra - consider using `await using` here later
+            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            using var reader = new JsonTextReader(new StreamReader(stream));
 
-                try
-                {
-                    throw new RestClientErrorException(
-                        serializer.Deserialize<JsonError>(reader));
-                }
-                catch (Exception exception)
-                {
-                    throw new RestClientErrorException(response, exception);
-                }
+            var serializer = new JsonSerializer();
+            if (response.IsSuccessStatusCode)
+            {
+                return serializer.Deserialize<TJson>(reader);
+            }
+
+            try
+            {
+                throw new RestClientErrorException(
+                    serializer.Deserialize<JsonError>(reader));
+            }
+            catch (Exception exception)
+            {
+                throw new RestClientErrorException(response, exception);
             }
         }
 
@@ -242,22 +245,22 @@ namespace Alpaca.Markets
             callAndDeserializeSingleObjectAsync<TApi, TJson>(
                 httpClient, throttler, uriBuilder.Uri, cancellationToken);
 
-        private async Task<IEnumerable<TApi>> getObjectsListAsync<TApi, TJson>(
+        private async Task<IReadOnlyList<TApi>> getObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
             UriBuilder uriBuilder,
             CancellationToken cancellationToken)
             where TJson : TApi =>
-            (IEnumerable<TApi>) await callAndDeserializeSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(
+            (IReadOnlyList<TApi>) await callAndDeserializeSingleObjectAsync<IReadOnlyList<TJson>, List<TJson>>(
                 httpClient, throttler, uriBuilder.Uri, cancellationToken)
                 .ConfigureAwait(false);
-        private async Task<IEnumerable<TApi>> deleteObjectsListAsync<TApi, TJson>(
+        private async Task<IReadOnlyList<TApi>> deleteObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
             UriBuilder uriBuilder,
             CancellationToken cancellationToken)
             where TJson : TApi =>
-            (IEnumerable<TApi>) await callAndDeserializeSingleObjectAsync<IEnumerable<TJson>, List<TJson>>(
+            (IReadOnlyList<TApi>) await callAndDeserializeSingleObjectAsync<IReadOnlyList<TJson>, List<TJson>>(
                     httpClient, throttler, uriBuilder.Uri, cancellationToken, HttpMethod.Delete)
                 .ConfigureAwait(false);
 
