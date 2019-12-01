@@ -15,7 +15,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets total account portfolio value.
         /// </summary>
-        [Obsolete("PortfolioValue is deprecated, please use Equity instead.")]
+        [Obsolete("PortfolioValue is deprecated, please use Equity instead.", true)]
         Decimal PortfolioValue { get; }
 
         /// <summary>
