@@ -2,8 +2,11 @@ name: Build Only
 
 on:
   push:
-    tags-ignore:
-      - v*
+    branches: 
+      - '**'
+    tags:
+      - '**'
+      - '!v**'
 
 jobs:
   build:
