@@ -1,4 +1,4 @@
-[![Master build status](https://ci.appveyor.com/api/projects/status/github/alpacahq/alpaca-trade-api-csharp?svg=true&branch=master&passingText=master%20-%20OK&failedText=master%20-%20FAIL&pendingText=master%20-%20Pending)](https://ci.appveyor.com/project/alpacahq-bot/alpaca-trade-api-csharp) [![Develop build status](https://ci.appveyor.com/api/projects/status/github/alpacahq/alpaca-trade-api-csharp?svg=true&branch=develop&passingText=develop%20-%20OK&failedText=develop%20-%20FAIL&pendingText=develop%20-%20Pending)](https://ci.appveyor.com/project/alpacahq-bot/alpaca-trade-api-csharp)
+![](https://github.com/alpacahq/alpaca-trade-api-csharp/workflows/Build%20and%20Release/badge.svg?branch=master)
 
 # .NET SDK for Alpaca Markets API
 ## .NET Core Usage Example
@@ -24,9 +24,9 @@ if (clock != null)
 ## Mapping between branches and SDK versions
 | Branch                                       | Version | Description                    |
 | -------------------------------------------- | ------- | ------------------------------ |
-| [develop](../../tree/develop)                | 3.4.*   | New features, breaking changes |
-| [master](../../tree/master)                  | 3.3.*   | All new features and hot-fixes |
-| [support/v3.2.x](../../tree/support/v3.2.x)  | 3.2.*   | Hot fixes only, some features  |
+| [develop](../../tree/develop)                | 3.5.*   | New features, breaking changes |
+| [master](../../tree/master)                  | 3.4.*   | All new features and hot-fixes |
+| [support/v3.3.x](../../tree/support/v3.2.x)  | 3.3.*   | Hot fixes only, some features  |
 
 # Release-specific changes in SDK
 ## Use .NET Core configuration
