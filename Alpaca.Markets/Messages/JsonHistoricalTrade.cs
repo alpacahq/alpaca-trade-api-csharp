@@ -9,10 +9,10 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal class JsonHistoricalTrade : IHistoricalTrade
     {
-        [JsonProperty(PropertyName = "e", Required = Required.Always)]
+        [JsonProperty(PropertyName = "e", Required = Required.Default)]
         public String Exchange { get; set; }
 
-        [JsonProperty(PropertyName = "t", Required = Required.Always)]
+        [JsonProperty(PropertyName = "t", Required = Required.Default)]
         public Int64 TimeOffset { get; set; }
 
         [JsonProperty(PropertyName = "p", Required = Required.Default)]
