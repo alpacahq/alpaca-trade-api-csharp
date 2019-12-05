@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
+    // TODO: OlegRa - remove `V1` class and flatten hierarchy after removing Polygon Historical API v1 support
+
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal class JsonHistoricalTrade : IHistoricalTrade
+    internal sealed class JsonHistoricalTrade : IHistoricalTrade
     {
-        
-        // V1 API fields
+#pragma warning disable CA1825 // Avoid zero-length array allocations.
+        private static readonly IReadOnlyList<Int64> _empty = new Int64[0];
+#pragma warning restore CA1825 // Avoid zero-length array allocations.
 
-        [JsonProperty(PropertyName = "e", Required = Required.Default)]
-        public String Exchange { get; set; }
+        [JsonIgnore]
+        public String Exchange  => throw new InvalidOperationException();
 
-        [JsonProperty(PropertyName = "t", Required = Required.Default)]
-        public Int64 TimeOffset { get; set; }
+        [JsonIgnore]
+        public Int64 TimeOffset  => throw new InvalidOperationException();
 
         [JsonProperty(PropertyName = "p", Required = Required.Default)]
         public Decimal Price { get; set; }
@@ -26,8 +28,8 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "s", Required = Required.Default)]
         public Int64 Size { get; set; }
 
-        // V2 API fields
-        public Int64 SipTimestamp { get { return TimeOffset; } }
+        [JsonProperty(PropertyName = "t", Required = Required.Default)]
+        public Int64 SipTimestamp { get; set; }
 
         [JsonProperty(PropertyName = "y", Required = Required.Default)]
         public Int64 ParticipantTimestamp { get; set; }
@@ -35,11 +37,8 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "f", Required = Required.Default)]
         public Int64 TrfTimestamp { get; set; }
 
-        [JsonProperty(PropertyName = "c", Required = Required.Default)]
-        public IReadOnlyList<Int64> Conditions { get; set; }
-
         [JsonProperty(PropertyName = "x", Required = Required.Default)]
-        private Int64 ExchangeV2 { set { Exchange = value.ToString(CultureInfo.InvariantCulture); } }
+        public Int64 ExchangeId { get; set; }
 
         [JsonProperty(PropertyName = "r", Required = Required.Default)]
         public Int64 TrfId { get; set; }
@@ -55,5 +54,59 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "I", Required = Required.Default)]
         public String OrigId { get; set; }
+
+        [JsonProperty(PropertyName = "c", Required = Required.Default)]
+        public List<Int64> ConditionsList { get; set; }
+
+        [JsonIgnore]
+        public IReadOnlyList<Int64> Conditions => ConditionsList ?? _empty;
+    }
+
+    [SuppressMessage(
+        "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+    internal sealed class JsonHistoricalTradeV1 : IHistoricalTrade
+    {
+        [JsonProperty(PropertyName = "e", Required = Required.Default)]
+        public String Exchange { get; set; }
+
+        [JsonProperty(PropertyName = "t", Required = Required.Default)]
+        public Int64 TimeOffset { get; set; }
+
+        [JsonProperty(PropertyName = "p", Required = Required.Default)]
+        public Decimal Price { get; set; }
+
+        [JsonProperty(PropertyName = "s", Required = Required.Default)]
+        public Int64 Size { get; set; }
+
+        [JsonIgnore]
+        public Int64 SipTimestamp => TimeOffset;
+
+        [JsonIgnore]
+        public Int64 ParticipantTimestamp => throw new InvalidOperationException();
+
+        [JsonIgnore]
+        public Int64 TrfTimestamp => throw new InvalidOperationException();
+
+        [JsonIgnore]
+        public Int64 ExchangeId => throw new InvalidOperationException();
+
+        [JsonIgnore]
+        public Int64 TrfId => throw new InvalidOperationException();
+
+        [JsonIgnore]
+        public Int64 Tape => throw new InvalidOperationException();
+
+        [JsonIgnore]
+        public Int64 SequenceNumber => throw new InvalidOperationException();
+
+        [JsonIgnore]
+        public String Id => throw new InvalidOperationException();
+
+        [JsonIgnore]
+        public String OrigId => throw new InvalidOperationException();
+
+        [JsonIgnore]
+        public IReadOnlyList<Int64> Conditions => throw new InvalidOperationException();
     }
 }

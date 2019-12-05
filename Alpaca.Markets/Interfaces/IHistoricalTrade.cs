@@ -11,11 +11,18 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade source exchange.
         /// </summary>
+        [Obsolete("Exchange is deprecated in API v2, use ExchangeId instead", false)]
         String Exchange { get; }
+
+        /// <summary>
+        /// Gets trade source exchange identifier.
+        /// </summary>
+        Int64 ExchangeId { get; }
 
         /// <summary>
         /// Gets trade timestamp.
         /// </summary>
+        [Obsolete("TimeOffset is deprecated in API v2, use SipTimestamp instead", false)]
         Int64 TimeOffset  { get; }
 
         /// <summary>
