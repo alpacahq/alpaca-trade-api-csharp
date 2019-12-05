@@ -12,10 +12,6 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonHistoricalQuote : IHistoricalQuote
     {
-#pragma warning disable CA1825 // Avoid zero-length array allocations.
-        private static readonly IReadOnlyList<Int64> _empty = new Int64[0];
-#pragma warning restore CA1825 // Avoid zero-length array allocations.
-
         [JsonIgnore]
         String IQuoteBase<String>.BidExchange => throw new InvalidOperationException();
 
@@ -76,11 +72,11 @@ namespace Alpaca.Markets
             DateTimeHelper.FromUnixTimeNanoseconds(TradeReportingFacilityTimestampInNanoseconds);
 
         [JsonIgnore]
-        public IReadOnlyList<Int64> Conditions => ConditionsList ?? _empty;
+        public IReadOnlyList<Int64> Conditions => ConditionsList.EmptyIfNull();
 
         [JsonIgnore]
 
-        public IReadOnlyList<Int64> Indicators => IndicatorsList ?? _empty;
+        public IReadOnlyList<Int64> Indicators => IndicatorsList.EmptyIfNull();
     }
 
     [SuppressMessage(

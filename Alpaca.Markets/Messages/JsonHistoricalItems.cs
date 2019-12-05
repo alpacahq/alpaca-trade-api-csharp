@@ -9,10 +9,6 @@ namespace Alpaca.Markets
 
     internal abstract class JsonHistoricalItemsBase<TApi, TJson> : IHistoricalItems<TApi> where TJson : TApi
     {
-#pragma warning disable CA1825 // Avoid zero-length array allocations.
-        private static readonly IReadOnlyList<TApi> _empty = new TApi[0];
-#pragma warning restore CA1825 // Avoid zero-length array allocations.
-
         [JsonProperty(PropertyName = "status", Required = Required.Default)]
         public String Status { get; set; }
 
@@ -36,8 +32,7 @@ namespace Alpaca.Markets
             TimeSpan.FromMilliseconds(DbLatencyInMilliseconds);
 
         [JsonIgnore]
-        public IReadOnlyList<TApi> Items =>
-            (IReadOnlyList<TApi>)ItemsList ?? _empty;
+        public IReadOnlyList<TApi> Items => ItemsList.EmptyIfNull<TApi, TJson>();
     }
 
     [SuppressMessage(
