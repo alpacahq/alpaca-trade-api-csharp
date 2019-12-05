@@ -299,7 +299,8 @@ namespace UsageExamples
                 if (positionQuantity > 0)
                 {
                     await restClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
-                } else
+                }
+                else
                 {
                     await restClient.PostOrderAsync(symbol, positionQuantity * -1, OrderSide.Buy, OrderType.Market, TimeInForce.Day);
                 }

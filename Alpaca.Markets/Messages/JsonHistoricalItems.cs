@@ -28,6 +28,9 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "resultsCount", Required = Required.Default)]
         public Int64 ResultsCount { get; set; }
 
+        [JsonProperty(PropertyName = "db_latency", Required = Required.Default)]
+        public Int64 DbLatency { get; set; }
+
         [JsonProperty(PropertyName = "ticks", Required = Required.Default)]
         public List<TJson> ItemsList { get; set; }
 
