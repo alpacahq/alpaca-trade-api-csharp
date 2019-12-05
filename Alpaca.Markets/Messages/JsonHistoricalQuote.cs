@@ -25,13 +25,13 @@ namespace Alpaca.Markets
         public Int64 TimeOffset => throw new InvalidOperationException();
 
         [JsonProperty(PropertyName = "t", Required = Required.Default)]
-        public Int64 SipTimestamp { get; set; }
+        public Int64 TimestampInNanoseconds { get; set; }
 
         [JsonProperty(PropertyName = "y", Required = Required.Default)]
-        public Int64 ParticipantTimestamp { get; set; }
+        public Int64 ParticipantTimestampInNanoseconds { get; set; }
 
         [JsonProperty(PropertyName = "f", Required = Required.Default)]
-        public Int64 TrfTimestamp { get; set; }
+        public Int64 TradeReportingFacilityTimestampInNanoseconds { get; set; }
 
         [JsonProperty(PropertyName = "X", Required = Required.Default)]
         public Int64 AskExchange { get; set; }
@@ -62,6 +62,18 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
         public List<Int64> IndicatorsList { get; set; }
+
+        [JsonIgnore]
+        public DateTime Timestamp =>
+            DateTimeHelper.FromUnixTimeNanoseconds(TimestampInNanoseconds);
+
+        [JsonIgnore]
+        public DateTime ParticipantTimestamp =>
+            DateTimeHelper.FromUnixTimeNanoseconds(ParticipantTimestampInNanoseconds);
+
+        [JsonIgnore]
+        public DateTime TradeReportingFacilityTimestamp =>
+            DateTimeHelper.FromUnixTimeNanoseconds(TradeReportingFacilityTimestampInNanoseconds);
 
         [JsonIgnore]
         public IReadOnlyList<Int64> Conditions => ConditionsList ?? _empty;
@@ -97,11 +109,11 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "t", Required = Required.Default)]
         public Int64 TimeOffset { get; set; }
 
-        public Int64 SipTimestamp => throw new InvalidOperationException();
+        public DateTime Timestamp => throw new InvalidOperationException();
 
-        public Int64 ParticipantTimestamp => throw new InvalidOperationException();
+        public DateTime ParticipantTimestamp => throw new InvalidOperationException();
 
-        public Int64 TrfTimestamp => throw new InvalidOperationException();
+        public DateTime TradeReportingFacilityTimestamp => throw new InvalidOperationException();
 
         Int64 IQuoteBase<Int64>.AskExchange => throw new InvalidOperationException();
 

@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates historical trade information from Polygon REST API.
     /// </summary>
-    public interface IHistoricalTrade
+    public interface IHistoricalTrade : ITimestamps, IHistoricalBase
     {
         /// <summary>
         /// Gets trade source exchange.
@@ -22,7 +21,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade timestamp.
         /// </summary>
-        [Obsolete("TimeOffset is deprecated in API v2, use SipTimestamp instead", false)]
+        [Obsolete("TimeOffset is deprecated in API v2, use Timestamp instead", false)]
         Int64 TimeOffset  { get; }
 
         /// <summary>
@@ -36,48 +35,18 @@ namespace Alpaca.Markets
         Int64 Size { get; }
 
         /// <summary>
-        /// Gets SIP timestamp
-        /// </summary>
-        Int64 SipTimestamp { get; }
-
-        /// <summary>
-        /// Gets participant/exchange timestamp.
-        /// </summary>
-        Int64 ParticipantTimestamp { get; }
-
-        /// <summary>
-        /// Gets trade reporting facility timestamp.
-        /// </summary>
-        Int64 TrfTimestamp { get; }
-
-        /// <summary>
         /// Gets trade reporting facility ID.
         /// </summary>
-        Int64 TrfId { get; }
-
-        /// <summary>
-        /// Gets tape where trade occured.
-        /// </summary>
-        Int64 Tape { get; }
-
-        /// <summary>
-        /// Gets sequence number of trade.
-        /// </summary>
-        Int64 SequenceNumber { get; }
+        Int64 TradeReportingFacilityId { get; }
 
         /// <summary>
         /// Gets trade ID.
         /// </summary>
-        String Id { get; }
+        String TradeId { get; }
 
         /// <summary>
         /// Gets original trade ID.
         /// </summary>
-        String OrigId { get; }
-
-        /// <summary>
-        /// Gets trade conditions.
-        /// </summary>
-        IReadOnlyList<Int64> Conditions { get; }
+        String OriginalTradeId { get; }
     }
 }

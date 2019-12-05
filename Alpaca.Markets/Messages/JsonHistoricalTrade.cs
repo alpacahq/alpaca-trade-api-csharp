@@ -29,19 +29,19 @@ namespace Alpaca.Markets
         public Int64 Size { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Default)]
-        public Int64 SipTimestamp { get; set; }
+        public Int64 TimestampInNanoseconds { get; set; }
 
         [JsonProperty(PropertyName = "y", Required = Required.Default)]
-        public Int64 ParticipantTimestamp { get; set; }
+        public Int64 ParticipantTimestampInNanoseconds { get; set; }
 
         [JsonProperty(PropertyName = "f", Required = Required.Default)]
-        public Int64 TrfTimestamp { get; set; }
+        public Int64 TradeReportingFacilityTimestampInNanoseconds { get; set; }
 
         [JsonProperty(PropertyName = "x", Required = Required.Default)]
         public Int64 ExchangeId { get; set; }
 
         [JsonProperty(PropertyName = "r", Required = Required.Default)]
-        public Int64 TrfId { get; set; }
+        public Int64 TradeReportingFacilityId { get; set; }
 
         [JsonProperty(PropertyName = "z", Required = Required.Default)]
         public Int64 Tape { get; set; }
@@ -50,13 +50,25 @@ namespace Alpaca.Markets
         public Int64 SequenceNumber { get; set; }
 
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
-        public String Id { get; set; }
+        public String TradeId { get; set; }
 
         [JsonProperty(PropertyName = "I", Required = Required.Default)]
-        public String OrigId { get; set; }
+        public String OriginalTradeId { get; set; }
 
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
         public List<Int64> ConditionsList { get; set; }
+        
+        [JsonIgnore]
+        public DateTime Timestamp =>
+            DateTimeHelper.FromUnixTimeNanoseconds(TimestampInNanoseconds);
+
+        [JsonIgnore]
+        public DateTime ParticipantTimestamp =>
+            DateTimeHelper.FromUnixTimeNanoseconds(ParticipantTimestampInNanoseconds);
+
+        [JsonIgnore]
+        public DateTime TradeReportingFacilityTimestamp =>
+            DateTimeHelper.FromUnixTimeNanoseconds(TradeReportingFacilityTimestampInNanoseconds);
 
         [JsonIgnore]
         public IReadOnlyList<Int64> Conditions => ConditionsList ?? _empty;
@@ -80,19 +92,19 @@ namespace Alpaca.Markets
         public Int64 Size { get; set; }
 
         [JsonIgnore]
-        public Int64 SipTimestamp => throw new InvalidOperationException();
+        public DateTime Timestamp => throw new InvalidOperationException();
 
         [JsonIgnore]
-        public Int64 ParticipantTimestamp => throw new InvalidOperationException();
+        public DateTime ParticipantTimestamp => throw new InvalidOperationException();
 
         [JsonIgnore]
-        public Int64 TrfTimestamp => throw new InvalidOperationException();
+        public DateTime TradeReportingFacilityTimestamp => throw new InvalidOperationException();
 
         [JsonIgnore]
         public Int64 ExchangeId => throw new InvalidOperationException();
 
         [JsonIgnore]
-        public Int64 TrfId => throw new InvalidOperationException();
+        public Int64 TradeReportingFacilityId => throw new InvalidOperationException();
 
         [JsonIgnore]
         public Int64 Tape => throw new InvalidOperationException();
@@ -101,10 +113,10 @@ namespace Alpaca.Markets
         public Int64 SequenceNumber => throw new InvalidOperationException();
 
         [JsonIgnore]
-        public String Id => throw new InvalidOperationException();
+        public String TradeId => throw new InvalidOperationException();
 
         [JsonIgnore]
-        public String OrigId => throw new InvalidOperationException();
+        public String OriginalTradeId => throw new InvalidOperationException();
 
         [JsonIgnore]
         public IReadOnlyList<Int64> Conditions => throw new InvalidOperationException();
