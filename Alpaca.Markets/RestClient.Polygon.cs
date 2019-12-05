@@ -52,17 +52,17 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of historical trades for a single asset from Polygon's REST API endpoint.
         /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
         /// <param name="date">Single date for data retrieval.</param>
+        /// <param name="symbol">>Asset name for data retrieval.</param>
         /// <param name="timestamp">Paging - Using the timestamp of the last result will give you the next page of results.</param>
         /// <param name="timestampLimit">Maximum timestamp allowed in the results.</param>
         /// <param name="limit">Limits the size of the response.</param>
         /// <param name="reverse">Reverses the order of the results.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical trade information.</returns>
-        public Task<IHistoricalItems<IHistoricalTradeV2>> ListHistoricalTradesV2Async(
-            String symbol,
+        public Task<IHistoricalItems<IHistoricalTrade>> ListHistoricalTradesAsync(
             DateTime date,
+            String symbol,
             Int64? timestamp = null,
             Int64? timestampLimit = null,
             Int32? limit = null,
@@ -81,8 +81,8 @@ namespace Alpaca.Markets
             };
 
             return getSingleObjectAsync
-                <IHistoricalItems<IHistoricalTradeV2>,
-                    JsonHistoricalItems<IHistoricalTradeV2, JsonHistoricalTradeV2>>(
+                <IHistoricalItems<IHistoricalTrade>,
+                    JsonHistoricalItems<IHistoricalTrade, JsonHistoricalTrade>>(
                 _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken);
         }
 
@@ -95,7 +95,7 @@ namespace Alpaca.Markets
         /// <param name="limit">Paging - maximal number of historical trades in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical trade information.</returns>
-        [Obsolete("This version of ListHistoricalTradesAsync will be deprecated in a future release.", true)]
+        [Obsolete("This version of ListHistoricalTradesAsync will be deprecated in a future release.", false)]
         public Task<IDayHistoricalItems<IHistoricalTrade>> ListHistoricalTradesAsync(
             String symbol,
             DateTime date,
@@ -121,17 +121,17 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of historical trades for a single asset from Polygon's REST API endpoint.
         /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
         /// <param name="date">Single date for data retrieval.</param>
+        /// <param name="symbol">>Asset name for data retrieval.</param>
         /// <param name="timestamp">Paging - Using the timestamp of the last result will give you the next page of results.</param>
         /// <param name="timestampLimit">Maximum timestamp allowed in the results.</param>
         /// <param name="limit">Limits the size of the response.</param>
         /// <param name="reverse">Reverses the order of the results.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical trade information.</returns>
-        public Task<IHistoricalItems<IHistoricalQuoteV2>> ListHistoricalQuotesV2Async(
-            String symbol,
+        public Task<IHistoricalItems<IHistoricalQuote>> ListHistoricalQuotesAsync(
             DateTime date,
+            String symbol,
             Int64? timestamp = null,
             Int64? timestampLimit = null,
             Int32? limit = null,
@@ -150,8 +150,8 @@ namespace Alpaca.Markets
             };
 
             return getSingleObjectAsync
-                <IHistoricalItems<IHistoricalQuoteV2>,
-                    JsonHistoricalItems<IHistoricalQuoteV2, JsonHistoricalQuoteV2>>(
+                <IHistoricalItems<IHistoricalQuote>,
+                    JsonHistoricalItems<IHistoricalQuote, JsonHistoricalQuote>>(
                 _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken);
         }
 
@@ -164,7 +164,7 @@ namespace Alpaca.Markets
         /// <param name="limit">Paging - maximal number of historical quotes in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical quote information.</returns>
-        [Obsolete("This version of ListHistoricalQuotesAsync will be deprecated in a future release.", true)]
+        [Obsolete("This version of ListHistoricalQuotesAsync will be deprecated in a future release.", false)]
 
         public Task<IDayHistoricalItems<IHistoricalQuote>> ListHistoricalQuotesAsync(
             String symbol,
