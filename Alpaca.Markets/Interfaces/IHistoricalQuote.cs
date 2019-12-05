@@ -6,6 +6,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates historical quote information from Polygon REST API.
     /// </summary>
+    // ReSharper disable once PossibleInterfaceMemberAmbiguity
     public interface IHistoricalQuote : IQuoteBase<String>, IQuoteBase<Int64>, ITimestamps, IHistoricalBase
     {
         /// <summary>
