@@ -91,7 +91,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">>Asset name for data retrieval.</param>
         /// <param name="date">Single date for data retrieval.</param>
-        /// <param name="offset">Paging - offset or first historical trade in days trades llist.</param>
+        /// <param name="offset">Paging - offset or first historical trade in days trades list.</param>
         /// <param name="limit">Paging - maximal number of historical trades in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical trade information.</returns>
@@ -160,7 +160,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbol">>Asset name for data retrieval.</param>
         /// <param name="date">Single date for data retrieval.</param>
-        /// <param name="offset">Paging - offset or first historical quote in days quotes llist.</param>
+        /// <param name="offset">Paging - offset or first historical quote in days quotes list.</param>
         /// <param name="limit">Paging - maximal number of historical quotes in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical quote information.</returns>
