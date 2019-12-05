@@ -52,8 +52,8 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of historical trades for a single asset from Polygon's REST API endpoint.
         /// </summary>
-        /// <param name="date">Single date for data retrieval.</param>
         /// <param name="symbol">>Asset name for data retrieval.</param>
+        /// <param name="date">Single date for data retrieval.</param>
         /// <param name="timestamp">Paging - Using the timestamp of the last result will give you the next page of results.</param>
         /// <param name="timestampLimit">Maximum timestamp allowed in the results.</param>
         /// <param name="limit">Limits the size of the response.</param>
@@ -61,8 +61,8 @@ namespace Alpaca.Markets
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical trade information.</returns>
         public Task<IHistoricalItems<IHistoricalTrade>> ListHistoricalTradesAsync(
-            DateTime date,
             String symbol,
+            DateTime date,
             Int64? timestamp = null,
             Int64? timestampLimit = null,
             Int32? limit = null,
@@ -121,8 +121,8 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of historical trades for a single asset from Polygon's REST API endpoint.
         /// </summary>
-        /// <param name="date">Single date for data retrieval.</param>
         /// <param name="symbol">>Asset name for data retrieval.</param>
+        /// <param name="date">Single date for data retrieval.</param>
         /// <param name="timestamp">Paging - Using the timestamp of the last result will give you the next page of results.</param>
         /// <param name="timestampLimit">Maximum timestamp allowed in the results.</param>
         /// <param name="limit">Limits the size of the response.</param>
@@ -130,8 +130,8 @@ namespace Alpaca.Markets
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical trade information.</returns>
         public Task<IHistoricalItems<IHistoricalQuote>> ListHistoricalQuotesAsync(
-            DateTime date,
             String symbol,
+            DateTime date,
             Int64? timestamp = null,
             Int64? timestampLimit = null,
             Int32? limit = null,

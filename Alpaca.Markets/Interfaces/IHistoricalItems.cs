@@ -41,5 +41,11 @@ namespace Alpaca.Markets
         /// Polygon v2 API only.
         /// </summary>
         Int64 ResultsCount { get; }
+
+        /// <summary>
+        /// DB latency reported by Polygon.
+        /// Polygon v2 API only.
+        /// </summary>
+        Int64 DbLatency { get; }
     }
 }
