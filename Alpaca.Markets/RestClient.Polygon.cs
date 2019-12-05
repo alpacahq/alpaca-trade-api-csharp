@@ -184,7 +184,7 @@ namespace Alpaca.Markets
 
             return getSingleObjectAsync
                 <IDayHistoricalItems<IHistoricalQuote>,
-                    JsonDayHistoricalItems<IHistoricalQuote, JsonHistoricalQuote>>(
+                    JsonDayHistoricalItems<IHistoricalQuote, JsonHistoricalQuoteV1>>(
                 _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken);
         }
 

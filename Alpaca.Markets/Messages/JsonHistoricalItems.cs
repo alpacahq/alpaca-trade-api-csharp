@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -39,6 +40,9 @@ namespace Alpaca.Markets
             (IReadOnlyList<TApi>)ItemsList ?? _empty;
     }
 
+    [SuppressMessage(
+        "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal class JsonHistoricalItems<TApi, TJson> 
         : JsonHistoricalItemsBase<TApi, TJson> where TJson : TApi
     {

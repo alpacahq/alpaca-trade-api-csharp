@@ -80,7 +80,7 @@ namespace Alpaca.Markets
         public Int64 Size { get; set; }
 
         [JsonIgnore]
-        public Int64 SipTimestamp => TimeOffset;
+        public Int64 SipTimestamp => throw new InvalidOperationException();
 
         [JsonIgnore]
         public Int64 ParticipantTimestamp => throw new InvalidOperationException();

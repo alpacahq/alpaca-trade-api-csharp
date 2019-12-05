@@ -51,11 +51,6 @@ namespace Alpaca.Markets
         Int64 TrfTimestamp { get; }
 
         /// <summary>
-        /// Gets trade conditions.
-        /// </summary>
-        IReadOnlyList<Int64> Conditions { get; }
-
-        /// <summary>
         /// Gets trade reporting facility ID.
         /// </summary>
         Int64 TrfId { get; }
@@ -79,5 +74,10 @@ namespace Alpaca.Markets
         /// Gets original trade ID.
         /// </summary>
         String OrigId { get; }
+
+        /// <summary>
+        /// Gets trade conditions.
+        /// </summary>
+        IReadOnlyList<Int64> Conditions { get; }
     }
 }

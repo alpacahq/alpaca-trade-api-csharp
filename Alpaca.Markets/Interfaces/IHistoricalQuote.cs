@@ -6,11 +6,12 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates historical quote information from Polygon REST API.
     /// </summary>
-    public interface IHistoricalQuote : IQuoteBase<String>
+    public interface IHistoricalQuote : IQuoteBase<String>, IQuoteBase<Int64>
     {
         /// <summary>
         /// Gets time offset of quote.
         /// </summary>
+        [Obsolete("TimeOffset is deprecated in API v2, use SipTimestamp instead", false)]
         Int64 TimeOffset { get; }
 
         /// <summary>
@@ -29,11 +30,6 @@ namespace Alpaca.Markets
         Int64 TrfTimestamp { get; }
 
         /// <summary>
-        /// Gets quote conditions.
-        /// </summary>
-        IReadOnlyList<Int64> Conditions { get; }
-
-        /// <summary>
         /// Gets tape where trade occured.
         /// </summary>
         Int64 Tape { get; }
@@ -42,6 +38,11 @@ namespace Alpaca.Markets
         /// Gets sequence number of trade.
         /// </summary>
         Int64 SequenceNumber { get; }
+
+        /// <summary>
+        /// Gets quote conditions.
+        /// </summary>
+        IReadOnlyList<Int64> Conditions { get; }
 
         /// <summary>
         /// Gets indicators.
