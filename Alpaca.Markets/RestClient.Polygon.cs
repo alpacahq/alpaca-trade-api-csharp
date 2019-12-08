@@ -96,7 +96,7 @@ namespace Alpaca.Markets
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical trade information.</returns>
         [Obsolete("This version of ListHistoricalTradesAsync will be deprecated in a future release.", false)]
-        public Task<IDayHistoricalItems<IHistoricalTrade>> ListHistoricalTradesAsync(
+        public Task<IDayHistoricalItems<IHistoricalTrade>> ListHistoricalTradesV1Async(
             String symbol,
             DateTime date,
             Int64? offset = null,
@@ -166,7 +166,7 @@ namespace Alpaca.Markets
         /// <returns>Read-only list of historical quote information.</returns>
         [Obsolete("This version of ListHistoricalQuotesAsync will be deprecated in a future release.", false)]
 
-        public Task<IDayHistoricalItems<IHistoricalQuote>> ListHistoricalQuotesAsync(
+        public Task<IDayHistoricalItems<IHistoricalQuote>> ListHistoricalQuotesV1Async(
             String symbol,
             DateTime date,
             Int64? offset = null,
