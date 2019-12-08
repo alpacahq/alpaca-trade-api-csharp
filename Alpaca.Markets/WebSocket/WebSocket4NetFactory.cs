@@ -17,7 +17,7 @@ namespace Alpaca.Markets
                 Uri url)
             {
                 _webSocket = new WebSocket(url.ToString(),
-                    sslProtocols: SslProtocols.Tls11 | SslProtocols.Tls12);
+                    sslProtocols: SslProtocols.Tls12);
 
                 _webSocket.Opened += handleOpened;
                 _webSocket.Closed += handleClosed;
