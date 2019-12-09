@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
@@ -71,5 +72,8 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "status", Required = Required.Always)]
         public OrderStatus OrderStatus { get; set; }
+
+        [JsonProperty(PropertyName = "legs", Required = Required.Default)]
+        public IReadOnlyList<IOrder>? Legs { get; set; }
     }
 }

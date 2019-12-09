@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Alpaca.Markets
 {
@@ -111,5 +112,10 @@ namespace Alpaca.Markets
         /// Gets current order status.
         /// </summary>
         OrderStatus OrderStatus { get; }
+
+        /// <summary>
+        /// Gets legs for this order.
+        /// </summary>
+        IReadOnlyList<IOrder>? Legs { get; }
     }
 }
