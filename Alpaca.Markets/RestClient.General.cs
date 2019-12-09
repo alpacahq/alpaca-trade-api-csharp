@@ -208,10 +208,11 @@ namespace Alpaca.Markets
         /// <param name="clientOrderId">Client order ID.</param>
         /// <param name="extendedHours">Whether or not this order should be allowed to execute during extended hours trading.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <param name="orderClass">Order class for advanced order types.</param>
         /// <param name="takeProfitLimitPrice">Profit taking limit price for for advanced order types.</param>
         /// <param name="stopLossStopPrice">Stop loss stop price for for advanced order types.</param>
         /// <param name="stopLossLimitPrice">Stop loss limit price for for advanced order types.</param>
-        /// <param name="orderClass">Order class for advanced order types.</param>
+        /// <param name="nested">Whether or not child orders should be listed as 'legs' of parent orders. (Advanced order types only.)</param>
         /// <returns>Read-only order information object for newly created order.</returns>
         public async Task<IOrder> PostOrderAsync(
             String symbol,
@@ -227,6 +228,7 @@ namespace Alpaca.Markets
             Decimal? takeProfitLimitPrice = null,
             Decimal? stopLossStopPrice = null,
             Decimal? stopLossLimitPrice = null,
+            Boolean nested = false,
             CancellationToken cancellationToken = default)
         {
             if (!String.IsNullOrEmpty(clientOrderId) &&
@@ -266,7 +268,7 @@ namespace Alpaca.Markets
 
             using var content = new StringContent(stringWriter.ToString());
             using var response = await _alpacaHttpClient.PostAsync(
-                    new Uri("orders", UriKind.RelativeOrAbsolute), content, cancellationToken)
+                    new Uri($"orders?nested={nested}", UriKind.RelativeOrAbsolute), content, cancellationToken)
                 .ConfigureAwait(false);
 
             return await deserializeAsync<IOrder, JsonOrder>(response)
