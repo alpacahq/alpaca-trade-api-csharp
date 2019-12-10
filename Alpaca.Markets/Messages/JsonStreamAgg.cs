@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     internal sealed class JsonStreamAgg : IStreamAgg
     {
         [JsonProperty(PropertyName = "sym", Required = Required.Always)]
-        public String Symbol { get; set; }
+        public String Symbol { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "o", Required = Required.Always)]
         public Decimal Open { get; set; }

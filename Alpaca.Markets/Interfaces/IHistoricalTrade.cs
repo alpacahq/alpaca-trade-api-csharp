@@ -11,7 +11,7 @@ namespace Alpaca.Markets
         /// Gets trade source exchange.
         /// </summary>
         [Obsolete("Exchange is deprecated in API v2, use ExchangeId instead", false)]
-        String Exchange { get; }
+        String? Exchange { get; }
 
         /// <summary>
         /// Gets trade source exchange identifier.
@@ -42,11 +42,11 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade ID.
         /// </summary>
-        String TradeId { get; }
+        String? TradeId { get; }
 
         /// <summary>
         /// Gets original trade ID.
         /// </summary>
-        String OriginalTradeId { get; }
+        String? OriginalTradeId { get; }
     }
 }

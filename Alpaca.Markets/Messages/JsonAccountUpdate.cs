@@ -17,7 +17,7 @@ namespace Alpaca.Markets
         public AccountStatus Status { get; set; }
 
         [JsonProperty(PropertyName = "currency", Required = Required.Default)]
-        public String Currency { get; set; }
+        public String? Currency { get; set; }
 
         [JsonProperty(PropertyName = "cash", Required = Required.Always)]
         public Decimal TradableCash { get; set; }

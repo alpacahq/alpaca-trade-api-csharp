@@ -25,7 +25,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets exchange market identification code.
         /// </summary>
-        String MarketIdentificationCode { get; }
+        String? MarketIdentificationCode { get; }
 
         /// <summary>
         /// Gets exchange name.
@@ -35,6 +35,6 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets exchange tape ID.
         /// </summary>
-        String TapeId { get; }
+        String? TapeId { get; }
     }
 }

@@ -12,12 +12,12 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets resulting status of historical data request.
         /// </summary>
-        String Status { get; }
+        String? Status { get; }
 
         /// <summary>
         /// Gets asset name for all historical items in container.
         /// </summary>
-        String Symbol { get; }
+        String? Symbol { get; }
 
         /// <summary>
         /// Gets read-only collection of historical items.

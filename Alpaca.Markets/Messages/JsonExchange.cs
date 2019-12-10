@@ -19,12 +19,12 @@ namespace Alpaca.Markets
         public MarketDataType MarketDataType { get; set; }
 
         [JsonProperty(PropertyName = "mic", Required = Required.Default)]
-        public String MarketIdentificationCode { get; set; }
+        public String? MarketIdentificationCode { get; set; }
 
         [JsonProperty(PropertyName = "name", Required = Required.Always)]
-        public String Name { get; set; }
+        public String Name { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "tape", Required = Required.Default)]
-        public String TapeId { get; set; }
+        public String? TapeId { get; set; }
     }
 }

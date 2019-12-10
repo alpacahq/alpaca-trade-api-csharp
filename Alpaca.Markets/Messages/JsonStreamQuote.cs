@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     internal class JsonStreamQuote : IStreamQuote
     {
         [JsonProperty(PropertyName = "sym", Required = Required.Always)]
-        public String Symbol { get; set; }
+        public String Symbol { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "bx", Required = Required.Always)]
         public Int64 BidExchange { get; set; }

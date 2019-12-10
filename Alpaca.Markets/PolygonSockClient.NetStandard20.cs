@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using System.Diagnostics.Contracts;
 using Microsoft.Extensions.Configuration;
 
 namespace Alpaca.Markets
@@ -15,13 +16,15 @@ namespace Alpaca.Markets
         /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
         public PolygonSockClient(
             IConfiguration configuration,
-            IWebSocketFactory webSocketFactory = null)
+            IWebSocketFactory? webSocketFactory = null)
             : this(
-                configuration?["keyId"],
-                configuration?["polygonWebsocketApi"],
+                configuration?["keyId"]
+                    ?? throw new ArgumentException("Provide 'keyId' configuration parameter.", nameof(configuration)),
+                configuration?["polygonWebsocketApi"] ?? "wss://alpaca.socket.polygon.io/stocks",
                 Convert.ToBoolean(configuration?["staging"] ?? "false", CultureInfo.InvariantCulture),
                 webSocketFactory)
         {
+            Contract.Requires(configuration != null);
         }
     }
 }

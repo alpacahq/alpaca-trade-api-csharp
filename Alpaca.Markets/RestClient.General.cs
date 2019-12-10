@@ -87,13 +87,13 @@ namespace Alpaca.Markets
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of asset information objects.</returns>
         public Task<IReadOnlyList<IAsset>> ListAccountActivitiesAsync(
-            IEnumerable<AccountActivityType> activityTypes = null,
+            IEnumerable<AccountActivityType>? activityTypes = null,
             DateTime? date = null,
             DateTime? until = null,
             DateTime? after = null,
             SortDirection? direction = null,
             Int64? pageSize = null,
-            String pageToken = null,
+            String? pageToken = null,
             CancellationToken cancellationToken = default)
         {
             if (date.HasValue && (until.HasValue || after.HasValue))
@@ -217,11 +217,11 @@ namespace Alpaca.Markets
             TimeInForce duration,
             Decimal? limitPrice = null,
             Decimal? stopPrice = null,
-            String clientOrderId = null,
+            String? clientOrderId = null,
             Boolean? extendedHours = null,
             CancellationToken cancellationToken = default)
         {
-            if (!String.IsNullOrEmpty(clientOrderId) &&
+            if (clientOrderId != null && 
                 clientOrderId.Length > 48)
             {
                 clientOrderId = clientOrderId.Substring(0, 48);
@@ -273,10 +273,10 @@ namespace Alpaca.Markets
             TimeInForce? duration = null,
             Decimal? limitPrice = null,
             Decimal? stopPrice = null,
-            String clientOrderId = null,
+            String? clientOrderId = null,
             CancellationToken cancellationToken = default)
         {
-            if (!String.IsNullOrEmpty(clientOrderId) &&
+            if (clientOrderId != null && 
                 clientOrderId.Length > 48)
             {
                 clientOrderId = clientOrderId.Substring(0, 48);

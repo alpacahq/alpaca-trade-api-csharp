@@ -40,12 +40,12 @@ namespace Alpaca.Markets
             Int32? occurrences = null,
             TimeSpan? timeUnit = null,
             Int32? maxRetryAttempts = null,
-            IEnumerable<Int32> retryHttpStatuses = null)
+            IEnumerable<Int32>? retryHttpStatuses = null)
         {
             Occurrences = occurrences ?? DEFAULT_OCCURRENCES;
             TimeUnit = timeUnit ?? _defaultTimeUnit;
             MaxRetryAttempts = maxRetryAttempts ?? DEFAULT_MAX_RETRY_ATTEMPT;
-            RetryHttpStatuses = retryHttpStatuses;
+            _retryHttpStatuses = new HashSet<Int32>(retryHttpStatuses ?? Enumerable.Empty<Int32>());
 
             _rateThrottler = new Lazy<IThrottler>(() => new RateThrottler(this));
         }
@@ -147,7 +147,7 @@ namespace Alpaca.Markets
         public static ThrottleParameters Default { get; } = new ThrottleParameters();
 
         private void checkIfNotTooLateToConfigure(
-            [System.Runtime.CompilerServices.CallerMemberName] String propertyName = null)
+            [System.Runtime.CompilerServices.CallerMemberName] String propertyName = "<Unknown>")
         {
             if (_rateThrottler != null &&
                 _rateThrottler.IsValueCreated)

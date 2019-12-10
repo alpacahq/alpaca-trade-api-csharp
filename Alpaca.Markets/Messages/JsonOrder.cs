@@ -13,7 +13,7 @@ namespace Alpaca.Markets
         public Guid OrderId { get; set; }
 
         [JsonProperty(PropertyName = "client_order_id", Required = Required.Always)]
-        public String ClientOrderId { get; set; }
+        public String? ClientOrderId { get; set; }
 
         [JsonProperty(PropertyName = "created_at", Required = Required.Default)]
         public DateTime? CreatedAt { get; set; }
@@ -40,7 +40,7 @@ namespace Alpaca.Markets
         public Guid AssetId { get; set; }
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
-        public String Symbol { get; set; }
+        public String Symbol { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "asset_class", Required = Required.Always)]
         public AssetClass AssetClass { get; set; }

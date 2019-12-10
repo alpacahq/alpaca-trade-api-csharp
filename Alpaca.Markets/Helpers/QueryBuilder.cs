@@ -14,9 +14,12 @@ namespace Alpaca.Markets
 
         public QueryBuilder AddParameter(
             String name,
-            String value)
+            String? value)
         {
-            _queryParameters.Add(name, value);
+            if (value != null)
+            {
+                _queryParameters.Add(name, value);
+            }
             return this;
         }
 

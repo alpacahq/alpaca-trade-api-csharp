@@ -10,9 +10,9 @@ namespace Alpaca.Markets
     internal abstract class JsonHistoricalItemsBase<TApi, TJson> : IHistoricalItems<TApi> where TJson : TApi
     {
         [JsonProperty(PropertyName = "status", Required = Required.Default)]
-        public String Status { get; set; }
+        public String? Status { get; set; }
 
-        public abstract String Symbol { get; set; }
+        public abstract String? Symbol { get; set; }
 
         [JsonProperty(PropertyName = "adjusted", Required = Required.Default)]
         public Boolean Adjusted { get; set; }
@@ -25,7 +25,7 @@ namespace Alpaca.Markets
 
         public abstract Int64 DbLatencyInMilliseconds { get; set; }
 
-        public abstract List<TJson> ItemsList { get; set; }
+        public abstract List<TJson>? ItemsList { get; set; }
 
         [JsonIgnore]
         public TimeSpan DatabaseLatency => 
@@ -42,25 +42,25 @@ namespace Alpaca.Markets
         : JsonHistoricalItemsBase<TApi, TJson> where TJson : TApi
     {
         [JsonProperty(PropertyName = "ticker", Required = Required.Default)]
-        public override String Symbol { get; set; }
+        public override String? Symbol { get; set; }
 
         [JsonProperty(PropertyName = "db_latency", Required = Required.Always)]
         public override Int64 DbLatencyInMilliseconds { get; set; }
 
         [JsonProperty(PropertyName = "results", Required = Required.Default)]
-        public override List<TJson> ItemsList { get; set; }
+        public override List<TJson>? ItemsList { get; set; }
     }
 
     internal abstract class JsonHistoricalItemsV1<TApi, TJson> 
         : JsonHistoricalItemsBase<TApi, TJson> where TJson : TApi
     {
         [JsonProperty(PropertyName = "symbol", Required = Required.Default)]
-        public override String Symbol { get; set; }
+        public override String? Symbol { get; set; }
 
         [JsonProperty(PropertyName = "msLatency", Required = Required.Always)]
         public override Int64 DbLatencyInMilliseconds { get; set; }
 
         [JsonProperty(PropertyName = "ticks", Required = Required.Default)]
-        public override List<TJson> ItemsList { get; set; }
+        public override List<TJson>? ItemsList { get; set; }
     }
 }

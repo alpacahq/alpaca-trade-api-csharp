@@ -63,15 +63,15 @@ namespace Alpaca.Markets
                 String message) =>
                 _webSocket.Send(message);
 
-            public event Action Opened;
+            public event Action? Opened;
 
-            public event Action Closed;
+            public event Action? Closed;
 
-            public event Action<Byte[]> DataReceived;
+            public event Action<Byte[]>? DataReceived;
 
-            public event Action<String> MessageReceived;
+            public event Action<String>? MessageReceived;
 
-            public event Action<Exception> Error;
+            public event Action<Exception>? Error;
 
             private void handleOpened
                 (Object sender,

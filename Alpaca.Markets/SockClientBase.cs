@@ -27,7 +27,7 @@ namespace Alpaca.Markets
         /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
         protected SockClientBase(
             UriBuilder endpointUri,
-            IWebSocketFactory webSocketFactory)
+            IWebSocketFactory? webSocketFactory)
         {
             endpointUri = endpointUri ?? throw new ArgumentException(
                         "Endpoint URL should not be null", nameof(endpointUri));
@@ -48,22 +48,22 @@ namespace Alpaca.Markets
         /// <summary>
         /// Occured when stream successfully connected.
         /// </summary>
-        public event Action<AuthStatus> Connected;
+        public event Action<AuthStatus>? Connected;
 
         /// <summary>
         /// Occured when underlying web socket successfully opened.
         /// </summary>
-        public event Action SocketOpened;
+        public event Action? SocketOpened;
 
         /// <summary>
         /// Occured when underlying web socket successfully closed.
         /// </summary>
-        public event Action SocketClosed;
+        public event Action? SocketClosed;
 
         /// <summary>
         /// Occured when any error happened in stream.
         /// </summary>
-        public event Action<Exception> OnError;
+        public event Action<Exception>? OnError;
 
         /// <summary>
         /// Opens connection to a streaming API.
@@ -180,6 +180,7 @@ namespace Alpaca.Markets
             IDictionary<TKey, Action<JToken>> handlers,
             TKey messageType,
             JToken message)
+            where TKey : class
         {
             try
             {

@@ -12,10 +12,10 @@ namespace Alpaca.Markets
 #pragma warning restore CA1825 // Avoid zero-length array allocations.
         }
 #endif
-        public static IReadOnlyList<TInto> EmptyIfNull<TInto, TFrom>(this List<TFrom> list)
-            where TFrom : TInto => EmptyIfNull((IReadOnlyList<TInto>) list);
+        public static IReadOnlyList<TInto> EmptyIfNull<TInto, TFrom>(this List<TFrom>? list)
+            where TFrom : TInto => EmptyIfNull((IReadOnlyList<TInto>?) list);
 
-        public static IReadOnlyList<T> EmptyIfNull<T>(this IReadOnlyList<T> list) =>
+        public static IReadOnlyList<T> EmptyIfNull<T>(this IReadOnlyList<T>? list) =>
             list ??
 #if NET45
                 Empty<T>.Array;
