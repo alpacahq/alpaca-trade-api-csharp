@@ -243,7 +243,13 @@ namespace Alpaca.Markets
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             var serializer = new JsonSerializer();
+#if NETSTANDARD2_1
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            await using var stringWriter = new StringWriter();
+#pragma warning restore CA2000 // Dispose objects before losing scope
+#else
             using var stringWriter = new StringWriter();
+#endif
 
             serializer.Serialize(stringWriter, newOrder);
 

@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     public enum AggregationType
     {
         /// <summary>
-        /// Aggreagated data for single trading day.
+        /// Aggregated data for single trading day.
         /// </summary>
         [EnumMember(Value = "daily")]
         Day,
