@@ -54,10 +54,10 @@ namespace Alpaca.Markets
         public Int64 SequenceNumber { get; set; }
 
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
-        public List<Int64> ConditionsList { get; set; }
+        public List<Int64>? ConditionsList { get; set; }
 
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
-        public List<Int64> IndicatorsList { get; set; }
+        public List<Int64>? IndicatorsList { get; set; }
 
         [JsonIgnore]
         public DateTime Timestamp =>
@@ -85,10 +85,10 @@ namespace Alpaca.Markets
     internal sealed class JsonHistoricalQuoteV1 : IHistoricalQuote
     {
         [JsonProperty(PropertyName = "bE", Required = Required.Default)]
-        public String BidExchange { get; set; }
+        public String BidExchange { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "aE", Required = Required.Default)]
-        public String AskExchange { get; set; }
+        public String AskExchange { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "bP", Required = Required.Default)]
         public Decimal BidPrice { get; set; }

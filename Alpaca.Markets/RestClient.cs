@@ -35,7 +35,7 @@ namespace Alpaca.Markets
 
         private readonly HttpClient _polygonHttpClient = new HttpClient();
 
-        private static IThrottler _alpacaRestApiThrottler;
+        private readonly IThrottler _alpacaRestApiThrottler;
 
         private readonly Boolean _isPolygonStaging;
 
@@ -57,14 +57,14 @@ namespace Alpaca.Markets
         public RestClient(
             String keyId,
             String secretKey,
-            String alpacaRestApi = null,
-            String polygonRestApi = null,
-            String alpacaDataApi = null,
+            String alpacaRestApi = "https://api.alpaca.markets",
+            String polygonRestApi = "https://api.polygon.io",
+            String alpacaDataApi = "https://data.alpaca.markets",
             Int32? apiVersion = null,
             Int32? dataApiVersion = null,
             Boolean? isStagingEnvironment = null,
-            ThrottleParameters throttleParameters = null,
-            String oauthKey = null)
+            ThrottleParameters? throttleParameters = null,
+            String oauthKey = "")
             : this(
                 keyId,
                 secretKey,
@@ -120,7 +120,7 @@ namespace Alpaca.Markets
                     "Supported Data REST API versions are '1' and '2' only", nameof(dataApiVersion));
             }
 
-            throttleParameters = throttleParameters ?? ThrottleParameters.Default;
+            throttleParameters ??= ThrottleParameters.Default;
             _alpacaRestApiThrottler = throttleParameters.GetThrottler();
 
             if (String.IsNullOrEmpty(oauthKey))
@@ -178,7 +178,7 @@ namespace Alpaca.Markets
             IThrottler throttler,
             Uri endpointUri,
             CancellationToken cancellationToken,
-            HttpMethod method = null)
+            HttpMethod? method = null)
             where TJson : TApi
         {
             var exceptions = new Queue<Exception>();
@@ -190,8 +190,8 @@ namespace Alpaca.Markets
                 {
                     using var request = new HttpRequestMessage(method ?? HttpMethod.Get, endpointUri);
                     using var response = await httpClient
-.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
-.ConfigureAwait(false);
+                        .SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
+                        .ConfigureAwait(false);
 
                     // Check response for server and caller specified waits and retries
                     if (!throttler.CheckHttpResponse(response))
@@ -215,8 +215,12 @@ namespace Alpaca.Markets
             HttpResponseMessage response)
             where TJson : TApi
         {
-            // TODO: olegra - consider using `await using` here later
-            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+#if NETSTANDARD2_1
+            await using var stream = await response.Content.ReadAsStreamAsync()
+#else
+            using var stream = await response.Content.ReadAsStreamAsync()
+#endif
+                .ConfigureAwait(false);
             using var reader = new JsonTextReader(new StreamReader(stream));
 
             var serializer = new JsonSerializer();
@@ -228,7 +232,7 @@ namespace Alpaca.Markets
             try
             {
                 throw new RestClientErrorException(
-                    serializer.Deserialize<JsonError>(reader));
+                    serializer.Deserialize<JsonError>(reader) ?? new JsonError());
             }
             catch (Exception exception)
             {

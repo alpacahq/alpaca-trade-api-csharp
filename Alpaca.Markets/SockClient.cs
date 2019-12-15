@@ -45,8 +45,8 @@ namespace Alpaca.Markets
         public SockClient(
             String keyId,
             String secretKey,
-            String alpacaRestApi = null,
-            IWebSocketFactory webSocketFactory = null)
+            String alpacaRestApi = "https://api.alpaca.markets",
+            IWebSocketFactory? webSocketFactory = null)
             : this(
                 keyId,
                 secretKey,
@@ -66,7 +66,7 @@ namespace Alpaca.Markets
             String keyId,
             String secretKey,
             Uri alpacaRestApi,
-            IWebSocketFactory webSocketFactory)
+            IWebSocketFactory? webSocketFactory)
             : base(getUriBuilder(alpacaRestApi), webSocketFactory)
         {
             _keyId = keyId ?? throw new ArgumentException(
@@ -86,12 +86,12 @@ namespace Alpaca.Markets
         /// <summary>
         /// Occured when new account update received from stream.
         /// </summary>
-        public event Action<IAccountUpdate> OnAccountUpdate;
+        public event Action<IAccountUpdate>? OnAccountUpdate;
 
         /// <summary>
         /// Occured when new trade update received from stream.
         /// </summary>
-        public event Action<ITradeUpdate> OnTradeUpdate;
+        public event Action<ITradeUpdate>? OnTradeUpdate;
 
         /// <inheritdoc/>
         protected override void OnOpened()
@@ -119,7 +119,19 @@ namespace Alpaca.Markets
             try
             {
                 var token = JObject.Parse(Encoding.UTF8.GetString(binaryData));
-                HandleMessage(_handlers, token["stream"].ToString(), token["data"]);
+
+                var payload = token["data"];
+                var messageType = token["stream"];
+
+                if (payload is null ||
+                    messageType is null)
+                {
+                    HandleError(new InvalidOperationException());
+                }
+                else
+                {
+                    HandleMessage(_handlers, messageType.ToString(), payload);
+                }
             }
             catch (Exception exception)
             {
@@ -130,7 +142,7 @@ namespace Alpaca.Markets
         private static UriBuilder getUriBuilder(
             Uri alpacaRestApi)
         {
-            alpacaRestApi = alpacaRestApi ?? new Uri("https://api.alpaca.markets");
+            alpacaRestApi ??= new Uri("https://api.alpaca.markets");
 
             var uriBuilder = new UriBuilder(alpacaRestApi)
             {
@@ -150,6 +162,12 @@ namespace Alpaca.Markets
             JToken token)
         {
             var response = token.ToObject<JsonAuthResponse>();
+            if (response is null)
+            {
+                HandleError(new InvalidOperationException("Invalid authentication response."));
+                return;
+            }
+
             OnConnected(response.Status);
 
             if (response.Status == AuthStatus.Authorized)

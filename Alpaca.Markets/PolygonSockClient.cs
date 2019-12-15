@@ -38,22 +38,22 @@ namespace Alpaca.Markets
         /// <summary>
         /// Occured when new trade received from stream.
         /// </summary>
-        public event Action<IStreamTrade> TradeReceived;
+        public event Action<IStreamTrade>? TradeReceived;
 
         /// <summary>
         /// Occured when new quote received from stream.
         /// </summary>
-        public event Action<IStreamQuote> QuoteReceived;
+        public event Action<IStreamQuote>? QuoteReceived;
 
         /// <summary>
         /// Occured when new bar received from stream.
         /// </summary>
-        public event Action<IStreamAgg> MinuteAggReceived;
+        public event Action<IStreamAgg>? MinuteAggReceived;
 
         /// <summary>
         /// Occured when new bar received from stream.
         /// </summary>
-        public event Action<IStreamAgg> SecondAggReceived;
+        public event Action<IStreamAgg>? SecondAggReceived;
 
         /// <summary>
         /// Creates new instance of <see cref="PolygonSockClient"/> object.
@@ -64,9 +64,9 @@ namespace Alpaca.Markets
         /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
         public PolygonSockClient(
             String keyId,
-            String polygonWebsocketApi = null,
+            String polygonWebsocketApi = "wss://alpaca.socket.polygon.io/stocks",
             Boolean isStagingEnvironment = false,
-            IWebSocketFactory webSocketFactory = null
+            IWebSocketFactory? webSocketFactory = null
             )
             : this(
                 keyId,
@@ -87,7 +87,7 @@ namespace Alpaca.Markets
             String keyId,
             Uri polygonWebsocketApi,
             Boolean isStagingEnvironment,
-            IWebSocketFactory webSocketFactory)
+            IWebSocketFactory? webSocketFactory)
             : base(getUriBuilder(polygonWebsocketApi), webSocketFactory)
         {
             _keyId = keyId ?? throw new ArgumentException(
@@ -264,7 +264,15 @@ namespace Alpaca.Markets
             {
                 foreach (var token in JArray.Parse(message))
                 {
-                    HandleMessage(_handlers, token["ev"].ToString(), token);
+                    var messageType = token["ev"];
+                    if (messageType is null)
+                    {
+                        HandleError(new InvalidOperationException());
+                    }
+                    else
+                    {
+                        HandleMessage(_handlers, messageType.ToString(), token);
+                    }
                 }
             }
             catch (Exception exception)
@@ -276,7 +284,7 @@ namespace Alpaca.Markets
         private static UriBuilder getUriBuilder(
             Uri polygonWebsocketApi)
         {
-            polygonWebsocketApi = polygonWebsocketApi ?? new Uri("wss://alpaca.socket.polygon.io/stocks");
+            polygonWebsocketApi ??= new Uri("wss://alpaca.socket.polygon.io/stocks");
 
             var uriBuilder = new UriBuilder(polygonWebsocketApi)
             {
@@ -290,7 +298,7 @@ namespace Alpaca.Markets
         {
             var connectionStatus = token.ToObject<JsonConnectionStatus>();
 
-            switch (connectionStatus.Status) //-V3002
+            switch (connectionStatus?.Status) //-V3002
             {
                 case ConnectionStatus.Connected:
                     SendAsJsonString(new JsonAuthRequest
@@ -308,6 +316,10 @@ namespace Alpaca.Markets
                 case ConnectionStatus.AuthenticationFailed:
                 case ConnectionStatus.AuthenticationRequired:
                     HandleError(new InvalidOperationException(connectionStatus.Message));
+                    break;
+
+                default:
+                    HandleError(new InvalidOperationException("Unknown connection status"));
                     break;
             }
         }

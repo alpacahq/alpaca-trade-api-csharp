@@ -20,7 +20,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets main account currency.
         /// </summary>
-        String Currency { get; }
+        String? Currency { get; }
 
         /// <summary>
         /// Gets amount of money available for trading.

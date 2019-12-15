@@ -9,6 +9,6 @@ namespace Alpaca.Markets
         public JsonAction Action { get; set; }
 
         [JsonProperty(PropertyName = "params", Required = Required.Default)]
-        public String Params { get; set; }
+        public String? Params { get; set; }
     }
 }

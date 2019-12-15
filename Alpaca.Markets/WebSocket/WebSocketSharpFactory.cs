@@ -1,4 +1,5 @@
 ﻿#if NET45
+
 using System;
 using System.Security.Authentication;
 using System.Threading.Tasks;
@@ -20,8 +21,10 @@ namespace Alpaca.Markets
             public WebSocketWrapper(
                 Uri url)
             {
-                _webSocket = new WebSocket(url.ToString());
-                _webSocket.SslConfiguration.EnabledSslProtocols = SslProtocols.Tls12;
+                _webSocket = new WebSocket(url.ToString())
+                {
+                    SslConfiguration = {EnabledSslProtocols = SslProtocols.Tls12}
+                };
 
                 _webSocket.OnOpen += handleOpened;
                 _webSocket.OnClose += handleClosed;
@@ -63,15 +66,15 @@ namespace Alpaca.Markets
                 String message) =>
                 _webSocket.Send(message);
 
-            public event Action Opened;
+            public event Action? Opened;
 
-            public event Action Closed;
+            public event Action? Closed;
 
-            public event Action<Byte[]> DataReceived;
+            public event Action<Byte[]>? DataReceived;
 
-            public event Action<String> MessageReceived;
+            public event Action<String>? MessageReceived;
 
-            public event Action<Exception> Error;
+            public event Action<Exception>? Error;
 
             private void handleOpened
                 (Object sender,
