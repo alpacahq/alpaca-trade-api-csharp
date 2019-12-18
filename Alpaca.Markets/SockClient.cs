@@ -36,50 +36,14 @@ namespace Alpaca.Markets
         /// <summary>
         /// Creates new instance of <see cref="SockClient"/> object.
         /// </summary>
-        /// <param name="keyId">Application key identifier.</param>
-        /// <param name="secretKey">Application secret key.</param>
-        /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
-        public SockClient(
-            String keyId,
-            String secretKey,
-            String alpacaRestApi = "https://api.alpaca.markets",
-            IWebSocketFactory? webSocketFactory = null)
-            : this(new SockClientConfiguration(keyId, secretKey, alpacaRestApi, webSocketFactory))
-        {
-        }
-
-        /// <summary>
-        /// Creates new instance of <see cref="SockClient"/> object.
-        /// </summary>
-        /// <param name="keyId">Application key identifier.</param>
-        /// <param name="secretKey">Application secret key.</param>
-        /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
-        public SockClient(
-            String keyId,
-            String secretKey,
-            Uri alpacaRestApi,
-            IWebSocketFactory? webSocketFactory)
-            : this(new SockClientConfiguration(keyId, secretKey, alpacaRestApi, webSocketFactory))
-        {
-        }
-
-        /// <summary>
-        /// Creates new instance of <see cref="SockClient"/> object.
-        /// </summary>
         /// <param name="configuration"></param>
         public SockClient(
             SockClientConfiguration configuration)
             : base(
-                getUriBuilder(ensureNotNull(configuration).AlpacaRestApi),
+                configuration.EnsureNotNull(nameof(configuration)).GetUriBuilder(),
                 configuration.WebSocketFactory)
         {
-            configuration.EnsureIsValid();
-
-            _configuration = configuration;
+            _configuration = configuration.EnsureIsValid();
 
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
@@ -106,7 +70,7 @@ namespace Alpaca.Markets
             SendAsJsonString(new JsonAuthRequest
             {
                 Action = JsonAction.Authenticate,
-                Data = new JsonAuthRequest.JsonData()
+                Data = new JsonAuthRequest.JsonData
                 {
                     KeyId = _configuration.KeyId,
                     SecretKey = _configuration.SecretKey
@@ -146,25 +110,6 @@ namespace Alpaca.Markets
             }
         }
 
-        private static UriBuilder getUriBuilder(
-            Uri alpacaRestApi)
-        {
-            alpacaRestApi ??= new Uri("https://api.alpaca.markets");
-
-            var uriBuilder = new UriBuilder(alpacaRestApi)
-            {
-                Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
-            };
-
-            if (!uriBuilder.Path.EndsWith("/", StringComparison.Ordinal))
-            {
-                uriBuilder.Path += "/";
-            }
-
-            uriBuilder.Path += "stream";
-            return uriBuilder;
-        }
-
         private void handleAuthorization(
             JToken token)
         {
@@ -182,7 +127,7 @@ namespace Alpaca.Markets
                 var listenRequest = new JsonListenRequest
                 {
                     Action = JsonAction.Listen,
-                    Data = new JsonListenRequest.JsonData()
+                    Data = new JsonListenRequest.JsonData
                     {
                         Streams = new List<String>
                         {
@@ -203,8 +148,5 @@ namespace Alpaca.Markets
         private void handleAccountUpdate(
             JToken token) =>
             OnAccountUpdate.DeserializeAndInvoke<IAccountUpdate, JsonAccountUpdate>(token);
-
-        private static SockClientConfiguration ensureNotNull(SockClientConfiguration configuration) => 
-            configuration ?? throw new ArgumentNullException(nameof(configuration));
     }
 }

@@ -46,7 +46,7 @@ namespace UsageExamples
                 {
                     KeyId = API_KEY,
                     SecretKey = API_SECRET,
-                    AlpacaRestApi = new Uri(API_URL)
+                    TradingApiUrl = PaperEnvironment.TradingApiUrl
                 });
             sockClient.ConnectAndAuthenticateAsync().Wait();
 
