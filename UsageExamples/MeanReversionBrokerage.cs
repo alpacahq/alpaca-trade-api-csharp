@@ -41,7 +41,13 @@ namespace UsageExamples
             restClient = new RestClient(API_KEY, API_SECRET, API_URL, apiVersion: 2);
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
-            sockClient = new SockClient(API_KEY, API_SECRET, API_URL);
+            sockClient = new SockClient(
+                new SockClientConfiguration
+                {
+                    KeyId = API_KEY,
+                    SecretKey = API_SECRET,
+                    AlpacaRestApi = new Uri(API_URL)
+                });
             sockClient.ConnectAndAuthenticateAsync().Wait();
 
             sockClient.OnTradeUpdate += HandleTradeUpdate;

@@ -1,7 +1,6 @@
-﻿
+﻿#if NETSTANDARD2_0 || NETSTANDARD2_1
 
 using System;
-#if NETSTANDARD2_0 || NETSTANDARD2_1
 using System.Diagnostics.Contracts;
 using Microsoft.Extensions.Configuration;
 
@@ -14,16 +13,11 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="configuration">Application configuration.</param>
         /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
+        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
         public SockClient(
             IConfiguration configuration,
             IWebSocketFactory? webSocketFactory = null)
-            : this(
-                configuration?["keyId"]
-                    ?? throw new ArgumentException("Provide 'keyId' configuration parameter.", nameof(configuration)),
-                configuration["secretKey"]
-                    ?? throw new ArgumentException("Provide 'secretKey' configuration parameter.", nameof(configuration)),
-                configuration["alpacaRestApi"] ?? "https://api.alpaca.markets",
-                webSocketFactory)
+            : this(new SockClientConfiguration(configuration, webSocketFactory))
         {
             Contract.Requires(configuration != null);
         }

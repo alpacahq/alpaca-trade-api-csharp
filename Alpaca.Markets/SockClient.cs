@@ -31,9 +31,7 @@ namespace Alpaca.Markets
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
-        private readonly String _keyId;
-
-        private readonly String _secretKey;
+        private readonly SockClientConfiguration _configuration;
 
         /// <summary>
         /// Creates new instance of <see cref="SockClient"/> object.
@@ -42,16 +40,13 @@ namespace Alpaca.Markets
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
+        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
         public SockClient(
             String keyId,
             String secretKey,
             String alpacaRestApi = "https://api.alpaca.markets",
             IWebSocketFactory? webSocketFactory = null)
-            : this(
-                keyId,
-                secretKey,
-                new Uri(alpacaRestApi ?? "https://api.alpaca.markets"),
-                webSocketFactory ?? new WebSocket4NetFactory())
+            : this(new SockClientConfiguration(keyId, secretKey, alpacaRestApi, webSocketFactory))
         {
         }
 
@@ -62,17 +57,29 @@ namespace Alpaca.Markets
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
+        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
         public SockClient(
             String keyId,
             String secretKey,
             Uri alpacaRestApi,
             IWebSocketFactory? webSocketFactory)
-            : base(getUriBuilder(alpacaRestApi), webSocketFactory)
+            : this(new SockClientConfiguration(keyId, secretKey, alpacaRestApi, webSocketFactory))
         {
-            _keyId = keyId ?? throw new ArgumentException(
-                         "Application key id should not be null", nameof(keyId));
-            _secretKey = secretKey ?? throw new ArgumentException(
-                             "Application secret key should not be null", nameof(secretKey));
+        }
+
+        /// <summary>
+        /// Creates new instance of <see cref="SockClient"/> object.
+        /// </summary>
+        /// <param name="configuration"></param>
+        public SockClient(
+            SockClientConfiguration configuration)
+            : base(
+                getUriBuilder(ensureNotNull(configuration).AlpacaRestApi),
+                configuration.WebSocketFactory)
+        {
+            configuration.EnsureIsValid();
+
+            _configuration = configuration;
 
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
@@ -101,8 +108,8 @@ namespace Alpaca.Markets
                 Action = JsonAction.Authenticate,
                 Data = new JsonAuthRequest.JsonData()
                 {
-                    KeyId = _keyId,
-                    SecretKey = _secretKey
+                    KeyId = _configuration.KeyId,
+                    SecretKey = _configuration.SecretKey
                 }
             });
 
@@ -196,5 +203,8 @@ namespace Alpaca.Markets
         private void handleAccountUpdate(
             JToken token) =>
             OnAccountUpdate.DeserializeAndInvoke<IAccountUpdate, JsonAccountUpdate>(token);
+
+        private static SockClientConfiguration ensureNotNull(SockClientConfiguration configuration) => 
+            configuration ?? throw new ArgumentNullException(nameof(configuration));
     }
 }
