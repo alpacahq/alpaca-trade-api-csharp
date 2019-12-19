@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.6;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.3;net45</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>3.5.0-alpha2</Version>
@@ -35,7 +35,7 @@
     <DocumentationFile>bin\Release\netstandard2.0\Alpaca.Markets.xml</DocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="('$(TargetFramework)'=='netstandard2.1')Or('$(TargetFramework)'=='netstandard2.0')Or('$(TargetFramework)'=='netstandard1.6')">
+  <PropertyGroup Condition="('$(TargetFramework)'=='netstandard2.1')Or('$(TargetFramework)'=='netstandard2.0')Or('$(TargetFramework)'=='netstandard1.3')">
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -43,6 +43,18 @@
   <ItemGroup>
     <None Include="..\Icon.png" Pack="true" PackagePath="icon.png" />
     <None Remove="Alpaca.Markets.csproj.DotSettings" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="RestClient.*.cs">
+      <DependentUpon>RestClient.cs</DependentUpon>
+    </Compile>
+    <Compile Update="SockClient.*.cs">
+      <DependentUpon>SockClient.cs</DependentUpon>
+    </Compile>
+    <Compile Update="PolygonSockClient.*.cs">
+      <DependentUpon>PolygonSockClient.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -58,12 +70,11 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="WebSocket4Net" Version="0.15.2" />
   </ItemGroup>
-  <ItemGroup Condition="('$(TargetFramework)'=='netstandard2.1')Or('$(TargetFramework)' == 'netstandard2.0')">
+
+  <ItemGroup Condition="('$(TargetFramework)'=='netstandard2.1')Or('$(TargetFramework)'=='netstandard2.0')">
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.0" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.6'">
-    <PackageReference Include="System.Net.Security" Version="4.3.2" />
-  </ItemGroup>
+
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
     <PackageReference Include="WebSocketSharpFork" Version="1.0.4">
       <PrivateAssets>all</PrivateAssets>
@@ -71,4 +82,5 @@
     </PackageReference>
     <Reference Include="System.Net.Http" />
   </ItemGroup>
+
 </Project>
