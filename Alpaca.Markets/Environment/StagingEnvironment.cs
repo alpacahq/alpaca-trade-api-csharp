@@ -5,12 +5,12 @@ namespace Alpaca.Markets
     /// <summary>
     /// 
     /// </summary>
-    public static class LiveEnvironment
+    public static class StagingEnvironment
     {
         /// <summary>
         /// 
         /// </summary>
-        public static Uri TradingApiUrl { get; } = new Uri("https://api.alpaca.markets");
+        public static Uri TradingApiUrl { get; } = new Uri("https://staging-api.tradetalk.us");
 
         /// <summary>
         /// 

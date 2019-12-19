@@ -9,16 +9,15 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
-    public sealed class SockClientConfiguration
+    public sealed class PolygonSockClientConfiguration
     {
         /// <summary>
         /// 
         /// </summary>
-        public SockClientConfiguration()
+        public PolygonSockClientConfiguration()
         {
             KeyId = String.Empty;
-            SecretKey = String.Empty;
-            TradingApiUrl = LiveEnvironment.TradingApiUrl;
+            PolygonApiUrl = LiveEnvironment.PolygonApiUrl;
             WebSocketFactory = new WebSocket4NetFactory();
         }
 
@@ -30,19 +29,15 @@ namespace Alpaca.Markets
         /// <summary>
         /// 
         /// </summary>
-        public String SecretKey { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public Uri TradingApiUrl { get; set; }
+        public Uri PolygonApiUrl { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         public IWebSocketFactory WebSocketFactory { get; set; }
 
-        internal SockClientConfiguration EnsureIsValid()
+        
+        internal PolygonSockClientConfiguration EnsureIsValid()
         {
             if (String.IsNullOrEmpty(KeyId))
             {
@@ -50,16 +45,10 @@ namespace Alpaca.Markets
                     $"The value of '{nameof(KeyId)}' property shouldn't be null or empty.");
             }
 
-            if (String.IsNullOrEmpty(SecretKey))
+            if (PolygonApiUrl == null)
             {
                 throw new InvalidOperationException(
-                    $"The value of '{nameof(SecretKey)}' property shouldn't be null or empty.");
-            }
-
-            if (TradingApiUrl == null)
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(TradingApiUrl)}' property shouldn't be null.");
+                    $"The value of '{nameof(PolygonApiUrl)}' property shouldn't be null.");
             }
 
             if (WebSocketFactory == null)
@@ -71,20 +60,10 @@ namespace Alpaca.Markets
             return this;
         }
 
-        internal UriBuilder GetUriBuilder()
-        {
-            var uriBuilder = new UriBuilder(TradingApiUrl)
+        internal UriBuilder GetUriBuilder() =>
+            new UriBuilder(PolygonApiUrl)
             {
-                Scheme = TradingApiUrl.Scheme == "http" ? "ws" : "wss"
+                Scheme = PolygonApiUrl.Scheme == "http" ? "ws" : "wss"
             };
-
-            if (!uriBuilder.Path.EndsWith("/", StringComparison.Ordinal))
-            {
-                uriBuilder.Path += "/";
-            }
-
-            uriBuilder.Path += "stream";
-            return uriBuilder;
-        }
     }
 }

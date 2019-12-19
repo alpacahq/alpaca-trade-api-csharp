@@ -17,8 +17,7 @@ namespace Alpaca.Markets
             String secretKey,
             String? alpacaRestApi = null,
             IWebSocketFactory? webSocketFactory = null)
-            : this(createConfiguration(keyId, secretKey,
-                new Uri(alpacaRestApi ?? LiveEnvironment.TradingApiUrl.AbsoluteUri), webSocketFactory))
+            : this(createConfiguration(keyId, secretKey, new Uri(alpacaRestApi ?? LiveEnvironment.TradingApiUrl.AbsoluteUri), webSocketFactory))
         {
         }
 
@@ -39,25 +38,6 @@ namespace Alpaca.Markets
         {
         }
 
-        private static SockClientConfiguration createConfiguration(
-            String keyId,
-            String secretKey,
-            Uri alpacaRestApi,
-            IWebSocketFactory? webSocketFactory)
-        {
-            return new SockClientConfiguration
-            {
-                KeyId = keyId ?? throw new ArgumentException("Application key id should not be null or empty.",
-                            nameof(keyId)),
-                SecretKey = secretKey ??
-                            throw new ArgumentException("Application secret key should not be null or empty.",
-                                nameof(secretKey)),
-
-                TradingApiUrl = alpacaRestApi ?? LiveEnvironment.TradingApiUrl,
-                WebSocketFactory = webSocketFactory ?? new WebSocket4NetFactory(),
-            };
-        }
-
 #if NETSTANDARD2_0 || NETSTANDARD2_1
         /// <summary>
         /// Creates new instance of <see cref="SockClient"/> object.
@@ -68,22 +48,30 @@ namespace Alpaca.Markets
         public SockClient(
             Microsoft.Extensions.Configuration.IConfiguration configuration,
             IWebSocketFactory? webSocketFactory = null)
-            : this(createConfiguration(configuration, webSocketFactory))
-        {
+            : this(createConfiguration(configuration, webSocketFactory)) =>
             System.Diagnostics.Contracts.Contract.Requires(configuration != null);
-        }
 
         private static SockClientConfiguration createConfiguration(
             Microsoft.Extensions.Configuration.IConfiguration configuration,
-            IWebSocketFactory? webSocketFactory = null)
-        {
-            System.Diagnostics.Contracts.Contract.Requires(configuration != null);
-            return createConfiguration(
+            IWebSocketFactory? webSocketFactory = null) =>
+            createConfiguration(
                 configuration?["keyId"] ?? throw new ArgumentException("Provide 'keyId' configuration parameter.", nameof(configuration)),
                 configuration["secretKey"] ?? throw new ArgumentException("Provide 'secretKey' configuration parameter.", nameof(configuration)),
                 new Uri(configuration["alpacaRestApi"] ?? LiveEnvironment.TradingApiUrl.AbsoluteUri),
-                webSocketFactory ?? new WebSocket4NetFactory());
-        }
+                webSocketFactory);
 #endif
+
+        private static SockClientConfiguration createConfiguration(
+            String keyId,
+            String secretKey,
+            Uri alpacaRestApi,
+            IWebSocketFactory? webSocketFactory) =>
+            new SockClientConfiguration
+            {
+                KeyId = keyId ?? throw new ArgumentException("Application key id should not be null.", nameof(keyId)),
+                SecretKey = secretKey ?? throw new ArgumentException("Application secret key should not be null.", nameof(secretKey)),
+                TradingApiUrl = alpacaRestApi ?? LiveEnvironment.TradingApiUrl,
+                WebSocketFactory = webSocketFactory ?? new WebSocket4NetFactory(),
+            };
     }
 }

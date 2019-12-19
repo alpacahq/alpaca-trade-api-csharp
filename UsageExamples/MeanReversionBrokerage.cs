@@ -83,7 +83,11 @@ namespace UsageExamples
             Console.WriteLine("Market opened.");
 
             // Connect to Polygon's websocket and listen for price updates.
-            polygonSockClient = new PolygonSockClient(API_KEY);
+            polygonSockClient = new PolygonSockClient(
+                new PolygonSockClientConfiguration
+                {
+                    KeyId = API_KEY
+                });
             polygonSockClient.ConnectAndAuthenticateAsync().Wait();
             Console.WriteLine("Polygon client opened.");
             polygonSockClient.MinuteAggReceived += async (agg) =>

@@ -33,8 +33,8 @@ namespace Alpaca.Markets
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
-        private readonly String _keyId;
-
+        private readonly PolygonSockClientConfiguration _configuration;
+        
         /// <summary>
         /// Occured when new trade received from stream.
         /// </summary>
@@ -56,48 +56,16 @@ namespace Alpaca.Markets
         public event Action<IStreamAgg>? SecondAggReceived;
 
         /// <summary>
-        /// Creates new instance of <see cref="PolygonSockClient"/> object.
-        /// </summary>
-        /// <param name="keyId">Application key identifier.</param>
-        /// <param name="polygonWebsocketApi">Polygon websocket API endpoint URL.</param>
-        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        public PolygonSockClient(
-            String keyId,
-            String polygonWebsocketApi = "wss://alpaca.socket.polygon.io/stocks",
-            Boolean isStagingEnvironment = false,
-            IWebSocketFactory? webSocketFactory = null
-            )
-            : this(
-                keyId,
-                new Uri(polygonWebsocketApi ?? "wss://alpaca.socket.polygon.io/stocks"),
-                isStagingEnvironment,
-                webSocketFactory ?? new WebSocket4NetFactory())
-        {
-        }
-
-        /// <summary>
         /// Creates new instance of <see cref="SockClient"/> object.
         /// </summary>
-        /// <param name="keyId">Application key identifier.</param>
-        /// <param name="polygonWebsocketApi">Polygon websocket API endpoint URL.</param>
-        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
+        /// <param name="configuration"></param>
         public PolygonSockClient(
-            String keyId,
-            Uri polygonWebsocketApi,
-            Boolean isStagingEnvironment,
-            IWebSocketFactory? webSocketFactory)
-            : base(getUriBuilder(polygonWebsocketApi), webSocketFactory)
+            PolygonSockClientConfiguration configuration)
+            : base(
+                configuration.EnsureNotNull(nameof(configuration)).GetUriBuilder(),
+                configuration.WebSocketFactory)
         {
-            _keyId = keyId ?? throw new ArgumentException(
-                         "Application key id should not be null", nameof(keyId));
-
-            if (isStagingEnvironment &&
-                !_keyId.EndsWith("-staging", StringComparison.Ordinal))
-            {
-                _keyId += "-staging";
-            }
+            _configuration = configuration.EnsureIsValid();
 
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
@@ -108,7 +76,6 @@ namespace Alpaca.Markets
                 { SecondAggChannel, handleSecondAggChannel }
             };
         }
-
         /// <summary>
         /// Subscribes for the trade updates via <see cref="TradeReceived"/>
         /// event for specific asset from Polygon streaming API.
@@ -281,18 +248,6 @@ namespace Alpaca.Markets
             }
         }
 
-        private static UriBuilder getUriBuilder(
-            Uri polygonWebsocketApi)
-        {
-            polygonWebsocketApi ??= new Uri("wss://alpaca.socket.polygon.io/stocks");
-
-            var uriBuilder = new UriBuilder(polygonWebsocketApi)
-            {
-                Scheme = polygonWebsocketApi.Scheme == "http" ? "ws" : "wss"
-            };
-            return uriBuilder;
-        }
-
         private void handleAuthorization(
             JToken token)
         {
@@ -304,7 +259,7 @@ namespace Alpaca.Markets
                     SendAsJsonString(new JsonAuthRequest
                     {
                         Action = JsonAction.PolygonAuthenticate,
-                        Params = _keyId
+                        Params = _configuration.KeyId
                     });
                     break;
 
