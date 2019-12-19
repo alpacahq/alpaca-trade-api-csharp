@@ -20,8 +20,6 @@ namespace UsageExamples
 
         private string API_SECRET = "REPLACEME";
 
-        private string API_URL = "https://paper-api.alpaca.markets";
-
         private string symbol = "AAPL";
 
         private Decimal scale = 200;
@@ -38,7 +36,13 @@ namespace UsageExamples
 
         public async Task Run()
         {
-            restClient = new RestClient(API_KEY, API_SECRET, API_URL, apiVersion: 2);
+            restClient = new RestClient(
+                new RestClientConfiguration
+                {
+                    KeyId = API_KEY,
+                    SecretKey = API_SECRET,
+                    TradingApiUrl = PaperEnvironment.TradingApiUrl,
+                });
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
             sockClient = new SockClient(

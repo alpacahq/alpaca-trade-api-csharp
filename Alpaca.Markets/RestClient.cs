@@ -18,16 +18,8 @@ namespace Alpaca.Markets
         Justification = "We do not plan to support localized exception messages in this SDK.")]
     public sealed partial class RestClient : IDisposable
     {
-        private const Int32 DEFAULT_API_VERSION_NUMBER = 2;
-
-        private const Int32 DEFAULT_DATA_API_VERSION_NUMBER = 1;
-
         // TODO: olegra - use built-in HttpMethod.Patch property in .NET Standard 2.1
         private static readonly HttpMethod _httpMethodPatch = new HttpMethod("PATCH");
-
-        private static readonly HashSet<Int32> _supportedApiVersions = new HashSet<Int32> { 1, 2 };
-
-        private static readonly HashSet<Int32> _supportedDataApiVersions = new HashSet<Int32> { 1 };
 
         private readonly HttpClient _alpacaHttpClient = new HttpClient();
 
@@ -35,122 +27,54 @@ namespace Alpaca.Markets
 
         private readonly HttpClient _polygonHttpClient = new HttpClient();
 
+        private readonly RestClientConfiguration _configuration;
+
         private readonly IThrottler _alpacaRestApiThrottler;
 
         private readonly Boolean _isPolygonStaging;
 
-        private readonly String _polygonApiKey;
-
         /// <summary>
-        /// Creates new instance of <see cref="RestClient"/> object.
+        /// 
         /// </summary>
-        /// <param name="keyId">Application key identifier.</param>
-        /// <param name="secretKey">Application secret key.</param>
-        /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
-        /// <param name="polygonRestApi">Polygon REST API endpoint URL.</param>
-        /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
-        /// <param name="apiVersion">Version of Alpaca API to call.  Valid values are "1" or "2".</param>
-        /// <param name="dataApiVersion">Version of Alpaca data API to call.  The only valid value is currently "1".</param>
-        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="throttleParameters">Parameters for requests throttling.</param>
-        /// <param name="oauthKey">Key for alternative authentication via oauth. keyId and secretKey will be ignored if provided.</param>
+        /// <param name="configuration"></param>
+        /// <exception cref="ArgumentException"></exception>
         public RestClient(
-            String keyId,
-            String secretKey,
-            String alpacaRestApi = "https://api.alpaca.markets",
-            String polygonRestApi = "https://api.polygon.io",
-            String alpacaDataApi = "https://data.alpaca.markets",
-            Int32? apiVersion = null,
-            Int32? dataApiVersion = null,
-            Boolean? isStagingEnvironment = null,
-            ThrottleParameters? throttleParameters = null,
-            String oauthKey = "")
-            : this(
-                keyId,
-                secretKey,
-                new Uri(alpacaRestApi ?? "https://api.alpaca.markets"),
-                new Uri(polygonRestApi ?? "https://api.polygon.io"),
-                new Uri(alpacaDataApi ?? "https://data.alpaca.markets"),
-                apiVersion ?? DEFAULT_API_VERSION_NUMBER,
-                dataApiVersion ?? DEFAULT_DATA_API_VERSION_NUMBER,
-                isStagingEnvironment ?? false,
-                throttleParameters ?? ThrottleParameters.Default,
-                oauthKey ?? "")
+            RestClientConfiguration configuration)
         {
-        }
+            _configuration = configuration
+                .EnsureNotNull(nameof(configuration))
+                .EnsureIsValid();
 
-        /// <summary>
-        /// Creates new instance of <see cref="RestClient"/> object.
-        /// </summary>
-        /// <param name="keyId">Application key identifier.</param>
-        /// <param name="secretKey">Application secret key.</param>
-        /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
-        /// <param name="polygonRestApi">Polygon REST API endpoint URL.</param>
-        /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
-        /// <param name="apiVersion">Version of Alpaca API to call.  Valid values are "1" or "2".</param>
-        /// <param name="dataApiVersion">Version of Alpaca data API to call.  The only valid value is currently "1".</param>
-        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="throttleParameters">Parameters for requests throttling.</param>
-        /// <param name="oauthKey">Key for alternative authentication via oauth. keyId and secretKey will be ignored if provided.</param>
-        public RestClient(
-            String keyId,
-            String secretKey,
-            Uri alpacaRestApi,
-            Uri polygonRestApi,
-            Uri alpacaDataApi,
-            Int32 apiVersion,
-            Int32 dataApiVersion,
-            Boolean isStagingEnvironment,
-            ThrottleParameters throttleParameters,
-            String oauthKey)
-        {
-            keyId = keyId ?? throw new ArgumentException(
-                        "Application key id should not be null", nameof(keyId));
-            secretKey = secretKey ?? throw new ArgumentException(
-                            "Application secret key id should not be null", nameof(secretKey));
+            _alpacaRestApiThrottler = configuration.GetThrottler();
 
-            if (!_supportedApiVersions.Contains(apiVersion))
-            {
-                throw new ArgumentException(
-                    "Supported REST API versions are '1' and '2' only", nameof(apiVersion));
-            }
-            if (!_supportedDataApiVersions.Contains(dataApiVersion))
-            {
-                throw new ArgumentException(
-                    "Supported Data REST API versions are '1' and '2' only", nameof(dataApiVersion));
-            }
-
-            throttleParameters ??= ThrottleParameters.Default;
-            _alpacaRestApiThrottler = throttleParameters.GetThrottler();
-
-            if (String.IsNullOrEmpty(oauthKey))
+            if (String.IsNullOrEmpty(configuration.OAuthKey))
             {
                 _alpacaHttpClient.DefaultRequestHeaders.Add(
-                    "APCA-API-KEY-ID", keyId);
+                    "APCA-API-KEY-ID", configuration.KeyId);
                 _alpacaHttpClient.DefaultRequestHeaders.Add(
-                    "APCA-API-SECRET-KEY", secretKey);
+                    "APCA-API-SECRET-KEY", configuration.SecretKey);
             }
             else
             {
                 _alpacaHttpClient.DefaultRequestHeaders.Add(
-                    "Authorization", "Bearer " + oauthKey);
+                    "Authorization", "Bearer " + configuration.OAuthKey);
             }
+
             _alpacaHttpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _alpacaHttpClient.BaseAddress = addApiVersionNumberSafe(
-                alpacaRestApi ?? new Uri("https://api.alpaca.markets"), apiVersion);
+                configuration.TradingApiUrl ?? new Uri("https://api.alpaca.markets"), configuration.TradingApiVersion);
 
             _alpacaDataClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _alpacaDataClient.BaseAddress = addApiVersionNumberSafe(
-                alpacaDataApi ?? new Uri("https://data.alpaca.markets"), dataApiVersion);
+                configuration.DataApiUrl ?? new Uri("https://data.alpaca.markets"), configuration.DataApiVersion);
 
-            _polygonApiKey = keyId;
             _polygonHttpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _polygonHttpClient.BaseAddress =
-                polygonRestApi ?? new Uri("https://api.polygon.io");
-            _isPolygonStaging = isStagingEnvironment ||
+                configuration.PolygonApiUrl ?? new Uri("https://api.polygon.io");
+            _isPolygonStaging =
 #if NETSTANDARD2_1
                 _alpacaHttpClient.BaseAddress.Host.Contains("staging", StringComparison.Ordinal);
 #else
