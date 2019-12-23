@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Configuration parameters object for <see cref="PolygonSockClient"/> class.
     /// </summary>
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
@@ -12,7 +12,7 @@ namespace Alpaca.Markets
     public sealed class PolygonSockClientConfiguration
     {
         /// <summary>
-        /// 
+        /// Creates new instance of <see cref="PolygonSockClientConfiguration"/> class.
         /// </summary>
         public PolygonSockClientConfiguration()
         {
@@ -22,20 +22,19 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets Alpaca application key identifier.
         /// </summary>
         public String KeyId { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets Polygon.io streaming API base URL.
         /// </summary>
         public Uri PolygonApiUrl { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets web sockets connection factory.
         /// </summary>
         public IWebSocketFactory WebSocketFactory { get; set; }
-
         
         internal PolygonSockClientConfiguration EnsureIsValid()
         {

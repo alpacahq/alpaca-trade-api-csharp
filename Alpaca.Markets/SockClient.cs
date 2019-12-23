@@ -36,7 +36,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Creates new instance of <see cref="SockClient"/> object.
         /// </summary>
-        /// <param name="configuration"></param>
+        /// <param name="configuration">Configuration parameters object.</param>
         public SockClient(
             SockClientConfiguration configuration)
             : base(

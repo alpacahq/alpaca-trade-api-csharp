@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Configuration parameters object for <see cref="SockClient"/> class.
     /// </summary>
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
@@ -12,7 +12,7 @@ namespace Alpaca.Markets
     public sealed class SockClientConfiguration
     {
         /// <summary>
-        /// 
+        /// Creates new instance of <see cref="SockClientConfiguration"/> class.
         /// </summary>
         public SockClientConfiguration()
         {
@@ -23,22 +23,22 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets Alpaca application key identifier.
         /// </summary>
         public String KeyId { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets Alpaca secret key identifier.
         /// </summary>
         public String SecretKey { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets Alpaca streaming API base URL.
         /// </summary>
         public Uri TradingApiUrl { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets web sockets connection factory.
         /// </summary>
         public IWebSocketFactory WebSocketFactory { get; set; }
 

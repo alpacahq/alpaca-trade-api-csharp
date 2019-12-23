@@ -56,9 +56,9 @@ namespace Alpaca.Markets
         public event Action<IStreamAgg>? SecondAggReceived;
 
         /// <summary>
-        /// Creates new instance of <see cref="SockClient"/> object.
+        /// Creates new instance of <see cref="PolygonSockClient"/> object.
         /// </summary>
-        /// <param name="configuration"></param>
+        /// <param name="configuration">Configuration parameters object.</param>
         public PolygonSockClient(
             PolygonSockClientConfiguration configuration)
             : base(

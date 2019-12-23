@@ -34,10 +34,9 @@ namespace Alpaca.Markets
         private readonly Boolean _isPolygonStaging;
 
         /// <summary>
-        /// 
+        /// Creates new instance of <see cref="RestClient"/> object.
         /// </summary>
-        /// <param name="configuration"></param>
-        /// <exception cref="ArgumentException"></exception>
+        /// <param name="configuration">Configuration parameters object.</param>
         public RestClient(
             RestClientConfiguration configuration)
         {
@@ -45,7 +44,7 @@ namespace Alpaca.Markets
                 .EnsureNotNull(nameof(configuration))
                 .EnsureIsValid();
 
-            _alpacaRestApiThrottler = configuration.GetThrottler();
+            _alpacaRestApiThrottler = configuration.ThrottleParameters.GetThrottler();
 
             if (String.IsNullOrEmpty(configuration.OAuthKey))
             {

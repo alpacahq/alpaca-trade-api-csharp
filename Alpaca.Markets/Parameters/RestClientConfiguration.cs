@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Configuration parameters object for <see cref="RestClient"/> class.
     /// </summary>
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
@@ -21,7 +21,7 @@ namespace Alpaca.Markets
         private static readonly HashSet<Int32> _supportedDataApiVersions = new HashSet<Int32> { 1 };
 
         /// <summary>
-        /// 
+        /// Creates new instance of <see cref="RestClientConfiguration"/> class.
         /// </summary>
         public RestClientConfiguration()
         {
@@ -40,47 +40,47 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets Alpaca application key identifier.
         /// </summary>
         public String KeyId { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets Alpaca secret key identifier.
         /// </summary>
         public String SecretKey { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets Alpaca OAuth authentication key.
         /// </summary>
         public String OAuthKey { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets Alpaca trading REST API base URL.
         /// </summary>
         public Uri TradingApiUrl { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets Alpaca data REST API base URL.
         /// </summary>
         public Uri DataApiUrl { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets Polygon.io REST API base URL.
         /// </summary>
         public Uri PolygonApiUrl { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets Alpaca Trading API version.
         /// </summary>
         public Int32 TradingApiVersion { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets Alpaca data REST API version.
         /// </summary>
         public Int32 DataApiVersion { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets REST API throttling parameters.
         /// </summary>
         public ThrottleParameters ThrottleParameters { get; set; }
 
@@ -137,7 +137,5 @@ namespace Alpaca.Markets
 
             return this;
         }
-
-        internal IThrottler GetThrottler() => ThrottleParameters.GetThrottler();
     }
 }
