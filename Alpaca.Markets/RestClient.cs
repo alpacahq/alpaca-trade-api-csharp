@@ -27,7 +27,7 @@ namespace Alpaca.Markets
 
         private readonly HttpClient _polygonHttpClient = new HttpClient();
 
-        private readonly RestClientConfiguration _configuration;
+        private readonly RestfulApiClientConfiguration _configuration;
 
         private readonly IThrottler _alpacaRestApiThrottler;
 
@@ -38,41 +38,30 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="configuration">Configuration parameters object.</param>
         public RestClient(
-            RestClientConfiguration configuration)
+            RestfulApiClientConfiguration configuration)
         {
             _configuration = configuration
                 .EnsureNotNull(nameof(configuration))
                 .EnsureIsValid();
 
             _alpacaRestApiThrottler = configuration.ThrottleParameters.GetThrottler();
-
-            if (String.IsNullOrEmpty(configuration.OAuthKey))
-            {
-                _alpacaHttpClient.DefaultRequestHeaders.Add(
-                    "APCA-API-KEY-ID", configuration.KeyId);
-                _alpacaHttpClient.DefaultRequestHeaders.Add(
-                    "APCA-API-SECRET-KEY", configuration.SecretKey);
-            }
-            else
-            {
-                _alpacaHttpClient.DefaultRequestHeaders.Add(
-                    "Authorization", "Bearer " + configuration.OAuthKey);
-            }
+            
+            configuration.SecurityId
+                .AddAuthenticationHeader(_alpacaHttpClient, configuration.KeyId);
 
             _alpacaHttpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _alpacaHttpClient.BaseAddress = addApiVersionNumberSafe(
-                configuration.TradingApiUrl ?? new Uri("https://api.alpaca.markets"), configuration.TradingApiVersion);
+                configuration.TradingApiUrl, configuration.TradingApiVersion);
 
             _alpacaDataClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _alpacaDataClient.BaseAddress = addApiVersionNumberSafe(
-                configuration.DataApiUrl ?? new Uri("https://data.alpaca.markets"), configuration.DataApiVersion);
+                configuration.DataApiUrl, configuration.DataApiVersion);
 
             _polygonHttpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _polygonHttpClient.BaseAddress =
-                configuration.PolygonApiUrl ?? new Uri("https://api.polygon.io");
+            _polygonHttpClient.BaseAddress = configuration.PolygonApiUrl;
             _isPolygonStaging =
 #if NETSTANDARD2_1
                 _alpacaHttpClient.BaseAddress.Host.Contains("staging", StringComparison.Ordinal);
@@ -191,13 +180,13 @@ namespace Alpaca.Markets
                     httpClient, throttler, uriBuilder.Uri, cancellationToken, HttpMethod.Delete)
                 .ConfigureAwait(false);
 
-        private static Uri addApiVersionNumberSafe(Uri baseUri, Int32 apiVersion)
+        private static Uri addApiVersionNumberSafe(Uri baseUri, ApiVersion apiVersion)
         {
             var builder = new UriBuilder(baseUri);
 
             if (builder.Path.Equals("/", StringComparison.Ordinal))
             {
-                builder.Path = $"v{apiVersion}/";
+                builder.Path = $"{apiVersion.ToEnumString()}/";
             }
             if (!builder.Path.EndsWith("/", StringComparison.Ordinal))
             {

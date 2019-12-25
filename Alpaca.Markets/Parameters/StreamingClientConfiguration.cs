@@ -9,17 +9,16 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
-    public sealed class SockClientConfiguration
+    public abstract class StreamingClientConfiguration
     {
         /// <summary>
-        /// Creates new instance of <see cref="SockClientConfiguration"/> class.
+        /// Creates new instance of <see cref="StreamingClientConfiguration"/> class.
         /// </summary>
-        public SockClientConfiguration()
+        protected internal StreamingClientConfiguration(Uri apiEndpoint)
         {
             KeyId = String.Empty;
-            SecretKey = String.Empty;
-            TradingApiUrl = LiveEnvironment.TradingApiUrl;
-            WebSocketFactory = new WebSocket4NetFactory();
+            ApiEndpoint = apiEndpoint;
+            WebSocketFactory = WebSocket4NetFactory.Instance;
         }
 
         /// <summary>
@@ -28,21 +27,19 @@ namespace Alpaca.Markets
         public String KeyId { get; set; }
 
         /// <summary>
-        /// Gets or sets Alpaca secret key identifier.
-        /// </summary>
-        public String SecretKey { get; set; }
-
-        /// <summary>
         /// Gets or sets Alpaca streaming API base URL.
         /// </summary>
-        public Uri TradingApiUrl { get; set; }
+        public Uri ApiEndpoint { get; set; }
 
         /// <summary>
         /// Gets or sets web sockets connection factory.
         /// </summary>
         public IWebSocketFactory WebSocketFactory { get; set; }
 
-        internal SockClientConfiguration EnsureIsValid()
+        internal IWebSocket CreateWebSocket() => 
+            WebSocketFactory.CreateWebSocket(ApiEndpoint);
+
+        internal virtual void EnsureIsValid()
         {
             if (String.IsNullOrEmpty(KeyId))
             {
@@ -50,16 +47,10 @@ namespace Alpaca.Markets
                     $"The value of '{nameof(KeyId)}' property shouldn't be null or empty.");
             }
 
-            if (String.IsNullOrEmpty(SecretKey))
+            if (ApiEndpoint == null)
             {
                 throw new InvalidOperationException(
-                    $"The value of '{nameof(SecretKey)}' property shouldn't be null or empty.");
-            }
-
-            if (TradingApiUrl == null)
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(TradingApiUrl)}' property shouldn't be null.");
+                    $"The value of '{nameof(ApiEndpoint)}' property shouldn't be null.");
             }
 
             if (WebSocketFactory == null)
@@ -67,24 +58,6 @@ namespace Alpaca.Markets
                 throw new InvalidOperationException(
                     $"The value of '{nameof(WebSocketFactory)}' property shouldn't be null.");
             }
-
-            return this;
-        }
-
-        internal UriBuilder GetUriBuilder()
-        {
-            var uriBuilder = new UriBuilder(TradingApiUrl)
-            {
-                Scheme = TradingApiUrl.Scheme == "http" ? "ws" : "wss"
-            };
-
-            if (!uriBuilder.Path.EndsWith("/", StringComparison.Ordinal))
-            {
-                uriBuilder.Path += "/";
-            }
-
-            uriBuilder.Path += "stream";
-            return uriBuilder;
         }
     }
 }

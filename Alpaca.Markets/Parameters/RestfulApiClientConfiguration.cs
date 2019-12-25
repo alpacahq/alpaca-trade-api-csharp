@@ -10,31 +10,30 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
-    public sealed class RestClientConfiguration
+    public sealed class RestfulApiClientConfiguration
     {
-        internal const Int32 DEFAULT_API_VERSION_NUMBER = 2;
+        internal const ApiVersion DefaultTradingApiVersionNumber = ApiVersion.V2;
 
-        internal const Int32 DEFAULT_DATA_API_VERSION_NUMBER = 1;
+        internal const ApiVersion DefaultDataApiVersionNumber = ApiVersion.V1;
 
-        private static readonly HashSet<Int32> _supportedApiVersions = new HashSet<Int32> { 1, 2 };
+        private static readonly HashSet<ApiVersion> _supportedApiVersions = new HashSet<ApiVersion> { ApiVersion.V1, ApiVersion.V2 };
 
-        private static readonly HashSet<Int32> _supportedDataApiVersions = new HashSet<Int32> { 1 };
+        private static readonly HashSet<ApiVersion> _supportedDataApiVersions = new HashSet<ApiVersion> { ApiVersion.V1 };
 
         /// <summary>
-        /// Creates new instance of <see cref="RestClientConfiguration"/> class.
+        /// Creates new instance of <see cref="RestfulApiClientConfiguration"/> class.
         /// </summary>
-        public RestClientConfiguration()
+        public RestfulApiClientConfiguration()
         {
             KeyId = String.Empty;
-            SecretKey = String.Empty;
-            OAuthKey = String.Empty;
+            SecurityId = new SecretKey(String.Empty);
 
-            TradingApiUrl = LiveEnvironment.TradingApiUrl;
-            DataApiUrl = LiveEnvironment.DataApiUrl;
-            PolygonApiUrl = LiveEnvironment.PolygonRestApi;
+            TradingApiUrl = Environments.Live.AlpacaTradingApi;
+            DataApiUrl = Environments.Live.AlpacaDataApi;
+            PolygonApiUrl = Environments.Live.PolygonDataApi;
 
-            TradingApiVersion = DEFAULT_API_VERSION_NUMBER;
-            DataApiVersion = DEFAULT_DATA_API_VERSION_NUMBER;
+            TradingApiVersion = DefaultTradingApiVersionNumber;
+            DataApiVersion = DefaultDataApiVersionNumber;
 
             ThrottleParameters = ThrottleParameters.Default;
         }
@@ -45,14 +44,9 @@ namespace Alpaca.Markets
         public String KeyId { get; set; }
 
         /// <summary>
-        /// Gets or sets Alpaca secret key identifier.
+        /// 
         /// </summary>
-        public String SecretKey { get; set; }
-
-        /// <summary>
-        /// Gets or sets Alpaca OAuth authentication key.
-        /// </summary>
-        public String OAuthKey { get; set; }
+        public SecurityKey SecurityId { get; set; }
 
         /// <summary>
         /// Gets or sets Alpaca trading REST API base URL.
@@ -72,19 +66,19 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets Alpaca Trading API version.
         /// </summary>
-        public Int32 TradingApiVersion { get; set; }
+        public ApiVersion TradingApiVersion { get; set; }
 
         /// <summary>
         /// Gets or sets Alpaca data REST API version.
         /// </summary>
-        public Int32 DataApiVersion { get; set; }
+        public ApiVersion DataApiVersion { get; set; }
 
         /// <summary>
         /// Gets or sets REST API throttling parameters.
         /// </summary>
         public ThrottleParameters ThrottleParameters { get; set; }
 
-        internal RestClientConfiguration EnsureIsValid()
+        internal RestfulApiClientConfiguration EnsureIsValid()
         {
             if (String.IsNullOrEmpty(KeyId))
             {
@@ -92,11 +86,10 @@ namespace Alpaca.Markets
                     $"The value of '{nameof(KeyId)}' property shouldn't be null or empty.");
             }
 
-            if (!(String.IsNullOrEmpty(SecretKey) ^
-                  String.IsNullOrEmpty(OAuthKey)))
+            if (SecurityId == null)
             {
                 throw new InvalidOperationException(
-                    $"The value of '{nameof(SecretKey)}' or `{nameof(OAuthKey)}` property (but not both) should be non-empty.");
+                    $"The value of '{nameof(SecurityId)}' property shouldn't be null.");
             }
 
             if (TradingApiUrl == null)

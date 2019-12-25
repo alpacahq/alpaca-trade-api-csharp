@@ -17,7 +17,8 @@ namespace Alpaca.Markets
             String secretKey,
             String? alpacaRestApi = null,
             IWebSocketFactory? webSocketFactory = null)
-            : this(createConfiguration(keyId, secretKey, new Uri(alpacaRestApi ?? LiveEnvironment.TradingApiUrl.AbsoluteUri), webSocketFactory))
+            : this(createConfiguration(
+                keyId, secretKey, alpacaRestApi.GetUrlSafe(Environments.Live.AlpacaTradingApi), webSocketFactory))
         {
         }
 
@@ -51,27 +52,27 @@ namespace Alpaca.Markets
             : this(createConfiguration(configuration, webSocketFactory)) =>
             System.Diagnostics.Contracts.Contract.Requires(configuration != null);
 
-        private static SockClientConfiguration createConfiguration(
+        private static AlpacaStreamingClientConfiguration createConfiguration(
             Microsoft.Extensions.Configuration.IConfiguration configuration,
             IWebSocketFactory? webSocketFactory = null) =>
             createConfiguration(
                 configuration?["keyId"] ?? throw new ArgumentException("Provide 'keyId' configuration parameter.", nameof(configuration)),
                 configuration["secretKey"] ?? throw new ArgumentException("Provide 'secretKey' configuration parameter.", nameof(configuration)),
-                new Uri(configuration["alpacaRestApi"] ?? LiveEnvironment.TradingApiUrl.AbsoluteUri),
+                configuration["alpacaRestApi"].GetUrlSafe(Environments.Live.AlpacaTradingApi),
                 webSocketFactory);
 #endif
 
-        private static SockClientConfiguration createConfiguration(
+        private static AlpacaStreamingClientConfiguration createConfiguration(
             String keyId,
             String secretKey,
             Uri alpacaRestApi,
             IWebSocketFactory? webSocketFactory) =>
-            new SockClientConfiguration
+            new AlpacaStreamingClientConfiguration
             {
                 KeyId = keyId ?? throw new ArgumentException("Application key id should not be null.", nameof(keyId)),
                 SecretKey = secretKey ?? throw new ArgumentException("Application secret key should not be null.", nameof(secretKey)),
-                TradingApiUrl = alpacaRestApi ?? LiveEnvironment.TradingApiUrl,
-                WebSocketFactory = webSocketFactory ?? new WebSocket4NetFactory(),
+                ApiEndpoint = alpacaRestApi ?? Environments.Live.AlpacaTradingApi,
+                WebSocketFactory = webSocketFactory ?? WebSocket4NetFactory.Instance,
             };
     }
 }

@@ -2,30 +2,16 @@
 
 namespace Alpaca.Markets
 {
-    /// <summary>
-    /// Stores list of base API URLs for different API endpoints available for Alpaca.Markets SDK
-    /// on live environment. This environment used by all Alpaca users who has fully registered accounts.
-    /// </summary>
-    public static class LiveEnvironment
+    internal sealed class LiveEnvironment : IEnvironment
     {
-        /// <summary>
-        /// Gets Alpaca trading REST API base URL for live environment.
-        /// </summary>
-        public static Uri TradingApiUrl { get; } = new Uri("https://api.alpaca.markets");
+        public Uri AlpacaTradingApi { get; } = new Uri("https://api.alpaca.markets");
 
-        /// <summary>
-        /// Gets Alpaca data REST API base URL for live environment.
-        /// </summary>
-        public static Uri DataApiUrl { get; } = new Uri("https://data.alpaca.markets");
+        public Uri AlpacaDataApi { get; } = new Uri("https://data.alpaca.markets");
 
-        /// <summary>
-        /// Gets Polygon.io streaming API base URL for live environment.
-        /// </summary>
-        public static Uri PolygonApiUrl { get; } = new Uri("wss://alpaca.socket.polygon.io/stocks");
+        public Uri PolygonDataApi { get; } = new Uri("https://api.polygon.io");
 
-        /// <summary>
-        /// Gets Polygon.io data REST API base URL for live environment.
-        /// </summary>
-        public static Uri PolygonRestApi { get; } = new Uri("https://api.polygon.io");
+        public Uri AlpacaStreamingApi { get; } = new Uri("wss://api.alpaca.markets/stream");
+
+        public Uri PolygonStreamingApi { get; } = new Uri("wss://alpaca.socket.polygon.io/stocks");
     }
 }

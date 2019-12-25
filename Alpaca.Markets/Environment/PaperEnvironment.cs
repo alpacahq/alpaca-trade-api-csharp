@@ -2,15 +2,21 @@
 
 namespace Alpaca.Markets
 {
-    /// <summary>
-    /// Stores list of base API URLs for different API endpoints available for Alpaca.Markets SDK
-    /// on paper environment. This environment used by all Alpaca users who have no registered accounts.
-    /// </summary>
-    public static class PaperEnvironment
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Globalization", "CA1303:Do not pass literals as localized parameters",
+        Justification = "We do not plan to support localized exception messages in this SDK.")]
+    internal sealed class PaperEnvironment : IEnvironment
     {
-        /// <summary>
-        /// Gets Alpaca trading REST API base URL for paper environment.
-        /// </summary>
-        public static Uri TradingApiUrl { get; } = new Uri("https://paper-api.alpaca.markets");
+        public Uri AlpacaTradingApi { get; } = new Uri("https://paper-api.alpaca.markets");
+
+        public Uri AlpacaDataApi => Environments.Live.AlpacaDataApi;
+
+        public Uri PolygonDataApi => throw new InvalidOperationException(
+            "Polygon.io REST API does not available on this environment.");
+
+        public Uri AlpacaStreamingApi { get; } = new Uri("wws://paper-api.alpaca.markets/stream");
+
+        public Uri PolygonStreamingApi => throw new InvalidOperationException(
+            "Polygon.io streaming API does not available on this environment.");
     }
 }

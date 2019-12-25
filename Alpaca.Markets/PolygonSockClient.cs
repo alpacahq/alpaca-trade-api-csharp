@@ -13,7 +13,7 @@ namespace Alpaca.Markets
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
     // ReSharper disable once PartialTypeWithSinglePart
-    public sealed partial class PolygonSockClient : SockClientBase
+    public sealed partial class PolygonSockClient : SockClientBase<PolygonStreamingClientConfiguration>
     {
         // Available Polygon message types
 
@@ -32,8 +32,6 @@ namespace Alpaca.Markets
         // ReSharper restore InconsistentNaming
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
-
-        private readonly PolygonSockClientConfiguration _configuration;
         
         /// <summary>
         /// Occured when new trade received from stream.
@@ -60,13 +58,9 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="configuration">Configuration parameters object.</param>
         public PolygonSockClient(
-            PolygonSockClientConfiguration configuration)
-            : base(
-                configuration.EnsureNotNull(nameof(configuration)).GetUriBuilder(),
-                configuration.WebSocketFactory)
+            PolygonStreamingClientConfiguration configuration)
+            : base(configuration)
         {
-            _configuration = configuration.EnsureIsValid();
-
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
                 { StatusMessage, handleAuthorization },
@@ -259,7 +253,7 @@ namespace Alpaca.Markets
                     SendAsJsonString(new JsonAuthRequest
                     {
                         Action = JsonAction.PolygonAuthenticate,
-                        Params = _configuration.KeyId
+                        Params = Configuration.KeyId
                     });
                     break;
 

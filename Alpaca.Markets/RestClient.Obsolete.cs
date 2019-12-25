@@ -34,11 +34,11 @@ namespace Alpaca.Markets
             : this(createConfiguration(
                 keyId,
                 secretKey,
-                new Uri(alpacaRestApi ?? LiveEnvironment.TradingApiUrl.AbsoluteUri),
-                new Uri(polygonRestApi ?? LiveEnvironment.PolygonRestApi.AbsoluteUri),
-                new Uri(alpacaDataApi ?? LiveEnvironment.DataApiUrl.AbsoluteUri),
-                apiVersion ?? RestClientConfiguration.DEFAULT_API_VERSION_NUMBER,
-                dataApiVersion ?? RestClientConfiguration.DEFAULT_DATA_API_VERSION_NUMBER,
+                alpacaRestApi.GetUrlSafe(Environments.Live.AlpacaTradingApi),
+                polygonRestApi.GetUrlSafe(Environments.Live.PolygonDataApi),
+                alpacaDataApi.GetUrlSafe(Environments.Live.AlpacaDataApi),
+                apiVersion ?? (Int32)RestfulApiClientConfiguration.DefaultTradingApiVersionNumber,
+                dataApiVersion ?? (Int32)RestfulApiClientConfiguration.DefaultDataApiVersionNumber,
                 throttleParameters ?? ThrottleParameters.Default,
                 oauthKey ?? String.Empty))
         {
@@ -87,17 +87,17 @@ namespace Alpaca.Markets
             System.Diagnostics.Contracts.Contract.Requires(configuration != null);
         }
 
-        private static RestClientConfiguration createConfiguration(
+        private static RestfulApiClientConfiguration createConfiguration(
             Microsoft.Extensions.Configuration.IConfiguration configuration)
         {
             return createConfiguration(
                 configuration?["keyId"] ?? throw new ArgumentException("Provide 'keyId' configuration parameter.", nameof(configuration)),
                 configuration["secretKey"] ?? throw new ArgumentException("Provide 'secretKey' configuration parameter.", nameof(configuration)),
-                new Uri(configuration["alpacaRestApi"] ?? LiveEnvironment.TradingApiUrl.AbsoluteUri),
-                new Uri(configuration["polygonRestApi"] ?? LiveEnvironment.PolygonRestApi.AbsoluteUri),
-                new Uri(configuration["alpacaDataApi"] ?? LiveEnvironment.DataApiUrl.AbsoluteUri),
-                toInt32OrNull(configuration["apiVersion"]) ?? RestClientConfiguration.DEFAULT_API_VERSION_NUMBER,
-                toInt32OrNull(configuration["dataApiVersion"]) ?? RestClientConfiguration.DEFAULT_DATA_API_VERSION_NUMBER,
+                configuration["alpacaRestApi"].GetUrlSafe(Environments.Live.AlpacaTradingApi),
+                configuration["polygonRestApi"].GetUrlSafe(Environments.Live.PolygonDataApi),
+                configuration["alpacaDataApi"].GetUrlSafe(Environments.Live.AlpacaDataApi),
+                toInt32OrNull(configuration["apiVersion"]) ?? (Int32)RestfulApiClientConfiguration.DefaultTradingApiVersionNumber,
+                toInt32OrNull(configuration["dataApiVersion"]) ?? (Int32)RestfulApiClientConfiguration.DefaultDataApiVersionNumber,
                 new ThrottleParameters(null, null,
                     toInt32OrNull(configuration["maxRetryAttempts"]),
                     configuration?.GetSection("retryHttpStatuses")
@@ -113,7 +113,7 @@ namespace Alpaca.Markets
             value != null ? Convert.ToBoolean(value, CultureInfo.InvariantCulture) : (Boolean?)null;
 #endif
 
-        private static RestClientConfiguration createConfiguration(
+        private static RestfulApiClientConfiguration createConfiguration(
             String keyId,
             String secretKey,
             Uri alpacaRestApi,
@@ -124,17 +124,21 @@ namespace Alpaca.Markets
             ThrottleParameters throttleParameters,
             String oauthKey)
         {
-            return new RestClientConfiguration
+            if (!(String.IsNullOrEmpty(secretKey) ^
+                String.IsNullOrEmpty(oauthKey)))
+            {
+                throw new ArgumentException("Application secret key or OAuth key (but not both) should not be null or empty.");
+            }
+            return new RestfulApiClientConfiguration
             {
                 KeyId = keyId ?? throw new ArgumentException("Application key id should not be null.", nameof(keyId)),
-                SecretKey = secretKey ?? throw new ArgumentException("Application secret key should not be null.", nameof(secretKey)),
-                TradingApiUrl = alpacaRestApi ?? LiveEnvironment.TradingApiUrl,
-                PolygonApiUrl = polygonRestApi ?? LiveEnvironment.PolygonRestApi,
-                DataApiUrl = alpacaDataApi ?? LiveEnvironment.DataApiUrl,
-                TradingApiVersion = apiVersion,
-                DataApiVersion = dataApiVersion,
-                ThrottleParameters = throttleParameters ?? ThrottleParameters.Default,
-                OAuthKey = oauthKey ?? throw new ArgumentException("Application OAuth key should not be null.", nameof(oauthKey))
+                SecurityId = SecurityKey.Create(secretKey, oauthKey),
+                TradingApiUrl = alpacaRestApi ?? Environments.Live.AlpacaTradingApi,
+                PolygonApiUrl = polygonRestApi ?? Environments.Live.PolygonDataApi,
+                DataApiUrl = alpacaDataApi ?? Environments.Live.AlpacaDataApi,
+                TradingApiVersion = (ApiVersion)apiVersion,
+                DataApiVersion = (ApiVersion)dataApiVersion,
+                ThrottleParameters = throttleParameters ?? ThrottleParameters.Default
             };
 
         }

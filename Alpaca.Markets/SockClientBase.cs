@@ -16,25 +16,24 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
-    public abstract class SockClientBase : IDisposable
+    public abstract class SockClientBase<TConfiguration> : IDisposable
+        where TConfiguration : StreamingClientConfiguration
     {
         private readonly IWebSocket _webSocket;
 
-        /// <summary>
-        /// Creates new instance of <see cref="SockClientBase"/> object.
-        /// </summary>
-        /// <param name="endpointUri">URL for websocket endpoint connection.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        protected SockClientBase(
-            UriBuilder endpointUri,
-            IWebSocketFactory? webSocketFactory)
-        {
-            endpointUri = endpointUri ?? throw new ArgumentException(
-                        "Endpoint URL should not be null", nameof(endpointUri));
-            webSocketFactory = webSocketFactory ?? throw new ArgumentException(
-                            "Web Socket factory should not be null", nameof(webSocketFactory));
+        internal readonly TConfiguration Configuration;
 
-            _webSocket = webSocketFactory.CreateWebSocket(endpointUri.Uri);
+        /// <summary>
+        /// Creates new instance of <see cref="SockClientBase{TConfiguration}"/> object.
+        /// </summary>
+        /// <param name="configuration"></param>
+        protected internal SockClientBase(
+            TConfiguration configuration)
+        {
+            Configuration = configuration.EnsureNotNull(nameof(configuration));
+            Configuration.EnsureIsValid();
+
+            _webSocket = configuration.CreateWebSocket();
 
             _webSocket.Opened += OnOpened;
             _webSocket.Closed += OnClosed;

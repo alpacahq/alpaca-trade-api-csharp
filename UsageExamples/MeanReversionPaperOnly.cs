@@ -27,11 +27,11 @@ namespace UsageExamples
         public async Task Run()
         {
             restClient = new RestClient(
-                new RestClientConfiguration
+                new RestfulApiClientConfiguration
                 {
                     KeyId = API_KEY,
-                    SecretKey = API_SECRET,
-                    TradingApiUrl = PaperEnvironment.TradingApiUrl,
+                    SecurityId = new SecretKey(API_SECRET),
+                    TradingApiUrl = Environments.Paper.AlpacaTradingApi
                 });
 
             // First, cancel any existing orders so they don't impact our buying power.

@@ -18,7 +18,8 @@ namespace Alpaca.Markets
             String? polygonWebsocketApi = null,
             Boolean isStagingEnvironment = false,
             IWebSocketFactory? webSocketFactory = null)
-            : this(createConfiguration(keyId, new Uri(polygonWebsocketApi ?? LiveEnvironment.PolygonApiUrl.AbsoluteUri), isStagingEnvironment,  webSocketFactory))
+            : this(createConfiguration(
+                keyId, polygonWebsocketApi.GetUrlSafe(Environments.Live.PolygonStreamingApi), isStagingEnvironment,  webSocketFactory))
         {
         }
 
@@ -54,27 +55,27 @@ namespace Alpaca.Markets
             System.Diagnostics.Contracts.Contract.Requires(configuration != null);
         }
 
-        private static PolygonSockClientConfiguration createConfiguration(
+        private static PolygonStreamingClientConfiguration createConfiguration(
             Microsoft.Extensions.Configuration.IConfiguration configuration,
             IWebSocketFactory? webSocketFactory = null) =>
             createConfiguration(
                 configuration?["keyId"] ?? throw new ArgumentException("Provide 'keyId' configuration parameter.", nameof(configuration)),
-                new Uri(configuration?["polygonWebsocketApi"] ?? LiveEnvironment.PolygonApiUrl.AbsoluteUri),
+                configuration["polygonWebsocketApi"].GetUrlSafe(Environments.Live.PolygonStreamingApi),
                 Convert.ToBoolean(configuration?["staging"] ?? "false", CultureInfo.InvariantCulture),
                 webSocketFactory);
 #endif    
 
-        private static PolygonSockClientConfiguration createConfiguration(
+        private static PolygonStreamingClientConfiguration createConfiguration(
             String keyId,
             Uri polygonWebsocketApi,
             Boolean isStagingEnvironment,
             IWebSocketFactory? webSocketFactory)
         {
-            return new PolygonSockClientConfiguration()
+            return new PolygonStreamingClientConfiguration()
             {
                 KeyId = adjustKeyId(keyId ?? throw new ArgumentException("Application key id should not be null or empty.", nameof(keyId)), isStagingEnvironment),
-                PolygonApiUrl = polygonWebsocketApi ?? (isStagingEnvironment ? StagingEnvironment.PolygonApiUrl : LiveEnvironment.PolygonApiUrl),
-                WebSocketFactory = webSocketFactory ?? new WebSocket4NetFactory()
+                ApiEndpoint = polygonWebsocketApi ?? (isStagingEnvironment ? Environments.Staging.PolygonStreamingApi : Environments.Live.PolygonStreamingApi),
+                WebSocketFactory = webSocketFactory ?? WebSocket4NetFactory.Instance
             };
         }
 

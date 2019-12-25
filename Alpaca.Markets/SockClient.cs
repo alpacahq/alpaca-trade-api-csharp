@@ -13,7 +13,7 @@ namespace Alpaca.Markets
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
     // ReSharper disable once PartialTypeWithSinglePart
-    public sealed partial class SockClient : SockClientBase
+    public sealed partial class SockClient : SockClientBase<AlpacaStreamingClientConfiguration>
     {
         // Available Alpaca message types
 
@@ -31,20 +31,14 @@ namespace Alpaca.Markets
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
-        private readonly SockClientConfiguration _configuration;
-
         /// <summary>
         /// Creates new instance of <see cref="SockClient"/> object.
         /// </summary>
         /// <param name="configuration">Configuration parameters object.</param>
         public SockClient(
-            SockClientConfiguration configuration)
-            : base(
-                configuration.EnsureNotNull(nameof(configuration)).GetUriBuilder(),
-                configuration.WebSocketFactory)
+            AlpacaStreamingClientConfiguration configuration)
+            : base(configuration)
         {
-            _configuration = configuration.EnsureIsValid();
-
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
                 { Listening, _ => { } },
@@ -72,8 +66,8 @@ namespace Alpaca.Markets
                 Action = JsonAction.Authenticate,
                 Data = new JsonAuthRequest.JsonData
                 {
-                    KeyId = _configuration.KeyId,
-                    SecretKey = _configuration.SecretKey
+                    KeyId = Configuration.KeyId,
+                    SecretKey = Configuration.SecretKey
                 }
             });
 

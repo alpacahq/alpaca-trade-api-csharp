@@ -37,20 +37,20 @@ namespace UsageExamples
         public async Task Run()
         {
             restClient = new RestClient(
-                new RestClientConfiguration
+                new RestfulApiClientConfiguration
                 {
                     KeyId = API_KEY,
-                    SecretKey = API_SECRET,
-                    TradingApiUrl = PaperEnvironment.TradingApiUrl,
+                    SecurityId = new SecretKey(API_SECRET),
+                    TradingApiUrl = Environments.Paper.AlpacaTradingApi
                 });
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
             sockClient = new SockClient(
-                new SockClientConfiguration
+                new AlpacaStreamingClientConfiguration
                 {
                     KeyId = API_KEY,
                     SecretKey = API_SECRET,
-                    TradingApiUrl = PaperEnvironment.TradingApiUrl
+                    ApiEndpoint = Environments.Paper.AlpacaStreamingApi
                 });
             sockClient.ConnectAndAuthenticateAsync().Wait();
 
@@ -88,7 +88,7 @@ namespace UsageExamples
 
             // Connect to Polygon's websocket and listen for price updates.
             polygonSockClient = new PolygonSockClient(
-                new PolygonSockClientConfiguration
+                new PolygonStreamingClientConfiguration
                 {
                     KeyId = API_KEY
                 });

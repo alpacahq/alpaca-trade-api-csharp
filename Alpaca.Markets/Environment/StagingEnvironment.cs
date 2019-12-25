@@ -2,20 +2,16 @@
 
 namespace Alpaca.Markets
 {
-    /// <summary>
-    /// Stores list of base API URLs for different API endpoints available for Alpaca.Markets SDK
-    /// on staging environment. This environment used by development team for pre-production tests.
-    /// </summary>
-    public static class StagingEnvironment
+    internal sealed class StagingEnvironment : IEnvironment
     {
-        /// <summary>
-        /// Gets Alpaca trading REST API base URL for staging environment.
-        /// </summary>
-        public static Uri TradingApiUrl { get; } = new Uri("https://staging-api.tradetalk.us");
+        public Uri AlpacaTradingApi { get; } = new Uri("https://staging-api.tradetalk.us");
 
-        /// <summary>
-        /// Gets Polygon.io streaming API base URL for staging environment.
-        /// </summary>
-        public static Uri PolygonApiUrl { get; } = new Uri("wss://alpaca.socket.polygon.io/stocks");
+        public Uri AlpacaDataApi => Environments.Live.AlpacaDataApi;
+
+        public Uri PolygonDataApi => Environments.Live.PolygonDataApi;
+
+        public Uri AlpacaStreamingApi { get; } = new Uri("wws://staging-api.tradetalk.us/stream");
+
+        public Uri PolygonStreamingApi => Environments.Live.PolygonStreamingApi;
     }
 }

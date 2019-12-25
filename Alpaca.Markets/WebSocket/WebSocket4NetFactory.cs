@@ -102,6 +102,8 @@ namespace Alpaca.Markets
                 Error?.Invoke(eventArgs.Exception);
         }
 
+        public static IWebSocketFactory Instance { get; } = new WebSocket4NetFactory();
+
         public IWebSocket CreateWebSocket(
             Uri url) =>
             new WebSocketWrapper(url);
