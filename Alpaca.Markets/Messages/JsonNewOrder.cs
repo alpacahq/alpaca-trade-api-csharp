@@ -36,6 +36,6 @@ namespace Alpaca.Markets
         public OrderClass? OrderClass { get; set; }
 
         [JsonProperty(PropertyName = "order_attributes", Required = Required.Default)]
-        public JsonNewOrderAttributes OrderAttributes { get; set; }
+        public JsonNewOrderAttributes? OrderAttributes { get; set; }
     }
 }
