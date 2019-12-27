@@ -13,7 +13,7 @@ namespace Alpaca.Markets
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
     // ReSharper disable once PartialTypeWithSinglePart
-    public sealed partial class SockClient : SockClientBase
+    public sealed partial class SockClient : SockClientBase<AlpacaStreamingClientConfiguration>
     {
         // Available Alpaca message types
 
@@ -31,49 +31,14 @@ namespace Alpaca.Markets
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
-        private readonly String _keyId;
-
-        private readonly String _secretKey;
-
         /// <summary>
         /// Creates new instance of <see cref="SockClient"/> object.
         /// </summary>
-        /// <param name="keyId">Application key identifier.</param>
-        /// <param name="secretKey">Application secret key.</param>
-        /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
+        /// <param name="configuration">Configuration parameters object.</param>
         public SockClient(
-            String keyId,
-            String secretKey,
-            String alpacaRestApi = null,
-            IWebSocketFactory webSocketFactory = null)
-            : this(
-                keyId,
-                secretKey,
-                new Uri(alpacaRestApi ?? "https://api.alpaca.markets"),
-                webSocketFactory ?? new WebSocket4NetFactory())
+            AlpacaStreamingClientConfiguration configuration)
+            : base(configuration)
         {
-        }
-
-        /// <summary>
-        /// Creates new instance of <see cref="SockClient"/> object.
-        /// </summary>
-        /// <param name="keyId">Application key identifier.</param>
-        /// <param name="secretKey">Application secret key.</param>
-        /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        public SockClient(
-            String keyId,
-            String secretKey,
-            Uri alpacaRestApi,
-            IWebSocketFactory webSocketFactory)
-            : base(getUriBuilder(alpacaRestApi), webSocketFactory)
-        {
-            _keyId = keyId ?? throw new ArgumentException(
-                         "Application key id should not be null", nameof(keyId));
-            _secretKey = secretKey ?? throw new ArgumentException(
-                             "Application secret key should not be null", nameof(secretKey));
-
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
                 { Listening, _ => { } },
@@ -86,12 +51,12 @@ namespace Alpaca.Markets
         /// <summary>
         /// Occured when new account update received from stream.
         /// </summary>
-        public event Action<IAccountUpdate> OnAccountUpdate;
+        public event Action<IAccountUpdate>? OnAccountUpdate;
 
         /// <summary>
         /// Occured when new trade update received from stream.
         /// </summary>
-        public event Action<ITradeUpdate> OnTradeUpdate;
+        public event Action<ITradeUpdate>? OnTradeUpdate;
 
         /// <inheritdoc/>
         protected override void OnOpened()
@@ -99,10 +64,10 @@ namespace Alpaca.Markets
             SendAsJsonString(new JsonAuthRequest
             {
                 Action = JsonAction.Authenticate,
-                Data = new JsonAuthRequest.JsonData()
+                Data = new JsonAuthRequest.JsonData
                 {
-                    KeyId = _keyId,
-                    SecretKey = _secretKey
+                    KeyId = Configuration.KeyId,
+                    SecretKey = Configuration.SecretKey
                 }
             });
 
@@ -119,7 +84,19 @@ namespace Alpaca.Markets
             try
             {
                 var token = JObject.Parse(Encoding.UTF8.GetString(binaryData));
-                HandleMessage(_handlers, token["stream"].ToString(), token["data"]);
+
+                var payload = token["data"];
+                var messageType = token["stream"];
+
+                if (payload is null ||
+                    messageType is null)
+                {
+                    HandleError(new InvalidOperationException());
+                }
+                else
+                {
+                    HandleMessage(_handlers, messageType.ToString(), payload);
+                }
             }
             catch (Exception exception)
             {
@@ -127,29 +104,16 @@ namespace Alpaca.Markets
             }
         }
 
-        private static UriBuilder getUriBuilder(
-            Uri alpacaRestApi)
-        {
-            alpacaRestApi = alpacaRestApi ?? new Uri("https://api.alpaca.markets");
-
-            var uriBuilder = new UriBuilder(alpacaRestApi)
-            {
-                Scheme = alpacaRestApi.Scheme == "http" ? "ws" : "wss"
-            };
-
-            if (!uriBuilder.Path.EndsWith("/", StringComparison.Ordinal))
-            {
-                uriBuilder.Path += "/";
-            }
-
-            uriBuilder.Path += "stream";
-            return uriBuilder;
-        }
-
         private void handleAuthorization(
             JToken token)
         {
             var response = token.ToObject<JsonAuthResponse>();
+            if (response is null)
+            {
+                HandleError(new InvalidOperationException("Invalid authentication response."));
+                return;
+            }
+
             OnConnected(response.Status);
 
             if (response.Status == AuthStatus.Authorized)
@@ -157,7 +121,7 @@ namespace Alpaca.Markets
                 var listenRequest = new JsonListenRequest
                 {
                     Action = JsonAction.Listen,
-                    Data = new JsonListenRequest.JsonData()
+                    Data = new JsonListenRequest.JsonData
                     {
                         Streams = new List<String>
                         {

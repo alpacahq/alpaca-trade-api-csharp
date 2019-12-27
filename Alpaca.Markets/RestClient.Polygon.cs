@@ -330,7 +330,7 @@ namespace Alpaca.Markets
         private QueryBuilder getDefaultPolygonApiQueryBuilder()
         {
             var builder = new QueryBuilder()
-                .AddParameter("apiKey", _polygonApiKey);
+                .AddParameter("apiKey", _configuration.KeyId);
 
             if (_isPolygonStaging)
             {

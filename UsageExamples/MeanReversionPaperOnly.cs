@@ -16,8 +16,6 @@ namespace UsageExamples
 
         private string API_SECRET = "REPLACEME";
 
-        private string API_URL = "https://paper-api.alpaca.markets";
-
         private string symbol = "SPY";
 
         private Decimal scale = 200;
@@ -28,7 +26,13 @@ namespace UsageExamples
 
         public async Task Run()
         {
-            restClient = new RestClient(API_KEY, API_SECRET, API_URL);
+            restClient = new RestClient(
+                new RestfulApiClientConfiguration
+                {
+                    KeyId = API_KEY,
+                    SecurityId = new SecretKey(API_SECRET),
+                    TradingApiUrl = Environments.Paper.AlpacaTradingApi
+                });
 
             // First, cancel any existing orders so they don't impact our buying power.
             var orders = await restClient.ListOrdersAsync();

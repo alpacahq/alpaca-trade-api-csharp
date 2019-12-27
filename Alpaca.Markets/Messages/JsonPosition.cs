@@ -16,7 +16,7 @@ namespace Alpaca.Markets
         public Guid AssetId { get; set; }
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
-        public String Symbol { get; set; }
+        public String Symbol { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "exchange", Required = Required.Always)]
         public Exchange Exchange { get; set; }

@@ -18,16 +18,8 @@ namespace Alpaca.Markets
         Justification = "We do not plan to support localized exception messages in this SDK.")]
     public sealed partial class RestClient : IDisposable
     {
-        private const Int32 DEFAULT_API_VERSION_NUMBER = 2;
-
-        private const Int32 DEFAULT_DATA_API_VERSION_NUMBER = 1;
-
         // TODO: olegra - use built-in HttpMethod.Patch property in .NET Standard 2.1
         private static readonly HttpMethod _httpMethodPatch = new HttpMethod("PATCH");
-
-        private static readonly HashSet<Int32> _supportedApiVersions = new HashSet<Int32> { 1, 2 };
-
-        private static readonly HashSet<Int32> _supportedDataApiVersions = new HashSet<Int32> { 1 };
 
         private readonly HttpClient _alpacaHttpClient = new HttpClient();
 
@@ -35,122 +27,42 @@ namespace Alpaca.Markets
 
         private readonly HttpClient _polygonHttpClient = new HttpClient();
 
-        private static IThrottler _alpacaRestApiThrottler;
+        private readonly RestfulApiClientConfiguration _configuration;
+
+        private readonly IThrottler _alpacaRestApiThrottler;
 
         private readonly Boolean _isPolygonStaging;
 
-        private readonly String _polygonApiKey;
-
         /// <summary>
         /// Creates new instance of <see cref="RestClient"/> object.
         /// </summary>
-        /// <param name="keyId">Application key identifier.</param>
-        /// <param name="secretKey">Application secret key.</param>
-        /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
-        /// <param name="polygonRestApi">Polygon REST API endpoint URL.</param>
-        /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
-        /// <param name="apiVersion">Version of Alpaca API to call.  Valid values are "1" or "2".</param>
-        /// <param name="dataApiVersion">Version of Alpaca data API to call.  The only valid value is currently "1".</param>
-        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="throttleParameters">Parameters for requests throttling.</param>
-        /// <param name="oauthKey">Key for alternative authentication via oauth. keyId and secretKey will be ignored if provided.</param>
+        /// <param name="configuration">Configuration parameters object.</param>
         public RestClient(
-            String keyId,
-            String secretKey,
-            String alpacaRestApi = null,
-            String polygonRestApi = null,
-            String alpacaDataApi = null,
-            Int32? apiVersion = null,
-            Int32? dataApiVersion = null,
-            Boolean? isStagingEnvironment = null,
-            ThrottleParameters throttleParameters = null,
-            String oauthKey = null)
-            : this(
-                keyId,
-                secretKey,
-                new Uri(alpacaRestApi ?? "https://api.alpaca.markets"),
-                new Uri(polygonRestApi ?? "https://api.polygon.io"),
-                new Uri(alpacaDataApi ?? "https://data.alpaca.markets"),
-                apiVersion ?? DEFAULT_API_VERSION_NUMBER,
-                dataApiVersion ?? DEFAULT_DATA_API_VERSION_NUMBER,
-                isStagingEnvironment ?? false,
-                throttleParameters ?? ThrottleParameters.Default,
-                oauthKey ?? "")
+            RestfulApiClientConfiguration configuration)
         {
-        }
+            _configuration = configuration
+                .EnsureNotNull(nameof(configuration))
+                .EnsureIsValid();
 
-        /// <summary>
-        /// Creates new instance of <see cref="RestClient"/> object.
-        /// </summary>
-        /// <param name="keyId">Application key identifier.</param>
-        /// <param name="secretKey">Application secret key.</param>
-        /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
-        /// <param name="polygonRestApi">Polygon REST API endpoint URL.</param>
-        /// <param name="alpacaDataApi">Alpaca REST data API endpoint URL.</param>
-        /// <param name="apiVersion">Version of Alpaca API to call.  Valid values are "1" or "2".</param>
-        /// <param name="dataApiVersion">Version of Alpaca data API to call.  The only valid value is currently "1".</param>
-        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="throttleParameters">Parameters for requests throttling.</param>
-        /// <param name="oauthKey">Key for alternative authentication via oauth. keyId and secretKey will be ignored if provided.</param>
-        public RestClient(
-            String keyId,
-            String secretKey,
-            Uri alpacaRestApi,
-            Uri polygonRestApi,
-            Uri alpacaDataApi,
-            Int32 apiVersion,
-            Int32 dataApiVersion,
-            Boolean isStagingEnvironment,
-            ThrottleParameters throttleParameters,
-            String oauthKey)
-        {
-            keyId = keyId ?? throw new ArgumentException(
-                        "Application key id should not be null", nameof(keyId));
-            secretKey = secretKey ?? throw new ArgumentException(
-                            "Application secret key id should not be null", nameof(secretKey));
+            _alpacaRestApiThrottler = configuration.ThrottleParameters.GetThrottler();
+            
+            configuration.SecurityId
+                .AddAuthenticationHeader(_alpacaHttpClient, configuration.KeyId);
 
-            if (!_supportedApiVersions.Contains(apiVersion))
-            {
-                throw new ArgumentException(
-                    "Supported REST API versions are '1' and '2' only", nameof(apiVersion));
-            }
-            if (!_supportedDataApiVersions.Contains(dataApiVersion))
-            {
-                throw new ArgumentException(
-                    "Supported Data REST API versions are '1' and '2' only", nameof(dataApiVersion));
-            }
-
-            throttleParameters = throttleParameters ?? ThrottleParameters.Default;
-            _alpacaRestApiThrottler = throttleParameters.GetThrottler();
-
-            if (String.IsNullOrEmpty(oauthKey))
-            {
-                _alpacaHttpClient.DefaultRequestHeaders.Add(
-                    "APCA-API-KEY-ID", keyId);
-                _alpacaHttpClient.DefaultRequestHeaders.Add(
-                    "APCA-API-SECRET-KEY", secretKey);
-            }
-            else
-            {
-                _alpacaHttpClient.DefaultRequestHeaders.Add(
-                    "Authorization", "Bearer " + oauthKey);
-            }
             _alpacaHttpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _alpacaHttpClient.BaseAddress = addApiVersionNumberSafe(
-                alpacaRestApi ?? new Uri("https://api.alpaca.markets"), apiVersion);
+                configuration.TradingApiUrl, configuration.TradingApiVersion);
 
             _alpacaDataClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _alpacaDataClient.BaseAddress = addApiVersionNumberSafe(
-                alpacaDataApi ?? new Uri("https://data.alpaca.markets"), dataApiVersion);
+                configuration.DataApiUrl, configuration.DataApiVersion);
 
-            _polygonApiKey = keyId;
             _polygonHttpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _polygonHttpClient.BaseAddress =
-                polygonRestApi ?? new Uri("https://api.polygon.io");
-            _isPolygonStaging = isStagingEnvironment ||
+            _polygonHttpClient.BaseAddress = configuration.PolygonApiUrl;
+            _isPolygonStaging =
 #if NETSTANDARD2_1
                 _alpacaHttpClient.BaseAddress.Host.Contains("staging", StringComparison.Ordinal);
 #else
@@ -178,7 +90,7 @@ namespace Alpaca.Markets
             IThrottler throttler,
             Uri endpointUri,
             CancellationToken cancellationToken,
-            HttpMethod method = null)
+            HttpMethod? method = null)
             where TJson : TApi
         {
             var exceptions = new Queue<Exception>();
@@ -190,8 +102,8 @@ namespace Alpaca.Markets
                 {
                     using var request = new HttpRequestMessage(method ?? HttpMethod.Get, endpointUri);
                     using var response = await httpClient
-.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
-.ConfigureAwait(false);
+                        .SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
+                        .ConfigureAwait(false);
 
                     // Check response for server and caller specified waits and retries
                     if (!throttler.CheckHttpResponse(response))
@@ -215,8 +127,12 @@ namespace Alpaca.Markets
             HttpResponseMessage response)
             where TJson : TApi
         {
-            // TODO: olegra - consider using `await using` here later
-            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+#if NETSTANDARD2_1
+            await using var stream = await response.Content.ReadAsStreamAsync()
+#else
+            using var stream = await response.Content.ReadAsStreamAsync()
+#endif
+                .ConfigureAwait(false);
             using var reader = new JsonTextReader(new StreamReader(stream));
 
             var serializer = new JsonSerializer();
@@ -228,7 +144,7 @@ namespace Alpaca.Markets
             try
             {
                 throw new RestClientErrorException(
-                    serializer.Deserialize<JsonError>(reader));
+                    serializer.Deserialize<JsonError>(reader) ?? new JsonError());
             }
             catch (Exception exception)
             {
@@ -264,13 +180,13 @@ namespace Alpaca.Markets
                     httpClient, throttler, uriBuilder.Uri, cancellationToken, HttpMethod.Delete)
                 .ConfigureAwait(false);
 
-        private static Uri addApiVersionNumberSafe(Uri baseUri, Int32 apiVersion)
+        private static Uri addApiVersionNumberSafe(Uri baseUri, ApiVersion apiVersion)
         {
             var builder = new UriBuilder(baseUri);
 
             if (builder.Path.Equals("/", StringComparison.Ordinal))
             {
-                builder.Path = $"v{apiVersion}/";
+                builder.Path = $"{apiVersion.ToEnumString()}/";
             }
             if (!builder.Path.EndsWith("/", StringComparison.Ordinal))
             {

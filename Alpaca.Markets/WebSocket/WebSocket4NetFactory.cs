@@ -17,7 +17,7 @@ namespace Alpaca.Markets
                 Uri url)
             {
                 _webSocket = new WebSocket(url.ToString(),
-                    sslProtocols: SslProtocols.Tls11 | SslProtocols.Tls12);
+                    sslProtocols: SslProtocols.Tls12);
 
                 _webSocket.Opened += handleOpened;
                 _webSocket.Closed += handleClosed;
@@ -66,15 +66,15 @@ namespace Alpaca.Markets
                 String message) =>
                 _webSocket.Send(message);
 
-            public event Action Opened;
+            public event Action? Opened;
 
-            public event Action Closed;
+            public event Action? Closed;
 
-            public event Action<Byte[]> DataReceived;
+            public event Action<Byte[]>? DataReceived;
 
-            public event Action<String> MessageReceived;
+            public event Action<String>? MessageReceived;
 
-            public event Action<Exception> Error;
+            public event Action<Exception>? Error;
 
             private void handleOpened(
                 Object sender,
@@ -101,6 +101,8 @@ namespace Alpaca.Markets
                 ErrorEventArgs eventArgs) =>
                 Error?.Invoke(eventArgs.Exception);
         }
+
+        public static IWebSocketFactory Instance { get; } = new WebSocket4NetFactory();
 
         public IWebSocket CreateWebSocket(
             Uri url) =>

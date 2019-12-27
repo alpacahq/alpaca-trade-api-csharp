@@ -86,14 +86,14 @@ namespace Alpaca.Markets
         /// <param name="pageToken">The ID of the end of your current page of results.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of asset information objects.</returns>
-        public Task<IReadOnlyList<IAsset>> ListAccountActivitiesAsync(
-            IEnumerable<AccountActivityType> activityTypes = null,
+        public Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
+            IEnumerable<AccountActivityType>? activityTypes = null,
             DateTime? date = null,
             DateTime? until = null,
             DateTime? after = null,
             SortDirection? direction = null,
             Int64? pageSize = null,
-            String pageToken = null,
+            String? pageToken = null,
             CancellationToken cancellationToken = default)
         {
             if (date.HasValue && (until.HasValue || after.HasValue))
@@ -115,7 +115,7 @@ namespace Alpaca.Markets
                     .AddParameter("pageToken", pageToken)
             };
 
-            return getObjectsListAsync<IAsset, JsonAsset>(
+            return getObjectsListAsync<IAccountActivity, JsonAccountActivity>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, builder, cancellationToken);
         }
 
@@ -222,7 +222,7 @@ namespace Alpaca.Markets
             TimeInForce duration,
             Decimal? limitPrice = null,
             Decimal? stopPrice = null,
-            String clientOrderId = null,
+            String? clientOrderId = null,
             Boolean? extendedHours = null,
             OrderClass? orderClass = null,
             Decimal? takeProfitLimitPrice = null,
@@ -231,7 +231,7 @@ namespace Alpaca.Markets
             Boolean nested = false,
             CancellationToken cancellationToken = default)
         {
-            if (!String.IsNullOrEmpty(clientOrderId) &&
+            if (clientOrderId != null && 
                 clientOrderId.Length > 48)
             {
                 clientOrderId = clientOrderId.Substring(0, 48);
@@ -262,7 +262,13 @@ namespace Alpaca.Markets
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             var serializer = new JsonSerializer();
+#if NETSTANDARD2_1
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            await using var stringWriter = new StringWriter();
+#pragma warning restore CA2000 // Dispose objects before losing scope
+#else
             using var stringWriter = new StringWriter();
+#endif
 
             serializer.Serialize(stringWriter, newOrder);
 
@@ -292,10 +298,10 @@ namespace Alpaca.Markets
             TimeInForce? duration = null,
             Decimal? limitPrice = null,
             Decimal? stopPrice = null,
-            String clientOrderId = null,
+            String? clientOrderId = null,
             CancellationToken cancellationToken = default)
         {
-            if (!String.IsNullOrEmpty(clientOrderId) &&
+            if (clientOrderId != null && 
                 clientOrderId.Length > 48)
             {
                 clientOrderId = clientOrderId.Substring(0, 48);

@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     internal sealed class JsonPositionActionStatus : IPositionActionStatus
     {
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
-        public String Symbol { get; set; }
+        public String Symbol { get; set; } = String.Empty;
 
         [JsonIgnore]
         public Boolean IsSuccess => StatusCode.IsSuccessHttpStatusCode();

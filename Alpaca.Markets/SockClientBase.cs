@@ -16,25 +16,24 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
-    public abstract class SockClientBase : IDisposable
+    public abstract class SockClientBase<TConfiguration> : IDisposable
+        where TConfiguration : StreamingClientConfiguration
     {
         private readonly IWebSocket _webSocket;
 
-        /// <summary>
-        /// Creates new instance of <see cref="SockClientBase"/> object.
-        /// </summary>
-        /// <param name="endpointUri">URL for websocket endpoint connection.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        protected SockClientBase(
-            UriBuilder endpointUri,
-            IWebSocketFactory webSocketFactory)
-        {
-            endpointUri = endpointUri ?? throw new ArgumentException(
-                        "Endpoint URL should not be null", nameof(endpointUri));
-            webSocketFactory = webSocketFactory ?? throw new ArgumentException(
-                            "Web Socket factory should not be null", nameof(webSocketFactory));
+        internal readonly TConfiguration Configuration;
 
-            _webSocket = webSocketFactory.CreateWebSocket(endpointUri.Uri);
+        /// <summary>
+        /// Creates new instance of <see cref="SockClientBase{TConfiguration}"/> object.
+        /// </summary>
+        /// <param name="configuration"></param>
+        protected internal SockClientBase(
+            TConfiguration configuration)
+        {
+            Configuration = configuration.EnsureNotNull(nameof(configuration));
+            Configuration.EnsureIsValid();
+
+            _webSocket = configuration.CreateWebSocket();
 
             _webSocket.Opened += OnOpened;
             _webSocket.Closed += OnClosed;
@@ -48,22 +47,22 @@ namespace Alpaca.Markets
         /// <summary>
         /// Occured when stream successfully connected.
         /// </summary>
-        public event Action<AuthStatus> Connected;
+        public event Action<AuthStatus>? Connected;
 
         /// <summary>
         /// Occured when underlying web socket successfully opened.
         /// </summary>
-        public event Action SocketOpened;
+        public event Action? SocketOpened;
 
         /// <summary>
         /// Occured when underlying web socket successfully closed.
         /// </summary>
-        public event Action SocketClosed;
+        public event Action? SocketClosed;
 
         /// <summary>
         /// Occured when any error happened in stream.
         /// </summary>
-        public event Action<Exception> OnError;
+        public event Action<Exception>? OnError;
 
         /// <summary>
         /// Opens connection to a streaming API.
@@ -180,6 +179,7 @@ namespace Alpaca.Markets
             IDictionary<TKey, Action<JToken>> handlers,
             TKey messageType,
             JToken message)
+            where TKey : class
         {
             try
             {

@@ -46,13 +46,13 @@ namespace Alpaca.Markets
         public Int64 SequenceNumber { get; set; }
 
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
-        public String TradeId { get; set; }
+        public String? TradeId { get; set; }
 
         [JsonProperty(PropertyName = "I", Required = Required.Default)]
-        public String OriginalTradeId { get; set; }
+        public String? OriginalTradeId { get; set; }
 
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
-        public List<Int64> ConditionsList { get; set; }
+        public List<Int64>? ConditionsList { get; set; }
         
         [JsonIgnore]
         public DateTime Timestamp =>
@@ -76,7 +76,7 @@ namespace Alpaca.Markets
     internal sealed class JsonHistoricalTradeV1 : IHistoricalTrade
     {
         [JsonProperty(PropertyName = "e", Required = Required.Default)]
-        public String Exchange { get; set; }
+        public String? Exchange { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Default)]
         public Int64 TimeOffset { get; set; }

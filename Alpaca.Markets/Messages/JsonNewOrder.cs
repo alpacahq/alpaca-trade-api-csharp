@@ -6,7 +6,7 @@ namespace Alpaca.Markets
     internal sealed class JsonNewOrder
     {
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
-        public String Symbol { get; set; }
+        public String Symbol { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "qty", Required = Required.Always)]
         public Int64 Quantity { get; set; }
@@ -27,7 +27,7 @@ namespace Alpaca.Markets
         public Decimal? StopPrice { get; set; }
 
         [JsonProperty(PropertyName = "client_order_id", Required = Required.Default)]
-        public String ClientOrderId { get; set; }
+        public String? ClientOrderId { get; set; }
 
         [JsonProperty(PropertyName = "extended_hours", Required = Required.Default)]
         public Boolean? ExtendedHours { get; set; }

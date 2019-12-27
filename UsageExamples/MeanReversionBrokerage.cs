@@ -20,8 +20,6 @@ namespace UsageExamples
 
         private string API_SECRET = "REPLACEME";
 
-        private string API_URL = "https://paper-api.alpaca.markets";
-
         private string symbol = "AAPL";
 
         private Decimal scale = 200;
@@ -38,10 +36,22 @@ namespace UsageExamples
 
         public async Task Run()
         {
-            restClient = new RestClient(API_KEY, API_SECRET, API_URL, apiVersion: 2);
+            restClient = new RestClient(
+                new RestfulApiClientConfiguration
+                {
+                    KeyId = API_KEY,
+                    SecurityId = new SecretKey(API_SECRET),
+                    TradingApiUrl = Environments.Paper.AlpacaTradingApi
+                });
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
-            sockClient = new SockClient(API_KEY, API_SECRET, API_URL);
+            sockClient = new SockClient(
+                new AlpacaStreamingClientConfiguration
+                {
+                    KeyId = API_KEY,
+                    SecretKey = API_SECRET,
+                    ApiEndpoint = Environments.Paper.AlpacaStreamingApi
+                });
             sockClient.ConnectAndAuthenticateAsync().Wait();
 
             sockClient.OnTradeUpdate += HandleTradeUpdate;
@@ -77,7 +87,11 @@ namespace UsageExamples
             Console.WriteLine("Market opened.");
 
             // Connect to Polygon's websocket and listen for price updates.
-            polygonSockClient = new PolygonSockClient(API_KEY);
+            polygonSockClient = new PolygonSockClient(
+                new PolygonStreamingClientConfiguration
+                {
+                    KeyId = API_KEY
+                });
             polygonSockClient.ConnectAndAuthenticateAsync().Wait();
             Console.WriteLine("Polygon client opened.");
             polygonSockClient.MinuteAggReceived += async (agg) =>

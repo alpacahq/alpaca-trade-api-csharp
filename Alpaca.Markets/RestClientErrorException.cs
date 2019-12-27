@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Net.Http;
-#if !NETSTANDARD1_6
-using System.Runtime.Serialization;
-#endif
 
 namespace Alpaca.Markets
 {
@@ -42,10 +39,10 @@ namespace Alpaca.Markets
         {
         }
 
-#if !NETSTANDARD1_6
+#if !NETSTANDARD1_3
         private RestClientErrorException(
-            SerializationInfo info,
-            StreamingContext context)
+            System.Runtime.Serialization.SerializationInfo info,
+            System.Runtime.Serialization.StreamingContext context)
             : base(info, context)
         {
         }

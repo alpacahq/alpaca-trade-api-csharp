@@ -10,7 +10,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets account number (string identifier).
         /// </summary>
-        String AccountNumber { get; }
+        String? AccountNumber { get; }
 
         /// <summary>
         /// Gets returns <c>true</c> if account is linked to day pattern trader.
