@@ -16,7 +16,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
-    public abstract class SockClientBase<TConfiguration> : IDisposable
+    public abstract class StreamingClientBase<TConfiguration> : IDisposable
         where TConfiguration : StreamingClientConfiguration
     {
         private readonly IWebSocket _webSocket;
@@ -24,10 +24,10 @@ namespace Alpaca.Markets
         internal readonly TConfiguration Configuration;
 
         /// <summary>
-        /// Creates new instance of <see cref="SockClientBase{TConfiguration}"/> object.
+        /// Creates new instance of <see cref="StreamingClientBase{TConfiguration}"/> object.
         /// </summary>
         /// <param name="configuration"></param>
-        protected internal SockClientBase(
+        private protected StreamingClientBase(
             TConfiguration configuration)
         {
             Configuration = configuration.EnsureNotNull(nameof(configuration));

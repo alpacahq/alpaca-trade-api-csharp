@@ -25,8 +25,8 @@ namespace UsageExamples
         private Decimal scale = 200;
 
         private RestClient restClient;
-        private SockClient sockClient;
-        private PolygonSockClient polygonSockClient;
+        private AlpacaStreamingClient alpacaStreamingClient;
+        private PolygonStreamingClient polygonStreamingClient;
 
         private Guid lastTradeId = Guid.NewGuid();
 
@@ -45,16 +45,16 @@ namespace UsageExamples
                 });
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
-            sockClient = new SockClient(
+            alpacaStreamingClient = new AlpacaStreamingClient(
                 new AlpacaStreamingClientConfiguration
                 {
                     KeyId = API_KEY,
                     SecretKey = API_SECRET,
                     ApiEndpoint = Environments.Paper.AlpacaStreamingApi
                 });
-            sockClient.ConnectAndAuthenticateAsync().Wait();
+            alpacaStreamingClient.ConnectAndAuthenticateAsync().Wait();
 
-            sockClient.OnTradeUpdate += HandleTradeUpdate;
+            alpacaStreamingClient.OnTradeUpdate += HandleTradeUpdate;
 
             // First, cancel any existing orders so they don't impact our buying power.
             var orders = await restClient.ListOrdersAsync();
@@ -87,14 +87,14 @@ namespace UsageExamples
             Console.WriteLine("Market opened.");
 
             // Connect to Polygon's websocket and listen for price updates.
-            polygonSockClient = new PolygonSockClient(
+            polygonStreamingClient = new PolygonStreamingClient(
                 new PolygonStreamingClientConfiguration
                 {
                     KeyId = API_KEY
                 });
-            polygonSockClient.ConnectAndAuthenticateAsync().Wait();
+            polygonStreamingClient.ConnectAndAuthenticateAsync().Wait();
             Console.WriteLine("Polygon client opened.");
-            polygonSockClient.MinuteAggReceived += async (agg) =>
+            polygonStreamingClient.MinuteAggReceived += async (agg) =>
             {
                 // If the market's close to closing, exit position and stop trading.
                 TimeSpan minutesUntilClose = closingTime - DateTime.UtcNow;
@@ -102,7 +102,7 @@ namespace UsageExamples
                 {
                     Console.WriteLine("Reached the end of trading window.");
                     await ClosePositionAtMarket();
-                    await polygonSockClient.DisconnectAsync();
+                    await polygonStreamingClient.DisconnectAsync();
                 }
                 else
                 {
@@ -110,14 +110,14 @@ namespace UsageExamples
                     await HandleMinuteAgg(agg);
                 }
             };
-            polygonSockClient.SubscribeSecondAgg(symbol);
+            polygonStreamingClient.SubscribeSecondAgg(symbol);
         }
 
         public void Dispose()
         {
             restClient?.Dispose();
-            sockClient?.Dispose();
-            polygonSockClient?.Dispose();
+            alpacaStreamingClient?.Dispose();
+            polygonStreamingClient?.Dispose();
         }
 
         // Waits until the clock says the market is open.

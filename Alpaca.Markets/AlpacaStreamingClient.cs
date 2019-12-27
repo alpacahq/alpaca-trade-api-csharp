@@ -12,8 +12,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
-    // ReSharper disable once PartialTypeWithSinglePart
-    public sealed partial class SockClient : SockClientBase<AlpacaStreamingClientConfiguration>
+    public sealed class AlpacaStreamingClient : StreamingClientBase<AlpacaStreamingClientConfiguration>
     {
         // Available Alpaca message types
 
@@ -35,9 +34,9 @@ namespace Alpaca.Markets
         /// Creates new instance of <see cref="SockClient"/> object.
         /// </summary>
         /// <param name="configuration">Configuration parameters object.</param>
-        public SockClient(
+        public AlpacaStreamingClient(
             AlpacaStreamingClientConfiguration configuration)
-            : base(configuration)
+            : base(configuration.EnsureNotNull(nameof(configuration)))
         {
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {

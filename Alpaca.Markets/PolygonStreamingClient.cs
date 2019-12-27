@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
@@ -12,8 +12,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
-    // ReSharper disable once PartialTypeWithSinglePart
-    public sealed partial class PolygonSockClient : SockClientBase<PolygonStreamingClientConfiguration>
+    public sealed class PolygonStreamingClient : StreamingClientBase<PolygonStreamingClientConfiguration>
     {
         // Available Polygon message types
 
@@ -54,12 +53,12 @@ namespace Alpaca.Markets
         public event Action<IStreamAgg>? SecondAggReceived;
 
         /// <summary>
-        /// Creates new instance of <see cref="PolygonSockClient"/> object.
+        /// Creates new instance of <see cref="PolygonStreamingClient"/> object.
         /// </summary>
         /// <param name="configuration">Configuration parameters object.</param>
-        public PolygonSockClient(
+        public PolygonStreamingClient(
             PolygonStreamingClientConfiguration configuration)
-            : base(configuration)
+            : base(configuration.EnsureNotNull(nameof(configuration)))
         {
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
@@ -70,6 +69,7 @@ namespace Alpaca.Markets
                 { SecondAggChannel, handleSecondAggChannel }
             };
         }
+
         /// <summary>
         /// Subscribes for the trade updates via <see cref="TradeReceived"/>
         /// event for specific asset from Polygon streaming API.
@@ -297,7 +297,7 @@ namespace Alpaca.Markets
         private static String getParams(
             String channel,
             IEnumerable<String> symbols) =>
-            String.Join(",",symbols.Select(symbol => getParams(channel, symbol)));
+            String.Join(",",symbols.Select(symbol => getParams(channel, (String) symbol)));
 
         private void handleTradesChannel(
             JToken token) =>
