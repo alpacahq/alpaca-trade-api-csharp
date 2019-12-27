@@ -86,7 +86,7 @@ namespace Alpaca.Markets
         /// <param name="pageToken">The ID of the end of your current page of results.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of asset information objects.</returns>
-        public Task<IReadOnlyList<IAsset>> ListAccountActivitiesAsync(
+        public Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
             IEnumerable<AccountActivityType> activityTypes = null,
             DateTime? date = null,
             DateTime? until = null,
@@ -115,7 +115,7 @@ namespace Alpaca.Markets
                     .AddParameter("pageToken", pageToken)
             };
 
-            return getObjectsListAsync<IAsset, JsonAsset>(
+            return getObjectsListAsync<IAccountActivity, JsonAccountActivity>(
                 _alpacaHttpClient, _alpacaRestApiThrottler, builder, cancellationToken);
         }
 
