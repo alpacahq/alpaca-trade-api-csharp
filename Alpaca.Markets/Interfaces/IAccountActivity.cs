@@ -18,6 +18,16 @@ namespace Alpaca.Markets
         String ActivityId { get; }
 
         /// <summary>
+        /// An activity timestamp (date and time) from <see cref="ActivityId"/>.
+        /// </summary>
+        DateTime ActivityDateTime { get; }
+
+        /// <summary>
+        /// An activity unique identifier from <see cref="ActivityId"/>.
+        /// </summary>
+        Guid ActivityGuid { get; }
+
+        /// <summary>
         /// The symbol of the security involved with the activity. Not present for all activity types.
         /// </summary>
         String Symbol { get; }

@@ -75,9 +75,52 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
+        /// Gets list of account activities from Alpaca REST API endpoint by specific activity.
+        /// </summary>
+        /// <param name="activityType">The activity type you want to view entries for.</param>
+        /// <param name="date">The date for which you want to see activities.</param>
+        /// <param name="until">The response will contain only activities submitted before this date. (Cannot be used with date.)</param>
+        /// <param name="after">The response will contain only activities submitted after this date. (Cannot be used with date.)</param>
+        /// <param name="direction">The response will be sorted by time in this direction. (Default behavior is descending.)</param>
+        /// <param name="pageSize">The maximum number of entries to return in the response.</param>
+        /// <param name="pageToken">The ID of the end of your current page of results.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only list of asset information objects.</returns>
+        public Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
+            AccountActivityType activityType,
+            DateTime? date = null,
+            DateTime? until = null,
+            DateTime? after = null,
+            SortDirection? direction = null,
+            Int64? pageSize = null,
+            String pageToken = null,
+            CancellationToken cancellationToken = default)
+        {
+            if (date.HasValue && (until.HasValue || after.HasValue))
+            {
+                throw new ArgumentException("You unable to specify 'date' and 'until'/'after' arguments in same call.");
+            }
+
+            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            {
+                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + $"account/activities/{activityType.ToEnumString()}",
+                Query = new QueryBuilder()
+                    .AddParameter("date", date, "yyyy-MM-dd")
+                    .AddParameter("until", until, "O")
+                    .AddParameter("after", after, "O")
+                    .AddParameter("direction", direction)
+                    .AddParameter("pageSize", pageSize)
+                    .AddParameter("pageToken", pageToken)
+            };
+
+            return getObjectsListAsync<IAccountActivity, JsonAccountActivity>(
+                _alpacaHttpClient, _alpacaRestApiThrottler, builder, cancellationToken);
+        }
+
+        /// <summary>
         /// Gets list of account activities from Alpaca REST API endpoint.
         /// </summary>
-        /// <param name="activityTypes">The activity type you want to view entries for.</param>
+        /// <param name="activityTypes">The list of activity types you want to view entries for.</param>
         /// <param name="date">The date for which you want to see activities.</param>
         /// <param name="until">The response will contain only activities submitted before this date. (Cannot be used with date.)</param>
         /// <param name="after">The response will contain only activities submitted after this date. (Cannot be used with date.)</param>
@@ -105,8 +148,7 @@ namespace Alpaca.Markets
             {
                 Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "account/activities",
                 Query = new QueryBuilder()
-                    .AddParameter("activity_types",
-                        String.Join(",", activityTypes ?? Enumerable.Empty<AccountActivityType>()))
+                    .AddParameter("activity_types", activityTypes)
                     .AddParameter("date", date, "yyyy-MM-dd")
                     .AddParameter("until", until, "O")
                     .AddParameter("after", after, "O")
