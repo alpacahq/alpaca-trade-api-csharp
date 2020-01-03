@@ -4,24 +4,22 @@
     <TargetFrameworks>netstandard2.0;netstandard1.6;net45</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>3.3.8</Version>
+    <Version>3.3.9</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2019 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>3.3.8.0</AssemblyVersion>
-    <FileVersion>3.3.8.0</FileVersion>
+    <AssemblyVersion>3.3.9.0</AssemblyVersion>
+    <FileVersion>3.3.9.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn>8002;NU5125</NoWarn>
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIconUrl>https://alpaca.markets/static/favicon-32x32.png</PackageIconUrl>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- For proper deserialization of "unknown" order types (like `short_sell` for example) enum type `OrderSide` now has 
-own custom deserializer `OrderSideEnumConverter` which handle all unknown values as `OrderSide.Sell` values.
-- In method `RestClient.ListAccountActivitiesAsync` list processed correctly (and overload for single value added).</PackageReleaseNotes>
+    <PackageReleaseNotes>- Fixed problem with deserialization of "unknown" enum values in some cases for custom deserializers.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
