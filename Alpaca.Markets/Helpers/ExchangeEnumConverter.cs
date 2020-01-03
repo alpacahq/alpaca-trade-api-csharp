@@ -20,7 +20,7 @@ namespace Alpaca.Markets
             {
                 return base.ReadJson(reader, objectType, existingValue, serializer);
             }
-            catch (ArgumentException)
+            catch (JsonSerializationException)
             {
                 return Exchange.Unknown;
             }
