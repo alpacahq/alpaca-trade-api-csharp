@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Configuration parameters object for <see cref="AlpacaDataClient"/> class.
     /// </summary>
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
@@ -12,7 +12,7 @@ namespace Alpaca.Markets
     public sealed class AlpacaDataClientConfiguration
     {
         /// <summary>
-        /// 
+        /// Creates new instance of <see cref="AlpacaDataClientConfiguration"/> class.
         /// </summary>
         public AlpacaDataClientConfiguration()
         {
@@ -26,7 +26,7 @@ namespace Alpaca.Markets
         public String KeyId { get; set; }
 
         /// <summary>
-        /// Gets or sets Alpaca data API base URL.
+        /// Gets or sets Alpaca Data API base URL.
         /// </summary>
         public Uri ApiEndpoint { get; set; }
 

@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Provides unified type-safe access for Alpaca Data API via HTTP/REST.
     /// </summary>
     public sealed class AlpacaDataClient : IDisposable
     {
         private readonly HttpClient _httpClient = new HttpClient();
 
         /// <summary>
-        /// 
+        /// Creates new instance of <see cref="AlpacaDataClient"/> object.
         /// </summary>
-        /// <param name="configuration"></param>
+        /// <param name="configuration">Configuration parameters object.</param>
         public AlpacaDataClient(
             AlpacaDataClientConfiguration configuration)
         {

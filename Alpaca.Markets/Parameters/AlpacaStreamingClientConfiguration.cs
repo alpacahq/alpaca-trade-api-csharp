@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Configuration parameters object for <see cref="SockClient"/> class.
+    /// Configuration parameters object for <see cref="AlpacaStreamingClient"/> class.
     /// </summary>
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",

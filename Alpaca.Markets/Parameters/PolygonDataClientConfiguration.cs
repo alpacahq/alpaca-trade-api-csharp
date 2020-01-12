@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Configuration parameters object for <see cref="PolygonDataClient"/> class.
     /// </summary>
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
@@ -12,7 +12,7 @@ namespace Alpaca.Markets
     public sealed class PolygonDataClientConfiguration
     {
         /// <summary>
-        /// 
+        /// Creates new instance of <see cref="PolygonDataClientConfiguration"/> class.
         /// </summary>
         public PolygonDataClientConfiguration()
         {
@@ -26,12 +26,12 @@ namespace Alpaca.Markets
         public String KeyId { get; set; }
 
         /// <summary>
-        /// Gets or sets Alpaca data API base URL.
+        /// Gets or sets Polygon Data API base URL.
         /// </summary>
         public Uri ApiEndpoint { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets if <see cref="PolygonDataClient"/> connects for staging environment.
         /// </summary>
         public Boolean IsStaging { get; set; }
 

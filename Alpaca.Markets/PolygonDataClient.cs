@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Provides unified type-safe access for Polygon Data API via HTTP/REST.
     /// </summary>
     public sealed class PolygonDataClient : IDisposable
     {
@@ -21,9 +21,9 @@ namespace Alpaca.Markets
         private readonly String _keyId;
 
         /// <summary>
-        /// 
+        /// Creates new instance of <see cref="PolygonDataClient"/> object.
         /// </summary>
-        /// <param name="configuration"></param>
+        /// <param name="configuration">Configuration parameters object.</param>
         public PolygonDataClient(
             PolygonDataClientConfiguration configuration)
         {
