@@ -27,6 +27,8 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IncludeSymbols>true</IncludeSymbols>
     <Nullable>enable</Nullable>
+    <AssemblyOriginatorKeyFile>Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -35,11 +37,6 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard2.0\Alpaca.Markets.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="('$(TargetFramework)'=='netstandard2.1')Or('$(TargetFramework)'=='netstandard2.0')Or('$(TargetFramework)'=='netstandard1.3')">
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
