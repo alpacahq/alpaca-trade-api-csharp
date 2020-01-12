@@ -27,7 +27,7 @@ namespace UsageExamples
         public async Task Run()
         {
             restClient = new RestClient(
-                new RestfulApiClientConfiguration
+                new RestClientConfiguration
                 {
                     KeyId = API_KEY,
                     SecurityId = new SecretKey(API_SECRET),

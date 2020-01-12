@@ -562,32 +562,15 @@ namespace Alpaca.Markets
         /// <param name="limit">Maximal number of daily bars in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
-        public async Task<IReadOnlyDictionary<String, IEnumerable<IAgg>>> GetBarSetAsync(
+        public Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
             IEnumerable<String> symbols,
             TimeFrame timeFrame,
             Int32? limit = 100,
             Boolean areTimesInclusive = true,
             DateTime? timeFrom = null,
             DateTime? timeInto = null,
-            CancellationToken cancellationToken = default)
-        {
-            var builder = new UriBuilder(_alpacaDataClient.BaseAddress)
-            {
-                Path = _alpacaDataClient.BaseAddress.AbsolutePath + $"bars/{timeFrame.ToEnumString()}",
-                Query = new QueryBuilder()
-                    .AddParameter("symbols", String.Join(",", symbols))
-                    .AddParameter((areTimesInclusive ? "start" : "after"), timeFrom, "O")
-                    .AddParameter((areTimesInclusive ? "end" : "until"), timeInto, "O")
-                    .AddParameter("limit", limit)
-            };
-
-            var response = await getSingleObjectAsync
-                <IReadOnlyDictionary<String, List<JsonBarAgg>>,
-                    Dictionary<String, List<JsonBarAgg>>>(
-                _alpacaHttpClient, FakeThrottler.Instance, builder, cancellationToken)
-                .ConfigureAwait(false);
-
-            return response.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.AsEnumerable<IAgg>());
-        }
+            CancellationToken cancellationToken = default) =>
+            _alpacaDataClient.GetBarSetAsync(
+                symbols, timeFrame, limit, areTimesInclusive, timeFrom, timeInto, cancellationToken);
     }
 }

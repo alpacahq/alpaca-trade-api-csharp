@@ -37,8 +37,8 @@ namespace Alpaca.Markets
                 alpacaRestApi.GetUrlSafe(Environments.Live.AlpacaTradingApi),
                 polygonRestApi.GetUrlSafe(Environments.Live.PolygonDataApi),
                 alpacaDataApi.GetUrlSafe(Environments.Live.AlpacaDataApi),
-                apiVersion ?? (Int32)RestfulApiClientConfiguration.DefaultTradingApiVersionNumber,
-                dataApiVersion ?? (Int32)RestfulApiClientConfiguration.DefaultDataApiVersionNumber,
+                apiVersion ?? (Int32)RestClientConfiguration.DefaultTradingApiVersionNumber,
+                dataApiVersion ?? (Int32)RestClientConfiguration.DefaultDataApiVersionNumber,
                 throttleParameters ?? ThrottleParameters.Default,
                 oauthKey ?? String.Empty))
         {
@@ -87,7 +87,7 @@ namespace Alpaca.Markets
             System.Diagnostics.Contracts.Contract.Requires(configuration != null);
         }
 
-        private static RestfulApiClientConfiguration createConfiguration(
+        private static RestClientConfiguration createConfiguration(
             Microsoft.Extensions.Configuration.IConfiguration configuration)
         {
             return createConfiguration(
@@ -96,8 +96,8 @@ namespace Alpaca.Markets
                 configuration["alpacaRestApi"].GetUrlSafe(Environments.Live.AlpacaTradingApi),
                 configuration["polygonRestApi"].GetUrlSafe(Environments.Live.PolygonDataApi),
                 configuration["alpacaDataApi"].GetUrlSafe(Environments.Live.AlpacaDataApi),
-                toInt32OrNull(configuration["apiVersion"]) ?? (Int32)RestfulApiClientConfiguration.DefaultTradingApiVersionNumber,
-                toInt32OrNull(configuration["dataApiVersion"]) ?? (Int32)RestfulApiClientConfiguration.DefaultDataApiVersionNumber,
+                toInt32OrNull(configuration["apiVersion"]) ?? (Int32)RestClientConfiguration.DefaultTradingApiVersionNumber,
+                toInt32OrNull(configuration["dataApiVersion"]) ?? (Int32)RestClientConfiguration.DefaultDataApiVersionNumber,
                 new ThrottleParameters(null, null,
                     toInt32OrNull(configuration["maxRetryAttempts"]),
                     configuration?.GetSection("retryHttpStatuses")
@@ -113,7 +113,7 @@ namespace Alpaca.Markets
             value != null ? Convert.ToBoolean(value, CultureInfo.InvariantCulture) : (Boolean?)null;
 #endif
 
-        private static RestfulApiClientConfiguration createConfiguration(
+        private static RestClientConfiguration createConfiguration(
             String keyId,
             String secretKey,
             Uri alpacaRestApi,
@@ -129,7 +129,7 @@ namespace Alpaca.Markets
             {
                 throw new ArgumentException("Application secret key or OAuth key (but not both) should not be null or empty.");
             }
-            return new RestfulApiClientConfiguration
+            return new RestClientConfiguration
             {
                 KeyId = keyId ?? throw new ArgumentException("Application key id should not be null.", nameof(keyId)),
                 SecurityId = SecurityKey.Create(secretKey, oauthKey),

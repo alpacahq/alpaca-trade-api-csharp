@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
-    public sealed class RestfulApiClientConfiguration
+    public sealed class RestClientConfiguration
     {
         internal const ApiVersion DefaultTradingApiVersionNumber = ApiVersion.V2;
 
@@ -21,9 +21,9 @@ namespace Alpaca.Markets
         private static readonly HashSet<ApiVersion> _supportedDataApiVersions = new HashSet<ApiVersion> { ApiVersion.V1 };
 
         /// <summary>
-        /// Creates new instance of <see cref="RestfulApiClientConfiguration"/> class.
+        /// Creates new instance of <see cref="RestClientConfiguration"/> class.
         /// </summary>
-        public RestfulApiClientConfiguration()
+        public RestClientConfiguration()
         {
             KeyId = String.Empty;
             SecurityId = new SecretKey(String.Empty);
@@ -78,7 +78,14 @@ namespace Alpaca.Markets
         /// </summary>
         public ThrottleParameters ThrottleParameters { get; set; }
 
-        internal RestfulApiClientConfiguration EnsureIsValid()
+        internal AlpacaDataClientConfiguration AlpacaDataClientConfiguration =>
+            new AlpacaDataClientConfiguration
+            {
+                KeyId = KeyId,
+                ApiEndpoint = DataApiUrl
+            };
+
+        internal RestClientConfiguration EnsureIsValid()
         {
             if (String.IsNullOrEmpty(KeyId))
             {

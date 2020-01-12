@@ -23,11 +23,11 @@ namespace Alpaca.Markets
 
         private readonly HttpClient _alpacaHttpClient = new HttpClient();
 
-        private readonly HttpClient _alpacaDataClient = new HttpClient();
+        private readonly AlpacaDataClient _alpacaDataClient;
 
         private readonly HttpClient _polygonHttpClient = new HttpClient();
 
-        private readonly RestfulApiClientConfiguration _configuration;
+        private readonly RestClientConfiguration _configuration;
 
         private readonly IThrottler _alpacaRestApiThrottler;
 
@@ -38,7 +38,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="configuration">Configuration parameters object.</param>
         public RestClient(
-            RestfulApiClientConfiguration configuration)
+            RestClientConfiguration configuration)
         {
             _configuration = configuration
                 .EnsureNotNull(nameof(configuration))
@@ -54,10 +54,7 @@ namespace Alpaca.Markets
             _alpacaHttpClient.BaseAddress = addApiVersionNumberSafe(
                 configuration.TradingApiUrl, configuration.TradingApiVersion);
 
-            _alpacaDataClient.DefaultRequestHeaders.Accept
-                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _alpacaDataClient.BaseAddress = addApiVersionNumberSafe(
-                configuration.DataApiUrl, configuration.DataApiVersion);
+            _alpacaDataClient = new AlpacaDataClient(configuration.AlpacaDataClientConfiguration);
 
             _polygonHttpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -170,6 +167,7 @@ namespace Alpaca.Markets
             (IReadOnlyList<TApi>) await callAndDeserializeSingleObjectAsync<IReadOnlyList<TJson>, List<TJson>>(
                 httpClient, throttler, uriBuilder.Uri, cancellationToken)
                 .ConfigureAwait(false);
+
         private async Task<IReadOnlyList<TApi>> deleteObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
