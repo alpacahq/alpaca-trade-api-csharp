@@ -85,6 +85,13 @@ namespace Alpaca.Markets
                 ApiEndpoint = DataApiUrl
             };
 
+        internal PolygonDataClientConfiguration PolygonDataClientConfiguration =>
+            new PolygonDataClientConfiguration
+            {
+                KeyId = KeyId,
+                ApiEndpoint = PolygonApiUrl
+            };
+
         internal RestClientConfiguration EnsureIsValid()
         {
             if (String.IsNullOrEmpty(KeyId))

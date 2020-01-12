@@ -19,6 +19,16 @@ namespace Alpaca.Markets
             callAndDeserializeSingleObjectAsync<TApi, TJson>(
                 httpClient, throttler, uriBuilder.Uri, cancellationToken);
 
+        public static async Task<IReadOnlyList<TApi>> GetObjectsListAsync<TApi, TJson>(
+            this HttpClient httpClient,
+            IThrottler throttler,
+            UriBuilder uriBuilder,
+            CancellationToken cancellationToken)
+            where TJson : TApi =>
+            (IReadOnlyList<TApi>) await callAndDeserializeSingleObjectAsync<IReadOnlyList<TJson>, List<TJson>>(
+                    httpClient, throttler, uriBuilder.Uri, cancellationToken)
+                .ConfigureAwait(false);
+
         private static async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
@@ -85,16 +95,6 @@ namespace Alpaca.Markets
                 throw new RestClientErrorException(response, exception);
             }
         }
-
-        private static async Task<IReadOnlyList<TApi>> getObjectsListAsync<TApi, TJson>(
-            HttpClient httpClient,
-            IThrottler throttler,
-            UriBuilder uriBuilder,
-            CancellationToken cancellationToken)
-            where TJson : TApi =>
-            (IReadOnlyList<TApi>) await callAndDeserializeSingleObjectAsync<IReadOnlyList<TJson>, List<TJson>>(
-                httpClient, throttler, uriBuilder.Uri, cancellationToken)
-                .ConfigureAwait(false);
 
         private static async Task<IReadOnlyList<TApi>> deleteObjectsListAsync<TApi, TJson>(
             HttpClient httpClient,

@@ -9,12 +9,12 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
-    public sealed class AlpacaDataClientConfiguration
+    public sealed class PolygonDataClientConfiguration
     {
         /// <summary>
         /// 
         /// </summary>
-        public AlpacaDataClientConfiguration()
+        public PolygonDataClientConfiguration()
         {
             KeyId = String.Empty;
             ApiEndpoint = Environments.Live.AlpacaDataApi;
@@ -29,6 +29,11 @@ namespace Alpaca.Markets
         /// Gets or sets Alpaca data API base URL.
         /// </summary>
         public Uri ApiEndpoint { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Boolean IsStaging { get; set; }
 
         internal void EnsureIsValid()
         {

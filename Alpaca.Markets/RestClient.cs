@@ -25,13 +25,9 @@ namespace Alpaca.Markets
 
         private readonly AlpacaDataClient _alpacaDataClient;
 
-        private readonly HttpClient _polygonHttpClient = new HttpClient();
-
-        private readonly RestClientConfiguration _configuration;
+        private readonly PolygonDataClient _polygonDataClient;
 
         private readonly IThrottler _alpacaRestApiThrottler;
-
-        private readonly Boolean _isPolygonStaging;
 
         /// <summary>
         /// Creates new instance of <see cref="RestClient"/> object.
@@ -40,7 +36,7 @@ namespace Alpaca.Markets
         public RestClient(
             RestClientConfiguration configuration)
         {
-            _configuration = configuration
+            configuration
                 .EnsureNotNull(nameof(configuration))
                 .EnsureIsValid();
 
@@ -55,16 +51,7 @@ namespace Alpaca.Markets
                 configuration.TradingApiUrl, configuration.TradingApiVersion);
 
             _alpacaDataClient = new AlpacaDataClient(configuration.AlpacaDataClientConfiguration);
-
-            _polygonHttpClient.DefaultRequestHeaders.Accept
-                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _polygonHttpClient.BaseAddress = configuration.PolygonApiUrl;
-            _isPolygonStaging =
-#if NETSTANDARD2_1
-                _alpacaHttpClient.BaseAddress.Host.Contains("staging", StringComparison.Ordinal);
-#else
-                _alpacaHttpClient.BaseAddress.Host.Contains("staging");
-#endif
+            _polygonDataClient = new PolygonDataClient(configuration.PolygonDataClientConfiguration);
 
 #if NET45
             System.Net.ServicePointManager.SecurityProtocol =
@@ -79,7 +66,7 @@ namespace Alpaca.Markets
         {
             _alpacaHttpClient?.Dispose();
             _alpacaDataClient?.Dispose();
-            _polygonHttpClient?.Dispose();
+            _polygonDataClient?.Dispose();
         }
 
         private static async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(
