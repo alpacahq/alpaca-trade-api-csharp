@@ -4,7 +4,6 @@ using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
@@ -57,14 +56,10 @@ namespace Alpaca.Markets
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             using var request = new HttpRequestMessage(_httpMethodPatch,
-                new Uri("account/configurations", UriKind.RelativeOrAbsolute));
-
-            var serializer = new JsonSerializer();
-            using (var stringWriter = new StringWriter())
+                new Uri("account/configurations", UriKind.RelativeOrAbsolute))
             {
-                serializer.Serialize(stringWriter, accountConfiguration);
-                request.Content = new StringContent(stringWriter.ToString());
-            }
+                Content = toStringContent(accountConfiguration)
+            };
 
             using var response = await _alpacaHttpClient.SendAsync(request, cancellationToken)
                 .ConfigureAwait(false);
@@ -283,18 +278,7 @@ namespace Alpaca.Markets
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            var serializer = new JsonSerializer();
-#if NETSTANDARD2_1
-#pragma warning disable CA2000 // Dispose objects before losing scope
-            await using var stringWriter = new StringWriter();
-#pragma warning restore CA2000 // Dispose objects before losing scope
-#else
-            using var stringWriter = new StringWriter();
-#endif
-
-            serializer.Serialize(stringWriter, newOrder);
-
-            using var content = new StringContent(stringWriter.ToString());
+            using var content = toStringContent(newOrder);
             using var response = await _alpacaHttpClient.PostAsync(
                     new Uri("orders", UriKind.RelativeOrAbsolute), content, cancellationToken)
                 .ConfigureAwait(false);
@@ -341,14 +325,10 @@ namespace Alpaca.Markets
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             using var request = new HttpRequestMessage(_httpMethodPatch,
-                new Uri($"orders/{orderId:D}", UriKind.RelativeOrAbsolute));
-
-            using (var stringWriter = new StringWriter())
+                new Uri($"orders/{orderId:D}", UriKind.RelativeOrAbsolute))
             {
-                var serializer = new JsonSerializer();
-                serializer.Serialize(stringWriter, changeOrder);
-                request.Content = new StringContent(stringWriter.ToString());
-            }
+                Content = toStringContent(changeOrder)
+            };
 
             using var response = await _alpacaHttpClient.SendAsync(request, cancellationToken)
                 .ConfigureAwait(false);

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -54,12 +53,5 @@ namespace Alpaca.Markets
         
         [JsonIgnore]
         public Guid ActivityGuid { get; set; }
-
-        [OnDeserialized]
-        internal void OnDeserializedMethod(
-            StreamingContext context)
-        {
-
-        }
     }
 }
