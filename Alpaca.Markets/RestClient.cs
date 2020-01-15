@@ -261,6 +261,16 @@ namespace Alpaca.Markets
                     httpClient, throttler, uriBuilder.Uri, cancellationToken, HttpMethod.Delete)
                 .ConfigureAwait(false);
 
+        private static StringContent toStringContent(
+            Object value)
+        {
+            var serializer = new JsonSerializer();
+            using var stringWriter = new StringWriter();
+
+            serializer.Serialize(stringWriter, value);
+            return new StringContent(stringWriter.ToString());
+        }
+
         private static Uri addApiVersionNumberSafe(Uri baseUri, Int32 apiVersion)
         {
             var builder = new UriBuilder(baseUri);
