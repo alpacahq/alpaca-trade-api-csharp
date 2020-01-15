@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -10,8 +9,6 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonAccountActivity : IAccountActivity
     {
-
-
         [JsonProperty(PropertyName = "activity_type", Required = Required.Always)]
         public AccountActivityType ActivityType { get; set; }
 
@@ -56,12 +53,5 @@ namespace Alpaca.Markets
         
         [JsonIgnore]
         public Guid ActivityGuid { get; set; }
-
-        [OnDeserialized]
-        internal void OnDeserializedMethod(
-            StreamingContext context)
-        {
-
-        }
     }
 }
