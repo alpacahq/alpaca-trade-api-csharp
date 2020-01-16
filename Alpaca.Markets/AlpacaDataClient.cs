@@ -30,6 +30,7 @@ namespace Alpaca.Markets
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _httpClient.BaseAddress = configuration.ApiEndpoint
                 .AddApiVersionNumberSafe(ApiVersion.V1);
+            _httpClient.SetSecurityProtocol();
         }
 
         /// <inheritdoc />

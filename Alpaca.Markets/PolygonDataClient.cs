@@ -37,6 +37,7 @@ namespace Alpaca.Markets
             _httpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _httpClient.BaseAddress = configuration.ApiEndpoint;
+            _httpClient.SetSecurityProtocol();
         }
 
         /// <inheritdoc />

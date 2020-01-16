@@ -37,8 +37,8 @@ namespace Alpaca.Markets
                 alpacaRestApi.GetUrlSafe(Environments.Live.AlpacaTradingApi),
                 polygonRestApi.GetUrlSafe(Environments.Live.PolygonDataApi),
                 alpacaDataApi.GetUrlSafe(Environments.Live.AlpacaDataApi),
-                apiVersion ?? (Int32)RestClientConfiguration.DefaultTradingApiVersionNumber,
-                dataApiVersion ?? (Int32)RestClientConfiguration.DefaultDataApiVersionNumber,
+                apiVersion ?? (Int32)AlpacaTradingClientConfiguration.DefaultApiVersion,
+                dataApiVersion ?? (Int32)AlpacaDataClientConfiguration.DefaultApiVersion,
                 throttleParameters ?? ThrottleParameters.Default,
                 oauthKey ?? String.Empty))
         {
@@ -96,8 +96,8 @@ namespace Alpaca.Markets
                 configuration["alpacaRestApi"].GetUrlSafe(Environments.Live.AlpacaTradingApi),
                 configuration["polygonRestApi"].GetUrlSafe(Environments.Live.PolygonDataApi),
                 configuration["alpacaDataApi"].GetUrlSafe(Environments.Live.AlpacaDataApi),
-                toInt32OrNull(configuration["apiVersion"]) ?? (Int32)RestClientConfiguration.DefaultTradingApiVersionNumber,
-                toInt32OrNull(configuration["dataApiVersion"]) ?? (Int32)RestClientConfiguration.DefaultDataApiVersionNumber,
+                toInt32OrNull(configuration["apiVersion"]) ?? (Int32)AlpacaTradingClientConfiguration.DefaultApiVersion,
+                toInt32OrNull(configuration["dataApiVersion"]) ?? (Int32)AlpacaDataClientConfiguration.DefaultApiVersion,
                 new ThrottleParameters(null, null,
                     toInt32OrNull(configuration["maxRetryAttempts"]),
                     configuration?.GetSection("retryHttpStatuses")

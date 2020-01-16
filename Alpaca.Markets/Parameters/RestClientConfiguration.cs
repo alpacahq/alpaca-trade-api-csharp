@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
@@ -12,14 +11,6 @@ namespace Alpaca.Markets
         Justification = "We do not plan to support localized exception messages in this SDK.")]
     public sealed class RestClientConfiguration
     {
-        internal const ApiVersion DefaultTradingApiVersionNumber = ApiVersion.V2;
-
-        internal const ApiVersion DefaultDataApiVersionNumber = ApiVersion.V1;
-
-        private static readonly HashSet<ApiVersion> _supportedApiVersions = new HashSet<ApiVersion> { ApiVersion.V1, ApiVersion.V2 };
-
-        private static readonly HashSet<ApiVersion> _supportedDataApiVersions = new HashSet<ApiVersion> { ApiVersion.V1 };
-
         /// <summary>
         /// Creates new instance of <see cref="RestClientConfiguration"/> class.
         /// </summary>
@@ -28,12 +19,12 @@ namespace Alpaca.Markets
             KeyId = String.Empty;
             SecurityId = new SecretKey(String.Empty);
 
-            TradingApiUrl = Environments.Live.AlpacaTradingApi;
             DataApiUrl = Environments.Live.AlpacaDataApi;
+            TradingApiUrl = Environments.Live.AlpacaTradingApi;
             PolygonApiUrl = Environments.Live.PolygonDataApi;
 
-            TradingApiVersion = DefaultTradingApiVersionNumber;
-            DataApiVersion = DefaultDataApiVersionNumber;
+            DataApiVersion = AlpacaDataClientConfiguration.DefaultApiVersion;
+            TradingApiVersion = AlpacaTradingClientConfiguration.DefaultApiVersion;
 
             ThrottleParameters = ThrottleParameters.Default;
         }
@@ -44,7 +35,7 @@ namespace Alpaca.Markets
         public String KeyId { get; set; }
 
         /// <summary>
-        /// 
+        /// Security identifier for API authentication.
         /// </summary>
         public SecurityKey SecurityId { get; set; }
 
@@ -85,64 +76,19 @@ namespace Alpaca.Markets
                 ApiEndpoint = DataApiUrl
             };
 
+        internal AlpacaTradingClientConfiguration AlpacaTradingClientConfiguration =>
+            new AlpacaTradingClientConfiguration
+            {
+                KeyId = KeyId,
+                SecurityId = SecurityId,
+                ApiEndpoint = TradingApiUrl
+            };
+
         internal PolygonDataClientConfiguration PolygonDataClientConfiguration =>
             new PolygonDataClientConfiguration
             {
                 KeyId = KeyId,
                 ApiEndpoint = PolygonApiUrl
             };
-
-        internal RestClientConfiguration EnsureIsValid()
-        {
-            if (String.IsNullOrEmpty(KeyId))
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(KeyId)}' property shouldn't be null or empty.");
-            }
-
-            if (SecurityId == null)
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(SecurityId)}' property shouldn't be null.");
-            }
-
-            if (TradingApiUrl == null)
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(TradingApiUrl)}' property shouldn't be null.");
-            }
-
-            if (DataApiUrl == null)
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(DataApiUrl)}' property shouldn't be null.");
-            }
-
-            if (PolygonApiUrl == null)
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(PolygonApiUrl)}' property shouldn't be null.");
-            }
-
-            if (!_supportedApiVersions.Contains(TradingApiVersion))
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(TradingApiVersion)}' property is invalid.");
-            }
-
-            if (!_supportedDataApiVersions.Contains(DataApiVersion))
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(DataApiVersion)}' property is invalid.");
-            }
-
-            if (ThrottleParameters == null)
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(ThrottleParameters)}' property shouldn't be null.");
-            }
-
-            return this;
-        }
     }
 }

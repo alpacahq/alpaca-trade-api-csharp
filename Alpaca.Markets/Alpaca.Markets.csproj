@@ -45,14 +45,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="RestClient.*.cs">
-      <DependentUpon>RestClient.cs</DependentUpon>
-    </Compile>
-    <Compile Update="SockClient.*.cs">
-      <DependentUpon>SockClient.cs</DependentUpon>
-    </Compile>
-    <Compile Update="PolygonSockClient.*.cs">
-      <DependentUpon>PolygonSockClient.cs</DependentUpon>
+    <Compile Update="AlpacaTradingClient.*.cs">
+      <DependentUpon>AlpacaTradingClient.cs</DependentUpon>
     </Compile>
   </ItemGroup>
 
