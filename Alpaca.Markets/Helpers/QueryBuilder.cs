@@ -27,7 +27,11 @@ namespace Alpaca.Markets
         public QueryBuilder AddParameter(
             String name,
             Boolean? value) =>
+#if NETSTANDARD1_3
+            addParameter(name, value, _ => _.ToString());
+#else
             addParameter(name, value, _ => _.ToString(CultureInfo.InvariantCulture));
+#endif
 
         public QueryBuilder AddParameter<TValue>(
             String name,
