@@ -9,7 +9,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
-    public sealed class RestClientConfiguration
+    internal sealed class RestClientConfiguration
     {
         /// <summary>
         /// Creates new instance of <see cref="RestClientConfiguration"/> class.

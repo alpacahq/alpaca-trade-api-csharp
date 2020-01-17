@@ -20,29 +20,38 @@ namespace UsageExamples
 
         private Decimal scale = 200;
 
-        private RestClient restClient;
+        private AlpacaTradingClient alpacaTradingClient;
+
+        private AlpacaDataClient alpacaDataClient;
 
         private Guid lastTradeId = Guid.NewGuid();
 
         public async Task Run()
         {
-            restClient = new RestClient(
-                new RestClientConfiguration
+            alpacaTradingClient = new AlpacaTradingClient(
+                new AlpacaTradingClientConfiguration()
                 {
                     KeyId = API_KEY,
                     SecurityId = new SecretKey(API_SECRET),
-                    TradingApiUrl = Environments.Paper.AlpacaTradingApi
+                    ApiEndpoint = Environments.Paper.AlpacaTradingApi
+                });
+
+            alpacaDataClient = new AlpacaDataClient(
+                new AlpacaDataClientConfiguration
+                {
+                    KeyId = API_KEY,
+                    ApiEndpoint = Environments.Paper.AlpacaDataApi
                 });
 
             // First, cancel any existing orders so they don't impact our buying power.
-            var orders = await restClient.ListOrdersAsync();
+            var orders = await alpacaTradingClient.ListOrdersAsync();
             foreach (var order in orders)
             {
-                await restClient.DeleteOrderAsync(order.OrderId);
+                await alpacaTradingClient.DeleteOrderAsync(order.OrderId);
             }
 
             // Figure out when the market will close so we can prepare to sell beforehand.
-            var calendars = (await restClient.ListCalendarAsync(DateTime.Today)).ToList();
+            var calendars = (await alpacaTradingClient.ListCalendarAsync(DateTime.Today)).ToList();
             var calendarDate = calendars.First().TradingDate;
             var closingTime = calendars.First().TradingCloseTime;
 
@@ -57,10 +66,10 @@ namespace UsageExamples
             while (timeUntilClose.TotalMinutes > 15)
             {
                 // Cancel old order if it's not already been filled.
-                await restClient.DeleteOrderAsync(lastTradeId);
+                await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
 
                 // Get information about current account value.
-                var account = await restClient.GetAccountAsync();
+                var account = await alpacaTradingClient.GetAccountAsync();
                 Decimal buyingPower = account.BuyingPower;
                 Decimal portfolioValue = account.Equity;
 
@@ -69,7 +78,7 @@ namespace UsageExamples
                 Decimal positionValue = 0;
                 try
                 {
-                    var currentPosition = await restClient.GetPositionAsync(symbol);
+                    var currentPosition = await alpacaTradingClient.GetPositionAsync(symbol);
                     positionQuantity = currentPosition.Quantity;
                     positionValue = currentPosition.MarketValue;
                 }
@@ -78,7 +87,7 @@ namespace UsageExamples
                     // No position exists. This exception can be safely ignored.
                 }
 
-                var barSet = await restClient.GetBarSetAsync(new[] { symbol }, TimeFrame.Minute, 20);
+                var barSet = await alpacaDataClient.GetBarSetAsync(new[] { symbol }, TimeFrame.Minute, 20);
                 var bars = barSet[symbol].ToList();
 
                 Decimal avg = bars.Average(item => item.Close);
@@ -145,12 +154,13 @@ namespace UsageExamples
 
         public void Dispose()
         {
-            restClient?.Dispose();
+            alpacaTradingClient?.Dispose();
+            alpacaDataClient?.Dispose();
         }
 
         private async Task AwaitMarketOpen()
         {
-            while (!(await restClient.GetClockAsync()).IsOpen)
+            while (!(await alpacaTradingClient.GetClockAsync()).IsOpen)
             {
                 await Task.Delay(60000);
             }
@@ -165,7 +175,7 @@ namespace UsageExamples
                 return;
             }
             Console.WriteLine($"Submitting {side} order for {quantity} shares at ${price}.");
-            var order = await restClient.PostOrderAsync(symbol, quantity, side, OrderType.Limit, TimeInForce.Day, price);
+            var order = await alpacaTradingClient.PostOrderAsync(symbol, quantity, side, OrderType.Limit, TimeInForce.Day, price);
             lastTradeId = order.OrderId;
         }
 
@@ -173,8 +183,8 @@ namespace UsageExamples
         {
             try
             {
-                var positionQuantity = (await restClient.GetPositionAsync(symbol)).Quantity;
-                await restClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
+                var positionQuantity = (await alpacaTradingClient.GetPositionAsync(symbol)).Quantity;
+                await alpacaTradingClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
             }
             catch (Exception)
             {
