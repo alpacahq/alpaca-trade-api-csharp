@@ -24,9 +24,10 @@ namespace UsageExamples
 
         private Decimal scale = 200;
 
-        private RestClient restClient;
-        private SockClient sockClient;
-        private PolygonSockClient polygonSockClient;
+        private PolygonDataClient polygonDataClient;
+        private AlpacaTradingClient alpacaTradingClient;
+        private AlpacaStreamingClient alpacaStreamingClient;
+        private PolygonStreamingClient polygonStreamingClient;
 
         private Guid lastTradeId = Guid.NewGuid();
 
@@ -36,35 +37,42 @@ namespace UsageExamples
 
         public async Task Run()
         {
-            restClient = new RestClient(
-                new RestfulApiClientConfiguration
+            alpacaTradingClient = new AlpacaTradingClient(
+                new AlpacaTradingClientConfiguration
                 {
                     KeyId = API_KEY,
                     SecurityId = new SecretKey(API_SECRET),
-                    TradingApiUrl = Environments.Paper.AlpacaTradingApi
+                    ApiEndpoint = Environments.Paper.AlpacaTradingApi
+                });
+
+            polygonDataClient = new PolygonDataClient(
+                new PolygonDataClientConfiguration
+                {
+                    KeyId = API_KEY,
+                    ApiEndpoint = Environments.Paper.PolygonDataApi
                 });
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
-            sockClient = new SockClient(
+            alpacaStreamingClient = new AlpacaStreamingClient(
                 new AlpacaStreamingClientConfiguration
                 {
                     KeyId = API_KEY,
                     SecretKey = API_SECRET,
                     ApiEndpoint = Environments.Paper.AlpacaStreamingApi
                 });
-            sockClient.ConnectAndAuthenticateAsync().Wait();
+            alpacaStreamingClient.ConnectAndAuthenticateAsync().Wait();
 
-            sockClient.OnTradeUpdate += HandleTradeUpdate;
+            alpacaStreamingClient.OnTradeUpdate += HandleTradeUpdate;
 
             // First, cancel any existing orders so they don't impact our buying power.
-            var orders = await restClient.ListOrdersAsync();
+            var orders = await alpacaTradingClient.ListOrdersAsync();
             foreach (var order in orders)
             {
-                await restClient.DeleteOrderAsync(order.OrderId);
+                await alpacaTradingClient.DeleteOrderAsync(order.OrderId);
             }
 
             // Figure out when the market will close so we can prepare to sell beforehand.
-            var calendars = (await restClient.ListCalendarAsync(DateTime.Today)).ToList();
+            var calendars = (await alpacaTradingClient.ListCalendarAsync(DateTime.Today)).ToList();
             var calendarDate = calendars.First().TradingDate;
             var closingTime = calendars.First().TradingCloseTime;
 
@@ -72,7 +80,7 @@ namespace UsageExamples
 
             var today = DateTime.Today;
             // Get the first group of bars from today if the market has already been open.
-            var bars = await restClient.ListMinuteAggregatesAsync(symbol, 1, today, today.AddDays(1));
+            var bars = await polygonDataClient.ListMinuteAggregatesAsync(symbol, 1, today, today.AddDays(1));
             var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count() - 20));
             foreach (var bar in lastBars)
             {
@@ -87,14 +95,14 @@ namespace UsageExamples
             Console.WriteLine("Market opened.");
 
             // Connect to Polygon's websocket and listen for price updates.
-            polygonSockClient = new PolygonSockClient(
+            polygonStreamingClient = new PolygonStreamingClient(
                 new PolygonStreamingClientConfiguration
                 {
                     KeyId = API_KEY
                 });
-            polygonSockClient.ConnectAndAuthenticateAsync().Wait();
+            polygonStreamingClient.ConnectAndAuthenticateAsync().Wait();
             Console.WriteLine("Polygon client opened.");
-            polygonSockClient.MinuteAggReceived += async (agg) =>
+            polygonStreamingClient.MinuteAggReceived += async (agg) =>
             {
                 // If the market's close to closing, exit position and stop trading.
                 TimeSpan minutesUntilClose = closingTime - DateTime.UtcNow;
@@ -102,7 +110,7 @@ namespace UsageExamples
                 {
                     Console.WriteLine("Reached the end of trading window.");
                     await ClosePositionAtMarket();
-                    await polygonSockClient.DisconnectAsync();
+                    await polygonStreamingClient.DisconnectAsync();
                 }
                 else
                 {
@@ -110,14 +118,15 @@ namespace UsageExamples
                     await HandleMinuteAgg(agg);
                 }
             };
-            polygonSockClient.SubscribeSecondAgg(symbol);
+            polygonStreamingClient.SubscribeSecondAgg(symbol);
         }
 
         public void Dispose()
         {
-            restClient?.Dispose();
-            sockClient?.Dispose();
-            polygonSockClient?.Dispose();
+            alpacaTradingClient?.Dispose();
+            polygonDataClient?.Dispose();
+            alpacaStreamingClient?.Dispose();
+            polygonStreamingClient?.Dispose();
         }
 
         // Waits until the clock says the market is open.
@@ -127,7 +136,7 @@ namespace UsageExamples
         // 20 minutes after the market opens.
         private async Task AwaitMarketOpen()
         {
-            while (!(await restClient.GetClockAsync()).IsOpen)
+            while (!(await alpacaTradingClient.GetClockAsync()).IsOpen)
             {
                 await Task.Delay(60000);
             }
@@ -150,11 +159,11 @@ namespace UsageExamples
                 {
                     // We need to wait for the cancel to process in order to avoid
                     // having long and short orders open at the same time.
-                    bool res = await restClient.DeleteOrderAsync(lastTradeId);
+                    bool res = await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
                 }
 
                 // Make sure we know how much we should spend on our position.
-                var account = await restClient.GetAccountAsync();
+                var account = await alpacaTradingClient.GetAccountAsync();
                 Decimal buyingPower = account.BuyingPower;
                 Decimal equity = account.Equity;
                 long multiplier = account.Multiplier;
@@ -164,7 +173,7 @@ namespace UsageExamples
                 Decimal positionValue = 0;
                 try
                 {
-                    var currentPosition = await restClient.GetPositionAsync(symbol);
+                    var currentPosition = await alpacaTradingClient.GetPositionAsync(symbol);
                     positionQuantity = currentPosition.Quantity;
                     positionValue = currentPosition.MarketValue;
                 }
@@ -294,7 +303,7 @@ namespace UsageExamples
             }
             try
             {
-                var order = await restClient.PostOrderAsync(symbol, quantity, side, OrderType.Limit, TimeInForce.Day, price);
+                var order = await alpacaTradingClient.PostOrderAsync(symbol, quantity, side, OrderType.Limit, TimeInForce.Day, price);
                 lastTradeId = order.OrderId;
                 lastTradeOpen = true;
             }
@@ -308,15 +317,15 @@ namespace UsageExamples
         {
             try
             {
-                var positionQuantity = (await restClient.GetPositionAsync(symbol)).Quantity;
+                var positionQuantity = (await alpacaTradingClient.GetPositionAsync(symbol)).Quantity;
                 Console.WriteLine("Closing position at market price.");
                 if (positionQuantity > 0)
                 {
-                    await restClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
+                    await alpacaTradingClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
                 }
                 else
                 {
-                    await restClient.PostOrderAsync(symbol, positionQuantity * -1, OrderSide.Buy, OrderType.Market, TimeInForce.Day);
+                    await alpacaTradingClient.PostOrderAsync(symbol, positionQuantity * -1, OrderSide.Buy, OrderType.Market, TimeInForce.Day);
                 }
             }
             catch (Exception)

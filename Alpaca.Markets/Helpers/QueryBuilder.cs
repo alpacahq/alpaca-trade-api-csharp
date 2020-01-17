@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Net.Http;
 
 namespace Alpaca.Markets
@@ -23,11 +24,22 @@ namespace Alpaca.Markets
             return this;
         }
 
+        public QueryBuilder AddParameter(
+            String name,
+            Boolean? value) =>
+            addParameter(name, value, _ => _.ToString(CultureInfo.InvariantCulture));
+
         public QueryBuilder AddParameter<TValue>(
             String name,
             TValue? value)
             where TValue : struct, Enum =>
             addParameter(name, value, EnumExtensions.ToEnumString);
+
+        public QueryBuilder AddParameter<TValue>(
+            String name,
+            IEnumerable<TValue>? values)
+            where TValue : struct, Enum =>
+            addParameter(name, values, EnumExtensions.ToEnumString);
 
         public QueryBuilder AddParameter(
             String name,
@@ -62,5 +74,12 @@ namespace Alpaca.Markets
             Func<TValue, String> converter)
             where TValue : struct =>
             value.HasValue ? AddParameter(name, converter(value.Value)) : this;
+
+        private QueryBuilder addParameter<TValue>(
+            String name,
+            IEnumerable<TValue>? values,
+            Func<TValue, String> converter)
+            where TValue : struct =>
+            values != null ? AddParameter(name, String.Join(",", values.Select(converter))) : this;
     }
 }

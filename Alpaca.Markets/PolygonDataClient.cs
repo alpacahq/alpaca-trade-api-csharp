@@ -2,14 +2,48 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
-    public sealed partial class RestClient
+    /// <summary>
+    /// Provides unified type-safe access for Polygon Data API via HTTP/REST.
+    /// </summary>
+    public sealed class PolygonDataClient : IDisposable
     {
+        private readonly HttpClient _httpClient = new HttpClient();
+
+        private readonly Boolean _isStagingEnvironment;
+
+        private readonly String _keyId;
+
         /// <summary>
+        /// Creates new instance of <see cref="PolygonDataClient"/> object.
+        /// </summary>
+        /// <param name="configuration">Configuration parameters object.</param>
+        public PolygonDataClient(
+            PolygonDataClientConfiguration configuration)
+        {
+            configuration
+                .EnsureNotNull(nameof(configuration))
+                .EnsureIsValid();
+
+            _isStagingEnvironment = configuration.IsStaging;
+            _keyId = configuration.KeyId;
+
+            _httpClient.DefaultRequestHeaders.Accept
+                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _httpClient.BaseAddress = configuration.ApiEndpoint;
+            _httpClient.SetSecurityProtocol();
+        }
+
+        /// <inheritdoc />
+        public void Dispose() => _httpClient.Dispose();
+
+                /// <summary>
         /// Gets list of available exchanges from Polygon REST API endpoint.
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -17,14 +51,14 @@ namespace Alpaca.Markets
         public Task<IReadOnlyList<IExchange>> ListExchangesAsync(
             CancellationToken cancellationToken = default)
         {
-            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = "v1/meta/exchanges",
                 Query = getDefaultPolygonApiQueryBuilder()
             };
 
-            return getObjectsListAsync<IExchange, JsonExchange>(
-                _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken);
+            return _httpClient.GetObjectsListAsync<IExchange, JsonExchange>(
+                FakeThrottler.Instance, builder, cancellationToken);
         }
 
         /// <summary>
@@ -36,17 +70,17 @@ namespace Alpaca.Markets
         /// equal to full symbol type names descriptions for each supported symbol type.
         /// </returns>
         public Task<IReadOnlyDictionary<String, String>> GetSymbolTypeMapAsync(
-        CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default)
         {
-            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = "v1/meta/symbol-types",
                 Query = getDefaultPolygonApiQueryBuilder()
             };
 
-            return getSingleObjectAsync
+            return _httpClient.GetSingleObjectAsync
                 <IReadOnlyDictionary<String,String>, Dictionary<String, String>>(
-                    _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken);
+                    FakeThrottler.Instance, builder, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +104,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default)
         {
             var dateAsString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
-            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = $"v2/ticks/stocks/trades/{symbol}/{dateAsString}",
                 Query = getDefaultPolygonApiQueryBuilder()
@@ -80,10 +114,9 @@ namespace Alpaca.Markets
                     .AddParameter("reverse", reverse != null ? reverse.ToString() : null)
             };
 
-            return getSingleObjectAsync
-                <IHistoricalItems<IHistoricalTrade>,
-                    JsonHistoricalItems<IHistoricalTrade, JsonHistoricalTrade>>(
-                _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken);
+            return _httpClient.GetSingleObjectAsync
+                <IHistoricalItems<IHistoricalTrade>, JsonHistoricalItems<IHistoricalTrade, JsonHistoricalTrade>>(
+                    FakeThrottler.Instance, builder, cancellationToken);
         }
 
         /// <summary>
@@ -104,7 +137,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default)
         {
             var dateAsString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
-            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = $"v1/historic/trades/{symbol}/{dateAsString}",
                 Query = getDefaultPolygonApiQueryBuilder()
@@ -112,10 +145,9 @@ namespace Alpaca.Markets
                     .AddParameter("limit", limit)
             };
 
-            return getSingleObjectAsync
-                <IDayHistoricalItems<IHistoricalTrade>,
-                    JsonDayHistoricalItems<IHistoricalTrade, JsonHistoricalTradeV1>>(
-                _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken);
+            return _httpClient.GetSingleObjectAsync
+                <IDayHistoricalItems<IHistoricalTrade>, JsonDayHistoricalItems<IHistoricalTrade, JsonHistoricalTradeV1>>(
+                    FakeThrottler.Instance, builder, cancellationToken);
         }
 
         /// <summary>
@@ -139,7 +171,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default)
         {
             var dateAsString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
-            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = $"v2/ticks/stocks/nbbo/{symbol}/{dateAsString}",
                 Query = getDefaultPolygonApiQueryBuilder()
@@ -149,10 +181,9 @@ namespace Alpaca.Markets
                     .AddParameter("reverse", reverse != null ? reverse.ToString() : null)
             };
 
-            return getSingleObjectAsync
-                <IHistoricalItems<IHistoricalQuote>,
-                    JsonHistoricalItems<IHistoricalQuote, JsonHistoricalQuote>>(
-                _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken);
+            return _httpClient.GetSingleObjectAsync
+                <IHistoricalItems<IHistoricalQuote>, JsonHistoricalItems<IHistoricalQuote, JsonHistoricalQuote>>(
+                    FakeThrottler.Instance, builder, cancellationToken);
         }
 
         /// <summary>
@@ -165,7 +196,6 @@ namespace Alpaca.Markets
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical quote information.</returns>
         [Obsolete("This version of ListHistoricalQuotesAsync will be deprecated in a future release.", false)]
-
         public Task<IDayHistoricalItems<IHistoricalQuote>> ListHistoricalQuotesV1Async(
             String symbol,
             DateTime date,
@@ -174,7 +204,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default)
         {
             var dateAsString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
-            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = $"v1/historic/quotes/{symbol}/{dateAsString}",
                 Query = getDefaultPolygonApiQueryBuilder()
@@ -182,10 +212,9 @@ namespace Alpaca.Markets
                     .AddParameter("limit", limit)
             };
 
-            return getSingleObjectAsync
-                <IDayHistoricalItems<IHistoricalQuote>,
-                    JsonDayHistoricalItems<IHistoricalQuote, JsonHistoricalQuoteV1>>(
-                _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken);
+            return _httpClient.GetSingleObjectAsync
+                <IDayHistoricalItems<IHistoricalQuote>,JsonDayHistoricalItems<IHistoricalQuote, JsonHistoricalQuoteV1>>(
+                    FakeThrottler.Instance, builder, cancellationToken);
         }
 
         /// <summary>
@@ -209,17 +238,16 @@ namespace Alpaca.Markets
             var unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(dateFromInclusive);
             var unixTo = DateTimeHelper.GetUnixTimeMilliseconds(dateToInclusive);
 
-            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/minute/{unixFrom}/{unixTo}",
                 Query = getDefaultPolygonApiQueryBuilder()
                     .AddParameter("unadjusted", unadjusted ? Boolean.TrueString : Boolean.FalseString)
             };
 
-            return getSingleObjectAsync
-                <IHistoricalItems<IAgg>,
-                    JsonHistoricalItems<IAgg, JsonMinuteAgg>>(
-                _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken);
+            return _httpClient.GetSingleObjectAsync
+                <IHistoricalItems<IAgg>, JsonHistoricalItems<IAgg, JsonMinuteAgg>>(
+                    FakeThrottler.Instance, builder, cancellationToken);
         }
 
         /// <summary>
@@ -243,17 +271,16 @@ namespace Alpaca.Markets
             var unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(dateFromInclusive);
             var unixTo = DateTimeHelper.GetUnixTimeMilliseconds(dateToInclusive);
 
-            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/day/{unixFrom}/{unixTo}",
                 Query = getDefaultPolygonApiQueryBuilder()
                     .AddParameter("unadjusted", unadjusted ? Boolean.TrueString : Boolean.FalseString)
             };
 
-            return getSingleObjectAsync
-                <IHistoricalItems<IAgg>,
-                    JsonHistoricalItems<IAgg, JsonMinuteAgg>>(
-                _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken);
+            return _httpClient.GetSingleObjectAsync
+                <IHistoricalItems<IAgg>, JsonHistoricalItems<IAgg, JsonMinuteAgg>>(
+                    FakeThrottler.Instance, builder, cancellationToken);
         }
 
         /// <summary>
@@ -266,14 +293,14 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default)
         {
-            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = $"v1/last/stocks/{symbol}",
                 Query = getDefaultPolygonApiQueryBuilder()
             };
 
-            return getSingleObjectAsync<ILastTrade, JsonLastTrade>(
-                _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken);
+            return _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTrade>(
+                FakeThrottler.Instance, builder, cancellationToken);
         }
 
         /// <summary>
@@ -286,14 +313,14 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default)
         {
-            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = $"v1/last_quote/stocks/{symbol}",
                 Query = getDefaultPolygonApiQueryBuilder()
             };
 
-            return getSingleObjectAsync<ILastQuote, JsonLastQuote>(
-                _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken);
+            return _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuote>(
+                FakeThrottler.Instance, builder, cancellationToken);
         }
 
         /// <summary>
@@ -309,15 +336,15 @@ namespace Alpaca.Markets
             TickType tickType = TickType.Trades,
             CancellationToken cancellationToken = default)
         {
-            var builder = new UriBuilder(_polygonHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = $"v1/meta/conditions/{tickType.ToEnumString()}",
                 Query = getDefaultPolygonApiQueryBuilder()
             };
 
-            var dictionary = await getSingleObjectAsync
-                <IDictionary<String, String>, Dictionary<String, String>>(
-                    _polygonHttpClient, FakeThrottler.Instance, builder, cancellationToken)
+            var dictionary = await _httpClient.GetSingleObjectAsync
+                    <IDictionary<String, String>, Dictionary<String, String>>(
+                        FakeThrottler.Instance, builder, cancellationToken)
                 .ConfigureAwait(false);
 
             return dictionary
@@ -330,9 +357,9 @@ namespace Alpaca.Markets
         private QueryBuilder getDefaultPolygonApiQueryBuilder()
         {
             var builder = new QueryBuilder()
-                .AddParameter("apiKey", _configuration.KeyId);
+                .AddParameter("apiKey", _keyId);
 
-            if (_isPolygonStaging)
+            if (_isStagingEnvironment)
             {
                 builder.AddParameter("staging", "true");
             }

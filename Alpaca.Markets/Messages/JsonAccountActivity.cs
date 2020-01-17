@@ -47,5 +47,11 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "type", Required = Required.Default)]
         public TradeEvent? Type { get; set; }
+
+        [JsonIgnore]
+        public DateTime ActivityDateTime { get; set; }
+        
+        [JsonIgnore]
+        public Guid ActivityGuid { get; set; }
     }
 }

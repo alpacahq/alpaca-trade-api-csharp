@@ -1,9 +1,19 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
-    public sealed partial class SockClient
+    /// <summary>
+    /// Provides unified type-safe access for Alpaca streaming API.
+    /// </summary>
+    [SuppressMessage(
+        "Globalization","CA1303:Do not pass literals as localized parameters",
+        Justification = "We do not plan to support localized exception messages in this SDK.")]
+    [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the AlpacaStreamingClient class instead.", false)]
+    public sealed class SockClient : IDisposable
     {
+        private readonly AlpacaStreamingClient _client;
+
         /// <summary>
         /// Creates new instance of <see cref="SockClient"/> object.
         /// </summary>
@@ -11,7 +21,6 @@ namespace Alpaca.Markets
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
         public SockClient(
             String keyId,
             String secretKey,
@@ -29,7 +38,6 @@ namespace Alpaca.Markets
         /// <param name="secretKey">Application secret key.</param>
         /// <param name="alpacaRestApi">Alpaca REST API endpoint URL.</param>
         /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
         public SockClient(
             String keyId,
             String secretKey,
@@ -45,7 +53,6 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="configuration">Application configuration.</param>
         /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
         public SockClient(
             Microsoft.Extensions.Configuration.IConfiguration configuration,
             IWebSocketFactory? webSocketFactory = null)
@@ -61,6 +68,38 @@ namespace Alpaca.Markets
                 configuration["alpacaRestApi"].GetUrlSafe(Environments.Live.AlpacaTradingApi),
                 webSocketFactory);
 #endif
+
+        /// <summary>
+        /// Creates new instance of <see cref="SockClient"/> object.
+        /// </summary>
+        /// <param name="configuration">Configuration parameters object.</param>
+        private SockClient(
+            AlpacaStreamingClientConfiguration configuration) =>
+            _client = new AlpacaStreamingClient(configuration);
+
+
+        /// <summary>
+        /// Occured when new account update received from stream.
+        /// </summary>
+        [SuppressMessage("Design", "CA1030:Use events where appropriate", Justification = "Compiler issue")]
+        public event Action<IAccountUpdate>? OnAccountUpdate
+        {
+            add => _client.OnAccountUpdate += value;
+            remove => _client.OnAccountUpdate -= value;
+        }
+
+        /// <summary>
+        /// Occured when new trade update received from stream.
+        /// </summary>
+        [SuppressMessage("Design", "CA1030:Use events where appropriate", Justification = "Compiler issue")]
+        public event Action<ITradeUpdate>? OnTradeUpdate
+        {
+            add => _client.OnTradeUpdate += value;
+            remove => _client.OnTradeUpdate -= value;
+        }
+        
+        /// <inheritdoc/>
+        public void Dispose() => _client.Dispose();
 
         private static AlpacaStreamingClientConfiguration createConfiguration(
             String keyId,

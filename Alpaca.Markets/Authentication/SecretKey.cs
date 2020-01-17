@@ -4,14 +4,14 @@ using System.Net.Http;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Secret API key for Alpaca/Polygon APIs authentication.
     /// </summary>
     public sealed class SecretKey : SecurityKey
     {
         /// <summary>
-        /// 
+        /// Creates new instance of <see cref="SecretKey"/> object.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">Secret API key value.</param>
         public SecretKey(String value) : base(value) {}
 
         internal override void AddAuthenticationHeader(

@@ -4,10 +4,10 @@
     <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.3;net45</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>3.5.0-alpha3</Version>
+    <Version>3.5.0-beta1</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
-    <Copyright>© 2018-2019 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <Copyright>© 2018-2020 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
@@ -19,12 +19,15 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- First draft for new `Client` configuration approach using constructor configuration object.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Some changes merged into this version from main 3.4.x branch
+- RESTful API clients renamed and old classes now marked as obsolete</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IncludeSymbols>true</IncludeSymbols>
     <Nullable>enable</Nullable>
+    <AssemblyOriginatorKeyFile>Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -35,25 +38,14 @@
     <DocumentationFile>bin\Release\netstandard2.0\Alpaca.Markets.xml</DocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="('$(TargetFramework)'=='netstandard2.1')Or('$(TargetFramework)'=='netstandard2.0')Or('$(TargetFramework)'=='netstandard1.3')">
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-
   <ItemGroup>
     <None Include="..\Icon.png" Pack="true" PackagePath="icon.png" />
     <None Remove="Alpaca.Markets.csproj.DotSettings" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="RestClient.*.cs">
-      <DependentUpon>RestClient.cs</DependentUpon>
-    </Compile>
-    <Compile Update="SockClient.*.cs">
-      <DependentUpon>SockClient.cs</DependentUpon>
-    </Compile>
-    <Compile Update="PolygonSockClient.*.cs">
-      <DependentUpon>PolygonSockClient.cs</DependentUpon>
+    <Compile Update="AlpacaTradingClient.*.cs">
+      <DependentUpon>AlpacaTradingClient.cs</DependentUpon>
     </Compile>
   </ItemGroup>
 
