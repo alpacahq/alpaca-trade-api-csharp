@@ -30,11 +30,6 @@ namespace Alpaca.Markets
         /// </summary>
         public Uri ApiEndpoint { get; set; }
 
-        /// <summary>
-        /// Gets or sets if <see cref="PolygonDataClient"/> connects for staging environment.
-        /// </summary>
-        public Boolean IsStaging { get; set; }
-
         internal void EnsureIsValid()
         {
             if (String.IsNullOrEmpty(KeyId))

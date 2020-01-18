@@ -237,10 +237,10 @@ namespace Alpaca.Markets
             Boolean isStagingEnvironment,
             IWebSocketFactory? webSocketFactory)
         {
-            return new PolygonStreamingClientConfiguration()
+            return new PolygonStreamingClientConfiguration
             {
                 KeyId = adjustKeyId(keyId ?? throw new ArgumentException("Application key id should not be null or empty.", nameof(keyId)), isStagingEnvironment),
-                ApiEndpoint = polygonWebsocketApi ?? (isStagingEnvironment ? Environments.Staging.PolygonStreamingApi : Environments.Live.PolygonStreamingApi),
+                ApiEndpoint = polygonWebsocketApi ?? Environments.Live.PolygonStreamingApi,
                 WebSocketFactory = webSocketFactory ?? WebSocket4NetFactory.Instance
             };
         }
