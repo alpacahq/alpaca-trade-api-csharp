@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Supported assed classes for Alpaca REST API.
+    /// Supported asset classes for Alpaca REST API.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum AssetClass

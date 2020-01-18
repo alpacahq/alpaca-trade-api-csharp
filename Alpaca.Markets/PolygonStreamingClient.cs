@@ -31,7 +31,7 @@ namespace Alpaca.Markets
         // ReSharper restore InconsistentNaming
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
-        
+
         /// <summary>
         /// Occured when new trade received from stream.
         /// </summary>
