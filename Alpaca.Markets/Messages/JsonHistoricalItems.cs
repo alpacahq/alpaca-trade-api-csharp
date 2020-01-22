@@ -44,7 +44,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "ticker", Required = Required.Default)]
         public override String? Symbol { get; set; }
 
-        [JsonProperty(PropertyName = "db_latency", Required = Required.Always)]
+        [JsonProperty(PropertyName = "db_latency", Required = Required.Default)]
         public override Int64 DbLatencyInMilliseconds { get; set; }
 
         [JsonProperty(PropertyName = "results", Required = Required.Default)]
@@ -57,7 +57,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "symbol", Required = Required.Default)]
         public override String? Symbol { get; set; }
 
-        [JsonProperty(PropertyName = "msLatency", Required = Required.Always)]
+        [JsonProperty(PropertyName = "msLatency", Required = Required.Default)]
         public override Int64 DbLatencyInMilliseconds { get; set; }
 
         [JsonProperty(PropertyName = "ticks", Required = Required.Default)]
