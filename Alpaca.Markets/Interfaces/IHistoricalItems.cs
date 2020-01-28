@@ -12,12 +12,12 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets resulting status of historical data request.
         /// </summary>
-        String Status { get; }
+        String? Status { get; }
 
         /// <summary>
         /// Gets asset name for all historical items in container.
         /// </summary>
-        String Symbol { get; }
+        String? Symbol { get; }
 
         /// <summary>
         /// Gets read-only collection of historical items.
@@ -41,5 +41,11 @@ namespace Alpaca.Markets
         /// Polygon v2 API only.
         /// </summary>
         Int64 ResultsCount { get; }
+
+        /// <summary>
+        /// Query execution database latency reported by Polygon.
+        /// </summary>
+        [Obsolete("This property will be removed in upcoming major version of SDK.", false)]
+        TimeSpan DatabaseLatency { get; }
     }
 }

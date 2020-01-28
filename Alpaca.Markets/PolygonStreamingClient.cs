@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
@@ -12,8 +12,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
-    // ReSharper disable once PartialTypeWithSinglePart
-    public sealed partial class PolygonSockClient : SockClientBase
+    public sealed class PolygonStreamingClient : StreamingClientBase<PolygonStreamingClientConfiguration>
     {
         // Available Polygon message types
 
@@ -33,72 +32,34 @@ namespace Alpaca.Markets
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
-        private readonly String _keyId;
-
         /// <summary>
         /// Occured when new trade received from stream.
         /// </summary>
-        public event Action<IStreamTrade> TradeReceived;
+        public event Action<IStreamTrade>? TradeReceived;
 
         /// <summary>
         /// Occured when new quote received from stream.
         /// </summary>
-        public event Action<IStreamQuote> QuoteReceived;
+        public event Action<IStreamQuote>? QuoteReceived;
 
         /// <summary>
         /// Occured when new bar received from stream.
         /// </summary>
-        public event Action<IStreamAgg> MinuteAggReceived;
+        public event Action<IStreamAgg>? MinuteAggReceived;
 
         /// <summary>
         /// Occured when new bar received from stream.
         /// </summary>
-        public event Action<IStreamAgg> SecondAggReceived;
+        public event Action<IStreamAgg>? SecondAggReceived;
 
         /// <summary>
-        /// Creates new instance of <see cref="PolygonSockClient"/> object.
+        /// Creates new instance of <see cref="PolygonStreamingClient"/> object.
         /// </summary>
-        /// <param name="keyId">Application key identifier.</param>
-        /// <param name="polygonWebsocketApi">Polygon websocket API endpoint URL.</param>
-        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        public PolygonSockClient(
-            String keyId,
-            String polygonWebsocketApi = null,
-            Boolean isStagingEnvironment = false,
-            IWebSocketFactory webSocketFactory = null
-            )
-            : this(
-                keyId,
-                new Uri(polygonWebsocketApi ?? "wss://alpaca.socket.polygon.io/stocks"),
-                isStagingEnvironment,
-                webSocketFactory ?? new WebSocket4NetFactory())
+        /// <param name="configuration">Configuration parameters object.</param>
+        public PolygonStreamingClient(
+            PolygonStreamingClientConfiguration configuration)
+            : base(configuration.EnsureNotNull(nameof(configuration)))
         {
-        }
-
-        /// <summary>
-        /// Creates new instance of <see cref="SockClient"/> object.
-        /// </summary>
-        /// <param name="keyId">Application key identifier.</param>
-        /// <param name="polygonWebsocketApi">Polygon websocket API endpoint URL.</param>
-        /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        public PolygonSockClient(
-            String keyId,
-            Uri polygonWebsocketApi,
-            Boolean isStagingEnvironment,
-            IWebSocketFactory webSocketFactory)
-            : base(getUriBuilder(polygonWebsocketApi), webSocketFactory)
-        {
-            _keyId = keyId ?? throw new ArgumentException(
-                         "Application key id should not be null", nameof(keyId));
-
-            if (isStagingEnvironment &&
-                !_keyId.EndsWith("-staging", StringComparison.Ordinal))
-            {
-                _keyId += "-staging";
-            }
-
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
                 { StatusMessage, handleAuthorization },
@@ -264,7 +225,15 @@ namespace Alpaca.Markets
             {
                 foreach (var token in JArray.Parse(message))
                 {
-                    HandleMessage(_handlers, token["ev"].ToString(), token);
+                    var messageType = token["ev"];
+                    if (messageType is null)
+                    {
+                        HandleError(new InvalidOperationException());
+                    }
+                    else
+                    {
+                        HandleMessage(_handlers, messageType.ToString(), token);
+                    }
                 }
             }
             catch (Exception exception)
@@ -273,30 +242,18 @@ namespace Alpaca.Markets
             }
         }
 
-        private static UriBuilder getUriBuilder(
-            Uri polygonWebsocketApi)
-        {
-            polygonWebsocketApi = polygonWebsocketApi ?? new Uri("wss://alpaca.socket.polygon.io/stocks");
-
-            var uriBuilder = new UriBuilder(polygonWebsocketApi)
-            {
-                Scheme = polygonWebsocketApi.Scheme == "http" ? "ws" : "wss"
-            };
-            return uriBuilder;
-        }
-
         private void handleAuthorization(
             JToken token)
         {
             var connectionStatus = token.ToObject<JsonConnectionStatus>();
 
-            switch (connectionStatus.Status) //-V3002
+            switch (connectionStatus?.Status)
             {
                 case ConnectionStatus.Connected:
                     SendAsJsonString(new JsonAuthRequest
                     {
                         Action = JsonAction.PolygonAuthenticate,
-                        Params = _keyId
+                        Params = Configuration.KeyId
                     });
                     break;
 
@@ -304,10 +261,17 @@ namespace Alpaca.Markets
                     OnConnected(AuthStatus.Authorized);
                     break;
 
-                case ConnectionStatus.Failed:
                 case ConnectionStatus.AuthenticationFailed:
                 case ConnectionStatus.AuthenticationRequired:
                     HandleError(new InvalidOperationException(connectionStatus.Message));
+                    break;
+
+                case ConnectionStatus.Failed:
+                case ConnectionStatus.Success:
+                    break;
+
+                default:
+                    HandleError(new InvalidOperationException("Unknown connection status"));
                     break;
             }
         }
@@ -336,7 +300,7 @@ namespace Alpaca.Markets
         private static String getParams(
             String channel,
             IEnumerable<String> symbols) =>
-            String.Join(",",symbols.Select(symbol => getParams(channel, symbol)));
+            String.Join(",",symbols.Select(symbol => getParams(channel, (String) symbol)));
 
         private void handleTradesChannel(
             JToken token) =>

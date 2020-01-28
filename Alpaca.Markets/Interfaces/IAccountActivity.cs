@@ -30,7 +30,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// The symbol of the security involved with the activity. Not present for all activity types.
         /// </summary>
-        String Symbol { get; }
+        String? Symbol { get; }
 
         /// <summary>
         /// The date on which the activity occurred or on which the transaction associated with the activity settled.

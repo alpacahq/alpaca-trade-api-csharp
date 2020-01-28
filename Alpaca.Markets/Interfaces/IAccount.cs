@@ -10,13 +10,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets account number (string identifier).
         /// </summary>
-        String AccountNumber { get; }
-
-        /// <summary>
-        /// Gets total account portfolio value.
-        /// </summary>
-        [Obsolete("PortfolioValue is deprecated, please use Equity instead.", true)]
-        Decimal PortfolioValue { get; }
+        String? AccountNumber { get; }
 
         /// <summary>
         /// Gets returns <c>true</c> if account is linked to day pattern trader.
@@ -99,7 +93,7 @@ namespace Alpaca.Markets
         Decimal LastMaintenanceMargin { get; }
 
         /// <summary>
-        /// the current number of daytrades that have been made in the last 5 trading days (inclusive of today).
+        /// the current number of day trades that have been made in the last 5 trading days (inclusive of today).
         /// </summary>
         Int64 DayTradeCount { get; }
 

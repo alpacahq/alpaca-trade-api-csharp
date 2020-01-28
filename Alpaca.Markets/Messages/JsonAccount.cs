@@ -14,22 +14,19 @@ namespace Alpaca.Markets
         public Guid AccountId { get; set; }
 
         [JsonProperty(PropertyName = "account_number", Required = Required.Default)]
-        public String AccountNumber { get; set; }
+        public String? AccountNumber { get; set; }
 
         [JsonProperty(PropertyName = "status", Required = Required.Always)]
         public AccountStatus Status { get; set; }
 
         [JsonProperty(PropertyName = "currency", Required = Required.Default)]
-        public String Currency { get; set; }
+        public String? Currency { get; set; }
 
         [JsonProperty(PropertyName = "cash", Required = Required.Always)]
         public Decimal TradableCash { get; set; }
 
         [JsonProperty(PropertyName = "cash_withdrawable", Required = Required.Default)]
         public Decimal WithdrawableCash { get; set; }
-
-        [JsonProperty(PropertyName = "portfolio_value", Required = Required.Always)]
-        public Decimal PortfolioValue { get; set; }
 
         [JsonProperty(PropertyName = "pattern_day_trader", Required = Required.Always)]
         public Boolean IsDayPatternTrader { get; set; }

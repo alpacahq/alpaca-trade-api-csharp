@@ -18,6 +18,6 @@ namespace Alpaca.Markets
         public Decimal? StopPrice { get; set; }
 
         [JsonProperty(PropertyName = "client_order_id", Required = Required.Default)]
-        public String ClientOrderId { get; set; }
+        public String? ClientOrderId { get; set; }
     }
 }

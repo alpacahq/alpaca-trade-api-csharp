@@ -10,7 +10,7 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonLastQuote : ILastQuote
     {
-        internal sealed class Last
+        internal struct Last
         {
             [JsonProperty(PropertyName = "bidexchange", Required = Required.Always)]
             public Int64 BidExchange { get; set; }
@@ -38,10 +38,10 @@ namespace Alpaca.Markets
         public Last Nested { get; set; }
 
         [JsonProperty(PropertyName = "status", Required = Required.Always)]
-        public String Status { get; set; }
+        public String Status { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
-        public String Symbol { get; set; }
+        public String Symbol { get; set; } = String.Empty;
 
         [JsonIgnore]
         public Int64 BidExchange => Nested.BidExchange;

@@ -15,7 +15,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets client-side order identifier.
         /// </summary>
-        String ClientOrderId { get; }
+        String? ClientOrderId { get; }
 
         /// <summary>
         /// Gets order creation timestamp.

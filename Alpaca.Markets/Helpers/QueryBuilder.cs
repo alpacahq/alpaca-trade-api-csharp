@@ -15,9 +15,12 @@ namespace Alpaca.Markets
 
         public QueryBuilder AddParameter(
             String name,
-            String value)
+            String? value)
         {
-            _queryParameters.Add(name, value);
+            if (value != null)
+            {
+                _queryParameters.Add(name, value);
+            }
             return this;
         }
 
@@ -29,7 +32,7 @@ namespace Alpaca.Markets
 
         public QueryBuilder AddParameter<TValue>(
             String name,
-            IEnumerable<TValue> values)
+            IEnumerable<TValue>? values)
             where TValue : struct, Enum =>
             addParameter(name, values, EnumExtensions.ToEnumString);
 
@@ -69,7 +72,7 @@ namespace Alpaca.Markets
 
         private QueryBuilder addParameter<TValue>(
             String name,
-            IEnumerable<TValue> values,
+            IEnumerable<TValue>? values,
             Func<TValue, String> converter)
             where TValue : struct =>
             values != null ? AddParameter(name, String.Join(",", values.Select(converter))) : this;

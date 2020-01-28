@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
-    public sealed partial class RestClient
+    public sealed partial class AlpacaTradingClient
     {
         /// <summary>
         /// Gets list of watch list objects from Alpaca REST API endpoint.
@@ -17,13 +17,13 @@ namespace Alpaca.Markets
         public Task<IReadOnlyList<IWatchList>> ListWatchListsAsync(
             CancellationToken cancellationToken = default)
         {
-            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "watchlists"
+                Path = _httpClient.BaseAddress.AbsolutePath + "watchlists"
             };
 
-            return getObjectsListAsync<IWatchList, JsonWatchList>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, builder, cancellationToken);
+            return _httpClient.GetObjectsListAsync<IWatchList, JsonWatchList>(
+                _alpacaRestApiThrottler, builder, cancellationToken);
         }
 
         /// <summary>
@@ -35,19 +35,19 @@ namespace Alpaca.Markets
         /// <returns>Newly created watch list object.</returns>
         public async Task<IWatchList> CreateWatchListAsync(
             String name,
-            IEnumerable<String> assets = null,
+            IEnumerable<String>? assets = null,
             CancellationToken cancellationToken = default)
         {
             verifyWatchListName(name);
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using var content = toStringContent(name, assets);
-            using var response = await _alpacaHttpClient.PostAsync(
+            using var content = toStringContent(name, assets ?? Enumerable.Empty<String>());
+            using var response = await _httpClient.PostAsync(
                     new Uri("watchlists", UriKind.RelativeOrAbsolute), content, cancellationToken)
                 .ConfigureAwait(false);
 
-            return await deserializeAsync<IWatchList, JsonWatchList>(response)
+            return await response.DeserializeAsync<IWatchList, JsonWatchList>()
                 .ConfigureAwait(false);
         }
 
@@ -61,13 +61,13 @@ namespace Alpaca.Markets
             Guid watchListId,
             CancellationToken cancellationToken = default)
         {
-            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + $"watchlists/{watchListId:D}"
+                Path = _httpClient.BaseAddress.AbsolutePath + $"watchlists/{watchListId:D}"
             };
 
-            return getSingleObjectAsync<IWatchList, JsonWatchList>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, builder, cancellationToken);
+            return _httpClient.GetSingleObjectAsync<IWatchList, JsonWatchList>(
+                _alpacaRestApiThrottler, builder, cancellationToken);
         }
 
         /// <summary>
@@ -82,15 +82,15 @@ namespace Alpaca.Markets
         {
             verifyWatchListName(name);
 
-            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "watchlists:by_name",
+                Path = _httpClient.BaseAddress.AbsolutePath + "watchlists:by_name",
                 Query = new QueryBuilder()
                     .AddParameter("name", name)
             };
 
-            return getSingleObjectAsync<IWatchList, JsonWatchList>(
-                _alpacaHttpClient, _alpacaRestApiThrottler, builder, cancellationToken);
+            return _httpClient.GetSingleObjectAsync<IWatchList, JsonWatchList>(
+                _alpacaRestApiThrottler, builder, cancellationToken);
         }
 
         /// <summary>
@@ -112,11 +112,11 @@ namespace Alpaca.Markets
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             using var content = toStringContent(name, assets);
-            using var response = await _alpacaHttpClient.PutAsync(
+            using var response = await _httpClient.PutAsync(
                     new Uri($"watchlists/{watchListId:D}", UriKind.RelativeOrAbsolute), content, cancellationToken)
                 .ConfigureAwait(false);
 
-            return await deserializeAsync<IWatchList, JsonWatchList>(response)
+            return await response.DeserializeAsync<IWatchList, JsonWatchList>()
                 .ConfigureAwait(false);
         }
 
@@ -137,11 +137,11 @@ namespace Alpaca.Markets
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             using var content = toStringContent(asset);
-            using var response = await _alpacaHttpClient.PostAsync(
+            using var response = await _httpClient.PostAsync(
                     new Uri($"watchlists/{watchListId:D}", UriKind.RelativeOrAbsolute), content, cancellationToken)
                 .ConfigureAwait(false);
 
-            return await deserializeAsync<IWatchList, JsonWatchList>(response)
+            return await response.DeserializeAsync<IWatchList, JsonWatchList>()
                 .ConfigureAwait(false);
         }
 
@@ -161,9 +161,9 @@ namespace Alpaca.Markets
 
             verifyWatchListName(name);
 
-            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "watchlists:by_name",
+                Path = _httpClient.BaseAddress.AbsolutePath + "watchlists:by_name",
                 Query = new QueryBuilder()
                     .AddParameter("name", name)
             };
@@ -171,10 +171,10 @@ namespace Alpaca.Markets
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             using var content = toStringContent(asset);
-            using var response = await _alpacaHttpClient.PostAsync(builder.Uri, content, cancellationToken)
+            using var response = await _httpClient.PostAsync(builder.Uri, content, cancellationToken)
                 .ConfigureAwait(false);
 
-            return await deserializeAsync<IWatchList, JsonWatchList>(response)
+            return await response.DeserializeAsync<IWatchList, JsonWatchList>()
                 .ConfigureAwait(false);
         }
 
@@ -194,11 +194,11 @@ namespace Alpaca.Markets
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using var response = await _alpacaHttpClient.DeleteAsync(
+            using var response = await _httpClient.DeleteAsync(
                     new Uri($"watchlists/{watchListId:D}/{asset}", UriKind.RelativeOrAbsolute), cancellationToken)
                 .ConfigureAwait(false);
 
-            return await deserializeAsync<IWatchList, JsonWatchList>(response)
+            return await response.DeserializeAsync<IWatchList, JsonWatchList>()
                 .ConfigureAwait(false);
         }
 
@@ -218,19 +218,19 @@ namespace Alpaca.Markets
 
             verifyWatchListName(name);
 
-            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + $"watchlists:by_name/{asset}",
+                Path = _httpClient.BaseAddress.AbsolutePath + $"watchlists:by_name/{asset}",
                 Query = new QueryBuilder()
                     .AddParameter("name", name)
             };
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using var response = await _alpacaHttpClient.DeleteAsync(builder.Uri, cancellationToken)
+            using var response = await _httpClient.DeleteAsync(builder.Uri, cancellationToken)
                 .ConfigureAwait(false);
 
-            return await deserializeAsync<IWatchList, JsonWatchList>(response)
+            return await response.DeserializeAsync<IWatchList, JsonWatchList>()
                 .ConfigureAwait(false);
         }
 
@@ -246,7 +246,7 @@ namespace Alpaca.Markets
         {
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using var response = await _alpacaHttpClient.DeleteAsync(
+            using var response = await _httpClient.DeleteAsync(
                     new Uri($"watchlists/{watchListId:D}", UriKind.RelativeOrAbsolute), cancellationToken)
                 .ConfigureAwait(false);
 
@@ -265,16 +265,16 @@ namespace Alpaca.Markets
         {
             verifyWatchListName(name);
 
-            var builder = new UriBuilder(_alpacaHttpClient.BaseAddress)
+            var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = _alpacaHttpClient.BaseAddress.AbsolutePath + "watchlists:by_name",
+                Path = _httpClient.BaseAddress.AbsolutePath + "watchlists:by_name",
                 Query = new QueryBuilder()
                     .AddParameter("name", name)
             };
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using var response = await _alpacaHttpClient.DeleteAsync(builder.Uri, cancellationToken)
+            using var response = await _httpClient.DeleteAsync(builder.Uri, cancellationToken)
                 .ConfigureAwait(false);
 
             return response.IsSuccessStatusCode;

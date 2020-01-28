@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     internal sealed class JsonStreamTrade : IStreamTrade
     {
         [JsonProperty(PropertyName = "sym", Required = Required.Always)]
-        public String Symbol { get; set; }
+        public String Symbol { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "x", Required = Required.Always)]
         public Int64 Exchange { get; set; }
