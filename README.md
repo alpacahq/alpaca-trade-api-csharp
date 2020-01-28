@@ -37,10 +37,6 @@ if (clock != null)
 
 The [IConfiguration](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.iconfiguration) interface support marked as obsolete in SDK starting from version [3.5.0](https://github.com/alpacahq/alpaca-trade-api-csharp/releases/tag/v3.5.0) because it's hard to maintain and can be easy implemented on client side. This support will be completely removed from SDK in upboming major release.
 
-## Assembly signing in NuGet package
-
-Starting from version [3.5.0](https://github.com/alpacahq/alpaca-trade-api-csharp/releases/tag/v3.5.0) NuGet packages contains strongly signed assemblies only all target frameworks.
-
 ## Polygon NATS client deprecation
 
 Polygon is deprecating their NATS streaming in favor of Websockets, and they have finally made it possible for Alpaca users to switch to the websocket endpoint. Starting from version [3.5.0](https://github.com/alpacahq/alpaca-trade-api-csharp/releases/tag/v3.5.0) support for NATS client streaming completely removed from SDK.
