@@ -69,6 +69,8 @@ namespace Alpaca.Markets
         /// </summary>
         public ThrottleParameters ThrottleParameters { get; set; }
 
+        public Boolean IsStagingEnvironment { get; set; }
+
         internal AlpacaDataClientConfiguration AlpacaDataClientConfiguration =>
             new AlpacaDataClientConfiguration
             {
@@ -87,7 +89,9 @@ namespace Alpaca.Markets
         internal PolygonDataClientConfiguration PolygonDataClientConfiguration =>
             new PolygonDataClientConfiguration
             {
-                KeyId = KeyId,
+                KeyId = IsStagingEnvironment
+                    ? $"{KeyId}-staging"
+                    : KeyId,
                 ApiEndpoint = PolygonApiUrl
             };
     }

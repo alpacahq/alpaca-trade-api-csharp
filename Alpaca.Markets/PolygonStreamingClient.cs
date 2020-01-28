@@ -31,7 +31,7 @@ namespace Alpaca.Markets
         // ReSharper restore InconsistentNaming
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
-        
+
         /// <summary>
         /// Occured when new trade received from stream.
         /// </summary>
@@ -247,7 +247,7 @@ namespace Alpaca.Markets
         {
             var connectionStatus = token.ToObject<JsonConnectionStatus>();
 
-            switch (connectionStatus?.Status) //-V3002
+            switch (connectionStatus?.Status)
             {
                 case ConnectionStatus.Connected:
                     SendAsJsonString(new JsonAuthRequest
@@ -261,10 +261,13 @@ namespace Alpaca.Markets
                     OnConnected(AuthStatus.Authorized);
                     break;
 
-                case ConnectionStatus.Failed:
                 case ConnectionStatus.AuthenticationFailed:
                 case ConnectionStatus.AuthenticationRequired:
                     HandleError(new InvalidOperationException(connectionStatus.Message));
+                    break;
+
+                case ConnectionStatus.Failed:
+                case ConnectionStatus.Success:
                     break;
 
                 default:

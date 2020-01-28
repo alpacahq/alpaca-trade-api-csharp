@@ -31,7 +31,8 @@ namespace Alpaca.Markets
                 .EnsureNotNull(nameof(configuration))
                 .EnsureIsValid();
 
-            _isStagingEnvironment = configuration.IsStaging;
+            _isStagingEnvironment = configuration.KeyId
+                .EndsWith("-staging", StringComparison.Ordinal);
             _keyId = configuration.KeyId;
 
             _httpClient.DefaultRequestHeaders.Accept

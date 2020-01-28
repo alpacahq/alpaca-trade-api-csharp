@@ -56,6 +56,7 @@ namespace Alpaca.Markets
                 apiVersion ?? (Int32)AlpacaTradingClientConfiguration.DefaultApiVersion,
                 dataApiVersion ?? (Int32)AlpacaDataClientConfiguration.DefaultApiVersion,
                 throttleParameters ?? ThrottleParameters.Default,
+                isStagingEnvironment ?? false,
                 oauthKey ?? String.Empty))
         {
         }
@@ -82,11 +83,11 @@ namespace Alpaca.Markets
             Uri alpacaDataApi,
             Int32 apiVersion,
             Int32 dataApiVersion,
-            Boolean isStagingEnvironment,
             ThrottleParameters throttleParameters,
+            Boolean isStagingEnvironment,
             String oauthKey)
             : this(createConfiguration(
-                keyId, secretKey, alpacaRestApi, polygonRestApi, alpacaDataApi, apiVersion, dataApiVersion, throttleParameters, oauthKey))
+                keyId, secretKey, alpacaRestApi, polygonRestApi, alpacaDataApi, apiVersion, dataApiVersion, throttleParameters, isStagingEnvironment, oauthKey))
         {
         }
 
@@ -111,6 +112,7 @@ namespace Alpaca.Markets
             Int32 apiVersion,
             Int32 dataApiVersion,
             ThrottleParameters throttleParameters,
+            Boolean isStagingEnvironment,
             String oauthKey)
         {
             if (!(String.IsNullOrEmpty(secretKey) ^
@@ -127,7 +129,8 @@ namespace Alpaca.Markets
                 DataApiUrl = alpacaDataApi ?? Environments.Live.AlpacaDataApi,
                 TradingApiVersion = (ApiVersion)apiVersion,
                 DataApiVersion = (ApiVersion)dataApiVersion,
-                ThrottleParameters = throttleParameters ?? ThrottleParameters.Default
+                ThrottleParameters = throttleParameters ?? ThrottleParameters.Default,
+                IsStagingEnvironment = isStagingEnvironment
             };
         }
 
@@ -790,6 +793,7 @@ namespace Alpaca.Markets
                     toInt32OrNull(configuration["maxRetryAttempts"]),
                     configuration?.GetSection("retryHttpStatuses")
                         .GetChildren().Select(item => Convert.ToInt32(item.Value, CultureInfo.InvariantCulture))),
+                toBooleanOrNull(configuration?["staging"]) ?? false,
                 String.Empty);
         }
 
@@ -798,7 +802,7 @@ namespace Alpaca.Markets
             value != null ? Convert.ToInt32(value, CultureInfo.InvariantCulture) : (Int32?)null;
 
         private static Boolean? toBooleanOrNull(
-            String value) =>
+            String? value) =>
             value != null ? Convert.ToBoolean(value, CultureInfo.InvariantCulture) : (Boolean?)null;
 #endif
     }

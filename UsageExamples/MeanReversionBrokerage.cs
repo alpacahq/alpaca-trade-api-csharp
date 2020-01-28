@@ -37,29 +37,13 @@ namespace UsageExamples
 
         public async Task Run()
         {
-            alpacaTradingClient = new AlpacaTradingClient(
-                new AlpacaTradingClientConfiguration
-                {
-                    KeyId = API_KEY,
-                    SecurityId = new SecretKey(API_SECRET),
-                    ApiEndpoint = Environments.Paper.AlpacaTradingApi
-                });
+            alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(API_KEY, new SecretKey(API_SECRET));
 
-            polygonDataClient = new PolygonDataClient(
-                new PolygonDataClientConfiguration
-                {
-                    KeyId = API_KEY,
-                    ApiEndpoint = Environments.Paper.PolygonDataApi
-                });
+            polygonDataClient = Environments.Paper.GetPolygonDataClient(API_KEY);
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
-            alpacaStreamingClient = new AlpacaStreamingClient(
-                new AlpacaStreamingClientConfiguration
-                {
-                    KeyId = API_KEY,
-                    SecretKey = API_SECRET,
-                    ApiEndpoint = Environments.Paper.AlpacaStreamingApi
-                });
+            alpacaStreamingClient = Environments.Paper.GetAlpacaStreamingClient(API_KEY, API_SECRET);
+
             alpacaStreamingClient.ConnectAndAuthenticateAsync().Wait();
 
             alpacaStreamingClient.OnTradeUpdate += HandleTradeUpdate;
@@ -95,11 +79,8 @@ namespace UsageExamples
             Console.WriteLine("Market opened.");
 
             // Connect to Polygon's websocket and listen for price updates.
-            polygonStreamingClient = new PolygonStreamingClient(
-                new PolygonStreamingClientConfiguration
-                {
-                    KeyId = API_KEY
-                });
+            polygonStreamingClient = Environments.Live.GetPolygonStreamingClient(API_KEY);
+
             polygonStreamingClient.ConnectAndAuthenticateAsync().Wait();
             Console.WriteLine("Polygon client opened.");
             polygonStreamingClient.MinuteAggReceived += async (agg) =>

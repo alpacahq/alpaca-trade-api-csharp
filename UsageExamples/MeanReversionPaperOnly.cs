@@ -28,20 +28,9 @@ namespace UsageExamples
 
         public async Task Run()
         {
-            alpacaTradingClient = new AlpacaTradingClient(
-                new AlpacaTradingClientConfiguration()
-                {
-                    KeyId = API_KEY,
-                    SecurityId = new SecretKey(API_SECRET),
-                    ApiEndpoint = Environments.Paper.AlpacaTradingApi
-                });
+            alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(API_KEY, new SecretKey(API_SECRET));
 
-            alpacaDataClient = new AlpacaDataClient(
-                new AlpacaDataClientConfiguration
-                {
-                    KeyId = API_KEY,
-                    ApiEndpoint = Environments.Paper.AlpacaDataApi
-                });
+            alpacaDataClient = Environments.Paper.GetAlpacaDataClient(API_KEY);
 
             // First, cancel any existing orders so they don't impact our buying power.
             var orders = await alpacaTradingClient.ListOrdersAsync();
