@@ -15,17 +15,5 @@ namespace Alpaca.Markets
         /// </summary>
         [EnumMember(Value = "bracket")]
         Bracket,
-
-        /// <summary>
-        /// OCO order
-        /// </summary>
-        [EnumMember(Value = "oco")]
-        Oco,
-
-        /// <summary>
-        /// OCO order
-        /// </summary>
-        [EnumMember(Value = "oto")]
-        Oto,
     }
 }

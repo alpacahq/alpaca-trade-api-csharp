@@ -243,9 +243,9 @@ namespace Alpaca.Markets
         /// <param name="clientOrderId">Client order ID.</param>
         /// <param name="extendedHours">Whether or not this order should be allowed to execute during extended hours trading.</param>
         /// <param name="orderClass">Order class for advanced order types.</param>
-        /// <param name="takeProfitLimitPrice">Profit taking limit price for for advanced order types.</param>
-        /// <param name="stopLossStopPrice">Stop loss stop price for for advanced order types.</param>
-        /// <param name="stopLossLimitPrice">Stop loss limit price for for advanced order types.</param>
+        /// <param name="takeProfitLimitPrice">Profit taking limit price for advanced order types.</param>
+        /// <param name="stopLossStopPrice">Stop loss stop price for advanced order types.</param>
+        /// <param name="stopLossLimitPrice">Stop loss limit price for advanced order types.</param>
         /// <param name="nested">Whether or not child orders should be listed as 'legs' of parent orders. (Advanced order types only.)</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for newly created order.</returns>
@@ -272,6 +272,23 @@ namespace Alpaca.Markets
                 clientOrderId = clientOrderId.Substring(0, 48);
             }
 
+            JsonNewOrderAdvancedAttributes? takeProfit = null, stopLoss = null;
+            if (takeProfitLimitPrice != null)
+            {
+                takeProfit = new JsonNewOrderAdvancedAttributes
+                {
+                    LimitPrice = takeProfitLimitPrice
+                };
+            }
+            if (stopLossStopPrice != null || stopLossLimitPrice != null)
+            {
+                stopLoss = new JsonNewOrderAdvancedAttributes
+                {
+                    StopPrice = stopLossStopPrice,
+                    LimitPrice = stopLossLimitPrice
+                };
+            }
+
             var newOrder = new JsonNewOrder
             {
                 Symbol = symbol,
@@ -284,12 +301,8 @@ namespace Alpaca.Markets
                 ClientOrderId = clientOrderId,
                 ExtendedHours = extendedHours,
                 OrderClass = orderClass,
-                OrderAttributes = new JsonNewOrderAttributes
-                {
-                    TakeProfitLimitPrice = takeProfitLimitPrice,
-                    StopLossStopPrice = stopLossStopPrice,
-                    StopLossLimitPrice = stopLossLimitPrice,
-                }
+                TakeProfit = takeProfit,
+                StopLoss = stopLoss,
             };
 
             var builder = new UriBuilder(_httpClient.BaseAddress)

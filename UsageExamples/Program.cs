@@ -9,7 +9,7 @@ namespace UsageExamples
         {
             try
             {
-                var algo = new MeanReversionBrokerage();
+                var algo = new AdvancedOrderTest();
                 await algo.Run();
             }
             catch (Exception e)
