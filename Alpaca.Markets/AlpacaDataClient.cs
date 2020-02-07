@@ -26,6 +26,9 @@ namespace Alpaca.Markets
                 .EnsureNotNull(nameof(configuration))
                 .EnsureIsValid();
 
+            configuration.SecurityId
+                .AddAuthenticationHeader(_httpClient, configuration.KeyId);
+
             _httpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _httpClient.BaseAddress = configuration.ApiEndpoint

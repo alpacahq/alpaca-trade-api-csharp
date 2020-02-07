@@ -30,7 +30,7 @@ namespace UsageExamples
         {
             alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(API_KEY, new SecretKey(API_SECRET));
 
-            alpacaDataClient = Environments.Paper.GetAlpacaDataClient(API_KEY);
+            alpacaDataClient = Environments.Paper.GetAlpacaDataClient(API_KEY, new SecretKey(API_SECRET));
 
             // First, cancel any existing orders so they don't impact our buying power.
             var orders = await alpacaTradingClient.ListOrdersAsync();

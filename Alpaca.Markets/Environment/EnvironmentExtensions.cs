@@ -48,11 +48,13 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="keyId">Alpaca API key identifier.</param>
+        /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>New instance of <see cref="AlpacaDataClient"/> object.</returns>
         public static AlpacaDataClient GetAlpacaDataClient(
             this IEnvironment environment,
-            String keyId) =>
-            new AlpacaDataClient(environment.GetAlpacaDataClientConfiguration(keyId));
+            String keyId,
+            SecurityKey securityKey) =>
+            new AlpacaDataClient(environment.GetAlpacaDataClientConfiguration(keyId, securityKey));
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataClientConfiguration"/> for specific
@@ -60,13 +62,16 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="keyId">Alpaca API key identifier.</param>
+        /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>New instance of <see cref="AlpacaDataClientConfiguration"/> object.</returns>
         public static AlpacaDataClientConfiguration GetAlpacaDataClientConfiguration(
             this IEnvironment environment,
-            String keyId) =>
+            String keyId,
+            SecurityKey securityKey) =>
             new AlpacaDataClientConfiguration
             {
                 ApiEndpoint = environment?.AlpacaDataApi ?? throw new ArgumentNullException(nameof(environment)),
+                SecurityId = securityKey ?? throw new ArgumentNullException(nameof(securityKey)),
                 KeyId = keyId ?? throw new ArgumentNullException(nameof(keyId))
             };
 
