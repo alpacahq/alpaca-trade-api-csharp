@@ -129,10 +129,16 @@ namespace Alpaca.Markets
                     "APCA-API-KEY-ID", keyId);
                 _alpacaHttpClient.DefaultRequestHeaders.Add(
                     "APCA-API-SECRET-KEY", secretKey);
+                _alpacaDataClient.DefaultRequestHeaders.Add(
+                    "APCA-API-KEY-ID", keyId);
+                _alpacaDataClient.DefaultRequestHeaders.Add(
+                    "APCA-API-SECRET-KEY", secretKey);
             }
             else
             {
                 _alpacaHttpClient.DefaultRequestHeaders.Add(
+                    "Authorization", "Bearer " + oauthKey);
+                _alpacaDataClient.DefaultRequestHeaders.Add(
                     "Authorization", "Bearer " + oauthKey);
             }
             _alpacaHttpClient.DefaultRequestHeaders.Accept
