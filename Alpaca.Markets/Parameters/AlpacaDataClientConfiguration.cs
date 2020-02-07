@@ -23,6 +23,7 @@ namespace Alpaca.Markets
         {
             KeyId = String.Empty;
             ApiVersion = DefaultApiVersion;
+            SecurityId = new SecretKey(String.Empty);
             ApiEndpoint = Environments.Live.AlpacaDataApi;
         }
 
@@ -30,6 +31,11 @@ namespace Alpaca.Markets
         /// Gets or sets Alpaca application key identifier.
         /// </summary>
         public String KeyId { get; set; }
+
+        /// <summary>
+        /// Security identifier for API authentication.
+        /// </summary>
+        public SecurityKey SecurityId { get; set; }
 
         /// <summary>
         /// Gets or sets Alpaca Data API base URL.
