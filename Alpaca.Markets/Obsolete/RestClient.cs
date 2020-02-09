@@ -292,6 +292,11 @@ namespace Alpaca.Markets
         /// <param name="stopPrice">Order stop price.</param>
         /// <param name="clientOrderId">Client order ID.</param>
         /// <param name="extendedHours">Whether or not this order should be allowed to execute during extended hours trading.</param>
+        /// <param name="orderClass">Order class for advanced order types.</param>
+        /// <param name="takeProfitLimitPrice">Profit taking limit price for for advanced order types.</param>
+        /// <param name="stopLossStopPrice">Stop loss stop price for for advanced order types.</param>
+        /// <param name="stopLossLimitPrice">Stop loss limit price for for advanced order types.</param>
+        /// <param name="nested">Whether or not child orders should be listed as 'legs' of parent orders. (Advanced order types only.)</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for newly created order.</returns>
         public Task<IOrder> PostOrderAsync(
@@ -304,10 +309,16 @@ namespace Alpaca.Markets
             Decimal? stopPrice = null,
             String? clientOrderId = null,
             Boolean? extendedHours = null,
+            OrderClass? orderClass = null,
+            Decimal? takeProfitLimitPrice = null,
+            Decimal? stopLossStopPrice = null,
+            Decimal? stopLossLimitPrice = null,
+            Boolean? nested = false,
             CancellationToken cancellationToken = default) =>
             _alpacaTradingClient.PostOrderAsync(
                 symbol, quantity, side, type, duration, limitPrice, stopPrice,
-                clientOrderId, extendedHours, cancellationToken);
+                clientOrderId, extendedHours, orderClass, takeProfitLimitPrice,
+                stopLossStopPrice, stopLossLimitPrice,nested, cancellationToken);
 
         /// <summary>
         /// Updates existing order using Alpaca REST API endpoint.
