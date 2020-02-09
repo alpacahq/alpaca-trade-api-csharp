@@ -1,4 +1,7 @@
 ![](https://github.com/alpacahq/alpaca-trade-api-csharp/workflows/Build%20and%20Release/badge.svg?branch=master)
+![Nuget](https://img.shields.io/nuget/v/Alpaca.Markets?logo=NuGet)
+![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Alpaca.Markets?logo=NuGet)
+![Nuget](https://img.shields.io/nuget/dt/Alpaca.Markets?logo=NuGet)
 
 # .NET SDK for Alpaca Markets API
 
