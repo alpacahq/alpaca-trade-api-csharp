@@ -116,6 +116,12 @@ namespace Alpaca.Markets
         /// Order completely filled.
         /// </summary>
         [EnumMember(Value = "fill")]
-        Fill
+        Fill,
+
+        /// <summary>
+        /// Order held pending trigger event.
+        /// </summary>
+        [EnumMember(Value = "held")]
+        Held
     }
 }
