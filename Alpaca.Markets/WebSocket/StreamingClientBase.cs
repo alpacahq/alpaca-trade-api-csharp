@@ -19,6 +19,8 @@ namespace Alpaca.Markets
     public abstract class StreamingClientBase<TConfiguration> : IDisposable
         where TConfiguration : StreamingClientConfiguration
     {
+        private readonly SynchronizationQueue _queue = new SynchronizationQueue();
+
         private readonly IWebSocket _webSocket;
 
         internal readonly TConfiguration Configuration;
@@ -42,6 +44,7 @@ namespace Alpaca.Markets
             _webSocket.DataReceived += OnDataReceived;
 
             _webSocket.Error += HandleError;
+            _queue.OnError += HandleError;
         }
 
         /// <summary>
@@ -158,8 +161,10 @@ namespace Alpaca.Markets
             _webSocket.DataReceived -= OnDataReceived;
 
             _webSocket.Error -= HandleError;
+            _queue.OnError -= OnError;
 
             _webSocket.Dispose();
+            _queue.Dispose();
         }
 
         /// <summary>
@@ -186,7 +191,7 @@ namespace Alpaca.Markets
                 if (handlers != null &&
                     handlers.TryGetValue(messageType, out var handler))
                 {
-                    handler(message);
+                    _queue.Enqueue(() => handler(message));
                 }
                 else
                 {
