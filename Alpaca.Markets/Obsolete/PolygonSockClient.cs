@@ -68,7 +68,7 @@ namespace Alpaca.Markets
             createConfiguration(
                 configuration?["keyId"] ?? throw new ArgumentException("Provide 'keyId' configuration parameter.", nameof(configuration)),
                 configuration["polygonWebsocketApi"].GetUrlSafe(Environments.Live.PolygonStreamingApi),
-                Convert.ToBoolean(configuration?["staging"] ?? "false", System.Globalization.CultureInfo.InvariantCulture),
+                Convert.ToBoolean(configuration["staging"] ?? "false", System.Globalization.CultureInfo.InvariantCulture),
                 webSocketFactory);
 #endif    
 

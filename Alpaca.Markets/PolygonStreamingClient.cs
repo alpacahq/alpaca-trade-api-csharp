@@ -16,8 +16,6 @@ namespace Alpaca.Markets
     {
         // Available Polygon message types
 
-        // ReSharper disable InconsistentNaming
-
         private const String TradesChannel = "T";
 
         private const String QuotesChannel = "Q";
@@ -27,8 +25,6 @@ namespace Alpaca.Markets
         private const String SecondAggChannel = "A";
 
         private const String StatusMessage = "status";
-
-        // ReSharper restore InconsistentNaming
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
@@ -300,7 +296,7 @@ namespace Alpaca.Markets
         private static String getParams(
             String channel,
             IEnumerable<String> symbols) =>
-            String.Join(",",symbols.Select(symbol => getParams(channel, (String) symbol)));
+            String.Join(",",symbols.Select(symbol => getParams(channel, symbol)));
 
         private void handleTradesChannel(
             JToken token) =>

@@ -13,9 +13,9 @@ namespace Alpaca.Markets
         Justification = "We do not plan to support localized exception messages in this SDK.")]
     public sealed class ThrottleParameters
     {
-        private const Int32 DEFAULT_OCCURRENCES = 200;
+        private const Int32 DefaultOccurrences = 200;
 
-        private const Int32 DEFAULT_MAX_RETRY_ATTEMPT = 5;
+        private const Int32 DefaultMaxRetryAttempts = 5;
 
         private readonly TimeSpan _defaultTimeUnit = TimeSpan.FromMinutes(1);
 
@@ -42,9 +42,9 @@ namespace Alpaca.Markets
             Int32? maxRetryAttempts = null,
             IEnumerable<Int32>? retryHttpStatuses = null)
         {
-            Occurrences = occurrences ?? DEFAULT_OCCURRENCES;
+            Occurrences = occurrences ?? DefaultOccurrences;
             TimeUnit = timeUnit ?? _defaultTimeUnit;
-            MaxRetryAttempts = maxRetryAttempts ?? DEFAULT_MAX_RETRY_ATTEMPT;
+            MaxRetryAttempts = maxRetryAttempts ?? DefaultMaxRetryAttempts;
             _retryHttpStatuses = new HashSet<Int32>(retryHttpStatuses ?? Enumerable.Empty<Int32>());
 
             _rateThrottler = new Lazy<IThrottler>(() => new RateThrottler(this));

@@ -16,8 +16,6 @@ namespace Alpaca.Markets
     {
         // Available Alpaca message types
 
-        // ReSharper disable InconsistentNaming
-
         private const String TradeUpdates = "trade_updates";
 
         private const String AccountUpdates = "account_updates";
@@ -25,8 +23,6 @@ namespace Alpaca.Markets
         private const String Authorization = "authorization";
 
         private const String Listening = "listening";
-
-        // ReSharper restore InconsistentNaming
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,7 +12,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
-    public sealed partial class RestClient : IDisposable
+    public sealed class RestClient : IDisposable
     {
         private readonly AlpacaTradingClient _alpacaTradingClient;
 
@@ -791,19 +789,20 @@ namespace Alpaca.Markets
                 toInt32OrNull(configuration["dataApiVersion"]) ?? (Int32)AlpacaDataClientConfiguration.DefaultApiVersion,
                 new ThrottleParameters(null, null,
                     toInt32OrNull(configuration["maxRetryAttempts"]),
-                    configuration?.GetSection("retryHttpStatuses")
-                        .GetChildren().Select(item => Convert.ToInt32(item.Value, CultureInfo.InvariantCulture))),
-                toBooleanOrNull(configuration?["staging"]) ?? false,
+                    System.Linq.Enumerable.Select(
+                        configuration.GetSection("retryHttpStatuses").GetChildren(),
+                        item => Convert.ToInt32(item.Value, System.Globalization.CultureInfo.InvariantCulture))),
+                toBooleanOrNull(configuration["staging"]) ?? false,
                 String.Empty);
         }
 
         private static Int32? toInt32OrNull(
             String value) => 
-            value != null ? Convert.ToInt32(value, CultureInfo.InvariantCulture) : (Int32?)null;
+            value != null ? Convert.ToInt32(value, System.Globalization.CultureInfo.InvariantCulture) : (Int32?)null;
 
         private static Boolean? toBooleanOrNull(
             String? value) =>
-            value != null ? Convert.ToBoolean(value, CultureInfo.InvariantCulture) : (Boolean?)null;
+            value != null ? Convert.ToBoolean(value, System.Globalization.CultureInfo.InvariantCulture) : (Boolean?)null;
 #endif
     }
 }

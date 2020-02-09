@@ -316,7 +316,7 @@ namespace Alpaca.Markets
 
             using var content = toStringContent(newOrder);
             using var response = await _httpClient.PostAsync(
-                    new Uri("orders", UriKind.RelativeOrAbsolute), content, cancellationToken)
+                    builder.Uri, content, cancellationToken)
                 .ConfigureAwait(false);
 
             return await response.DeserializeAsync<IOrder, JsonOrder>()
