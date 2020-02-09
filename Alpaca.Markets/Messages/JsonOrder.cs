@@ -74,6 +74,9 @@ namespace Alpaca.Markets
         public OrderStatus OrderStatus { get; set; }
 
         [JsonProperty(PropertyName = "legs", Required = Required.Default)]
-        public IReadOnlyList<IOrder>? Legs { get; set; }
+        public List<JsonOrder>? LegsList { get; set; }
+
+        [JsonIgnore]
+        public IReadOnlyList<IOrder> Legs => LegsList.EmptyIfNull<IOrder, JsonOrder>();
     }
 }
