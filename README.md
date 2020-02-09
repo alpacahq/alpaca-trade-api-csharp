@@ -11,7 +11,7 @@
 2. Add a reference for Alpaca .NET SDK with `dotnet add package Alpaca.Markets`.
 3. Change `Main` method in auto-generated `Programm.cs` file to this code snippet:
 ```cs
-var client = new Alpaca.Markets.Environments.Paper
+var client = Alpaca.Markets.Environments.Paper
     .GetAlpacaTradingClient(KEY_ID, new SecretKey(SECRET_KEY));
 
 var clock = client.GetClockAsync().Result;
