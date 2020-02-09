@@ -19,7 +19,9 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Added autorization using key/id pair into `AlpacaDataClient` class.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added autorization using key/id pair into `AlpacaDataClient` class.
+- Added support for advanced order types (brackets) into `PostOrderAsync` method.
+- All streaming events now processed in separate thread for detaching network thread and message processing logic.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
