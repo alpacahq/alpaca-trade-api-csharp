@@ -1,0 +1,796 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SockClientBase
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SockClientBase
+   ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.SockClientBase">
+  
+  
+  <h1 id="Alpaca_Markets_SockClientBase" data-uid="Alpaca.Markets.SockClientBase" class="text-break">Class SockClientBase
+  </h1>
+  <div class="markdown level0 summary"><p>Provides unified type-safe access for websocket streaming APIs.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">SockClientBase</span></div>
+      <div class="level2"><a class="xref" href="Alpaca.Markets.PolygonSockClient.html">PolygonSockClient</a></div>
+      <div class="level2"><a class="xref" href="Alpaca.Markets.SockClient.html">SockClient</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
+  <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
+  <h5 id="Alpaca_Markets_SockClientBase_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class SockClientBase : IDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase__ctor_System_UriBuilder_Alpaca_Markets_IWebSocketFactory_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.%23ctor(System.UriBuilder%2CAlpaca.Markets.IWebSocketFactory)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L28">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase__ctor_" data-uid="Alpaca.Markets.SockClientBase.#ctor*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase__ctor_System_UriBuilder_Alpaca_Markets_IWebSocketFactory_" data-uid="Alpaca.Markets.SockClientBase.#ctor(System.UriBuilder,Alpaca.Markets.IWebSocketFactory)">SockClientBase(UriBuilder, IWebSocketFactory)</h4>
+  <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.SockClientBase.html">SockClientBase</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected SockClientBase(UriBuilder endpointUri, IWebSocketFactory webSocketFactory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UriBuilder</span></td>
+        <td><span class="parametername">endpointUri</span></td>
+        <td><p>URL for websocket endpoint connection.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IWebSocketFactory.html">IWebSocketFactory</a></td>
+        <td><span class="parametername">webSocketFactory</span></td>
+        <td><p>Factory class for web socket wrapper creation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_ConnectAndAuthenticateAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.ConnectAndAuthenticateAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L82">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase_ConnectAndAuthenticateAsync_" data-uid="Alpaca.Markets.SockClientBase.ConnectAndAuthenticateAsync*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase_ConnectAndAuthenticateAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.SockClientBase.ConnectAndAuthenticateAsync(System.Threading.CancellationToken)">ConnectAndAuthenticateAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Opens connection to a streaming API and awaits for authentication response.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;AuthStatus&gt; ConnectAndAuthenticateAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.AuthStatus.html">AuthStatus</a>&gt;</td>
+        <td><p>Awaitable task object for handling client authentication event in asynchronous mode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_ConnectAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.ConnectAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L73">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase_ConnectAsync_" data-uid="Alpaca.Markets.SockClientBase.ConnectAsync*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase_ConnectAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.SockClientBase.ConnectAsync(System.Threading.CancellationToken)">ConnectAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Opens connection to a streaming API.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ConnectAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>Awaitable task object for handling action completion in asynchronous mode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_DisconnectAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.DisconnectAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L103">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase_DisconnectAsync_" data-uid="Alpaca.Markets.SockClientBase.DisconnectAsync*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase_DisconnectAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.SockClientBase.DisconnectAsync(System.Threading.CancellationToken)">DisconnectAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Closes connection to a streaming API.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DisconnectAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>Awaitable task object for handling action completion in asynchronous mode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_Dispose.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L108">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase_Dispose_" data-uid="Alpaca.Markets.SockClientBase.Dispose*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase_Dispose" data-uid="Alpaca.Markets.SockClientBase.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L146">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase_Dispose_" data-uid="Alpaca.Markets.SockClientBase.Dispose*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase_Dispose_System_Boolean_" data-uid="Alpaca.Markets.SockClientBase.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Implement <span class="xref">System.IDisposable</span> pattern for inheritable classes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td><p>If <code>true</code> - dispose managed objects.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_HandleError_System_Exception_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.HandleError(System.Exception)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L216">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase_HandleError_" data-uid="Alpaca.Markets.SockClientBase.HandleError*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase_HandleError_System_Exception_" data-uid="Alpaca.Markets.SockClientBase.HandleError(System.Exception)">HandleError(Exception)</h4>
+  <div class="markdown level1 summary"><p>Handles <a class="xref" href="Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_Error">Error</a> event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void HandleError(Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>Exception for routing into <a class="xref" href="Alpaca.Markets.SockClientBase.html#Alpaca_Markets_SockClientBase_OnError">OnError</a> event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_HandleMessage__1_System_Collections_Generic_IDictionary___0_System_Action_Newtonsoft_Json_Linq_JToken_____0_Newtonsoft_Json_Linq_JToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.HandleMessage%60%601(System.Collections.Generic.IDictionary%7B%60%600%2CSystem.Action%7BNewtonsoft.Json.Linq.JToken%7D%7D%2C%60%600%2CNewtonsoft.Json.Linq.JToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L176">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase_HandleMessage_" data-uid="Alpaca.Markets.SockClientBase.HandleMessage*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase_HandleMessage__1_System_Collections_Generic_IDictionary___0_System_Action_Newtonsoft_Json_Linq_JToken_____0_Newtonsoft_Json_Linq_JToken_" data-uid="Alpaca.Markets.SockClientBase.HandleMessage``1(System.Collections.Generic.IDictionary{``0,System.Action{Newtonsoft.Json.Linq.JToken}},``0,Newtonsoft.Json.Linq.JToken)">HandleMessage&lt;TKey&gt;(IDictionary&lt;TKey, Action&lt;JToken&gt;&gt;, TKey, JToken)</h4>
+  <div class="markdown level1 summary"><p>Handles single incoming message. Select handler from generic handlers map
+<code data-dev-comment-type="paramref" class="paramref">handlers</code> using <code data-dev-comment-type="paramref" class="paramref">messageType</code> parameter
+as a key and pass <code data-dev-comment-type="paramref" class="paramref">message</code> parameter as value into the
+selected handler. All exceptions are caught inside this method and reported
+to client via standard <a class="xref" href="Alpaca.Markets.SockClientBase.html#Alpaca_Markets_SockClientBase_OnError">OnError</a> event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void HandleMessage&lt;TKey&gt;(IDictionary&lt;TKey, Action&lt;JToken&gt;&gt; handlers, TKey messageType, JToken message)
+    where TKey : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;TKey, <span class="xref">System.Action</span>&lt;<span class="xref">Newtonsoft.Json.Linq.JToken</span>&gt;&gt;</td>
+        <td><span class="parametername">handlers</span></td>
+        <td><p>Message handlers map.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">messageType</span></td>
+        <td><p>Message type for selecting handler from map.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Newtonsoft.Json.Linq.JToken</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>Message data for processing by selected handler.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_OnClosed.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.OnClosed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L122">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase_OnClosed_" data-uid="Alpaca.Markets.SockClientBase.OnClosed*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase_OnClosed" data-uid="Alpaca.Markets.SockClientBase.OnClosed">OnClosed()</h4>
+  <div class="markdown level1 summary"><p>Handles <a class="xref" href="Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_Closed">Closed</a> event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnClosed()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_OnConnected_Alpaca_Markets_AuthStatus_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.OnConnected(Alpaca.Markets.AuthStatus)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L208">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase_OnConnected_" data-uid="Alpaca.Markets.SockClientBase.OnConnected*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase_OnConnected_Alpaca_Markets_AuthStatus_" data-uid="Alpaca.Markets.SockClientBase.OnConnected(Alpaca.Markets.AuthStatus)">OnConnected(AuthStatus)</h4>
+  <div class="markdown level1 summary"><p>Raises <a class="xref" href="Alpaca.Markets.SockClientBase.html#Alpaca_Markets_SockClientBase_Connected">Connected</a> event with specified <code data-dev-comment-type="paramref" class="paramref">authStatus</code> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void OnConnected(AuthStatus authStatus)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.AuthStatus.html">AuthStatus</a></td>
+        <td><span class="parametername">authStatus</span></td>
+        <td><p>Authentication status (protocol level) of client.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_OnDataReceived_System_Byte___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.OnDataReceived(System.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L137">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase_OnDataReceived_" data-uid="Alpaca.Markets.SockClientBase.OnDataReceived*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase_OnDataReceived_System_Byte___" data-uid="Alpaca.Markets.SockClientBase.OnDataReceived(System.Byte[])">OnDataReceived(Byte[])</h4>
+  <div class="markdown level1 summary"><p>Handles <a class="xref" href="Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_DataReceived">DataReceived</a> event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnDataReceived(byte[] binaryData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">binaryData</span></td>
+        <td><p>Incoming binary data for processing.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_OnMessageReceived_System_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.OnMessageReceived(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L128">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase_OnMessageReceived_" data-uid="Alpaca.Markets.SockClientBase.OnMessageReceived*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase_OnMessageReceived_System_String_" data-uid="Alpaca.Markets.SockClientBase.OnMessageReceived(System.String)">OnMessageReceived(String)</h4>
+  <div class="markdown level1 summary"><p>Handles <a class="xref" href="Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_MessageReceived">MessageReceived</a> event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnMessageReceived(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>Incoming string message for processing.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_OnOpened.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.OnOpened%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L117">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase_OnOpened_" data-uid="Alpaca.Markets.SockClientBase.OnOpened*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase_OnOpened" data-uid="Alpaca.Markets.SockClientBase.OnOpened">OnOpened()</h4>
+  <div class="markdown level1 summary"><p>Handles <a class="xref" href="Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_Opened">Opened</a> event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnOpened()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_SendAsJsonString_System_Object_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.SendAsJsonString(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L226">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_SockClientBase_SendAsJsonString_" data-uid="Alpaca.Markets.SockClientBase.SendAsJsonString*"></a>
+  <h4 id="Alpaca_Markets_SockClientBase_SendAsJsonString_System_Object_" data-uid="Alpaca.Markets.SockClientBase.SendAsJsonString(System.Object)">SendAsJsonString(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SendAsJsonString(object value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_Connected.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.Connected%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L51">View Source</a>
+  </span>
+  <h4 id="Alpaca_Markets_SockClientBase_Connected" data-uid="Alpaca.Markets.SockClientBase.Connected">Connected</h4>
+  <div class="markdown level1 summary"><p>Occured when stream successfully connected.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;AuthStatus&gt; Connected</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="Alpaca.Markets.AuthStatus.html">AuthStatus</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_OnError.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.OnError%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L66">View Source</a>
+  </span>
+  <h4 id="Alpaca_Markets_SockClientBase_OnError" data-uid="Alpaca.Markets.SockClientBase.OnError">OnError</h4>
+  <div class="markdown level1 summary"><p>Occured when any error happened in stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;Exception&gt; OnError</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.Exception</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_SocketClosed.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.SocketClosed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L61">View Source</a>
+  </span>
+  <h4 id="Alpaca_Markets_SockClientBase_SocketClosed" data-uid="Alpaca.Markets.SockClientBase.SocketClosed">SocketClosed</h4>
+  <div class="markdown level1 summary"><p>Occured when underlying web socket successfully closed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action SocketClosed</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase_SocketOpened.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase.SocketOpened%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L56">View Source</a>
+  </span>
+  <h4 id="Alpaca_Markets_SockClientBase_SocketOpened" data-uid="Alpaca.Markets.SockClientBase.SocketOpened">SocketOpened</h4>
+  <div class="markdown level1 summary"><p>Occured when underlying web socket successfully opened.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action SocketOpened</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SockClientBase.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SockClientBase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/SockClientBase.cs/#L15" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
