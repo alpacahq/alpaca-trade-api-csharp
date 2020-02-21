@@ -12,6 +12,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Globalization","CA1303:Do not pass literals as localized parameters",
         Justification = "We do not plan to support localized exception messages in this SDK.")]
+    [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the AlpacaDataClient, AlpacaTradingClient and PolygonDataClient classes instead.", false)]
     public sealed class RestClient : IDisposable
     {
         private readonly AlpacaTradingClient _alpacaTradingClient;
@@ -33,7 +34,6 @@ namespace Alpaca.Markets
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         /// <param name="throttleParameters">Parameters for requests throttling.</param>
         /// <param name="oauthKey">Key for alternative authentication via oauth. keyId and secretKey will be ignored if provided.</param>
-        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
         public RestClient(
             String keyId,
             String secretKey,
@@ -72,7 +72,6 @@ namespace Alpaca.Markets
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         /// <param name="throttleParameters">Parameters for requests throttling.</param>
         /// <param name="oauthKey">Key for alternative authentication via oauth. keyId and secretKey will be ignored if provided.</param>
-        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
         public RestClient(
             String keyId,
             String secretKey,
@@ -94,7 +93,6 @@ namespace Alpaca.Markets
         /// Creates new instance of <see cref="RestClient"/> object.
         /// </summary>
         /// <param name="configuration">Application configuration.</param>
-        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
         public RestClient(
             Microsoft.Extensions.Configuration.IConfiguration configuration)
             : this(createConfiguration(configuration)) =>
