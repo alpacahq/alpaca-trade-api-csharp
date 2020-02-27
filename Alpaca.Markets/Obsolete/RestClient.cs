@@ -580,6 +580,26 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _polygonDataClient.ListMinuteAggregatesAsync(symbol, multiplier, dateFromInclusive, dateToInclusive, unadjusted, cancellationToken);
 
+        
+        /// <summary>
+        /// Gets list of historical hour bars for single asset from Polygon's v2 REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">>Asset name for data retrieval.</param>
+        /// <param name="multiplier">>Number of bars to combine in each result.</param>
+        /// <param name="dateFromInclusive">Start time for filtering (inclusive).</param>
+        /// <param name="dateToInclusive">End time for filtering (inclusive).</param>
+        /// <param name="unadjusted">Set to true if the results should not be adjusted for splits.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only list of minute bars for specified asset.</returns>
+        public Task<IHistoricalItems<IAgg>> ListHourAggregatesAsync(
+            String symbol,
+            Int32 multiplier,
+            DateTime dateFromInclusive,
+            DateTime dateToInclusive,
+            Boolean unadjusted = false,
+            CancellationToken cancellationToken = default) =>
+            _polygonDataClient.ListHourAggregatesAsync(symbol, multiplier, dateFromInclusive, dateToInclusive, unadjusted, cancellationToken);
+
         /// <summary>
         /// Gets list of historical minute bars for single asset from Polygon's v2 REST API endpoint.
         /// </summary>
