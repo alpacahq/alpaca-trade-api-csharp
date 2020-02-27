@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -77,7 +76,7 @@ namespace Alpaca.Markets
                 }
             }
 
-            public void Dispose() => _lock?.Dispose();
+            public void Dispose() => _lock.Dispose();
         }
 
         private readonly NextRetryGuard _nextRetryGuard = new NextRetryGuard();
@@ -117,8 +116,7 @@ namespace Alpaca.Markets
         {
             _timeUnitMilliseconds = (Int32)throttleParameters.TimeUnit.TotalMilliseconds;
             MaxRetryAttempts = throttleParameters.MaxRetryAttempts;
-            _retryHttpStatuses = new HashSet<Int32>(
-                throttleParameters.RetryHttpStatuses ?? Enumerable.Empty<Int32>());
+            _retryHttpStatuses = new HashSet<Int32>(throttleParameters.RetryHttpStatuses);
 
             // Create the throttle semaphore, with the number of occurrences as the maximum count.
             _throttleSemaphore = new SemaphoreSlim(throttleParameters.Occurrences, throttleParameters.Occurrences);

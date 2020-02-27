@@ -12,9 +12,6 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for websocket streaming APIs.
     /// </summary>
-    [SuppressMessage(
-        "Globalization","CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     public abstract class StreamingClientBase<TConfiguration> : IDisposable
         where TConfiguration : StreamingClientConfiguration
     {

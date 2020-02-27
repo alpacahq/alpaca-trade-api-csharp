@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Alpaca.Markets
@@ -8,9 +7,6 @@ namespace Alpaca.Markets
     /// <summary>
     /// Helper class for storing parameters required for initializing rate throttler in <see cref="RestClient"/> class.
     /// </summary>
-    [SuppressMessage(
-        "Globalization","CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     public sealed class ThrottleParameters
     {
         private const Int32 DefaultOccurrences = 200;

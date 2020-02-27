@@ -61,6 +61,7 @@ namespace Alpaca.Markets
             try
             {
                 throw new RestClientErrorException(
+                    // ReSharper disable once ConstantNullCoalescingCondition
                     serializer.Deserialize<JsonError>(reader) ?? new JsonError());
             }
             catch (Exception exception)

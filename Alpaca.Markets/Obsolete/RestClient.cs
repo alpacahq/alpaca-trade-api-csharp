@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,9 +8,6 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca REST API and Polygon REST API endpoints.
     /// </summary>
-    [SuppressMessage(
-        "Globalization","CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the AlpacaDataClient, AlpacaTradingClient and PolygonDataClient classes instead.", false)]
     public sealed class RestClient : IDisposable
     {
@@ -147,9 +143,9 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public void Dispose()
         {
-            _alpacaTradingClient?.Dispose();
-            _alpacaDataClient?.Dispose();
-            _polygonDataClient?.Dispose();
+            _alpacaTradingClient.Dispose();
+            _alpacaDataClient.Dispose();
+            _polygonDataClient.Dispose();
         }
 
         /// <summary>
@@ -464,8 +460,7 @@ namespace Alpaca.Markets
             DateTime? timeFrom = null,
             DateTime? timeInto = null,
             CancellationToken cancellationToken = default) =>
-            _alpacaDataClient.GetBarSetAsync(
-                symbols, timeFrame, limit, areTimesInclusive, timeFrom, timeInto, cancellationToken);
+            _alpacaDataClient.GetBarSetAsync(symbols, timeFrame, limit, areTimesInclusive, timeFrom, timeInto, cancellationToken);
 
         /// <summary>
         /// Gets list of available exchanges from Polygon REST API endpoint.

@@ -9,9 +9,6 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API via websockets.
     /// </summary>
-    [SuppressMessage(
-        "Globalization","CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     public sealed class PolygonStreamingClient : StreamingClientBase<PolygonStreamingClientConfiguration>
     {
         // Available Polygon message types
@@ -243,6 +240,7 @@ namespace Alpaca.Markets
         {
             var connectionStatus = token.ToObject<JsonConnectionStatus>();
 
+            // ReSharper disable once ConstantConditionalAccessQualifier
             switch (connectionStatus?.Status)
             {
                 case ConnectionStatus.Connected:
