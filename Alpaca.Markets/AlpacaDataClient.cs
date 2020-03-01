@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -99,6 +100,74 @@ namespace Alpaca.Markets
             return response.ToDictionary(
                 kvp => kvp.Key, 
                 kvp => (IReadOnlyList<IAgg>)kvp.Value.AsReadOnly());
+        }
+
+        /// <summary>
+        /// Gets list of historical bars for single asset from from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="multiplier">Number of bars to combine in each result.</param>
+        /// <param name="timeSpan">Size of the aggregation time window.</param>
+        /// <param name="dateFromInclusive">Start time for filtering (inclusive).</param>
+        /// <param name="dateToInclusive">End time for filtering (inclusive).</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only list of day bars for specified asset.</returns>
+        public Task<IHistoricalItems<IAgg>> ListAggregatesAsync(
+            String symbol,
+            Int32 multiplier,
+            AggregationTimeSpan timeSpan,
+            DateTime dateFromInclusive,
+            DateTime dateToInclusive,
+            CancellationToken cancellationToken = default)
+        {
+            var dateStringFrom = dateFromInclusive.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+            var dateStringTo = dateToInclusive.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+            var builder = new UriBuilder(_httpClient.BaseAddress)
+            {
+                Path = _httpClient.BaseAddress.AbsolutePath + $"aggs/ticker/{symbol}/range/{multiplier}/{timeSpan.ToEnumString()}/{dateStringFrom}/{dateStringTo}",
+            };
+
+            return _httpClient.GetSingleObjectAsync<IHistoricalItems<IAgg>, JsonHistoricalItems<IAgg, JsonMinuteAgg>>(
+                FakeThrottler.Instance, builder, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets last trade for singe asset from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only last trade information.</returns>
+        public Task<ILastTrade> GetLastTradeAsync(
+            String symbol,
+            CancellationToken cancellationToken = default)
+        {
+            var builder = new UriBuilder(_httpClient.BaseAddress)
+            {
+                Path = _httpClient.BaseAddress.AbsolutePath + $"last/stocks/{symbol}"
+            };
+
+            return _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTrade>(
+                FakeThrottler.Instance, builder, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets current quote for singe asset from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only current quote information.</returns>
+        public Task<ILastQuote> GetLastQuoteAsync(
+            String symbol,
+            CancellationToken cancellationToken = default)
+        {
+            var builder = new UriBuilder(_httpClient.BaseAddress)
+            {
+                Path = _httpClient.BaseAddress.AbsolutePath + $"last_quote/stocks/{symbol}"
+            };
+
+            return _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuote>(
+                FakeThrottler.Instance, builder, cancellationToken);
         }
     }
 }
