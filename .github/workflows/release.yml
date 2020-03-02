@@ -28,11 +28,11 @@ jobs:
       run: dotnet build -c Release
 
     - name: Dotnet Nuget Push
-      if: startsWith(github.ref, 'refs/tags/v')
+      if: github.repository == 'alpacahq/alpaca-trade-api-csharp' && startsWith(github.ref, 'refs/tags/v')
       run: dotnet nuget push **.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
 
     - name: Create GitHub Release
-      if: startsWith(github.ref, 'refs/tags/v')
+      if: github.repository == 'alpacahq/alpaca-trade-api-csharp' && startsWith(github.ref, 'refs/tags/v')
       uses: actions/create-release@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
