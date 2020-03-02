@@ -12,7 +12,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets time offset of quote.
         /// </summary>
-        [Obsolete("TimeOffset is deprecated in API v2, use Timestamp instead", false)]
+        [Obsolete("TimeOffset is deprecated in API v2, use Timestamp instead", true)]
         Int64 TimeOffset { get; }
 
         /// <summary>

@@ -52,7 +52,7 @@ namespace Alpaca.Markets
         /// <param name="limit">Maximal number of daily bars in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
-        [Obsolete("Use overloaded method that required BarSetRequest parameter instead of this one.")]
+        [Obsolete("Use overloaded method that required BarSetRequest parameter instead of this one.", false)]
         public Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
             IEnumerable<String> symbols,
             TimeFrame timeFrame,

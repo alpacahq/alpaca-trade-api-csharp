@@ -45,7 +45,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Query execution database latency reported by Polygon.
         /// </summary>
-        [Obsolete("This property will be removed in upcoming major version of SDK.", false)]
+        [Obsolete("This property will be removed in upcoming major version of SDK.", true)]
         TimeSpan DatabaseLatency { get; }
     }
 }
