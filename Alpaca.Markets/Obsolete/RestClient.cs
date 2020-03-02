@@ -513,7 +513,7 @@ namespace Alpaca.Markets
         /// <param name="limit">Paging - maximal number of historical trades in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical trade information.</returns>
-        [Obsolete("This version of ListHistoricalTradesAsync will be deprecated in a future release.", false)]
+        [Obsolete("This version of ListHistoricalTradesAsync will be deprecated in a future release.", true)]
         public Task<IDayHistoricalItems<IHistoricalTrade>> ListHistoricalTradesV1Async(
             String symbol,
             DateTime date,
@@ -552,7 +552,7 @@ namespace Alpaca.Markets
         /// <param name="limit">Paging - maximal number of historical quotes in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical quote information.</returns>
-        [Obsolete("This version of ListHistoricalQuotesAsync will be deprecated in a future release.", false)]
+        [Obsolete("This version of ListHistoricalQuotesAsync will be deprecated in a future release.", true)]
         public Task<IDayHistoricalItems<IHistoricalQuote>> ListHistoricalQuotesV1Async(
             String symbol,
             DateTime date,
