@@ -110,12 +110,14 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="keyId">Alpaca API key identifier.</param>
         /// <param name="secretKey">Alpaca API secret key.</param>
+        /// <param name="oauthToken">Alpaca API oauth token. If provided, key and secret key will be ignored.</param>
         /// <returns>New instance of <see cref="AlpacaStreamingClient"/> object.</returns>
         public static AlpacaStreamingClient GetAlpacaStreamingClient(
             this IEnvironment environment,
             String keyId,
-            String secretKey) =>
-            new AlpacaStreamingClient(environment.GetAlpacaStreamingClientConfiguration(keyId, secretKey));
+            String secretKey,
+            String? oauthToken) =>
+            new AlpacaStreamingClient(environment.GetAlpacaStreamingClientConfiguration(keyId, secretKey, oauthToken));
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaStreamingClientConfiguration"/> for specific
@@ -124,16 +126,19 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="keyId">Alpaca API key identifier.</param>
         /// <param name="secretKey">Alpaca API secret key.</param>
+        /// <param name="oauthToken">Alpaca API oauth token. If provided, key and secret key will be ignored.</param>
         /// <returns>New instance of <see cref="AlpacaStreamingClientConfiguration"/> object.</returns>
         public static AlpacaStreamingClientConfiguration GetAlpacaStreamingClientConfiguration(
             this IEnvironment environment,
             String keyId,
-            String secretKey) =>
+            String secretKey,
+            String? oauthToken) =>
             new AlpacaStreamingClientConfiguration()
             {
                 ApiEndpoint = environment?.AlpacaStreamingApi ?? throw new ArgumentNullException(nameof(environment)),
-                SecretKey = secretKey ?? throw new ArgumentNullException(nameof(secretKey)),
-                KeyId = keyId ?? throw new ArgumentNullException(nameof(keyId))
+                SecretKey = secretKey ?? oauthToken ?? throw new ArgumentNullException(nameof(secretKey)),
+                KeyId = keyId ?? oauthToken ?? throw new ArgumentNullException(nameof(keyId)),
+                OAuthToken = oauthToken ?? String.Empty
             };
 
         /// <summary>

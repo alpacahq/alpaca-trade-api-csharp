@@ -53,14 +53,25 @@ namespace Alpaca.Markets
         /// <inheritdoc/>
         protected override void OnOpened()
         {
-            SendAsJsonString(new JsonAuthRequest
+            JsonAuthRequest.JsonData data;
+            if (String.IsNullOrEmpty(Configuration.OAuthToken))
             {
-                Action = JsonAction.Authenticate,
-                Data = new JsonAuthRequest.JsonData
+                data = new JsonAuthRequest.JsonData
                 {
                     KeyId = Configuration.KeyId,
                     SecretKey = Configuration.SecretKey
-                }
+                };
+            } else
+            {
+                data = new JsonAuthRequest.JsonData
+                {
+                    OAuthToken = Configuration.OAuthToken
+                };
+            }
+            SendAsJsonString(new JsonAuthRequest
+            {
+                Action = JsonAction.Authenticate,
+                Data = data
             });
 
             base.OnOpened();

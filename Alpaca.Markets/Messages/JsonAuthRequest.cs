@@ -7,11 +7,14 @@ namespace Alpaca.Markets
     {
         internal sealed class JsonData
         {
-            [JsonProperty(PropertyName = "key_id", Required = Required.Always)]
+            [JsonProperty(PropertyName = "key_id", Required = Required.Default)]
             public String KeyId { get; set; } = String.Empty;
 
-            [JsonProperty(PropertyName = "secret_key", Required = Required.Always)]
+            [JsonProperty(PropertyName = "secret_key", Required = Required.Default)]
             public String SecretKey { get; set; } = String.Empty;
+
+            [JsonProperty(PropertyName = "oauth_token", Required = Required.Default)]
+            public String OAuthToken { get; set; } = String.Empty;
         }
 
         [JsonProperty(PropertyName = "action", Required = Required.Always)]

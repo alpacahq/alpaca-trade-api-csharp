@@ -14,6 +14,7 @@ namespace Alpaca.Markets
             : base(Environments.Live.AlpacaStreamingApi)
         {
             SecretKey = String.Empty;
+            OAuthToken = String.Empty;
         }
 
         /// <summary>
@@ -21,11 +22,16 @@ namespace Alpaca.Markets
         /// </summary>
         public String SecretKey { get; set; }
 
+        /// <summary>
+        /// Gets or sets Alpaca oauth token identifier.
+        /// </summary>
+        public String OAuthToken { get; set; }
+
         internal override void EnsureIsValid()
         {
             base.EnsureIsValid();
 
-            if (String.IsNullOrEmpty(SecretKey))
+            if (String.IsNullOrEmpty(OAuthToken) && String.IsNullOrEmpty(SecretKey))
             {
                 throw new InvalidOperationException(
                     $"The value of '{nameof(SecretKey)}' property shouldn't be null or empty.");
