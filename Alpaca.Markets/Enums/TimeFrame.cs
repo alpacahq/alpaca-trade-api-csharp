@@ -29,6 +29,12 @@ namespace Alpaca.Markets
         FifteenMinutes,
 
         /// <summary>
+        /// Hour bars.
+        /// </summary>
+        [EnumMember(Value = "1H")]
+        Hour,
+
+        /// <summary>
         /// Daily bars.
         /// </summary>
         [EnumMember(Value = "1D")]

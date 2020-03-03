@@ -12,7 +12,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets historical equity values.
         /// </summary>
-        IReadOnlyList<Decimal?>? Equity { get; }
+        IReadOnlyList<Decimal?> Equity { get; }
 
         /// <summary>
         /// Gets historical profit/loss values.
@@ -32,7 +32,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets timeframe value for this historical view.
         /// </summary>
-        HistoryTimeframe Timeframe { get; }
+        TimeFrame Timeframe { get; }
 
         /// <summary>
         /// Gets base value for this historical view.

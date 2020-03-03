@@ -84,6 +84,12 @@ namespace Alpaca.Markets
                 throw new RequestValidationException(
                     "Time interval should be valid.");
             }
+
+            if (TimeFrame == TimeFrame.Hour)
+            {
+                throw new RequestValidationException(
+                    "1H TimeFrame may not be used for BarSet requests.");
+            }
         }
     }
 }
