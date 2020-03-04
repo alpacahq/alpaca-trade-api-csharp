@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Alpaca.Markets
 {
@@ -10,29 +9,14 @@ namespace Alpaca.Markets
     public interface IPortfolioHistory
     {
         /// <summary>
-        /// Gets historical equity values.
+        /// Gets historical information items list with timestamps.
         /// </summary>
-        IReadOnlyList<Decimal?> Equity { get; }
+        IReadOnlyList<IPortfolioHistoryItem> Items { get; }
 
         /// <summary>
-        /// Gets historical profit/loss values.
+        /// Gets time frame value for this historical view.
         /// </summary>
-        IReadOnlyList<Decimal?> ProfitLoss { get; }
-
-        /// <summary>
-        /// Gets historical profit/loss values as percentages.
-        /// </summary>
-        IReadOnlyList<Decimal?> ProfitLossPct { get; }
-
-        /// <summary>
-        /// Gets historical timestamp values.
-        /// </summary>
-        IReadOnlyList<DateTime> Timestamps { get; }
-
-        /// <summary>
-        /// Gets timeframe value for this historical view.
-        /// </summary>
-        TimeFrame Timeframe { get; }
+        TimeFrame TimeFrame { get; }
 
         /// <summary>
         /// Gets base value for this historical view.

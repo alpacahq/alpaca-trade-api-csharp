@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -11,34 +11,63 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonPortfolioHistory : IPortfolioHistory
     {
+        private sealed class Item : IPortfolioHistoryItem
+        {
+            public Decimal? Equity { get; set; }
+
+            public Decimal? ProfitLoss { get; set; }
+
+            public Decimal? ProfitLossPercentage { get; set; }
+
+            public DateTime Timestamp { get; set; }
+        }
+
+        private readonly List<IPortfolioHistoryItem> _items = new List<IPortfolioHistoryItem>();
+
         [JsonProperty(PropertyName = "equity", Required = Required.Always)]
         public List<Decimal?>? EquityList { get; set; }
-
-        [JsonIgnore]
-        public IReadOnlyList<Decimal?> Equity => EquityList.EmptyIfNull<Decimal?>();
 
         [JsonProperty(PropertyName = "profit_loss", Required = Required.Always)]
         public List<Decimal?>? ProfitLossList { get; set; }
 
-        [JsonIgnore]
-        public IReadOnlyList<Decimal?> ProfitLoss => ProfitLossList.EmptyIfNull<Decimal?>();
-
         [JsonProperty(PropertyName = "profit_loss_pct", Required = Required.Always)]
-        public List<Decimal?>? ProfitLossPctList { get; set; }
-
-        [JsonIgnore]
-        public IReadOnlyList<Decimal?> ProfitLossPct => ProfitLossPctList.EmptyIfNull<Decimal?>();
+        public List<Decimal?>? ProfitLossPercentageList { get; set; }
 
         [JsonProperty(PropertyName = "timestamp", Required = Required.Always)]
         public List<Int64>? TimestampsList { get; set; }
 
         [JsonIgnore]
-        public IReadOnlyList<DateTime> Timestamps => TimestampsList.EmptyIfNull<Int64>().Select(s => DateTimeHelper.FromUnixTimeMilliseconds(s)).ToList();
+        public IReadOnlyList<IPortfolioHistoryItem> Items => _items;
 
         [JsonProperty(PropertyName = "timeframe", Required = Required.Always)]
-        public TimeFrame Timeframe { get; set; }
+        public TimeFrame TimeFrame { get; set; }
 
         [JsonProperty(PropertyName = "base_value", Required = Required.Always)]
         public Decimal BaseValue { get; set; }
+
+        [OnDeserialized]
+        internal void OnDeserializedMethod(
+            StreamingContext context)
+        {
+            var equities = EquityList.EmptyIfNull();
+            var timestamps = TimestampsList.EmptyIfNull();
+            var profitLosses = ProfitLossList.EmptyIfNull();
+            var profitLossesPercentage = ProfitLossPercentageList.EmptyIfNull();
+
+            var count = Math.Min(
+                Math.Min(equities.Count, timestamps.Count),
+                Math.Min(profitLosses.Count, profitLossesPercentage.Count));
+
+            for (var index = 0; index < count; ++index)
+            {
+                _items.Add(new Item()
+                {
+                    Equity = equities[index],
+                    ProfitLoss = profitLosses[index],
+                    ProfitLossPercentage = profitLossesPercentage[index],
+                    Timestamp = DateTimeHelper.FromUnixTimeSeconds(timestamps[index]),
+                });
+            }
+        }
     }
 }
