@@ -234,9 +234,6 @@ namespace Alpaca.Markets
                 return false;
             }
 
-            // Allow framework to throw the exception
-            response.EnsureSuccessStatusCode();
-
             return true;
         }
     }
