@@ -58,16 +58,17 @@ namespace Alpaca.Markets
                 return serializer.Deserialize<TJson>(reader);
             }
 
-            try
+            // ReSharper disable once ConstantNullCoalescingCondition
+            var jsonError = 
+                serializer.Deserialize<JsonError>(reader) ?? new JsonError();
+
+            if (jsonError.Code == 0 ||
+                String.IsNullOrEmpty(jsonError.Message))
             {
-                throw new RestClientErrorException(
-                    // ReSharper disable once ConstantNullCoalescingCondition
-                    serializer.Deserialize<JsonError>(reader) ?? new JsonError());
+                throw new RestClientErrorException(response);
             }
-            catch (Exception exception)
-            {
-                throw new RestClientErrorException(response, exception);
-            }
+
+            throw new RestClientErrorException(jsonError);
         }
 
         private static async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(
