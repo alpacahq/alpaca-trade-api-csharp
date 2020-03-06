@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.3;net45</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>3.6.0-alpha2</Version>
+    <Version>3.6.0-alpha3</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2020 Alpaca Securities LLC. All rights reserved.</Copyright>
@@ -20,7 +20,9 @@
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <PackageReleaseNotes>- Changed approach for passing parameters into `AlpacaDataClient.GetBarSetAsync` method.
-- Added new method `PolygonDataClient.GetHourAggregatesAsync` for requesting hourly bars from Polygon.</PackageReleaseNotes>
+- Added new method `PolygonDataClient.GetHourAggregatesAsync` for requesting hourly bars from Polygon.
+- Revert back proper error handling - custom exception throwing in case of HTTP errors.
+- Added new advanced order types (OCO and OTO), and portfolio history endpoint support.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
