@@ -114,9 +114,9 @@ namespace Alpaca.Markets
         /// <returns>New instance of <see cref="AlpacaStreamingClient"/> object.</returns>
         public static AlpacaStreamingClient GetAlpacaStreamingClient(
             this IEnvironment environment,
-            String keyId,
-            String secretKey,
-            String? oauthToken) =>
+            String? keyId = null,
+            String? secretKey = null,
+            String? oauthToken = null) =>
             new AlpacaStreamingClient(environment.GetAlpacaStreamingClientConfiguration(keyId, secretKey, oauthToken));
 
         /// <summary>
@@ -130,9 +130,9 @@ namespace Alpaca.Markets
         /// <returns>New instance of <see cref="AlpacaStreamingClientConfiguration"/> object.</returns>
         public static AlpacaStreamingClientConfiguration GetAlpacaStreamingClientConfiguration(
             this IEnvironment environment,
-            String keyId,
-            String secretKey,
-            String? oauthToken) =>
+            String? keyId = null,
+            String? secretKey = null,
+            String? oauthToken = null) =>
             new AlpacaStreamingClientConfiguration()
             {
                 ApiEndpoint = environment?.AlpacaStreamingApi ?? throw new ArgumentNullException(nameof(environment)),
