@@ -181,7 +181,7 @@ namespace Alpaca.Markets
                 Query = new QueryBuilder()
                     .AddParameter("start_date", startDate, DateTimeHelper.DateFormat)
                     .AddParameter("end_date", endDate, DateTimeHelper.DateFormat)
-                    .AddParameter("period", period)
+                    .AddParameter("period", period?.ToString())
                     .AddParameter("timeframe", timeFrame)
                     .AddParameter("extended_hours", extendedHours)
             };
