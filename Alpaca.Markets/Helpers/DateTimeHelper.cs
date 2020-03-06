@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Alpaca.Markets
 {
@@ -13,6 +14,11 @@ namespace Alpaca.Markets
 
         private static readonly Int64 _timeSpanMaxValueMilliseconds =
             (Int64)TimeSpan.MaxValue.TotalMilliseconds;
+
+        public static String DateFormat { get; } = "yyyy-MM-dd";
+
+        public static String AsDateString(this DateTime dateTime) =>
+            dateTime.ToString(DateFormat, CultureInfo.InvariantCulture);
 
         public static DateTime FromUnixTimeNanoseconds(
             Int64 linuxTimeStamp) =>

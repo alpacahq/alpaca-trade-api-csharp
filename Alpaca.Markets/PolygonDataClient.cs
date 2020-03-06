@@ -104,10 +104,9 @@ namespace Alpaca.Markets
             Boolean? reverse = null,
             CancellationToken cancellationToken = default)
         {
-            var dateAsString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = $"v2/ticks/stocks/trades/{symbol}/{dateAsString}",
+                Path = $"v2/ticks/stocks/trades/{symbol}/{date.AsDateString()}",
                 Query = getDefaultPolygonApiQueryBuilder()
                     .AddParameter("timestamp", timestamp)
                     .AddParameter("timestamp_limit", timestampLimit)
@@ -137,10 +136,9 @@ namespace Alpaca.Markets
             Int32? limit = null,
             CancellationToken cancellationToken = default)
         {
-            var dateAsString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = $"v1/historic/trades/{symbol}/{dateAsString}",
+                Path = $"v1/historic/trades/{symbol}/{date.AsDateString()}",
                 Query = getDefaultPolygonApiQueryBuilder()
                     .AddParameter("offset", offset)
                     .AddParameter("limit", limit)
@@ -171,10 +169,9 @@ namespace Alpaca.Markets
             Boolean? reverse = null,
             CancellationToken cancellationToken = default)
         {
-            var dateAsString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = $"v2/ticks/stocks/nbbo/{symbol}/{dateAsString}",
+                Path = $"v2/ticks/stocks/nbbo/{symbol}/{date.AsDateString()}",
                 Query = getDefaultPolygonApiQueryBuilder()
                     .AddParameter("timestamp", timestamp)
                     .AddParameter("timestamp_limit", timestampLimit)
@@ -204,10 +201,9 @@ namespace Alpaca.Markets
             Int32? limit = null,
             CancellationToken cancellationToken = default)
         {
-            var dateAsString = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = $"v1/historic/quotes/{symbol}/{dateAsString}",
+                Path = $"v1/historic/quotes/{symbol}/{date.AsDateString()}",
                 Query = getDefaultPolygonApiQueryBuilder()
                     .AddParameter("offset", offset)
                     .AddParameter("limit", limit)

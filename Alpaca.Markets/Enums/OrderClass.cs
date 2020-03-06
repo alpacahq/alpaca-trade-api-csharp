@@ -15,5 +15,17 @@ namespace Alpaca.Markets
         /// </summary>
         [EnumMember(Value = "bracket")]
         Bracket,
+
+        /// <summary>
+        /// One Cancels Other order
+        /// </summary>
+        [EnumMember(Value = "oco")]
+        OneCancelsOther,
+
+        /// <summary>
+        /// One Triggers Other order
+        /// </summary>
+        [EnumMember(Value = "oto")]
+        OneTriggersOther,
     }
 }

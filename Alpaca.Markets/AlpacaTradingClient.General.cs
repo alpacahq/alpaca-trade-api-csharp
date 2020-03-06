@@ -98,7 +98,7 @@ namespace Alpaca.Markets
             {
                 Path = _httpClient.BaseAddress.AbsolutePath + $"account/activities/{activityType.ToEnumString()}",
                 Query = new QueryBuilder()
-                    .AddParameter("date", date, "yyyy-MM-dd")
+                    .AddParameter("date", date, DateTimeHelper.DateFormat)
                     .AddParameter("until", until, "O")
                     .AddParameter("after", after, "O")
                     .AddParameter("direction", direction)
@@ -142,7 +142,7 @@ namespace Alpaca.Markets
                 Path = _httpClient.BaseAddress.AbsolutePath + "account/activities",
                 Query = new QueryBuilder()
                     .AddParameter("activity_types", activityTypes)
-                    .AddParameter("date", date, "yyyy-MM-dd")
+                    .AddParameter("date", date, DateTimeHelper.DateFormat)
                     .AddParameter("until", until, "O")
                     .AddParameter("after", after, "O")
                     .AddParameter("direction", direction)
@@ -151,6 +151,42 @@ namespace Alpaca.Markets
             };
 
             return _httpClient.GetObjectsListAsync<IAccountActivity, JsonAccountActivity>(
+                _alpacaRestApiThrottler, builder, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets portfolio equity history from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="startDate">Start date for desired history.</param>
+        /// <param name="endDate">End date for desired history. Default value is today. </param>
+        /// <param name="period">Period value for desired history. Default value is 1 month.</param>
+        /// <param name="timeFrame">
+        /// Time frame value for desired history.
+        /// Default value is 1 minute for a period shorter than 7 days, 15 minutes for a period less than 30 days, or 1 day for a longer period.
+        /// </param>
+        /// <param name="extendedHours">If true, include extended hours in the result. This is effective only for time frame less than 1 day.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only portfolio history information object.</returns>
+        public Task<IPortfolioHistory> GetPortfolioHistoryAsync(
+                DateTime? startDate = null,
+                DateTime? endDate = null,
+                TimeFrame? timeFrame = null,
+                HistoryPeriod? period = null,
+                Boolean? extendedHours = null,
+                CancellationToken cancellationToken = default)
+        {
+            var builder = new UriBuilder(_httpClient.BaseAddress)
+            {
+                Path = _httpClient.BaseAddress.AbsolutePath + "account/portfolio/history",
+                Query = new QueryBuilder()
+                    .AddParameter("start_date", startDate, DateTimeHelper.DateFormat)
+                    .AddParameter("end_date", endDate, DateTimeHelper.DateFormat)
+                    .AddParameter("period", period?.ToString())
+                    .AddParameter("timeframe", timeFrame)
+                    .AddParameter("extended_hours", extendedHours)
+            };
+
+            return _httpClient.GetSingleObjectAsync<IPortfolioHistory, JsonPortfolioHistory>(
                 _alpacaRestApiThrottler, builder, cancellationToken);
         }
 
@@ -556,8 +592,8 @@ namespace Alpaca.Markets
             {
                 Path = _httpClient.BaseAddress.AbsolutePath + "calendar",
                 Query = new QueryBuilder()
-                    .AddParameter("start", startDateInclusive, "yyyy-MM-dd")
-                    .AddParameter("end", endDateInclusive, "yyyy-MM-dd")
+                    .AddParameter("start", startDateInclusive, DateTimeHelper.DateFormat)
+                    .AddParameter("end", endDateInclusive, DateTimeHelper.DateFormat)
             };
 
             return _httpClient.GetObjectsListAsync<ICalendar, JsonCalendar>(
