@@ -235,6 +235,29 @@ namespace Alpaca.Markets
                 activityTypes, date, until, after, direction, pageSize, pageToken, cancellationToken);
 
         /// <summary>
+        /// Gets portfolio equity history from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="startDate">Start date for desired history.</param>
+        /// <param name="endDate">End date for desired history. Default value is today. </param>
+        /// <param name="period">Period value for desired history. Default value is 1 month.</param>
+        /// <param name="timeFrame">
+        /// Time frame value for desired history.
+        /// Default value is 1 minute for a period shorter than 7 days, 15 minutes for a period less than 30 days, or 1 day for a longer period.
+        /// </param>
+        /// <param name="extendedHours">If true, include extended hours in the result. This is effective only for time frame less than 1 day.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only portfolio history information object.</returns>
+        public Task<IPortfolioHistory> GetPortfolioHistoryAsync(
+            DateTime? startDate = null,
+            DateTime? endDate = null,
+            TimeFrame? timeFrame = null,
+            HistoryPeriod? period = null,
+            Boolean? extendedHours = null,
+            CancellationToken cancellationToken = default) =>
+            _alpacaTradingClient.GetPortfolioHistoryAsync(
+                startDate, endDate, timeFrame, period, extendedHours, cancellationToken);
+
+        /// <summary>
         /// Gets list of available assets from Alpaca REST API endpoint.
         /// </summary>
         /// <param name="assetStatus">Asset status for filtering.</param>
