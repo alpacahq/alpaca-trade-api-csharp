@@ -56,18 +56,15 @@ namespace Alpaca.Markets
         public Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
             IEnumerable<String> symbols,
             TimeFrame timeFrame,
-            Int32? limit = BarSetRequest.DefaultLimit,
+            Int32? limit = null,
             Boolean areTimesInclusive = true,
             DateTime? timeFrom = null,
             DateTime? timeInto = null,
             CancellationToken cancellationToken = default) =>
-            GetBarSetAsync(new BarSetRequest(symbols, timeFrame)
-            {
-                Limit = limit,
-                TimeFrom = timeFrom,
-                TimeInto = timeInto,
-                AreTimesInclusive = areTimesInclusive,
-            }, cancellationToken);
+            GetBarSetAsync(
+                new BarSetRequest(symbols, timeFrame) { Limit = limit }
+                    .SetTimeInterval(areTimesInclusive, timeFrom, timeInto),
+                cancellationToken);
 
         /// <summary>
         /// Gets lookup table of historical daily bars lists for all assets from Alpaca REST API endpoint.

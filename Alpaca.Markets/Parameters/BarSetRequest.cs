@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Alpaca.Markets
 {
@@ -8,8 +9,6 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed class BarSetRequest
     {
-        internal const Int32 DefaultLimit = 100;
-
         private readonly List<String> _symbols;
 
         /// <summary>
@@ -33,56 +32,105 @@ namespace Alpaca.Markets
             IEnumerable<String> symbols,
             TimeFrame timeFrame)
         {
-            _symbols = new List<String>(symbols);
+            _symbols = new List<String>(symbols
+                .Where(_ => !String.IsNullOrEmpty(_))
+                .Distinct(StringComparer.Ordinal));
             TimeFrame = timeFrame;
         }
 
         /// <summary>
-        /// Gets mutable list of asset names for data retrieval.
+        /// Gets immutable list of asset names for data retrieval.
         /// </summary>
-        public IList<String> Symbols => _symbols;
+        public IReadOnlyList<String> Symbols => _symbols;
 
         /// <summary>
-        /// Gets or sets type of time bars for retrieval.
+        /// Gets type of time bars for retrieval.
         /// </summary>
-        public TimeFrame TimeFrame { get; set; }
+        public TimeFrame TimeFrame { get; }
 
         /// <summary>
         /// Gets of sets maximal number of daily bars in data response.
         /// </summary>
-        public Int32? Limit { get; set; } = DefaultLimit;
+        public Int32? Limit { get; set; }
 
         /// <summary>
-        /// If <c>true</c> - both <see cref="TimeFrom"/> and <see cref="TimeInto"/> properties are treated as inclusive.
+        /// Gets flag indicating that both <see cref="TimeFrom"/> and <see cref="TimeInto"/> properties are treated as inclusive timestamps.
         /// </summary>
-        public Boolean AreTimesInclusive { get; set; } = true;
+        public Boolean AreTimesInclusive { get; private set; } = true;
 
         /// <summary>
-        /// Gets or sets start time for filtering.
+        /// Gets start time for filtering.
         /// </summary>
-        public DateTime? TimeFrom { get; set; }
+        public DateTime? TimeFrom { get; private set; }
 
         /// <summary>
-        /// Gets or sets end time for filtering.
+        /// Gets end time for filtering.
         /// </summary>
-        public DateTime? TimeInto { get; set; }
+        public DateTime? TimeInto { get; private set; }
 
         /// <summary>
-        /// Validates parameters consistency and throws exception in case of any errors.
+        /// Sets inclusive time interval for request (start/end time included into interval if specified).
         /// </summary>
-        /// <exception cref="RequestValidationException"></exception>
-        public void Validate()
+        /// <param name="start">Filtering interval start time.</param>
+        /// <param name="end">Filtering interval end time.</param>
+        /// <returns>Fluent interface method return same <see cref="BarSetRequest"/> instance.</returns>
+        public BarSetRequest SetInclusiveTimeInterval(
+            DateTime? start,
+            DateTime? end) =>
+            SetTimeInterval(
+                true, start, end);
+
+        /// <summary>
+        /// Sets exclusive time interval for request (start/end time not included into interval if specified).
+        /// </summary>
+        /// <param name="after">Filtering interval start time.</param>
+        /// <param name="until">Filtering interval end time.</param>
+        /// <returns>Fluent interface method return same <see cref="BarSetRequest"/> instance.</returns>
+        public BarSetRequest SetExclusiveTimeInterval(
+            DateTime? after,
+            DateTime? until) =>
+            SetTimeInterval(
+                false, after, until);
+
+        /// <summary>
+        /// Gets all validation exceptions (inconsistent request data errors).
+        /// </summary>
+        /// <returns>Lazy-evaluated list of validation errors.</returns>
+        // ReSharper disable once MemberCanBePrivate.Global
+        public IEnumerable<RequestValidationException> GetExceptions()
         {
             if (_symbols.Count == 0)
             {
-                throw new RequestValidationException(
+                yield return new RequestValidationException(
                     "Symbols list shouldn't be empty.", nameof(Symbols));
             }
 
             if (TimeFrom > TimeInto)
             {
-                throw new RequestValidationException(
-                    "Time interval should be valid.");
+                yield return new RequestValidationException(
+                    "Time interval should be valid.", nameof(TimeFrom));
+                yield return new RequestValidationException(
+                    "Time interval should be valid.", nameof(TimeInto));
+            }
+        }
+
+        internal BarSetRequest SetTimeInterval(
+            Boolean areTimesInclusive,
+            DateTime? timeFrom,
+            DateTime? timeInto)
+        {
+            AreTimesInclusive = areTimesInclusive;
+            TimeFrom = timeFrom;
+            TimeInto = timeInto;
+            return this;
+        }
+
+        internal void Validate()
+        {
+            var exception = new AggregateException(GetExceptions());
+            if (exception.InnerExceptions.Count != 0)
+            {
+                throw exception;
             }
         }
     }
