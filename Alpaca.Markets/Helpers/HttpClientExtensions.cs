@@ -11,6 +11,16 @@ namespace Alpaca.Markets
 {
     internal static class HttpClientExtensions
     {
+        public static void AddAuthenticationHeaders(
+            this HttpClient httpClient,
+            SecurityKey securityKey)
+        {
+            foreach (var pair in securityKey.GetAuthenticationHeaders())
+            {
+                httpClient.DefaultRequestHeaders.Add(pair.Key, pair.Value);
+            }
+        }
+
         public static Task<TApi> GetSingleObjectAsync<TApi, TJson>(
             this HttpClient httpClient,
             IThrottler throttler,

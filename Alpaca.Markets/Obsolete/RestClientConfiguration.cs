@@ -13,7 +13,7 @@ namespace Alpaca.Markets
         public RestClientConfiguration()
         {
             KeyId = String.Empty;
-            SecurityId = new SecretKey(String.Empty);
+            SecurityId = new SecretKey(String.Empty, String.Empty);
 
             DataApiUrl = Environments.Live.AlpacaDataApi;
             TradingApiUrl = Environments.Live.AlpacaTradingApi;
@@ -70,14 +70,12 @@ namespace Alpaca.Markets
         internal AlpacaDataClientConfiguration AlpacaDataClientConfiguration =>
             new AlpacaDataClientConfiguration
             {
-                KeyId = KeyId,
                 ApiEndpoint = DataApiUrl
             };
 
         internal AlpacaTradingClientConfiguration AlpacaTradingClientConfiguration =>
             new AlpacaTradingClientConfiguration
             {
-                KeyId = KeyId,
                 SecurityId = SecurityId,
                 ApiEndpoint = TradingApiUrl
             };

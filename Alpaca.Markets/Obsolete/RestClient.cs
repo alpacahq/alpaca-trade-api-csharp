@@ -115,7 +115,7 @@ namespace Alpaca.Markets
             return new RestClientConfiguration
             {
                 KeyId = keyId ?? throw new ArgumentException("Application key id should not be null.", nameof(keyId)),
-                SecurityId = SecurityKey.Create(secretKey, oauthKey),
+                SecurityId = String.IsNullOrEmpty(secretKey) ? (SecurityKey) new SecretKey(keyId, secretKey) : new OAuthKey(oauthKey),
                 TradingApiUrl = alpacaRestApi ?? Environments.Live.AlpacaTradingApi,
                 PolygonApiUrl = polygonRestApi ?? Environments.Live.PolygonDataApi,
                 DataApiUrl = alpacaDataApi ?? Environments.Live.AlpacaDataApi,
