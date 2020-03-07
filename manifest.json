@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AlpacaDataClient.html",
-          "hash": "rpaHiWN81PR7A4fDj3UieA=="
+          "hash": "7CihLVQzWjBzZwub+Y758Q=="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AlpacaTradingClient.html",
-          "hash": "++hyga299OJ4EtaWO4jR9w=="
+          "hash": "rwmDfc8/FiR69rR8iO7IIw=="
         }
       },
       "is_incremental": false,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.BarSetRequest.html",
-          "hash": "l8Hq0wmbVkoV9ejVY0NVVA=="
+          "hash": "ofKJUfl35SqIkBlr+iB/vA=="
         }
       },
       "is_incremental": false,
@@ -226,6 +226,30 @@
         ".html": {
           "relative_path": "api/Alpaca.Markets.ExchangeType.html",
           "hash": "2WlMzyrNNHMXXlbxhWqjVw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Alpaca.Markets.HistoryPeriod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alpaca.Markets.HistoryPeriod.html",
+          "hash": "TV8FUyh483ymIqdGh1N0wA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Alpaca.Markets.HistoryPeriodUnit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alpaca.Markets.HistoryPeriodUnit.html",
+          "hash": "NJ8nHpUyz9NrGnVKW7mUCA=="
         }
       },
       "is_incremental": false,
@@ -485,6 +509,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Alpaca.Markets.IPortfolioHistory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alpaca.Markets.IPortfolioHistory.html",
+          "hash": "wDOcNhlN8iqtdvjjWnF8Iw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Alpaca.Markets.IPortfolioHistoryItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alpaca.Markets.IPortfolioHistoryItem.html",
+          "hash": "loRScYAaez/1AaZOiw/xog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Alpaca.Markets.IPosition.yml",
       "output": {
         ".html": {
@@ -645,7 +693,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.OrderClass.html",
-          "hash": "qXbg1h7qxi55+Bc0qoLv5A=="
+          "hash": "8c12M8Esr1QyfQ8tlJN2sA=="
         }
       },
       "is_incremental": false,
@@ -705,7 +753,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.PolygonDataClient.html",
-          "hash": "5dUtRQQYk4SoV+8S7tgOWg=="
+          "hash": "wyun8EIMdojDydFlIU5ItQ=="
         }
       },
       "is_incremental": false,
@@ -777,7 +825,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.RequestValidationException.html",
-          "hash": "VbdwavyPEOUVMApLy9W+Bw=="
+          "hash": "i0lIyYaEHYJ8fHTAh3Hf7Q=="
         }
       },
       "is_incremental": false,
@@ -789,7 +837,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.RestClient.html",
-          "hash": "lnx/esdBdb6ipgr0XcAL9Q=="
+          "hash": "rDrMMPGejed3NkO/Hldw2Q=="
         }
       },
       "is_incremental": false,
@@ -801,7 +849,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.RestClientErrorException.html",
-          "hash": "39ubiA4pg3bEpFCVUbkc1w=="
+          "hash": "hpiD0lbCzOAh8bhFTwW0vA=="
         }
       },
       "is_incremental": false,
@@ -909,7 +957,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.TimeFrame.html",
-          "hash": "61gkWl2CGn9Run/zST8sSg=="
+          "hash": "RYcjUi6kQvCExQfOGoApbw=="
         }
       },
       "is_incremental": false,
@@ -957,7 +1005,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.html",
-          "hash": "DUgpbt49Gdo1i4ikw+bt1g=="
+          "hash": "rAM1N/2fAU6d4VLu14pp9Q=="
         }
       },
       "is_incremental": false,
@@ -981,7 +1029,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "pwsRa+/3qDpuzhx5CmlPig=="
+          "hash": "KVgyHGfaoGEdH3Bjc6Opdw=="
         }
       },
       "is_incremental": false,
@@ -996,7 +1044,7 @@
           "hash": "pzN9PN/30i0Fg2QW5uVdXA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1020,7 +1068,7 @@
           "hash": "WUXGLIPVS9MNtVZYENTiug=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1039,25 +1087,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
-          "skipped_file_count": 0
+          "skipped_file_count": 3
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 80,
-          "skipped_file_count": 0
+          "total_file_count": 84,
+          "skipped_file_count": 70
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -1070,8 +1116,8 @@
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0
