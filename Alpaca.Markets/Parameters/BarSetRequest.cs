@@ -112,6 +112,12 @@ namespace Alpaca.Markets
                 yield return new RequestValidationException(
                     "Time interval should be valid.", nameof(TimeInto));
             }
+
+            if (TimeFrame == TimeFrame.Hour)
+            {
+                yield return new RequestValidationException(
+                    "1H TimeFrame may not be used for BarSet requests.", nameof(TimeFrame));
+            }
         }
 
         internal BarSetRequest SetTimeInterval(
@@ -131,12 +137,6 @@ namespace Alpaca.Markets
             if (exception.InnerExceptions.Count != 0)
             {
                 throw exception;
-            }
-
-            if (TimeFrame == TimeFrame.Hour)
-            {
-                throw new RequestValidationException(
-                    "1H TimeFrame may not be used for BarSet requests.");
             }
         }
     }
