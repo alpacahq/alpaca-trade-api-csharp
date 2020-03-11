@@ -33,14 +33,16 @@ namespace UsageExamples
             alpacaDataClient = Environments.Paper.GetAlpacaDataClient(new SecretKey(API_KEY, API_SECRET));
 
             // First, cancel any existing orders so they don't impact our buying power.
-            var orders = await alpacaTradingClient.ListOrdersAsync();
+            var orders = await alpacaTradingClient.ListAllOrdersAsync();
             foreach (var order in orders)
             {
                 await alpacaTradingClient.DeleteOrderAsync(order.OrderId);
             }
 
             // Figure out when the market will close so we can prepare to sell beforehand.
-            var calendars = (await alpacaTradingClient.ListCalendarAsync(DateTime.Today)).ToList();
+            var calendars = (await alpacaTradingClient
+                .ListCalendarAsync(new CalendarRequest().SetInclusiveTimeInterval(DateTime.Today, null)))
+                .ToList();
             var calendarDate = calendars.First().TradingDate;
             var closingTime = calendars.First().TradingCloseTime;
 
