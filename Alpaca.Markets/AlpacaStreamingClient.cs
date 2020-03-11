@@ -56,11 +56,8 @@ namespace Alpaca.Markets
             SendAsJsonString(new JsonAuthRequest
             {
                 Action = JsonAction.Authenticate,
-                Data = new JsonAuthRequest.JsonData
-                {
-                    KeyId = Configuration.KeyId,
-                    SecretKey = Configuration.SecretKey
-                }
+                Data = Configuration.SecurityId
+                    .GetAuthenticationData()
             });
 
             base.OnOpened();

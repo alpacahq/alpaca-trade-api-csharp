@@ -17,16 +17,10 @@ namespace Alpaca.Markets
         /// </summary>
         public AlpacaDataClientConfiguration()
         {
-            KeyId = String.Empty;
             ApiVersion = DefaultApiVersion;
-            SecurityId = new SecretKey(String.Empty);
+            SecurityId = new SecretKey(String.Empty, String.Empty);
             ApiEndpoint = Environments.Live.AlpacaDataApi;
         }
-
-        /// <summary>
-        /// Gets or sets Alpaca application key identifier.
-        /// </summary>
-        public String KeyId { get; set; }
 
         /// <summary>
         /// Security identifier for API authentication.
@@ -45,12 +39,6 @@ namespace Alpaca.Markets
 
         internal void EnsureIsValid()
         {
-            if (String.IsNullOrEmpty(KeyId))
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(KeyId)}' property shouldn't be null or empty.");
-            }
-
             if (ApiEndpoint == null)
             {
                 throw new InvalidOperationException(

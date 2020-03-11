@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Net.Http;
+using System.Collections.Generic;
 
 namespace Alpaca.Markets
 {
@@ -17,15 +17,8 @@ namespace Alpaca.Markets
 
         internal String Value { get; }
 
-        internal abstract void AddAuthenticationHeader(
-            HttpClient httpClient,
-            String keyId);
+        internal abstract IEnumerable<KeyValuePair<String, String>> GetAuthenticationHeaders();
 
-        internal static SecurityKey Create(
-            String secretKey,
-            String oauthKey) => 
-            String.IsNullOrEmpty(secretKey)
-                ? (SecurityKey) new SecretKey(secretKey)
-                : new OAuthKey(oauthKey);
+        internal abstract JsonAuthRequest.JsonData GetAuthenticationData();
     }
 }

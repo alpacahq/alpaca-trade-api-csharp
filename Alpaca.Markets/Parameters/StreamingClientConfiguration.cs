@@ -12,15 +12,9 @@ namespace Alpaca.Markets
         /// </summary>
         protected internal StreamingClientConfiguration(Uri apiEndpoint)
         {
-            KeyId = String.Empty;
             ApiEndpoint = apiEndpoint;
             WebSocketFactory = WebSocket4NetFactory.Instance;
         }
-
-        /// <summary>
-        /// Gets or sets Alpaca application key identifier.
-        /// </summary>
-        public String KeyId { get; set; }
 
         /// <summary>
         /// Gets or sets Alpaca streaming API base URL.
@@ -37,12 +31,6 @@ namespace Alpaca.Markets
 
         internal virtual void EnsureIsValid()
         {
-            if (String.IsNullOrEmpty(KeyId))
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(KeyId)}' property shouldn't be null or empty.");
-            }
-
             if (ApiEndpoint == null)
             {
                 throw new InvalidOperationException(
