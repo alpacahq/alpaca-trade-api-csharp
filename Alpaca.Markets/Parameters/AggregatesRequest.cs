@@ -6,7 +6,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates request parameters for <see cref="PolygonDataClient.ListAggregatesAsync(AggregatesRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
-    public sealed class AggregatesRequest
+    public sealed class AggregatesRequest : Validation.IRequest
     {
         /// <summary>
         /// Creates new instance of <see cref="AggregatesRequest"/> object.
@@ -65,8 +65,7 @@ namespace Alpaca.Markets
         /// Gets all validation exceptions (inconsistent request data errors).
         /// </summary>
         /// <returns>Lazy-evaluated list of validation errors.</returns>
-        // ReSharper disable once MemberCanBePrivate.Global
-        public IEnumerable<RequestValidationException> GetExceptions()
+        IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
             if (String.IsNullOrEmpty(Symbol))
             {
@@ -92,15 +91,6 @@ namespace Alpaca.Markets
                     "Time interval should be valid.", nameof(DateFrom));
                 yield return new RequestValidationException(
                     "Time interval should be valid.", nameof(DateInto));
-            }
-        }
-
-        internal void Validate()
-        {
-            var exception = new AggregateException(GetExceptions());
-            if (exception.InnerExceptions.Count != 0)
-            {
-                throw exception;
             }
         }
     }

@@ -7,7 +7,7 @@ namespace Alpaca.Markets
     /// Encapsulates request parameters for <see cref="PolygonDataClient.ListHistoricalTradesAsync(HistoricalRequest,System.Threading.CancellationToken)"/>
     /// and <see cref="PolygonDataClient.ListHistoricalQuotesAsync(HistoricalRequest,System.Threading.CancellationToken)"/> method calls.
     /// </summary>
-    public sealed class HistoricalRequest
+    public sealed class HistoricalRequest : Validation.IRequest
     {
         /// <summary>
         /// Creates new instance of <see cref="HistoricalRequest"/> object.
@@ -57,22 +57,12 @@ namespace Alpaca.Markets
         /// Gets all validation exceptions (inconsistent request data errors).
         /// </summary>
         /// <returns>Lazy-evaluated list of validation errors.</returns>
-        // ReSharper disable once MemberCanBePrivate.Global
-        public IEnumerable<RequestValidationException> GetExceptions()
+        IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
             if (String.IsNullOrEmpty(Symbol))
             {
                 yield return new RequestValidationException(
                     "Symbols shouldn't be empty.", nameof(Symbol));
-            }
-        }
-
-        internal void Validate()
-        {
-            var exception = new AggregateException(GetExceptions());
-            if (exception.InnerExceptions.Count != 0)
-            {
-                throw exception;
             }
         }
     }

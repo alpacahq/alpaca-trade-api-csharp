@@ -213,7 +213,7 @@ namespace Alpaca.Markets
         /// <param name="pageSize">The maximum number of entries to return in the response.</param>
         /// <param name="pageToken">The ID of the end of your current page of results.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only list of asset information objects.</returns>
+        /// <returns>Read-only list of account activity record objects.</returns>
         public Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
             IEnumerable<AccountActivityType>? activityTypes = null,
             DateTime? date = null,
@@ -238,7 +238,7 @@ namespace Alpaca.Markets
         /// </param>
         /// <param name="extendedHours">If true, include extended hours in the result. This is effective only for time frame less than 1 day.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only portfolio history information object.</returns>
+        /// <returns>Read-only list of account activity record objects.</returns>
         public Task<IPortfolioHistory> GetPortfolioHistoryAsync(
             DateTime? startDate = null,
             DateTime? endDate = null,

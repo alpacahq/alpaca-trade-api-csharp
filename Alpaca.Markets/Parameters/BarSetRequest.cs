@@ -7,7 +7,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaDataClient.GetBarSetAsync(BarSetRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
-    public sealed class BarSetRequest
+    public sealed class BarSetRequest : Validation.IRequest
     {
         private readonly List<String> _symbols;
 
@@ -96,8 +96,7 @@ namespace Alpaca.Markets
         /// Gets all validation exceptions (inconsistent request data errors).
         /// </summary>
         /// <returns>Lazy-evaluated list of validation errors.</returns>
-        // ReSharper disable once MemberCanBePrivate.Global
-        public IEnumerable<RequestValidationException> GetExceptions()
+        IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
             if (_symbols.Count == 0)
             {
@@ -129,15 +128,6 @@ namespace Alpaca.Markets
             TimeFrom = timeFrom;
             TimeInto = timeInto;
             return this;
-        }
-
-        internal void Validate()
-        {
-            var exception = new AggregateException(GetExceptions());
-            if (exception.InnerExceptions.Count != 0)
-            {
-                throw exception;
-            }
         }
     }
 }

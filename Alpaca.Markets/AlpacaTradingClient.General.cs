@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -78,7 +79,8 @@ namespace Alpaca.Markets
         /// <param name="pageSize">The maximum number of entries to return in the response.</param>
         /// <param name="pageToken">The ID of the end of your current page of results.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only list of asset information objects.</returns>
+        /// <returns>Read-only list of account activity record objects.</returns>
+        [Obsolete("Use overloaded method that required AccountActivitiesRequest parameter instead of this one.", false)]
         public Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
             AccountActivityType activityType,
             DateTime? date = null,
@@ -89,25 +91,15 @@ namespace Alpaca.Markets
             String? pageToken = null,
             CancellationToken cancellationToken = default)
         {
-            if (date.HasValue && (until.HasValue || after.HasValue))
-            {
-                throw new ArgumentException("You unable to specify 'date' and 'until'/'after' arguments in same call.");
-            }
-
-            var builder = new UriBuilder(_httpClient.BaseAddress)
-            {
-                Path = _httpClient.BaseAddress.AbsolutePath + $"account/activities/{activityType.ToEnumString()}",
-                Query = new QueryBuilder()
-                    .AddParameter("date", date, DateTimeHelper.DateFormat)
-                    .AddParameter("until", until, "O")
-                    .AddParameter("after", after, "O")
-                    .AddParameter("direction", direction)
-                    .AddParameter("pageSize", pageSize)
-                    .AddParameter("pageToken", pageToken)
-            };
-
-            return _httpClient.GetObjectsListAsync<IAccountActivity, JsonAccountActivity>(
-                _alpacaRestApiThrottler, builder, cancellationToken);
+            return ListAccountActivitiesAsync(
+                new AccountActivitiesRequest(activityType)
+                    {
+                        Direction = direction,
+                        PageSize = pageSize,
+                        PageToken = pageToken
+                    }
+                    .SetTimes(date, after, until),
+                cancellationToken);
         }
 
         /// <summary>
@@ -121,7 +113,8 @@ namespace Alpaca.Markets
         /// <param name="pageSize">The maximum number of entries to return in the response.</param>
         /// <param name="pageToken">The ID of the end of your current page of results.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only list of asset information objects.</returns>
+        /// <returns>Read-only list of account activity record objects.</returns>
+        [Obsolete("Use overloaded method that required AccountActivitiesRequest parameter instead of this one.", false)]
         public Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
             IEnumerable<AccountActivityType>? activityTypes = null,
             DateTime? date = null,
@@ -132,22 +125,41 @@ namespace Alpaca.Markets
             String? pageToken = null,
             CancellationToken cancellationToken = default)
         {
-            if (date.HasValue && (until.HasValue || after.HasValue))
-            {
-                throw new ArgumentException("You unable to specify 'date' and 'until'/'after' arguments in same call.");
-            }
+            return ListAccountActivitiesAsync(
+                new AccountActivitiesRequest(
+                    activityTypes ?? Enumerable.Empty<AccountActivityType>())
+                    {
+                        Direction = direction,
+                        PageSize = pageSize,
+                        PageToken = pageToken
+                    }
+                    .SetTimes(date, after, until),
+                cancellationToken);
+        }
+        
+        /// <summary>
+        /// Gets list of account activities from Alpaca REST API endpoint by specific activity.
+        /// </summary>
+        /// <param name="request">Account activities request parameters.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only list of account activity record objects.</returns>
+        public Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
+            AccountActivitiesRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            request.EnsureNotNull(nameof(request)).Validate();
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = _httpClient.BaseAddress.AbsolutePath + "account/activities",
+                Path = _httpClient.BaseAddress.AbsolutePath + $"account/activities",
                 Query = new QueryBuilder()
-                    .AddParameter("activity_types", activityTypes)
-                    .AddParameter("date", date, DateTimeHelper.DateFormat)
-                    .AddParameter("until", until, "O")
-                    .AddParameter("after", after, "O")
-                    .AddParameter("direction", direction)
-                    .AddParameter("pageSize", pageSize)
-                    .AddParameter("pageToken", pageToken)
+                    .AddParameter("activity_types", request.ActivityTypes)
+                    .AddParameter("date", request.Date, DateTimeHelper.DateFormat)
+                    .AddParameter("until", request.Until, "O")
+                    .AddParameter("after", request.After, "O")
+                    .AddParameter("direction", request.Direction)
+                    .AddParameter("pageSize", request.PageSize)
+                    .AddParameter("pageToken", request.PageToken)
             };
 
             return _httpClient.GetObjectsListAsync<IAccountActivity, JsonAccountActivity>(
