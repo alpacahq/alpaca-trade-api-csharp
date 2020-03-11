@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 
 namespace Alpaca.Markets
@@ -11,17 +12,29 @@ namespace Alpaca.Markets
         /// <summary>
         /// Creates new instance of <see cref="SecretKey"/> object.
         /// </summary>
+        /// <param name="keyId">Secret API key identifier.</param>
         /// <param name="value">Secret API key value.</param>
-        public SecretKey(String value) : base(value) {}
+        public SecretKey(
+            String keyId,
+            String value)
+            : base(value) =>
+            KeyId = keyId;
 
-        internal override void AddAuthenticationHeader(
-            HttpClient httpClient,
-            String keyId)
+        internal String KeyId { get; }
+
+        internal override IEnumerable<KeyValuePair<String, String>> GetAuthenticationHeaders()
         {
-            httpClient.DefaultRequestHeaders.Add(
-                "APCA-API-KEY-ID", keyId);
-            httpClient.DefaultRequestHeaders.Add(
+            yield return new KeyValuePair<String, String>(
+                "APCA-API-KEY-ID", KeyId);
+            yield return new KeyValuePair<String, String>(
                 "APCA-API-SECRET-KEY", Value);
         }
+
+        internal override JsonAuthRequest.JsonData GetAuthenticationData() =>
+            new JsonAuthRequest.JsonData
+            {
+                KeyId = KeyId,
+                SecretKey = Value
+            };
     }
 }

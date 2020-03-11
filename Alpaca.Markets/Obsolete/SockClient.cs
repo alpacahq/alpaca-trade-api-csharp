@@ -105,8 +105,9 @@ namespace Alpaca.Markets
             IWebSocketFactory? webSocketFactory) =>
             new AlpacaStreamingClientConfiguration
             {
-                KeyId = keyId ?? throw new ArgumentException("Application key id should not be null.", nameof(keyId)),
-                SecretKey = secretKey ?? throw new ArgumentException("Application secret key should not be null.", nameof(secretKey)),
+                SecurityId = new SecretKey(
+                    keyId ?? throw new ArgumentException("Application key id should not be null.", nameof(keyId)),
+                    secretKey ?? throw new ArgumentException("Application secret key should not be null.", nameof(secretKey))),
                 ApiEndpoint = alpacaRestApi ?? Environments.Live.AlpacaTradingApi,
                 WebSocketFactory = webSocketFactory ?? WebSocket4NetFactory.Instance,
             };

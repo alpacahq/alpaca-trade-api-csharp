@@ -37,12 +37,12 @@ namespace UsageExamples
 
         public async Task Run()
         {
-            alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(API_KEY, new SecretKey(API_SECRET));
+            alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(new SecretKey(API_KEY, API_SECRET));
 
             polygonDataClient = Environments.Paper.GetPolygonDataClient(API_KEY);
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
-            alpacaStreamingClient = Environments.Paper.GetAlpacaStreamingClient(API_KEY, API_SECRET);
+            alpacaStreamingClient = Environments.Paper.GetAlpacaStreamingClient(new SecretKey(API_KEY, API_SECRET));
 
             alpacaStreamingClient.ConnectAndAuthenticateAsync().Wait();
 
