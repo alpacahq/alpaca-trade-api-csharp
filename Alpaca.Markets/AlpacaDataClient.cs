@@ -42,7 +42,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets lookup table of historical daily bars lists for all assets from Alpaca REST API endpoint.
         /// </summary>
-        /// <param name="symbols">>Asset names for data retrieval.</param>
+        /// <param name="symbols">Asset names for data retrieval.</param>
         /// <param name="timeFrame">Type of time bars for retrieval.</param>
         /// <param name="areTimesInclusive">
         /// If <c>true</c> - both <paramref name="timeFrom"/> and <paramref name="timeInto"/> parameters are treated as inclusive.

@@ -64,7 +64,9 @@ namespace UsageExamples
 
             var today = DateTime.Today;
             // Get the first group of bars from today if the market has already been open.
-            var bars = await polygonDataClient.ListMinuteAggregatesAsync(symbol, 1, today, today.AddDays(1));
+            var bars = await polygonDataClient.ListAggregatesAsync(
+                new AggregatesRequest(symbol, new AggregationPeriod(1, AggregationPeriodUnit.Minute))
+                    .SetInclusiveTimeInterval(today, today.AddDays(1)));
             var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count() - 20));
             foreach (var bar in lastBars)
             {

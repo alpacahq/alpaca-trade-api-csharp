@@ -114,7 +114,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of historical trades for a single asset from Polygon's REST API endpoint.
         /// </summary>
-        /// <param name="request">Historical trades request parameter.</param>
+        /// <param name="request">Historical quotes request parameter.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical trade information.</returns>
         public Task<IHistoricalItems<IHistoricalQuote>> ListHistoricalQuotesAsync(
@@ -138,98 +138,27 @@ namespace Alpaca.Markets
                     FakeThrottler.Instance, builder, cancellationToken);
         }
 
-        /// <summary>
-        /// Gets list of historical minute bars for single asset from Polygon's v2 REST API endpoint.
-        /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
-        /// <param name="multiplier">>Number of bars to combine in each result.</param>
-        /// <param name="dateFromInclusive">Start time for filtering (inclusive).</param>
-        /// <param name="dateToInclusive">End time for filtering (inclusive).</param>
-        /// <param name="unadjusted">Set to true if the results should not be adjusted for splits.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only list of minute bars for specified asset.</returns>
-        public Task<IHistoricalItems<IAgg>> ListMinuteAggregatesAsync(
-            String symbol,
-            Int32 multiplier,
-            DateTime dateFromInclusive,
-            DateTime dateToInclusive,
-            Boolean unadjusted = false,
-            CancellationToken cancellationToken = default)
-        {
-            var unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(dateFromInclusive);
-            var unixTo = DateTimeHelper.GetUnixTimeMilliseconds(dateToInclusive);
-
-            var builder = new UriBuilder(_httpClient.BaseAddress)
-            {
-                Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/minute/{unixFrom}/{unixTo}",
-                Query = getDefaultPolygonApiQueryBuilder()
-                    .AddParameter("unadjusted", unadjusted ? Boolean.TrueString : Boolean.FalseString)
-            };
-
-            return _httpClient.GetSingleObjectAsync
-                <IHistoricalItems<IAgg>, JsonHistoricalItems<IAgg, JsonMinuteAgg>>(
-                    FakeThrottler.Instance, builder, cancellationToken);
-        }
-
-        /// <summary>
-        /// Gets list of historical hour bars for single asset from Polygon's v2 REST API endpoint.
-        /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
-        /// <param name="multiplier">>Number of bars to combine in each result.</param>
-        /// <param name="dateFromInclusive">Start time for filtering (inclusive).</param>
-        /// <param name="dateToInclusive">End time for filtering (inclusive).</param>
-        /// <param name="unadjusted">Set to true if the results should not be adjusted for splits.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only list of minute bars for specified asset.</returns>
-        public Task<IHistoricalItems<IAgg>> ListHourAggregatesAsync(
-            String symbol,
-            Int32 multiplier,
-            DateTime dateFromInclusive,
-            DateTime dateToInclusive,
-            Boolean unadjusted = false,
-            CancellationToken cancellationToken = default)
-        {
-            var unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(dateFromInclusive);
-            var unixTo = DateTimeHelper.GetUnixTimeMilliseconds(dateToInclusive);
-
-            var builder = new UriBuilder(_httpClient.BaseAddress)
-            {
-                Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/hour/{unixFrom}/{unixTo}",
-                Query = getDefaultPolygonApiQueryBuilder()
-                    .AddParameter("unadjusted", unadjusted ? Boolean.TrueString : Boolean.FalseString)
-            };
-
-            return _httpClient.GetSingleObjectAsync
-                <IHistoricalItems<IAgg>, JsonHistoricalItems<IAgg, JsonMinuteAgg>>(
-                    FakeThrottler.Instance, builder, cancellationToken);
-        }
 
         /// <summary>
         /// Gets list of historical minute bars for single asset from Polygon's v2 REST API endpoint.
         /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
-        /// <param name="multiplier">>Number of bars to combine in each result.</param>
-        /// <param name="dateFromInclusive">Start time for filtering (inclusive).</param>
-        /// <param name="dateToInclusive">End time for filtering (inclusive).</param>
-        /// <param name="unadjusted">Set to true if the results should not be adjusted for splits.</param>
+        /// <param name="request">Day aggregates request parameter.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of day bars for specified asset.</returns>
-        public Task<IHistoricalItems<IAgg>> ListDayAggregatesAsync(
-            String symbol,
-            Int32 multiplier,
-            DateTime dateFromInclusive,
-            DateTime dateToInclusive,
-            Boolean unadjusted = false,
+        public Task<IHistoricalItems<IAgg>> ListAggregatesAsync(
+            AggregatesRequest request,
             CancellationToken cancellationToken = default)
         {
-            var unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(dateFromInclusive);
-            var unixTo = DateTimeHelper.GetUnixTimeMilliseconds(dateToInclusive);
+            request.EnsureNotNull(nameof(request)).Validate();
+
+            var unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(request.DateFrom);
+            var unixTo = DateTimeHelper.GetUnixTimeMilliseconds(request.DateInto);
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = $"v2/aggs/ticker/{symbol}/range/{multiplier}/day/{unixFrom}/{unixTo}",
+                Path = $"v2/aggs/ticker/{request.Symbol}/range/{request.Period.ToString()}/{unixFrom}/{unixTo}",
                 Query = getDefaultPolygonApiQueryBuilder()
-                    .AddParameter("unadjusted", unadjusted ? Boolean.TrueString : Boolean.FalseString)
+                    .AddParameter("unadjusted", request.Unadjusted ? Boolean.TrueString : Boolean.FalseString)
             };
 
             return _httpClient.GetSingleObjectAsync
