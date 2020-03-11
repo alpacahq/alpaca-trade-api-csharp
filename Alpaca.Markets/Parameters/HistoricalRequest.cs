@@ -53,10 +53,6 @@ namespace Alpaca.Markets
         /// </summary>
         public Boolean? Reverse { get; set; }
 
-        /// <summary>
-        /// Gets all validation exceptions (inconsistent request data errors).
-        /// </summary>
-        /// <returns>Lazy-evaluated list of validation errors.</returns>
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
             if (String.IsNullOrEmpty(Symbol))

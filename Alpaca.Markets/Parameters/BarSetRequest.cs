@@ -92,10 +92,6 @@ namespace Alpaca.Markets
             SetTimeInterval(
                 false, after, until);
 
-        /// <summary>
-        /// Gets all validation exceptions (inconsistent request data errors).
-        /// </summary>
-        /// <returns>Lazy-evaluated list of validation errors.</returns>
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
             if (_symbols.Count == 0)

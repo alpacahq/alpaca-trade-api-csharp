@@ -7,6 +7,10 @@ namespace Alpaca.Markets
     {
         internal interface IRequest
         {
+            /// <summary>
+            /// Gets all validation exceptions (inconsistent request data errors).
+            /// </summary>
+            /// <returns>Lazy-evaluated list of validation errors.</returns>
             IEnumerable<RequestValidationException> GetExceptions();
         }
 

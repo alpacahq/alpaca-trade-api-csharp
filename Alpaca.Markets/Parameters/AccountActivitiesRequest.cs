@@ -66,12 +66,12 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets the maximum number of entries to return in the response.
         /// </summary>
-        public long? PageSize { get; set; }
+        public Int64? PageSize { get; set; }
         
         /// <summary>
         /// Gets or sets the ID of the end of your current page of results.
         /// </summary>
-        public string? PageToken { get; set; }
+        public String? PageToken { get; set; }
 
         /// <summary>
         /// 
@@ -103,10 +103,6 @@ namespace Alpaca.Markets
             return this;
         }
 
-        /// <summary>
-        /// Gets all validation exceptions (inconsistent request data errors).
-        /// </summary>
-        /// <returns>Lazy-evaluated list of validation errors.</returns>
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
             if (After.HasValue &&

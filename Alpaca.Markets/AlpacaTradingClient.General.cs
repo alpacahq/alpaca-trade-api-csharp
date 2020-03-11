@@ -89,9 +89,8 @@ namespace Alpaca.Markets
             SortDirection? direction = null,
             Int64? pageSize = null,
             String? pageToken = null,
-            CancellationToken cancellationToken = default)
-        {
-            return ListAccountActivitiesAsync(
+            CancellationToken cancellationToken = default) =>
+            ListAccountActivitiesAsync(
                 new AccountActivitiesRequest(activityType)
                     {
                         Direction = direction,
@@ -100,7 +99,6 @@ namespace Alpaca.Markets
                     }
                     .SetTimes(date, after, until),
                 cancellationToken);
-        }
 
         /// <summary>
         /// Gets list of account activities from Alpaca REST API endpoint.
@@ -123,11 +121,10 @@ namespace Alpaca.Markets
             SortDirection? direction = null,
             Int64? pageSize = null,
             String? pageToken = null,
-            CancellationToken cancellationToken = default)
-        {
-            return ListAccountActivitiesAsync(
+            CancellationToken cancellationToken = default) =>
+            ListAccountActivitiesAsync(
                 new AccountActivitiesRequest(
-                    activityTypes ?? Enumerable.Empty<AccountActivityType>())
+                        activityTypes ?? Enumerable.Empty<AccountActivityType>())
                     {
                         Direction = direction,
                         PageSize = pageSize,
@@ -135,8 +132,7 @@ namespace Alpaca.Markets
                     }
                     .SetTimes(date, after, until),
                 cancellationToken);
-        }
-        
+
         /// <summary>
         /// Gets list of account activities from Alpaca REST API endpoint by specific activity.
         /// </summary>
@@ -179,23 +175,46 @@ namespace Alpaca.Markets
         /// <param name="extendedHours">If true, include extended hours in the result. This is effective only for time frame less than 1 day.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only portfolio history information object.</returns>
+        [Obsolete("Use overloaded method that required PortfolioHistoryRequest parameter instead of this one.", false)]
         public Task<IPortfolioHistory> GetPortfolioHistoryAsync(
                 DateTime? startDate = null,
                 DateTime? endDate = null,
                 TimeFrame? timeFrame = null,
                 HistoryPeriod? period = null,
                 Boolean? extendedHours = null,
-                CancellationToken cancellationToken = default)
+                CancellationToken cancellationToken = default) =>
+            GetPortfolioHistoryAsync(
+                new PortfolioHistoryRequest()
+                {
+                    StartDate = startDate,
+                    EndDate = endDate,
+                    ExtendedHours = extendedHours,
+                    Period = period,
+                    TimeFrame = timeFrame
+                },
+                cancellationToken);
+
+        /// <summary>
+        /// Gets portfolio equity history from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="request">Portfolio history request parameters.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only portfolio history information object.</returns>
+        public Task<IPortfolioHistory> GetPortfolioHistoryAsync(
+            PortfolioHistoryRequest request,
+            CancellationToken cancellationToken = default)
         {
+            request.EnsureNotNull(nameof(request)).Validate();
+
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = _httpClient.BaseAddress.AbsolutePath + "account/portfolio/history",
                 Query = new QueryBuilder()
-                    .AddParameter("start_date", startDate, DateTimeHelper.DateFormat)
-                    .AddParameter("end_date", endDate, DateTimeHelper.DateFormat)
-                    .AddParameter("period", period?.ToString())
-                    .AddParameter("timeframe", timeFrame)
-                    .AddParameter("extended_hours", extendedHours)
+                    .AddParameter("start_date", request.StartDate, DateTimeHelper.DateFormat)
+                    .AddParameter("end_date", request.EndDate, DateTimeHelper.DateFormat)
+                    .AddParameter("period", request.Period?.ToString())
+                    .AddParameter("timeframe", request.TimeFrame)
+                    .AddParameter("extended_hours", request.ExtendedHours)
             };
 
             return _httpClient.GetSingleObjectAsync<IPortfolioHistory, JsonPortfolioHistory>(
