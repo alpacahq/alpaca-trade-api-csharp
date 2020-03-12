@@ -181,7 +181,7 @@ namespace Alpaca.Markets
         /// <param name="clientOrderId">Updated client order ID or <c>null</c> if client order ID is not changed.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for updated order.</returns>
-        [Obsolete("Use overloaded method that required PatchOrderRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required ChangeOrderRequest parameter instead of this one.", false)]
         public Task<IOrder> PatchOrderAsync(
             Guid orderId,
             Int64? quantity = null,
@@ -191,13 +191,65 @@ namespace Alpaca.Markets
             String? clientOrderId = null,
             CancellationToken cancellationToken = default) =>
             PatchOrderAsync(
-                new PatchOrderRequest(orderId)
+                new ChangeOrderRequest(orderId)
                 {
                     Quantity = quantity,
                     Duration = duration,
                     StopPrice = stopPrice,
                     LimitPrice = limitPrice,
                     ClientOrderId = clientOrderId
+                },
+                cancellationToken);
+
+        /// <summary>
+        /// Creates new order for execution using Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">Order asset name.</param>
+        /// <param name="quantity">Order quantity.</param>
+        /// <param name="side">Order side (buy or sell).</param>
+        /// <param name="type">Order type.</param>
+        /// <param name="duration">Order duration.</param>
+        /// <param name="limitPrice">Order limit price.</param>
+        /// <param name="stopPrice">Order stop price.</param>
+        /// <param name="clientOrderId">Client order ID.</param>
+        /// <param name="extendedHours">Whether or not this order should be allowed to execute during extended hours trading.</param>
+        /// <param name="orderClass">Order class for advanced order types.</param>
+        /// <param name="takeProfitLimitPrice">Profit taking limit price for advanced order types.</param>
+        /// <param name="stopLossStopPrice">Stop loss stop price for advanced order types.</param>
+        /// <param name="stopLossLimitPrice">Stop loss limit price for advanced order types.</param>
+        /// <param name="nested">Whether or not child orders should be listed as 'legs' of parent orders. (Advanced order types only.)</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only order information object for newly created order.</returns>
+        [Obsolete("Use overloaded method that required NewOrderRequest parameter instead of this one.", false)]
+        public Task<IOrder> PostOrderAsync(
+            String symbol,
+            Int64 quantity,
+            OrderSide side,
+            OrderType type,
+            TimeInForce duration,
+            Decimal? limitPrice = null,
+            Decimal? stopPrice = null,
+            String? clientOrderId = null,
+            Boolean? extendedHours = null,
+            OrderClass? orderClass = null,
+            Decimal? takeProfitLimitPrice = null,
+            Decimal? stopLossStopPrice = null,
+            Decimal? stopLossLimitPrice = null,
+            Boolean? nested = false,
+            CancellationToken cancellationToken = default) =>
+            PostOrderAsync(
+                new NewOrderRequest(
+                    symbol, quantity, side, type, duration)
+                {
+                    Nested = nested,
+                    StopPrice = stopPrice,
+                    LimitPrice = limitPrice,
+                    OrderClass = orderClass,
+                    ClientOrderId = clientOrderId,
+                    ExtendedHours = extendedHours,
+                    StopLossLimitPrice = stopLossLimitPrice,
+                    StopLossStopPrice = stopLossStopPrice,
+                    TakeProfitLimitPrice = takeProfitLimitPrice
                 },
                 cancellationToken);
     }

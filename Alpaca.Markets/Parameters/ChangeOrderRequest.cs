@@ -4,15 +4,15 @@ using System.Collections.Generic;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates request parameters for <see cref="AlpacaTradingClient.PatchOrderAsync(PatchOrderRequest,System.Threading.CancellationToken)"/> call.
+    /// Encapsulates request parameters for <see cref="AlpacaTradingClient.PatchOrderAsync(ChangeOrderRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
-    public sealed class PatchOrderRequest : Validation.IRequest
+    public sealed class ChangeOrderRequest : Validation.IRequest
     {
         /// <summary>
-        /// Creates new instance of <see cref="AccountActivitiesRequest"/> object.
+        /// Creates new instance of <see cref="ChangeOrderRequest"/> object.
         /// </summary>
         /// <param name="orderId">Server side order identifier.</param>
-        public PatchOrderRequest(Guid orderId)
+        public ChangeOrderRequest(Guid orderId)
         {
             OrderId = orderId;
         }
@@ -49,8 +49,7 @@ namespace Alpaca.Markets
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
-            if (ClientOrderId != null &&
-                ClientOrderId.Length > 48)
+            if (ClientOrderId?.Length > 48)
             {
                 ClientOrderId = ClientOrderId.Substring(0, 48);
             }

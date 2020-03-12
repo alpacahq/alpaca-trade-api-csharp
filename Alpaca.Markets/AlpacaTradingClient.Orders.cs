@@ -48,84 +48,48 @@ namespace Alpaca.Markets
         /// <summary>
         /// Creates new order for execution using Alpaca REST API endpoint.
         /// </summary>
-        /// <param name="symbol">Order asset name.</param>
-        /// <param name="quantity">Order quantity.</param>
-        /// <param name="side">Order side (buy or sell).</param>
-        /// <param name="type">Order type.</param>
-        /// <param name="duration">Order duration.</param>
-        /// <param name="limitPrice">Order limit price.</param>
-        /// <param name="stopPrice">Order stop price.</param>
-        /// <param name="clientOrderId">Client order ID.</param>
-        /// <param name="extendedHours">Whether or not this order should be allowed to execute during extended hours trading.</param>
-        /// <param name="orderClass">Order class for advanced order types.</param>
-        /// <param name="takeProfitLimitPrice">Profit taking limit price for advanced order types.</param>
-        /// <param name="stopLossStopPrice">Stop loss stop price for advanced order types.</param>
-        /// <param name="stopLossLimitPrice">Stop loss limit price for advanced order types.</param>
-        /// <param name="nested">Whether or not child orders should be listed as 'legs' of parent orders. (Advanced order types only.)</param>
+        /// <param name="request">New order placement request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for newly created order.</returns>
         public async Task<IOrder> PostOrderAsync(
-            String symbol,
-            Int64 quantity,
-            OrderSide side,
-            OrderType type,
-            TimeInForce duration,
-            Decimal? limitPrice = null,
-            Decimal? stopPrice = null,
-            String? clientOrderId = null,
-            Boolean? extendedHours = null,
-            OrderClass? orderClass = null,
-            Decimal? takeProfitLimitPrice = null,
-            Decimal? stopLossStopPrice = null,
-            Decimal? stopLossLimitPrice = null,
-            Boolean? nested = false,
+            NewOrderRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (clientOrderId != null &&
-                clientOrderId.Length > 48)
-            {
-                clientOrderId = clientOrderId.Substring(0, 48);
-            }
-
-            JsonNewOrderAdvancedAttributes? takeProfit = null, stopLoss = null;
-            if (takeProfitLimitPrice != null)
-            {
-                takeProfit = new JsonNewOrderAdvancedAttributes
-                {
-                    LimitPrice = takeProfitLimitPrice
-                };
-            }
-
-            if (stopLossStopPrice != null || stopLossLimitPrice != null)
-            {
-                stopLoss = new JsonNewOrderAdvancedAttributes
-                {
-                    StopPrice = stopLossStopPrice,
-                    LimitPrice = stopLossLimitPrice
-                };
-            }
+            request.EnsureNotNull(nameof(request)).Validate();
 
             var newOrder = new JsonNewOrder
             {
-                Symbol = symbol,
-                Quantity = quantity,
-                OrderSide = side,
-                OrderType = type,
-                TimeInForce = duration,
-                LimitPrice = limitPrice,
-                StopPrice = stopPrice,
-                ClientOrderId = clientOrderId,
-                ExtendedHours = extendedHours,
-                OrderClass = orderClass,
-                TakeProfit = takeProfit,
-                StopLoss = stopLoss,
+                Symbol = request.Symbol,
+                Quantity = request.Quantity,
+                OrderSide = request.Side,
+                OrderType = request.Type,
+                TimeInForce = request.Duration,
+                LimitPrice = request.LimitPrice,
+                StopPrice = request.StopPrice,
+                ClientOrderId = request.ClientOrderId,
+                ExtendedHours = request.ExtendedHours,
+                OrderClass = request.OrderClass,
+                TakeProfit = request.TakeProfitLimitPrice != null
+                    ? new JsonNewOrderAdvancedAttributes
+                    {
+                        LimitPrice = request.TakeProfitLimitPrice
+                    }
+                    : null,
+                StopLoss = request.StopLossStopPrice != null ||
+                           request.StopLossLimitPrice != null
+                    ? new JsonNewOrderAdvancedAttributes
+                    {
+                        StopPrice = request.StopLossStopPrice,
+                        LimitPrice = request.StopLossLimitPrice
+                    }
+                    : null
             };
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = _httpClient.BaseAddress.AbsolutePath + "orders",
                 Query = new QueryBuilder()
-                    .AddParameter("nested", nested)
+                    .AddParameter("nested", request.Nested)
             };
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
@@ -146,7 +110,7 @@ namespace Alpaca.Markets
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for updated order.</returns>
         public async Task<IOrder> PatchOrderAsync(
-            PatchOrderRequest request,
+            ChangeOrderRequest request,
             CancellationToken cancellationToken = default)
         {
             request.EnsureNotNull(nameof(request)).Validate();
