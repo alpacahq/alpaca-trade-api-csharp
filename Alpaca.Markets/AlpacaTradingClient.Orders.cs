@@ -142,47 +142,33 @@ namespace Alpaca.Markets
         /// <summary>
         /// Updates existing order using Alpaca REST API endpoint.
         /// </summary>
-        /// <param name="orderId">Server side order identifier.</param>
-        /// <param name="quantity">Updated order quantity or <c>null</c> if quantity is not changed.</param>
-        /// <param name="duration">Updated order duration or <c>null</c> if duration is not changed.</param>
-        /// <param name="limitPrice">Updated order limit price or <c>null</c> if limit price is not changed.</param>
-        /// <param name="stopPrice">Updated order stop price or <c>null</c> if stop price is not changed.</param>
-        /// <param name="clientOrderId">Updated client order ID or <c>null</c> if client order ID is not changed.</param>
+        /// <param name="request">Patch order request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for updated order.</returns>
         public async Task<IOrder> PatchOrderAsync(
-            Guid orderId,
-            Int64? quantity = null,
-            TimeInForce? duration = null,
-            Decimal? limitPrice = null,
-            Decimal? stopPrice = null,
-            String? clientOrderId = null,
+            PatchOrderRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (clientOrderId != null &&
-                clientOrderId.Length > 48)
-            {
-                clientOrderId = clientOrderId.Substring(0, 48);
-            }
+            request.EnsureNotNull(nameof(request)).Validate();
 
             var changeOrder = new JsonChangeOrder
             {
-                Quantity = quantity,
-                TimeInForce = duration,
-                LimitPrice = limitPrice,
-                StopPrice = stopPrice,
-                ClientOrderId = clientOrderId,
+                Quantity = request.Quantity,
+                TimeInForce = request.Duration,
+                LimitPrice = request.LimitPrice,
+                StopPrice = request.StopPrice,
+                ClientOrderId = request.ClientOrderId,
             };
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using var request = new HttpRequestMessage(_httpMethodPatch,
-                new Uri($"orders/{orderId:D}", UriKind.RelativeOrAbsolute))
+            using var httpRequest = new HttpRequestMessage(_httpMethodPatch,
+                new Uri($"orders/{request.OrderId:D}", UriKind.RelativeOrAbsolute))
             {
                 Content = toStringContent(changeOrder)
             };
 
-            using var response = await _httpClient.SendAsync(request, cancellationToken)
+            using var response = await _httpClient.SendAsync(httpRequest, cancellationToken)
                 .ConfigureAwait(false);
 
             return await response.DeserializeAsync<IOrder, JsonOrder>()

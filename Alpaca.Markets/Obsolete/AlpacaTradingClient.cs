@@ -169,5 +169,36 @@ namespace Alpaca.Markets
                     }
                     .SetExclusiveTimeInterval(afterDateTimeExclusive, untilDateTimeExclusive),
                 cancellationToken);
+
+        /// <summary>
+        /// Updates existing order using Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="orderId">Server side order identifier.</param>
+        /// <param name="quantity">Updated order quantity or <c>null</c> if quantity is not changed.</param>
+        /// <param name="duration">Updated order duration or <c>null</c> if duration is not changed.</param>
+        /// <param name="limitPrice">Updated order limit price or <c>null</c> if limit price is not changed.</param>
+        /// <param name="stopPrice">Updated order stop price or <c>null</c> if stop price is not changed.</param>
+        /// <param name="clientOrderId">Updated client order ID or <c>null</c> if client order ID is not changed.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only order information object for updated order.</returns>
+        [Obsolete("Use overloaded method that required PatchOrderRequest parameter instead of this one.", false)]
+        public Task<IOrder> PatchOrderAsync(
+            Guid orderId,
+            Int64? quantity = null,
+            TimeInForce? duration = null,
+            Decimal? limitPrice = null,
+            Decimal? stopPrice = null,
+            String? clientOrderId = null,
+            CancellationToken cancellationToken = default) =>
+            PatchOrderAsync(
+                new PatchOrderRequest(orderId)
+                {
+                    Quantity = quantity,
+                    Duration = duration,
+                    StopPrice = stopPrice,
+                    LimitPrice = limitPrice,
+                    ClientOrderId = clientOrderId
+                },
+                cancellationToken);
     }
 }

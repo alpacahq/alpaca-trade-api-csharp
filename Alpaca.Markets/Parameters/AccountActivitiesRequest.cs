@@ -12,14 +12,14 @@ namespace Alpaca.Markets
         private readonly List<AccountActivityType> _accountActivityTypes = new List<AccountActivityType>();
 
         /// <summary>
-        /// Creates new instance of <see cref="BarSetRequest"/> object for all activity types.
+        /// Creates new instance of <see cref="AccountActivitiesRequest"/> object for all activity types.
         /// </summary>
         public AccountActivitiesRequest()
         {
         }
 
         /// <summary>
-        /// Creates new instance of <see cref="BarSetRequest"/> object for a single activity types.
+        /// Creates new instance of <see cref="AccountActivitiesRequest"/> object for a single activity types.
         /// </summary>
         /// <param name="activityType">The activity type you want to view entries for.</param>
         public AccountActivitiesRequest(
