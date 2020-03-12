@@ -288,7 +288,12 @@ namespace UsageExamples
             }
             try
             {
-                var order = await alpacaTradingClient.PostOrderAsync(symbol, quantity, side, OrderType.Limit, TimeInForce.Day, price);
+                var order = await alpacaTradingClient.PostOrderAsync(
+                    new NewOrderRequest(
+                        symbol, quantity, side, OrderType.Limit, TimeInForce.Day)
+                    {
+                        LimitPrice = price
+                    });
                 lastTradeId = order.OrderId;
                 lastTradeOpen = true;
             }
@@ -306,11 +311,15 @@ namespace UsageExamples
                 Console.WriteLine("Closing position at market price.");
                 if (positionQuantity > 0)
                 {
-                    await alpacaTradingClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
+                    await alpacaTradingClient.PostOrderAsync(
+                        new NewOrderRequest(
+                            symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day));
                 }
                 else
                 {
-                    await alpacaTradingClient.PostOrderAsync(symbol, positionQuantity * -1, OrderSide.Buy, OrderType.Market, TimeInForce.Day);
+                    await alpacaTradingClient.PostOrderAsync(
+                        new NewOrderRequest(
+                            symbol, Math.Abs(positionQuantity), OrderSide.Buy, OrderType.Market, TimeInForce.Day));
                 }
             }
             catch (Exception)
