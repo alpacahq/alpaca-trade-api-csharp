@@ -29,20 +29,18 @@ namespace Alpaca.Markets
         /// <summary>
         /// Add new watch list object into Alpaca REST API endpoint.
         /// </summary>
-        /// <param name="name">User defined watch list name.</param>
-        /// <param name="assets">List of asset names for new watch list.</param>
+        /// <param name="request">New watch list request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Newly created watch list object.</returns>
         public async Task<IWatchList> CreateWatchListAsync(
-            String name,
-            IEnumerable<String>? assets = null,
+            NewWatchListRequest request,
             CancellationToken cancellationToken = default)
         {
-            verifyWatchListName(name);
+            request.EnsureNotNull(nameof(request)).Validate();
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using var content = toStringContent(name, assets ?? Enumerable.Empty<String>());
+            using var content = toStringContent(request.Name, request.Assets);
             using var response = await _httpClient.PostAsync(
                     new Uri("watchlists", UriKind.RelativeOrAbsolute), content, cancellationToken)
                 .ConfigureAwait(false);
@@ -80,7 +78,10 @@ namespace Alpaca.Markets
             String name,
             CancellationToken cancellationToken = default)
         {
-            verifyWatchListName(name);
+            if (!name.IsWatchListNameValid())
+            {
+                throw new ArgumentException("Watch list name should be from 1 to 64 characters length.", nameof(name));
+            }
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
@@ -96,24 +97,20 @@ namespace Alpaca.Markets
         /// <summary>
         /// Updates watch list object from Alpaca REST API endpoint by watch list identifier.
         /// </summary>
-        /// <param name="watchListId">Unique watch list identifier.</param>
-        /// <param name="name">User defined watch list name.</param>
-        /// <param name="assets">List of asset names for new watch list.</param>
+        /// <param name="request">Update watch list request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Updated watch list object with proper <paramref name="watchListId"/> value.</returns>
+        /// <returns>Updated watch list object with proper <paramref name="request.WatchListId"/> value.</returns>
         public async Task<IWatchList> UpdateWatchListByIdAsync(
-            Guid watchListId,
-            String name,
-            IEnumerable<String> assets,
+            UpdateWatchListRequest request,
             CancellationToken cancellationToken = default)
         {
-            verifyWatchListName(name);
+            request.EnsureNotNull(nameof(request)).Validate();
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using var content = toStringContent(name, assets);
+            using var content = toStringContent(request.Name, request.Assets);
             using var response = await _httpClient.PutAsync(
-                    new Uri($"watchlists/{watchListId:D}", UriKind.RelativeOrAbsolute), content, cancellationToken)
+                    new Uri($"watchlists/{request.WatchListId:D}", UriKind.RelativeOrAbsolute), content, cancellationToken)
                 .ConfigureAwait(false);
 
             return await response.DeserializeAsync<IWatchList, JsonWatchList>()
@@ -123,22 +120,20 @@ namespace Alpaca.Markets
         /// <summary>
         /// Adds asset into watch list using Alpaca REST API endpoint by watch list identifier.
         /// </summary>
-        /// <param name="watchListId">Unique watch list identifier.</param>
-        /// <param name="asset">Asset name for adding into watch list.</param>
+        /// <param name="request">Asset adding request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Updated watch list object with proper <paramref name="watchListId"/> value.</returns>
+        /// <returns>Updated watch list object with proper <paramref name="request.Key"/> value.</returns>
         public async Task<IWatchList> AddAssetIntoWatchListByIdAsync(
-            Guid watchListId,
-            String asset,
+            ChangeWatchListRequest<Guid> request,
             CancellationToken cancellationToken = default)
         {
-            asset = asset ?? throw new ArgumentNullException(nameof(asset));
+            request.EnsureNotNull(nameof(request)).Validate();
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using var content = toStringContent(asset);
+            using var content = toStringContent(request.Asset);
             using var response = await _httpClient.PostAsync(
-                    new Uri($"watchlists/{watchListId:D}", UriKind.RelativeOrAbsolute), content, cancellationToken)
+                    new Uri($"watchlists/{request.Key:D}", UriKind.RelativeOrAbsolute), content, cancellationToken)
                 .ConfigureAwait(false);
 
             return await response.DeserializeAsync<IWatchList, JsonWatchList>()
@@ -148,29 +143,25 @@ namespace Alpaca.Markets
         /// <summary>
         /// Adds asset into watch list using Alpaca REST API endpoint by watch list name.
         /// </summary>
-        /// <param name="name">User defined watch list name.</param>
-        /// <param name="asset">Asset name for adding into watch list.</param>
+        /// <param name="request">Asset adding request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Updated watch list object with proper <paramref name="name"/> value.</returns>
+        /// <returns>Updated watch list object with proper <paramref name="request.Key"/> value.</returns>
         public async Task<IWatchList> AddAssetIntoWatchListByNameAsync(
-            String name,
-            String asset,
+            ChangeWatchListRequest<String> request,
             CancellationToken cancellationToken = default)
         {
-            asset = asset ?? throw new ArgumentNullException(nameof(asset));
-
-            verifyWatchListName(name);
+            request.EnsureNotNull(nameof(request)).Validate();
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = _httpClient.BaseAddress.AbsolutePath + "watchlists:by_name",
                 Query = new QueryBuilder()
-                    .AddParameter("name", name)
+                    .AddParameter("name", request.Key)
             };
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using var content = toStringContent(asset);
+            using var content = toStringContent(request.Asset);
             using var response = await _httpClient.PostAsync(builder.Uri, content, cancellationToken)
                 .ConfigureAwait(false);
 
@@ -181,21 +172,19 @@ namespace Alpaca.Markets
         /// <summary>
         /// Deletes asset from watch list using Alpaca REST API endpoint by watch list identifier.
         /// </summary>
-        /// <param name="watchListId">Unique watch list identifier.</param>
-        /// <param name="asset">Asset name for adding into watch list.</param>
+        /// <param name="request">Asset deleting request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Updated watch list object with proper <paramref name="watchListId"/> value.</returns>
+        /// <returns>Updated watch list object with proper <paramref name="request.Key"/> value.</returns>
         public async Task<IWatchList> DeleteAssetFromWatchListByIdAsync(
-            Guid watchListId,
-            String asset,
+            ChangeWatchListRequest<Guid> request,
             CancellationToken cancellationToken = default)
         {
-            asset = asset ?? throw new ArgumentNullException(nameof(asset));
+            request.EnsureNotNull(nameof(request)).Validate();
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             using var response = await _httpClient.DeleteAsync(
-                    new Uri($"watchlists/{watchListId:D}/{asset}", UriKind.RelativeOrAbsolute), cancellationToken)
+                    new Uri($"watchlists/{request.Key:D}/{request.Asset}", UriKind.RelativeOrAbsolute), cancellationToken)
                 .ConfigureAwait(false);
 
             return await response.DeserializeAsync<IWatchList, JsonWatchList>()
@@ -205,24 +194,20 @@ namespace Alpaca.Markets
         /// <summary>
         /// Deletes asset from watch list using Alpaca REST API endpoint by watch list name.
         /// </summary>
-        /// <param name="name">User defined watch list name.</param>
-        /// <param name="asset">Asset name for adding into watch list.</param>
+        /// <param name="request">Asset deleting request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Updated watch list object with proper <paramref name="name"/> value.</returns>
+        /// <returns>Updated watch list object with proper <paramref name="request.Key"/> value.</returns>
         public async Task<IWatchList> DeleteAssetFromWatchListByNameAsync(
-            String name,
-            String asset,
+            ChangeWatchListRequest<String> request,
             CancellationToken cancellationToken = default)
         {
-            asset = asset ?? throw new ArgumentNullException(nameof(asset));
-
-            verifyWatchListName(name);
+            request.EnsureNotNull(nameof(request)).Validate();
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = _httpClient.BaseAddress.AbsolutePath + $"watchlists:by_name/{asset}",
+                Path = _httpClient.BaseAddress.AbsolutePath + $"watchlists:by_name/{request.Asset}",
                 Query = new QueryBuilder()
-                    .AddParameter("name", name)
+                    .AddParameter("name", request.Key)
             };
 
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
@@ -263,7 +248,10 @@ namespace Alpaca.Markets
             String name,
             CancellationToken cancellationToken = default)
         {
-            verifyWatchListName(name);
+            if (!name.IsWatchListNameValid())
+            {
+                throw new ArgumentException("Watch list name should be from 1 to 64 characters length.", nameof(name));
+            }
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
@@ -280,17 +268,6 @@ namespace Alpaca.Markets
             return response.IsSuccessStatusCode;
         }
 
-        private static void verifyWatchListName(String name)
-        {
-            name = name ?? throw new ArgumentNullException(nameof(name));
-
-            if (name.Length == 0 ||
-                name.Length > 64)
-            {
-                throw new ArgumentException(
-                    "Watch list name should be from 1 to 64 symbols.", nameof(name));
-            }
-        }
 
         private static StringContent toStringContent(
             String name,

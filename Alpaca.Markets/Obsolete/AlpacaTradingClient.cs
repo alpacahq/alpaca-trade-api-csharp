@@ -252,5 +252,109 @@ namespace Alpaca.Markets
                     TakeProfitLimitPrice = takeProfitLimitPrice
                 },
                 cancellationToken);
+
+        /// <summary>
+        /// Add new watch list object into Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="name">User defined watch list name.</param>
+        /// <param name="assets">List of asset names for new watch list.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Newly created watch list object.</returns>
+        [Obsolete("Use overloaded method that required NewWatchListRequest parameter instead of this one.", false)]
+        public Task<IWatchList> CreateWatchListAsync(
+            String name,
+            IEnumerable<String>? assets = null,
+            CancellationToken cancellationToken = default) =>
+            CreateWatchListAsync(
+                new NewWatchListRequest(
+                    name, assets ?? Enumerable.Empty<String>()),
+                cancellationToken);
+
+        /// <summary>
+        /// Updates watch list object from Alpaca REST API endpoint by watch list identifier.
+        /// </summary>
+        /// <param name="watchListId">Unique watch list identifier.</param>
+        /// <param name="name">User defined watch list name.</param>
+        /// <param name="assets">List of asset names for new watch list.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Updated watch list object with proper <paramref name="watchListId"/> value.</returns>
+        [Obsolete("Use overloaded method that required UpdateWatchListRequest parameter instead of this one.", false)]
+        public Task<IWatchList> UpdateWatchListByIdAsync(
+            Guid watchListId,
+            String name,
+            IEnumerable<String> assets,
+            CancellationToken cancellationToken = default) =>
+            UpdateWatchListByIdAsync(
+                new UpdateWatchListRequest(
+                    watchListId, name, assets), 
+                cancellationToken);
+
+        /// <summary>
+        /// Adds asset into watch list using Alpaca REST API endpoint by watch list identifier.
+        /// </summary>
+        /// <param name="watchListId">Unique watch list identifier.</param>
+        /// <param name="asset">Asset name for adding into watch list.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Updated watch list object with proper <paramref name="watchListId"/> value.</returns>
+        [Obsolete("Use overloaded method that required ChangeWatchListRequest parameter instead of this one.", false)]
+        public Task<IWatchList> AddAssetIntoWatchListByIdAsync(
+            Guid watchListId,
+            String asset,
+            CancellationToken cancellationToken = default) =>
+            AddAssetIntoWatchListByIdAsync(
+                new ChangeWatchListRequest<Guid>(
+                    watchListId, asset),
+                cancellationToken);
+
+        /// <summary>
+        /// Adds asset into watch list using Alpaca REST API endpoint by watch list name.
+        /// </summary>
+        /// <param name="name">User defined watch list name.</param>
+        /// <param name="asset">Asset name for adding into watch list.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Updated watch list object with proper <paramref name="name"/> value.</returns>
+        [Obsolete("Use overloaded method that required ChangeWatchListRequest parameter instead of this one.", false)]
+        public Task<IWatchList> AddAssetIntoWatchListByNameAsync(
+            String name,
+            String asset,
+            CancellationToken cancellationToken = default) =>
+            AddAssetIntoWatchListByNameAsync(
+                new ChangeWatchListRequest<String>(
+                    name, asset),
+                cancellationToken);
+
+        /// <summary>
+        /// Deletes asset from watch list using Alpaca REST API endpoint by watch list identifier.
+        /// </summary>
+        /// <param name="watchListId">Unique watch list identifier.</param>
+        /// <param name="asset">Asset name for adding into watch list.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Updated watch list object with proper <paramref name="watchListId"/> value.</returns>
+        [Obsolete("Use overloaded method that required ChangeWatchListRequest parameter instead of this one.", false)]
+        public Task<IWatchList> DeleteAssetFromWatchListByIdAsync(
+            Guid watchListId,
+            String asset,
+            CancellationToken cancellationToken = default) =>
+            DeleteAssetFromWatchListByIdAsync(
+                new ChangeWatchListRequest<Guid>(
+                    watchListId, asset),
+                cancellationToken);
+
+        /// <summary>
+        /// Deletes asset from watch list using Alpaca REST API endpoint by watch list name.
+        /// </summary>
+        /// <param name="name">User defined watch list name.</param>
+        /// <param name="asset">Asset name for adding into watch list.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Updated watch list object with proper <paramref name="name"/> value.</returns>
+        [Obsolete("Use overloaded method that required ChangeWatchListRequest parameter instead of this one.", false)]
+        public Task<IWatchList> DeleteAssetFromWatchListByNameAsync(
+            String name,
+            String asset,
+            CancellationToken cancellationToken = default) =>
+            DeleteAssetFromWatchListByNameAsync(
+                new ChangeWatchListRequest<string>(
+                    name, asset),
+                cancellationToken);
     }
 }
