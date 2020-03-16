@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class SecretKey
+    <title>Class AssetsRequest
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class SecretKey
+    <meta name="title" content="Class AssetsRequest
    ">
     <meta name="generator" content="docfx 2.50.0.0">
     
@@ -68,19 +68,18 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.SecretKey">
+            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.AssetsRequest">
   
   
-  <h1 id="Alpaca_Markets_SecretKey" data-uid="Alpaca.Markets.SecretKey" class="text-break">Class SecretKey
+  <h1 id="Alpaca_Markets_AssetsRequest" data-uid="Alpaca.Markets.AssetsRequest" class="text-break">Class AssetsRequest
   </h1>
-  <div class="markdown level0 summary"><p>Secret API key for Alpaca/Polygon APIs authentication.</p>
+  <div class="markdown level0 summary"><p>Encapsulates request parameters for <a class="xref" href="Alpaca.Markets.AlpacaTradingClient.html#Alpaca_Markets_AlpacaTradingClient_ListAssetsAsync_Alpaca_Markets_AssetsRequest_System_Threading_CancellationToken_">ListAssetsAsync(AssetsRequest, CancellationToken)</a> call.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Alpaca.Markets.SecurityKey.html">SecurityKey</a></div>
-    <div class="level2"><span class="xref">SecretKey</span></div>
+    <div class="level1"><span class="xref">AssetsRequest</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -108,49 +107,71 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
-  <h5 id="Alpaca_Markets_SecretKey_syntax">Syntax</h5>
+  <h5 id="Alpaca_Markets_AssetsRequest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class SecretKey : SecurityKey</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class AssetsRequest : Validation.IRequest</code></pre>
   </div>
-  <h3 id="constructors">Constructors
+  <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SecretKey__ctor_System_String_System_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SecretKey.%23ctor(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AssetsRequest_AssetClass.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AssetsRequest.AssetClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Authentication/SecretKey.cs/#L17">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AssetsRequest.cs/#L18">View Source</a>
   </span>
-  <a id="Alpaca_Markets_SecretKey__ctor_" data-uid="Alpaca.Markets.SecretKey.#ctor*"></a>
-  <h4 id="Alpaca_Markets_SecretKey__ctor_System_String_System_String_" data-uid="Alpaca.Markets.SecretKey.#ctor(System.String,System.String)">SecretKey(String, String)</h4>
-  <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.SecretKey.html">SecretKey</a> object.</p>
+  <a id="Alpaca_Markets_AssetsRequest_AssetClass_" data-uid="Alpaca.Markets.AssetsRequest.AssetClass*"></a>
+  <h4 id="Alpaca_Markets_AssetsRequest_AssetClass" data-uid="Alpaca.Markets.AssetsRequest.AssetClass">AssetClass</h4>
+  <div class="markdown level1 summary"><p>Gets or sets asset class for filtering.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SecretKey(string keyId, string value)</code></pre>
+    <pre><code class="lang-csharp hljs">public AssetClass? AssetClass { get; set; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">keyId</span></td>
-        <td><p>Secret API key identifier.</p>
-</td>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Alpaca.Markets.AssetClass.html">AssetClass</a>&gt;</td>
+        <td></td>
       </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AssetsRequest_AssetStatus.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AssetsRequest.AssetStatus%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AssetsRequest.cs/#L13">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_AssetsRequest_AssetStatus_" data-uid="Alpaca.Markets.AssetsRequest.AssetStatus*"></a>
+  <h4 id="Alpaca_Markets_AssetsRequest_AssetStatus" data-uid="Alpaca.Markets.AssetsRequest.AssetStatus">AssetStatus</h4>
+  <div class="markdown level1 summary"><p>Gets or sets asset status for filtering.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssetStatus? AssetStatus { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">value</span></td>
-        <td><p>Secret API key value.</p>
-</td>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Alpaca.Markets.AssetStatus.html">AssetStatus</a>&gt;</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -162,10 +183,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_SecretKey.md&amp;value=---%0Auid%3A%20Alpaca.Markets.SecretKey%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AssetsRequest.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AssetsRequest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Authentication/SecretKey.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AssetsRequest.cs/#L8" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
