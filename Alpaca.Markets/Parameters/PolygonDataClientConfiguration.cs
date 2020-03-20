@@ -17,7 +17,7 @@ namespace Alpaca.Markets
         public PolygonDataClientConfiguration()
         {
             KeyId = String.Empty;
-            ApiEndpoint = Environments.Live.AlpacaDataApi;
+            ApiEndpoint = Environments.Live.PolygonDataApi;
         }
 
         /// <summary>
