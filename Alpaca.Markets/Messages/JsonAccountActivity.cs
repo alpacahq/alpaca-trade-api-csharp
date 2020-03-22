@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -9,6 +11,8 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonAccountActivity : IAccountActivity
     {
+        private static readonly Char[] _activityIdSeparator = { ':' };
+
         [JsonProperty(PropertyName = "activity_type", Required = Required.Always)]
         public AccountActivityType ActivityType { get; set; }
 
@@ -49,9 +53,29 @@ namespace Alpaca.Markets
         public TradeEvent? Type { get; set; }
 
         [JsonIgnore]
-        public DateTime ActivityDateTime { get; set; }
+        public DateTime ActivityDateTime { get; private set; }
         
         [JsonIgnore]
-        public Guid ActivityGuid { get; set; }
+        public Guid ActivityGuid { get; private set; }
+
+        [OnDeserialized]
+        internal void OnDeserializedMethod(
+            StreamingContext context)
+        {
+            var components = ActivityId.Split(_activityIdSeparator, StringSplitOptions.RemoveEmptyEntries);
+
+            if (components.Length > 0 &&
+                DateTime.TryParseExact(components[0], "yyyyMMddHHmmssfff",
+                    CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateTime))
+            {
+                ActivityDateTime = CustomTimeZone.ConvertFromEstToUtc(dateTime);
+            }
+
+            if (components.Length > 1 &&
+                Guid.TryParseExact(components[1], "D", out var guid))
+            {
+                ActivityGuid = guid;
+            }
+        }
     }
 }

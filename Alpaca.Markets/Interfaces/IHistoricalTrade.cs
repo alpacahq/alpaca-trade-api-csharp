@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates historical trade information from Polygon REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IHistoricalTrade : ITimestamps, IHistoricalBase
     {
         /// <summary>

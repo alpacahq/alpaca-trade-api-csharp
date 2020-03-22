@@ -10,6 +10,7 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonLastQuote : ILastQuote
     {
+        [SuppressMessage("ReSharper", "StringLiteralTypo")]
         internal struct Last
         {
             [JsonProperty(PropertyName = "bidexchange", Required = Required.Always)]

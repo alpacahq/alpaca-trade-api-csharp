@@ -5,13 +5,13 @@ namespace Alpaca.Markets
 {
     internal static class HttpStatusCodeExtensions
     {
-        public static Boolean IsSuccessHttpStatusCode(
+        private static Boolean isSuccessHttpStatusCode(
             this HttpStatusCode httpStatusCode) =>
             httpStatusCode >= HttpStatusCode.OK &&
             httpStatusCode < HttpStatusCode.Ambiguous;
 
         public static Boolean IsSuccessHttpStatusCode(
             this Int64 httpStatusCode) =>
-            IsSuccessHttpStatusCode((HttpStatusCode) httpStatusCode);
+            isSuccessHttpStatusCode((HttpStatusCode) httpStatusCode);
     }
 }

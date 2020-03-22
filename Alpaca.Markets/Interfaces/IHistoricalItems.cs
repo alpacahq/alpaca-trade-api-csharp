@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
@@ -7,6 +8,7 @@ namespace Alpaca.Markets
     /// Encapsulates read-only access for historical items in Polygon REST API.
     /// </summary>
     /// <typeparam name="TItem">Type of historical items inside this container.</typeparam>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IHistoricalItems<out TItem>
     {
         /// <summary>

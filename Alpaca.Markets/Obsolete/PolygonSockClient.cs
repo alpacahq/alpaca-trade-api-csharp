@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
@@ -7,6 +8,9 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Polygon streaming API via websockets.
     /// </summary>
     [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the PolygonStreamingClient class instead.", false)]
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public sealed class PolygonSockClient : IDisposable
     {
         private readonly PolygonStreamingClient _client;

@@ -33,7 +33,7 @@ namespace Alpaca.Markets
         public Int32 ItemsInWindow { get; set; }
 
         [JsonIgnore]
-        public DateTime Time { get; set; }
+        public DateTime Time { get; private set; }
 
         [OnDeserialized]
         internal void OnDeserializedMethod(

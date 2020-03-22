@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -7,6 +8,7 @@ namespace Alpaca.Markets
     /// Exchanges supported by Alpaca REST API.
     /// </summary>
     [JsonConverter(typeof(ExchangeEnumConverter))]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public enum Exchange
     {
         /// <summary>

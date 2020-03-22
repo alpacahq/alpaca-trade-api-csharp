@@ -41,10 +41,10 @@ namespace Alpaca.Markets
         public Int32 ItemsInWindow { get; set; }
 
         [JsonIgnore]
-        public DateTime StartTime { get; set; }
+        public DateTime StartTime { get; private set; }
 
         [JsonIgnore]
-        public DateTime EndTime { get; set; }
+        public DateTime EndTime { get; private set; }
 
         [OnDeserialized]
         internal void OnDeserializedMethod(

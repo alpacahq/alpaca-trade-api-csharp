@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates full account information from Alpaca REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IAccount : IAccountBase
     {
         /// <summary>

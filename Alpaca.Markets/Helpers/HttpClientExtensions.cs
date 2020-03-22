@@ -122,6 +122,7 @@ namespace Alpaca.Markets
 
         [Conditional("NET45")]
         public static void SetSecurityProtocol(
+            // ReSharper disable once UnusedParameter.Global
             this HttpClient httpClient)
         {
 #if NET45

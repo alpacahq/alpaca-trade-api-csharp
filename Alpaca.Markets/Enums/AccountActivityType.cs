@@ -10,6 +10,10 @@ namespace Alpaca.Markets
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
     [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [SuppressMessage("ReSharper", "CommentTypo")]
+    [SuppressMessage("ReSharper", "IdentifierTypo")]
+    [SuppressMessage("ReSharper", "StringLiteralTypo")]
     public enum AccountActivityType
     {
         /// <summary>

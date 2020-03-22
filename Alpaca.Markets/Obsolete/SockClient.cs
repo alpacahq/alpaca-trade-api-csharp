@@ -7,6 +7,8 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Alpaca streaming API.
     /// </summary>
     [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the AlpacaStreamingClient class instead.", false)]
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
     public sealed class SockClient : IDisposable
     {
         private readonly AlpacaStreamingClient _client;
