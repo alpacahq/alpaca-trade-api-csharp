@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.Http;
 using System.Threading;
@@ -9,6 +10,9 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
+    [SuppressMessage(
+        "Globalization","CA1303:Do not pass literals as localized parameters",
+        Justification = "We do not plan to support localized exception messages in this SDK.")]
     internal static class HttpClientExtensions
     {
         public static Task<TApi> GetSingleObjectAsync<TApi, TJson>(
@@ -55,20 +59,27 @@ namespace Alpaca.Markets
             var serializer = new JsonSerializer();
             if (response.IsSuccessStatusCode)
             {
-                return serializer.Deserialize<TJson>(reader);
+                return serializer.Deserialize<TJson>(reader) ??
+                    throw new RestClientErrorException("Unable to deserialize JSON response message.");
             }
 
-            // ReSharper disable once ConstantNullCoalescingCondition
-            var jsonError = 
-                serializer.Deserialize<JsonError>(reader) ?? new JsonError();
+            try
+            {
+                var jsonError = 
+                    serializer.Deserialize<JsonError>(reader) ?? new JsonError();
 
-            if (jsonError.Code == 0 ||
-                String.IsNullOrEmpty(jsonError.Message))
+                if (jsonError.Code == 0 ||
+                    String.IsNullOrEmpty(jsonError.Message))
+                {
+                    throw new RestClientErrorException(response);
+                }
+
+                throw new RestClientErrorException(jsonError);
+            }
+            catch (Exception)
             {
                 throw new RestClientErrorException(response);
             }
-
-            throw new RestClientErrorException(jsonError);
         }
 
         private static async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(
