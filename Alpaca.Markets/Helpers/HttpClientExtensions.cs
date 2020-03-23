@@ -65,7 +65,8 @@ namespace Alpaca.Markets
             var serializer = new JsonSerializer();
             if (response.IsSuccessStatusCode)
             {
-                return serializer.Deserialize<TJson>(reader);
+                return serializer.Deserialize<TJson>(reader) ??
+                    throw new RestClientErrorException("Unable to deserialize JSON response message.");
             }
 
             // ReSharper disable once ConstantNullCoalescingCondition
