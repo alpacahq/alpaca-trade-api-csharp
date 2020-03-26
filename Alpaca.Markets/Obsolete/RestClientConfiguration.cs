@@ -70,14 +70,18 @@ namespace Alpaca.Markets
         internal AlpacaDataClientConfiguration AlpacaDataClientConfiguration =>
             new AlpacaDataClientConfiguration
             {
-                ApiEndpoint = DataApiUrl
+                SecurityId = SecurityId,
+                ApiEndpoint = DataApiUrl,
+                ApiVersion = DataApiVersion
             };
 
         internal AlpacaTradingClientConfiguration AlpacaTradingClientConfiguration =>
             new AlpacaTradingClientConfiguration
             {
                 SecurityId = SecurityId,
-                ApiEndpoint = TradingApiUrl
+                ApiEndpoint = TradingApiUrl,
+                ApiVersion = DataApiVersion,
+                ThrottleParameters = ThrottleParameters
             };
 
         internal PolygonDataClientConfiguration PolygonDataClientConfiguration =>

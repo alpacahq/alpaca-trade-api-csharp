@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Alpaca.Markets
@@ -32,6 +33,7 @@ namespace Alpaca.Markets
         /// <param name="timeUnit"></param>
         /// <param name="maxRetryAttempts"></param>
         /// <param name="retryHttpStatuses"></param>
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public ThrottleParameters(
             Int32? occurrences = null,
             TimeSpan? timeUnit = null,
@@ -126,6 +128,7 @@ namespace Alpaca.Markets
         {
             get => _retryHttpStatuses;
             // ReSharper disable once MemberCanBePrivate.Global
+            // ReSharper disable once UnusedMember.Global
             set
             {
                 checkIfNotTooLateToConfigure();

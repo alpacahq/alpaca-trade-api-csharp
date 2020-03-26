@@ -35,7 +35,7 @@ namespace Alpaca.Markets
         public Int64 Timestamp { get; set; }
 
         [JsonIgnore]
-        public DateTime Time { get; set; }
+        public DateTime Time { get; private set; }
 
         [OnDeserialized]
         internal void OnDeserializedMethod(

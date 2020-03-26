@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -8,6 +9,7 @@ namespace Alpaca.Markets
     /// Notification level for order fill emails.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public enum TradeConfirmEmail
     {
         /// <summary>

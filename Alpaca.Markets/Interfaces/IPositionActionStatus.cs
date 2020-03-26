@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates position action status information from Alpaca REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IPositionActionStatus
     {
         /// <summary>

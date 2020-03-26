@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Alpaca.Markets
@@ -7,6 +8,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaTradingClient.ListAccountActivitiesAsync(AccountActivitiesRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public sealed class AccountActivitiesRequest : Validation.IRequest
     {
         private readonly List<AccountActivityType> _accountActivityTypes = new List<AccountActivityType>();
@@ -14,6 +16,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Creates new instance of <see cref="AccountActivitiesRequest"/> object for all activity types.
         /// </summary>
+        // ReSharper disable once UnusedMember.Global
         public AccountActivitiesRequest()
         {
         }

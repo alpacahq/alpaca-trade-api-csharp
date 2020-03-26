@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -8,6 +9,7 @@ namespace Alpaca.Markets
     /// Order statuses filter for <see cref="RestClient.ListOrdersAsync"/> call from Alpaca REST API.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public enum OrderStatusFilter
     {
         /// <summary>

@@ -21,14 +21,15 @@ namespace Alpaca.Markets
         public static DateTime ConvertFromEstToUtc(
             DateTime utcDate,
             DateTime estTime) =>
+            ConvertFromEstToUtc(
+                utcDate.Date.Add(estTime.TimeOfDay));
+
+        public static DateTime ConvertFromEstToUtc(
+            DateTime estDateTime) =>
 #if NETSTANDARD1_3
-            TimeZoneInfo.ConvertTime(
-                utcDate.Date.Add(estTime.TimeOfDay),
-                Est, TimeZoneInfo.Utc);
+            TimeZoneInfo.ConvertTime(estDateTime, Est, TimeZoneInfo.Utc);
 #else
-            TimeZoneInfo.ConvertTimeToUtc(
-                utcDate.Date.Add(estTime.TimeOfDay),
-                Est);
+            TimeZoneInfo.ConvertTimeToUtc(estDateTime, Est);
 #endif
     }
 }

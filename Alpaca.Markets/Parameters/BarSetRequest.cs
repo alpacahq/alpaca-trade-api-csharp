@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Alpaca.Markets
@@ -7,6 +8,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaDataClient.GetBarSetAsync(BarSetRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public sealed class BarSetRequest : Validation.IRequest
     {
         private readonly List<String> _symbols;

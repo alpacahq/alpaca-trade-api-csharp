@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates portfolio history information from Alpaca REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IPortfolioHistory
     {
         /// <summary>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
 
 namespace Alpaca.Markets
 {
@@ -20,7 +19,7 @@ namespace Alpaca.Markets
             : base(value) =>
             KeyId = keyId;
 
-        internal String KeyId { get; }
+        private String KeyId { get; }
 
         internal override IEnumerable<KeyValuePair<String, String>> GetAuthenticationHeaders()
         {

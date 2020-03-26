@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
@@ -6,6 +7,7 @@ namespace Alpaca.Markets
     /// Encapsulates basic quote information any REST API.
     /// </summary>
     /// <typeparam name="TExchange">Type of bid/ask exchange properties.</typeparam>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IQuoteBase<out TExchange>
     {
         /// <summary>

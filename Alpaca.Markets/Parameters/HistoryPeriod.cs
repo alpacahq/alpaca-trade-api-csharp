@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Alpaca.Markets
@@ -6,6 +7,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates account history period request duration - value and unit pair.
     /// </summary>
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public readonly struct HistoryPeriod : IEquatable<HistoryPeriod>
     {
         /// <summary>

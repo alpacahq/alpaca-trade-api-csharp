@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates base historical information from Polygon REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IHistoricalBase
     {
         /// <summary>

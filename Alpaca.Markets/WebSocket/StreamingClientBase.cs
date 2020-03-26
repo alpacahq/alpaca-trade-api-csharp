@@ -12,6 +12,8 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for websocket streaming APIs.
     /// </summary>
+    [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
+    [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
     public abstract class StreamingClientBase<TConfiguration> : IDisposable
         where TConfiguration : StreamingClientConfiguration
     {

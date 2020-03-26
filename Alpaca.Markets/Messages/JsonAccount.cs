@@ -8,6 +8,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+    [SuppressMessage("ReSharper", "StringLiteralTypo")]
     internal sealed class JsonAccount : IAccount
     {
         [JsonProperty(PropertyName = "id", Required = Required.Always)]
