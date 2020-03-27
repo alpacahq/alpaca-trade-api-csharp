@@ -25,7 +25,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "c", Required = Required.Always)]
         public Decimal Close { get; set; }
 
-        [JsonProperty(PropertyName = "a", Required = Required.Always)]
+        [JsonProperty(PropertyName = "a", Required = Required.Default)]
         public Decimal Average { get; set; }
 
         [JsonProperty(PropertyName = "v", Required = Required.Always)]

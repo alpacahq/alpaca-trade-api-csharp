@@ -35,7 +35,7 @@ namespace Alpaca.Markets
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
-            if (EndDateInclusive > StartDateInclusive)
+            if (EndDateInclusive < StartDateInclusive)
             {
                 yield return new RequestValidationException(
                     "Time interval should be valid.", nameof(StartDateInclusive));

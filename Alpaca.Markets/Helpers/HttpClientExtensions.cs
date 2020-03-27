@@ -69,17 +69,24 @@ namespace Alpaca.Markets
                     throw new RestClientErrorException("Unable to deserialize JSON response message.");
             }
 
-            // ReSharper disable once ConstantNullCoalescingCondition
-            var jsonError = 
-                serializer.Deserialize<JsonError>(reader) ?? new JsonError();
+            try
+            {
+                // ReSharper disable once ConstantNullCoalescingCondition
+                var jsonError = 
+                    serializer.Deserialize<JsonError>(reader) ?? new JsonError();
 
-            if (jsonError.Code == 0 ||
-                String.IsNullOrEmpty(jsonError.Message))
+                if (jsonError.Code == 0 ||
+                    String.IsNullOrEmpty(jsonError.Message))
+                {
+                    throw new RestClientErrorException(response);
+                }
+
+                throw new RestClientErrorException(jsonError);
+            }
+            catch (Exception)
             {
                 throw new RestClientErrorException(response);
             }
-
-            throw new RestClientErrorException(jsonError);
         }
 
         private static async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(

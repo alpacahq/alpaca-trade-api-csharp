@@ -88,7 +88,7 @@ namespace Alpaca.Markets
             };
 
             var response = await _httpClient
-                .GetSingleObjectAsync<IReadOnlyDictionary<String, List<JsonBarAgg>>, Dictionary<String, List<JsonBarAgg>>>(
+                .GetSingleObjectAsync<IReadOnlyDictionary<String, List<JsonAlpacaAgg>>, Dictionary<String, List<JsonAlpacaAgg>>>(
                     FakeThrottler.Instance, builder, cancellationToken)
                 .ConfigureAwait(false);
 

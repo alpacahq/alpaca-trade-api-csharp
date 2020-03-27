@@ -72,18 +72,30 @@ namespace Alpaca.Markets
         /// Read-only dictionary with keys equal to symbol type abbreviation and values
         /// equal to full symbol type names descriptions for each supported symbol type.
         /// </returns>
-        public Task<IReadOnlyDictionary<String, String>> GetSymbolTypeMapAsync(
+        public async Task<IReadOnlyDictionary<String, String>> GetSymbolTypeMapAsync(
             CancellationToken cancellationToken = default)
         {
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = "v1/meta/symbol-types",
+                Path = "v2/reference/types",
                 Query = getDefaultPolygonApiQueryBuilder()
             };
 
-            return _httpClient.GetSingleObjectAsync
-                <IReadOnlyDictionary<String,String>, Dictionary<String, String>>(
-                    FakeThrottler.Instance, builder, cancellationToken);
+            var map = await _httpClient.GetSingleObjectAsync
+                <JsonSymbolTypeMap, JsonSymbolTypeMap>(
+                    FakeThrottler.Instance, builder, cancellationToken)
+                .ConfigureAwait(false);
+
+            return map.Results.StockTypes
+                .Concat(map.Results.IndexTypes)
+                .GroupBy(
+                    kvp => kvp.Key, 
+                    kvp => kvp.Value,
+                    StringComparer.Ordinal)
+                .ToDictionary(
+                    group => group.Key,
+                    group => group.First(),
+                    StringComparer.Ordinal);
         }
 
         /// <summary>
@@ -164,7 +176,7 @@ namespace Alpaca.Markets
             };
 
             return _httpClient.GetSingleObjectAsync
-                <IHistoricalItems<IAgg>, JsonHistoricalItems<IAgg, JsonMinuteAgg>>(
+                <IHistoricalItems<IAgg>, JsonHistoricalItems<IAgg, JsonPolygonAgg>>(
                     FakeThrottler.Instance, builder, cancellationToken);
         }
 
