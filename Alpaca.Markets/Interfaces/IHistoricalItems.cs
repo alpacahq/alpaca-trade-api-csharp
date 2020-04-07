@@ -43,11 +43,5 @@ namespace Alpaca.Markets
         /// Polygon v2 API only.
         /// </summary>
         Int64 ResultsCount { get; }
-
-        /// <summary>
-        /// Query execution database latency reported by Polygon.
-        /// </summary>
-        [Obsolete("This property will be removed in upcoming major version of SDK.", true)]
-        TimeSpan DatabaseLatency { get; }
     }
 }
