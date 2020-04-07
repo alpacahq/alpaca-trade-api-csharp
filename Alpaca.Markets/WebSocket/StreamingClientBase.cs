@@ -12,13 +12,13 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for websocket streaming APIs.
     /// </summary>
+    [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
     [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
-    [SuppressMessage(
-        "Globalization","CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     public abstract class StreamingClientBase<TConfiguration> : IDisposable
         where TConfiguration : StreamingClientConfiguration
     {
+        private readonly SynchronizationQueue _queue = new SynchronizationQueue();
+
         private readonly IWebSocket _webSocket;
 
         internal readonly TConfiguration Configuration;
@@ -42,6 +42,7 @@ namespace Alpaca.Markets
             _webSocket.DataReceived += OnDataReceived;
 
             _webSocket.Error += HandleError;
+            _queue.OnError += HandleError;
         }
 
         /// <summary>
@@ -158,8 +159,10 @@ namespace Alpaca.Markets
             _webSocket.DataReceived -= OnDataReceived;
 
             _webSocket.Error -= HandleError;
+            _queue.OnError -= OnError;
 
             _webSocket.Dispose();
+            _queue.Dispose();
         }
 
         /// <summary>
@@ -186,7 +189,7 @@ namespace Alpaca.Markets
                 if (handlers != null &&
                     handlers.TryGetValue(messageType, out var handler))
                 {
-                    handler(message);
+                    _queue.Enqueue(() => handler(message));
                 }
                 else
                 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Alpaca.Markets
@@ -6,6 +7,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates account history period request duration - value and unit pair.
     /// </summary>
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public readonly struct HistoryPeriod : IEquatable<HistoryPeriod>
     {
         /// <summary>
@@ -35,8 +37,8 @@ namespace Alpaca.Markets
         public bool Equals(HistoryPeriod other) => Unit == other.Unit && Value == other.Value;
 
         /// <inheritdoc />
-        public override String ToString() => 
-            Value.ToString("D", CultureInfo.InvariantCulture) + Unit.ToEnumString();
+        public override String ToString() =>
+            $"{Value.ToString("D", CultureInfo.InvariantCulture)}{Unit.ToEnumString()}";
 
         /// <inheritdoc />
         public override Boolean Equals(Object? other) => other is HistoryPeriod period && Equals(period);

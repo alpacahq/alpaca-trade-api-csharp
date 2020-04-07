@@ -28,19 +28,21 @@ namespace UsageExamples
 
         public async Task Run()
         {
-            alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(API_KEY, new SecretKey(API_SECRET));
+            alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(new SecretKey(API_KEY, API_SECRET));
 
-            alpacaDataClient = Environments.Paper.GetAlpacaDataClient(API_KEY, new SecretKey(API_SECRET));
+            alpacaDataClient = Environments.Paper.GetAlpacaDataClient(new SecretKey(API_KEY, API_SECRET));
 
             // First, cancel any existing orders so they don't impact our buying power.
-            var orders = await alpacaTradingClient.ListOrdersAsync();
+            var orders = await alpacaTradingClient.ListAllOrdersAsync();
             foreach (var order in orders)
             {
                 await alpacaTradingClient.DeleteOrderAsync(order.OrderId);
             }
 
             // Figure out when the market will close so we can prepare to sell beforehand.
-            var calendars = (await alpacaTradingClient.ListCalendarAsync(DateTime.Today)).ToList();
+            var calendars = (await alpacaTradingClient
+                .ListCalendarAsync(new CalendarRequest().SetInclusiveTimeInterval(DateTime.Today, null)))
+                .ToList();
             var calendarDate = calendars.First().TradingDate;
             var closingTime = calendars.First().TradingCloseTime;
 
@@ -76,7 +78,8 @@ namespace UsageExamples
                     // No position exists. This exception can be safely ignored.
                 }
 
-                var barSet = await alpacaDataClient.GetBarSetAsync(new[] { symbol }, TimeFrame.Minute, 20);
+                var barSet = await alpacaDataClient.GetBarSetAsync(
+                    new BarSetRequest(symbol, TimeFrame.Minute) { Limit = 20 });
                 var bars = barSet[symbol].ToList();
 
                 Decimal avg = bars.Average(item => item.Close);
@@ -164,7 +167,12 @@ namespace UsageExamples
                 return;
             }
             Console.WriteLine($"Submitting {side} order for {quantity} shares at ${price}.");
-            var order = await alpacaTradingClient.PostOrderAsync(symbol, quantity, side, OrderType.Limit, TimeInForce.Day, price);
+            var order = await alpacaTradingClient.PostOrderAsync(
+                new NewOrderRequest(
+                    symbol, quantity, side, OrderType.Limit, TimeInForce.Day)
+                {
+                    LimitPrice = price
+                });
             lastTradeId = order.OrderId;
         }
 
@@ -173,7 +181,9 @@ namespace UsageExamples
             try
             {
                 var positionQuantity = (await alpacaTradingClient.GetPositionAsync(symbol)).Quantity;
-                await alpacaTradingClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
+                await alpacaTradingClient.PostOrderAsync(
+                    new NewOrderRequest(
+                        symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day));
             }
             catch (Exception)
             {

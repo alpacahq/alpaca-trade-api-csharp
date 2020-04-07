@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates position information from Alpaca REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IPosition
     {
         /// <summary>
@@ -53,7 +55,7 @@ namespace Alpaca.Markets
         Decimal MarketValue { get; }
 
         /// <summary>
-        /// Get postion cost basis.
+        /// Get position cost basis.
         /// </summary>
         Decimal CostBasis { get; }
 

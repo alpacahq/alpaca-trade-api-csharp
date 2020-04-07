@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Alpaca.Markets
+{
+    /// <summary>
+    /// Encapsulates request parameters for <see cref="AlpacaTradingClient.CreateWatchListAsync(NewWatchListRequest,System.Threading.CancellationToken)"/> call.
+    /// </summary>
+    public sealed class NewWatchListRequest : Validation.IRequest
+    {
+        private readonly List<String> _assets = new List<String>();
+
+        /// <summary>
+        /// Creates new instance of <see cref="NewWatchListRequest"/> object.
+        /// </summary>
+        /// <param name="name">User defined watch list name.</param>
+        public NewWatchListRequest(String name) => Name = name;
+
+        /// <summary>
+        /// Creates new instance of <see cref="NewWatchListRequest"/> object.
+        /// </summary>
+        /// <param name="name">User defined watch list name.</param>
+        /// <param name="assets">List of asset names for new watch list.</param>
+        public NewWatchListRequest(
+            String name,
+            IEnumerable<String> assets)
+            : this(name) => 
+            _assets.AddRange(
+                (assets ?? Enumerable.Empty<String>())
+                .Distinct(StringComparer.Ordinal));
+
+        /// <summary>
+        /// Gets user defined watch list name.
+        /// </summary>
+        public String Name { get; }
+
+        /// <summary>
+        /// Gets list of asset names for new watch list.
+        /// </summary>
+        public IReadOnlyList<String> Assets => _assets;
+       
+        IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
+        {
+            // TODO: olegra - add more validations here
+            if (!Name.IsWatchListNameValid())
+            {
+                yield return new RequestValidationException(
+                    "Watch list name should be from 1 to 64 characters length.", nameof(Name));
+            }
+        }
+    }
+}

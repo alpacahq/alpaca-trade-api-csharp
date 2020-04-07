@@ -9,14 +9,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca streaming API.
     /// </summary>
-    [SuppressMessage(
-        "Globalization","CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     public sealed class AlpacaStreamingClient : StreamingClientBase<AlpacaStreamingClientConfiguration>
     {
         // Available Alpaca message types
-
-        // ReSharper disable InconsistentNaming
 
         private const String TradeUpdates = "trade_updates";
 
@@ -25,8 +20,6 @@ namespace Alpaca.Markets
         private const String Authorization = "authorization";
 
         private const String Listening = "listening";
-
-        // ReSharper restore InconsistentNaming
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
@@ -63,11 +56,8 @@ namespace Alpaca.Markets
             SendAsJsonString(new JsonAuthRequest
             {
                 Action = JsonAction.Authenticate,
-                Data = new JsonAuthRequest.JsonData
-                {
-                    KeyId = Configuration.KeyId,
-                    SecretKey = Configuration.SecretKey
-                }
+                Data = Configuration.SecurityId
+                    .GetAuthenticationData()
             });
 
             base.OnOpened();
@@ -103,10 +93,12 @@ namespace Alpaca.Markets
             }
         }
 
+        [SuppressMessage("ReSharper", "HeuristicUnreachableCode")]
         private void handleAuthorization(
             JToken token)
         {
             var response = token.ToObject<JsonAuthResponse>();
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             if (response is null)
             {
                 HandleError(new InvalidOperationException("Invalid authentication response."));

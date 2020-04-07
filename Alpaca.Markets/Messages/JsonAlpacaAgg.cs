@@ -8,35 +8,36 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonDayAgg : IAgg
+    internal sealed class JsonAlpacaAgg : IAgg
     {
-
-        [JsonProperty(PropertyName = "o", Required = Required.Always)]
+        [JsonProperty(PropertyName = "o", Required = Required.Default)]
         public Decimal Open { get; set; }
 
-        [JsonProperty(PropertyName = "c", Required = Required.Always)]
+        [JsonProperty(PropertyName = "c", Required = Required.Default)]
         public Decimal Close { get; set; }
 
-        [JsonProperty(PropertyName = "l", Required = Required.Always)]
+        [JsonProperty(PropertyName = "l", Required = Required.Default)]
         public Decimal Low { get; set; }
 
-        [JsonProperty(PropertyName = "h", Required = Required.Always)]
+        [JsonProperty(PropertyName = "h", Required = Required.Default)]
         public Decimal High { get; set; }
 
-        [JsonProperty(PropertyName = "v", Required = Required.Always)]
+        [JsonProperty(PropertyName = "v", Required = Required.Default)]
         public Int64 Volume { get; set; }
+
+        [JsonProperty(PropertyName = "t", Required = Required.Default)]
+        public Int64 TimeOffset { get; set; }
 
         [JsonProperty(PropertyName = "n", Required = Required.Default)]
         public Int32 ItemsInWindow { get; set; }
 
-        [JsonConverter(typeof(DateConverter), "yyyy-M-d")]
-        [JsonProperty(PropertyName = "d", Required = Required.Default)]
-        public DateTime Time { get; set; }
+        [JsonIgnore]
+        public DateTime Time { get; private set; }
 
         [OnDeserialized]
         internal void OnDeserializedMethod(
             StreamingContext context) =>
-            Time = DateTime.SpecifyKind(
-                Time.Date, DateTimeKind.Utc);
+            Time = DateTimeHelper.FromUnixTimeSeconds(TimeOffset);
     }
 }
+

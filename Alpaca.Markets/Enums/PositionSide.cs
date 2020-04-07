@@ -9,6 +9,7 @@ namespace Alpaca.Markets
     /// Position side in Alpaca REST API.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage(
         "Naming", "CA1720:Identifier contains type name",
         Justification = "Both names are trading terms not CLR type names.")]

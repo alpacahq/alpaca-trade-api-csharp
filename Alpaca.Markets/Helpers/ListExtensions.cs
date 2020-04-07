@@ -22,6 +22,5 @@ namespace Alpaca.Markets
 #else
                 System.Array.Empty<T>();
 #endif
-
     }
 }

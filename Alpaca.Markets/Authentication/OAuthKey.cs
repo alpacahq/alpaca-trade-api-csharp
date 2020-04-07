@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Net.Http;
+using System.Collections.Generic;
 
 namespace Alpaca.Markets
 {
@@ -12,14 +12,22 @@ namespace Alpaca.Markets
         /// Creates new instance of <see cref="OAuthKey"/> object.
         /// </summary>
         /// <param name="value">OAuth key.</param>
-        public OAuthKey(String value) : base(value) {}
-
-        internal override void AddAuthenticationHeader(
-            HttpClient httpClient,
-            String keyId)
+        public OAuthKey(
+            String value)
+            : base(value)
         {
-            httpClient.DefaultRequestHeaders.Add(
+        }
+
+        internal override IEnumerable<KeyValuePair<String, String>> GetAuthenticationHeaders()
+        {
+            yield return new KeyValuePair<String, String>(
                 "Authorization", "Bearer " + Value);
         }
+
+        internal override JsonAuthRequest.JsonData GetAuthenticationData() =>
+            new JsonAuthRequest.JsonData
+            {
+                OAuthToken = Value
+            };
     }
 }

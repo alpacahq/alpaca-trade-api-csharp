@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,10 +9,10 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca REST API and Polygon REST API endpoints.
     /// </summary>
-    [SuppressMessage(
-        "Globalization","CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
-    public sealed partial class RestClient : IDisposable
+    [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the AlpacaDataClient, AlpacaTradingClient and PolygonDataClient classes instead.", false)]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    public sealed class RestClient : IDisposable
     {
         private readonly AlpacaTradingClient _alpacaTradingClient;
 
@@ -35,7 +33,6 @@ namespace Alpaca.Markets
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         /// <param name="throttleParameters">Parameters for requests throttling.</param>
         /// <param name="oauthKey">Key for alternative authentication via oauth. keyId and secretKey will be ignored if provided.</param>
-        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
         public RestClient(
             String keyId,
             String secretKey,
@@ -74,7 +71,6 @@ namespace Alpaca.Markets
         /// <param name="isStagingEnvironment">If <c>true</c> use staging.</param>
         /// <param name="throttleParameters">Parameters for requests throttling.</param>
         /// <param name="oauthKey">Key for alternative authentication via oauth. keyId and secretKey will be ignored if provided.</param>
-        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
         public RestClient(
             String keyId,
             String secretKey,
@@ -96,7 +92,6 @@ namespace Alpaca.Markets
         /// Creates new instance of <see cref="RestClient"/> object.
         /// </summary>
         /// <param name="configuration">Application configuration.</param>
-        [Obsolete("This constructor is deprecated and will be removed in upcoming releases.", false)]
         public RestClient(
             Microsoft.Extensions.Configuration.IConfiguration configuration)
             : this(createConfiguration(configuration)) =>
@@ -123,7 +118,7 @@ namespace Alpaca.Markets
             return new RestClientConfiguration
             {
                 KeyId = keyId ?? throw new ArgumentException("Application key id should not be null.", nameof(keyId)),
-                SecurityId = SecurityKey.Create(secretKey, oauthKey),
+                SecurityId = String.IsNullOrEmpty(secretKey) ? (SecurityKey) new SecretKey(keyId, secretKey) : new OAuthKey(oauthKey),
                 TradingApiUrl = alpacaRestApi ?? Environments.Live.AlpacaTradingApi,
                 PolygonApiUrl = polygonRestApi ?? Environments.Live.PolygonDataApi,
                 DataApiUrl = alpacaDataApi ?? Environments.Live.AlpacaDataApi,
@@ -151,9 +146,9 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public void Dispose()
         {
-            _alpacaTradingClient?.Dispose();
-            _alpacaDataClient?.Dispose();
-            _polygonDataClient?.Dispose();
+            _alpacaTradingClient.Dispose();
+            _alpacaDataClient.Dispose();
+            _polygonDataClient.Dispose();
         }
 
         /// <summary>
@@ -221,7 +216,7 @@ namespace Alpaca.Markets
         /// <param name="pageSize">The maximum number of entries to return in the response.</param>
         /// <param name="pageToken">The ID of the end of your current page of results.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only list of asset information objects.</returns>
+        /// <returns>Read-only list of account activity record objects.</returns>
         public Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
             IEnumerable<AccountActivityType>? activityTypes = null,
             DateTime? date = null,
@@ -246,7 +241,7 @@ namespace Alpaca.Markets
         /// </param>
         /// <param name="extendedHours">If true, include extended hours in the result. This is effective only for time frame less than 1 day.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only portfolio history information object.</returns>
+        /// <returns>Read-only list of account activity record objects.</returns>
         public Task<IPortfolioHistory> GetPortfolioHistoryAsync(
             DateTime? startDate = null,
             DateTime? endDate = null,
@@ -491,8 +486,7 @@ namespace Alpaca.Markets
             DateTime? timeFrom = null,
             DateTime? timeInto = null,
             CancellationToken cancellationToken = default) =>
-            _alpacaDataClient.GetBarSetAsync(
-                symbols, timeFrame, limit, areTimesInclusive, timeFrom, timeInto, cancellationToken);
+            _alpacaDataClient.GetBarSetAsync(symbols, timeFrame, limit, areTimesInclusive, timeFrom, timeInto, cancellationToken);
 
         /// <summary>
         /// Gets list of available exchanges from Polygon REST API endpoint.
@@ -518,7 +512,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of historical trades for a single asset from Polygon's REST API endpoint.
         /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
+        /// <param name="symbol">Asset name for data retrieval.</param>
         /// <param name="date">Single date for data retrieval.</param>
         /// <param name="timestamp">Paging - Using the timestamp of the last result will give you the next page of results.</param>
         /// <param name="timestampLimit">Maximum timestamp allowed in the results.</param>
@@ -539,13 +533,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of historical trades for single asset from Polygon REST API endpoint.
         /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
+        /// <param name="symbol">Asset name for data retrieval.</param>
         /// <param name="date">Single date for data retrieval.</param>
         /// <param name="offset">Paging - offset or first historical trade in days trades list.</param>
         /// <param name="limit">Paging - maximal number of historical trades in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical trade information.</returns>
-        [Obsolete("This version of ListHistoricalTradesAsync will be deprecated in a future release.", false)]
+        [Obsolete("This version of ListHistoricalTradesAsync will be deprecated in a future release.", true)]
         public Task<IDayHistoricalItems<IHistoricalTrade>> ListHistoricalTradesV1Async(
             String symbol,
             DateTime date,
@@ -557,7 +551,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of historical trades for a single asset from Polygon's REST API endpoint.
         /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
+        /// <param name="symbol">Asset name for data retrieval.</param>
         /// <param name="date">Single date for data retrieval.</param>
         /// <param name="timestamp">Paging - Using the timestamp of the last result will give you the next page of results.</param>
         /// <param name="timestampLimit">Maximum timestamp allowed in the results.</param>
@@ -578,13 +572,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of historical quotes for single asset from Polygon REST API endpoint.
         /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
+        /// <param name="symbol">Asset name for data retrieval.</param>
         /// <param name="date">Single date for data retrieval.</param>
         /// <param name="offset">Paging - offset or first historical quote in days quotes list.</param>
         /// <param name="limit">Paging - maximal number of historical quotes in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical quote information.</returns>
-        [Obsolete("This version of ListHistoricalQuotesAsync will be deprecated in a future release.", false)]
+        [Obsolete("This version of ListHistoricalQuotesAsync will be deprecated in a future release.", true)]
         public Task<IDayHistoricalItems<IHistoricalQuote>> ListHistoricalQuotesV1Async(
             String symbol,
             DateTime date,
@@ -596,8 +590,8 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of historical minute bars for single asset from Polygon's v2 REST API endpoint.
         /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
-        /// <param name="multiplier">>Number of bars to combine in each result.</param>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="multiplier">Number of bars to combine in each result.</param>
         /// <param name="dateFromInclusive">Start time for filtering (inclusive).</param>
         /// <param name="dateToInclusive">End time for filtering (inclusive).</param>
         /// <param name="unadjusted">Set to true if the results should not be adjusted for splits.</param>
@@ -616,8 +610,8 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of historical hour bars for single asset from Polygon's v2 REST API endpoint.
         /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
-        /// <param name="multiplier">>Number of bars to combine in each result.</param>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="multiplier">Number of bars to combine in each result.</param>
         /// <param name="dateFromInclusive">Start time for filtering (inclusive).</param>
         /// <param name="dateToInclusive">End time for filtering (inclusive).</param>
         /// <param name="unadjusted">Set to true if the results should not be adjusted for splits.</param>
@@ -635,8 +629,8 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets list of historical minute bars for single asset from Polygon's v2 REST API endpoint.
         /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
-        /// <param name="multiplier">>Number of bars to combine in each result.</param>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="multiplier">Number of bars to combine in each result.</param>
         /// <param name="dateFromInclusive">Start time for filtering (inclusive).</param>
         /// <param name="dateToInclusive">End time for filtering (inclusive).</param>
         /// <param name="unadjusted">Set to true if the results should not be adjusted for splits.</param>
@@ -834,19 +828,20 @@ namespace Alpaca.Markets
                 toInt32OrNull(configuration["dataApiVersion"]) ?? (Int32)AlpacaDataClientConfiguration.DefaultApiVersion,
                 new ThrottleParameters(null, null,
                     toInt32OrNull(configuration["maxRetryAttempts"]),
-                    configuration?.GetSection("retryHttpStatuses")
-                        .GetChildren().Select(item => Convert.ToInt32(item.Value, CultureInfo.InvariantCulture))),
-                toBooleanOrNull(configuration?["staging"]) ?? false,
+                    System.Linq.Enumerable.Select(
+                        configuration.GetSection("retryHttpStatuses").GetChildren(),
+                        item => Convert.ToInt32(item.Value, System.Globalization.CultureInfo.InvariantCulture))),
+                toBooleanOrNull(configuration["staging"]) ?? false,
                 String.Empty);
         }
 
         private static Int32? toInt32OrNull(
             String value) => 
-            value != null ? Convert.ToInt32(value, CultureInfo.InvariantCulture) : (Int32?)null;
+            value != null ? Convert.ToInt32(value, System.Globalization.CultureInfo.InvariantCulture) : (Int32?)null;
 
         private static Boolean? toBooleanOrNull(
             String? value) =>
-            value != null ? Convert.ToBoolean(value, CultureInfo.InvariantCulture) : (Boolean?)null;
+            value != null ? Convert.ToBoolean(value, System.Globalization.CultureInfo.InvariantCulture) : (Boolean?)null;
 #endif
     }
 }

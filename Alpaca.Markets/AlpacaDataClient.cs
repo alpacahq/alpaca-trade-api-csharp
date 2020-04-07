@@ -26,8 +26,7 @@ namespace Alpaca.Markets
                 .EnsureNotNull(nameof(configuration))
                 .EnsureIsValid();
 
-            configuration.SecurityId
-                .AddAuthenticationHeader(_httpClient, configuration.KeyId);
+            _httpClient.AddAuthenticationHeaders(configuration.SecurityId);
 
             _httpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -42,7 +41,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets lookup table of historical daily bars lists for all assets from Alpaca REST API endpoint.
         /// </summary>
-        /// <param name="symbols">>Asset names for data retrieval.</param>
+        /// <param name="symbols">Asset names for data retrieval.</param>
         /// <param name="timeFrame">Type of time bars for retrieval.</param>
         /// <param name="areTimesInclusive">
         /// If <c>true</c> - both <paramref name="timeFrom"/> and <paramref name="timeInto"/> parameters are treated as inclusive.
@@ -52,27 +51,44 @@ namespace Alpaca.Markets
         /// <param name="limit">Maximal number of daily bars in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
-        public async Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
+        [Obsolete("Use overloaded method that required BarSetRequest parameter instead of this one.", false)]
+        public Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
             IEnumerable<String> symbols,
             TimeFrame timeFrame,
-            Int32? limit = 100,
+            Int32? limit = null,
             Boolean areTimesInclusive = true,
             DateTime? timeFrom = null,
             DateTime? timeInto = null,
+            CancellationToken cancellationToken = default) =>
+            GetBarSetAsync(
+                new BarSetRequest(symbols, timeFrame) { Limit = limit }
+                    .SetTimeInterval(areTimesInclusive, timeFrom, timeInto),
+                cancellationToken);
+
+        /// <summary>
+        /// Gets lookup table of historical daily bars lists for all assets from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="request">Historical daily bars request parameters.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only list of daily bars for specified asset.</returns>
+        public async Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
+            BarSetRequest request,
             CancellationToken cancellationToken = default)
         {
+            request.EnsureNotNull(nameof(request)).Validate();
+
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = _httpClient.BaseAddress.AbsolutePath + $"bars/{timeFrame.ToEnumString()}",
+                Path = _httpClient.BaseAddress.AbsolutePath + $"bars/{request.TimeFrame.ToEnumString()}",
                 Query = new QueryBuilder()
-                    .AddParameter("symbols", String.Join(",", symbols))
-                    .AddParameter((areTimesInclusive ? "start" : "after"), timeFrom, "O")
-                    .AddParameter((areTimesInclusive ? "end" : "until"), timeInto, "O")
-                    .AddParameter("limit", limit)
+                    .AddParameter("symbols", String.Join(",", request.Symbols))
+                    .AddParameter((request.AreTimesInclusive ? "start" : "after"), request.TimeFrom, "O")
+                    .AddParameter((request.AreTimesInclusive ? "end" : "until"), request.TimeInto, "O")
+                    .AddParameter("limit", request.Limit)
             };
 
             var response = await _httpClient
-                .GetSingleObjectAsync<IReadOnlyDictionary<String, List<JsonBarAgg>>, Dictionary<String, List<JsonBarAgg>>>(
+                .GetSingleObjectAsync<IReadOnlyDictionary<String, List<JsonAlpacaAgg>>, Dictionary<String, List<JsonAlpacaAgg>>>(
                     FakeThrottler.Instance, builder, cancellationToken)
                 .ConfigureAwait(false);
 

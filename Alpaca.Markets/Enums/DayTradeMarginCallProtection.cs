@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -9,6 +10,7 @@ namespace Alpaca.Markets
     /// https://docs.alpaca.markets/user-protections/#day-trade-margin-call-dtmc-protection-at-alpaca
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public enum DayTradeMarginCallProtection
     {
         /// <summary>

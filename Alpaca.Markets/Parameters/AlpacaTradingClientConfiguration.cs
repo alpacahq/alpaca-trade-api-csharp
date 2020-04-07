@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Configuration parameters object for <see cref="AlpacaTradingClient"/> class.
     /// </summary>
-    [SuppressMessage(
-        "Globalization","CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     public sealed class AlpacaTradingClientConfiguration
     {
         private static readonly HashSet<ApiVersion> _supportedApiVersions = new HashSet<ApiVersion> { ApiVersion.V1, ApiVersion.V2 };
@@ -21,17 +17,11 @@ namespace Alpaca.Markets
         /// </summary>
         public AlpacaTradingClientConfiguration()
         {
-            KeyId = String.Empty;
             ApiVersion = DefaultApiVersion;
-            SecurityId = new SecretKey(String.Empty);
+            SecurityId = new SecretKey(String.Empty, String.Empty);
             ApiEndpoint = Environments.Live.AlpacaTradingApi;
             ThrottleParameters = ThrottleParameters.Default;
         }
-
-        /// <summary>
-        /// Gets or sets Alpaca application key identifier.
-        /// </summary>
-        public String KeyId { get; set; }
 
         /// <summary>
         /// Security identifier for API authentication.
@@ -55,12 +45,6 @@ namespace Alpaca.Markets
 
         internal void EnsureIsValid()
         {
-            if (String.IsNullOrEmpty(KeyId))
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(KeyId)}' property shouldn't be null or empty.");
-            }
-
             if (SecurityId == null)
             {
                 throw new InvalidOperationException(

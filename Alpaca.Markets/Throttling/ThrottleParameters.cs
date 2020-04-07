@@ -8,14 +8,11 @@ namespace Alpaca.Markets
     /// <summary>
     /// Helper class for storing parameters required for initializing rate throttler in <see cref="RestClient"/> class.
     /// </summary>
-    [SuppressMessage(
-        "Globalization","CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     public sealed class ThrottleParameters
     {
-        private const Int32 DEFAULT_OCCURRENCES = 200;
+        private const Int32 DefaultOccurrences = 200;
 
-        private const Int32 DEFAULT_MAX_RETRY_ATTEMPT = 5;
+        private const Int32 DefaultMaxRetryAttempts = 5;
 
         private readonly TimeSpan _defaultTimeUnit = TimeSpan.FromMinutes(1);
 
@@ -36,15 +33,16 @@ namespace Alpaca.Markets
         /// <param name="timeUnit"></param>
         /// <param name="maxRetryAttempts"></param>
         /// <param name="retryHttpStatuses"></param>
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public ThrottleParameters(
             Int32? occurrences = null,
             TimeSpan? timeUnit = null,
             Int32? maxRetryAttempts = null,
             IEnumerable<Int32>? retryHttpStatuses = null)
         {
-            Occurrences = occurrences ?? DEFAULT_OCCURRENCES;
+            Occurrences = occurrences ?? DefaultOccurrences;
             TimeUnit = timeUnit ?? _defaultTimeUnit;
-            MaxRetryAttempts = maxRetryAttempts ?? DEFAULT_MAX_RETRY_ATTEMPT;
+            MaxRetryAttempts = maxRetryAttempts ?? DefaultMaxRetryAttempts;
             _retryHttpStatuses = new HashSet<Int32>(retryHttpStatuses ?? Enumerable.Empty<Int32>());
 
             _rateThrottler = new Lazy<IThrottler>(() => new RateThrottler(this));
@@ -130,6 +128,7 @@ namespace Alpaca.Markets
         {
             get => _retryHttpStatuses;
             // ReSharper disable once MemberCanBePrivate.Global
+            // ReSharper disable once UnusedMember.Global
             set
             {
                 checkIfNotTooLateToConfigure();

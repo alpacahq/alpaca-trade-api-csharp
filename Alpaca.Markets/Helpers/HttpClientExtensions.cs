@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.Http;
 using System.Threading;
@@ -10,11 +9,18 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    [SuppressMessage(
-        "Globalization","CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     internal static class HttpClientExtensions
     {
+        public static void AddAuthenticationHeaders(
+            this HttpClient httpClient,
+            SecurityKey securityKey)
+        {
+            foreach (var pair in securityKey.GetAuthenticationHeaders())
+            {
+                httpClient.DefaultRequestHeaders.Add(pair.Key, pair.Value);
+            }
+        }
+
         public static Task<TApi> GetSingleObjectAsync<TApi, TJson>(
             this HttpClient httpClient,
             IThrottler throttler,
@@ -65,6 +71,7 @@ namespace Alpaca.Markets
 
             try
             {
+                // ReSharper disable once ConstantNullCoalescingCondition
                 var jsonError = 
                     serializer.Deserialize<JsonError>(reader) ?? new JsonError();
 
@@ -123,6 +130,7 @@ namespace Alpaca.Markets
 
         [Conditional("NET45")]
         public static void SetSecurityProtocol(
+            // ReSharper disable once UnusedParameter.Global
             this HttpClient httpClient)
         {
 #if NET45

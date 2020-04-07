@@ -7,10 +7,10 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API via websockets.
     /// </summary>
-    [SuppressMessage(
-        "Globalization", "CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the PolygonStreamingClient class instead.", false)]
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public sealed class PolygonSockClient : IDisposable
     {
         private readonly PolygonStreamingClient _client;
@@ -68,7 +68,7 @@ namespace Alpaca.Markets
             createConfiguration(
                 configuration?["keyId"] ?? throw new ArgumentException("Provide 'keyId' configuration parameter.", nameof(configuration)),
                 configuration["polygonWebsocketApi"].GetUrlSafe(Environments.Live.PolygonStreamingApi),
-                Convert.ToBoolean(configuration?["staging"] ?? "false", System.Globalization.CultureInfo.InvariantCulture),
+                Convert.ToBoolean(configuration["staging"] ?? "false", System.Globalization.CultureInfo.InvariantCulture),
                 webSocketFactory);
 #endif    
 

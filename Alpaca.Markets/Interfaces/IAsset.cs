@@ -6,6 +6,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates asset information from Alpaca REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IAsset
     {
         /// <summary>

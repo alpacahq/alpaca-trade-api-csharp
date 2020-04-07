@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Configuration parameters object for <see cref="AlpacaStreamingClient"/> class.
     /// </summary>
-    [SuppressMessage(
-        "Globalization","CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     public sealed class AlpacaStreamingClientConfiguration : StreamingClientConfiguration
     {
         /// <summary>
@@ -17,22 +13,22 @@ namespace Alpaca.Markets
         public AlpacaStreamingClientConfiguration()
             : base(Environments.Live.AlpacaStreamingApi)
         {
-            SecretKey = String.Empty;
+            SecurityId = new SecretKey(String.Empty, String.Empty);
         }
 
         /// <summary>
         /// Gets or sets Alpaca secret key identifier.
         /// </summary>
-        public String SecretKey { get; set; }
+        public SecurityKey SecurityId { get; set; }
 
         internal override void EnsureIsValid()
         {
             base.EnsureIsValid();
 
-            if (String.IsNullOrEmpty(SecretKey))
+            if (String.IsNullOrEmpty(SecurityId.Value))
             {
                 throw new InvalidOperationException(
-                    $"The value of '{nameof(SecretKey)}' property shouldn't be null or empty.");
+                    $"The value of '{nameof(SecurityId)}' property shouldn't be null or empty.");
             }
         }
     }

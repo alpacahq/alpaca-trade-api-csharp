@@ -2,9 +2,6 @@
 
 namespace Alpaca.Markets
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Globalization", "CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     internal sealed class PaperEnvironment : IEnvironment
     {
         public Uri AlpacaTradingApi { get; } = new Uri("https://paper-api.alpaca.markets");

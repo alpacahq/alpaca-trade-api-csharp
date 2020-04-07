@@ -6,10 +6,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca streaming API.
     /// </summary>
-    [SuppressMessage(
-        "Globalization","CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the AlpacaStreamingClient class instead.", false)]
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
     public sealed class SockClient : IDisposable
     {
         private readonly AlpacaStreamingClient _client;
@@ -108,8 +107,9 @@ namespace Alpaca.Markets
             IWebSocketFactory? webSocketFactory) =>
             new AlpacaStreamingClientConfiguration
             {
-                KeyId = keyId ?? throw new ArgumentException("Application key id should not be null.", nameof(keyId)),
-                SecretKey = secretKey ?? throw new ArgumentException("Application secret key should not be null.", nameof(secretKey)),
+                SecurityId = new SecretKey(
+                    keyId ?? throw new ArgumentException("Application key id should not be null.", nameof(keyId)),
+                    secretKey ?? throw new ArgumentException("Application secret key should not be null.", nameof(secretKey))),
                 ApiEndpoint = alpacaRestApi ?? Environments.Live.AlpacaTradingApi,
                 WebSocketFactory = webSocketFactory ?? WebSocket4NetFactory.Instance,
             };

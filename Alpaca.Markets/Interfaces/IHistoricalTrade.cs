@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates historical trade information from Polygon REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IHistoricalTrade : ITimestamps, IHistoricalBase
     {
         /// <summary>
         /// Gets trade source exchange.
         /// </summary>
-        [Obsolete("Exchange is deprecated in API v2, use ExchangeId instead", false)]
+        [Obsolete("Exchange is deprecated in API v2, use ExchangeId instead", true)]
         String? Exchange { get; }
 
         /// <summary>
@@ -21,7 +23,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade timestamp.
         /// </summary>
-        [Obsolete("TimeOffset is deprecated in API v2, use Timestamp instead", false)]
+        [Obsolete("TimeOffset is deprecated in API v2, use Timestamp instead", true)]
         Int64 TimeOffset  { get; }
 
         /// <summary>

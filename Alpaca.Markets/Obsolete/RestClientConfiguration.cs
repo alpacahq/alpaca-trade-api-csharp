@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Configuration parameters object for <see cref="RestClient"/> class.
     /// </summary>
-    [SuppressMessage(
-        "Globalization","CA1303:Do not pass literals as localized parameters",
-        Justification = "We do not plan to support localized exception messages in this SDK.")]
     internal sealed class RestClientConfiguration
     {
         /// <summary>
@@ -17,7 +13,7 @@ namespace Alpaca.Markets
         public RestClientConfiguration()
         {
             KeyId = String.Empty;
-            SecurityId = new SecretKey(String.Empty);
+            SecurityId = new SecretKey(String.Empty, String.Empty);
 
             DataApiUrl = Environments.Live.AlpacaDataApi;
             TradingApiUrl = Environments.Live.AlpacaTradingApi;
@@ -74,16 +70,18 @@ namespace Alpaca.Markets
         internal AlpacaDataClientConfiguration AlpacaDataClientConfiguration =>
             new AlpacaDataClientConfiguration
             {
-                KeyId = KeyId,
-                ApiEndpoint = DataApiUrl
+                SecurityId = SecurityId,
+                ApiEndpoint = DataApiUrl,
+                ApiVersion = DataApiVersion
             };
 
         internal AlpacaTradingClientConfiguration AlpacaTradingClientConfiguration =>
             new AlpacaTradingClientConfiguration
             {
-                KeyId = KeyId,
                 SecurityId = SecurityId,
-                ApiEndpoint = TradingApiUrl
+                ApiEndpoint = TradingApiUrl,
+                ApiVersion = DataApiVersion,
+                ThrottleParameters = ThrottleParameters
             };
 
         internal PolygonDataClientConfiguration PolygonDataClientConfiguration =>

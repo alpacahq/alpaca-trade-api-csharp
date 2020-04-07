@@ -10,7 +10,7 @@ namespace Alpaca.Markets
             new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 #endif
 
-        private const Int64 NANOSECONDS_IN_MILLISECONDS = 1_000_000;
+        private const Int64 NanosecondsInMilliseconds = 1_000_000;
 
         private static readonly Int64 _timeSpanMaxValueMilliseconds =
             (Int64)TimeSpan.MaxValue.TotalMilliseconds;
@@ -23,7 +23,7 @@ namespace Alpaca.Markets
         public static DateTime FromUnixTimeNanoseconds(
             Int64 linuxTimeStamp) =>
             linuxTimeStamp > _timeSpanMaxValueMilliseconds
-                ? FromUnixTimeMilliseconds(linuxTimeStamp / NANOSECONDS_IN_MILLISECONDS)
+                ? FromUnixTimeMilliseconds(linuxTimeStamp / NanosecondsInMilliseconds)
                 : FromUnixTimeMilliseconds(linuxTimeStamp);
 
         public static DateTime FromUnixTimeMilliseconds(

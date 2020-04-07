@@ -37,26 +37,28 @@ namespace UsageExamples
 
         public async Task Run()
         {
-            alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(API_KEY, new SecretKey(API_SECRET));
+            alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(new SecretKey(API_KEY, API_SECRET));
 
             polygonDataClient = Environments.Paper.GetPolygonDataClient(API_KEY);
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
-            alpacaStreamingClient = Environments.Paper.GetAlpacaStreamingClient(API_KEY, API_SECRET);
+            alpacaStreamingClient = Environments.Paper.GetAlpacaStreamingClient(new SecretKey(API_KEY, API_SECRET));
 
             alpacaStreamingClient.ConnectAndAuthenticateAsync().Wait();
 
             alpacaStreamingClient.OnTradeUpdate += HandleTradeUpdate;
 
             // First, cancel any existing orders so they don't impact our buying power.
-            var orders = await alpacaTradingClient.ListOrdersAsync();
+            var orders = await alpacaTradingClient.ListAllOrdersAsync();
             foreach (var order in orders)
             {
                 await alpacaTradingClient.DeleteOrderAsync(order.OrderId);
             }
 
             // Figure out when the market will close so we can prepare to sell beforehand.
-            var calendars = (await alpacaTradingClient.ListCalendarAsync(DateTime.Today)).ToList();
+            var calendars = (await alpacaTradingClient
+                .ListCalendarAsync(new CalendarRequest().SetInclusiveTimeInterval(DateTime.Today, null)))
+                .ToList();
             var calendarDate = calendars.First().TradingDate;
             var closingTime = calendars.First().TradingCloseTime;
 
@@ -64,7 +66,9 @@ namespace UsageExamples
 
             var today = DateTime.Today;
             // Get the first group of bars from today if the market has already been open.
-            var bars = await polygonDataClient.ListMinuteAggregatesAsync(symbol, 1, today, today.AddDays(1));
+            var bars = await polygonDataClient.ListAggregatesAsync(
+                new AggregatesRequest(symbol, new AggregationPeriod(1, AggregationPeriodUnit.Minute))
+                    .SetInclusiveTimeInterval(today, today.AddDays(1)));
             var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count() - 20));
             foreach (var bar in lastBars)
             {
@@ -284,7 +288,12 @@ namespace UsageExamples
             }
             try
             {
-                var order = await alpacaTradingClient.PostOrderAsync(symbol, quantity, side, OrderType.Limit, TimeInForce.Day, price);
+                var order = await alpacaTradingClient.PostOrderAsync(
+                    new NewOrderRequest(
+                        symbol, quantity, side, OrderType.Limit, TimeInForce.Day)
+                    {
+                        LimitPrice = price
+                    });
                 lastTradeId = order.OrderId;
                 lastTradeOpen = true;
             }
@@ -302,11 +311,15 @@ namespace UsageExamples
                 Console.WriteLine("Closing position at market price.");
                 if (positionQuantity > 0)
                 {
-                    await alpacaTradingClient.PostOrderAsync(symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day);
+                    await alpacaTradingClient.PostOrderAsync(
+                        new NewOrderRequest(
+                            symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day));
                 }
                 else
                 {
-                    await alpacaTradingClient.PostOrderAsync(symbol, positionQuantity * -1, OrderSide.Buy, OrderType.Market, TimeInForce.Day);
+                    await alpacaTradingClient.PostOrderAsync(
+                        new NewOrderRequest(
+                            symbol, Math.Abs(positionQuantity), OrderSide.Buy, OrderType.Market, TimeInForce.Day));
                 }
             }
             catch (Exception)
