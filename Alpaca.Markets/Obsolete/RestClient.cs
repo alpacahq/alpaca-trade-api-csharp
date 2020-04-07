@@ -87,17 +87,6 @@ namespace Alpaca.Markets
         {
         }
 
-#if NETSTANDARD2_0 || NETSTANDARD2_1
-        /// <summary>
-        /// Creates new instance of <see cref="RestClient"/> object.
-        /// </summary>
-        /// <param name="configuration">Application configuration.</param>
-        public RestClient(
-            Microsoft.Extensions.Configuration.IConfiguration configuration)
-            : this(createConfiguration(configuration)) =>
-            System.Diagnostics.Contracts.Contract.Requires(configuration != null);
-#endif
-
         private static RestClientConfiguration createConfiguration(
             String keyId,
             String secretKey,
@@ -813,35 +802,5 @@ namespace Alpaca.Markets
             String name,
             CancellationToken cancellationToken = default) =>
             _alpacaTradingClient.DeleteWatchListByNameAsync(name, cancellationToken);
-
-#if NETSTANDARD2_0 || NETSTANDARD2_1
-        private static RestClientConfiguration createConfiguration(
-            Microsoft.Extensions.Configuration.IConfiguration configuration)
-        {
-            return createConfiguration(
-                configuration?["keyId"] ?? throw new ArgumentException("Provide 'keyId' configuration parameter.", nameof(configuration)),
-                configuration["secretKey"] ?? throw new ArgumentException("Provide 'secretKey' configuration parameter.", nameof(configuration)),
-                configuration["alpacaRestApi"].GetUrlSafe(Environments.Live.AlpacaTradingApi),
-                configuration["polygonRestApi"].GetUrlSafe(Environments.Live.PolygonDataApi),
-                configuration["alpacaDataApi"].GetUrlSafe(Environments.Live.AlpacaDataApi),
-                toInt32OrNull(configuration["apiVersion"]) ?? (Int32)AlpacaTradingClientConfiguration.DefaultApiVersion,
-                toInt32OrNull(configuration["dataApiVersion"]) ?? (Int32)AlpacaDataClientConfiguration.DefaultApiVersion,
-                new ThrottleParameters(null, null,
-                    toInt32OrNull(configuration["maxRetryAttempts"]),
-                    System.Linq.Enumerable.Select(
-                        configuration.GetSection("retryHttpStatuses").GetChildren(),
-                        item => Convert.ToInt32(item.Value, System.Globalization.CultureInfo.InvariantCulture))),
-                toBooleanOrNull(configuration["staging"]) ?? false,
-                String.Empty);
-        }
-
-        private static Int32? toInt32OrNull(
-            String value) => 
-            value != null ? Convert.ToInt32(value, System.Globalization.CultureInfo.InvariantCulture) : (Int32?)null;
-
-        private static Boolean? toBooleanOrNull(
-            String? value) =>
-            value != null ? Convert.ToBoolean(value, System.Globalization.CultureInfo.InvariantCulture) : (Boolean?)null;
-#endif
     }
 }

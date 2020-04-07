@@ -48,30 +48,6 @@ namespace Alpaca.Markets
         {
         }
 
-#if NETSTANDARD2_0 || NETSTANDARD2_1
-        /// <summary>
-        /// Creates new instance of <see cref="PolygonSockClient"/> object.
-        /// </summary>
-        /// <param name="configuration">Application configuration.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        public PolygonSockClient(
-            Microsoft.Extensions.Configuration.IConfiguration configuration,
-            IWebSocketFactory? webSocketFactory = null)
-            : this(createConfiguration(configuration, webSocketFactory))
-        {
-            System.Diagnostics.Contracts.Contract.Requires(configuration != null);
-        }
-
-        private static PolygonStreamingClientConfiguration createConfiguration(
-            Microsoft.Extensions.Configuration.IConfiguration configuration,
-            IWebSocketFactory? webSocketFactory = null) =>
-            createConfiguration(
-                configuration?["keyId"] ?? throw new ArgumentException("Provide 'keyId' configuration parameter.", nameof(configuration)),
-                configuration["polygonWebsocketApi"].GetUrlSafe(Environments.Live.PolygonStreamingApi),
-                Convert.ToBoolean(configuration["staging"] ?? "false", System.Globalization.CultureInfo.InvariantCulture),
-                webSocketFactory);
-#endif    
-
         /// <summary>
         /// Creates new instance of <see cref="PolygonSockClient"/> object.
         /// </summary>

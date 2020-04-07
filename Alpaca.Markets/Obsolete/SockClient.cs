@@ -46,28 +46,6 @@ namespace Alpaca.Markets
         {
         }
 
-#if NETSTANDARD2_0 || NETSTANDARD2_1
-        /// <summary>
-        /// Creates new instance of <see cref="SockClient"/> object.
-        /// </summary>
-        /// <param name="configuration">Application configuration.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        public SockClient(
-            Microsoft.Extensions.Configuration.IConfiguration configuration,
-            IWebSocketFactory? webSocketFactory = null)
-            : this(createConfiguration(configuration, webSocketFactory)) =>
-            System.Diagnostics.Contracts.Contract.Requires(configuration != null);
-
-        private static AlpacaStreamingClientConfiguration createConfiguration(
-            Microsoft.Extensions.Configuration.IConfiguration configuration,
-            IWebSocketFactory? webSocketFactory = null) =>
-            createConfiguration(
-                configuration?["keyId"] ?? throw new ArgumentException("Provide 'keyId' configuration parameter.", nameof(configuration)),
-                configuration["secretKey"] ?? throw new ArgumentException("Provide 'secretKey' configuration parameter.", nameof(configuration)),
-                configuration["alpacaRestApi"].GetUrlSafe(Environments.Live.AlpacaTradingApi),
-                webSocketFactory);
-#endif
-
         /// <summary>
         /// Creates new instance of <see cref="SockClient"/> object.
         /// </summary>
