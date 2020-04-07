@@ -17,7 +17,7 @@ namespace Alpaca.Markets
         /// <param name="reverse">Reverses the order of the results.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical trade information.</returns>
-        [Obsolete("Use overloaded method that required HistoricalRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required HistoricalRequest parameter instead of this one.", true)]
         public Task<IHistoricalItems<IHistoricalTrade>> ListHistoricalTradesAsync(
             String symbol,
             DateTime date,
@@ -46,7 +46,7 @@ namespace Alpaca.Markets
         /// <param name="reverse">Reverses the order of the results.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical trade information.</returns>
-        [Obsolete("Use overloaded method that required HistoricalRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required HistoricalRequest parameter instead of this one.", true)]
         public Task<IHistoricalItems<IHistoricalQuote>> ListHistoricalQuotesAsync(
             String symbol,
             DateTime date,
@@ -74,7 +74,7 @@ namespace Alpaca.Markets
         /// <param name="unadjusted">Set to true if the results should not be adjusted for splits.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of day bars for specified asset.</returns>
-        [Obsolete("Use overloaded method that required AggregatesRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required AggregatesRequest parameter instead of this one.", true)]
         public Task<IHistoricalItems<IAgg>> ListDayAggregatesAsync(
             String symbol,
             Int32 multiplier,
@@ -101,7 +101,7 @@ namespace Alpaca.Markets
         /// <param name="unadjusted">Set to true if the results should not be adjusted for splits.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of minute bars for specified asset.</returns>
-        [Obsolete("Use overloaded method that required AggregatesRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required AggregatesRequest parameter instead of this one.", true)]
         public Task<IHistoricalItems<IAgg>> ListHourAggregatesAsync(
             String symbol,
             Int32 multiplier,
@@ -128,7 +128,7 @@ namespace Alpaca.Markets
         /// <param name="unadjusted">Set to true if the results should not be adjusted for splits.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of minute bars for specified asset.</returns>
-        [Obsolete("Use overloaded method that required AggregatesRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required AggregatesRequest parameter instead of this one.", true)]
         public Task<IHistoricalItems<IAgg>> ListMinuteAggregatesAsync(
             String symbol,
             Int32 multiplier,

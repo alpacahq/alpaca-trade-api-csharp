@@ -7,7 +7,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API via websockets.
     /// </summary>
-    [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the PolygonStreamingClient class instead.", false)]
+    [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the PolygonStreamingClient class instead.", true)]
     [SuppressMessage("ReSharper", "UnusedType.Global")]
     [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]

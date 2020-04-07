@@ -20,7 +20,7 @@ namespace Alpaca.Markets
         /// <param name="pageToken">The ID of the end of your current page of results.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of account activity record objects.</returns>
-        [Obsolete("Use overloaded method that required AccountActivitiesRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required AccountActivitiesRequest parameter instead of this one.", true)]
         public Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
             AccountActivityType activityType,
             DateTime? date = null,
@@ -52,7 +52,7 @@ namespace Alpaca.Markets
         /// <param name="pageToken">The ID of the end of your current page of results.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of account activity record objects.</returns>
-        [Obsolete("Use overloaded method that required AccountActivitiesRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required AccountActivitiesRequest parameter instead of this one.", true)]
         public Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
             IEnumerable<AccountActivityType>? activityTypes = null,
             DateTime? date = null,
@@ -86,7 +86,7 @@ namespace Alpaca.Markets
         /// <param name="extendedHours">If true, include extended hours in the result. This is effective only for time frame less than 1 day.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only portfolio history information object.</returns>
-        [Obsolete("Use overloaded method that required PortfolioHistoryRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required PortfolioHistoryRequest parameter instead of this one.", true)]
         public Task<IPortfolioHistory> GetPortfolioHistoryAsync(
             DateTime? startDate = null,
             DateTime? endDate = null,
@@ -112,7 +112,7 @@ namespace Alpaca.Markets
         /// <param name="assetClass">Asset class for filtering.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of asset information objects.</returns>
-        [Obsolete("Use overloaded method that required AssetsRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required AssetsRequest parameter instead of this one.", true)]
         public Task<IReadOnlyList<IAsset>> ListAssetsAsync(
             AssetStatus? assetStatus = null,
             AssetClass? assetClass = null,
@@ -132,7 +132,7 @@ namespace Alpaca.Markets
         /// <param name="endDateInclusive">End time for filtering (inclusive).</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of trading date information object.</returns>
-        [Obsolete("Use overloaded method that required CalendarRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required CalendarRequest parameter instead of this one.", true)]
         public Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
             DateTime? startDateInclusive = null,
             DateTime? endDateInclusive = null,
@@ -152,7 +152,7 @@ namespace Alpaca.Markets
         /// <param name="limitOrderNumber">Maximal number of orders in response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of order information objects.</returns>
-        [Obsolete("Use overloaded method that required ListOrdersRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required ListOrdersRequest parameter instead of this one.", true)]
         public Task<IReadOnlyList<IOrder>> ListOrdersAsync(
             OrderStatusFilter? orderStatusFilter = null,
             SortDirection? orderListSorting = null,
@@ -181,7 +181,7 @@ namespace Alpaca.Markets
         /// <param name="clientOrderId">Updated client order ID or <c>null</c> if client order ID is not changed.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for updated order.</returns>
-        [Obsolete("Use overloaded method that required ChangeOrderRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required ChangeOrderRequest parameter instead of this one.", true)]
         public Task<IOrder> PatchOrderAsync(
             Guid orderId,
             Int64? quantity = null,
@@ -220,7 +220,7 @@ namespace Alpaca.Markets
         /// <param name="nested">Whether or not child orders should be listed as 'legs' of parent orders. (Advanced order types only.)</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for newly created order.</returns>
-        [Obsolete("Use overloaded method that required NewOrderRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required NewOrderRequest parameter instead of this one.", true)]
         public Task<IOrder> PostOrderAsync(
             String symbol,
             Int64 quantity,
@@ -260,7 +260,7 @@ namespace Alpaca.Markets
         /// <param name="assets">List of asset names for new watch list.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Newly created watch list object.</returns>
-        [Obsolete("Use overloaded method that required NewWatchListRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required NewWatchListRequest parameter instead of this one.", true)]
         public Task<IWatchList> CreateWatchListAsync(
             String name,
             IEnumerable<String>? assets = null,
@@ -278,7 +278,7 @@ namespace Alpaca.Markets
         /// <param name="assets">List of asset names for new watch list.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Updated watch list object with proper <paramref name="watchListId"/> value.</returns>
-        [Obsolete("Use overloaded method that required UpdateWatchListRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required UpdateWatchListRequest parameter instead of this one.", true)]
         public Task<IWatchList> UpdateWatchListByIdAsync(
             Guid watchListId,
             String name,
@@ -296,7 +296,7 @@ namespace Alpaca.Markets
         /// <param name="asset">Asset name for adding into watch list.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Updated watch list object with proper <paramref name="watchListId"/> value.</returns>
-        [Obsolete("Use overloaded method that required ChangeWatchListRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required ChangeWatchListRequest parameter instead of this one.", true)]
         public Task<IWatchList> AddAssetIntoWatchListByIdAsync(
             Guid watchListId,
             String asset,
@@ -313,7 +313,7 @@ namespace Alpaca.Markets
         /// <param name="asset">Asset name for adding into watch list.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Updated watch list object with proper <paramref name="name"/> value.</returns>
-        [Obsolete("Use overloaded method that required ChangeWatchListRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required ChangeWatchListRequest parameter instead of this one.", true)]
         public Task<IWatchList> AddAssetIntoWatchListByNameAsync(
             String name,
             String asset,
@@ -330,7 +330,7 @@ namespace Alpaca.Markets
         /// <param name="asset">Asset name for adding into watch list.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Updated watch list object with proper <paramref name="watchListId"/> value.</returns>
-        [Obsolete("Use overloaded method that required ChangeWatchListRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required ChangeWatchListRequest parameter instead of this one.", true)]
         public Task<IWatchList> DeleteAssetFromWatchListByIdAsync(
             Guid watchListId,
             String asset,
@@ -347,7 +347,7 @@ namespace Alpaca.Markets
         /// <param name="asset">Asset name for adding into watch list.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Updated watch list object with proper <paramref name="name"/> value.</returns>
-        [Obsolete("Use overloaded method that required ChangeWatchListRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required ChangeWatchListRequest parameter instead of this one.", true)]
         public Task<IWatchList> DeleteAssetFromWatchListByNameAsync(
             String name,
             String asset,

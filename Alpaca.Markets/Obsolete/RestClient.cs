@@ -9,7 +9,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca REST API and Polygon REST API endpoints.
     /// </summary>
-    [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the AlpacaDataClient, AlpacaTradingClient and PolygonDataClient classes instead.", false)]
+    [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the AlpacaDataClient, AlpacaTradingClient and PolygonDataClient classes instead.", true)]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedType.Global")]
     public sealed class RestClient : IDisposable
