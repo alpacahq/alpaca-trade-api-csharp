@@ -5,6 +5,8 @@ namespace Alpaca.Markets
 {
     internal static class Validation
     {
+        private const Int32 ClientOrderIdMaxLength = 128;
+
         internal interface IRequest
         {
             /// <summary>
@@ -23,5 +25,10 @@ namespace Alpaca.Markets
                 throw exception;
             }
         }
+
+        public static String? ValidateClientOrderId(this String? clientOrderId) => 
+            clientOrderId?.Length > ClientOrderIdMaxLength
+                ? clientOrderId.Substring(0, ClientOrderIdMaxLength) 
+                : clientOrderId;
     }
 }
