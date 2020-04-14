@@ -102,10 +102,7 @@ namespace Alpaca.Markets
         
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
-            if (ClientOrderId?.Length > 48)
-            {
-                ClientOrderId = ClientOrderId.Substring(0, 48);
-            }
+            ClientOrderId.ValidateClientOrderId();
 
             // TODO: olegra - add more validations here
 
