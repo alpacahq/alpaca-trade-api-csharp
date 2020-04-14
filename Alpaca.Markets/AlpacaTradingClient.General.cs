@@ -302,11 +302,7 @@ namespace Alpaca.Markets
             Boolean? nested = false,
             CancellationToken cancellationToken = default)
         {
-            if (clientOrderId != null &&
-                clientOrderId.Length > 48)
-            {
-                clientOrderId = clientOrderId.Substring(0, 48);
-            }
+            clientOrderId = validateClientOrderId(clientOrderId);
 
             JsonNewOrderAdvancedAttributes? takeProfit = null, stopLoss = null;
             if (takeProfitLimitPrice != null)
@@ -379,11 +375,7 @@ namespace Alpaca.Markets
             String? clientOrderId = null,
             CancellationToken cancellationToken = default)
         {
-            if (clientOrderId != null &&
-                clientOrderId.Length > 48)
-            {
-                clientOrderId = clientOrderId.Substring(0, 48);
-            }
+            clientOrderId = validateClientOrderId(clientOrderId);
 
             var changeOrder = new JsonChangeOrder
             {

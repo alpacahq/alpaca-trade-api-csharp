@@ -15,6 +15,8 @@ namespace Alpaca.Markets
         Justification = "We do not plan to support localized exception messages in this SDK.")]
     public sealed partial class AlpacaTradingClient : IDisposable
     {
+        private const Int32 ClientOrderIdMaxLength = 128;
+
         // TODO: olegra - use built-in HttpMethod.Patch property in .NET Standard 2.1
         private static readonly HttpMethod _httpMethodPatch = new HttpMethod("PATCH");
 
@@ -57,5 +59,9 @@ namespace Alpaca.Markets
             serializer.Serialize(stringWriter, value);
             return new StringContent(stringWriter.ToString());
         }
-    }
+
+        private static String? validateClientOrderId(String? clientOrderId) => 
+            clientOrderId?.Length > ClientOrderIdMaxLength
+                ? clientOrderId.Substring(0, ClientOrderIdMaxLength) 
+                : clientOrderId;    }
 }
