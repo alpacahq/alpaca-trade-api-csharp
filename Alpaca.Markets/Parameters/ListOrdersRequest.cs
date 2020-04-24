@@ -34,6 +34,11 @@ namespace Alpaca.Markets
         public Int64? LimitOrderNumber { get; set; }
 
         /// <summary>
+        /// Gets or sets flag for rolling up multi-leg orders under the <see cref="IOrder.Legs"/> property of primary order.
+        /// </summary>
+        public Boolean? RollUpNestedOrder { get; set; }
+
+        /// <summary>
         /// Sets exclusive time interval for request (start/end time not included into interval if specified).
         /// </summary>
         /// <param name="after">Filtering interval start time.</param>
