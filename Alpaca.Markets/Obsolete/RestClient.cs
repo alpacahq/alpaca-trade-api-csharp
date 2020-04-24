@@ -290,7 +290,7 @@ namespace Alpaca.Markets
         /// <param name="untilDateTimeExclusive">Returns only orders until specified timestamp (exclusive).</param>
         /// <param name="afterDateTimeExclusive">Returns only orders after specified timestamp (exclusive).</param>
         /// <param name="limitOrderNumber">Maximal number of orders in response.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of order information objects.</returns>
         public Task<IReadOnlyList<IOrder>> ListOrdersAsync(
             OrderStatusFilter? orderStatusFilter = null,
@@ -301,7 +301,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _alpacaTradingClient.ListOrdersAsync(
                 orderStatusFilter, orderListSorting, untilDateTimeExclusive,
-                afterDateTimeExclusive, limitOrderNumber, cancellationToken);
+                afterDateTimeExclusive, limitOrderNumber, null, cancellationToken);
 
         /// <summary>
         /// Creates new order for execution using Alpaca REST API endpoint.

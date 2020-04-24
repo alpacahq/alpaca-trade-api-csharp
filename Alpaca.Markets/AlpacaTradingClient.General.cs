@@ -241,6 +241,7 @@ namespace Alpaca.Markets
         /// <param name="untilDateTimeExclusive">Returns only orders until specified timestamp (exclusive).</param>
         /// <param name="afterDateTimeExclusive">Returns only orders after specified timestamp (exclusive).</param>
         /// <param name="limitOrderNumber">Maximal number of orders in response.</param>
+        /// <param name="rollUpNestedOrders">Flag for rolling up multi-leg orders under the <see cref="IOrder.Legs"/> property of primary order.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of order information objects.</returns>
         public Task<IReadOnlyList<IOrder>> ListOrdersAsync(
@@ -249,6 +250,7 @@ namespace Alpaca.Markets
             DateTime? untilDateTimeExclusive = null,
             DateTime? afterDateTimeExclusive = null,
             Int64? limitOrderNumber = null,
+            Boolean? rollUpNestedOrders = null,
             CancellationToken cancellationToken = default)
         {
             var builder = new UriBuilder(_httpClient.BaseAddress)
@@ -260,6 +262,7 @@ namespace Alpaca.Markets
                     .AddParameter("until", untilDateTimeExclusive, "O")
                     .AddParameter("after", afterDateTimeExclusive, "O")
                     .AddParameter("limit", limitOrderNumber)
+                    .AddParameter("nested", rollUpNestedOrders)
             };
 
             return _httpClient.GetObjectsListAsync<IOrder, JsonOrder>(
@@ -347,8 +350,7 @@ namespace Alpaca.Markets
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             using var content = toStringContent(newOrder);
-            using var response = await _httpClient.PostAsync(
-                    new Uri("orders", UriKind.RelativeOrAbsolute), content, cancellationToken)
+            using var response = await _httpClient.PostAsync(builder.Uri, content, cancellationToken)
                 .ConfigureAwait(false);
 
             return await response.DeserializeAsync<IOrder, JsonOrder>()
