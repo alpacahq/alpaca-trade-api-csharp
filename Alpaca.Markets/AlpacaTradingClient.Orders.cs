@@ -39,7 +39,7 @@ namespace Alpaca.Markets
                     .AddParameter("until", request.UntilDateTimeExclusive, "O")
                     .AddParameter("after", request.AfterDateTimeExclusive, "O")
                     .AddParameter("limit", request.LimitOrderNumber)
-                    .AddParameter("nested", request.RollUpNestedOrder)
+                    .AddParameter("nested", request.RollUpNestedOrders)
             };
 
             return _httpClient.GetObjectsListAsync<IOrder, JsonOrder>(

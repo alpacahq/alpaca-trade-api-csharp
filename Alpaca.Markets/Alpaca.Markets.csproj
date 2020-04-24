@@ -19,7 +19,7 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- The new property `RollUpNestedOrder` added into the `ListOrdersRequest` class for supporting nested orders roll-up on the server-side.</PackageReleaseNotes>
+    <PackageReleaseNotes>- The new property `RollUpNestedOrders` added into the `ListOrdersRequest` class for supporting nested orders roll-up on the server-side.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
