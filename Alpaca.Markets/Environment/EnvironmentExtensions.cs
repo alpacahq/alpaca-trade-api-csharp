@@ -148,5 +148,33 @@ namespace Alpaca.Markets
                 ApiEndpoint = environment?.PolygonStreamingApi ?? throw new ArgumentNullException(nameof(environment)),
                 KeyId = keyId ?? throw new ArgumentNullException(nameof(keyId))
             };
+
+        /// <summary>
+        /// Creates new instance of <see cref="AlpacaDataStreamingClient"/> for specific
+        /// environment provided as <paramref name="environment"/> argument.
+        /// </summary>
+        /// <param name="environment">Target environment for new object.</param>
+        /// <param name="securityKey">Alpaca API security key.</param>
+        /// <returns>New instance of <see cref="AlpacaDataStreamingClient"/> object.</returns>
+        public static AlpacaDataStreamingClient GetAlpacaDataStreamingClient(
+            this IEnvironment environment,
+            SecurityKey securityKey) =>
+            new AlpacaDataStreamingClient(environment.GetAlpacaDataStreamingClientConfiguration(securityKey));
+
+        /// <summary>
+        /// Creates new instance of <see cref="AlpacaDataStreamingClientConfiguration"/> for specific
+        /// environment provided as <paramref name="environment"/> argument.
+        /// </summary>
+        /// <param name="environment">Target environment for new object.</param>
+        /// <param name="securityKey">Alpaca API security key.</param>
+        /// <returns>New instance of <see cref="AlpacaDataStreamingClientConfiguration"/> object.</returns>
+        public static AlpacaDataStreamingClientConfiguration GetAlpacaDataStreamingClientConfiguration(
+            this IEnvironment environment,
+            SecurityKey securityKey) =>
+            new AlpacaDataStreamingClientConfiguration()
+            {
+                ApiEndpoint = environment?.AlpacaDataStreamingApi ?? throw new ArgumentNullException(nameof(environment)),
+                SecurityId = securityKey ?? throw new ArgumentNullException(nameof(securityKey))
+            };
     }
 }
