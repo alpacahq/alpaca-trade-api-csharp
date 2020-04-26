@@ -96,5 +96,43 @@ namespace Alpaca.Markets
                 kvp => kvp.Key, 
                 kvp => (IReadOnlyList<IAgg>)kvp.Value.AsReadOnly());
         }
+
+        /// <summary>
+        /// Gets last trade for singe asset from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only last trade information.</returns>
+        public Task<ILastTrade> GetLastTradeAsync(
+            String symbol,
+            CancellationToken cancellationToken = default)
+        {
+            var builder = new UriBuilder(_httpClient.BaseAddress)
+            {
+                Path = _httpClient.BaseAddress.AbsolutePath + $"last/stocks/{symbol}",
+            };
+
+            return _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTrade>(
+                FakeThrottler.Instance, builder, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets current quote for singe asset from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only current quote information.</returns>
+        public Task<ILastQuote> GetLastQuoteAsync(
+            String symbol,
+            CancellationToken cancellationToken = default)
+        {
+            var builder = new UriBuilder(_httpClient.BaseAddress)
+            {
+                Path = _httpClient.BaseAddress.AbsolutePath + $"last_quote/stocks/{symbol}",
+            };
+
+            return _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuote>(
+                FakeThrottler.Instance, builder, cancellationToken);
+        }
     }
 }
