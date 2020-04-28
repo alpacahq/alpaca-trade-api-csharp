@@ -13,6 +13,9 @@ namespace Alpaca.Markets
         [EnumMember(Value = "listen")]
         Listen,
 
+        [EnumMember(Value = "unlisten")]
+        Unlisten,
+
         [EnumMember(Value = "auth")]
         PolygonAuthenticate,
 

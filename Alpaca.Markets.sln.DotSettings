@@ -10,4 +10,5 @@
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=intraday/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Onboarding/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Tradable/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=unlisten/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Withdrawable/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

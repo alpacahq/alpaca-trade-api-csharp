@@ -7,13 +7,8 @@ namespace Alpaca.Markets
     /// Encapsulates bar information from Polygon streaming API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-    public interface IStreamAgg : IAggBase
+    public interface IStreamAgg : IAggBase, IStreamBase
     {
-        /// <summary>
-        /// Gets asset name.
-        /// </summary>
-        String Symbol { get; } 
-        
         /// <summary>
         /// Gets bar average price.
         /// </summary>
