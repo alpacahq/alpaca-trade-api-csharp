@@ -13,47 +13,36 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed class AlpacaDataStreamingClient : StreamingClientBase<AlpacaDataStreamingClientConfiguration>
     {
-        private sealed class Subscriptions<TApi, TJson>
+        private interface ISubscription
+        {
+            void OnUpdate(
+                Boolean state);
+
+            void OnReceived(
+                JToken token);
+        }
+
+        private sealed class AlpacaDataSubscription<TApi, TJson> : IAlpacaDataSubscription<TApi>, ISubscription
             where TJson : class, TApi
             where TApi : IStreamBase
         {
-            private readonly ConcurrentDictionary<String, AlpacaDataSubscription<TApi>> _items =
-                new ConcurrentDictionary<String, AlpacaDataSubscription<TApi>>(StringComparer.Ordinal);
+            internal AlpacaDataSubscription(
+                String stream) =>
+                Stream = stream;
 
-            private readonly String _channelName;
+            public String Stream { get; }
 
-            public Subscriptions(
-                String channelName)
-            {
-                _channelName = channelName;
-            }
+            public Boolean Subscribed { get; private set; }
 
-            public IAlpacaDataSubscription<TApi> GetOrAdd(
-                String symbol) =>
-                _items.GetOrAdd(symbol, createSubscription);
+            public event Action<TApi>? Received;
 
-            public void HandleUpdate(
-                JToken token)
-            {
-                var update = token.ToObject<TJson>()
-                             ?? throw new RestClientErrorException("Unable to deserialize JSON response message.");
+            public void OnReceived(
+                JToken token) =>
+                Received?.Invoke(token.ToObject<TJson>() ??
+                                 throw new RestClientErrorException());
 
-                _items.TryGetValue(update.Symbol, out var subscription);
-                subscription.OnReceived(update);
-            }
-
-            public void HandleUpdate(
-                String symbol)
-            {
-                if (_items.TryGetValue(symbol, out var subscription))
-                {
-                    subscription.OnUpdate();
-                }
-            }
-                
-            private AlpacaDataSubscription<TApi> createSubscription(
-                String symbol) =>
-                new AlpacaDataSubscription<TApi>(_channelName, symbol);
+            public void OnUpdate(
+                Boolean state) => Subscribed = state;
         }
 
         // Available Alpaca data streaming message types
@@ -68,16 +57,10 @@ namespace Alpaca.Markets
 
         private const String Authorization = "authorization";
 
+        private readonly ConcurrentDictionary<String, ISubscription> _subscriptions =
+            new ConcurrentDictionary<String, ISubscription>(StringComparer.Ordinal);
+
         private readonly IDictionary<String, Action<JToken>> _handlers;
-
-        private readonly Subscriptions<IStreamTrade, JsonStreamTrade> _tradeSubscriptions = 
-            new Subscriptions<IStreamTrade, JsonStreamTrade>(TradesChannel);
-
-        private readonly Subscriptions<IStreamQuote, JsonStreamQuote> _quoteSubscriptions = 
-            new Subscriptions<IStreamQuote, JsonStreamQuote>(QuotesChannel);
-
-        private readonly Subscriptions<IStreamAgg, JsonStreamAgg> _minuteAggSubscriptions = 
-            new Subscriptions<IStreamAgg, JsonStreamAgg>(MinuteAggChannel);
 
         /// <summary>
         /// Creates new instance of <see cref="PolygonStreamingClient"/> object.
@@ -90,10 +73,7 @@ namespace Alpaca.Markets
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
                 { Listening, handleListeningUpdates },
-                { Authorization, handleAuthorization },
-                { TradesChannel, _tradeSubscriptions.HandleUpdate },
-                { QuotesChannel, _quoteSubscriptions.HandleUpdate },
-                { MinuteAggChannel, _minuteAggSubscriptions.HandleUpdate }
+                { Authorization, handleAuthorization }
             };
         }
 
@@ -104,7 +84,7 @@ namespace Alpaca.Markets
         /// <returns></returns>
         public IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
             String symbol) =>
-            _tradeSubscriptions.GetOrAdd(symbol);
+            getOrAdd<IStreamTrade, JsonStreamTrade>(getStreamName(TradesChannel, symbol));
 
         /// <summary>
         /// 
@@ -113,7 +93,7 @@ namespace Alpaca.Markets
         /// <returns></returns>
         public IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
             String symbol) =>
-            _quoteSubscriptions.GetOrAdd(symbol);
+            getOrAdd<IStreamQuote, JsonStreamQuote>(getStreamName(QuotesChannel, symbol));
 
         /// <summary>
         /// 
@@ -122,7 +102,26 @@ namespace Alpaca.Markets
         /// <returns></returns>
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
             String symbol) =>
-            _minuteAggSubscriptions.GetOrAdd(symbol);
+            getOrAdd<IStreamAgg, JsonStreamAgg>(getStreamName(MinuteAggChannel, symbol));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="subscription"></param>
+        public void Subscribe(
+            IAlpacaDataSubscription subscription) =>
+            subscribe(new []
+            {
+                subscription.EnsureNotNull(nameof(subscription)).Stream
+            });
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="subscriptions"></param>
+        public void Subscribe(
+            params IAlpacaDataSubscription[] subscriptions) =>
+            Subscribe(subscriptions.AsEnumerable());
 
         /// <summary>
         /// 
@@ -131,6 +130,25 @@ namespace Alpaca.Markets
         public void Subscribe(
             IEnumerable<IAlpacaDataSubscription> subscriptions) =>
             subscribe(subscriptions.Select(_ => _.Stream));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="subscription"></param>
+        public void Unsubscribe(
+            IAlpacaDataSubscription subscription) =>
+            unsubscribe(new []
+            {
+                subscription.EnsureNotNull(nameof(subscription)).Stream
+            });
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="subscriptions"></param>
+        public void Unsubscribe(
+            params IAlpacaDataSubscription[] subscriptions) =>
+            Unsubscribe(subscriptions.AsEnumerable());
 
         /// <summary>
         /// 
@@ -162,92 +180,29 @@ namespace Alpaca.Markets
         {
             try
             {
-                var token = JToken.Parse(Encoding.UTF8.GetString(binaryData));
+                var token = JObject.Parse(Encoding.UTF8.GetString(binaryData));
 
-                switch (token)
-                {
-                    case JArray parsedArray:
-                        handleRealtimeData(parsedArray);
-                        break;
+                var payload = token["data"];
+                var stream = token["stream"];
 
-                    case JObject parsedObject:
-                        handleSingleObject(parsedObject);
-                        break;
-
-                    default:
-                        HandleError(new InvalidOperationException());
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                HandleError(exception);
-            }
-        }
-
-        /// <inheritdoc/>
-        [SuppressMessage(
-            "Design", "CA1031:Do not catch general exception types",
-            Justification = "Expected behavior - we report exceptions via OnError event.")]
-        protected override void OnMessageReceived(
-            String message)
-        {
-            try
-            {
-                var token = JToken.Parse(message);
-
-                switch (token)
-                {
-                    case JArray parsedArray:
-                        handleRealtimeData(parsedArray);
-                        break;
-
-                    case JObject parsedObject:
-                        handleSingleObject(parsedObject);
-                        break;
-
-                    default:
-                        HandleError(new InvalidOperationException());
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                HandleError(exception);
-            }
-        }
-
-        private void handleSingleObject(
-            JObject parsedObject)
-        {
-            var payload = parsedObject["data"];
-            var messageType = parsedObject["stream"];
-
-            if (payload is null ||
-                messageType is null)
-            {
-                HandleError(new InvalidOperationException());
-            }
-            else
-            {
-                HandleMessage(_handlers, messageType.ToString(), payload);
-            }
-        }
-
-        private void handleRealtimeData(
-            JArray parsedArray)
-        {
-            foreach (var token in parsedArray)
-            {
-                var messageType = token["ev"];
-                if (messageType is null)
+                if (payload is null ||
+                    stream is null)
                 {
                     HandleError(new InvalidOperationException());
                 }
                 else
                 {
-                    HandleMessage(_handlers, messageType.ToString(), token);
+                    var streamAsString = stream.ToString();
+                    if (handleRealtimeDataUpdate(streamAsString, payload))
+                    {
+                        return;
+                    }
+                    HandleMessage(_handlers, streamAsString, payload);
                 }
+            }
+            catch (Exception exception)
+            {
+                HandleError(exception);
             }
         }
 
@@ -285,11 +240,50 @@ namespace Alpaca.Markets
 
             foreach (var symbol in listeningUpdate.Streams)
             {
-                _tradeSubscriptions.HandleUpdate(symbol);
-                _quoteSubscriptions.HandleUpdate(symbol);
-                _minuteAggSubscriptions.HandleUpdate(symbol);
+                handleListeningStateUpdate(symbol, true);
             }
         }
+
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
+        private bool handleRealtimeDataUpdate(
+            String stream,
+            JToken token)
+        {
+            if (!_subscriptions.TryGetValue(stream, out var subscription))
+            {
+                return false;
+            }
+
+            try
+            {
+                subscription.OnReceived(token);
+                return true;
+            }
+            catch (Exception exception)
+            {
+                HandleError(exception);
+                return false;
+            }
+        }
+
+        private void handleListeningStateUpdate(
+            String stream,
+            Boolean state)
+        {
+            if (_subscriptions.TryGetValue(stream, out var subscription))
+            {
+                subscription.OnUpdate(state);
+            }
+        }
+        
+        private  IAlpacaDataSubscription<TApi> getOrAdd<TApi, TJson>(
+            String stream)
+            where TJson : class, TApi
+            where TApi : IStreamBase =>
+            (IAlpacaDataSubscription<TApi>) _subscriptions.GetOrAdd(
+                stream, (key) => new AlpacaDataSubscription<TApi, TJson>(key));
 
         private void subscribe(
             IEnumerable<String> streams) =>
@@ -310,5 +304,10 @@ namespace Alpaca.Markets
                     Streams = streams.ToList()
                 }
             });
+
+        private static String getStreamName(
+            String channelName,
+            String symbol) =>
+            $"{channelName}.{symbol}";
     }
 }
