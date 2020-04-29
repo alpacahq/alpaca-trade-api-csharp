@@ -15,8 +15,7 @@ namespace Alpaca.Markets
     {
         private interface ISubscription
         {
-            void OnUpdate(
-                Boolean state);
+            void OnUpdate();
 
             void OnReceived(
                 JToken token);
@@ -41,8 +40,7 @@ namespace Alpaca.Markets
                 Received?.Invoke(token.ToObject<TJson>() ??
                                  throw new RestClientErrorException());
 
-            public void OnUpdate(
-                Boolean state) => Subscribed = state;
+            public void OnUpdate() => Subscribed = !Subscribed;
         }
 
         // Available Alpaca data streaming message types
@@ -93,7 +91,7 @@ namespace Alpaca.Markets
         /// <returns></returns>
         public IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
             String symbol) =>
-            getOrAdd<IStreamQuote, JsonStreamQuote>(getStreamName(QuotesChannel, symbol));
+            getOrAdd<IStreamQuote, JsonStreamQuoteAlpaca>(getStreamName(QuotesChannel, symbol));
 
         /// <summary>
         /// 
@@ -240,7 +238,7 @@ namespace Alpaca.Markets
 
             foreach (var symbol in listeningUpdate.Streams)
             {
-                handleListeningStateUpdate(symbol, true);
+                handleListeningStateUpdate(symbol); // Simple approach - switch state
             }
         }
 
@@ -269,12 +267,11 @@ namespace Alpaca.Markets
         }
 
         private void handleListeningStateUpdate(
-            String stream,
-            Boolean state)
+            String stream)
         {
             if (_subscriptions.TryGetValue(stream, out var subscription))
             {
-                subscription.OnUpdate(state);
+                subscription.OnUpdate();
             }
         }
         

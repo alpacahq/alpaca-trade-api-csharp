@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal class JsonStreamQuote : IStreamQuote
+    internal class JsonStreamQuotePolygon : IStreamQuote
     {
         [JsonProperty(PropertyName = "sym", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;

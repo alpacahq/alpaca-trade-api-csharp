@@ -302,7 +302,7 @@ namespace Alpaca.Markets
 
         private void handleQuotesChannel(
             JToken token) =>
-            QuoteReceived.DeserializeAndInvoke<IStreamQuote, JsonStreamQuote>(token);
+            QuoteReceived.DeserializeAndInvoke<IStreamQuote, JsonStreamQuotePolygon>(token);
 
         private void handleMinuteAggChannel(
             JToken token) =>
