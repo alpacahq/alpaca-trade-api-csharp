@@ -61,7 +61,7 @@ namespace Alpaca.Markets
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
         /// <summary>
-        /// Creates new instance of <see cref="PolygonStreamingClient"/> object.
+        /// Creates new instance of <see cref="AlpacaDataStreamingClient"/> object.
         /// </summary>
         /// <param name="configuration">Configuration parameters object.</param>
         public AlpacaDataStreamingClient(
@@ -76,36 +76,42 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// 
+        /// Gets the trade updates subscription for the <paramref name="symbol"/> asset.
         /// </summary>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
+        /// <param name="symbol">Alpaca asset name.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
         public IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
             String symbol) =>
             getOrAdd<IStreamTrade, JsonStreamTrade>(getStreamName(TradesChannel, symbol));
 
         /// <summary>
-        /// 
+        /// Gets the quote updates subscription for the <paramref name="symbol"/> asset.
         /// </summary>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
+        /// <param name="symbol">Alpaca asset name.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
         public IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
             String symbol) =>
             getOrAdd<IStreamQuote, JsonStreamQuoteAlpaca>(getStreamName(QuotesChannel, symbol));
 
         /// <summary>
-        /// 
+        /// Gets the minute aggregate (bar) subscription for the <paramref name="symbol"/> asset.
         /// </summary>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
+        /// <param name="symbol">Alpaca asset name.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
             String symbol) =>
             getOrAdd<IStreamAgg, JsonStreamAgg>(getStreamName(MinuteAggChannel, symbol));
 
         /// <summary>
-        /// 
+        /// Subscribes the single <paramref name="subscription"/> object for receiving data from the server.
         /// </summary>
-        /// <param name="subscription"></param>
+        /// <param name="subscription">Subscription target - asset and update type holder.</param>
         public void Subscribe(
             IAlpacaDataSubscription subscription) =>
             subscribe(new []
@@ -114,25 +120,25 @@ namespace Alpaca.Markets
             });
 
         /// <summary>
-        /// 
+        /// Subscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
-        /// <param name="subscriptions"></param>
+        /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
         public void Subscribe(
             params IAlpacaDataSubscription[] subscriptions) =>
             Subscribe(subscriptions.AsEnumerable());
 
         /// <summary>
-        /// 
+        /// Subscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
-        /// <param name="subscriptions"></param>
+        /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
         public void Subscribe(
             IEnumerable<IAlpacaDataSubscription> subscriptions) =>
             subscribe(subscriptions.Select(_ => _.Stream));
 
         /// <summary>
-        /// 
+        /// Unsubscribes the single <paramref name="subscription"/> object for receiving data from the server.
         /// </summary>
-        /// <param name="subscription"></param>
+        /// <param name="subscription">Subscription target - asset and update type holder.</param>
         public void Unsubscribe(
             IAlpacaDataSubscription subscription) =>
             unsubscribe(new []
@@ -141,17 +147,17 @@ namespace Alpaca.Markets
             });
 
         /// <summary>
-        /// 
+        /// Unsubscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
-        /// <param name="subscriptions"></param>
+        /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
         public void Unsubscribe(
             params IAlpacaDataSubscription[] subscriptions) =>
             Unsubscribe(subscriptions.AsEnumerable());
 
         /// <summary>
-        /// 
+        /// Unsubscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
-        /// <param name="subscriptions"></param>
+        /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
         public void Unsubscribe(
             IEnumerable<IAlpacaDataSubscription> subscriptions) =>
             unsubscribe(subscriptions.Select(_ => _.Stream));

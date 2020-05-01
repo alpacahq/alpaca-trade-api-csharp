@@ -103,7 +103,7 @@ namespace UsageExamples
                     await HandleMinuteAgg(agg);
                 }
             };
-            polygonStreamingClient.SubscribeSecondAgg(symbol);
+            polygonStreamingClient.SubscribeMinuteAgg(symbol);
         }
 
         public void Dispose()
