@@ -78,7 +78,7 @@ namespace Alpaca.Markets
             String name,
             CancellationToken cancellationToken = default)
         {
-            if (!name.IsWatchListNameValid())
+            if (name.IsWatchListNameInvalid())
             {
                 throw new ArgumentException("Watch list name should be from 1 to 64 characters length.", nameof(name));
             }
@@ -248,7 +248,7 @@ namespace Alpaca.Markets
             String name,
             CancellationToken cancellationToken = default)
         {
-            if (!name.IsWatchListNameValid())
+            if (name.IsWatchListNameInvalid())
             {
                 throw new ArgumentException("Watch list name should be from 1 to 64 characters length.", nameof(name));
             }

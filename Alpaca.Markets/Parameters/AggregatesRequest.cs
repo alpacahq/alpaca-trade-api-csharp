@@ -17,7 +17,8 @@ namespace Alpaca.Markets
             String symbol,
             AggregationPeriod period)
         {
-            Symbol = symbol;
+            Symbol = symbol ?? throw new ArgumentException(
+                "Symbol name cannot be null.", nameof(symbol));
             Period = period;
         }
 

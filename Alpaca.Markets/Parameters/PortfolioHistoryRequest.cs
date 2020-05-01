@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Alpaca.Markets
 {
@@ -35,10 +36,7 @@ namespace Alpaca.Markets
         /// </summary>
         public Boolean? ExtendedHours { get; set; }
  
-        IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
-        {
-            // TODO: olegra - add more validations
-            yield break;
-        }
+        IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions() => 
+            Enumerable.Empty<RequestValidationException>();
     }
 }

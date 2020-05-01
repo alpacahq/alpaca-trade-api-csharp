@@ -23,7 +23,8 @@ namespace Alpaca.Markets
             OrderType type,
             TimeInForce duration)
         {
-            Symbol = symbol;
+            Symbol = symbol ?? throw new ArgumentException(
+                "Symbol name cannot be null.", nameof(symbol));
             Quantity = quantity;
             Side = side;
             Type = type;
@@ -102,11 +103,19 @@ namespace Alpaca.Markets
         
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
-            ClientOrderId.ValidateClientOrderId();
+            ClientOrderId = ClientOrderId?.ValidateClientOrderId();
 
-            // TODO: olegra - add more validations here
+            if (String.IsNullOrEmpty(Symbol))
+            {
+                yield return new RequestValidationException(
+                    "Symbols shouldn't be empty.", nameof(Symbol));
+            }
 
-            yield break;
+            if (Quantity <= 0)
+            {
+                yield return new RequestValidationException(
+                    "Order quantity should be positive value.", nameof(Quantity));
+            }
         }
     }
 }

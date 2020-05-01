@@ -49,11 +49,13 @@ namespace Alpaca.Markets
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
-            ClientOrderId.ValidateClientOrderId();
+            ClientOrderId = ClientOrderId?.ValidateClientOrderId();
 
-            // TODO: olegra - add more validations here
-
-            yield break;
+            if (Quantity <= 0)
+            {
+                yield return new RequestValidationException(
+                    "Order quantity should be positive value.", nameof(Quantity));
+            }
         }
     }
 }

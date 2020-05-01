@@ -35,7 +35,6 @@ namespace Alpaca.Markets
             TimeFrame timeFrame)
         {
             _symbols = new List<String>(symbols
-                .Where(_ => !String.IsNullOrEmpty(_))
                 .Distinct(StringComparer.Ordinal));
             TimeFrame = timeFrame;
         }
@@ -100,6 +99,12 @@ namespace Alpaca.Markets
             {
                 yield return new RequestValidationException(
                     "Symbols list shouldn't be empty.", nameof(Symbols));
+            }
+
+            if (_symbols.Any(String.IsNullOrEmpty))
+            {
+                yield return new RequestValidationException(
+                    "Symbols list shouldn't contain null or empty items.", nameof(Symbols));
             }
 
             if (TimeFrom > TimeInto)

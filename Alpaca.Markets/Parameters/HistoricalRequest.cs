@@ -18,9 +18,9 @@ namespace Alpaca.Markets
             String symbol,
             DateTime date)
         {
-            Symbol = symbol;
+            Symbol = symbol ?? throw new ArgumentException(
+                "Symbol name cannot be null.", nameof(symbol));
             Date = date;
-
         }
 
         /// <summary>

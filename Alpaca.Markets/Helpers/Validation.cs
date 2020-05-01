@@ -7,6 +7,8 @@ namespace Alpaca.Markets
     {
         private const Int32 ClientOrderIdMaxLength = 128;
 
+        private const Int32 WatchListNameMaxLength = 64;
+
         internal interface IRequest
         {
             /// <summary>
@@ -22,7 +24,9 @@ namespace Alpaca.Markets
             var exception = new AggregateException(request.GetExceptions());
             if (exception.InnerExceptions.Count != 0)
             {
-                throw exception;
+                throw exception.InnerExceptions.Count == 1
+                    ? exception.InnerExceptions[0]
+                    : exception;
             }
         }
 
@@ -30,5 +34,9 @@ namespace Alpaca.Markets
             clientOrderId?.Length > ClientOrderIdMaxLength
                 ? clientOrderId.Substring(0, ClientOrderIdMaxLength) 
                 : clientOrderId;
+
+        public static Boolean IsWatchListNameInvalid(this String? watchListName) =>
+            String.IsNullOrEmpty(watchListName) ||
+            watchListName?.Length > WatchListNameMaxLength;
     }
 }

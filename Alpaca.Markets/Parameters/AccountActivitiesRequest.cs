@@ -77,10 +77,10 @@ namespace Alpaca.Markets
         public String? PageToken { get; set; }
 
         /// <summary>
-        /// 
+        /// Sets filtering for single <paramref name="date"/> activities.
         /// </summary>
-        /// <param name="date"></param>
-        /// <returns></returns>
+        /// <param name="date">Target date for filtering activities.</param>
+        /// <returns>Fluent interface method return same <see cref="AccountActivitiesRequest"/> instance.</returns>
         public AccountActivitiesRequest SetSingleDate(
             DateTime date)
         {
@@ -91,11 +91,11 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// 
+        /// Sets filtering for activities from <paramref name="dateFrom"/> to <paramref name="dateInto"/> inclusive.
         /// </summary>
-        /// <param name="dateFrom"></param>
-        /// <param name="dateInto"></param>
-        /// <returns></returns>
+        /// <param name="dateFrom">Filtering interval start time.</param>
+        /// <param name="dateInto">Filtering interval end time.</param>
+        /// <returns>Fluent interface method return same <see cref="AccountActivitiesRequest"/> instance.</returns>
         public AccountActivitiesRequest SetInclusiveTimeInterval(
             DateTime? dateFrom,
             DateTime? dateInto)
@@ -131,11 +131,11 @@ namespace Alpaca.Markets
 
             if (until.HasValue || after.HasValue)
             {
-                throw new ArgumentException("You unable to specify 'date' and 'until'/'after' arguments in same call.");
+                throw new ArgumentException(
+                    "You unable to specify 'date' and 'until'/'after' arguments in same call.");
             }
 
             return SetSingleDate(date.Value);
-
         }
     }
 }
