@@ -196,7 +196,7 @@ namespace Alpaca.Markets
                 Query = getDefaultPolygonApiQueryBuilder()
             };
 
-            return _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTrade>(
+            return _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTradePolygon>(
                 FakeThrottler.Instance, builder, cancellationToken);
         }
 
@@ -216,7 +216,7 @@ namespace Alpaca.Markets
                 Query = getDefaultPolygonApiQueryBuilder()
             };
 
-            return _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuote>(
+            return _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuotePolygon>(
                 FakeThrottler.Instance, builder, cancellationToken);
         }
 

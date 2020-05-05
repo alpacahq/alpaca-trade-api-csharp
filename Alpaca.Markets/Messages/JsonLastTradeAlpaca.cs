@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonLastTrade : ILastTrade
+    internal sealed class JsonLastTradeAlpaca : ILastTrade
     {
         internal struct Last
         {
@@ -50,7 +50,7 @@ namespace Alpaca.Markets
         internal void OnDeserializedMethod(
             StreamingContext context)
         {
-            Time = DateTimeHelper.FromUnixTimeMilliseconds(Nested.Timestamp);
+            Time = DateTimeHelper.FromUnixTimeNanoseconds(Nested.Timestamp);
         }
     }
 }

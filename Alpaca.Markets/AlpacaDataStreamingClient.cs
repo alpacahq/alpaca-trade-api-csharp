@@ -84,7 +84,7 @@ namespace Alpaca.Markets
         /// </returns>
         public IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
             String symbol) =>
-            getOrAdd<IStreamTrade, JsonStreamTrade>(getStreamName(TradesChannel, symbol));
+            getOrAdd<IStreamTrade, JsonStreamTradeAlpaca>(getStreamName(TradesChannel, symbol));
 
         /// <summary>
         /// Gets the quote updates subscription for the <paramref name="symbol"/> asset.
@@ -106,7 +106,7 @@ namespace Alpaca.Markets
         /// </returns>
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
             String symbol) =>
-            getOrAdd<IStreamAgg, JsonStreamAgg>(getStreamName(MinuteAggChannel, symbol));
+            getOrAdd<IStreamAgg, JsonStreamAggAlpaca>(getStreamName(MinuteAggChannel, symbol));
 
         /// <summary>
         /// Subscribes the single <paramref name="subscription"/> object for receiving data from the server.

@@ -8,9 +8,9 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonStreamTrade : IStreamTrade
+    internal sealed class JsonStreamTradeAlpaca : IStreamTrade
     {
-        [JsonProperty(PropertyName = "sym", Required = Required.Always)]
+        [JsonProperty(PropertyName = "T", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "x", Required = Required.Always)]
@@ -31,6 +31,6 @@ namespace Alpaca.Markets
         [OnDeserialized]
         internal void OnDeserializedMethod(
             StreamingContext context) =>
-            Time = DateTimeHelper.FromUnixTimeMilliseconds(Timestamp);
+            Time = DateTimeHelper.FromUnixTimeNanoseconds(Timestamp);
     }
 }

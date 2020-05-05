@@ -112,7 +112,7 @@ namespace Alpaca.Markets
                 Path = _httpClient.BaseAddress.AbsolutePath + $"last/stocks/{symbol}",
             };
 
-            return _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTrade>(
+            return _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTradeAlpaca>(
                 FakeThrottler.Instance, builder, cancellationToken);
         }
 
@@ -131,7 +131,7 @@ namespace Alpaca.Markets
                 Path = _httpClient.BaseAddress.AbsolutePath + $"last_quote/stocks/{symbol}",
             };
 
-            return _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuote>(
+            return _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuoteAlpaca>(
                 FakeThrottler.Instance, builder, cancellationToken);
         }
     }

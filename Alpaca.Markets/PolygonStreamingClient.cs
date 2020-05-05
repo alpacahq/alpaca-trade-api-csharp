@@ -298,7 +298,7 @@ namespace Alpaca.Markets
 
         private void handleTradesChannel(
             JToken token) =>
-            TradeReceived.DeserializeAndInvoke<IStreamTrade, JsonStreamTrade>(token);
+            TradeReceived.DeserializeAndInvoke<IStreamTrade, JsonStreamTradePolygon>(token);
 
         private void handleQuotesChannel(
             JToken token) =>
@@ -306,10 +306,10 @@ namespace Alpaca.Markets
 
         private void handleMinuteAggChannel(
             JToken token) =>
-            MinuteAggReceived.DeserializeAndInvoke<IStreamAgg, JsonStreamAgg>(token);
+            MinuteAggReceived.DeserializeAndInvoke<IStreamAgg, JsonStreamAggPolygon>(token);
 
         private void handleSecondAggChannel(
             JToken token) =>
-            SecondAggReceived.DeserializeAndInvoke<IStreamAgg, JsonStreamAgg>(token);
+            SecondAggReceived.DeserializeAndInvoke<IStreamAgg, JsonStreamAggPolygon>(token);
     }
 }
