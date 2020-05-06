@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Text;
 using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
@@ -21,7 +20,8 @@ namespace Alpaca.Markets
                 JToken token);
         }
 
-        private sealed class AlpacaDataSubscription<TApi, TJson> : IAlpacaDataSubscription<TApi>, ISubscription
+        private sealed class AlpacaDataSubscription<TApi, TJson>
+            : IAlpacaDataSubscription<TApi>, ISubscription
             where TJson : class, TApi
             where TApi : IStreamBase
         {
@@ -37,10 +37,61 @@ namespace Alpaca.Markets
 
             public void OnReceived(
                 JToken token) =>
-                Received?.Invoke(token.ToObject<TJson>() ??
-                                 throw new RestClientErrorException());
+                Received?.Invoke(token.ToObject<TJson>()
+                                 ?? throw new RestClientErrorException());
 
             public void OnUpdate() => Subscribed = !Subscribed;
+        }
+
+        private sealed class Subscriptions
+        {
+            private const String WidlcardSymbolString = "*";
+
+            private readonly ConcurrentDictionary<String, ISubscription> _subscriptions =
+                new ConcurrentDictionary<String, ISubscription>(StringComparer.Ordinal);
+
+            public Subscriptions()
+            {
+                _subscriptions.GetOrAdd(MinuteAggChannel, _ =>
+                    new AlpacaDataSubscription<IStreamAgg, JsonStreamAggAlpaca>(
+                        getStreamName(MinuteAggChannel, WidlcardSymbolString)));
+            }
+
+            public  IAlpacaDataSubscription<TApi> GetOrAdd<TApi, TJson>(
+                String stream)
+                where TJson : class, TApi
+                where TApi : IStreamBase =>
+                (IAlpacaDataSubscription<TApi>) _subscriptions.GetOrAdd(
+                    stream, key => new AlpacaDataSubscription<TApi, TJson>(key));
+
+            public void OnUpdate(String stream)
+            {
+                if (_subscriptions.TryGetValue(stream, out var subscription))
+                {
+                    subscription.OnUpdate();
+                }
+            }
+
+            public bool OnReceived(
+                String stream,
+                JToken token)
+            {
+                var found = false;
+
+                if (_subscriptions.TryGetValue(token["ev"]?.ToString() ?? String.Empty, out var subscription))
+                {
+                    subscription.OnReceived(token);
+                    found = true;
+                }
+
+                if (_subscriptions.TryGetValue(stream, out subscription))
+                {
+                    subscription.OnReceived(token);
+                    found = true;
+                }
+
+                return found;
+            }
         }
 
         // Available Alpaca data streaming message types
@@ -55,10 +106,9 @@ namespace Alpaca.Markets
 
         private const String Authorization = "authorization";
 
-        private readonly ConcurrentDictionary<String, ISubscription> _subscriptions =
-            new ConcurrentDictionary<String, ISubscription>(StringComparer.Ordinal);
-
         private readonly IDictionary<String, Action<JToken>> _handlers;
+
+        private readonly Subscriptions _subscriptions = new Subscriptions();
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataStreamingClient"/> object.
@@ -66,14 +116,12 @@ namespace Alpaca.Markets
         /// <param name="configuration">Configuration parameters object.</param>
         public AlpacaDataStreamingClient(
             AlpacaDataStreamingClientConfiguration configuration)
-            : base(configuration.EnsureNotNull(nameof(configuration)))
-        {
+            : base(configuration.EnsureNotNull(nameof(configuration))) =>
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
                 { Listening, handleListeningUpdates },
                 { Authorization, handleAuthorization }
             };
-        }
 
         /// <summary>
         /// Gets the trade updates subscription for the <paramref name="symbol"/> asset.
@@ -83,8 +131,8 @@ namespace Alpaca.Markets
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
         public IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
-            String symbol) =>
-            getOrAdd<IStreamTrade, JsonStreamTradeAlpaca>(getStreamName(TradesChannel, symbol));
+            String symbol) => 
+            _subscriptions.GetOrAdd<IStreamTrade, JsonStreamTradeAlpaca>(getStreamName(TradesChannel, symbol));
 
         /// <summary>
         /// Gets the quote updates subscription for the <paramref name="symbol"/> asset.
@@ -95,7 +143,16 @@ namespace Alpaca.Markets
         /// </returns>
         public IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
             String symbol) =>
-            getOrAdd<IStreamQuote, JsonStreamQuoteAlpaca>(getStreamName(QuotesChannel, symbol));
+            _subscriptions.GetOrAdd<IStreamQuote, JsonStreamQuoteAlpaca>(getStreamName(QuotesChannel, symbol));
+
+        /// <summary>
+        /// Gets the minute aggregate (bar) subscription for the all assets.
+        /// </summary>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription() => 
+            _subscriptions.GetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(MinuteAggChannel);
 
         /// <summary>
         /// Gets the minute aggregate (bar) subscription for the <paramref name="symbol"/> asset.
@@ -106,7 +163,7 @@ namespace Alpaca.Markets
         /// </returns>
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
             String symbol) =>
-            getOrAdd<IStreamAgg, JsonStreamAggAlpaca>(getStreamName(MinuteAggChannel, symbol));
+            _subscriptions.GetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(getStreamName(MinuteAggChannel, symbol));
 
         /// <summary>
         /// Subscribes the single <paramref name="subscription"/> object for receiving data from the server.
@@ -179,12 +236,12 @@ namespace Alpaca.Markets
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]
-        protected override void OnDataReceived(
-            Byte[] binaryData)
+        protected override void OnMessageReceived(
+            String message)
         {
             try
             {
-                var token = JObject.Parse(Encoding.UTF8.GetString(binaryData));
+                var token = JObject.Parse(message);
 
                 var payload = token["data"];
                 var stream = token["stream"];
@@ -232,6 +289,9 @@ namespace Alpaca.Markets
             }
         }
         
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
         private void handleListeningUpdates(
             JToken token)
         {
@@ -242,9 +302,16 @@ namespace Alpaca.Markets
                 HandleError(new InvalidOperationException(listeningUpdate.Error));
             }
 
-            foreach (var symbol in listeningUpdate.Streams)
+            foreach (var stream in listeningUpdate.Streams)
             {
-                handleListeningStateUpdate(symbol); // Simple approach - switch state
+                try
+                {
+                    _subscriptions.OnUpdate(stream);
+                }
+                catch (Exception exception)
+                {
+                    HandleError(exception);
+                }
             }
         }
 
@@ -255,15 +322,9 @@ namespace Alpaca.Markets
             String stream,
             JToken token)
         {
-            if (!_subscriptions.TryGetValue(stream, out var subscription))
-            {
-                return false;
-            }
-
             try
             {
-                subscription.OnReceived(token);
-                return true;
+                return _subscriptions.OnReceived(stream, token);
             }
             catch (Exception exception)
             {
@@ -271,23 +332,7 @@ namespace Alpaca.Markets
                 return false;
             }
         }
-
-        private void handleListeningStateUpdate(
-            String stream)
-        {
-            if (_subscriptions.TryGetValue(stream, out var subscription))
-            {
-                subscription.OnUpdate();
-            }
-        }
         
-        private  IAlpacaDataSubscription<TApi> getOrAdd<TApi, TJson>(
-            String stream)
-            where TJson : class, TApi
-            where TApi : IStreamBase =>
-            (IAlpacaDataSubscription<TApi>) _subscriptions.GetOrAdd(
-                stream, (key) => new AlpacaDataSubscription<TApi, TJson>(key));
-
         private void subscribe(
             IEnumerable<String> streams) =>
             sendSubscriptionRequest(streams, JsonAction.Listen);
