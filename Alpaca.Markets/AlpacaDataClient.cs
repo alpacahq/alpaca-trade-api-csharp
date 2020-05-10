@@ -82,8 +82,8 @@ namespace Alpaca.Markets
                 Path = _httpClient.BaseAddress.AbsolutePath + $"bars/{request.TimeFrame.ToEnumString()}",
                 Query = new QueryBuilder()
                     .AddParameter("symbols", String.Join(",", request.Symbols))
-                    .AddParameter((request.AreTimesInclusive ? "start" : "after"), request.TimeFrom, "O")
-                    .AddParameter((request.AreTimesInclusive ? "end" : "until"), request.TimeInto, "O")
+                    .AddParameter((request.AreTimesInclusive ? "start" : "after"), request.TimeInterval.From, "O")
+                    .AddParameter((request.AreTimesInclusive ? "end" : "until"), request.TimeInterval.Into, "O")
                     .AddParameter("limit", request.Limit)
             };
 

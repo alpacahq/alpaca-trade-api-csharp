@@ -28,7 +28,7 @@ namespace Alpaca.Markets
             ListOrdersRequest request,
             CancellationToken cancellationToken = default)
         {
-            request.EnsureNotNull(nameof(request)).Validate();
+            request.EnsureNotNull(nameof(request));
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
@@ -36,8 +36,8 @@ namespace Alpaca.Markets
                 Query = new QueryBuilder()
                     .AddParameter("status", request.OrderStatusFilter)
                     .AddParameter("direction", request.OrderListSorting)
-                    .AddParameter("until", request.UntilDateTimeExclusive, "O")
-                    .AddParameter("after", request.AfterDateTimeExclusive, "O")
+                    .AddParameter("until", request.TimeInterval?.From, "O")
+                    .AddParameter("after", request.TimeInterval?.Into, "O")
                     .AddParameter("limit", request.LimitOrderNumber)
                     .AddParameter("nested", request.RollUpNestedOrders)
             };

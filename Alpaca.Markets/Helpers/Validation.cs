@@ -37,6 +37,6 @@ namespace Alpaca.Markets
 
         public static Boolean IsWatchListNameInvalid(this String? watchListName) =>
             String.IsNullOrEmpty(watchListName) ||
-            watchListName?.Length > WatchListNameMaxLength;
+            watchListName?.Length > WatchListNameMaxLength; //-V3022
     }
 }

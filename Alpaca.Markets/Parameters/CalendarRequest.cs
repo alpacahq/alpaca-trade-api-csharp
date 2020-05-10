@@ -1,22 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaTradingClient.ListCalendarAsync(CalendarRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
-    public sealed class CalendarRequest : Validation.IRequest
+    public sealed class CalendarRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>
     {
+        /// <summary>
+        /// Gets inclusive date interval for filtering items in response.
+        /// </summary>
+        public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
+
         /// <summary>
         /// Gets start time for filtering (inclusive).
         /// </summary>
-        public DateTime? StartDateInclusive { get; private set; }
+        [Obsolete("Use the TimeInterval.From property instead.", false)]
+        public DateTime? StartDateInclusive => TimeInterval?.From;
 
         /// <summary>
         /// Gets end time for filtering (inclusive).
         /// </summary>
-        public DateTime? EndDateInclusive { get; private set; }
+        [Obsolete("Use the TimeInterval.Into property instead.", false)]
+        public DateTime? EndDateInclusive => TimeInterval?.Into;
 
         /// <summary>
         /// Sets exclusive time interval for request (start/end time included into interval if specified).
@@ -24,24 +30,13 @@ namespace Alpaca.Markets
         /// <param name="start">Filtering interval start time.</param>
         /// <param name="end">Filtering interval end time.</param>
         /// <returns>Fluent interface method return same <see cref="CalendarRequest"/> instance.</returns>
-        public CalendarRequest SetInclusiveTimeInterval(
+        [Obsolete("This method will be removed soon in favor of the extension method SetInclusiveTimeInterval.", false)]
+        public CalendarRequest SetInclusiveTimeIntervalWithNulls(
             DateTime? start,
-            DateTime? end)
-        {
-            StartDateInclusive = start;
-            EndDateInclusive = end;
-            return this;
-        }
+            DateTime? end) =>
+            this.SetTimeInterval(Markets.TimeInterval.GetInclusive(start, end));
 
-        IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
-        {
-            if (EndDateInclusive < StartDateInclusive)
-            {
-                yield return new RequestValidationException(
-                    "Time interval should be valid.", nameof(StartDateInclusive));
-                yield return new RequestValidationException(
-                    "Time interval should be valid.", nameof(EndDateInclusive));
-            }
-        }
+        void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
+            IInclusiveTimeInterval value) => TimeInterval = value;
     }
 }

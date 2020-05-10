@@ -9,7 +9,7 @@ namespace Alpaca.Markets
     /// Encapsulates request parameters for <see cref="AlpacaTradingClient.ListAccountActivitiesAsync(AccountActivitiesRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-    public sealed class AccountActivitiesRequest : Validation.IRequest
+    public sealed class AccountActivitiesRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>
     {
         private readonly List<AccountActivityType> _accountActivityTypes = new List<AccountActivityType>();
 
@@ -52,14 +52,21 @@ namespace Alpaca.Markets
         public DateTime? Date { get; private set; }
 
         /// <summary>
+        /// Gets inclusive date interval for filtering items in response.
+        /// </summary>
+        public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
+
+        /// <summary>
         /// Gets the upper date limit for requesting only activities submitted before this date.
         /// </summary>
-        public DateTime? Until { get; private set; }
+        [Obsolete("Use the TimeInterval.From property instead.", false)]
+        public DateTime? Until => TimeInterval.From;
 
         /// <summary>
         /// Gets the lover date limit for requesting only activities submitted after this date.
         /// </summary>
-        public DateTime? After { get; private set; }
+        [Obsolete("Use the TimeInterval.Into property instead.", false)]
+        public DateTime? After => TimeInterval.Into;
 
         /// <summary>
         /// Gets or sets the sorting direction for results.
@@ -84,9 +91,8 @@ namespace Alpaca.Markets
         public AccountActivitiesRequest SetSingleDate(
             DateTime date)
         {
+            TimeInterval = Markets.TimeInterval.InclusiveEmpty;
             Date = date;
-            After = null;
-            Until = null;
             return this;
         }
 
@@ -96,29 +102,18 @@ namespace Alpaca.Markets
         /// <param name="dateFrom">Filtering interval start time.</param>
         /// <param name="dateInto">Filtering interval end time.</param>
         /// <returns>Fluent interface method return same <see cref="AccountActivitiesRequest"/> instance.</returns>
-        public AccountActivitiesRequest SetInclusiveTimeInterval(
+        [Obsolete("This method will be removed soon in favor of the extension method SetInclusiveTimeInterval.", false)]
+        public AccountActivitiesRequest SetInclusiveTimeIntervalWithNulls(
             DateTime? dateFrom,
-            DateTime? dateInto)
+            DateTime? dateInto) =>
+            this.SetTimeInterval(Markets.TimeInterval.GetInclusive(dateFrom, dateInto));
+
+        void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(IInclusiveTimeInterval value)
         {
-            After = dateFrom;
-            Until = dateInto;
+            TimeInterval = value;
             Date = null;
-            return this;
         }
 
-        IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
-        {
-            if (After.HasValue &&
-                Until.HasValue &&
-                After > Until)
-            {
-                yield return new RequestValidationException(
-                    "Time interval should be valid.", nameof(After));
-                yield return new RequestValidationException(
-                    "Time interval should be valid.", nameof(Until));
-            }
-        }
-        
         internal AccountActivitiesRequest SetTimes(
             DateTime? date = null,
             DateTime? after = null,
@@ -126,7 +121,9 @@ namespace Alpaca.Markets
         {
             if (date is null)
             {
-                return SetInclusiveTimeInterval(after, until);
+                return Markets.TimeInterval.SetInclusiveTimeInterval(this,
+                    after ?? throw new ArgumentNullException(nameof(after)),
+                    until ?? throw new ArgumentNullException(nameof(until)));
             }
 
             if (until.HasValue || after.HasValue)

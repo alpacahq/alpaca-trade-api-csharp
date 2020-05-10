@@ -41,7 +41,7 @@ namespace UsageExamples
 
             // Figure out when the market will close so we can prepare to sell beforehand.
             var calendars = (await alpacaTradingClient
-                .ListCalendarAsync(new CalendarRequest().SetInclusiveTimeInterval(DateTime.Today, null)))
+                .ListCalendarAsync(new CalendarRequest().SetTimeInterval(DateTime.Today.GetInclusiveIntervalFromThat())))
                 .ToList();
             var calendarDate = calendars.First().TradingDate;
             var closingTime = calendars.First().TradingCloseTime;

@@ -97,12 +97,11 @@ namespace Alpaca.Markets
             GetPortfolioHistoryAsync(
                 new PortfolioHistoryRequest()
                 {
-                    StartDate = startDate,
-                    EndDate = endDate,
                     ExtendedHours = extendedHours,
                     Period = period,
                     TimeFrame = timeFrame
-                },
+                }.SetTimeInterval(
+                    TimeInterval.GetInclusive(startDate, endDate)),
                 cancellationToken);
 
         /// <summary>
@@ -139,7 +138,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             ListCalendarAsync(
                 new CalendarRequest()
-                    .SetInclusiveTimeInterval(startDateInclusive, endDateInclusive),
+                    .SetInclusiveTimeIntervalWithNulls(startDateInclusive, endDateInclusive),
                 cancellationToken);
 
         /// <summary>
@@ -167,7 +166,7 @@ namespace Alpaca.Markets
                         OrderListSorting = orderListSorting,
                         OrderStatusFilter = orderStatusFilter
                     }
-                    .SetExclusiveTimeInterval(afterDateTimeExclusive, untilDateTimeExclusive),
+                    .SetExclusiveTimeIntervalWithNulls(afterDateTimeExclusive, untilDateTimeExclusive),
                 cancellationToken);
 
         /// <summary>

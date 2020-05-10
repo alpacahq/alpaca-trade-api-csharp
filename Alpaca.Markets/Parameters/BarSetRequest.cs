@@ -9,7 +9,8 @@ namespace Alpaca.Markets
     /// Encapsulates request parameters for <see cref="AlpacaDataClient.GetBarSetAsync(BarSetRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
-    public sealed class BarSetRequest : Validation.IRequest
+    public sealed class BarSetRequest : Validation.IRequest, 
+        IRequestWithTimeInterval<IInclusiveTimeInterval>, IRequestWithTimeInterval<IExclusiveTimeInterval>
     {
         private readonly List<String> _symbols;
 
@@ -57,17 +58,24 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets flag indicating that both <see cref="TimeFrom"/> and <see cref="TimeInto"/> properties are treated as inclusive timestamps.
         /// </summary>
-        public Boolean AreTimesInclusive { get; private set; } = true;
+        public Boolean AreTimesInclusive => TimeInterval is IInclusiveTimeInterval;
+
+        /// <summary>
+        /// Gets inclusive or exclusive date interval for filtering items in response.
+        /// </summary>
+        public ITimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
 
         /// <summary>
         /// Gets start time for filtering.
         /// </summary>
-        public DateTime? TimeFrom { get; private set; }
+        [Obsolete("Use the TimeInterval.From property instead.", false)]
+        public DateTime? TimeFrom => TimeInterval.From;
 
         /// <summary>
         /// Gets end time for filtering.
         /// </summary>
-        public DateTime? TimeInto { get; private set; }
+        [Obsolete("Use the TimeInterval.Into property instead.", false)]
+        public DateTime? TimeInto => TimeInterval.Into;
 
         /// <summary>
         /// Sets inclusive time interval for request (start/end time included into interval if specified).
@@ -75,11 +83,11 @@ namespace Alpaca.Markets
         /// <param name="start">Filtering interval start time.</param>
         /// <param name="end">Filtering interval end time.</param>
         /// <returns>Fluent interface method return same <see cref="BarSetRequest"/> instance.</returns>
-        public BarSetRequest SetInclusiveTimeInterval(
+        [Obsolete("This method will be removed soon in favor of the extension method SetInclusiveTimeInterval.", false)]
+        public BarSetRequest SetInclusiveTimeIntervalWithNulls(
             DateTime? start,
             DateTime? end) =>
-            SetTimeInterval(
-                true, start, end);
+            this.SetTimeInterval(Markets.TimeInterval.GetInclusive(start, end));
 
         /// <summary>
         /// Sets exclusive time interval for request (start/end time not included into interval if specified).
@@ -87,11 +95,11 @@ namespace Alpaca.Markets
         /// <param name="after">Filtering interval start time.</param>
         /// <param name="until">Filtering interval end time.</param>
         /// <returns>Fluent interface method return same <see cref="BarSetRequest"/> instance.</returns>
-        public BarSetRequest SetExclusiveTimeInterval(
+        [Obsolete("This method will be removed soon in favor of the extension method SetExclusiveTimeInterval.", false)]
+        public BarSetRequest SetExclusiveTimeIntervalWithNulls(
             DateTime? after,
             DateTime? until) =>
-            SetTimeInterval(
-                false, after, until);
+            this.SetTimeInterval(Markets.TimeInterval.GetExclusive(after, until));
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
@@ -107,14 +115,6 @@ namespace Alpaca.Markets
                     "Symbols list shouldn't contain null or empty items.", nameof(Symbols));
             }
 
-            if (TimeFrom > TimeInto)
-            {
-                yield return new RequestValidationException(
-                    "Time interval should be valid.", nameof(TimeFrom));
-                yield return new RequestValidationException(
-                    "Time interval should be valid.", nameof(TimeInto));
-            }
-
             if (TimeFrame == TimeFrame.Hour)
             {
                 yield return new RequestValidationException(
@@ -122,15 +122,18 @@ namespace Alpaca.Markets
             }
         }
 
+        void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
+            IInclusiveTimeInterval value) => TimeInterval = value;
+
+        void IRequestWithTimeInterval<IExclusiveTimeInterval>.SetInterval(
+            IExclusiveTimeInterval value) => TimeInterval = value;
+
         internal BarSetRequest SetTimeInterval(
             Boolean areTimesInclusive,
             DateTime? timeFrom,
-            DateTime? timeInto)
-        {
-            AreTimesInclusive = areTimesInclusive;
-            TimeFrom = timeFrom;
-            TimeInto = timeInto;
-            return this;
-        }
+            DateTime? timeInto) =>
+            areTimesInclusive
+                ? this.SetTimeInterval(Markets.TimeInterval.GetInclusive(timeFrom, timeInto))
+                : this.SetTimeInterval(Markets.TimeInterval.GetExclusive(timeFrom, timeInto));
     }
 }

@@ -77,7 +77,7 @@ namespace Alpaca.Markets
             AccountActivitiesRequest request,
             CancellationToken cancellationToken = default)
         {
-            request.EnsureNotNull(nameof(request)).Validate();
+            request.EnsureNotNull(nameof(request));
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
@@ -85,8 +85,8 @@ namespace Alpaca.Markets
                 Query = new QueryBuilder()
                     .AddParameter("activity_types", request.ActivityTypes)
                     .AddParameter("date", request.Date, DateTimeHelper.DateFormat)
-                    .AddParameter("until", request.Until, "O")
-                    .AddParameter("after", request.After, "O")
+                    .AddParameter("until", request.TimeInterval.Into, "O")
+                    .AddParameter("after", request.TimeInterval.From, "O")
                     .AddParameter("direction", request.Direction)
                     .AddParameter("pageSize", request.PageSize)
                     .AddParameter("pageToken", request.PageToken)
@@ -106,14 +106,14 @@ namespace Alpaca.Markets
             PortfolioHistoryRequest request,
             CancellationToken cancellationToken = default)
         {
-            request.EnsureNotNull(nameof(request)).Validate();
+            request.EnsureNotNull(nameof(request));
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = _httpClient.BaseAddress.AbsolutePath + "account/portfolio/history",
                 Query = new QueryBuilder()
-                    .AddParameter("start_date", request.StartDate, DateTimeHelper.DateFormat)
-                    .AddParameter("end_date", request.EndDate, DateTimeHelper.DateFormat)
+                    .AddParameter("start_date", request.TimeInterval?.From, DateTimeHelper.DateFormat)
+                    .AddParameter("end_date", request.TimeInterval?.Into, DateTimeHelper.DateFormat)
                     .AddParameter("period", request.Period?.ToString())
                     .AddParameter("timeframe", request.TimeFrame)
                     .AddParameter("extended_hours", request.ExtendedHours)
@@ -143,7 +143,7 @@ namespace Alpaca.Markets
             AssetsRequest request,
             CancellationToken cancellationToken = default)
         {
-            request.EnsureNotNull(nameof(request)).Validate();
+            request.EnsureNotNull(nameof(request));
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
@@ -286,14 +286,14 @@ namespace Alpaca.Markets
             CalendarRequest request,
             CancellationToken cancellationToken = default)
         {
-            request.EnsureNotNull(nameof(request)).Validate();
+            request.EnsureNotNull(nameof(request));
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = _httpClient.BaseAddress.AbsolutePath + "calendar",
                 Query = new QueryBuilder()
-                    .AddParameter("start", request.StartDateInclusive, DateTimeHelper.DateFormat)
-                    .AddParameter("end", request.EndDateInclusive, DateTimeHelper.DateFormat)
+                    .AddParameter("start", request.TimeInterval?.From, DateTimeHelper.DateFormat)
+                    .AddParameter("end", request.TimeInterval?.Into, DateTimeHelper.DateFormat)
             };
 
             return _httpClient.GetObjectsListAsync<ICalendar, JsonCalendar>(
