@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface ILastQuote
    ">
-    <meta name="generator" content="docfx 2.51.0.0">
+    <meta name="generator" content="docfx 2.52.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -79,9 +79,6 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Alpaca.Markets.IStreamQuote.html#Alpaca_Markets_IStreamQuote_Symbol">IStreamQuote.Symbol</a>
-    </div>
-    <div>
       <a class="xref" href="Alpaca.Markets.IStreamQuote.html#Alpaca_Markets_IStreamQuote_Time">IStreamQuote.Time</a>
     </div>
     <div>
@@ -102,12 +99,15 @@
     <div>
       <a class="xref" href="Alpaca.Markets.IQuoteBase-1.html#Alpaca_Markets_IQuoteBase_1_AskSize">IQuoteBase&lt;Int64&gt;.AskSize</a>
     </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.IStreamBase.html#Alpaca_Markets_IStreamBase_Symbol">IStreamBase.Symbol</a>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_ILastQuote_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ILastQuote : IStreamQuote, IQuoteBase&lt;long&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public interface ILastQuote : IStreamQuote, IQuoteBase&lt;long&gt;, IStreamBase</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
