@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AggregatesRequest
    ">
-    <meta name="generator" content="docfx 2.51.0.0">
+    <meta name="generator" content="docfx 2.52.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -81,6 +81,10 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">AggregatesRequest</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Alpaca.Markets.IRequestWithTimeInterval-1.html">IRequestWithTimeInterval</a>&lt;<a class="xref" href="Alpaca.Markets.IInclusiveTimeInterval.html">IInclusiveTimeInterval</a>&gt;</div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -109,7 +113,7 @@
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_AggregatesRequest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class AggregatesRequest : Validation.IRequest</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class AggregatesRequest : Validation.IRequest, IRequestWithTimeInterval&lt;IInclusiveTimeInterval&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -160,7 +164,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AggregatesRequest_DateFrom.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AggregatesRequest.DateFrom%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AggregatesRequest.cs/#L37">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AggregatesRequest.cs/#L43">View Source</a>
   </span>
   <a id="Alpaca_Markets_AggregatesRequest_DateFrom_" data-uid="Alpaca.Markets.AggregatesRequest.DateFrom*"></a>
   <h4 id="Alpaca_Markets_AggregatesRequest_DateFrom" data-uid="Alpaca.Markets.AggregatesRequest.DateFrom">DateFrom</h4>
@@ -169,7 +173,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime DateFrom { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the TimeInterval.From property instead.&quot;, false)]
+public DateTime DateFrom { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -191,7 +196,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AggregatesRequest_DateInto.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AggregatesRequest.DateInto%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AggregatesRequest.cs/#L42">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AggregatesRequest.cs/#L49">View Source</a>
   </span>
   <a id="Alpaca_Markets_AggregatesRequest_DateInto_" data-uid="Alpaca.Markets.AggregatesRequest.DateInto*"></a>
   <h4 id="Alpaca_Markets_AggregatesRequest_DateInto" data-uid="Alpaca.Markets.AggregatesRequest.DateInto">DateInto</h4>
@@ -200,7 +205,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime DateInto { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the TimeInterval.Into property instead.&quot;, false)]
+public DateTime DateInto { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -222,7 +228,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AggregatesRequest_Period.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AggregatesRequest.Period%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AggregatesRequest.cs/#L32">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AggregatesRequest.cs/#L33">View Source</a>
   </span>
   <a id="Alpaca_Markets_AggregatesRequest_Period_" data-uid="Alpaca.Markets.AggregatesRequest.Period*"></a>
   <h4 id="Alpaca_Markets_AggregatesRequest_Period" data-uid="Alpaca.Markets.AggregatesRequest.Period">Period</h4>
@@ -253,7 +259,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AggregatesRequest_Symbol.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AggregatesRequest.Symbol%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AggregatesRequest.cs/#L27">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AggregatesRequest.cs/#L28">View Source</a>
   </span>
   <a id="Alpaca_Markets_AggregatesRequest_Symbol_" data-uid="Alpaca.Markets.AggregatesRequest.Symbol*"></a>
   <h4 id="Alpaca_Markets_AggregatesRequest_Symbol" data-uid="Alpaca.Markets.AggregatesRequest.Symbol">Symbol</h4>
@@ -281,10 +287,41 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AggregatesRequest_TimeInterval.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AggregatesRequest.TimeInterval%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AggregatesRequest.cs/#L38">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_AggregatesRequest_TimeInterval_" data-uid="Alpaca.Markets.AggregatesRequest.TimeInterval*"></a>
+  <h4 id="Alpaca_Markets_AggregatesRequest_TimeInterval" data-uid="Alpaca.Markets.AggregatesRequest.TimeInterval">TimeInterval</h4>
+  <div class="markdown level1 summary"><p>Gets inclusive date interval for filtering items in response.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IInclusiveTimeInterval TimeInterval { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IInclusiveTimeInterval.html">IInclusiveTimeInterval</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AggregatesRequest_Unadjusted.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AggregatesRequest.Unadjusted%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AggregatesRequest.cs/#L47">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AggregatesRequest.cs/#L55">View Source</a>
   </span>
   <a id="Alpaca_Markets_AggregatesRequest_Unadjusted_" data-uid="Alpaca.Markets.AggregatesRequest.Unadjusted*"></a>
   <h4 id="Alpaca_Markets_AggregatesRequest_Unadjusted" data-uid="Alpaca.Markets.AggregatesRequest.Unadjusted">Unadjusted</h4>
@@ -310,23 +347,22 @@
       </tr>
     </tbody>
   </table>
-  <h3 id="methods">Methods
+  <h3 id="eii">Explicit Interface Implementations
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AggregatesRequest_SetInclusiveTimeInterval_System_DateTime_System_DateTime_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AggregatesRequest.SetInclusiveTimeInterval(System.DateTime%2CSystem.DateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AggregatesRequest_Alpaca_Markets_IRequestWithTimeInterval_Alpaca_Markets_IInclusiveTimeInterval__SetInterval_Alpaca_Markets_IInclusiveTimeInterval_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AggregatesRequest.Alpaca%23Markets%23IRequestWithTimeInterval%7BAlpaca%23Markets%23IInclusiveTimeInterval%7D%23SetInterval(Alpaca.Markets.IInclusiveTimeInterval)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AggregatesRequest.cs/#L55">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AggregatesRequest.cs/#L78">View Source</a>
   </span>
-  <a id="Alpaca_Markets_AggregatesRequest_SetInclusiveTimeInterval_" data-uid="Alpaca.Markets.AggregatesRequest.SetInclusiveTimeInterval*"></a>
-  <h4 id="Alpaca_Markets_AggregatesRequest_SetInclusiveTimeInterval_System_DateTime_System_DateTime_" data-uid="Alpaca.Markets.AggregatesRequest.SetInclusiveTimeInterval(System.DateTime,System.DateTime)">SetInclusiveTimeInterval(DateTime, DateTime)</h4>
-  <div class="markdown level1 summary"><p>Sets inclusive time interval for request.</p>
-</div>
+  <a id="Alpaca_Markets_AggregatesRequest_Alpaca_Markets_IRequestWithTimeInterval_Alpaca_Markets_IInclusiveTimeInterval__SetInterval_" data-uid="Alpaca.Markets.AggregatesRequest.Alpaca#Markets#IRequestWithTimeInterval{Alpaca#Markets#IInclusiveTimeInterval}#SetInterval*"></a>
+  <h4 id="Alpaca_Markets_AggregatesRequest_Alpaca_Markets_IRequestWithTimeInterval_Alpaca_Markets_IInclusiveTimeInterval__SetInterval_Alpaca_Markets_IInclusiveTimeInterval_" data-uid="Alpaca.Markets.AggregatesRequest.Alpaca#Markets#IRequestWithTimeInterval{Alpaca#Markets#IInclusiveTimeInterval}#SetInterval(Alpaca.Markets.IInclusiveTimeInterval)">IRequestWithTimeInterval&lt;IInclusiveTimeInterval&gt;.SetInterval(IInclusiveTimeInterval)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AggregatesRequest SetInclusiveTimeInterval(DateTime dateFrom, DateTime dateInto)</code></pre>
+    <pre><code class="lang-csharp hljs">void IRequestWithTimeInterval&lt;IInclusiveTimeInterval&gt;.SetInterval(IInclusiveTimeInterval value)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -339,35 +375,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
-        <td><span class="parametername">dateFrom</span></td>
-        <td><p>Filtering interval start time.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.DateTime</span></td>
-        <td><span class="parametername">dateInto</span></td>
-        <td><p>Filtering interval end time.</p>
-</td>
+        <td><a class="xref" href="Alpaca.Markets.IInclusiveTimeInterval.html">IInclusiveTimeInterval</a></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Alpaca.Markets.AggregatesRequest.html">AggregatesRequest</a></td>
-        <td><p>Fluent interface method return same <a class="xref" href="Alpaca.Markets.AggregatesRequest.html">AggregatesRequest</a> instance.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Alpaca.Markets.IRequestWithTimeInterval-1.html">IRequestWithTimeInterval&lt;TInterval&gt;</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Alpaca.Markets.TimeInterval.html#Alpaca_Markets_TimeInterval_SetInclusiveTimeInterval__1___0_System_DateTime_System_DateTime_">TimeInterval.SetInclusiveTimeInterval&lt;TRequest&gt;(TRequest, DateTime, DateTime)</a>
+  </div>
+  <div>
+      <a class="xref" href="Alpaca.Markets.TimeInterval.html#Alpaca_Markets_TimeInterval_SetTimeInterval__1___0_Alpaca_Markets_IInclusiveTimeInterval_">TimeInterval.SetTimeInterval&lt;TRequest&gt;(TRequest, IInclusiveTimeInterval)</a>
+  </div>
 </article>
           </div>
           
