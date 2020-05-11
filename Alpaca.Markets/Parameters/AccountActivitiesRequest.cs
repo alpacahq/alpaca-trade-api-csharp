@@ -121,7 +121,7 @@ namespace Alpaca.Markets
         {
             if (date is null)
             {
-                return Markets.TimeInterval.SetInclusiveTimeInterval(this,
+                return this.SetInclusiveTimeInterval(
                     after ?? throw new ArgumentNullException(nameof(after)),
                     until ?? throw new ArgumentNullException(nameof(until)));
             }
