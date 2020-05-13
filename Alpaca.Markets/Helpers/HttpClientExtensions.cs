@@ -69,26 +69,34 @@ namespace Alpaca.Markets
                     throw new RestClientErrorException("Unable to deserialize JSON response message.");
             }
 
+            throw getException(response, serializer, reader);
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "We wrap all exceptions into the single exception type.")]
+        private static RestClientErrorException getException(
+            HttpResponseMessage response,
+            JsonSerializer serializer,
+            JsonReader reader)
+        {
             try
             {
                 // ReSharper disable once ConstantNullCoalescingCondition
-                var jsonError = 
+                var jsonError =
                     serializer.Deserialize<JsonError>(reader) ?? new JsonError();
 
-                if (jsonError.Code == 0 ||
-                    String.IsNullOrEmpty(jsonError.Message))
-                {
-                    throw new RestClientErrorException(response);
-                }
-
-                throw new RestClientErrorException(jsonError);
+                return jsonError.Code == 0 ||
+                       String.IsNullOrEmpty(jsonError.Message)
+                    ? new RestClientErrorException(response)
+                    : new RestClientErrorException(jsonError);
             }
             catch (Exception)
             {
-                throw new RestClientErrorException(response);
+                return new RestClientErrorException(response);
             }
-        }
 
+        }
         private static async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
