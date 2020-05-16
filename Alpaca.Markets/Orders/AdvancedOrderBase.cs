@@ -1,7 +1,7 @@
 ﻿namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Encapsulates base data for advanced order types, never used directly by any code.
     /// </summary>
     public abstract class AdvancedOrderBase : OrderBase
     {

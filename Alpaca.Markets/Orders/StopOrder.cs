@@ -3,7 +3,7 @@
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Encapsulates data required for placing the stop order on the Alpaca REST API.
     /// </summary>
     public sealed class StopOrder : SimpleOrderBase
     {

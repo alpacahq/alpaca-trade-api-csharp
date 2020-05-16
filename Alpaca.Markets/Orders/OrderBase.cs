@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Encapsulates base data for any order types, never used directly by any code.
     /// </summary>
     public abstract class OrderBase : Validation.IRequest
     {

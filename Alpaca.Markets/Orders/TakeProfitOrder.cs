@@ -3,7 +3,7 @@
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Encapsulates data required for placing take profit order on the Alpaca REST API.
     /// </summary>
     public sealed class TakeProfitOrder : AdvancedOrderBase, ITakeProfit
     {

@@ -3,17 +3,17 @@
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Encapsulates the price information about the stop loss order.
     /// </summary>
     public interface IStopLoss
     {
         /// <summary>
-        /// Gets or sets the stop loss stop price for advanced order types.
+        /// Gets the stop loss stop price.
         /// </summary>
         Decimal StopPrice { get; }
 
         /// <summary>
-        /// Gets or sets the stop loss limit price for advanced order types.
+        /// Gets the stop loss limit price.
         /// </summary>
         Decimal? LimitPrice { get; }
     }

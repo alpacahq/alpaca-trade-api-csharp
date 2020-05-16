@@ -3,7 +3,7 @@
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Encapsulates data required for placing OCO order on the Alpaca REST API.
     /// </summary>
     public sealed class OneCancelsOtherOrder : AdvancedOrderBase
     {
@@ -20,12 +20,12 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// Gets prices for take profit order for the advanced order types.
+        /// Gets prices for take profit order for the OCO order.
         /// </summary>
         public ITakeProfit TakeProfit { get; }
         
         /// <summary>
-        /// Gets prices for stop loss order for the advanced order types.
+        /// Gets prices for stop loss order for the OCO order.
         /// </summary>
         public IStopLoss StopLoss { get; }
 
