@@ -52,52 +52,37 @@ namespace Alpaca.Markets
         /// <param name="request">New order placement request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for newly created order.</returns>
-        public async Task<IOrder> PostOrderAsync(
+        public Task<IOrder> PostOrderAsync(
             NewOrderRequest request,
             CancellationToken cancellationToken = default)
         {
             request.EnsureNotNull(nameof(request)).Validate();
-
-            var newOrder = new JsonNewOrder
-            {
-                Symbol = request.Symbol,
-                Quantity = request.Quantity,
-                OrderSide = request.Side,
-                OrderType = request.Type,
-                TimeInForce = request.Duration,
-                LimitPrice = request.LimitPrice,
-                StopPrice = request.StopPrice,
-                ClientOrderId = request.ClientOrderId,
-                ExtendedHours = request.ExtendedHours,
-                OrderClass = request.OrderClass,
-                TakeProfit = request.TakeProfitLimitPrice != null
-                    ? new JsonNewOrderAdvancedAttributes
-                    {
-                        LimitPrice = request.TakeProfitLimitPrice
-                    }
-                    : null,
-                StopLoss = request.StopLossStopPrice != null ||
-                           request.StopLossLimitPrice != null
-                    ? new JsonNewOrderAdvancedAttributes
-                    {
-                        StopPrice = request.StopLossStopPrice,
-                        LimitPrice = request.StopLossLimitPrice
-                    }
-                    : null
-            };
-
-            var builder = new UriBuilder(_httpClient.BaseAddress)
-            {
-                Path = _httpClient.BaseAddress.AbsolutePath + "orders",
-                Query = new QueryBuilder()
-                    .AddParameter("nested", request.Nested)
-            };
-
+            return postOrderAsync(request.GetJsonRequest(), cancellationToken);
+        } 
+        
+        /// <summary>
+        /// Creates new order for execution using Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="orderBase">New order placement request parameters.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only order information object for newly created order.</returns>
+        public Task<IOrder> PostOrderAsync(
+            OrderBase orderBase,
+            CancellationToken cancellationToken = default)
+        {
+            orderBase.EnsureNotNull(nameof(orderBase)).Validate();
+            return postOrderAsync(orderBase.GetJsonRequest(), cancellationToken);
+        }
+                
+        private async Task<IOrder> postOrderAsync(
+            JsonNewOrder jsonNewOrder,
+            CancellationToken cancellationToken = default)
+        {
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-            using var content = toStringContent(newOrder);
+            using var content = toStringContent(jsonNewOrder);
             using var response = await _httpClient.PostAsync(
-                    builder.Uri, content, cancellationToken)
+                    new Uri("orders", UriKind.RelativeOrAbsolute), content, cancellationToken)
                 .ConfigureAwait(false);
 
             return await response.DeserializeAsync<IOrder, JsonOrder>()

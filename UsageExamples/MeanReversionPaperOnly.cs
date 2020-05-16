@@ -168,11 +168,7 @@ namespace UsageExamples
             }
             Console.WriteLine($"Submitting {side} order for {quantity} shares at ${price}.");
             var order = await alpacaTradingClient.PostOrderAsync(
-                new NewOrderRequest(
-                    symbol, quantity, side, OrderType.Limit, TimeInForce.Day)
-                {
-                    LimitPrice = price
-                });
+                side.Limit(symbol, quantity, price));
             lastTradeId = order.OrderId;
         }
 
@@ -182,8 +178,7 @@ namespace UsageExamples
             {
                 var positionQuantity = (await alpacaTradingClient.GetPositionAsync(symbol)).Quantity;
                 await alpacaTradingClient.PostOrderAsync(
-                    new NewOrderRequest(
-                        symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day));
+                    OrderSide.Sell.Market(symbol, positionQuantity));
             }
             catch (Exception)
             {
