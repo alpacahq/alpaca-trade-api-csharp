@@ -23,6 +23,34 @@ namespace Alpaca.Markets
         public Decimal LimitPrice { get; }
 
         /// <summary>
+        /// Creates new buy market order using specified symbol and quantity.
+        /// </summary>
+        /// <param name="symbol">Order asset name.</param>
+        /// <param name="quantity">Order quantity.</param>
+        /// <param name="limitPrice">Order limit price.</param>
+        /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>
+        public static LimitOrder Buy(
+            String symbol,
+            Int64 quantity,
+            Decimal limitPrice) =>
+            new LimitOrder(
+                symbol, quantity, OrderSide.Buy, limitPrice);
+
+        /// <summary>
+        /// Creates new sell market order using specified symbol and quantity.
+        /// </summary>
+        /// <param name="symbol">Order asset name.</param>
+        /// <param name="quantity">Order quantity.</param>
+        /// <param name="limitPrice">Order limit price.</param>
+        /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>
+        public static LimitOrder Sell(
+            String symbol,
+            Int64 quantity,
+            Decimal limitPrice) =>
+            new LimitOrder(
+                symbol, quantity, OrderSide.Sell, limitPrice);
+
+        /// <summary>
         /// Creates a new instance of the <see cref="OneCancelsOtherOrder"/> order from the current order.
         /// </summary>
         /// <param name="stopLossStopPrice">Stop loss order stop price.</param>

@@ -16,5 +16,29 @@ namespace Alpaca.Markets
                 OrderType.Market)
         {
         }
+
+        /// <summary>
+        /// Creates new buy market order using specified symbol and quantity.
+        /// </summary>
+        /// <param name="symbol">Order asset name.</param>
+        /// <param name="quantity">Order quantity.</param>
+        /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
+        public static MarketOrder Buy(
+            String symbol,
+            Int64 quantity) =>
+            new MarketOrder(
+                symbol, quantity, OrderSide.Buy);
+
+        /// <summary>
+        /// Creates new sell market order using specified symbol and quantity.
+        /// </summary>
+        /// <param name="symbol">Order asset name.</param>
+        /// <param name="quantity">Order quantity.</param>
+        /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
+        public static MarketOrder Sell(
+            String symbol,
+            Int64 quantity) =>
+            new MarketOrder(
+                symbol, quantity, OrderSide.Sell);
     }
 }

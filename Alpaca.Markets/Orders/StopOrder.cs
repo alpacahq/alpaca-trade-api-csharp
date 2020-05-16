@@ -22,6 +22,34 @@ namespace Alpaca.Markets
         /// Gets or sets the new order stop price.
         /// </summary>
         public Decimal StopPrice { get; }
+        
+        /// <summary>
+        /// Creates new buy stop order using specified symbol and quantity.
+        /// </summary>
+        /// <param name="symbol">Order asset name.</param>
+        /// <param name="quantity">Order quantity.</param>
+        /// <param name="stopPrice">Order stop price.</param>
+        /// <returns>The new <see cref="StopOrder"/> object instance.</returns>
+        public static StopOrder Buy(
+            String symbol,
+            Int64 quantity,
+            Decimal stopPrice) =>
+            new StopOrder(
+                symbol, quantity, OrderSide.Buy, stopPrice);
+
+        /// <summary>
+        /// Creates new sell buy order using specified symbol and quantity.
+        /// </summary>
+        /// <param name="symbol">Order asset name.</param>
+        /// <param name="quantity">Order quantity.</param>
+        /// <param name="stopPrice">Order stop price.</param>
+        /// <returns>The new <see cref="StopOrder"/> object instance.</returns>
+        public static StopOrder Sell(
+            String symbol,
+            Int64 quantity,
+            Decimal stopPrice) =>
+            new StopOrder(
+                symbol, quantity, OrderSide.Sell, stopPrice);
 
         internal override JsonNewOrder GetJsonRequest() =>
             base.GetJsonRequest()
