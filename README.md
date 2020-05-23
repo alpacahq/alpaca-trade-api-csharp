@@ -26,6 +26,8 @@ if (clock != null)
 4. Replace `KEY_ID` and `SECRET_KEY` values with your own data from the Alpaca dashboard.
 5. Run the sample application using `dotnet run` command and check the output. You should see information about the current market timestamp and the times that the market will open and close next.
 
+See the [UsageExamples](../../tree/develop/UsageExamples) project for near-to-real-world strategy implementation using this SDK. The [Wiki](https://github.com/alpacahq/alpaca-trade-api-csharp/wiki) pages contains a lot of additonal information about different aspects of this SDK (environments handling, authentication types, different order placement approaches, streaming client subscriptions handling, etc.).
+
 ## Mapping between branches and SDK versions
 
 | Branch                                       | Version | Description                    |
