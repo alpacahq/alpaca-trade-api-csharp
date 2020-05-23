@@ -58,6 +58,12 @@ namespace Alpaca.Markets
             : base(message.ReasonPhrase ?? String.Empty) =>
             ErrorCode = (Int32)message.StatusCode;
 
+        internal RestClientErrorException(
+            HttpResponseMessage message,
+            Exception exception)
+            : base(message.ReasonPhrase ?? String.Empty, exception) =>
+            ErrorCode = (Int32)message.StatusCode;
+
         /// <summary>
         /// Original error code returned by REST API endpoint.
         /// </summary>
