@@ -40,12 +40,12 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// Occured when new account update received from stream.
+        /// Occurred when new account update received from stream.
         /// </summary>
         public event Action<IAccountUpdate>? OnAccountUpdate;
 
         /// <summary>
-        /// Occured when new trade update received from stream.
+        /// Occurred when new trade update received from stream.
         /// </summary>
         public event Action<ITradeUpdate>? OnTradeUpdate;
 
