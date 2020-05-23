@@ -233,20 +233,23 @@ namespace Alpaca.Markets
         /// <summary>
         /// Liquidate an open position at market price using Alpaca REST API endpoint.
         /// </summary>
-        /// <param name="symbol">Symbol for liquidation.</param>
+        /// <param name="request">Position deletion request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns><c>True</c> if position liquidation was accepted.</returns>
-        public async Task<Boolean> DeletePositionAsync(
-            String symbol,
+        /// <returns>The <see cref="IOrder"/> object that represents the position liquidation order (for tracking).</returns>
+        public async Task<IOrder> DeletePositionAsync(
+            DeletePositionRequest request,
             CancellationToken cancellationToken = default)
         {
+            request.EnsureNotNull(nameof(request));
+
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             using var response = await _httpClient.DeleteAsync(
-                    new Uri($"positions/{symbol}", UriKind.RelativeOrAbsolute), cancellationToken)
+                    new Uri($"positions/{request.Symbol}", UriKind.RelativeOrAbsolute), cancellationToken)
                 .ConfigureAwait(false);
 
-            return response.IsSuccessStatusCode;
+            return await response.DeserializeAsync<IOrder, JsonOrder>()
+                .ConfigureAwait(false);
         }
 
         /// <summary>
