@@ -4,22 +4,22 @@
     <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.3;net45</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>3.5.10</Version>
+    <Version>3.5.11</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2020 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>3.5.10.0</AssemblyVersion>
-    <FileVersion>3.5.10.0</FileVersion>
+    <AssemblyVersion>3.5.11.0</AssemblyVersion>
+    <FileVersion>3.5.11.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn>8002;NU5125</NoWarn>
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- The proper error handling implemented in case of extended info in JSON format existence.</PackageReleaseNotes>
+    <PackageReleaseNotes>- The deserialization exception added as a nested exception into the `RestClientErrorException` object.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
