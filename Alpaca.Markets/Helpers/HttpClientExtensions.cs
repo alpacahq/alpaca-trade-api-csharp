@@ -91,9 +91,9 @@ namespace Alpaca.Markets
                     ? new RestClientErrorException(response)
                     : new RestClientErrorException(jsonError);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                return new RestClientErrorException(response);
+                return new RestClientErrorException(response, exception);
             }
 
         }
