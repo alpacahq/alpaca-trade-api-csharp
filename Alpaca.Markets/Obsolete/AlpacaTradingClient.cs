@@ -366,16 +366,9 @@ namespace Alpaca.Markets
         [Obsolete("Use overloaded method that required DeletePositionRequest parameter instead of this one.", false)]
         public async Task<Boolean> DeletePositionAsync(
             String symbol,
-            CancellationToken cancellationToken = default)
-        {
-            await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
-
-            using var response = await _httpClient.DeleteAsync(
-                    new Uri($"positions/{symbol}", UriKind.RelativeOrAbsolute), cancellationToken)
+            CancellationToken cancellationToken = default) =>
+            await _httpClient.DeleteAsync(
+                    _alpacaRestApiThrottler, $"positions/{symbol}", cancellationToken)
                 .ConfigureAwait(false);
-
-            return response.IsSuccessStatusCode;
-        }
-
     }
 }
