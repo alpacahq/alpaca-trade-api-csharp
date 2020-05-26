@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
@@ -28,7 +26,16 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken)
             where TJson : TApi =>
             callAndDeserializeSingleObjectAsync<TApi, TJson>(
-                httpClient, throttler, uriBuilder.Uri, cancellationToken);
+                httpClient, throttler, HttpMethod.Get, uriBuilder.Uri, cancellationToken);
+
+        public static Task<TApi> GetSingleObjectAsync<TApi, TJson>(
+            this HttpClient httpClient,
+            IThrottler throttler,
+            String endpointUri,
+            CancellationToken cancellationToken)
+            where TJson : TApi =>
+            callAndDeserializeSingleObjectAsync<TApi, TJson>(
+                httpClient, throttler, HttpMethod.Get, asUri(endpointUri), cancellationToken);
 
         public static async Task<IReadOnlyList<TApi>> GetObjectsListAsync<TApi, TJson>(
             this HttpClient httpClient,
@@ -37,104 +44,112 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken)
             where TJson : TApi =>
             (IReadOnlyList<TApi>) await callAndDeserializeSingleObjectAsync<IReadOnlyList<TJson>, List<TJson>>(
-                    httpClient, throttler, uriBuilder.Uri, cancellationToken)
+                    httpClient, throttler, HttpMethod.Get, uriBuilder.Uri, cancellationToken)
+
                 .ConfigureAwait(false);
 
-        public static async Task<IReadOnlyList<TApi>> DeleteObjectsListAsync<TApi, TJson>(
+        public static Task<Boolean> DeleteAsync(
+            this HttpClient httpClient,
+            IThrottler throttler,
+            UriBuilder uriBuilder,
+            CancellationToken cancellationToken) =>
+            callAndReturnSuccessCodeAsync(
+                httpClient, throttler, HttpMethod.Delete, uriBuilder.Uri, cancellationToken);
+
+        public static Task<Boolean> DeleteAsync(
+            this HttpClient httpClient,
+            IThrottler throttler,
+            String endpointUri,
+            CancellationToken cancellationToken) =>
+            callAndReturnSuccessCodeAsync(
+                httpClient, throttler, HttpMethod.Delete, asUri(endpointUri), cancellationToken);
+
+        public static Task<TApi> DeleteSingleObjectAsync<TApi, TJson>(
             this HttpClient httpClient,
             IThrottler throttler,
             UriBuilder uriBuilder,
             CancellationToken cancellationToken)
             where TJson : TApi =>
+            callAndDeserializeSingleObjectAsync<TApi, TJson>(
+                httpClient, throttler, HttpMethod.Delete, uriBuilder.Uri, cancellationToken);
+
+        public static Task<TApi> DeleteSingleObjectAsync<TApi, TJson>(
+            this HttpClient httpClient,
+            IThrottler throttler,
+            String endpointUri,
+            CancellationToken cancellationToken)
+            where TJson : TApi =>
+            callAndDeserializeSingleObjectAsync<TApi, TJson>(
+                httpClient, throttler, HttpMethod.Delete, asUri(endpointUri), cancellationToken);
+
+        public static async Task<IReadOnlyList<TApi>> DeleteObjectsListAsync<TApi, TJson>(
+            this HttpClient httpClient,
+            IThrottler throttler,
+            String endpointUri,
+            CancellationToken cancellationToken)
+            where TJson : TApi =>
             (IReadOnlyList<TApi>) await callAndDeserializeSingleObjectAsync<IReadOnlyList<TJson>, List<TJson>>(
-                    httpClient, throttler, uriBuilder.Uri, cancellationToken, HttpMethod.Delete)
+                    httpClient, throttler, HttpMethod.Delete, asUri(endpointUri), cancellationToken)
                 .ConfigureAwait(false);
 
-        public static async Task<TApi> DeserializeAsync<TApi, TJson>(
-            this HttpResponseMessage response)
-            where TJson : TApi
-        {
-#if NETSTANDARD2_1
-            await using var stream = await response.Content.ReadAsStreamAsync()
-#else
-            using var stream = await response.Content.ReadAsStreamAsync()
-#endif
-                .ConfigureAwait(false);
-            using var reader = new JsonTextReader(new StreamReader(stream));
-
-            var serializer = new JsonSerializer();
-            if (response.IsSuccessStatusCode)
-            {
-                return serializer.Deserialize<TJson>(reader) ??
-                    throw new RestClientErrorException("Unable to deserialize JSON response message.");
-            }
-
-            throw getException(response, serializer, reader);
-        }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage(
-            "Design", "CA1031:Do not catch general exception types",
-            Justification = "We wrap all exceptions into the single exception type.")]
-        private static RestClientErrorException getException(
-            HttpResponseMessage response,
-            JsonSerializer serializer,
-            JsonReader reader)
-        {
-            try
-            {
-                // ReSharper disable once ConstantNullCoalescingCondition
-                var jsonError =
-                    serializer.Deserialize<JsonError>(reader) ?? new JsonError();
-
-                return jsonError.Code == 0 ||
-                       String.IsNullOrEmpty(jsonError.Message)
-                    ? new RestClientErrorException(response)
-                    : new RestClientErrorException(jsonError);
-            }
-            catch (Exception)
-            {
-                return new RestClientErrorException(response);
-            }
-
-        }
         private static async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(
             HttpClient httpClient,
             IThrottler throttler,
+            HttpMethod method,
             Uri endpointUri,
-            CancellationToken cancellationToken,
-            HttpMethod? method = null)
+            CancellationToken cancellationToken)
             where TJson : TApi
         {
-            var exceptions = new Queue<Exception>();
-
             for(var attempts = 0; attempts < throttler.MaxRetryAttempts; ++attempts)
             {
                 await throttler.WaitToProceed(cancellationToken).ConfigureAwait(false);
-                try
+
+                using var request = new HttpRequestMessage(method, endpointUri);
+                using var response = await httpClient
+                    .SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
+                    .ConfigureAwait(false);
+
+                // Check response for server and caller specified waits and retries
+                if (throttler.CheckHttpResponse(response))
                 {
-                    using var request = new HttpRequestMessage(method ?? HttpMethod.Get, endpointUri);
-                    using var response = await httpClient
-                        .SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
-                        .ConfigureAwait(false);
-
-                    // Check response for server and caller specified waits and retries
-                    if (!throttler.CheckHttpResponse(response))
-                    {
-                        continue;
-                    }
-
                     return await response.DeserializeAsync<TApi, TJson>()
                         .ConfigureAwait(false);
                 }
-                catch (HttpRequestException ex)
+            }
+
+            throw new RestClientErrorException(
+                $"Unable to successfully call REST API endpoint `{endpointUri}` after {throttler.MaxRetryAttempts} attempts.");
+        }
+
+        private static async Task<Boolean> callAndReturnSuccessCodeAsync(
+            HttpClient httpClient,
+            IThrottler throttler,
+            HttpMethod method,
+            Uri endpointUri,
+            CancellationToken cancellationToken)
+        {
+            for(var attempts = 0; attempts < throttler.MaxRetryAttempts; ++attempts)
+            {
+                await throttler.WaitToProceed(cancellationToken).ConfigureAwait(false);
+
+                using var request = new HttpRequestMessage(method, endpointUri);
+                using var response = await httpClient
+                    .SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
+                    .ConfigureAwait(false);
+
+                // Check response for server and caller specified waits and retries
+                if (throttler.CheckHttpResponse(response))
                 {
-                    exceptions.Enqueue(ex);
-                    break;
+                    return await response.IsSuccessStatusCodeAsync()
+                        .ConfigureAwait(false);
                 }
             }
 
-            throw new AggregateException(exceptions);
+            throw new RestClientErrorException(
+                $"Unable to successfully call REST API endpoint `{endpointUri}` after {throttler.MaxRetryAttempts} attempts.");
         }
+
+        private static Uri asUri(String endpointUri) => new Uri(endpointUri, UriKind.RelativeOrAbsolute);
 
         [Conditional("NET45")]
         public static void SetSecurityProtocol(

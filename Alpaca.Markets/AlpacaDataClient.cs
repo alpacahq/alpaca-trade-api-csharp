@@ -105,16 +105,9 @@ namespace Alpaca.Markets
         /// <returns>Read-only last trade information.</returns>
         public Task<ILastTrade> GetLastTradeAsync(
             String symbol,
-            CancellationToken cancellationToken = default)
-        {
-            var builder = new UriBuilder(_httpClient.BaseAddress)
-            {
-                Path = _httpClient.BaseAddress.AbsolutePath + $"last/stocks/{symbol}",
-            };
-
-            return _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTradeAlpaca>(
-                FakeThrottler.Instance, builder, cancellationToken);
-        }
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTradeAlpaca>(
+                FakeThrottler.Instance, $"last/stocks/{symbol}", cancellationToken);
 
         /// <summary>
         /// Gets current quote for singe asset from Alpaca REST API endpoint.
@@ -124,15 +117,8 @@ namespace Alpaca.Markets
         /// <returns>Read-only current quote information.</returns>
         public Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
-            CancellationToken cancellationToken = default)
-        {
-            var builder = new UriBuilder(_httpClient.BaseAddress)
-            {
-                Path = _httpClient.BaseAddress.AbsolutePath + $"last_quote/stocks/{symbol}",
-            };
-
-            return _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuoteAlpaca>(
-                FakeThrottler.Instance, builder, cancellationToken);
-        }
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuoteAlpaca>(
+                FakeThrottler.Instance, $"last_quote/stocks/{symbol}", cancellationToken);
     }
 }
