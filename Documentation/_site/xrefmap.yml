@@ -425,6 +425,25 @@ references:
   commentId: F:Alpaca.Markets.AccountStatus.Submitted
   fullName: Alpaca.Markets.AccountStatus.Submitted
   nameWithType: AccountStatus.Submitted
+- uid: Alpaca.Markets.AdvancedOrderBase
+  name: AdvancedOrderBase
+  href: api/Alpaca.Markets.AdvancedOrderBase.html
+  commentId: T:Alpaca.Markets.AdvancedOrderBase
+  fullName: Alpaca.Markets.AdvancedOrderBase
+  nameWithType: AdvancedOrderBase
+- uid: Alpaca.Markets.AdvancedOrderBase.OrderClass
+  name: OrderClass
+  href: api/Alpaca.Markets.AdvancedOrderBase.html#Alpaca_Markets_AdvancedOrderBase_OrderClass
+  commentId: P:Alpaca.Markets.AdvancedOrderBase.OrderClass
+  fullName: Alpaca.Markets.AdvancedOrderBase.OrderClass
+  nameWithType: AdvancedOrderBase.OrderClass
+- uid: Alpaca.Markets.AdvancedOrderBase.OrderClass*
+  name: OrderClass
+  href: api/Alpaca.Markets.AdvancedOrderBase.html#Alpaca_Markets_AdvancedOrderBase_OrderClass_
+  commentId: Overload:Alpaca.Markets.AdvancedOrderBase.OrderClass
+  isSpec: "True"
+  fullName: Alpaca.Markets.AdvancedOrderBase.OrderClass
+  nameWithType: AdvancedOrderBase.OrderClass
 - uid: Alpaca.Markets.AggregatesRequest
   name: AggregatesRequest
   href: api/Alpaca.Markets.AggregatesRequest.html
@@ -1300,6 +1319,12 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.AlpacaTradingClient.DeleteOrderAsync
   nameWithType: AlpacaTradingClient.DeleteOrderAsync
+- uid: Alpaca.Markets.AlpacaTradingClient.DeletePositionAsync(Alpaca.Markets.DeletePositionRequest,System.Threading.CancellationToken)
+  name: DeletePositionAsync(DeletePositionRequest, CancellationToken)
+  href: api/Alpaca.Markets.AlpacaTradingClient.html#Alpaca_Markets_AlpacaTradingClient_DeletePositionAsync_Alpaca_Markets_DeletePositionRequest_System_Threading_CancellationToken_
+  commentId: M:Alpaca.Markets.AlpacaTradingClient.DeletePositionAsync(Alpaca.Markets.DeletePositionRequest,System.Threading.CancellationToken)
+  fullName: Alpaca.Markets.AlpacaTradingClient.DeletePositionAsync(Alpaca.Markets.DeletePositionRequest, System.Threading.CancellationToken)
+  nameWithType: AlpacaTradingClient.DeletePositionAsync(DeletePositionRequest, CancellationToken)
 - uid: Alpaca.Markets.AlpacaTradingClient.DeletePositionAsync(System.String,System.Threading.CancellationToken)
   name: DeletePositionAsync(String, CancellationToken)
   href: api/Alpaca.Markets.AlpacaTradingClient.html#Alpaca_Markets_AlpacaTradingClient_DeletePositionAsync_System_String_System_Threading_CancellationToken_
@@ -1687,6 +1712,12 @@ references:
   commentId: M:Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(Alpaca.Markets.NewOrderRequest,System.Threading.CancellationToken)
   fullName: Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(Alpaca.Markets.NewOrderRequest, System.Threading.CancellationToken)
   nameWithType: AlpacaTradingClient.PostOrderAsync(NewOrderRequest, CancellationToken)
+- uid: Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(Alpaca.Markets.OrderBase,System.Threading.CancellationToken)
+  name: PostOrderAsync(OrderBase, CancellationToken)
+  href: api/Alpaca.Markets.AlpacaTradingClient.html#Alpaca_Markets_AlpacaTradingClient_PostOrderAsync_Alpaca_Markets_OrderBase_System_Threading_CancellationToken_
+  commentId: M:Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(Alpaca.Markets.OrderBase,System.Threading.CancellationToken)
+  fullName: Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(Alpaca.Markets.OrderBase, System.Threading.CancellationToken)
+  nameWithType: AlpacaTradingClient.PostOrderAsync(OrderBase, CancellationToken)
 - uid: Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(System.String,System.Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType,Alpaca.Markets.TimeInForce,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.Nullable{System.Boolean},System.Nullable{Alpaca.Markets.OrderClass},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Boolean},System.Threading.CancellationToken)
   name: PostOrderAsync(String, Int64, OrderSide, OrderType, TimeInForce, Nullable<Decimal>, Nullable<Decimal>, String, Nullable<Boolean>, Nullable<OrderClass>, Nullable<Decimal>, Nullable<Decimal>, Nullable<Decimal>, Nullable<Boolean>, CancellationToken)
   href: api/Alpaca.Markets.AlpacaTradingClient.html#Alpaca_Markets_AlpacaTradingClient_PostOrderAsync_System_String_System_Int64_Alpaca_Markets_OrderSide_Alpaca_Markets_OrderType_Alpaca_Markets_TimeInForce_System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_String_System_Nullable_System_Boolean__System_Nullable_Alpaca_Markets_OrderClass__System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_Nullable_System_Boolean__System_Threading_CancellationToken_
@@ -2085,6 +2116,38 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.BarSetRequest.TimeInto
   nameWithType: BarSetRequest.TimeInto
+- uid: Alpaca.Markets.BracketOrder
+  name: BracketOrder
+  href: api/Alpaca.Markets.BracketOrder.html
+  commentId: T:Alpaca.Markets.BracketOrder
+  fullName: Alpaca.Markets.BracketOrder
+  nameWithType: BracketOrder
+- uid: Alpaca.Markets.BracketOrder.StopLoss
+  name: StopLoss
+  href: api/Alpaca.Markets.BracketOrder.html#Alpaca_Markets_BracketOrder_StopLoss
+  commentId: P:Alpaca.Markets.BracketOrder.StopLoss
+  fullName: Alpaca.Markets.BracketOrder.StopLoss
+  nameWithType: BracketOrder.StopLoss
+- uid: Alpaca.Markets.BracketOrder.StopLoss*
+  name: StopLoss
+  href: api/Alpaca.Markets.BracketOrder.html#Alpaca_Markets_BracketOrder_StopLoss_
+  commentId: Overload:Alpaca.Markets.BracketOrder.StopLoss
+  isSpec: "True"
+  fullName: Alpaca.Markets.BracketOrder.StopLoss
+  nameWithType: BracketOrder.StopLoss
+- uid: Alpaca.Markets.BracketOrder.TakeProfit
+  name: TakeProfit
+  href: api/Alpaca.Markets.BracketOrder.html#Alpaca_Markets_BracketOrder_TakeProfit
+  commentId: P:Alpaca.Markets.BracketOrder.TakeProfit
+  fullName: Alpaca.Markets.BracketOrder.TakeProfit
+  nameWithType: BracketOrder.TakeProfit
+- uid: Alpaca.Markets.BracketOrder.TakeProfit*
+  name: TakeProfit
+  href: api/Alpaca.Markets.BracketOrder.html#Alpaca_Markets_BracketOrder_TakeProfit_
+  commentId: Overload:Alpaca.Markets.BracketOrder.TakeProfit
+  isSpec: "True"
+  fullName: Alpaca.Markets.BracketOrder.TakeProfit
+  nameWithType: BracketOrder.TakeProfit
 - uid: Alpaca.Markets.CalendarRequest
   name: CalendarRequest
   href: api/Alpaca.Markets.CalendarRequest.html
@@ -2344,6 +2407,38 @@ references:
   commentId: F:Alpaca.Markets.DayTradeMarginCallProtection.Exit
   fullName: Alpaca.Markets.DayTradeMarginCallProtection.Exit
   nameWithType: DayTradeMarginCallProtection.Exit
+- uid: Alpaca.Markets.DeletePositionRequest
+  name: DeletePositionRequest
+  href: api/Alpaca.Markets.DeletePositionRequest.html
+  commentId: T:Alpaca.Markets.DeletePositionRequest
+  fullName: Alpaca.Markets.DeletePositionRequest
+  nameWithType: DeletePositionRequest
+- uid: Alpaca.Markets.DeletePositionRequest.#ctor(System.String)
+  name: DeletePositionRequest(String)
+  href: api/Alpaca.Markets.DeletePositionRequest.html#Alpaca_Markets_DeletePositionRequest__ctor_System_String_
+  commentId: M:Alpaca.Markets.DeletePositionRequest.#ctor(System.String)
+  fullName: Alpaca.Markets.DeletePositionRequest.DeletePositionRequest(System.String)
+  nameWithType: DeletePositionRequest.DeletePositionRequest(String)
+- uid: Alpaca.Markets.DeletePositionRequest.#ctor*
+  name: DeletePositionRequest
+  href: api/Alpaca.Markets.DeletePositionRequest.html#Alpaca_Markets_DeletePositionRequest__ctor_
+  commentId: Overload:Alpaca.Markets.DeletePositionRequest.#ctor
+  isSpec: "True"
+  fullName: Alpaca.Markets.DeletePositionRequest.DeletePositionRequest
+  nameWithType: DeletePositionRequest.DeletePositionRequest
+- uid: Alpaca.Markets.DeletePositionRequest.Symbol
+  name: Symbol
+  href: api/Alpaca.Markets.DeletePositionRequest.html#Alpaca_Markets_DeletePositionRequest_Symbol
+  commentId: P:Alpaca.Markets.DeletePositionRequest.Symbol
+  fullName: Alpaca.Markets.DeletePositionRequest.Symbol
+  nameWithType: DeletePositionRequest.Symbol
+- uid: Alpaca.Markets.DeletePositionRequest.Symbol*
+  name: Symbol
+  href: api/Alpaca.Markets.DeletePositionRequest.html#Alpaca_Markets_DeletePositionRequest_Symbol_
+  commentId: Overload:Alpaca.Markets.DeletePositionRequest.Symbol
+  isSpec: "True"
+  fullName: Alpaca.Markets.DeletePositionRequest.Symbol
+  nameWithType: DeletePositionRequest.Symbol
 - uid: Alpaca.Markets.EnvironmentExtensions
   name: EnvironmentExtensions
   href: api/Alpaca.Markets.EnvironmentExtensions.html
@@ -5275,6 +5370,38 @@ references:
   fullName.vb: Alpaca.Markets.IRequestWithTimeInterval(Of TInterval).SetInterval
   nameWithType: IRequestWithTimeInterval<TInterval>.SetInterval
   nameWithType.vb: IRequestWithTimeInterval(Of TInterval).SetInterval
+- uid: Alpaca.Markets.IStopLoss
+  name: IStopLoss
+  href: api/Alpaca.Markets.IStopLoss.html
+  commentId: T:Alpaca.Markets.IStopLoss
+  fullName: Alpaca.Markets.IStopLoss
+  nameWithType: IStopLoss
+- uid: Alpaca.Markets.IStopLoss.LimitPrice
+  name: LimitPrice
+  href: api/Alpaca.Markets.IStopLoss.html#Alpaca_Markets_IStopLoss_LimitPrice
+  commentId: P:Alpaca.Markets.IStopLoss.LimitPrice
+  fullName: Alpaca.Markets.IStopLoss.LimitPrice
+  nameWithType: IStopLoss.LimitPrice
+- uid: Alpaca.Markets.IStopLoss.LimitPrice*
+  name: LimitPrice
+  href: api/Alpaca.Markets.IStopLoss.html#Alpaca_Markets_IStopLoss_LimitPrice_
+  commentId: Overload:Alpaca.Markets.IStopLoss.LimitPrice
+  isSpec: "True"
+  fullName: Alpaca.Markets.IStopLoss.LimitPrice
+  nameWithType: IStopLoss.LimitPrice
+- uid: Alpaca.Markets.IStopLoss.StopPrice
+  name: StopPrice
+  href: api/Alpaca.Markets.IStopLoss.html#Alpaca_Markets_IStopLoss_StopPrice
+  commentId: P:Alpaca.Markets.IStopLoss.StopPrice
+  fullName: Alpaca.Markets.IStopLoss.StopPrice
+  nameWithType: IStopLoss.StopPrice
+- uid: Alpaca.Markets.IStopLoss.StopPrice*
+  name: StopPrice
+  href: api/Alpaca.Markets.IStopLoss.html#Alpaca_Markets_IStopLoss_StopPrice_
+  commentId: Overload:Alpaca.Markets.IStopLoss.StopPrice
+  isSpec: "True"
+  fullName: Alpaca.Markets.IStopLoss.StopPrice
+  nameWithType: IStopLoss.StopPrice
 - uid: Alpaca.Markets.IStreamAgg
   name: IStreamAgg
   href: api/Alpaca.Markets.IStreamAgg.html
@@ -5416,6 +5543,25 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.IStreamTrade.Time
   nameWithType: IStreamTrade.Time
+- uid: Alpaca.Markets.ITakeProfit
+  name: ITakeProfit
+  href: api/Alpaca.Markets.ITakeProfit.html
+  commentId: T:Alpaca.Markets.ITakeProfit
+  fullName: Alpaca.Markets.ITakeProfit
+  nameWithType: ITakeProfit
+- uid: Alpaca.Markets.ITakeProfit.LimitPrice
+  name: LimitPrice
+  href: api/Alpaca.Markets.ITakeProfit.html#Alpaca_Markets_ITakeProfit_LimitPrice
+  commentId: P:Alpaca.Markets.ITakeProfit.LimitPrice
+  fullName: Alpaca.Markets.ITakeProfit.LimitPrice
+  nameWithType: ITakeProfit.LimitPrice
+- uid: Alpaca.Markets.ITakeProfit.LimitPrice*
+  name: LimitPrice
+  href: api/Alpaca.Markets.ITakeProfit.html#Alpaca_Markets_ITakeProfit_LimitPrice_
+  commentId: Overload:Alpaca.Markets.ITakeProfit.LimitPrice
+  isSpec: "True"
+  fullName: Alpaca.Markets.ITakeProfit.LimitPrice
+  nameWithType: ITakeProfit.LimitPrice
 - uid: Alpaca.Markets.ITimeInterval
   name: ITimeInterval
   href: api/Alpaca.Markets.ITimeInterval.html
@@ -5742,6 +5888,67 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.IWebSocketFactory.CreateWebSocket
   nameWithType: IWebSocketFactory.CreateWebSocket
+- uid: Alpaca.Markets.LimitOrder
+  name: LimitOrder
+  href: api/Alpaca.Markets.LimitOrder.html
+  commentId: T:Alpaca.Markets.LimitOrder
+  fullName: Alpaca.Markets.LimitOrder
+  nameWithType: LimitOrder
+- uid: Alpaca.Markets.LimitOrder.Buy(System.String,System.Int64,System.Decimal)
+  name: Buy(String, Int64, Decimal)
+  href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_Buy_System_String_System_Int64_System_Decimal_
+  commentId: M:Alpaca.Markets.LimitOrder.Buy(System.String,System.Int64,System.Decimal)
+  fullName: Alpaca.Markets.LimitOrder.Buy(System.String, System.Int64, System.Decimal)
+  nameWithType: LimitOrder.Buy(String, Int64, Decimal)
+- uid: Alpaca.Markets.LimitOrder.Buy*
+  name: Buy
+  href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_Buy_
+  commentId: Overload:Alpaca.Markets.LimitOrder.Buy
+  isSpec: "True"
+  fullName: Alpaca.Markets.LimitOrder.Buy
+  nameWithType: LimitOrder.Buy
+- uid: Alpaca.Markets.LimitOrder.LimitPrice
+  name: LimitPrice
+  href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_LimitPrice
+  commentId: P:Alpaca.Markets.LimitOrder.LimitPrice
+  fullName: Alpaca.Markets.LimitOrder.LimitPrice
+  nameWithType: LimitOrder.LimitPrice
+- uid: Alpaca.Markets.LimitOrder.LimitPrice*
+  name: LimitPrice
+  href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_LimitPrice_
+  commentId: Overload:Alpaca.Markets.LimitOrder.LimitPrice
+  isSpec: "True"
+  fullName: Alpaca.Markets.LimitOrder.LimitPrice
+  nameWithType: LimitOrder.LimitPrice
+- uid: Alpaca.Markets.LimitOrder.OneCancelsOther(System.Decimal,System.Nullable{System.Decimal})
+  name: OneCancelsOther(Decimal, Nullable<Decimal>)
+  href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_OneCancelsOther_System_Decimal_System_Nullable_System_Decimal__
+  commentId: M:Alpaca.Markets.LimitOrder.OneCancelsOther(System.Decimal,System.Nullable{System.Decimal})
+  name.vb: OneCancelsOther(Decimal, Nullable(Of Decimal))
+  fullName: Alpaca.Markets.LimitOrder.OneCancelsOther(System.Decimal, System.Nullable<System.Decimal>)
+  fullName.vb: Alpaca.Markets.LimitOrder.OneCancelsOther(System.Decimal, System.Nullable(Of System.Decimal))
+  nameWithType: LimitOrder.OneCancelsOther(Decimal, Nullable<Decimal>)
+  nameWithType.vb: LimitOrder.OneCancelsOther(Decimal, Nullable(Of Decimal))
+- uid: Alpaca.Markets.LimitOrder.OneCancelsOther*
+  name: OneCancelsOther
+  href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_OneCancelsOther_
+  commentId: Overload:Alpaca.Markets.LimitOrder.OneCancelsOther
+  isSpec: "True"
+  fullName: Alpaca.Markets.LimitOrder.OneCancelsOther
+  nameWithType: LimitOrder.OneCancelsOther
+- uid: Alpaca.Markets.LimitOrder.Sell(System.String,System.Int64,System.Decimal)
+  name: Sell(String, Int64, Decimal)
+  href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_Sell_System_String_System_Int64_System_Decimal_
+  commentId: M:Alpaca.Markets.LimitOrder.Sell(System.String,System.Int64,System.Decimal)
+  fullName: Alpaca.Markets.LimitOrder.Sell(System.String, System.Int64, System.Decimal)
+  nameWithType: LimitOrder.Sell(String, Int64, Decimal)
+- uid: Alpaca.Markets.LimitOrder.Sell*
+  name: Sell
+  href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_Sell_
+  commentId: Overload:Alpaca.Markets.LimitOrder.Sell
+  isSpec: "True"
+  fullName: Alpaca.Markets.LimitOrder.Sell
+  nameWithType: LimitOrder.Sell
 - uid: Alpaca.Markets.ListOrdersRequest
   name: ListOrdersRequest
   href: api/Alpaca.Markets.ListOrdersRequest.html
@@ -5896,6 +6103,38 @@ references:
   commentId: F:Alpaca.Markets.MarketDataType.Indexes
   fullName: Alpaca.Markets.MarketDataType.Indexes
   nameWithType: MarketDataType.Indexes
+- uid: Alpaca.Markets.MarketOrder
+  name: MarketOrder
+  href: api/Alpaca.Markets.MarketOrder.html
+  commentId: T:Alpaca.Markets.MarketOrder
+  fullName: Alpaca.Markets.MarketOrder
+  nameWithType: MarketOrder
+- uid: Alpaca.Markets.MarketOrder.Buy(System.String,System.Int64)
+  name: Buy(String, Int64)
+  href: api/Alpaca.Markets.MarketOrder.html#Alpaca_Markets_MarketOrder_Buy_System_String_System_Int64_
+  commentId: M:Alpaca.Markets.MarketOrder.Buy(System.String,System.Int64)
+  fullName: Alpaca.Markets.MarketOrder.Buy(System.String, System.Int64)
+  nameWithType: MarketOrder.Buy(String, Int64)
+- uid: Alpaca.Markets.MarketOrder.Buy*
+  name: Buy
+  href: api/Alpaca.Markets.MarketOrder.html#Alpaca_Markets_MarketOrder_Buy_
+  commentId: Overload:Alpaca.Markets.MarketOrder.Buy
+  isSpec: "True"
+  fullName: Alpaca.Markets.MarketOrder.Buy
+  nameWithType: MarketOrder.Buy
+- uid: Alpaca.Markets.MarketOrder.Sell(System.String,System.Int64)
+  name: Sell(String, Int64)
+  href: api/Alpaca.Markets.MarketOrder.html#Alpaca_Markets_MarketOrder_Sell_System_String_System_Int64_
+  commentId: M:Alpaca.Markets.MarketOrder.Sell(System.String,System.Int64)
+  fullName: Alpaca.Markets.MarketOrder.Sell(System.String, System.Int64)
+  nameWithType: MarketOrder.Sell(String, Int64)
+- uid: Alpaca.Markets.MarketOrder.Sell*
+  name: Sell
+  href: api/Alpaca.Markets.MarketOrder.html#Alpaca_Markets_MarketOrder_Sell_
+  commentId: Overload:Alpaca.Markets.MarketOrder.Sell
+  isSpec: "True"
+  fullName: Alpaca.Markets.MarketOrder.Sell
+  nameWithType: MarketOrder.Sell
 - uid: Alpaca.Markets.NewOrderRequest
   name: NewOrderRequest
   href: api/Alpaca.Markets.NewOrderRequest.html
@@ -6170,6 +6409,189 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.OAuthKey.OAuthKey
   nameWithType: OAuthKey.OAuthKey
+- uid: Alpaca.Markets.OneCancelsOtherOrder
+  name: OneCancelsOtherOrder
+  href: api/Alpaca.Markets.OneCancelsOtherOrder.html
+  commentId: T:Alpaca.Markets.OneCancelsOtherOrder
+  fullName: Alpaca.Markets.OneCancelsOtherOrder
+  nameWithType: OneCancelsOtherOrder
+- uid: Alpaca.Markets.OneCancelsOtherOrder.StopLoss
+  name: StopLoss
+  href: api/Alpaca.Markets.OneCancelsOtherOrder.html#Alpaca_Markets_OneCancelsOtherOrder_StopLoss
+  commentId: P:Alpaca.Markets.OneCancelsOtherOrder.StopLoss
+  fullName: Alpaca.Markets.OneCancelsOtherOrder.StopLoss
+  nameWithType: OneCancelsOtherOrder.StopLoss
+- uid: Alpaca.Markets.OneCancelsOtherOrder.StopLoss*
+  name: StopLoss
+  href: api/Alpaca.Markets.OneCancelsOtherOrder.html#Alpaca_Markets_OneCancelsOtherOrder_StopLoss_
+  commentId: Overload:Alpaca.Markets.OneCancelsOtherOrder.StopLoss
+  isSpec: "True"
+  fullName: Alpaca.Markets.OneCancelsOtherOrder.StopLoss
+  nameWithType: OneCancelsOtherOrder.StopLoss
+- uid: Alpaca.Markets.OneCancelsOtherOrder.TakeProfit
+  name: TakeProfit
+  href: api/Alpaca.Markets.OneCancelsOtherOrder.html#Alpaca_Markets_OneCancelsOtherOrder_TakeProfit
+  commentId: P:Alpaca.Markets.OneCancelsOtherOrder.TakeProfit
+  fullName: Alpaca.Markets.OneCancelsOtherOrder.TakeProfit
+  nameWithType: OneCancelsOtherOrder.TakeProfit
+- uid: Alpaca.Markets.OneCancelsOtherOrder.TakeProfit*
+  name: TakeProfit
+  href: api/Alpaca.Markets.OneCancelsOtherOrder.html#Alpaca_Markets_OneCancelsOtherOrder_TakeProfit_
+  commentId: Overload:Alpaca.Markets.OneCancelsOtherOrder.TakeProfit
+  isSpec: "True"
+  fullName: Alpaca.Markets.OneCancelsOtherOrder.TakeProfit
+  nameWithType: OneCancelsOtherOrder.TakeProfit
+- uid: Alpaca.Markets.OrderBase
+  name: OrderBase
+  href: api/Alpaca.Markets.OrderBase.html
+  commentId: T:Alpaca.Markets.OrderBase
+  fullName: Alpaca.Markets.OrderBase
+  nameWithType: OrderBase
+- uid: Alpaca.Markets.OrderBase.ClientOrderId
+  name: ClientOrderId
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_ClientOrderId
+  commentId: P:Alpaca.Markets.OrderBase.ClientOrderId
+  fullName: Alpaca.Markets.OrderBase.ClientOrderId
+  nameWithType: OrderBase.ClientOrderId
+- uid: Alpaca.Markets.OrderBase.ClientOrderId*
+  name: ClientOrderId
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_ClientOrderId_
+  commentId: Overload:Alpaca.Markets.OrderBase.ClientOrderId
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderBase.ClientOrderId
+  nameWithType: OrderBase.ClientOrderId
+- uid: Alpaca.Markets.OrderBase.Duration
+  name: Duration
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Duration
+  commentId: P:Alpaca.Markets.OrderBase.Duration
+  fullName: Alpaca.Markets.OrderBase.Duration
+  nameWithType: OrderBase.Duration
+- uid: Alpaca.Markets.OrderBase.Duration*
+  name: Duration
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Duration_
+  commentId: Overload:Alpaca.Markets.OrderBase.Duration
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderBase.Duration
+  nameWithType: OrderBase.Duration
+- uid: Alpaca.Markets.OrderBase.ExtendedHours
+  name: ExtendedHours
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_ExtendedHours
+  commentId: P:Alpaca.Markets.OrderBase.ExtendedHours
+  fullName: Alpaca.Markets.OrderBase.ExtendedHours
+  nameWithType: OrderBase.ExtendedHours
+- uid: Alpaca.Markets.OrderBase.ExtendedHours*
+  name: ExtendedHours
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_ExtendedHours_
+  commentId: Overload:Alpaca.Markets.OrderBase.ExtendedHours
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderBase.ExtendedHours
+  nameWithType: OrderBase.ExtendedHours
+- uid: Alpaca.Markets.OrderBase.Quantity
+  name: Quantity
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Quantity
+  commentId: P:Alpaca.Markets.OrderBase.Quantity
+  fullName: Alpaca.Markets.OrderBase.Quantity
+  nameWithType: OrderBase.Quantity
+- uid: Alpaca.Markets.OrderBase.Quantity*
+  name: Quantity
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Quantity_
+  commentId: Overload:Alpaca.Markets.OrderBase.Quantity
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderBase.Quantity
+  nameWithType: OrderBase.Quantity
+- uid: Alpaca.Markets.OrderBase.Side
+  name: Side
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Side
+  commentId: P:Alpaca.Markets.OrderBase.Side
+  fullName: Alpaca.Markets.OrderBase.Side
+  nameWithType: OrderBase.Side
+- uid: Alpaca.Markets.OrderBase.Side*
+  name: Side
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Side_
+  commentId: Overload:Alpaca.Markets.OrderBase.Side
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderBase.Side
+  nameWithType: OrderBase.Side
+- uid: Alpaca.Markets.OrderBase.Symbol
+  name: Symbol
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Symbol
+  commentId: P:Alpaca.Markets.OrderBase.Symbol
+  fullName: Alpaca.Markets.OrderBase.Symbol
+  nameWithType: OrderBase.Symbol
+- uid: Alpaca.Markets.OrderBase.Symbol*
+  name: Symbol
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Symbol_
+  commentId: Overload:Alpaca.Markets.OrderBase.Symbol
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderBase.Symbol
+  nameWithType: OrderBase.Symbol
+- uid: Alpaca.Markets.OrderBase.Type
+  name: Type
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Type
+  commentId: P:Alpaca.Markets.OrderBase.Type
+  fullName: Alpaca.Markets.OrderBase.Type
+  nameWithType: OrderBase.Type
+- uid: Alpaca.Markets.OrderBase.Type*
+  name: Type
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Type_
+  commentId: Overload:Alpaca.Markets.OrderBase.Type
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderBase.Type
+  nameWithType: OrderBase.Type
+- uid: Alpaca.Markets.OrderBaseExtensions
+  name: OrderBaseExtensions
+  href: api/Alpaca.Markets.OrderBaseExtensions.html
+  commentId: T:Alpaca.Markets.OrderBaseExtensions
+  fullName: Alpaca.Markets.OrderBaseExtensions
+  nameWithType: OrderBaseExtensions
+- uid: Alpaca.Markets.OrderBaseExtensions.WithClientOrderId*
+  name: WithClientOrderId
+  href: api/Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithClientOrderId_
+  commentId: Overload:Alpaca.Markets.OrderBaseExtensions.WithClientOrderId
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderBaseExtensions.WithClientOrderId
+  nameWithType: OrderBaseExtensions.WithClientOrderId
+- uid: Alpaca.Markets.OrderBaseExtensions.WithClientOrderId``1(``0,System.String)
+  name: WithClientOrderId<TOrder>(TOrder, String)
+  href: api/Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithClientOrderId__1___0_System_String_
+  commentId: M:Alpaca.Markets.OrderBaseExtensions.WithClientOrderId``1(``0,System.String)
+  name.vb: WithClientOrderId(Of TOrder)(TOrder, String)
+  fullName: Alpaca.Markets.OrderBaseExtensions.WithClientOrderId<TOrder>(TOrder, System.String)
+  fullName.vb: Alpaca.Markets.OrderBaseExtensions.WithClientOrderId(Of TOrder)(TOrder, System.String)
+  nameWithType: OrderBaseExtensions.WithClientOrderId<TOrder>(TOrder, String)
+  nameWithType.vb: OrderBaseExtensions.WithClientOrderId(Of TOrder)(TOrder, String)
+- uid: Alpaca.Markets.OrderBaseExtensions.WithDuration*
+  name: WithDuration
+  href: api/Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithDuration_
+  commentId: Overload:Alpaca.Markets.OrderBaseExtensions.WithDuration
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderBaseExtensions.WithDuration
+  nameWithType: OrderBaseExtensions.WithDuration
+- uid: Alpaca.Markets.OrderBaseExtensions.WithDuration``1(``0,Alpaca.Markets.TimeInForce)
+  name: WithDuration<TOrder>(TOrder, TimeInForce)
+  href: api/Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithDuration__1___0_Alpaca_Markets_TimeInForce_
+  commentId: M:Alpaca.Markets.OrderBaseExtensions.WithDuration``1(``0,Alpaca.Markets.TimeInForce)
+  name.vb: WithDuration(Of TOrder)(TOrder, TimeInForce)
+  fullName: Alpaca.Markets.OrderBaseExtensions.WithDuration<TOrder>(TOrder, Alpaca.Markets.TimeInForce)
+  fullName.vb: Alpaca.Markets.OrderBaseExtensions.WithDuration(Of TOrder)(TOrder, Alpaca.Markets.TimeInForce)
+  nameWithType: OrderBaseExtensions.WithDuration<TOrder>(TOrder, TimeInForce)
+  nameWithType.vb: OrderBaseExtensions.WithDuration(Of TOrder)(TOrder, TimeInForce)
+- uid: Alpaca.Markets.OrderBaseExtensions.WithExtendedHours*
+  name: WithExtendedHours
+  href: api/Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithExtendedHours_
+  commentId: Overload:Alpaca.Markets.OrderBaseExtensions.WithExtendedHours
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderBaseExtensions.WithExtendedHours
+  nameWithType: OrderBaseExtensions.WithExtendedHours
+- uid: Alpaca.Markets.OrderBaseExtensions.WithExtendedHours``1(``0,System.Boolean)
+  name: WithExtendedHours<TOrder>(TOrder, Boolean)
+  href: api/Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithExtendedHours__1___0_System_Boolean_
+  commentId: M:Alpaca.Markets.OrderBaseExtensions.WithExtendedHours``1(``0,System.Boolean)
+  name.vb: WithExtendedHours(Of TOrder)(TOrder, Boolean)
+  fullName: Alpaca.Markets.OrderBaseExtensions.WithExtendedHours<TOrder>(TOrder, System.Boolean)
+  fullName.vb: Alpaca.Markets.OrderBaseExtensions.WithExtendedHours(Of TOrder)(TOrder, System.Boolean)
+  nameWithType: OrderBaseExtensions.WithExtendedHours<TOrder>(TOrder, Boolean)
+  nameWithType.vb: OrderBaseExtensions.WithExtendedHours(Of TOrder)(TOrder, Boolean)
 - uid: Alpaca.Markets.OrderClass
   name: OrderClass
   href: api/Alpaca.Markets.OrderClass.html
@@ -6212,6 +6634,64 @@ references:
   commentId: F:Alpaca.Markets.OrderSide.Sell
   fullName: Alpaca.Markets.OrderSide.Sell
   nameWithType: OrderSide.Sell
+- uid: Alpaca.Markets.OrderSideExtensions
+  name: OrderSideExtensions
+  href: api/Alpaca.Markets.OrderSideExtensions.html
+  commentId: T:Alpaca.Markets.OrderSideExtensions
+  fullName: Alpaca.Markets.OrderSideExtensions
+  nameWithType: OrderSideExtensions
+- uid: Alpaca.Markets.OrderSideExtensions.Limit(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal)
+  name: Limit(OrderSide, String, Int64, Decimal)
+  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Limit_Alpaca_Markets_OrderSide_System_String_System_Int64_System_Decimal_
+  commentId: M:Alpaca.Markets.OrderSideExtensions.Limit(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal)
+  fullName: Alpaca.Markets.OrderSideExtensions.Limit(Alpaca.Markets.OrderSide, System.String, System.Int64, System.Decimal)
+  nameWithType: OrderSideExtensions.Limit(OrderSide, String, Int64, Decimal)
+- uid: Alpaca.Markets.OrderSideExtensions.Limit*
+  name: Limit
+  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Limit_
+  commentId: Overload:Alpaca.Markets.OrderSideExtensions.Limit
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderSideExtensions.Limit
+  nameWithType: OrderSideExtensions.Limit
+- uid: Alpaca.Markets.OrderSideExtensions.Market(Alpaca.Markets.OrderSide,System.String,System.Int64)
+  name: Market(OrderSide, String, Int64)
+  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Market_Alpaca_Markets_OrderSide_System_String_System_Int64_
+  commentId: M:Alpaca.Markets.OrderSideExtensions.Market(Alpaca.Markets.OrderSide,System.String,System.Int64)
+  fullName: Alpaca.Markets.OrderSideExtensions.Market(Alpaca.Markets.OrderSide, System.String, System.Int64)
+  nameWithType: OrderSideExtensions.Market(OrderSide, String, Int64)
+- uid: Alpaca.Markets.OrderSideExtensions.Market*
+  name: Market
+  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Market_
+  commentId: Overload:Alpaca.Markets.OrderSideExtensions.Market
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderSideExtensions.Market
+  nameWithType: OrderSideExtensions.Market
+- uid: Alpaca.Markets.OrderSideExtensions.Stop(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal)
+  name: Stop(OrderSide, String, Int64, Decimal)
+  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Stop_Alpaca_Markets_OrderSide_System_String_System_Int64_System_Decimal_
+  commentId: M:Alpaca.Markets.OrderSideExtensions.Stop(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal)
+  fullName: Alpaca.Markets.OrderSideExtensions.Stop(Alpaca.Markets.OrderSide, System.String, System.Int64, System.Decimal)
+  nameWithType: OrderSideExtensions.Stop(OrderSide, String, Int64, Decimal)
+- uid: Alpaca.Markets.OrderSideExtensions.Stop*
+  name: Stop
+  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Stop_
+  commentId: Overload:Alpaca.Markets.OrderSideExtensions.Stop
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderSideExtensions.Stop
+  nameWithType: OrderSideExtensions.Stop
+- uid: Alpaca.Markets.OrderSideExtensions.StopLimit(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal)
+  name: StopLimit(OrderSide, String, Int64, Decimal, Decimal)
+  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_StopLimit_Alpaca_Markets_OrderSide_System_String_System_Int64_System_Decimal_System_Decimal_
+  commentId: M:Alpaca.Markets.OrderSideExtensions.StopLimit(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal)
+  fullName: Alpaca.Markets.OrderSideExtensions.StopLimit(Alpaca.Markets.OrderSide, System.String, System.Int64, System.Decimal, System.Decimal)
+  nameWithType: OrderSideExtensions.StopLimit(OrderSide, String, Int64, Decimal, Decimal)
+- uid: Alpaca.Markets.OrderSideExtensions.StopLimit*
+  name: StopLimit
+  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_StopLimit_
+  commentId: Overload:Alpaca.Markets.OrderSideExtensions.StopLimit
+  isSpec: "True"
+  fullName: Alpaca.Markets.OrderSideExtensions.StopLimit
+  nameWithType: OrderSideExtensions.StopLimit
 - uid: Alpaca.Markets.OrderStatus
   name: OrderStatus
   href: api/Alpaca.Markets.OrderStatus.html
@@ -8002,6 +8482,57 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.SecurityKey.SecurityKey
   nameWithType: SecurityKey.SecurityKey
+- uid: Alpaca.Markets.SimpleOrderBase
+  name: SimpleOrderBase
+  href: api/Alpaca.Markets.SimpleOrderBase.html
+  commentId: T:Alpaca.Markets.SimpleOrderBase
+  fullName: Alpaca.Markets.SimpleOrderBase
+  nameWithType: SimpleOrderBase
+- uid: Alpaca.Markets.SimpleOrderBase.Bracket(System.Decimal,System.Decimal,System.Nullable{System.Decimal})
+  name: Bracket(Decimal, Decimal, Nullable<Decimal>)
+  href: api/Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_Bracket_System_Decimal_System_Decimal_System_Nullable_System_Decimal__
+  commentId: M:Alpaca.Markets.SimpleOrderBase.Bracket(System.Decimal,System.Decimal,System.Nullable{System.Decimal})
+  name.vb: Bracket(Decimal, Decimal, Nullable(Of Decimal))
+  fullName: Alpaca.Markets.SimpleOrderBase.Bracket(System.Decimal, System.Decimal, System.Nullable<System.Decimal>)
+  fullName.vb: Alpaca.Markets.SimpleOrderBase.Bracket(System.Decimal, System.Decimal, System.Nullable(Of System.Decimal))
+  nameWithType: SimpleOrderBase.Bracket(Decimal, Decimal, Nullable<Decimal>)
+  nameWithType.vb: SimpleOrderBase.Bracket(Decimal, Decimal, Nullable(Of Decimal))
+- uid: Alpaca.Markets.SimpleOrderBase.Bracket*
+  name: Bracket
+  href: api/Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_Bracket_
+  commentId: Overload:Alpaca.Markets.SimpleOrderBase.Bracket
+  isSpec: "True"
+  fullName: Alpaca.Markets.SimpleOrderBase.Bracket
+  nameWithType: SimpleOrderBase.Bracket
+- uid: Alpaca.Markets.SimpleOrderBase.StopLoss(System.Decimal,System.Nullable{System.Decimal})
+  name: StopLoss(Decimal, Nullable<Decimal>)
+  href: api/Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_StopLoss_System_Decimal_System_Nullable_System_Decimal__
+  commentId: M:Alpaca.Markets.SimpleOrderBase.StopLoss(System.Decimal,System.Nullable{System.Decimal})
+  name.vb: StopLoss(Decimal, Nullable(Of Decimal))
+  fullName: Alpaca.Markets.SimpleOrderBase.StopLoss(System.Decimal, System.Nullable<System.Decimal>)
+  fullName.vb: Alpaca.Markets.SimpleOrderBase.StopLoss(System.Decimal, System.Nullable(Of System.Decimal))
+  nameWithType: SimpleOrderBase.StopLoss(Decimal, Nullable<Decimal>)
+  nameWithType.vb: SimpleOrderBase.StopLoss(Decimal, Nullable(Of Decimal))
+- uid: Alpaca.Markets.SimpleOrderBase.StopLoss*
+  name: StopLoss
+  href: api/Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_StopLoss_
+  commentId: Overload:Alpaca.Markets.SimpleOrderBase.StopLoss
+  isSpec: "True"
+  fullName: Alpaca.Markets.SimpleOrderBase.StopLoss
+  nameWithType: SimpleOrderBase.StopLoss
+- uid: Alpaca.Markets.SimpleOrderBase.TakeProfit(System.Decimal)
+  name: TakeProfit(Decimal)
+  href: api/Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_TakeProfit_System_Decimal_
+  commentId: M:Alpaca.Markets.SimpleOrderBase.TakeProfit(System.Decimal)
+  fullName: Alpaca.Markets.SimpleOrderBase.TakeProfit(System.Decimal)
+  nameWithType: SimpleOrderBase.TakeProfit(Decimal)
+- uid: Alpaca.Markets.SimpleOrderBase.TakeProfit*
+  name: TakeProfit
+  href: api/Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_TakeProfit_
+  commentId: Overload:Alpaca.Markets.SimpleOrderBase.TakeProfit
+  isSpec: "True"
+  fullName: Alpaca.Markets.SimpleOrderBase.TakeProfit
+  nameWithType: SimpleOrderBase.TakeProfit
 - uid: Alpaca.Markets.SockClient
   name: SockClient
   href: api/Alpaca.Markets.SockClient.html
@@ -8070,6 +8601,141 @@ references:
   commentId: F:Alpaca.Markets.SortDirection.Descending
   fullName: Alpaca.Markets.SortDirection.Descending
   nameWithType: SortDirection.Descending
+- uid: Alpaca.Markets.StopLimitOrder
+  name: StopLimitOrder
+  href: api/Alpaca.Markets.StopLimitOrder.html
+  commentId: T:Alpaca.Markets.StopLimitOrder
+  fullName: Alpaca.Markets.StopLimitOrder
+  nameWithType: StopLimitOrder
+- uid: Alpaca.Markets.StopLimitOrder.Buy(System.String,System.Int64,System.Decimal,System.Decimal)
+  name: Buy(String, Int64, Decimal, Decimal)
+  href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_Buy_System_String_System_Int64_System_Decimal_System_Decimal_
+  commentId: M:Alpaca.Markets.StopLimitOrder.Buy(System.String,System.Int64,System.Decimal,System.Decimal)
+  fullName: Alpaca.Markets.StopLimitOrder.Buy(System.String, System.Int64, System.Decimal, System.Decimal)
+  nameWithType: StopLimitOrder.Buy(String, Int64, Decimal, Decimal)
+- uid: Alpaca.Markets.StopLimitOrder.Buy*
+  name: Buy
+  href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_Buy_
+  commentId: Overload:Alpaca.Markets.StopLimitOrder.Buy
+  isSpec: "True"
+  fullName: Alpaca.Markets.StopLimitOrder.Buy
+  nameWithType: StopLimitOrder.Buy
+- uid: Alpaca.Markets.StopLimitOrder.LimitPrice
+  name: LimitPrice
+  href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_LimitPrice
+  commentId: P:Alpaca.Markets.StopLimitOrder.LimitPrice
+  fullName: Alpaca.Markets.StopLimitOrder.LimitPrice
+  nameWithType: StopLimitOrder.LimitPrice
+- uid: Alpaca.Markets.StopLimitOrder.LimitPrice*
+  name: LimitPrice
+  href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_LimitPrice_
+  commentId: Overload:Alpaca.Markets.StopLimitOrder.LimitPrice
+  isSpec: "True"
+  fullName: Alpaca.Markets.StopLimitOrder.LimitPrice
+  nameWithType: StopLimitOrder.LimitPrice
+- uid: Alpaca.Markets.StopLimitOrder.Sell(System.String,System.Int64,System.Decimal,System.Decimal)
+  name: Sell(String, Int64, Decimal, Decimal)
+  href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_Sell_System_String_System_Int64_System_Decimal_System_Decimal_
+  commentId: M:Alpaca.Markets.StopLimitOrder.Sell(System.String,System.Int64,System.Decimal,System.Decimal)
+  fullName: Alpaca.Markets.StopLimitOrder.Sell(System.String, System.Int64, System.Decimal, System.Decimal)
+  nameWithType: StopLimitOrder.Sell(String, Int64, Decimal, Decimal)
+- uid: Alpaca.Markets.StopLimitOrder.Sell*
+  name: Sell
+  href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_Sell_
+  commentId: Overload:Alpaca.Markets.StopLimitOrder.Sell
+  isSpec: "True"
+  fullName: Alpaca.Markets.StopLimitOrder.Sell
+  nameWithType: StopLimitOrder.Sell
+- uid: Alpaca.Markets.StopLimitOrder.StopPrice
+  name: StopPrice
+  href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_StopPrice
+  commentId: P:Alpaca.Markets.StopLimitOrder.StopPrice
+  fullName: Alpaca.Markets.StopLimitOrder.StopPrice
+  nameWithType: StopLimitOrder.StopPrice
+- uid: Alpaca.Markets.StopLimitOrder.StopPrice*
+  name: StopPrice
+  href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_StopPrice_
+  commentId: Overload:Alpaca.Markets.StopLimitOrder.StopPrice
+  isSpec: "True"
+  fullName: Alpaca.Markets.StopLimitOrder.StopPrice
+  nameWithType: StopLimitOrder.StopPrice
+- uid: Alpaca.Markets.StopLossOrder
+  name: StopLossOrder
+  href: api/Alpaca.Markets.StopLossOrder.html
+  commentId: T:Alpaca.Markets.StopLossOrder
+  fullName: Alpaca.Markets.StopLossOrder
+  nameWithType: StopLossOrder
+- uid: Alpaca.Markets.StopLossOrder.LimitPrice
+  name: LimitPrice
+  href: api/Alpaca.Markets.StopLossOrder.html#Alpaca_Markets_StopLossOrder_LimitPrice
+  commentId: P:Alpaca.Markets.StopLossOrder.LimitPrice
+  fullName: Alpaca.Markets.StopLossOrder.LimitPrice
+  nameWithType: StopLossOrder.LimitPrice
+- uid: Alpaca.Markets.StopLossOrder.LimitPrice*
+  name: LimitPrice
+  href: api/Alpaca.Markets.StopLossOrder.html#Alpaca_Markets_StopLossOrder_LimitPrice_
+  commentId: Overload:Alpaca.Markets.StopLossOrder.LimitPrice
+  isSpec: "True"
+  fullName: Alpaca.Markets.StopLossOrder.LimitPrice
+  nameWithType: StopLossOrder.LimitPrice
+- uid: Alpaca.Markets.StopLossOrder.StopPrice
+  name: StopPrice
+  href: api/Alpaca.Markets.StopLossOrder.html#Alpaca_Markets_StopLossOrder_StopPrice
+  commentId: P:Alpaca.Markets.StopLossOrder.StopPrice
+  fullName: Alpaca.Markets.StopLossOrder.StopPrice
+  nameWithType: StopLossOrder.StopPrice
+- uid: Alpaca.Markets.StopLossOrder.StopPrice*
+  name: StopPrice
+  href: api/Alpaca.Markets.StopLossOrder.html#Alpaca_Markets_StopLossOrder_StopPrice_
+  commentId: Overload:Alpaca.Markets.StopLossOrder.StopPrice
+  isSpec: "True"
+  fullName: Alpaca.Markets.StopLossOrder.StopPrice
+  nameWithType: StopLossOrder.StopPrice
+- uid: Alpaca.Markets.StopOrder
+  name: StopOrder
+  href: api/Alpaca.Markets.StopOrder.html
+  commentId: T:Alpaca.Markets.StopOrder
+  fullName: Alpaca.Markets.StopOrder
+  nameWithType: StopOrder
+- uid: Alpaca.Markets.StopOrder.Buy(System.String,System.Int64,System.Decimal)
+  name: Buy(String, Int64, Decimal)
+  href: api/Alpaca.Markets.StopOrder.html#Alpaca_Markets_StopOrder_Buy_System_String_System_Int64_System_Decimal_
+  commentId: M:Alpaca.Markets.StopOrder.Buy(System.String,System.Int64,System.Decimal)
+  fullName: Alpaca.Markets.StopOrder.Buy(System.String, System.Int64, System.Decimal)
+  nameWithType: StopOrder.Buy(String, Int64, Decimal)
+- uid: Alpaca.Markets.StopOrder.Buy*
+  name: Buy
+  href: api/Alpaca.Markets.StopOrder.html#Alpaca_Markets_StopOrder_Buy_
+  commentId: Overload:Alpaca.Markets.StopOrder.Buy
+  isSpec: "True"
+  fullName: Alpaca.Markets.StopOrder.Buy
+  nameWithType: StopOrder.Buy
+- uid: Alpaca.Markets.StopOrder.Sell(System.String,System.Int64,System.Decimal)
+  name: Sell(String, Int64, Decimal)
+  href: api/Alpaca.Markets.StopOrder.html#Alpaca_Markets_StopOrder_Sell_System_String_System_Int64_System_Decimal_
+  commentId: M:Alpaca.Markets.StopOrder.Sell(System.String,System.Int64,System.Decimal)
+  fullName: Alpaca.Markets.StopOrder.Sell(System.String, System.Int64, System.Decimal)
+  nameWithType: StopOrder.Sell(String, Int64, Decimal)
+- uid: Alpaca.Markets.StopOrder.Sell*
+  name: Sell
+  href: api/Alpaca.Markets.StopOrder.html#Alpaca_Markets_StopOrder_Sell_
+  commentId: Overload:Alpaca.Markets.StopOrder.Sell
+  isSpec: "True"
+  fullName: Alpaca.Markets.StopOrder.Sell
+  nameWithType: StopOrder.Sell
+- uid: Alpaca.Markets.StopOrder.StopPrice
+  name: StopPrice
+  href: api/Alpaca.Markets.StopOrder.html#Alpaca_Markets_StopOrder_StopPrice
+  commentId: P:Alpaca.Markets.StopOrder.StopPrice
+  fullName: Alpaca.Markets.StopOrder.StopPrice
+  nameWithType: StopOrder.StopPrice
+- uid: Alpaca.Markets.StopOrder.StopPrice*
+  name: StopPrice
+  href: api/Alpaca.Markets.StopOrder.html#Alpaca_Markets_StopOrder_StopPrice_
+  commentId: Overload:Alpaca.Markets.StopOrder.StopPrice
+  isSpec: "True"
+  fullName: Alpaca.Markets.StopOrder.StopPrice
+  nameWithType: StopOrder.StopPrice
 - uid: Alpaca.Markets.StreamingClientBase`1
   name: StreamingClientBase<TConfiguration>
   href: api/Alpaca.Markets.StreamingClientBase-1.html
@@ -8352,6 +9018,25 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory
   nameWithType: StreamingClientConfiguration.WebSocketFactory
+- uid: Alpaca.Markets.TakeProfitOrder
+  name: TakeProfitOrder
+  href: api/Alpaca.Markets.TakeProfitOrder.html
+  commentId: T:Alpaca.Markets.TakeProfitOrder
+  fullName: Alpaca.Markets.TakeProfitOrder
+  nameWithType: TakeProfitOrder
+- uid: Alpaca.Markets.TakeProfitOrder.LimitPrice
+  name: LimitPrice
+  href: api/Alpaca.Markets.TakeProfitOrder.html#Alpaca_Markets_TakeProfitOrder_LimitPrice
+  commentId: P:Alpaca.Markets.TakeProfitOrder.LimitPrice
+  fullName: Alpaca.Markets.TakeProfitOrder.LimitPrice
+  nameWithType: TakeProfitOrder.LimitPrice
+- uid: Alpaca.Markets.TakeProfitOrder.LimitPrice*
+  name: LimitPrice
+  href: api/Alpaca.Markets.TakeProfitOrder.html#Alpaca_Markets_TakeProfitOrder_LimitPrice_
+  commentId: Overload:Alpaca.Markets.TakeProfitOrder.LimitPrice
+  isSpec: "True"
+  fullName: Alpaca.Markets.TakeProfitOrder.LimitPrice
+  nameWithType: TakeProfitOrder.LimitPrice
 - uid: Alpaca.Markets.ThrottleParameters
   name: ThrottleParameters
   href: api/Alpaca.Markets.ThrottleParameters.html
