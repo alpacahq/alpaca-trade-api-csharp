@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal class JsonStreamQuoteAlpaca : IStreamQuote
+    internal sealed class JsonStreamQuoteAlpaca : IStreamQuote
     {
         [JsonProperty(PropertyName = "T", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
@@ -39,9 +39,7 @@ namespace Alpaca.Markets
 
         [OnDeserialized]
         internal void OnDeserializedMethod(
-            StreamingContext context)
-        {
+            StreamingContext context) =>
             Time = DateTimeHelper.FromUnixTimeNanoseconds(Timestamp);
-        }
     }
 }
