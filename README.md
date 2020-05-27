@@ -32,16 +32,6 @@ See the [UsageExamples](../../tree/develop/UsageExamples) project for near-to-re
 
 | Branch                                       | Version | Description                    |
 | -------------------------------------------- | ------- | ------------------------------ |
-| [develop](../../tree/develop)                | 3.7.*   | New features, breaking changes |
-| [master](../../tree/master)                  | 3.6.*   | All new features and hot-fixes |
-| [support/v3.5.x](../../tree/support/v3.5.x)  | 3.5.*   | Hot fixes only, some features  |
-
-# Release-specific changes in SDK
-
-## The `IConfiguration` support deprecation
-
-The [IConfiguration](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.iconfiguration) interface support completely removed from the SDK starting from version [3.6.0](https://github.com/alpacahq/alpaca-trade-api-csharp/releases/tag/v3.6.0) because it's hard to maintain and can be easy implemented on client side.
-
-## Polygon NATS client deprecation
-
-Polygon is deprecating their NATS streaming in favor of Websockets, and they have finally made it possible for Alpaca users to switch to the websocket endpoint. Starting from version [3.5.0](https://github.com/alpacahq/alpaca-trade-api-csharp/releases/tag/v3.5.0) support for NATS client streaming completely removed from SDK.
+| [develop](../../tree/develop)                | 4.0.*   | New features, breaking changes |
+| [master](../../tree/master)                  | 3.7.*   | All new features and hot-fixes |
+| [support/v3.6.x](../../tree/support/v3.6.x)  | 3.6.*   | Hot fixes only, some features  |
