@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class BracketOrder
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class BracketOrder
+   ">
+    <meta name="generator" content="docfx 2.54.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.BracketOrder">
+  
+  
+  <h1 id="Alpaca_Markets_BracketOrder" data-uid="Alpaca.Markets.BracketOrder" class="text-break">Class BracketOrder
+  </h1>
+  <div class="markdown level0 summary"><p>Encapsulates data required for placing bracket order on the Alpaca REST API.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Alpaca.Markets.OrderBase.html">OrderBase</a></div>
+    <div class="level2"><a class="xref" href="Alpaca.Markets.AdvancedOrderBase.html">AdvancedOrderBase</a></div>
+    <div class="level3"><span class="xref">BracketOrder</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Alpaca.Markets.AdvancedOrderBase.html#Alpaca_Markets_AdvancedOrderBase_OrderClass">AdvancedOrderBase.OrderClass</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Symbol">OrderBase.Symbol</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Quantity">OrderBase.Quantity</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Side">OrderBase.Side</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Type">OrderBase.Type</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Duration">OrderBase.Duration</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_ClientOrderId">OrderBase.ClientOrderId</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_ExtendedHours">OrderBase.ExtendedHours</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
+  <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
+  <h5 id="Alpaca_Markets_BracketOrder_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class BracketOrder : AdvancedOrderBase, Validation.IRequest</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_BracketOrder_StopLoss.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BracketOrder.StopLoss%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Orders/BracketOrder.cs/#L31">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BracketOrder_StopLoss_" data-uid="Alpaca.Markets.BracketOrder.StopLoss*"></a>
+  <h4 id="Alpaca_Markets_BracketOrder_StopLoss" data-uid="Alpaca.Markets.BracketOrder.StopLoss">StopLoss</h4>
+  <div class="markdown level1 summary"><p>Gets prices for stop loss order for the bracket order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IStopLoss StopLoss { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IStopLoss.html">IStopLoss</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_BracketOrder_TakeProfit.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BracketOrder.TakeProfit%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Orders/BracketOrder.cs/#L26">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BracketOrder_TakeProfit_" data-uid="Alpaca.Markets.BracketOrder.TakeProfit*"></a>
+  <h4 id="Alpaca_Markets_BracketOrder_TakeProfit" data-uid="Alpaca.Markets.BracketOrder.TakeProfit">TakeProfit</h4>
+  <div class="markdown level1 summary"><p>Gets prices for take profit order for the bracket order.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ITakeProfit TakeProfit { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.ITakeProfit.html">ITakeProfit</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_BracketOrder.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BracketOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Orders/BracketOrder.cs/#L8" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
