@@ -41,7 +41,7 @@ namespace UsageExamples
 
             // Figure out when the market will close so we can prepare to sell beforehand.
             var calendars = (await alpacaTradingClient
-                .ListCalendarAsync(new CalendarRequest().SetInclusiveTimeInterval(DateTime.Today, null)))
+                .ListCalendarAsync(new CalendarRequest().SetTimeInterval(DateTime.Today.GetInclusiveIntervalFromThat())))
                 .ToList();
             var calendarDate = calendars.First().TradingDate;
             var closingTime = calendars.First().TradingCloseTime;
@@ -168,11 +168,7 @@ namespace UsageExamples
             }
             Console.WriteLine($"Submitting {side} order for {quantity} shares at ${price}.");
             var order = await alpacaTradingClient.PostOrderAsync(
-                new NewOrderRequest(
-                    symbol, quantity, side, OrderType.Limit, TimeInForce.Day)
-                {
-                    LimitPrice = price
-                });
+                side.Limit(symbol, quantity, price));
             lastTradeId = order.OrderId;
         }
 
@@ -182,8 +178,7 @@ namespace UsageExamples
             {
                 var positionQuantity = (await alpacaTradingClient.GetPositionAsync(symbol)).Quantity;
                 await alpacaTradingClient.PostOrderAsync(
-                    new NewOrderRequest(
-                        symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day));
+                    OrderSide.Sell.Market(symbol, positionQuantity));
             }
             catch (Exception)
             {

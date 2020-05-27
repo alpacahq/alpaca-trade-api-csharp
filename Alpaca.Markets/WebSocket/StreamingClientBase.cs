@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -39,7 +40,7 @@ namespace Alpaca.Markets
             _webSocket.Closed += OnClosed;
 
             _webSocket.MessageReceived += OnMessageReceived;
-            _webSocket.DataReceived += OnDataReceived;
+            _webSocket.DataReceived += onDataReceived;
 
             _webSocket.Error += HandleError;
             _queue.OnError += HandleError;
@@ -91,7 +92,7 @@ namespace Alpaca.Markets
             void HandleConnected(AuthStatus authStatus)
             {
                 Connected -= HandleConnected;
-                tcs.SetResult(authStatus);
+                tcs?.SetResult(authStatus);
             }
         }
 
@@ -131,15 +132,6 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// Handles <see cref="IWebSocket.DataReceived"/> event.
-        /// </summary>
-        /// <param name="binaryData">Incoming binary data for processing.</param>
-        protected virtual void OnDataReceived(
-            Byte[] binaryData)
-        {
-        }
-
-        /// <summary>
         /// Implement <see cref="IDisposable"/> pattern for inheritable classes.
         /// </summary>
         /// <param name="disposing">If <c>true</c> - dispose managed objects.</param>
@@ -156,7 +148,7 @@ namespace Alpaca.Markets
             _webSocket.Closed -= OnClosed;
 
             _webSocket.MessageReceived -= OnMessageReceived;
-            _webSocket.DataReceived -= OnDataReceived;
+            _webSocket.DataReceived -= onDataReceived;
 
             _webSocket.Error -= HandleError;
             _queue.OnError -= OnError;
@@ -216,10 +208,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="exception">Exception for routing into <see cref="OnError"/> event.</param>
         protected void HandleError(
-            Exception exception)
-        {
+            Exception exception) =>
             OnError?.Invoke(exception);
-        }
 
         /// <summary>
         /// 
@@ -234,5 +224,9 @@ namespace Alpaca.Markets
             serializer.Serialize(textWriter, value);
             _webSocket.Send(textWriter.ToString());
         }
+
+        private void onDataReceived(
+            Byte[] binaryData) =>
+            OnMessageReceived(Encoding.UTF8.GetString(binaryData));
     }
 }

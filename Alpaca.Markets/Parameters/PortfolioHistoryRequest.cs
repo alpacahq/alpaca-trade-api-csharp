@@ -1,22 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaTradingClient.GetPortfolioHistoryAsync(PortfolioHistoryRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
-    public sealed class PortfolioHistoryRequest : Validation.IRequest
+    public sealed class PortfolioHistoryRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>
     {
+        /// <summary>
+        /// Gets inclusive date interval for filtering items in response.
+        /// </summary>
+        public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
+
         /// <summary>
         /// Gets or sets start date for desired history.
         /// </summary>
-        public DateTime? StartDate { get; set; }
+        [Obsolete("Use the TimeInterval.From property instead.", false)]
+        public DateTime? StartDate => TimeInterval.From;
 
         /// <summary>
         /// Gets or sets  the end date for desired history. Default value (if <c>null</c>) is today.
         /// </summary>
-        public DateTime? EndDate { get; set; }
+        [Obsolete("Use the TimeInterval.Into property instead.", false)]
+        public DateTime? EndDate => TimeInterval.Into;
 
         /// <summary>
         /// Gets or sets the time frame value for desired history. Default value (if <c>null</c>) is 1 minute
@@ -34,11 +40,8 @@ namespace Alpaca.Markets
         /// This is effective only for time frame less than 1 day.
         /// </summary>
         public Boolean? ExtendedHours { get; set; }
- 
-        IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
-        {
-            // TODO: olegra - add more validations
-            yield break;
-        }
+
+        void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
+            IInclusiveTimeInterval value) => TimeInterval = value;
     }
 }

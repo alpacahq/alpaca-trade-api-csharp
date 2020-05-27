@@ -12,12 +12,6 @@ namespace Alpaca.Markets
     public interface IHistoricalQuote : IQuoteBase<String>, IQuoteBase<Int64>, ITimestamps, IHistoricalBase
     {
         /// <summary>
-        /// Gets time offset of quote.
-        /// </summary>
-        [Obsolete("TimeOffset is deprecated in API v2, use Timestamp instead", true)]
-        Int64 TimeOffset { get; }
-
-        /// <summary>
         /// Gets indicators.
         /// </summary>
         IReadOnlyList<Int64> Indicators { get; }

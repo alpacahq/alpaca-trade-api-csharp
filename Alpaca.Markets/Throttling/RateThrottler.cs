@@ -34,12 +34,8 @@ namespace Alpaca.Markets
                 await Task.Delay(delay, cancellationToken).ConfigureAwait(false);
             }
 
-            public void SetNextRetryTimeRandom()
-            {
-                // TODO: If server logic fixed to provide Retry-After, this whole IF block will be dead code to remove
-                SetNextRetryTime(DateTime.UtcNow.AddMilliseconds(
-                    _randomRetryWait.Next(1000, 5000)));
-            }
+            public void SetNextRetryTimeRandom() => 
+                SetNextRetryTime(DateTime.UtcNow.AddMilliseconds(_randomRetryWait.Next(1000, 5000)));
 
             public void SetNextRetryTime(
                 DateTime nextRetryTime)

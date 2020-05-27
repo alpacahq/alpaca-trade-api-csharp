@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Text;
 using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
@@ -41,12 +40,12 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// Occured when new account update received from stream.
+        /// Occurred when new account update received from stream.
         /// </summary>
         public event Action<IAccountUpdate>? OnAccountUpdate;
 
         /// <summary>
-        /// Occured when new trade update received from stream.
+        /// Occurred when new trade update received from stream.
         /// </summary>
         public event Action<ITradeUpdate>? OnTradeUpdate;
 
@@ -67,12 +66,12 @@ namespace Alpaca.Markets
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]
-        protected override void OnDataReceived(
-            Byte[] binaryData)
+        protected override void OnMessageReceived(
+            String message)
         {
             try
             {
-                var token = JObject.Parse(Encoding.UTF8.GetString(binaryData));
+                var token = JObject.Parse(message);
 
                 var payload = token["data"];
                 var messageType = token["stream"];

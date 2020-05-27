@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace Alpaca.Markets
 {
+    // TODO: olegra - mark it as obsolete in next major release
+
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaTradingClient.PostOrderAsync(NewOrderRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
@@ -23,7 +25,8 @@ namespace Alpaca.Markets
             OrderType type,
             TimeInForce duration)
         {
-            Symbol = symbol;
+            Symbol = symbol ?? throw new ArgumentException(
+                "Symbol name cannot be null.", nameof(symbol));
             Quantity = quantity;
             Side = side;
             Type = type;
@@ -53,7 +56,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the new order duration.
         /// </summary>
-        public TimeInForce Duration { get;  }
+        public TimeInForce Duration { get; }
 
         /// <summary>
         /// Gets or sets the new order limit price.
@@ -98,15 +101,53 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets flag indicated that child orders should be listed as 'legs' of parent orders.
         /// </summary>
+        [Obsolete("This request parameter doesn't supported by the Alpaca REST API anymore.", true)]
         public Boolean? Nested { get; set; }
         
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
-            ClientOrderId.ValidateClientOrderId();
+            ClientOrderId = ClientOrderId?.ValidateClientOrderId();
 
-            // TODO: olegra - add more validations here
+            if (String.IsNullOrEmpty(Symbol))
+            {
+                yield return new RequestValidationException(
+                    "Symbols shouldn't be empty.", nameof(Symbol));
+            }
 
-            yield break;
+            if (Quantity <= 0)
+            {
+                yield return new RequestValidationException(
+                    "Order quantity should be positive value.", nameof(Quantity));
+            }
         }
+
+        internal JsonNewOrder GetJsonRequest() =>
+            new JsonNewOrder
+            {
+                Symbol = Symbol,
+                Quantity = Quantity,
+                OrderSide = Side,
+                OrderType = Type,
+                TimeInForce = Duration,
+                LimitPrice = LimitPrice,
+                StopPrice = StopPrice,
+                ClientOrderId = ClientOrderId,
+                ExtendedHours = ExtendedHours,
+                OrderClass = OrderClass,
+                TakeProfit = TakeProfitLimitPrice != null
+                    ? new JsonNewOrderAdvancedAttributes
+                    {
+                        LimitPrice = TakeProfitLimitPrice
+                    }
+                    : null,
+                StopLoss = StopLossStopPrice != null ||
+                           StopLossLimitPrice != null
+                    ? new JsonNewOrderAdvancedAttributes
+                    {
+                        StopPrice = StopLossStopPrice,
+                        LimitPrice = StopLossLimitPrice
+                    }
+                    : null
+            };
     }
 }

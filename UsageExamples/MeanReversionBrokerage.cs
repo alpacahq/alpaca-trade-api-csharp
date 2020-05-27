@@ -57,7 +57,7 @@ namespace UsageExamples
 
             // Figure out when the market will close so we can prepare to sell beforehand.
             var calendars = (await alpacaTradingClient
-                .ListCalendarAsync(new CalendarRequest().SetInclusiveTimeInterval(DateTime.Today, null)))
+                .ListCalendarAsync(new CalendarRequest().SetTimeInterval(DateTime.Today.GetInclusiveIntervalFromThat())))
                 .ToList();
             var calendarDate = calendars.First().TradingDate;
             var closingTime = calendars.First().TradingCloseTime;
@@ -103,7 +103,7 @@ namespace UsageExamples
                     await HandleMinuteAgg(agg);
                 }
             };
-            polygonStreamingClient.SubscribeSecondAgg(symbol);
+            polygonStreamingClient.SubscribeMinuteAgg(symbol);
         }
 
         public void Dispose()
@@ -289,11 +289,8 @@ namespace UsageExamples
             try
             {
                 var order = await alpacaTradingClient.PostOrderAsync(
-                    new NewOrderRequest(
-                        symbol, quantity, side, OrderType.Limit, TimeInForce.Day)
-                    {
-                        LimitPrice = price
-                    });
+                    side.Limit(symbol, quantity, price));
+
                 lastTradeId = order.OrderId;
                 lastTradeOpen = true;
             }
@@ -312,14 +309,12 @@ namespace UsageExamples
                 if (positionQuantity > 0)
                 {
                     await alpacaTradingClient.PostOrderAsync(
-                        new NewOrderRequest(
-                            symbol, positionQuantity, OrderSide.Sell, OrderType.Market, TimeInForce.Day));
+                        OrderSide.Sell.Market(symbol, positionQuantity));
                 }
                 else
                 {
                     await alpacaTradingClient.PostOrderAsync(
-                        new NewOrderRequest(
-                            symbol, Math.Abs(positionQuantity), OrderSide.Buy, OrderType.Market, TimeInForce.Day));
+                        OrderSide.Buy.Market(symbol, Math.Abs(positionQuantity)));
                 }
             }
             catch (Exception)

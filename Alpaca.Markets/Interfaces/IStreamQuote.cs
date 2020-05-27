@@ -7,13 +7,8 @@ namespace Alpaca.Markets
     /// Encapsulates quote information from Polygon streaming API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-    public interface IStreamQuote : IQuoteBase<Int64>
+    public interface IStreamQuote : IQuoteBase<Int64>, IStreamBase
     {
-        /// <summary>
-        /// Gets asset name.
-        /// </summary>
-        String Symbol { get; }
-
         /// <summary>
         /// Gets quote timestamp.
         /// </summary>

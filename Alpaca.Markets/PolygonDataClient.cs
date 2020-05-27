@@ -165,12 +165,12 @@ namespace Alpaca.Markets
         {
             request.EnsureNotNull(nameof(request)).Validate();
 
-            var unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(request.DateFrom);
-            var unixTo = DateTimeHelper.GetUnixTimeMilliseconds(request.DateInto);
+            var unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(request.TimeInterval.From ?? default);
+            var unixInto = DateTimeHelper.GetUnixTimeMilliseconds(request.TimeInterval.Into ?? default);
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = $"v2/aggs/ticker/{request.Symbol}/range/{request.Period.ToString()}/{unixFrom}/{unixTo}",
+                Path = $"v2/aggs/ticker/{request.Symbol}/range/{request.Period.ToString()}/{unixFrom}/{unixInto}",
                 Query = getDefaultPolygonApiQueryBuilder()
                     .AddParameter("unadjusted", request.Unadjusted ? Boolean.TrueString : Boolean.FalseString)
             };
@@ -196,7 +196,7 @@ namespace Alpaca.Markets
                 Query = getDefaultPolygonApiQueryBuilder()
             };
 
-            return _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTrade>(
+            return _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTradePolygon>(
                 FakeThrottler.Instance, builder, cancellationToken);
         }
 
@@ -216,7 +216,7 @@ namespace Alpaca.Markets
                 Query = getDefaultPolygonApiQueryBuilder()
             };
 
-            return _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuote>(
+            return _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuotePolygon>(
                 FakeThrottler.Instance, builder, cancellationToken);
         }
 

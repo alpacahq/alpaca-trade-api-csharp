@@ -42,11 +42,16 @@ namespace Alpaca.Markets
        
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
-            // TODO: olegra - add more validations here
-            if (!Name.IsWatchListNameValid())
+            if (Name.IsWatchListNameInvalid())
             {
                 yield return new RequestValidationException(
                     "Watch list name should be from 1 to 64 characters length.", nameof(Name));
+            }
+
+            if (Assets.Any(String.IsNullOrEmpty))
+            {
+                yield return new RequestValidationException(
+                    "Assets list shouldn't contain null or empty items.", nameof(Assets));
             }
         }
     }

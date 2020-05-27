@@ -5,8 +5,6 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    // TODO: OlegRa - remove `V1` class and flatten hierarchy after removing Polygon Historical API v1 support
-
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
@@ -17,8 +15,6 @@ namespace Alpaca.Markets
 
         [JsonIgnore]
         String IQuoteBase<String>.AskExchange => throw new InvalidOperationException();
-
-        public Int64 TimeOffset => throw new InvalidOperationException();
 
         [JsonProperty(PropertyName = "t", Required = Required.Default)]
         public Int64 TimestampInNanoseconds { get; set; }
@@ -77,50 +73,5 @@ namespace Alpaca.Markets
         [JsonIgnore]
 
         public IReadOnlyList<Int64> Indicators => IndicatorsList.EmptyIfNull();
-    }
-
-    [SuppressMessage(
-        "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonHistoricalQuoteV1 : IHistoricalQuote
-    {
-        [JsonProperty(PropertyName = "bE", Required = Required.Default)]
-        public String BidExchange { get; set; } = String.Empty;
-
-        [JsonProperty(PropertyName = "aE", Required = Required.Default)]
-        public String AskExchange { get; set; } = String.Empty;
-
-        [JsonProperty(PropertyName = "bP", Required = Required.Default)]
-        public Decimal BidPrice { get; set; }
-
-        [JsonProperty(PropertyName = "aP", Required = Required.Default)]
-        public Decimal AskPrice { get; set; }
-
-        [JsonProperty(PropertyName = "bS", Required = Required.Default)]
-        public Int64 BidSize { get; set; }
-
-        [JsonProperty(PropertyName = "aS", Required = Required.Default)]
-        public Int64 AskSize { get; set; }
-
-        [JsonProperty(PropertyName = "t", Required = Required.Default)]
-        public Int64 TimeOffset { get; set; }
-
-        public DateTime Timestamp => throw new InvalidOperationException();
-
-        public DateTime ParticipantTimestamp => throw new InvalidOperationException();
-
-        public DateTime TradeReportingFacilityTimestamp => throw new InvalidOperationException();
-
-        Int64 IQuoteBase<Int64>.AskExchange => throw new InvalidOperationException();
-
-        Int64 IQuoteBase<Int64>.BidExchange => throw new InvalidOperationException();
-
-        public Int64 Tape => throw new InvalidOperationException();
-
-        public Int64 SequenceNumber => throw new InvalidOperationException();
-
-        public IReadOnlyList<Int64> Conditions => throw new InvalidOperationException();
-
-        public IReadOnlyList<Int64> Indicators => throw new InvalidOperationException();
     }
 }

@@ -7,13 +7,8 @@ namespace Alpaca.Markets
     /// Encapsulates trade information from Polygon streaming API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-    public interface IStreamTrade
+    public interface IStreamTrade : IStreamBase
     {
-        /// <summary>
-        /// Gets asset name.
-        /// </summary>
-        String Symbol { get; }
-
         /// <summary>
         /// Gets asset's exchange identifier.
         /// </summary>

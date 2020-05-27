@@ -31,5 +31,10 @@ namespace Alpaca.Markets
         /// Gets Polygon.io streaming API base URL for this environment.
         /// </summary>
         Uri PolygonStreamingApi { get; }
+
+        /// <summary>
+        /// Gets Alpaca data streaming API base URL for this environment.
+        /// </summary>
+        Uri AlpacaDataStreamingApi { get; }
     }
 }

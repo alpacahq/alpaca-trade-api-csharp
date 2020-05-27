@@ -6,7 +6,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates request parameters for <see cref="PolygonDataClient.ListAggregatesAsync(AggregatesRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
-    public sealed class AggregatesRequest : Validation.IRequest
+    public sealed class AggregatesRequest : Validation.IRequest, IRequestWithTimeInterval<IInclusiveTimeInterval>
     {
         /// <summary>
         /// Creates new instance of <see cref="AggregatesRequest"/> object.
@@ -17,7 +17,8 @@ namespace Alpaca.Markets
             String symbol,
             AggregationPeriod period)
         {
-            Symbol = symbol;
+            Symbol = symbol ?? throw new ArgumentException(
+                "Symbol name cannot be null.", nameof(symbol));
             Period = period;
         }
 
@@ -32,34 +33,26 @@ namespace Alpaca.Markets
         public AggregationPeriod Period { get; }
 
         /// <summary>
+        /// Gets inclusive date interval for filtering items in response.
+        /// </summary>
+        public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
+
+        /// <summary>
         /// Gets start time for filtering (inclusive).
         /// </summary>
-        public DateTime DateFrom { get; private set; }
+        [Obsolete("Use the TimeInterval.From property instead.", false)]
+        public DateTime DateFrom => TimeInterval.From ?? default;
 
         /// <summary>
         /// Gets end time for filtering (inclusive).
         /// </summary>
-        public DateTime DateInto { get; private set; }
+        [Obsolete("Use the TimeInterval.Into property instead.", false)]
+        public DateTime DateInto => TimeInterval.Into ?? default;
 
         /// <summary>
         /// Gets or sets flag indicated that the results should not be adjusted for splits.
         /// </summary>
         public Boolean Unadjusted { get; set; }
-        
-        /// <summary>
-        /// Sets inclusive time interval for request.
-        /// </summary>
-        /// <param name="dateFrom">Filtering interval start time.</param>
-        /// <param name="dateInto">Filtering interval end time.</param>
-        /// <returns>Fluent interface method return same <see cref="AggregatesRequest"/> instance.</returns>
-        public AggregatesRequest SetInclusiveTimeInterval(
-            DateTime dateFrom,
-            DateTime dateInto)
-        {
-            DateFrom = dateFrom;
-            DateInto = dateInto;
-            return this;
-        }
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
@@ -69,25 +62,20 @@ namespace Alpaca.Markets
                     "Symbols shouldn't be empty.", nameof(Symbol));
             }
 
-            if (DateFrom == default)
+            if (TimeInterval.IsEmpty())
             {
                 yield return new RequestValidationException(
-                    "Time interval start should be specified.", nameof(DateFrom));
+                    "Time interval should be specified.", nameof(TimeInterval));
             }
 
-            if (DateInto == default)
+            if (TimeInterval.IsOpen())
             {
                 yield return new RequestValidationException(
-                    "Time interval end should be specified.", nameof(DateInto));
-            }
-
-            if (DateFrom > DateInto)
-            {
-                yield return new RequestValidationException(
-                    "Time interval should be valid.", nameof(DateFrom));
-                yield return new RequestValidationException(
-                    "Time interval should be valid.", nameof(DateInto));
+                    "Time interval should have both dates.", nameof(TimeInterval));
             }
         }
+
+        void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
+            IInclusiveTimeInterval value) => TimeInterval = value;
     }
 }

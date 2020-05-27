@@ -57,16 +57,9 @@ namespace Alpaca.Markets
         /// <returns>Watch list object with proper <paramref name="watchListId"/> value.</returns>
         public Task<IWatchList> GetWatchListByIdAsync(
             Guid watchListId,
-            CancellationToken cancellationToken = default)
-        {
-            var builder = new UriBuilder(_httpClient.BaseAddress)
-            {
-                Path = _httpClient.BaseAddress.AbsolutePath + $"watchlists/{watchListId:D}"
-            };
-
-            return _httpClient.GetSingleObjectAsync<IWatchList, JsonWatchList>(
-                _alpacaRestApiThrottler, builder, cancellationToken);
-        }
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetSingleObjectAsync<IWatchList, JsonWatchList>(
+                _alpacaRestApiThrottler, $"watchlists/{watchListId:D}", cancellationToken);
 
         /// <summary>
         /// Get watch list object from Alpaca REST API endpoint by watch list user-defined name.
@@ -78,7 +71,7 @@ namespace Alpaca.Markets
             String name,
             CancellationToken cancellationToken = default)
         {
-            if (!name.IsWatchListNameValid())
+            if (name.IsWatchListNameInvalid())
             {
                 throw new ArgumentException("Watch list name should be from 1 to 64 characters length.", nameof(name));
             }
@@ -181,13 +174,8 @@ namespace Alpaca.Markets
         {
             request.EnsureNotNull(nameof(request)).Validate();
 
-            await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
-
-            using var response = await _httpClient.DeleteAsync(
-                    new Uri($"watchlists/{request.Key:D}/{request.Asset}", UriKind.RelativeOrAbsolute), cancellationToken)
-                .ConfigureAwait(false);
-
-            return await response.DeserializeAsync<IWatchList, JsonWatchList>()
+            return await _httpClient.DeleteSingleObjectAsync<IWatchList, JsonWatchList>(
+                    _alpacaRestApiThrottler, $"watchlists/{request.Key:D}/{request.Asset}", cancellationToken)
                 .ConfigureAwait(false);
         }
 
@@ -210,12 +198,9 @@ namespace Alpaca.Markets
                     .AddParameter("name", request.Key)
             };
 
-            await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
-
-            using var response = await _httpClient.DeleteAsync(builder.Uri, cancellationToken)
-                .ConfigureAwait(false);
-
-            return await response.DeserializeAsync<IWatchList, JsonWatchList>()
+            return await _httpClient
+                .DeleteSingleObjectAsync<IWatchList, JsonWatchList>(
+                    _alpacaRestApiThrottler, builder, cancellationToken)
                 .ConfigureAwait(false);
         }
 
@@ -227,16 +212,10 @@ namespace Alpaca.Markets
         /// <returns>Returns <c>true</c> if operation completed successfully.</returns>
         public async Task<Boolean> DeleteWatchListByIdAsync(
             Guid watchListId,
-            CancellationToken cancellationToken = default)
-        {
-            await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
-
-            using var response = await _httpClient.DeleteAsync(
-                    new Uri($"watchlists/{watchListId:D}", UriKind.RelativeOrAbsolute), cancellationToken)
+            CancellationToken cancellationToken = default) =>
+            await _httpClient.DeleteAsync(
+                    _alpacaRestApiThrottler, $"watchlists/{watchListId:D}", cancellationToken)
                 .ConfigureAwait(false);
-
-            return response.IsSuccessStatusCode;
-        }
 
         /// <summary>
         /// Deletes watch list from Alpaca REST API endpoint by watch list name.
@@ -248,7 +227,7 @@ namespace Alpaca.Markets
             String name,
             CancellationToken cancellationToken = default)
         {
-            if (!name.IsWatchListNameValid())
+            if (name.IsWatchListNameInvalid())
             {
                 throw new ArgumentException("Watch list name should be from 1 to 64 characters length.", nameof(name));
             }
@@ -260,12 +239,9 @@ namespace Alpaca.Markets
                     .AddParameter("name", name)
             };
 
-            await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
-
-            using var response = await _httpClient.DeleteAsync(builder.Uri, cancellationToken)
+            return await _httpClient.DeleteAsync(
+                    _alpacaRestApiThrottler, builder, cancellationToken)
                 .ConfigureAwait(false);
-
-            return response.IsSuccessStatusCode;
         }
 
 

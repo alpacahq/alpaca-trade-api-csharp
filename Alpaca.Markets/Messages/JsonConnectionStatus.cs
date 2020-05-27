@@ -12,7 +12,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "status", Required = Required.Always)]
         public ConnectionStatus Status { get; set; }
 
-        [JsonProperty(PropertyName = "message", Required = Required.Always)]
+        [JsonProperty(PropertyName = "message", Required = Required.Default)]
         public String Message { get; set; } = String.Empty;
     }
 }

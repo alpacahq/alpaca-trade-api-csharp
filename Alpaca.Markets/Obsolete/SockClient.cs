@@ -6,7 +6,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca streaming API.
     /// </summary>
-    [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the AlpacaStreamingClient class instead.", false)]
+    [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the AlpacaStreamingClient class instead.", true)]
     [SuppressMessage("ReSharper", "UnusedType.Global")]
     [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
     public sealed class SockClient : IDisposable
@@ -45,28 +45,6 @@ namespace Alpaca.Markets
             : this(createConfiguration(keyId, secretKey, alpacaRestApi, webSocketFactory))
         {
         }
-
-#if NETSTANDARD2_0 || NETSTANDARD2_1
-        /// <summary>
-        /// Creates new instance of <see cref="SockClient"/> object.
-        /// </summary>
-        /// <param name="configuration">Application configuration.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        public SockClient(
-            Microsoft.Extensions.Configuration.IConfiguration configuration,
-            IWebSocketFactory? webSocketFactory = null)
-            : this(createConfiguration(configuration, webSocketFactory)) =>
-            System.Diagnostics.Contracts.Contract.Requires(configuration != null);
-
-        private static AlpacaStreamingClientConfiguration createConfiguration(
-            Microsoft.Extensions.Configuration.IConfiguration configuration,
-            IWebSocketFactory? webSocketFactory = null) =>
-            createConfiguration(
-                configuration?["keyId"] ?? throw new ArgumentException("Provide 'keyId' configuration parameter.", nameof(configuration)),
-                configuration["secretKey"] ?? throw new ArgumentException("Provide 'secretKey' configuration parameter.", nameof(configuration)),
-                configuration["alpacaRestApi"].GetUrlSafe(Environments.Live.AlpacaTradingApi),
-                webSocketFactory);
-#endif
 
         /// <summary>
         /// Creates new instance of <see cref="SockClient"/> object.

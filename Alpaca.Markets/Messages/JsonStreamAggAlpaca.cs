@@ -8,9 +8,9 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonStreamAgg : IStreamAgg
+    internal sealed class JsonStreamAggAlpaca : IStreamAgg
     {
-        [JsonProperty(PropertyName = "sym", Required = Required.Always)]
+        [JsonProperty(PropertyName = "T", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "o", Required = Required.Always)]

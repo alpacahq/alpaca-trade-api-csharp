@@ -51,7 +51,7 @@ namespace Alpaca.Markets
         /// <param name="limit">Maximal number of daily bars in data response.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
-        [Obsolete("Use overloaded method that required BarSetRequest parameter instead of this one.", false)]
+        [Obsolete("Use overloaded method that required BarSetRequest parameter instead of this one.", true)]
         public Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
             IEnumerable<String> symbols,
             TimeFrame timeFrame,
@@ -82,8 +82,8 @@ namespace Alpaca.Markets
                 Path = _httpClient.BaseAddress.AbsolutePath + $"bars/{request.TimeFrame.ToEnumString()}",
                 Query = new QueryBuilder()
                     .AddParameter("symbols", String.Join(",", request.Symbols))
-                    .AddParameter((request.AreTimesInclusive ? "start" : "after"), request.TimeFrom, "O")
-                    .AddParameter((request.AreTimesInclusive ? "end" : "until"), request.TimeInto, "O")
+                    .AddParameter((request.AreTimesInclusive ? "start" : "after"), request.TimeInterval.From, "O")
+                    .AddParameter((request.AreTimesInclusive ? "end" : "until"), request.TimeInterval.Into, "O")
                     .AddParameter("limit", request.Limit)
             };
 
@@ -96,5 +96,29 @@ namespace Alpaca.Markets
                 kvp => kvp.Key, 
                 kvp => (IReadOnlyList<IAgg>)kvp.Value.AsReadOnly());
         }
+
+        /// <summary>
+        /// Gets last trade for singe asset from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only last trade information.</returns>
+        public Task<ILastTrade> GetLastTradeAsync(
+            String symbol,
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTradeAlpaca>(
+                FakeThrottler.Instance, $"last/stocks/{symbol}", cancellationToken);
+
+        /// <summary>
+        /// Gets current quote for singe asset from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only current quote information.</returns>
+        public Task<ILastQuote> GetLastQuoteAsync(
+            String symbol,
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuoteAlpaca>(
+                FakeThrottler.Instance, $"last_quote/stocks/{symbol}", cancellationToken);
     }
 }

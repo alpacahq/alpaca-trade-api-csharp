@@ -7,7 +7,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API via websockets.
     /// </summary>
-    [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the PolygonStreamingClient class instead.", false)]
+    [Obsolete("This class is deprecated and will be removed in the upcoming releases. Use the PolygonStreamingClient class instead.", true)]
     [SuppressMessage("ReSharper", "UnusedType.Global")]
     [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
@@ -47,30 +47,6 @@ namespace Alpaca.Markets
             : this(createConfiguration(keyId, polygonWebsocketApi, isStagingEnvironment, webSocketFactory))
         {
         }
-
-#if NETSTANDARD2_0 || NETSTANDARD2_1
-        /// <summary>
-        /// Creates new instance of <see cref="PolygonSockClient"/> object.
-        /// </summary>
-        /// <param name="configuration">Application configuration.</param>
-        /// <param name="webSocketFactory">Factory class for web socket wrapper creation.</param>
-        public PolygonSockClient(
-            Microsoft.Extensions.Configuration.IConfiguration configuration,
-            IWebSocketFactory? webSocketFactory = null)
-            : this(createConfiguration(configuration, webSocketFactory))
-        {
-            System.Diagnostics.Contracts.Contract.Requires(configuration != null);
-        }
-
-        private static PolygonStreamingClientConfiguration createConfiguration(
-            Microsoft.Extensions.Configuration.IConfiguration configuration,
-            IWebSocketFactory? webSocketFactory = null) =>
-            createConfiguration(
-                configuration?["keyId"] ?? throw new ArgumentException("Provide 'keyId' configuration parameter.", nameof(configuration)),
-                configuration["polygonWebsocketApi"].GetUrlSafe(Environments.Live.PolygonStreamingApi),
-                Convert.ToBoolean(configuration["staging"] ?? "false", System.Globalization.CultureInfo.InvariantCulture),
-                webSocketFactory);
-#endif    
 
         /// <summary>
         /// Creates new instance of <see cref="PolygonSockClient"/> object.

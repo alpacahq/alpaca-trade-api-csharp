@@ -5,19 +5,11 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-    // TODO: OlegRa - remove `V1` class and flatten hierarchy after removing Polygon Historical API v1 support
-
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonHistoricalTrade : IHistoricalTrade
     {
-        [JsonIgnore]
-        public String Exchange  => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        public Int64 TimeOffset  => throw new InvalidOperationException();
-
         [JsonProperty(PropertyName = "p", Required = Required.Default)]
         public Decimal Price { get; set; }
 
@@ -68,53 +60,5 @@ namespace Alpaca.Markets
 
         [JsonIgnore]
         public IReadOnlyList<Int64> Conditions => ConditionsList.EmptyIfNull();
-    }
-
-    [SuppressMessage(
-        "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonHistoricalTradeV1 : IHistoricalTrade
-    {
-        [JsonProperty(PropertyName = "e", Required = Required.Default)]
-        public String? Exchange { get; set; }
-
-        [JsonProperty(PropertyName = "t", Required = Required.Default)]
-        public Int64 TimeOffset { get; set; }
-
-        [JsonProperty(PropertyName = "p", Required = Required.Default)]
-        public Decimal Price { get; set; }
-
-        [JsonProperty(PropertyName = "s", Required = Required.Default)]
-        public Int64 Size { get; set; }
-
-        [JsonIgnore]
-        public DateTime Timestamp => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        public DateTime ParticipantTimestamp => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        public DateTime TradeReportingFacilityTimestamp => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        public Int64 ExchangeId => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        public Int64 TradeReportingFacilityId => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        public Int64 Tape => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        public Int64 SequenceNumber => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        public String TradeId => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        public String OriginalTradeId => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        public IReadOnlyList<Int64> Conditions => throw new InvalidOperationException();
     }
 }

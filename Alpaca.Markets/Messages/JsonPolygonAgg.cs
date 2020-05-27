@@ -10,7 +10,6 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonPolygonAgg : IAgg
     {
-
         [JsonProperty(PropertyName = "o", Required = Required.Default)]
         public Decimal Open { get; set; }
 
