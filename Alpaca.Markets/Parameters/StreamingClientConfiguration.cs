@@ -3,7 +3,7 @@
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Configuration parameters object for <see cref="SockClient"/> class.
+    /// Configuration parameters object for <see cref="StreamingClientBase{TConfiguration}"/> class.
     /// </summary>
     public abstract class StreamingClientConfiguration
     {

@@ -23,7 +23,7 @@ namespace Alpaca.Markets
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
         /// <summary>
-        /// Creates new instance of <see cref="SockClient"/> object.
+        /// Creates new instance of <see cref="AlpacaStreamingClient"/> object.
         /// </summary>
         /// <param name="configuration">Configuration parameters object.</param>
         public AlpacaStreamingClient(
