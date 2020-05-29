@@ -40,13 +40,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets start time for filtering (inclusive).
         /// </summary>
-        [Obsolete("Use the TimeInterval.From property instead.", false)]
+        [Obsolete("Use the TimeInterval.From property instead.", true)]
         public DateTime DateFrom => TimeInterval.From ?? default;
 
         /// <summary>
         /// Gets end time for filtering (inclusive).
         /// </summary>
-        [Obsolete("Use the TimeInterval.Into property instead.", false)]
+        [Obsolete("Use the TimeInterval.Into property instead.", true)]
         public DateTime DateInto => TimeInterval.Into ?? default;
 
         /// <summary>

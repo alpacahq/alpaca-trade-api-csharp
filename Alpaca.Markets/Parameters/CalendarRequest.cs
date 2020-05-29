@@ -15,13 +15,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets start time for filtering (inclusive).
         /// </summary>
-        [Obsolete("Use the TimeInterval.From property instead.", false)]
+        [Obsolete("Use the TimeInterval.From property instead.", true)]
         public DateTime? StartDateInclusive => TimeInterval?.From;
 
         /// <summary>
         /// Gets end time for filtering (inclusive).
         /// </summary>
-        [Obsolete("Use the TimeInterval.Into property instead.", false)]
+        [Obsolete("Use the TimeInterval.Into property instead.", true)]
         public DateTime? EndDateInclusive => TimeInterval?.Into;
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Alpaca.Markets
         /// <param name="start">Filtering interval start time.</param>
         /// <param name="end">Filtering interval end time.</param>
         /// <returns>Fluent interface method return same <see cref="CalendarRequest"/> instance.</returns>
-        [Obsolete("This method will be removed soon in favor of the extension method SetInclusiveTimeInterval.", false)]
+        [Obsolete("This method will be removed soon in favor of the extension method SetInclusiveTimeInterval.", true)]
         public CalendarRequest SetInclusiveTimeIntervalWithNulls(
             DateTime? start,
             DateTime? end) =>
