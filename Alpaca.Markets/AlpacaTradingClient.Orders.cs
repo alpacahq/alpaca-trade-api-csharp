@@ -32,7 +32,7 @@ namespace Alpaca.Markets
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = _httpClient.BaseAddress.AbsolutePath + "orders",
+                Path = "v2/orders",
                 Query = new QueryBuilder()
                     .AddParameter("status", request.OrderStatusFilter)
                     .AddParameter("direction", request.OrderListSorting)
@@ -82,7 +82,7 @@ namespace Alpaca.Markets
 
             using var content = toStringContent(jsonNewOrder);
             using var response = await _httpClient.PostAsync(
-                    new Uri("orders", UriKind.RelativeOrAbsolute), content, cancellationToken)
+                    new Uri("v2/orders", UriKind.RelativeOrAbsolute), content, cancellationToken)
                 .ConfigureAwait(false);
 
             return await response.DeserializeAsync<IOrder, JsonOrder>()
@@ -113,7 +113,7 @@ namespace Alpaca.Markets
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             using var httpRequest = new HttpRequestMessage(_httpMethodPatch,
-                new Uri($"orders/{request.OrderId:D}", UriKind.RelativeOrAbsolute))
+                new Uri($"v2/orders/{request.OrderId:D}", UriKind.RelativeOrAbsolute))
             {
                 Content = toStringContent(changeOrder)
             };
@@ -137,7 +137,7 @@ namespace Alpaca.Markets
         {
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = _httpClient.BaseAddress.AbsolutePath + "orders:by_client_order_id",
+                Path = "v2/orders:by_client_order_id",
                 Query = new QueryBuilder()
                     .AddParameter("client_order_id", clientOrderId)
             };
@@ -156,7 +156,7 @@ namespace Alpaca.Markets
             Guid orderId,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetSingleObjectAsync<IOrder, JsonOrder>(
-                _alpacaRestApiThrottler, $"orders/{orderId:D}", cancellationToken);
+                _alpacaRestApiThrottler, $"v2/orders/{orderId:D}", cancellationToken);
 
         /// <summary>
         /// Deletes/cancel order on server by server order ID using Alpaca REST API endpoint.
@@ -168,7 +168,7 @@ namespace Alpaca.Markets
             Guid orderId,
             CancellationToken cancellationToken = default) =>
             await _httpClient.DeleteAsync(
-                    _alpacaRestApiThrottler,$"orders/{orderId:D}", cancellationToken)
+                    _alpacaRestApiThrottler,$"v2/orders/{orderId:D}", cancellationToken)
                 .ConfigureAwait(false);
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace Alpaca.Markets
         public async Task<IReadOnlyList<IOrderActionStatus>> DeleteAllOrdersAsync(
             CancellationToken cancellationToken = default) =>
             await _httpClient.DeleteObjectsListAsync<IOrderActionStatus, JsonOrderActionStatus>(
-                    _alpacaRestApiThrottler, "orders", cancellationToken)
+                    _alpacaRestApiThrottler, "v2/orders", cancellationToken)
                 .ConfigureAwait(false);
     }
 }

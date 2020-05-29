@@ -30,8 +30,7 @@ namespace Alpaca.Markets
 
             _httpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _httpClient.BaseAddress = configuration.ApiEndpoint
-                .AddApiVersionNumberSafe(ApiVersion.V1);
+            _httpClient.BaseAddress = configuration.ApiEndpoint;
             _httpClient.SetSecurityProtocol();
         }
 
@@ -52,7 +51,7 @@ namespace Alpaca.Markets
 
             var builder = new UriBuilder(_httpClient.BaseAddress)
             {
-                Path = _httpClient.BaseAddress.AbsolutePath + $"bars/{request.TimeFrame.ToEnumString()}",
+                Path = $"v1/bars/{request.TimeFrame.ToEnumString()}",
                 Query = new QueryBuilder()
                     .AddParameter("symbols", String.Join(",", request.Symbols))
                     .AddParameter((request.AreTimesInclusive ? "start" : "after"), request.TimeInterval.From, "O")
@@ -80,7 +79,7 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTradeAlpaca>(
-                FakeThrottler.Instance, $"last/stocks/{symbol}", cancellationToken);
+                FakeThrottler.Instance, $"v1/last/stocks/{symbol}", cancellationToken);
 
         /// <summary>
         /// Gets current quote for singe asset from Alpaca REST API endpoint.
@@ -92,6 +91,6 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuoteAlpaca>(
-                FakeThrottler.Instance, $"last_quote/stocks/{symbol}", cancellationToken);
+                FakeThrottler.Instance, $"v1/last_quote/stocks/{symbol}", cancellationToken);
     }
 }

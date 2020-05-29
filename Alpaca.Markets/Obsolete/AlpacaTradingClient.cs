@@ -17,7 +17,7 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             await _httpClient.DeleteAsync(
-                    _alpacaRestApiThrottler, $"positions/{symbol}", cancellationToken)
+                    _alpacaRestApiThrottler, $"v2/positions/{symbol}", cancellationToken)
                 .ConfigureAwait(false);
     }
 }
