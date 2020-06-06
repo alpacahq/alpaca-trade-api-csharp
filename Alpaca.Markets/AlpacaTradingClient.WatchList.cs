@@ -52,7 +52,7 @@ namespace Alpaca.Markets
             Guid watchListId,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetSingleObjectAsync<IWatchList, JsonWatchList>(
-                $"v2/watchlists/{watchListId:D}", cancellationToken, _alpacaRestApiThrottler);
+                getEndpointUri(watchListId), cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
         /// Get watch list object from Alpaca REST API endpoint by watch list user-defined name.
@@ -70,13 +70,7 @@ namespace Alpaca.Markets
             }
 
             return _httpClient.GetSingleObjectAsync<IWatchList, JsonWatchList>(
-                new UriBuilder(_httpClient.BaseAddress)
-                {
-                    Path ="v2/watchlists:by_name",
-                    Query = new QueryBuilder()
-                        .AddParameter("name", name)
-                }, 
-                cancellationToken, _alpacaRestApiThrottler);
+                getEndpointUriBuilder(name), cancellationToken, _alpacaRestApiThrottler);
         }
 
         /// <summary>
@@ -95,7 +89,7 @@ namespace Alpaca.Markets
 
             using var content = toStringContent(request.Name, request.Assets);
             using var response = await _httpClient.PutAsync(
-                    new Uri($"v2/watchlists/{request.WatchListId:D}", UriKind.RelativeOrAbsolute), content, cancellationToken)
+                    new Uri(getEndpointUri(request.WatchListId), UriKind.RelativeOrAbsolute), content, cancellationToken)
                 .ConfigureAwait(false);
 
             return await response.DeserializeAsync<IWatchList, JsonWatchList>()
@@ -118,7 +112,7 @@ namespace Alpaca.Markets
 
             using var content = toStringContent(request.Asset);
             using var response = await _httpClient.PostAsync(
-                    new Uri($"v2/watchlists/{request.Key:D}", UriKind.RelativeOrAbsolute), content, cancellationToken)
+                    new Uri(getEndpointUri(request.Key), UriKind.RelativeOrAbsolute), content, cancellationToken)
                 .ConfigureAwait(false);
 
             return await response.DeserializeAsync<IWatchList, JsonWatchList>()
@@ -137,17 +131,11 @@ namespace Alpaca.Markets
         {
             request.EnsureNotNull(nameof(request)).Validate();
 
-            var builder = new UriBuilder(_httpClient.BaseAddress)
-            {
-                Path = "v2/watchlists:by_name",
-                Query = new QueryBuilder()
-                    .AddParameter("name", request.Key)
-            };
-
             await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             using var content = toStringContent(request.Asset);
-            using var response = await _httpClient.PostAsync(builder.Uri, content, cancellationToken)
+            using var response = await _httpClient.PostAsync(
+                    getEndpointUriBuilder(request.Key).Uri, content, cancellationToken)
                 .ConfigureAwait(false);
 
             return await response.DeserializeAsync<IWatchList, JsonWatchList>()
@@ -160,15 +148,15 @@ namespace Alpaca.Markets
         /// <param name="request">Asset deleting request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Updated watch list object with proper <paramref name="request.Key"/> value.</returns>
-        public async Task<IWatchList> DeleteAssetFromWatchListByIdAsync(
+        public Task<IWatchList> DeleteAssetFromWatchListByIdAsync(
             ChangeWatchListRequest<Guid> request,
             CancellationToken cancellationToken = default)
         {
             request.EnsureNotNull(nameof(request)).Validate();
 
-            return await _httpClient.DeleteSingleObjectAsync<IWatchList, JsonWatchList>(
-                    $"v2/watchlists/{request.Key:D}/{request.Asset}", cancellationToken, _alpacaRestApiThrottler)
-                .ConfigureAwait(false);
+            return _httpClient.DeleteSingleObjectAsync<IWatchList, JsonWatchList>(
+                $"{getEndpointUri(request.Key)}/{request.Asset}",
+                cancellationToken, _alpacaRestApiThrottler);
         }
 
         /// <summary>
@@ -177,7 +165,7 @@ namespace Alpaca.Markets
         /// <param name="request">Asset deleting request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Updated watch list object with proper <paramref name="request.Key"/> value.</returns>
-        public async Task<IWatchList> DeleteAssetFromWatchListByNameAsync(
+        public Task<IWatchList> DeleteAssetFromWatchListByNameAsync(
             ChangeWatchListRequest<String> request,
             CancellationToken cancellationToken = default)
         {
@@ -190,10 +178,8 @@ namespace Alpaca.Markets
                     .AddParameter("name", request.Key)
             };
 
-            return await _httpClient
-                .DeleteSingleObjectAsync<IWatchList, JsonWatchList>(
-                    builder, cancellationToken, _alpacaRestApiThrottler)
-                .ConfigureAwait(false);
+            return _httpClient.DeleteSingleObjectAsync<IWatchList, JsonWatchList>(
+                builder, cancellationToken, _alpacaRestApiThrottler);
         }
 
         /// <summary>
@@ -202,12 +188,11 @@ namespace Alpaca.Markets
         /// <param name="watchListId">Unique watch list identifier.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Returns <c>true</c> if operation completed successfully.</returns>
-        public async Task<Boolean> DeleteWatchListByIdAsync(
+        public Task<Boolean> DeleteWatchListByIdAsync(
             Guid watchListId,
             CancellationToken cancellationToken = default) =>
-            await _httpClient.DeleteAsync(
-                    $"v2/watchlists/{watchListId:D}", cancellationToken, _alpacaRestApiThrottler)
-                .ConfigureAwait(false);
+            _httpClient.DeleteAsync(
+                getEndpointUri(watchListId), cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
         /// Deletes watch list from Alpaca REST API endpoint by watch list name.
@@ -215,7 +200,7 @@ namespace Alpaca.Markets
         /// <param name="name">User defined watch list name.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Returns <c>true</c> if operation completed successfully.</returns>
-        public async Task<Boolean> DeleteWatchListByNameAsync(
+        public Task<Boolean> DeleteWatchListByNameAsync(
             String name,
             CancellationToken cancellationToken = default)
         {
@@ -224,18 +209,18 @@ namespace Alpaca.Markets
                 throw new ArgumentException("Watch list name should be from 1 to 64 characters length.", nameof(name));
             }
 
-            var builder = new UriBuilder(_httpClient.BaseAddress)
+            return _httpClient.DeleteAsync(
+                getEndpointUriBuilder(name), cancellationToken, _alpacaRestApiThrottler);
+        }
+
+        private UriBuilder getEndpointUriBuilder(
+            String name) =>
+            new UriBuilder(_httpClient.BaseAddress)
             {
                 Path = "v2/watchlists:by_name",
                 Query = new QueryBuilder()
                     .AddParameter("name", name)
             };
-
-            return await _httpClient.DeleteAsync(
-                    builder, cancellationToken, _alpacaRestApiThrottler)
-                .ConfigureAwait(false);
-        }
-
 
         private static StringContent toStringContent(
             String name,
@@ -246,7 +231,12 @@ namespace Alpaca.Markets
                 Symbols = assets?.ToList()
             });
 
-        private static StringContent toStringContent(String asset)
+        private static StringContent toStringContent(
+            String asset)
             => toStringContent(new { Symbol = asset });
+
+        private static String getEndpointUri(
+            Guid watchListId) => 
+            $"v2/watchlists/{watchListId:D}";
     }
 }

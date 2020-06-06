@@ -52,6 +52,22 @@ namespace Alpaca.Markets
         /// Gets or sets flag that indicates reversed order of the results.
         /// </summary>
         public Boolean? Reverse { get; set; }
+        
+        internal UriBuilder GetUriBuilder(
+            PolygonDataClient polygonDataClient,
+            String historicalItemType)
+        {
+            var builder = polygonDataClient.GetUriBuilder(
+                $"v2/ticks/stocks/{historicalItemType}/{Symbol}/{Date.AsDateString()}");
+
+            builder.QueryBuilder
+                .AddParameter("limit", Limit)
+                .AddParameter("timestamp", Timestamp)
+                .AddParameter("timestamp_limit", TimestampLimit)
+                .AddParameter("reverse", Reverse != null ? Reverse.ToString() : null);
+
+            return builder;
+        }
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {

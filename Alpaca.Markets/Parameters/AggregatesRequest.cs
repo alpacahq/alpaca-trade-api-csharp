@@ -54,6 +54,21 @@ namespace Alpaca.Markets
         /// </summary>
         public Boolean Unadjusted { get; set; }
 
+        internal UriBuilder GetUriBuilder(
+            PolygonDataClient polygonDataClient)
+        {
+            var unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(TimeInterval.From ?? default);
+            var unixInto = DateTimeHelper.GetUnixTimeMilliseconds(TimeInterval.Into ?? default);
+
+            var builder = polygonDataClient.GetUriBuilder(
+                $"v2/aggs/ticker/{Symbol}/range/{Period.ToString()}/{unixFrom}/{unixInto}");
+
+            builder.QueryBuilder
+                .AddParameter("unadjusted", Unadjusted ? Boolean.TrueString : Boolean.FalseString);
+
+            return builder;
+        }
+
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
             if (String.IsNullOrEmpty(Symbol))
