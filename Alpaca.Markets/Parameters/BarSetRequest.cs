@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Net.Http;
 
 namespace Alpaca.Markets
 {
@@ -100,6 +101,18 @@ namespace Alpaca.Markets
             DateTime? after,
             DateTime? until) =>
             this.SetTimeInterval(Markets.TimeInterval.GetExclusive(after, until));
+        
+        internal UriBuilder GetUriBuilder(
+            HttpClient httpClient) =>
+            new UriBuilder(httpClient.BaseAddress)
+            {
+                Path = $"v1/bars/{TimeFrame.ToEnumString()}",
+                Query = new QueryBuilder()
+                    .AddParameter("symbols", String.Join(",", Symbols))
+                    .AddParameter((AreTimesInclusive ? "start" : "after"), TimeInterval.From, "O")
+                    .AddParameter((AreTimesInclusive ? "end" : "until"), TimeInterval.Into, "O")
+                    .AddParameter("limit", Limit)
+            };
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {

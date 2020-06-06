@@ -61,7 +61,7 @@ namespace Alpaca.Markets
             };
 
             return _httpClient.GetObjectsListAsync<IExchange, JsonExchange>(
-                FakeThrottler.Instance, builder, cancellationToken);
+                builder, cancellationToken);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Alpaca.Markets
 
             var map = await _httpClient.GetSingleObjectAsync
                 <JsonSymbolTypeMap, JsonSymbolTypeMap>(
-                    FakeThrottler.Instance, builder, cancellationToken)
+                    builder, cancellationToken)
                 .ConfigureAwait(false);
 
             return map.Results.StockTypes
@@ -122,7 +122,7 @@ namespace Alpaca.Markets
 
             return _httpClient.GetSingleObjectAsync
                 <IHistoricalItems<IHistoricalTrade>, JsonHistoricalItems<IHistoricalTrade, JsonHistoricalTrade>>(
-                    FakeThrottler.Instance, builder, cancellationToken);
+                    builder, cancellationToken);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Alpaca.Markets
 
             return _httpClient.GetSingleObjectAsync
                 <IHistoricalItems<IHistoricalQuote>, JsonHistoricalItems<IHistoricalQuote, JsonHistoricalQuote>>(
-                    FakeThrottler.Instance, builder, cancellationToken);
+                    builder, cancellationToken);
         }
 
 
@@ -177,7 +177,7 @@ namespace Alpaca.Markets
 
             return _httpClient.GetSingleObjectAsync
                 <IHistoricalItems<IAgg>, JsonHistoricalItems<IAgg, JsonPolygonAgg>>(
-                    FakeThrottler.Instance, builder, cancellationToken);
+                    builder, cancellationToken);
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace Alpaca.Markets
             };
 
             return _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTradePolygon>(
-                FakeThrottler.Instance, builder, cancellationToken);
+                builder, cancellationToken);
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Alpaca.Markets
             };
 
             return _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuotePolygon>(
-                FakeThrottler.Instance, builder, cancellationToken);
+                builder, cancellationToken);
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace Alpaca.Markets
 
             var dictionary = await _httpClient.GetSingleObjectAsync
                     <IDictionary<String, String>, Dictionary<String, String>>(
-                        FakeThrottler.Instance, builder, cancellationToken)
+                        builder, cancellationToken)
                 .ConfigureAwait(false);
 
             return dictionary

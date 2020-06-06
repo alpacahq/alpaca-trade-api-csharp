@@ -49,24 +49,13 @@ namespace Alpaca.Markets
         {
             request.EnsureNotNull(nameof(request)).Validate();
 
-            var builder = new UriBuilder(_httpClient.BaseAddress)
-            {
-                Path = $"v1/bars/{request.TimeFrame.ToEnumString()}",
-                Query = new QueryBuilder()
-                    .AddParameter("symbols", String.Join(",", request.Symbols))
-                    .AddParameter((request.AreTimesInclusive ? "start" : "after"), request.TimeInterval.From, "O")
-                    .AddParameter((request.AreTimesInclusive ? "end" : "until"), request.TimeInterval.Into, "O")
-                    .AddParameter("limit", request.Limit)
-            };
-
             var response = await _httpClient
-                .GetSingleObjectAsync<IReadOnlyDictionary<String, List<JsonAlpacaAgg>>, Dictionary<String, List<JsonAlpacaAgg>>>(
-                    FakeThrottler.Instance, builder, cancellationToken)
+                .GetSingleObjectAsync<Dictionary<String, List<JsonAlpacaAgg>>, Dictionary<String, List<JsonAlpacaAgg>>>(
+                    request.GetUriBuilder(_httpClient), cancellationToken)
                 .ConfigureAwait(false);
 
-            return response.ToDictionary(
-                kvp => kvp.Key, 
-                kvp => (IReadOnlyList<IAgg>)kvp.Value.AsReadOnly());
+            return response.ToDictionary<KeyValuePair<String, List<JsonAlpacaAgg>>, String, IReadOnlyList<IAgg>>(
+                _ => _.Key, _ => _.Value, StringComparer.Ordinal);
         }
 
         /// <summary>
@@ -79,7 +68,7 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTradeAlpaca>(
-                FakeThrottler.Instance, $"v1/last/stocks/{symbol}", cancellationToken);
+                $"v1/last/stocks/{symbol}", cancellationToken);
 
         /// <summary>
         /// Gets current quote for singe asset from Alpaca REST API endpoint.
@@ -91,6 +80,6 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuoteAlpaca>(
-                FakeThrottler.Instance, $"v1/last_quote/stocks/{symbol}", cancellationToken);
+                $"v1/last_quote/stocks/{symbol}", cancellationToken);
     }
 }

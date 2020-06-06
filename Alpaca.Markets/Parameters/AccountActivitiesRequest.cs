@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Net.Http;
 
 namespace Alpaca.Markets
 {
@@ -107,6 +108,21 @@ namespace Alpaca.Markets
             DateTime? dateFrom,
             DateTime? dateInto) =>
             this.SetTimeInterval(Markets.TimeInterval.GetInclusive(dateFrom, dateInto));
+
+        internal UriBuilder GetUriBuilder(
+            HttpClient httpClient) =>
+            new UriBuilder(httpClient.BaseAddress)
+            {
+                Path = "v2/account/activities",
+                Query = new QueryBuilder()
+                    .AddParameter("activity_types", ActivityTypes)
+                    .AddParameter("date", Date, DateTimeHelper.DateFormat)
+                    .AddParameter("until", TimeInterval.Into, "O")
+                    .AddParameter("after", TimeInterval.From, "O")
+                    .AddParameter("direction", Direction)
+                    .AddParameter("pageSize", PageSize)
+                    .AddParameter("pageToken", PageToken)
+            };
 
         void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(IInclusiveTimeInterval value)
         {

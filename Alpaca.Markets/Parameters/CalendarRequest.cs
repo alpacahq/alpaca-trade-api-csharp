@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 
 namespace Alpaca.Markets
 {
@@ -35,6 +36,16 @@ namespace Alpaca.Markets
             DateTime? start,
             DateTime? end) =>
             this.SetTimeInterval(Markets.TimeInterval.GetInclusive(start, end));
+
+        internal UriBuilder GetUriBuilder(
+            HttpClient httpClient) =>
+            new UriBuilder(httpClient.BaseAddress)
+            {
+                Path = "v2/calendar",
+                Query = new QueryBuilder()
+                    .AddParameter("start", TimeInterval?.From, DateTimeHelper.DateFormat)
+                    .AddParameter("end", TimeInterval?.Into, DateTimeHelper.DateFormat)
+            };
 
         void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
             IInclusiveTimeInterval value) => TimeInterval = value;

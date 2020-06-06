@@ -15,16 +15,9 @@ namespace Alpaca.Markets
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of watch list objects.</returns>
         public Task<IReadOnlyList<IWatchList>> ListWatchListsAsync(
-            CancellationToken cancellationToken = default)
-        {
-            var builder = new UriBuilder(_httpClient.BaseAddress)
-            {
-                Path = "v2/watchlists"
-            };
-
-            return _httpClient.GetObjectsListAsync<IWatchList, JsonWatchList>(
-                _alpacaRestApiThrottler, builder, cancellationToken);
-        }
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetObjectsListAsync<IWatchList, JsonWatchList>(
+                "v2/watchlists", cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
         /// Add new watch list object into Alpaca REST API endpoint.
@@ -59,7 +52,7 @@ namespace Alpaca.Markets
             Guid watchListId,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetSingleObjectAsync<IWatchList, JsonWatchList>(
-                _alpacaRestApiThrottler, $"v2/watchlists/{watchListId:D}", cancellationToken);
+                $"v2/watchlists/{watchListId:D}", cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
         /// Get watch list object from Alpaca REST API endpoint by watch list user-defined name.
@@ -76,15 +69,14 @@ namespace Alpaca.Markets
                 throw new ArgumentException("Watch list name should be from 1 to 64 characters length.", nameof(name));
             }
 
-            var builder = new UriBuilder(_httpClient.BaseAddress)
-            {
-                Path ="v2/watchlists:by_name",
-                Query = new QueryBuilder()
-                    .AddParameter("name", name)
-            };
-
             return _httpClient.GetSingleObjectAsync<IWatchList, JsonWatchList>(
-                _alpacaRestApiThrottler, builder, cancellationToken);
+                new UriBuilder(_httpClient.BaseAddress)
+                {
+                    Path ="v2/watchlists:by_name",
+                    Query = new QueryBuilder()
+                        .AddParameter("name", name)
+                }, 
+                cancellationToken, _alpacaRestApiThrottler);
         }
 
         /// <summary>
@@ -175,7 +167,7 @@ namespace Alpaca.Markets
             request.EnsureNotNull(nameof(request)).Validate();
 
             return await _httpClient.DeleteSingleObjectAsync<IWatchList, JsonWatchList>(
-                    _alpacaRestApiThrottler, $"v2/watchlists/{request.Key:D}/{request.Asset}", cancellationToken)
+                    $"v2/watchlists/{request.Key:D}/{request.Asset}", cancellationToken, _alpacaRestApiThrottler)
                 .ConfigureAwait(false);
         }
 
@@ -200,7 +192,7 @@ namespace Alpaca.Markets
 
             return await _httpClient
                 .DeleteSingleObjectAsync<IWatchList, JsonWatchList>(
-                    _alpacaRestApiThrottler, builder, cancellationToken)
+                    builder, cancellationToken, _alpacaRestApiThrottler)
                 .ConfigureAwait(false);
         }
 
@@ -214,7 +206,7 @@ namespace Alpaca.Markets
             Guid watchListId,
             CancellationToken cancellationToken = default) =>
             await _httpClient.DeleteAsync(
-                    _alpacaRestApiThrottler, $"v2/watchlists/{watchListId:D}", cancellationToken)
+                    $"v2/watchlists/{watchListId:D}", cancellationToken, _alpacaRestApiThrottler)
                 .ConfigureAwait(false);
 
         /// <summary>
@@ -240,7 +232,7 @@ namespace Alpaca.Markets
             };
 
             return await _httpClient.DeleteAsync(
-                    _alpacaRestApiThrottler, builder, cancellationToken)
+                    builder, cancellationToken, _alpacaRestApiThrottler)
                 .ConfigureAwait(false);
         }
 

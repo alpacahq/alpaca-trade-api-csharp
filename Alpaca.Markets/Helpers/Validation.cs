@@ -18,7 +18,7 @@ namespace Alpaca.Markets
             IEnumerable<RequestValidationException> GetExceptions();
         }
 
-        public static void Validate<TRequest>(this TRequest request)
+        public static TRequest Validate<TRequest>(this TRequest request)
             where TRequest : class, IRequest
         {
             var exception = new AggregateException(request.GetExceptions());
@@ -28,6 +28,8 @@ namespace Alpaca.Markets
                     ? exception.InnerExceptions[0]
                     : exception;
             }
+
+            return request;
         }
 
         public static String? ValidateClientOrderId(this String? clientOrderId) => 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 
 namespace Alpaca.Markets
 {
@@ -55,6 +56,20 @@ namespace Alpaca.Markets
             DateTime? after,
             DateTime? until) =>
             this.SetTimeInterval(Markets.TimeInterval.GetExclusive(after, until));
+
+        internal UriBuilder GetUriBuilder(
+            HttpClient httpClient) =>
+            new UriBuilder(httpClient.BaseAddress)
+            {
+                Path = "v2/orders",
+                Query = new QueryBuilder()
+                    .AddParameter("status", OrderStatusFilter)
+                    .AddParameter("direction", OrderListSorting)
+                    .AddParameter("until", TimeInterval?.From, "O")
+                    .AddParameter("after", TimeInterval?.Into, "O")
+                    .AddParameter("limit", LimitOrderNumber)
+                    .AddParameter("nested", RollUpNestedOrders)
+            };
 
         void IRequestWithTimeInterval<IExclusiveTimeInterval>.SetInterval(
             IExclusiveTimeInterval value) => TimeInterval = value;
