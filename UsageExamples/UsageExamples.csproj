@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp3.0;netcoreapp2.0;netcoreapp1.0;net45</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;netcoreapp2.1;net452</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
@@ -12,10 +12,6 @@
       <Project>{F339D73B-347F-47D4-9BFB-EBEA010FC6F7}</Project>
       <Name>Alpaca.Markets</Name>
     </ProjectReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="('$(TargetFramework)'=='netcoreapp2.0')Or('$(TargetFramework)'=='netcoreapp3.0')">
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.4" />
   </ItemGroup>
 
 </Project>
