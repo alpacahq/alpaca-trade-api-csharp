@@ -16,7 +16,7 @@ namespace Alpaca.Markets
         /// <returns>Read-only list of watch list objects.</returns>
         public Task<IReadOnlyList<IWatchList>> ListWatchListsAsync(
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetObjectsListAsync<IWatchList, JsonWatchList>(
+            _httpClient.GetAsync<IReadOnlyList<IWatchList>, List<JsonWatchList>>(
                 "v2/watchlists", cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Alpaca.Markets
         public Task<IWatchList> GetWatchListByIdAsync(
             Guid watchListId,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync<IWatchList, JsonWatchList>(
+            _httpClient.GetAsync<IWatchList, JsonWatchList>(
                 getEndpointUri(watchListId), cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Alpaca.Markets
                 throw new ArgumentException("Watch list name should be from 1 to 64 characters length.", nameof(name));
             }
 
-            return _httpClient.GetSingleObjectAsync<IWatchList, JsonWatchList>(
+            return _httpClient.GetAsync<IWatchList, JsonWatchList>(
                 getEndpointUriBuilder(name), cancellationToken, _alpacaRestApiThrottler);
         }
 
@@ -154,7 +154,7 @@ namespace Alpaca.Markets
         {
             request.EnsureNotNull(nameof(request)).Validate();
 
-            return _httpClient.DeleteSingleObjectAsync<IWatchList, JsonWatchList>(
+            return _httpClient.DeleteAsync<IWatchList, JsonWatchList>(
                 $"{getEndpointUri(request.Key)}/{request.Asset}",
                 cancellationToken, _alpacaRestApiThrottler);
         }
@@ -178,7 +178,7 @@ namespace Alpaca.Markets
                     .AddParameter("name", request.Key)
             };
 
-            return _httpClient.DeleteSingleObjectAsync<IWatchList, JsonWatchList>(
+            return _httpClient.DeleteAsync<IWatchList, JsonWatchList>(
                 builder, cancellationToken, _alpacaRestApiThrottler);
         }
 

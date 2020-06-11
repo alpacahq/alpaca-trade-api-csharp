@@ -53,7 +53,7 @@ namespace Alpaca.Markets
         /// <returns>Read-only list of exchange information objects.</returns>
         public Task<IReadOnlyList<IExchange>> ListExchangesAsync(
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetObjectsListAsync<IExchange, JsonExchange>(
+            _httpClient.GetAsync<IReadOnlyList<IExchange>, List<JsonExchange>>(
                 GetUriBuilder("v1/meta/exchanges"), cancellationToken);
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Alpaca.Markets
         public async Task<IReadOnlyDictionary<String, String>> GetSymbolTypeMapAsync(
             CancellationToken cancellationToken = default)
         {
-            var map = await _httpClient.GetSingleObjectAsync<JsonSymbolTypeMap, JsonSymbolTypeMap>(
+            var map = await _httpClient.GetAsync<JsonSymbolTypeMap, JsonSymbolTypeMap>(
                     GetUriBuilder("v2/reference/types"), cancellationToken)
                 .ConfigureAwait(false);
 
@@ -92,7 +92,7 @@ namespace Alpaca.Markets
         public Task<IHistoricalItems<IHistoricalTrade>> ListHistoricalTradesAsync(
             HistoricalRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync
+            _httpClient.GetAsync
                 <IHistoricalItems<IHistoricalTrade>, JsonHistoricalItems<IHistoricalTrade, JsonHistoricalTrade>>(
                     request.EnsureNotNull(nameof(request)).Validate()
                         .GetUriBuilder(this, "trades"),
@@ -107,7 +107,7 @@ namespace Alpaca.Markets
         public Task<IHistoricalItems<IHistoricalQuote>> ListHistoricalQuotesAsync(
             HistoricalRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync
+            _httpClient.GetAsync
                 <IHistoricalItems<IHistoricalQuote>, JsonHistoricalItems<IHistoricalQuote, JsonHistoricalQuote>>(
                     request.EnsureNotNull(nameof(request)).Validate()
                         .GetUriBuilder(this, "nbbo"),
@@ -123,7 +123,7 @@ namespace Alpaca.Markets
         public Task<IHistoricalItems<IAgg>> ListAggregatesAsync(
             AggregatesRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync
+            _httpClient.GetAsync
                 <IHistoricalItems<IAgg>, JsonHistoricalItems<IAgg, JsonPolygonAgg>>(
                     request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(this), 
                     cancellationToken);
@@ -137,7 +137,7 @@ namespace Alpaca.Markets
         public Task<ILastTrade> GetLastTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTradePolygon>(
+            _httpClient.GetAsync<ILastTrade, JsonLastTradePolygon>(
                 GetUriBuilder($"v1/last/stocks/{symbol}"), cancellationToken);
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Alpaca.Markets
         public Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuotePolygon>(
+            _httpClient.GetAsync<ILastQuote, JsonLastQuotePolygon>(
                 GetUriBuilder($"v1/last_quote/stocks/{symbol}"), cancellationToken);
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace Alpaca.Markets
             TickType tickType = TickType.Trades,
             CancellationToken cancellationToken = default)
         {
-            var dictionary = await _httpClient.GetSingleObjectAsync
+            var dictionary = await _httpClient.GetAsync
                     <IDictionary<String, String>, Dictionary<String, String>>(
                         GetUriBuilder($"v1/meta/conditions/{tickType.ToEnumString()}"),
                         cancellationToken)

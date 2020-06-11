@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,42 +9,39 @@ namespace Alpaca.Markets
 {
     internal static partial class HttpClientExtensions
     {
-        public static Task<TApi> GetSingleObjectAsync<TApi, TJson>(
+        public static Task<TApi> GetAsync<TApi, TJson>(
             this HttpClient httpClient,
             UriBuilder uriBuilder,
             CancellationToken cancellationToken,
             IThrottler? throttler = null)
             where TJson : TApi =>
-            callAndDeserializeSingleObjectAsync<TApi, TJson>(
+            callAndDeserializeAsync<TApi, TJson>(
                 httpClient, HttpMethod.Get, uriBuilder.Uri, cancellationToken, throttler);
 
-        public static Task<TApi> GetSingleObjectAsync<TApi, TJson>(
+        public static Task<TApi> GetAsync<TApi, TJson>(
             this HttpClient httpClient,
             String endpointUri,
             CancellationToken cancellationToken,
             IThrottler? throttler = null)
             where TJson : TApi =>
-            callAndDeserializeSingleObjectAsync<TApi, TJson>(
+            callAndDeserializeAsync<TApi, TJson>(
                 httpClient, HttpMethod.Get, asUri(endpointUri), cancellationToken, throttler);
 
-        public static async Task<IReadOnlyList<TApi>> GetObjectsListAsync<TApi, TJson>(
-            this HttpClient httpClient,
-            String endpointUri,
-            CancellationToken cancellationToken,
-            IThrottler? throttler = null)
-            where TJson : TApi =>
-            (IReadOnlyList<TApi>) await callAndDeserializeSingleObjectAsync<IReadOnlyList<TJson>, List<TJson>>(
-                    httpClient, HttpMethod.Get, asUri(endpointUri), cancellationToken, throttler)
-                .ConfigureAwait(false);
-
-        public static async Task<IReadOnlyList<TApi>> GetObjectsListAsync<TApi, TJson>(
+        public static async Task<IReadOnlyDictionary<TKeyApi, TValueApi>> GetAsync<TKeyApi, TValueApi, TKeyJson, TValueJson>(
             this HttpClient httpClient,
             UriBuilder uriBuilder,
-            CancellationToken cancellationToken,
-            IThrottler? throttler = null)
-            where TJson : TApi =>
-            (IReadOnlyList<TApi>) await callAndDeserializeSingleObjectAsync<IReadOnlyList<TJson>, List<TJson>>(
-                    httpClient, HttpMethod.Get, uriBuilder.Uri, cancellationToken, throttler)
+            IEqualityComparer<TKeyApi> comparer,
+            CancellationToken cancellationToken)
+            where TKeyJson : TKeyApi
+            where TValueJson : TValueApi
+        {
+            var response = await httpClient
+                .GetAsync<Dictionary<TKeyJson, TValueJson>, Dictionary<TKeyJson, TValueJson>>(
+                    uriBuilder, cancellationToken)
                 .ConfigureAwait(false);
+
+            return response.ToDictionary<KeyValuePair<TKeyJson, TValueJson>, TKeyApi, TValueApi>(
+                _ => _.Key, _ => _.Value, comparer);
+        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -27,7 +26,7 @@ namespace Alpaca.Markets
         public Task<IReadOnlyList<IOrder>> ListOrdersAsync(
             ListOrdersRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetObjectsListAsync<IOrder, JsonOrder>(
+            _httpClient.GetAsync<IReadOnlyList<IOrder>, List<JsonOrder>>(
                 request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
                 cancellationToken, _alpacaRestApiThrottler);
 
@@ -74,35 +73,12 @@ namespace Alpaca.Markets
         /// <param name="request">Patch order request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for updated order.</returns>
-        public async Task<IOrder> PatchOrderAsync(
+        public Task<IOrder> PatchOrderAsync(
             ChangeOrderRequest request,
-            CancellationToken cancellationToken = default)
-        {
-            request.EnsureNotNull(nameof(request)).Validate();
-
-            var changeOrder = new JsonChangeOrder
-            {
-                Quantity = request.Quantity,
-                TimeInForce = request.Duration,
-                LimitPrice = request.LimitPrice,
-                StopPrice = request.StopPrice,
-                ClientOrderId = request.ClientOrderId,
-            };
-
-            await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
-
-            using var httpRequest = new HttpRequestMessage(_httpMethodPatch,
-                new Uri($"v2/orders/{request.OrderId:D}", UriKind.RelativeOrAbsolute))
-            {
-                Content = toStringContent(changeOrder)
-            };
-
-            using var response = await _httpClient.SendAsync(httpRequest, cancellationToken)
-                .ConfigureAwait(false);
-
-            return await response.DeserializeAsync<IOrder, JsonOrder>()
-                .ConfigureAwait(false);
-        }
+            CancellationToken cancellationToken = default) =>
+            _httpClient.PatchAsync<IOrder, JsonOrder>(
+                request.EnsureNotNull(nameof(request)).Validate().GetEndpointUri(),
+                toStringContent(request), _alpacaRestApiThrottler, cancellationToken);
 
         /// <summary>
         /// Get single order information by client order ID from Alpaca REST API endpoint.
@@ -113,7 +89,7 @@ namespace Alpaca.Markets
         public Task<IOrder> GetOrderAsync(
             String clientOrderId,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync<IOrder, JsonOrder>(
+            _httpClient.GetAsync<IOrder, JsonOrder>(
                 new UriBuilder(_httpClient.BaseAddress)
                 {
                     Path = "v2/orders:by_client_order_id",
@@ -131,7 +107,7 @@ namespace Alpaca.Markets
         public Task<IOrder> GetOrderAsync(
             Guid orderId,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync<IOrder, JsonOrder>(
+            _httpClient.GetAsync<IOrder, JsonOrder>(
                 $"v2/orders/{orderId:D}", cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
@@ -140,22 +116,20 @@ namespace Alpaca.Markets
         /// <param name="orderId">Server order ID for cancelling.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns><c>True</c> if order cancellation was accepted.</returns>
-        public async Task<Boolean> DeleteOrderAsync(
+        public Task<Boolean> DeleteOrderAsync(
             Guid orderId,
             CancellationToken cancellationToken = default) =>
-            await _httpClient.DeleteAsync(
-                    $"v2/orders/{orderId:D}", cancellationToken, _alpacaRestApiThrottler)
-                .ConfigureAwait(false);
+            _httpClient.DeleteAsync(
+                $"v2/orders/{orderId:D}", cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
         /// Deletes/cancel all open orders using Alpaca REST API endpoint.
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>List of order cancellation status objects.</returns>
-        public async Task<IReadOnlyList<IOrderActionStatus>> DeleteAllOrdersAsync(
+        public Task<IReadOnlyList<IOrderActionStatus>> DeleteAllOrdersAsync(
             CancellationToken cancellationToken = default) =>
-            await _httpClient.DeleteObjectsListAsync<IOrderActionStatus, JsonOrderActionStatus>(
-                    "v2/orders", cancellationToken, _alpacaRestApiThrottler)
-                .ConfigureAwait(false);
+            _httpClient.DeleteAsync<IReadOnlyList<IOrderActionStatus>, List<JsonOrderActionStatus>>(
+                    "v2/orders", cancellationToken, _alpacaRestApiThrottler);
     }
 }

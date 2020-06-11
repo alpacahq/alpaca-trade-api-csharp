@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,7 +14,7 @@ namespace Alpaca.Markets
         /// <returns>Read-only account information.</returns>
         public Task<IAccount> GetAccountAsync(
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync<IAccount, JsonAccount>(
+            _httpClient.GetAsync<IAccount, JsonAccount>(
                 "v2/account", cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
@@ -25,7 +24,7 @@ namespace Alpaca.Markets
         /// <returns>Mutable version of account configuration object.</returns>
         public Task<IAccountConfiguration> GetAccountConfigurationAsync(
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync<IAccountConfiguration, JsonAccountConfiguration>(
+            _httpClient.GetAsync<IAccountConfiguration, JsonAccountConfiguration>(
                 "v2/account/configurations", cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
@@ -34,24 +33,12 @@ namespace Alpaca.Markets
         /// <param name="accountConfiguration">New account configuration object for updating.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Mutable version of updated account configuration object.</returns>
-        public async Task<IAccountConfiguration> PatchAccountConfigurationAsync(
+        public Task<IAccountConfiguration> PatchAccountConfigurationAsync(
             IAccountConfiguration accountConfiguration,
-            CancellationToken cancellationToken = default)
-        {
-            await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
-
-            using var request = new HttpRequestMessage(_httpMethodPatch,
-                new Uri("v2/account/configurations", UriKind.RelativeOrAbsolute))
-            {
-                Content = toStringContent(accountConfiguration)
-            };
-
-            using var response = await _httpClient.SendAsync(request, cancellationToken)
-                .ConfigureAwait(false);
-
-            return await response.DeserializeAsync<IAccountConfiguration, JsonAccountConfiguration>()
-                .ConfigureAwait(false);
-        }
+            CancellationToken cancellationToken = default) =>
+            _httpClient.PatchAsync<IAccountConfiguration, JsonAccountConfiguration>(
+                "v2/account/configurations", toStringContent(accountConfiguration),
+                _alpacaRestApiThrottler, cancellationToken);
 
         /// <summary>
         /// Gets list of account activities from Alpaca REST API endpoint by specific activity.
@@ -62,7 +49,7 @@ namespace Alpaca.Markets
         public Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
             AccountActivitiesRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetObjectsListAsync<IAccountActivity, JsonAccountActivity>(
+            _httpClient.GetAsync<IReadOnlyList<IAccountActivity>, List<JsonAccountActivity>>(
                 request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
                 cancellationToken, _alpacaRestApiThrottler);
 
@@ -75,7 +62,7 @@ namespace Alpaca.Markets
         public Task<IPortfolioHistory> GetPortfolioHistoryAsync(
             PortfolioHistoryRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync<IPortfolioHistory, JsonPortfolioHistory>(
+            _httpClient.GetAsync<IPortfolioHistory, JsonPortfolioHistory>(
                 request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
                 cancellationToken, _alpacaRestApiThrottler);
 
@@ -98,7 +85,7 @@ namespace Alpaca.Markets
         public Task<IReadOnlyList<IAsset>> ListAssetsAsync(
             AssetsRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetObjectsListAsync<IAsset, JsonAsset>(
+            _httpClient.GetAsync<IReadOnlyList<IAsset>, List<JsonAsset>>(
                 request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
                 cancellationToken, _alpacaRestApiThrottler);
 
@@ -111,7 +98,7 @@ namespace Alpaca.Markets
         public Task<IAsset> GetAssetAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync<IAsset, JsonAsset>(
+            _httpClient.GetAsync<IAsset, JsonAsset>(
                 $"assets/{symbol}", cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
@@ -121,7 +108,7 @@ namespace Alpaca.Markets
         /// <returns>Read-only list of position information objects.</returns>
         public Task<IReadOnlyList<IPosition>> ListPositionsAsync(
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetObjectsListAsync<IPosition, JsonPosition>(
+            _httpClient.GetAsync<IReadOnlyList<IPosition>, List<JsonPosition>>(
                 "v2/positions", cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
@@ -133,7 +120,7 @@ namespace Alpaca.Markets
         public Task<IPosition> GetPositionAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync<IPosition, JsonPosition>(
+            _httpClient.GetAsync<IPosition, JsonPosition>(
                 $"v2/positions/{symbol}", cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
@@ -143,7 +130,7 @@ namespace Alpaca.Markets
         /// <returns>List of position cancellation status objects.</returns>
         public Task<IReadOnlyList<IPositionActionStatus>> DeleteAllPositionsAsync(
             CancellationToken cancellationToken = default) =>
-            _httpClient.DeleteObjectsListAsync<IPositionActionStatus, JsonPositionActionStatus>(
+            _httpClient.DeleteAsync<IReadOnlyList<IPositionActionStatus>, List<JsonPositionActionStatus>>(
                     "v2/positions", cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
@@ -155,7 +142,7 @@ namespace Alpaca.Markets
         public Task<IOrder> DeletePositionAsync(
             DeletePositionRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.DeleteSingleObjectAsync<IOrder, JsonOrder>(
+            _httpClient.DeleteAsync<IOrder, JsonOrder>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient), 
                 cancellationToken, _alpacaRestApiThrottler);
 
@@ -166,7 +153,7 @@ namespace Alpaca.Markets
         /// <returns>Read-only clock information object.</returns>
         public Task<IClock> GetClockAsync(
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync<IClock, JsonClock>(
+            _httpClient.GetAsync<IClock, JsonClock>(
                 "v2/clock", cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
@@ -188,7 +175,7 @@ namespace Alpaca.Markets
         public Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
             CalendarRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetObjectsListAsync<ICalendar, JsonCalendar>(
+            _httpClient.GetAsync<IReadOnlyList<ICalendar>, List<JsonCalendar>>(
                 request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
                 cancellationToken, _alpacaRestApiThrottler);
     }

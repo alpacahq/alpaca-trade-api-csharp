@@ -47,8 +47,8 @@
     <Compile Update="AlpacaTradingClient.*.cs">
       <DependentUpon>AlpacaTradingClient.cs</DependentUpon>
     </Compile>
-    <Compile Update="Helpers/HttpClientExtensions.*.cs">
-      <DependentUpon>Helpers/HttpClientExtensions.cs</DependentUpon>
+    <Compile Update="Helpers\HttpClientExtensions.*.cs">
+      <DependentUpon>Helpers\HttpClientExtensions.cs</DependentUpon>
     </Compile>
   </ItemGroup>
 

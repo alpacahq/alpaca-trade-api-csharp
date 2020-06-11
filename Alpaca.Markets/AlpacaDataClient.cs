@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -43,20 +42,12 @@ namespace Alpaca.Markets
         /// <param name="request">Historical daily bars request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
-        public async Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
+        public Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
             BarSetRequest request,
-            CancellationToken cancellationToken = default)
-        {
-            request.EnsureNotNull(nameof(request)).Validate();
-
-            var response = await _httpClient
-                .GetSingleObjectAsync<Dictionary<String, List<JsonAlpacaAgg>>, Dictionary<String, List<JsonAlpacaAgg>>>(
-                    request.GetUriBuilder(_httpClient), cancellationToken)
-                .ConfigureAwait(false);
-
-            return response.ToDictionary<KeyValuePair<String, List<JsonAlpacaAgg>>, String, IReadOnlyList<IAgg>>(
-                _ => _.Key, _ => _.Value, StringComparer.Ordinal);
-        }
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<String, IReadOnlyList<IAgg>, String, List<JsonAlpacaAgg>>(
+                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
+                StringComparer.Ordinal, cancellationToken);
 
         /// <summary>
         /// Gets last trade for singe asset from Alpaca REST API endpoint.
@@ -67,7 +58,7 @@ namespace Alpaca.Markets
         public Task<ILastTrade> GetLastTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync<ILastTrade, JsonLastTradeAlpaca>(
+            _httpClient.GetAsync<ILastTrade, JsonLastTradeAlpaca>(
                 $"v1/last/stocks/{symbol}", cancellationToken);
 
         /// <summary>
@@ -79,7 +70,7 @@ namespace Alpaca.Markets
         public Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetSingleObjectAsync<ILastQuote, JsonLastQuoteAlpaca>(
+            _httpClient.GetAsync<ILastQuote, JsonLastQuoteAlpaca>(
                 $"v1/last_quote/stocks/{symbol}", cancellationToken);
     }
 }

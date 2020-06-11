@@ -31,7 +31,7 @@ namespace Alpaca.Markets
 #endif
         }
 
-        private static async Task<TApi> callAndDeserializeSingleObjectAsync<TApi, TJson>(
+        private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
             HttpClient httpClient,
             HttpMethod method,
             Uri endpointUri,

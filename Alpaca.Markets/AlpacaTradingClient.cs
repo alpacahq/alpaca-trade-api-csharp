@@ -11,9 +11,6 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed partial class AlpacaTradingClient : IDisposable
     {
-        // TODO: olegra - use built-in HttpMethod.Patch property in .NET Standard 2.1
-        private static readonly HttpMethod _httpMethodPatch = new HttpMethod("PATCH");
-
         private readonly HttpClient _httpClient = new HttpClient();
 
         private readonly IThrottler _alpacaRestApiThrottler;
