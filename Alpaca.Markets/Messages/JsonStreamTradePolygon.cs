@@ -13,6 +13,9 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "sym", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
 
+        [JsonProperty(PropertyName = "i", Required = Required.Default)]
+        public String TradeId { get; set; } = String.Empty;
+
         [JsonProperty(PropertyName = "x", Required = Required.Always)]
         public Int64 Exchange { get; set; }
 
