@@ -10,6 +10,11 @@ namespace Alpaca.Markets
     public interface IStreamTrade : IStreamBase
     {
         /// <summary>
+        /// Gets trade identifier.
+        /// </summary>
+        String TradeId { get; }
+
+        /// <summary>
         /// Gets asset's exchange identifier.
         /// </summary>
         Int64 Exchange { get; }
