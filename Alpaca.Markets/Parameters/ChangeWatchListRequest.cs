@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
@@ -31,11 +32,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets unique watch list identifier or name.
         /// </summary>
+        [JsonIgnore]
         public TKey Key { get; }
 
         /// <summary>
         /// Gets asset name for adding/deleting into watch list.
         /// </summary>
+        [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Asset { get; }
        
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
@@ -38,15 +36,5 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         public void Dispose() => _httpClient.Dispose();
-
-        private static StringContent toStringContent(
-            Object value)
-        {
-            var serializer = new JsonSerializer();
-            using var stringWriter = new StringWriter();
-
-            serializer.Serialize(stringWriter, value);
-            return new StringContent(stringWriter.ToString());
-        }
     }
 }

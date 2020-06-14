@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Alpaca.Markets
 {
@@ -40,5 +41,8 @@ namespace Alpaca.Markets
         public static Boolean IsWatchListNameInvalid(this String? watchListName) =>
             String.IsNullOrEmpty(watchListName) ||
             watchListName?.Length > WatchListNameMaxLength; //-V3022
+
+        public static String? ValidateWatchListName(this String? watchListName) =>
+            IsWatchListNameInvalid(watchListName) ? null : watchListName;
     }
 }

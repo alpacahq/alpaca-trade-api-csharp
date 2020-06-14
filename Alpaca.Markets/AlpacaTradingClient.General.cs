@@ -36,8 +36,8 @@ namespace Alpaca.Markets
         public Task<IAccountConfiguration> PatchAccountConfigurationAsync(
             IAccountConfiguration accountConfiguration,
             CancellationToken cancellationToken = default) =>
-            _httpClient.PatchAsync<IAccountConfiguration, JsonAccountConfiguration>(
-                "v2/account/configurations", toStringContent(accountConfiguration),
+            _httpClient.PatchAsync<IAccountConfiguration, JsonAccountConfiguration, IAccountConfiguration>(
+                "v2/account/configurations", accountConfiguration,
                 _alpacaRestApiThrottler, cancellationToken);
 
         /// <summary>

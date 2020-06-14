@@ -52,20 +52,11 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             postOrderAsync(orderBase.EnsureNotNull(nameof(orderBase)).Validate().GetJsonRequest(), cancellationToken);
 
-        private async Task<IOrder> postOrderAsync(
+        private Task<IOrder> postOrderAsync(
             JsonNewOrder jsonNewOrder,
-            CancellationToken cancellationToken = default)
-        {
-            await _alpacaRestApiThrottler.WaitToProceed(cancellationToken).ConfigureAwait(false);
-
-            using var content = toStringContent(jsonNewOrder);
-            using var response = await _httpClient.PostAsync(
-                    new Uri("v2/orders", UriKind.RelativeOrAbsolute), content, cancellationToken)
-                .ConfigureAwait(false);
-
-            return await response.DeserializeAsync<IOrder, JsonOrder>()
-                .ConfigureAwait(false);
-        }
+            CancellationToken cancellationToken = default) =>
+            _httpClient.PostAsync<IOrder, JsonOrder, JsonNewOrder>(
+                "v2/orders", jsonNewOrder, cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
         /// Updates existing order using Alpaca REST API endpoint.
@@ -76,9 +67,9 @@ namespace Alpaca.Markets
         public Task<IOrder> PatchOrderAsync(
             ChangeOrderRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.PatchAsync<IOrder, JsonOrder>(
+            _httpClient.PatchAsync<IOrder, JsonOrder, ChangeOrderRequest>(
                 request.EnsureNotNull(nameof(request)).Validate().GetEndpointUri(),
-                toStringContent(request), _alpacaRestApiThrottler, cancellationToken);
+                request, _alpacaRestApiThrottler, cancellationToken);
 
         /// <summary>
         /// Get single order information by client order ID from Alpaca REST API endpoint.

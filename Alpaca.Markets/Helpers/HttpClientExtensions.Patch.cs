@@ -14,26 +14,14 @@ namespace Alpaca.Markets
             new HttpMethod("PATCH");
 #endif
 
-        public static async Task<TApi> PatchAsync<TApi, TJson>(
+        public static Task<TApi> PatchAsync<TApi, TJson, TRequest>(
             this HttpClient httpClient,
             String endpointUri,
-            HttpContent content,
+            TRequest request,
             IThrottler throttler,
             CancellationToken cancellationToken)
-            where TJson : TApi
-        {
-            await throttler.WaitToProceed(cancellationToken).ConfigureAwait(false);
-
-            using var request = new HttpRequestMessage(_httpMethodPatch, asUri(endpointUri))
-            {
-                Content = content
-            };
-
-            using var response = await httpClient.SendAsync(request, cancellationToken)
-                .ConfigureAwait(false);
-
-            return await response.DeserializeAsync<TApi, TJson>()
-                .ConfigureAwait(false);
-        }
+            where TJson : TApi =>
+            callAndDeserializeAsync<TApi, TJson, TRequest>(
+                httpClient, _httpMethodPatch, asUri(endpointUri), request, cancellationToken, throttler);
     }
 }
