@@ -33,7 +33,7 @@ namespace Alpaca.Markets
 #endif
         }
 
-        private static Task<TApi> callAndDeserializeAsync<TApi, TJson>(
+        private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
             HttpClient httpClient,
             HttpMethod method,
             Uri endpointUri,
@@ -42,10 +42,12 @@ namespace Alpaca.Markets
             where TJson : TApi
         {
             using var request = new HttpRequestMessage(method, endpointUri);
-            return callAndDeserializeAsync<TApi, TJson>(httpClient, request, cancellationToken, throttler);
+            return await callAndDeserializeAsync<TApi, TJson>(
+                httpClient, request, cancellationToken, throttler)
+                .ConfigureAwait(false);
         }
 
-        private static Task<TApi> callAndDeserializeAsync<TApi, TJson, TContent>(
+        private static async Task<TApi> callAndDeserializeAsync<TApi, TJson, TContent>(
             HttpClient httpClient,
             HttpMethod method,
             Uri endpointUri,
@@ -54,8 +56,10 @@ namespace Alpaca.Markets
             IThrottler? throttler = null)
             where TJson : TApi
         {
-            using var request = new HttpRequestMessage(method, endpointUri) { Content = toStringContent(content)};
-            return callAndDeserializeAsync<TApi, TJson>(httpClient, request, cancellationToken, throttler);
+            using var request = new HttpRequestMessage(method, endpointUri) { Content = toStringContent(content) };
+            return await callAndDeserializeAsync<TApi, TJson>(
+                httpClient, request, cancellationToken, throttler)
+                .ConfigureAwait(false);
         }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
@@ -65,7 +69,7 @@ namespace Alpaca.Markets
             IThrottler? throttler = null)
             where TJson : TApi
         {
-            var response = await sendThrottledAsync(
+            using var response = await sendThrottledAsync(
                     httpClient, request, cancellationToken, throttler)
                 .ConfigureAwait(false);
 
@@ -82,7 +86,7 @@ namespace Alpaca.Markets
         {
             using var request = new HttpRequestMessage(method, endpointUri);
 
-            var response = await sendThrottledAsync(
+            using var response = await sendThrottledAsync(
                     httpClient, request, cancellationToken, throttler)
                 .ConfigureAwait(false);
 
@@ -103,7 +107,7 @@ namespace Alpaca.Markets
             {
                 await throttler.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
-                using var response = await httpClient
+                var response = await httpClient
                     .SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
                     .ConfigureAwait(false);
 
@@ -112,6 +116,8 @@ namespace Alpaca.Markets
                 {
                     return response;
                 }
+                
+                response.Dispose();
             }
 
             throw new RestClientErrorException(
