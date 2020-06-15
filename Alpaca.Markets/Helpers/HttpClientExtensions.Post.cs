@@ -26,5 +26,16 @@ namespace Alpaca.Markets
             where TJson : TApi =>
             callAndDeserializeAsync<TApi, TJson, TRequest>(
                 httpClient, HttpMethod.Post, endpointUri, request, cancellationToken, throttler);
+
+        public static Task<TApi> PutAsync<TApi, TJson, TRequest>(
+            this HttpClient httpClient,
+            String endpointUri,
+            TRequest request,
+            CancellationToken cancellationToken,
+            IThrottler? throttler = null)
+            where TJson : TApi =>
+            callAndDeserializeAsync<TApi, TJson, TRequest>(
+                httpClient, HttpMethod.Put, asUri(endpointUri), request, cancellationToken, throttler);
+
     }
 }

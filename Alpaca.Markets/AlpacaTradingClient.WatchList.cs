@@ -62,7 +62,7 @@ namespace Alpaca.Markets
         public Task<IWatchList> UpdateWatchListByIdAsync(
             UpdateWatchListRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.PostAsync<IWatchList, JsonWatchList, UpdateWatchListRequest>(
+            _httpClient.PutAsync<IWatchList, JsonWatchList, UpdateWatchListRequest>(
                 getEndpointUri(request.EnsureNotNull(nameof(request)).Validate().WatchListId), request,
                 cancellationToken, _alpacaRestApiThrottler);
 
