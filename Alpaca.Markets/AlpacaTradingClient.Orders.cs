@@ -36,8 +36,8 @@ namespace Alpaca.Markets
                 Query = new QueryBuilder()
                     .AddParameter("status", request.OrderStatusFilter)
                     .AddParameter("direction", request.OrderListSorting)
-                    .AddParameter("until", request.TimeInterval?.From, "O")
-                    .AddParameter("after", request.TimeInterval?.Into, "O")
+                    .AddParameter("until", request.TimeInterval?.Into, "O")
+                    .AddParameter("after", request.TimeInterval?.From, "O")
                     .AddParameter("limit", request.LimitOrderNumber)
                     .AddParameter("nested", request.RollUpNestedOrders)
             };
