@@ -22,7 +22,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// An activity timestamp (date and time) from <see cref="ActivityId"/>.
         /// </summary>
+        [Obsolete("This property will be removed in the next major release. Use the ActivityDateTimeUtc property instead.", false)]
         DateTime ActivityDateTime { get; }
+
+        /// <summary>
+        /// An activity timestamp (date and time) from <see cref="ActivityId"/> in the UTC.
+        /// </summary>
+        DateTime ActivityDateTimeUtc { get; }
 
         /// <summary>
         /// An activity unique identifier from <see cref="ActivityId"/>.
@@ -35,7 +41,7 @@ namespace Alpaca.Markets
         String? Symbol { get; }
 
         /// <summary>
-        /// The date on which the activity occurred or on which the transaction associated with the activity settled.
+        /// The date on which the activity occurred or on which the transaction associated with the activity settled in the UTC.
         /// </summary>
         DateTime? ActivityDate { get; }
 
@@ -77,7 +83,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// The time at which an execution occurred.
         /// </summary>
+        [Obsolete("This property will be removed in the next major release. Use the TransactionTimeUtc property instead.", false)]
         DateTime? TransactionTime { get; }
+
+        /// <summary>
+        /// The time at which an execution occurred in the UTC.
+        /// </summary>
+        DateTime? TransactionTimeUtc { get; }
 
         /// <summary>
         /// The type of trade event associated with an execution.

@@ -20,7 +20,9 @@ namespace Alpaca.Markets
 
             public Decimal? ProfitLossPercentage { get; set; }
 
-            public DateTime Timestamp { get; set; }
+            public DateTime Timestamp => TimestampUtc;
+
+            public DateTime TimestampUtc { get; set; }
         }
 
         private readonly List<IPortfolioHistoryItem> _items = new List<IPortfolioHistoryItem>();
@@ -66,7 +68,7 @@ namespace Alpaca.Markets
                     Equity = equities[index],
                     ProfitLoss = profitLosses[index],
                     ProfitLossPercentage = profitLossesPercentage[index],
-                    Timestamp = DateTimeHelper.FromUnixTimeSeconds(timestamps[index]),
+                    TimestampUtc = DateTimeHelper.FromUnixTimeSeconds(timestamps[index]),
                 });
             }
         }

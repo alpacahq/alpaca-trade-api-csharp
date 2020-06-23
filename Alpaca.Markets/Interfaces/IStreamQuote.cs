@@ -12,6 +12,12 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets quote timestamp.
         /// </summary>
+        [Obsolete("This property will be removed in the next major release. Use the TimeUtc property instead.", false)]
         DateTime Time { get; }
+
+        /// <summary>
+        /// Gets quote timestamp in UTC time zone.
+        /// </summary>
+        DateTime TimeUtc { get; }
     }
 }

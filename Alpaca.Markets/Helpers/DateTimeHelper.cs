@@ -26,6 +26,16 @@ namespace Alpaca.Markets
                 ? FromUnixTimeMilliseconds(linuxTimeStamp / NanosecondsInMilliseconds)
                 : FromUnixTimeMilliseconds(linuxTimeStamp);
 
+        public static DateTime AsUtcDateTime(
+            this DateTime value) =>
+            DateTime.SpecifyKind(value, DateTimeKind.Utc);
+
+        public static DateTime? AsUtcDateTime(
+            this DateTime? value) =>
+            value.HasValue
+                ? DateTime.SpecifyKind(value.Value, DateTimeKind.Utc)
+                : (DateTime?) null;
+
         public static DateTime FromUnixTimeMilliseconds(
             Int64 linuxTimeStamp) =>
 #if NET45

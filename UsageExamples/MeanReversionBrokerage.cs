@@ -59,8 +59,8 @@ namespace UsageExamples
             var calendars = (await alpacaTradingClient
                 .ListCalendarAsync(new CalendarRequest().SetTimeInterval(DateTime.Today.GetInclusiveIntervalFromThat())))
                 .ToList();
-            var calendarDate = calendars.First().TradingDate;
-            var closingTime = calendars.First().TradingCloseTime;
+            var calendarDate = calendars.First().TradingDateUtc;
+            var closingTime = calendars.First().TradingCloseTimeUtc;
 
             closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 
@@ -72,7 +72,7 @@ namespace UsageExamples
             var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count() - 20));
             foreach (var bar in lastBars)
             {
-                if (bar.Time.Date == today)
+                if (bar.TimeUtc.Date == today)
                 {
                     closingPrices.Add(bar.Close);
                 }

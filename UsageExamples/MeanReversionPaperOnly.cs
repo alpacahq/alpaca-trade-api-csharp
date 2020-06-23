@@ -43,8 +43,8 @@ namespace UsageExamples
             var calendars = (await alpacaTradingClient
                 .ListCalendarAsync(new CalendarRequest().SetTimeInterval(DateTime.Today.GetInclusiveIntervalFromThat())))
                 .ToList();
-            var calendarDate = calendars.First().TradingDate;
-            var closingTime = calendars.First().TradingCloseTime;
+            var calendarDate = calendars.First().TradingDateUtc;
+            var closingTime = calendars.First().TradingCloseTimeUtc;
 
             closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 

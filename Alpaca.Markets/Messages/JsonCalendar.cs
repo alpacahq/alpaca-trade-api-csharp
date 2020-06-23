@@ -12,30 +12,51 @@ namespace Alpaca.Markets
     {
         [JsonConverter(typeof(DateConverter))]
         [JsonProperty(PropertyName = "date", Required = Required.Always)]
-        public DateTime TradingDate { get; set; }
+        public DateTime TradingDateEst { get; set; }
 
         [JsonConverter(typeof(TimeConverter))]
         [JsonProperty(PropertyName = "open", Required = Required.Always)]
-        public DateTime TradingOpenTime { get; set; }
+        public DateTime TradingOpenTimeEst { get; set; }
 
         [JsonConverter(typeof(TimeConverter))]
         [JsonProperty(PropertyName = "close", Required = Required.Always)]
-        public DateTime TradingCloseTime { get; set; }
+        public DateTime TradingCloseTimeEst { get; set; }
+
+        [JsonIgnore]
+        public DateTime TradingDateUtc { get; private set; }
+
+        [JsonIgnore]
+        public DateTime TradingOpenTimeUtc { get; private set; }
+
+        [JsonIgnore]
+        public DateTime TradingCloseTimeUtc { get; private set; }
+
+        [JsonIgnore] 
+        public DateTime TradingDate => TradingDateUtc;
+
+        [JsonIgnore]
+        public DateTime TradingOpenTime => TradingOpenTimeUtc;
+
+        [JsonIgnore] 
+        public DateTime TradingCloseTime => TradingCloseTimeUtc;
 
         [OnDeserialized]
         internal void OnDeserializedMethod(
             StreamingContext context)
         {
-            TradingDate = DateTime.SpecifyKind(
-                TradingDate.Date, DateTimeKind.Unspecified).Date;
+            TradingDateEst = DateTime.SpecifyKind(
+                TradingDate.Date, DateTimeKind.Unspecified);
+            TradingOpenTimeEst = DateTime.SpecifyKind(
+                TradingOpenTimeEst, DateTimeKind.Unspecified);
+            TradingCloseTimeEst = DateTime.SpecifyKind(
+                TradingCloseTimeEst, DateTimeKind.Unspecified);
 
-            TradingOpenTime = CustomTimeZone.ConvertFromEstToUtc(
-                TradingDate, TradingOpenTime);
-            TradingCloseTime = CustomTimeZone.ConvertFromEstToUtc(
-                TradingDate, TradingCloseTime);
+            TradingOpenTimeUtc = CustomTimeZone.ConvertFromEstToUtc(
+                TradingDateEst.Date.Add(TradingOpenTimeEst.TimeOfDay));
+            TradingCloseTimeUtc = CustomTimeZone.ConvertFromEstToUtc(
+                TradingDateEst.Date.Add(TradingCloseTime.TimeOfDay));
 
-            TradingDate = DateTime.SpecifyKind(
-                TradingDate.Date, DateTimeKind.Utc);
+            TradingDateUtc = TradingDateEst.AsUtcDateTime();
         }
     }
 }

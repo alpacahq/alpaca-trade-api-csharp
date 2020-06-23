@@ -45,17 +45,29 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
         public List<Int64>? ConditionsList { get; set; }
-        
+
         [JsonIgnore]
-        public DateTime Timestamp =>
+        public DateTime Timestamp => 
             DateTimeHelper.FromUnixTimeNanoseconds(TimestampInNanoseconds);
 
         [JsonIgnore]
-        public DateTime ParticipantTimestamp =>
+        public DateTime TimestampUtc =>
+            DateTimeHelper.FromUnixTimeNanoseconds(TimestampInNanoseconds);
+
+        [JsonIgnore]
+        public DateTime ParticipantTimestamp => 
             DateTimeHelper.FromUnixTimeNanoseconds(ParticipantTimestampInNanoseconds);
 
         [JsonIgnore]
-        public DateTime TradeReportingFacilityTimestamp =>
+        public DateTime ParticipantTimestampUtc =>
+            DateTimeHelper.FromUnixTimeNanoseconds(ParticipantTimestampInNanoseconds);
+
+        [JsonIgnore]
+        public DateTime TradeReportingFacilityTimestamp => 
+            DateTimeHelper.FromUnixTimeNanoseconds(TradeReportingFacilityTimestampInNanoseconds);
+
+        [JsonIgnore]
+        public DateTime TradeReportingFacilityTimestampUtc =>
             DateTimeHelper.FromUnixTimeNanoseconds(TradeReportingFacilityTimestampInNanoseconds);
 
         [JsonIgnore]

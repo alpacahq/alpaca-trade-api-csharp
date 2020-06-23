@@ -89,6 +89,9 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "created_at", Required = Required.Always)]
         public DateTime CreatedAt { get; set; }
 
+        [JsonIgnore]
+        public DateTime CreatedAtUtc => CreatedAt.AsUtcDateTime();
+
         [OnDeserialized]
         internal void OnDeserializedMethod(
             StreamingContext context)
