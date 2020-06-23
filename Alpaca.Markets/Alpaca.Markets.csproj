@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.3;net45</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>3.8.0-alpha3</Version>
+    <Version>3.8.0-alpha4</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2020 Alpaca Securities LLC. All rights reserved.</Copyright>
@@ -19,7 +19,8 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- A lot of fixes related to HTTP client refactoring testing.</PackageReleaseNotes>
+    <PackageReleaseNotes>- All output date/time properties now have explicit `Utc` suffix. The `ICalendar` interface provides also values in the EST time zone.
+- Fixed the problem with the incorrect time interval handling in the `ListOrders Async` method.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
