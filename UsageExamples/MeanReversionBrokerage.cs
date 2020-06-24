@@ -49,7 +49,7 @@ namespace UsageExamples
             alpacaStreamingClient.OnTradeUpdate += HandleTradeUpdate;
 
             // First, cancel any existing orders so they don't impact our buying power.
-            var orders = await alpacaTradingClient.ListAllOrdersAsync();
+            var orders = await alpacaTradingClient.ListOrdersAsync(new ListOrdersRequest());
             foreach (var order in orders)
             {
                 await alpacaTradingClient.DeleteOrderAsync(order.OrderId);
