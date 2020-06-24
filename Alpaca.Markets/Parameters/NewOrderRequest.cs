@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 namespace Alpaca.Markets
 {
-    // TODO: olegra - mark it as obsolete in next major release
-
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaTradingClient.PostOrderAsync(NewOrderRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>

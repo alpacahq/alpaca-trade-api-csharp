@@ -71,9 +71,9 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of asset information objects.</returns>
+        [Obsolete("This method will be removed in the next major release.", false)]
         public Task<IReadOnlyList<IAsset>> ListAllAssetsAsync(
             CancellationToken cancellationToken = default) =>
-            // TODO: olegra - remove this overload after removing old version with separate arguments
             ListAssetsAsync(new AssetsRequest(), cancellationToken);
 
         /// <summary>
@@ -161,9 +161,9 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of trading date information object.</returns>
+        [Obsolete("This method will be removed in the next major release.", false)]
         public Task<IReadOnlyList<ICalendar>> ListAllCalendarAsync(
             CancellationToken cancellationToken = default) =>
-            // TODO: olegra - remove this overload after removing old version with separate arguments
             ListCalendarAsync(new CalendarRequest(), cancellationToken);
 
         /// <summary>
