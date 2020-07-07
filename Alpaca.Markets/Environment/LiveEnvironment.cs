@@ -12,7 +12,7 @@ namespace Alpaca.Markets
 
         public Uri AlpacaStreamingApi { get; } = new Uri("wss://api.alpaca.markets/stream");
 
-        public Uri PolygonStreamingApi { get; } = new Uri("wss://alpaca.socket.polygon.io/stocks");
+        public Uri PolygonStreamingApi { get; } = new Uri("wss://socket.polygon.io/stocks");
 
         public Uri AlpacaDataStreamingApi { get; } = new Uri("wss://data.alpaca.markets/stream");
     }
