@@ -11,11 +11,11 @@ namespace Alpaca.Markets
         /// Gets bar timestamp.
         /// </summary>
         [Obsolete("This property will be removed in the next major release. Use the TimeUtc property instead.", false)]
-        DateTime Time { get; }
+        DateTime? Time { get; }
 
         /// <summary>
         /// Gets bar timestamp in the UTC.
         /// </summary>
-        DateTime TimeUtc { get; }
+        DateTime? TimeUtc { get; }
     }
 }

@@ -31,28 +31,20 @@ namespace Alpaca.Markets
         public Int64 Volume { get; set; }
 
         [JsonProperty(PropertyName = "s", Required = Required.Always)]
-        public Int64 StartTimeOffset { get; set; }
+        [JsonConverter(typeof(UnixMillisecondsDateTimeConverter))]
+        public DateTime StartTimeUtc { get; set; }
 
         [JsonProperty(PropertyName = "e", Required = Required.Always)]
-        public Int64 EndTimeOffset { get; set; }
+        [JsonConverter(typeof(UnixMillisecondsDateTimeConverter))]
+        public DateTime EndTimeUtc { get; set; }
 
         [JsonProperty(PropertyName = "n", Required = Required.Default)]
         public Int32 ItemsInWindow { get; set; }
 
         [JsonIgnore]
-        public DateTime StartTime => 
-            DateTimeHelper.FromUnixTimeMilliseconds(StartTimeOffset);
+        public DateTime StartTime => StartTimeUtc;
 
         [JsonIgnore]
-        public DateTime StartTimeUtc => 
-            DateTimeHelper.FromUnixTimeMilliseconds(StartTimeOffset);
-
-        [JsonIgnore]
-        public DateTime EndTime => 
-            DateTimeHelper.FromUnixTimeMilliseconds(EndTimeOffset);
-
-        [JsonIgnore]
-        public DateTime EndTimeUtc => 
-            DateTimeHelper.FromUnixTimeMilliseconds(EndTimeOffset);
+        public DateTime EndTime => EndTimeUtc;
     }
 }

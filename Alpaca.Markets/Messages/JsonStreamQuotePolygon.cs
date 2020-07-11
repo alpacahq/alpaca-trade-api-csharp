@@ -31,14 +31,10 @@ namespace Alpaca.Markets
         public Int64 AskSize { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
-        public Int64 Timestamp { get; set; }
+        [JsonConverter(typeof(UnixMillisecondsDateTimeConverter))]
+        public DateTime TimeUtc { get; set; }
 
         [JsonIgnore]
-        public DateTime Time => 
-            DateTimeHelper.FromUnixTimeMilliseconds(Timestamp);
-
-        [JsonIgnore]
-        public DateTime TimeUtc => 
-            DateTimeHelper.FromUnixTimeMilliseconds(Timestamp);
+        public DateTime Time => TimeUtc;
     }
 }

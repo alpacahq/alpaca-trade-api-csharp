@@ -36,8 +36,9 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "profit_loss_pct", Required = Required.Always)]
         public List<Decimal?>? ProfitLossPercentageList { get; set; }
 
-        [JsonProperty(PropertyName = "timestamp", Required = Required.Always)]
-        public List<Int64>? TimestampsList { get; set; }
+        [JsonProperty(PropertyName = "timestamp", Required = Required.Always, 
+            ItemConverterType = typeof(UnixSecondsDateTimeConverter))]
+        public List<DateTime>? TimestampsList { get; set; }
 
         [JsonIgnore]
         public IReadOnlyList<IPortfolioHistoryItem> Items => _items;
@@ -68,7 +69,7 @@ namespace Alpaca.Markets
                     Equity = equities[index],
                     ProfitLoss = profitLosses[index],
                     ProfitLossPercentage = profitLossesPercentage[index],
-                    TimestampUtc = DateTimeHelper.FromUnixTimeSeconds(timestamps[index]),
+                    TimestampUtc = timestamps[index],
                 });
             }
         }

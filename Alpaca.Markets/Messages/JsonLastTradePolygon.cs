@@ -21,7 +21,8 @@ namespace Alpaca.Markets
             public Int64 Size { get; set; }
 
             [JsonProperty(PropertyName = "timestamp", Required = Required.Always)]
-            public Int64 Timestamp { get; set; }
+            [JsonConverter(typeof(UnixMillisecondsDateTimeConverter))]
+            public DateTime Timestamp { get; set; }
         }
 
         [JsonProperty(PropertyName = "last", Required = Required.Always)]
@@ -43,11 +44,9 @@ namespace Alpaca.Markets
         public Int64 Size => Nested.Size;
 
         [JsonIgnore]
-        public DateTime Time => 
-            DateTimeHelper.FromUnixTimeMilliseconds(Nested.Timestamp);
+        public DateTime Time => Nested.Timestamp;
 
         [JsonIgnore]
-        public DateTime TimeUtc => 
-            DateTimeHelper.FromUnixTimeMilliseconds(Nested.Timestamp);
+        public DateTime TimeUtc => Nested.Timestamp;
     }
 }

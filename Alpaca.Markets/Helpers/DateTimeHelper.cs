@@ -17,51 +17,63 @@ namespace Alpaca.Markets
 
         public static String DateFormat { get; } = "yyyy-MM-dd";
 
-        public static String AsDateString(this DateTime dateTime) =>
+        public static String AsDateString(in this DateTime dateTime) =>
             dateTime.ToString(DateFormat, CultureInfo.InvariantCulture);
 
-        public static DateTime FromUnixTimeNanoseconds(
-            Int64 linuxTimeStamp) =>
-            linuxTimeStamp > _timeSpanMaxValueMilliseconds
-                ? FromUnixTimeMilliseconds(linuxTimeStamp / NanosecondsInMilliseconds)
-                : FromUnixTimeMilliseconds(linuxTimeStamp);
-
         public static DateTime AsUtcDateTime(
-            this DateTime value) =>
+            in this DateTime value) =>
             DateTime.SpecifyKind(value, DateTimeKind.Utc);
 
         public static DateTime? AsUtcDateTime(
-            this DateTime? value) =>
+            in this DateTime? value) =>
             value.HasValue
                 ? DateTime.SpecifyKind(value.Value, DateTimeKind.Utc)
                 : (DateTime?) null;
 
-        public static DateTime FromUnixTimeMilliseconds(
-            Int64 linuxTimeStamp) =>
-#if NET45
-            _epoch.Add(TimeSpan.FromMilliseconds(linuxTimeStamp));
-#else
-            DateTime.SpecifyKind(
-                DateTimeOffset.FromUnixTimeMilliseconds(linuxTimeStamp)
-                    .DateTime, DateTimeKind.Utc);
-#endif
-
         public static DateTime FromUnixTimeSeconds(
-            Int64 linuxTimeStamp) =>
+            this in Int64 linuxTimeStamp) =>
 #if NET45
             _epoch.Add(TimeSpan.FromSeconds(linuxTimeStamp));
 #else
-            DateTime.SpecifyKind(
-                DateTimeOffset.FromUnixTimeSeconds(linuxTimeStamp)
-                    .DateTime, DateTimeKind.Utc);
+            DateTimeOffset.FromUnixTimeSeconds(linuxTimeStamp).UtcDateTime;
 #endif
 
-        public static Int64 GetUnixTimeMilliseconds(
-            DateTime dateTime) =>
+        public static DateTime FromUnixTimeMilliseconds(
+            this in Int64 linuxTimeStamp) =>
+#if NET45
+            _epoch.Add(TimeSpan.FromMilliseconds(linuxTimeStamp));
+#else
+            DateTimeOffset.FromUnixTimeMilliseconds(linuxTimeStamp).UtcDateTime;
+#endif
+
+        public static DateTime FromUnixTimeNanoseconds(
+            this in Int64 linuxTimeStamp) =>
+            linuxTimeStamp > _timeSpanMaxValueMilliseconds
+                ? FromUnixTimeMilliseconds(linuxTimeStamp / NanosecondsInMilliseconds)
+                : FromUnixTimeMilliseconds(linuxTimeStamp);
+
+        public static Int64 IntoUnixTimeSeconds(
+            this in DateTime dateTime) =>
+#if NET45
+            (Int64)(dateTime.Subtract(_epoch)).TotalSeconds;
+#else
+            new DateTimeOffset(dateTime).ToUnixTimeSeconds();
+#endif
+
+        public static Int64 IntoUnixTimeMilliseconds(
+            this in DateTime dateTime) =>
 #if NET45
             (Int64)(dateTime.Subtract(_epoch)).TotalMilliseconds;
 #else
             new DateTimeOffset(dateTime).ToUnixTimeMilliseconds();
+#endif
+
+        public static Int64 IntoUnixTimeNanoseconds(
+            this in DateTime dateTime) =>
+#if NET45
+            (Int64)(dateTime.Subtract(_epoch).TotalMilliseconds * NanosecondsInMilliseconds);
+#else
+            new DateTimeOffset(dateTime).ToUnixTimeMilliseconds() * NanosecondsInMilliseconds;
 #endif
     }
 }

@@ -25,18 +25,13 @@ namespace Alpaca.Markets
         public Int64 Volume { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Default)]
-        public Int64 TimeOffset { get; set; }
+        public DateTime? TimeUtc { get; set; }
 
         [JsonProperty(PropertyName = "n", Required = Required.Default)]
         public Int32 ItemsInWindow { get; set; }
 
         [JsonIgnore] 
-        public DateTime Time => 
-            DateTimeHelper.FromUnixTimeSeconds(TimeOffset);
-
-        [JsonIgnore] 
-        public DateTime TimeUtc => 
-            DateTimeHelper.FromUnixTimeSeconds(TimeOffset);
+        public DateTime? Time => TimeUtc;
     }
 }
 

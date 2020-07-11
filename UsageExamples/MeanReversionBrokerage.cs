@@ -72,7 +72,7 @@ namespace UsageExamples
             var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count() - 20));
             foreach (var bar in lastBars)
             {
-                if (bar.TimeUtc.Date == today)
+                if (bar.TimeUtc?.Date == today)
                 {
                     closingPrices.Add(bar.Close);
                 }

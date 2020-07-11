@@ -57,8 +57,8 @@ namespace Alpaca.Markets
         internal UriBuilder GetUriBuilder(
             PolygonDataClient polygonDataClient)
         {
-            var unixFrom = DateTimeHelper.GetUnixTimeMilliseconds(TimeInterval.From ?? default);
-            var unixInto = DateTimeHelper.GetUnixTimeMilliseconds(TimeInterval.Into ?? default);
+            var unixFrom = (TimeInterval.From ?? default).IntoUnixTimeMilliseconds();
+            var unixInto = (TimeInterval.Into ?? default).IntoUnixTimeMilliseconds();
 
             var builder = polygonDataClient.GetUriBuilder(
                 $"v2/aggs/ticker/{Symbol}/range/{Period.ToString()}/{unixFrom}/{unixInto}");
