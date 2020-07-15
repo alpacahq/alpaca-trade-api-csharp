@@ -45,16 +45,20 @@ namespace Alpaca.Markets
             StreamingContext context)
         {
             TradingDateEst = DateTime.SpecifyKind(
-                TradingDate.Date, DateTimeKind.Unspecified);
-            TradingOpenTimeEst = DateTime.SpecifyKind(
-                TradingOpenTimeEst, DateTimeKind.Unspecified);
-            TradingCloseTimeEst = DateTime.SpecifyKind(
-                TradingCloseTimeEst, DateTimeKind.Unspecified);
+                TradingDateEst.Date, DateTimeKind.Unspecified);
 
-            TradingOpenTimeUtc = CustomTimeZone.ConvertFromEstToUtc(
-                TradingDateEst.Date.Add(TradingOpenTimeEst.TimeOfDay));
-            TradingCloseTimeUtc = CustomTimeZone.ConvertFromEstToUtc(
-                TradingDateEst.Date.Add(TradingCloseTime.TimeOfDay));
+            TradingOpenTimeEst = DateTime.SpecifyKind(
+                TradingDateEst.Date.Add(TradingOpenTimeEst.TimeOfDay),
+                DateTimeKind.Unspecified);
+            TradingCloseTimeEst = DateTime.SpecifyKind(
+                TradingDateEst.Date.Add(TradingCloseTimeEst.TimeOfDay), 
+                DateTimeKind.Unspecified);
+
+
+            TradingOpenTimeUtc = CustomTimeZone
+                .ConvertFromEstToUtc(TradingOpenTimeEst);
+            TradingCloseTimeUtc = CustomTimeZone
+                .ConvertFromEstToUtc(TradingCloseTimeEst);
 
             TradingDateUtc = TradingDateEst.AsUtcDateTime();
         }

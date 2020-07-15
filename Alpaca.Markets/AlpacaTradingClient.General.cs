@@ -99,7 +99,7 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IAsset, JsonAsset>(
-                $"assets/{symbol}", cancellationToken, _alpacaRestApiThrottler);
+                $"v2/assets/{symbol}", cancellationToken, _alpacaRestApiThrottler);
 
         /// <summary>
         /// Gets list of available positions from Alpaca REST API endpoint.
