@@ -25,6 +25,7 @@ namespace Alpaca.Markets
         public Int64 Volume { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Default)]
+        [JsonConverter(typeof(UnixSecondsDateTimeConverter))]
         public DateTime? TimeUtc { get; set; }
 
         [JsonProperty(PropertyName = "n", Required = Required.Default)]
