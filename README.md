@@ -32,6 +32,6 @@ See the [UsageExamples](../../tree/develop/UsageExamples) project for near-to-re
 
 | Branch                                       | Version | Description                    |
 | -------------------------------------------- | ------- | ------------------------------ |
-| [develop](../../tree/develop)                | 4.0.*   | New features, breaking changes |
+| [develop](../../tree/develop)                | 3.8.*   | New features, breaking changes |
 | [master](../../tree/master)                  | 3.7.*   | All new features and hot-fixes |
 | [support/v3.6.x](../../tree/support/v3.6.x)  | 3.6.*   | Hot fixes only, some features  |
