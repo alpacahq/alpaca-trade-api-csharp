@@ -20,9 +20,9 @@ namespace UsageExamples
 
         private Decimal scale = 200;
 
-        private AlpacaTradingClient alpacaTradingClient;
+        private IAlpacaTradingClient alpacaTradingClient;
 
-        private AlpacaDataClient alpacaDataClient;
+        private IAlpacaDataClient alpacaDataClient;
 
         private Guid lastTradeId = Guid.NewGuid();
 

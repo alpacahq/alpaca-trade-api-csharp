@@ -15,7 +15,7 @@ namespace Alpaca.Markets
     /// </summary>
     [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
     [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
-    public abstract class StreamingClientBase<TConfiguration> : IDisposable
+    public abstract class StreamingClientBase<TConfiguration> : IStreamingClientBase 
         where TConfiguration : StreamingClientConfiguration
     {
         private readonly SynchronizationQueue _queue = new SynchronizationQueue();
@@ -46,40 +46,24 @@ namespace Alpaca.Markets
             _queue.OnError += HandleError;
         }
 
-        /// <summary>
-        /// Occured when stream successfully connected.
-        /// </summary>
+        /// <inheritdoc />
         public event Action<AuthStatus>? Connected;
 
-        /// <summary>
-        /// Occured when underlying web socket successfully opened.
-        /// </summary>
+        /// <inheritdoc />
         public event Action? SocketOpened;
 
-        /// <summary>
-        /// Occured when underlying web socket successfully closed.
-        /// </summary>
+        /// <inheritdoc />
         public event Action? SocketClosed;
 
-        /// <summary>
-        /// Occured when any error happened in stream.
-        /// </summary>
+        /// <inheritdoc />
         public event Action<Exception>? OnError;
 
-        /// <summary>
-        /// Opens connection to a streaming API.
-        /// </summary>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Awaitable task object for handling action completion in asynchronous mode.</returns>
+        /// <inheritdoc />
         public Task ConnectAsync(
             CancellationToken cancellationToken = default)
             => _webSocket.OpenAsync(cancellationToken);
 
-        /// <summary>
-        /// Opens connection to a streaming API and awaits for authentication response.
-        /// </summary>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Awaitable task object for handling client authentication event in asynchronous mode.</returns>
+        /// <inheritdoc />
         public async Task<AuthStatus> ConnectAndAuthenticateAsync(
             CancellationToken cancellationToken = default)
         {
@@ -96,11 +80,7 @@ namespace Alpaca.Markets
             }
         }
 
-        /// <summary>
-        /// Closes connection to a streaming API.
-        /// </summary>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Awaitable task object for handling action completion in asynchronous mode.</returns>
+        /// <inheritdoc />
         public Task DisconnectAsync(
             CancellationToken cancellationToken = default)
             => _webSocket.CloseAsync(cancellationToken);

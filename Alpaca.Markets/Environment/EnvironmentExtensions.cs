@@ -10,13 +10,13 @@ namespace Alpaca.Markets
     public static class EnvironmentExtensions
     {
         /// <summary>
-        /// Creates new instance of <see cref="AlpacaTradingClient"/> for specific
-        /// environment provided as <paramref name="environment"/> argument.
+        /// Creates the new instance of <see cref="IAlpacaTradingClient"/> interface
+        /// implementation for specific environment provided as <paramref name="environment"/> argument.
         /// </summary>
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
-        /// <returns>New instance of <see cref="AlpacaTradingClient"/> object.</returns>
-        public static AlpacaTradingClient GetAlpacaTradingClient(
+        /// <returns>The new instance of <see cref="IAlpacaTradingClient"/> interface implementation.</returns>
+        public static IAlpacaTradingClient GetAlpacaTradingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
             new AlpacaTradingClient(environment.GetAlpacaTradingClientConfiguration(securityKey));
@@ -38,13 +38,13 @@ namespace Alpaca.Markets
             };
 
         /// <summary>
-        /// Creates new instance of <see cref="AlpacaDataClient"/> for specific
-        /// environment provided as <paramref name="environment"/> argument.
+        /// Creates the new instance of <see cref="IAlpacaDataClient"/> interface
+        /// implementation for specific environment provided as <paramref name="environment"/> argument.
         /// </summary>
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
-        /// <returns>New instance of <see cref="AlpacaDataClient"/> object.</returns>
-        public static AlpacaDataClient GetAlpacaDataClient(
+        /// <returns>The new instance of <see cref="IAlpacaDataClient"/> interface implementation.</returns>
+        public static IAlpacaDataClient GetAlpacaDataClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
             new AlpacaDataClient(environment.GetAlpacaDataClientConfiguration(securityKey));
@@ -66,13 +66,13 @@ namespace Alpaca.Markets
             };
 
         /// <summary>
-        /// Creates new instance of <see cref="PolygonDataClient"/> for specific
-        /// environment provided as <paramref name="environment"/> argument.
+        /// Creates the new instance of <see cref="IPolygonDataClient"/> interface
+        /// implementation for specific environment provided as <paramref name="environment"/> argument.
         /// </summary>
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="keyId">Alpaca API key identifier.</param>
-        /// <returns>New instance of <see cref="PolygonDataClient"/> object.</returns>
-        public static PolygonDataClient GetPolygonDataClient(
+        /// <returns>The new instance of <see cref="IPolygonDataClient"/> interface implementation.</returns>
+        public static IPolygonDataClient GetPolygonDataClient(
             this IEnvironment environment,
             String keyId) =>
             new PolygonDataClient(environment.GetPolygonDataClientConfiguration(keyId));
@@ -94,13 +94,13 @@ namespace Alpaca.Markets
             };
 
         /// <summary>
-        /// Creates new instance of <see cref="AlpacaStreamingClient"/> for specific
-        /// environment provided as <paramref name="environment"/> argument.
+        /// Creates the new instance of <see cref="IAlpacaStreamingClient"/> interface
+        /// implementation for specific environment provided as <paramref name="environment"/> argument.
         /// </summary>
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
-        /// <returns>New instance of <see cref="AlpacaStreamingClient"/> object.</returns>
-        public static AlpacaStreamingClient GetAlpacaStreamingClient(
+        /// <returns>The new instance of <see cref="IAlpacaStreamingClient"/> interface implementation.</returns>
+        public static IAlpacaStreamingClient GetAlpacaStreamingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
             new AlpacaStreamingClient(environment.GetAlpacaStreamingClientConfiguration(securityKey));
@@ -122,13 +122,13 @@ namespace Alpaca.Markets
             };
 
         /// <summary>
-        /// Creates new instance of <see cref="PolygonStreamingClient"/> for specific
-        /// environment provided as <paramref name="environment"/> argument.
+        /// Creates the new instance of <see cref="IPolygonStreamingClient"/> interface
+        /// implementation for specific environment provided as <paramref name="environment"/> argument.
         /// </summary>
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="keyId">Alpaca API key identifier.</param>
-        /// <returns>New instance of <see cref="PolygonStreamingClient"/> object.</returns>
-        public static PolygonStreamingClient GetPolygonStreamingClient(
+        /// <returns>The new instance of <see cref="IPolygonStreamingClient"/> interface implementation.</returns>
+        public static IPolygonStreamingClient GetPolygonStreamingClient(
             this IEnvironment environment,
             String keyId) =>
             new PolygonStreamingClient(environment.GetPolygonStreamingClientConfiguration(keyId));
@@ -150,13 +150,13 @@ namespace Alpaca.Markets
             };
 
         /// <summary>
-        /// Creates new instance of <see cref="AlpacaDataStreamingClient"/> for specific
-        /// environment provided as <paramref name="environment"/> argument.
+        /// Creates the new instance of <see cref="IAlpacaDataStreamingClient"/> interface
+        /// implementation for specific environment provided as <paramref name="environment"/> argument.
         /// </summary>
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
-        /// <returns>New instance of <see cref="AlpacaDataStreamingClient"/> object.</returns>
-        public static AlpacaDataStreamingClient GetAlpacaDataStreamingClient(
+        /// <returns>The new instance of <see cref="IAlpacaDataStreamingClient"/> interface implementation.</returns>
+        public static IAlpacaDataStreamingClient GetAlpacaDataStreamingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
             new AlpacaDataStreamingClient(environment.GetAlpacaDataStreamingClientConfiguration(securityKey));

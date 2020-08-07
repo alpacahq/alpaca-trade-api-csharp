@@ -24,10 +24,13 @@ namespace UsageExamples
 
         private Decimal scale = 200;
 
-        private PolygonDataClient polygonDataClient;
-        private AlpacaTradingClient alpacaTradingClient;
-        private AlpacaStreamingClient alpacaStreamingClient;
-        private PolygonStreamingClient polygonStreamingClient;
+        private IPolygonDataClient polygonDataClient;
+
+        private IAlpacaTradingClient alpacaTradingClient;
+
+        private IAlpacaStreamingClient alpacaStreamingClient;
+
+        private IPolygonStreamingClient polygonStreamingClient;
 
         private Guid lastTradeId = Guid.NewGuid();
 

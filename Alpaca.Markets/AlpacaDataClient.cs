@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca Data API via HTTP/REST.
     /// </summary>
-    public sealed class AlpacaDataClient : IDisposable
+    public sealed class AlpacaDataClient : IAlpacaDataClient
     {
         private readonly HttpClient _httpClient = new HttpClient();
 
@@ -36,12 +36,7 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public void Dispose() => _httpClient.Dispose();
 
-        /// <summary>
-        /// Gets lookup table of historical daily bars lists for all assets from Alpaca REST API endpoint.
-        /// </summary>
-        /// <param name="request">Historical daily bars request parameters.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only list of daily bars for specified asset.</returns>
+        /// <inheritdoc />
         public Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default) =>
@@ -49,24 +44,14 @@ namespace Alpaca.Markets
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
                 StringComparer.Ordinal, cancellationToken);
 
-        /// <summary>
-        /// Gets last trade for singe asset from Alpaca REST API endpoint.
-        /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only last trade information.</returns>
+        /// <inheritdoc />
         public Task<ILastTrade> GetLastTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ILastTrade, JsonLastTradeAlpaca>(
                 $"v1/last/stocks/{symbol}", cancellationToken);
 
-        /// <summary>
-        /// Gets current quote for singe asset from Alpaca REST API endpoint.
-        /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only current quote information.</returns>
+        /// <inheritdoc />
         public Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>

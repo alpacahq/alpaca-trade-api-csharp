@@ -14,7 +14,7 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Polygon Data API via HTTP/REST.
     /// </summary>
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-    public sealed class PolygonDataClient : IDisposable
+    public sealed class PolygonDataClient : IPolygonDataClient
     {
         private readonly HttpClient _httpClient = new HttpClient();
 
@@ -46,24 +46,13 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public void Dispose() => _httpClient.Dispose();
 
-        /// <summary>
-        /// Gets list of available exchanges from Polygon REST API endpoint.
-        /// </summary>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only list of exchange information objects.</returns>
+        /// <inheritdoc />
         public Task<IReadOnlyList<IExchange>> ListExchangesAsync(
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IReadOnlyList<IExchange>, List<JsonExchange>>(
                 GetUriBuilder("v1/meta/exchanges"), cancellationToken);
 
-        /// <summary>
-        /// Gets mapping dictionary for symbol types from Polygon REST API endpoint.
-        /// </summary>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>
-        /// Read-only dictionary with keys equal to symbol type abbreviation and values
-        /// equal to full symbol type names descriptions for each supported symbol type.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<IReadOnlyDictionary<String, String>> GetSymbolTypeMapAsync(
             CancellationToken cancellationToken = default)
         {
@@ -83,12 +72,7 @@ namespace Alpaca.Markets
                     StringComparer.Ordinal);
         }
 
-        /// <summary>
-        /// Gets list of historical trades for a single asset from Polygon's REST API endpoint.
-        /// </summary>
-        /// <param name="request">Historical trades request parameter.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only list of historical trade information.</returns>
+        /// <inheritdoc />
         public Task<IHistoricalItems<IHistoricalTrade>> ListHistoricalTradesAsync(
             HistoricalRequest request,
             CancellationToken cancellationToken = default) =>
@@ -98,12 +82,7 @@ namespace Alpaca.Markets
                         .GetUriBuilder(this, "trades"),
                     cancellationToken);
 
-        /// <summary>
-        /// Gets list of historical trades for a single asset from Polygon's REST API endpoint.
-        /// </summary>
-        /// <param name="request">Historical quotes request parameter.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only list of historical trade information.</returns>
+        /// <inheritdoc />
         public Task<IHistoricalItems<IHistoricalQuote>> ListHistoricalQuotesAsync(
             HistoricalRequest request,
             CancellationToken cancellationToken = default) =>
@@ -113,13 +92,7 @@ namespace Alpaca.Markets
                         .GetUriBuilder(this, "nbbo"),
                     cancellationToken);
 
-
-        /// <summary>
-        /// Gets list of historical minute bars for single asset from Polygon's v2 REST API endpoint.
-        /// </summary>
-        /// <param name="request">Day aggregates request parameter.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only list of day bars for specified asset.</returns>
+        /// <inheritdoc />
         public Task<IHistoricalItems<IAgg>> ListAggregatesAsync(
             AggregatesRequest request,
             CancellationToken cancellationToken = default) =>
@@ -128,39 +101,21 @@ namespace Alpaca.Markets
                     request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(this), 
                     cancellationToken);
 
-        /// <summary>
-        /// Gets last trade for singe asset from Polygon REST API endpoint.
-        /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only last trade information.</returns>
+        /// <inheritdoc />
         public Task<ILastTrade> GetLastTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ILastTrade, JsonLastTradePolygon>(
                 GetUriBuilder($"v1/last/stocks/{symbol}"), cancellationToken);
 
-        /// <summary>
-        /// Gets current quote for singe asset from Polygon REST API endpoint.
-        /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only current quote information.</returns>
+        /// <inheritdoc />
         public Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ILastQuote, JsonLastQuotePolygon>(
                 GetUriBuilder($"v1/last_quote/stocks/{symbol}"), cancellationToken);
 
-        /// <summary>
-        /// Gets mapping dictionary for specific tick type from Polygon REST API endpoint.
-        /// </summary>
-        /// <param name="tickType">Tick type for conditions map.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>
-        /// Read-only dictionary with keys equal to condition integer values and values
-        /// equal to full tick condition descriptions for each supported tick type.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<IReadOnlyDictionary<Int64, String>> GetConditionMapAsync(
             TickType tickType = TickType.Trades,
             CancellationToken cancellationToken = default)
