@@ -143,7 +143,9 @@ namespace Alpaca.Markets
             await _nextRetryGuard.WaitToProceed(cancellationToken).ConfigureAwait(false);
 
             // Block until we can enter the semaphore or until the timeout expires.
-            var entered = _throttleSemaphore.Wait(Timeout.Infinite);
+            var entered = await _throttleSemaphore
+                .WaitAsync(Timeout.Infinite, cancellationToken)
+                .ConfigureAwait(false);
 
             // If we entered the semaphore, compute the corresponding exit time 
             // and add it to the queue.
