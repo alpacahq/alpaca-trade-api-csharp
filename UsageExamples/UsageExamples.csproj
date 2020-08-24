@@ -2,11 +2,15 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp3.1;netcoreapp2.1;net452</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;netcoreapp2.1;net45</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+  <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\Alpaca.Markets\Alpaca.Markets.csproj">
       <Project>{F339D73B-347F-47D4-9BFB-EBEA010FC6F7}</Project>

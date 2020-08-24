@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.3;net45</TargetFrameworks>
@@ -65,6 +65,10 @@
     <PackageReference Include="WebSocket4Net" Version="0.15.2" />
   </ItemGroup>
 
+  <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+  
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
     <PackageReference Include="WebSocketSharpFork" Version="1.0.4">
       <PrivateAssets>all</PrivateAssets>
