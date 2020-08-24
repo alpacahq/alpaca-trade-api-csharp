@@ -88,6 +88,15 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "stop_price", Required = Required.Default)]
         public Decimal? StopPrice { get; set; }
 
+        [JsonProperty(PropertyName = "trail_price", Required = Required.Default)]
+        public Decimal? TrailOffsetInDollars { get; set; }
+
+        [JsonProperty(PropertyName = "trail_percent", Required = Required.Default)]
+        public Decimal? TrailOffsetInPercent { get; set; }
+
+        [JsonProperty(PropertyName = "hwm", Required = Required.Default)]
+        public Decimal? HighWaterMark { get; set; }
+        
         [JsonProperty(PropertyName = "filled_avg_price", Required = Required.Default)]
         public Decimal? AverageFillPrice { get; set; }
 
