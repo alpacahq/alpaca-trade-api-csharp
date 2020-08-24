@@ -26,6 +26,12 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "stop_price", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public Decimal? StopPrice { get; set; }
 
+        [JsonProperty(PropertyName = "trail_price", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public Decimal? TrailOffsetInDollars { get; set; }
+
+        [JsonProperty(PropertyName = "trail_percent", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public Decimal? TrailOffsetInPercent { get; set; }
+        
         [JsonProperty(PropertyName = "client_order_id", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public String? ClientOrderId { get; set; }
 

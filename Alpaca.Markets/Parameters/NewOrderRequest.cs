@@ -67,6 +67,16 @@ namespace Alpaca.Markets
         public Decimal? StopPrice { get; set; }
 
         /// <summary>
+        /// Gets or sets the new trailing order trail price offset in dollars.
+        /// </summary>
+        public Decimal? TrailOffsetInDollars { get; set; }
+
+        /// <summary>
+        /// Gets or sets the new trailing order trail price offset in percent.
+        /// </summary>
+        public Decimal? TrailOffsetInPercent { get; set; }
+
+        /// <summary>
         /// Gets or sets the client order ID.
         /// </summary>
         public String? ClientOrderId { get; set; }
@@ -123,6 +133,8 @@ namespace Alpaca.Markets
                 TimeInForce = Duration,
                 LimitPrice = LimitPrice,
                 StopPrice = StopPrice,
+                TrailOffsetInDollars = TrailOffsetInDollars,
+                TrailOffsetInPercent = TrailOffsetInPercent,
                 ClientOrderId = ClientOrderId,
                 ExtendedHours = ExtendedHours,
                 OrderClass = OrderClass,

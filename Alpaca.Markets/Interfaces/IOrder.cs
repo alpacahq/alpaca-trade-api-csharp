@@ -146,6 +146,21 @@ namespace Alpaca.Markets
         /// Gets order stop price for stop and stop-limit orders.
         /// </summary>
         Decimal? StopPrice { get; }
+        
+        /// <summary>
+        /// Gets the profit taking limit price for advanced order types.
+        /// </summary>
+        public Decimal? TrailOffsetInDollars { get; }
+
+        /// <summary>
+        /// Gets the stop loss stop price for advanced order types.
+        /// </summary>
+        public Decimal? TrailOffsetInPercent { get; }
+
+        /// <summary>
+        /// Gets the current high water mark price for trailing stop orders.
+        /// </summary>
+        public Decimal? HighWaterMark { get;  }
 
         /// <summary>
         /// Gets order average fill price.
