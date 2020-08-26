@@ -20,6 +20,21 @@ namespace Alpaca.Markets
             return order;
         }
 
+        public static JsonNewOrder WithTrailOffset(
+            this JsonNewOrder order,
+            TrailOffset trailOffset)
+        {
+            if (trailOffset.IsInDollars)
+            {
+                order.TrailOffsetInDollars = trailOffset.Value;
+            }
+            else
+            {
+                order.TrailOffsetInPercent = trailOffset.Value;
+            }
+            return order;
+        }
+        
         public static JsonNewOrder WithOrderClass(
             this JsonNewOrder order,
             OrderClass orderClass)
