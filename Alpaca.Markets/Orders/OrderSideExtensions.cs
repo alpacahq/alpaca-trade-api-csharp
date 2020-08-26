@@ -26,7 +26,7 @@ namespace Alpaca.Markets
         /// <param name="orderSide">Order side (buy or sell).</param>
         /// <param name="symbol">Order asset name.</param>
         /// <param name="quantity">Order quantity.</param>
-        /// <param name="stopPrice"></param>
+        /// <param name="stopPrice">Order stop price.</param>
         /// <returns>The new <see cref="StopOrder"/> object instance.</returns>
         public static StopOrder Stop(
             this OrderSide orderSide,
@@ -41,7 +41,7 @@ namespace Alpaca.Markets
         /// <param name="orderSide">Order side (buy or sell).</param>
         /// <param name="symbol">Order asset name.</param>
         /// <param name="quantity">Order quantity.</param>
-        /// <param name="limitPrice"></param>
+        /// <param name="limitPrice">Order limit price.</param>
         /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>
         public static LimitOrder Limit(
             this OrderSide orderSide,
@@ -56,8 +56,8 @@ namespace Alpaca.Markets
         /// <param name="orderSide">Order side (buy or sell).</param>
         /// <param name="symbol">Order asset name.</param>
         /// <param name="quantity">Order quantity.</param>
-        /// <param name="stopPrice"></param>
-        /// <param name="limitPrice"></param>
+        /// <param name="stopPrice">Order stop price.</param>
+        /// <param name="limitPrice">Order limit price.</param>
         /// <returns>The new <see cref="StopLimitOrder"/> object instance.</returns>
         public static StopLimitOrder StopLimit(
             this OrderSide orderSide,
@@ -66,5 +66,20 @@ namespace Alpaca.Markets
             Decimal stopPrice,
             Decimal limitPrice) =>
             new StopLimitOrder(symbol, quantity, orderSide, stopPrice, limitPrice);
+
+        /// <summary>
+        /// Creates new trailing stop order using specified side, symbol, quantity, and trail offset.
+        /// </summary>
+        /// <param name="orderSide">Order side (buy or sell).</param>
+        /// <param name="symbol">Order asset name.</param>
+        /// <param name="quantity">Order quantity.</param>
+        /// <param name="trailOffset">Order trail offset.</param>
+        /// <returns>The new <see cref="TrailingStopOrder"/> object instance.</returns>
+        public static TrailingStopOrder TrailingStop(
+            this OrderSide orderSide,
+            String symbol,
+            Int64 quantity,
+            TrailOffset trailOffset) =>
+            new TrailingStopOrder(symbol, quantity, orderSide, trailOffset);
     }
 }
