@@ -21,9 +21,13 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "timestamp", Required = Required.Default)]
         public DateTime Timestamp { get; set; }
 
+        [JsonIgnore]
+        public DateTime TimestampUtc => Timestamp.AsUtcDateTime();
+
         [JsonProperty(PropertyName = "order", Required = Required.Always)]
         public JsonOrder JsonOrder { get; set; } = new JsonOrder();
 
+        [JsonIgnore]
         public IOrder Order => JsonOrder;
     }
 }

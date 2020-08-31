@@ -6,7 +6,7 @@ using System.Linq;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Helper class for storing parameters required for initializing rate throttler in <see cref="RestClient"/> class.
+    /// Helper class for storing parameters required for initializing rate throttler in <see cref="AlpacaTradingClient"/> class.
     /// </summary>
     public sealed class ThrottleParameters
     {

@@ -9,7 +9,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API via websockets.
     /// </summary>
-    public sealed class PolygonStreamingClient : StreamingClientBase<PolygonStreamingClientConfiguration>
+    public sealed class PolygonStreamingClient :
+        StreamingClientBase<PolygonStreamingClientConfiguration>,
+        IPolygonStreamingClient
     {
         // Available Polygon message types
 
@@ -25,24 +27,16 @@ namespace Alpaca.Markets
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
-        /// <summary>
-        /// Occured when new trade received from stream.
-        /// </summary>
+        /// <inheritdoc />
         public event Action<IStreamTrade>? TradeReceived;
 
-        /// <summary>
-        /// Occured when new quote received from stream.
-        /// </summary>
+        /// <inheritdoc />
         public event Action<IStreamQuote>? QuoteReceived;
 
-        /// <summary>
-        /// Occured when new bar received from stream.
-        /// </summary>
+        /// <inheritdoc />
         public event Action<IStreamAgg>? MinuteAggReceived;
 
-        /// <summary>
-        /// Occured when new bar received from stream.
-        /// </summary>
+        /// <inheritdoc />
         public event Action<IStreamAgg>? SecondAggReceived;
 
         /// <summary>
@@ -63,146 +57,82 @@ namespace Alpaca.Markets
             };
         }
 
-        /// <summary>
-        /// Subscribes for the trade updates via <see cref="TradeReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
+        /// <inheritdoc />
         public void SubscribeTrade(
             String symbol) =>
             subscribe(getParams(TradesChannel, symbol));
 
-        /// <summary>
-        /// Subscribes for the quote updates via <see cref="QuoteReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
+        /// <inheritdoc />
         public void SubscribeQuote(
             String symbol) =>
             subscribe(getParams(QuotesChannel, symbol));
 
-        /// <summary>
-        /// Subscribes for the second bar updates via <see cref="SecondAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
+        /// <inheritdoc />
         public void SubscribeSecondAgg(
             String symbol) =>
             subscribe(getParams(SecondAggChannel, symbol));
 
-        /// <summary>
-        /// Subscribes for the minute bar updates via <see cref="MinuteAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
+        /// <inheritdoc />
         public void SubscribeMinuteAgg(
             String symbol) =>
             subscribe(getParams(MinuteAggChannel, symbol));
 
-        /// <summary>
-        /// Subscribes for the trade updates via <see cref="TradeReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
+        /// <inheritdoc />
         public void SubscribeTrade(
             IEnumerable<String> symbols) =>
             subscribe(getParams(TradesChannel, symbols));
 
-        /// <summary>
-        /// Subscribes for the quote updates via <see cref="QuoteReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
+        /// <inheritdoc />
         public void SubscribeQuote(
             IEnumerable<String> symbols) =>
             subscribe(getParams(QuotesChannel, symbols));
 
-        /// <summary>
-        /// Subscribes for the second bar updates via <see cref="SecondAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
+        /// <inheritdoc />
         public void SubscribeSecondAgg(
             IEnumerable<String> symbols) =>
             subscribe(getParams(SecondAggChannel, symbols));
 
-        /// <summary>
-        /// Subscribes for the minute bar updates via <see cref="MinuteAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
+        /// <inheritdoc />
         public void SubscribeMinuteAgg(
             IEnumerable<String> symbols) =>
             subscribe(getParams(MinuteAggChannel, symbols));
 
-        /// <summary>
-        /// Unsubscribes from the trade updates via <see cref="TradeReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
+        /// <inheritdoc />
         public void UnsubscribeTrade(
             String symbol) =>
             unsubscribe(getParams(TradesChannel, symbol));
 
-        /// <summary>
-        /// Unsubscribes from the quote updates via <see cref="QuoteReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
+        /// <inheritdoc />
         public void UnsubscribeQuote(
             String symbol) =>
             unsubscribe(getParams(QuotesChannel, symbol));
 
-        /// <summary>
-        /// Unsubscribes from the second bar updates via <see cref="SecondAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
+        /// <inheritdoc />
         public void UnsubscribeSecondAgg(
             String symbol) =>
             unsubscribe(getParams(SecondAggChannel, symbol));
 
-        /// <summary>
-        /// Unsubscribes from the minute bar updates via <see cref="MinuteAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
+        /// <inheritdoc />
         public void UnsubscribeMinuteAgg(
             String symbol) =>
             unsubscribe(getParams(MinuteAggChannel, symbol));
 
-        /// <summary>
-        /// Unsubscribes from the trade updates via <see cref="TradeReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
+        /// <inheritdoc />
         public void UnsubscribeTrade(
             IEnumerable<String> symbols) =>
             unsubscribe(getParams(TradesChannel, symbols));
 
-        /// <summary>
-        /// Unsubscribes from the quote updates via <see cref="QuoteReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
+        /// <inheritdoc />
         public void UnsubscribeQuote(
             IEnumerable<String> symbols) =>
             unsubscribe(getParams(QuotesChannel, symbols));
 
-        /// <summary>
-        /// Unsubscribes from the second bar updates via <see cref="SecondAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
+        /// <inheritdoc />
         public void UnsubscribeSecondAgg(
             IEnumerable<String> symbols) =>
             unsubscribe(getParams(SecondAggChannel, symbols));
 
-        /// <summary>
-        /// Unsubscribes from the minute bar updates via <see cref="MinuteAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
+        /// <inheritdoc />
         public void UnsubscribeMinuteAgg(
             IEnumerable<String> symbols) =>
             unsubscribe(getParams(MinuteAggChannel, symbols));

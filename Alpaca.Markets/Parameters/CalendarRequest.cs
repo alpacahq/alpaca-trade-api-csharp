@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 
 namespace Alpaca.Markets
 {
@@ -15,13 +16,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets start time for filtering (inclusive).
         /// </summary>
-        [Obsolete("Use the TimeInterval.From property instead.", false)]
+        [Obsolete("Use the TimeInterval.From property instead.", true)]
         public DateTime? StartDateInclusive => TimeInterval?.From;
 
         /// <summary>
         /// Gets end time for filtering (inclusive).
         /// </summary>
-        [Obsolete("Use the TimeInterval.Into property instead.", false)]
+        [Obsolete("Use the TimeInterval.Into property instead.", true)]
         public DateTime? EndDateInclusive => TimeInterval?.Into;
 
         /// <summary>
@@ -30,11 +31,21 @@ namespace Alpaca.Markets
         /// <param name="start">Filtering interval start time.</param>
         /// <param name="end">Filtering interval end time.</param>
         /// <returns>Fluent interface method return same <see cref="CalendarRequest"/> instance.</returns>
-        [Obsolete("This method will be removed soon in favor of the extension method SetInclusiveTimeInterval.", false)]
+        [Obsolete("This method will be removed soon in favor of the extension method SetInclusiveTimeInterval.", true)]
         public CalendarRequest SetInclusiveTimeIntervalWithNulls(
             DateTime? start,
             DateTime? end) =>
             this.SetTimeInterval(Markets.TimeInterval.GetInclusive(start, end));
+
+        internal UriBuilder GetUriBuilder(
+            HttpClient httpClient) =>
+            new UriBuilder(httpClient.BaseAddress)
+            {
+                Path = "v2/calendar",
+                Query = new QueryBuilder()
+                    .AddParameter("start", TimeInterval?.From, DateTimeHelper.DateFormat)
+                    .AddParameter("end", TimeInterval?.Into, DateTimeHelper.DateFormat)
+            };
 
         void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
             IInclusiveTimeInterval value) => TimeInterval = value;

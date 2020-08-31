@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Alpaca.Markets
 {
@@ -8,16 +7,11 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed class AlpacaTradingClientConfiguration
     {
-        private static readonly HashSet<ApiVersion> _supportedApiVersions = new HashSet<ApiVersion> { ApiVersion.V1, ApiVersion.V2 };
-
-        internal const ApiVersion DefaultApiVersion = ApiVersion.V2;
-
         /// <summary>
         /// Creates new instance of <see cref="AlpacaTradingClientConfiguration"/> class.
         /// </summary>
         public AlpacaTradingClientConfiguration()
         {
-            ApiVersion = DefaultApiVersion;
             SecurityId = new SecretKey(String.Empty, String.Empty);
             ApiEndpoint = Environments.Live.AlpacaTradingApi;
             ThrottleParameters = ThrottleParameters.Default;
@@ -36,6 +30,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets Alpaca Trading API version.
         /// </summary>
+        [Obsolete("This property doesn't affect the client's behavior and will be removed in the next versions of SDK.", false)]
         public ApiVersion ApiVersion { get; set; }
 
         /// <summary>
@@ -55,12 +50,6 @@ namespace Alpaca.Markets
             {
                 throw new InvalidOperationException(
                     $"The value of '{nameof(ApiEndpoint)}' property shouldn't be null.");
-            }
-
-            if (!_supportedApiVersions.Contains(ApiVersion))
-            {
-                throw new InvalidOperationException(
-                    $"The value of '{nameof(ApiVersion)}' property is invalid.");
             }
 
             if (ThrottleParameters == null)

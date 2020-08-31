@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 
 namespace Alpaca.Markets
 {
@@ -15,13 +16,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets start date for desired history.
         /// </summary>
-        [Obsolete("Use the TimeInterval.From property instead.", false)]
+        [Obsolete("Use the TimeInterval.From property instead.", true)]
         public DateTime? StartDate => TimeInterval.From;
 
         /// <summary>
         /// Gets or sets  the end date for desired history. Default value (if <c>null</c>) is today.
         /// </summary>
-        [Obsolete("Use the TimeInterval.Into property instead.", false)]
+        [Obsolete("Use the TimeInterval.Into property instead.", true)]
         public DateTime? EndDate => TimeInterval.Into;
 
         /// <summary>
@@ -40,6 +41,19 @@ namespace Alpaca.Markets
         /// This is effective only for time frame less than 1 day.
         /// </summary>
         public Boolean? ExtendedHours { get; set; }
+
+        internal UriBuilder GetUriBuilder(
+            HttpClient httpClient) =>
+            new UriBuilder(httpClient.BaseAddress)
+            {
+                Path = "v2/account/portfolio/history",
+                Query = new QueryBuilder()
+                    .AddParameter("start_date", TimeInterval?.From, DateTimeHelper.DateFormat)
+                    .AddParameter("end_date", TimeInterval?.Into, DateTimeHelper.DateFormat)
+                    .AddParameter("period", Period?.ToString())
+                    .AddParameter("timeframe", TimeFrame)
+                    .AddParameter("extended_hours", ExtendedHours)
+            };
 
         void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
             IInclusiveTimeInterval value) => TimeInterval = value;

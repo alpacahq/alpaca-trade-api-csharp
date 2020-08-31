@@ -24,10 +24,13 @@ namespace UsageExamples
 
         private Decimal scale = 200;
 
-        private PolygonDataClient polygonDataClient;
-        private AlpacaTradingClient alpacaTradingClient;
-        private AlpacaStreamingClient alpacaStreamingClient;
-        private PolygonStreamingClient polygonStreamingClient;
+        private IPolygonDataClient polygonDataClient;
+
+        private IAlpacaTradingClient alpacaTradingClient;
+
+        private IAlpacaStreamingClient alpacaStreamingClient;
+
+        private IPolygonStreamingClient polygonStreamingClient;
 
         private Guid lastTradeId = Guid.NewGuid();
 
@@ -49,7 +52,7 @@ namespace UsageExamples
             alpacaStreamingClient.OnTradeUpdate += HandleTradeUpdate;
 
             // First, cancel any existing orders so they don't impact our buying power.
-            var orders = await alpacaTradingClient.ListAllOrdersAsync();
+            var orders = await alpacaTradingClient.ListOrdersAsync(new ListOrdersRequest());
             foreach (var order in orders)
             {
                 await alpacaTradingClient.DeleteOrderAsync(order.OrderId);
@@ -59,8 +62,8 @@ namespace UsageExamples
             var calendars = (await alpacaTradingClient
                 .ListCalendarAsync(new CalendarRequest().SetTimeInterval(DateTime.Today.GetInclusiveIntervalFromThat())))
                 .ToList();
-            var calendarDate = calendars.First().TradingDate;
-            var closingTime = calendars.First().TradingCloseTime;
+            var calendarDate = calendars.First().TradingDateUtc;
+            var closingTime = calendars.First().TradingCloseTimeUtc;
 
             closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 
@@ -72,7 +75,7 @@ namespace UsageExamples
             var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count() - 20));
             foreach (var bar in lastBars)
             {
-                if (bar.Time.Date == today)
+                if (bar.TimeUtc?.Date == today)
                 {
                     closingPrices.Add(bar.Close);
                 }

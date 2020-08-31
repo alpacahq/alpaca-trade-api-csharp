@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Net.Http;
 
 namespace Alpaca.Markets
 {
@@ -59,13 +60,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the upper date limit for requesting only activities submitted before this date.
         /// </summary>
-        [Obsolete("Use the TimeInterval.From property instead.", false)]
+        [Obsolete("Use the TimeInterval.From property instead.", true)]
         public DateTime? Until => TimeInterval.From;
 
         /// <summary>
         /// Gets the lover date limit for requesting only activities submitted after this date.
         /// </summary>
-        [Obsolete("Use the TimeInterval.Into property instead.", false)]
+        [Obsolete("Use the TimeInterval.Into property instead.", true)]
         public DateTime? After => TimeInterval.Into;
 
         /// <summary>
@@ -102,11 +103,26 @@ namespace Alpaca.Markets
         /// <param name="dateFrom">Filtering interval start time.</param>
         /// <param name="dateInto">Filtering interval end time.</param>
         /// <returns>Fluent interface method return same <see cref="AccountActivitiesRequest"/> instance.</returns>
-        [Obsolete("This method will be removed soon in favor of the extension method SetInclusiveTimeInterval.", false)]
+        [Obsolete("This method will be removed soon in favor of the extension method SetInclusiveTimeInterval.", true)]
         public AccountActivitiesRequest SetInclusiveTimeIntervalWithNulls(
             DateTime? dateFrom,
             DateTime? dateInto) =>
             this.SetTimeInterval(Markets.TimeInterval.GetInclusive(dateFrom, dateInto));
+
+        internal UriBuilder GetUriBuilder(
+            HttpClient httpClient) =>
+            new UriBuilder(httpClient.BaseAddress)
+            {
+                Path = "v2/account/activities",
+                Query = new QueryBuilder()
+                    .AddParameter("activity_types", ActivityTypes)
+                    .AddParameter("date", Date, DateTimeHelper.DateFormat)
+                    .AddParameter("until", TimeInterval.Into, "O")
+                    .AddParameter("after", TimeInterval.From, "O")
+                    .AddParameter("direction", Direction)
+                    .AddParameter("pageSize", PageSize)
+                    .AddParameter("pageToken", PageToken)
+            };
 
         void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(IInclusiveTimeInterval value)
         {

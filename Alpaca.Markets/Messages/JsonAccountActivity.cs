@@ -53,8 +53,14 @@ namespace Alpaca.Markets
         public TradeEvent? Type { get; set; }
 
         [JsonIgnore]
-        public DateTime ActivityDateTime { get; private set; }
-        
+        public DateTime ActivityDateTimeUtc { get; private set; }
+
+        [JsonIgnore] 
+        public DateTime ActivityDateTime => ActivityDateTimeUtc;
+
+        [JsonIgnore] 
+        public DateTime? TransactionTimeUtc => TransactionTime.AsUtcDateTime();
+
         [JsonIgnore]
         public Guid ActivityGuid { get; private set; }
 
@@ -68,7 +74,7 @@ namespace Alpaca.Markets
                 DateTime.TryParseExact(components[0], "yyyyMMddHHmmssfff",
                     CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateTime))
             {
-                ActivityDateTime = CustomTimeZone.ConvertFromEstToUtc(dateTime);
+                ActivityDateTimeUtc = CustomTimeZone.ConvertFromEstToUtc(dateTime);
             }
 
             if (components.Length > 1 &&
@@ -76,6 +82,8 @@ namespace Alpaca.Markets
             {
                 ActivityGuid = guid;
             }
+
+            ActivityDate = ActivityDate?.Date.AsUtcDateTime();
         }
     }
 }

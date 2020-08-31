@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 namespace Alpaca.Markets
 {
-    // TODO: olegra - mark it as obsolete in next major release
-
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaTradingClient.PostOrderAsync(NewOrderRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
@@ -69,6 +67,16 @@ namespace Alpaca.Markets
         public Decimal? StopPrice { get; set; }
 
         /// <summary>
+        /// Gets or sets the new trailing order trail price offset in dollars.
+        /// </summary>
+        public Decimal? TrailOffsetInDollars { get; set; }
+
+        /// <summary>
+        /// Gets or sets the new trailing order trail price offset in percent.
+        /// </summary>
+        public Decimal? TrailOffsetInPercent { get; set; }
+
+        /// <summary>
         /// Gets or sets the client order ID.
         /// </summary>
         public String? ClientOrderId { get; set; }
@@ -97,12 +105,6 @@ namespace Alpaca.Markets
         /// Gets or sets the stop loss limit price for advanced order types.
         /// </summary>
         public Decimal? StopLossLimitPrice { get; set; }
-
-        /// <summary>
-        /// Gets or sets flag indicated that child orders should be listed as 'legs' of parent orders.
-        /// </summary>
-        [Obsolete("This request parameter doesn't supported by the Alpaca REST API anymore.", true)]
-        public Boolean? Nested { get; set; }
         
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
@@ -131,6 +133,8 @@ namespace Alpaca.Markets
                 TimeInForce = Duration,
                 LimitPrice = LimitPrice,
                 StopPrice = StopPrice,
+                TrailOffsetInDollars = TrailOffsetInDollars,
+                TrailOffsetInPercent = TrailOffsetInPercent,
                 ClientOrderId = ClientOrderId,
                 ExtendedHours = ExtendedHours,
                 OrderClass = OrderClass,

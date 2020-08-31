@@ -30,7 +30,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets update timestamp.
         /// </summary>
+        [Obsolete("This property will be removed in the next major release. Use the TimestampUtc property instead.", false)]
         DateTime Timestamp { get; }
+
+        /// <summary>
+        /// Gets update timestamp in UTC time zone.
+        /// </summary>
+        DateTime TimestampUtc { get; }
 
         /// <summary>
         /// Gets related order object.

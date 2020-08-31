@@ -34,6 +34,15 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "deleted_at", Required = Required.AllowNull)]
         public DateTime? DeletedAt { get; set; }
 
+        [JsonIgnore] 
+        public DateTime CreatedAtUtc => CreatedAt.AsUtcDateTime();
+
+        [JsonIgnore]
+        public DateTime UpdatedAtUtc => UpdatedAt.AsUtcDateTime();
+
+        [JsonIgnore]
+        public DateTime? DeletedAtUtc => DeletedAt.AsUtcDateTime();
+
         [OnDeserialized]
         internal void OnDeserializedMethod(
             StreamingContext context)

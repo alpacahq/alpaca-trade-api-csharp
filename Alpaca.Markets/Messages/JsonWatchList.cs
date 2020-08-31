@@ -16,8 +16,14 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "created_at", Required = Required.Always)]
         public DateTime Created { get; set; }
 
+        [JsonIgnore]
+        public DateTime CreatedUtc => Created.AsUtcDateTime();
+
         [JsonProperty(PropertyName = "updated_at", Required = Required.Default)]
         public DateTime? Updated { get; set; }
+
+        [JsonIgnore]
+        public DateTime? UpdatedUtc => Updated.AsUtcDateTime();
 
         [JsonProperty(PropertyName = "name", Required = Required.Always)]
         public String Name { get; set; } = String.Empty;

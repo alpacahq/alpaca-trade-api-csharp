@@ -34,6 +34,12 @@ namespace Alpaca.Markets
         /// Stop limit order (both stop and limit prices required).
         /// </summary>
         [EnumMember(Value = "stop_limit")]
-        StopLimit
+        StopLimit,
+        
+        /// <summary>
+        /// Trailing stop order (dollars or percent offset required).
+        /// </summary>
+        [EnumMember(Value = "trailing_stop")]
+        TrailingStop
     }
 }

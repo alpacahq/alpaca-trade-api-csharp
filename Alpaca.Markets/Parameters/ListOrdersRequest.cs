@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 
 namespace Alpaca.Markets
 {
@@ -35,13 +36,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets lower bound date time for filtering orders until specified timestamp (exclusive).
         /// </summary>
-        [Obsolete("Use the TimeInterval.From property instead.", false)]
+        [Obsolete("Use the TimeInterval.From property instead.", true)]
         public DateTime? AfterDateTimeExclusive => TimeInterval?.From;
 
         /// <summary>
         /// Gets upper bound date time for filtering orders until specified timestamp (exclusive).
         /// </summary>
-        [Obsolete("Use the TimeInterval.Into property instead.", false)]
+        [Obsolete("Use the TimeInterval.Into property instead.", true)]
         public DateTime? UntilDateTimeExclusive => TimeInterval?.Into;
 
         /// <summary>
@@ -50,11 +51,25 @@ namespace Alpaca.Markets
         /// <param name="after">Filtering interval start time.</param>
         /// <param name="until">Filtering interval end time.</param>
         /// <returns>Fluent interface method return same <see cref="ListOrdersRequest"/> instance.</returns>
-        [Obsolete("This method will be removed soon in favor of the extension method SetExclusiveTimeInterval.", false)]
+        [Obsolete("This method will be removed soon in favor of the extension method SetExclusiveTimeInterval.", true)]
         public ListOrdersRequest SetExclusiveTimeIntervalWithNulls(
             DateTime? after,
             DateTime? until) =>
             this.SetTimeInterval(Markets.TimeInterval.GetExclusive(after, until));
+
+        internal UriBuilder GetUriBuilder(
+            HttpClient httpClient) =>
+            new UriBuilder(httpClient.BaseAddress)
+            {
+                Path = "v2/orders",
+                Query = new QueryBuilder()
+                    .AddParameter("status", OrderStatusFilter)
+                    .AddParameter("direction", OrderListSorting)
+                    .AddParameter("until", TimeInterval?.Into, "O")
+                    .AddParameter("after", TimeInterval?.From, "O")
+                    .AddParameter("limit", LimitOrderNumber)
+                    .AddParameter("nested", RollUpNestedOrders)
+            };
 
         void IRequestWithTimeInterval<IExclusiveTimeInterval>.SetInterval(
             IExclusiveTimeInterval value) => TimeInterval = value;

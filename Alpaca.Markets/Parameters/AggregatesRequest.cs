@@ -40,19 +40,34 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets start time for filtering (inclusive).
         /// </summary>
-        [Obsolete("Use the TimeInterval.From property instead.", false)]
+        [Obsolete("Use the TimeInterval.From property instead.", true)]
         public DateTime DateFrom => TimeInterval.From ?? default;
 
         /// <summary>
         /// Gets end time for filtering (inclusive).
         /// </summary>
-        [Obsolete("Use the TimeInterval.Into property instead.", false)]
+        [Obsolete("Use the TimeInterval.Into property instead.", true)]
         public DateTime DateInto => TimeInterval.Into ?? default;
 
         /// <summary>
         /// Gets or sets flag indicated that the results should not be adjusted for splits.
         /// </summary>
         public Boolean Unadjusted { get; set; }
+
+        internal UriBuilder GetUriBuilder(
+            PolygonDataClient polygonDataClient)
+        {
+            var unixFrom = (TimeInterval.From ?? default).IntoUnixTimeMilliseconds();
+            var unixInto = (TimeInterval.Into ?? default).IntoUnixTimeMilliseconds();
+
+            var builder = polygonDataClient.GetUriBuilder(
+                $"v2/aggs/ticker/{Symbol}/range/{Period.ToString()}/{unixFrom}/{unixInto}");
+
+            builder.QueryBuilder
+                .AddParameter("unadjusted", Unadjusted ? Boolean.TrueString : Boolean.FalseString);
+
+            return builder;
+        }
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {

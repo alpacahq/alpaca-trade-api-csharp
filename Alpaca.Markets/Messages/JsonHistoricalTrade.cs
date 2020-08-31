@@ -17,13 +17,16 @@ namespace Alpaca.Markets
         public Int64 Size { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Default)]
-        public Int64 TimestampInNanoseconds { get; set; }
+        [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
+        public DateTime? TimestampUtc { get; set; }
 
         [JsonProperty(PropertyName = "y", Required = Required.Default)]
-        public Int64 ParticipantTimestampInNanoseconds { get; set; }
+        [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
+        public DateTime? ParticipantTimestampUtc { get; set; }
 
         [JsonProperty(PropertyName = "f", Required = Required.Default)]
-        public Int64 TradeReportingFacilityTimestampInNanoseconds { get; set; }
+        [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
+        public DateTime? TradeReportingFacilityTimestampUtc { get; set; }
 
         [JsonProperty(PropertyName = "x", Required = Required.Default)]
         public Int64 ExchangeId { get; set; }
@@ -45,18 +48,15 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
         public List<Int64>? ConditionsList { get; set; }
-        
-        [JsonIgnore]
-        public DateTime Timestamp =>
-            DateTimeHelper.FromUnixTimeNanoseconds(TimestampInNanoseconds);
 
         [JsonIgnore]
-        public DateTime ParticipantTimestamp =>
-            DateTimeHelper.FromUnixTimeNanoseconds(ParticipantTimestampInNanoseconds);
+        public DateTime? Timestamp => TimestampUtc;
 
         [JsonIgnore]
-        public DateTime TradeReportingFacilityTimestamp =>
-            DateTimeHelper.FromUnixTimeNanoseconds(TradeReportingFacilityTimestampInNanoseconds);
+        public DateTime? ParticipantTimestamp => ParticipantTimestampUtc;
+
+        [JsonIgnore]
+        public DateTime? TradeReportingFacilityTimestamp => TradeReportingFacilityTimestampUtc;
 
         [JsonIgnore]
         public IReadOnlyList<Int64> Conditions => ConditionsList.EmptyIfNull();

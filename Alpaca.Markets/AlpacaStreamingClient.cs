@@ -8,7 +8,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca streaming API.
     /// </summary>
-    public sealed class AlpacaStreamingClient : StreamingClientBase<AlpacaStreamingClientConfiguration>
+    public sealed class AlpacaStreamingClient :
+        StreamingClientBase<AlpacaStreamingClientConfiguration>,
+        IAlpacaStreamingClient
     {
         // Available Alpaca message types
 
@@ -23,7 +25,7 @@ namespace Alpaca.Markets
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
         /// <summary>
-        /// Creates new instance of <see cref="SockClient"/> object.
+        /// Creates new instance of <see cref="AlpacaStreamingClient"/> object.
         /// </summary>
         /// <param name="configuration">Configuration parameters object.</param>
         public AlpacaStreamingClient(
@@ -39,14 +41,10 @@ namespace Alpaca.Markets
             };
         }
 
-        /// <summary>
-        /// Occurred when new account update received from stream.
-        /// </summary>
+        /// <inheritdoc />
         public event Action<IAccountUpdate>? OnAccountUpdate;
 
-        /// <summary>
-        /// Occurred when new trade update received from stream.
-        /// </summary>
+        /// <inheritdoc />
         public event Action<ITradeUpdate>? OnTradeUpdate;
 
         /// <inheritdoc/>

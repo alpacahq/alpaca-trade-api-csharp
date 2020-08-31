@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -32,26 +31,20 @@ namespace Alpaca.Markets
         public Int64 Volume { get; set; }
 
         [JsonProperty(PropertyName = "s", Required = Required.Always)]
-        public Int64 StartTimeOffset { get; set; }
+        [JsonConverter(typeof(UnixMillisecondsDateTimeConverter))]
+        public DateTime StartTimeUtc { get; set; }
 
         [JsonProperty(PropertyName = "e", Required = Required.Always)]
-        public Int64 EndTimeOffset { get; set; }
+        [JsonConverter(typeof(UnixMillisecondsDateTimeConverter))]
+        public DateTime EndTimeUtc { get; set; }
 
         [JsonProperty(PropertyName = "n", Required = Required.Default)]
         public Int32 ItemsInWindow { get; set; }
 
         [JsonIgnore]
-        public DateTime StartTime { get; private set; }
+        public DateTime StartTime => StartTimeUtc;
 
         [JsonIgnore]
-        public DateTime EndTime { get; private set; }
-
-        [OnDeserialized]
-        internal void OnDeserializedMethod(
-            StreamingContext context)
-        {
-            StartTime = DateTimeHelper.FromUnixTimeMilliseconds(StartTimeOffset);
-            EndTime = DateTimeHelper.FromUnixTimeMilliseconds(EndTimeOffset);
-        }
+        public DateTime EndTime => EndTimeUtc;
     }
 }

@@ -20,9 +20,9 @@ namespace UsageExamples
 
         private Decimal scale = 200;
 
-        private AlpacaTradingClient alpacaTradingClient;
+        private IAlpacaTradingClient alpacaTradingClient;
 
-        private AlpacaDataClient alpacaDataClient;
+        private IAlpacaDataClient alpacaDataClient;
 
         private Guid lastTradeId = Guid.NewGuid();
 
@@ -33,7 +33,7 @@ namespace UsageExamples
             alpacaDataClient = Environments.Paper.GetAlpacaDataClient(new SecretKey(API_KEY, API_SECRET));
 
             // First, cancel any existing orders so they don't impact our buying power.
-            var orders = await alpacaTradingClient.ListAllOrdersAsync();
+            var orders = await alpacaTradingClient.ListOrdersAsync(new ListOrdersRequest());
             foreach (var order in orders)
             {
                 await alpacaTradingClient.DeleteOrderAsync(order.OrderId);
@@ -43,8 +43,8 @@ namespace UsageExamples
             var calendars = (await alpacaTradingClient
                 .ListCalendarAsync(new CalendarRequest().SetTimeInterval(DateTime.Today.GetInclusiveIntervalFromThat())))
                 .ToList();
-            var calendarDate = calendars.First().TradingDate;
-            var closingTime = calendars.First().TradingCloseTime;
+            var calendarDate = calendars.First().TradingDateUtc;
+            var closingTime = calendars.First().TradingCloseTimeUtc;
 
             closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 
