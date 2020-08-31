@@ -38,18 +38,6 @@ namespace Alpaca.Markets
         public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
 
         /// <summary>
-        /// Gets start time for filtering (inclusive).
-        /// </summary>
-        [Obsolete("Use the TimeInterval.From property instead.", true)]
-        public DateTime DateFrom => TimeInterval.From ?? default;
-
-        /// <summary>
-        /// Gets end time for filtering (inclusive).
-        /// </summary>
-        [Obsolete("Use the TimeInterval.Into property instead.", true)]
-        public DateTime DateInto => TimeInterval.Into ?? default;
-
-        /// <summary>
         /// Gets or sets flag indicated that the results should not be adjusted for splits.
         /// </summary>
         public Boolean Unadjusted { get; set; }

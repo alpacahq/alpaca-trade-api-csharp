@@ -33,30 +33,6 @@ namespace Alpaca.Markets
         /// </summary>
         public Boolean? RollUpNestedOrders { get; set; }
 
-        /// <summary>
-        /// Gets lower bound date time for filtering orders until specified timestamp (exclusive).
-        /// </summary>
-        [Obsolete("Use the TimeInterval.From property instead.", true)]
-        public DateTime? AfterDateTimeExclusive => TimeInterval?.From;
-
-        /// <summary>
-        /// Gets upper bound date time for filtering orders until specified timestamp (exclusive).
-        /// </summary>
-        [Obsolete("Use the TimeInterval.Into property instead.", true)]
-        public DateTime? UntilDateTimeExclusive => TimeInterval?.Into;
-
-        /// <summary>
-        /// Sets exclusive time interval for request (start/end time not included into interval if specified).
-        /// </summary>
-        /// <param name="after">Filtering interval start time.</param>
-        /// <param name="until">Filtering interval end time.</param>
-        /// <returns>Fluent interface method return same <see cref="ListOrdersRequest"/> instance.</returns>
-        [Obsolete("This method will be removed soon in favor of the extension method SetExclusiveTimeInterval.", true)]
-        public ListOrdersRequest SetExclusiveTimeIntervalWithNulls(
-            DateTime? after,
-            DateTime? until) =>
-            this.SetTimeInterval(Markets.TimeInterval.GetExclusive(after, until));
-
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
             new UriBuilder(httpClient.BaseAddress)

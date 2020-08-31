@@ -14,18 +14,6 @@ namespace Alpaca.Markets
         public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
 
         /// <summary>
-        /// Gets or sets start date for desired history.
-        /// </summary>
-        [Obsolete("Use the TimeInterval.From property instead.", true)]
-        public DateTime? StartDate => TimeInterval.From;
-
-        /// <summary>
-        /// Gets or sets  the end date for desired history. Default value (if <c>null</c>) is today.
-        /// </summary>
-        [Obsolete("Use the TimeInterval.Into property instead.", true)]
-        public DateTime? EndDate => TimeInterval.Into;
-
-        /// <summary>
         /// Gets or sets the time frame value for desired history. Default value (if <c>null</c>) is 1 minute
         /// for a period shorter than 7 days, 15 minutes for a period less than 30 days, or 1 day for a longer period.
         /// </summary>
