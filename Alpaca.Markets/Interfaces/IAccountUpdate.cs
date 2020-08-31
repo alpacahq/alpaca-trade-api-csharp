@@ -12,7 +12,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets timestamp of last account update event.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the UpdatedAtUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the UpdatedAtUtc property instead.", true)]
         DateTime UpdatedAt { get; }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets timestamp of account deletion event.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the DeletedAtUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the DeletedAtUtc property instead.", true)]
         DateTime? DeletedAt { get; }
 
         /// <summary>

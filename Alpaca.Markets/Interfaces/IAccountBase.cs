@@ -35,7 +35,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets timestamp of account creation event.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the CreatedAtUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the CreatedAtUtc property instead.", true)]
         DateTime CreatedAt { get; }
 
         /// <summary>

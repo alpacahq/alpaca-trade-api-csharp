@@ -27,7 +27,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets historical timestamp value.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the TimestampUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the TimestampUtc property instead.", true)]
         DateTime Timestamp { get; }
 
         /// <summary>

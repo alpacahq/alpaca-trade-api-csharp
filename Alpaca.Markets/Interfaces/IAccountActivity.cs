@@ -22,7 +22,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// An activity timestamp (date and time) from <see cref="ActivityId"/>.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the ActivityDateTimeUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the ActivityDateTimeUtc property instead.", true)]
         DateTime ActivityDateTime { get; }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// The time at which an execution occurred.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the TransactionTimeUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the TransactionTimeUtc property instead.", true)]
         DateTime? TransactionTime { get; }
 
         /// <summary>

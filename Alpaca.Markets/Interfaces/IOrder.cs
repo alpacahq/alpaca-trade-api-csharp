@@ -23,7 +23,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets order creation timestamp.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the CreatedAtUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the CreatedAtUtc property instead.", true)]
         DateTime? CreatedAt { get; }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets last order update timestamp.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the UpdatedAtUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the UpdatedAtUtc property instead.", true)]
         DateTime? UpdatedAt { get; }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets order submission timestamp.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the SubmittedAtUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the SubmittedAtUtc property instead.", true)]
         DateTime? SubmittedAt { get; }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets order fill timestamp.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the FilledAtUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the FilledAtUtc property instead.", true)]
         DateTime? FilledAt { get; }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets order expiration timestamp.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the ExpiredAtUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the ExpiredAtUtc property instead.", true)]
         DateTime? ExpiredAt { get; }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets order cancellation timestamp.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the CancelledAtUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the CancelledAtUtc property instead.", true)]
         DateTime? CancelledAt { get; }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets order rejection timestamp.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the FailedAtUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the FailedAtUtc property instead.", true)]
         DateTime? FailedAt { get; }
 
         /// <summary>
