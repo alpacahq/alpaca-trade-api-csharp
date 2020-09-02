@@ -222,7 +222,7 @@ namespace UsageExamples
                     {
                         // There is an existing short position we need to dispose of first
                         Console.WriteLine($"Removing {positionValue:C2} short position.");
-                        await SubmitOrder(positionQuantity * -1, agg.Close, OrderSide.Buy);
+                        await SubmitOrder(-positionQuantity, agg.Close, OrderSide.Buy);
                     }
                     else if (amountToLong > 0)
                     {

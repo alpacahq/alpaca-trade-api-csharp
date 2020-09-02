@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -11,6 +12,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets inclusive date interval for filtering items in response.
         /// </summary>
+        [UsedImplicitly]
         public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
 
         internal UriBuilder GetUriBuilder(
@@ -19,11 +21,11 @@ namespace Alpaca.Markets
             {
                 Path = "v2/calendar",
                 Query = new QueryBuilder()
-                    .AddParameter("start", TimeInterval?.From, DateTimeHelper.DateFormat)
-                    .AddParameter("end", TimeInterval?.Into, DateTimeHelper.DateFormat)
+                    .AddParameter("start", TimeInterval.From, DateTimeHelper.DateFormat)
+                    .AddParameter("end", TimeInterval.Into, DateTimeHelper.DateFormat)
             };
 
         void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
-            IInclusiveTimeInterval value) => TimeInterval = value;
+            IInclusiveTimeInterval value) => TimeInterval = value.EnsureNotNull(nameof(value));
     }
 }

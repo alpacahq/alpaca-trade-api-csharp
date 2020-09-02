@@ -37,11 +37,6 @@ namespace Alpaca.Markets
 
             public void Dispose()
             {
-                if (_webSocket == null)
-                {
-                    return;
-                }
-
                 _webSocket.OnOpen -= handleOpened;
                 _webSocket.OnClose -= handleClosed;
 
@@ -50,8 +45,7 @@ namespace Alpaca.Markets
 
                 _webSocket.OnError -= handleError;
 
-                var disposable = _webSocket as IDisposable;
-                disposable?.Dispose();
+                (_webSocket as IDisposable).Dispose();
             }
 
             public Task OpenAsync(

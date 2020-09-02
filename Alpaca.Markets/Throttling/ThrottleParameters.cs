@@ -134,6 +134,7 @@ namespace Alpaca.Markets
                 checkIfNotTooLateToConfigure();
 
                 _retryHttpStatuses = new HashSet<Int32>(
+                    // ReSharper disable once ConstantNullCoalescingCondition
                     value ?? Enumerable.Empty<Int32>());
             }
         }
