@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AlpacaDataClient
    ">
-    <meta name="generator" content="docfx 2.54.0.0">
+    <meta name="generator" content="docfx 2.56.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -83,6 +83,7 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
+    <div><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></div>
     <div><span class="xref">System.IDisposable</span></div>
   </div>
   <div class="inheritedMembers">
@@ -113,7 +114,7 @@
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_AlpacaDataClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class AlpacaDataClient : IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class AlpacaDataClient : IAlpacaDataClient, IDisposable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -122,7 +123,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaDataClient__ctor_Alpaca_Markets_AlpacaDataClientConfiguration_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaDataClient.%23ctor(Alpaca.Markets.AlpacaDataClientConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaDataClient.cs/#L22">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaDataClient.cs/#L21">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaDataClient__ctor_" data-uid="Alpaca.Markets.AlpacaDataClient.#ctor*"></a>
   <h4 id="Alpaca_Markets_AlpacaDataClient__ctor_Alpaca_Markets_AlpacaDataClientConfiguration_" data-uid="Alpaca.Markets.AlpacaDataClient.#ctor(Alpaca.Markets.AlpacaDataClientConfiguration)">AlpacaDataClient(AlpacaDataClientConfiguration)</h4>
@@ -158,7 +159,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaDataClient_Dispose.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaDataClient.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaDataClient.cs/#L39">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaDataClient.cs/#L37">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaDataClient_Dispose_" data-uid="Alpaca.Markets.AlpacaDataClient.Dispose*"></a>
   <h4 id="Alpaca_Markets_AlpacaDataClient_Dispose" data-uid="Alpaca.Markets.AlpacaDataClient.Dispose">Dispose()</h4>
@@ -173,7 +174,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaDataClient_GetBarSetAsync_Alpaca_Markets_BarSetRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaDataClient.GetBarSetAsync(Alpaca.Markets.BarSetRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaDataClient.cs/#L74">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaDataClient.cs/#L40">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaDataClient_GetBarSetAsync_" data-uid="Alpaca.Markets.AlpacaDataClient.GetBarSetAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaDataClient_GetBarSetAsync_Alpaca_Markets_BarSetRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaDataClient.GetBarSetAsync(Alpaca.Markets.BarSetRequest,System.Threading.CancellationToken)">GetBarSetAsync(BarSetRequest, CancellationToken)</h4>
@@ -226,97 +227,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaDataClient_GetBarSetAsync_System_Collections_Generic_IEnumerable_System_String__Alpaca_Markets_TimeFrame_System_Nullable_System_Int32__System_Boolean_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaDataClient.GetBarSetAsync(System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CAlpaca.Markets.TimeFrame%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Boolean%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaDataClient.cs/#L54">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaDataClient_GetBarSetAsync_" data-uid="Alpaca.Markets.AlpacaDataClient.GetBarSetAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaDataClient_GetBarSetAsync_System_Collections_Generic_IEnumerable_System_String__Alpaca_Markets_TimeFrame_System_Nullable_System_Int32__System_Boolean_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaDataClient.GetBarSetAsync(System.Collections.Generic.IEnumerable{System.String},Alpaca.Markets.TimeFrame,System.Nullable{System.Int32},System.Boolean,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Threading.CancellationToken)">GetBarSetAsync(IEnumerable&lt;String&gt;, TimeFrame, Nullable&lt;Int32&gt;, Boolean, Nullable&lt;DateTime&gt;, Nullable&lt;DateTime&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets lookup table of historical daily bars lists for all assets from Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required BarSetRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IReadOnlyDictionary&lt;string, IReadOnlyList&lt;IAgg&gt;&gt;&gt; GetBarSetAsync(IEnumerable&lt;string&gt; symbols, TimeFrame timeFrame, int? limit = default(int? ), bool areTimesInclusive = true, DateTime? timeFrom = default(DateTime? ), DateTime? timeInto = default(DateTime? ), CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td><span class="parametername">symbols</span></td>
-        <td><p>Asset names for data retrieval.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Alpaca.Markets.TimeFrame.html">TimeFrame</a></td>
-        <td><span class="parametername">timeFrame</span></td>
-        <td><p>Type of time bars for retrieval.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td><span class="parametername">limit</span></td>
-        <td><p>Maximal number of daily bars in data response.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">areTimesInclusive</span></td>
-        <td><p>If <code>true</code> - both <code data-dev-comment-type="paramref" class="paramref">timeFrom</code> and <code data-dev-comment-type="paramref" class="paramref">timeInto</code> parameters are treated as inclusive.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">timeFrom</span></td>
-        <td><p>Start time for filtering.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">timeInto</span></td>
-        <td><p>End time for filtering.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IAgg.html">IAgg</a>&gt;&gt;&gt;</td>
-        <td><p>Read-only list of daily bars for specified asset.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaDataClient_GetLastQuoteAsync_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaDataClient.GetLastQuoteAsync(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaDataClient.cs/#L118">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaDataClient.cs/#L55">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaDataClient_GetLastQuoteAsync_" data-uid="Alpaca.Markets.AlpacaDataClient.GetLastQuoteAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaDataClient_GetLastQuoteAsync_System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaDataClient.GetLastQuoteAsync(System.String,System.Threading.CancellationToken)">GetLastQuoteAsync(String, CancellationToken)</h4>
@@ -372,7 +286,7 @@ public Task&lt;IReadOnlyDictionary&lt;string, IReadOnlyList&lt;IAgg&gt;&gt;&gt; 
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaDataClient_GetLastTradeAsync_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaDataClient.GetLastTradeAsync(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaDataClient.cs/#L106">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaDataClient.cs/#L48">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaDataClient_GetLastTradeAsync_" data-uid="Alpaca.Markets.AlpacaDataClient.GetLastTradeAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaDataClient_GetLastTradeAsync_System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaDataClient.GetLastTradeAsync(System.String,System.Threading.CancellationToken)">GetLastTradeAsync(String, CancellationToken)</h4>
@@ -425,6 +339,9 @@ public Task&lt;IReadOnlyDictionary&lt;string, IReadOnlyList&lt;IAgg&gt;&gt;&gt; 
   </table>
   <h3 id="implements">Implements</h3>
   <div>
+      <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a>
+  </div>
+  <div>
       <span class="xref">System.IDisposable</span>
   </div>
 </article>
@@ -438,7 +355,7 @@ public Task&lt;IReadOnlyDictionary&lt;string, IReadOnlyList&lt;IAgg&gt;&gt;&gt; 
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaDataClient.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaDataClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaDataClient.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaDataClient.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

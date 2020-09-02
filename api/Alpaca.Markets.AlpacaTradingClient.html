@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AlpacaTradingClient
    ">
-    <meta name="generator" content="docfx 2.54.0.0">
+    <meta name="generator" content="docfx 2.56.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -83,6 +83,7 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
+    <div><a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a></div>
     <div><span class="xref">System.IDisposable</span></div>
   </div>
   <div class="inheritedMembers">
@@ -113,7 +114,7 @@
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_AlpacaTradingClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class AlpacaTradingClient : IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class AlpacaTradingClient : IAlpacaTradingClient, IDisposable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -122,7 +123,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient__ctor_Alpaca_Markets_AlpacaTradingClientConfiguration_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.%23ctor(Alpaca.Markets.AlpacaTradingClientConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.cs/#L25">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.cs/#L19">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient__ctor_" data-uid="Alpaca.Markets.AlpacaTradingClient.#ctor*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient__ctor_Alpaca_Markets_AlpacaTradingClientConfiguration_" data-uid="Alpaca.Markets.AlpacaTradingClient.#ctor(Alpaca.Markets.AlpacaTradingClientConfiguration)">AlpacaTradingClient(AlpacaTradingClientConfiguration)</h4>
@@ -158,7 +159,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_AddAssetIntoWatchListByIdAsync_Alpaca_Markets_ChangeWatchListRequest_System_Guid__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByIdAsync(Alpaca.Markets.ChangeWatchListRequest%7BSystem.Guid%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L119">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L46">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_AddAssetIntoWatchListByIdAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByIdAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_AddAssetIntoWatchListByIdAsync_Alpaca_Markets_ChangeWatchListRequest_System_Guid__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByIdAsync(Alpaca.Markets.ChangeWatchListRequest{System.Guid},System.Threading.CancellationToken)">AddAssetIntoWatchListByIdAsync(ChangeWatchListRequest&lt;Guid&gt;, CancellationToken)</h4>
@@ -211,73 +212,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_AddAssetIntoWatchListByIdAsync_System_Guid_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByIdAsync(System.Guid%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L298">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_AddAssetIntoWatchListByIdAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByIdAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_AddAssetIntoWatchListByIdAsync_System_Guid_System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByIdAsync(System.Guid,System.String,System.Threading.CancellationToken)">AddAssetIntoWatchListByIdAsync(Guid, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Adds asset into watch list using Alpaca REST API endpoint by watch list identifier.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required ChangeWatchListRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IWatchList&gt; AddAssetIntoWatchListByIdAsync(Guid watchListId, string asset, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Guid</span></td>
-        <td><span class="parametername">watchListId</span></td>
-        <td><p>Unique watch list identifier.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">asset</span></td>
-        <td><p>Asset name for adding into watch list.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.IWatchList.html">IWatchList</a>&gt;</td>
-        <td><p>Updated watch list object with proper <code data-dev-comment-type="paramref" class="paramref">watchListId</code> value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_AddAssetIntoWatchListByNameAsync_Alpaca_Markets_ChangeWatchListRequest_System_String__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByNameAsync(Alpaca.Markets.ChangeWatchListRequest%7BSystem.String%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L142">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L54">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_AddAssetIntoWatchListByNameAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByNameAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_AddAssetIntoWatchListByNameAsync_Alpaca_Markets_ChangeWatchListRequest_System_String__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByNameAsync(Alpaca.Markets.ChangeWatchListRequest{System.String},System.Threading.CancellationToken)">AddAssetIntoWatchListByNameAsync(ChangeWatchListRequest&lt;String&gt;, CancellationToken)</h4>
@@ -330,73 +268,10 @@ public Task&lt;IWatchList&gt; AddAssetIntoWatchListByIdAsync(Guid watchListId, s
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_AddAssetIntoWatchListByNameAsync_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByNameAsync(System.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L315">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_AddAssetIntoWatchListByNameAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByNameAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_AddAssetIntoWatchListByNameAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByNameAsync(System.String,System.String,System.Threading.CancellationToken)">AddAssetIntoWatchListByNameAsync(String, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Adds asset into watch list using Alpaca REST API endpoint by watch list name.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required ChangeWatchListRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IWatchList&gt; AddAssetIntoWatchListByNameAsync(string name, string asset, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>User defined watch list name.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">asset</span></td>
-        <td><p>Asset name for adding into watch list.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.IWatchList.html">IWatchList</a>&gt;</td>
-        <td><p>Updated watch list object with proper <code data-dev-comment-type="paramref" class="paramref">name</code> value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_CreateWatchListAsync_Alpaca_Markets_NewWatchListRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.CreateWatchListAsync(Alpaca.Markets.NewWatchListRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L35">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L17">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_CreateWatchListAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.CreateWatchListAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_CreateWatchListAsync_Alpaca_Markets_NewWatchListRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.CreateWatchListAsync(Alpaca.Markets.NewWatchListRequest,System.Threading.CancellationToken)">CreateWatchListAsync(NewWatchListRequest, CancellationToken)</h4>
@@ -449,73 +324,10 @@ public Task&lt;IWatchList&gt; AddAssetIntoWatchListByNameAsync(string name, stri
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_CreateWatchListAsync_System_String_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.CreateWatchListAsync(System.String%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L262">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_CreateWatchListAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.CreateWatchListAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_CreateWatchListAsync_System_String_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.CreateWatchListAsync(System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">CreateWatchListAsync(String, IEnumerable&lt;String&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Add new watch list object into Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required NewWatchListRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IWatchList&gt; CreateWatchListAsync(string name, IEnumerable&lt;string&gt; assets = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>User defined watch list name.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td><span class="parametername">assets</span></td>
-        <td><p>List of asset names for new watch list.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.IWatchList.html">IWatchList</a>&gt;</td>
-        <td><p>Newly created watch list object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_DeleteAllOrdersAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.DeleteAllOrdersAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L179">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L72">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_DeleteAllOrdersAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteAllOrdersAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_DeleteAllOrdersAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteAllOrdersAsync(System.Threading.CancellationToken)">DeleteAllOrdersAsync(CancellationToken)</h4>
@@ -565,7 +377,7 @@ public Task&lt;IWatchList&gt; CreateWatchListAsync(string name, IEnumerable&lt;s
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_DeleteAllPositionsAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.DeleteAllPositionsAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L192">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L75">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_DeleteAllPositionsAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteAllPositionsAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_DeleteAllPositionsAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteAllPositionsAsync(System.Threading.CancellationToken)">DeleteAllPositionsAsync(CancellationToken)</h4>
@@ -615,7 +427,7 @@ public Task&lt;IWatchList&gt; CreateWatchListAsync(string name, IEnumerable&lt;s
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_DeleteAssetFromWatchListByIdAsync_Alpaca_Markets_ChangeWatchListRequest_System_Guid__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByIdAsync(Alpaca.Markets.ChangeWatchListRequest%7BSystem.Guid%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L171">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L62">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_DeleteAssetFromWatchListByIdAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByIdAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_DeleteAssetFromWatchListByIdAsync_Alpaca_Markets_ChangeWatchListRequest_System_Guid__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByIdAsync(Alpaca.Markets.ChangeWatchListRequest{System.Guid},System.Threading.CancellationToken)">DeleteAssetFromWatchListByIdAsync(ChangeWatchListRequest&lt;Guid&gt;, CancellationToken)</h4>
@@ -668,73 +480,10 @@ public Task&lt;IWatchList&gt; CreateWatchListAsync(string name, IEnumerable&lt;s
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_DeleteAssetFromWatchListByIdAsync_System_Guid_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByIdAsync(System.Guid%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L332">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_DeleteAssetFromWatchListByIdAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByIdAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_DeleteAssetFromWatchListByIdAsync_System_Guid_System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByIdAsync(System.Guid,System.String,System.Threading.CancellationToken)">DeleteAssetFromWatchListByIdAsync(Guid, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Deletes asset from watch list using Alpaca REST API endpoint by watch list identifier.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required ChangeWatchListRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IWatchList&gt; DeleteAssetFromWatchListByIdAsync(Guid watchListId, string asset, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Guid</span></td>
-        <td><span class="parametername">watchListId</span></td>
-        <td><p>Unique watch list identifier.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">asset</span></td>
-        <td><p>Asset name for adding into watch list.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.IWatchList.html">IWatchList</a>&gt;</td>
-        <td><p>Updated watch list object with proper <code data-dev-comment-type="paramref" class="paramref">watchListId</code> value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_DeleteAssetFromWatchListByNameAsync_Alpaca_Markets_ChangeWatchListRequest_System_String__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByNameAsync(Alpaca.Markets.ChangeWatchListRequest%7BSystem.String%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L188">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L70">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_DeleteAssetFromWatchListByNameAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByNameAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_DeleteAssetFromWatchListByNameAsync_Alpaca_Markets_ChangeWatchListRequest_System_String__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByNameAsync(Alpaca.Markets.ChangeWatchListRequest{System.String},System.Threading.CancellationToken)">DeleteAssetFromWatchListByNameAsync(ChangeWatchListRequest&lt;String&gt;, CancellationToken)</h4>
@@ -787,73 +536,10 @@ public Task&lt;IWatchList&gt; DeleteAssetFromWatchListByIdAsync(Guid watchListId
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_DeleteAssetFromWatchListByNameAsync_System_String_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByNameAsync(System.String%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L349">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_DeleteAssetFromWatchListByNameAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByNameAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_DeleteAssetFromWatchListByNameAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByNameAsync(System.String,System.String,System.Threading.CancellationToken)">DeleteAssetFromWatchListByNameAsync(String, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Deletes asset from watch list using Alpaca REST API endpoint by watch list name.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required ChangeWatchListRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IWatchList&gt; DeleteAssetFromWatchListByNameAsync(string name, string asset, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>User defined watch list name.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">asset</span></td>
-        <td><p>Asset name for adding into watch list.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.IWatchList.html">IWatchList</a>&gt;</td>
-        <td><p>Updated watch list object with proper <code data-dev-comment-type="paramref" class="paramref">name</code> value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_DeleteOrderAsync_System_Guid_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.DeleteOrderAsync(System.Guid%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L167">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L65">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_DeleteOrderAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteOrderAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_DeleteOrderAsync_System_Guid_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteOrderAsync(System.Guid,System.Threading.CancellationToken)">DeleteOrderAsync(Guid, CancellationToken)</h4>
@@ -909,7 +595,7 @@ public Task&lt;IWatchList&gt; DeleteAssetFromWatchListByNameAsync(string name, s
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_DeletePositionAsync_Alpaca_Markets_DeletePositionRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.DeletePositionAsync(Alpaca.Markets.DeletePositionRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L204">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L81">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_DeletePositionAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeletePositionAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_DeletePositionAsync_Alpaca_Markets_DeletePositionRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeletePositionAsync(Alpaca.Markets.DeletePositionRequest,System.Threading.CancellationToken)">DeletePositionAsync(DeletePositionRequest, CancellationToken)</h4>
@@ -965,7 +651,7 @@ public Task&lt;IWatchList&gt; DeleteAssetFromWatchListByNameAsync(string name, s
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_DeletePositionAsync_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.DeletePositionAsync(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L366">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L16">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_DeletePositionAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeletePositionAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_DeletePositionAsync_System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeletePositionAsync(System.String,System.Threading.CancellationToken)">DeletePositionAsync(String, CancellationToken)</h4>
@@ -974,7 +660,7 @@ public Task&lt;IWatchList&gt; DeleteAssetFromWatchListByNameAsync(string name, s
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required DeletePositionRequest parameter instead of this one.&quot;, false)]
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required DeletePositionRequest parameter instead of this one.&quot;, true)]
 public Task&lt;bool&gt; DeletePositionAsync(string symbol, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -1022,7 +708,7 @@ public Task&lt;bool&gt; DeletePositionAsync(string symbol, CancellationToken can
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_DeleteWatchListByIdAsync_System_Guid_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.DeleteWatchListByIdAsync(System.Guid%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L213">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L78">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_DeleteWatchListByIdAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteWatchListByIdAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_DeleteWatchListByIdAsync_System_Guid_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteWatchListByIdAsync(System.Guid,System.Threading.CancellationToken)">DeleteWatchListByIdAsync(Guid, CancellationToken)</h4>
@@ -1078,7 +764,7 @@ public Task&lt;bool&gt; DeletePositionAsync(string symbol, CancellationToken can
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_DeleteWatchListByNameAsync_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.DeleteWatchListByNameAsync(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L226">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L85">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_DeleteWatchListByNameAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteWatchListByNameAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_DeleteWatchListByNameAsync_System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.DeleteWatchListByNameAsync(System.String,System.Threading.CancellationToken)">DeleteWatchListByNameAsync(String, CancellationToken)</h4>
@@ -1134,7 +820,7 @@ public Task&lt;bool&gt; DeletePositionAsync(string symbol, CancellationToken can
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_Dispose.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.cs/#L44">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.cs/#L37">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_Dispose_" data-uid="Alpaca.Markets.AlpacaTradingClient.Dispose*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_Dispose" data-uid="Alpaca.Markets.AlpacaTradingClient.Dispose">Dispose()</h4>
@@ -1149,7 +835,7 @@ public Task&lt;bool&gt; DeletePositionAsync(string symbol, CancellationToken can
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_GetAccountAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.GetAccountAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L16">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L11">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_GetAccountAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetAccountAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_GetAccountAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetAccountAsync(System.Threading.CancellationToken)">GetAccountAsync(CancellationToken)</h4>
@@ -1199,7 +885,7 @@ public Task&lt;bool&gt; DeletePositionAsync(string symbol, CancellationToken can
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_GetAccountConfigurationAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.GetAccountConfigurationAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L26">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L17">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_GetAccountConfigurationAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetAccountConfigurationAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_GetAccountConfigurationAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetAccountConfigurationAsync(System.Threading.CancellationToken)">GetAccountConfigurationAsync(CancellationToken)</h4>
@@ -1249,7 +935,7 @@ public Task&lt;bool&gt; DeletePositionAsync(string symbol, CancellationToken can
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_GetAssetAsync_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.GetAssetAsync(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L152">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L55">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_GetAssetAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetAssetAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_GetAssetAsync_System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetAssetAsync(System.String,System.Threading.CancellationToken)">GetAssetAsync(String, CancellationToken)</h4>
@@ -1305,7 +991,7 @@ public Task&lt;bool&gt; DeletePositionAsync(string symbol, CancellationToken can
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_GetClockAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.GetClockAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L222">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L89">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_GetClockAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetClockAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_GetClockAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetClockAsync(System.Threading.CancellationToken)">GetClockAsync(CancellationToken)</h4>
@@ -1355,7 +1041,7 @@ public Task&lt;bool&gt; DeletePositionAsync(string symbol, CancellationToken can
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_GetOrderAsync_System_Guid_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.GetOrderAsync(System.Guid%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L155">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L58">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_GetOrderAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetOrderAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_GetOrderAsync_System_Guid_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetOrderAsync(System.Guid,System.Threading.CancellationToken)">GetOrderAsync(Guid, CancellationToken)</h4>
@@ -1411,7 +1097,7 @@ public Task&lt;bool&gt; DeletePositionAsync(string symbol, CancellationToken can
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_GetOrderAsync_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.GetOrderAsync(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L134">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L45">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_GetOrderAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetOrderAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_GetOrderAsync_System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetOrderAsync(System.String,System.Threading.CancellationToken)">GetOrderAsync(String, CancellationToken)</h4>
@@ -1467,7 +1153,7 @@ public Task&lt;bool&gt; DeletePositionAsync(string symbol, CancellationToken can
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_GetPortfolioHistoryAsync_Alpaca_Markets_PortfolioHistoryRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.GetPortfolioHistoryAsync(Alpaca.Markets.PortfolioHistoryRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L91">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L39">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_GetPortfolioHistoryAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetPortfolioHistoryAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_GetPortfolioHistoryAsync_Alpaca_Markets_PortfolioHistoryRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetPortfolioHistoryAsync(Alpaca.Markets.PortfolioHistoryRequest,System.Threading.CancellationToken)">GetPortfolioHistoryAsync(PortfolioHistoryRequest, CancellationToken)</h4>
@@ -1520,92 +1206,10 @@ public Task&lt;bool&gt; DeletePositionAsync(string symbol, CancellationToken can
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_GetPortfolioHistoryAsync_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_Alpaca_Markets_TimeFrame__System_Nullable_Alpaca_Markets_HistoryPeriod__System_Nullable_System_Boolean__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.GetPortfolioHistoryAsync(System.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BAlpaca.Markets.TimeFrame%7D%2CSystem.Nullable%7BAlpaca.Markets.HistoryPeriod%7D%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L89">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_GetPortfolioHistoryAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetPortfolioHistoryAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_GetPortfolioHistoryAsync_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_Alpaca_Markets_TimeFrame__System_Nullable_Alpaca_Markets_HistoryPeriod__System_Nullable_System_Boolean__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetPortfolioHistoryAsync(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{Alpaca.Markets.TimeFrame},System.Nullable{Alpaca.Markets.HistoryPeriod},System.Nullable{System.Boolean},System.Threading.CancellationToken)">GetPortfolioHistoryAsync(Nullable&lt;DateTime&gt;, Nullable&lt;DateTime&gt;, Nullable&lt;TimeFrame&gt;, Nullable&lt;HistoryPeriod&gt;, Nullable&lt;Boolean&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets portfolio equity history from Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required PortfolioHistoryRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IPortfolioHistory&gt; GetPortfolioHistoryAsync(DateTime? startDate = default(DateTime? ), DateTime? endDate = default(DateTime? ), TimeFrame? timeFrame = default(TimeFrame? ), HistoryPeriod? period = default(HistoryPeriod? ), bool? extendedHours = default(bool? ), CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">startDate</span></td>
-        <td><p>Start date for desired history.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">endDate</span></td>
-        <td><p>End date for desired history. Default value is today.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Alpaca.Markets.TimeFrame.html">TimeFrame</a>&gt;</td>
-        <td><span class="parametername">timeFrame</span></td>
-        <td><p>Time frame value for desired history.
-Default value is 1 minute for a period shorter than 7 days, 15 minutes for a period less than 30 days, or 1 day for a longer period.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Alpaca.Markets.HistoryPeriod.html">HistoryPeriod</a>&gt;</td>
-        <td><span class="parametername">period</span></td>
-        <td><p>Period value for desired history. Default value is 1 month.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">extendedHours</span></td>
-        <td><p>If true, include extended hours in the result. This is effective only for time frame less than 1 day.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.IPortfolioHistory.html">IPortfolioHistory</a>&gt;</td>
-        <td><p>Read-only portfolio history information object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_GetPositionAsync_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.GetPositionAsync(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L181">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L68">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_GetPositionAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetPositionAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_GetPositionAsync_System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetPositionAsync(System.String,System.Threading.CancellationToken)">GetPositionAsync(String, CancellationToken)</h4>
@@ -1661,7 +1265,7 @@ Default value is 1 minute for a period shorter than 7 days, 15 minutes for a per
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_GetWatchListByIdAsync_System_Guid_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.GetWatchListByIdAsync(System.Guid%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L58">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L24">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_GetWatchListByIdAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetWatchListByIdAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_GetWatchListByIdAsync_System_Guid_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetWatchListByIdAsync(System.Guid,System.Threading.CancellationToken)">GetWatchListByIdAsync(Guid, CancellationToken)</h4>
@@ -1717,7 +1321,7 @@ Default value is 1 minute for a period shorter than 7 days, 15 minutes for a per
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_GetWatchListByNameAsync_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.GetWatchListByNameAsync(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L70">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L31">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_GetWatchListByNameAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetWatchListByNameAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_GetWatchListByNameAsync_System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.GetWatchListByNameAsync(System.String,System.Threading.CancellationToken)">GetWatchListByNameAsync(String, CancellationToken)</h4>
@@ -1773,7 +1377,7 @@ Default value is 1 minute for a period shorter than 7 days, 15 minutes for a per
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListAccountActivitiesAsync_Alpaca_Markets_AccountActivitiesRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListAccountActivitiesAsync(Alpaca.Markets.AccountActivitiesRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L62">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L31">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_ListAccountActivitiesAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAccountActivitiesAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_ListAccountActivitiesAsync_Alpaca_Markets_AccountActivitiesRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAccountActivitiesAsync(Alpaca.Markets.AccountActivitiesRequest,System.Threading.CancellationToken)">ListAccountActivitiesAsync(AccountActivitiesRequest, CancellationToken)</h4>
@@ -1826,196 +1430,10 @@ Default value is 1 minute for a period shorter than 7 days, 15 minutes for a per
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListAccountActivitiesAsync_Alpaca_Markets_AccountActivityType_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_Alpaca_Markets_SortDirection__System_Nullable_System_Int64__System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListAccountActivitiesAsync(Alpaca.Markets.AccountActivityType%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BAlpaca.Markets.SortDirection%7D%2CSystem.Nullable%7BSystem.Int64%7D%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L23">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_ListAccountActivitiesAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAccountActivitiesAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_ListAccountActivitiesAsync_Alpaca_Markets_AccountActivityType_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_Alpaca_Markets_SortDirection__System_Nullable_System_Int64__System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAccountActivitiesAsync(Alpaca.Markets.AccountActivityType,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{Alpaca.Markets.SortDirection},System.Nullable{System.Int64},System.String,System.Threading.CancellationToken)">ListAccountActivitiesAsync(AccountActivityType, Nullable&lt;DateTime&gt;, Nullable&lt;DateTime&gt;, Nullable&lt;DateTime&gt;, Nullable&lt;SortDirection&gt;, Nullable&lt;Int64&gt;, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets list of account activities from Alpaca REST API endpoint by specific activity.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required AccountActivitiesRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IReadOnlyList&lt;IAccountActivity&gt;&gt; ListAccountActivitiesAsync(AccountActivityType activityType, DateTime? date = default(DateTime? ), DateTime? until = default(DateTime? ), DateTime? after = default(DateTime? ), SortDirection? direction = default(SortDirection? ), long? pageSize = default(long? ), string pageToken = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Alpaca.Markets.AccountActivityType.html">AccountActivityType</a></td>
-        <td><span class="parametername">activityType</span></td>
-        <td><p>The activity type you want to view entries for.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">date</span></td>
-        <td><p>The date for which you want to see activities.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">until</span></td>
-        <td><p>The response will contain only activities submitted before this date. (Cannot be used with date.)</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">after</span></td>
-        <td><p>The response will contain only activities submitted after this date. (Cannot be used with date.)</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Alpaca.Markets.SortDirection.html">SortDirection</a>&gt;</td>
-        <td><span class="parametername">direction</span></td>
-        <td><p>The response will be sorted by time in this direction. (Default behavior is descending.)</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
-        <td><span class="parametername">pageSize</span></td>
-        <td><p>The maximum number of entries to return in the response.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">pageToken</span></td>
-        <td><p>The ID of the end of your current page of results.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IAccountActivity.html">IAccountActivity</a>&gt;&gt;</td>
-        <td><p>Read-only list of account activity record objects.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListAccountActivitiesAsync_System_Collections_Generic_IEnumerable_Alpaca_Markets_AccountActivityType__System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_Alpaca_Markets_SortDirection__System_Nullable_System_Int64__System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListAccountActivitiesAsync(System.Collections.Generic.IEnumerable%7BAlpaca.Markets.AccountActivityType%7D%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BAlpaca.Markets.SortDirection%7D%2CSystem.Nullable%7BSystem.Int64%7D%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L55">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_ListAccountActivitiesAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAccountActivitiesAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_ListAccountActivitiesAsync_System_Collections_Generic_IEnumerable_Alpaca_Markets_AccountActivityType__System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_Alpaca_Markets_SortDirection__System_Nullable_System_Int64__System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAccountActivitiesAsync(System.Collections.Generic.IEnumerable{Alpaca.Markets.AccountActivityType},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{Alpaca.Markets.SortDirection},System.Nullable{System.Int64},System.String,System.Threading.CancellationToken)">ListAccountActivitiesAsync(IEnumerable&lt;AccountActivityType&gt;, Nullable&lt;DateTime&gt;, Nullable&lt;DateTime&gt;, Nullable&lt;DateTime&gt;, Nullable&lt;SortDirection&gt;, Nullable&lt;Int64&gt;, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets list of account activities from Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required AccountActivitiesRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IReadOnlyList&lt;IAccountActivity&gt;&gt; ListAccountActivitiesAsync(IEnumerable&lt;AccountActivityType&gt; activityTypes = null, DateTime? date = default(DateTime? ), DateTime? until = default(DateTime? ), DateTime? after = default(DateTime? ), SortDirection? direction = default(SortDirection? ), long? pageSize = default(long? ), string pageToken = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.AccountActivityType.html">AccountActivityType</a>&gt;</td>
-        <td><span class="parametername">activityTypes</span></td>
-        <td><p>The list of activity types you want to view entries for.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">date</span></td>
-        <td><p>The date for which you want to see activities.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">until</span></td>
-        <td><p>The response will contain only activities submitted before this date. (Cannot be used with date.)</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">after</span></td>
-        <td><p>The response will contain only activities submitted after this date. (Cannot be used with date.)</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Alpaca.Markets.SortDirection.html">SortDirection</a>&gt;</td>
-        <td><span class="parametername">direction</span></td>
-        <td><p>The response will be sorted by time in this direction. (Default behavior is descending.)</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
-        <td><span class="parametername">pageSize</span></td>
-        <td><p>The maximum number of entries to return in the response.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">pageToken</span></td>
-        <td><p>The ID of the end of your current page of results.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IAccountActivity.html">IAccountActivity</a>&gt;&gt;</td>
-        <td><p>Read-only list of account activity record objects.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListAllAssetsAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListAllAssetsAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L117">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L29">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_ListAllAssetsAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAllAssetsAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_ListAllAssetsAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAllAssetsAsync(System.Threading.CancellationToken)">ListAllAssetsAsync(CancellationToken)</h4>
@@ -2024,7 +1442,8 @@ public Task&lt;IReadOnlyList&lt;IAccountActivity&gt;&gt; ListAccountActivitiesAs
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IReadOnlyList&lt;IAsset&gt;&gt; ListAllAssetsAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;This method will be removed in the next major release.&quot;, false)]
+public Task&lt;IReadOnlyList&lt;IAsset&gt;&gt; ListAllAssetsAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2065,7 +1484,7 @@ public Task&lt;IReadOnlyList&lt;IAccountActivity&gt;&gt; ListAccountActivitiesAs
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListAllCalendarAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListAllCalendarAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L232">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L39">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_ListAllCalendarAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAllCalendarAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_ListAllCalendarAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAllCalendarAsync(System.Threading.CancellationToken)">ListAllCalendarAsync(CancellationToken)</h4>
@@ -2074,7 +1493,8 @@ public Task&lt;IReadOnlyList&lt;IAccountActivity&gt;&gt; ListAccountActivitiesAs
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IReadOnlyList&lt;ICalendar&gt;&gt; ListAllCalendarAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;This method will be removed in the next major release.&quot;, false)]
+public Task&lt;IReadOnlyList&lt;ICalendar&gt;&gt; ListAllCalendarAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2115,7 +1535,7 @@ public Task&lt;IReadOnlyList&lt;IAccountActivity&gt;&gt; ListAccountActivitiesAs
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListAllOrdersAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListAllOrdersAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L16">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L49">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_ListAllOrdersAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAllOrdersAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_ListAllOrdersAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAllOrdersAsync(System.Threading.CancellationToken)">ListAllOrdersAsync(CancellationToken)</h4>
@@ -2124,7 +1544,8 @@ public Task&lt;IReadOnlyList&lt;IAccountActivity&gt;&gt; ListAccountActivitiesAs
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IReadOnlyList&lt;IOrder&gt;&gt; ListAllOrdersAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;This method will be removed in the next major release.&quot;, false)]
+public Task&lt;IReadOnlyList&lt;IOrder&gt;&gt; ListAllOrdersAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2165,7 +1586,7 @@ public Task&lt;IReadOnlyList&lt;IAccountActivity&gt;&gt; ListAccountActivitiesAs
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListAssetsAsync_Alpaca_Markets_AssetsRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListAssetsAsync(Alpaca.Markets.AssetsRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L128">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L47">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_ListAssetsAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAssetsAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_ListAssetsAsync_Alpaca_Markets_AssetsRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAssetsAsync(Alpaca.Markets.AssetsRequest,System.Threading.CancellationToken)">ListAssetsAsync(AssetsRequest, CancellationToken)</h4>
@@ -2218,73 +1639,10 @@ public Task&lt;IReadOnlyList&lt;IAccountActivity&gt;&gt; ListAccountActivitiesAs
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListAssetsAsync_System_Nullable_Alpaca_Markets_AssetStatus__System_Nullable_Alpaca_Markets_AssetClass__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListAssetsAsync(System.Nullable%7BAlpaca.Markets.AssetStatus%7D%2CSystem.Nullable%7BAlpaca.Markets.AssetClass%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L114">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_ListAssetsAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAssetsAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_ListAssetsAsync_System_Nullable_Alpaca_Markets_AssetStatus__System_Nullable_Alpaca_Markets_AssetClass__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListAssetsAsync(System.Nullable{Alpaca.Markets.AssetStatus},System.Nullable{Alpaca.Markets.AssetClass},System.Threading.CancellationToken)">ListAssetsAsync(Nullable&lt;AssetStatus&gt;, Nullable&lt;AssetClass&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets list of available assets from Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required AssetsRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IReadOnlyList&lt;IAsset&gt;&gt; ListAssetsAsync(AssetStatus? assetStatus = default(AssetStatus? ), AssetClass? assetClass = default(AssetClass? ), CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Alpaca.Markets.AssetStatus.html">AssetStatus</a>&gt;</td>
-        <td><span class="parametername">assetStatus</span></td>
-        <td><p>Asset status for filtering.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Alpaca.Markets.AssetClass.html">AssetClass</a>&gt;</td>
-        <td><span class="parametername">assetClass</span></td>
-        <td><p>Asset class for filtering.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IAsset.html">IAsset</a>&gt;&gt;</td>
-        <td><p>Read-only list of asset information objects.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListCalendarAsync_Alpaca_Markets_CalendarRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListCalendarAsync(Alpaca.Markets.CalendarRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L243">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L95">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_ListCalendarAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListCalendarAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_ListCalendarAsync_Alpaca_Markets_CalendarRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListCalendarAsync(Alpaca.Markets.CalendarRequest,System.Threading.CancellationToken)">ListCalendarAsync(CalendarRequest, CancellationToken)</h4>
@@ -2337,73 +1695,10 @@ public Task&lt;IReadOnlyList&lt;IAsset&gt;&gt; ListAssetsAsync(AssetStatus? asse
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListCalendarAsync_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListCalendarAsync(System.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L134">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_ListCalendarAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListCalendarAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_ListCalendarAsync_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListCalendarAsync(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Threading.CancellationToken)">ListCalendarAsync(Nullable&lt;DateTime&gt;, Nullable&lt;DateTime&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets list of trading days from Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required CalendarRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IReadOnlyList&lt;ICalendar&gt;&gt; ListCalendarAsync(DateTime? startDateInclusive = default(DateTime? ), DateTime? endDateInclusive = default(DateTime? ), CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">startDateInclusive</span></td>
-        <td><p>Start time for filtering (inclusive).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">endDateInclusive</span></td>
-        <td><p>End time for filtering (inclusive).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.ICalendar.html">ICalendar</a>&gt;&gt;</td>
-        <td><p>Read-only list of trading date information object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListOrdersAsync_Alpaca_Markets_ListOrdersRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListOrdersAsync(Alpaca.Markets.ListOrdersRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L27">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L11">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_ListOrdersAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListOrdersAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_ListOrdersAsync_Alpaca_Markets_ListOrdersRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListOrdersAsync(Alpaca.Markets.ListOrdersRequest,System.Threading.CancellationToken)">ListOrdersAsync(ListOrdersRequest, CancellationToken)</h4>
@@ -2456,91 +1751,10 @@ public Task&lt;IReadOnlyList&lt;ICalendar&gt;&gt; ListCalendarAsync(DateTime? st
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListOrdersAsync_System_Nullable_Alpaca_Markets_OrderStatusFilter__System_Nullable_Alpaca_Markets_SortDirection__System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_System_Int64__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListOrdersAsync(System.Nullable%7BAlpaca.Markets.OrderStatusFilter%7D%2CSystem.Nullable%7BAlpaca.Markets.SortDirection%7D%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BSystem.Int64%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L154">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_ListOrdersAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListOrdersAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_ListOrdersAsync_System_Nullable_Alpaca_Markets_OrderStatusFilter__System_Nullable_Alpaca_Markets_SortDirection__System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_System_Int64__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListOrdersAsync(System.Nullable{Alpaca.Markets.OrderStatusFilter},System.Nullable{Alpaca.Markets.SortDirection},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int64},System.Threading.CancellationToken)">ListOrdersAsync(Nullable&lt;OrderStatusFilter&gt;, Nullable&lt;SortDirection&gt;, Nullable&lt;DateTime&gt;, Nullable&lt;DateTime&gt;, Nullable&lt;Int64&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets list of available orders from Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required ListOrdersRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IReadOnlyList&lt;IOrder&gt;&gt; ListOrdersAsync(OrderStatusFilter? orderStatusFilter = default(OrderStatusFilter? ), SortDirection? orderListSorting = default(SortDirection? ), DateTime? untilDateTimeExclusive = default(DateTime? ), DateTime? afterDateTimeExclusive = default(DateTime? ), long? limitOrderNumber = default(long? ), CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Alpaca.Markets.OrderStatusFilter.html">OrderStatusFilter</a>&gt;</td>
-        <td><span class="parametername">orderStatusFilter</span></td>
-        <td><p>Order status for filtering.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Alpaca.Markets.SortDirection.html">SortDirection</a>&gt;</td>
-        <td><span class="parametername">orderListSorting</span></td>
-        <td><p>The chronological order of response based on the submission time.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">untilDateTimeExclusive</span></td>
-        <td><p>Returns only orders until specified timestamp (exclusive).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
-        <td><span class="parametername">afterDateTimeExclusive</span></td>
-        <td><p>Returns only orders after specified timestamp (exclusive).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
-        <td><span class="parametername">limitOrderNumber</span></td>
-        <td><p>Maximal number of orders in response.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IOrder.html">IOrder</a>&gt;&gt;</td>
-        <td><p>Read-only list of order information objects.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListPositionsAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListPositionsAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L163">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L62">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_ListPositionsAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListPositionsAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_ListPositionsAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListPositionsAsync(System.Threading.CancellationToken)">ListPositionsAsync(CancellationToken)</h4>
@@ -2590,7 +1804,7 @@ public Task&lt;IReadOnlyList&lt;IOrder&gt;&gt; ListOrdersAsync(OrderStatusFilter
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_ListWatchListsAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.ListWatchListsAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L17">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L11">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_ListWatchListsAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListWatchListsAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_ListWatchListsAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.ListWatchListsAsync(System.Threading.CancellationToken)">ListWatchListsAsync(CancellationToken)</h4>
@@ -2640,7 +1854,7 @@ public Task&lt;IReadOnlyList&lt;IOrder&gt;&gt; ListOrdersAsync(OrderStatusFilter
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_PatchAccountConfigurationAsync_Alpaca_Markets_IAccountConfiguration_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.PatchAccountConfigurationAsync(Alpaca.Markets.IAccountConfiguration%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L37">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.General.cs/#L23">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_PatchAccountConfigurationAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.PatchAccountConfigurationAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_PatchAccountConfigurationAsync_Alpaca_Markets_IAccountConfiguration_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.PatchAccountConfigurationAsync(Alpaca.Markets.IAccountConfiguration,System.Threading.CancellationToken)">PatchAccountConfigurationAsync(IAccountConfiguration, CancellationToken)</h4>
@@ -2696,7 +1910,7 @@ public Task&lt;IReadOnlyList&lt;IOrder&gt;&gt; ListOrdersAsync(OrderStatusFilter
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_PatchOrderAsync_Alpaca_Markets_ChangeOrderRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.PatchOrderAsync(Alpaca.Markets.ChangeOrderRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L98">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L37">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_PatchOrderAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.PatchOrderAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_PatchOrderAsync_Alpaca_Markets_ChangeOrderRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.PatchOrderAsync(Alpaca.Markets.ChangeOrderRequest,System.Threading.CancellationToken)">PatchOrderAsync(ChangeOrderRequest, CancellationToken)</h4>
@@ -2749,97 +1963,10 @@ public Task&lt;IReadOnlyList&lt;IOrder&gt;&gt; ListOrdersAsync(OrderStatusFilter
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_PatchOrderAsync_System_Guid_System_Nullable_System_Int64__System_Nullable_Alpaca_Markets_TimeInForce__System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.PatchOrderAsync(System.Guid%2CSystem.Nullable%7BSystem.Int64%7D%2CSystem.Nullable%7BAlpaca.Markets.TimeInForce%7D%2CSystem.Nullable%7BSystem.Decimal%7D%2CSystem.Nullable%7BSystem.Decimal%7D%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L183">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_PatchOrderAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.PatchOrderAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_PatchOrderAsync_System_Guid_System_Nullable_System_Int64__System_Nullable_Alpaca_Markets_TimeInForce__System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_String_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.PatchOrderAsync(System.Guid,System.Nullable{System.Int64},System.Nullable{Alpaca.Markets.TimeInForce},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.Threading.CancellationToken)">PatchOrderAsync(Guid, Nullable&lt;Int64&gt;, Nullable&lt;TimeInForce&gt;, Nullable&lt;Decimal&gt;, Nullable&lt;Decimal&gt;, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Updates existing order using Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required ChangeOrderRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IOrder&gt; PatchOrderAsync(Guid orderId, long? quantity = default(long? ), TimeInForce? duration = default(TimeInForce? ), decimal? limitPrice = default(decimal? ), decimal? stopPrice = default(decimal? ), string clientOrderId = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Guid</span></td>
-        <td><span class="parametername">orderId</span></td>
-        <td><p>Server side order identifier.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
-        <td><span class="parametername">quantity</span></td>
-        <td><p>Updated order quantity or <code>null</code> if quantity is not changed.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Alpaca.Markets.TimeInForce.html">TimeInForce</a>&gt;</td>
-        <td><span class="parametername">duration</span></td>
-        <td><p>Updated order duration or <code>null</code> if duration is not changed.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Decimal</span>&gt;</td>
-        <td><span class="parametername">limitPrice</span></td>
-        <td><p>Updated order limit price or <code>null</code> if limit price is not changed.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Decimal</span>&gt;</td>
-        <td><span class="parametername">stopPrice</span></td>
-        <td><p>Updated order stop price or <code>null</code> if stop price is not changed.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">clientOrderId</span></td>
-        <td><p>Updated client order ID or <code>null</code> if client order ID is not changed.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.IOrder.html">IOrder</a>&gt;</td>
-        <td><p>Read-only order information object for updated order.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_PostOrderAsync_Alpaca_Markets_NewOrderRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(Alpaca.Markets.NewOrderRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L55">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L19">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_PostOrderAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.PostOrderAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_PostOrderAsync_Alpaca_Markets_NewOrderRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(Alpaca.Markets.NewOrderRequest,System.Threading.CancellationToken)">PostOrderAsync(NewOrderRequest, CancellationToken)</h4>
@@ -2895,7 +2022,7 @@ public Task&lt;IOrder&gt; PatchOrderAsync(Guid orderId, long? quantity = default
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_PostOrderAsync_Alpaca_Markets_OrderBase_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(Alpaca.Markets.OrderBase%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L69">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.Orders.cs/#L25">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_PostOrderAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.PostOrderAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_PostOrderAsync_Alpaca_Markets_OrderBase_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(Alpaca.Markets.OrderBase,System.Threading.CancellationToken)">PostOrderAsync(OrderBase, CancellationToken)</h4>
@@ -2948,145 +2075,10 @@ public Task&lt;IOrder&gt; PatchOrderAsync(Guid orderId, long? quantity = default
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_PostOrderAsync_System_String_System_Int64_Alpaca_Markets_OrderSide_Alpaca_Markets_OrderType_Alpaca_Markets_TimeInForce_System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_String_System_Nullable_System_Boolean__System_Nullable_Alpaca_Markets_OrderClass__System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_Nullable_System_Boolean__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(System.String%2CSystem.Int64%2CAlpaca.Markets.OrderSide%2CAlpaca.Markets.OrderType%2CAlpaca.Markets.TimeInForce%2CSystem.Nullable%7BSystem.Decimal%7D%2CSystem.Nullable%7BSystem.Decimal%7D%2CSystem.String%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.Nullable%7BAlpaca.Markets.OrderClass%7D%2CSystem.Nullable%7BSystem.Decimal%7D%2CSystem.Nullable%7BSystem.Decimal%7D%2CSystem.Nullable%7BSystem.Decimal%7D%2CSystem.Nullable%7BSystem.Boolean%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L222">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_PostOrderAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.PostOrderAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_PostOrderAsync_System_String_System_Int64_Alpaca_Markets_OrderSide_Alpaca_Markets_OrderType_Alpaca_Markets_TimeInForce_System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_String_System_Nullable_System_Boolean__System_Nullable_Alpaca_Markets_OrderClass__System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_Nullable_System_Boolean__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(System.String,System.Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType,Alpaca.Markets.TimeInForce,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.Nullable{System.Boolean},System.Nullable{Alpaca.Markets.OrderClass},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Boolean},System.Threading.CancellationToken)">PostOrderAsync(String, Int64, OrderSide, OrderType, TimeInForce, Nullable&lt;Decimal&gt;, Nullable&lt;Decimal&gt;, String, Nullable&lt;Boolean&gt;, Nullable&lt;OrderClass&gt;, Nullable&lt;Decimal&gt;, Nullable&lt;Decimal&gt;, Nullable&lt;Decimal&gt;, Nullable&lt;Boolean&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Creates new order for execution using Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required NewOrderRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IOrder&gt; PostOrderAsync(string symbol, long quantity, OrderSide side, OrderType type, TimeInForce duration, decimal? limitPrice = default(decimal? ), decimal? stopPrice = default(decimal? ), string clientOrderId = null, bool? extendedHours = default(bool? ), OrderClass? orderClass = default(OrderClass? ), decimal? takeProfitLimitPrice = default(decimal? ), decimal? stopLossStopPrice = default(decimal? ), decimal? stopLossLimitPrice = default(decimal? ), bool? nested, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">symbol</span></td>
-        <td><p>Order asset name.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">quantity</span></td>
-        <td><p>Order quantity.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Alpaca.Markets.OrderSide.html">OrderSide</a></td>
-        <td><span class="parametername">side</span></td>
-        <td><p>Order side (buy or sell).</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Alpaca.Markets.OrderType.html">OrderType</a></td>
-        <td><span class="parametername">type</span></td>
-        <td><p>Order type.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Alpaca.Markets.TimeInForce.html">TimeInForce</a></td>
-        <td><span class="parametername">duration</span></td>
-        <td><p>Order duration.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Decimal</span>&gt;</td>
-        <td><span class="parametername">limitPrice</span></td>
-        <td><p>Order limit price.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Decimal</span>&gt;</td>
-        <td><span class="parametername">stopPrice</span></td>
-        <td><p>Order stop price.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">clientOrderId</span></td>
-        <td><p>Client order ID.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">extendedHours</span></td>
-        <td><p>Whether or not this order should be allowed to execute during extended hours trading.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Alpaca.Markets.OrderClass.html">OrderClass</a>&gt;</td>
-        <td><span class="parametername">orderClass</span></td>
-        <td><p>Order class for advanced order types.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Decimal</span>&gt;</td>
-        <td><span class="parametername">takeProfitLimitPrice</span></td>
-        <td><p>Profit taking limit price for advanced order types.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Decimal</span>&gt;</td>
-        <td><span class="parametername">stopLossStopPrice</span></td>
-        <td><p>Stop loss stop price for advanced order types.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Decimal</span>&gt;</td>
-        <td><span class="parametername">stopLossLimitPrice</span></td>
-        <td><p>Stop loss limit price for advanced order types.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">nested</span></td>
-        <td><p>Whether or not child orders should be listed as 'legs' of parent orders. (Advanced order types only.)</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.IOrder.html">IOrder</a>&gt;</td>
-        <td><p>Read-only order information object for newly created order.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_UpdateWatchListByIdAsync_Alpaca_Markets_UpdateWatchListRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.UpdateWatchListByIdAsync(Alpaca.Markets.UpdateWatchListRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L96">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaTradingClient.WatchList.cs/#L38">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaTradingClient_UpdateWatchListByIdAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.UpdateWatchListByIdAsync*"></a>
   <h4 id="Alpaca_Markets_AlpacaTradingClient_UpdateWatchListByIdAsync_Alpaca_Markets_UpdateWatchListRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.UpdateWatchListByIdAsync(Alpaca.Markets.UpdateWatchListRequest,System.Threading.CancellationToken)">UpdateWatchListByIdAsync(UpdateWatchListRequest, CancellationToken)</h4>
@@ -3137,76 +2129,10 @@ public Task&lt;IOrder&gt; PostOrderAsync(string symbol, long quantity, OrderSide
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient_UpdateWatchListByIdAsync_System_Guid_System_String_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient.UpdateWatchListByIdAsync(System.Guid%2CSystem.String%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L280">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaTradingClient_UpdateWatchListByIdAsync_" data-uid="Alpaca.Markets.AlpacaTradingClient.UpdateWatchListByIdAsync*"></a>
-  <h4 id="Alpaca_Markets_AlpacaTradingClient_UpdateWatchListByIdAsync_System_Guid_System_String_System_Collections_Generic_IEnumerable_System_String__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.AlpacaTradingClient.UpdateWatchListByIdAsync(System.Guid,System.String,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">UpdateWatchListByIdAsync(Guid, String, IEnumerable&lt;String&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Updates watch list object from Alpaca REST API endpoint by watch list identifier.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use overloaded method that required UpdateWatchListRequest parameter instead of this one.&quot;, true)]
-public Task&lt;IWatchList&gt; UpdateWatchListByIdAsync(Guid watchListId, string name, IEnumerable&lt;string&gt; assets, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Guid</span></td>
-        <td><span class="parametername">watchListId</span></td>
-        <td><p>Unique watch list identifier.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>User defined watch list name.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td><span class="parametername">assets</span></td>
-        <td><p>List of asset names for new watch list.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.IWatchList.html">IWatchList</a>&gt;</td>
-        <td><p>Updated watch list object with proper <code data-dev-comment-type="paramref" class="paramref">watchListId</code> value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a>
+  </div>
   <div>
       <span class="xref">System.IDisposable</span>
   </div>
@@ -3221,7 +2147,7 @@ public Task&lt;IWatchList&gt; UpdateWatchListByIdAsync(Guid watchListId, string 
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaTradingClient.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaTradingClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Obsolete/AlpacaTradingClient.cs/#L8" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
