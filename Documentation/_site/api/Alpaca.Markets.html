@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace Alpaca.Markets
    ">
-    <meta name="generator" content="docfx 2.54.0.0">
+    <meta name="generator" content="docfx 2.56.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -182,9 +182,6 @@ and <a class="xref" href="Alpaca.Markets.PolygonDataClient.html#Alpaca_Markets_P
       <h4><a class="xref" href="Alpaca.Markets.PolygonDataClientConfiguration.html">PolygonDataClientConfiguration</a></h4>
       <section><p>Configuration parameters object for <a class="xref" href="Alpaca.Markets.PolygonDataClient.html">PolygonDataClient</a> class.</p>
 </section>
-      <h4><a class="xref" href="Alpaca.Markets.PolygonSockClient.html">PolygonSockClient</a></h4>
-      <section><p>Provides unified type-safe access for Polygon streaming API via websockets.</p>
-</section>
       <h4><a class="xref" href="Alpaca.Markets.PolygonStreamingClient.html">PolygonStreamingClient</a></h4>
       <section><p>Provides unified type-safe access for Polygon streaming API via websockets.</p>
 </section>
@@ -197,9 +194,6 @@ and <a class="xref" href="Alpaca.Markets.PolygonDataClient.html#Alpaca_Markets_P
       <h4><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></h4>
       <section><p>Represents exception information for request input data validation errors.</p>
 </section>
-      <h4><a class="xref" href="Alpaca.Markets.RestClient.html">RestClient</a></h4>
-      <section><p>Provides unified type-safe access for Alpaca REST API and Polygon REST API endpoints.</p>
-</section>
       <h4><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></h4>
       <section><p>Represents Alpaca/Polygon REST API specific error information.</p>
 </section>
@@ -211,9 +205,6 @@ and <a class="xref" href="Alpaca.Markets.PolygonDataClient.html#Alpaca_Markets_P
 </section>
       <h4><a class="xref" href="Alpaca.Markets.SimpleOrderBase.html">SimpleOrderBase</a></h4>
       <section><p>Encapsulates base data for ordinal order types, never used directly by any code.</p>
-</section>
-      <h4><a class="xref" href="Alpaca.Markets.SockClient.html">SockClient</a></h4>
-      <section><p>Provides unified type-safe access for Alpaca streaming API.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.StopLimitOrder.html">StopLimitOrder</a></h4>
       <section><p>Encapsulates data required for placing the stop limit order on the Alpaca REST API.</p>
@@ -228,16 +219,19 @@ and <a class="xref" href="Alpaca.Markets.PolygonDataClient.html#Alpaca_Markets_P
       <section><p>Provides unified type-safe access for websocket streaming APIs.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.StreamingClientConfiguration.html">StreamingClientConfiguration</a></h4>
-      <section><p>Configuration parameters object for <a class="xref" href="Alpaca.Markets.SockClient.html">SockClient</a> class.</p>
+      <section><p>Configuration parameters object for <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html">StreamingClientBase&lt;TConfiguration&gt;</a> class.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.TakeProfitOrder.html">TakeProfitOrder</a></h4>
       <section><p>Encapsulates data required for placing take profit order on the Alpaca REST API.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.ThrottleParameters.html">ThrottleParameters</a></h4>
-      <section><p>Helper class for storing parameters required for initializing rate throttler in <a class="xref" href="Alpaca.Markets.RestClient.html">RestClient</a> class.</p>
+      <section><p>Helper class for storing parameters required for initializing rate throttler in <a class="xref" href="Alpaca.Markets.AlpacaTradingClient.html">AlpacaTradingClient</a> class.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.TimeInterval.html">TimeInterval</a></h4>
       <section><p>Encapsulates implementations of the <a class="xref" href="Alpaca.Markets.ITimeInterval.html">ITimeInterval</a> interface and helper methods for it.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.TrailingStopOrder.html">TrailingStopOrder</a></h4>
+      <section><p>Encapsulates data required for placing the market order on the Alpaca REST API.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.UpdateWatchListRequest.html">UpdateWatchListRequest</a></h4>
       <section><p>Encapsulates request parameters for <a class="xref" href="Alpaca.Markets.AlpacaTradingClient.html#Alpaca_Markets_AlpacaTradingClient_UpdateWatchListByIdAsync_Alpaca_Markets_UpdateWatchListRequest_System_Threading_CancellationToken_">UpdateWatchListByIdAsync(UpdateWatchListRequest, CancellationToken)</a> call.</p>
@@ -249,6 +243,9 @@ and <a class="xref" href="Alpaca.Markets.PolygonDataClient.html#Alpaca_Markets_P
 </section>
       <h4><a class="xref" href="Alpaca.Markets.HistoryPeriod.html">HistoryPeriod</a></h4>
       <section><p>Encapsulates account history period request duration - value and unit pair.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a></h4>
+      <section><p>Represents the trailing stop order offset in dollars or as percent of HWM.</p>
 </section>
     <h3 id="interfaces">Interfaces
   </h3>
@@ -273,11 +270,23 @@ and <a class="xref" href="Alpaca.Markets.PolygonDataClient.html#Alpaca_Markets_P
       <h4><a class="xref" href="Alpaca.Markets.IAggBase.html">IAggBase</a></h4>
       <section><p>Encapsulates basic bar information for Polygon APIs.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></h4>
+      <section><p>Provides unified type-safe access for Alpaca Data API via HTTP/REST.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IAlpacaDataStreamingClient.html">IAlpacaDataStreamingClient</a></h4>
+      <section><p>Provides unified type-safe access for Alpaca data streaming API via websockets.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription.html">IAlpacaDataSubscription</a></h4>
       <section><p>Encapsulates generic Alpaca Data streaming API subscription item.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription&lt;TApi&gt;</a></h4>
       <section><p>Encapsulates strongly-typed Alpaca Data streaming API subscription item.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a></h4>
+      <section><p>Provides unified type-safe access for Alpaca streaming API.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a></h4>
+      <section><p>Provides unified type-safe access for Alpaca Trading API via HTTP/REST.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.IAsset.html">IAsset</a></h4>
       <section><p>Encapsulates asset information from Alpaca REST API.</p>
@@ -287,9 +296,6 @@ and <a class="xref" href="Alpaca.Markets.PolygonDataClient.html#Alpaca_Markets_P
 </section>
       <h4><a class="xref" href="Alpaca.Markets.IClock.html">IClock</a></h4>
       <section><p>Encapsulates current trading date information from Alpaca REST API.</p>
-</section>
-      <h4><a class="xref" href="Alpaca.Markets.IDayHistoricalItems-1.html">IDayHistoricalItems&lt;TItem&gt;</a></h4>
-      <section><p>Encapsulates list of single day historical items from Polygon REST API.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.IEnvironment.html">IEnvironment</a></h4>
       <section><p>Provides URLs for different APIs available for this SDK on specific environment.</p>
@@ -327,6 +333,12 @@ and <a class="xref" href="Alpaca.Markets.PolygonDataClient.html#Alpaca_Markets_P
       <h4><a class="xref" href="Alpaca.Markets.IOrderActionStatus.html">IOrderActionStatus</a></h4>
       <section><p>Encapsulates order action status information from Alpaca REST API.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.IPolygonDataClient.html">IPolygonDataClient</a></h4>
+      <section><p>Provides unified type-safe access for Polygon Data API via HTTP/REST.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IPolygonStreamingClient.html">IPolygonStreamingClient</a></h4>
+      <section><p>Provides unified type-safe access for Polygon streaming API via websockets.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.IPortfolioHistory.html">IPortfolioHistory</a></h4>
       <section><p>Encapsulates portfolio history information from Alpaca REST API.</p>
 </section>
@@ -353,6 +365,9 @@ and <a class="xref" href="Alpaca.Markets.PolygonDataClient.html#Alpaca_Markets_P
 </section>
       <h4><a class="xref" href="Alpaca.Markets.IStreamBase.html">IStreamBase</a></h4>
       <section><p>Encapsulates base streaming item information from data streaming API.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IStreamingClientBase.html">IStreamingClientBase</a></h4>
+      <section><p>Provides unified type-safe access for websocket streaming APIs.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.IStreamQuote.html">IStreamQuote</a></h4>
       <section><p>Encapsulates quote information from Polygon streaming API.</p>
@@ -433,7 +448,7 @@ and <a class="xref" href="Alpaca.Markets.PolygonDataClient.html#Alpaca_Markets_P
       <section><p>Order status in Alpaca REST API.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.OrderStatusFilter.html">OrderStatusFilter</a></h4>
-      <section><p>Order statuses filter for <a class="xref" href="Alpaca.Markets.RestClient.html#Alpaca_Markets_RestClient_ListOrdersAsync_System_Nullable_Alpaca_Markets_OrderStatusFilter__System_Nullable_Alpaca_Markets_SortDirection__System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_System_Int64__System_Threading_CancellationToken_">ListOrdersAsync(Nullable&lt;OrderStatusFilter&gt;, Nullable&lt;SortDirection&gt;, Nullable&lt;DateTime&gt;, Nullable&lt;DateTime&gt;, Nullable&lt;Int64&gt;, CancellationToken)</a> call from Alpaca REST API.</p>
+      <section><p>Order statuses filter for <a class="xref" href="Alpaca.Markets.AlpacaTradingClient.html#Alpaca_Markets_AlpacaTradingClient_ListOrdersAsync_Alpaca_Markets_ListOrdersRequest_System_Threading_CancellationToken_">ListOrdersAsync(ListOrdersRequest, CancellationToken)</a> call from Alpaca REST API.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.OrderType.html">OrderType</a></h4>
       <section><p>Supported order types in Alpaca REST API.</p>
@@ -445,7 +460,7 @@ and <a class="xref" href="Alpaca.Markets.PolygonDataClient.html#Alpaca_Markets_P
       <section><p>Supported sort directions in Alpaca REST API.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.TickType.html">TickType</a></h4>
-      <section><p>Conditions map type for <a class="xref" href="Alpaca.Markets.RestClient.html#Alpaca_Markets_RestClient_GetConditionMapAsync_Alpaca_Markets_TickType_System_Threading_CancellationToken_">GetConditionMapAsync(TickType, CancellationToken)</a> call form Polygon REST API.</p>
+      <section><p>Conditions map type for <a class="xref" href="Alpaca.Markets.PolygonDataClient.html#Alpaca_Markets_PolygonDataClient_GetConditionMapAsync_Alpaca_Markets_TickType_System_Threading_CancellationToken_">GetConditionMapAsync(TickType, CancellationToken)</a> call form Polygon REST API.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.TimeFrame.html">TimeFrame</a></h4>
       <section><p>Supported bar duration for Alpaca REST API.</p>
