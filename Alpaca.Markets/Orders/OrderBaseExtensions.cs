@@ -15,7 +15,7 @@ namespace Alpaca.Markets
         /// <typeparam name="TOrder">Type of target order for altering.</typeparam>
         /// <returns>Fluent interface - returns the <paramref name="order"/> object.</returns>
         public static TOrder WithDuration<TOrder>(
-            TOrder order,
+            this TOrder order,
             TimeInForce duration)
             where TOrder : OrderBase
         {
@@ -31,7 +31,7 @@ namespace Alpaca.Markets
         /// <typeparam name="TOrder">Type of target order for altering.</typeparam>
         /// <returns>Fluent interface - returns the <paramref name="order"/> object.</returns>
         public static TOrder WithClientOrderId<TOrder>(
-            TOrder order,
+            this TOrder order,
             String clientOrderId)
             where TOrder : OrderBase
         {
@@ -47,7 +47,7 @@ namespace Alpaca.Markets
         /// <typeparam name="TOrder">Type of target order for altering.</typeparam>
         /// <returns>Fluent interface - returns the <paramref name="order"/> object.</returns>
         public static TOrder WithExtendedHours<TOrder>(
-            TOrder order,
+            this TOrder order,
             Boolean extendedHours)
             where TOrder : OrderBase
         {
