@@ -12,7 +12,7 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed class AlpacaDataClient : IAlpacaDataClient
     {
-        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly HttpClient _httpClient;
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataClient"/> object.
@@ -24,6 +24,8 @@ namespace Alpaca.Markets
             configuration
                 .EnsureNotNull(nameof(configuration))
                 .EnsureIsValid();
+
+            _httpClient = configuration.HttpClient ?? new HttpClient();
 
             _httpClient.AddAuthenticationHeaders(configuration.SecurityId);
 

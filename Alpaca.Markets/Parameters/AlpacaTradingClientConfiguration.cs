@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.Http;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -37,6 +39,11 @@ namespace Alpaca.Markets
         /// Gets or sets REST API throttling parameters.
         /// </summary>
         public ThrottleParameters ThrottleParameters { get; set; }
+
+        /// <summary>
+        /// Gets or sets <see cref="HttpClient"/> instance for connecting.
+        /// </summary>
+        public HttpClient? HttpClient { get; [UsedImplicitly] set; }
 
         internal void EnsureIsValid()
         {
