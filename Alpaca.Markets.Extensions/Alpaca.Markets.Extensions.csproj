@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Alpaca.Markets" Version="3.9.0-alpha2" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.8" />
+  </ItemGroup>
+
+</Project>
