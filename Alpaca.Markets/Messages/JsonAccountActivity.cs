@@ -46,8 +46,8 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "side", Required = Required.Default)]
         public OrderSide? Side { get; set; }
 
-        [JsonProperty(PropertyName = "transaction_time", Required = Required.Default)]
-        public DateTime? TransactionTime { get; set; }
+        [JsonIgnore] 
+        public DateTime? TransactionTime => TransactionTimeUtc;
 
         [JsonProperty(PropertyName = "type", Required = Required.Default)]
         public TradeEvent? Type { get; set; }
@@ -58,8 +58,9 @@ namespace Alpaca.Markets
         [JsonIgnore] 
         public DateTime ActivityDateTime => ActivityDateTimeUtc;
 
-        [JsonIgnore] 
-        public DateTime? TransactionTimeUtc => TransactionTime.AsUtcDateTime();
+        [JsonProperty(PropertyName = "transaction_time", Required = Required.Default)]
+        [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
+        public DateTime? TransactionTimeUtc { get; set; }
 
         [JsonIgnore]
         public Guid ActivityGuid { get; private set; }

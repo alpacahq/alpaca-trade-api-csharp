@@ -25,23 +25,26 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "cash_withdrawable", Required = Required.Default)]
         public Decimal WithdrawableCash { get; set; }
 
-        [JsonProperty(PropertyName = "created_at", Required = Required.Always)]
-        public DateTime CreatedAt { get; set; }
-
-        [JsonProperty(PropertyName = "updated_at", Required = Required.Always)]
-        public DateTime UpdatedAt { get; set; }
-
-        [JsonProperty(PropertyName = "deleted_at", Required = Required.AllowNull)]
-        public DateTime? DeletedAt { get; set; }
+        [JsonIgnore] 
+        public DateTime CreatedAt => CreatedAtUtc;
 
         [JsonIgnore] 
-        public DateTime CreatedAtUtc => CreatedAt.AsUtcDateTime();
+        public DateTime UpdatedAt => UpdatedAtUtc;
 
-        [JsonIgnore]
-        public DateTime UpdatedAtUtc => UpdatedAt.AsUtcDateTime();
+        [JsonIgnore] 
+        public DateTime? DeletedAt => DeletedAtUtc;
 
-        [JsonIgnore]
-        public DateTime? DeletedAtUtc => DeletedAt.AsUtcDateTime();
+        [JsonProperty(PropertyName = "created_at", Required = Required.Always)]
+        [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
+        public DateTime CreatedAtUtc { get; set; }
+
+        [JsonProperty(PropertyName = "updated_at", Required = Required.Always)]
+        [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
+        public DateTime UpdatedAtUtc { get; set; }
+
+        [JsonProperty(PropertyName = "deleted_at", Required = Required.AllowNull)]
+        [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
+        public DateTime? DeletedAtUtc { get; set; }
 
         [OnDeserialized]
         internal void OnDeserializedMethod(

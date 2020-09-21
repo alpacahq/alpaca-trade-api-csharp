@@ -86,11 +86,12 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "sma", Required = Required.Default)]
         public Decimal Sma { get; set; }
 
-        [JsonProperty(PropertyName = "created_at", Required = Required.Always)]
-        public DateTime CreatedAt { get; set; }
-
         [JsonIgnore]
-        public DateTime CreatedAtUtc => CreatedAt.AsUtcDateTime();
+        public DateTime CreatedAt => CreatedAtUtc;
+
+        [JsonProperty(PropertyName = "created_at", Required = Required.Always)]
+        [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
+        public DateTime CreatedAtUtc { get; set; }
 
         [OnDeserialized]
         internal void OnDeserializedMethod(
