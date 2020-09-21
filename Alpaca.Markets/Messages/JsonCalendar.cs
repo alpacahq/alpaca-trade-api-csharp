@@ -10,15 +10,15 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonCalendar : ICalendar
     {
-        [JsonConverter(typeof(DateConverter))]
+        [JsonConverter(typeof(AssumeLocalIsoDateConverter))]
         [JsonProperty(PropertyName = "date", Required = Required.Always)]
         public DateTime TradingDateEst { get; set; }
 
-        [JsonConverter(typeof(TimeConverter))]
+        [JsonConverter(typeof(AssumeLocalIsoTimeConverter))]
         [JsonProperty(PropertyName = "open", Required = Required.Always)]
         public DateTime TradingOpenTimeEst { get; set; }
 
-        [JsonConverter(typeof(TimeConverter))]
+        [JsonConverter(typeof(AssumeLocalIsoTimeConverter))]
         [JsonProperty(PropertyName = "close", Required = Required.Always)]
         public DateTime TradingCloseTimeEst { get; set; }
 
@@ -53,7 +53,6 @@ namespace Alpaca.Markets
             TradingCloseTimeEst = DateTime.SpecifyKind(
                 TradingDateEst.Date.Add(TradingCloseTimeEst.TimeOfDay), 
                 DateTimeKind.Unspecified);
-
 
             TradingOpenTimeUtc = CustomTimeZone
                 .ConvertFromEstToUtc(TradingOpenTimeEst);

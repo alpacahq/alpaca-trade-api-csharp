@@ -16,47 +16,53 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "client_order_id", Required = Required.Always)]
         public String? ClientOrderId { get; set; }
 
+        [JsonIgnore]
+        public DateTime? CreatedAt => CreatedAtUtc;
+
         [JsonProperty(PropertyName = "created_at", Required = Required.Default)]
-        public DateTime? CreatedAt { get; set; }
+        [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
+        public DateTime? CreatedAtUtc { get; set; }
 
         [JsonIgnore]
-        public DateTime? CreatedAtUtc => CreatedAt.AsUtcDateTime();
+        public DateTime? UpdatedAt => UpdatedAtUtc;
 
         [JsonProperty(PropertyName = "updated_at", Required = Required.Default)]
-        public DateTime? UpdatedAt { get; set; }
+        [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
+        public DateTime? UpdatedAtUtc { get; set; }
 
-        [JsonIgnore]
-        public DateTime? UpdatedAtUtc => UpdatedAt.AsUtcDateTime();
+        [JsonIgnore] public DateTime? SubmittedAt => SubmittedAtUtc;
 
         [JsonProperty(PropertyName = "submitted_at", Required = Required.Default)]
-        public DateTime? SubmittedAt { get; set; }
+        [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
+        public DateTime? SubmittedAtUtc { get; set; }
 
         [JsonIgnore]
-        public DateTime? SubmittedAtUtc => SubmittedAt.AsUtcDateTime();
+        public DateTime? FilledAt => FilledAtUtc;
 
         [JsonProperty(PropertyName = "filled_at", Required = Required.Default)]
-        public DateTime? FilledAt { get; set; }
+        [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
+        public DateTime? FilledAtUtc { get; set; }
 
         [JsonIgnore]
-        public DateTime? FilledAtUtc => FilledAt.AsUtcDateTime();
+        public DateTime? ExpiredAt => ExpiredAtUtc;
 
         [JsonProperty(PropertyName = "expired_at ", Required = Required.Default)]
-        public DateTime? ExpiredAt { get; set; }
+        [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
+        public DateTime? ExpiredAtUtc { get; set; }
 
         [JsonIgnore]
-        public DateTime? ExpiredAtUtc => ExpiredAt.AsUtcDateTime();
+        public DateTime? CancelledAt => CancelledAtUtc;
 
         [JsonProperty(PropertyName = "canceled_at", Required = Required.Default)]
-        public DateTime? CancelledAt { get; set; }
+        [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
+        public DateTime? CancelledAtUtc { get; set; }
 
         [JsonIgnore]
-        public DateTime? CancelledAtUtc => CancelledAt.AsUtcDateTime();
+        public DateTime? FailedAt => FailedAtUtc;
 
         [JsonProperty(PropertyName = "failed_at", Required = Required.Default)]
-        public DateTime? FailedAt { get; set; }
-
-        [JsonIgnore]
-        public DateTime? FailedAtUtc => FailedAt.AsUtcDateTime();
+        [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
+        public DateTime? FailedAtUtc { get; set; }
 
         [JsonProperty(PropertyName = "asset_id", Required = Required.Always)]
         public Guid AssetId { get; set; }

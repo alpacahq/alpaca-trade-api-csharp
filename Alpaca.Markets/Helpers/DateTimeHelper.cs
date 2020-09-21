@@ -21,14 +21,8 @@ namespace Alpaca.Markets
             dateTime.ToString(DateFormat, CultureInfo.InvariantCulture);
 
         public static DateTime AsUtcDateTime(
-            in this DateTime value) =>
+            this in DateTime value) =>
             DateTime.SpecifyKind(value, DateTimeKind.Utc);
-
-        public static DateTime? AsUtcDateTime(
-            in this DateTime? value) =>
-            value.HasValue
-                ? DateTime.SpecifyKind(value.Value, DateTimeKind.Utc)
-                : (DateTime?) null;
 
         public static DateTime FromUnixTimeSeconds(
             this in Int64 linuxTimeStamp) =>
