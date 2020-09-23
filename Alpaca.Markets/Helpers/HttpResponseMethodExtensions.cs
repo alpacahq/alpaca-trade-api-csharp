@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -22,8 +23,14 @@ namespace Alpaca.Markets
 
             if (response.IsSuccessStatusCode)
             {
-                return new JsonSerializer().Deserialize<TJson>(reader) ??
-                       throw new RestClientErrorException("Unable to deserialize JSON response message.");
+                return new JsonSerializer
+                           {
+                               DateParseHandling = DateParseHandling.None,
+                               Culture = CultureInfo.InvariantCulture
+                           }
+                           .Deserialize<TJson>(reader) ??
+                       throw new RestClientErrorException(
+                           "Unable to deserialize JSON response message.");
             }
 
             throw getException(response, reader);
