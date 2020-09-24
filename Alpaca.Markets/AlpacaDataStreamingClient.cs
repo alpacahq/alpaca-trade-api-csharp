@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
@@ -32,6 +33,11 @@ namespace Alpaca.Markets
                 Stream = stream;
 
             public String Stream { get; }
+
+            public IEnumerable<String> Streams
+            {
+                get { yield return Stream; }
+            }
 
             public Boolean Subscribed { get; private set; }
 
@@ -147,10 +153,7 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public void Subscribe(
             IAlpacaDataSubscription subscription) =>
-            subscribe(new []
-            {
-                subscription.EnsureNotNull(nameof(subscription)).Stream
-            });
+            subscribe(subscription.EnsureNotNull(nameof(subscription)).Streams);
 
         /// <inheritdoc />
         public void Subscribe(
@@ -160,15 +163,12 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public void Subscribe(
             IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-            subscribe(subscriptions.Select(_ => _.Stream));
+            subscribe(subscriptions.SelectMany(_ => _.Streams));
 
         /// <inheritdoc />
         public void Unsubscribe(
             IAlpacaDataSubscription subscription) =>
-            unsubscribe(new []
-            {
-                subscription.EnsureNotNull(nameof(subscription)).Stream
-            });
+            unsubscribe(subscription.EnsureNotNull(nameof(subscription)).Streams);
 
         /// <inheritdoc />
         public void Unsubscribe(
@@ -178,7 +178,7 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public void Unsubscribe(
             IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-            unsubscribe(subscriptions.Select(_ => _.Stream));
+            unsubscribe(subscriptions.SelectMany(_ => _.Streams));
 
         /// <inheritdoc/>
         protected override void OnOpened()

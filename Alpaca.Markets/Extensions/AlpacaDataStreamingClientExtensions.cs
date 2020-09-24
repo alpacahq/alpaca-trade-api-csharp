@@ -19,7 +19,9 @@ namespace Alpaca.Markets
                 IEnumerable<IAlpacaDataSubscription<TItem>> subscriptions) =>
                 _subscriptions = subscriptions.ToList();
 
-            public String Stream => _subscriptions[0].Stream;
+            public String Stream => Streams.FirstOrDefault() ?? String.Empty;
+
+            public IEnumerable<String> Streams => _subscriptions.SelectMany(_ => _.Streams);
 
             public Boolean Subscribed => _subscriptions.All(_ => _.Subscribed);
 

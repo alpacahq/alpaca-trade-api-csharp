@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Alpaca.Markets
 {
@@ -8,8 +9,14 @@ namespace Alpaca.Markets
     public interface IAlpacaDataSubscription
     {
         /// <summary>
+        /// Gets the stream names - updates type (channel name) and asset name (symbol) list.
+        /// </summary>
+        IEnumerable<String> Streams { get; }
+
+        /// <summary>
         /// Gets the stream name - updates type (channel name) and asset name (symbol).
         /// </summary>
+        [Obsolete("This property will be removed in the next major release. Use the Streams property instead.", false)]
         String Stream { get; }
 
         /// <summary>
