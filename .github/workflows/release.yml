@@ -27,6 +27,14 @@ jobs:
     - name: Dotnet Build
       run: dotnet build -c Release
 
+    - name: Upload NuGetPackages
+      uses: actions/upload-artifact@v2
+      with:
+        name: NuGet packages
+        path: |
+          **/Alpaca.*.nupkg
+          **/Alpaca.*.snupkg
+          
     - name: Dotnet Nuget Push
       if: github.repository == 'alpacahq/alpaca-trade-api-csharp' && startsWith(github.ref, 'refs/tags/v')
       run: dotnet nuget push **.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
