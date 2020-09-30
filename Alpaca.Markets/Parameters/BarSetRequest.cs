@@ -13,6 +13,8 @@ namespace Alpaca.Markets
     public sealed class BarSetRequest : Validation.IRequest, 
         IRequestWithTimeInterval<IInclusiveTimeInterval>, IRequestWithTimeInterval<IExclusiveTimeInterval>
     {
+        private const Int32 MaxAllowedSymbolsInRequest = 100;
+
         private readonly List<String> _symbols;
 
         /// <summary>
@@ -84,6 +86,13 @@ namespace Alpaca.Markets
             {
                 yield return new RequestValidationException(
                     "Symbols list shouldn't be empty.", nameof(Symbols));
+            }
+
+            if (_symbols.Count > MaxAllowedSymbolsInRequest)
+            {
+                yield return new RequestValidationException(
+                    $"Symbols list shouldn't contain more than {MaxAllowedSymbolsInRequest} items.",
+                    nameof(Symbols));
             }
 
             if (_symbols.Any(String.IsNullOrEmpty))
