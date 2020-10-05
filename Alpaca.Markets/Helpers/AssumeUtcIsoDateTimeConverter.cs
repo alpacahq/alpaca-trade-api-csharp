@@ -11,7 +11,7 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class AssumeUtcIsoDateTimeConverter : DateTimeConverterBase
     {
-        public sealed override void WriteJson(
+        public override void WriteJson(
             JsonWriter writer, 
             Object? value, 
             JsonSerializer serializer)
