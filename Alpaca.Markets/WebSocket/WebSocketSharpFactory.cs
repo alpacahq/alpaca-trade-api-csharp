@@ -23,7 +23,10 @@ namespace Alpaca.Markets
             {
                 _webSocket = new WebSocket(url.ToString())
                 {
-                    SslConfiguration = {EnabledSslProtocols = SslProtocols.Tls12}
+                    SslConfiguration =
+                    {
+                        EnabledSslProtocols = SslProtocols.Tls12
+                    }
                 };
 
                 _webSocket.OnOpen += handleOpened;
