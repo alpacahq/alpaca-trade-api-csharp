@@ -8,7 +8,7 @@ namespace Alpaca.Markets.Extensions
     internal abstract class ClientWithReconnectBase<TClient, TSubscription> : IStreamingClientBase
         where TClient : IStreamingClientBase
     {
-            protected readonly ConcurrentDictionary<String, TSubscription> _subscriptions =
+            protected readonly ConcurrentDictionary<String, TSubscription> Subscriptions =
                 new ConcurrentDictionary<String, TSubscription>(StringComparer.Ordinal);
 
             private readonly CancellationTokenSource _cancellationTokenSource =
@@ -18,65 +18,65 @@ namespace Alpaca.Markets.Extensions
 
             private readonly Random _random = new Random();
 
-            protected readonly TClient _client;
+            protected readonly TClient Client;
 
             protected ClientWithReconnectBase(
                 TClient client,
                 ReconnectionParameters reconnectionParameters)
             {
-                _client = client;
+                Client = client;
                 _reconnectionParameters = reconnectionParameters;
-                _client.SocketClosed += handleSocketClosed;
+                Client.SocketClosed += handleSocketClosed;
             }
 
             public void Dispose()
             {
-                _client.SocketClosed -= handleSocketClosed;
+                Client.SocketClosed -= handleSocketClosed;
                 _cancellationTokenSource.Cancel();
 
-                _client.Dispose();
+                Client.Dispose();
                 _cancellationTokenSource.Dispose();
             }
 
             public Task ConnectAsync(
                 CancellationToken cancellationToken = default) =>
-                _client.ConnectAsync(cancellationToken);
+                Client.ConnectAsync(cancellationToken);
 
             public Task<AuthStatus> ConnectAndAuthenticateAsync(
                 CancellationToken cancellationToken = default) =>
-                _client.ConnectAndAuthenticateAsync(cancellationToken);
+                Client.ConnectAndAuthenticateAsync(cancellationToken);
 
             public Task DisconnectAsync(
                 CancellationToken cancellationToken = default)
             {
-                _client.SocketClosed -= handleSocketClosed;
+                Client.SocketClosed -= handleSocketClosed;
                 _cancellationTokenSource.Cancel();
 
-                return _client.DisconnectAsync(cancellationToken);
+                return Client.DisconnectAsync(cancellationToken);
             }
 
             public event Action<AuthStatus>? Connected
             {
-                add => _client.Connected += value;
-                remove => _client.Connected -= value;
+                add => Client.Connected += value;
+                remove => Client.Connected -= value;
             }
 
             public event Action? SocketOpened
             {
-                add => _client.SocketOpened += value;
-                remove => _client.SocketOpened -= value;
+                add => Client.SocketOpened += value;
+                remove => Client.SocketOpened -= value;
             }
 
             public event Action? SocketClosed
             {
-                add => _client.SocketClosed += value;
-                remove => _client.SocketClosed -= value;
+                add => Client.SocketClosed += value;
+                remove => Client.SocketClosed -= value;
             }
 
             public event Action<Exception>? OnError
             {
-                add => _client.OnError += value;
-                remove => _client.OnError -= value;
+                add => Client.OnError += value;
+                remove => Client.OnError -= value;
             }
 
             protected abstract void Resubscribe(String symbol, TSubscription subscription);
@@ -99,7 +99,7 @@ namespace Alpaca.Markets.Extensions
 
                     if (authStatus == AuthStatus.Authorized)
                     {
-                        foreach (var kvp in _subscriptions.ToArray())
+                        foreach (var kvp in Subscriptions.ToArray())
                         {
                             if (_cancellationTokenSource.IsCancellationRequested)
                             {

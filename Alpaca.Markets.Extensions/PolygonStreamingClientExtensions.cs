@@ -32,30 +32,30 @@ namespace Alpaca.Markets.Extensions
 
             public void SubscribeTrade(String symbol)
             {
-                _subscriptions.AddOrUpdate(symbol, SubscriptionTypes.Trade,
+                Subscriptions.AddOrUpdate(symbol, SubscriptionTypes.Trade,
                     (_, subscription) => subscription | SubscriptionTypes.Trade);
-                _client.SubscribeTrade(symbol);
+                Client.SubscribeTrade(symbol);
             }
 
             public void SubscribeQuote(String symbol)
             {
-                _subscriptions.AddOrUpdate(symbol, SubscriptionTypes.Quote,
+                Subscriptions.AddOrUpdate(symbol, SubscriptionTypes.Quote,
                     (_, subscription) => subscription | SubscriptionTypes.Quote);
-                _client.SubscribeQuote(symbol);
+                Client.SubscribeQuote(symbol);
             }
 
             public void SubscribeSecondAgg(String symbol)
             {
-                _subscriptions.AddOrUpdate(symbol, SubscriptionTypes.Second,
+                Subscriptions.AddOrUpdate(symbol, SubscriptionTypes.Second,
                     (_, subscription) => subscription | SubscriptionTypes.Second);
-                _client.SubscribeSecondAgg(symbol);
+                Client.SubscribeSecondAgg(symbol);
             }
 
             public void SubscribeMinuteAgg(String symbol)
             {
-                _subscriptions.AddOrUpdate(symbol, SubscriptionTypes.Minute,
+                Subscriptions.AddOrUpdate(symbol, SubscriptionTypes.Minute,
                     (_, subscription) => subscription | SubscriptionTypes.Minute);
-                _client.SubscribeMinuteAgg(symbol);
+                Client.SubscribeMinuteAgg(symbol);
             }
 
             public void SubscribeTrade(IEnumerable<String> symbols)
@@ -92,30 +92,30 @@ namespace Alpaca.Markets.Extensions
 
             public void UnsubscribeTrade(String symbol)
             {
-                _subscriptions.AddOrUpdate(symbol, SubscriptionTypes.None,
+                Subscriptions.AddOrUpdate(symbol, SubscriptionTypes.None,
                     (_, subscription) => subscription & ~SubscriptionTypes.Trade);
-                _client.UnsubscribeTrade(symbol);
+                Client.UnsubscribeTrade(symbol);
             }
 
             public void UnsubscribeQuote(String symbol)
             {
-                _subscriptions.AddOrUpdate(symbol, SubscriptionTypes.None,
+                Subscriptions.AddOrUpdate(symbol, SubscriptionTypes.None,
                     (_, subscription) => subscription & ~SubscriptionTypes.Quote);
-                _client.UnsubscribeQuote(symbol);
+                Client.UnsubscribeQuote(symbol);
             }
 
             public void UnsubscribeSecondAgg(String symbol)
             {
-                _subscriptions.AddOrUpdate(symbol, SubscriptionTypes.None,
+                Subscriptions.AddOrUpdate(symbol, SubscriptionTypes.None,
                     (_, subscription) => subscription & ~SubscriptionTypes.Second);
-                _client.UnsubscribeSecondAgg(symbol);
+                Client.UnsubscribeSecondAgg(symbol);
             }
 
             public void UnsubscribeMinuteAgg(String symbol)
             {
-                _subscriptions.AddOrUpdate(symbol, SubscriptionTypes.None,
+                Subscriptions.AddOrUpdate(symbol, SubscriptionTypes.None,
                     (_, subscription) => subscription & ~SubscriptionTypes.Minute);
-                _client.UnsubscribeMinuteAgg(symbol);
+                Client.UnsubscribeMinuteAgg(symbol);
             }
 
             public void UnsubscribeTrade(IEnumerable<String> symbols)
@@ -152,26 +152,26 @@ namespace Alpaca.Markets.Extensions
 
             public event Action<IStreamTrade>? TradeReceived
             {
-                add => _client.TradeReceived += value;
-                remove => _client.TradeReceived -= value;
+                add => Client.TradeReceived += value;
+                remove => Client.TradeReceived -= value;
             }
 
             public event Action<IStreamQuote>? QuoteReceived
             {
-                add => _client.QuoteReceived += value;
-                remove => _client.QuoteReceived -= value;
+                add => Client.QuoteReceived += value;
+                remove => Client.QuoteReceived -= value;
             }
 
             public event Action<IStreamAgg>? MinuteAggReceived
             {
-                add => _client.MinuteAggReceived += value;
-                remove => _client.MinuteAggReceived -= value;
+                add => Client.MinuteAggReceived += value;
+                remove => Client.MinuteAggReceived -= value;
             }
 
             public event Action<IStreamAgg>? SecondAggReceived
             {
-                add => _client.SecondAggReceived += value;
-                remove => _client.SecondAggReceived -= value;
+                add => Client.SecondAggReceived += value;
+                remove => Client.SecondAggReceived -= value;
             }
 
             protected override void Resubscribe(
