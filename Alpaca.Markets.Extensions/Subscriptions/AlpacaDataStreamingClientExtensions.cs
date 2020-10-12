@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Alpaca.Markets
+namespace Alpaca.Markets.Extensions
 {
     /// <summary>
     /// Set of extension methods for the <see cref="IAlpacaDataStreamingClient"/> interface.
     /// </summary>
-    public static class AlpacaDataStreamingClientExtensions
+    public static partial class AlpacaDataStreamingClientExtensions
     {
         private sealed class MultiSubscription<TItem>
             : IAlpacaDataSubscription<TItem> 

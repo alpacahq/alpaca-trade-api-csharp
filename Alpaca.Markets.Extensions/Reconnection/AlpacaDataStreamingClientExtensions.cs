@@ -36,7 +36,10 @@ namespace Alpaca.Markets.Extensions
             public void Subscribe(
                 IAlpacaDataSubscription subscription)
             {
-                Subscriptions.TryAdd(subscription.Stream, subscription);
+                foreach (var stream in subscription.Streams)
+                {
+                    Subscriptions.TryAdd(stream, subscription);
+                }
                 Client.Subscribe(subscription);
             }
 
@@ -48,8 +51,9 @@ namespace Alpaca.Markets.Extensions
                 params IAlpacaDataSubscription[] subscriptions)
             {
                 foreach (var subscription in subscriptions)
+                foreach (var stream in subscription.Streams)
                 {
-                    Subscriptions.TryAdd(subscription.Stream, subscription);
+                    Subscriptions.TryAdd(stream, subscription);
                 }
                 Client.Subscribe(subscriptions);
             }
@@ -57,7 +61,10 @@ namespace Alpaca.Markets.Extensions
             public void Unsubscribe(
                 IAlpacaDataSubscription subscription)
             {
-                Subscriptions.TryRemove(subscription.Stream, out _);
+                foreach (var stream in subscription.Streams)
+                {
+                    Subscriptions.TryRemove(stream, out _);
+                }
                 Client.Unsubscribe(subscription);
             }
 
@@ -69,8 +76,9 @@ namespace Alpaca.Markets.Extensions
                 params IAlpacaDataSubscription[] subscriptions)
             {
                 foreach (var subscription in subscriptions)
+                foreach (var stream in subscription.Streams)
                 {
-                    Subscriptions.TryRemove(subscription.Stream, out _);
+                    Subscriptions.TryRemove(stream, out _);
                 }
                 Client.Unsubscribe(subscriptions);
             }
