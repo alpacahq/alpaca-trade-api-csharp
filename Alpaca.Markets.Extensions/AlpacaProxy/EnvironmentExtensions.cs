@@ -51,7 +51,7 @@ namespace Alpaca.Markets.Extensions
         /// </param>
         /// <returns>New environment URLs object.</returns>
         public static IEnvironment WithProxyForAlpacaDataStreamingClient(
-            IEnvironment environment,
+            this IEnvironment environment,
             Uri? alpacaProxyAgentUrl = null) =>
             new ProxyEnvironment(environment)
             {
@@ -69,7 +69,7 @@ namespace Alpaca.Markets.Extensions
         /// </param>
         /// <returns>New environment URLs object.</returns>
         public static IEnvironment WithProxyForPolygonStreamingClient(
-            IEnvironment environment,
+            this IEnvironment environment,
             Uri? alpacaProxyAgentUrl = null) =>
             new ProxyEnvironment(environment)
             {

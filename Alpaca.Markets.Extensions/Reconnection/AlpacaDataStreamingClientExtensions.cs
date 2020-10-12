@@ -8,7 +8,7 @@ namespace Alpaca.Markets.Extensions
     /// Helper extension method for creating special version of the <see cref="IAlpacaDataStreamingClient"/>
     /// implementation with automatic reconnection (with configurable delay and number of attempts) support.
     /// </summary>
-    public static class AlpacaDataStreamingClientExtensions
+    public static partial class AlpacaDataStreamingClientExtensions
     {
         private sealed class ClientWithReconnection :
             ClientWithReconnectBase<IAlpacaDataStreamingClient, IAlpacaDataSubscription>,
