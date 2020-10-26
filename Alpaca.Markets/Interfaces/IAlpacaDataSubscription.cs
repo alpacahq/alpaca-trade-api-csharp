@@ -16,7 +16,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the stream name - updates type (channel name) and asset name (symbol).
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the Streams property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the Streams property instead.", true)]
         String Stream { get; }
 
         /// <summary>
