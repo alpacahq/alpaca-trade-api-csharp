@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -27,6 +28,7 @@ namespace Alpaca.Markets.Extensions
                 Client = client;
                 _reconnectionParameters = reconnectionParameters;
                 Client.SocketClosed += handleSocketClosed;
+                Client.OnError += handleOnError;
             }
 
             public void Dispose()
@@ -67,50 +69,58 @@ namespace Alpaca.Markets.Extensions
                 remove => Client.SocketOpened -= value;
             }
 
-            public event Action? SocketClosed
-            {
-                add => Client.SocketClosed += value;
-                remove => Client.SocketClosed -= value;
-            }
+            public event Action? SocketClosed;
 
-            public event Action<Exception>? OnError
-            {
-                add => Client.OnError += value;
-                remove => Client.OnError -= value;
-            }
+            public event Action<Exception>? OnError;
 
             protected abstract void Resubscribe(String symbol, TSubscription subscription);
 
+            [SuppressMessage(
+                "Design", "CA1031:Do not catch general exception types",
+                Justification = "Expected behavior - we report exceptions via OnError event.")]
             private async void handleSocketClosed()
             {
-                var reconnectionAttempts = 0;
-
-                while (!_cancellationTokenSource.IsCancellationRequested &&
-                       reconnectionAttempts < _reconnectionParameters.MaxReconnectionAttempts)
+                try
                 {
-                    await Task.Delay(_random.Next(
-                                (Int32)_reconnectionParameters.MinReconnectionDelay.TotalMilliseconds, 
-                                (Int32)_reconnectionParameters.MaxReconnectionDelay.TotalMilliseconds), 
-                            _cancellationTokenSource.Token)
-                        .ConfigureAwait(false);
+                    var reconnectionAttempts = 0;
 
-                    var authStatus = await ConnectAndAuthenticateAsync(_cancellationTokenSource.Token)
-                        .ConfigureAwait(false);
-
-                    if (authStatus == AuthStatus.Authorized)
+                    while (!_cancellationTokenSource.IsCancellationRequested &&
+                           reconnectionAttempts < _reconnectionParameters.MaxReconnectionAttempts)
                     {
-                        foreach (var kvp in Subscriptions.ToArray())
+                        await Task.Delay(_random.Next(
+                                    (Int32)_reconnectionParameters.MinReconnectionDelay.TotalMilliseconds, 
+                                    (Int32)_reconnectionParameters.MaxReconnectionDelay.TotalMilliseconds), 
+                                _cancellationTokenSource.Token)
+                            .ConfigureAwait(false);
+
+                        var authStatus = await ConnectAndAuthenticateAsync(_cancellationTokenSource.Token)
+                            .ConfigureAwait(false);
+
+                        if (authStatus == AuthStatus.Authorized)
                         {
-                            if (_cancellationTokenSource.IsCancellationRequested)
+                            foreach (var kvp in Subscriptions.ToArray())
                             {
-                                return;
+                                if (_cancellationTokenSource.IsCancellationRequested)
+                                {
+                                    return;
+                                }
+                                Resubscribe(kvp.Key, kvp.Value);
                             }
-                            Resubscribe(kvp.Key, kvp.Value);
+
+                            return; // Reconnected, authorized and re-subscribed
                         }
+
+                        ++reconnectionAttempts;
                     }
 
-                    ++reconnectionAttempts;
+                    SocketClosed?.Invoke(); // Finally report to clients
+                }
+                catch (Exception exception)
+                {
+                    handleOnError(exception);
                 }
             }
+
+            private void handleOnError(Exception exception) => OnError?.Invoke(exception);
     }
 }
