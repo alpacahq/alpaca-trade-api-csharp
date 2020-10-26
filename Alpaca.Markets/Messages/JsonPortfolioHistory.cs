@@ -20,8 +20,6 @@ namespace Alpaca.Markets
 
             public Decimal? ProfitLossPercentage { get; set; }
 
-            public DateTime Timestamp => TimestampUtc;
-
             public DateTime TimestampUtc { get; set; }
         }
 

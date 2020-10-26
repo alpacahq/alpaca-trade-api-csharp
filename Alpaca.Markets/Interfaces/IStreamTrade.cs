@@ -30,12 +30,6 @@ namespace Alpaca.Markets
         Int64 Size { get; }
 
         /// <summary>
-        /// Gets trade timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the TimeUtc property instead.", true)]
-        DateTime Time { get; }
-
-        /// <summary>
         /// Gets trade timestamp in UTC time zone.
         /// </summary>
         DateTime TimeUtc { get; }

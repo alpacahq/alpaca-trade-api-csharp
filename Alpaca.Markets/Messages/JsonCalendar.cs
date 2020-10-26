@@ -31,15 +31,6 @@ namespace Alpaca.Markets
         [JsonIgnore]
         public DateTime TradingCloseTimeUtc { get; private set; }
 
-        [JsonIgnore] 
-        public DateTime TradingDate => TradingDateUtc;
-
-        [JsonIgnore]
-        public DateTime TradingOpenTime => TradingOpenTimeUtc;
-
-        [JsonIgnore] 
-        public DateTime TradingCloseTime => TradingCloseTimeUtc;
-
         [OnDeserialized]
         internal void OnDeserializedMethod(
             StreamingContext context)

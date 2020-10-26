@@ -30,8 +30,5 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "n", Required = Required.Default)]
         public Int32 ItemsInWindow { get; set; }
-
-        [JsonIgnore] 
-        public DateTime? Time => TimeUtc;
     }
 }

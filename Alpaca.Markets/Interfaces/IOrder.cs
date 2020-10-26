@@ -21,21 +21,9 @@ namespace Alpaca.Markets
         String? ClientOrderId { get; }
 
         /// <summary>
-        /// Gets order creation timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the CreatedAtUtc property instead.", true)]
-        DateTime? CreatedAt { get; }
-
-        /// <summary>
         /// Gets order creation timestamp in UTC time zone.
         /// </summary>
         DateTime? CreatedAtUtc { get; }
-
-        /// <summary>
-        /// Gets last order update timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the UpdatedAtUtc property instead.", true)]
-        DateTime? UpdatedAt { get; }
 
         /// <summary>
         /// Gets last order update timestamp in UTC time zone.
@@ -43,21 +31,9 @@ namespace Alpaca.Markets
         DateTime? UpdatedAtUtc { get; }
 
         /// <summary>
-        /// Gets order submission timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the SubmittedAtUtc property instead.", true)]
-        DateTime? SubmittedAt { get; }
-
-        /// <summary>
         /// Gets order submission timestamp in UTC time zone.
         /// </summary>
         DateTime? SubmittedAtUtc { get; }
-
-        /// <summary>
-        /// Gets order fill timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the FilledAtUtc property instead.", true)]
-        DateTime? FilledAt { get; }
 
         /// <summary>
         /// Gets order fill timestamp in UTC time zone.
@@ -65,32 +41,14 @@ namespace Alpaca.Markets
         DateTime? FilledAtUtc { get; }
 
         /// <summary>
-        /// Gets order expiration timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the ExpiredAtUtc property instead.", true)]
-        DateTime? ExpiredAt { get; }
-
-        /// <summary>
         /// Gets order expiration timestamp in UTC time zone.
         /// </summary>
         DateTime? ExpiredAtUtc { get; }
 
         /// <summary>
-        /// Gets order cancellation timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the CancelledAtUtc property instead.", true)]
-        DateTime? CancelledAt { get; }
-
-        /// <summary>
         /// Gets order cancellation timestamp in UTC time zone.
         /// </summary>
         DateTime? CancelledAtUtc { get; }
-
-        /// <summary>
-        /// Gets order rejection timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the FailedAtUtc property instead.", true)]
-        DateTime? FailedAt { get; }
 
         /// <summary>
         /// Gets order rejection timestamp in UTC time zone.

@@ -10,32 +10,14 @@ namespace Alpaca.Markets
     public interface ITimestamps
     {
         /// <summary>
-        /// Gets SIP timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the TimestampUtc property instead.", true)]
-        DateTime? Timestamp { get; }
-
-        /// <summary>
         /// Gets SIP timestamp in UTC time zone.
         /// </summary>
         DateTime? TimestampUtc { get; }
 
         /// <summary>
-        /// Gets participant/exchange timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the ParticipantTimestampUtc property instead.", true)]
-        DateTime? ParticipantTimestamp { get; }
-
-        /// <summary>
         /// Gets participant/exchange timestamp in UTC time zone.
         /// </summary>
         DateTime? ParticipantTimestampUtc { get; }
-
-        /// <summary>
-        /// Gets trade reporting facility timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the TradeReportingFacilityTimestampUtc property instead.", true)]
-        DateTime? TradeReportingFacilityTimestamp { get; }
 
         /// <summary>
         /// Gets trade reporting facility timestamp in UTC time zone.

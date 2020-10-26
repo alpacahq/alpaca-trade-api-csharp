@@ -33,12 +33,6 @@ namespace Alpaca.Markets
         Decimal WithdrawableCash { get; }
 
         /// <summary>
-        /// Gets timestamp of account creation event.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the CreatedAtUtc property instead.", true)]
-        DateTime CreatedAt { get; }
-
-        /// <summary>
         /// Gets timestamp of account creation event in UTC.
         /// </summary>
         DateTime CreatedAtUtc { get; }

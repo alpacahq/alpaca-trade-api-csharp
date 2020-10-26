@@ -30,12 +30,6 @@ namespace Alpaca.Markets
         public Uri ApiEndpoint { get; set; }
 
         /// <summary>
-        /// Gets or sets Alpaca Trading API version.
-        /// </summary>
-        [Obsolete("This property doesn't affect the client's behavior and will be removed in the next versions of SDK.", true)]
-        public ApiVersion ApiVersion { get; set; }
-
-        /// <summary>
         /// Gets or sets REST API throttling parameters.
         /// </summary>
         public ThrottleParameters ThrottleParameters { get; set; }

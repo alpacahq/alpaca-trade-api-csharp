@@ -15,21 +15,9 @@ namespace Alpaca.Markets
         Decimal Average { get; }
 
         /// <summary>
-        /// Gets bar opening timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the StartTimeUtc property instead.", true)]
-        DateTime StartTime { get; }
-
-        /// <summary>
         /// Gets bar opening timestamp in UTC time zone.
         /// </summary>
         DateTime StartTimeUtc { get; }
-
-        /// <summary>
-        /// Gets bar closing timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the EndTimeUtc property instead.", true)]
-        DateTime EndTime { get; }
 
         /// <summary>
         /// Gets bar closing timestamp in UTC time zone.

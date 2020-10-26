@@ -13,15 +13,9 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "id", Required = Required.Always)]
         public Guid WatchListId { get; set; }
 
-        [JsonIgnore]
-        public DateTime Created => CreatedUtc;
-
         [JsonProperty(PropertyName = "created_at", Required = Required.Always)]
         [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
         public DateTime CreatedUtc  { get; set; }
-
-        [JsonIgnore]
-        public DateTime? Updated => UpdatedUtc;
 
         [JsonProperty(PropertyName = "updated_at", Required = Required.Default)]
         [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]

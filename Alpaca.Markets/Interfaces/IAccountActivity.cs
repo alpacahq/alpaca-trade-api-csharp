@@ -20,12 +20,6 @@ namespace Alpaca.Markets
         String ActivityId { get; }
 
         /// <summary>
-        /// An activity timestamp (date and time) from <see cref="ActivityId"/>.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the ActivityDateTimeUtc property instead.", true)]
-        DateTime ActivityDateTime { get; }
-
-        /// <summary>
         /// An activity timestamp (date and time) from <see cref="ActivityId"/> in the UTC.
         /// </summary>
         DateTime ActivityDateTimeUtc { get; }
@@ -79,12 +73,6 @@ namespace Alpaca.Markets
         /// The order side of a trade execution.
         /// </summary>
         OrderSide? Side { get; }
-
-        /// <summary>
-        /// The time at which an execution occurred.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the TransactionTimeUtc property instead.", true)]
-        DateTime? TransactionTime { get; }
 
         /// <summary>
         /// The time at which an execution occurred in the UTC.

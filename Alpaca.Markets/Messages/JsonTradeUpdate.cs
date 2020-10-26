@@ -18,9 +18,6 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "position_qty", Required = Required.Default)]
         public Int64? Quantity { get; set; }
 
-        [JsonIgnore]
-        public DateTime Timestamp => TimestampUtc;
-
         [JsonProperty(PropertyName = "timestamp", Required = Required.Default)]
         [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
         public DateTime TimestampUtc { get; set; }

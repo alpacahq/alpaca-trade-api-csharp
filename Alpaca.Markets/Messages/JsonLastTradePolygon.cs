@@ -44,9 +44,6 @@ namespace Alpaca.Markets
         public Int64 Size => Nested.Size;
 
         [JsonIgnore]
-        public DateTime Time => Nested.Timestamp;
-
-        [JsonIgnore]
         public DateTime TimeUtc => Nested.Timestamp;
     }
 }

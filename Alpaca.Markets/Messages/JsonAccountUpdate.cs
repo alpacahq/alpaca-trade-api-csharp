@@ -25,15 +25,6 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "cash_withdrawable", Required = Required.Default)]
         public Decimal WithdrawableCash { get; set; }
 
-        [JsonIgnore] 
-        public DateTime CreatedAt => CreatedAtUtc;
-
-        [JsonIgnore] 
-        public DateTime UpdatedAt => UpdatedAtUtc;
-
-        [JsonIgnore] 
-        public DateTime? DeletedAt => DeletedAtUtc;
-
         [JsonProperty(PropertyName = "created_at", Required = Required.Always)]
         [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
         public DateTime CreatedAtUtc { get; set; }

@@ -25,12 +25,6 @@ namespace Alpaca.Markets
         Decimal? ProfitLossPercentage { get; }
 
         /// <summary>
-        /// Gets historical timestamp value.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the TimestampUtc property instead.", true)]
-        DateTime Timestamp { get; }
-
-        /// <summary>
         /// Gets historical timestamp value in UTC time zone.
         /// </summary>
         DateTime TimestampUtc { get; }
