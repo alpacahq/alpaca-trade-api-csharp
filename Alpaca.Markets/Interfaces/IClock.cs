@@ -12,7 +12,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets current timestamp (in UTC time zone).
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the TimestampUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the TimestampUtc property instead.", true)]
         DateTime Timestamp { get; }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets nearest trading day open time (in UTC time zone).
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the NextOpenUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the NextOpenUtc property instead.", true)]
         DateTime NextOpen { get; }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets nearest trading day close time (in UTC time zone).
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the NextCloseUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the NextCloseUtc property instead.", true)]
         DateTime NextClose { get;  }
 
         /// <summary>

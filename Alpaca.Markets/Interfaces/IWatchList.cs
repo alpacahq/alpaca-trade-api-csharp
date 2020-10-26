@@ -16,7 +16,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets watch list creation time.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the CreatedUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the CreatedUtc property instead.", true)]
         DateTime Created { get; }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets watch list last update time.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the UpdatedUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the UpdatedUtc property instead.", true)]
         DateTime? Updated { get; }
 
         /// <summary>

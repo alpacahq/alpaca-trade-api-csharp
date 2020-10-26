@@ -12,7 +12,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets SIP timestamp.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the TimestampUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the TimestampUtc property instead.", true)]
         DateTime? Timestamp { get; }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets participant/exchange timestamp.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the ParticipantTimestampUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the ParticipantTimestampUtc property instead.", true)]
         DateTime? ParticipantTimestamp { get; }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade reporting facility timestamp.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the TradeReportingFacilityTimestampUtc property instead.", false)]
+        [Obsolete("This property will be removed in the next major release. Use the TradeReportingFacilityTimestampUtc property instead.", true)]
         DateTime? TradeReportingFacilityTimestamp { get; }
 
         /// <summary>

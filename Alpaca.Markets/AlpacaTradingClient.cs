@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed partial class AlpacaTradingClient : IAlpacaTradingClient
     {
-        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly HttpClient _httpClient;
 
         private readonly IThrottler _alpacaRestApiThrottler;
 
@@ -22,6 +22,8 @@ namespace Alpaca.Markets
             configuration
                 .EnsureNotNull(nameof(configuration))
                 .EnsureIsValid();
+
+            _httpClient = configuration.HttpClient ?? new HttpClient();
 
             _alpacaRestApiThrottler = configuration.ThrottleParameters.GetThrottler();
 

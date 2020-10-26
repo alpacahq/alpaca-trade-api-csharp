@@ -17,7 +17,11 @@ namespace Alpaca.Markets
                 Uri url)
             {
                 _webSocket = new WebSocket(url.ToString(),
-                    sslProtocols: SslProtocols.Tls12);
+                    sslProtocols: SslProtocols.Tls12)
+                {
+                    EnableAutoSendPing = true, 
+                    AutoSendPingInterval = 30
+                };
 
                 _webSocket.Opened += handleOpened;
                 _webSocket.Closed += handleClosed;
@@ -30,11 +34,6 @@ namespace Alpaca.Markets
 
             public void Dispose()
             {
-                if (_webSocket == null)
-                {
-                    return;
-                }
-
                 _webSocket.Opened -= handleOpened;
                 _webSocket.Closed -= handleClosed;
 

@@ -33,8 +33,9 @@ namespace Alpaca.Markets
             SecurityKey securityKey) =>
             new AlpacaTradingClientConfiguration
             {
-                ApiEndpoint = environment?.AlpacaTradingApi ?? throw new ArgumentNullException(nameof(environment)),
-                SecurityId = securityKey ?? throw new ArgumentNullException(nameof(securityKey)),
+                ApiEndpoint = environment.EnsureNotNull(nameof(environment))
+                    .AlpacaTradingApi.EnsureNotNull(nameof(IEnvironment.AlpacaTradingApi)),
+                SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
             };
 
         /// <summary>
@@ -61,8 +62,9 @@ namespace Alpaca.Markets
             SecurityKey securityKey) =>
             new AlpacaDataClientConfiguration
             {
-                ApiEndpoint = environment?.AlpacaDataApi ?? throw new ArgumentNullException(nameof(environment)),
-                SecurityId = securityKey ?? throw new ArgumentNullException(nameof(securityKey)),
+                ApiEndpoint = environment.EnsureNotNull(nameof(environment))
+                    .AlpacaDataApi.EnsureNotNull(nameof(IEnvironment.AlpacaDataApi)),
+                SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
             };
 
         /// <summary>
@@ -89,7 +91,8 @@ namespace Alpaca.Markets
             String keyId) =>
             new PolygonDataClientConfiguration
             {
-                ApiEndpoint = environment?.PolygonDataApi ?? throw new ArgumentNullException(nameof(environment)),
+                ApiEndpoint = environment.EnsureNotNull(nameof(environment))
+                    .PolygonDataApi.EnsureNotNull(nameof(IEnvironment.PolygonDataApi)),
                 KeyId = keyId ?? throw new ArgumentNullException(nameof(keyId))
             };
 
@@ -117,8 +120,9 @@ namespace Alpaca.Markets
             SecurityKey securityKey) =>
             new AlpacaStreamingClientConfiguration()
             {
-                ApiEndpoint = environment?.AlpacaStreamingApi ?? throw new ArgumentNullException(nameof(environment)),
-                SecurityId = securityKey,
+                ApiEndpoint = environment.EnsureNotNull(nameof(environment))
+                    .AlpacaStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaStreamingApi)),
+                SecurityId = securityKey
             };
 
         /// <summary>
@@ -145,8 +149,9 @@ namespace Alpaca.Markets
             String keyId) =>
             new PolygonStreamingClientConfiguration()
             {
-                ApiEndpoint = environment?.PolygonStreamingApi ?? throw new ArgumentNullException(nameof(environment)),
-                KeyId = keyId ?? throw new ArgumentNullException(nameof(keyId))
+                ApiEndpoint = environment.EnsureNotNull(nameof(environment))
+                    .PolygonStreamingApi.EnsureNotNull(nameof(IEnvironment.PolygonStreamingApi)),
+                KeyId = keyId.EnsureNotNull(nameof(keyId))
             };
 
         /// <summary>
@@ -173,8 +178,9 @@ namespace Alpaca.Markets
             SecurityKey securityKey) =>
             new AlpacaDataStreamingClientConfiguration()
             {
-                ApiEndpoint = environment?.AlpacaDataStreamingApi ?? throw new ArgumentNullException(nameof(environment)),
-                SecurityId = securityKey ?? throw new ArgumentNullException(nameof(securityKey))
+                ApiEndpoint = environment.EnsureNotNull(nameof(environment))
+                    .AlpacaDataStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaDataStreamingApi)),
+                SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
             };
     }
 }

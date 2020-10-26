@@ -28,6 +28,7 @@ namespace Alpaca.Markets
             IEnumerable<String> assets)
             : this(name) => 
             _assets.AddRange(
+                // ReSharper disable once ConstantNullCoalescingCondition
                 (assets ?? Enumerable.Empty<String>())
                 .Distinct(StringComparer.Ordinal));
 

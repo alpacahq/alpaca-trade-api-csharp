@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -11,31 +12,8 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets inclusive date interval for filtering items in response.
         /// </summary>
+        [UsedImplicitly]
         public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
-
-        /// <summary>
-        /// Gets start time for filtering (inclusive).
-        /// </summary>
-        [Obsolete("Use the TimeInterval.From property instead.", true)]
-        public DateTime? StartDateInclusive => TimeInterval?.From;
-
-        /// <summary>
-        /// Gets end time for filtering (inclusive).
-        /// </summary>
-        [Obsolete("Use the TimeInterval.Into property instead.", true)]
-        public DateTime? EndDateInclusive => TimeInterval?.Into;
-
-        /// <summary>
-        /// Sets exclusive time interval for request (start/end time included into interval if specified).
-        /// </summary>
-        /// <param name="start">Filtering interval start time.</param>
-        /// <param name="end">Filtering interval end time.</param>
-        /// <returns>Fluent interface method return same <see cref="CalendarRequest"/> instance.</returns>
-        [Obsolete("This method will be removed soon in favor of the extension method SetInclusiveTimeInterval.", true)]
-        public CalendarRequest SetInclusiveTimeIntervalWithNulls(
-            DateTime? start,
-            DateTime? end) =>
-            this.SetTimeInterval(Markets.TimeInterval.GetInclusive(start, end));
 
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
@@ -43,11 +21,11 @@ namespace Alpaca.Markets
             {
                 Path = "v2/calendar",
                 Query = new QueryBuilder()
-                    .AddParameter("start", TimeInterval?.From, DateTimeHelper.DateFormat)
-                    .AddParameter("end", TimeInterval?.Into, DateTimeHelper.DateFormat)
+                    .AddParameter("start", TimeInterval.From, DateTimeHelper.DateFormat)
+                    .AddParameter("end", TimeInterval.Into, DateTimeHelper.DateFormat)
             };
 
         void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
-            IInclusiveTimeInterval value) => TimeInterval = value;
+            IInclusiveTimeInterval value) => TimeInterval = value.EnsureNotNull(nameof(value));
     }
 }

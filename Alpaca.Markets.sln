@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsageExamples", "UsageExamp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Documentation", "Documentation\Documentation.csproj", "{0ECB1697-4464-4970-AD06-E98245702B44}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alpaca.Markets.Extensions", "Alpaca.Markets.Extensions\Alpaca.Markets.Extensions.csproj", "{4CCE5C4A-688A-40DA-BEFD-12E6803B41D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{0ECB1697-4464-4970-AD06-E98245702B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0ECB1697-4464-4970-AD06-E98245702B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ECB1697-4464-4970-AD06-E98245702B44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CCE5C4A-688A-40DA-BEFD-12E6803B41D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CCE5C4A-688A-40DA-BEFD-12E6803B41D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CCE5C4A-688A-40DA-BEFD-12E6803B41D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CCE5C4A-688A-40DA-BEFD-12E6803B41D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

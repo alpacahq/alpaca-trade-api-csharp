@@ -16,7 +16,7 @@ namespace Alpaca.Markets
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public sealed class PolygonDataClient : IPolygonDataClient
     {
-        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly HttpClient _httpClient;
 
         private readonly Boolean _isStagingEnvironment;
 
@@ -32,6 +32,8 @@ namespace Alpaca.Markets
             configuration
                 .EnsureNotNull(nameof(configuration))
                 .EnsureIsValid();
+
+            _httpClient = configuration.HttpClient ?? new HttpClient();
 
             _isStagingEnvironment = configuration.KeyId
                 .EndsWith("-staging", StringComparison.Ordinal);

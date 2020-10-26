@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -58,7 +59,7 @@ namespace Alpaca.Markets
         /// </returns>
         public static Boolean IsEmpty(
             this ITimeInterval interval) =>
-            interval?.Into is null & interval?.From is null;
+            interval.EnsureNotNull(nameof(interval)).Into is null & interval.From is null;
 
         /// <summary>
         /// Gets boolean flag signals that time interval is open (both start or end date equal to <c>null</c>).
@@ -69,7 +70,7 @@ namespace Alpaca.Markets
         /// </returns>
         public static Boolean IsOpen(
             this ITimeInterval interval) =>
-            interval?.Into is null ^ interval?.From is null;
+            interval.EnsureNotNull(nameof(interval)).Into is null ^ interval.From is null;
 
         /// <summary>
         /// Set inclusive time interval for <paramref name="request"/> object.
@@ -114,6 +115,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="into">Ending date/time point for filtering.</param>
         /// <returns>Inclusive open time interval.</returns>
+        [UsedImplicitly]
         public static IInclusiveTimeInterval GetInclusiveIntervalTillThat(
             this DateTime into) =>
             new Inclusive(null, into);
@@ -125,6 +127,7 @@ namespace Alpaca.Markets
         /// <param name="from">Starting date/time point for filtering.</param>
         /// <param name="into">Ending date/time point for filtering.</param>
         /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
+        [UsedImplicitly]
         public static TRequest SetExclusiveTimeInterval<TRequest>(
             this TRequest request,
             DateTime from,
@@ -152,6 +155,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="from">Starting date/time point for filtering.</param>
         /// <returns>Exclusive open time interval.</returns>
+        [UsedImplicitly]
         public static IExclusiveTimeInterval GetExclusiveIntervalFromThat(
             this DateTime from) =>
             new Exclusive(from, null);
@@ -161,6 +165,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="into">Ending date/time point for filtering.</param>
         /// <returns>Exclusive open time interval.</returns>
+        [UsedImplicitly]
         public static IExclusiveTimeInterval GetExclusiveIntervalTillThat(
             this DateTime into) =>
             new Exclusive(null, into);

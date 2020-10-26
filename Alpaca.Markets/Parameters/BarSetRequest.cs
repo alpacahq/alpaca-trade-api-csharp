@@ -13,6 +13,8 @@ namespace Alpaca.Markets
     public sealed class BarSetRequest : Validation.IRequest, 
         IRequestWithTimeInterval<IInclusiveTimeInterval>, IRequestWithTimeInterval<IExclusiveTimeInterval>
     {
+        private const Int32 MaxAllowedSymbolsInRequest = 100;
+
         private readonly List<String> _symbols;
 
         /// <summary>
@@ -57,7 +59,7 @@ namespace Alpaca.Markets
         public Int32? Limit { get; set; }
 
         /// <summary>
-        /// Gets flag indicating that both <see cref="TimeFrom"/> and <see cref="TimeInto"/> properties are treated as inclusive timestamps.
+        /// Gets flag indicating that <see cref="TimeInterval"/>  are treated as inclusive.
         /// </summary>
         public Boolean AreTimesInclusive => TimeInterval is IInclusiveTimeInterval;
 
@@ -66,42 +68,6 @@ namespace Alpaca.Markets
         /// </summary>
         public ITimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
 
-        /// <summary>
-        /// Gets start time for filtering.
-        /// </summary>
-        [Obsolete("Use the TimeInterval.From property instead.", true)]
-        public DateTime? TimeFrom => TimeInterval.From;
-
-        /// <summary>
-        /// Gets end time for filtering.
-        /// </summary>
-        [Obsolete("Use the TimeInterval.Into property instead.", true)]
-        public DateTime? TimeInto => TimeInterval.Into;
-
-        /// <summary>
-        /// Sets inclusive time interval for request (start/end time included into interval if specified).
-        /// </summary>
-        /// <param name="start">Filtering interval start time.</param>
-        /// <param name="end">Filtering interval end time.</param>
-        /// <returns>Fluent interface method return same <see cref="BarSetRequest"/> instance.</returns>
-        [Obsolete("This method will be removed soon in favor of the extension method SetInclusiveTimeInterval.", true)]
-        public BarSetRequest SetInclusiveTimeIntervalWithNulls(
-            DateTime? start,
-            DateTime? end) =>
-            this.SetTimeInterval(Markets.TimeInterval.GetInclusive(start, end));
-
-        /// <summary>
-        /// Sets exclusive time interval for request (start/end time not included into interval if specified).
-        /// </summary>
-        /// <param name="after">Filtering interval start time.</param>
-        /// <param name="until">Filtering interval end time.</param>
-        /// <returns>Fluent interface method return same <see cref="BarSetRequest"/> instance.</returns>
-        [Obsolete("This method will be removed soon in favor of the extension method SetExclusiveTimeInterval.", true)]
-        public BarSetRequest SetExclusiveTimeIntervalWithNulls(
-            DateTime? after,
-            DateTime? until) =>
-            this.SetTimeInterval(Markets.TimeInterval.GetExclusive(after, until));
-        
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
             new UriBuilder(httpClient.BaseAddress)
@@ -120,6 +86,13 @@ namespace Alpaca.Markets
             {
                 yield return new RequestValidationException(
                     "Symbols list shouldn't be empty.", nameof(Symbols));
+            }
+
+            if (_symbols.Count > MaxAllowedSymbolsInRequest)
+            {
+                yield return new RequestValidationException(
+                    $"Symbols list shouldn't contain more than {MaxAllowedSymbolsInRequest} items.",
+                    nameof(Symbols));
             }
 
             if (_symbols.Any(String.IsNullOrEmpty))

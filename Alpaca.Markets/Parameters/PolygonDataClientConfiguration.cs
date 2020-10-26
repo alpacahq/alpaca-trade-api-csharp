@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.Http;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -25,6 +27,11 @@ namespace Alpaca.Markets
         /// Gets or sets Polygon Data API base URL.
         /// </summary>
         public Uri ApiEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or sets <see cref="HttpClient"/> instance for connecting.
+        /// </summary>
+        public HttpClient? HttpClient { get; [UsedImplicitly] set; }
 
         internal void EnsureIsValid()
         {

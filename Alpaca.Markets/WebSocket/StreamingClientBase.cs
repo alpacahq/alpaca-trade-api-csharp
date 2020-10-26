@@ -76,7 +76,7 @@ namespace Alpaca.Markets
             void HandleConnected(AuthStatus authStatus)
             {
                 Connected -= HandleConnected;
-                tcs?.SetResult(authStatus);
+                tcs.SetResult(authStatus);
             }
         }
 
@@ -118,8 +118,7 @@ namespace Alpaca.Markets
         protected virtual void Dispose(
             Boolean disposing)
         {
-            if (!disposing ||
-                _webSocket == null)
+            if (!disposing)
             {
                 return;
             }
@@ -158,8 +157,8 @@ namespace Alpaca.Markets
         {
             try
             {
-                if (handlers != null &&
-                    handlers.TryGetValue(messageType, out var handler))
+                if (handlers.EnsureNotNull(nameof(handlers))
+                    .TryGetValue(messageType, out var handler))
                 {
                     _queue.Enqueue(() => handler(message));
                 }
