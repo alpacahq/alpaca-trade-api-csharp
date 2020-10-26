@@ -34,4 +34,4 @@ See the [UsageExamples](../../tree/develop/UsageExamples) project for near-to-re
 | -------------------------------------------- | ------- | ------------------------------ |
 | [develop](../../tree/develop)                | 4.0.*   | New features, breaking changes |
 | [master](../../tree/master)                  | 3.9.*   | All new features and hot-fixes |
-| [support/v3.7.x](../../tree/support/v3.8.x)  | 3.8.*   | Hot fixes only, some features  |
+| [support/v3.8.x](../../tree/support/v3.8.x)  | 3.8.*   | Hot fixes only, some features  |
