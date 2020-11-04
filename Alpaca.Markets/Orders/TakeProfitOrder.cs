@@ -8,10 +8,10 @@ namespace Alpaca.Markets
     public sealed class TakeProfitOrder : AdvancedOrderBase, ITakeProfit
     {
         internal TakeProfitOrder(
-            OrderBase order,
+            OrderBase baseOrder,
             Decimal limitPrice)
             : base(
-                order,
+                baseOrder,
                 OrderClass.OneTriggersOther) =>
             LimitPrice = limitPrice;
 
