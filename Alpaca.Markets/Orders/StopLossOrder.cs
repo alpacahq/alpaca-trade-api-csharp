@@ -8,11 +8,11 @@ namespace Alpaca.Markets
     public sealed class StopLossOrder : AdvancedOrderBase, IStopLoss
     {
         internal StopLossOrder(
-            OrderBase order,
+            OrderBase baseOrder,
             Decimal stopPrice,
             Decimal? limitPrice)
             : base(
-                order, 
+                baseOrder, 
                 OrderClass.OneTriggersOther)
         {
             LimitPrice = limitPrice;

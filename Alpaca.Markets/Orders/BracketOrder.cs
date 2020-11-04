@@ -8,16 +8,16 @@ namespace Alpaca.Markets
     public sealed class BracketOrder : AdvancedOrderBase
     {
         internal BracketOrder(
-            SimpleOrderBase order,
+            SimpleOrderBase baseOrder,
             Decimal takeProfitLimitPrice,
             Decimal stopLossStopPrice,
             Decimal? stopLossLimitPrice)
             : base(
-                order, 
+                baseOrder, 
                 OrderClass.Bracket)
         {
-            TakeProfit = order.TakeProfit(takeProfitLimitPrice);
-            StopLoss = order.StopLoss(stopLossStopPrice, stopLossLimitPrice);
+            TakeProfit = baseOrder.TakeProfit(takeProfitLimitPrice);
+            StopLoss = baseOrder.StopLoss(stopLossStopPrice, stopLossLimitPrice);
         }
         
         /// <summary>

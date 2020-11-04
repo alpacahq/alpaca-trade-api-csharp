@@ -8,15 +8,15 @@ namespace Alpaca.Markets
     public sealed class OneCancelsOtherOrder : AdvancedOrderBase
     {
         internal OneCancelsOtherOrder(
-            LimitOrder order,
+            LimitOrder limitOrder,
             Decimal stopLossStopPrice,
             Decimal? stopLossLimitPrice)
             : base(
-                order, 
+                limitOrder, 
                 OrderClass.OneCancelsOther)
         {
-            TakeProfit = order.TakeProfit(order.LimitPrice);
-            StopLoss = order.StopLoss(stopLossStopPrice, stopLossLimitPrice);
+            TakeProfit = limitOrder.TakeProfit(limitOrder.LimitPrice);
+            StopLoss = limitOrder.StopLoss(stopLossStopPrice, stopLossLimitPrice);
         }
 
         /// <summary>
@@ -32,6 +32,7 @@ namespace Alpaca.Markets
         internal override JsonNewOrder GetJsonRequest() =>
             base.GetJsonRequest()
                 .WithTakeProfit(TakeProfit)
-                .WithStopLoss(StopLoss);
+                .WithStopLoss(StopLoss)
+                .WithoutLimitPrice();
     }
 }
