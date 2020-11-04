@@ -4,6 +4,13 @@ namespace Alpaca.Markets
 {
     internal static class JsonNewOrderExtensions
     {
+        public static JsonNewOrder WithoutLimitPrice(
+            this JsonNewOrder order)
+        {
+            order.LimitPrice = null;
+            return order;
+        }
+
         public static JsonNewOrder WithStopPrice(
             this JsonNewOrder order,
             Decimal stopPrice)

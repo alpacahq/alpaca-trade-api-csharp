@@ -22,16 +22,16 @@ namespace Alpaca.Markets
         }
 
         internal OrderBase(
-            OrderBase order)
+            OrderBase baseOrder)
             : this(
-                order.Symbol,
-                order.Quantity,
-                order.Side,
-                order.Type)
+                baseOrder.Symbol,
+                baseOrder.Quantity,
+                baseOrder.Side,
+                baseOrder.Type)
         {
-            Duration = order.Duration;
-            ClientOrderId = order.ClientOrderId;
-            ExtendedHours = order.ExtendedHours;
+            Duration = baseOrder.Duration;
+            ClientOrderId = baseOrder.ClientOrderId;
+            ExtendedHours = baseOrder.ExtendedHours;
         }
 
         /// <summary>

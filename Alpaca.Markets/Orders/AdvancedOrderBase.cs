@@ -6,10 +6,13 @@
     public abstract class AdvancedOrderBase : OrderBase
     {
         internal AdvancedOrderBase(
-            OrderBase order,
+            OrderBase baseOrder,
             OrderClass orderClass)
-            : base(order) =>
+            : base(baseOrder)
+        {
+            BaseOrder = baseOrder;
             OrderClass = orderClass;
+        }
 
         /// <summary>
         /// Gets or sets the order class for advanced order types.
@@ -17,7 +20,9 @@
         public OrderClass OrderClass { get; }
 
         internal override JsonNewOrder GetJsonRequest() =>
-            base.GetJsonRequest()
+            BaseOrder.GetJsonRequest()
                 .WithOrderClass(OrderClass);
+
+        private OrderBase BaseOrder { get; }
     }
 }
