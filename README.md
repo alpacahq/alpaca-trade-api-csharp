@@ -9,18 +9,35 @@
 
 1. Create a new console application in a new, empty folder by running `dotnet new console`.
 2. Add a reference for Alpaca .NET SDK with `dotnet add package Alpaca.Markets`.
-3. Change `Main` method in auto-generated `Programm.cs` file to this code snippet:
+3. Replace content of the auto-generated `Programm.cs` file with this code snippet:
 ```cs
-var client = Alpaca.Markets.Environments.Paper
-    .GetAlpacaTradingClient(new SecretKey(KEY_ID, SECRET_KEY));
+using System;
+using Alpaca.Markets;
+using System.Threading.Tasks;
 
-var clock = client.GetClockAsync().Result;
-
-if (clock != null)
+namespace AlpacaExample
 {
-    Console.WriteLine(
-        "Timestamp: {0}, NextOpen: {1}, NextClose: {2}",
-        clock.Timestamp, clock.NextOpen, clock.NextClose);
+    internal static class Program
+    {
+        private const String KEY_ID = "";
+
+        private const String SECRET_KEY = "";
+
+        public static async Task Main()
+        {
+            var client = Environments.Paper
+                .GetAlpacaTradingClient(new SecretKey(KEY_ID, SECRET_KEY));
+
+            var clock = await client.GetClockAsync();
+
+            if (clock != null)
+            {
+                Console.WriteLine(
+                    "Timestamp: {0}, NextOpen: {1}, NextClose: {2}",
+                    clock.TimestampUtc, clock.NextOpenUtc, clock.NextCloseUtc);
+            }
+        }
+    }
 }
 ```
 4. Replace `KEY_ID` and `SECRET_KEY` values with your own data from the Alpaca dashboard.
