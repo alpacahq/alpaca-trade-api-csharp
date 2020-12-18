@@ -8,6 +8,8 @@ namespace Alpaca.Markets
 {
     internal sealed class QueryBuilder
     {
+        private const String ListSeparator = ",";
+
         private readonly IDictionary<String, String> _queryParameters =
             new Dictionary<String, String>();
 
@@ -62,6 +64,13 @@ namespace Alpaca.Markets
 
         public QueryBuilder AddParameter(
             String name,
+            String[] values) =>
+            values.Length != 0
+                ? AddParameter(name, String.Join(ListSeparator, values))
+                : this;
+
+        public QueryBuilder AddParameter(
+            String name,
             Int64? value) =>
             addParameter(name, value,
                 time => time.ToString("D", CultureInfo.InvariantCulture));
@@ -84,6 +93,8 @@ namespace Alpaca.Markets
             IEnumerable<TValue>? values,
             Func<TValue, String> converter)
             where TValue : struct =>
-            values != null ? AddParameter(name, String.Join(",", values.Select(converter))) : this;
+            values != null
+                ? AddParameter(name, String.Join(ListSeparator, values.Select(converter)))
+                : this;
     }
 }
