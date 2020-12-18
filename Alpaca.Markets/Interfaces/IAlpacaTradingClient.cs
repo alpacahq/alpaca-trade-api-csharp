@@ -289,6 +289,16 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Liquidates all open positions at market price using Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="request">All positions deletion request parameters.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>List of position cancellation status objects.</returns>
+        Task<IReadOnlyList<IPositionActionStatus>> DeleteAllPositionsAsync(
+            DeleteAllPositionsRequest request,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Liquidate an open position at market price using Alpaca REST API endpoint.
         /// </summary>
         /// <param name="request">Position deletion request parameters.</param>
