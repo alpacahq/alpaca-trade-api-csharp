@@ -74,8 +74,15 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public Task<IReadOnlyList<IPositionActionStatus>> DeleteAllPositionsAsync(
             CancellationToken cancellationToken = default) =>
+            DeleteAllPositionsAsync(new DeleteAllPositionsRequest(), cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IReadOnlyList<IPositionActionStatus>> DeleteAllPositionsAsync(
+            DeleteAllPositionsRequest request,
+            CancellationToken cancellationToken = default) =>
             _httpClient.DeleteAsync<IReadOnlyList<IPositionActionStatus>, List<JsonPositionActionStatus>>(
-                    "v2/positions", cancellationToken, _alpacaRestApiThrottler);
+                request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient), 
+                cancellationToken, _alpacaRestApiThrottler);
 
         /// <inheritdoc />
         public Task<IOrder> DeletePositionAsync(
