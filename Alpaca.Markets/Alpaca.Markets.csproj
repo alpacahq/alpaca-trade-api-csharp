@@ -20,7 +20,8 @@
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <PackageReleaseNotes>- Added the new `DeleteAllPositionsAsync` overload into the `IAlpacaTradingClient` interface and implementation - provides support for canceling all open orders alongside the all positions liquidation.
-- Added the new `Symbols` property into the `ListOrderRequest` parameters class along with the `WithSymbol` and `WithSymbols` fluent methods.</PackageReleaseNotes>
+- Added the new `Symbols` property into the `ListOrderRequest` parameters class along with the `WithSymbol` and `WithSymbols` fluent methods.´
+- Reverted back ability to set some order properties for the advanced order types.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
