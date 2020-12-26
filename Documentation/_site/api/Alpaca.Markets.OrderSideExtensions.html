@@ -10,7 +10,11 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class OrderSideExtensions
    ">
+<<<<<<< HEAD
     <meta name="generator" content="docfx 2.54.0.0">
+=======
+    <meta name="generator" content="docfx 2.56.4.0">
+>>>>>>> 9ce483145e2e0aa6867e0d7e1ce8d5fde8518fe7
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -160,7 +164,12 @@
       <tr>
         <td><span class="xref">System.Decimal</span></td>
         <td><span class="parametername">limitPrice</span></td>
+<<<<<<< HEAD
         <td></td>
+=======
+        <td><p>Order limit price.</p>
+</td>
+>>>>>>> 9ce483145e2e0aa6867e0d7e1ce8d5fde8518fe7
       </tr>
     </tbody>
   </table>
@@ -289,7 +298,12 @@
       <tr>
         <td><span class="xref">System.Decimal</span></td>
         <td><span class="parametername">stopPrice</span></td>
+<<<<<<< HEAD
         <td></td>
+=======
+        <td><p>Order stop price.</p>
+</td>
+>>>>>>> 9ce483145e2e0aa6867e0d7e1ce8d5fde8518fe7
       </tr>
     </tbody>
   </table>
@@ -356,12 +370,22 @@
       <tr>
         <td><span class="xref">System.Decimal</span></td>
         <td><span class="parametername">stopPrice</span></td>
+<<<<<<< HEAD
         <td></td>
+=======
+        <td><p>Order stop price.</p>
+</td>
+>>>>>>> 9ce483145e2e0aa6867e0d7e1ce8d5fde8518fe7
       </tr>
       <tr>
         <td><span class="xref">System.Decimal</span></td>
         <td><span class="parametername">limitPrice</span></td>
+<<<<<<< HEAD
         <td></td>
+=======
+        <td><p>Order limit price.</p>
+</td>
+>>>>>>> 9ce483145e2e0aa6867e0d7e1ce8d5fde8518fe7
       </tr>
     </tbody>
   </table>
@@ -381,6 +405,77 @@
       </tr>
     </tbody>
   </table>
+<<<<<<< HEAD
+=======
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_OrderSideExtensions_TrailingStop_Alpaca_Markets_OrderSide_System_String_System_Int64_Alpaca_Markets_TrailOffset_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OrderSideExtensions.TrailingStop(Alpaca.Markets.OrderSide%2CSystem.String%2CSystem.Int64%2CAlpaca.Markets.TrailOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/Orders/OrderSideExtensions.cs/#L78">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_OrderSideExtensions_TrailingStop_" data-uid="Alpaca.Markets.OrderSideExtensions.TrailingStop*"></a>
+  <h4 id="Alpaca_Markets_OrderSideExtensions_TrailingStop_Alpaca_Markets_OrderSide_System_String_System_Int64_Alpaca_Markets_TrailOffset_" data-uid="Alpaca.Markets.OrderSideExtensions.TrailingStop(Alpaca.Markets.OrderSide,System.String,System.Int64,Alpaca.Markets.TrailOffset)">TrailingStop(OrderSide, String, Int64, TrailOffset)</h4>
+  <div class="markdown level1 summary"><p>Creates new trailing stop order using specified side, symbol, quantity, and trail offset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TrailingStopOrder TrailingStop(this OrderSide orderSide, string symbol, long quantity, TrailOffset trailOffset)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.OrderSide.html">OrderSide</a></td>
+        <td><span class="parametername">orderSide</span></td>
+        <td><p>Order side (buy or sell).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Order asset name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">quantity</span></td>
+        <td><p>Order quantity.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a></td>
+        <td><span class="parametername">trailOffset</span></td>
+        <td><p>Order trail offset.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.TrailingStopOrder.html">TrailingStopOrder</a></td>
+        <td><p>The new <a class="xref" href="Alpaca.Markets.TrailingStopOrder.html">TrailingStopOrder</a> object instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+>>>>>>> 9ce483145e2e0aa6867e0d7e1ce8d5fde8518fe7
 </article>
           </div>
           
@@ -397,7 +492,12 @@
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+<<<<<<< HEAD
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+=======
+                <h5>In This Article</h5>
+                <div></div>
+>>>>>>> 9ce483145e2e0aa6867e0d7e1ce8d5fde8518fe7
               </nav>
             </div>
           </div>

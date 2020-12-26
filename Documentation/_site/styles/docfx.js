@@ -256,7 +256,11 @@ $(function () {
           } else {
             flipContents("hide");
             $("body").trigger("queryReady");
+<<<<<<< HEAD
             $('#search-results>.search-list').text('Search Results for "' + query + '"');
+=======
+            $('#search-results>.search-list>span').text('"' + query + '"');
+>>>>>>> 9ce483145e2e0aa6867e0d7e1ce8d5fde8518fe7
           }
         }).off("keydown");
       });
@@ -301,12 +305,26 @@ $(function () {
 
     function handleSearchResults(hits) {
       var numPerPage = 10;
+<<<<<<< HEAD
       $('#pagination').empty();
       $('#pagination').removeData("twbs-pagination");
       if (hits.length === 0) {
         $('#search-results>.sr-items').html('<p>No results found</p>');
       } else {
         $('#pagination').twbsPagination({
+=======
+      var pagination = $('#pagination');
+      pagination.empty();
+      pagination.removeData("twbs-pagination");
+      if (hits.length === 0) {
+        $('#search-results>.sr-items').html('<p>No results found</p>');
+      } else {        
+        pagination.twbsPagination({
+          first: pagination.data('first'),
+          prev: pagination.data('prev'),
+          next: pagination.data('next'),
+          last: pagination.data('last'),
+>>>>>>> 9ce483145e2e0aa6867e0d7e1ce8d5fde8518fe7
           totalPages: Math.ceil(hits.length / numPerPage),
           visiblePages: 5,
           onPageClick: function (event, page) {
@@ -422,6 +440,11 @@ $(function () {
       $('#toc a.active').parents('li').each(function (i, e) {
         $(e).addClass(active).addClass(expanded);
         $(e).children('a').addClass(active);
+<<<<<<< HEAD
+=======
+      })
+      $('#toc a.active').parents('li').each(function (i, e) {
+>>>>>>> 9ce483145e2e0aa6867e0d7e1ce8d5fde8518fe7
         top += $(e).position().top;
       })
       $('.sidetoc').scrollTop(top - 50);
@@ -591,10 +614,19 @@ $(function () {
   //Setup Affix
   function renderAffix() {
     var hierarchy = getHierarchy();
+<<<<<<< HEAD
     if (hierarchy && hierarchy.length > 0) {
       var html = '<h5 class="title">In This Article</h5>'
       html += util.formList(hierarchy, ['nav', 'bs-docs-sidenav']);
       $("#affix").empty().append(html);
+=======
+    if (!hierarchy || hierarchy.length <= 0) {
+      $("#affix").hide();
+    }
+    else {
+      var html = util.formList(hierarchy, ['nav', 'bs-docs-sidenav']);
+      $("#affix>div").empty().append(html);
+>>>>>>> 9ce483145e2e0aa6867e0d7e1ce8d5fde8518fe7
       if ($('footer').is(':visible')) {
         $(".sideaffix").css("bottom", "70px");
       }

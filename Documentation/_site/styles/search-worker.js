@@ -6,7 +6,11 @@
   var stopWords = null;
   var searchData = {};
 
+<<<<<<< HEAD
   lunr.tokenizer.separator = /[\s\-\.]+/;
+=======
+  lunr.tokenizer.separator = /[\s\-\.\(\)]+/;
+>>>>>>> 9ce483145e2e0aa6867e0d7e1ce8d5fde8518fe7
 
   var stopWordsRequest = new XMLHttpRequest();
   stopWordsRequest.open('GET', '../search-stopwords.json');
