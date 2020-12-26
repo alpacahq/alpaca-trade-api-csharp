@@ -19,9 +19,15 @@
         /// </summary>
         public OrderClass OrderClass { get; }
 
-        internal override JsonNewOrder GetJsonRequest() =>
-            BaseOrder.GetJsonRequest()
+        internal override JsonNewOrder GetJsonRequest()
+        {
+            BaseOrder.ClientOrderId = ClientOrderId;
+            BaseOrder.ExtendedHours = ExtendedHours;
+            BaseOrder.Duration = Duration;
+
+            return BaseOrder.GetJsonRequest()
                 .WithOrderClass(OrderClass);
+        }
 
         private OrderBase BaseOrder { get; }
     }
