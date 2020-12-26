@@ -11,22 +11,26 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v2
 
-    - name: Cache NuGet Packages
-      uses: actions/cache@v1
-      with:
-        path: ~/.nuget/packages
-        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-nuget-
+    - name: Set Git Identity
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "github-actions@github.com"
+
+    - name: Pull Git Subtree
+      run: |
+        git subtree pull --prefix Documentation/_site origin gh-pages
+        git add Documentation/_site/** -f
+        git commit
 
     - name: Dotnet Build
       run: dotnet build -c Documentation
 
-    - name: Save Git Subtree
+    - name: Save Documentation
       run: |
-        git config user.name "GitHub Actions"
-        git config user.email "github-actions@github.com"
         git add Documentation/_site/** -f
         git commit -m "Update content of .NET SDK documentation on GitHub Pages web site."
+
+    - name: Push Git Subtree
+      run: |
         git subtree push --prefix Documentation/_site origin gh-pages
         git push origin
