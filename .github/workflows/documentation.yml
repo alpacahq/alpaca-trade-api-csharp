@@ -1,0 +1,30 @@
+name: Update Documentation
+
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    name: Create Documentation
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v1
+
+    - name: Cache NuGet Packages
+      uses: actions/cache@v1
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+
+    - name: Dotnet Build
+      run: dotnet build -c Documentation
+
+    - name: Save Git Subtree
+      run: |
+        git add Documentation/_site/** -f
+        git commit -m "Update content of .NET SDK documentation on GitHub Pages web site."
+        git subtree push --prefix Documentation/_site origin gh-pages
+        git push origin
