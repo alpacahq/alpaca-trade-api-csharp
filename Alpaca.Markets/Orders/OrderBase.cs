@@ -37,7 +37,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the new order asset name.
         /// </summary>
-        public String Symbol { get;  }
+        public String Symbol { get; }
 
         /// <summary>
         /// Gets the new order quantity.
