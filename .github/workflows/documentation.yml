@@ -41,7 +41,7 @@ jobs:
 
     - name: Delete Documenation
       run: |
-        rm -rfv .
+        rm -rfv ./*
         git rm ** -f
 
     - name: Load Documentation
