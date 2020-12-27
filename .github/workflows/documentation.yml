@@ -15,7 +15,7 @@ jobs:
       run: dotnet build -c Documentation
 
     - name: Pack Documentation
-      run: tar -cjvf Documentation.tar -C Documentation/_site .
+      run: tar -cvf Documentation.tar -C Documentation/_site .
 
     - name: Save Documentation
       uses: actions/upload-artifact@v2
