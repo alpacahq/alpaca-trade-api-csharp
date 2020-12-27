@@ -11,26 +11,51 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v2
 
+    - name: Dotnet Build
+      run: dotnet build -c Documentation
+
+    - name: Pack Documentation
+      run: tar -cjvf Documentation.tar -C Documentation/_site .
+
+    - name: Save Documentation
+      uses: actions/upload-artifact@v2
+      with:
+        name: documentation
+        path: Documentation.tar
+
+  publish:
+    name: Publish Documentation
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Checkout Branch
+      uses: actions/checkout@v2
+      with:
+        ref: gh-pages
+
     - name: Set Git Identity
       run: |
         git config user.name "GitHub Actions"
         git config user.email "github-actions@github.com"
 
-    - name: Pull Git Subtree
+    - name: Delete Documenation
       run: |
-        git subtree pull --prefix Documentation/_site origin gh-pages
-        git add Documentation/_site/** -f
-        git commit
+        rm -rfv .
+        git rm ** -f
 
-    - name: Dotnet Build
-      run: dotnet build -c Documentation
+    - name: Load Documentation
+      uses: actions/download-artifact@v2
+      with:
+        name: documentation
 
-    - name: Save Documentation
+    - name: Unpack Documentation
       run: |
-        git add Documentation/_site/** -f
+        tar -xvf Documentation.tar
+        rm Documentation.tar
+        git add ** -f
+
+    - name: Commit and Push
+      run: |
         git commit -m "Update content of .NET SDK documentation on GitHub Pages web site."
-
-    - name: Push Git Subtree
-      run: |
-        git subtree push --prefix Documentation/_site origin gh-pages
-        git push origin
+        git push origin gh-pages
