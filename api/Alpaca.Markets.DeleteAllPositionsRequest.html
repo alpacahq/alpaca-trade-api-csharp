@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Enum AssetClass
+    <title>Class DeleteAllPositionsRequest
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Enum AssetClass
+    <meta name="title" content="Class DeleteAllPositionsRequest
    ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -68,38 +68,83 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.AssetClass">
+            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.DeleteAllPositionsRequest">
   
   
-  <h1 id="Alpaca_Markets_AssetClass" data-uid="Alpaca.Markets.AssetClass" class="text-break">Enum AssetClass
+  <h1 id="Alpaca_Markets_DeleteAllPositionsRequest" data-uid="Alpaca.Markets.DeleteAllPositionsRequest" class="text-break">Class DeleteAllPositionsRequest
   </h1>
-  <div class="markdown level0 summary"><p>Supported asset classes for Alpaca REST API.</p>
+  <div class="markdown level0 summary"><p>Encapsulates request parameters for <a class="xref" href="Alpaca.Markets.AlpacaTradingClient.html#Alpaca_Markets_AlpacaTradingClient_DeleteAllPositionsAsync_Alpaca_Markets_DeleteAllPositionsRequest_System_Threading_CancellationToken_">DeleteAllPositionsAsync(DeleteAllPositionsRequest, CancellationToken)</a> call.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">DeleteAllPositionsRequest</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
-  <h5 id="Alpaca_Markets_AssetClass_syntax">Syntax</h5>
+  <h5 id="Alpaca_Markets_DeleteAllPositionsRequest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(StringEnumConverter))]
-public enum AssetClass</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class DeleteAllPositionsRequest</code></pre>
   </div>
-  <h3 id="fields">Fields
+  <h3 id="properties">Properties
   </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_DeleteAllPositionsRequest_CancelOrders.md&amp;value=---%0Auid%3A%20Alpaca.Markets.DeleteAllPositionsRequest.CancelOrders%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/DeleteAllPositionsRequest.cs/#L15">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_DeleteAllPositionsRequest_CancelOrders_" data-uid="Alpaca.Markets.DeleteAllPositionsRequest.CancelOrders*"></a>
+  <h4 id="Alpaca_Markets_DeleteAllPositionsRequest_CancelOrders" data-uid="Alpaca.Markets.DeleteAllPositionsRequest.CancelOrders">CancelOrders</h4>
+  <div class="markdown level1 summary"><p>Gets the flag indicating that request should also cancel all open orders (false if null).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+public bool? CancelOrders { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Type</th>
         <th>Description</th>
       </tr>
-    <thead>
+    </thead>
     <tbody>
       <tr>
-        <td id="Alpaca_Markets_AssetClass_UsEquity">UsEquity</td>
-        <td><p>US equity asset class.</p>
-</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
       </tr>
     </tbody>
-  </thead></thead></table>
+  </table>
 </article>
           </div>
           
@@ -108,10 +153,10 @@ public enum AssetClass</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AssetClass.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AssetClass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_DeleteAllPositionsRequest.md&amp;value=---%0Auid%3A%20Alpaca.Markets.DeleteAllPositionsRequest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/AssetClass.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/DeleteAllPositionsRequest.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
