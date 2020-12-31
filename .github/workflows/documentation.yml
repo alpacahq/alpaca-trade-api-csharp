@@ -1,0 +1,61 @@
+name: Update Documentation
+
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    name: Create Documentation
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Dotnet Build
+      run: dotnet build -c Documentation
+
+    - name: Pack Documentation
+      run: tar -cvf Documentation.tar -C Documentation/_site .
+
+    - name: Save Documentation
+      uses: actions/upload-artifact@v2
+      with:
+        name: documentation
+        path: Documentation.tar
+
+  publish:
+    name: Publish Documentation
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Checkout Branch
+      uses: actions/checkout@v2
+      with:
+        ref: gh-pages
+
+    - name: Set Git Identity
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "github-actions@github.com"
+
+    - name: Delete Documenation
+      run: |
+        rm -rfv ./*
+        git rm ** -f
+
+    - name: Load Documentation
+      uses: actions/download-artifact@v2
+      with:
+        name: documentation
+
+    - name: Unpack Documentation
+      run: |
+        tar -xvf Documentation.tar
+        rm Documentation.tar
+        git add ** -f
+
+    - name: Commit and Push
+      run: |
+        git commit -m "Update content of .NET SDK documentation on GitHub Pages web site."
+        git push origin gh-pages

@@ -28,12 +28,6 @@ namespace Alpaca.Markets
         Int64? Quantity { get; }
 
         /// <summary>
-        /// Gets update timestamp.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the TimestampUtc property instead.", true)]
-        DateTime Timestamp { get; }
-
-        /// <summary>
         /// Gets update timestamp in UTC time zone.
         /// </summary>
         DateTime TimestampUtc { get; }

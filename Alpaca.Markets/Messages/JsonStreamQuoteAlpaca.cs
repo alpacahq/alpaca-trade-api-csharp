@@ -33,8 +33,5 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
         [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
         public DateTime TimeUtc { get; set; }
-
-        [JsonIgnore]
-        public DateTime Time => TimeUtc;
     }
 }

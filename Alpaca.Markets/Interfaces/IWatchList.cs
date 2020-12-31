@@ -14,21 +14,9 @@ namespace Alpaca.Markets
         Guid WatchListId { get; }
 
         /// <summary>
-        /// Gets watch list creation time.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the CreatedUtc property instead.", true)]
-        DateTime Created { get; }
-
-        /// <summary>
         /// Gets watch list creation time in UTC time zone.
         /// </summary>
         DateTime CreatedUtc { get; }
-
-        /// <summary>
-        /// Gets watch list last update time.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the UpdatedUtc property instead.", true)]
-        DateTime? Updated { get; }
 
         /// <summary>
         /// Gets watch list last update time in UTC time zone.

@@ -16,49 +16,29 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "client_order_id", Required = Required.Always)]
         public String? ClientOrderId { get; set; }
 
-        [JsonIgnore]
-        public DateTime? CreatedAt => CreatedAtUtc;
-
         [JsonProperty(PropertyName = "created_at", Required = Required.Default)]
         [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
         public DateTime? CreatedAtUtc { get; set; }
-
-        [JsonIgnore]
-        public DateTime? UpdatedAt => UpdatedAtUtc;
 
         [JsonProperty(PropertyName = "updated_at", Required = Required.Default)]
         [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
         public DateTime? UpdatedAtUtc { get; set; }
 
-        [JsonIgnore] public DateTime? SubmittedAt => SubmittedAtUtc;
-
         [JsonProperty(PropertyName = "submitted_at", Required = Required.Default)]
         [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
         public DateTime? SubmittedAtUtc { get; set; }
-
-        [JsonIgnore]
-        public DateTime? FilledAt => FilledAtUtc;
 
         [JsonProperty(PropertyName = "filled_at", Required = Required.Default)]
         [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
         public DateTime? FilledAtUtc { get; set; }
 
-        [JsonIgnore]
-        public DateTime? ExpiredAt => ExpiredAtUtc;
-
         [JsonProperty(PropertyName = "expired_at ", Required = Required.Default)]
         [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
         public DateTime? ExpiredAtUtc { get; set; }
 
-        [JsonIgnore]
-        public DateTime? CancelledAt => CancelledAtUtc;
-
         [JsonProperty(PropertyName = "canceled_at", Required = Required.Default)]
         [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
         public DateTime? CancelledAtUtc { get; set; }
-
-        [JsonIgnore]
-        public DateTime? FailedAt => FailedAtUtc;
 
         [JsonProperty(PropertyName = "failed_at", Required = Required.Default)]
         [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]

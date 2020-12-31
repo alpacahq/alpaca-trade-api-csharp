@@ -37,12 +37,6 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade timestamp.
         /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the TimeUtc property instead.", true)]
-        DateTime Time { get; }
-
-        /// <summary>
-        /// Gets trade timestamp.
-        /// </summary>
         DateTime TimeUtc { get; }
     }
 }

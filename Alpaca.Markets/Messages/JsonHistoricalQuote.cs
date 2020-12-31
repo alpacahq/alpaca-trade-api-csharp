@@ -59,15 +59,6 @@ namespace Alpaca.Markets
         public List<Int64>? IndicatorsList { get; set; }
 
         [JsonIgnore]
-        public DateTime? Timestamp => TimestampUtc;
-
-        [JsonIgnore]
-        public DateTime? ParticipantTimestamp => ParticipantTimestampUtc;
-
-        [JsonIgnore]
-        public DateTime? TradeReportingFacilityTimestamp => TradeReportingFacilityTimestampUtc;
-
-        [JsonIgnore]
         public IReadOnlyList<Int64> Conditions => ConditionsList.EmptyIfNull();
 
         [JsonIgnore]
