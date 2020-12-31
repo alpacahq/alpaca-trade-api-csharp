@@ -19,20 +19,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-nuget-
 
-<<<<<<< HEAD
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.404
-
-    - name: NuGet Clean
-      run: dotnet nuget locals all --clear
-
-    - name: Dotnet Clean
-      run: dotnet clean -c Release
-
-=======
->>>>>>> develop
     - name: Dotnet Build
       run: dotnet build -c Release
 
