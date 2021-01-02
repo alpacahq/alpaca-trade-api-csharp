@@ -17,7 +17,9 @@ namespace Alpaca.Markets
                 Uri url)
             {
                 _webSocket = new WebSocket(url.ToString(),
+#pragma warning disable CA5398 // Avoid hardcoded SslProtocols values
                     sslProtocols: SslProtocols.Tls12)
+#pragma warning restore CA5398 // Avoid hardcoded SslProtocols values
                 {
                     EnableAutoSendPing = true, 
                     AutoSendPingInterval = 30
@@ -76,27 +78,27 @@ namespace Alpaca.Markets
             public event Action<Exception>? Error;
 
             private void handleOpened(
-                Object sender,
+                Object? sender,
                 EventArgs eventArgs) =>
                 Opened?.Invoke();
 
             private void handleClosed(
-                Object sender,
+                Object? sender,
                 EventArgs eventArgs) =>
                 Closed?.Invoke();
 
             private void handleDataReceived(
-                Object sender,
+                Object? sender,
                 DataReceivedEventArgs eventArgs) =>
                 DataReceived?.Invoke(eventArgs.Data);
 
             private void handleMessageReceived(
-                Object sender,
+                Object? sender,
                 MessageReceivedEventArgs eventArgs) =>
                 MessageReceived?.Invoke(eventArgs.Message);
 
             private void handleError(
-                Object sender,
+                Object? sender,
                 ErrorEventArgs eventArgs) =>
                 Error?.Invoke(eventArgs.Exception);
         }

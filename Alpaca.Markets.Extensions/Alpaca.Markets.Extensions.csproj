@@ -1,25 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net5</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>4.0.0-beta1</Version>
+    <Version>5.0.0-beta1</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2020 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>4.0.0.1</AssemblyVersion>
-    <FileVersion>4.0.0.1</FileVersion>
+    <AssemblyVersion>5.0.0.0</AssemblyVersion>
+    <FileVersion>5.0.0.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <NoWarn>8002;NU5125</NoWarn>
-    <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Keep the version up to date the with main SDK package.</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -29,6 +27,7 @@
     <SignAssembly>true</SignAssembly>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

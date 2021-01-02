@@ -27,7 +27,7 @@ namespace Alpaca.Markets
 
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress)
+            new UriBuilder(httpClient.BaseAddress!)
             {
                 Path = $"v2/positions/{Symbol}"
             };

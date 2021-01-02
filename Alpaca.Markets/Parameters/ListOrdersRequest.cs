@@ -69,7 +69,7 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public ListOrdersRequest WithSymbols(IEnumerable<String> symbols)
         {
-            foreach (var symbol in symbols)
+            foreach (var symbol in symbols.EnsureNotNull(nameof(symbols)))
             {
                 addSymbolWithCheck(symbol, nameof(symbols));
             }
@@ -78,7 +78,7 @@ namespace Alpaca.Markets
 
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress)
+            new UriBuilder(httpClient.BaseAddress!)
             {
                 Path = "v2/orders",
                 Query = new QueryBuilder()

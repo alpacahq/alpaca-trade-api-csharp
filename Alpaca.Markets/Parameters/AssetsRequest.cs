@@ -19,7 +19,7 @@ namespace Alpaca.Markets
         public AssetClass? AssetClass { get; set; }
 
         internal UriBuilder GetUriBuilder(HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress)
+            new UriBuilder(httpClient.BaseAddress!)
             {
                 Path = "v2/assets",
                 Query = new QueryBuilder()

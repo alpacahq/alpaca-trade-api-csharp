@@ -87,7 +87,9 @@ namespace Alpaca.Markets.Extensions
                     while (!_cancellationTokenSource.IsCancellationRequested &&
                            reconnectionAttempts < _reconnectionParameters.MaxReconnectionAttempts)
                     {
+#pragma warning disable CA5394 // Do not use insecure randomness
                         await Task.Delay(_random.Next(
+#pragma warning restore CA5394 // Do not use insecure randomness
                                     (Int32)_reconnectionParameters.MinReconnectionDelay.TotalMilliseconds, 
                                     (Int32)_reconnectionParameters.MaxReconnectionDelay.TotalMilliseconds), 
                                 _cancellationTokenSource.Token)

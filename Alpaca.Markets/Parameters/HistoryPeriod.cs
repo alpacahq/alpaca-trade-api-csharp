@@ -41,7 +41,8 @@ namespace Alpaca.Markets
             $"{Value.ToString("D", CultureInfo.InvariantCulture)}{Unit.ToEnumString()}";
 
         /// <inheritdoc />
-        public override Boolean Equals(Object? other) => other is HistoryPeriod period && Equals(period);
+        public override Boolean Equals(Object? obj) => 
+            obj is HistoryPeriod period && Equals(period);
 
         /// <inheritdoc />
         public override Int32 GetHashCode()

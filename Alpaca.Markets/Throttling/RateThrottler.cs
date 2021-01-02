@@ -34,8 +34,10 @@ namespace Alpaca.Markets
                 await Task.Delay(delay, cancellationToken).ConfigureAwait(false);
             }
 
-            public void SetNextRetryTimeRandom() => 
+            public void SetNextRetryTimeRandom() =>
+#pragma warning disable CA5394 // Do not use insecure randomness
                 SetNextRetryTime(DateTime.UtcNow.AddMilliseconds(_randomRetryWait.Next(1000, 5000)));
+#pragma warning restore CA5394 // Do not use insecure randomness
 
             public void SetNextRetryTime(
                 DateTime nextRetryTime)
@@ -122,7 +124,7 @@ namespace Alpaca.Markets
 
             // Create a timer to exit the semaphore. Use the time unit as the original
             // interval length because that's the earliest we will need to exit the semaphore.
-            _exitTimer = new Timer(exitTimerCallback, null, _timeUnitMilliseconds, -1);
+            _exitTimer = new Timer(exitTimerCallback, this, _timeUnitMilliseconds, -1);
         }
 
         /// <inheritdoc />
@@ -159,7 +161,7 @@ namespace Alpaca.Markets
         // Callback for the exit timer that exits the semaphore based on exit times 
         // in the queue and then sets the timer for the next exit time.
         private void exitTimerCallback(
-            Object state)
+            Object? state)
         {
             var nextRetryDelay = _nextRetryGuard.GetDelayTillNextRetryTime().TotalMilliseconds;
             if (nextRetryDelay > 0)

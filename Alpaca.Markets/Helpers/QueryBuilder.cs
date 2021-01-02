@@ -77,7 +77,9 @@ namespace Alpaca.Markets
 
         public override String ToString()
         {
+#pragma warning disable 8620
             using var content = new FormUrlEncodedContent(_queryParameters);
+#pragma warning restore 8620
             return content.ReadAsStringAsync().Result;
         }
 

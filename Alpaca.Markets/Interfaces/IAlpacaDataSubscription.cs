@@ -14,12 +14,6 @@ namespace Alpaca.Markets
         IEnumerable<String> Streams { get; }
 
         /// <summary>
-        /// Gets the stream name - updates type (channel name) and asset name (symbol).
-        /// </summary>
-        [Obsolete("This property will be removed in the next major release. Use the Streams property instead.", true)]
-        String Stream { get; }
-
-        /// <summary>
         /// Gets boolean flag indicating the current subscription status of this item.
         /// </summary>
         Boolean Subscribed { get; }

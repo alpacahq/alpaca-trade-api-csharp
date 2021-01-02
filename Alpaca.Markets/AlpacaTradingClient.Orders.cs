@@ -46,7 +46,7 @@ namespace Alpaca.Markets
             String clientOrderId,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IOrder, JsonOrder>(
-                new UriBuilder(_httpClient.BaseAddress)
+                new UriBuilder(_httpClient.BaseAddress!)
                 {
                     Path = "v2/orders:by_client_order_id",
                     Query = new QueryBuilder()

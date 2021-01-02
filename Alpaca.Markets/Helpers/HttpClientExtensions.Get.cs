@@ -32,6 +32,7 @@ namespace Alpaca.Markets
             UriBuilder uriBuilder,
             IEqualityComparer<TKeyApi> comparer,
             CancellationToken cancellationToken)
+            where TKeyApi : notnull
             where TKeyJson : TKeyApi
             where TValueJson : TValueApi
         {
