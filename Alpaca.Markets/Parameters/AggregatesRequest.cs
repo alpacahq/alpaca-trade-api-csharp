@@ -40,7 +40,17 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets flag indicated that the results should not be adjusted for splits.
         /// </summary>
-        public Boolean Unadjusted { get; set; }
+        public Boolean? Unadjusted { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the sorting direction for items in response (the ascending if omitted).
+        /// </summary>
+        public SortDirection? Sort { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of base aggregates queried to create the aggregate results.
+        /// </summary>
+        public Int32? Limit { get; set; }
 
         internal UriBuilder GetUriBuilder(
             PolygonDataClient polygonDataClient)
@@ -49,10 +59,12 @@ namespace Alpaca.Markets
             var unixInto = (TimeInterval.Into ?? default).IntoUnixTimeMilliseconds();
 
             var builder = polygonDataClient.GetUriBuilder(
-                $"v2/aggs/ticker/{Symbol}/range/{Period.ToString()}/{unixFrom}/{unixInto}");
+                $"v2/aggs/ticker/{Symbol}/range/{Period}/{unixFrom}/{unixInto}");
 
             builder.QueryBuilder
-                .AddParameter("unadjusted", Unadjusted ? Boolean.TrueString : Boolean.FalseString);
+                .AddParameter("unadjusted", Unadjusted)
+                .AddParameter("limit", Limit)
+                .AddParameter("sort", Sort);
 
             return builder;
         }
@@ -75,6 +87,18 @@ namespace Alpaca.Markets
             {
                 yield return new RequestValidationException(
                     "Time interval should have both dates.", nameof(TimeInterval));
+            }
+
+            if (TimeInterval.IsOpen())
+            {
+                yield return new RequestValidationException(
+                    "Time interval should have both dates.", nameof(TimeInterval));
+            }
+
+            if (Limit > 50_000)
+            {
+                yield return new RequestValidationException(
+                    "Maximal aggregation interval value is 50000.", nameof(Limit));
             }
         }
 
