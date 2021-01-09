@@ -31,7 +31,10 @@ namespace Alpaca.Markets.Extensions
                 remove => Client.OnTradeUpdate += value;
             }
 
-            protected override void Resubscribe(String symbol, Int32 subscription) { }
+            protected override void Resubscribe(String symbol, Int32 subscription)
+            {
+                // This streaming connection subscribe to events on connection automatically
+            }
         }
 
         /// <summary>

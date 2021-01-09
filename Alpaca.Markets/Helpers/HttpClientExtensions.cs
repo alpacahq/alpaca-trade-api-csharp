@@ -30,6 +30,8 @@ namespace Alpaca.Markets
 #pragma warning disable CA5364 // Do Not Use Deprecated Security Protocols
                 System.Net.SecurityProtocolType.Tls12 | System.Net.SecurityProtocolType.Tls11;
 #pragma warning restore CA5364 // Do Not Use Deprecated Security Protocols
+#else
+            // .NET Core runtime automatically selects a most secure protocol versions
 #endif
         }
 

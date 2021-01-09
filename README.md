@@ -1,4 +1,5 @@
 ![](https://github.com/alpacahq/alpaca-trade-api-csharp/workflows/Build%20and%20Release/badge.svg?branch=master)
+![Codacy grade](https://img.shields.io/codacy/grade/7659cd4379964ef190a1088aa879350a?logo=codacy)
 ![Nuget](https://img.shields.io/nuget/v/Alpaca.Markets?logo=NuGet)
 ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Alpaca.Markets?logo=NuGet)
 ![Nuget](https://img.shields.io/nuget/dt/Alpaca.Markets?logo=NuGet)

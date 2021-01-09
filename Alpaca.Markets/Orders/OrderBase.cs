@@ -35,7 +35,7 @@ namespace Alpaca.Markets
         protected internal OrderBase(
             OrderBase baseOrder)
             : this(
-                baseOrder.Symbol,
+                baseOrder.EnsureNotNull(nameof(baseOrder)).Symbol,
                 baseOrder.Quantity,
                 baseOrder.Side,
                 baseOrder.Type)
