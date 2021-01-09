@@ -7,16 +7,23 @@ namespace Alpaca.Markets
     /// </summary>
     public abstract class SimpleOrderBase : OrderBase
     {
-        internal SimpleOrderBase(
+        /// <summary>
+        /// Creates new instance of the <see cref="SimpleOrderBase"/> class.
+        /// </summary>
+        /// <param name="symbol">Alpaca symbol for order.</param>
+        /// <param name="quantity">Order quantity (absolute value).</param>
+        /// <param name="side">Order side (buy or sell).</param>
+        /// <param name="type">Order type (market, limit, stop, stop-limit).</param>
+        protected internal SimpleOrderBase(
             String symbol,
             Int64 quantity,
-            OrderSide orderSide,
-            OrderType orderType)
+            OrderSide side,
+            OrderType type)
             : base(
                 symbol, 
                 quantity, 
-                orderSide, 
-                orderType)
+                side, 
+                type)
         {
         }
         

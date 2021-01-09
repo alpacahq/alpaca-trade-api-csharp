@@ -5,10 +5,15 @@
     /// </summary>
     public abstract class AdvancedOrderBase : OrderBase
     {
-        internal AdvancedOrderBase(
+        /// <summary>
+        /// Creates new instance of the <see cref="AdvancedOrderBase"/> class.
+        /// </summary>
+        /// <param name="baseOrder">Base order object for creating advanced one.</param>
+        /// <param name="orderClass">Advanced order class for new smart order.</param>
+        protected internal AdvancedOrderBase(
             OrderBase baseOrder,
             OrderClass orderClass)
-            : base(baseOrder)
+            : base(baseOrder.EnsureNotNull(nameof(baseOrder)))
         {
             BaseOrder = baseOrder;
             OrderClass = orderClass;

@@ -12,13 +12,13 @@ namespace UsageExamples
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal sealed class MeanReversionPaperOnly : IDisposable
     {
-        private string API_KEY = "REPLACEME";
+        private const String API_KEY = "REPLACEME";
 
-        private string API_SECRET = "REPLACEME";
+        private const String API_SECRET = "REPLACEME";
 
-        private string symbol = "SPY";
+        private const String symbol = "SPY";
 
-        private Decimal scale = 200;
+        private const Decimal scale = 200;
 
         private IAlpacaTradingClient alpacaTradingClient;
 
@@ -65,7 +65,7 @@ namespace UsageExamples
                 Decimal portfolioValue = account.Equity;
 
                 // Get information about our existing position.
-                int positionQuantity = 0;
+                Int32 positionQuantity = 0;
                 Decimal positionValue = 0;
                 try
                 {
@@ -115,7 +115,7 @@ namespace UsageExamples
                         {
                             amountToAdd = buyingPower;
                         }
-                        int qtyToBuy = (int)(amountToAdd / currentPrice);
+                        Int32 qtyToBuy = (Int32)(amountToAdd / currentPrice);
 
                         await SubmitOrder(qtyToBuy, currentPrice, OrderSide.Buy);
                     }
@@ -125,7 +125,7 @@ namespace UsageExamples
 
                         // Make sure we're not trying to sell more than we have.
                         amountToAdd *= -1;
-                        int qtyToSell = (int)(amountToAdd / currentPrice);
+                        Int32 qtyToSell = (Int32)(amountToAdd / currentPrice);
                         if (qtyToSell > positionQuantity)
                         {
                             qtyToSell = positionQuantity;
@@ -159,7 +159,7 @@ namespace UsageExamples
         }
 
         // Submit an order if quantity is not zero.
-        private async Task SubmitOrder(int quantity, Decimal price, OrderSide side)
+        private async Task SubmitOrder(Int32 quantity, Decimal price, OrderSide side)
         {
             if (quantity == 0)
             {

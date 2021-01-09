@@ -12,15 +12,13 @@ namespace Alpaca.Markets
             Object? value, 
             JsonSerializer serializer)
         {
-            switch (value)
+            if (value is DateTime dateTimeValue)
             {
-                case DateTime dateTimeValue:
-                    writer.WriteValue(IntoUnixTime(dateTimeValue));
-                    break;
-
-                case null:
-                    writer.WriteNull();
-                    break;
+                writer.WriteValue(IntoUnixTime(dateTimeValue));
+            }
+            else if (value is null)
+            {
+                writer.WriteNull();
             }
         }
 

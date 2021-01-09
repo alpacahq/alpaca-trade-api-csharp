@@ -51,10 +51,13 @@ namespace Alpaca.Markets.Extensions
                 params IAlpacaDataSubscription[] subscriptions)
             {
                 foreach (var subscription in subscriptions)
-                foreach (var stream in subscription.Streams)
                 {
-                    Subscriptions.TryAdd(stream, subscription);
+                    foreach (var stream in subscription.Streams)
+                    {
+                        Subscriptions.TryAdd(stream, subscription);
+                    }
                 }
+
                 Client.Subscribe(subscriptions);
             }
 

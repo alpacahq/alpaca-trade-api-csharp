@@ -16,13 +16,13 @@ namespace UsageExamples
     [SuppressMessage("ReSharper", "RedundantDefaultMemberInitializer")]
     internal sealed class MeanReversionBrokerage : IDisposable
     {
-        private string API_KEY = "REPLACEME";
+        private const String API_KEY = "REPLACEME";
 
-        private string API_SECRET = "REPLACEME";
+        private const String API_SECRET = "REPLACEME";
 
-        private string symbol = "AAPL";
+        private const String symbol = "AAPL";
 
-        private Decimal scale = 200;
+        private const Decimal scale = 200;
 
         private IPolygonDataClient polygonDataClient;
 
@@ -34,7 +34,7 @@ namespace UsageExamples
 
         private Guid lastTradeId = Guid.NewGuid();
 
-        private bool lastTradeOpen = false;
+        private Boolean lastTradeOpen;
 
         private readonly List<Decimal> closingPrices = new List<Decimal>();
 
@@ -147,17 +147,17 @@ namespace UsageExamples
                 {
                     // We need to wait for the cancel to process in order to avoid
                     // having long and short orders open at the same time.
-                    bool res = await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
+                    Boolean res = await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
                 }
 
                 // Make sure we know how much we should spend on our position.
                 var account = await alpacaTradingClient.GetAccountAsync();
                 Decimal buyingPower = account.BuyingPower;
                 Decimal equity = account.Equity;
-                long multiplier = account.Multiplier;
+                Int64 multiplier = account.Multiplier;
 
                 // Check how much we currently have in this position.
-                int positionQuantity = 0;
+                Int32 positionQuantity = 0;
                 Decimal positionValue = 0;
                 try
                 {
@@ -194,14 +194,14 @@ namespace UsageExamples
                             {
                                 amountToShort = buyingPower;
                             }
-                            int qty = (int)(amountToShort / agg.Close);
+                            Int32 qty = (Int32)(amountToShort / agg.Close);
                             Console.WriteLine($"Adding {qty * agg.Close:C2} to short position.");
                             await SubmitOrder(qty, agg.Close, OrderSide.Sell);
                         }
                         else
                         {
                             // We want to shrink our existing short position.
-                            int qty = (int)(amountToShort / agg.Close);
+                            Int32 qty = (Int32)(amountToShort / agg.Close);
                             if (qty > -1 * positionQuantity)
                             {
                                 qty = -1 * positionQuantity;
@@ -231,7 +231,7 @@ namespace UsageExamples
                         {
                             amountToLong = buyingPower;
                         }
-                        int qty = (int)(amountToLong / agg.Close);
+                        Int32 qty = (Int32)(amountToLong / agg.Close);
 
                         await SubmitOrder(qty, agg.Close, OrderSide.Buy);
                         Console.WriteLine($"Adding {qty * agg.Close:C2} to long position.");
@@ -240,7 +240,7 @@ namespace UsageExamples
                     {
                         // We want to shrink our existing long position.
                         amountToLong *= -1;
-                        int qty = (int)(amountToLong / agg.Close);
+                        Int32 qty = (Int32)(amountToLong / agg.Close);
                         if (qty > positionQuantity)
                         {
                             qty = positionQuantity;
@@ -283,7 +283,7 @@ namespace UsageExamples
         }
 
         // Submit an order if quantity is not zero.
-        private async Task SubmitOrder(int quantity, Decimal price, OrderSide side)
+        private async Task SubmitOrder(Int32 quantity, Decimal price, OrderSide side)
         {
             if (quantity == 0)
             {

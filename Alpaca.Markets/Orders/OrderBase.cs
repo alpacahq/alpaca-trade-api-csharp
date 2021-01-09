@@ -8,7 +8,14 @@ namespace Alpaca.Markets
     /// </summary>
     public abstract class OrderBase : Validation.IRequest
     {
-        internal OrderBase(
+        /// <summary>
+        /// Creates new instance of the <see cref="OrderBase"/> class.
+        /// </summary>
+        /// <param name="symbol">Alpaca symbol for order.</param>
+        /// <param name="quantity">Order quantity (absolute value).</param>
+        /// <param name="side">Order side (buy or sell).</param>
+        /// <param name="type">Order type (market, limit, stop, stop-limit).</param>
+        protected internal OrderBase(
             String symbol,
             Int64 quantity,
             OrderSide side,

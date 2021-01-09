@@ -59,7 +59,7 @@ namespace Alpaca.Markets
         /// </returns>
         public static Boolean IsEmpty(
             this ITimeInterval interval) =>
-            interval.EnsureNotNull(nameof(interval)).Into is null & interval.From is null;
+            interval.EnsureNotNull(nameof(interval)).Into is null && interval.From is null;
 
         /// <summary>
         /// Gets boolean flag signals that time interval is open (both start or end date equal to <c>null</c>).

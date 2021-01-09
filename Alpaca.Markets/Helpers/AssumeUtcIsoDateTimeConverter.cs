@@ -16,15 +16,13 @@ namespace Alpaca.Markets
             Object? value, 
             JsonSerializer serializer)
         {
-            switch (value)
+            if (value is DateTime dateTimeValue)
             {
-                case DateTime dateTimeValue:
-                    writer.WriteValue(dateTimeValue.ToString("O"));
-                    break;
-
-                case null:
-                    writer.WriteNull();
-                    break;
+                writer.WriteValue(dateTimeValue.ToString("O"));
+            }
+            else if (value is null)
+            {
+                writer.WriteNull();
             }
         }
         public override Object? ReadJson(
