@@ -54,11 +54,23 @@ namespace Alpaca.Markets
         /// Creates a new instance of the <see cref="OneCancelsOtherOrder"/> order from the current order.
         /// </summary>
         /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
-        /// <param name="stopLossLimitPrice">Stop loss order limit price (optional).</param>
+        /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
+        public OneCancelsOtherOrder OneCancelsOther(
+            Decimal stopLossStopPrice) =>
+            new OneCancelsOtherOrder(
+                this,
+                stopLossStopPrice,
+                null);
+
+        /// <summary>
+        /// Creates a new instance of the <see cref="OneCancelsOtherOrder"/> order from the current order.
+        /// </summary>
+        /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
+        /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
         /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
         public OneCancelsOtherOrder OneCancelsOther(
             Decimal stopLossStopPrice,
-            Decimal? stopLossLimitPrice = null) =>
+            Decimal stopLossLimitPrice) =>
             new OneCancelsOtherOrder(
                 this,
                 stopLossStopPrice,

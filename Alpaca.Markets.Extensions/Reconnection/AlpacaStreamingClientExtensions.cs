@@ -39,6 +39,16 @@ namespace Alpaca.Markets.Extensions
 
         /// <summary>
         /// Wraps instance of <see cref="IAlpacaStreamingClient"/> into the helper class
+        /// with automatic reconnection support with the default reconnection parameters.
+        /// </summary>
+        /// <param name="client">Original streaming client for wrapping.</param>
+        /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        public static IAlpacaStreamingClient WithReconnect(
+            this IAlpacaStreamingClient client) =>
+            WithReconnect(client, ReconnectionParameters.Default);
+
+        /// <summary>
+        /// Wraps instance of <see cref="IAlpacaStreamingClient"/> into the helper class
         /// with automatic reconnection support and provide optional reconnection parameters.
         /// </summary>
         /// <param name="client">Original streaming client for wrapping.</param>
@@ -46,7 +56,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
         public static IAlpacaStreamingClient WithReconnect(
             this IAlpacaStreamingClient client,
-            ReconnectionParameters? parameters = null) =>
-            new ClientWithReconnection(client, parameters ?? ReconnectionParameters.Default);
+            ReconnectionParameters parameters) =>
+            new ClientWithReconnection(client, parameters);
     }
 }

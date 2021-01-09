@@ -17,7 +17,9 @@ namespace Alpaca.Markets
                 OrderClass.Bracket)
         {
             TakeProfit = baseOrder.TakeProfit(takeProfitLimitPrice);
-            StopLoss = baseOrder.StopLoss(stopLossStopPrice, stopLossLimitPrice);
+            StopLoss = stopLossLimitPrice.HasValue
+                ? baseOrder.StopLoss(stopLossStopPrice, stopLossLimitPrice.Value)
+                : baseOrder.StopLoss(stopLossStopPrice);
         }
         
         /// <summary>

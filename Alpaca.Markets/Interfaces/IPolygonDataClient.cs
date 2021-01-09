@@ -82,6 +82,17 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets mapping dictionary for specific tick type from Polygon REST API endpoint.
         /// </summary>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>
+        /// Read-only dictionary with keys equal to condition integer values and values
+        /// equal to full tick condition descriptions for each supported tick type.
+        /// </returns>
+        Task<IReadOnlyDictionary<Int64, String>> GetConditionMapAsync(
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets mapping dictionary for specific tick type from Polygon REST API endpoint.
+        /// </summary>
         /// <param name="tickType">Tick type for conditions map.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>
@@ -89,7 +100,7 @@ namespace Alpaca.Markets
         /// equal to full tick condition descriptions for each supported tick type.
         /// </returns>
         Task<IReadOnlyDictionary<Int64, String>> GetConditionMapAsync(
-            TickType tickType = TickType.Trades,
+            TickType tickType,
             CancellationToken cancellationToken = default);
     }
 }

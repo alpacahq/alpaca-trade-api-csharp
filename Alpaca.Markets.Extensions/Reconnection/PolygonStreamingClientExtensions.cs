@@ -199,6 +199,16 @@ namespace Alpaca.Markets.Extensions
 
         /// <summary>
         /// Wraps instance of <see cref="IPolygonStreamingClient"/> into the helper class
+        /// with automatic reconnection support with the default reconnection parameters.
+        /// </summary>
+        /// <param name="client">Original streaming client for wrapping.</param>
+        /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        public static IPolygonStreamingClient WithReconnect(
+            this IPolygonStreamingClient client) =>
+            WithReconnect(client, ReconnectionParameters.Default);
+
+        /// <summary>
+        /// Wraps instance of <see cref="IPolygonStreamingClient"/> into the helper class
         /// with automatic reconnection support and provide optional reconnection parameters.
         /// </summary>
         /// <param name="client">Original streaming client for wrapping.</param>
@@ -206,7 +216,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
         public static IPolygonStreamingClient WithReconnect(
             this IPolygonStreamingClient client,
-            ReconnectionParameters? parameters = null) =>
-            new ClientWithReconnection(client, parameters ?? ReconnectionParameters.Default);
+            ReconnectionParameters parameters) =>
+            new ClientWithReconnection(client, parameters);
     }
 }

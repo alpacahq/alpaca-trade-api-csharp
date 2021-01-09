@@ -79,10 +79,13 @@ namespace Alpaca.Markets.Extensions
                 params IAlpacaDataSubscription[] subscriptions)
             {
                 foreach (var subscription in subscriptions)
-                foreach (var stream in subscription.Streams)
                 {
-                    Subscriptions.TryRemove(stream, out _);
+                    foreach (var stream in subscription.Streams)
+                    {
+                        Subscriptions.TryRemove(stream, out _);
+                    }
                 }
+
                 Client.Unsubscribe(subscriptions);
             }
 
@@ -99,11 +102,21 @@ namespace Alpaca.Markets.Extensions
         /// with automatic reconnection support and provide optional reconnection parameters.
         /// </summary>
         /// <param name="client">Original streaming client for wrapping.</param>
-        /// <param name="parameters">Reconnection parameters (or default if missing).</param>
+        /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        public static IAlpacaDataStreamingClient WithReconnect(
+            this IAlpacaDataStreamingClient client) =>
+            WithReconnect(client, ReconnectionParameters.Default);
+
+        /// <summary>
+        /// Wraps instance of <see cref="IAlpacaDataStreamingClient"/> into the helper class
+        /// with automatic reconnection support with the default reconnection parameters.
+        /// </summary>
+        /// <param name="client">Original streaming client for wrapping.</param>
+        /// <param name="parameters">Reconnection parameters.</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
         public static IAlpacaDataStreamingClient WithReconnect(
             this IAlpacaDataStreamingClient client,
-            ReconnectionParameters? parameters = null) =>
-            new ClientWithReconnection(client, parameters ?? ReconnectionParameters.Default);
+            ReconnectionParameters parameters) =>
+            new ClientWithReconnection(client, parameters);
     }
 }

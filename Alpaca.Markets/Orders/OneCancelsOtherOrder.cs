@@ -16,7 +16,9 @@ namespace Alpaca.Markets
                 OrderClass.OneCancelsOther)
         {
             TakeProfit = limitOrder.TakeProfit(limitOrder.LimitPrice);
-            StopLoss = limitOrder.StopLoss(stopLossStopPrice, stopLossLimitPrice);
+            StopLoss = stopLossLimitPrice.HasValue
+                ? limitOrder.StopLoss(stopLossStopPrice, stopLossLimitPrice.Value)
+                : limitOrder.StopLoss(stopLossStopPrice);
         }
 
         /// <summary>

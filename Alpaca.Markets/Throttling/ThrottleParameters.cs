@@ -14,7 +14,7 @@ namespace Alpaca.Markets
 
         private const Int32 DefaultMaxRetryAttempts = 5;
 
-        private readonly TimeSpan _defaultTimeUnit = TimeSpan.FromMinutes(1);
+        private static readonly TimeSpan _defaultTimeUnit = TimeSpan.FromMinutes(1);
 
         private readonly Lazy<IThrottler> _rateThrottler;
 
@@ -26,6 +26,15 @@ namespace Alpaca.Markets
 
         private HashSet<Int32> _retryHttpStatuses;
 
+        private ThrottleParameters()
+            :this(
+                DefaultOccurrences,
+                _defaultTimeUnit,
+                DefaultMaxRetryAttempts,
+                Enumerable.Empty<Int32>())
+        {
+        }
+        
         /// <summary>
         /// Creates new instance of <see cref="ThrottleParameters"/> object.
         /// </summary>
@@ -35,15 +44,15 @@ namespace Alpaca.Markets
         /// <param name="retryHttpStatuses"></param>
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public ThrottleParameters(
-            Int32? occurrences = null,
-            TimeSpan? timeUnit = null,
-            Int32? maxRetryAttempts = null,
-            IEnumerable<Int32>? retryHttpStatuses = null)
+            Int32 occurrences,
+            TimeSpan timeUnit,
+            Int32 maxRetryAttempts,
+            IEnumerable<Int32> retryHttpStatuses)
         {
-            Occurrences = occurrences ?? DefaultOccurrences;
-            TimeUnit = timeUnit ?? _defaultTimeUnit;
-            MaxRetryAttempts = maxRetryAttempts ?? DefaultMaxRetryAttempts;
-            _retryHttpStatuses = new HashSet<Int32>(retryHttpStatuses ?? Enumerable.Empty<Int32>());
+            TimeUnit = timeUnit;
+            Occurrences = occurrences;
+            MaxRetryAttempts = maxRetryAttempts;
+            _retryHttpStatuses = new HashSet<Int32>(retryHttpStatuses);
 
             _rateThrottler = new Lazy<IThrottler>(() => new RateThrottler(this));
         }

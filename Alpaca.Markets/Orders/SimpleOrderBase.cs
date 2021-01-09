@@ -42,11 +42,23 @@ namespace Alpaca.Markets
         /// Creates a new instance of the <see cref="StopLossOrder"/> order from the current order.
         /// </summary>
         /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
-        /// <param name="stopLossLimitPrice">Stop loss order limit price (optional).</param>
+        /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
+        public StopLossOrder StopLoss(
+            Decimal stopLossStopPrice) =>
+            new StopLossOrder(
+                this, 
+                stopLossStopPrice,
+                null);
+
+        /// <summary>
+        /// Creates a new instance of the <see cref="StopLossOrder"/> order from the current order.
+        /// </summary>
+        /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
+        /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
         /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
         public StopLossOrder StopLoss(
             Decimal stopLossStopPrice,
-            Decimal? stopLossLimitPrice = null) =>
+            Decimal stopLossLimitPrice) =>
             new StopLossOrder(
                 this, 
                 stopLossStopPrice,
@@ -57,12 +69,27 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="takeProfitLimitPrice">Take profit order limit price.</param>
         /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
-        /// <param name="stopLossLimitPrice">Stop loss order limit price (optional).</param>
+        /// <returns>New advanced order representing an original order plus pair of take profit and stop loss orders.</returns>
+        public BracketOrder Bracket(
+            Decimal takeProfitLimitPrice,
+            Decimal stopLossStopPrice) =>
+            new BracketOrder(
+                this, 
+                takeProfitLimitPrice, 
+                stopLossStopPrice, 
+                null);
+
+        /// <summary>
+        /// Creates a new instance of the <see cref="BracketOrder"/> order from the current order.
+        /// </summary>
+        /// <param name="takeProfitLimitPrice">Take profit order limit price.</param>
+        /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
+        /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
         /// <returns>New advanced order representing an original order plus pair of take profit and stop loss orders.</returns>
         public BracketOrder Bracket(
             Decimal takeProfitLimitPrice,
             Decimal stopLossStopPrice,
-            Decimal? stopLossLimitPrice = null) =>
+            Decimal stopLossLimitPrice) =>
             new BracketOrder(
                 this, 
                 takeProfitLimitPrice, 
