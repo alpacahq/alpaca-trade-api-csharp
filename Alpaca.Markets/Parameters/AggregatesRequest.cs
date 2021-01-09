@@ -25,7 +25,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets asset name for data retrieval.
         /// </summary>
-        public string Symbol { get; }
+        public String Symbol { get; }
 
         /// <summary>
         /// Gets aggregation time span (number or bars and base bar size).

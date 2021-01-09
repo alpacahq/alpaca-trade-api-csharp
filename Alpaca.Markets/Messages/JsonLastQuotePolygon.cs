@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     internal sealed class JsonLastQuotePolygon : ILastQuote
     {
         [SuppressMessage("ReSharper", "StringLiteralTypo")]
-        internal struct Last
+        internal struct Last : IEquatable<Last>
         {
             [JsonProperty(PropertyName = "bidexchange", Required = Required.Always)]
             public Int64 BidExchange { get; set; }
@@ -33,6 +33,35 @@ namespace Alpaca.Markets
             [JsonProperty(PropertyName = "timestamp", Required = Required.Always)]
             [JsonConverter(typeof(UnixMillisecondsDateTimeConverter))]
             public DateTime Timestamp { get; set; }
+
+            public Boolean Equals(Last other) =>
+                Timestamp.Equals(other.Timestamp) &&
+                BidExchange == other.BidExchange &&
+                AskExchange == other.AskExchange &&
+                BidPrice == other.BidPrice &&
+                AskPrice == other.AskPrice &&
+                BidSize == other.BidSize &&
+                AskSize == other.AskSize;
+
+            public override Boolean Equals(Object? obj) => 
+                obj is Last other && Equals(other);
+
+            [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
+            public override Int32 GetHashCode()
+            {
+                unchecked
+                {
+                    var hashCode = BidExchange.GetHashCode();
+                    hashCode = (hashCode * 397) ^ AskExchange.GetHashCode();
+                    hashCode = (hashCode * 397) ^ BidPrice.GetHashCode();
+                    hashCode = (hashCode * 397) ^ AskPrice.GetHashCode();
+                    hashCode = (hashCode * 397) ^ BidSize.GetHashCode();
+                    hashCode = (hashCode * 397) ^ AskSize.GetHashCode();
+                    hashCode = (hashCode * 397) ^ Timestamp.GetHashCode();
+                    return hashCode;
+                }
+            }
+
         }
 
         [JsonProperty(PropertyName = "last", Required = Required.Always)]

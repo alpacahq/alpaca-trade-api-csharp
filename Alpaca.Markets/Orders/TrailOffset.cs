@@ -18,17 +18,17 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the trailing stop order price offset value.
         /// </summary>
-        public decimal Value { get; }
+        public Decimal Value { get; }
         
         /// <summary>
         /// Returns <c>true</c> if trail offset is an amount in dollars.
         /// </summary>
-        public bool IsInDollars { get; }
+        public Boolean IsInDollars { get; }
 
         /// <summary>
         /// Returns <c>true</c> if trail offset is a percent of HWM value.
         /// </summary>
-        public bool IsInPercent => !IsInDollars;
+        public Boolean IsInPercent => !IsInDollars;
         
         /// <summary>
         /// Creates new instance of the <see cref="TrailOffset"/> object

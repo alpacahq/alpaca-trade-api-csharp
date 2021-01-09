@@ -9,7 +9,7 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonLastTradePolygon : ILastTrade
     {
-        internal struct Last
+        internal struct Last : IEquatable<Last>
         {
             [JsonProperty(PropertyName = "exchange", Required = Required.Always)]
             public Int64 Exchange { get; set; }
@@ -23,6 +23,28 @@ namespace Alpaca.Markets
             [JsonProperty(PropertyName = "timestamp", Required = Required.Always)]
             [JsonConverter(typeof(UnixMillisecondsDateTimeConverter))]
             public DateTime Timestamp { get; set; }
+
+            public Boolean Equals(Last other) =>
+                Timestamp.Equals(other.Timestamp) &&
+                Exchange == other.Exchange &&
+                Price == other.Price &&
+                Size == other.Size;
+
+            public override Boolean Equals(Object? obj) => 
+                obj is Last other && Equals(other);
+
+            [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
+            public override Int32 GetHashCode()
+            {
+                unchecked
+                {
+                    var hashCode = Exchange.GetHashCode();
+                    hashCode = (hashCode * 397) ^ Price.GetHashCode();
+                    hashCode = (hashCode * 397) ^ Size.GetHashCode();
+                    hashCode = (hashCode * 397) ^ Timestamp.GetHashCode();
+                    return hashCode;
+                }
+            }
         }
 
         [JsonProperty(PropertyName = "last", Required = Required.Always)]

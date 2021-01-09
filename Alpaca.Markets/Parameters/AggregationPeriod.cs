@@ -32,7 +32,7 @@ namespace Alpaca.Markets
         public Int32 Value { get; }
 
         /// <inheritdoc />
-        public bool Equals(AggregationPeriod other) => Unit == other.Unit && Value == other.Value;
+        public Boolean Equals(AggregationPeriod other) => Unit == other.Unit && Value == other.Value;
 
         /// <inheritdoc />
         public override String ToString() =>

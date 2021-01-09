@@ -79,7 +79,7 @@ namespace Alpaca.Markets
                 }
             }
 
-            public bool OnReceived(
+            public Boolean OnReceived(
                 String stream,
                 JToken token)
             {
@@ -278,7 +278,7 @@ namespace Alpaca.Markets
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]
-        private bool handleRealtimeDataUpdate(
+        private Boolean handleRealtimeDataUpdate(
             String stream,
             JToken token)
         {

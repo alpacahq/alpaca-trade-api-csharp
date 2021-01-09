@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     /// </summary>
     public static class TimeInterval
     {
-        private readonly struct Inclusive : IInclusiveTimeInterval
+        private readonly struct Inclusive : IInclusiveTimeInterval, IEquatable<Inclusive>
         {
             internal Inclusive(
                 DateTime? from,
@@ -27,9 +27,24 @@ namespace Alpaca.Markets
             public DateTime? From { get; }
 
             public DateTime? Into { get; }
+
+            public Boolean Equals(Inclusive other) =>
+                Nullable.Equals(From, other.From) && 
+                Nullable.Equals(Into, other.Into);
+
+            public override Boolean Equals(Object? obj) => 
+                obj is Inclusive other && Equals(other);
+
+            public override Int32 GetHashCode()
+            {
+                unchecked
+                {
+                    return (From.GetHashCode() * 397) ^ Into.GetHashCode();
+                }
+            }
         }
 
-        private readonly struct Exclusive : IExclusiveTimeInterval
+        private readonly struct Exclusive : IExclusiveTimeInterval, IEquatable<Exclusive>
         {
             internal Exclusive(
                 DateTime? from,
@@ -48,6 +63,21 @@ namespace Alpaca.Markets
             public DateTime? From { get; }
 
             public DateTime? Into { get; }
+
+            public Boolean Equals(Exclusive other) =>
+                Nullable.Equals(From, other.From) && 
+                Nullable.Equals(Into, other.Into);
+
+            public override Boolean Equals(Object? obj) => 
+                obj is Exclusive other && Equals(other);
+
+            public override Int32 GetHashCode()
+            {
+                unchecked
+                {
+                    return (From.GetHashCode() * 397) ^ Into.GetHashCode();
+                }
+            }
         }
 
         /// <summary>

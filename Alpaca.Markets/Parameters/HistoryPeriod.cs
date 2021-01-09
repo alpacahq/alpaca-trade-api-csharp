@@ -34,7 +34,7 @@ namespace Alpaca.Markets
         public Int32 Value { get; }
 
         /// <inheritdoc />
-        public bool Equals(HistoryPeriod other) => Unit == other.Unit && Value == other.Value;
+        public Boolean Equals(HistoryPeriod other) => Unit == other.Unit && Value == other.Value;
 
         /// <inheritdoc />
         public override String ToString() =>
