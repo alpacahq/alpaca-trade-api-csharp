@@ -28,7 +28,11 @@ namespace Alpaca.Markets
             Type = type;
         }
 
-        internal OrderBase(
+        /// <summary>
+        /// Creates new instance of the <see cref="OrderBase"/> class.
+        /// </summary>
+        /// <param name="baseOrder">Base order for getting parameters.</param>
+        protected internal OrderBase(
             OrderBase baseOrder)
             : this(
                 baseOrder.Symbol,

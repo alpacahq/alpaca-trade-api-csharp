@@ -7,9 +7,9 @@
 
 ## .NET Core Usage Example
 
-1. Create a new console application in a new, empty folder by running `dotnet new console`.
-2. Add a reference for Alpaca .NET SDK with `dotnet add package Alpaca.Markets`.
-3. Replace content of the auto-generated `Programm.cs` file with this code snippet:
+1.  Create a new console application in a new, empty folder by running `dotnet new console`.
+2.  Add a reference for Alpaca .NET SDK with `dotnet add package Alpaca.Markets`.
+3.  Replace content of the auto-generated `Programm.cs` file with this code snippet:
 ```cs
 using System;
 using Alpaca.Markets;
@@ -40,8 +40,8 @@ namespace AlpacaExample
     }
 }
 ```
-4. Replace `KEY_ID` and `SECRET_KEY` values with your own data from the Alpaca dashboard.
-5. Run the sample application using `dotnet run` command and check the output. You should see information about the current market timestamp and the times that the market will open and close next.
+4.  Replace `KEY_ID` and `SECRET_KEY` values with your own data from the Alpaca dashboard.
+5.  Run the sample application using `dotnet run` command and check the output. You should see information about the current market timestamp and the times that the market will open and close next.
 
 See the [UsageExamples](../../tree/develop/UsageExamples) project for near-to-real-world strategy implementation using this SDK. The [Wiki](https://github.com/alpacahq/alpaca-trade-api-csharp/wiki) pages contains a lot of additonal information about different aspects of this SDK (environments handling, authentication types, different order placement approaches, streaming client subscriptions handling, etc.).
 
