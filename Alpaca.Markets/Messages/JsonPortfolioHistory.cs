@@ -62,7 +62,7 @@ namespace Alpaca.Markets
 
             for (var index = 0; index < count; ++index)
             {
-                _items.Add(new Item()
+                _items.Add(new Item
                 {
                     Equity = equities[index],
                     ProfitLoss = profitLosses[index],

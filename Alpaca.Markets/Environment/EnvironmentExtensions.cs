@@ -118,7 +118,7 @@ namespace Alpaca.Markets
         public static AlpacaStreamingClientConfiguration GetAlpacaStreamingClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-            new AlpacaStreamingClientConfiguration()
+            new AlpacaStreamingClientConfiguration
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .AlpacaStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaStreamingApi)),
@@ -147,7 +147,7 @@ namespace Alpaca.Markets
         public static PolygonStreamingClientConfiguration GetPolygonStreamingClientConfiguration(
             this IEnvironment environment,
             String keyId) =>
-            new PolygonStreamingClientConfiguration()
+            new PolygonStreamingClientConfiguration
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .PolygonStreamingApi.EnsureNotNull(nameof(IEnvironment.PolygonStreamingApi)),
@@ -176,7 +176,7 @@ namespace Alpaca.Markets
         public static AlpacaDataStreamingClientConfiguration GetAlpacaDataStreamingClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-            new AlpacaDataStreamingClientConfiguration()
+            new AlpacaDataStreamingClientConfiguration
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .AlpacaDataStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaDataStreamingApi)),
