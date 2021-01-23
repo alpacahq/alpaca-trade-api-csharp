@@ -30,7 +30,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets update timestamp in UTC time zone.
         /// </summary>
-        DateTime TimestampUtc { get; }
+        DateTime? TimestampUtc { get; }
 
         /// <summary>
         /// Gets related order object.
