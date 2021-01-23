@@ -20,7 +20,7 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "timestamp", Required = Required.Default)]
         [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
-        public DateTime TimestampUtc { get; set; }
+        public DateTime? TimestampUtc { get; set; }
 
         [JsonProperty(PropertyName = "order", Required = Required.Always)]
         public JsonOrder JsonOrder { get; set; } = new JsonOrder();
