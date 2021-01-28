@@ -51,14 +51,12 @@ namespace Alpaca.Markets
             PropertyName = propertyName;
         }
 
-#if !NETSTANDARD1_3
         private RequestValidationException(
             System.Runtime.Serialization.SerializationInfo info,
             System.Runtime.Serialization.StreamingContext context)
             : base(info, context)
         {
         }
-#endif
 
         /// <summary>
         /// GEts the invalid property name that causes this validation exception.

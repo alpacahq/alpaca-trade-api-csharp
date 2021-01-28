@@ -25,7 +25,7 @@ namespace Alpaca.Markets
             // ReSharper disable once UnusedParameter.Global
             this HttpClient httpClient)
         {
-#if NET45
+#if NETFRAMEWORK
             System.Net.ServicePointManager.SecurityProtocol =
 #pragma warning disable CA5364 // Do Not Use Deprecated Security Protocols
                 System.Net.SecurityProtocolType.Tls12 | System.Net.SecurityProtocolType.Tls11;

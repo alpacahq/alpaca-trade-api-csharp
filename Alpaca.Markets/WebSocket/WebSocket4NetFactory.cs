@@ -49,7 +49,7 @@ namespace Alpaca.Markets
 
             public Task OpenAsync(
                 CancellationToken cancellationToken) =>
-#if NET45
+#if NETFRAMEWORK
                 Task.Run(() => _webSocket.Open(), cancellationToken);
 #else
                 _webSocket.OpenAsync();
@@ -57,7 +57,7 @@ namespace Alpaca.Markets
 
             public Task CloseAsync(
                 CancellationToken cancellationToken) =>
-#if NET45
+#if NETFRAMEWORK
                 Task.Run(() => _webSocket.Close(), cancellationToken);
 #else
                 _webSocket.CloseAsync();

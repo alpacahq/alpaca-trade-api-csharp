@@ -39,14 +39,12 @@ namespace Alpaca.Markets
         {
         }
 
-#if !NETSTANDARD1_3
         private RestClientErrorException(
             System.Runtime.Serialization.SerializationInfo info,
             System.Runtime.Serialization.StreamingContext context)
             : base(info, context)
         {
         }
-#endif
 
         internal RestClientErrorException(
             JsonError error)

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net5</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>5.0.0-alpha1</Version>
@@ -39,15 +39,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\Icon.png" Pack="true" PackagePath="icon.png" />
     <None Remove="Alpaca.Markets.Extensions.csproj.DotSettings" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Include="..\Alpaca.Markets\Helpers\NullableHelper.cs" Link="NullableHelper.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\Icon.png" Pack="true" PackagePath="icon.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿#if NET45
+﻿#if NETFRAMEWORK
 
 using System;
 using System.Security.Authentication;
