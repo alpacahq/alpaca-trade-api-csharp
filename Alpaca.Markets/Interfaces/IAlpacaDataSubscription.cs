@@ -33,7 +33,7 @@ namespace Alpaca.Markets
         where TApi : IStreamBase
     {
         /// <summary>
-        /// Occured when a new <typeparamref name="TApi"/> item received from the stream.
+        /// Occurred when a new <typeparamref name="TApi"/> item received from the stream.
         /// </summary>
         event Action<TApi> Received;
     }

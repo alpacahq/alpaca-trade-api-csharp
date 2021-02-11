@@ -45,8 +45,7 @@ namespace Alpaca.Markets
         /// <param name="configuration">Configuration parameters object.</param>
         public PolygonStreamingClient(
             PolygonStreamingClientConfiguration configuration)
-            : base(configuration.EnsureNotNull(nameof(configuration)))
-        {
+            : base(configuration.EnsureNotNull(nameof(configuration))) =>
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
                 { StatusMessage, handleAuthorization },
@@ -55,7 +54,6 @@ namespace Alpaca.Markets
                 { MinuteAggChannel, handleMinuteAggChannel },
                 { SecondAggChannel, handleSecondAggChannel }
             };
-        }
 
         /// <inheritdoc />
         public void SubscribeTrade(

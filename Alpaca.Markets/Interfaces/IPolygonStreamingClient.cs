@@ -9,22 +9,22 @@ namespace Alpaca.Markets
     public interface IPolygonStreamingClient : IStreamingClientBase
     {
         /// <summary>
-        /// Occured when new trade received from stream.
+        /// Occurred when new trade received from stream.
         /// </summary>
         event Action<IStreamTrade>? TradeReceived;
 
         /// <summary>
-        /// Occured when new quote received from stream.
+        /// Occurred when new quote received from stream.
         /// </summary>
         event Action<IStreamQuote>? QuoteReceived;
 
         /// <summary>
-        /// Occured when new bar received from stream.
+        /// Occurred when new bar received from stream.
         /// </summary>
         event Action<IStreamAgg>? MinuteAggReceived;
 
         /// <summary>
-        /// Occured when new bar received from stream.
+        /// Occurred when new bar received from stream.
         /// </summary>
         event Action<IStreamAgg>? SecondAggReceived;
 

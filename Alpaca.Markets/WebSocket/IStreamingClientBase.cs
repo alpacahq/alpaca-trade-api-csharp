@@ -10,22 +10,22 @@ namespace Alpaca.Markets
     public interface IStreamingClientBase : IDisposable
     {
         /// <summary>
-        /// Occured when stream successfully connected.
+        /// Occurred when stream successfully connected.
         /// </summary>
         event Action<AuthStatus>? Connected;
 
         /// <summary>
-        /// Occured when underlying web socket successfully opened.
+        /// Occurred when underlying web socket successfully opened.
         /// </summary>
         event Action? SocketOpened;
 
         /// <summary>
-        /// Occured when underlying web socket successfully closed.
+        /// Occurred when underlying web socket successfully closed.
         /// </summary>
         event Action? SocketClosed;
 
         /// <summary>
-        /// Occured when any error happened in stream.
+        /// Occurred when any error happened in stream.
         /// </summary>
         event Action<Exception>? OnError;
 
