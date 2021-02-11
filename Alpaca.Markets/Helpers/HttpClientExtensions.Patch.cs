@@ -18,10 +18,9 @@ namespace Alpaca.Markets
             this HttpClient httpClient,
             String endpointUri,
             TRequest request,
-            IThrottler throttler,
             CancellationToken cancellationToken)
             where TJson : TApi =>
             callAndDeserializeAsync<TApi, TJson, TRequest>(
-                httpClient, _httpMethodPatch, asUri(endpointUri), request, cancellationToken, throttler);
+                httpClient, _httpMethodPatch, asUri(endpointUri), request, cancellationToken);
     }
 }

@@ -31,7 +31,7 @@ namespace Alpaca.Markets
             JsonNewOrder jsonNewOrder,
             CancellationToken cancellationToken = default) =>
             _httpClient.PostAsync<IOrder, JsonOrder, JsonNewOrder>(
-                "v2/orders", jsonNewOrder, cancellationToken, _alpacaRestApiThrottler);
+                "v2/orders", jsonNewOrder, cancellationToken);
 
         /// <inheritdoc />
         public Task<IOrder> PatchOrderAsync(
@@ -39,7 +39,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.PatchAsync<IOrder, JsonOrder, ChangeOrderRequest>(
                 request.EnsureNotNull(nameof(request)).Validate().GetEndpointUri(),
-                request, _alpacaRestApiThrottler, cancellationToken);
+                request, cancellationToken);
 
         /// <inheritdoc />
         public Task<IOrder> GetOrderAsync(
@@ -65,13 +65,13 @@ namespace Alpaca.Markets
         public Task<Boolean> DeleteOrderAsync(
             Guid orderId,
             CancellationToken cancellationToken = default) =>
-            _httpClient.DeleteAsync(
-                $"v2/orders/{orderId:D}", cancellationToken, _alpacaRestApiThrottler);
+            _httpClient.TryDeleteAsync(
+                $"v2/orders/{orderId:D}", cancellationToken);
 
         /// <inheritdoc />
         public Task<IReadOnlyList<IOrderActionStatus>> DeleteAllOrdersAsync(
             CancellationToken cancellationToken = default) =>
             _httpClient.DeleteAsync<IReadOnlyList<IOrderActionStatus>, List<JsonOrderActionStatus>>(
-                    "v2/orders", cancellationToken, _alpacaRestApiThrottler);
+                    "v2/orders", cancellationToken);
     }
 }
