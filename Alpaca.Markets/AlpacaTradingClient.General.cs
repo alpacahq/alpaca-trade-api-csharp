@@ -24,8 +24,7 @@ namespace Alpaca.Markets
             IAccountConfiguration accountConfiguration,
             CancellationToken cancellationToken = default) =>
             _httpClient.PatchAsync<IAccountConfiguration, JsonAccountConfiguration, IAccountConfiguration>(
-                "v2/account/configurations", accountConfiguration,
-                _alpacaRestApiThrottler, cancellationToken);
+                "v2/account/configurations", accountConfiguration, cancellationToken);
 
         /// <inheritdoc />
         public Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
@@ -81,16 +80,15 @@ namespace Alpaca.Markets
             DeleteAllPositionsRequest request,
             CancellationToken cancellationToken = default) =>
             _httpClient.DeleteAsync<IReadOnlyList<IPositionActionStatus>, List<JsonPositionActionStatus>>(
-                request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient), 
-                cancellationToken, _alpacaRestApiThrottler);
+                request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient), cancellationToken);
 
         /// <inheritdoc />
         public Task<IOrder> DeletePositionAsync(
             DeletePositionRequest request,
             CancellationToken cancellationToken = default) =>
             _httpClient.DeleteAsync<IOrder, JsonOrder>(
-                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient), 
-                cancellationToken, _alpacaRestApiThrottler);
+                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
+                cancellationToken);
 
         /// <inheritdoc />
         public Task<IClock> GetClockAsync(

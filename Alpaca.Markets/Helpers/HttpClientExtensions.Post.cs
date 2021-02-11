@@ -11,31 +11,28 @@ namespace Alpaca.Markets
             this HttpClient httpClient,
             String endpointUri,
             TRequest request,
-            CancellationToken cancellationToken,
-            IThrottler? throttler = null)
+            CancellationToken cancellationToken)
             where TJson : TApi =>
             callAndDeserializeAsync<TApi, TJson, TRequest>(
-                httpClient, HttpMethod.Post, asUri(endpointUri), request, cancellationToken, throttler);
+                httpClient, HttpMethod.Post, asUri(endpointUri), request, cancellationToken);
 
         public static Task<TApi> PostAsync<TApi, TJson, TRequest>(
             this HttpClient httpClient,
             Uri endpointUri,
             TRequest request,
-            CancellationToken cancellationToken,
-            IThrottler? throttler = null)
+            CancellationToken cancellationToken)
             where TJson : TApi =>
             callAndDeserializeAsync<TApi, TJson, TRequest>(
-                httpClient, HttpMethod.Post, endpointUri, request, cancellationToken, throttler);
+                httpClient, HttpMethod.Post, endpointUri, request, cancellationToken);
 
         public static Task<TApi> PutAsync<TApi, TJson, TRequest>(
             this HttpClient httpClient,
             String endpointUri,
             TRequest request,
-            CancellationToken cancellationToken,
-            IThrottler? throttler = null)
+            CancellationToken cancellationToken)
             where TJson : TApi =>
             callAndDeserializeAsync<TApi, TJson, TRequest>(
-                httpClient, HttpMethod.Put, asUri(endpointUri), request, cancellationToken, throttler);
+                httpClient, HttpMethod.Put, asUri(endpointUri), request, cancellationToken);
 
     }
 }
