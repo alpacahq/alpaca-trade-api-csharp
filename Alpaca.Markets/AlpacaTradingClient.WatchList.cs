@@ -18,7 +18,7 @@ namespace Alpaca.Markets
             NewWatchListRequest request,
             CancellationToken cancellationToken = default) =>
             _httpClient.PostAsync<IWatchList, JsonWatchList, NewWatchListRequest>(
-                "v2/watchlists", request,  cancellationToken, _alpacaRestApiThrottler);
+                "v2/watchlists", request,  cancellationToken);
 
         /// <inheritdoc />
         public Task<IWatchList> GetWatchListByIdAsync(
@@ -40,7 +40,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.PutAsync<IWatchList, JsonWatchList, UpdateWatchListRequest>(
                 getEndpointUri(request.EnsureNotNull(nameof(request)).Validate().WatchListId), request,
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
 
         /// <inheritdoc />
         public Task<IWatchList> AddAssetIntoWatchListByIdAsync(
@@ -48,7 +48,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.PostAsync<IWatchList, JsonWatchList, ChangeWatchListRequest<Guid>>(
                 getEndpointUri(request.EnsureNotNull(nameof(request)).Validate().Key), request,
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
 
         /// <inheritdoc />
         public Task<IWatchList> AddAssetIntoWatchListByNameAsync(
@@ -56,7 +56,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.PostAsync<IWatchList, JsonWatchList, ChangeWatchListRequest<String>>(
                 getEndpointUriBuilder(request.EnsureNotNull(nameof(request)).Validate().Key).Uri, request,
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
 
         /// <inheritdoc />
         public Task<IWatchList> DeleteAssetFromWatchListByIdAsync(
@@ -64,7 +64,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.DeleteAsync<IWatchList, JsonWatchList>(
                 getEndpointUri(request.EnsureNotNull(nameof(request)).Validate().Key, request.Asset),
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
 
         /// <inheritdoc />
         public Task<IWatchList> DeleteAssetFromWatchListByNameAsync(
@@ -72,21 +72,21 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.DeleteAsync<IWatchList, JsonWatchList>(
                 getEndpointUriBuilder(request.EnsureNotNull(nameof(request)).Validate().Key, request.Asset),
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
 
         /// <inheritdoc />
         public Task<Boolean> DeleteWatchListByIdAsync(
             Guid watchListId,
             CancellationToken cancellationToken = default) =>
-            _httpClient.DeleteAsync(
-                getEndpointUri(watchListId), cancellationToken, _alpacaRestApiThrottler);
+            _httpClient.TryDeleteAsync(
+                getEndpointUri(watchListId), cancellationToken);
 
         /// <inheritdoc />
         public Task<Boolean> DeleteWatchListByNameAsync(
             String name,
             CancellationToken cancellationToken = default) =>
-            _httpClient.DeleteAsync(
-                getEndpointUriBuilder(name), cancellationToken, _alpacaRestApiThrottler);
+            _httpClient.TryDeleteAsync(
+                getEndpointUriBuilder(name), cancellationToken);
 
         private UriBuilder getEndpointUriBuilder(
             String name,
