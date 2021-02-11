@@ -20,20 +20,11 @@ namespace Alpaca.Markets
             }
         }
 
-        [Conditional("NET45")]
+        [Conditional("NETFRAMEWORK")]
         public static void SetSecurityProtocol(
             // ReSharper disable once UnusedParameter.Global
-            this HttpClient httpClient)
-        {
-#if NETFRAMEWORK
-            System.Net.ServicePointManager.SecurityProtocol =
-#pragma warning disable CA5364 // Do Not Use Deprecated Security Protocols
-                System.Net.SecurityProtocolType.Tls12 | System.Net.SecurityProtocolType.Tls11;
-#pragma warning restore CA5364 // Do Not Use Deprecated Security Protocols
-#else
-            // .NET Core runtime automatically selects a most secure protocol versions
-#endif
-        }
+            this HttpClient httpClient) =>
+            AppContext.SetSwitch("DontEnableSystemDefaultTlsVersions", false);
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
             HttpClient httpClient,
