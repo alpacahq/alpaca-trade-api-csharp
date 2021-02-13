@@ -3,6 +3,7 @@
 [![Nuget](https://img.shields.io/nuget/v/Alpaca.Markets?logo=NuGet)](https://www.nuget.org/packages/Alpaca.Markets)
 [![Nuget](https://img.shields.io/nuget/vpre/Alpaca.Markets?logo=NuGet)](https://www.nuget.org/packages/Alpaca.Markets)
 [![Nuget](https://img.shields.io/nuget/dt/Alpaca.Markets?logo=NuGet)](https://www.nuget.org/stats/packages/Alpaca.Markets?groupby=Version)
+[![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=OlegRa/Alpaca.Markets)](https://dependabot.com)
 
 # .NET SDK for Alpaca Markets API
 
