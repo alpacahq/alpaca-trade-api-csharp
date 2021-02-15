@@ -4,21 +4,20 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.0.0-alpha3</Version>
+    <Version>5.0.0-alpha4</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.0.0.2</AssemblyVersion>
-    <FileVersion>5.0.0.2</FileVersion>
+    <AssemblyVersion>5.0.0.3</AssemblyVersion>
+    <FileVersion>5.0.0.3</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Enabled the system default TLS (most secure) version selection for the .NET Framework versions of SDK.
-- Removed throttling from some `AlpacaTradingClient` method calls because they are not idempotent.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Breaking change - the `PolygonStreamingClient` class now uses the same subscription approach as the `AlpacaDataStreamingClient` class. Also, the 'IStreamingClientBase` interface renamed into the more appropriate `IStreamingClient`. Some more interfaces and classes added for reducing code duplication.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
