@@ -8,152 +8,102 @@ namespace Alpaca.Markets
     /// </summary>
     public interface IPolygonStreamingClient : IStreamingClientBase
     {
-        /// <summary>
-        /// Occurred when new trade received from stream.
+                /// <summary>
+        /// Gets the trade updates subscription for the <paramref name="symbol"/> asset.
         /// </summary>
-        event Action<IStreamTrade>? TradeReceived;
-
-        /// <summary>
-        /// Occurred when new quote received from stream.
-        /// </summary>
-        event Action<IStreamQuote>? QuoteReceived;
-
-        /// <summary>
-        /// Occurred when new bar received from stream.
-        /// </summary>
-        event Action<IStreamAgg>? MinuteAggReceived;
-
-        /// <summary>
-        /// Occurred when new bar received from stream.
-        /// </summary>
-        event Action<IStreamAgg>? SecondAggReceived;
-
-        /// <summary>
-        /// Subscribes for the trade updates via <see cref="PolygonStreamingClient.TradeReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
-        void SubscribeTrade(
+        /// <param name="symbol">Alpaca asset name.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
             String symbol);
 
         /// <summary>
-        /// Subscribes for the quote updates via <see cref="PolygonStreamingClient.QuoteReceived"/>
-        /// event for specific asset from Polygon streaming API.
+        /// Gets the quote updates subscription for the <paramref name="symbol"/> asset.
         /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
-        void SubscribeQuote(
+        /// <param name="symbol">Alpaca asset name.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
             String symbol);
 
         /// <summary>
-        /// Subscribes for the second bar updates via <see cref="PolygonStreamingClient.SecondAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
+        /// Gets the minute aggregate (bar) subscription for the all assets.
         /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
-        void SubscribeSecondAgg(
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription();
+
+        /// <summary>
+        /// Gets the minute aggregate (bar) subscription for the <paramref name="symbol"/> asset.
+        /// </summary>
+        /// <param name="symbol">Alpaca asset name.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
             String symbol);
 
         /// <summary>
-        /// Subscribes for the minute bar updates via <see cref="PolygonStreamingClient.MinuteAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
+        /// Gets the second aggregate (bar) subscription for the all assets.
         /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
-        void SubscribeMinuteAgg(
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        IAlpacaDataSubscription<IStreamAgg> GetSecondAggSubscription();
+
+        /// <summary>
+        /// Gets the second aggregate (bar) subscription for the <paramref name="symbol"/> asset.
+        /// </summary>
+        /// <param name="symbol">Alpaca asset name.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        IAlpacaDataSubscription<IStreamAgg> GetSecondAggSubscription(
             String symbol);
 
         /// <summary>
-        /// Subscribes for the trade updates via <see cref="PolygonStreamingClient.TradeReceived"/>
-        /// event for specific asset from Polygon streaming API.
+        /// Subscribes the single <paramref name="subscription"/> object for receiving data from the server.
         /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
-        void SubscribeTrade(
-            IEnumerable<String> symbols);
+        /// <param name="subscription">Subscription target - asset and update type holder.</param>
+        void Subscribe(
+            IAlpacaDataSubscription subscription);
 
         /// <summary>
-        /// Subscribes for the quote updates via <see cref="PolygonStreamingClient.QuoteReceived"/>
-        /// event for specific asset from Polygon streaming API.
+        /// Subscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
-        void SubscribeQuote(
-            IEnumerable<String> symbols);
+        /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
+        void Subscribe(
+            params IAlpacaDataSubscription[] subscriptions);
 
         /// <summary>
-        /// Subscribes for the second bar updates via <see cref="PolygonStreamingClient.SecondAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
+        /// Subscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
-        void SubscribeSecondAgg(
-            IEnumerable<String> symbols);
+        /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
+        void Subscribe(
+            IEnumerable<IAlpacaDataSubscription> subscriptions);
 
         /// <summary>
-        /// Subscribes for the minute bar updates via <see cref="PolygonStreamingClient.MinuteAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
+        /// Unsubscribes the single <paramref name="subscription"/> object for receiving data from the server.
         /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
-        void SubscribeMinuteAgg(
-            IEnumerable<String> symbols);
+        /// <param name="subscription">Subscription target - asset and update type holder.</param>
+        void Unsubscribe(
+            IAlpacaDataSubscription subscription);
 
         /// <summary>
-        /// Unsubscribes from the trade updates via <see cref="PolygonStreamingClient.TradeReceived"/>
-        /// event for specific asset from Polygon streaming API.
+        /// Unsubscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
-        void UnsubscribeTrade(
-            String symbol);
+        /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
+        void Unsubscribe(
+            params IAlpacaDataSubscription[] subscriptions);
 
         /// <summary>
-        /// Unsubscribes from the quote updates via <see cref="PolygonStreamingClient.QuoteReceived"/>
-        /// event for specific asset from Polygon streaming API.
+        /// Unsubscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
-        void UnsubscribeQuote(
-            String symbol);
-
-        /// <summary>
-        /// Unsubscribes from the second bar updates via <see cref="PolygonStreamingClient.SecondAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
-        void UnsubscribeSecondAgg(
-            String symbol);
-
-        /// <summary>
-        /// Unsubscribes from the minute bar updates via <see cref="PolygonStreamingClient.MinuteAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbol">Asset name for subscription change.</param>
-        void UnsubscribeMinuteAgg(
-            String symbol);
-
-        /// <summary>
-        /// Unsubscribes from the trade updates via <see cref="PolygonStreamingClient.TradeReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
-        void UnsubscribeTrade(
-            IEnumerable<String> symbols);
-
-        /// <summary>
-        /// Unsubscribes from the quote updates via <see cref="PolygonStreamingClient.QuoteReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
-        void UnsubscribeQuote(
-            IEnumerable<String> symbols);
-
-        /// <summary>
-        /// Unsubscribes from the second bar updates via <see cref="PolygonStreamingClient.SecondAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
-        void UnsubscribeSecondAgg(
-            IEnumerable<String> symbols);
-
-        /// <summary>
-        /// Unsubscribes from the minute bar updates via <see cref="PolygonStreamingClient.MinuteAggReceived"/>
-        /// event for specific asset from Polygon streaming API.
-        /// </summary>
-        /// <param name="symbols">List of asset names for subscription change.</param>
-        void UnsubscribeMinuteAgg(
-            IEnumerable<String> symbols);
+        /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
+        void Unsubscribe(
+            IEnumerable<IAlpacaDataSubscription> subscriptions);
     }
 }

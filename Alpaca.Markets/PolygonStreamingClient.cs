@@ -27,18 +27,6 @@ namespace Alpaca.Markets
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
-        /// <inheritdoc />
-        public event Action<IStreamTrade>? TradeReceived;
-
-        /// <inheritdoc />
-        public event Action<IStreamQuote>? QuoteReceived;
-
-        /// <inheritdoc />
-        public event Action<IStreamAgg>? MinuteAggReceived;
-
-        /// <inheritdoc />
-        public event Action<IStreamAgg>? SecondAggReceived;
-
         /// <summary>
         /// Creates new instance of <see cref="PolygonStreamingClient"/> object.
         /// </summary>
@@ -48,92 +36,66 @@ namespace Alpaca.Markets
             : base(configuration.EnsureNotNull(nameof(configuration))) =>
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
-                { StatusMessage, handleAuthorization },
-                { TradesChannel, handleTradesChannel },
-                { QuotesChannel, handleQuotesChannel },
-                { MinuteAggChannel, handleMinuteAggChannel },
-                { SecondAggChannel, handleSecondAggChannel }
+                { StatusMessage, handleAuthorization }
             };
 
         /// <inheritdoc />
-        public void SubscribeTrade(
+        public IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
+            String symbol) => 
+            SubscriptionsGetOrAdd<IStreamTrade, JsonStreamTradeAlpaca>(GetStreamName(TradesChannel, symbol));
+
+        /// <inheritdoc />
+        public IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
             String symbol) =>
-            subscribe(getParams(TradesChannel, symbol));
+            SubscriptionsGetOrAdd<IStreamQuote, JsonStreamQuoteAlpaca>(GetStreamName(QuotesChannel, symbol));
 
         /// <inheritdoc />
-        public void SubscribeQuote(
+        public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription() => 
+            SubscriptionsWildcardGetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(MinuteAggChannel);
+
+        /// <inheritdoc />
+        public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
             String symbol) =>
-            subscribe(getParams(QuotesChannel, symbol));
+            SubscriptionsGetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(GetStreamName(MinuteAggChannel, symbol));
 
         /// <inheritdoc />
-        public void SubscribeSecondAgg(
+        public IAlpacaDataSubscription<IStreamAgg> GetSecondAggSubscription() => 
+            SubscriptionsWildcardGetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(SecondAggChannel);
+
+        /// <inheritdoc />
+        public IAlpacaDataSubscription<IStreamAgg> GetSecondAggSubscription(
             String symbol) =>
-            subscribe(getParams(SecondAggChannel, symbol));
+            SubscriptionsGetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(GetStreamName(SecondAggChannel, symbol));
 
         /// <inheritdoc />
-        public void SubscribeMinuteAgg(
-            String symbol) =>
-            subscribe(getParams(MinuteAggChannel, symbol));
+        public void Subscribe(
+            IAlpacaDataSubscription subscription) =>
+            subscribe(subscription.EnsureNotNull(nameof(subscription)).Streams);
 
         /// <inheritdoc />
-        public void SubscribeTrade(
-            IEnumerable<String> symbols) =>
-            subscribe(getParams(TradesChannel, symbols));
+        public void Subscribe(
+            params IAlpacaDataSubscription[] subscriptions) =>
+            Subscribe(subscriptions.AsEnumerable());
 
         /// <inheritdoc />
-        public void SubscribeQuote(
-            IEnumerable<String> symbols) =>
-            subscribe(getParams(QuotesChannel, symbols));
+        public void Subscribe(
+            IEnumerable<IAlpacaDataSubscription> subscriptions) =>
+            subscribe(subscriptions.SelectMany(_ => _.Streams));
 
         /// <inheritdoc />
-        public void SubscribeSecondAgg(
-            IEnumerable<String> symbols) =>
-            subscribe(getParams(SecondAggChannel, symbols));
+        public void Unsubscribe(
+            IAlpacaDataSubscription subscription) =>
+            unsubscribe(subscription.EnsureNotNull(nameof(subscription)).Streams);
 
         /// <inheritdoc />
-        public void SubscribeMinuteAgg(
-            IEnumerable<String> symbols) =>
-            subscribe(getParams(MinuteAggChannel, symbols));
+        public void Unsubscribe(
+            params IAlpacaDataSubscription[] subscriptions) =>
+            Unsubscribe(subscriptions.AsEnumerable());
 
         /// <inheritdoc />
-        public void UnsubscribeTrade(
-            String symbol) =>
-            unsubscribe(getParams(TradesChannel, symbol));
-
-        /// <inheritdoc />
-        public void UnsubscribeQuote(
-            String symbol) =>
-            unsubscribe(getParams(QuotesChannel, symbol));
-
-        /// <inheritdoc />
-        public void UnsubscribeSecondAgg(
-            String symbol) =>
-            unsubscribe(getParams(SecondAggChannel, symbol));
-
-        /// <inheritdoc />
-        public void UnsubscribeMinuteAgg(
-            String symbol) =>
-            unsubscribe(getParams(MinuteAggChannel, symbol));
-
-        /// <inheritdoc />
-        public void UnsubscribeTrade(
-            IEnumerable<String> symbols) =>
-            unsubscribe(getParams(TradesChannel, symbols));
-
-        /// <inheritdoc />
-        public void UnsubscribeQuote(
-            IEnumerable<String> symbols) =>
-            unsubscribe(getParams(QuotesChannel, symbols));
-
-        /// <inheritdoc />
-        public void UnsubscribeSecondAgg(
-            IEnumerable<String> symbols) =>
-            unsubscribe(getParams(SecondAggChannel, symbols));
-
-        /// <inheritdoc />
-        public void UnsubscribeMinuteAgg(
-            IEnumerable<String> symbols) =>
-            unsubscribe(getParams(MinuteAggChannel, symbols));
+        public void Unsubscribe(
+            IEnumerable<IAlpacaDataSubscription> subscriptions) =>
+            unsubscribe(subscriptions.SelectMany(_ => _.Streams));
 
         /// <inheritdoc/>
         [SuppressMessage(
@@ -153,13 +115,36 @@ namespace Alpaca.Markets
                     }
                     else
                     {
-                        HandleMessage(_handlers, messageType.ToString(), token);
+                        var stream = messageType.ToString();
+                        if (handleRealtimeDataUpdate(stream, token))
+                        {
+                            return;
+                        }
+                        HandleMessage(_handlers, stream, token);
                     }
                 }
             }
             catch (Exception exception)
             {
                 HandleError(exception);
+            }
+        }
+        
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
+        private Boolean handleRealtimeDataUpdate(
+            String stream,
+            JToken token)
+        {
+            try
+            {
+                return SubscriptionsOnReceived(stream, token);
+            }
+            catch (Exception exception)
+            {
+                HandleError(exception);
+                return false;
             }
         }
 
@@ -199,45 +184,23 @@ namespace Alpaca.Markets
         }
 
         private void subscribe(
-            String parameters) =>
+            IEnumerable<String> streams) =>
             SendAsJsonString(new JsonListenRequest
             {
                 Action = JsonAction.PolygonSubscribe,
-                Params = parameters
+                Params = getParams(streams)
             });
 
         private void unsubscribe(
-            String parameters) =>
+            IEnumerable<String> streams) =>
             SendAsJsonString(new JsonUnsubscribeRequest
             {
                 Action = JsonAction.PolygonUnsubscribe,
-                Params = parameters
+                Params = getParams(streams)
             });
 
         private static String getParams(
-            String channel,
-            String symbol) =>
-            $"{channel}.{symbol}";
-
-        private static String getParams(
-            String channel,
-            IEnumerable<String> symbols) =>
-            String.Join(",",symbols.Select(symbol => getParams(channel, symbol)));
-
-        private void handleTradesChannel(
-            JToken token) =>
-            TradeReceived.DeserializeAndInvoke<IStreamTrade, JsonStreamTradePolygon>(token);
-
-        private void handleQuotesChannel(
-            JToken token) =>
-            QuoteReceived.DeserializeAndInvoke<IStreamQuote, JsonStreamQuotePolygon>(token);
-
-        private void handleMinuteAggChannel(
-            JToken token) =>
-            MinuteAggReceived.DeserializeAndInvoke<IStreamAgg, JsonStreamAggPolygon>(token);
-
-        private void handleSecondAggChannel(
-            JToken token) =>
-            SecondAggReceived.DeserializeAndInvoke<IStreamAgg, JsonStreamAggPolygon>(token);
+            IEnumerable<String> streams) =>
+            String.Join(",", streams);
     }
 }

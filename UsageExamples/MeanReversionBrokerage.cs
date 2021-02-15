@@ -90,7 +90,9 @@ namespace UsageExamples
 
             polygonStreamingClient.ConnectAndAuthenticateAsync().Wait();
             Console.WriteLine("Polygon client opened.");
-            polygonStreamingClient.MinuteAggReceived += async (agg) =>
+
+            var subscription = polygonStreamingClient.GetMinuteAggSubscription(symbol);
+            subscription.Received += async (agg) =>
             {
                 // If the market's close to closing, exit position and stop trading.
                 TimeSpan minutesUntilClose = closingTime - DateTime.UtcNow;
@@ -106,7 +108,7 @@ namespace UsageExamples
                     await HandleMinuteAgg(agg);
                 }
             };
-            polygonStreamingClient.SubscribeMinuteAgg(symbol);
+            polygonStreamingClient.Subscribe(subscription);
         }
 
         public void Dispose()
