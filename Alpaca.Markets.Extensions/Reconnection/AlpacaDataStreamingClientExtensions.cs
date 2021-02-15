@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -11,7 +9,7 @@ namespace Alpaca.Markets.Extensions
     public static partial class AlpacaDataStreamingClientExtensions
     {
         private sealed class ClientWithReconnection :
-            ClientWithReconnectBase<IAlpacaDataStreamingClient, IAlpacaDataSubscription>,
+            DataClientWithReconnectBase<IAlpacaDataStreamingClient>,
             IAlpacaDataStreamingClient
         {
             public ClientWithReconnection(
@@ -32,69 +30,6 @@ namespace Alpaca.Markets.Extensions
 
             public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(String symbol) =>
                 Client.GetMinuteAggSubscription(symbol);
-
-            public void Subscribe(
-                IAlpacaDataSubscription subscription)
-            {
-                foreach (var stream in subscription.Streams)
-                {
-                    Subscriptions.TryAdd(stream, subscription);
-                }
-                Client.Subscribe(subscription);
-            }
-
-            public void Subscribe(
-                IEnumerable<IAlpacaDataSubscription> subscriptions) => 
-                Subscribe(subscriptions.ToArray());
-
-            public void Subscribe(
-                params IAlpacaDataSubscription[] subscriptions)
-            {
-                foreach (var subscription in subscriptions)
-                {
-                    foreach (var stream in subscription.Streams)
-                    {
-                        Subscriptions.TryAdd(stream, subscription);
-                    }
-                }
-
-                Client.Subscribe(subscriptions);
-            }
-
-            public void Unsubscribe(
-                IAlpacaDataSubscription subscription)
-            {
-                foreach (var stream in subscription.Streams)
-                {
-                    Subscriptions.TryRemove(stream, out _);
-                }
-                Client.Unsubscribe(subscription);
-            }
-
-            public void Unsubscribe(
-                IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-                Unsubscribe(subscriptions.ToArray());
-
-            public void Unsubscribe(
-                params IAlpacaDataSubscription[] subscriptions)
-            {
-                foreach (var subscription in subscriptions)
-                {
-                    foreach (var stream in subscription.Streams)
-                    {
-                        Subscriptions.TryRemove(stream, out _);
-                    }
-                }
-
-                Client.Unsubscribe(subscriptions);
-            }
-
-            protected override void Resubscribe(
-                String symbol, 
-                IAlpacaDataSubscription subscription)
-            {
-                Client.Subscribe(subscription);
-            }
         }
 
         /// <summary>

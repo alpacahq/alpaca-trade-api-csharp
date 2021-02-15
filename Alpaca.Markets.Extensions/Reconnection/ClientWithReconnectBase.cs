@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Alpaca.Markets.Extensions
 {
-    internal abstract class ClientWithReconnectBase<TClient, TSubscription> : IStreamingClientBase
-        where TClient : IStreamingClientBase
+    internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
+        where TClient : IStreamingClient
     {
-            protected readonly ConcurrentDictionary<String, TSubscription> Subscriptions =
-                new ConcurrentDictionary<String, TSubscription>(StringComparer.Ordinal);
-
             private readonly CancellationTokenSource _cancellationTokenSource =
                 new CancellationTokenSource();
 
@@ -73,7 +69,11 @@ namespace Alpaca.Markets.Extensions
 
             public event Action<Exception>? OnError;
 
-            protected abstract void Resubscribe(String symbol, TSubscription subscription);
+            protected virtual void OnReconnection(
+                CancellationToken cancellationToken)
+            {
+                // DO nothing by default for auto-resubscribed clients.
+            }
 
             [SuppressMessage(
                 "Design", "CA1031:Do not catch general exception types",
@@ -100,15 +100,7 @@ namespace Alpaca.Markets.Extensions
 
                         if (authStatus == AuthStatus.Authorized)
                         {
-                            foreach (var kvp in Subscriptions.ToArray())
-                            {
-                                if (_cancellationTokenSource.IsCancellationRequested)
-                                {
-                                    return;
-                                }
-                                Resubscribe(kvp.Key, kvp.Value);
-                            }
-
+                            OnReconnection(_cancellationTokenSource.Token);
                             return; // Reconnected, authorized and re-subscribed
                         }
 

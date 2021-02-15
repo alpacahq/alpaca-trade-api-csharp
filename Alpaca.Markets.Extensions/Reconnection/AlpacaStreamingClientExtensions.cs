@@ -9,7 +9,7 @@ namespace Alpaca.Markets.Extensions
     public static class AlpacaStreamingClientExtensions
     {
         private sealed class ClientWithReconnection :
-            ClientWithReconnectBase<IAlpacaStreamingClient, Int32>,
+            ClientWithReconnectBase<IAlpacaStreamingClient>,
             IAlpacaStreamingClient
         {
             public ClientWithReconnection(
@@ -29,11 +29,6 @@ namespace Alpaca.Markets.Extensions
             {
                 add => Client.OnTradeUpdate += value;
                 remove => Client.OnTradeUpdate += value;
-            }
-
-            protected override void Resubscribe(String symbol, Int32 subscription)
-            {
-                // This streaming connection subscribe to events on connection automatically
             }
         }
 
