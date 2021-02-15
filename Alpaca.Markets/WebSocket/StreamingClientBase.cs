@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Provides unified type-safe access for websocket streaming APIs.
+    /// Provides base implementation for the websocket streaming APIs clients.
     /// </summary>
     [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
     [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]

@@ -8,9 +8,8 @@ using Newtonsoft.Json.Linq;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Provides base implementation for the websocket streaming APIs clients with subscripitons.
     /// </summary>
-    /// <typeparam name="TConfiguration"></typeparam>
     public abstract class StreamingDataClientBase<TConfiguration>
         : StreamingClientBase<TConfiguration>, IStreamingDataClient
         where TConfiguration : StreamingClientConfiguration
@@ -105,9 +104,9 @@ namespace Alpaca.Markets
         private readonly Subscriptions _subscriptions = new Subscriptions();
 
         /// <summary>
-        /// 
+        /// Creates new instance of <see cref="StreamingDataClientBase{TConfiguration}"/> object.
         /// </summary>
-        /// <param name="configuration"></param>
+        /// <param name="configuration">Configuration parameters object.</param>
         protected StreamingDataClientBase(
             TConfiguration configuration)
             : base(configuration.EnsureNotNull(nameof(configuration)))
@@ -145,12 +144,12 @@ namespace Alpaca.Markets
             Unsubscribe(subscriptions.SelectMany(_ => _.Streams));
 
         /// <summary>
-        /// 
+        /// Gets typed subscription for the channel and symbol pair.
         /// </summary>
-        /// <param name="channelName"></param>
-        /// <param name="symbol"></param>
-        /// <typeparam name="TApi"></typeparam>
-        /// <typeparam name="TJson"></typeparam>
+        /// <param name="channelName">Channel name for the subscription.</param>
+        /// <param name="symbol">Symbol name for the subscription.</param>
+        /// <typeparam name="TApi">Public type (interface) of updates.</typeparam>
+        /// <typeparam name="TJson">Private type (class) of updates.</typeparam>
         /// <returns></returns>
         protected IAlpacaDataSubscription<TApi> GetSubscription<TApi, TJson>(
             String channelName,
@@ -161,11 +160,11 @@ namespace Alpaca.Markets
                 channelName, $"{channelName}.{symbol}");
 
         /// <summary>
-        /// 
+        /// Gets typed subscription for the all symbols on the particular channel.
         /// </summary>
-        /// <param name="channelName"></param>
-        /// <typeparam name="TApi"></typeparam>
-        /// <typeparam name="TJson"></typeparam>
+        /// <param name="channelName">Channel name for the subscription.</param>
+        /// <typeparam name="TApi">Public type (interface) of updates.</typeparam>
+        /// <typeparam name="TJson">Private type (class) of updates.</typeparam>
         /// <returns></returns>
         protected IAlpacaDataSubscription<TApi> GetSubscription<TApi, TJson>(
             String channelName)
@@ -176,11 +175,11 @@ namespace Alpaca.Markets
 
                 
         /// <summary>
-        /// 
+        /// Handles the real-time data updates from the underlying web socket stream.
         /// </summary>
-        /// <param name="stream"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
+        /// <param name="stream">Stream name (channel + symbol or just channel).</param>
+        /// <param name="token">Parsed JSON object for update processing.</param>
+        /// <returns>Returns <c>true</c> if update successfully handled.</returns>
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]
@@ -201,25 +200,25 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// 
+        /// Handles the subscription status update for the particular stream.
         /// </summary>
-        /// <param name="stream"></param>
+        /// <param name="stream">Stream name for updating status.</param>
         /// <returns></returns>
         protected void SubscriptionsOnUpdate(
             String stream) =>
             _subscriptions.OnUpdate(stream);
 
         /// <summary>
-        /// 
+        /// Sends the subscription update for the list of streams.
         /// </summary>
-        /// <param name="streams"></param>
+        /// <param name="streams">List of stream names for subscription.</param>
         protected abstract void Subscribe(
             IEnumerable<String> streams);
 
         /// <summary>
-        /// 
+        /// Sends the un-subscription update for the list of streams.
         /// </summary>
-        /// <param name="streams"></param>
+        /// <param name="streams">List of stream names for un-subscription.</param>
         protected abstract void Unsubscribe(
             IEnumerable<String> streams);
     }
