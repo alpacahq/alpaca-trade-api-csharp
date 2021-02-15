@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
@@ -10,19 +9,9 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Polygon streaming API via websockets.
     /// </summary>
     public sealed class PolygonStreamingClient :
-        StreamingClientBase<PolygonStreamingClientConfiguration>,
+        StreamingDataClientBase<PolygonStreamingClientConfiguration>,
         IPolygonStreamingClient
     {
-        // Available Polygon message types
-
-        private const String TradesChannel = "T";
-
-        private const String QuotesChannel = "Q";
-
-        private const String MinuteAggChannel = "AM";
-
-        private const String SecondAggChannel = "A";
-
         private const String StatusMessage = "status";
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
@@ -42,60 +31,48 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
             String symbol) => 
-            SubscriptionsGetOrAdd<IStreamTrade, JsonStreamTradeAlpaca>(GetStreamName(TradesChannel, symbol));
+            GetSubscription<IStreamTrade, JsonStreamTradeAlpaca>(TradesChannel, symbol);
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
             String symbol) =>
-            SubscriptionsGetOrAdd<IStreamQuote, JsonStreamQuoteAlpaca>(GetStreamName(QuotesChannel, symbol));
+            GetSubscription<IStreamQuote, JsonStreamQuoteAlpaca>(QuotesChannel, symbol);
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription() => 
-            SubscriptionsWildcardGetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(MinuteAggChannel);
+            GetSubscription<IStreamAgg, JsonStreamAggAlpaca>(MinuteAggChannel);
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
             String symbol) =>
-            SubscriptionsGetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(GetStreamName(MinuteAggChannel, symbol));
+            GetSubscription<IStreamAgg, JsonStreamAggAlpaca>(MinuteAggChannel, symbol);
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamAgg> GetSecondAggSubscription() => 
-            SubscriptionsWildcardGetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(SecondAggChannel);
+            GetSubscription<IStreamAgg, JsonStreamAggAlpaca>(SecondAggChannel);
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamAgg> GetSecondAggSubscription(
             String symbol) =>
-            SubscriptionsGetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(GetStreamName(SecondAggChannel, symbol));
+            GetSubscription<IStreamAgg, JsonStreamAggAlpaca>(SecondAggChannel, symbol);
 
         /// <inheritdoc />
-        public void Subscribe(
-            IAlpacaDataSubscription subscription) =>
-            subscribe(subscription.EnsureNotNull(nameof(subscription)).Streams);
+        protected override void Subscribe(
+            IEnumerable<String> streams) =>
+            SendAsJsonString(new JsonListenRequest
+            {
+                Action = JsonAction.PolygonSubscribe,
+                Params = getParams(streams)
+            });
 
         /// <inheritdoc />
-        public void Subscribe(
-            params IAlpacaDataSubscription[] subscriptions) =>
-            Subscribe(subscriptions.AsEnumerable());
-
-        /// <inheritdoc />
-        public void Subscribe(
-            IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-            subscribe(subscriptions.SelectMany(_ => _.Streams));
-
-        /// <inheritdoc />
-        public void Unsubscribe(
-            IAlpacaDataSubscription subscription) =>
-            unsubscribe(subscription.EnsureNotNull(nameof(subscription)).Streams);
-
-        /// <inheritdoc />
-        public void Unsubscribe(
-            params IAlpacaDataSubscription[] subscriptions) =>
-            Unsubscribe(subscriptions.AsEnumerable());
-
-        /// <inheritdoc />
-        public void Unsubscribe(
-            IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-            unsubscribe(subscriptions.SelectMany(_ => _.Streams));
+        protected override void Unsubscribe(
+            IEnumerable<String> streams) =>
+            SendAsJsonString(new JsonUnsubscribeRequest
+            {
+                Action = JsonAction.PolygonUnsubscribe,
+                Params = getParams(streams)
+            });
 
         /// <inheritdoc/>
         [SuppressMessage(
@@ -116,7 +93,7 @@ namespace Alpaca.Markets
                     else
                     {
                         var stream = messageType.ToString();
-                        if (handleRealtimeDataUpdate(stream, token))
+                        if (HandleRealtimeDataUpdate(stream, token))
                         {
                             return;
                         }
@@ -127,24 +104,6 @@ namespace Alpaca.Markets
             catch (Exception exception)
             {
                 HandleError(exception);
-            }
-        }
-        
-        [SuppressMessage(
-            "Design", "CA1031:Do not catch general exception types",
-            Justification = "Expected behavior - we report exceptions via OnError event.")]
-        private Boolean handleRealtimeDataUpdate(
-            String stream,
-            JToken token)
-        {
-            try
-            {
-                return SubscriptionsOnReceived(stream, token);
-            }
-            catch (Exception exception)
-            {
-                HandleError(exception);
-                return false;
             }
         }
 
@@ -182,22 +141,6 @@ namespace Alpaca.Markets
                     break;
             }
         }
-
-        private void subscribe(
-            IEnumerable<String> streams) =>
-            SendAsJsonString(new JsonListenRequest
-            {
-                Action = JsonAction.PolygonSubscribe,
-                Params = getParams(streams)
-            });
-
-        private void unsubscribe(
-            IEnumerable<String> streams) =>
-            SendAsJsonString(new JsonUnsubscribeRequest
-            {
-                Action = JsonAction.PolygonUnsubscribe,
-                Params = getParams(streams)
-            });
 
         private static String getParams(
             IEnumerable<String> streams) =>

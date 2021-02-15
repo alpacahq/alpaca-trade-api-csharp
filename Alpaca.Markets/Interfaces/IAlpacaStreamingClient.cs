@@ -5,7 +5,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca streaming API.
     /// </summary>
-    public interface IAlpacaStreamingClient : IStreamingClientBase
+    public interface IAlpacaStreamingClient : IStreamingClient
     {
         /// <summary>
         /// Occurred when new account update received from stream.

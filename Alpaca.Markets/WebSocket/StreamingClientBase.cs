@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -16,93 +15,10 @@ namespace Alpaca.Markets
     /// </summary>
     [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
     [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
-    public abstract class StreamingClientBase<TConfiguration> : IStreamingClientBase 
+    public abstract class StreamingClientBase<TConfiguration> : IStreamingClient 
         where TConfiguration : StreamingClientConfiguration
     {
-        private interface ISubscription
-        {
-            void OnUpdate();
-
-            void OnReceived(
-                JToken token);
-        }
-
-        private sealed class AlpacaDataSubscription<TApi, TJson>
-            : IAlpacaDataSubscription<TApi>, ISubscription
-            where TJson : class, TApi
-            where TApi : IStreamBase
-        {
-            internal AlpacaDataSubscription(
-                String stream) =>
-                Stream = stream;
-
-            public String Stream { get; }
-
-            public IEnumerable<String> Streams
-            {
-                get { yield return Stream; }
-            }
-
-            public Boolean Subscribed { get; private set; }
-
-            public event Action<TApi>? Received;
-
-            public void OnReceived(
-                JToken token) =>
-                Received?.Invoke(token.ToObject<TJson>()
-                                 ?? throw new RestClientErrorException());
-
-            public void OnUpdate() => Subscribed = !Subscribed;
-        }
-
-        private sealed class Subscriptions
-        {
-            private readonly ConcurrentDictionary<String, ISubscription> _subscriptions =
-                new ConcurrentDictionary<String, ISubscription>(StringComparer.Ordinal);
-
-            public IAlpacaDataSubscription<TApi> GetOrAdd<TApi, TJson>(
-                String stream,
-                String key)
-                where TJson : class, TApi
-                where TApi : IStreamBase =>
-                (IAlpacaDataSubscription<TApi>) _subscriptions.GetOrAdd(
-                    key, _ => new AlpacaDataSubscription<TApi, TJson>(stream));
-
-            public void OnUpdate(String stream)
-            {
-                if (_subscriptions.TryGetValue(stream, out var subscription))
-                {
-                    subscription.OnUpdate();
-                }
-            }
-
-            public Boolean OnReceived(
-                String stream,
-                JToken token)
-            {
-                var found = false;
-
-                if (_subscriptions.TryGetValue(token["ev"]?.ToString() ?? String.Empty, out var subscription))
-                {
-                    subscription.OnReceived(token);
-                    found = true;
-                }
-
-                if (_subscriptions.TryGetValue(stream, out subscription))
-                {
-                    subscription.OnReceived(token);
-                    found = true;
-                }
-
-                return found;
-            }
-        }
-
-        private const String WildcardSymbolString = "*";
-
         private readonly SynchronizationQueue _queue = new SynchronizationQueue();
-
-        private readonly Subscriptions _subscriptions = new Subscriptions();
 
         internal readonly TConfiguration Configuration;
 
@@ -275,56 +191,9 @@ namespace Alpaca.Markets
             OnError?.Invoke(exception);
 
         /// <summary>
-        /// 
+        /// Send object (JSON serializable) as string into the web socket.
         /// </summary>
-        /// <param name="stream"></param>
-        /// <typeparam name="TApi"></typeparam>
-        /// <typeparam name="TJson"></typeparam>
-        /// <returns></returns>
-        protected IAlpacaDataSubscription<TApi> SubscriptionsGetOrAdd<TApi, TJson>(
-            String stream)
-            where TJson : class, TApi
-            where TApi : IStreamBase =>
-            _subscriptions.GetOrAdd<TApi, TJson>(stream, stream);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="channelName"></param>
-        /// <typeparam name="TApi"></typeparam>
-        /// <typeparam name="TJson"></typeparam>
-        /// <returns></returns>
-        protected IAlpacaDataSubscription<TApi> SubscriptionsWildcardGetOrAdd<TApi, TJson>(
-            String channelName)
-            where TJson : class, TApi
-            where TApi : IStreamBase =>
-            _subscriptions.GetOrAdd<TApi, TJson>(
-                channelName, GetStreamName(channelName, WildcardSymbolString));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="stream"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
-        protected Boolean SubscriptionsOnReceived(
-            String stream,
-            JToken token) =>
-            _subscriptions.OnReceived(stream, token.EnsureNotNull(nameof(token)));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="stream"></param>
-        /// <returns></returns>
-        protected void SubscriptionsOnUpdate(
-            String stream) =>
-            _subscriptions.OnUpdate(stream);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">Object for serializing and sending.</param>
         protected void SendAsJsonString(
             Object value)
         {
@@ -334,17 +203,6 @@ namespace Alpaca.Markets
             serializer.Serialize(textWriter, value);
             _webSocket.Send(textWriter.ToString());
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="channelName"></param>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
-        protected static String GetStreamName(
-            String channelName,
-            String symbol) =>
-            $"{channelName}.{symbol}";
 
         private void onDataReceived(
             Byte[] binaryData) =>

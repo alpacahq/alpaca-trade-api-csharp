@@ -10,17 +10,9 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Alpaca data streaming API via websockets.
     /// </summary>
     public sealed class AlpacaDataStreamingClient :
-        StreamingClientBase<AlpacaDataStreamingClientConfiguration>, 
+        StreamingDataClientBase<AlpacaDataStreamingClientConfiguration>, 
         IAlpacaDataStreamingClient
     {
-        // Available Alpaca data streaming message types
-
-        private const String TradesChannel = "T";
-
-        private const String QuotesChannel = "Q";
-
-        private const String MinuteAggChannel = "AM";
-
         private const String Listening = "listening";
 
         private const String Authorization = "authorization";
@@ -43,51 +35,21 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
             String symbol) => 
-            SubscriptionsGetOrAdd<IStreamTrade, JsonStreamTradeAlpaca>(GetStreamName(TradesChannel, symbol));
+            GetSubscription<IStreamTrade, JsonStreamTradeAlpaca>(TradesChannel, symbol);
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
             String symbol) =>
-            SubscriptionsGetOrAdd<IStreamQuote, JsonStreamQuoteAlpaca>(GetStreamName(QuotesChannel, symbol));
+            GetSubscription<IStreamQuote, JsonStreamQuoteAlpaca>(QuotesChannel, symbol);
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription() => 
-            SubscriptionsWildcardGetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(MinuteAggChannel);
+            GetSubscription<IStreamAgg, JsonStreamAggAlpaca>(MinuteAggChannel);
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
             String symbol) =>
-            SubscriptionsGetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(GetStreamName(MinuteAggChannel, symbol));
-
-        /// <inheritdoc />
-        public void Subscribe(
-            IAlpacaDataSubscription subscription) =>
-            subscribe(subscription.EnsureNotNull(nameof(subscription)).Streams);
-
-        /// <inheritdoc />
-        public void Subscribe(
-            params IAlpacaDataSubscription[] subscriptions) =>
-            Subscribe(subscriptions.AsEnumerable());
-
-        /// <inheritdoc />
-        public void Subscribe(
-            IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-            subscribe(subscriptions.SelectMany(_ => _.Streams));
-
-        /// <inheritdoc />
-        public void Unsubscribe(
-            IAlpacaDataSubscription subscription) =>
-            unsubscribe(subscription.EnsureNotNull(nameof(subscription)).Streams);
-
-        /// <inheritdoc />
-        public void Unsubscribe(
-            params IAlpacaDataSubscription[] subscriptions) =>
-            Unsubscribe(subscriptions.AsEnumerable());
-
-        /// <inheritdoc />
-        public void Unsubscribe(
-            IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-            unsubscribe(subscriptions.SelectMany(_ => _.Streams));
+            GetSubscription<IStreamAgg, JsonStreamAggAlpaca>(MinuteAggChannel, symbol);
 
         /// <inheritdoc/>
         protected override void OnOpened()
@@ -101,6 +63,16 @@ namespace Alpaca.Markets
 
             base.OnOpened();
         }
+
+        /// <inheritdoc />
+        protected override void Subscribe(
+            IEnumerable<String> streams) =>
+            sendSubscriptionRequest(streams, JsonAction.Listen);
+
+        /// <inheritdoc />
+        protected override void Unsubscribe(
+            IEnumerable<String> streams) =>
+            sendSubscriptionRequest(streams, JsonAction.Unlisten);
 
         /// <inheritdoc/>
         [SuppressMessage(
@@ -124,7 +96,7 @@ namespace Alpaca.Markets
                 else
                 {
                     var streamAsString = stream.ToString();
-                    if (handleRealtimeDataUpdate(streamAsString, payload))
+                    if (HandleRealtimeDataUpdate(streamAsString, payload))
                     {
                         return;
                     }
@@ -184,32 +156,6 @@ namespace Alpaca.Markets
                 }
             }
         }
-
-        [SuppressMessage(
-            "Design", "CA1031:Do not catch general exception types",
-            Justification = "Expected behavior - we report exceptions via OnError event.")]
-        private Boolean handleRealtimeDataUpdate(
-            String stream,
-            JToken token)
-        {
-            try
-            {
-                return SubscriptionsOnReceived(stream, token);
-            }
-            catch (Exception exception)
-            {
-                HandleError(exception);
-                return false;
-            }
-        }
-        
-        private void subscribe(
-            IEnumerable<String> streams) =>
-            sendSubscriptionRequest(streams, JsonAction.Listen);
-
-        private void unsubscribe(
-            IEnumerable<String> streams) =>
-            sendSubscriptionRequest(streams, JsonAction.Unlisten);
 
         private void sendSubscriptionRequest(
             IEnumerable<String> streams,

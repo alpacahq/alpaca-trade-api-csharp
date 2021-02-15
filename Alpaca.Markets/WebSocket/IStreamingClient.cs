@@ -7,7 +7,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for websocket streaming APIs.
     /// </summary>
-    public interface IStreamingClientBase : IDisposable
+    public interface IStreamingClient : IDisposable
     {
         /// <summary>
         /// Occurred when stream successfully connected.
