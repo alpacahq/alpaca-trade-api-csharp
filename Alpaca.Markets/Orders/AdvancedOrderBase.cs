@@ -1,4 +1,6 @@
-﻿namespace Alpaca.Markets
+﻿using JetBrains.Annotations;
+
+namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates base data for advanced order types, never used directly by any code.
@@ -22,6 +24,7 @@
         /// <summary>
         /// Gets or sets the order class for advanced order types.
         /// </summary>
+        [UsedImplicitly]
         public OrderClass OrderClass { get; }
 
         internal override JsonNewOrder GetJsonRequest()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Http;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -10,6 +11,7 @@ namespace Alpaca.Markets
     /// Encapsulates request parameters for <see cref="AlpacaTradingClient.ListAccountActivitiesAsync(AccountActivitiesRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public sealed class AccountActivitiesRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>
     {
         private readonly List<AccountActivityType> _accountActivityTypes = new List<AccountActivityType>();
@@ -26,6 +28,7 @@ namespace Alpaca.Markets
         /// Creates new instance of <see cref="AccountActivitiesRequest"/> object for a single activity types.
         /// </summary>
         /// <param name="activityType">The activity type you want to view entries for.</param>
+        [UsedImplicitly]
         public AccountActivitiesRequest(
             AccountActivityType activityType)
         {
@@ -60,17 +63,17 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets the sorting direction for results.
         /// </summary>
-        public SortDirection? Direction { get; set; }
+        public SortDirection? Direction { get; [UsedImplicitly] set; }
 
         /// <summary>
         /// Gets or sets the maximum number of entries to return in the response.
         /// </summary>
-        public Int64? PageSize { get; set; }
+        public Int64? PageSize { get; [UsedImplicitly] set; }
         
         /// <summary>
         /// Gets or sets the ID of the end of your current page of results.
         /// </summary>
-        public String? PageToken { get; set; }
+        public String? PageToken { get; [UsedImplicitly] set; }
 
         /// <summary>
         /// Sets filtering for single <paramref name="date"/> activities.
@@ -104,27 +107,6 @@ namespace Alpaca.Markets
         {
             TimeInterval = value;
             Date = null;
-        }
-
-        internal AccountActivitiesRequest SetTimes(
-            DateTime? date = null,
-            DateTime? after = null,
-            DateTime? until = null)
-        {
-            if (date is null)
-            {
-                return this.SetInclusiveTimeInterval(
-                    after ?? throw new ArgumentNullException(nameof(after)),
-                    until ?? throw new ArgumentNullException(nameof(until)));
-            }
-
-            if (until.HasValue || after.HasValue)
-            {
-                throw new ArgumentException(
-                    "You unable to specify 'date' and 'until'/'after' arguments in same call.");
-            }
-
-            return SetSingleDate(date.Value);
         }
     }
 }

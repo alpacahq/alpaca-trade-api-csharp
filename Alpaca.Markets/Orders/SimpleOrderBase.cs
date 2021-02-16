@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates base data for ordinal order types, never used directly by any code.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public abstract class SimpleOrderBase : OrderBase
     {
         /// <summary>

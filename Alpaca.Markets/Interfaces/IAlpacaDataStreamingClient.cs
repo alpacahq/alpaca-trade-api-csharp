@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Provides unified type-safe access for Alpaca data streaming API via websockets.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public interface IAlpacaDataStreamingClient : IStreamingDataClient
     {
         /// <summary>

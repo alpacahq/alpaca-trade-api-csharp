@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -24,11 +25,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets specified duration units.
         /// </summary>
-        public AggregationPeriodUnit Unit { get; }
+        [UsedImplicitly]
+        private AggregationPeriodUnit Unit { get; }
 
         /// <summary>
         /// Gets specified duration value.
         /// </summary>
+        [UsedImplicitly]
         public Int32 Value { get; }
 
         /// <inheritdoc />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -58,11 +59,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the new order side (buy or sell).
         /// </summary>
+        [UsedImplicitly]
         public OrderSide Side { get; }
 
         /// <summary>
         /// Gets the new order type.
         /// </summary>
+        [UsedImplicitly]
         public OrderType Type { get; }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,6 +9,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca Data API via HTTP/REST.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public interface IAlpacaDataClient : IDisposable
     {
         /// <summary>

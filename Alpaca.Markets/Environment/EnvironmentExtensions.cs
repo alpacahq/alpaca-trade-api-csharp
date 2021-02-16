@@ -161,6 +161,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaDataStreamingClient"/> interface implementation.</returns>
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public static IAlpacaDataStreamingClient GetAlpacaDataStreamingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>

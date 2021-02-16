@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates data required for placing the limit order on the Alpaca REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public sealed class LimitOrder : SimpleOrderBase
     {
         internal LimitOrder(

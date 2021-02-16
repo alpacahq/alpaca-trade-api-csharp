@@ -7,6 +7,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates base historical information from Polygon REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IHistoricalBase
     {

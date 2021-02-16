@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// OAuth key for Alpaca/Polygon APIs authentication.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
     public sealed class OAuthKey : SecurityKey
     {
         /// <summary>

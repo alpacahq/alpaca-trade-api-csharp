@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates exchange information from Ploygon REST API.
+    /// Encapsulates exchange information from Polygon REST API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IExchange

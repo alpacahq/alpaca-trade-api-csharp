@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Set of extensions methods for creating the <see cref="OrderBase"/> inheritors.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class OrderSideExtensions
     {
         /// <summary>

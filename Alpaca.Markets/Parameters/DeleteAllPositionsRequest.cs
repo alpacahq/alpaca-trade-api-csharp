@@ -19,7 +19,7 @@ namespace Alpaca.Markets
             HttpClient httpClient) =>
             new UriBuilder(httpClient.BaseAddress!)
             {
-                Path = $"v2/positions",
+                Path = "v2/positions",
                 Query = new QueryBuilder()
                     .AddParameter("cancel_orders", CancelOrders)
             };

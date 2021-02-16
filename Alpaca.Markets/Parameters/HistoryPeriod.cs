@@ -15,6 +15,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Duration value in units.</param>
         /// <param name="unit">Duration units (days, weeks, etc.)</param>
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public HistoryPeriod(
             Int32 value,
             HistoryPeriodUnit unit)

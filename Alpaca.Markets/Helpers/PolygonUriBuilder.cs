@@ -22,12 +22,5 @@ namespace Alpaca.Markets
         }
 
         public QueryBuilder QueryBuilder { get; }
-
-        public PolygonUriBuilder WithPath(
-            String path)
-        {
-            _uriBuilder.Path = path;
-            return this;
-        }
     }
 }

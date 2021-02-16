@@ -91,6 +91,7 @@ namespace Alpaca.Markets
             _httpClient.GetAsync
                 <IHistoricalItems<IHistoricalQuote>, JsonHistoricalItems<IHistoricalQuote, JsonHistoricalQuote>>(
                     request.EnsureNotNull(nameof(request)).Validate()
+                        // ReSharper disable once StringLiteralTypo
                         .GetUriBuilder(this, "nbbo"),
                     cancellationToken);
 

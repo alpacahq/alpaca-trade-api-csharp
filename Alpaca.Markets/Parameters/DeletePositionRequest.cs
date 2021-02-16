@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 
 namespace Alpaca.Markets
@@ -7,6 +8,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaTradingClient.DeletePositionAsync(DeletePositionRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
+    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public sealed class DeletePositionRequest : Validation.IRequest
     {
         /// <summary>

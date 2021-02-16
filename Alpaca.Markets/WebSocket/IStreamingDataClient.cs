@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Provides unified type-safe access for websocket streaming APIs with data subscriptions.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IStreamingDataClient : IStreamingClient
     {
         /// <summary>

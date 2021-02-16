@@ -6,6 +6,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates last trade information from Polygon REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface ILastTrade
     {

@@ -45,6 +45,7 @@ namespace Alpaca.Markets
                     .AddParameter("start_date", TimeInterval.From, DateTimeHelper.DateFormat)
                     .AddParameter("end_date", TimeInterval.Into, DateTimeHelper.DateFormat)
                     .AddParameter("period", Period?.ToString())
+                    // ReSharper disable once StringLiteralTypo
                     .AddParameter("timeframe", TimeFrame)
                     .AddParameter("extended_hours", ExtendedHours)
             };

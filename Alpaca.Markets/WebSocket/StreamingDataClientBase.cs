@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Provides base implementation for the websocket streaming APIs clients with subscripitons.
+    /// Provides base implementation for the websocket streaming APIs clients with subscriptions.
     /// </summary>
     public abstract class StreamingDataClientBase<TConfiguration>
         : StreamingClientBase<TConfiguration>, IStreamingDataClient
@@ -27,15 +27,15 @@ namespace Alpaca.Markets
             where TJson : class, TApi
             where TApi : IStreamBase
         {
+            private readonly String _stream;
+
             internal AlpacaDataSubscription(
                 String stream) =>
-                Stream = stream;
-
-            public String Stream { get; }
+                _stream = stream;
 
             public IEnumerable<String> Streams
             {
-                get { yield return Stream; }
+                get { yield return _stream; }
             }
 
             public Boolean Subscribed { get; private set; }

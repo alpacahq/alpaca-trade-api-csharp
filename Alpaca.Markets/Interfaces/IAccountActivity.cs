@@ -6,6 +6,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates account activity information from Alpaca REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IAccountActivity
     {

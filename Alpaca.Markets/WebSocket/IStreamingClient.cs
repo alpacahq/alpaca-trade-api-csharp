@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -7,6 +8,8 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for websocket streaming APIs.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
     public interface IStreamingClient : IDisposable
     {
         /// <summary>

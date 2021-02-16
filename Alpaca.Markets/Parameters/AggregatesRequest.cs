@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -30,6 +31,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets aggregation time span (number or bars and base bar size).
         /// </summary>
+        [UsedImplicitly]
         public AggregationPeriod Period { get; }
 
         /// <summary>
@@ -40,6 +42,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets flag indicated that the results should not be adjusted for splits.
         /// </summary>
+        [UsedImplicitly]
         public Boolean Unadjusted { get; set; }
 
         internal UriBuilder GetUriBuilder(
@@ -49,6 +52,7 @@ namespace Alpaca.Markets
             var unixInto = (TimeInterval.Into ?? default).IntoUnixTimeMilliseconds();
 
             var builder = polygonDataClient.GetUriBuilder(
+                // ReSharper disable once StringLiteralTypo
                 $"v2/aggs/ticker/{Symbol}/range/{Period.ToString()}/{unixFrom}/{unixInto}");
 
             builder.QueryBuilder

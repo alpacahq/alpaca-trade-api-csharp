@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -31,26 +32,31 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets single date for data retrieval.
         /// </summary>
+        [UsedImplicitly]
         public DateTime Date { get; }
 
         /// <summary>
         /// Gets or sets initial timestamp for request. Using the timestamp of the last result will give you the next page of results.
         /// </summary>
+        [UsedImplicitly]
         public Int64? Timestamp { get; set; }
 
         /// <summary>
         /// Gets or sets maximum timestamp allowed in the results.
         /// </summary>
+        [UsedImplicitly]
         public Int64? TimestampLimit { get; set; }
 
         /// <summary>
         /// Gets or sets size (number of items) limits fore the response.
         /// </summary>
+        [UsedImplicitly]
         public Int32? Limit { get; set; }
 
         /// <summary>
         /// Gets or sets flag that indicates reversed order of the results.
         /// </summary>
+        [UsedImplicitly]
         public Boolean? Reverse { get; set; }
         
         internal UriBuilder GetUriBuilder(

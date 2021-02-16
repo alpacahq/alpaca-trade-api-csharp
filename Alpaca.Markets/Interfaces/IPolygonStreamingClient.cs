@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API via websockets.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public interface IPolygonStreamingClient : IStreamingDataClient
     {
                 /// <summary>
