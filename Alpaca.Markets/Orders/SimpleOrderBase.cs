@@ -36,7 +36,7 @@ namespace Alpaca.Markets
         /// <returns>New advanced order representing pair of original order and take profit order.</returns>
         public TakeProfitOrder TakeProfit(
             Decimal takeProfitLimitPrice) =>
-            new TakeProfitOrder(
+            new (
                 this, 
                 takeProfitLimitPrice);
 
@@ -47,7 +47,7 @@ namespace Alpaca.Markets
         /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
         public StopLossOrder StopLoss(
             Decimal stopLossStopPrice) =>
-            new StopLossOrder(
+            new (
                 this, 
                 stopLossStopPrice,
                 null);
@@ -61,7 +61,7 @@ namespace Alpaca.Markets
         public StopLossOrder StopLoss(
             Decimal stopLossStopPrice,
             Decimal stopLossLimitPrice) =>
-            new StopLossOrder(
+            new (
                 this, 
                 stopLossStopPrice,
                 stopLossLimitPrice);
@@ -75,7 +75,7 @@ namespace Alpaca.Markets
         public BracketOrder Bracket(
             Decimal takeProfitLimitPrice,
             Decimal stopLossStopPrice) =>
-            new BracketOrder(
+            new (
                 this, 
                 takeProfitLimitPrice, 
                 stopLossStopPrice, 
@@ -92,7 +92,7 @@ namespace Alpaca.Markets
             Decimal takeProfitLimitPrice,
             Decimal stopLossStopPrice,
             Decimal stopLossLimitPrice) =>
-            new BracketOrder(
+            new (
                 this, 
                 takeProfitLimitPrice, 
                 stopLossStopPrice, 

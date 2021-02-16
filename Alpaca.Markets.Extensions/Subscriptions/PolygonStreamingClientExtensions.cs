@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Alpaca.Markets.Extensions
@@ -7,9 +8,10 @@ namespace Alpaca.Markets.Extensions
     /// <summary>
     /// Set of extension methods for the <see cref="IPolygonStreamingClient"/> interface.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static partial class PolygonStreamingClientExtensions
     {
-
         /// <summary>
         /// Gets the trade updates subscription for the all assets from the <paramref name="symbols"/> list.
         /// </summary>

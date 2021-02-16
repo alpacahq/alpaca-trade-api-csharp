@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Alpaca.Markets.Extensions
@@ -7,6 +8,8 @@ namespace Alpaca.Markets.Extensions
     /// <summary>
     /// Set of extension methods for the <see cref="IAlpacaDataStreamingClient"/> interface.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static partial class AlpacaDataStreamingClientExtensions
     {
         private const Int32 MaxAllowedTradeOrQuoteSubscriptionsCount = 30;

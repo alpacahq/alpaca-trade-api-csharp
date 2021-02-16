@@ -20,10 +20,12 @@ namespace Alpaca.Markets
             }
         }
 
+        // ReSharper disable once StringLiteralTypo
         [Conditional("NETFRAMEWORK")]
         public static void SetSecurityProtocol(
             // ReSharper disable once UnusedParameter.Global
             this HttpClient httpClient) =>
+            // ReSharper disable once StringLiteralTypo
             AppContext.SetSwitch("DontEnableSystemDefaultTlsVersions", false);
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
@@ -117,7 +119,7 @@ namespace Alpaca.Markets
                 $"Unable to successfully call REST API endpoint `{request.RequestUri}` after {throttler.MaxRetryAttempts} attempts.");
         }
 
-        private static Uri asUri(String endpointUri) => new Uri(endpointUri, UriKind.RelativeOrAbsolute);
+        private static Uri asUri(String endpointUri) => new (endpointUri, UriKind.RelativeOrAbsolute);
 
         private static StringContent toStringContent<T>(T value)
         {

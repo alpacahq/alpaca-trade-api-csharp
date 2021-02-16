@@ -50,6 +50,10 @@
 
   <ItemGroup>
     <PackageReference Include="Alpaca.Markets" Version="5.0.0-alpha4" />
+    <PackageReference Include="JetBrains.Annotations" Version="2020.3.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>compile;analyzers</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.DotNet.Analyzers.Compatibility" Version="0.2.12-alpha">

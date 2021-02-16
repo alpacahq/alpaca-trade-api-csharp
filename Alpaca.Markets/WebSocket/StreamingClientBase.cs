@@ -18,7 +18,7 @@ namespace Alpaca.Markets
     public abstract class StreamingClientBase<TConfiguration> : IStreamingClient 
         where TConfiguration : StreamingClientConfiguration
     {
-        private readonly SynchronizationQueue _queue = new SynchronizationQueue();
+        private readonly SynchronizationQueue _queue = new ();
 
         internal readonly TConfiguration Configuration;
 

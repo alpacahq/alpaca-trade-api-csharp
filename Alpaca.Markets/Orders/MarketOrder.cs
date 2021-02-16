@@ -28,7 +28,7 @@ namespace Alpaca.Markets
         public static MarketOrder Buy(
             String symbol,
             Int64 quantity) =>
-            new MarketOrder(
+            new (
                 symbol, quantity, OrderSide.Buy);
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Alpaca.Markets
         public static MarketOrder Sell(
             String symbol,
             Int64 quantity) =>
-            new MarketOrder(
+            new (
                 symbol, quantity, OrderSide.Sell);
     }
 }

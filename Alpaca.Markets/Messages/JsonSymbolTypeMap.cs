@@ -13,16 +13,16 @@ namespace Alpaca.Markets
         internal sealed class JsonResults
         {
             [JsonProperty(PropertyName = "types", Required = Required.Default)]
-            public Dictionary<String, String> StockTypes { get; set; } = new Dictionary<String, String>();
+            public Dictionary<String, String> StockTypes { get; set; } = new ();
 
             [JsonProperty(PropertyName = "indexTypes", Required = Required.Default)]
-            public Dictionary<String, String> IndexTypes { get; set; } = new Dictionary<String, String>();
+            public Dictionary<String, String> IndexTypes { get; set; } = new ();
         }
 
         [JsonProperty(PropertyName = "status", Required = Required.Default)]
         public String Status { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "results", Required = Required.Default)]
-        public JsonResults Results { get; set; } = new JsonResults();
+        public JsonResults Results { get; set; } = new ();
     }
 }

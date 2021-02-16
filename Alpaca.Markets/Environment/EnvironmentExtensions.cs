@@ -31,7 +31,7 @@ namespace Alpaca.Markets
         public static AlpacaTradingClientConfiguration GetAlpacaTradingClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-            new AlpacaTradingClientConfiguration
+            new ()
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .AlpacaTradingApi.EnsureNotNull(nameof(IEnvironment.AlpacaTradingApi)),
@@ -60,7 +60,7 @@ namespace Alpaca.Markets
         public static AlpacaDataClientConfiguration GetAlpacaDataClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-            new AlpacaDataClientConfiguration
+            new ()
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .AlpacaDataApi.EnsureNotNull(nameof(IEnvironment.AlpacaDataApi)),
@@ -89,7 +89,7 @@ namespace Alpaca.Markets
         public static PolygonDataClientConfiguration GetPolygonDataClientConfiguration(
             this IEnvironment environment,
             String keyId) =>
-            new PolygonDataClientConfiguration
+            new ()
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .PolygonDataApi.EnsureNotNull(nameof(IEnvironment.PolygonDataApi)),
@@ -118,7 +118,7 @@ namespace Alpaca.Markets
         public static AlpacaStreamingClientConfiguration GetAlpacaStreamingClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-            new AlpacaStreamingClientConfiguration
+            new ()
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .AlpacaStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaStreamingApi)),
@@ -147,7 +147,7 @@ namespace Alpaca.Markets
         public static PolygonStreamingClientConfiguration GetPolygonStreamingClientConfiguration(
             this IEnvironment environment,
             String keyId) =>
-            new PolygonStreamingClientConfiguration
+            new ()
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .PolygonStreamingApi.EnsureNotNull(nameof(IEnvironment.PolygonStreamingApi)),
@@ -177,7 +177,7 @@ namespace Alpaca.Markets
         public static AlpacaDataStreamingClientConfiguration GetAlpacaDataStreamingClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-            new AlpacaDataStreamingClientConfiguration
+            new ()
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .AlpacaDataStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaDataStreamingApi)),

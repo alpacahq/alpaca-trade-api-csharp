@@ -12,12 +12,12 @@ namespace Alpaca.Markets
     {
         private sealed class NextRetryGuard : IDisposable
         {
-            private readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
+            private readonly ReaderWriterLockSlim _lock = new (LockRecursionPolicy.NoRecursion);
 
             /// <summary>
             /// Used to create a random length delay when server responds with a Http status like 503, but provides no Retry-After header.
             /// </summary>
-            private readonly Random _randomRetryWait = new Random();
+            private readonly Random _randomRetryWait = new ();
 
             private DateTime _nextRetryTime = DateTime.MinValue;
 
@@ -77,7 +77,7 @@ namespace Alpaca.Markets
             public void Dispose() => _lock.Dispose();
         }
 
-        private readonly NextRetryGuard _nextRetryGuard = new NextRetryGuard();
+        private readonly NextRetryGuard _nextRetryGuard = new ();
 
         /// <summary>
         /// Times (in millisecond ticks) at which the semaphore should be exited.

@@ -27,7 +27,7 @@ namespace Alpaca.Markets
         }
 
         internal override JsonAuthRequest.JsonData GetAuthenticationData() =>
-            new JsonAuthRequest.JsonData
+            new ()
             {
                 OAuthToken = Value
             };

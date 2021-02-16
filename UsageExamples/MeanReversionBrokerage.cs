@@ -11,8 +11,8 @@ namespace UsageExamples
     // is available to users who have a funded Alpaca brokerage account. By default, it
     // is configured to use the paper trading API, but you can change it to use the live
     // trading API by setting the API_URL.
-    [SuppressMessage("ReSharper", "InconsistentNaming")]
     [SuppressMessage("ReSharper", "UnusedVariable")]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     [SuppressMessage("ReSharper", "RedundantDefaultMemberInitializer")]
     internal sealed class MeanReversionBrokerage : IDisposable
     {
@@ -36,7 +36,7 @@ namespace UsageExamples
 
         private Boolean lastTradeOpen;
 
-        private readonly List<Decimal> closingPrices = new List<Decimal>();
+        private readonly List<Decimal> closingPrices = new ();
 
         public async Task Run()
         {
@@ -72,7 +72,7 @@ namespace UsageExamples
             var bars = await polygonDataClient.ListAggregatesAsync(
                 new AggregatesRequest(symbol, new AggregationPeriod(1, AggregationPeriodUnit.Minute))
                     .SetInclusiveTimeInterval(today, today.AddDays(1)));
-            var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count() - 20));
+            var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count - 20));
             foreach (var bar in lastBars)
             {
                 if (bar.TimeUtc?.Date == today)

@@ -140,7 +140,7 @@ namespace Alpaca.Markets
         }
 
         internal JsonNewOrder GetJsonRequest() =>
-            new JsonNewOrder
+            new ()
             {
                 Symbol = Symbol,
                 Quantity = Quantity,

@@ -38,7 +38,7 @@ namespace Alpaca.Markets
 
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress!)
+            new (httpClient.BaseAddress!)
             {
                 Path = "v2/account/portfolio/history",
                 Query = new QueryBuilder()

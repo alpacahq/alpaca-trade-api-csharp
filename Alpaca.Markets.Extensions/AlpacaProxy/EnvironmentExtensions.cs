@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -7,6 +8,8 @@ namespace Alpaca.Markets.Extensions
     /// clients (<see cref="AlpacaDataStreamingClient"/> and <see cref="PolygonStreamingClient"/>)
     /// with custom values or with local proxy WebSocket URL obtained from environment variables.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class EnvironmentExtensions
     {
         private const String EnvironmentVariableName = "DATA_PROXY_WS";
@@ -62,6 +65,7 @@ namespace Alpaca.Markets.Extensions
         /// in the modified <paramref name="environment"/> object.
         /// </param>
         /// <returns>New environment URLs object.</returns>
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public static IEnvironment WithProxyForAlpacaDataStreamingClient(
             this IEnvironment environment,
             Uri alpacaProxyAgentUrl) =>
@@ -90,6 +94,7 @@ namespace Alpaca.Markets.Extensions
         /// in the modified <paramref name="environment"/> object.
         /// </param>
         /// <returns>New environment URLs object.</returns>
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public static IEnvironment WithProxyForPolygonStreamingClient(
             this IEnvironment environment,
             Uri alpacaProxyAgentUrl) =>
@@ -99,7 +104,7 @@ namespace Alpaca.Markets.Extensions
             };
 
         private static Uri getFromEnvironmentOrDefault() => 
-            new Uri(Environment.GetEnvironmentVariable(EnvironmentVariableName)
-                    ?? DefaultAlpacaProxyAgentUri);
+            new(Environment.GetEnvironmentVariable(EnvironmentVariableName)
+                ?? DefaultAlpacaProxyAgentUri);
     }
 }

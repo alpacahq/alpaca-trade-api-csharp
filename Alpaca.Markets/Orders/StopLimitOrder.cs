@@ -15,8 +15,7 @@ namespace Alpaca.Markets
             Int64 quantity,
             OrderSide side,
             Decimal stopPrice,
-            Decimal limitPrice
-        )
+            Decimal limitPrice)
             : base(
                 symbol, quantity, side,
                 OrderType.StopLimit)
@@ -50,7 +49,7 @@ namespace Alpaca.Markets
             Int64 quantity,
             Decimal stopPrice,
             Decimal limitPrice) =>
-            new StopLimitOrder(
+            new (
                 symbol, quantity, OrderSide.Buy, stopPrice, limitPrice);
 
         /// <summary>
@@ -66,7 +65,7 @@ namespace Alpaca.Markets
             Int64 quantity,
             Decimal stopPrice,
             Decimal limitPrice) =>
-            new StopLimitOrder(
+            new (
                 symbol, quantity, OrderSide.Sell, stopPrice, limitPrice);
 
         internal override JsonNewOrder GetJsonRequest() =>

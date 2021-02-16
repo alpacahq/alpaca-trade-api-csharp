@@ -35,7 +35,7 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             Decimal limitPrice) =>
-            new LimitOrder(
+            new (
                 symbol, quantity, OrderSide.Buy, limitPrice);
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             Decimal limitPrice) =>
-            new LimitOrder(
+            new (
                 symbol, quantity, OrderSide.Sell, limitPrice);
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Alpaca.Markets
         /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
         public OneCancelsOtherOrder OneCancelsOther(
             Decimal stopLossStopPrice) =>
-            new OneCancelsOtherOrder(
+            new (
                 this,
                 stopLossStopPrice,
                 null);
@@ -73,7 +73,7 @@ namespace Alpaca.Markets
         public OneCancelsOtherOrder OneCancelsOther(
             Decimal stopLossStopPrice,
             Decimal stopLossLimitPrice) =>
-            new OneCancelsOtherOrder(
+            new (
                 this,
                 stopLossStopPrice,
                 stopLossLimitPrice);

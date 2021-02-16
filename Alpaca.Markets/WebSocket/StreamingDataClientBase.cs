@@ -53,7 +53,7 @@ namespace Alpaca.Markets
         private sealed class Subscriptions
         {
             private readonly ConcurrentDictionary<String, ISubscription> _subscriptions =
-                new ConcurrentDictionary<String, ISubscription>(StringComparer.Ordinal);
+                new (StringComparer.Ordinal);
 
             public IAlpacaDataSubscription<TApi> GetOrAdd<TApi, TJson>(
                 String stream,
@@ -101,7 +101,7 @@ namespace Alpaca.Markets
 
         internal const String MinuteAggChannel = "AM";
 
-        private readonly Subscriptions _subscriptions = new Subscriptions();
+        private readonly Subscriptions _subscriptions = new ();
 
         /// <summary>
         /// Creates new instance of <see cref="StreamingDataClientBase{TConfiguration}"/> object.

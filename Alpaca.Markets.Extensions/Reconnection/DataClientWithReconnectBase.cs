@@ -11,7 +11,7 @@ namespace Alpaca.Markets.Extensions
         where TClient : IStreamingDataClient
     {
         private readonly ConcurrentDictionary<String, IAlpacaDataSubscription> _subscriptions =
-            new ConcurrentDictionary<String, IAlpacaDataSubscription>(StringComparer.Ordinal);
+            new (StringComparer.Ordinal);
 
         protected DataClientWithReconnectBase(
             TClient client,

@@ -37,7 +37,7 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             TrailOffset trailOffset) =>
-            new TrailingStopOrder(
+            new (
                 symbol, quantity, OrderSide.Buy, trailOffset);
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             TrailOffset trailOffset) =>
-            new TrailingStopOrder(
+            new(
                 symbol, quantity, OrderSide.Sell, trailOffset);
 
         internal override JsonNewOrder GetJsonRequest() =>

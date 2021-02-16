@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed class ListOrdersRequest : IRequestWithTimeInterval<IExclusiveTimeInterval>
     {
-        private readonly HashSet<String> _symbols = new HashSet<String>(StringComparer.Ordinal);
+        private readonly HashSet<String> _symbols = new (StringComparer.Ordinal);
         
         /// <summary>
         /// Gets or sets order status for filtering.
@@ -78,7 +78,7 @@ namespace Alpaca.Markets
 
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress!)
+            new (httpClient.BaseAddress!)
             {
                 Path = "v2/orders",
                 Query = new QueryBuilder()

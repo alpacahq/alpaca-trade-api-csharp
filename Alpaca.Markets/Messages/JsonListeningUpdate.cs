@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     internal sealed class JsonListeningUpdate
     {
         [JsonProperty(PropertyName = "streams", Required = Required.Default)]
-        public List<String> Streams { get; set; } = new List<String>();
+        public List<String> Streams { get; set; } = new ();
 
         [JsonProperty(PropertyName = "error", Required = Required.Default)]
         public String Error { get; set; } = String.Empty;

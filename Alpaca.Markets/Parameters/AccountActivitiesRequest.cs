@@ -14,7 +14,7 @@ namespace Alpaca.Markets
     [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public sealed class AccountActivitiesRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>
     {
-        private readonly List<AccountActivityType> _accountActivityTypes = new List<AccountActivityType>();
+        private readonly List<AccountActivityType> _accountActivityTypes = new ();
 
         /// <summary>
         /// Creates new instance of <see cref="AccountActivitiesRequest"/> object for all activity types.
@@ -30,20 +30,16 @@ namespace Alpaca.Markets
         /// <param name="activityType">The activity type you want to view entries for.</param>
         [UsedImplicitly]
         public AccountActivitiesRequest(
-            AccountActivityType activityType)
-        {
+            AccountActivityType activityType) =>
             _accountActivityTypes.Add(activityType);
-        }
 
         /// <summary>
         /// Creates new instance of <see cref="BarSetRequest"/> object for several activity types.
         /// </summary>
         /// <param name="activityTypes">The list of activity types you want to view entries for.</param>
         public AccountActivitiesRequest(
-            IEnumerable<AccountActivityType> activityTypes)
-        {
+            IEnumerable<AccountActivityType> activityTypes) =>
             _accountActivityTypes.AddRange(activityTypes.Distinct());
-        }
 
         /// <summary>
         /// Gets the activity types you want to view entries for. Empty list means 'all activity types'.
@@ -80,6 +76,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="date">Target date for filtering activities.</param>
         /// <returns>Fluent interface method return same <see cref="AccountActivitiesRequest"/> instance.</returns>
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public AccountActivitiesRequest SetSingleDate(
             DateTime date)
         {
@@ -90,7 +87,7 @@ namespace Alpaca.Markets
 
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress!)
+            new (httpClient.BaseAddress!)
             {
                 Path = "v2/account/activities",
                 Query = new QueryBuilder()

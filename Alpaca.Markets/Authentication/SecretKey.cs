@@ -23,14 +23,16 @@ namespace Alpaca.Markets
 
         internal override IEnumerable<KeyValuePair<String, String>> GetAuthenticationHeaders()
         {
+            // ReSharper disable StringLiteralTypo
             yield return new KeyValuePair<String, String>(
                 "APCA-API-KEY-ID", KeyId);
             yield return new KeyValuePair<String, String>(
                 "APCA-API-SECRET-KEY", Value);
+            // ReSharper restore StringLiteralTypo
         }
 
         internal override JsonAuthRequest.JsonData GetAuthenticationData() =>
-            new JsonAuthRequest.JsonData
+            new ()
             {
                 KeyId = KeyId,
                 SecretKey = Value

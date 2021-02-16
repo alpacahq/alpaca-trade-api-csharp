@@ -153,7 +153,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets throttle parameters initialized with default values or from configuration file.
         /// </summary>
-        public static ThrottleParameters Default { get; } = new ThrottleParameters();
+        public static ThrottleParameters Default { get; } = new ();
 
         private void checkIfNotTooLateToConfigure(
             [System.Runtime.CompilerServices.CallerMemberName] String propertyName = "<Unknown>")

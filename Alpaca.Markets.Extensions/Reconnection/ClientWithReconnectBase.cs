@@ -8,12 +8,11 @@ namespace Alpaca.Markets.Extensions
     internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
         where TClient : IStreamingClient
     {
-            private readonly CancellationTokenSource _cancellationTokenSource =
-                new CancellationTokenSource();
+            private readonly CancellationTokenSource _cancellationTokenSource = new ();
 
             private readonly ReconnectionParameters _reconnectionParameters;
 
-            private readonly Random _random = new Random();
+            private readonly Random _random = new ();
 
             protected readonly TClient Client;
 

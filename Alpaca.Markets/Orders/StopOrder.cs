@@ -38,7 +38,7 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             Decimal stopPrice) =>
-            new StopOrder(
+            new (
                 symbol, quantity, OrderSide.Buy, stopPrice);
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             Decimal stopPrice) =>
-            new StopOrder(
+            new (
                 symbol, quantity, OrderSide.Sell, stopPrice);
 
         internal override JsonNewOrder GetJsonRequest() =>

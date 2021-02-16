@@ -42,7 +42,7 @@ namespace Alpaca.Markets
         [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public static TrailOffset InDollars(
             Decimal value) =>
-            new TrailOffset(value, true);
+            new (value, true);
         
         /// <summary>
         /// Creates new instance of the <see cref="TrailOffset"/> object
@@ -53,7 +53,7 @@ namespace Alpaca.Markets
         [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public static TrailOffset InPercent(
             Decimal value) =>
-            new TrailOffset(value, false);
+            new (value, false);
 
         /// <inheritdoc />
         public override Boolean Equals(Object? obj) =>

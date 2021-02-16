@@ -73,7 +73,7 @@ namespace Alpaca.Markets
 
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress!)
+            new (httpClient.BaseAddress!)
             {
                 Path = $"v1/bars/{TimeFrame.ToEnumString()}",
                 Query = new QueryBuilder()
