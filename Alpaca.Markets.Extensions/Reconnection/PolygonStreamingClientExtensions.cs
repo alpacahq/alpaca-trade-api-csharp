@@ -6,7 +6,7 @@ namespace Alpaca.Markets.Extensions
     /// Helper extension method for creating special version of the <see cref="IPolygonStreamingClient"/>
     /// implementation with automatic reconnection (with configurable delay and number of attempts) support.
     /// </summary>
-    public static class PolygonStreamingClientExtensions
+    public static partial class PolygonStreamingClientExtensions
     {
         private sealed class ClientWithReconnection :
             DataClientWithReconnectBase<IPolygonStreamingClient>,

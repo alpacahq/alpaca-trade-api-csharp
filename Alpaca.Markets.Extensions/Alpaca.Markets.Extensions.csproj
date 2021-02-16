@@ -17,7 +17,7 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Service release - limits the upper version of the main package by 5.0.0-alpha3 for the proper upgrade.</PackageReleaseNotes>
+    <PackageReleaseNotes>- The `PolygonStreamingClient` extensions adjusted according to the changes in the main SDK package, helper methods for the multi-symbols subscription added into the extensions package.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
