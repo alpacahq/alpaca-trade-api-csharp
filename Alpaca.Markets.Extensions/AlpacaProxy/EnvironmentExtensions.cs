@@ -104,7 +104,7 @@ namespace Alpaca.Markets.Extensions
             };
 
         private static Uri getFromEnvironmentOrDefault() => 
-            new(Environment.GetEnvironmentVariable(EnvironmentVariableName)
+            new(Environment.GetEnvironmentVariable(EnvironmentVariableName) //-V3022
                 ?? DefaultAlpacaProxyAgentUri);
     }
 }

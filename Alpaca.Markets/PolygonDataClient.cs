@@ -144,7 +144,7 @@ namespace Alpaca.Markets
         internal PolygonUriBuilder GetUriBuilder(
             String path)
             => new (
-                new UriBuilder(_httpClient.BaseAddress!)
+                new UriBuilder(_httpClient.BaseAddress!) //-V3117
                 {
                     Path = path
                 }, 

@@ -157,7 +157,7 @@ namespace Alpaca.Markets
             where TJson : class, TApi
             where TApi : IStreamBase =>
             _subscriptions.GetOrAdd<TApi, TJson>(
-                channelName, $"{channelName}.{symbol}");
+                $"{channelName}.{symbol}", channelName);
 
         /// <summary>
         /// Gets typed subscription for the all symbols on the particular channel.
@@ -171,7 +171,7 @@ namespace Alpaca.Markets
             where TJson : class, TApi
             where TApi : IStreamBase =>
             _subscriptions.GetOrAdd<TApi, TJson>(
-                channelName, $"{channelName}.*");
+                $"{channelName}.*", channelName);
 
                 
         /// <summary>
