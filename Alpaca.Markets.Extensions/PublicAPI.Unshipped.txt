@@ -1,0 +1,2 @@
+﻿#nullable enable
+static Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable<TItem>(this Alpaca.Markets.IAlpacaDataSubscription<TItem>! subscription, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<TItem>!
