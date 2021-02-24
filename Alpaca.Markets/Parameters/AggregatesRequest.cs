@@ -6,6 +6,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates request parameters for <see cref="PolygonDataClient.ListAggregatesAsync(AggregatesRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
+    [Obsolete("This class will be removed in the next major SDK release", false)]
     public sealed class AggregatesRequest : Validation.IRequest, IRequestWithTimeInterval<IInclusiveTimeInterval>
     {
         /// <summary>

@@ -7,6 +7,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Configuration parameters object for <see cref="PolygonDataClient"/> class.
     /// </summary>
+    [Obsolete("This class will be removed in the next major SDK release", false)]
     public sealed class PolygonDataClientConfiguration
     {
         /// <summary>

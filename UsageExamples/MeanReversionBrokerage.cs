@@ -5,14 +5,17 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
+// TODO: olegra - temporary disable for the transition period
+#pragma warning disable 618
+
 namespace UsageExamples
 {
     // This version of the mean reversion example algorithm utilizes Polygon data that
     // is available to users who have a funded Alpaca brokerage account. By default, it
     // is configured to use the paper trading API, but you can change it to use the live
     // trading API by setting the API_URL.
-    [SuppressMessage("ReSharper", "InconsistentNaming")]
     [SuppressMessage("ReSharper", "UnusedVariable")]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     [SuppressMessage("ReSharper", "RedundantDefaultMemberInitializer")]
     internal sealed class MeanReversionBrokerage : IDisposable
     {
