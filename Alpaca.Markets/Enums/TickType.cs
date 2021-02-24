@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
-    [Obsolete("This enum will be removed in the next major SDK release", false)]
+    [Obsolete("This enum will be removed in the next major SDK release", true)]
     public enum TickType
     {
         /// <summary>

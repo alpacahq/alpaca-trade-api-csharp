@@ -5,9 +5,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
-// TODO: olegra - temporary disable for the transition period
-#pragma warning disable 618
-
 namespace UsageExamples
 {
     // This version of the mean reversion example algorithm utilizes Polygon data that
@@ -27,13 +24,13 @@ namespace UsageExamples
 
         private Decimal scale = 200;
 
-        private IPolygonDataClient polygonDataClient;
+        private IAlpacaDataClient alpacaDataClient;
 
         private IAlpacaTradingClient alpacaTradingClient;
 
         private IAlpacaStreamingClient alpacaStreamingClient;
 
-        private IPolygonStreamingClient polygonStreamingClient;
+        private IAlpacaDataStreamingClient alpacaDataStreamingClient;
 
         private Guid lastTradeId = Guid.NewGuid();
 
@@ -45,7 +42,7 @@ namespace UsageExamples
         {
             alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(new SecretKey(API_KEY, API_SECRET));
 
-            polygonDataClient = Environments.Paper.GetPolygonDataClient(API_KEY);
+            alpacaDataClient = Environments.Paper.GetAlpacaDataClient(new SecretKey(API_KEY, API_SECRET));
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
             alpacaStreamingClient = Environments.Paper.GetAlpacaStreamingClient(new SecretKey(API_KEY, API_SECRET));
@@ -71,29 +68,33 @@ namespace UsageExamples
             closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 
             var today = DateTime.Today;
+
+            // TODO: olegra - temporary disable for the transition period
+
             // Get the first group of bars from today if the market has already been open.
-            var bars = await polygonDataClient.ListAggregatesAsync(
-                new AggregatesRequest(symbol, new AggregationPeriod(1, AggregationPeriodUnit.Minute))
-                    .SetInclusiveTimeInterval(today, today.AddDays(1)));
-            var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count() - 20));
-            foreach (var bar in lastBars)
-            {
-                if (bar.TimeUtc?.Date == today)
-                {
-                    closingPrices.Add(bar.Close);
-                }
-            }
+            //var bars = await alpacaDataClient.ListAggregatesAsync(
+            //    new AggregatesRequest(symbol, new AggregationPeriod(1, AggregationPeriodUnit.Minute))
+            //        .SetInclusiveTimeInterval(today, today.AddDays(1)));
+            //var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count() - 20));
+            //foreach (var bar in lastBars)
+            //{
+            //    if (bar.TimeUtc?.Date == today)
+            //    {
+            //        closingPrices.Add(bar.Close);
+            //    }
+            //}
 
             Console.WriteLine("Waiting for market open...");
             await AwaitMarketOpen();
             Console.WriteLine("Market opened.");
 
             // Connect to Polygon's websocket and listen for price updates.
-            polygonStreamingClient = Environments.Live.GetPolygonStreamingClient(API_KEY);
+            alpacaDataStreamingClient = Environments.Live.GetAlpacaDataStreamingClient(new SecretKey(API_KEY, API_SECRET));
 
-            polygonStreamingClient.ConnectAndAuthenticateAsync().Wait();
+            alpacaDataStreamingClient.ConnectAndAuthenticateAsync().Wait();
             Console.WriteLine("Polygon client opened.");
-            polygonStreamingClient.MinuteAggReceived += async (agg) =>
+            var subscription = alpacaDataStreamingClient.GetMinuteAggSubscription(symbol);
+            subscription.Received += async (agg) =>
             {
                 // If the market's close to closing, exit position and stop trading.
                 TimeSpan minutesUntilClose = closingTime - DateTime.UtcNow;
@@ -101,7 +102,7 @@ namespace UsageExamples
                 {
                     Console.WriteLine("Reached the end of trading window.");
                     await ClosePositionAtMarket();
-                    await polygonStreamingClient.DisconnectAsync();
+                    await alpacaDataStreamingClient.DisconnectAsync();
                 }
                 else
                 {
@@ -109,15 +110,15 @@ namespace UsageExamples
                     await HandleMinuteAgg(agg);
                 }
             };
-            polygonStreamingClient.SubscribeMinuteAgg(symbol);
+            alpacaDataStreamingClient.Subscribe(subscription);
         }
 
         public void Dispose()
         {
             alpacaTradingClient?.Dispose();
-            polygonDataClient?.Dispose();
+            alpacaDataClient?.Dispose();
             alpacaStreamingClient?.Dispose();
-            polygonStreamingClient?.Dispose();
+            alpacaDataStreamingClient?.Dispose();
         }
 
         // Waits until the clock says the market is open.

@@ -5,7 +5,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Configuration parameters object for <see cref="PolygonStreamingClient"/> class.
     /// </summary>
-    [Obsolete("This class will be removed in the next major SDK release", false)]
+    [Obsolete("This class will be removed in the next major SDK release", true)]
     public sealed class PolygonStreamingClientConfiguration : StreamingClientConfiguration
     {
         /// <summary>

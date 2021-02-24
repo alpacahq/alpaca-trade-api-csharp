@@ -8,7 +8,7 @@ namespace Alpaca.Markets.Extensions
     /// Set of extensions methods for registering the strongly-typed Polygon.io REST API clients
     /// in the default Microsoft dependency injection container used by the most .NET hosts.
     /// </summary>
-    [Obsolete("This class will be removed in the next major SDK release", false)]
+    [Obsolete("This class will be removed in the next major SDK release", true)]
     public static class PolygonServiceCollectionExtensions
     {
         /// <summary>
@@ -19,7 +19,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="environment">Alpaca environment data.</param>
         /// <param name="keyId">Alpaca API key used for Polygon.io connection.</param>
         /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
-        [Obsolete("This method will be removed in the next major SDK release", false)]
+        [Obsolete("This method will be removed in the next major SDK release", true)]
         public static IServiceCollection AddPolygonDataClient(
             this IServiceCollection services,
             IEnvironment environment,
