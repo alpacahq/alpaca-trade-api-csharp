@@ -97,42 +97,12 @@ namespace Alpaca.Markets
             };
 
         /// <summary>
-        /// Creates the new instance of <see cref="IPolygonStreamingClient"/> interface
-        /// implementation for specific environment provided as <paramref name="environment"/> argument.
-        /// </summary>
-        /// <param name="environment">Target environment for new object.</param>
-        /// <param name="keyId">Alpaca API key identifier.</param>
-        /// <returns>The new instance of <see cref="IPolygonStreamingClient"/> interface implementation.</returns>
-        public static IPolygonStreamingClient GetPolygonStreamingClient(
-            this IEnvironment environment,
-            String keyId) =>
-            new PolygonStreamingClient(environment.GetPolygonStreamingClientConfiguration(keyId));
-
-        /// <summary>
-        /// Creates new instance of <see cref="PolygonStreamingClientConfiguration"/> for specific
-        /// environment provided as <paramref name="environment"/> argument.
-        /// </summary>
-        /// <param name="environment">Target environment for new object.</param>
-        /// <param name="keyId">Alpaca API key identifier.</param>
-        /// <returns>New instance of <see cref="PolygonStreamingClientConfiguration"/> object.</returns>
-        public static PolygonStreamingClientConfiguration GetPolygonStreamingClientConfiguration(
-            this IEnvironment environment,
-            String keyId) =>
-            new ()
-            {
-                ApiEndpoint = environment.EnsureNotNull(nameof(environment))
-                    .PolygonStreamingApi.EnsureNotNull(nameof(IEnvironment.PolygonStreamingApi)),
-                KeyId = keyId.EnsureNotNull(nameof(keyId))
-            };
-
-        /// <summary>
         /// Creates the new instance of <see cref="IAlpacaDataStreamingClient"/> interface
         /// implementation for specific environment provided as <paramref name="environment"/> argument.
         /// </summary>
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaDataStreamingClient"/> interface implementation.</returns>
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public static IAlpacaDataStreamingClient GetAlpacaDataStreamingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>

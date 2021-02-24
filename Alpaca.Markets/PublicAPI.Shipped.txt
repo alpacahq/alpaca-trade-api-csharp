@@ -440,13 +440,6 @@ Alpaca.Markets.IOrder.UpdatedAtUtc.get -> System.DateTime?
 Alpaca.Markets.IOrderActionStatus
 Alpaca.Markets.IOrderActionStatus.IsSuccess.get -> bool
 Alpaca.Markets.IOrderActionStatus.OrderId.get -> System.Guid
-Alpaca.Markets.IPolygonStreamingClient
-Alpaca.Markets.IPolygonStreamingClient.GetMinuteAggSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
-Alpaca.Markets.IPolygonStreamingClient.GetMinuteAggSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
-Alpaca.Markets.IPolygonStreamingClient.GetQuoteSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamQuote!>!
-Alpaca.Markets.IPolygonStreamingClient.GetSecondAggSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
-Alpaca.Markets.IPolygonStreamingClient.GetSecondAggSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
-Alpaca.Markets.IPolygonStreamingClient.GetTradeSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamTrade!>!
 Alpaca.Markets.IPortfolioHistory
 Alpaca.Markets.IPortfolioHistory.BaseValue.get -> decimal
 Alpaca.Markets.IPortfolioHistory.Items.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IPortfolioHistoryItem!>!
@@ -663,18 +656,6 @@ Alpaca.Markets.OrderType.Market = 0 -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderType.Stop = 1 -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderType.StopLimit = 3 -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderType.TrailingStop = 4 -> Alpaca.Markets.OrderType
-Alpaca.Markets.PolygonStreamingClient
-Alpaca.Markets.PolygonStreamingClient.GetMinuteAggSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
-Alpaca.Markets.PolygonStreamingClient.GetMinuteAggSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
-Alpaca.Markets.PolygonStreamingClient.GetQuoteSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamQuote!>!
-Alpaca.Markets.PolygonStreamingClient.GetSecondAggSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
-Alpaca.Markets.PolygonStreamingClient.GetSecondAggSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
-Alpaca.Markets.PolygonStreamingClient.GetTradeSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamTrade!>!
-Alpaca.Markets.PolygonStreamingClient.PolygonStreamingClient(Alpaca.Markets.PolygonStreamingClientConfiguration! configuration) -> void
-Alpaca.Markets.PolygonStreamingClientConfiguration
-Alpaca.Markets.PolygonStreamingClientConfiguration.KeyId.get -> string!
-Alpaca.Markets.PolygonStreamingClientConfiguration.KeyId.set -> void
-Alpaca.Markets.PolygonStreamingClientConfiguration.PolygonStreamingClientConfiguration() -> void
 Alpaca.Markets.PortfolioHistoryRequest
 Alpaca.Markets.PortfolioHistoryRequest.ExtendedHours.get -> bool?
 Alpaca.Markets.PortfolioHistoryRequest.ExtendedHours.set -> void
@@ -820,8 +801,6 @@ static Alpaca.Markets.EnvironmentExtensions.GetAlpacaStreamingClient(this Alpaca
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaStreamingClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaStreamingClientConfiguration!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaTradingClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaTradingClient!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaTradingClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaTradingClientConfiguration!
-static Alpaca.Markets.EnvironmentExtensions.GetPolygonStreamingClient(this Alpaca.Markets.IEnvironment! environment, string! keyId) -> Alpaca.Markets.IPolygonStreamingClient!
-static Alpaca.Markets.EnvironmentExtensions.GetPolygonStreamingClientConfiguration(this Alpaca.Markets.IEnvironment! environment, string! keyId) -> Alpaca.Markets.PolygonStreamingClientConfiguration!
 static Alpaca.Markets.Environments.Live.get -> Alpaca.Markets.IEnvironment!
 static Alpaca.Markets.Environments.Paper.get -> Alpaca.Markets.IEnvironment!
 static Alpaca.Markets.HistoryPeriod.operator !=(Alpaca.Markets.HistoryPeriod lhs, Alpaca.Markets.HistoryPeriod rhs) -> bool

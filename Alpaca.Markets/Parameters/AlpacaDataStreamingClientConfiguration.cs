@@ -11,7 +11,7 @@ namespace Alpaca.Markets
         /// Creates new instance of <see cref="AlpacaDataStreamingClientConfiguration"/> class.
         /// </summary>
         public AlpacaDataStreamingClientConfiguration()
-            : base(Environments.Live.PolygonStreamingApi)
+            : base(Environments.Live.AlpacaDataStreamingApi)
         {
             SecurityId = new SecretKey(String.Empty, String.Empty);
         }

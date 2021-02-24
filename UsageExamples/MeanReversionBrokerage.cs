@@ -30,7 +30,7 @@ namespace UsageExamples
 
         private IAlpacaStreamingClient alpacaStreamingClient;
 
-        private IPolygonStreamingClient polygonStreamingClient;
+        private IAlpacaDataStreamingClient alpacaDataStreamingClient;
 
         private Guid lastTradeId = Guid.NewGuid();
 
@@ -88,12 +88,12 @@ namespace UsageExamples
             Console.WriteLine("Market opened.");
 
             // Connect to Polygon's websocket and listen for price updates.
-            polygonStreamingClient = Environments.Live.GetPolygonStreamingClient(API_KEY);
+            alpacaDataStreamingClient = Environments.Live.GetAlpacaDataStreamingClient(new SecretKey(API_KEY, API_SECRET));
 
-            polygonStreamingClient.ConnectAndAuthenticateAsync().Wait();
+            alpacaDataStreamingClient.ConnectAndAuthenticateAsync().Wait();
             Console.WriteLine("Polygon client opened.");
 
-            var subscription = polygonStreamingClient.GetMinuteAggSubscription(symbol);
+            var subscription = alpacaDataStreamingClient.GetMinuteAggSubscription(symbol);
             subscription.Received += async (agg) =>
             {
                 // If the market's close to closing, exit position and stop trading.
@@ -102,7 +102,7 @@ namespace UsageExamples
                 {
                     Console.WriteLine("Reached the end of trading window.");
                     await ClosePositionAtMarket();
-                    await polygonStreamingClient.DisconnectAsync();
+                    await alpacaDataStreamingClient.DisconnectAsync();
                 }
                 else
                 {
@@ -110,7 +110,7 @@ namespace UsageExamples
                     await HandleMinuteAgg(agg);
                 }
             };
-            polygonStreamingClient.Subscribe(subscription);
+            alpacaDataStreamingClient.Subscribe(subscription);
         }
 
         public void Dispose()
@@ -118,7 +118,7 @@ namespace UsageExamples
             alpacaTradingClient?.Dispose();
             alpacaDataClient?.Dispose();
             alpacaStreamingClient?.Dispose();
-            polygonStreamingClient?.Dispose();
+            alpacaDataStreamingClient?.Dispose();
         }
 
         // Waits until the clock says the market is open.
