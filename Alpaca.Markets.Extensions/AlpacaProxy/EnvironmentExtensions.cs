@@ -21,7 +21,9 @@ namespace Alpaca.Markets.Extensions
                 IEnvironment environment)
             {
                 _environment = environment;
+#pragma warning disable 618
                 PolygonStreamingApi = _environment.PolygonStreamingApi;
+#pragma warning restore 618
                 AlpacaDataStreamingApi = _environment.AlpacaDataStreamingApi;
             }
 
@@ -33,7 +35,9 @@ namespace Alpaca.Markets.Extensions
 
             public Uri AlpacaDataApi => _environment.AlpacaDataApi;
 
+#pragma warning disable 618
             public Uri PolygonDataApi => _environment.PolygonDataApi;
+#pragma warning restore 618
 
             public Uri AlpacaStreamingApi => _environment.AlpacaStreamingApi;
         }
@@ -68,6 +72,7 @@ namespace Alpaca.Markets.Extensions
         /// in the modified <paramref name="environment"/> object.
         /// </param>
         /// <returns>New environment URLs object.</returns>
+        [Obsolete("This method will be removed in the next major SDK release", false)]
         public static IEnvironment WithProxyForPolygonStreamingClient(
             this IEnvironment environment,
             Uri? alpacaProxyAgentUrl = null) =>

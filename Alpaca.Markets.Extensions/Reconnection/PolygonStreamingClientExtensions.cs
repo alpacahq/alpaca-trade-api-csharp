@@ -7,6 +7,7 @@ namespace Alpaca.Markets.Extensions
     /// Helper extension method for creating special version of the <see cref="IPolygonStreamingClient"/>
     /// implementation with automatic reconnection (with configurable delay and number of attempts) support.
     /// </summary>
+    [Obsolete("This class will be removed in the next major SDK release", false)]
     public static class PolygonStreamingClientExtensions
     {
         [Flags]
@@ -204,6 +205,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="client">Original streaming client for wrapping.</param>
         /// <param name="parameters">Reconnection parameters (or default if missing).</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        [Obsolete("This method will be removed in the next major SDK release", false)]
         public static IPolygonStreamingClient WithReconnect(
             this IPolygonStreamingClient client,
             ReconnectionParameters? parameters = null) =>
