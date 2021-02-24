@@ -68,35 +68,6 @@ namespace Alpaca.Markets
             };
 
         /// <summary>
-        /// Creates the new instance of <see cref="IPolygonDataClient"/> interface
-        /// implementation for specific environment provided as <paramref name="environment"/> argument.
-        /// </summary>
-        /// <param name="environment">Target environment for new object.</param>
-        /// <param name="keyId">Alpaca API key identifier.</param>
-        /// <returns>The new instance of <see cref="IPolygonDataClient"/> interface implementation.</returns>
-        public static IPolygonDataClient GetPolygonDataClient(
-            this IEnvironment environment,
-            String keyId) =>
-            new PolygonDataClient(environment.GetPolygonDataClientConfiguration(keyId));
-
-        /// <summary>
-        /// Creates new instance of <see cref="PolygonDataClientConfiguration"/> for specific
-        /// environment provided as <paramref name="environment"/> argument.
-        /// </summary>
-        /// <param name="environment">Target environment for new object.</param>
-        /// <param name="keyId">Alpaca API key identifier.</param>
-        /// <returns>New instance of <see cref="PolygonDataClientConfiguration"/> object.</returns>
-        public static PolygonDataClientConfiguration GetPolygonDataClientConfiguration(
-            this IEnvironment environment,
-            String keyId) =>
-            new ()
-            {
-                ApiEndpoint = environment.EnsureNotNull(nameof(environment))
-                    .PolygonDataApi.EnsureNotNull(nameof(IEnvironment.PolygonDataApi)),
-                KeyId = keyId ?? throw new ArgumentNullException(nameof(keyId))
-            };
-
-        /// <summary>
         /// Creates the new instance of <see cref="IAlpacaStreamingClient"/> interface
         /// implementation for specific environment provided as <paramref name="environment"/> argument.
         /// </summary>

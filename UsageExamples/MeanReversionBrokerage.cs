@@ -24,7 +24,7 @@ namespace UsageExamples
 
         private const Decimal scale = 200;
 
-        private IPolygonDataClient polygonDataClient;
+        private IAlpacaDataClient alpacaDataClient;
 
         private IAlpacaTradingClient alpacaTradingClient;
 
@@ -42,7 +42,7 @@ namespace UsageExamples
         {
             alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(new SecretKey(API_KEY, API_SECRET));
 
-            polygonDataClient = Environments.Paper.GetPolygonDataClient(API_KEY);
+            alpacaDataClient = Environments.Paper.GetAlpacaDataClient(new SecretKey(API_KEY, API_SECRET));
 
             // Connect to Alpaca's websocket and listen for updates on our orders.
             alpacaStreamingClient = Environments.Paper.GetAlpacaStreamingClient(new SecretKey(API_KEY, API_SECRET));
@@ -67,19 +67,21 @@ namespace UsageExamples
 
             closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 
-            var today = DateTime.Today;
-            // Get the first group of bars from today if the market has already been open.
-            var bars = await polygonDataClient.ListAggregatesAsync(
-                new AggregatesRequest(symbol, new AggregationPeriod(1, AggregationPeriodUnit.Minute))
-                    .SetInclusiveTimeInterval(today, today.AddDays(1)));
-            var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count - 20));
-            foreach (var bar in lastBars)
-            {
-                if (bar.TimeUtc?.Date == today)
-                {
-                    closingPrices.Add(bar.Close);
-                }
-            }
+            // TODO: olegra - re-enable after Alpaca Data API v2 transition period completion
+
+            //var today = DateTime.Today;
+            //// Get the first group of bars from today if the market has already been open.
+            //var bars = await alpacaDataClient.ListAggregatesAsync(
+            //    new AggregatesRequest(symbol, new AggregationPeriod(1, AggregationPeriodUnit.Minute))
+            //        .SetInclusiveTimeInterval(today, today.AddDays(1)));
+            //var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count - 20));
+            //foreach (var bar in lastBars)
+            //{
+            //    if (bar.TimeUtc?.Date == today)
+            //    {
+            //        closingPrices.Add(bar.Close);
+            //    }
+            //}
 
             Console.WriteLine("Waiting for market open...");
             await AwaitMarketOpen();
@@ -114,7 +116,7 @@ namespace UsageExamples
         public void Dispose()
         {
             alpacaTradingClient?.Dispose();
-            polygonDataClient?.Dispose();
+            alpacaDataClient?.Dispose();
             alpacaStreamingClient?.Dispose();
             polygonStreamingClient?.Dispose();
         }

@@ -57,18 +57,6 @@ Alpaca.Markets.AccountStatus.Submitted = 2 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AdvancedOrderBase
 Alpaca.Markets.AdvancedOrderBase.AdvancedOrderBase(Alpaca.Markets.OrderBase! baseOrder, Alpaca.Markets.OrderClass orderClass) -> void
 Alpaca.Markets.AdvancedOrderBase.OrderClass.get -> Alpaca.Markets.OrderClass
-Alpaca.Markets.AggregatesRequest
-Alpaca.Markets.AggregatesRequest.AggregatesRequest(string! symbol, Alpaca.Markets.AggregationPeriod period) -> void
-Alpaca.Markets.AggregatesRequest.Period.get -> Alpaca.Markets.AggregationPeriod
-Alpaca.Markets.AggregatesRequest.Symbol.get -> string!
-Alpaca.Markets.AggregatesRequest.TimeInterval.get -> Alpaca.Markets.IInclusiveTimeInterval!
-Alpaca.Markets.AggregatesRequest.Unadjusted.get -> bool
-Alpaca.Markets.AggregatesRequest.Unadjusted.set -> void
-Alpaca.Markets.AggregationPeriod
-Alpaca.Markets.AggregationPeriod.AggregationPeriod() -> void
-Alpaca.Markets.AggregationPeriod.AggregationPeriod(int value, Alpaca.Markets.AggregationPeriodUnit unit) -> void
-Alpaca.Markets.AggregationPeriod.Equals(Alpaca.Markets.AggregationPeriod other) -> bool
-Alpaca.Markets.AggregationPeriod.Value.get -> int
 Alpaca.Markets.AggregationPeriodUnit
 Alpaca.Markets.AggregationPeriodUnit.Day = 2 -> Alpaca.Markets.AggregationPeriodUnit
 Alpaca.Markets.AggregationPeriodUnit.Hour = 1 -> Alpaca.Markets.AggregationPeriodUnit
@@ -229,18 +217,6 @@ Alpaca.Markets.ExchangeType
 Alpaca.Markets.ExchangeType.Banking = 1 -> Alpaca.Markets.ExchangeType
 Alpaca.Markets.ExchangeType.Exchange = 0 -> Alpaca.Markets.ExchangeType
 Alpaca.Markets.ExchangeType.TradeReportingFacility = 2 -> Alpaca.Markets.ExchangeType
-Alpaca.Markets.HistoricalRequest
-Alpaca.Markets.HistoricalRequest.Date.get -> System.DateTime
-Alpaca.Markets.HistoricalRequest.HistoricalRequest(string! symbol, System.DateTime date) -> void
-Alpaca.Markets.HistoricalRequest.Limit.get -> int?
-Alpaca.Markets.HistoricalRequest.Limit.set -> void
-Alpaca.Markets.HistoricalRequest.Reverse.get -> bool?
-Alpaca.Markets.HistoricalRequest.Reverse.set -> void
-Alpaca.Markets.HistoricalRequest.Symbol.get -> string!
-Alpaca.Markets.HistoricalRequest.Timestamp.get -> long?
-Alpaca.Markets.HistoricalRequest.Timestamp.set -> void
-Alpaca.Markets.HistoricalRequest.TimestampLimit.get -> long?
-Alpaca.Markets.HistoricalRequest.TimestampLimit.set -> void
 Alpaca.Markets.HistoryPeriod
 Alpaca.Markets.HistoryPeriod.Equals(Alpaca.Markets.HistoryPeriod other) -> bool
 Alpaca.Markets.HistoryPeriod.HistoryPeriod() -> void
@@ -464,16 +440,6 @@ Alpaca.Markets.IOrder.UpdatedAtUtc.get -> System.DateTime?
 Alpaca.Markets.IOrderActionStatus
 Alpaca.Markets.IOrderActionStatus.IsSuccess.get -> bool
 Alpaca.Markets.IOrderActionStatus.OrderId.get -> System.Guid
-Alpaca.Markets.IPolygonDataClient
-Alpaca.Markets.IPolygonDataClient.GetConditionMapAsync(Alpaca.Markets.TickType tickType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<long, string!>!>!
-Alpaca.Markets.IPolygonDataClient.GetConditionMapAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<long, string!>!>!
-Alpaca.Markets.IPolygonDataClient.GetLastQuoteAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ILastQuote!>!
-Alpaca.Markets.IPolygonDataClient.GetLastTradeAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ILastTrade!>!
-Alpaca.Markets.IPolygonDataClient.GetSymbolTypeMapAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, string!>!>!
-Alpaca.Markets.IPolygonDataClient.ListAggregatesAsync(Alpaca.Markets.AggregatesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IHistoricalItems<Alpaca.Markets.IAgg!>!>!
-Alpaca.Markets.IPolygonDataClient.ListExchangesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IExchange!>!>!
-Alpaca.Markets.IPolygonDataClient.ListHistoricalQuotesAsync(Alpaca.Markets.HistoricalRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IHistoricalItems<Alpaca.Markets.IHistoricalQuote!>!>!
-Alpaca.Markets.IPolygonDataClient.ListHistoricalTradesAsync(Alpaca.Markets.HistoricalRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IHistoricalItems<Alpaca.Markets.IHistoricalTrade!>!>!
 Alpaca.Markets.IPolygonStreamingClient
 Alpaca.Markets.IPolygonStreamingClient.GetMinuteAggSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
 Alpaca.Markets.IPolygonStreamingClient.GetMinuteAggSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
@@ -697,26 +663,6 @@ Alpaca.Markets.OrderType.Market = 0 -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderType.Stop = 1 -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderType.StopLimit = 3 -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderType.TrailingStop = 4 -> Alpaca.Markets.OrderType
-Alpaca.Markets.PolygonDataClient
-Alpaca.Markets.PolygonDataClient.Dispose() -> void
-Alpaca.Markets.PolygonDataClient.GetConditionMapAsync(Alpaca.Markets.TickType tickType, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<long, string!>!>!
-Alpaca.Markets.PolygonDataClient.GetConditionMapAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<long, string!>!>!
-Alpaca.Markets.PolygonDataClient.GetLastQuoteAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ILastQuote!>!
-Alpaca.Markets.PolygonDataClient.GetLastTradeAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ILastTrade!>!
-Alpaca.Markets.PolygonDataClient.GetSymbolTypeMapAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, string!>!>!
-Alpaca.Markets.PolygonDataClient.ListAggregatesAsync(Alpaca.Markets.AggregatesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IHistoricalItems<Alpaca.Markets.IAgg!>!>!
-Alpaca.Markets.PolygonDataClient.ListExchangesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IExchange!>!>!
-Alpaca.Markets.PolygonDataClient.ListHistoricalQuotesAsync(Alpaca.Markets.HistoricalRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IHistoricalItems<Alpaca.Markets.IHistoricalQuote!>!>!
-Alpaca.Markets.PolygonDataClient.ListHistoricalTradesAsync(Alpaca.Markets.HistoricalRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IHistoricalItems<Alpaca.Markets.IHistoricalTrade!>!>!
-Alpaca.Markets.PolygonDataClient.PolygonDataClient(Alpaca.Markets.PolygonDataClientConfiguration! configuration) -> void
-Alpaca.Markets.PolygonDataClientConfiguration
-Alpaca.Markets.PolygonDataClientConfiguration.ApiEndpoint.get -> System.Uri!
-Alpaca.Markets.PolygonDataClientConfiguration.ApiEndpoint.set -> void
-Alpaca.Markets.PolygonDataClientConfiguration.HttpClient.get -> System.Net.Http.HttpClient?
-Alpaca.Markets.PolygonDataClientConfiguration.HttpClient.set -> void
-Alpaca.Markets.PolygonDataClientConfiguration.KeyId.get -> string!
-Alpaca.Markets.PolygonDataClientConfiguration.KeyId.set -> void
-Alpaca.Markets.PolygonDataClientConfiguration.PolygonDataClientConfiguration() -> void
 Alpaca.Markets.PolygonStreamingClient
 Alpaca.Markets.PolygonStreamingClient.GetMinuteAggSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
 Alpaca.Markets.PolygonStreamingClient.GetMinuteAggSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
@@ -814,9 +760,6 @@ Alpaca.Markets.ThrottleParameters.RetryHttpStatuses.set -> void
 Alpaca.Markets.ThrottleParameters.ThrottleParameters(int occurrences, System.TimeSpan timeUnit, int maxRetryAttempts, System.Collections.Generic.IEnumerable<int>! retryHttpStatuses) -> void
 Alpaca.Markets.ThrottleParameters.TimeUnit.get -> System.TimeSpan
 Alpaca.Markets.ThrottleParameters.TimeUnit.set -> void
-Alpaca.Markets.TickType
-Alpaca.Markets.TickType.Quotes = 1 -> Alpaca.Markets.TickType
-Alpaca.Markets.TickType.Trades = 0 -> Alpaca.Markets.TickType
 Alpaca.Markets.TimeFrame
 Alpaca.Markets.TimeFrame.Day = 4 -> Alpaca.Markets.TimeFrame
 Alpaca.Markets.TimeFrame.FifteenMinutes = 2 -> Alpaca.Markets.TimeFrame
@@ -864,16 +807,11 @@ Alpaca.Markets.UpdateWatchListRequest.Assets.get -> System.Collections.Generic.I
 Alpaca.Markets.UpdateWatchListRequest.Name.get -> string!
 Alpaca.Markets.UpdateWatchListRequest.UpdateWatchListRequest(System.Guid watchListId, string! name, System.Collections.Generic.IEnumerable<string!>! assets) -> void
 Alpaca.Markets.UpdateWatchListRequest.WatchListId.get -> System.Guid
-override Alpaca.Markets.AggregationPeriod.Equals(object? obj) -> bool
-override Alpaca.Markets.AggregationPeriod.GetHashCode() -> int
-override Alpaca.Markets.AggregationPeriod.ToString() -> string!
 override Alpaca.Markets.HistoryPeriod.Equals(object? obj) -> bool
 override Alpaca.Markets.HistoryPeriod.GetHashCode() -> int
 override Alpaca.Markets.HistoryPeriod.ToString() -> string!
 override Alpaca.Markets.TrailOffset.Equals(object? obj) -> bool
 override Alpaca.Markets.TrailOffset.GetHashCode() -> int
-static Alpaca.Markets.AggregationPeriod.operator !=(Alpaca.Markets.AggregationPeriod lhs, Alpaca.Markets.AggregationPeriod rhs) -> bool
-static Alpaca.Markets.AggregationPeriod.operator ==(Alpaca.Markets.AggregationPeriod lhs, Alpaca.Markets.AggregationPeriod rhs) -> bool
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaDataClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaDataClient!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaDataClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaDataClientConfiguration!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaDataStreamingClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaDataStreamingClient!
@@ -882,8 +820,6 @@ static Alpaca.Markets.EnvironmentExtensions.GetAlpacaStreamingClient(this Alpaca
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaStreamingClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaStreamingClientConfiguration!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaTradingClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaTradingClient!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaTradingClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaTradingClientConfiguration!
-static Alpaca.Markets.EnvironmentExtensions.GetPolygonDataClient(this Alpaca.Markets.IEnvironment! environment, string! keyId) -> Alpaca.Markets.IPolygonDataClient!
-static Alpaca.Markets.EnvironmentExtensions.GetPolygonDataClientConfiguration(this Alpaca.Markets.IEnvironment! environment, string! keyId) -> Alpaca.Markets.PolygonDataClientConfiguration!
 static Alpaca.Markets.EnvironmentExtensions.GetPolygonStreamingClient(this Alpaca.Markets.IEnvironment! environment, string! keyId) -> Alpaca.Markets.IPolygonStreamingClient!
 static Alpaca.Markets.EnvironmentExtensions.GetPolygonStreamingClientConfiguration(this Alpaca.Markets.IEnvironment! environment, string! keyId) -> Alpaca.Markets.PolygonStreamingClientConfiguration!
 static Alpaca.Markets.Environments.Live.get -> Alpaca.Markets.IEnvironment!
