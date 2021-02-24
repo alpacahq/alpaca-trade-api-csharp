@@ -371,8 +371,6 @@ Alpaca.Markets.IEnvironment.AlpacaDataApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaDataStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaTradingApi.get -> System.Uri!
-Alpaca.Markets.IEnvironment.PolygonDataApi.get -> System.Uri!
-Alpaca.Markets.IEnvironment.PolygonStreamingApi.get -> System.Uri!
 Alpaca.Markets.IExchange
 Alpaca.Markets.IExchange.ExchangeId.get -> long
 Alpaca.Markets.IExchange.ExchangeType.get -> Alpaca.Markets.ExchangeType
