@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Net.Http;
 
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Encapsulates request parameters for <see cref="AlpacaDataClient.ListHistoricalQuotesAsync(HistoricalQuotesRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
     public sealed class HistoricalQuotesRequest : HistoricalRequestBase
     {

@@ -3,7 +3,7 @@
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Set of extension methods for <see cref="HistoricalRequestBase"/> inheritors' initialization.
     /// </summary>
     public static class HistoricalRequestBaseExtensions
     {
