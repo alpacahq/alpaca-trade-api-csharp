@@ -3,7 +3,7 @@
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Encapsulates request parameters for <see cref="AlpacaDataClient.ListHistoricalTradesAsync(HistoricalTradesRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
     public sealed class HistoricalTradesRequest : HistoricalRequestBase
     {

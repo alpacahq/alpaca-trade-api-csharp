@@ -5,7 +5,7 @@ using System.Net.Http;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// 
+    /// Encapsulates base logic for all historical data requests on Alpaca Data API v2.
     /// </summary>
     public abstract class HistoricalRequestBase : Validation.IRequest
     {
