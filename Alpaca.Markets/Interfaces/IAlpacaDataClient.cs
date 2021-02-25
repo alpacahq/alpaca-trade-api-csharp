@@ -44,13 +44,33 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Gets historical daily bars lists for single asset from Alpaca REST API endpoint.
+        /// Gets historical bars list for single asset from Alpaca REST API endpoint.
         /// </summary>
         /// <param name="request">Historical daily bars request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of daily bars for specified asset (with pagination data).</returns>
-        Task<IPage<IAgg>> GetBarsAsync(
-            BarsRequest request,
+        Task<IPage<IAgg>> ListHistoricalBarsAsync(
+            HistoricalBarsRequest request,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<IPage<IHistoricalQuote>> ListHistoricalQuotesAsync(
+            HistoricalQuotesRequest request,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<IPage<IHistoricalTrade>> ListHistoricalTradesAsync(
+            HistoricalTradesRequest request,
             CancellationToken cancellationToken = default);
     }
 }

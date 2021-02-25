@@ -15,6 +15,11 @@ namespace Alpaca.Markets
         Int64 ExchangeId { get; }
 
         /// <summary>
+        /// Gets trade source exchange identifier.
+        /// </summary>
+        String Exchange { get; }
+
+        /// <summary>
         /// Gets trade price.
         /// </summary>
         Decimal Price { get; }
