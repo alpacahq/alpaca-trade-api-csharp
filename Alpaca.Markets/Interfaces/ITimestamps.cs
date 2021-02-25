@@ -17,11 +17,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets participant/exchange timestamp in UTC time zone.
         /// </summary>
+        [Obsolete("This property will be removed in the next major SDK release.", false)]
         DateTime? ParticipantTimestampUtc { get; }
 
         /// <summary>
         /// Gets trade reporting facility timestamp in UTC time zone.
         /// </summary>
+        [Obsolete("This property will be removed in the next major SDK release.", false)]
         DateTime? TradeReportingFacilityTimestampUtc { get; }
     }
 }

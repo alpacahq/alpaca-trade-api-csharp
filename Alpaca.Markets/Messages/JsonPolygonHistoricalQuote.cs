@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonHistoricalQuote : IHistoricalQuote
+    internal sealed class JsonPolygonHistoricalQuote : IHistoricalQuote
     {
         [JsonIgnore]
         String IQuoteBase<String>.BidExchange => throw new InvalidOperationException();

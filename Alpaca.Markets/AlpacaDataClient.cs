@@ -62,10 +62,26 @@ namespace Alpaca.Markets
                 $"v1/last_quote/stocks/{symbol}", cancellationToken);
 
         /// <inheritdoc />
-        public Task<IPage<IAgg>> GetBarsAsync(
-            BarsRequest request,
+        public Task<IPage<IAgg>> ListHistoricalBarsAsync(
+            HistoricalBarsRequest request,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IPage<IAgg>, JsonBarsPage>(
+                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
+                cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IPage<IHistoricalQuote>> ListHistoricalQuotesAsync(
+            HistoricalQuotesRequest request, 
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<IPage<IHistoricalQuote>, JsonQuotesPage>(
+                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
+                cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IPage<IHistoricalTrade>> ListHistoricalTradesAsync(
+            HistoricalTradesRequest request, 
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<IPage<IHistoricalTrade>, JsonTradesPage>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
                 cancellationToken);
     }

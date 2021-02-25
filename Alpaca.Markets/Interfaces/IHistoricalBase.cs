@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     public interface IHistoricalBase
     {
         /// <summary>
-        /// Gets tape where trade occured.
+        /// Gets tape where trade occurred.
         /// </summary>
         Int64 Tape { get; }
 

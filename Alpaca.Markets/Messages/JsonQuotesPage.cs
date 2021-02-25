@@ -8,10 +8,10 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonBarsPage : IPage<IAgg>
+    internal sealed class JsonQuotesPage : IPage<IHistoricalQuote>
     {
-        [JsonProperty(PropertyName = "bars", Required = Required.Always)]
-        public List<JsonAlpacaHistoricalBar> ItemsList { get; set; } = new List<JsonAlpacaHistoricalBar>();
+        [JsonProperty(PropertyName = "quotes", Required = Required.Always)]
+        public List<JsonAlpacaHistoricalQuote> ItemsList { get; set; } = new List<JsonAlpacaHistoricalQuote>();
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
@@ -20,6 +20,6 @@ namespace Alpaca.Markets
         public String? NextPageToken { get; set; }
 
         [JsonIgnore]
-        public IReadOnlyList<IAgg> Items => ItemsList.EmptyIfNull();
+        public IReadOnlyList<IHistoricalQuote> Items => ItemsList.EmptyIfNull();
     }
 }
