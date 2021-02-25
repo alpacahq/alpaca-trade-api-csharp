@@ -80,8 +80,8 @@ namespace UsageExamples
 
                 var into = DateTime.Now;
                 var from = into.Subtract(TimeSpan.FromMinutes(25));
-                var barSet = await alpacaDataClient.GetBarsAsync(
-                    new BarsRequest(symbol, BarTimeFrame.Minute, from, into).WithPageSize(20));
+                var barSet = await alpacaDataClient.ListHistoricalBarsAsync(
+                    new HistoricalBarsRequest(symbol, from, into, BarTimeFrame.Minute).WithPageSize(20));
                 var bars = barSet.Items;
 
                 Decimal avg = bars.Average(item => item.Close);

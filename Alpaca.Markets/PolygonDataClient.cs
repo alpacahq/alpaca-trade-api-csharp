@@ -80,7 +80,7 @@ namespace Alpaca.Markets
             HistoricalRequest request,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync
-                <IHistoricalItems<IHistoricalTrade>, JsonHistoricalItems<IHistoricalTrade, JsonHistoricalTrade>>(
+                <IHistoricalItems<IHistoricalTrade>, JsonHistoricalItems<IHistoricalTrade, JsonPolygonHistoricalTrade>>(
                     request.EnsureNotNull(nameof(request)).Validate()
                         .GetUriBuilder(this, "trades"),
                     cancellationToken);
@@ -90,7 +90,7 @@ namespace Alpaca.Markets
             HistoricalRequest request,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync
-                <IHistoricalItems<IHistoricalQuote>, JsonHistoricalItems<IHistoricalQuote, JsonHistoricalQuote>>(
+                <IHistoricalItems<IHistoricalQuote>, JsonHistoricalItems<IHistoricalQuote, JsonPolygonHistoricalQuote>>(
                     request.EnsureNotNull(nameof(request)).Validate()
                         .GetUriBuilder(this, "nbbo"),
                     cancellationToken);

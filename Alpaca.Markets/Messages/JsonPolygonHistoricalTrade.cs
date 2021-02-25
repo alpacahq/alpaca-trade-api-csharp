@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonHistoricalTrade : IHistoricalTrade
+    internal sealed class JsonPolygonHistoricalTrade : IHistoricalTrade
     {
         [JsonProperty(PropertyName = "p", Required = Required.Default)]
         public Decimal Price { get; set; }
@@ -30,6 +30,9 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "x", Required = Required.Default)]
         public Int64 ExchangeId { get; set; }
+
+        [JsonIgnore]
+        public String Exchange => throw new InvalidOperationException();
 
         [JsonProperty(PropertyName = "r", Required = Required.Default)]
         public Int64 TradeReportingFacilityId { get; set; }
