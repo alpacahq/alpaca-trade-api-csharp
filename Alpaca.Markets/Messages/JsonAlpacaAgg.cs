@@ -32,4 +32,3 @@ namespace Alpaca.Markets
         public Int32 ItemsInWindow { get; set; }
     }
 }
-

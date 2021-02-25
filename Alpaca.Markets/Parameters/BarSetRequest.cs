@@ -10,6 +10,7 @@ namespace Alpaca.Markets
     /// Encapsulates request parameters for <see cref="AlpacaDataClient.GetBarSetAsync(BarSetRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [Obsolete("This class will be removed from the next major version of SDK.", false)]
     public sealed class BarSetRequest : Validation.IRequest, 
         IRequestWithTimeInterval<IInclusiveTimeInterval>, IRequestWithTimeInterval<IExclusiveTimeInterval>
     {

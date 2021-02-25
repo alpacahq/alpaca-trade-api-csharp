@@ -78,9 +78,11 @@ namespace UsageExamples
                     // No position exists. This exception can be safely ignored.
                 }
 
-                var barSet = await alpacaDataClient.GetBarSetAsync(
-                    new BarSetRequest(symbol, TimeFrame.Minute) { Limit = 20 });
-                var bars = barSet[symbol].ToList();
+                var into = DateTime.Now;
+                var from = into.Subtract(TimeSpan.FromMinutes(25));
+                var barSet = await alpacaDataClient.GetBarsAsync(
+                    new BarsRequest(symbol, BarTimeFrame.Minute, from, into).WithPageSize(20));
+                var bars = barSet.Items;
 
                 Decimal avg = bars.Average(item => item.Close);
                 Decimal currentPrice = bars.Last().Close;

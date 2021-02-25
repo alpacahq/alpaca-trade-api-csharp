@@ -16,6 +16,7 @@ namespace Alpaca.Markets
         /// <param name="request">Historical daily bars request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
+        [Obsolete("This method will be removed from the next major version of SDK.", false)]
         Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default);
@@ -38,6 +39,16 @@ namespace Alpaca.Markets
         /// <returns>Read-only current quote information.</returns>
         Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets historical daily bars lists for single asset from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="request">Historical daily bars request parameters.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only list of daily bars for specified asset (with pagination data).</returns>
+        Task<IPage<IAgg>> GetBarsAsync(
+            BarsRequest request,
             CancellationToken cancellationToken = default);
     }
 }
