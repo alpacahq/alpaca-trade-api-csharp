@@ -39,6 +39,7 @@ namespace Alpaca.Markets
         public void Dispose() => _httpClient.Dispose();
 
         /// <inheritdoc />
+        [Obsolete("This method will be removed from the next major version of SDK.", false)]
         public Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default) =>
@@ -59,5 +60,13 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ILastQuote, JsonLastQuoteAlpaca>(
                 $"v1/last_quote/stocks/{symbol}", cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IPage<IAgg>> GetBarsAsync(
+            BarsRequest request,
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<IPage<IAgg>, JsonBarsPage>(
+                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
+                cancellationToken);
     }
 }
