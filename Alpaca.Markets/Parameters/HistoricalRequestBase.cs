@@ -43,13 +43,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the last part of the full REST endpoint URL path.
         /// </summary>
-        protected abstract String UrlPath { get; }
+        protected abstract String LastPathSegment { get; }
 
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress)
+            new UriBuilder(httpClient.BaseAddress!)
             {
-                Path = $"v2/stocks/{Symbol}/{UrlPath}",
+                Path = $"v2/stocks/{Symbol}/{LastPathSegment}",
                 Query = AddParameters(Pagination.QueryBuilder
                     .AddParameter("start", TimeInterval.From, "O")
                     .AddParameter("end", TimeInterval.Into, "O"))

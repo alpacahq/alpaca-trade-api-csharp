@@ -330,7 +330,7 @@ namespace Alpaca.Markets
                 Bars = streamsByChannels[BarsChannel].ToList()
             });
 
-        private ILookup<String, String> getLookup(
+        private static ILookup<String, String> getLookup(
             IEnumerable<String> streams) =>
             streams
                 .Select(stream => stream.Split(
@@ -340,7 +340,7 @@ namespace Alpaca.Markets
                     pair => pair[1], 
                     StringComparer.Ordinal);
 
-        private IEnumerable<String> getStreams(
+        private static IEnumerable<String> getStreams(
             IEnumerable<String> symbols,
             String channelName) =>
             symbols.Select(_ => getStreamName(channelName, _));

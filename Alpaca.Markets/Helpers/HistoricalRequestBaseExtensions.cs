@@ -18,7 +18,7 @@ namespace Alpaca.Markets
             UInt32 pageSize)
             where TRequest: HistoricalRequestBase
         {
-            request.Pagination.Size = pageSize;
+            request.EnsureNotNull(nameof(request)).Pagination.Size = pageSize;
             return request;
         }
 
@@ -33,7 +33,7 @@ namespace Alpaca.Markets
             String pageToken)
             where TRequest: HistoricalRequestBase
         {
-            request.Pagination.Token = pageToken;
+            request.EnsureNotNull(nameof(request)).Pagination.Token = pageToken;
             return request;
         }
     }
