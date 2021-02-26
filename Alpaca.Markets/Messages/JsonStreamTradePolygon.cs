@@ -15,8 +15,8 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
         public String TradeId { get; set; } = String.Empty;
 
-        [JsonProperty(PropertyName = "x", Required = Required.Always)]
-        public Int64 Exchange { get; set; }
+        [JsonIgnore]
+        public String Exchange => throw new InvalidOperationException();
 
         [JsonProperty(PropertyName = "p", Required = Required.Always)]
         public Decimal Price { get; set; }

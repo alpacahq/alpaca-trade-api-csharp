@@ -7,7 +7,7 @@ namespace Alpaca.Markets
     /// Encapsulates quote information from Polygon streaming API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-    public interface IStreamQuote : IQuoteBase<Int64>, IStreamBase
+    public interface IStreamQuote : IQuoteBase<String>, IQuoteBase<Int64>, IStreamBase
     {
         /// <summary>
         /// Gets quote timestamp in UTC time zone.

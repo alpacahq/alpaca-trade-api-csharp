@@ -15,6 +15,12 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "bx", Required = Required.Always)]
         public Int64 BidExchange { get; set; }
 
+        [JsonIgnore]
+        String IQuoteBase<String>.AskExchange => throw new InvalidOperationException();
+
+        [JsonIgnore]
+        String IQuoteBase<String>.BidExchange => throw new InvalidOperationException();
+
         [JsonProperty(PropertyName = "ax", Required = Required.Always)]
         public Int64 AskExchange { get; set; }
 

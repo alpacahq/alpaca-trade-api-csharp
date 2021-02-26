@@ -9,6 +9,9 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonStreamAggAlpaca : IStreamAgg
     {
+        [JsonProperty(PropertyName = "T", Required = Required.Always)]
+        public String Channel { get; set; } = String.Empty;
+
         [JsonProperty(PropertyName = "S", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
 
