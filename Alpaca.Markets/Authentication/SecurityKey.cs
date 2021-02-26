@@ -20,5 +20,7 @@ namespace Alpaca.Markets
         internal abstract IEnumerable<KeyValuePair<String, String>> GetAuthenticationHeaders();
 
         internal abstract JsonAuthRequest.JsonData GetAuthenticationData();
+
+        internal abstract JsonAuthentication GetAuthentication();
     }
 }

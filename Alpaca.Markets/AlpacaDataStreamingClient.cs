@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -10,14 +11,118 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Alpaca data streaming API via websockets.
     /// </summary>
     public sealed class AlpacaDataStreamingClient :
-        StreamingDataClientBase<AlpacaDataStreamingClientConfiguration>, 
+        StreamingClientBase<AlpacaDataStreamingClientConfiguration>, 
         IAlpacaDataStreamingClient
     {
-        private const String Listening = "listening";
+        private interface ISubscription
+        {
+            void OnUpdate(
+                Boolean isSubscribed);
 
-        private const String Authorization = "authorization";
+            void OnReceived(
+                JToken token);
+        }
+
+        private sealed class AlpacaDataSubscription<TApi, TJson>
+            : IAlpacaDataSubscription<TApi>, ISubscription
+            where TJson : class, TApi
+            where TApi : IStreamBase
+        {
+            private readonly String _stream;
+
+            internal AlpacaDataSubscription(
+                String stream) =>
+                _stream = stream;
+
+            public IEnumerable<String> Streams
+            {
+                get { yield return _stream; }
+            }
+
+            public Boolean Subscribed { get; private set; }
+
+            public event Action<TApi>? Received;
+
+            public void OnReceived(
+                JToken token) =>
+                Received?.Invoke(token.ToObject<TJson>()
+                                 ?? throw new RestClientErrorException());
+
+            public void OnUpdate(
+                Boolean isSubscribed) => Subscribed = isSubscribed;
+        }
+
+        private sealed class Subscriptions
+        {
+            private const String WildcardSymbolString = "*";
+
+            private readonly ConcurrentDictionary<String, ISubscription> _subscriptions =
+                new ConcurrentDictionary<String, ISubscription>(StringComparer.Ordinal);
+
+            public Subscriptions()
+            {
+                _subscriptions.GetOrAdd(BarsChannel, _ =>
+                    new AlpacaDataSubscription<IStreamAgg, JsonStreamAggAlpaca>(
+                        getStreamName(BarsChannel, WildcardSymbolString)));
+            }
+
+            public  IAlpacaDataSubscription<TApi> GetOrAdd<TApi, TJson>(
+                String stream)
+                where TJson : class, TApi
+                where TApi : IStreamBase =>
+                (IAlpacaDataSubscription<TApi>) _subscriptions.GetOrAdd(
+                    stream, key => new AlpacaDataSubscription<TApi, TJson>(key));
+
+            public void OnUpdate(
+                ISet<String> streams)
+            {
+                foreach (var kvp in _subscriptions)
+                {
+                    kvp.Value.OnUpdate(streams.Contains(kvp.Key));
+                }
+            }
+
+            public bool OnReceived(
+                String stream,
+                JToken token)
+            {
+                var found = false;
+
+                if (_subscriptions.TryGetValue(token["ev"]?.ToString() ?? String.Empty, out var subscription))
+                {
+                    subscription.OnReceived(token);
+                    found = true;
+                }
+
+                if (_subscriptions.TryGetValue(stream, out subscription))
+                {
+                    subscription.OnReceived(token);
+                    found = true;
+                }
+
+                return found;
+            }
+        }
+
+        // Available Alpaca data streaming message types
+
+        private const String TradesChannel = "t";
+
+        private const String QuotesChannel = "q";
+
+        private const String BarsChannel = "b";
+
+        private const String ErrorInfo = "error";
+
+        private const String Subscription = "subscription";
+
+        private const String ConnectionSuccess = "success";
+
+        private static readonly Char[] ChannelSeparator = { '.' };
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
+
+        private readonly Subscriptions _subscriptions = new Subscriptions();
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataStreamingClient"/> object.
@@ -28,51 +133,62 @@ namespace Alpaca.Markets
             : base(configuration.EnsureNotNull(nameof(configuration))) =>
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
-                { Listening, handleListeningUpdates },
-                { Authorization, handleAuthorization }
+                { ConnectionSuccess, handleConnectionSuccess },
+                { Subscription, handleSubscriptionUpdates },
+                { TradesChannel, handleRealtimeDataUpdate },
+                { QuotesChannel, handleRealtimeDataUpdate },
+                { BarsChannel, handleRealtimeDataUpdate },
+                { ErrorInfo, handleErrorMessages }
             };
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
             String symbol) => 
-            GetSubscription<IStreamTrade, JsonStreamTradeAlpaca>(TradesChannel, symbol);
+            _subscriptions.GetOrAdd<IStreamTrade, JsonStreamTradeAlpaca>(getStreamName(TradesChannel, symbol));
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
             String symbol) =>
-            GetSubscription<IStreamQuote, JsonStreamQuoteAlpaca>(QuotesChannel, symbol);
+            _subscriptions.GetOrAdd<IStreamQuote, JsonStreamQuoteAlpaca>(getStreamName(QuotesChannel, symbol));
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription() => 
-            GetSubscription<IStreamAgg, JsonStreamAggAlpaca>(MinuteAggChannel);
+            _subscriptions.GetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(BarsChannel);
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
             String symbol) =>
-            GetSubscription<IStreamAgg, JsonStreamAggAlpaca>(MinuteAggChannel, symbol);
-
-        /// <inheritdoc/>
-        protected override void OnOpened()
-        {
-            SendAsJsonString(new JsonAuthRequest
-            {
-                Action = JsonAction.Authenticate,
-                Data = Configuration.SecurityId
-                    .GetAuthenticationData()
-            });
-
-            base.OnOpened();
-        }
+            _subscriptions.GetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(getStreamName(BarsChannel, symbol));
 
         /// <inheritdoc />
-        protected override void Subscribe(
-            IEnumerable<String> streams) =>
-            sendSubscriptionRequest(streams, JsonAction.Listen);
+        public void Subscribe(
+            IAlpacaDataSubscription subscription) =>
+            subscribe(subscription.EnsureNotNull(nameof(subscription)).Streams);
 
         /// <inheritdoc />
-        protected override void Unsubscribe(
-            IEnumerable<String> streams) =>
-            sendSubscriptionRequest(streams, JsonAction.Unlisten);
+        public void Subscribe(
+            params IAlpacaDataSubscription[] subscriptions) =>
+            Subscribe(subscriptions.AsEnumerable());
+
+        /// <inheritdoc />
+        public void Subscribe(
+            IEnumerable<IAlpacaDataSubscription> subscriptions) =>
+            subscribe(subscriptions.SelectMany(_ => _.Streams));
+
+        /// <inheritdoc />
+        public void Unsubscribe(
+            IAlpacaDataSubscription subscription) =>
+            unsubscribe(subscription.EnsureNotNull(nameof(subscription)).Streams);
+
+        /// <inheritdoc />
+        public void Unsubscribe(
+            params IAlpacaDataSubscription[] subscriptions) =>
+            Unsubscribe(subscriptions.AsEnumerable());
+
+        /// <inheritdoc />
+        public void Unsubscribe(
+            IEnumerable<IAlpacaDataSubscription> subscriptions) =>
+            unsubscribe(subscriptions.SelectMany(_ => _.Streams));
 
         /// <inheritdoc/>
         [SuppressMessage(
@@ -83,24 +199,17 @@ namespace Alpaca.Markets
         {
             try
             {
-                var token = JObject.Parse(message);
-
-                var payload = token["data"];
-                var stream = token["stream"];
-
-                if (payload is null ||
-                    stream is null)
+                foreach (var token in JArray.Parse(message))
                 {
-                    HandleError(new InvalidOperationException());
-                }
-                else
-                {
-                    var streamAsString = stream.ToString();
-                    if (HandleRealtimeDataUpdate(streamAsString, payload))
+                    var messageType = token["T"];
+                    if (messageType is null)
                     {
-                        return;
+                        HandleError(new InvalidOperationException());
                     }
-                    HandleMessage(_handlers, streamAsString, payload);
+                    else
+                    {
+                        HandleMessage(_handlers, messageType.ToString(), token);
+                    }
                 }
             }
             catch (Exception exception)
@@ -109,20 +218,20 @@ namespace Alpaca.Markets
             }
         }
 
-        private void handleAuthorization(
+        private void handleConnectionSuccess(
             JToken token)
         {
-            var connectionStatus = token.ToObject<JsonConnectionStatus>() ?? new JsonConnectionStatus();
+            var connectionSuccess = token.ToObject<JsonConnectionSuccess>() ?? new JsonConnectionSuccess();
 
             // ReSharper disable once ConstantConditionalAccessQualifier
-            switch (connectionStatus.Status)
+            switch (connectionSuccess.Status)
             {
-                case ConnectionStatus.AlpacaDataStreamingAuthorized:
-                    OnConnected(AuthStatus.Authorized);
+                case ConnectionStatus.Connected:
+                    SendAsJsonString(Configuration.SecurityId.GetAuthentication());
                     break;
 
-                case ConnectionStatus.AlpacaDataStreamingUnauthorized:
-                    OnConnected(AuthStatus.Unauthorized);
+                case ConnectionStatus.Authenticated:
+                    OnConnected(AuthStatus.Authorized);
                     break;
 
                 default:
@@ -134,39 +243,111 @@ namespace Alpaca.Markets
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]
-        private void handleListeningUpdates(
+        private void handleSubscriptionUpdates(
             JToken token)
         {
-            var listeningUpdate = token.ToObject<JsonListeningUpdate>() ?? new JsonListeningUpdate();
+            var subscriptionUpdate = token.ToObject<JsonSubscriptionUpdate>() ?? new JsonSubscriptionUpdate();
 
-            if (!String.IsNullOrEmpty(listeningUpdate.Error))
+            var streams = new HashSet<String>(
+                getStreams(subscriptionUpdate.Trades, TradesChannel)
+                    .Concat(getStreams(subscriptionUpdate.Quotes, QuotesChannel))
+                    .Concat(getStreams(subscriptionUpdate.Bars, BarsChannel)),
+                StringComparer.Ordinal);
+
+            try
             {
-                HandleError(new InvalidOperationException(listeningUpdate.Error));
+                _subscriptions.OnUpdate(streams);
             }
-
-            foreach (var stream in listeningUpdate.Streams)
+            catch (Exception exception)
             {
-                try
-                {
-                    SubscriptionsOnUpdate(stream);
-                }
-                catch (Exception exception)
-                {
-                    HandleError(exception);
-                }
+                HandleError(exception);
             }
         }
 
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
+        private void handleRealtimeDataUpdate(
+            JToken token)
+        {
+            try
+            {
+                var channel = token["T"]?.ToString() ?? String.Empty;
+                var symbol = token["S"]?.ToString() ?? String.Empty;
+                _subscriptions.OnReceived(getStreamName(channel, symbol), token);
+            }
+            catch (Exception exception)
+            {
+                HandleError(exception);
+            }
+        }
+        
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
+        private void handleErrorMessages(
+            JToken token)
+        {
+            try
+            {
+                var error = token.ToObject<JsonStreamError>() ?? new JsonStreamError();
+                switch (error.Code)
+                {
+                    case 401: // Not authenticated
+                    case 402: // Authentication failed
+                    case 404: // Authentication timeout
+                    case 406: // Connection limit exceeded
+                        OnConnected(AuthStatus.Unauthorized);
+                        break;
+
+                    case 403: // Already authenticated
+                        break;
+                }
+                HandleError(new RestClientErrorException(error));
+            }
+            catch (Exception exception)
+            {
+                HandleError(exception);
+            }
+        }
+
+        private void subscribe(
+            IEnumerable<String> streams) =>
+            sendSubscriptionRequest(getLookup(streams), JsonAction.PolygonSubscribe);
+
+        private void unsubscribe(
+            IEnumerable<String> streams) =>
+            sendSubscriptionRequest(getLookup(streams), JsonAction.PolygonUnsubscribe);
+
         private void sendSubscriptionRequest(
-            IEnumerable<String> streams,
+            ILookup<String, String> streamsByChannels,
             JsonAction action) =>
-            SendAsJsonString(new JsonListenRequest
+            SendAsJsonString(new JsonSubscriptionUpdate
             {
                 Action = action,
-                Data = new JsonListenRequest.JsonData
-                {
-                    Streams = streams.ToList()
-                }
+                Trades = streamsByChannels[TradesChannel].ToList(),
+                Quotes = streamsByChannels[QuotesChannel].ToList(),
+                Bars = streamsByChannels[BarsChannel].ToList()
             });
+
+        private ILookup<String, String> getLookup(
+            IEnumerable<String> streams) =>
+            streams
+                .Select(stream => stream.Split(
+                    ChannelSeparator, 2, StringSplitOptions.RemoveEmptyEntries))
+                .ToLookup(
+                    pair => pair[0], 
+                    pair => pair[1], 
+                    StringComparer.Ordinal);
+
+        private IEnumerable<String> getStreams(
+            IEnumerable<String> symbols,
+            String channelName) =>
+            symbols.Select(_ => getStreamName(channelName, _));
+
+        private static String getStreamName(
+            String channelName,
+            String symbol) =>
+            $"{channelName}.{symbol}";
     }
 }

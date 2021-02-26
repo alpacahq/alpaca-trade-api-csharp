@@ -37,5 +37,13 @@ namespace Alpaca.Markets
                 KeyId = KeyId,
                 SecretKey = Value
             };
+
+        internal override JsonAuthentication GetAuthentication() =>
+            new JsonAuthentication
+            {
+                Action = JsonAction.PolygonAuthenticate,
+                SecretKey = Value,
+                KeyId = KeyId
+            };
     }
 }
