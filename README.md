@@ -52,5 +52,5 @@ See the [UsageExamples](../../tree/develop/UsageExamples) project for near-to-re
 | Branch                                       | Version | Description                    | Support Status             |
 | -------------------------------------------- | ------- | ------------------------------ |----------------------------|
 | [develop](../../tree/develop)                | 5.0.*   | New features, breaking changes | Short-term support version |
-| [master](../../tree/master)                  | 4.0.*   | All new features and hot-fixes | Long-term support version  |
-| [support/v3.9.x](../../tree/support/v3.9.x)  | 3.9.*   | Hot fixes only, some features  | Critical fixes only        |
+| [master](../../tree/master)                  | 4.1.*   | All new features and hot-fixes | Long-term support version  |
+| [support/v4.0.x](../../tree/support/v4.0.x)  | 4.0.*   | Hot fixes only, some features  | Critical fixes only        |
