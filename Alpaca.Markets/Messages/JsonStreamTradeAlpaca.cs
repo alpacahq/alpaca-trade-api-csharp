@@ -9,7 +9,7 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonStreamTradeAlpaca : IStreamTrade
     {
-        [JsonProperty(PropertyName = "T", Required = Required.Always)]
+        [JsonProperty(PropertyName = "S", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
@@ -25,7 +25,6 @@ namespace Alpaca.Markets
         public Int64 Size { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
-        [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
         public DateTime TimeUtc { get; set; }
     }
 }

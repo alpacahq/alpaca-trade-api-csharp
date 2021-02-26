@@ -54,6 +54,11 @@ namespace Alpaca.Markets
             ErrorCode = error.Code;
 
         internal RestClientErrorException(
+            JsonStreamError error)
+            : base(error.Message) =>
+            ErrorCode = error.Code;
+
+        internal RestClientErrorException(
             HttpResponseMessage message)
             : base(message.ReasonPhrase ?? String.Empty) =>
             ErrorCode = (Int32)message.StatusCode;
