@@ -54,17 +54,8 @@ namespace Alpaca.Markets
 
         private sealed class Subscriptions
         {
-            private const String WildcardSymbolString = "*";
-
             private readonly ConcurrentDictionary<String, ISubscription> _subscriptions =
                 new ConcurrentDictionary<String, ISubscription>(StringComparer.Ordinal);
-
-            public Subscriptions()
-            {
-                _subscriptions.GetOrAdd(BarsChannel, _ =>
-                    new AlpacaDataSubscription<IStreamAgg, JsonStreamAggAlpaca>(
-                        getStreamName(BarsChannel, WildcardSymbolString)));
-            }
 
             public  IAlpacaDataSubscription<TApi> GetOrAdd<TApi, TJson>(
                 String stream)
@@ -82,25 +73,14 @@ namespace Alpaca.Markets
                 }
             }
 
-            public bool OnReceived(
+            public void OnReceived(
                 String stream,
                 JToken token)
             {
-                var found = false;
-
-                if (_subscriptions.TryGetValue(token["ev"]?.ToString() ?? String.Empty, out var subscription))
+                if (_subscriptions.TryGetValue(stream, out var subscription))
                 {
                     subscription.OnReceived(token);
-                    found = true;
                 }
-
-                if (_subscriptions.TryGetValue(stream, out subscription))
-                {
-                    subscription.OnReceived(token);
-                    found = true;
-                }
-
-                return found;
             }
         }
 
@@ -117,6 +97,8 @@ namespace Alpaca.Markets
         private const String Subscription = "subscription";
 
         private const String ConnectionSuccess = "success";
+
+        private const String WildcardSymbolString = "*";
 
         private static readonly Char[] ChannelSeparator = { '.' };
 
@@ -153,7 +135,7 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription() => 
-            _subscriptions.GetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(BarsChannel);
+            _subscriptions.GetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(getStreamName(BarsChannel, WildcardSymbolString));
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
@@ -274,7 +256,13 @@ namespace Alpaca.Markets
             {
                 var channel = token["T"]?.ToString() ?? String.Empty;
                 var symbol = token["S"]?.ToString() ?? String.Empty;
+
                 _subscriptions.OnReceived(getStreamName(channel, symbol), token);
+
+                if (String.Equals(channel, BarsChannel, StringComparison.Ordinal))
+                {
+                    _subscriptions.OnReceived(getStreamName(channel, WildcardSymbolString), token);
+                }
             }
             catch (Exception exception)
             {

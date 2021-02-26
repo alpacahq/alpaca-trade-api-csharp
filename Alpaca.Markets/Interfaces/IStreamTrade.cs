@@ -17,7 +17,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets asset's exchange identifier.
         /// </summary>
-        Int64 Exchange { get; }
+        String Exchange { get; }
 
         /// <summary>
         /// Gets trade price level.

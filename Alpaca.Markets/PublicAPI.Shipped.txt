@@ -504,7 +504,6 @@ Alpaca.Markets.IStreamingDataClient.Unsubscribe(System.Collections.Generic.IEnum
 Alpaca.Markets.IStreamQuote
 Alpaca.Markets.IStreamQuote.TimeUtc.get -> System.DateTime
 Alpaca.Markets.IStreamTrade
-Alpaca.Markets.IStreamTrade.Exchange.get -> long
 Alpaca.Markets.IStreamTrade.Price.get -> decimal
 Alpaca.Markets.IStreamTrade.Size.get -> long
 Alpaca.Markets.IStreamTrade.TimeUtc.get -> System.DateTime

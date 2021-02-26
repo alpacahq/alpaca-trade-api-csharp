@@ -35,6 +35,7 @@ Alpaca.Markets.IPage<TItems>
 Alpaca.Markets.IPage<TItems>.Items.get -> System.Collections.Generic.IReadOnlyList<TItems>!
 Alpaca.Markets.IPage<TItems>.NextPageToken.get -> string?
 Alpaca.Markets.IPage<TItems>.Symbol.get -> string!
+Alpaca.Markets.IStreamTrade.Exchange.get -> string!
 Alpaca.Markets.Pagination
 Alpaca.Markets.Pagination.Pagination() -> void
 Alpaca.Markets.Pagination.Size.get -> uint?
