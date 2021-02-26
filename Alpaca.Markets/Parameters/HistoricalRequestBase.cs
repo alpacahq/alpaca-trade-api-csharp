@@ -41,7 +41,7 @@ namespace Alpaca.Markets
         public Pagination Pagination { get; } = new Pagination();
 
         /// <summary>
-        /// 
+        /// Gets the last part of the full REST endpoint URL path.
         /// </summary>
         protected abstract String UrlPath { get; }
 

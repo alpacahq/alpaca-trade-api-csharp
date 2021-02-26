@@ -56,6 +56,12 @@ namespace Alpaca.Markets
         /// Client authentication failed.
         /// </summary>
         [EnumMember(Value = "unauthorized")]
-        AlpacaDataStreamingUnauthorized
+        AlpacaDataStreamingUnauthorized,
+
+        /// <summary>
+        /// Client authentication completed.
+        /// </summary>
+        [EnumMember(Value = "authenticated")]
+        Authenticated
     }
 }

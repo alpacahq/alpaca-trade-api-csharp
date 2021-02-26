@@ -9,29 +9,28 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonStreamQuoteAlpaca : IStreamQuote
     {
-        [JsonProperty(PropertyName = "T", Required = Required.Always)]
+        [JsonProperty(PropertyName = "S", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
 
-        [JsonProperty(PropertyName = "x", Required = Required.Always)]
+        [JsonProperty(PropertyName = "bx", Required = Required.Always)]
         public Int64 BidExchange { get; set; }
 
-        [JsonProperty(PropertyName = "X", Required = Required.Always)]
+        [JsonProperty(PropertyName = "ax", Required = Required.Always)]
         public Int64 AskExchange { get; set; }
 
-        [JsonProperty(PropertyName = "p", Required = Required.Always)]
+        [JsonProperty(PropertyName = "bp", Required = Required.Always)]
         public Decimal BidPrice { get; set; }
 
-        [JsonProperty(PropertyName = "P", Required = Required.Always)]
+        [JsonProperty(PropertyName = "ap", Required = Required.Always)]
         public Decimal AskPrice { get; set; }
 
-        [JsonProperty(PropertyName = "s", Required = Required.Always)]
+        [JsonProperty(PropertyName = "bs", Required = Required.Always)]
         public Int64 BidSize { get; set; }
 
-        [JsonProperty(PropertyName = "S", Required = Required.Always)]
+        [JsonProperty(PropertyName = "as", Required = Required.Always)]
         public Int64 AskSize { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
-        [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
         public DateTime TimeUtc { get; set; }
     }
 }

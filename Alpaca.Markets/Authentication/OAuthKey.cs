@@ -29,5 +29,8 @@ namespace Alpaca.Markets
             {
                 OAuthToken = Value
             };
+
+        internal override JsonAuthentication GetAuthentication() => 
+            throw new InvalidOperationException();
     }
 }
