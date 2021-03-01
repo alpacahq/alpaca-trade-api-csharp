@@ -1,9 +1,11 @@
 ﻿#nullable enable
+Alpaca.Markets.Extensions.AlpacaDataClientExtensions
 Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions
 Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions
 Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions
 Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions
 Alpaca.Markets.Extensions.EnvironmentExtensions
+Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<TItem>
 Alpaca.Markets.Extensions.ReconnectionParameters
 Alpaca.Markets.Extensions.ReconnectionParameters.MaxReconnectionAttempts.get -> int
 Alpaca.Markets.Extensions.ReconnectionParameters.MaxReconnectionAttempts.set -> void
@@ -12,6 +14,9 @@ Alpaca.Markets.Extensions.ReconnectionParameters.MaxReconnectionDelay.set -> voi
 Alpaca.Markets.Extensions.ReconnectionParameters.MinReconnectionDelay.get -> System.TimeSpan
 Alpaca.Markets.Extensions.ReconnectionParameters.MinReconnectionDelay.set -> void
 Alpaca.Markets.Extensions.ReconnectionParameters.ReconnectionParameters() -> void
+static Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable(this Alpaca.Markets.IAlpacaDataClient! client, Alpaca.Markets.HistoricalBarsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IAgg!>!
+static Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable(this Alpaca.Markets.IAlpacaDataClient! client, Alpaca.Markets.HistoricalQuotesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IHistoricalQuote!>!
+static Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable(this Alpaca.Markets.IAlpacaDataClient! client, Alpaca.Markets.HistoricalTradesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IHistoricalTrade!>!
 static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetMinuteAggSubscription(this Alpaca.Markets.IAlpacaDataStreamingClient! client, params string![]! symbols) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
 static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetMinuteAggSubscription(this Alpaca.Markets.IAlpacaDataStreamingClient! client, System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
 static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetQuoteSubscription(this Alpaca.Markets.IAlpacaDataStreamingClient! client, params string![]! symbols) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamQuote!>!
@@ -20,6 +25,15 @@ static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetTradeSub
 static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetTradeSubscription(this Alpaca.Markets.IAlpacaDataStreamingClient! client, System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamTrade!>!
 static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaDataStreamingClient! client) -> Alpaca.Markets.IAlpacaDataStreamingClient!
 static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaDataStreamingClient! client, Alpaca.Markets.Extensions.ReconnectionParameters! parameters) -> Alpaca.Markets.IAlpacaDataStreamingClient!
+static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeMinuteBar(this Alpaca.Markets.IAlpacaDataStreamingClient! client, params string![]! symbols) -> Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
+static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeMinuteBar(this Alpaca.Markets.IAlpacaDataStreamingClient! client, string! symbol) -> Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
+static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeMinuteBar(this Alpaca.Markets.IAlpacaDataStreamingClient! client, System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
+static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeQuote(this Alpaca.Markets.IAlpacaDataStreamingClient! client, params string![]! symbols) -> Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<Alpaca.Markets.IStreamQuote!>!
+static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeQuote(this Alpaca.Markets.IAlpacaDataStreamingClient! client, string! symbol) -> Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<Alpaca.Markets.IStreamQuote!>!
+static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeQuote(this Alpaca.Markets.IAlpacaDataStreamingClient! client, System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<Alpaca.Markets.IStreamQuote!>!
+static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeTrade(this Alpaca.Markets.IAlpacaDataStreamingClient! client, params string![]! symbols) -> Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<Alpaca.Markets.IStreamTrade!>!
+static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeTrade(this Alpaca.Markets.IAlpacaDataStreamingClient! client, string! symbol) -> Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<Alpaca.Markets.IStreamTrade!>!
+static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeTrade(this Alpaca.Markets.IAlpacaDataStreamingClient! client, System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<Alpaca.Markets.IStreamTrade!>!
 static Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaDataClient(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
 static Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
 static Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaStreamingClient! client) -> Alpaca.Markets.IAlpacaStreamingClient!

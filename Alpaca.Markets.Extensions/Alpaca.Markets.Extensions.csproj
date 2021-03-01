@@ -4,20 +4,21 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.0.1-alpha</Version>
+    <Version>5.0.1-alpha2</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.0.1.0</AssemblyVersion>
-    <FileVersion>5.0.1.0</FileVersion>
+    <AssemblyVersion>5.0.1.1</AssemblyVersion>
+    <FileVersion>5.0.1.1</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Added support for the Alpaca Data API v2 REST and WebSocket connections.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added special wrapper for obtaining the `IAlpacaDataSubscription&lt;T&gt;` interface with pending subscription and unsubscription in the `Dispose` call.
+- Added helper methods for the `IAlpacaDataClient` interface that provides a simple way for handling the paginated responses from Alpaca Data API v2.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
