@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     /// </summary>
     /// <typeparam name="TExchange">Type of bid/ask exchange properties.</typeparam>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-    public interface IQuoteBase<out TExchange>
+    public interface IQuoteBase<out TExchange> : IQuoteBase
     {
         /// <summary>
         /// Gets identifier of bid source exchange.
@@ -19,7 +19,14 @@ namespace Alpaca.Markets
         /// Gets identifier of ask source exchange.
         /// </summary>
         TExchange AskExchange { get; }
+    }
 
+    /// <summary>
+    /// Encapsulates basic quote information any REST API.
+    /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    public interface IQuoteBase
+    {
         /// <summary>
         /// Gets bid price level.
         /// </summary>

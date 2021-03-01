@@ -504,13 +504,14 @@ Alpaca.Markets.IPosition.UnrealizedProfitLossPercent.get -> decimal
 Alpaca.Markets.IPositionActionStatus
 Alpaca.Markets.IPositionActionStatus.IsSuccess.get -> bool
 Alpaca.Markets.IPositionActionStatus.Symbol.get -> string!
+Alpaca.Markets.IQuoteBase
+Alpaca.Markets.IQuoteBase.AskPrice.get -> decimal
+Alpaca.Markets.IQuoteBase.AskSize.get -> long
+Alpaca.Markets.IQuoteBase.BidPrice.get -> decimal
+Alpaca.Markets.IQuoteBase.BidSize.get -> long
 Alpaca.Markets.IQuoteBase<TExchange>
 Alpaca.Markets.IQuoteBase<TExchange>.AskExchange.get -> TExchange
-Alpaca.Markets.IQuoteBase<TExchange>.AskPrice.get -> decimal
-Alpaca.Markets.IQuoteBase<TExchange>.AskSize.get -> long
 Alpaca.Markets.IQuoteBase<TExchange>.BidExchange.get -> TExchange
-Alpaca.Markets.IQuoteBase<TExchange>.BidPrice.get -> decimal
-Alpaca.Markets.IQuoteBase<TExchange>.BidSize.get -> long
 Alpaca.Markets.IRequestWithTimeInterval<TInterval>
 Alpaca.Markets.IRequestWithTimeInterval<TInterval>.SetInterval(TInterval value) -> void
 Alpaca.Markets.IStopLoss
