@@ -16,7 +16,6 @@ namespace Alpaca.Markets
         /// <param name="request">Historical daily bars request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
-        [Obsolete("This method will be removed from the next major version of SDK.", false)]
         Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default);

@@ -39,7 +39,6 @@ namespace Alpaca.Markets
         public void Dispose() => _httpClient.Dispose();
 
         /// <inheritdoc />
-        [Obsolete("This method will be removed from the next major version of SDK.", false)]
         public Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default) =>
