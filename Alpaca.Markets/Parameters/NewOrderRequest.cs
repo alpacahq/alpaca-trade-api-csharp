@@ -18,7 +18,7 @@ namespace Alpaca.Markets
         /// <param name="duration">Order duration.</param>
         public NewOrderRequest(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             OrderSide side,
             OrderType type,
             TimeInForce duration)
@@ -39,7 +39,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the new order quantity.
         /// </summary>
-        public Int64 Quantity { get; }
+        public OrderQuantity Quantity { get; }
 
         /// <summary>
         /// Gets the new order side (buy or sell).
@@ -116,7 +116,7 @@ namespace Alpaca.Markets
                     "Symbols shouldn't be empty.", nameof(Symbol));
             }
 
-            if (Quantity <= 0)
+            if (Quantity.Value <= 0M)
             {
                 yield return new RequestValidationException(
                     "Order quantity should be positive value.", nameof(Quantity));
@@ -127,7 +127,8 @@ namespace Alpaca.Markets
             new JsonNewOrder
             {
                 Symbol = Symbol,
-                Quantity = Quantity,
+                Quantity = Quantity.AsFractional(),
+                Notional = Quantity.AsNotional(),
                 OrderSide = Side,
                 OrderType = Type,
                 TimeInForce = Duration,
