@@ -283,12 +283,15 @@ Alpaca.Markets.IAccountActivity.ActivityDateTimeUtc.get -> System.DateTime
 Alpaca.Markets.IAccountActivity.ActivityGuid.get -> System.Guid
 Alpaca.Markets.IAccountActivity.ActivityId.get -> string!
 Alpaca.Markets.IAccountActivity.ActivityType.get -> Alpaca.Markets.AccountActivityType
-Alpaca.Markets.IAccountActivity.CumulativeQuantity.get -> long?
-Alpaca.Markets.IAccountActivity.LeavesQuantity.get -> long?
+Alpaca.Markets.IAccountActivity.CumulativeQuantity.get -> decimal?
+Alpaca.Markets.IAccountActivity.IntegerCumulativeQuantity.get -> long?
+Alpaca.Markets.IAccountActivity.IntegerLeavesQuantity.get -> long?
+Alpaca.Markets.IAccountActivity.IntegerQuantity.get -> long?
+Alpaca.Markets.IAccountActivity.LeavesQuantity.get -> decimal?
 Alpaca.Markets.IAccountActivity.NetAmount.get -> decimal?
 Alpaca.Markets.IAccountActivity.PerShareAmount.get -> decimal?
 Alpaca.Markets.IAccountActivity.Price.get -> decimal?
-Alpaca.Markets.IAccountActivity.Quantity.get -> long?
+Alpaca.Markets.IAccountActivity.Quantity.get -> decimal?
 Alpaca.Markets.IAccountActivity.Side.get -> Alpaca.Markets.OrderSide?
 Alpaca.Markets.IAccountActivity.Symbol.get -> string?
 Alpaca.Markets.IAccountActivity.TransactionTimeUtc.get -> System.DateTime?
@@ -451,15 +454,17 @@ Alpaca.Markets.IOrder.CreatedAtUtc.get -> System.DateTime?
 Alpaca.Markets.IOrder.ExpiredAtUtc.get -> System.DateTime?
 Alpaca.Markets.IOrder.FailedAtUtc.get -> System.DateTime?
 Alpaca.Markets.IOrder.FilledAtUtc.get -> System.DateTime?
-Alpaca.Markets.IOrder.FilledQuantity.get -> long
+Alpaca.Markets.IOrder.FilledQuantity.get -> decimal
 Alpaca.Markets.IOrder.HighWaterMark.get -> decimal?
+Alpaca.Markets.IOrder.IntegerFilledQuantity.get -> long
+Alpaca.Markets.IOrder.IntegerQuantity.get -> long
 Alpaca.Markets.IOrder.Legs.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOrder!>?
 Alpaca.Markets.IOrder.LimitPrice.get -> decimal?
 Alpaca.Markets.IOrder.OrderId.get -> System.Guid
 Alpaca.Markets.IOrder.OrderSide.get -> Alpaca.Markets.OrderSide
 Alpaca.Markets.IOrder.OrderStatus.get -> Alpaca.Markets.OrderStatus
 Alpaca.Markets.IOrder.OrderType.get -> Alpaca.Markets.OrderType
-Alpaca.Markets.IOrder.Quantity.get -> long
+Alpaca.Markets.IOrder.Quantity.get -> decimal
 Alpaca.Markets.IOrder.StopPrice.get -> decimal?
 Alpaca.Markets.IOrder.SubmittedAtUtc.get -> System.DateTime?
 Alpaca.Markets.IOrder.Symbol.get -> string!
@@ -493,10 +498,11 @@ Alpaca.Markets.IPosition.AssetLastPrice.get -> decimal
 Alpaca.Markets.IPosition.AverageEntryPrice.get -> decimal
 Alpaca.Markets.IPosition.CostBasis.get -> decimal
 Alpaca.Markets.IPosition.Exchange.get -> Alpaca.Markets.Exchange
+Alpaca.Markets.IPosition.IntegerQuantity.get -> long
 Alpaca.Markets.IPosition.IntradayUnrealizedProfitLoss.get -> decimal
 Alpaca.Markets.IPosition.IntradayUnrealizedProfitLossPercent.get -> decimal
 Alpaca.Markets.IPosition.MarketValue.get -> decimal
-Alpaca.Markets.IPosition.Quantity.get -> int
+Alpaca.Markets.IPosition.Quantity.get -> decimal
 Alpaca.Markets.IPosition.Side.get -> Alpaca.Markets.PositionSide
 Alpaca.Markets.IPosition.Symbol.get -> string!
 Alpaca.Markets.IPosition.UnrealizedProfitLoss.get -> decimal
@@ -557,9 +563,10 @@ Alpaca.Markets.ITimestamps.TimestampUtc.get -> System.DateTime?
 Alpaca.Markets.ITimestamps.TradeReportingFacilityTimestampUtc.get -> System.DateTime?
 Alpaca.Markets.ITradeUpdate
 Alpaca.Markets.ITradeUpdate.Event.get -> Alpaca.Markets.TradeEvent
+Alpaca.Markets.ITradeUpdate.IntegerQuantity.get -> long?
 Alpaca.Markets.ITradeUpdate.Order.get -> Alpaca.Markets.IOrder!
 Alpaca.Markets.ITradeUpdate.Price.get -> decimal?
-Alpaca.Markets.ITradeUpdate.Quantity.get -> long?
+Alpaca.Markets.ITradeUpdate.Quantity.get -> decimal?
 Alpaca.Markets.ITradeUpdate.TimestampUtc.get -> System.DateTime?
 Alpaca.Markets.IWatchList
 Alpaca.Markets.IWatchList.AccountId.get -> System.Guid

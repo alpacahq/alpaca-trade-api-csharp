@@ -40,9 +40,14 @@ namespace Alpaca.Markets
         Decimal AverageEntryPrice { get; }
 
         /// <summary>
-        /// Get position quantity (size).
+        /// Get position quantity (with the fractional part).
         /// </summary>
-        Int32 Quantity { get; }
+        Decimal Quantity { get; }
+
+        /// <summary>
+        /// Get position quantity (rounded to the nearest integer).
+        /// </summary>
+        Int64 IntegerQuantity { get; }
 
         /// <summary>
         /// Get position side (short or long).

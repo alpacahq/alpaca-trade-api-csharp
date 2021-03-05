@@ -65,12 +65,12 @@ namespace UsageExamples
                 Decimal portfolioValue = account.Equity;
 
                 // Get information about our existing position.
-                Int32 positionQuantity = 0;
+                var positionQuantity = 0L;
                 Decimal positionValue = 0;
                 try
                 {
                     var currentPosition = await alpacaTradingClient.GetPositionAsync(symbol);
-                    positionQuantity = currentPosition.Quantity;
+                    positionQuantity = currentPosition.IntegerQuantity;
                     positionValue = currentPosition.MarketValue;
                 }
                 catch (Exception)
@@ -127,7 +127,7 @@ namespace UsageExamples
 
                         // Make sure we're not trying to sell more than we have.
                         amountToAdd *= -1;
-                        Int32 qtyToSell = (Int32)(amountToAdd / currentPrice);
+                        var qtyToSell = (Int64)(amountToAdd / currentPrice);
                         if (qtyToSell > positionQuantity)
                         {
                             qtyToSell = positionQuantity;
@@ -161,7 +161,7 @@ namespace UsageExamples
         }
 
         // Submit an order if quantity is not zero.
-        private async Task SubmitOrder(Int32 quantity, Decimal price, OrderSide side)
+        private async Task SubmitOrder(Int64 quantity, Decimal price, OrderSide side)
         {
             if (quantity == 0)
             {
@@ -178,7 +178,7 @@ namespace UsageExamples
         {
             try
             {
-                var positionQuantity = (await alpacaTradingClient.GetPositionAsync(symbol)).Quantity;
+                var positionQuantity = (await alpacaTradingClient.GetPositionAsync(symbol)).IntegerQuantity;
                 await alpacaTradingClient.PostOrderAsync(
                     OrderSide.Sell.Market(symbol, positionQuantity));
             }

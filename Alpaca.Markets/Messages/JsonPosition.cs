@@ -29,7 +29,10 @@ namespace Alpaca.Markets
         public Decimal AverageEntryPrice { get; set; }
 
         [JsonProperty(PropertyName = "qty", Required = Required.Always)]
-        public Int32 Quantity { get; set; }
+        public Decimal Quantity { get; set; }
+
+        [JsonIgnore]
+        public Int64 IntegerQuantity => Quantity.AsInteger();
 
         [JsonProperty(PropertyName = "side", Required = Required.Default)]
         public PositionSide Side { get; set; }

@@ -161,12 +161,12 @@ namespace UsageExamples
                 Int64 multiplier = account.Multiplier;
 
                 // Check how much we currently have in this position.
-                Int32 positionQuantity = 0;
+                var positionQuantity = 0L;
                 Decimal positionValue = 0;
                 try
                 {
                     var currentPosition = await alpacaTradingClient.GetPositionAsync(symbol);
-                    positionQuantity = currentPosition.Quantity;
+                    positionQuantity = currentPosition.IntegerQuantity;
                     positionValue = currentPosition.MarketValue;
                 }
                 catch (Exception)
@@ -198,14 +198,14 @@ namespace UsageExamples
                             {
                                 amountToShort = buyingPower;
                             }
-                            Int32 qty = (Int32)(amountToShort / agg.Close);
+                            var qty = (Int64)(amountToShort / agg.Close);
                             Console.WriteLine($"Adding {qty * agg.Close:C2} to short position.");
                             await SubmitOrder(qty, agg.Close, OrderSide.Sell);
                         }
                         else
                         {
                             // We want to shrink our existing short position.
-                            Int32 qty = (Int32)(amountToShort / agg.Close);
+                            var qty = (Int64)(amountToShort / agg.Close);
                             if (qty > -1 * positionQuantity)
                             {
                                 qty = -1 * positionQuantity;
@@ -235,7 +235,7 @@ namespace UsageExamples
                         {
                             amountToLong = buyingPower;
                         }
-                        Int32 qty = (Int32)(amountToLong / agg.Close);
+                        int qty = (int)(amountToLong / agg.Close);
 
                         await SubmitOrder(qty, agg.Close, OrderSide.Buy);
                         Console.WriteLine($"Adding {qty * agg.Close:C2} to long position.");
@@ -244,7 +244,7 @@ namespace UsageExamples
                     {
                         // We want to shrink our existing long position.
                         amountToLong *= -1;
-                        Int32 qty = (Int32)(amountToLong / agg.Close);
+                        var qty = (Int64)(amountToLong / agg.Close);
                         if (qty > positionQuantity)
                         {
                             qty = positionQuantity;
@@ -287,7 +287,7 @@ namespace UsageExamples
         }
 
         // Submit an order if quantity is not zero.
-        private async Task SubmitOrder(Int32 quantity, Decimal price, OrderSide side)
+        private async Task SubmitOrder(Int64 quantity, Decimal price, OrderSide side)
         {
             if (quantity == 0)
             {
@@ -311,7 +311,7 @@ namespace UsageExamples
         {
             try
             {
-                var positionQuantity = (await alpacaTradingClient.GetPositionAsync(symbol)).Quantity;
+                var positionQuantity = (await alpacaTradingClient.GetPositionAsync(symbol)).IntegerQuantity;
                 Console.WriteLine("Closing position at market price.");
                 if (positionQuantity > 0)
                 {
