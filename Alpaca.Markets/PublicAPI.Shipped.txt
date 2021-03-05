@@ -609,6 +609,7 @@ Alpaca.Markets.MarketDataType.Currencies = 2 -> Alpaca.Markets.MarketDataType
 Alpaca.Markets.MarketDataType.Equities = 0 -> Alpaca.Markets.MarketDataType
 Alpaca.Markets.MarketDataType.Indexes = 1 -> Alpaca.Markets.MarketDataType
 Alpaca.Markets.MarketOrder
+Alpaca.Markets.MarketOrder.Quantity.get -> Alpaca.Markets.OrderQuantity
 Alpaca.Markets.NewOrderRequest
 Alpaca.Markets.NewOrderRequest.ClientOrderId.get -> string?
 Alpaca.Markets.NewOrderRequest.ClientOrderId.set -> void
@@ -871,8 +872,8 @@ static Alpaca.Markets.HistoryPeriod.operator !=(Alpaca.Markets.HistoryPeriod lhs
 static Alpaca.Markets.HistoryPeriod.operator ==(Alpaca.Markets.HistoryPeriod lhs, Alpaca.Markets.HistoryPeriod rhs) -> bool
 static Alpaca.Markets.LimitOrder.Buy(string! symbol, long quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
 static Alpaca.Markets.LimitOrder.Sell(string! symbol, long quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
-static Alpaca.Markets.MarketOrder.Buy(string! symbol, long quantity) -> Alpaca.Markets.MarketOrder!
-static Alpaca.Markets.MarketOrder.Sell(string! symbol, long quantity) -> Alpaca.Markets.MarketOrder!
+static Alpaca.Markets.MarketOrder.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
+static Alpaca.Markets.MarketOrder.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithClientOrderId<TOrder>(this TOrder! order, string! clientOrderId) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithDuration<TOrder>(this TOrder! order, Alpaca.Markets.TimeInForce duration) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithExtendedHours<TOrder>(this TOrder! order, bool extendedHours) -> TOrder!
