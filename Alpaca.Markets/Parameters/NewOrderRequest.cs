@@ -127,8 +127,6 @@ namespace Alpaca.Markets
             new JsonNewOrder
             {
                 Symbol = Symbol,
-                Quantity = Quantity.AsFractional(),
-                Notional = Quantity.AsNotional(),
                 OrderSide = Side,
                 OrderType = Type,
                 TimeInForce = Duration,
@@ -153,6 +151,6 @@ namespace Alpaca.Markets
                         LimitPrice = StopLossLimitPrice
                     }
                     : null
-            };
+            }.WithQuantity(Quantity);
     }
 }

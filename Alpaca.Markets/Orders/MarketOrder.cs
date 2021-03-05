@@ -9,13 +9,17 @@ namespace Alpaca.Markets
     {
         internal MarketOrder(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             OrderSide side)
             : base(
-                symbol, quantity, side,
-                OrderType.Market)
-        {
-        }
+                symbol, quantity.Value.AsInteger(), side,
+                OrderType.Market) =>
+            Quantity = quantity;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public new OrderQuantity Quantity { get; }
 
         /// <summary>
         /// Creates new buy market order using specified symbol and quantity.
@@ -25,7 +29,7 @@ namespace Alpaca.Markets
         /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
         public static MarketOrder Buy(
             String symbol,
-            Int64 quantity) =>
+            OrderQuantity quantity) =>
             new MarketOrder(
                 symbol, quantity, OrderSide.Buy);
 
@@ -37,8 +41,11 @@ namespace Alpaca.Markets
         /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
         public static MarketOrder Sell(
             String symbol,
-            Int64 quantity) =>
+            OrderQuantity quantity) =>
             new MarketOrder(
                 symbol, quantity, OrderSide.Sell);
+
+        internal override JsonNewOrder GetJsonRequest() =>
+            base.GetJsonRequest().WithQuantity(Quantity);
     }
 }
