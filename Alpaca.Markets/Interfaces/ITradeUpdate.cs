@@ -23,9 +23,14 @@ namespace Alpaca.Markets
         Decimal? Price { get; }
 
         /// <summary>
-        /// Gets updated trade quantity.
+        /// Gets updated trade quantity (with the fractional part).
         /// </summary>
-        Int64? Quantity { get; }
+        Decimal? Quantity { get; }
+
+        /// <summary>
+        /// Gets updated trade quantity (rounded to the nearest integer).
+        /// </summary>
+        Int64? IntegerQuantity { get; }
 
         /// <summary>
         /// Gets update timestamp in UTC time zone.

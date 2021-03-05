@@ -161,12 +161,12 @@ namespace UsageExamples
                 long multiplier = account.Multiplier;
 
                 // Check how much we currently have in this position.
-                int positionQuantity = 0;
+                var positionQuantity = 0L;
                 Decimal positionValue = 0;
                 try
                 {
                     var currentPosition = await alpacaTradingClient.GetPositionAsync(symbol);
-                    positionQuantity = currentPosition.Quantity;
+                    positionQuantity = currentPosition.IntegerQuantity;
                     positionValue = currentPosition.MarketValue;
                 }
                 catch (Exception)
@@ -198,14 +198,14 @@ namespace UsageExamples
                             {
                                 amountToShort = buyingPower;
                             }
-                            int qty = (int)(amountToShort / agg.Close);
+                            var qty = (Int64)(amountToShort / agg.Close);
                             Console.WriteLine($"Adding {qty * agg.Close:C2} to short position.");
                             await SubmitOrder(qty, agg.Close, OrderSide.Sell);
                         }
                         else
                         {
                             // We want to shrink our existing short position.
-                            int qty = (int)(amountToShort / agg.Close);
+                            var qty = (Int64)(amountToShort / agg.Close);
                             if (qty > -1 * positionQuantity)
                             {
                                 qty = -1 * positionQuantity;
@@ -244,7 +244,7 @@ namespace UsageExamples
                     {
                         // We want to shrink our existing long position.
                         amountToLong *= -1;
-                        int qty = (int)(amountToLong / agg.Close);
+                        var qty = (Int64)(amountToLong / agg.Close);
                         if (qty > positionQuantity)
                         {
                             qty = positionQuantity;
@@ -287,7 +287,7 @@ namespace UsageExamples
         }
 
         // Submit an order if quantity is not zero.
-        private async Task SubmitOrder(int quantity, Decimal price, OrderSide side)
+        private async Task SubmitOrder(Int64 quantity, Decimal price, OrderSide side)
         {
             if (quantity == 0)
             {
@@ -311,7 +311,7 @@ namespace UsageExamples
         {
             try
             {
-                var positionQuantity = (await alpacaTradingClient.GetPositionAsync(symbol)).Quantity;
+                var positionQuantity = (await alpacaTradingClient.GetPositionAsync(symbol)).IntegerQuantity;
                 Console.WriteLine("Closing position at market price.");
                 if (positionQuantity > 0)
                 {
