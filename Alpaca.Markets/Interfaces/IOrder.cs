@@ -71,14 +71,24 @@ namespace Alpaca.Markets
         AssetClass AssetClass { get; }
 
         /// <summary>
-        /// Gets original order quantity.
+        /// Gets original order quantity (with the fractional part).
         /// </summary>
-        Int64 Quantity { get; }
+        Decimal Quantity { get; }
 
         /// <summary>
-        /// Gets filled order quantity.
+        /// Gets filled order quantity (with the fractional part).
         /// </summary>
-        Int64 FilledQuantity { get; }
+        Decimal FilledQuantity { get; }
+
+        /// <summary>
+        /// Gets original order quantity (rounded to the nearest integer).
+        /// </summary>
+        Int64 IntegerQuantity { get; }
+
+        /// <summary>
+        /// Gets filled order quantity (rounded to the nearest integer).
+        /// </summary>
+        Int64 IntegerFilledQuantity { get; }
 
         /// <summary>
         /// Gets order type.

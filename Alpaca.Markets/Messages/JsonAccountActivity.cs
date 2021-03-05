@@ -28,17 +28,26 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "net_amount", Required = Required.Default)]
         public Decimal? NetAmount { get; set; }
 
-        [JsonProperty(PropertyName = "qty", Required = Required.Default)]
-        public Int64? Quantity { get; set; }
-
         [JsonProperty(PropertyName = "per_share_amount", Required = Required.Default)]
         public Decimal? PerShareAmount { get; set; }
 
+        [JsonProperty(PropertyName = "qty", Required = Required.Default)]
+        public Decimal? Quantity { get; set; }
+
         [JsonProperty(PropertyName = "cum_qty", Required = Required.Default)]
-        public Int64? CumulativeQuantity { get; set; }
+        public Decimal? CumulativeQuantity { get; set; }
 
         [JsonProperty(PropertyName = "leaves_qty", Required = Required.Default)]
-        public Int64? LeavesQuantity { get; set; }
+        public Decimal? LeavesQuantity { get; set; }
+
+        [JsonIgnore]
+        public Int64? IntegerQuantity => Quantity?.AsInteger();
+
+        [JsonIgnore]
+        public Int64? IntegerCumulativeQuantity => CumulativeQuantity?.AsInteger();
+
+        [JsonIgnore]
+        public Int64? IntegerLeavesQuantity => LeavesQuantity?.AsInteger();
 
         [JsonProperty(PropertyName = "price", Required = Required.Default)]
         public Decimal? Price { get; set; }

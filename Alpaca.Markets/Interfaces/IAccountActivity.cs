@@ -45,24 +45,39 @@ namespace Alpaca.Markets
         Decimal? NetAmount { get; }
 
         /// <summary>
-        /// The number of shares that contributed to the transaction. Not present for all activity types.
-        /// </summary>
-        Int64? Quantity { get; }
-
-        /// <summary>
         /// For dividend activities, the average amount paid per share. Not present for other activity types.
         /// </summary>
         Decimal? PerShareAmount { get; }
 
         /// <summary>
-        /// The cumulative quantity of shares involved in the execution.
+        /// The number of shares that contributed to the transaction (with the fractional part). Not present for all activity types.
         /// </summary>
-        Int64? CumulativeQuantity { get; }
+        Decimal? Quantity { get; }
 
         /// <summary>
-        /// For partially_filled orders, the quantity of shares that are left to be filled.
+        /// The cumulative quantity of shares involved in the execution (with the fractional part).
         /// </summary>
-        Int64? LeavesQuantity { get; }
+        Decimal? CumulativeQuantity { get; }
+
+        /// <summary>
+        /// For partially_filled orders, the quantity of shares that are left to be filled (with the fractional part).
+        /// </summary>
+        Decimal? LeavesQuantity { get; }
+
+        /// <summary>
+        /// The number of shares that contributed to the transaction (rounded to the nearest integer). Not present for all activity types.
+        /// </summary>
+        Int64? IntegerQuantity { get; }
+
+        /// <summary>
+        /// The cumulative quantity of shares involved in the execution (rounded to the nearest integer).
+        /// </summary>
+        Int64? IntegerCumulativeQuantity { get; }
+
+        /// <summary>
+        /// For partially_filled orders, the quantity of shares that are left to be filled (rounded to the nearest integer).
+        /// </summary>
+        Int64? IntegerLeavesQuantity { get; }
 
         /// <summary>
         /// The per-share price that a trade was executed at.
