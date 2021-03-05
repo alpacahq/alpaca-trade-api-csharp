@@ -8,8 +8,11 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
 
-        [JsonProperty(PropertyName = "qty", Required = Required.Always)]
-        public Int64 Quantity { get; set; }
+        [JsonProperty(PropertyName = "qty", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public Decimal? Quantity { get; set; }
+
+        [JsonProperty(PropertyName = "notional", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public Decimal? Notional { get; set; }
 
         [JsonProperty(PropertyName = "side", Required = Required.Always)]
         public OrderSide OrderSide { get; set; }
