@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
@@ -57,14 +58,24 @@ namespace Alpaca.Markets
         public static implicit operator OrderQuantity(
             Int64 value) => OrderQuantity.Fractional(value);
 
+        /// <summary>
+        /// Creates new instance of the <see cref="OrderQuantity"/> object
+        /// initialized with <paramref name="value"/> as number of shares.
+        /// </summary>
+        /// <param name="value">Integer number of shares.</param>
+        /// <returns>Initialized <see cref="OrderQuantity"/> object.</returns>
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
+        public static OrderQuantity FromInt64(
+            Int64 value) => OrderQuantity.Fractional(value);
+
         internal Decimal? AsNotional() => IsInDollars ? Value : (Decimal?) null;
 
         internal Decimal? AsFractional() => IsInShares ? Value : (Decimal?) null;
 
         /// <inheritdoc />
         public override Boolean Equals(
-            Object other) =>
-            other is OrderQuantity trailOffset &&
+            Object? obj) =>
+            obj is OrderQuantity trailOffset &&
             trailOffset.Equals(this);
 
         /// <inheritdoc />

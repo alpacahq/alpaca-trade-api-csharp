@@ -617,10 +617,10 @@ Alpaca.Markets.NewOrderRequest.ExtendedHours.get -> bool?
 Alpaca.Markets.NewOrderRequest.ExtendedHours.set -> void
 Alpaca.Markets.NewOrderRequest.LimitPrice.get -> decimal?
 Alpaca.Markets.NewOrderRequest.LimitPrice.set -> void
-Alpaca.Markets.NewOrderRequest.NewOrderRequest(string! symbol, long quantity, Alpaca.Markets.OrderSide side, Alpaca.Markets.OrderType type, Alpaca.Markets.TimeInForce duration) -> void
+Alpaca.Markets.NewOrderRequest.NewOrderRequest(string! symbol, Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.OrderSide side, Alpaca.Markets.OrderType type, Alpaca.Markets.TimeInForce duration) -> void
 Alpaca.Markets.NewOrderRequest.OrderClass.get -> Alpaca.Markets.OrderClass?
 Alpaca.Markets.NewOrderRequest.OrderClass.set -> void
-Alpaca.Markets.NewOrderRequest.Quantity.get -> long
+Alpaca.Markets.NewOrderRequest.Quantity.get -> Alpaca.Markets.OrderQuantity
 Alpaca.Markets.NewOrderRequest.Side.get -> Alpaca.Markets.OrderSide
 Alpaca.Markets.NewOrderRequest.StopLossLimitPrice.get -> decimal?
 Alpaca.Markets.NewOrderRequest.StopLossLimitPrice.set -> void
@@ -698,6 +698,20 @@ Alpaca.Markets.OrderType.Market = 0 -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderType.Stop = 1 -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderType.StopLimit = 3 -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderType.TrailingStop = 4 -> Alpaca.Markets.OrderType
+Alpaca.Markets.OrderQuantity
+Alpaca.Markets.OrderQuantity.Equals(Alpaca.Markets.OrderQuantity other) -> bool
+Alpaca.Markets.OrderQuantity.IsInDollars.get -> bool
+Alpaca.Markets.OrderQuantity.IsInShares.get -> bool
+Alpaca.Markets.OrderQuantity.OrderQuantity() -> void
+Alpaca.Markets.OrderQuantity.Value.get -> decimal
+override Alpaca.Markets.OrderQuantity.Equals(object? obj) -> bool
+override Alpaca.Markets.OrderQuantity.GetHashCode() -> int
+static Alpaca.Markets.OrderQuantity.Fractional(decimal value) -> Alpaca.Markets.OrderQuantity
+static Alpaca.Markets.OrderQuantity.FromInt64(long value) -> Alpaca.Markets.OrderQuantity
+static Alpaca.Markets.OrderQuantity.implicit operator Alpaca.Markets.OrderQuantity(long value) -> Alpaca.Markets.OrderQuantity
+static Alpaca.Markets.OrderQuantity.Notional(decimal value) -> Alpaca.Markets.OrderQuantity
+static Alpaca.Markets.OrderQuantity.operator !=(Alpaca.Markets.OrderQuantity lhs, Alpaca.Markets.OrderQuantity rhs) -> bool
+static Alpaca.Markets.OrderQuantity.operator ==(Alpaca.Markets.OrderQuantity lhs, Alpaca.Markets.OrderQuantity rhs) -> bool
 Alpaca.Markets.Pagination
 Alpaca.Markets.Pagination.Pagination() -> void
 Alpaca.Markets.Pagination.Size.get -> uint?
