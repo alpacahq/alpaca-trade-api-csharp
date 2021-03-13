@@ -13,7 +13,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets SIP timestamp in UTC time zone.
         /// </summary>
-        [Obsolete("This property will be moved into the IHistoricalBase interface in the next major SDK release.", false)]
+        [Obsolete("This property will be moved up in the interface hierarchy in the next major SDK release.", false)]
         DateTime? TimestampUtc { get; }
 
         /// <summary>
