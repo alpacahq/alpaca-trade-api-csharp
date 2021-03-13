@@ -7,7 +7,9 @@ namespace Alpaca.Markets
     /// Encapsulates bar information from Polygon streaming API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+#pragma warning disable 618
     public interface IStreamAgg : IAggBase, IStreamBase
+#pragma warning restore 618
     {
         /// <summary>
         /// Gets bar average price.

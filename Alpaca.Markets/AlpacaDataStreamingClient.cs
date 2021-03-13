@@ -26,7 +26,6 @@ namespace Alpaca.Markets
         private sealed class AlpacaDataSubscription<TApi, TJson>
             : IAlpacaDataSubscription<TApi>, ISubscription
             where TJson : class, TApi
-            where TApi : IStreamBase
         {
             private readonly String _stream;
 
@@ -59,8 +58,7 @@ namespace Alpaca.Markets
 
             public  IAlpacaDataSubscription<TApi> GetOrAdd<TApi, TJson>(
                 String stream)
-                where TJson : class, TApi
-                where TApi : IStreamBase =>
+                where TJson : class, TApi =>
                 (IAlpacaDataSubscription<TApi>) _subscriptions.GetOrAdd(
                     stream, key => new AlpacaDataSubscription<TApi, TJson>(key));
 

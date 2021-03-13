@@ -7,7 +7,9 @@ namespace Alpaca.Markets
     /// Encapsulates trade information from Polygon streaming API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+#pragma warning disable 618
     public interface IStreamTrade : IStreamBase
+#pragma warning restore 618
     {
         /// <summary>
         /// Gets trade identifier.

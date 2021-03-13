@@ -24,7 +24,6 @@ namespace Alpaca.Markets
     /// </summary>
     /// <typeparam name="TApi">Streaming update concrete type.</typeparam>
     public interface IAlpacaDataSubscription<out TApi> : IAlpacaDataSubscription
-        where TApi : IStreamBase
     {
         /// <summary>
         /// Occurred when a new <typeparamref name="TApi"/> item received from the stream.
