@@ -8,7 +8,9 @@ namespace Alpaca.Markets
     /// </summary>
     /// <typeparam name="TExchange">Type of bid/ask exchange properties.</typeparam>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+#pragma warning disable 618
     public interface IQuoteBase<out TExchange> : IQuoteBase
+#pragma warning restore 618
     {
         /// <summary>
         /// Gets identifier of bid source exchange.
@@ -25,6 +27,7 @@ namespace Alpaca.Markets
     /// Encapsulates basic quote information any REST API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [Obsolete("This interface will be merged with its generic version in the next major SDK release.", false)]
     public interface IQuoteBase
     {
         /// <summary>
