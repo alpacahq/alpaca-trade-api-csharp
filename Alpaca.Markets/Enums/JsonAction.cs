@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -14,6 +15,7 @@ namespace Alpaca.Markets
         Listen,
 
         [EnumMember(Value = "unlisten")]
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         Unlisten,
 
         [EnumMember(Value = "auth")]
