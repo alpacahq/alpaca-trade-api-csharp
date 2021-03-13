@@ -16,7 +16,6 @@ namespace Alpaca.Markets.Extensions
     {
         private sealed class AlpacaDataSubscriptionContainer<TItem>
             : IAlpacaDataSubscription<TItem>
-            where TItem : IStreamBase
         {
             private readonly IReadOnlyList<IAlpacaDataSubscription<TItem>> _subscriptions;
 
@@ -49,7 +48,6 @@ namespace Alpaca.Markets.Extensions
 
         private sealed class DisposableAlpacaDataSubscription<TItem> :
             IDisposableAlpacaDataSubscription<TItem>
-            where TItem : IStreamBase
         {
             private readonly IAlpacaDataSubscription<TItem> _subscription;
 
@@ -344,8 +342,7 @@ namespace Alpaca.Markets.Extensions
 
         private static IAlpacaDataSubscription<TItem> getSubscription<TItem>(
             Func<String, IAlpacaDataSubscription<TItem>> selector,
-            IEnumerable<String> symbols) 
-            where TItem : IStreamBase =>
+            IEnumerable<String> symbols) =>
             new AlpacaDataSubscriptionContainer<TItem>(symbols.Select(selector));
 
         private static IEnumerable<T> takeNotMoreThan<T>(
