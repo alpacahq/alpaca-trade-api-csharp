@@ -424,12 +424,9 @@ Alpaca.Markets.IHistoricalQuote
 Alpaca.Markets.IHistoricalQuote.Indicators.get -> System.Collections.Generic.IReadOnlyList<long>!
 Alpaca.Markets.IHistoricalTrade
 Alpaca.Markets.IHistoricalTrade.Exchange.get -> string!
-Alpaca.Markets.IHistoricalTrade.ExchangeId.get -> long
-Alpaca.Markets.IHistoricalTrade.OriginalTradeId.get -> string?
 Alpaca.Markets.IHistoricalTrade.Price.get -> decimal
 Alpaca.Markets.IHistoricalTrade.Size.get -> long
 Alpaca.Markets.IHistoricalTrade.TradeId.get -> string?
-Alpaca.Markets.IHistoricalTrade.TradeReportingFacilityId.get -> long
 Alpaca.Markets.IInclusiveTimeInterval
 Alpaca.Markets.ILastQuote
 Alpaca.Markets.ILastQuote.Status.get -> string!

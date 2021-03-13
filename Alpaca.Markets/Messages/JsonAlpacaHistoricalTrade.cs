@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
@@ -27,14 +26,5 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
         public Int64 Tape { get; set; }
-
-        [JsonIgnore] 
-        public Int64 ExchangeId => throw new InvalidOperationException();
-
-        [JsonIgnore] 
-        public Int64 TradeReportingFacilityId => throw new InvalidOperationException();
-
-        [JsonIgnore] 
-        public String? OriginalTradeId => throw new InvalidOperationException();
     }
 }

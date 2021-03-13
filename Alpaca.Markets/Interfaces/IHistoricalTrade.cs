@@ -17,11 +17,6 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade source exchange identifier.
         /// </summary>
-        Int64 ExchangeId { get; }
-
-        /// <summary>
-        /// Gets trade source exchange identifier.
-        /// </summary>
         String Exchange { get; }
 
         /// <summary>
@@ -40,18 +35,8 @@ namespace Alpaca.Markets
         Int64 Tape { get; }
 
         /// <summary>
-        /// Gets trade reporting facility ID.
-        /// </summary>
-        Int64 TradeReportingFacilityId { get; }
-
-        /// <summary>
         /// Gets trade ID.
         /// </summary>
         String? TradeId { get; }
-
-        /// <summary>
-        /// Gets original trade ID.
-        /// </summary>
-        String? OriginalTradeId { get; }
     }
 }
