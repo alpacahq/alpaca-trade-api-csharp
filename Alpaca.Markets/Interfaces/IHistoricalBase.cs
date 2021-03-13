@@ -12,6 +12,11 @@ namespace Alpaca.Markets
     public interface IHistoricalBase
     {
         /// <summary>
+        /// Gets SIP timestamp in UTC time zone.
+        /// </summary>
+        DateTime TimestampUtc { get; }
+
+        /// <summary>
         /// Gets tape where trade occurred.
         /// </summary>
         Int64 Tape { get; }

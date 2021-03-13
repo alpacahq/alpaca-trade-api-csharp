@@ -557,10 +557,6 @@ Alpaca.Markets.ITakeProfit.LimitPrice.get -> decimal
 Alpaca.Markets.ITimeInterval
 Alpaca.Markets.ITimeInterval.From.get -> System.DateTime?
 Alpaca.Markets.ITimeInterval.Into.get -> System.DateTime?
-Alpaca.Markets.ITimestamps
-Alpaca.Markets.ITimestamps.ParticipantTimestampUtc.get -> System.DateTime?
-Alpaca.Markets.ITimestamps.TimestampUtc.get -> System.DateTime?
-Alpaca.Markets.ITimestamps.TradeReportingFacilityTimestampUtc.get -> System.DateTime?
 Alpaca.Markets.ITradeUpdate
 Alpaca.Markets.ITradeUpdate.Event.get -> Alpaca.Markets.TradeEvent
 Alpaca.Markets.ITradeUpdate.IntegerQuantity.get -> long?

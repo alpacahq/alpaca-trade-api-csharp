@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     internal sealed class JsonAlpacaHistoricalQuote : IHistoricalQuote
     {
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
-        public DateTime? TimestampUtc { get; set; }
+        public DateTime TimestampUtc { get; set; }
 
         [JsonProperty(PropertyName = "ax", Required = Required.Always)]
         public String AskExchange { get; set; } = String.Empty;
@@ -30,12 +30,6 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "bs", Required = Required.Default)]
         public Int64 BidSize { get; set; }
-
-        [JsonIgnore] 
-        public DateTime? ParticipantTimestampUtc => TimestampUtc;
-
-        [JsonIgnore]
-        public DateTime? TradeReportingFacilityTimestampUtc => TimestampUtc;
 
         [JsonIgnore]
         Int64 IQuoteBase<Int64>.AskExchange => throw new InvalidOperationException();

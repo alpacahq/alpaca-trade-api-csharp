@@ -7,7 +7,7 @@ namespace Alpaca.Markets
     /// Encapsulates historical trade information from Polygon REST API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-    public interface IHistoricalTrade : ITimestamps, IHistoricalBase
+    public interface IHistoricalTrade : IHistoricalBase
     {
         /// <summary>
         /// Gets trade source exchange identifier.

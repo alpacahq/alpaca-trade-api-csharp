@@ -1,1 +1,2 @@
 ﻿#nullable enable
+Alpaca.Markets.IHistoricalBase.TimestampUtc.get -> System.DateTime

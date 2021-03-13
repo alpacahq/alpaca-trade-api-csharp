@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     // ReSharper disable once PossibleInterfaceMemberAmbiguity
-    public interface IHistoricalQuote : IQuoteBase<String>, IQuoteBase<Int64>, ITimestamps, IHistoricalBase
+    public interface IHistoricalQuote : IQuoteBase<String>, IQuoteBase<Int64>, IHistoricalBase
     {
         /// <summary>
         /// Gets indicators.

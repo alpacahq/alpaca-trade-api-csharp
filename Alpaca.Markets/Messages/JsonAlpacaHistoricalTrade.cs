@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     internal sealed class JsonAlpacaHistoricalTrade : IHistoricalTrade
     {
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
-        public DateTime? TimestampUtc { get; set; }
+        public DateTime TimestampUtc { get; set; }
 
         [JsonProperty(PropertyName = "x", Required = Required.Default)]
         public String Exchange { get; set; } = String.Empty;
@@ -27,12 +27,6 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
         public Int64 Tape { get; set; }
-
-        [JsonIgnore]
-        public DateTime? ParticipantTimestampUtc => TimestampUtc;
-
-        [JsonIgnore] 
-        public DateTime? TradeReportingFacilityTimestampUtc => TimestampUtc;
 
         [JsonIgnore] 
         public Int64 ExchangeId => throw new InvalidOperationException();
