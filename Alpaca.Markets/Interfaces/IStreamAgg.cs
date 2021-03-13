@@ -7,7 +7,7 @@ namespace Alpaca.Markets
     /// Encapsulates bar information from Polygon streaming API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-    public interface IStreamAgg : IAggBase, IStreamBase
+    public interface IStreamAgg : IAggBase
     {
         /// <summary>
         /// Gets bar average price.
@@ -23,5 +23,10 @@ namespace Alpaca.Markets
         /// Gets bar closing timestamp in UTC time zone.
         /// </summary>
         DateTime EndTimeUtc { get; }
+
+        /// <summary>
+        /// Gets asset name.
+        /// </summary>
+        String Symbol { get; }
     }
 }

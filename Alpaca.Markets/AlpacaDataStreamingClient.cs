@@ -26,7 +26,6 @@ namespace Alpaca.Markets
         private sealed class AlpacaDataSubscription<TApi, TJson>
             : IAlpacaDataSubscription<TApi>, ISubscription
             where TJson : class, TApi
-            where TApi : IStreamBase
         {
             private readonly String _stream;
 
@@ -54,13 +53,11 @@ namespace Alpaca.Markets
 
         private sealed class Subscriptions
         {
-            private readonly ConcurrentDictionary<String, ISubscription> _subscriptions =
-                new ConcurrentDictionary<String, ISubscription>(StringComparer.Ordinal);
+            private readonly ConcurrentDictionary<String, ISubscription> _subscriptions = new (StringComparer.Ordinal);
 
             public  IAlpacaDataSubscription<TApi> GetOrAdd<TApi, TJson>(
                 String stream)
-                where TJson : class, TApi
-                where TApi : IStreamBase =>
+                where TJson : class, TApi =>
                 (IAlpacaDataSubscription<TApi>) _subscriptions.GetOrAdd(
                     stream, key => new AlpacaDataSubscription<TApi, TJson>(key));
 
@@ -100,7 +97,7 @@ namespace Alpaca.Markets
 
         private const String WildcardSymbolString = "*";
 
-        private static readonly Char[] ChannelSeparator = { '.' };
+        private static readonly Char[] _channelSeparator = { '.' };
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
@@ -322,7 +319,7 @@ namespace Alpaca.Markets
             IEnumerable<String> streams) =>
             streams
                 .Select(stream => stream.Split(
-                    ChannelSeparator, 2, StringSplitOptions.RemoveEmptyEntries))
+                    _channelSeparator, 2, StringSplitOptions.RemoveEmptyEntries))
                 .ToLookup(
                     pair => pair[0], 
                     pair => pair[1], 

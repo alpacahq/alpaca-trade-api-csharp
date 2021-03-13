@@ -2,4 +2,8 @@
 Alpaca.Markets.IHistoricalQuote.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.IHistoricalTrade.Tape.get -> long
 Alpaca.Markets.IHistoricalTrade.TimestampUtc.get -> System.DateTime
+Alpaca.Markets.ILastQuote.Symbol.get -> string!
 Alpaca.Markets.ILastQuote.TimeUtc.get -> System.DateTime
+Alpaca.Markets.IStreamAgg.Symbol.get -> string!
+Alpaca.Markets.IStreamQuote.Symbol.get -> string!
+Alpaca.Markets.IStreamTrade.Symbol.get -> string!

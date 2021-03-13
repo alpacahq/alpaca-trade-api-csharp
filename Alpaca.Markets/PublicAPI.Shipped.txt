@@ -1,7 +1,5 @@
 ﻿#nullable enable
 abstract Alpaca.Markets.HistoricalRequestBase.LastPathSegment.get -> string!
-abstract Alpaca.Markets.StreamingDataClientBase<TConfiguration>.Subscribe(System.Collections.Generic.IEnumerable<string!>! streams) -> void
-abstract Alpaca.Markets.StreamingDataClientBase<TConfiguration>.Unsubscribe(System.Collections.Generic.IEnumerable<string!>! streams) -> void
 Alpaca.Markets.AccountActivitiesRequest
 Alpaca.Markets.AccountActivitiesRequest.AccountActivitiesRequest() -> void
 Alpaca.Markets.AccountActivitiesRequest.AccountActivitiesRequest(Alpaca.Markets.AccountActivityType activityType) -> void
@@ -518,8 +516,6 @@ Alpaca.Markets.IStreamAgg
 Alpaca.Markets.IStreamAgg.Average.get -> decimal
 Alpaca.Markets.IStreamAgg.EndTimeUtc.get -> System.DateTime
 Alpaca.Markets.IStreamAgg.StartTimeUtc.get -> System.DateTime
-Alpaca.Markets.IStreamBase
-Alpaca.Markets.IStreamBase.Symbol.get -> string!
 Alpaca.Markets.IStreamingClient
 Alpaca.Markets.IStreamingClient.ConnectAndAuthenticateAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.AuthStatus>!
 Alpaca.Markets.IStreamingClient.ConnectAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task!
@@ -767,18 +763,6 @@ Alpaca.Markets.StreamingClientConfiguration.ApiEndpoint.set -> void
 Alpaca.Markets.StreamingClientConfiguration.StreamingClientConfiguration(System.Uri! apiEndpoint) -> void
 Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory.get -> Alpaca.Markets.IWebSocketFactory!
 Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory.set -> void
-Alpaca.Markets.StreamingDataClientBase<TConfiguration>
-Alpaca.Markets.StreamingDataClientBase<TConfiguration>.GetSubscription<TApi, TJson>(string! channelName) -> Alpaca.Markets.IAlpacaDataSubscription<TApi>!
-Alpaca.Markets.StreamingDataClientBase<TConfiguration>.GetSubscription<TApi, TJson>(string! channelName, string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<TApi>!
-Alpaca.Markets.StreamingDataClientBase<TConfiguration>.HandleRealtimeDataUpdate(string! stream, Newtonsoft.Json.Linq.JToken! token) -> bool
-Alpaca.Markets.StreamingDataClientBase<TConfiguration>.StreamingDataClientBase(TConfiguration! configuration) -> void
-Alpaca.Markets.StreamingDataClientBase<TConfiguration>.Subscribe(Alpaca.Markets.IAlpacaDataSubscription! subscription) -> void
-Alpaca.Markets.StreamingDataClientBase<TConfiguration>.Subscribe(params Alpaca.Markets.IAlpacaDataSubscription![]! subscriptions) -> void
-Alpaca.Markets.StreamingDataClientBase<TConfiguration>.Subscribe(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions) -> void
-Alpaca.Markets.StreamingDataClientBase<TConfiguration>.SubscriptionsOnUpdate(string! stream) -> void
-Alpaca.Markets.StreamingDataClientBase<TConfiguration>.Unsubscribe(Alpaca.Markets.IAlpacaDataSubscription! subscription) -> void
-Alpaca.Markets.StreamingDataClientBase<TConfiguration>.Unsubscribe(params Alpaca.Markets.IAlpacaDataSubscription![]! subscriptions) -> void
-Alpaca.Markets.StreamingDataClientBase<TConfiguration>.Unsubscribe(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions) -> void
 Alpaca.Markets.TakeProfitOrder
 Alpaca.Markets.TakeProfitOrder.LimitPrice.get -> decimal
 Alpaca.Markets.ThrottleParameters

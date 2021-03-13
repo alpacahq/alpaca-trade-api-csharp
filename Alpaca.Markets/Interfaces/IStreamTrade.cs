@@ -7,7 +7,7 @@ namespace Alpaca.Markets
     /// Encapsulates trade information from Polygon streaming API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-    public interface IStreamTrade : IStreamBase
+    public interface IStreamTrade
     {
         /// <summary>
         /// Gets trade identifier.
@@ -33,5 +33,10 @@ namespace Alpaca.Markets
         /// Gets trade timestamp in UTC time zone.
         /// </summary>
         DateTime TimeUtc { get; }
+
+        /// <summary>
+        /// Gets asset name.
+        /// </summary>
+        String Symbol { get; }
     }
 }
