@@ -76,10 +76,6 @@
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)'=='net461'">
-    <PackageReference Include="WebSocketSharpFork" Version="1.0.4">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>compile;analyzers</IncludeAssets>
-    </PackageReference>
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
