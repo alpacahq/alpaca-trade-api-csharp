@@ -16,6 +16,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets indicators.
         /// </summary>
+        [Obsolete("This property will be removed in the next major SDK release.", true)]
         IReadOnlyList<Int64> Indicators { get; }
     }
 }
