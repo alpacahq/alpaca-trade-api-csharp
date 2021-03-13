@@ -10,16 +10,11 @@ namespace Alpaca.Markets
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     // ReSharper disable once PossibleInterfaceMemberAmbiguity
-    public interface IHistoricalQuote : IQuoteBase<String>, IQuoteBase<Int64>
+    public interface IHistoricalQuote : IQuoteBase<String>
     {
         /// <summary>
         /// Gets SIP timestamp in UTC time zone.
         /// </summary>
         DateTime TimestampUtc { get; }
-
-        /// <summary>
-        /// Gets indicators.
-        /// </summary>
-        IReadOnlyList<Int64> Indicators { get; }
     }
 }

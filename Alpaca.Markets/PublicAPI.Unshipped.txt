@@ -2,3 +2,4 @@
 Alpaca.Markets.IHistoricalQuote.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.IHistoricalTrade.Tape.get -> long
 Alpaca.Markets.IHistoricalTrade.TimestampUtc.get -> System.DateTime
+Alpaca.Markets.ILastQuote.TimeUtc.get -> System.DateTime

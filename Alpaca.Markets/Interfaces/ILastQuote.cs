@@ -7,8 +7,13 @@ namespace Alpaca.Markets
     /// Encapsulates last quote information from Alpaca REST API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-    public interface ILastQuote : IStreamQuote
+    public interface ILastQuote : IQuoteBase<Int64>, IStreamBase
     {
+        /// <summary>
+        /// Gets quote timestamp in UTC time zone.
+        /// </summary>
+        DateTime TimeUtc { get; }
+
         /// <summary>
         /// Gets quote response status.
         /// </summary>

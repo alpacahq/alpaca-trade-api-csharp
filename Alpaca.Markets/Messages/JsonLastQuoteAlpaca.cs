@@ -76,12 +76,6 @@ namespace Alpaca.Markets
         public Int64 BidExchange => Nested.BidExchange;
 
         [JsonIgnore]
-        String IQuoteBase<String>.AskExchange => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        String IQuoteBase<String>.BidExchange => throw new InvalidOperationException();
-
-        [JsonIgnore]
         public Int64 AskExchange => Nested.AskExchange;
 
         [JsonIgnore]

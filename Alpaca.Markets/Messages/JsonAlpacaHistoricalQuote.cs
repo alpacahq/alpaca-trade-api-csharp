@@ -30,15 +30,5 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "bs", Required = Required.Default)]
         public Int64 BidSize { get; set; }
-
-        [JsonIgnore]
-        Int64 IQuoteBase<Int64>.AskExchange => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        Int64 IQuoteBase<Int64>.BidExchange => throw new InvalidOperationException();
-
-        [JsonIgnore]
-
-        public IReadOnlyList<Int64> Indicators => throw new InvalidOperationException();
     }
 }
