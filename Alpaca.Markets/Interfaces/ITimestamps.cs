@@ -7,11 +7,13 @@ namespace Alpaca.Markets
     /// Encapsulates timestamps information from Polygon REST API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [Obsolete("This interface will be removed in the next major SDK release.", false)]
     public interface ITimestamps
     {
         /// <summary>
         /// Gets SIP timestamp in UTC time zone.
         /// </summary>
+        [Obsolete("This property will be moved into the IHistoricalBase interface in the next major SDK release.", false)]
         DateTime? TimestampUtc { get; }
 
         /// <summary>
