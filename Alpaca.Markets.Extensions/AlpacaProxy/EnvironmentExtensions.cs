@@ -21,13 +21,8 @@ namespace Alpaca.Markets.Extensions
                 IEnvironment environment)
             {
                 _environment = environment;
-#pragma warning disable 618
-                PolygonStreamingApi = _environment.PolygonStreamingApi;
-#pragma warning restore 618
                 AlpacaDataStreamingApi = _environment.AlpacaDataStreamingApi;
             }
-
-            public Uri PolygonStreamingApi { get; set; }
 
             public Uri AlpacaDataStreamingApi { get; set; }
 
@@ -35,11 +30,11 @@ namespace Alpaca.Markets.Extensions
 
             public Uri AlpacaDataApi => _environment.AlpacaDataApi;
 
-#pragma warning disable 618
-            public Uri PolygonDataApi => _environment.PolygonDataApi;
-#pragma warning restore 618
-
             public Uri AlpacaStreamingApi => _environment.AlpacaStreamingApi;
+
+            public Uri PolygonDataApi => throw new InvalidOperationException();
+
+            public Uri PolygonStreamingApi => throw new InvalidOperationException();
         }
 
         /// <summary>
@@ -76,10 +71,7 @@ namespace Alpaca.Markets.Extensions
         public static IEnvironment WithProxyForPolygonStreamingClient(
             this IEnvironment environment,
             Uri? alpacaProxyAgentUrl = null) =>
-            new ProxyEnvironment(environment)
-            {
-                PolygonStreamingApi = alpacaProxyAgentUrl ?? getFromEnvironmentOrDefault()
-            };
+            throw new InvalidOperationException();
 
         private static Uri getFromEnvironmentOrDefault() => 
             new Uri(Environment.GetEnvironmentVariable(EnvironmentVariableName)
