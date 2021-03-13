@@ -24,7 +24,6 @@ namespace Alpaca.Markets.Extensions
         public static async IAsyncEnumerable<TItem> AsAsyncEnumerable<TItem>(
             this IAlpacaDataSubscription<TItem> subscription,
             [EnumeratorCancellation] CancellationToken cancellationToken = default)
-            where TItem : IStreamBase
         {
             subscription.EnsureNotNull(nameof(subscription));
 

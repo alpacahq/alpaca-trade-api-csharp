@@ -11,7 +11,6 @@ namespace Alpaca.Markets.Extensions
     [SuppressMessage("ReSharper", "UnusedType.Global")]
     public interface IDisposableAlpacaDataSubscription<out TItem>
         : IAlpacaDataSubscription<TItem>, IAsyncDisposable, IDisposable
-        where TItem : IStreamBase 
     {
     }
 }
