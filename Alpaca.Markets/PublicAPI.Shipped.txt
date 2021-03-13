@@ -419,14 +419,19 @@ Alpaca.Markets.IHistoricalItems<TItem>.ResultsCount.get -> long
 Alpaca.Markets.IHistoricalItems<TItem>.Status.get -> string?
 Alpaca.Markets.IHistoricalItems<TItem>.Symbol.get -> string?
 Alpaca.Markets.IHistoricalQuote
+Alpaca.Markets.IHistoricalQuote.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.IHistoricalTrade
 Alpaca.Markets.IHistoricalTrade.Exchange.get -> string!
 Alpaca.Markets.IHistoricalTrade.Price.get -> decimal
 Alpaca.Markets.IHistoricalTrade.Size.get -> long
+Alpaca.Markets.IHistoricalTrade.Tape.get -> long
+Alpaca.Markets.IHistoricalTrade.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.IHistoricalTrade.TradeId.get -> string?
 Alpaca.Markets.IInclusiveTimeInterval
 Alpaca.Markets.ILastQuote
 Alpaca.Markets.ILastQuote.Status.get -> string!
+Alpaca.Markets.ILastQuote.Symbol.get -> string!
+Alpaca.Markets.ILastQuote.TimeUtc.get -> System.DateTime
 Alpaca.Markets.ILastTrade
 Alpaca.Markets.ILastTrade.Exchange.get -> long
 Alpaca.Markets.ILastTrade.Price.get -> decimal
@@ -516,6 +521,7 @@ Alpaca.Markets.IStreamAgg
 Alpaca.Markets.IStreamAgg.Average.get -> decimal
 Alpaca.Markets.IStreamAgg.EndTimeUtc.get -> System.DateTime
 Alpaca.Markets.IStreamAgg.StartTimeUtc.get -> System.DateTime
+Alpaca.Markets.IStreamAgg.Symbol.get -> string!
 Alpaca.Markets.IStreamingClient
 Alpaca.Markets.IStreamingClient.ConnectAndAuthenticateAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.AuthStatus>!
 Alpaca.Markets.IStreamingClient.ConnectAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task!
@@ -532,11 +538,13 @@ Alpaca.Markets.IStreamingDataClient.Unsubscribe(Alpaca.Markets.IAlpacaDataSubscr
 Alpaca.Markets.IStreamingDataClient.Unsubscribe(params Alpaca.Markets.IAlpacaDataSubscription![]! subscriptions) -> void
 Alpaca.Markets.IStreamingDataClient.Unsubscribe(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions) -> void
 Alpaca.Markets.IStreamQuote
+Alpaca.Markets.IStreamQuote.Symbol.get -> string!
 Alpaca.Markets.IStreamQuote.TimeUtc.get -> System.DateTime
 Alpaca.Markets.IStreamTrade
 Alpaca.Markets.IStreamTrade.Exchange.get -> string!
 Alpaca.Markets.IStreamTrade.Price.get -> decimal
 Alpaca.Markets.IStreamTrade.Size.get -> long
+Alpaca.Markets.IStreamTrade.Symbol.get -> string!
 Alpaca.Markets.IStreamTrade.TimeUtc.get -> System.DateTime
 Alpaca.Markets.IStreamTrade.TradeId.get -> string!
 Alpaca.Markets.ITakeProfit
