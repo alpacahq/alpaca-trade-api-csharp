@@ -38,15 +38,6 @@ namespace Alpaca.Markets
         Int64 IQuoteBase<Int64>.BidExchange => throw new InvalidOperationException();
 
         [JsonIgnore]
-        public Int64 Tape => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        public Int64 SequenceNumber => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        public IReadOnlyList<Int64> Conditions => throw new InvalidOperationException();
-
-        [JsonIgnore]
 
         public IReadOnlyList<Int64> Indicators => throw new InvalidOperationException();
     }

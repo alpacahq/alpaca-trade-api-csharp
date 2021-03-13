@@ -35,12 +35,6 @@ namespace Alpaca.Markets
         public Int64 TradeReportingFacilityId => throw new InvalidOperationException();
 
         [JsonIgnore] 
-        public Int64 SequenceNumber => throw new InvalidOperationException();
-
-        [JsonIgnore] 
         public String? OriginalTradeId => throw new InvalidOperationException();
-
-        [JsonIgnore]
-        public IReadOnlyList<Int64> Conditions => throw new InvalidOperationException();
     }
 }
