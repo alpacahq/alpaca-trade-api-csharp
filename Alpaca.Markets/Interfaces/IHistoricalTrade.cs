@@ -12,6 +12,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade source exchange identifier.
         /// </summary>
+        [Obsolete("This property will be removed in the next major SDK release.", false)]
         Int64 ExchangeId { get; }
 
         /// <summary>
@@ -32,6 +33,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade reporting facility ID.
         /// </summary>
+        [Obsolete("This property will be removed in the next major SDK release.", false)]
         Int64 TradeReportingFacilityId { get; }
 
         /// <summary>
@@ -42,6 +44,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets original trade ID.
         /// </summary>
+        [Obsolete("This property will be removed in the next major SDK release.", false)]
         String? OriginalTradeId { get; }
     }
 }
