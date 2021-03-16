@@ -55,7 +55,16 @@ namespace Alpaca.Markets
         /// <param name="value">Integer number of shares.</param>
         /// <returns>Initialized <see cref="OrderQuantity"/> object.</returns>
         public static implicit operator OrderQuantity(
-            Int64 value) => OrderQuantity.Fractional(value);
+            Int64 value) => Fractional(value);
+
+        /// <summary>
+        /// Creates new instance of the <see cref="OrderQuantity"/> object
+        /// initialized with <paramref name="value"/> as number of shares.
+        /// </summary>
+        /// <param name="value">Integer number of shares.</param>
+        /// <returns>Initialized <see cref="OrderQuantity"/> object.</returns>
+        public static OrderQuantity FromInt64(
+            Int64 value) => Fractional(value);
 
         internal Decimal? AsNotional() => IsInDollars ? Value : (Decimal?) null;
 
@@ -63,8 +72,8 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         public override Boolean Equals(
-            Object other) =>
-            other is OrderQuantity trailOffset &&
+            Object obj) =>
+            obj is OrderQuantity trailOffset &&
             trailOffset.Equals(this);
 
         /// <inheritdoc />

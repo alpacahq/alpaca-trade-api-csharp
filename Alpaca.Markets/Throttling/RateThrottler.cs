@@ -34,8 +34,10 @@ namespace Alpaca.Markets
                 await Task.Delay(delay, cancellationToken).ConfigureAwait(false);
             }
 
-            public void SetNextRetryTimeRandom() => 
+            public void SetNextRetryTimeRandom() =>
+#pragma warning disable CA5394 // Do not use insecure randomness
                 SetNextRetryTime(DateTime.UtcNow.AddMilliseconds(_randomRetryWait.Next(1000, 5000)));
+#pragma warning restore CA5394 // Do not use insecure randomness
 
             public void SetNextRetryTime(
                 DateTime nextRetryTime)

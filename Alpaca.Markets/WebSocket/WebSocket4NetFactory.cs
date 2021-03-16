@@ -17,7 +17,9 @@ namespace Alpaca.Markets
                 Uri url)
             {
                 _webSocket = new WebSocket(url.ToString(),
+#pragma warning disable CA5398 // Avoid hardcoded SslProtocols values
                     sslProtocols: SslProtocols.Tls12)
+#pragma warning restore CA5398 // Avoid hardcoded SslProtocols values
                 {
                     EnableAutoSendPing = true, 
                     AutoSendPingInterval = 30

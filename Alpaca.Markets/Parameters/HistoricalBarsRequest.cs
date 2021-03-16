@@ -28,7 +28,7 @@ namespace Alpaca.Markets
         public BarTimeFrame TimeFrame { get; }
 
         /// <inheritdoc />
-        protected override String UrlPath => "bars";
+        protected override String LastPathSegment => "bars";
 
         internal override QueryBuilder AddParameters(
             QueryBuilder queryBuilder) => 

@@ -22,6 +22,6 @@ namespace Alpaca.Markets
         }
 
         /// <inheritdoc />
-        protected override String UrlPath => "quotes";
+        protected override String LastPathSegment => "quotes";
     }
 }

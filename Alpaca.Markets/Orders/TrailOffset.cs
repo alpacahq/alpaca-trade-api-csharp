@@ -52,8 +52,8 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         public override Boolean Equals(
-            Object other) =>
-            other is TrailOffset trailOffset &&
+            Object obj) =>
+            obj is TrailOffset trailOffset &&
             trailOffset.Equals(this);
 
         /// <inheritdoc />

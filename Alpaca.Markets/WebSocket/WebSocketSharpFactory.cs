@@ -25,7 +25,9 @@ namespace Alpaca.Markets
                 {
                     SslConfiguration =
                     {
+#pragma warning disable CA5398 // Avoid hardcoded SslProtocols values
                         EnabledSslProtocols = SslProtocols.Tls12
+#pragma warning restore CA5398 // Avoid hardcoded SslProtocols values
                     }
                 };
 
