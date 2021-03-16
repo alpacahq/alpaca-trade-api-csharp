@@ -45,7 +45,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\Alpaca.Markets\Helpers\NullableHelper.cs" Link="NullableHelper.cs" />
+    <Compile Include="..\NullableHelper.cs" Link="NullableHelper.cs" />
+    <Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
   </ItemGroup>
 
   <ItemGroup>
