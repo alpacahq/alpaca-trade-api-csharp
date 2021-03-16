@@ -13,6 +13,7 @@ namespace Alpaca.Markets
         /// <param name="request"></param>
         /// <param name="pageSize">The request page size.</param>
         /// <returns>The original request parameters object.</returns>
+        [CLSCompliant(false)]
         public static TRequest WithPageSize<TRequest>(
             this TRequest request,
             UInt32 pageSize)

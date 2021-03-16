@@ -15,6 +15,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets and sets the request page size. If equals to <c>null</c> default size will be used.
         /// </summary>
+        [CLSCompliant(false)]
         public UInt32? Size { get; set; }
 
         /// <summary>
