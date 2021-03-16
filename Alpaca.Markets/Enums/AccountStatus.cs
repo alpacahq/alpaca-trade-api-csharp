@@ -52,6 +52,12 @@ namespace Alpaca.Markets
         /// Account approval rejected.
         /// </summary>
         [EnumMember(Value = "REJECTED")]
-        Rejected
+        Rejected,
+
+        /// <summary>
+        /// Account disabled.
+        /// </summary>
+        [EnumMember(Value = "DISABLED")]
+        Disabled
     }
 }
