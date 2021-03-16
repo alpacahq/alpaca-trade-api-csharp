@@ -8,6 +8,7 @@ namespace Alpaca.Markets.Extensions
     /// <see cref="IAlpacaDataStreamingClient"/>) with custom values or with local proxy
     /// WebSocket URL obtained from environment variables.
     /// </summary>
+    [CLSCompliant(false)]
     [SuppressMessage("ReSharper", "UnusedType.Global")]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class EnvironmentExtensions

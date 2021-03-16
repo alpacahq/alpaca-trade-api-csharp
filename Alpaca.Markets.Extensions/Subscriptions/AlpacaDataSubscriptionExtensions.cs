@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -9,6 +10,7 @@ namespace Alpaca.Markets.Extensions
     /// <summary>
     /// Set of extension methods for the <see cref="IAlpacaDataSubscription{TApi}"/> interface.
     /// </summary>
+    [CLSCompliant(false)]
     [SuppressMessage("ReSharper", "UnusedType.Global")]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class AlpacaDataSubscriptionExtensions

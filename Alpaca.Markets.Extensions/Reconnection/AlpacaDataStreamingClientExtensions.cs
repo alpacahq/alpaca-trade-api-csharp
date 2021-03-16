@@ -7,6 +7,7 @@ namespace Alpaca.Markets.Extensions
     /// Helper extension method for creating special version of the <see cref="IAlpacaDataStreamingClient"/>
     /// implementation with automatic reconnection (with configurable delay and number of attempts) support.
     /// </summary>
+    [CLSCompliant(false)]
     [SuppressMessage("ReSharper", "UnusedType.Global")]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static partial class AlpacaDataStreamingClientExtensions

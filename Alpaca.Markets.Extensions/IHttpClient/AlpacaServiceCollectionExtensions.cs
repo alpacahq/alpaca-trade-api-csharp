@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,6 +9,7 @@ namespace Alpaca.Markets.Extensions
     /// Set of extensions methods for registering the strongly-typed Alpaca REST API clients
     /// in the default Microsoft dependency injection container used by the most .NET hosts.
     /// </summary>
+    [CLSCompliant(false)]
     [SuppressMessage("ReSharper", "UnusedType.Global")]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class AlpacaServiceCollectionExtensions
