@@ -43,7 +43,9 @@ namespace Alpaca.Markets
        
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
+#pragma warning disable CA1508 // Avoid dead conditional code
             if (Key is String name &&
+#pragma warning restore CA1508 // Avoid dead conditional code
                 name.IsWatchListNameInvalid())
             {
                 yield return new RequestValidationException(

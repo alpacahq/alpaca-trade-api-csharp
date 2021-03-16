@@ -28,7 +28,9 @@ namespace Alpaca.Markets
 #if NET45
             System.Net.ServicePointManager.SecurityProtocol =
 #pragma warning disable CA5364 // Do Not Use Deprecated Security Protocols
+#pragma warning disable CA5386 // Avoid hard coding SecurityProtocolType value
                 System.Net.SecurityProtocolType.Tls12 | System.Net.SecurityProtocolType.Tls11;
+#pragma warning restore CA5386 // Avoid hard coding SecurityProtocolType value
 #pragma warning restore CA5364 // Do Not Use Deprecated Security Protocols
 #endif
         }
