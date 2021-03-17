@@ -382,6 +382,7 @@ Alpaca.Markets.IAsset.AssetId.get -> System.Guid
 Alpaca.Markets.IAsset.Class.get -> Alpaca.Markets.AssetClass
 Alpaca.Markets.IAsset.EasyToBorrow.get -> bool
 Alpaca.Markets.IAsset.Exchange.get -> Alpaca.Markets.Exchange
+Alpaca.Markets.IAsset.Fractionable.get -> bool
 Alpaca.Markets.IAsset.IsTradable.get -> bool
 Alpaca.Markets.IAsset.Marginable.get -> bool
 Alpaca.Markets.IAsset.Shortable.get -> bool

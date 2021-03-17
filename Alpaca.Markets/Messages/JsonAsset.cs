@@ -35,5 +35,8 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "easy_to_borrow", Required = Required.Default)]
         public Boolean EasyToBorrow { get; set; }
+
+        [JsonProperty(PropertyName = "fractionable", Required = Required.Default)]
+        public Boolean Fractionable { get; set; }
     }
 }
