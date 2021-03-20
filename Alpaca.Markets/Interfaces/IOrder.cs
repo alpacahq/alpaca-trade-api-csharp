@@ -72,9 +72,14 @@ namespace Alpaca.Markets
         AssetClass AssetClass { get; }
 
         /// <summary>
-        /// Gets original order quantity (with the fractional part).
+        /// Gets original notional order quantity (with the fractional part).
         /// </summary>
-        Decimal Quantity { get; }
+        Decimal? Notional { get; }
+
+        /// <summary>
+        /// Gets original fractional order quantity (with the fractional part).
+        /// </summary>
+        Decimal? Quantity { get; }
 
         /// <summary>
         /// Gets filled order quantity (with the fractional part).
