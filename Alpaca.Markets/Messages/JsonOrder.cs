@@ -53,14 +53,17 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "asset_class", Required = Required.Always)]
         public AssetClass AssetClass { get; set; }
 
-        [JsonProperty(PropertyName = "qty", Required = Required.Always)]
-        public Decimal Quantity { get; set; }
+        [JsonProperty(PropertyName = "notional", Required = Required.Default)]
+        public Decimal? Notional { get; set; }
+
+        [JsonProperty(PropertyName = "qty", Required = Required.Default)]
+        public Decimal? Quantity { get; set; }
 
         [JsonProperty(PropertyName = "filled_qty", Required = Required.Always)]
         public Decimal FilledQuantity { get; set; }
 
         [JsonIgnore]
-        public Int64 IntegerQuantity => Quantity.AsInteger();
+        public Int64 IntegerQuantity => Quantity?.AsInteger() ?? 0L;
 
         [JsonIgnore]
         public Int64 IntegerFilledQuantity => FilledQuantity.AsInteger();
