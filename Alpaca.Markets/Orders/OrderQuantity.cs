@@ -18,17 +18,17 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the market day order quantity or notional value.
         /// </summary>
-        public decimal Value { get; }
+        public Decimal Value { get; }
         
         /// <summary>
         /// Returns <c>true</c> if <see cref="Value"/> is an amount in dollars.
         /// </summary>
-        public bool IsInDollars { get; }
+        public Boolean IsInDollars { get; }
 
         /// <summary>
         /// Returns <c>true</c> if <see cref="Value"/> is a number of shares (fractional or integer).
         /// </summary>
-        public bool IsInShares => !IsInDollars;
+        public Boolean IsInShares => !IsInDollars;
 
         /// <summary>
         /// Creates new instance of the <see cref="OrderQuantity"/> object
