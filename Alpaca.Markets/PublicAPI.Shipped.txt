@@ -461,7 +461,8 @@ Alpaca.Markets.IOrder.OrderId.get -> System.Guid
 Alpaca.Markets.IOrder.OrderSide.get -> Alpaca.Markets.OrderSide
 Alpaca.Markets.IOrder.OrderStatus.get -> Alpaca.Markets.OrderStatus
 Alpaca.Markets.IOrder.OrderType.get -> Alpaca.Markets.OrderType
-Alpaca.Markets.IOrder.Quantity.get -> decimal
+Alpaca.Markets.IOrder.Quantity.get -> decimal?
+Alpaca.Markets.IOrder.Notional.get -> decimal?
 Alpaca.Markets.IOrder.StopPrice.get -> decimal?
 Alpaca.Markets.IOrder.SubmittedAtUtc.get -> System.DateTime?
 Alpaca.Markets.IOrder.Symbol.get -> string!
@@ -658,6 +659,7 @@ Alpaca.Markets.OrderClass
 Alpaca.Markets.OrderClass.Bracket = 0 -> Alpaca.Markets.OrderClass
 Alpaca.Markets.OrderClass.OneCancelsOther = 1 -> Alpaca.Markets.OrderClass
 Alpaca.Markets.OrderClass.OneTriggersOther = 2 -> Alpaca.Markets.OrderClass
+Alpaca.Markets.OrderExtensions
 Alpaca.Markets.OrderSide
 Alpaca.Markets.OrderSide.Buy = 0 -> Alpaca.Markets.OrderSide
 Alpaca.Markets.OrderSide.Sell = 1 -> Alpaca.Markets.OrderSide
@@ -858,6 +860,7 @@ static Alpaca.Markets.MarketOrder.Sell(string! symbol, Alpaca.Markets.OrderQuant
 static Alpaca.Markets.OrderBaseExtensions.WithClientOrderId<TOrder>(this TOrder! order, string! clientOrderId) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithDuration<TOrder>(this TOrder! order, Alpaca.Markets.TimeInForce duration) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithExtendedHours<TOrder>(this TOrder! order, bool extendedHours) -> TOrder!
+static Alpaca.Markets.OrderExtensions.GetOrderQuantity(this Alpaca.Markets.IOrder! order) -> Alpaca.Markets.OrderQuantity
 static Alpaca.Markets.OrderSideExtensions.Limit(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
 static Alpaca.Markets.OrderSideExtensions.Market(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity) -> Alpaca.Markets.MarketOrder!
 static Alpaca.Markets.OrderSideExtensions.Stop(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
