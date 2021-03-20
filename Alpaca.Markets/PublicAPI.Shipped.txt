@@ -413,13 +413,6 @@ Alpaca.Markets.IExchange.MarketIdentificationCode.get -> string?
 Alpaca.Markets.IExchange.Name.get -> string!
 Alpaca.Markets.IExchange.TapeId.get -> string?
 Alpaca.Markets.IExclusiveTimeInterval
-Alpaca.Markets.IHistoricalItems<TItem>
-Alpaca.Markets.IHistoricalItems<TItem>.Adjusted.get -> bool
-Alpaca.Markets.IHistoricalItems<TItem>.Items.get -> System.Collections.Generic.IReadOnlyList<TItem>!
-Alpaca.Markets.IHistoricalItems<TItem>.QueryCount.get -> long
-Alpaca.Markets.IHistoricalItems<TItem>.ResultsCount.get -> long
-Alpaca.Markets.IHistoricalItems<TItem>.Status.get -> string?
-Alpaca.Markets.IHistoricalItems<TItem>.Symbol.get -> string?
 Alpaca.Markets.IHistoricalQuote
 Alpaca.Markets.IHistoricalQuote.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.IHistoricalTrade
