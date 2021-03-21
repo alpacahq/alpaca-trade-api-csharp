@@ -9,6 +9,7 @@ namespace Alpaca.Markets
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [CLSCompliant(false)]
     public interface IOrder
     {
         /// <summary>

@@ -8,6 +8,7 @@ namespace Alpaca.Markets
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [CLSCompliant(false)]
     public interface ILastTrade
     {
         /// <summary>
@@ -33,7 +34,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade quantity.
         /// </summary>
-        Int64 Size { get; }
+        UInt64 Size { get; }
 
         /// <summary>
         /// Gets trade timestamp.

@@ -260,7 +260,7 @@ Alpaca.Markets.HistoryPeriodUnit.Year = 3 -> Alpaca.Markets.HistoryPeriodUnit
 Alpaca.Markets.IAccount
 Alpaca.Markets.IAccount.AccountNumber.get -> string?
 Alpaca.Markets.IAccount.BuyingPower.get -> decimal
-Alpaca.Markets.IAccount.DayTradeCount.get -> long
+Alpaca.Markets.IAccount.DayTradeCount.get -> ulong
 Alpaca.Markets.IAccount.DayTradingBuyingPower.get -> decimal
 Alpaca.Markets.IAccount.Equity.get -> decimal
 Alpaca.Markets.IAccount.InitialMargin.get -> decimal
@@ -272,7 +272,7 @@ Alpaca.Markets.IAccount.LastEquity.get -> decimal
 Alpaca.Markets.IAccount.LastMaintenanceMargin.get -> decimal
 Alpaca.Markets.IAccount.LongMarketValue.get -> decimal
 Alpaca.Markets.IAccount.MaintenanceMargin.get -> decimal
-Alpaca.Markets.IAccount.Multiplier.get -> long
+Alpaca.Markets.IAccount.Multiplier.get -> byte
 Alpaca.Markets.IAccount.RegulationBuyingPower.get -> decimal
 Alpaca.Markets.IAccount.ShortingEnabled.get -> bool
 Alpaca.Markets.IAccount.ShortMarketValue.get -> decimal
@@ -324,7 +324,7 @@ Alpaca.Markets.IAggBase.High.get -> decimal
 Alpaca.Markets.IAggBase.ItemsInWindow.get -> int
 Alpaca.Markets.IAggBase.Low.get -> decimal
 Alpaca.Markets.IAggBase.Open.get -> decimal
-Alpaca.Markets.IAggBase.Volume.get -> long
+Alpaca.Markets.IAggBase.Volume.get -> ulong
 Alpaca.Markets.IAlpacaDataClient
 Alpaca.Markets.IAlpacaDataClient.GetBarSetAsync(Alpaca.Markets.BarSetRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IAgg!>!>!>!
 Alpaca.Markets.IAlpacaDataClient.GetLastQuoteAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ILastQuote!>!
@@ -408,7 +408,7 @@ Alpaca.Markets.IEnvironment.AlpacaDataStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaTradingApi.get -> System.Uri!
 Alpaca.Markets.IExchange
-Alpaca.Markets.IExchange.ExchangeId.get -> long
+Alpaca.Markets.IExchange.ExchangeId.get -> uint
 Alpaca.Markets.IExchange.ExchangeType.get -> Alpaca.Markets.ExchangeType
 Alpaca.Markets.IExchange.MarketDataType.get -> Alpaca.Markets.MarketDataType
 Alpaca.Markets.IExchange.MarketIdentificationCode.get -> string?
@@ -420,8 +420,8 @@ Alpaca.Markets.IHistoricalQuote.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.IHistoricalTrade
 Alpaca.Markets.IHistoricalTrade.Exchange.get -> string!
 Alpaca.Markets.IHistoricalTrade.Price.get -> decimal
-Alpaca.Markets.IHistoricalTrade.Size.get -> long
-Alpaca.Markets.IHistoricalTrade.Tape.get -> long
+Alpaca.Markets.IHistoricalTrade.Size.get -> ulong
+Alpaca.Markets.IHistoricalTrade.Tape.get -> ulong
 Alpaca.Markets.IHistoricalTrade.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.IHistoricalTrade.TradeId.get -> string?
 Alpaca.Markets.IInclusiveTimeInterval
@@ -432,7 +432,7 @@ Alpaca.Markets.ILastQuote.TimeUtc.get -> System.DateTime
 Alpaca.Markets.ILastTrade
 Alpaca.Markets.ILastTrade.Exchange.get -> long
 Alpaca.Markets.ILastTrade.Price.get -> decimal
-Alpaca.Markets.ILastTrade.Size.get -> long
+Alpaca.Markets.ILastTrade.Size.get -> ulong
 Alpaca.Markets.ILastTrade.Status.get -> string!
 Alpaca.Markets.ILastTrade.Symbol.get -> string!
 Alpaca.Markets.ILastTrade.TimeUtc.get -> System.DateTime
@@ -507,9 +507,9 @@ Alpaca.Markets.IQuoteBase<TExchange>
 Alpaca.Markets.IQuoteBase<TExchange>.AskExchange.get -> TExchange
 Alpaca.Markets.IQuoteBase<TExchange>.BidExchange.get -> TExchange
 Alpaca.Markets.IQuoteBase<TExchange>.AskPrice.get -> decimal
-Alpaca.Markets.IQuoteBase<TExchange>.AskSize.get -> long
+Alpaca.Markets.IQuoteBase<TExchange>.AskSize.get -> ulong
 Alpaca.Markets.IQuoteBase<TExchange>.BidPrice.get -> decimal
-Alpaca.Markets.IQuoteBase<TExchange>.BidSize.get -> long
+Alpaca.Markets.IQuoteBase<TExchange>.BidSize.get -> ulong
 Alpaca.Markets.IRequestWithTimeInterval<TInterval>
 Alpaca.Markets.IRequestWithTimeInterval<TInterval>.SetInterval(TInterval value) -> void
 Alpaca.Markets.IStopLoss
@@ -541,7 +541,7 @@ Alpaca.Markets.IStreamQuote.TimeUtc.get -> System.DateTime
 Alpaca.Markets.IStreamTrade
 Alpaca.Markets.IStreamTrade.Exchange.get -> string!
 Alpaca.Markets.IStreamTrade.Price.get -> decimal
-Alpaca.Markets.IStreamTrade.Size.get -> long
+Alpaca.Markets.IStreamTrade.Size.get -> ulong
 Alpaca.Markets.IStreamTrade.Symbol.get -> string!
 Alpaca.Markets.IStreamTrade.TimeUtc.get -> System.DateTime
 Alpaca.Markets.IStreamTrade.TradeId.get -> string!

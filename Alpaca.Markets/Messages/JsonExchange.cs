@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     internal sealed class JsonExchange : IExchange
     {
         [JsonProperty(PropertyName = "id", Required = Required.Always)]
-        public Int64 ExchangeId { get; set; }
+        public UInt32 ExchangeId { get; set; }
 
         [JsonProperty(PropertyName = "type", Required = Required.Always)]
         public ExchangeType ExchangeType { get; set; }

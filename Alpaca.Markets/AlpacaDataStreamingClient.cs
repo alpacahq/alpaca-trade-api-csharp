@@ -121,20 +121,24 @@ namespace Alpaca.Markets
             };
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
             String symbol) => 
             _subscriptions.GetOrAdd<IStreamTrade, JsonStreamTradeAlpaca>(getStreamName(TradesChannel, symbol));
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
             String symbol) =>
             _subscriptions.GetOrAdd<IStreamQuote, JsonStreamQuoteAlpaca>(getStreamName(QuotesChannel, symbol));
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription() => 
             _subscriptions.GetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(getStreamName(BarsChannel, WildcardSymbolString));
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
             String symbol) =>
             _subscriptions.GetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(getStreamName(BarsChannel, symbol));

@@ -25,10 +25,10 @@ namespace Alpaca.Markets
             public Decimal AskPrice { get; set; }
 
             [JsonProperty(PropertyName = "bidsize", Required = Required.Default)]
-            public Int64 BidSize { get; set; }
+            public UInt64 BidSize { get; set; }
 
             [JsonProperty(PropertyName = "asksize", Required = Required.Default)]
-            public Int64 AskSize { get; set; }
+            public UInt64 AskSize { get; set; }
 
             [JsonProperty(PropertyName = "timestamp", Required = Required.Always)]
             [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
@@ -85,10 +85,10 @@ namespace Alpaca.Markets
         public Decimal AskPrice => Nested.AskPrice;
 
         [JsonIgnore]
-        public Int64 BidSize => Nested.BidSize;
+        public UInt64 BidSize => Nested.BidSize;
 
         [JsonIgnore]
-        public Int64 AskSize => Nested.AskSize;
+        public UInt64 AskSize => Nested.AskSize;
 
         [JsonIgnore]
         public DateTime TimeUtc => Nested.Timestamp;

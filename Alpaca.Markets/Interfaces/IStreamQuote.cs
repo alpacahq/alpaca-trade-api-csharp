@@ -7,6 +7,7 @@ namespace Alpaca.Markets
     /// Encapsulates quote information from Polygon streaming API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [CLSCompliant(false)]
     public interface IStreamQuote : IQuoteBase<String>
     {
         /// <summary>

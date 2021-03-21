@@ -12,13 +12,13 @@ namespace Alpaca.Markets
         internal struct Last : IEquatable<Last>
         {
             [JsonProperty(PropertyName = "exchange", Required = Required.Always)]
-            public Int64 Exchange { get; set; }
+            public Byte Exchange { get; set; }
 
             [JsonProperty(PropertyName = "price", Required = Required.Always)]
             public Decimal Price { get; set; }
 
             [JsonProperty(PropertyName = "size", Required = Required.Always)]
-            public Int64 Size { get; set; }
+            public UInt64 Size { get; set; }
 
             [JsonProperty(PropertyName = "timestamp", Required = Required.Always)]
             [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
@@ -63,7 +63,7 @@ namespace Alpaca.Markets
         public Decimal Price => Nested.Price;
 
         [JsonIgnore]
-        public Int64 Size => Nested.Size;
+        public UInt64 Size => Nested.Size;
 
         [JsonIgnore]
         public DateTime TimeUtc => Nested.Timestamp;

@@ -7,6 +7,7 @@ namespace Alpaca.Markets
     /// Encapsulates trade update information from Alpaca streaming API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [CLSCompliant(false)]
     public interface ITradeUpdate
     {
         /// <summary>

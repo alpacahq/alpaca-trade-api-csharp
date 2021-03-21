@@ -7,6 +7,7 @@ namespace Alpaca.Markets
     /// Encapsulates historical trade information from Polygon REST API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [CLSCompliant(false)]
     public interface IHistoricalTrade
     {
         /// <summary>
@@ -27,12 +28,12 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade quantity.
         /// </summary>
-        Int64 Size { get; }
+        UInt64 Size { get; }
         
         /// <summary>
         /// Gets tape where trade occurred.
         /// </summary>
-        Int64 Tape { get; }
+        UInt64 Tape { get; }
 
         /// <summary>
         /// Gets trade ID.

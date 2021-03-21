@@ -19,7 +19,7 @@ namespace Alpaca.Markets
         public Decimal AskPrice { get; set; }
 
         [JsonProperty(PropertyName = "as", Required = Required.Default)]
-        public Int64 AskSize { get; set; }
+        public UInt64 AskSize { get; set; }
 
         [JsonProperty(PropertyName = "bx", Required = Required.Always)]
         public String BidExchange  { get; set; } = String.Empty;
@@ -28,6 +28,6 @@ namespace Alpaca.Markets
         public Decimal BidPrice { get; set; }
 
         [JsonProperty(PropertyName = "bs", Required = Required.Default)]
-        public Int64 BidSize { get; set; }
+        public UInt64 BidSize { get; set; }
     }
 }
