@@ -19,12 +19,12 @@ namespace Alpaca.Markets
         public Decimal Price { get; set; }
 
         [JsonProperty(PropertyName = "s", Required = Required.Always)]
-        public Int64 Size { get; set; }
+        public UInt64 Size { get; set; }
 
         [JsonProperty(PropertyName = "z", Required = Required.Default)]
         public String? TradeId { get; set; }
 
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
-        public Int64 Tape { get; set; }
+        public UInt64 Tape { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Alpaca Trading API via HTTP/REST.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [CLSCompliant(false)]
     public interface IAlpacaTradingClient : IDisposable
     {
         /// <summary>
@@ -126,6 +127,7 @@ namespace Alpaca.Markets
         /// <param name="request">List orders request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of order information objects.</returns>
+        [CLSCompliant(false)]
         Task<IReadOnlyList<IOrder>> ListOrdersAsync(
             ListOrdersRequest request,
             CancellationToken cancellationToken = default);

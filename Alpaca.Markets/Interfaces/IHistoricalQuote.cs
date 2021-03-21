@@ -8,6 +8,7 @@ namespace Alpaca.Markets
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [CLSCompliant(false)]
     // ReSharper disable once PossibleInterfaceMemberAmbiguity
     public interface IHistoricalQuote : IQuoteBase<String>
     {

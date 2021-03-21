@@ -8,6 +8,7 @@ namespace Alpaca.Markets
     public sealed partial class AlpacaTradingClient
     {
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<IReadOnlyList<IOrder>> ListOrdersAsync(
             ListOrdersRequest request,
             CancellationToken cancellationToken = default) =>
@@ -16,12 +17,14 @@ namespace Alpaca.Markets
                 cancellationToken, _alpacaRestApiThrottler);
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<IOrder> PostOrderAsync(
             NewOrderRequest request,
             CancellationToken cancellationToken = default) =>
             postOrderAsync(request.EnsureNotNull(nameof(request)).Validate().GetJsonRequest(), cancellationToken);
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<IOrder> PostOrderAsync(
             OrderBase orderBase,
             CancellationToken cancellationToken = default) =>
@@ -34,6 +37,7 @@ namespace Alpaca.Markets
                 "v2/orders", jsonNewOrder, cancellationToken);
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<IOrder> PatchOrderAsync(
             ChangeOrderRequest request,
             CancellationToken cancellationToken = default) =>
@@ -42,6 +46,7 @@ namespace Alpaca.Markets
                 request, cancellationToken);
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<IOrder> GetOrderAsync(
             String clientOrderId,
             CancellationToken cancellationToken = default) =>
@@ -55,6 +60,7 @@ namespace Alpaca.Markets
                 cancellationToken, _alpacaRestApiThrottler);
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<IOrder> GetOrderAsync(
             Guid orderId,
             CancellationToken cancellationToken = default) =>

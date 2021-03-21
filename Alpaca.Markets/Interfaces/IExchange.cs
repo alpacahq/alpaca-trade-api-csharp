@@ -7,12 +7,13 @@ namespace Alpaca.Markets
     /// Encapsulates exchange information from Polygon REST API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [CLSCompliant(false)]
     public interface IExchange
     {
         /// <summary>
         /// Gets exchange unique identifier.
         /// </summary>
-        Int64 ExchangeId { get; }
+        UInt32 ExchangeId { get; }
 
         /// <summary>
         /// Gets exchange type.

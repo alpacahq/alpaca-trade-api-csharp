@@ -3,7 +3,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: CLSCompliant(false)]
+[assembly: CLSCompliant(true)]
 
 [assembly: SuppressMessage("Globalization",
     "CA1303: Do not pass literals as localized parameters",

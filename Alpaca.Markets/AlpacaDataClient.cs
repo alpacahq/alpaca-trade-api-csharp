@@ -39,6 +39,7 @@ namespace Alpaca.Markets
         public void Dispose() => _httpClient.Dispose();
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default) =>
@@ -47,6 +48,7 @@ namespace Alpaca.Markets
                 StringComparer.Ordinal, cancellationToken);
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<ILastTrade> GetLastTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
@@ -54,6 +56,7 @@ namespace Alpaca.Markets
                 $"v1/last/stocks/{symbol}", cancellationToken);
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
@@ -61,6 +64,7 @@ namespace Alpaca.Markets
                 $"v1/last_quote/stocks/{symbol}", cancellationToken);
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<IPage<IAgg>> ListHistoricalBarsAsync(
             HistoricalBarsRequest request,
             CancellationToken cancellationToken = default) =>
@@ -69,6 +73,7 @@ namespace Alpaca.Markets
                 cancellationToken);
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<IPage<IHistoricalQuote>> ListHistoricalQuotesAsync(
             HistoricalQuotesRequest request, 
             CancellationToken cancellationToken = default) =>
@@ -77,6 +82,7 @@ namespace Alpaca.Markets
                 cancellationToken);
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<IPage<IHistoricalTrade>> ListHistoricalTradesAsync(
             HistoricalTradesRequest request, 
             CancellationToken cancellationToken = default) =>

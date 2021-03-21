@@ -7,6 +7,7 @@ namespace Alpaca.Markets
     /// Encapsulates full account information from Alpaca REST API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [CLSCompliant(false)]
     public interface IAccount : IAccountBase
     {
         /// <summary>
@@ -42,7 +43,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Buying power multiplier that represents account margin classification.
         /// </summary>
-        Int64 Multiplier { get; }
+        Byte Multiplier { get; }
 
         /// <summary>
         /// Current available buying power.
@@ -97,7 +98,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// the current number of day trades that have been made in the last 5 trading days (inclusive of today).
         /// </summary>
-        Int64 DayTradeCount { get; }
+        UInt64 DayTradeCount { get; }
 
         /// <summary>
         /// value of special memorandum account.

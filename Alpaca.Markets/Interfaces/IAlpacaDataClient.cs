@@ -10,6 +10,7 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Alpaca Data API via HTTP/REST.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [CLSCompliant(false)]
     public interface IAlpacaDataClient : IDisposable
     {
         /// <summary>

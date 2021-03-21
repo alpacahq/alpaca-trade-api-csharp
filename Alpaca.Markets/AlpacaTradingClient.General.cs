@@ -8,6 +8,7 @@ namespace Alpaca.Markets
     public sealed partial class AlpacaTradingClient
     {
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<IAccount> GetAccountAsync(
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IAccount, JsonAccount>(
@@ -83,6 +84,7 @@ namespace Alpaca.Markets
                 request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient), cancellationToken);
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public Task<IOrder> DeletePositionAsync(
             DeletePositionRequest request,
             CancellationToken cancellationToken = default) =>

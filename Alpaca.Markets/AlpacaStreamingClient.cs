@@ -45,6 +45,7 @@ namespace Alpaca.Markets
         public event Action<IAccountUpdate>? OnAccountUpdate;
 
         /// <inheritdoc />
+        [CLSCompliant(false)]
         public event Action<ITradeUpdate>? OnTradeUpdate;
 
         /// <inheritdoc/>

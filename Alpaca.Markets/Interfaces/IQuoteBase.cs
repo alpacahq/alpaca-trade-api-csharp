@@ -8,6 +8,7 @@ namespace Alpaca.Markets
     /// </summary>
     /// <typeparam name="TExchange">Type of bid/ask exchange properties.</typeparam>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [CLSCompliant(false)]
     public interface IQuoteBase<out TExchange>
     {
         /// <summary>
@@ -33,11 +34,11 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets bid quantity.
         /// </summary>
-        Int64 BidSize { get; }
+        UInt64 BidSize { get; }
 
         /// <summary>
         /// Gets ask quantity.
         /// </summary>
-        Int64 AskSize { get; }
+        UInt64 AskSize { get; }
     }
 }

@@ -31,7 +31,7 @@ namespace Alpaca.Markets
         public Decimal Average => throw new InvalidOperationException();
 
         [JsonProperty(PropertyName = "v", Required = Required.Always)]
-        public Int64 Volume { get; set; }
+        public UInt64 Volume { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
         public DateTime StartTimeUtc { get; set; }

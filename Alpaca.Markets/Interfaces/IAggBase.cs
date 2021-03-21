@@ -7,6 +7,7 @@ namespace Alpaca.Markets
     /// Encapsulates basic bar information for Polygon APIs.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [CLSCompliant(false)]
     public interface IAggBase
     {
         /// <summary>
@@ -32,7 +33,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets bar trading volume.
         /// </summary>
-        Int64 Volume { get; }
+        UInt64 Volume { get; }
 
         /// <summary>
         /// Number of items in aggregate window.
