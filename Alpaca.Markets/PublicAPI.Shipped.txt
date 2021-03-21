@@ -82,6 +82,8 @@ Alpaca.Markets.AlpacaDataClientConfiguration.HttpClient.get -> System.Net.Http.H
 Alpaca.Markets.AlpacaDataClientConfiguration.HttpClient.set -> void
 Alpaca.Markets.AlpacaDataClientConfiguration.SecurityId.get -> Alpaca.Markets.SecurityKey!
 Alpaca.Markets.AlpacaDataClientConfiguration.SecurityId.set -> void
+Alpaca.Markets.AlpacaDataClientConfiguration.ThrottleParameters.get -> Alpaca.Markets.ThrottleParameters!
+Alpaca.Markets.AlpacaDataClientConfiguration.ThrottleParameters.set -> void
 Alpaca.Markets.AlpacaDataStreamingClient
 Alpaca.Markets.AlpacaDataStreamingClient.AlpacaDataStreamingClient(Alpaca.Markets.AlpacaDataStreamingClientConfiguration! configuration) -> void
 Alpaca.Markets.AlpacaDataStreamingClient.GetMinuteAggSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStreamAgg!>!
