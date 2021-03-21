@@ -14,6 +14,8 @@ namespace Alpaca.Markets
     {
         private readonly HttpClient _httpClient;
 
+        private readonly IThrottler _alpacaRestApiThrottler;
+
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataClient"/> object.
         /// </summary>
@@ -26,6 +28,8 @@ namespace Alpaca.Markets
                 .EnsureIsValid();
 
             _httpClient = configuration.HttpClient ?? new HttpClient();
+
+            _alpacaRestApiThrottler = configuration.ThrottleParameters.GetThrottler();
 
             _httpClient.AddAuthenticationHeaders(configuration.SecurityId);
 
@@ -51,14 +55,16 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ILastTrade, JsonLastTradeAlpaca>(
-                $"v1/last/stocks/{symbol}", cancellationToken);
+                $"v1/last/stocks/{symbol}", cancellationToken,
+                _alpacaRestApiThrottler);
 
         /// <inheritdoc />
         public Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ILastQuote, JsonLastQuoteAlpaca>(
-                $"v1/last_quote/stocks/{symbol}", cancellationToken);
+                $"v1/last_quote/stocks/{symbol}", cancellationToken,
+                _alpacaRestApiThrottler);
 
         /// <inheritdoc />
         public Task<IPage<IAgg>> ListHistoricalBarsAsync(
@@ -66,7 +72,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IPage<IAgg>, JsonBarsPage>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                cancellationToken);
+                cancellationToken, _alpacaRestApiThrottler);
 
         /// <inheritdoc />
         public Task<IPage<IHistoricalQuote>> ListHistoricalQuotesAsync(
@@ -74,7 +80,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IPage<IHistoricalQuote>, JsonQuotesPage>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                cancellationToken);
+                cancellationToken, _alpacaRestApiThrottler);
 
         /// <inheritdoc />
         public Task<IPage<IHistoricalTrade>> ListHistoricalTradesAsync(
@@ -82,6 +88,6 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IPage<IHistoricalTrade>, JsonTradesPage>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                cancellationToken);
+                cancellationToken, _alpacaRestApiThrottler);
     }
 }
