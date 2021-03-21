@@ -16,6 +16,7 @@ namespace Alpaca.Markets
         {
             SecurityId = new SecretKey(String.Empty, String.Empty);
             ApiEndpoint = Environments.Live.AlpacaDataApi;
+            ThrottleParameters = ThrottleParameters.Default;
         }
 
         /// <summary>
@@ -29,16 +30,33 @@ namespace Alpaca.Markets
         public Uri ApiEndpoint { get; set; }
 
         /// <summary>
+        /// Gets or sets REST API throttling parameters.
+        /// </summary>
+        public ThrottleParameters ThrottleParameters { get; set; }
+
+        /// <summary>
         /// Gets or sets <see cref="HttpClient"/> instance for connecting.
         /// </summary>
         public HttpClient? HttpClient { get; [UsedImplicitly] set; }
 
         internal void EnsureIsValid()
         {
+            if (SecurityId == null)
+            {
+                throw new InvalidOperationException(
+                    $"The value of '{nameof(SecurityId)}' property shouldn't be null.");
+            }
+
             if (ApiEndpoint == null)
             {
                 throw new InvalidOperationException(
                     $"The value of '{nameof(ApiEndpoint)}' property shouldn't be null.");
+            }
+
+            if (ThrottleParameters == null)
+            {
+                throw new InvalidOperationException(
+                    $"The value of '{nameof(ThrottleParameters)}' property shouldn't be null.");
             }
         }
     }
