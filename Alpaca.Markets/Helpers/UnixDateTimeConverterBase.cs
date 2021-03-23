@@ -32,7 +32,7 @@ namespace Alpaca.Markets
             Int64.TryParse(reader.Value?.ToString(), 
                 NumberStyles.Integer, CultureInfo.InvariantCulture, out var unixTimeStamp)
                 ? FromUnixTime(unixTimeStamp)
-                : (Object?) null;
+                : null;
 
         protected abstract Int64 IntoUnixTime(in DateTime value);
 

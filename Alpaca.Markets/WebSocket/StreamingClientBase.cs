@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -69,6 +70,7 @@ namespace Alpaca.Markets
         {
             var tcs = new TaskCompletionSource<AuthStatus>();
             Connected += HandleConnected;
+            OnError += HandleOnError;
 
             await ConnectAsync(cancellationToken).ConfigureAwait(false);
             return await tcs.Task.ConfigureAwait(false);
@@ -76,8 +78,17 @@ namespace Alpaca.Markets
             void HandleConnected(AuthStatus authStatus)
             {
                 Connected -= HandleConnected;
+                OnError -= OnError;
+
                 tcs.SetResult(authStatus);
             }
+
+            void HandleOnError(Exception exception) =>
+                HandleConnected(
+                    exception is SocketException { SocketErrorCode: SocketError.IsConnected } ||
+                    exception is RestClientErrorException { ErrorCode: 403 } // Already authenticated
+                        ? AuthStatus.Authorized
+                        : AuthStatus.Unauthorized);
         }
 
         /// <inheritdoc />
@@ -187,8 +198,14 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="exception">Exception for routing into <see cref="OnError"/> event.</param>
         protected void HandleError(
-            Exception exception) =>
+            Exception exception)
+        {
+            if (exception is SocketException { SocketErrorCode: SocketError.IsConnected }) 
+            {
+                return; // We skip that error because it doesn't matter for us
+            }
             OnError?.Invoke(exception);
+        }
 
         /// <summary>
         /// 
