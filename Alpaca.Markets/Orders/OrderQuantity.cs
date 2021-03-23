@@ -23,11 +23,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Returns <c>true</c> if <see cref="Value"/> is an amount in dollars.
         /// </summary>
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public Boolean IsInDollars { get; }
 
         /// <summary>
         /// Returns <c>true</c> if <see cref="Value"/> is a number of shares (fractional or integer).
         /// </summary>
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public Boolean IsInShares => !IsInDollars;
 
         /// <summary>
@@ -37,7 +39,7 @@ namespace Alpaca.Markets
         /// <param name="value">Amount of dollars to buy or sell.</param>
         /// <returns>Initialized <see cref="OrderQuantity"/> object.</returns>
         public static OrderQuantity Notional(
-            Decimal value) => new OrderQuantity(value, true);
+            Decimal value) => new (value, true);
 
         /// <summary>
         /// Creates new instance of the <see cref="OrderQuantity"/> object
@@ -46,7 +48,7 @@ namespace Alpaca.Markets
         /// <param name="value">Number of shares (integer or fractional).</param>
         /// <returns>Initialized <see cref="OrderQuantity"/> object.</returns>
         public static OrderQuantity Fractional(
-            Decimal value) => new OrderQuantity(value, false);
+            Decimal value) => new (value, false);
 
         /// <summary>
         /// Creates new instance of the <see cref="OrderQuantity"/> object
@@ -66,9 +68,9 @@ namespace Alpaca.Markets
         public static OrderQuantity FromInt64(
             Int64 value) => Fractional(value);
 
-        internal Decimal? AsNotional() => IsInDollars ? Value : (Decimal?) null;
+        internal Decimal? AsNotional() => IsInDollars ? Value : null;
 
-        internal Decimal? AsFractional() => IsInShares ? Value : (Decimal?) null;
+        internal Decimal? AsFractional() => IsInShares ? Value : null;
 
         /// <inheritdoc />
         public override Boolean Equals(

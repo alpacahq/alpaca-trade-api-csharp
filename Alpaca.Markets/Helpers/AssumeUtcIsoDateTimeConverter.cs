@@ -37,7 +37,7 @@ namespace Alpaca.Markets
                 CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, 
                 out var dateTimeOffset)
                 ? dateTimeOffset.UtcDateTime
-                : (Object?) null;
+                : null;
         }
     }
 }
