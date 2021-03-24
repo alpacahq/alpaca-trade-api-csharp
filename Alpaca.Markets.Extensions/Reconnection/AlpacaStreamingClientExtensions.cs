@@ -41,6 +41,7 @@ namespace Alpaca.Markets.Extensions
         /// </summary>
         /// <param name="client">Original streaming client for wrapping.</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        [CLSCompliant(false)]
         public static IAlpacaStreamingClient WithReconnect(
             this IAlpacaStreamingClient client) =>
             WithReconnect(client, ReconnectionParameters.Default);
@@ -52,6 +53,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="client">Original streaming client for wrapping.</param>
         /// <param name="parameters">Reconnection parameters (or default if missing).</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        [CLSCompliant(false)]
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public static IAlpacaStreamingClient WithReconnect(
             this IAlpacaStreamingClient client,
