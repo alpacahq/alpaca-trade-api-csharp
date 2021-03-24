@@ -78,15 +78,14 @@ namespace Alpaca.Markets
             void HandleConnected(AuthStatus authStatus)
             {
                 Connected -= HandleConnected;
-                OnError -= OnError;
+                OnError -= HandleOnError;
 
                 tcs.SetResult(authStatus);
             }
 
             void HandleOnError(Exception exception) =>
                 HandleConnected(
-                    exception is SocketException { SocketErrorCode: SocketError.IsConnected } ||
-                    exception is RestClientErrorException { ErrorCode: 403 } // Already authenticated
+                    exception is SocketException { SocketErrorCode: SocketError.IsConnected }
                         ? AuthStatus.Authorized
                         : AuthStatus.Unauthorized);
         }
