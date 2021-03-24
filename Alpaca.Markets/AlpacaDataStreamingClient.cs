@@ -289,6 +289,7 @@ namespace Alpaca.Markets
                         break;
 
                     case 403: // Already authenticated
+                        OnConnected(AuthStatus.Authorized);
                         break;
                 }
                 HandleError(new RestClientErrorException(error));
