@@ -21,12 +21,25 @@ namespace Alpaca.Markets.Extensions
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
         /// <param name="request">Original historical minute bars request (with empty next page token).</param>
+        /// <returns></returns>
+        public static IAsyncEnumerable<IAgg> GetHistoricalBarsAsAsyncEnumerable(
+            this IAlpacaDataClient client,
+            HistoricalBarsRequest request) =>
+            GetHistoricalBarsAsAsyncEnumerable(client, request, CancellationToken.None);
+
+        /// <summary>
+        /// Gets all items provided by <see cref="IAlpacaDataClient.ListHistoricalBarsAsync"/> in pagination
+        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IAgg}"/> interface) so they
+        /// can be consumed by the <c>await foreach</c> statement on the caller side.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
+        /// <param name="request">Original historical minute bars request (with empty next page token).</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns></returns>
         public static IAsyncEnumerable<IAgg> GetHistoricalBarsAsAsyncEnumerable(
             this IAlpacaDataClient client,
             HistoricalBarsRequest request,
-            CancellationToken cancellationToken = default) =>
+            CancellationToken cancellationToken) =>
             getPaginatedResponsesAsAsyncEnumerable(
                 new HistoricalBarsRequest(
                     request.EnsureNotNull(nameof(request)).Symbol,
@@ -44,12 +57,25 @@ namespace Alpaca.Markets.Extensions
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
         /// <param name="request">Original historical quotes request (with empty next page token).</param>
+        /// <returns></returns>
+        public static IAsyncEnumerable<IHistoricalQuote> GetHistoricalQuotesAsAsyncEnumerable(
+            this IAlpacaDataClient client,
+            HistoricalQuotesRequest request) =>
+            GetHistoricalQuotesAsAsyncEnumerable(client, request, CancellationToken.None);
+
+        /// <summary>
+        /// Gets all items provided by <see cref="IAlpacaDataClient.ListHistoricalQuotesAsync"/> in pagination
+        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IHistoricalQuote}"/> interface)
+        /// so they can be consumed by the <c>await foreach</c> statement on the caller side.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
+        /// <param name="request">Original historical quotes request (with empty next page token).</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns></returns>
         public static IAsyncEnumerable<IHistoricalQuote> GetHistoricalQuotesAsAsyncEnumerable(
             this IAlpacaDataClient client,
             HistoricalQuotesRequest request,
-            CancellationToken cancellationToken = default) =>
+            CancellationToken cancellationToken) =>
             getPaginatedResponsesAsAsyncEnumerable(
                 new HistoricalQuotesRequest(
                     request.EnsureNotNull(nameof(request)).Symbol,
@@ -66,12 +92,25 @@ namespace Alpaca.Markets.Extensions
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
         /// <param name="request">Original historical trades request (with empty next page token).</param>
+        /// <returns></returns>
+        public static IAsyncEnumerable<IHistoricalTrade> GetHistoricalTradesAsAsyncEnumerable(
+            this IAlpacaDataClient client,
+            HistoricalTradesRequest request) =>
+            GetHistoricalTradesAsAsyncEnumerable(client, request, CancellationToken.None);
+
+        /// <summary>
+        /// Gets all items provided by <see cref="IAlpacaDataClient.ListHistoricalTradesAsync"/> in pagination
+        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IHistoricalTrade}"/> interface)
+        /// so they can be consumed by the <c>await foreach</c> statement on the caller side.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
+        /// <param name="request">Original historical trades request (with empty next page token).</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns></returns>
         public static IAsyncEnumerable<IHistoricalTrade> GetHistoricalTradesAsAsyncEnumerable(
             this IAlpacaDataClient client,
             HistoricalTradesRequest request,
-            CancellationToken cancellationToken = default) =>
+            CancellationToken cancellationToken) =>
             getPaginatedResponsesAsAsyncEnumerable(
                 new HistoricalTradesRequest(
                     request.EnsureNotNull(nameof(request)).Symbol,

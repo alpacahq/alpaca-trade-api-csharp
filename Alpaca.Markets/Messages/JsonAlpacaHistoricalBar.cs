@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -27,7 +28,8 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
         public DateTime? TimeUtc { get; set; }
 
-        [JsonIgnore] 
-        public Int32 ItemsInWindow { get; } = 0;
+        [JsonIgnore]
+        [UsedImplicitly]
+        public Int32 ItemsInWindow { get; }
     }
 }
