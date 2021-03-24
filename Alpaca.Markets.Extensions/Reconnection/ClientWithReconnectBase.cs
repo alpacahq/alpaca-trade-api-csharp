@@ -14,7 +14,11 @@ namespace Alpaca.Markets.Extensions
 
             private readonly Random _random = new ();
 
+            private Int32 _reconnectionAttempts;
+
             protected readonly TClient Client;
+
+            private SpinLock _lock;
 
             protected ClientWithReconnectBase(
                 TClient client,
@@ -79,38 +83,62 @@ namespace Alpaca.Markets.Extensions
                 Justification = "Expected behavior - we report exceptions via OnError event.")]
             private async void handleSocketClosed()
             {
+                var lockTaken = false;
+                _lock.TryEnter(ref lockTaken);
+
+                if (!lockTaken)
+                {
+                    return;
+                }
+
                 try
                 {
-                    var reconnectionAttempts = 0;
-
-                    while (!_cancellationTokenSource.IsCancellationRequested &&
-                           reconnectionAttempts < _reconnectionParameters.MaxReconnectionAttempts)
-                    {
-#pragma warning disable CA5394 // Do not use insecure randomness
-                        await Task.Delay(_random.Next(
-#pragma warning restore CA5394 // Do not use insecure randomness
-                                    (Int32)_reconnectionParameters.MinReconnectionDelay.TotalMilliseconds, 
-                                    (Int32)_reconnectionParameters.MaxReconnectionDelay.TotalMilliseconds), 
-                                _cancellationTokenSource.Token)
-                            .ConfigureAwait(false);
-
-                        var authStatus = await ConnectAndAuthenticateAsync(_cancellationTokenSource.Token)
-                            .ConfigureAwait(false);
-
-                        if (authStatus == AuthStatus.Authorized)
-                        {
-                            OnReconnection(_cancellationTokenSource.Token);
-                            return; // Reconnected, authorized and re-subscribed
-                        }
-
-                        ++reconnectionAttempts;
-                    }
-
-                    SocketClosed?.Invoke(); // Finally report to clients
+                    await handleSocketClosedImpl().ConfigureAwait(false);
                 }
                 catch (Exception exception)
                 {
                     handleOnError(exception);
+                }
+                finally
+                {
+                    _lock.Exit();
+                }
+            }
+
+            private async Task handleSocketClosedImpl()
+            {
+                while (!_cancellationTokenSource.IsCancellationRequested &&
+                       Interlocked.Increment(ref _reconnectionAttempts) <=
+                       _reconnectionParameters.MaxReconnectionAttempts)
+                {
+#pragma warning disable CA5394 // Do not use insecure randomness
+                    await Task.Delay(_random.Next(
+#pragma warning restore CA5394 // Do not use insecure randomness
+                                (Int32) _reconnectionParameters.MinReconnectionDelay.TotalMilliseconds,
+                                (Int32) _reconnectionParameters.MaxReconnectionDelay.TotalMilliseconds),
+                            _cancellationTokenSource.Token)
+                        .ConfigureAwait(false);
+
+                    var authStatus = await ConnectAndAuthenticateAsync(_cancellationTokenSource.Token)
+                        .ConfigureAwait(false);
+
+                    if (authStatus == AuthStatus.Authorized)
+                    {
+                        break;
+                    }
+
+                    await DisconnectAsync(_cancellationTokenSource.Token)
+                        .ConfigureAwait(false);
+                }
+
+                if (Interlocked.Exchange(ref _reconnectionAttempts, 0) <=
+                    _reconnectionParameters.MaxReconnectionAttempts)
+                {
+                    OnReconnection(_cancellationTokenSource.Token);
+                }
+                else
+                {
+                    SocketClosed?.Invoke(); // Finally report to clients
                 }
             }
 
