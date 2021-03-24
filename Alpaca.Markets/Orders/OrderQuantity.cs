@@ -23,13 +23,11 @@ namespace Alpaca.Markets
         /// <summary>
         /// Returns <c>true</c> if <see cref="Value"/> is an amount in dollars.
         /// </summary>
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public Boolean IsInDollars { get; }
 
         /// <summary>
         /// Returns <c>true</c> if <see cref="Value"/> is a number of shares (fractional or integer).
         /// </summary>
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public Boolean IsInShares => !IsInDollars;
 
         /// <summary>
