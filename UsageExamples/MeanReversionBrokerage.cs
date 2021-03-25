@@ -97,7 +97,7 @@ namespace UsageExamples
             subscription.Received += async (agg) =>
             {
                 // If the market's close to closing, exit position and stop trading.
-                TimeSpan minutesUntilClose = closingTime - DateTime.UtcNow;
+                var minutesUntilClose = closingTime - DateTime.UtcNow;
                 if (minutesUntilClose.TotalMinutes < 15)
                 {
                     Console.WriteLine("Reached the end of trading window.");
@@ -142,8 +142,8 @@ namespace UsageExamples
             {
                 closingPrices.RemoveAt(0);
 
-                Decimal avg = closingPrices.Average();
-                Decimal diff = avg - agg.Close;
+                var avg = closingPrices.Average();
+                var diff = avg - agg.Close;
 
                 // If the last trade hasn't filled yet, we'd rather replace
                 // it than have two orders open at once.
@@ -151,14 +151,14 @@ namespace UsageExamples
                 {
                     // We need to wait for the cancel to process in order to avoid
                     // having long and short orders open at the same time.
-                    Boolean res = await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
+                    var res = await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
                 }
 
                 // Make sure we know how much we should spend on our position.
                 var account = await alpacaTradingClient.GetAccountAsync();
-                Decimal buyingPower = account.BuyingPower;
-                Decimal equity = account.Equity;
-                Int64 multiplier = account.Multiplier;
+                var buyingPower = account.BuyingPower;
+                var equity = account.Equity;
+                var multiplier = (Int64)account.Multiplier;
 
                 // Check how much we currently have in this position.
                 var positionQuantity = 0L;
@@ -186,9 +186,9 @@ namespace UsageExamples
                     else
                     {
                         // Allocate a percent of portfolio to short position
-                        Decimal portfolioShare = -1 * diff / agg.Close * scale;
-                        Decimal targetPositionValue = -1 * equity * multiplier * portfolioShare;
-                        Decimal amountToShort = targetPositionValue - positionValue;
+                        var portfolioShare = -1 * diff / agg.Close * scale;
+                        var targetPositionValue = -1 * equity * multiplier * portfolioShare;
+                        var amountToShort = targetPositionValue - positionValue;
 
                         if (amountToShort < 0)
                         {
@@ -218,9 +218,9 @@ namespace UsageExamples
                 else
                 {
                     // Allocate a percent of our portfolio to long position.
-                    Decimal portfolioShare = diff / agg.Close * scale;
-                    Decimal targetPositionValue = equity * multiplier * portfolioShare;
-                    Decimal amountToLong = targetPositionValue - positionValue;
+                    var portfolioShare = diff / agg.Close * scale;
+                    var targetPositionValue = equity * multiplier * portfolioShare;
+                    var amountToLong = targetPositionValue - positionValue;
 
                     if (positionQuantity < 0)
                     {
@@ -235,7 +235,7 @@ namespace UsageExamples
                         {
                             amountToLong = buyingPower;
                         }
-                        int qty = (int)(amountToLong / agg.Close);
+                        var qty = (int)(amountToLong / agg.Close);
 
                         await SubmitOrder(qty, agg.Close, OrderSide.Buy);
                         Console.WriteLine($"Adding {qty * agg.Close:C2} to long position.");

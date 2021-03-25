@@ -43,7 +43,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Buying power multiplier that represents account margin classification.
         /// </summary>
-        Byte Multiplier { get; }
+        Multiplier Multiplier { get; }
 
         /// <summary>
         /// Current available buying power.

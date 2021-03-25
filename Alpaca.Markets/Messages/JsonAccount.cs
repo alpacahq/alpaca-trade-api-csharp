@@ -48,7 +48,7 @@ namespace Alpaca.Markets
         public Boolean ShortingEnabled { get; set; }
 
         [JsonProperty(PropertyName = "multiplier", Required = Required.Default)]
-        public Byte Multiplier { get; set; }
+        public Multiplier Multiplier { get; set; }
 
         [JsonProperty(PropertyName = "buying_power", Required = Required.Always)]
         public Decimal BuyingPower { get; set; }
