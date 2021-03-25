@@ -12,13 +12,13 @@ namespace Alpaca.Markets.Extensions
 
             private readonly ReconnectionParameters _reconnectionParameters;
 
+            private SpinLock _lock = new (false);
+
+            private volatile Int32 _reconnectionAttempts;
+
             private readonly Random _random = new ();
 
-            private Int32 _reconnectionAttempts;
-
             protected readonly TClient Client;
-
-            private SpinLock _lock;
 
             protected ClientWithReconnectBase(
                 TClient client,
@@ -101,7 +101,7 @@ namespace Alpaca.Markets.Extensions
                 }
                 finally
                 {
-                    _lock.Exit();
+                    _lock.Exit(false);
                 }
             }
 
