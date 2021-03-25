@@ -282,6 +282,9 @@ namespace Alpaca.Markets
                 switch (error.Code)
                 {
                     case 401: // Not authenticated
+                        SendAsJsonString(Configuration.SecurityId.GetAuthentication());
+                        break;
+
                     case 402: // Authentication failed
                     case 404: // Authentication timeout
                     case 406: // Connection limit exceeded
@@ -291,8 +294,11 @@ namespace Alpaca.Markets
                     case 403: // Already authenticated
                         OnConnected(AuthStatus.Authorized);
                         break;
+
+                    default:
+                        HandleError(new RestClientErrorException(error));
+                        break;
                 }
-                HandleError(new RestClientErrorException(error));
             }
             catch (Exception exception)
             {
