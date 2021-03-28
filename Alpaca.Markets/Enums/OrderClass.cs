@@ -13,6 +13,12 @@ namespace Alpaca.Markets
     public enum OrderClass
     {
         /// <summary>
+        /// Simple order
+        /// </summary>
+        [EnumMember(Value = "simple")]
+        Simple,
+
+        /// <summary>
         /// Bracket order
         /// </summary>
         [EnumMember(Value = "bracket")]

@@ -44,6 +44,10 @@ namespace Alpaca.Markets
         [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
         public DateTime? FailedAtUtc { get; set; }
 
+        [JsonProperty(PropertyName = "replaced_at", Required = Required.Default)]
+        [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
+        public DateTime? ReplacedAtUtc { get; }
+
         [JsonProperty(PropertyName = "asset_id", Required = Required.Always)]
         public Guid AssetId { get; set; }
 
@@ -68,8 +72,11 @@ namespace Alpaca.Markets
         [JsonIgnore]
         public Int64 IntegerFilledQuantity => FilledQuantity.AsInteger();
 
-        [JsonProperty(PropertyName = "order_type", Required = Required.Always)]
+        [JsonProperty(PropertyName = "type", Required = Required.Always)]
         public OrderType OrderType { get; set; }
+
+        [JsonProperty(PropertyName = "order_class", Required = Required.Always)]
+        public OrderClass OrderClass { get; }
 
         [JsonProperty(PropertyName = "side", Required = Required.Always)]
         public OrderSide OrderSide { get; set; }
@@ -97,6 +104,12 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "status", Required = Required.Always)]
         public OrderStatus OrderStatus { get; set; }
+
+        [JsonProperty(PropertyName = "replaced_by", Required = Required.Default)]
+        public Guid? ReplacedByOrderId { get; }
+
+        [JsonProperty(PropertyName = "replaces", Required = Required.Default)]
+        public Guid? ReplacesOrderId { get; }
 
         [JsonProperty(PropertyName = "legs", Required = Required.Default)]
         public List<JsonOrder>? LegsList { get; set; }

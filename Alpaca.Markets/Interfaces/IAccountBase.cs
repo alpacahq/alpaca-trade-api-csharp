@@ -5,6 +5,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates basic account information from Alpaca streaming API.
     /// </summary>
+    [Obsolete("All members of this interface will be pushed down into the IAccount interface in the next major SDK release.", false)]
     public interface IAccountBase
     {
         /// <summary>
@@ -30,6 +31,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets amount of money available for withdraw.
         /// </summary>
+        [Obsolete("This property will be removed in the next major SDK release. Use TradableCash instead.", true)]
         Decimal WithdrawableCash { get; }
 
         /// <summary>

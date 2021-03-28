@@ -7,7 +7,9 @@ namespace Alpaca.Markets
     /// Encapsulates full account information from Alpaca REST API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+#pragma warning disable 618
     public interface IAccount : IAccountBase
+#pragma warning restore 618
     {
         /// <summary>
         /// Gets account number (string identifier).
