@@ -16,8 +16,6 @@ namespace Alpaca.Markets
 
         private const String TradeUpdates = "trade_updates";
 
-        private const String AccountUpdates = "account_updates";
-
         private const String Authorization = "authorization";
 
         private const String Listening = "listening";
@@ -36,13 +34,15 @@ namespace Alpaca.Markets
             {
                 { Listening, _ => { } },
                 { Authorization, handleAuthorization },
-                { AccountUpdates, handleAccountUpdate },
                 { TradeUpdates, handleTradeUpdate }
             };
         }
 
         /// <inheritdoc />
+#pragma warning disable CS0067 // Event never used
+        [Obsolete("This event never raised and will be removed in the next major SDK release", true)]
         public event Action<IAccountUpdate>? OnAccountUpdate;
+#pragma warning restore CS0067 // Event never used
 
         /// <inheritdoc />
         public event Action<ITradeUpdate>? OnTradeUpdate;
@@ -111,11 +111,7 @@ namespace Alpaca.Markets
                     Action = JsonAction.Listen,
                     Data = new JsonListenRequest.JsonData
                     {
-                        Streams = new List<String>
-                        {
-                            TradeUpdates,
-                            AccountUpdates
-                        }
+                        Streams = new List<String> { TradeUpdates }
                     }
                 };
 
@@ -126,9 +122,5 @@ namespace Alpaca.Markets
         private void handleTradeUpdate(
             JToken token) =>
             OnTradeUpdate.DeserializeAndInvoke<ITradeUpdate, JsonTradeUpdate>(token);
-
-        private void handleAccountUpdate(
-            JToken token) =>
-            OnAccountUpdate.DeserializeAndInvoke<IAccountUpdate, JsonAccountUpdate>(token);
     }
 }
