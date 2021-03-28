@@ -68,7 +68,7 @@ namespace Alpaca.Markets
         [JsonIgnore]
         public Int64 IntegerFilledQuantity => FilledQuantity.AsInteger();
 
-        [JsonProperty(PropertyName = "order_type", Required = Required.Always)]
+        [JsonProperty(PropertyName = "type", Required = Required.Always)]
         public OrderType OrderType { get; set; }
 
         [JsonProperty(PropertyName = "side", Required = Required.Always)]

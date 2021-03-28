@@ -7,6 +7,12 @@
             "**.csproj"
           ],
           "src": "../Alpaca.Markets"
+        },
+        {
+          "files": [
+            "**.csproj"
+          ],
+          "src": "../Alpaca.Markets.Extensions"
         }
       ],
       "dest": "api",
