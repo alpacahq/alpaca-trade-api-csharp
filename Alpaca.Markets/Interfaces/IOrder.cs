@@ -58,6 +58,11 @@ namespace Alpaca.Markets
         DateTime? FailedAtUtc { get; }
 
         /// <summary>
+        /// Gets order replacement timestamp in UTC time zone.
+        /// </summary>
+        DateTime? ReplacedAtUtc { get; }
+
+        /// <summary>
         /// Gets unique asset identifier.
         /// </summary>
         Guid AssetId { get; }
@@ -103,6 +108,11 @@ namespace Alpaca.Markets
         OrderType OrderType { get; }
 
         /// <summary>
+        /// Gets order class.
+        /// </summary>
+        OrderClass OrderClass { get; }
+
+        /// <summary>
         /// Gets order side (buy or sell).
         /// </summary>
         OrderSide OrderSide { get; }
@@ -146,6 +156,16 @@ namespace Alpaca.Markets
         /// Gets current order status.
         /// </summary>
         OrderStatus OrderStatus { get; }
+
+        /// <summary>
+        /// Gets the order ID that this order was replaced by.
+        /// </summary>
+        Guid? ReplacedByOrderId { get; }
+
+        /// <summary>
+        /// Gets the order ID that this order replaces.
+        /// </summary>
+        Guid? ReplacesOrderId { get; }
 
         /// <summary>
         /// Gets legs for this order.

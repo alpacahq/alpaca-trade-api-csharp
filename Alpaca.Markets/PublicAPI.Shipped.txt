@@ -445,10 +445,14 @@ Alpaca.Markets.IOrder.IntegerFilledQuantity.get -> long
 Alpaca.Markets.IOrder.IntegerQuantity.get -> long
 Alpaca.Markets.IOrder.Legs.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOrder!>?
 Alpaca.Markets.IOrder.LimitPrice.get -> decimal?
+Alpaca.Markets.IOrder.OrderClass.get -> Alpaca.Markets.OrderClass
 Alpaca.Markets.IOrder.OrderId.get -> System.Guid
 Alpaca.Markets.IOrder.OrderSide.get -> Alpaca.Markets.OrderSide
 Alpaca.Markets.IOrder.OrderStatus.get -> Alpaca.Markets.OrderStatus
 Alpaca.Markets.IOrder.OrderType.get -> Alpaca.Markets.OrderType
+Alpaca.Markets.IOrder.ReplacedAtUtc.get -> System.DateTime?
+Alpaca.Markets.IOrder.ReplacedByOrderId.get -> System.Guid?
+Alpaca.Markets.IOrder.ReplacesOrderId.get -> System.Guid?
 Alpaca.Markets.IOrder.Quantity.get -> decimal?
 Alpaca.Markets.IOrder.Notional.get -> decimal?
 Alpaca.Markets.IOrder.StopPrice.get -> decimal?
@@ -649,9 +653,10 @@ Alpaca.Markets.OrderBase.Symbol.get -> string!
 Alpaca.Markets.OrderBase.Type.get -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderBaseExtensions
 Alpaca.Markets.OrderClass
-Alpaca.Markets.OrderClass.Bracket = 0 -> Alpaca.Markets.OrderClass
-Alpaca.Markets.OrderClass.OneCancelsOther = 1 -> Alpaca.Markets.OrderClass
-Alpaca.Markets.OrderClass.OneTriggersOther = 2 -> Alpaca.Markets.OrderClass
+Alpaca.Markets.OrderClass.Bracket = 1 -> Alpaca.Markets.OrderClass
+Alpaca.Markets.OrderClass.OneCancelsOther = 2 -> Alpaca.Markets.OrderClass
+Alpaca.Markets.OrderClass.OneTriggersOther = 3 -> Alpaca.Markets.OrderClass
+Alpaca.Markets.OrderClass.Simple = 0 -> Alpaca.Markets.OrderClass
 Alpaca.Markets.OrderExtensions
 Alpaca.Markets.OrderSide
 Alpaca.Markets.OrderSide.Buy = 0 -> Alpaca.Markets.OrderSide
