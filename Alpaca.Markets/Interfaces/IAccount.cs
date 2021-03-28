@@ -8,8 +8,33 @@ namespace Alpaca.Markets
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     [CLSCompliant(false)]
-    public interface IAccount : IAccountBase
+    public interface IAccount
     {
+        /// <summary>
+        /// Gets unique account identifier.
+        /// </summary>
+        Guid AccountId { get; }
+
+        /// <summary>
+        /// Gets updated account status.
+        /// </summary>
+        AccountStatus Status { get; }
+
+        /// <summary>
+        /// Gets main account currency.
+        /// </summary>
+        String? Currency { get; }
+
+        /// <summary>
+        /// Gets amount of money available for trading.
+        /// </summary>
+        Decimal TradableCash { get; }
+
+        /// <summary>
+        /// Gets timestamp of account creation event in UTC.
+        /// </summary>
+        DateTime CreatedAtUtc { get; }
+
         /// <summary>
         /// Gets account number (string identifier).
         /// </summary>

@@ -11,11 +11,6 @@ namespace Alpaca.Markets
     public interface IAlpacaStreamingClient : IStreamingClient
     {
         /// <summary>
-        /// Occurred when new account update received from stream.
-        /// </summary>
-        event Action<IAccountUpdate>? OnAccountUpdate;
-
-        /// <summary>
         /// Occurred when new trade update received from stream.
         /// </summary>
         event Action<ITradeUpdate>? OnTradeUpdate;

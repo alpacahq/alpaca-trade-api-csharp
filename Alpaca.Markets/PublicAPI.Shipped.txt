@@ -102,7 +102,6 @@ Alpaca.Markets.AlpacaDataStreamingClientConfiguration.SecurityId.get -> Alpaca.M
 Alpaca.Markets.AlpacaDataStreamingClientConfiguration.SecurityId.set -> void
 Alpaca.Markets.AlpacaStreamingClient
 Alpaca.Markets.AlpacaStreamingClient.AlpacaStreamingClient(Alpaca.Markets.AlpacaStreamingClientConfiguration! configuration) -> void
-Alpaca.Markets.AlpacaStreamingClient.OnAccountUpdate -> System.Action<Alpaca.Markets.IAccountUpdate!>?
 Alpaca.Markets.AlpacaStreamingClient.OnTradeUpdate -> System.Action<Alpaca.Markets.ITradeUpdate!>?
 Alpaca.Markets.AlpacaStreamingClientConfiguration
 Alpaca.Markets.AlpacaStreamingClientConfiguration.AlpacaStreamingClientConfiguration() -> void
@@ -258,8 +257,11 @@ Alpaca.Markets.HistoryPeriodUnit.Month = 2 -> Alpaca.Markets.HistoryPeriodUnit
 Alpaca.Markets.HistoryPeriodUnit.Week = 1 -> Alpaca.Markets.HistoryPeriodUnit
 Alpaca.Markets.HistoryPeriodUnit.Year = 3 -> Alpaca.Markets.HistoryPeriodUnit
 Alpaca.Markets.IAccount
+Alpaca.Markets.IAccount.AccountId.get -> System.Guid
 Alpaca.Markets.IAccount.AccountNumber.get -> string?
 Alpaca.Markets.IAccount.BuyingPower.get -> decimal
+Alpaca.Markets.IAccount.CreatedAtUtc.get -> System.DateTime
+Alpaca.Markets.IAccount.Currency.get -> string?
 Alpaca.Markets.IAccount.DayTradeCount.get -> ulong
 Alpaca.Markets.IAccount.DayTradingBuyingPower.get -> decimal
 Alpaca.Markets.IAccount.Equity.get -> decimal
@@ -277,6 +279,8 @@ Alpaca.Markets.IAccount.RegulationBuyingPower.get -> decimal
 Alpaca.Markets.IAccount.ShortingEnabled.get -> bool
 Alpaca.Markets.IAccount.ShortMarketValue.get -> decimal
 Alpaca.Markets.IAccount.Sma.get -> decimal
+Alpaca.Markets.IAccount.Status.get -> Alpaca.Markets.AccountStatus
+Alpaca.Markets.IAccount.TradableCash.get -> decimal
 Alpaca.Markets.IAccount.TradeSuspendedByUser.get -> bool
 Alpaca.Markets.IAccountActivity
 Alpaca.Markets.IAccountActivity.ActivityDate.get -> System.DateTime?
@@ -297,13 +301,6 @@ Alpaca.Markets.IAccountActivity.Side.get -> Alpaca.Markets.OrderSide?
 Alpaca.Markets.IAccountActivity.Symbol.get -> string?
 Alpaca.Markets.IAccountActivity.TransactionTimeUtc.get -> System.DateTime?
 Alpaca.Markets.IAccountActivity.Type.get -> Alpaca.Markets.TradeEvent?
-Alpaca.Markets.IAccountBase
-Alpaca.Markets.IAccountBase.AccountId.get -> System.Guid
-Alpaca.Markets.IAccountBase.CreatedAtUtc.get -> System.DateTime
-Alpaca.Markets.IAccountBase.Currency.get -> string?
-Alpaca.Markets.IAccountBase.Status.get -> Alpaca.Markets.AccountStatus
-Alpaca.Markets.IAccountBase.TradableCash.get -> decimal
-Alpaca.Markets.IAccountBase.WithdrawableCash.get -> decimal
 Alpaca.Markets.IAccountConfiguration
 Alpaca.Markets.IAccountConfiguration.DayTradeMarginCallProtection.get -> Alpaca.Markets.DayTradeMarginCallProtection
 Alpaca.Markets.IAccountConfiguration.DayTradeMarginCallProtection.set -> void
@@ -313,9 +310,6 @@ Alpaca.Markets.IAccountConfiguration.IsSuspendTrade.get -> bool
 Alpaca.Markets.IAccountConfiguration.IsSuspendTrade.set -> void
 Alpaca.Markets.IAccountConfiguration.TradeConfirmEmail.get -> Alpaca.Markets.TradeConfirmEmail
 Alpaca.Markets.IAccountConfiguration.TradeConfirmEmail.set -> void
-Alpaca.Markets.IAccountUpdate
-Alpaca.Markets.IAccountUpdate.DeletedAtUtc.get -> System.DateTime?
-Alpaca.Markets.IAccountUpdate.UpdatedAtUtc.get -> System.DateTime
 Alpaca.Markets.IAgg
 Alpaca.Markets.IAgg.TimeUtc.get -> System.DateTime?
 Alpaca.Markets.IAggBase
@@ -343,7 +337,6 @@ Alpaca.Markets.IAlpacaDataSubscription.Subscribed.get -> bool
 Alpaca.Markets.IAlpacaDataSubscription<TApi>
 Alpaca.Markets.IAlpacaDataSubscription<TApi>.Received -> System.Action<TApi>!
 Alpaca.Markets.IAlpacaStreamingClient
-Alpaca.Markets.IAlpacaStreamingClient.OnAccountUpdate -> System.Action<Alpaca.Markets.IAccountUpdate!>?
 Alpaca.Markets.IAlpacaStreamingClient.OnTradeUpdate -> System.Action<Alpaca.Markets.ITradeUpdate!>?
 Alpaca.Markets.IAlpacaTradingClient
 Alpaca.Markets.IAlpacaTradingClient.AddAssetIntoWatchListByIdAsync(Alpaca.Markets.ChangeWatchListRequest<System.Guid>! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
