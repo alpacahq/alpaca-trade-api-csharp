@@ -19,11 +19,11 @@ namespace Alpaca.Markets.Extensions
             {
             }
 
-            public event Action<IAccountUpdate>? OnAccountUpdate
-            {
-                add => Client.OnAccountUpdate += value;
-                remove => Client.OnAccountUpdate += value;
-            }
+#pragma warning disable CS0067 // Event never used
+#pragma warning disable CS0618 // Type or member is obsolete
+            public event Action<IAccountUpdate>? OnAccountUpdate;
+#pragma warning restore CS0618 // Type or member is obsolete
+#pragma warning restore CS0067 // Event never used
 
             public event Action<ITradeUpdate>? OnTradeUpdate
             {

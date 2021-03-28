@@ -8,7 +8,9 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+#pragma warning disable CS0618 // Type or member is obsolete
     internal sealed class JsonAccountUpdate : IAccountUpdate
+#pragma warning restore CS0618 // Type or member is obsolete
     {
         [JsonProperty(PropertyName = "id", Required = Required.Always)]
         public Guid AccountId { get; set; }

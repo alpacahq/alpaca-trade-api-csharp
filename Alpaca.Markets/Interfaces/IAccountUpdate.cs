@@ -7,6 +7,7 @@ namespace Alpaca.Markets
     /// Encapsulates account update information from Alpaca streaming API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+    [Obsolete("This interface will be removed in the next major SDK release", false)]
     public interface IAccountUpdate : IAccountBase
     {
         /// <summary>
