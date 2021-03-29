@@ -479,7 +479,6 @@ Alpaca.Markets.IPortfolioHistoryItem.ProfitLoss.get -> decimal?
 Alpaca.Markets.IPortfolioHistoryItem.ProfitLossPercentage.get -> decimal?
 Alpaca.Markets.IPortfolioHistoryItem.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.IPosition
-Alpaca.Markets.IPosition.AccountId.get -> System.Guid
 Alpaca.Markets.IPosition.AssetChangePercent.get -> decimal
 Alpaca.Markets.IPosition.AssetClass.get -> Alpaca.Markets.AssetClass
 Alpaca.Markets.IPosition.AssetCurrentPrice.get -> decimal
