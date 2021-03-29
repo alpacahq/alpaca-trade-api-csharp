@@ -29,7 +29,7 @@ namespace Alpaca.Markets
         String Name { get; }
 
         /// <summary>
-        /// Gets <see cref="IAccountBase.AccountId"/> fro this watch list.
+        /// Gets <see cref="IAccountBase.AccountId"/> for this watch list.
         /// </summary>
         Guid AccountId { get; }
 
