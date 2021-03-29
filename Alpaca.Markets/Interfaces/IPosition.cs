@@ -12,6 +12,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets unique account identifier.
         /// </summary>
+        [Obsolete("This property will be removed in the next major SDK release", true)]
         Guid AccountId { get; }
 
         /// <summary>
