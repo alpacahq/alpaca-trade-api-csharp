@@ -4,20 +4,20 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.0.2-alpha2</Version>
+    <Version>5.0.2-alpha3</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.0.2.1</AssemblyVersion>
-    <FileVersion>5.0.2.1</FileVersion>
+    <AssemblyVersion>5.0.2.2</AssemblyVersion>
+    <FileVersion>5.0.2.2</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Thread tracking for the `SpinLock` instance disabled because in most cases we'll change context.
+    <PackageReleaseNotes>- The `IAlpacaStreamingClient.OnAccountUpdate` event and the `IAccountUpdate` interface removed from the Extensions.
 </PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -51,7 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Alpaca.Markets" Version="5.0.2-alpha2" />
+    <PackageReference Include="Alpaca.Markets" Version="5.0.2-alpha3" />
     <PackageReference Include="JetBrains.Annotations" Version="2020.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>compile;analyzers</IncludeAssets>

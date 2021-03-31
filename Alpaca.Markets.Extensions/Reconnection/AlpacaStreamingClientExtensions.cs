@@ -22,12 +22,6 @@ namespace Alpaca.Markets.Extensions
             {
             }
 
-            public event Action<IAccountUpdate>? OnAccountUpdate
-            {
-                add => Client.OnAccountUpdate += value;
-                remove => Client.OnAccountUpdate += value;
-            }
-
             public event Action<ITradeUpdate>? OnTradeUpdate
             {
                 add => Client.OnTradeUpdate += value;

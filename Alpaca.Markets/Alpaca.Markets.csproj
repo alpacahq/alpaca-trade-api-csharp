@@ -17,7 +17,9 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>- The `IAlpacaStreamingClient.OnAccountUpdate` event and the `IAccountUpdate` interface removed from the SDK.
+- The `IOrder` interface extended and supports all the JSON properties provided by the current API.
+- The `IPosition.AccountId` property removed from SDK.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
