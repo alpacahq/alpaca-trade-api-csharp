@@ -4,21 +4,20 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.0.2-alpha2</Version>
+    <Version>5.0.2-alpha3</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.0.2.1</AssemblyVersion>
-    <FileVersion>5.0.2.1</FileVersion>
+    <AssemblyVersion>5.0.2.2</AssemblyVersion>
+    <FileVersion>5.0.2.2</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Some authentication-related errors silenced in the `AlpacaDataStreamingClient' because we've already reported them as connection statuses.
-- The new enum `Multiplier` was added and used for the related property in the `IAccount` interface.</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
