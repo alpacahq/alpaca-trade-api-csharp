@@ -101,7 +101,9 @@ namespace Alpaca.Markets
                     "Symbols list shouldn't contain null or empty items.", nameof(Symbols));
             }
 
+#pragma warning disable CS0618 // Type or member is obsolete
             if (TimeFrame == TimeFrame.Hour)
+#pragma warning restore CS0618 // Type or member is obsolete
             {
                 yield return new RequestValidationException(
                     "1H TimeFrame may not be used for BarSet requests.", nameof(TimeFrame));
