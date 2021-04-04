@@ -100,12 +100,6 @@ namespace Alpaca.Markets
                 yield return new RequestValidationException(
                     "Symbols list shouldn't contain null or empty items.", nameof(Symbols));
             }
-
-            if (TimeFrame == TimeFrame.Hour)
-            {
-                yield return new RequestValidationException(
-                    "1H TimeFrame may not be used for BarSet requests.", nameof(TimeFrame));
-            }
         }
 
         void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(

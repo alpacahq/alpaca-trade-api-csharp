@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -14,6 +15,7 @@ namespace Alpaca.Markets
         /// One minute bars.
         /// </summary>
         [EnumMember(Value = "1Sec")]
+        [Obsolete("This enum member will be removed in the next major SDK release.", true)]
         Second,
 
         /// <summary>
