@@ -20,7 +20,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets Polygon.io data REST API base URL for this environment.
         /// </summary>
-        [Obsolete("This property will be removed in the next major SDK release", true)]
+        [Obsolete("This property will be removed in the next major SDK release.", true)]
         Uri PolygonDataApi { get; }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets Polygon.io streaming API base URL for this environment.
         /// </summary>
-        [Obsolete("This property will be removed in the next major SDK release", true)]
+        [Obsolete("This property will be removed in the next major SDK release.", true)]
         Uri PolygonStreamingApi { get; }
 
         /// <summary>

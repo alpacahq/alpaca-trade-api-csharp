@@ -67,7 +67,7 @@ namespace Alpaca.Markets.Extensions
         /// in the modified <paramref name="environment"/> object.
         /// </param>
         /// <returns>New environment URLs object.</returns>
-        [Obsolete("This method will be removed in the next major SDK release", true)]
+        [Obsolete("This method will be removed in the next major SDK release.", true)]
         public static IEnvironment WithProxyForPolygonStreamingClient(
             this IEnvironment environment,
             Uri? alpacaProxyAgentUrl = null) =>

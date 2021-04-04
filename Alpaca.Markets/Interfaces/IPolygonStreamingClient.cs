@@ -6,7 +6,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon streaming API via websockets.
     /// </summary>
-    [Obsolete("This interface will be removed in the next major SDK release", true)]
+    [Obsolete("This interface will be removed in the next major SDK release.", true)]
     public interface IPolygonStreamingClient : IStreamingClientBase
     {
         /// <summary>
