@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
@@ -16,5 +17,10 @@ namespace Alpaca.Markets
         /// Gets SIP timestamp in UTC time zone.
         /// </summary>
         DateTime TimestampUtc { get; }
+
+        /// <summary>
+        /// Gets trade conditions list.
+        /// </summary>
+        IReadOnlyList<String> Conditions { get; }
     }
 }

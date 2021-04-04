@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
@@ -35,5 +36,12 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
         public DateTime TimeUtc { get; set; }
+
+        [JsonProperty(PropertyName = "c", Required = Required.Default)]
+        public List<String> ConditionsList { get; } = new ();
+
+        [JsonIgnore]
+        public IReadOnlyList<String> Conditions => 
+            ConditionsList.EmptyIfNull();
     }
 }

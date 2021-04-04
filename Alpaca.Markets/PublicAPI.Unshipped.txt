@@ -1,1 +1,5 @@
 ﻿#nullable enable
+Alpaca.Markets.IHistoricalQuote.Conditions.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Alpaca.Markets.IHistoricalTrade.Conditions.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Alpaca.Markets.IStreamQuote.Conditions.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Alpaca.Markets.IStreamTrade.Conditions.get -> System.Collections.Generic.IReadOnlyList<string!>!

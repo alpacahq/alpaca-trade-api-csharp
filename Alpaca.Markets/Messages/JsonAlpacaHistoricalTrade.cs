@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
@@ -26,5 +27,12 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
         public UInt64 Tape { get; set; }
+
+        [JsonProperty(PropertyName = "c", Required = Required.Default)]
+        public List<String> ConditionsList { get; } = new ();
+
+        [JsonIgnore]
+        public IReadOnlyList<String> Conditions => 
+            ConditionsList.EmptyIfNull();
     }
 }
