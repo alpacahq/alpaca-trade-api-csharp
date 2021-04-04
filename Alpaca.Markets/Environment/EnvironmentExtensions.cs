@@ -74,7 +74,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="keyId">Alpaca API key identifier.</param>
         /// <returns>The new instance of <see cref="IPolygonDataClient"/> interface implementation.</returns>
-        [Obsolete("This method will be removed in the next major SDK release", true)]
+        [Obsolete("This method will be removed in the next major SDK release.", true)]
         public static IPolygonDataClient GetPolygonDataClient(
             this IEnvironment environment,
             String keyId) =>
@@ -87,7 +87,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="keyId">Alpaca API key identifier.</param>
         /// <returns>New instance of <see cref="PolygonDataClientConfiguration"/> object.</returns>
-        [Obsolete("This method will be removed in the next major SDK release", true)]
+        [Obsolete("This method will be removed in the next major SDK release.", true)]
         public static PolygonDataClientConfiguration GetPolygonDataClientConfiguration(
             this IEnvironment environment,
             String keyId) =>
@@ -134,7 +134,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="keyId">Alpaca API key identifier.</param>
         /// <returns>The new instance of <see cref="IPolygonStreamingClient"/> interface implementation.</returns>
-        [Obsolete("This method will be removed in the next major SDK release", true)]
+        [Obsolete("This method will be removed in the next major SDK release.", true)]
         public static IPolygonStreamingClient GetPolygonStreamingClient(
             this IEnvironment environment,
             String keyId) =>
@@ -147,7 +147,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="keyId">Alpaca API key identifier.</param>
         /// <returns>New instance of <see cref="PolygonStreamingClientConfiguration"/> object.</returns>
-        [Obsolete("This method will be removed in the next major SDK release", true)]
+        [Obsolete("This method will be removed in the next major SDK release.", true)]
         public static PolygonStreamingClientConfiguration GetPolygonStreamingClientConfiguration(
             this IEnvironment environment,
             String keyId) =>

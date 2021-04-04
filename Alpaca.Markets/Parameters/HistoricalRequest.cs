@@ -7,7 +7,7 @@ namespace Alpaca.Markets
     /// Encapsulates request parameters for <see cref="PolygonDataClient.ListHistoricalTradesAsync(HistoricalRequest,System.Threading.CancellationToken)"/>
     /// and <see cref="PolygonDataClient.ListHistoricalQuotesAsync(HistoricalRequest,System.Threading.CancellationToken)"/> method calls.
     /// </summary>
-    [Obsolete("This class will be removed in the next major SDK release", true)]
+    [Obsolete("This class will be removed in the next major SDK release.", true)]
     public sealed class HistoricalRequest : Validation.IRequest
     {
         /// <summary>

@@ -6,7 +6,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates account history period request duration - value and unit pair.
     /// </summary>
-    [Obsolete("This struct will be removed in the next major SDK release", true)]
+    [Obsolete("This struct will be removed in the next major SDK release.", true)]
     public readonly struct AggregationPeriod : IEquatable<AggregationPeriod>
     {
         /// <summary>

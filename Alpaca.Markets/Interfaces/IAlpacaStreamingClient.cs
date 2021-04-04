@@ -10,7 +10,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Occurred when new account update received from stream.
         /// </summary>
-        [Obsolete("This event never raised and will be removed in the next major SDK release", true)]
+        [Obsolete("This event never raised and will be removed in the next major SDK release.", true)]
         event Action<IAccountUpdate>? OnAccountUpdate;
 
         /// <summary>

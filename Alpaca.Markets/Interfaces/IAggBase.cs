@@ -38,7 +38,7 @@ namespace Alpaca.Markets
         /// Number of items in aggregate window.
         /// Polygon v2 API only.
         /// </summary>
-        [Obsolete("This property will be removed from the next major version of SDK.", true)]
+        [Obsolete("This property will be removed from the next major SDK release.", true)]
         Int32 ItemsInWindow { get; }
     }
 }

@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Polygon Data API via HTTP/REST.
     /// </summary>
-    [Obsolete("This interface will be removed in the next major SDK release", true)]
+    [Obsolete("This interface will be removed in the next major SDK release.", true)]
     public interface IPolygonDataClient : IDisposable
     {
         /// <summary>

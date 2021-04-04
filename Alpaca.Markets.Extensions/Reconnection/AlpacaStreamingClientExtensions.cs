@@ -20,7 +20,7 @@ namespace Alpaca.Markets.Extensions
             }
 
 #pragma warning disable CS0067 // Event never used
-            [Obsolete("This event never raised and will be removed in the next major SDK release", true)]
+            [Obsolete("This event never raised and will be removed in the next major SDK release.", true)]
             public event Action<IAccountUpdate>? OnAccountUpdate;
 #pragma warning restore CS0067 // Event never used
 

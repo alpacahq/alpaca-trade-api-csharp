@@ -14,7 +14,7 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Polygon Data API via HTTP/REST.
     /// </summary>
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-    [Obsolete("This class will be removed in the next major SDK release", true)]
+    [Obsolete("This class will be removed in the next major SDK release.", true)]
     public sealed class PolygonDataClient : IPolygonDataClient
     {
         private readonly HttpClient _httpClient;
