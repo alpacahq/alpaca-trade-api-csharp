@@ -4,11 +4,11 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates bar information from Polygon streaming API.
+    /// Encapsulates bar information from Alpaca streaming API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     [CLSCompliant(false)]
-    public interface IStreamAgg : IAggBase
+    public interface IRealTimeBar : IBar
     {
         /// <summary>
         /// Gets bar average price.

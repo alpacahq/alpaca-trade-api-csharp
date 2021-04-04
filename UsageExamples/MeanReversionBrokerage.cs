@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UsageExamples
 {
-    // This version of the mean reversion example algorithm utilizes Polygon data that
+    // This version of the mean reversion example algorithm utilizes Alpaca data that
     // is available to users who have a funded Alpaca brokerage account. By default, it
     // is configured to use the paper trading API, but you can change it to use the live
     // trading API by setting the API_URL.
@@ -87,13 +87,13 @@ namespace UsageExamples
             await AwaitMarketOpen();
             Console.WriteLine("Market opened.");
 
-            // Connect to Polygon's websocket and listen for price updates.
+            // Connect to Alpaca's websocket and listen for price updates.
             alpacaDataStreamingClient = Environments.Live.GetAlpacaDataStreamingClient(new SecretKey(API_KEY, API_SECRET));
 
             alpacaDataStreamingClient.ConnectAndAuthenticateAsync().Wait();
-            Console.WriteLine("Polygon client opened.");
+            Console.WriteLine("Alpaca streaming client opened.");
 
-            var subscription = alpacaDataStreamingClient.GetMinuteAggSubscription(symbol);
+            var subscription = alpacaDataStreamingClient.GetMinuteBarSubscription(symbol);
             subscription.Received += async (agg) =>
             {
                 // If the market's close to closing, exit position and stop trading.
@@ -135,7 +135,7 @@ namespace UsageExamples
         }
 
         // Determine whether our position should grow or shrink and submit orders.
-        private async Task HandleMinuteAgg(IStreamAgg agg)
+        private async Task HandleMinuteAgg(IRealTimeBar agg)
         {
             closingPrices.Add(agg.Close);
             if (closingPrices.Count > 20)

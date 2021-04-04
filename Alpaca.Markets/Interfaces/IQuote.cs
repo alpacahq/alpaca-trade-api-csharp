@@ -4,13 +4,18 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates basic quote information any REST API.
+    /// Encapsulates the basic quote information from Alpaca APIs.
     /// </summary>
     /// <typeparam name="TExchange">Type of bid/ask exchange properties.</typeparam>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     [CLSCompliant(false)]
-    public interface IQuoteBase<out TExchange>
+    public interface IQuote<out TExchange>
     {
+        /// <summary>
+        /// Gets quote timestamp in UTC time zone.
+        /// </summary>
+        DateTime TimestampUtc { get; }
+
         /// <summary>
         /// Gets identifier of bid source exchange.
         /// </summary>

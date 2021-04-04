@@ -4,11 +4,11 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates basic bar information for Polygon APIs.
+    /// Encapsulates basic bar information for Alpaca APIs.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     [CLSCompliant(false)]
-    public interface IAggBase
+    public interface IBar
     {
         /// <summary>
         /// Gets bar open price.
@@ -37,7 +37,6 @@ namespace Alpaca.Markets
 
         /// <summary>
         /// Number of items in aggregate window.
-        /// Polygon v2 API only.
         /// </summary>
         [Obsolete("This property will be removed from the next major version of SDK.", false)]
         Int32 ItemsInWindow { get; }

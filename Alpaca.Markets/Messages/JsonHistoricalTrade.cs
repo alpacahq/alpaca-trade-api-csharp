@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonAlpacaHistoricalTrade : IHistoricalTrade
+    internal sealed class JsonHistoricalTrade : IHistoricalTrade
     {
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
         public DateTime TimestampUtc { get; set; }

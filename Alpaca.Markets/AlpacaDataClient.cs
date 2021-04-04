@@ -44,10 +44,10 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
+        public Task<IReadOnlyDictionary<String, IReadOnlyList<IHistoricalBar>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<String, IReadOnlyList<IAgg>, String, List<JsonAlpacaAgg>>(
+            _httpClient.GetAsync<String, IReadOnlyList<IHistoricalBar>, String, List<JsonHistoricalBar.V1>>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
                 StringComparer.Ordinal, cancellationToken);
 
@@ -56,7 +56,7 @@ namespace Alpaca.Markets
         public Task<ILastTrade> GetLastTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<ILastTrade, JsonLastTradeAlpaca>(
+            _httpClient.GetAsync<ILastTrade, JsonLastTrade>(
                 $"v1/last/stocks/{symbol}", cancellationToken,
                 _alpacaRestApiThrottler);
 
@@ -65,16 +65,16 @@ namespace Alpaca.Markets
         public Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<ILastQuote, JsonLastQuoteAlpaca>(
+            _httpClient.GetAsync<ILastQuote, JsonLastQuote>(
                 $"v1/last_quote/stocks/{symbol}", cancellationToken,
                 _alpacaRestApiThrottler);
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public Task<IPage<IAgg>> ListHistoricalBarsAsync(
+        public Task<IPage<IHistoricalBar>> ListHistoricalBarsAsync(
             HistoricalBarsRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IPage<IAgg>, JsonBarsPage>(
+            _httpClient.GetAsync<IPage<IHistoricalBar>, JsonBarsPage>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
                 cancellationToken, _alpacaRestApiThrottler);
 

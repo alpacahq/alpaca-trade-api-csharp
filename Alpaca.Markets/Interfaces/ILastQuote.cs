@@ -8,13 +8,8 @@ namespace Alpaca.Markets
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     [CLSCompliant(false)]
-    public interface ILastQuote : IQuoteBase<Int64>
+    public interface ILastQuote : IQuote<Int64>
     {
-        /// <summary>
-        /// Gets quote timestamp in UTC time zone.
-        /// </summary>
-        DateTime TimeUtc { get; }
-
         /// <summary>
         /// Gets quote response status.
         /// </summary>

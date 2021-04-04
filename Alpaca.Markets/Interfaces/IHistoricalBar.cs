@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates bar information from Polygon REST API.
+    /// Encapsulates bar information from Alpaca APIs.
     /// </summary>
     [CLSCompliant(false)]
-    public interface IAgg : IAggBase
+    public interface IHistoricalBar : IBar
     {
         /// <summary>
         /// Gets bar timestamp in the UTC.

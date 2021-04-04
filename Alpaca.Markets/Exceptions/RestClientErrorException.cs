@@ -4,7 +4,7 @@ using System.Net.Http;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Represents Alpaca/Polygon REST API specific error information.
+    /// Represents Alpaca REST and Streaming API specific error information.
     /// </summary>
     [Serializable]
     public sealed class RestClientErrorException : Exception

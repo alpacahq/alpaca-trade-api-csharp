@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// OAuth key for Alpaca/Polygon APIs authentication.
+    /// OAuth key for Alpaca API authentication.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedType.Global")]
     public sealed class OAuthKey : SecurityKey

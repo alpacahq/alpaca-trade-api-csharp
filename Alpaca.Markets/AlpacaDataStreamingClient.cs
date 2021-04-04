@@ -122,26 +122,26 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
+        public IAlpacaDataSubscription<IRealTimeTrade> GetTradeSubscription(
             String symbol) => 
-            _subscriptions.GetOrAdd<IStreamTrade, JsonStreamTradeAlpaca>(getStreamName(TradesChannel, symbol));
+            _subscriptions.GetOrAdd<IRealTimeTrade, JsonRealTimeTrade>(getStreamName(TradesChannel, symbol));
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
+        public IAlpacaDataSubscription<IRealTimeQuote> GetQuoteSubscription(
             String symbol) =>
-            _subscriptions.GetOrAdd<IStreamQuote, JsonStreamQuoteAlpaca>(getStreamName(QuotesChannel, symbol));
+            _subscriptions.GetOrAdd<IRealTimeQuote, JsonRealTimeQuote>(getStreamName(QuotesChannel, symbol));
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription() => 
-            _subscriptions.GetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(getStreamName(BarsChannel, WildcardSymbolString));
+        public IAlpacaDataSubscription<IRealTimeBar> GetMinuteBarSubscription() => 
+            _subscriptions.GetOrAdd<IRealTimeBar, JsonRealTimeBar>(getStreamName(BarsChannel, WildcardSymbolString));
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
+        public IAlpacaDataSubscription<IRealTimeBar> GetMinuteBarSubscription(
             String symbol) =>
-            _subscriptions.GetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(getStreamName(BarsChannel, symbol));
+            _subscriptions.GetOrAdd<IRealTimeBar, JsonRealTimeBar>(getStreamName(BarsChannel, symbol));
 
         /// <inheritdoc />
         public void Subscribe(
@@ -309,11 +309,11 @@ namespace Alpaca.Markets
 
         private void subscribe(
             IEnumerable<String> streams) =>
-            sendSubscriptionRequest(getLookup(streams), JsonAction.PolygonSubscribe);
+            sendSubscriptionRequest(getLookup(streams), JsonAction.Subscribe);
 
         private void unsubscribe(
             IEnumerable<String> streams) =>
-            sendSubscriptionRequest(getLookup(streams), JsonAction.PolygonUnsubscribe);
+            sendSubscriptionRequest(getLookup(streams), JsonAction.Unsubscribe);
 
         private void sendSubscriptionRequest(
             ILookup<String, String> streamsByChannels,

@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonStreamQuoteAlpaca : IStreamQuote
+    internal sealed class JsonRealTimeQuote : IRealTimeQuote
     {
         [JsonProperty(PropertyName = "T", Required = Required.Always)]
         public String Channel { get; set; } = String.Empty;
@@ -35,7 +35,7 @@ namespace Alpaca.Markets
         public UInt64 AskSize { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
-        public DateTime TimeUtc { get; set; }
+        public DateTime TimestampUtc { get; set; }
 
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
         public List<String> ConditionsList { get; } = new ();

@@ -4,27 +4,16 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates last trade information from Alpaca REST API.
+    /// Encapsulates the basic trade information from Alpaca APIs.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     [CLSCompliant(false)]
-    public interface ILastTrade
+    public interface ITrade
     {
         /// <summary>
-        /// Gets request status.
+        /// Gets trade timestamp in UTC time zone.
         /// </summary>
-        String Status { get; }
-
-        /// <summary>
-        /// Gets asset name.
-        /// </summary>
-        String Symbol { get; }
-
-        /// <summary>
-        /// Gets asset's exchange identifier.
-        /// </summary>
-        Int64 Exchange { get; }
+        DateTime TimestampUtc { get; }
 
         /// <summary>
         /// Gets trade price level.
@@ -37,8 +26,13 @@ namespace Alpaca.Markets
         UInt64 Size { get; }
 
         /// <summary>
-        /// Gets trade timestamp.
+        /// Gets trade identifier.
         /// </summary>
-        DateTime TimeUtc { get; }
+        String? TradeId { get; }
+
+        /// <summary>
+        /// Gets trade source exchange identifier.
+        /// </summary>
+        String Exchange { get; }
     }
 }

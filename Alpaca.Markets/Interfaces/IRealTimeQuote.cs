@@ -5,14 +5,18 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates historical quote information from Alpaca REST API.
+    /// Encapsulates quote information from Alpaca streaming API.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     [CLSCompliant(false)]
-    // ReSharper disable once PossibleInterfaceMemberAmbiguity
-    public interface IHistoricalQuote : IQuote<String>
+    public interface IRealTimeQuote : IQuote<String>
     {
+        /// <summary>
+        /// Gets asset name.
+        /// </summary>
+        String Symbol { get; }
+
         /// <summary>
         /// Gets trade conditions list.
         /// </summary>

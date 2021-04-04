@@ -19,7 +19,7 @@ namespace Alpaca.Markets
         /// <param name="request">Historical daily bars request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
-        Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
+        Task<IReadOnlyDictionary<String, IReadOnlyList<IHistoricalBar>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default);
 
@@ -49,7 +49,7 @@ namespace Alpaca.Markets
         /// <param name="request">Historical bars request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical bars for specified asset (with pagination data).</returns>
-        Task<IPage<IAgg>> ListHistoricalBarsAsync(
+        Task<IPage<IHistoricalBar>> ListHistoricalBarsAsync(
             HistoricalBarsRequest request,
             CancellationToken cancellationToken = default);
 

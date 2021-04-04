@@ -7,7 +7,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonLastQuoteAlpaca : ILastQuote
+    internal sealed class JsonLastQuote : ILastQuote
     {
         [SuppressMessage("ReSharper", "StringLiteralTypo")]
         internal struct Last : IEquatable<Last>
@@ -91,6 +91,6 @@ namespace Alpaca.Markets
         public UInt64 AskSize => Nested.AskSize;
 
         [JsonIgnore]
-        public DateTime TimeUtc => Nested.Timestamp;
+        public DateTime TimestampUtc => Nested.Timestamp;
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Secret API key for Alpaca/Polygon APIs authentication.
+    /// Secret API key for Alpaca API authentication.
     /// </summary>
     public sealed class SecretKey : SecurityKey
     {
@@ -39,9 +39,9 @@ namespace Alpaca.Markets
             };
 
         internal override JsonAuthentication GetAuthentication() =>
-            new JsonAuthentication
+            new()
             {
-                Action = JsonAction.PolygonAuthenticate,
+                Action = JsonAction.StreamingAuthenticate,
                 SecretKey = Value,
                 KeyId = KeyId
             };
