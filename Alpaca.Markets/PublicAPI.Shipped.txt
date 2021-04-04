@@ -169,10 +169,9 @@ Alpaca.Markets.AuthStatus
 Alpaca.Markets.AuthStatus.Authorized = 0 -> Alpaca.Markets.AuthStatus
 Alpaca.Markets.AuthStatus.Unauthorized = 1 -> Alpaca.Markets.AuthStatus
 Alpaca.Markets.BarTimeFrame
-Alpaca.Markets.BarTimeFrame.Day = 3 -> Alpaca.Markets.BarTimeFrame
-Alpaca.Markets.BarTimeFrame.Hour = 2 -> Alpaca.Markets.BarTimeFrame
-Alpaca.Markets.BarTimeFrame.Minute = 1 -> Alpaca.Markets.BarTimeFrame
-Alpaca.Markets.BarTimeFrame.Second = 0 -> Alpaca.Markets.BarTimeFrame
+Alpaca.Markets.BarTimeFrame.Day = 2 -> Alpaca.Markets.BarTimeFrame
+Alpaca.Markets.BarTimeFrame.Hour = 1 -> Alpaca.Markets.BarTimeFrame
+Alpaca.Markets.BarTimeFrame.Minute = 0 -> Alpaca.Markets.BarTimeFrame
 Alpaca.Markets.BarSetRequest
 Alpaca.Markets.BarSetRequest.AreTimesInclusive.get -> bool
 Alpaca.Markets.BarSetRequest.BarSetRequest(string! symbol, Alpaca.Markets.TimeFrame timeFrame) -> void
@@ -785,10 +784,9 @@ Alpaca.Markets.ThrottleParameters.ThrottleParameters(int occurrences, System.Tim
 Alpaca.Markets.ThrottleParameters.TimeUnit.get -> System.TimeSpan
 Alpaca.Markets.ThrottleParameters.TimeUnit.set -> void
 Alpaca.Markets.TimeFrame
-Alpaca.Markets.TimeFrame.Day = 4 -> Alpaca.Markets.TimeFrame
+Alpaca.Markets.TimeFrame.Day = 3 -> Alpaca.Markets.TimeFrame
 Alpaca.Markets.TimeFrame.FifteenMinutes = 2 -> Alpaca.Markets.TimeFrame
 Alpaca.Markets.TimeFrame.FiveMinutes = 1 -> Alpaca.Markets.TimeFrame
-Alpaca.Markets.TimeFrame.Hour = 3 -> Alpaca.Markets.TimeFrame
 Alpaca.Markets.TimeFrame.Minute = 0 -> Alpaca.Markets.TimeFrame
 Alpaca.Markets.TimeInForce
 Alpaca.Markets.TimeInForce.Cls = 5 -> Alpaca.Markets.TimeInForce
