@@ -7,6 +7,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+    [Obsolete("This class will be removed in the next major SDK release.", false)]
     internal sealed class JsonExchange : IExchange
     {
         [JsonProperty(PropertyName = "id", Required = Required.Always)]
