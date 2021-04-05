@@ -168,6 +168,13 @@ Alpaca.Markets.AssetStatus.Inactive = 1 -> Alpaca.Markets.AssetStatus
 Alpaca.Markets.AuthStatus
 Alpaca.Markets.AuthStatus.Authorized = 0 -> Alpaca.Markets.AuthStatus
 Alpaca.Markets.AuthStatus.Unauthorized = 1 -> Alpaca.Markets.AuthStatus
+Alpaca.Markets.IBar
+Alpaca.Markets.IBar.Close.get -> decimal
+Alpaca.Markets.IBar.High.get -> decimal
+Alpaca.Markets.IBar.ItemsInWindow.get -> int
+Alpaca.Markets.IBar.Low.get -> decimal
+Alpaca.Markets.IBar.Open.get -> decimal
+Alpaca.Markets.IBar.Volume.get -> ulong
 Alpaca.Markets.BarTimeFrame
 Alpaca.Markets.BarTimeFrame.Day = 2 -> Alpaca.Markets.BarTimeFrame
 Alpaca.Markets.BarTimeFrame.Hour = 1 -> Alpaca.Markets.BarTimeFrame
@@ -519,6 +526,12 @@ Alpaca.Markets.ITakeProfit.LimitPrice.get -> decimal
 Alpaca.Markets.ITimeInterval
 Alpaca.Markets.ITimeInterval.From.get -> System.DateTime?
 Alpaca.Markets.ITimeInterval.Into.get -> System.DateTime?
+Alpaca.Markets.ITrade
+Alpaca.Markets.ITrade.Exchange.get -> string!
+Alpaca.Markets.ITrade.Price.get -> decimal
+Alpaca.Markets.ITrade.Size.get -> ulong
+Alpaca.Markets.ITrade.TimestampUtc.get -> System.DateTime
+Alpaca.Markets.ITrade.TradeId.get -> string?
 Alpaca.Markets.ITradeUpdate
 Alpaca.Markets.ITradeUpdate.Event.get -> Alpaca.Markets.TradeEvent
 Alpaca.Markets.ITradeUpdate.IntegerQuantity.get -> long?

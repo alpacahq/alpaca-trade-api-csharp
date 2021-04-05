@@ -1,14 +1,1 @@
 ﻿#nullable enable
-Alpaca.Markets.IBar
-Alpaca.Markets.IBar.Close.get -> decimal
-Alpaca.Markets.IBar.High.get -> decimal
-Alpaca.Markets.IBar.ItemsInWindow.get -> int
-Alpaca.Markets.IBar.Low.get -> decimal
-Alpaca.Markets.IBar.Open.get -> decimal
-Alpaca.Markets.IBar.Volume.get -> ulong
-Alpaca.Markets.ITrade
-Alpaca.Markets.ITrade.Exchange.get -> string!
-Alpaca.Markets.ITrade.Price.get -> decimal
-Alpaca.Markets.ITrade.Size.get -> ulong
-Alpaca.Markets.ITrade.TimestampUtc.get -> System.DateTime
-Alpaca.Markets.ITrade.TradeId.get -> string?
