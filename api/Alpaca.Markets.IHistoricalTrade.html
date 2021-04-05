@@ -73,33 +73,51 @@
   
   <h1 id="Alpaca_Markets_IHistoricalTrade" data-uid="Alpaca.Markets.IHistoricalTrade" class="text-break">Interface IHistoricalTrade
   </h1>
-  <div class="markdown level0 summary"><p>Encapsulates historical trade information from Polygon REST API.</p>
+  <div class="markdown level0 summary"><p>Encapsulates historical trade information from Alpaca REST API.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Alpaca.Markets.ITrade.html#Alpaca_Markets_ITrade_TimestampUtc">ITrade.TimestampUtc</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.ITrade.html#Alpaca_Markets_ITrade_Price">ITrade.Price</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.ITrade.html#Alpaca_Markets_ITrade_Size">ITrade.Size</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.ITrade.html#Alpaca_Markets_ITrade_TradeId">ITrade.TradeId</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.ITrade.html#Alpaca_Markets_ITrade_Exchange">ITrade.Exchange</a>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_IHistoricalTrade_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[CLSCompliant(false)]
-public interface IHistoricalTrade</code></pre>
+public interface IHistoricalTrade : ITrade</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IHistoricalTrade_Exchange.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IHistoricalTrade.Exchange%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IHistoricalTrade_Conditions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IHistoricalTrade.Conditions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalTrade.cs/#L21">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalTrade.cs/#L23">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IHistoricalTrade_Exchange_" data-uid="Alpaca.Markets.IHistoricalTrade.Exchange*"></a>
-  <h4 id="Alpaca_Markets_IHistoricalTrade_Exchange" data-uid="Alpaca.Markets.IHistoricalTrade.Exchange">Exchange</h4>
-  <div class="markdown level1 summary"><p>Gets trade source exchange identifier.</p>
+  <a id="Alpaca_Markets_IHistoricalTrade_Conditions_" data-uid="Alpaca.Markets.IHistoricalTrade.Conditions*"></a>
+  <h4 id="Alpaca_Markets_IHistoricalTrade_Conditions" data-uid="Alpaca.Markets.IHistoricalTrade.Conditions">Conditions</h4>
+  <div class="markdown level1 summary"><p>Gets trade conditions list.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Exchange { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;string&gt; Conditions { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -111,69 +129,7 @@ public interface IHistoricalTrade</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IHistoricalTrade_Price.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IHistoricalTrade.Price%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalTrade.cs/#L26">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_IHistoricalTrade_Price_" data-uid="Alpaca.Markets.IHistoricalTrade.Price*"></a>
-  <h4 id="Alpaca_Markets_IHistoricalTrade_Price" data-uid="Alpaca.Markets.IHistoricalTrade.Price">Price</h4>
-  <div class="markdown level1 summary"><p>Gets trade price.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">decimal Price { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Decimal</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IHistoricalTrade_Size.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IHistoricalTrade.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalTrade.cs/#L31">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_IHistoricalTrade_Size_" data-uid="Alpaca.Markets.IHistoricalTrade.Size*"></a>
-  <h4 id="Alpaca_Markets_IHistoricalTrade_Size" data-uid="Alpaca.Markets.IHistoricalTrade.Size">Size</h4>
-  <div class="markdown level1 summary"><p>Gets trade quantity.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ulong Size { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.UInt64</span></td>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -183,7 +139,7 @@ public interface IHistoricalTrade</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IHistoricalTrade_Tape.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IHistoricalTrade.Tape%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalTrade.cs/#L36">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalTrade.cs/#L18">View Source</a>
   </span>
   <a id="Alpaca_Markets_IHistoricalTrade_Tape_" data-uid="Alpaca.Markets.IHistoricalTrade.Tape*"></a>
   <h4 id="Alpaca_Markets_IHistoricalTrade_Tape" data-uid="Alpaca.Markets.IHistoricalTrade.Tape">Tape</h4>
@@ -209,68 +165,6 @@ public interface IHistoricalTrade</code></pre>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IHistoricalTrade_TimestampUtc.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IHistoricalTrade.TimestampUtc%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalTrade.cs/#L16">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_IHistoricalTrade_TimestampUtc_" data-uid="Alpaca.Markets.IHistoricalTrade.TimestampUtc*"></a>
-  <h4 id="Alpaca_Markets_IHistoricalTrade_TimestampUtc" data-uid="Alpaca.Markets.IHistoricalTrade.TimestampUtc">TimestampUtc</h4>
-  <div class="markdown level1 summary"><p>Gets SIP timestamp in UTC time zone.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">DateTime TimestampUtc { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.DateTime</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IHistoricalTrade_TradeId.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IHistoricalTrade.TradeId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalTrade.cs/#L41">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_IHistoricalTrade_TradeId_" data-uid="Alpaca.Markets.IHistoricalTrade.TradeId*"></a>
-  <h4 id="Alpaca_Markets_IHistoricalTrade_TradeId" data-uid="Alpaca.Markets.IHistoricalTrade.TradeId">TradeId</h4>
-  <div class="markdown level1 summary"><p>Gets trade ID.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string TradeId { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           
@@ -282,7 +176,7 @@ public interface IHistoricalTrade</code></pre>
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IHistoricalTrade.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IHistoricalTrade%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalTrade.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalTrade.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

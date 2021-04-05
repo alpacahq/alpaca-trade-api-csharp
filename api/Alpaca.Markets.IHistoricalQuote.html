@@ -73,28 +73,31 @@
   
   <h1 id="Alpaca_Markets_IHistoricalQuote" data-uid="Alpaca.Markets.IHistoricalQuote" class="text-break">Interface IHistoricalQuote
   </h1>
-  <div class="markdown level0 summary"><p>Encapsulates historical quote information from Polygon REST API.</p>
+  <div class="markdown level0 summary"><p>Encapsulates historical quote information from Alpaca REST API.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Alpaca.Markets.IQuoteBase-1.html#Alpaca_Markets_IQuoteBase_1_BidExchange">IQuoteBase&lt;String&gt;.BidExchange</a>
+      <a class="xref" href="Alpaca.Markets.IQuote-1.html#Alpaca_Markets_IQuote_1_TimestampUtc">IQuote&lt;String&gt;.TimestampUtc</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IQuoteBase-1.html#Alpaca_Markets_IQuoteBase_1_AskExchange">IQuoteBase&lt;String&gt;.AskExchange</a>
+      <a class="xref" href="Alpaca.Markets.IQuote-1.html#Alpaca_Markets_IQuote_1_BidExchange">IQuote&lt;String&gt;.BidExchange</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IQuoteBase-1.html#Alpaca_Markets_IQuoteBase_1_BidPrice">IQuoteBase&lt;String&gt;.BidPrice</a>
+      <a class="xref" href="Alpaca.Markets.IQuote-1.html#Alpaca_Markets_IQuote_1_AskExchange">IQuote&lt;String&gt;.AskExchange</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IQuoteBase-1.html#Alpaca_Markets_IQuoteBase_1_AskPrice">IQuoteBase&lt;String&gt;.AskPrice</a>
+      <a class="xref" href="Alpaca.Markets.IQuote-1.html#Alpaca_Markets_IQuote_1_BidPrice">IQuote&lt;String&gt;.BidPrice</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IQuoteBase-1.html#Alpaca_Markets_IQuoteBase_1_BidSize">IQuoteBase&lt;String&gt;.BidSize</a>
+      <a class="xref" href="Alpaca.Markets.IQuote-1.html#Alpaca_Markets_IQuote_1_AskPrice">IQuote&lt;String&gt;.AskPrice</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IQuoteBase-1.html#Alpaca_Markets_IQuoteBase_1_AskSize">IQuoteBase&lt;String&gt;.AskSize</a>
+      <a class="xref" href="Alpaca.Markets.IQuote-1.html#Alpaca_Markets_IQuote_1_BidSize">IQuote&lt;String&gt;.BidSize</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.IQuote-1.html#Alpaca_Markets_IQuote_1_AskSize">IQuote&lt;String&gt;.AskSize</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
@@ -102,25 +105,25 @@
   <h5 id="Alpaca_Markets_IHistoricalQuote_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[CLSCompliant(false)]
-public interface IHistoricalQuote : IQuoteBase&lt;string&gt;</code></pre>
+public interface IHistoricalQuote : IQuote&lt;string&gt;</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IHistoricalQuote_TimestampUtc.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IHistoricalQuote.TimestampUtc%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IHistoricalQuote_Conditions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IHistoricalQuote.Conditions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalQuote.cs/#L18">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalQuote.cs/#L19">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IHistoricalQuote_TimestampUtc_" data-uid="Alpaca.Markets.IHistoricalQuote.TimestampUtc*"></a>
-  <h4 id="Alpaca_Markets_IHistoricalQuote_TimestampUtc" data-uid="Alpaca.Markets.IHistoricalQuote.TimestampUtc">TimestampUtc</h4>
-  <div class="markdown level1 summary"><p>Gets SIP timestamp in UTC time zone.</p>
+  <a id="Alpaca_Markets_IHistoricalQuote_Conditions_" data-uid="Alpaca.Markets.IHistoricalQuote.Conditions*"></a>
+  <h4 id="Alpaca_Markets_IHistoricalQuote_Conditions" data-uid="Alpaca.Markets.IHistoricalQuote.Conditions">Conditions</h4>
+  <div class="markdown level1 summary"><p>Gets trade conditions list.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">DateTime TimestampUtc { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;string&gt; Conditions { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -132,7 +135,7 @@ public interface IHistoricalQuote : IQuoteBase&lt;string&gt;</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -148,7 +151,7 @@ public interface IHistoricalQuote : IQuoteBase&lt;string&gt;</code></pre>
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IHistoricalQuote.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IHistoricalQuote%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalQuote.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IHistoricalQuote.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

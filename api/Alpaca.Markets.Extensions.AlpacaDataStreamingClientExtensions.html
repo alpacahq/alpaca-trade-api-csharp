@@ -104,7 +104,7 @@ implementation with automatic reconnection (with configurable delay and number o
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IStreamAgg&gt; GetMinuteAggSubscription(this IAlpacaDataStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IRealTimeBar&gt; GetMinuteAggSubscription(this IAlpacaDataStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -140,7 +140,7 @@ implementation with automatic reconnection (with configurable delay and number o
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataSubscription</span>&lt;<span class="xref">IStreamAgg</span>&gt;</td>
+        <td><span class="xref">IAlpacaDataSubscription</span>&lt;<span class="xref">IRealTimeBar</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamAgg>.Received"></see> event.</p>
 </td>
       </tr>
@@ -160,7 +160,7 @@ implementation with automatic reconnection (with configurable delay and number o
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IStreamAgg&gt; GetMinuteAggSubscription(this IAlpacaDataStreamingClient client, params String[] symbols)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IRealTimeBar&gt; GetMinuteAggSubscription(this IAlpacaDataStreamingClient client, params String[] symbols)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -196,7 +196,7 @@ implementation with automatic reconnection (with configurable delay and number o
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataSubscription</span>&lt;<span class="xref">IStreamAgg</span>&gt;</td>
+        <td><span class="xref">IAlpacaDataSubscription</span>&lt;<span class="xref">IRealTimeBar</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamAgg>.Received"></see> event.</p>
 </td>
       </tr>
@@ -216,7 +216,7 @@ implementation with automatic reconnection (with configurable delay and number o
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IStreamQuote&gt; GetQuoteSubscription(this IAlpacaDataStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IRealTimeQuote&gt; GetQuoteSubscription(this IAlpacaDataStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -252,7 +252,7 @@ implementation with automatic reconnection (with configurable delay and number o
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataSubscription</span>&lt;<span class="xref">IStreamQuote</span>&gt;</td>
+        <td><span class="xref">IAlpacaDataSubscription</span>&lt;<span class="xref">IRealTimeQuote</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamQuote>.Received"></see> event.</p>
 </td>
       </tr>
@@ -272,7 +272,7 @@ implementation with automatic reconnection (with configurable delay and number o
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IStreamQuote&gt; GetQuoteSubscription(this IAlpacaDataStreamingClient client, params String[] symbols)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IRealTimeQuote&gt; GetQuoteSubscription(this IAlpacaDataStreamingClient client, params String[] symbols)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -308,7 +308,7 @@ implementation with automatic reconnection (with configurable delay and number o
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataSubscription</span>&lt;<span class="xref">IStreamQuote</span>&gt;</td>
+        <td><span class="xref">IAlpacaDataSubscription</span>&lt;<span class="xref">IRealTimeQuote</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamQuote>.Received"></see> event.</p>
 </td>
       </tr>
@@ -328,7 +328,7 @@ implementation with automatic reconnection (with configurable delay and number o
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IStreamTrade&gt; GetTradeSubscription(this IAlpacaDataStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IRealTimeTrade&gt; GetTradeSubscription(this IAlpacaDataStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -364,7 +364,7 @@ implementation with automatic reconnection (with configurable delay and number o
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataSubscription</span>&lt;<span class="xref">IStreamTrade</span>&gt;</td>
+        <td><span class="xref">IAlpacaDataSubscription</span>&lt;<span class="xref">IRealTimeTrade</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamTrade>.Received"></see> event.</p>
 </td>
       </tr>
@@ -384,7 +384,7 @@ implementation with automatic reconnection (with configurable delay and number o
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IStreamTrade&gt; GetTradeSubscription(this IAlpacaDataStreamingClient client, params String[] symbols)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IRealTimeTrade&gt; GetTradeSubscription(this IAlpacaDataStreamingClient client, params String[] symbols)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -420,7 +420,7 @@ implementation with automatic reconnection (with configurable delay and number o
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataSubscription</span>&lt;<span class="xref">IStreamTrade</span>&gt;</td>
+        <td><span class="xref">IAlpacaDataSubscription</span>&lt;<span class="xref">IRealTimeTrade</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamTrade>.Received"></see> event.</p>
 </td>
       </tr>
@@ -442,7 +442,7 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IStreamAgg&gt; SubscribeMinuteBar(this IAlpacaDataStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IRealTimeBar&gt; SubscribeMinuteBar(this IAlpacaDataStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -478,7 +478,7 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IStreamAgg</span>&gt;</td>
+        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IRealTimeBar</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamTrade>.Received"></see> event.</p>
 </td>
       </tr>
@@ -500,7 +500,7 @@ inside the <code>using</code> or <code>await using</code> statements for more cl
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IStreamAgg&gt; SubscribeMinuteBar(this IAlpacaDataStreamingClient client, String symbol)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IRealTimeBar&gt; SubscribeMinuteBar(this IAlpacaDataStreamingClient client, String symbol)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -536,7 +536,7 @@ inside the <code>using</code> or <code>await using</code> statements for more cl
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IStreamAgg</span>&gt;</td>
+        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IRealTimeBar</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamAgg>.Received"></see> event.</p>
 </td>
       </tr>
@@ -558,7 +558,7 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IStreamAgg&gt; SubscribeMinuteBar(this IAlpacaDataStreamingClient client, params String[] symbols)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IRealTimeBar&gt; SubscribeMinuteBar(this IAlpacaDataStreamingClient client, params String[] symbols)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -594,7 +594,7 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IStreamAgg</span>&gt;</td>
+        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IRealTimeBar</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamTrade>.Received"></see> event.</p>
 </td>
       </tr>
@@ -616,7 +616,7 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IStreamQuote&gt; SubscribeQuote(this IAlpacaDataStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IRealTimeQuote&gt; SubscribeQuote(this IAlpacaDataStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -652,7 +652,7 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IStreamQuote</span>&gt;</td>
+        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IRealTimeQuote</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamTrade>.Received"></see> event.</p>
 </td>
       </tr>
@@ -674,7 +674,7 @@ inside the <code>using</code> or <code>await using</code> statements for more cl
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IStreamQuote&gt; SubscribeQuote(this IAlpacaDataStreamingClient client, String symbol)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IRealTimeQuote&gt; SubscribeQuote(this IAlpacaDataStreamingClient client, String symbol)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -710,7 +710,7 @@ inside the <code>using</code> or <code>await using</code> statements for more cl
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IStreamQuote</span>&gt;</td>
+        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IRealTimeQuote</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamQuote>.Received"></see> event.</p>
 </td>
       </tr>
@@ -732,7 +732,7 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IStreamQuote&gt; SubscribeQuote(this IAlpacaDataStreamingClient client, params String[] symbols)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IRealTimeQuote&gt; SubscribeQuote(this IAlpacaDataStreamingClient client, params String[] symbols)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -768,7 +768,7 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IStreamQuote</span>&gt;</td>
+        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IRealTimeQuote</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamTrade>.Received"></see> event.</p>
 </td>
       </tr>
@@ -790,7 +790,7 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IStreamTrade&gt; SubscribeTrade(this IAlpacaDataStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IRealTimeTrade&gt; SubscribeTrade(this IAlpacaDataStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -826,7 +826,7 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IStreamTrade</span>&gt;</td>
+        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IRealTimeTrade</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamTrade>.Received"></see> event.</p>
 </td>
       </tr>
@@ -848,7 +848,7 @@ inside the <code>using</code> or <code>await using</code> statements for more cl
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IStreamTrade&gt; SubscribeTrade(this IAlpacaDataStreamingClient client, String symbol)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IRealTimeTrade&gt; SubscribeTrade(this IAlpacaDataStreamingClient client, String symbol)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -884,7 +884,7 @@ inside the <code>using</code> or <code>await using</code> statements for more cl
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IStreamTrade</span>&gt;</td>
+        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IRealTimeTrade</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamTrade>.Received"></see> event.</p>
 </td>
       </tr>
@@ -906,7 +906,7 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IStreamTrade&gt; SubscribeTrade(this IAlpacaDataStreamingClient client, params String[] symbols)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IDisposableAlpacaDataSubscription&lt;IRealTimeTrade&gt; SubscribeTrade(this IAlpacaDataStreamingClient client, params String[] symbols)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -942,7 +942,7 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IStreamTrade</span>&gt;</td>
+        <td><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<span class="xref">IRealTimeTrade</span>&gt;</td>
         <td><p>Subscription object for tracking updates via the <see cref="!:IAlpacaDataSubscription&lt;IStreamTrade>.Received"></see> event.</p>
 </td>
       </tr>

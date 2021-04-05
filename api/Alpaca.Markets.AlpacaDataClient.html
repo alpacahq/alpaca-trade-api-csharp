@@ -184,7 +184,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[CLSCompliant(false)]
-public Task&lt;IReadOnlyDictionary&lt;string, IReadOnlyList&lt;IAgg&gt;&gt;&gt; GetBarSetAsync(BarSetRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+public Task&lt;IReadOnlyDictionary&lt;string, IReadOnlyList&lt;IHistoricalBar&gt;&gt;&gt; GetBarSetAsync(BarSetRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -220,7 +220,7 @@ public Task&lt;IReadOnlyDictionary&lt;string, IReadOnlyList&lt;IAgg&gt;&gt;&gt; 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IAgg.html">IAgg</a>&gt;&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IHistoricalBar.html">IHistoricalBar</a>&gt;&gt;&gt;</td>
         <td><p>Read-only list of daily bars for specified asset.</p>
 </td>
       </tr>
@@ -355,7 +355,7 @@ public Task&lt;ILastTrade&gt; GetLastTradeAsync(string symbol, CancellationToken
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[CLSCompliant(false)]
-public Task&lt;IPage&lt;IAgg&gt;&gt; ListHistoricalBarsAsync(HistoricalBarsRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+public Task&lt;IPage&lt;IHistoricalBar&gt;&gt; ListHistoricalBarsAsync(HistoricalBarsRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -391,7 +391,7 @@ public Task&lt;IPage&lt;IAgg&gt;&gt; ListHistoricalBarsAsync(HistoricalBarsReque
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.IPage-1.html">IPage</a>&lt;<a class="xref" href="Alpaca.Markets.IAgg.html">IAgg</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.IPage-1.html">IPage</a>&lt;<a class="xref" href="Alpaca.Markets.IHistoricalBar.html">IHistoricalBar</a>&gt;&gt;</td>
         <td><p>Read-only list of historical bars for specified asset (with pagination data).</p>
 </td>
       </tr>

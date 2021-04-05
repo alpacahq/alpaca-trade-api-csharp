@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IStreamQuote
+    <title>Interface IRealTimeTrade
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IStreamQuote
+    <meta name="title" content="Interface IRealTimeTrade
    ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -68,53 +68,81 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.IStreamQuote">
+            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.IRealTimeTrade">
   
   
-  <h1 id="Alpaca_Markets_IStreamQuote" data-uid="Alpaca.Markets.IStreamQuote" class="text-break">Interface IStreamQuote
+  <h1 id="Alpaca_Markets_IRealTimeTrade" data-uid="Alpaca.Markets.IRealTimeTrade" class="text-break">Interface IRealTimeTrade
   </h1>
-  <div class="markdown level0 summary"><p>Encapsulates quote information from Polygon streaming API.</p>
+  <div class="markdown level0 summary"><p>Encapsulates trade information from Alpaca streaming API.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Alpaca.Markets.IQuoteBase-1.html#Alpaca_Markets_IQuoteBase_1_BidExchange">IQuoteBase&lt;String&gt;.BidExchange</a>
+      <a class="xref" href="Alpaca.Markets.ITrade.html#Alpaca_Markets_ITrade_TimestampUtc">ITrade.TimestampUtc</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IQuoteBase-1.html#Alpaca_Markets_IQuoteBase_1_AskExchange">IQuoteBase&lt;String&gt;.AskExchange</a>
+      <a class="xref" href="Alpaca.Markets.ITrade.html#Alpaca_Markets_ITrade_Price">ITrade.Price</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IQuoteBase-1.html#Alpaca_Markets_IQuoteBase_1_BidPrice">IQuoteBase&lt;String&gt;.BidPrice</a>
+      <a class="xref" href="Alpaca.Markets.ITrade.html#Alpaca_Markets_ITrade_Size">ITrade.Size</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IQuoteBase-1.html#Alpaca_Markets_IQuoteBase_1_AskPrice">IQuoteBase&lt;String&gt;.AskPrice</a>
+      <a class="xref" href="Alpaca.Markets.ITrade.html#Alpaca_Markets_ITrade_TradeId">ITrade.TradeId</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IQuoteBase-1.html#Alpaca_Markets_IQuoteBase_1_BidSize">IQuoteBase&lt;String&gt;.BidSize</a>
-    </div>
-    <div>
-      <a class="xref" href="Alpaca.Markets.IQuoteBase-1.html#Alpaca_Markets_IQuoteBase_1_AskSize">IQuoteBase&lt;String&gt;.AskSize</a>
+      <a class="xref" href="Alpaca.Markets.ITrade.html#Alpaca_Markets_ITrade_Exchange">ITrade.Exchange</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
-  <h5 id="Alpaca_Markets_IStreamQuote_syntax">Syntax</h5>
+  <h5 id="Alpaca_Markets_IRealTimeTrade_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[CLSCompliant(false)]
-public interface IStreamQuote : IQuoteBase&lt;string&gt;</code></pre>
+public interface IRealTimeTrade : ITrade</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamQuote_Symbol.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamQuote.Symbol%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IRealTimeTrade_Conditions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IRealTimeTrade.Conditions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamQuote.cs/#L21">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IRealTimeTrade.cs/#L23">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IStreamQuote_Symbol_" data-uid="Alpaca.Markets.IStreamQuote.Symbol*"></a>
-  <h4 id="Alpaca_Markets_IStreamQuote_Symbol" data-uid="Alpaca.Markets.IStreamQuote.Symbol">Symbol</h4>
+  <a id="Alpaca_Markets_IRealTimeTrade_Conditions_" data-uid="Alpaca.Markets.IRealTimeTrade.Conditions*"></a>
+  <h4 id="Alpaca_Markets_IRealTimeTrade_Conditions" data-uid="Alpaca.Markets.IRealTimeTrade.Conditions">Conditions</h4>
+  <div class="markdown level1 summary"><p>Gets trade conditions list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;string&gt; Conditions { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IRealTimeTrade_Symbol.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IRealTimeTrade.Symbol%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IRealTimeTrade.cs/#L18">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_IRealTimeTrade_Symbol_" data-uid="Alpaca.Markets.IRealTimeTrade.Symbol*"></a>
+  <h4 id="Alpaca_Markets_IRealTimeTrade_Symbol" data-uid="Alpaca.Markets.IRealTimeTrade.Symbol">Symbol</h4>
   <div class="markdown level1 summary"><p>Gets asset name.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -137,37 +165,6 @@ public interface IStreamQuote : IQuoteBase&lt;string&gt;</code></pre>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamQuote_TimeUtc.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamQuote.TimeUtc%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamQuote.cs/#L16">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_IStreamQuote_TimeUtc_" data-uid="Alpaca.Markets.IStreamQuote.TimeUtc*"></a>
-  <h4 id="Alpaca_Markets_IStreamQuote_TimeUtc" data-uid="Alpaca.Markets.IStreamQuote.TimeUtc">TimeUtc</h4>
-  <div class="markdown level1 summary"><p>Gets quote timestamp in UTC time zone.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">DateTime TimeUtc { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.DateTime</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           
@@ -176,10 +173,10 @@ public interface IStreamQuote : IQuoteBase&lt;string&gt;</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamQuote.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamQuote%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IRealTimeTrade.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IRealTimeTrade%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamQuote.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IRealTimeTrade.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
