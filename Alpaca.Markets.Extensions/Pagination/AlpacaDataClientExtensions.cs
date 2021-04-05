@@ -23,7 +23,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="request">Original historical minute bars request (with empty next page token).</param>
         /// <returns></returns>
         [CLSCompliant(false)]
-        public static IAsyncEnumerable<IAgg> GetHistoricalBarsAsAsyncEnumerable(
+        public static IAsyncEnumerable<IHistoricalBar> GetHistoricalBarsAsAsyncEnumerable(
             this IAlpacaDataClient client,
             HistoricalBarsRequest request) =>
             GetHistoricalBarsAsAsyncEnumerable(client, request, CancellationToken.None);
@@ -38,7 +38,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns></returns>
         [CLSCompliant(false)]
-        public static IAsyncEnumerable<IAgg> GetHistoricalBarsAsAsyncEnumerable(
+        public static IAsyncEnumerable<IHistoricalBar> GetHistoricalBarsAsAsyncEnumerable(
             this IAlpacaDataClient client,
             HistoricalBarsRequest request,
             CancellationToken cancellationToken) =>

@@ -22,17 +22,17 @@ namespace Alpaca.Markets.Extensions
             {
             }
 
-            public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription() =>
-                Client.GetMinuteAggSubscription();
+            public IAlpacaDataSubscription<IRealTimeBar> GetMinuteBarSubscription() =>
+                Client.GetMinuteBarSubscription();
 
-            public IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(String symbol) =>
+            public IAlpacaDataSubscription<IRealTimeTrade> GetTradeSubscription(String symbol) =>
                 Client.GetTradeSubscription(symbol);
 
-            public IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(String symbol) =>
+            public IAlpacaDataSubscription<IRealTimeQuote> GetQuoteSubscription(String symbol) =>
                 Client.GetQuoteSubscription(symbol);
 
-            public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(String symbol) =>
-                Client.GetMinuteAggSubscription(symbol);
+            public IAlpacaDataSubscription<IRealTimeBar> GetMinuteBarSubscription(String symbol) =>
+                Client.GetMinuteBarSubscription(symbol);
         }
 
         /// <summary>

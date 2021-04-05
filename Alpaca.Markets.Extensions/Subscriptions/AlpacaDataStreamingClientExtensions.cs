@@ -91,7 +91,7 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
+        public static IAlpacaDataSubscription<IRealTimeTrade> GetTradeSubscription(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
             getTradeSubscription(
@@ -107,7 +107,7 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
+        public static IAlpacaDataSubscription<IRealTimeTrade> GetTradeSubscription(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
             getTradeSubscription(
@@ -123,7 +123,7 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamQuote}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
+        public static IAlpacaDataSubscription<IRealTimeQuote> GetQuoteSubscription(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
             getQuoteSubscription(
@@ -139,7 +139,7 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamQuote}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
+        public static IAlpacaDataSubscription<IRealTimeQuote> GetQuoteSubscription(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
             getQuoteSubscription(
@@ -155,7 +155,7 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
+        public static IAlpacaDataSubscription<IRealTimeBar> GetMinuteAggSubscription(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
             getMinuteAggSubscription(
@@ -171,7 +171,7 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
+        public static IAlpacaDataSubscription<IRealTimeBar> GetMinuteAggSubscription(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
             getMinuteAggSubscription(
@@ -189,10 +189,10 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IDisposableAlpacaDataSubscription<IStreamTrade> SubscribeTrade(
+        public static IDisposableAlpacaDataSubscription<IRealTimeTrade> SubscribeTrade(
             this IAlpacaDataStreamingClient client,
             String symbol) =>
-            new DisposableAlpacaDataSubscription<IStreamTrade>(
+            new DisposableAlpacaDataSubscription<IRealTimeTrade>(
                 client.EnsureNotNull(nameof(client)).GetTradeSubscription(symbol),
                 client);
 
@@ -207,10 +207,10 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IDisposableAlpacaDataSubscription<IStreamTrade> SubscribeTrade(
+        public static IDisposableAlpacaDataSubscription<IRealTimeTrade> SubscribeTrade(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
-            new DisposableAlpacaDataSubscription<IStreamTrade>(
+            new DisposableAlpacaDataSubscription<IRealTimeTrade>(
                 client.EnsureNotNull(nameof(client)).GetTradeSubscription(symbols),
                 client);
 
@@ -225,10 +225,10 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IDisposableAlpacaDataSubscription<IStreamTrade> SubscribeTrade(
+        public static IDisposableAlpacaDataSubscription<IRealTimeTrade> SubscribeTrade(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
-            new DisposableAlpacaDataSubscription<IStreamTrade>(
+            new DisposableAlpacaDataSubscription<IRealTimeTrade>(
                 client.EnsureNotNull(nameof(client)).GetTradeSubscription(symbols),
                 client);
 
@@ -243,10 +243,10 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamQuote}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IDisposableAlpacaDataSubscription<IStreamQuote> SubscribeQuote(
+        public static IDisposableAlpacaDataSubscription<IRealTimeQuote> SubscribeQuote(
             this IAlpacaDataStreamingClient client,
             String symbol) =>
-            new DisposableAlpacaDataSubscription<IStreamQuote>(
+            new DisposableAlpacaDataSubscription<IRealTimeQuote>(
                 client.EnsureNotNull(nameof(client)).GetQuoteSubscription(symbol),
                 client);
 
@@ -261,10 +261,10 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IDisposableAlpacaDataSubscription<IStreamQuote> SubscribeQuote(
+        public static IDisposableAlpacaDataSubscription<IRealTimeQuote> SubscribeQuote(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
-            new DisposableAlpacaDataSubscription<IStreamQuote>(
+            new DisposableAlpacaDataSubscription<IRealTimeQuote>(
                 client.EnsureNotNull(nameof(client)).GetQuoteSubscription(symbols),
                 client);
 
@@ -279,10 +279,10 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IDisposableAlpacaDataSubscription<IStreamQuote> SubscribeQuote(
+        public static IDisposableAlpacaDataSubscription<IRealTimeQuote> SubscribeQuote(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
-            new DisposableAlpacaDataSubscription<IStreamQuote>(
+            new DisposableAlpacaDataSubscription<IRealTimeQuote>(
                 client.EnsureNotNull(nameof(client)).GetQuoteSubscription(symbols),
                 client);
 
@@ -297,10 +297,10 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IDisposableAlpacaDataSubscription<IStreamAgg> SubscribeMinuteBar(
+        public static IDisposableAlpacaDataSubscription<IRealTimeBar> SubscribeMinuteBar(
             this IAlpacaDataStreamingClient client,
             String symbol) =>
-            new DisposableAlpacaDataSubscription<IStreamAgg>(
+            new DisposableAlpacaDataSubscription<IRealTimeBar>(
                 client.EnsureNotNull(nameof(client)).GetMinuteAggSubscription(symbol),
                 client);
 
@@ -315,10 +315,10 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IDisposableAlpacaDataSubscription<IStreamAgg> SubscribeMinuteBar(
+        public static IDisposableAlpacaDataSubscription<IRealTimeBar> SubscribeMinuteBar(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
-            new DisposableAlpacaDataSubscription<IStreamAgg>(
+            new DisposableAlpacaDataSubscription<IRealTimeBar>(
                 client.EnsureNotNull(nameof(client)).GetMinuteAggSubscription(symbols),
                 client);
 
@@ -333,27 +333,27 @@ namespace Alpaca.Markets.Extensions
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
         [CLSCompliant(false)]
-        public static IDisposableAlpacaDataSubscription<IStreamAgg> SubscribeMinuteBar(
+        public static IDisposableAlpacaDataSubscription<IRealTimeBar> SubscribeMinuteBar(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
-            new DisposableAlpacaDataSubscription<IStreamAgg>(
+            new DisposableAlpacaDataSubscription<IRealTimeBar>(
                 client.EnsureNotNull(nameof(client)).GetMinuteAggSubscription(symbols),
                 client);
 
-        private static IAlpacaDataSubscription<IStreamTrade> getTradeSubscription(
+        private static IAlpacaDataSubscription<IRealTimeTrade> getTradeSubscription(
             IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
             getSubscription(client.GetTradeSubscription, symbols.takeNotMoreThan(MaxAllowedTradeOrQuoteSubscriptionsCount));
 
-        private static IAlpacaDataSubscription<IStreamQuote> getQuoteSubscription(
+        private static IAlpacaDataSubscription<IRealTimeQuote> getQuoteSubscription(
             IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
             getSubscription(client.GetQuoteSubscription, symbols.takeNotMoreThan(MaxAllowedTradeOrQuoteSubscriptionsCount));
 
-        private static IAlpacaDataSubscription<IStreamAgg> getMinuteAggSubscription(
+        private static IAlpacaDataSubscription<IRealTimeBar> getMinuteAggSubscription(
             IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
-            getSubscription(client.GetMinuteAggSubscription, symbols);
+            getSubscription(client.GetMinuteBarSubscription, symbols);
 
         private static IAlpacaDataSubscription<TItem> getSubscription<TItem>(
             Func<String, IAlpacaDataSubscription<TItem>> selector,
