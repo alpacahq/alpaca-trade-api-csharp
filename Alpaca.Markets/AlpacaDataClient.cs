@@ -49,7 +49,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<String, IReadOnlyList<IHistoricalBar>, String, List<JsonHistoricalBar.V1>>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                StringComparer.Ordinal, cancellationToken);
+                StringComparer.Ordinal, cancellationToken, _alpacaRestApiThrottler);
 
         /// <inheritdoc />
         [CLSCompliant(false)]
