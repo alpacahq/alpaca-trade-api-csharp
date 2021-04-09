@@ -27,17 +27,20 @@ namespace Alpaca.Markets
             callAndDeserializeAsync<TApi, TJson>(
                 httpClient, HttpMethod.Get, asUri(endpointUri), cancellationToken, throttler);
 
-        public static async Task<IReadOnlyDictionary<TKeyApi, TValueApi>> GetAsync<TKeyApi, TValueApi, TKeyJson, TValueJson>(
-            this HttpClient httpClient,
-            UriBuilder uriBuilder,
-            IEqualityComparer<TKeyApi> comparer,
-            CancellationToken cancellationToken)
+        public static async Task<IReadOnlyDictionary<TKeyApi, TValueApi>> GetAsync
+            <TKeyApi, TValueApi, TKeyJson, TValueJson>(
+                this HttpClient httpClient,
+                UriBuilder uriBuilder,
+                IEqualityComparer<TKeyApi> comparer,
+                CancellationToken cancellationToken,
+                IThrottler? throttler = null)
+            where TKeyApi : notnull
             where TKeyJson : TKeyApi
             where TValueJson : TValueApi
         {
             var response = await httpClient
                 .GetAsync<Dictionary<TKeyJson, TValueJson>, Dictionary<TKeyJson, TValueJson>>(
-                    uriBuilder, cancellationToken)
+                    uriBuilder, cancellationToken, throttler)
                 .ConfigureAwait(false);
 
             return response.ToDictionary<KeyValuePair<TKeyJson, TValueJson>, TKeyApi, TValueApi>(

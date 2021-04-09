@@ -48,7 +48,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<String, IReadOnlyList<IAgg>, String, List<JsonAlpacaAgg>>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                StringComparer.Ordinal, cancellationToken);
+                StringComparer.Ordinal, cancellationToken, _alpacaRestApiThrottler);
 
         /// <inheritdoc />
         public Task<ILastTrade> GetLastTradeAsync(
