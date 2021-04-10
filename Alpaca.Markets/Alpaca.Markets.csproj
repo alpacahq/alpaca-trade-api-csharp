@@ -61,9 +61,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2020.3.0">
+    <PackageReference Include="JetBrains.Annotations" Version="2021.1.0">
       <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>compile;analyzers</IncludeAssets>
+      <IncludeAssets>compile; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.2">
       <PrivateAssets>all</PrivateAssets>
