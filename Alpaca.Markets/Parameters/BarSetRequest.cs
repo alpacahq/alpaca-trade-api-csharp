@@ -14,7 +14,7 @@ namespace Alpaca.Markets
     public sealed class BarSetRequest : Validation.IRequest, 
         IRequestWithTimeInterval<IInclusiveTimeInterval>, IRequestWithTimeInterval<IExclusiveTimeInterval>
     {
-        private const Int32 MaxAllowedSymbolsInRequest = 100;
+        private const Int32 MaxAllowedSymbolsInRequest = 200;
 
         private readonly List<String> _symbols;
 
