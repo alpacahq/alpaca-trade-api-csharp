@@ -11,7 +11,7 @@ namespace Alpaca.Markets
         public Task<IReadOnlyList<IWatchList>> ListWatchListsAsync(
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IReadOnlyList<IWatchList>, List<JsonWatchList>>(
-                "v2/watchlists", cancellationToken, _alpacaRestApiThrottler);
+                "v2/watchlists", cancellationToken);
 
         /// <inheritdoc />
         public Task<IWatchList> CreateWatchListAsync(
@@ -25,14 +25,14 @@ namespace Alpaca.Markets
             Guid watchListId,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IWatchList, JsonWatchList>(
-                getEndpointUri(watchListId), cancellationToken, _alpacaRestApiThrottler);
+                getEndpointUri(watchListId), cancellationToken);
 
         /// <inheritdoc />
         public Task<IWatchList> GetWatchListByNameAsync(
             String name,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IWatchList, JsonWatchList>(
-                getEndpointUriBuilder(name), cancellationToken, _alpacaRestApiThrottler);
+                getEndpointUriBuilder(name), cancellationToken);
 
         /// <inheritdoc />
         public Task<IWatchList> UpdateWatchListByIdAsync(

@@ -12,13 +12,13 @@ namespace Alpaca.Markets
         public Task<IAccount> GetAccountAsync(
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IAccount, JsonAccount>(
-                "v2/account", cancellationToken, _alpacaRestApiThrottler);
+                "v2/account", cancellationToken);
 
         /// <inheritdoc />
         public Task<IAccountConfiguration> GetAccountConfigurationAsync(
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IAccountConfiguration, JsonAccountConfiguration>(
-                "v2/account/configurations", cancellationToken, _alpacaRestApiThrottler);
+                "v2/account/configurations", cancellationToken);
 
         /// <inheritdoc />
         public Task<IAccountConfiguration> PatchAccountConfigurationAsync(
@@ -33,7 +33,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IReadOnlyList<IAccountActivity>, List<JsonAccountActivity>>(
                 request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
 
         /// <inheritdoc />
         public Task<IPortfolioHistory> GetPortfolioHistoryAsync(
@@ -41,7 +41,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IPortfolioHistory, JsonPortfolioHistory>(
                 request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
 
         /// <inheritdoc />
         public Task<IReadOnlyList<IAsset>> ListAssetsAsync(
@@ -49,27 +49,27 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IReadOnlyList<IAsset>, List<JsonAsset>>(
                 request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
 
         /// <inheritdoc />
         public Task<IAsset> GetAssetAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IAsset, JsonAsset>(
-                $"v2/assets/{symbol}", cancellationToken, _alpacaRestApiThrottler);
+                $"v2/assets/{symbol}", cancellationToken);
 
         /// <inheritdoc />
         public Task<IReadOnlyList<IPosition>> ListPositionsAsync(
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IReadOnlyList<IPosition>, List<JsonPosition>>(
-                "v2/positions", cancellationToken, _alpacaRestApiThrottler);
+                "v2/positions", cancellationToken);
 
         /// <inheritdoc />
         public Task<IPosition> GetPositionAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IPosition, JsonPosition>(
-                $"v2/positions/{symbol}", cancellationToken, _alpacaRestApiThrottler);
+                $"v2/positions/{symbol}", cancellationToken);
 
         /// <inheritdoc />
         public Task<IReadOnlyList<IPositionActionStatus>> DeleteAllPositionsAsync(
@@ -96,7 +96,7 @@ namespace Alpaca.Markets
         public Task<IClock> GetClockAsync(
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IClock, JsonClock>(
-                "v2/clock", cancellationToken, _alpacaRestApiThrottler);
+                "v2/clock", cancellationToken);
 
         /// <inheritdoc />
         public Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
@@ -104,6 +104,6 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IReadOnlyList<ICalendar>, List<JsonCalendar>>(
                 request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
     }
 }

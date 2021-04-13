@@ -14,7 +14,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IReadOnlyList<IOrder>, List<JsonOrder>>(
                 request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
 
         /// <inheritdoc />
         [CLSCompliant(false)]
@@ -57,7 +57,7 @@ namespace Alpaca.Markets
                     Query = new QueryBuilder()
                         .AddParameter("client_order_id", clientOrderId)
                 },
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
 
         /// <inheritdoc />
         [CLSCompliant(false)]
@@ -65,7 +65,7 @@ namespace Alpaca.Markets
             Guid orderId,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IOrder, JsonOrder>(
-                $"v2/orders/{orderId:D}", cancellationToken, _alpacaRestApiThrottler);
+                $"v2/orders/{orderId:D}", cancellationToken);
 
         /// <inheritdoc />
         public Task<Boolean> DeleteOrderAsync(

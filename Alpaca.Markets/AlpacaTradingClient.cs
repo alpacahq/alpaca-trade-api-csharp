@@ -10,8 +10,6 @@ namespace Alpaca.Markets
     {
         private readonly HttpClient _httpClient;
 
-        private readonly IThrottler _alpacaRestApiThrottler;
-
         /// <summary>
         /// Creates new instance of <see cref="AlpacaTradingClient"/> object.
         /// </summary>
@@ -23,9 +21,8 @@ namespace Alpaca.Markets
                 .EnsureNotNull(nameof(configuration))
                 .EnsureIsValid();
 
-            _httpClient = configuration.HttpClient ?? new HttpClient();
-
-            _alpacaRestApiThrottler = configuration.ThrottleParameters.GetThrottler();
+            _httpClient = configuration.HttpClient ??
+                configuration.ThrottleParameters.GetHttpClient();
 
             _httpClient.AddAuthenticationHeaders(configuration.SecurityId);
 

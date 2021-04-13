@@ -14,8 +14,6 @@ namespace Alpaca.Markets
     {
         private readonly HttpClient _httpClient;
 
-        private readonly IThrottler _alpacaRestApiThrottler;
-
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataClient"/> object.
         /// </summary>
@@ -27,9 +25,8 @@ namespace Alpaca.Markets
                 .EnsureNotNull(nameof(configuration))
                 .EnsureIsValid();
 
-            _httpClient = configuration.HttpClient ?? new HttpClient();
-
-            _alpacaRestApiThrottler = configuration.ThrottleParameters.GetThrottler();
+            _httpClient = configuration.HttpClient ??
+                          configuration.ThrottleParameters.GetHttpClient();
 
             _httpClient.AddAuthenticationHeaders(configuration.SecurityId);
 
@@ -49,7 +46,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<String, IReadOnlyList<IHistoricalBar>, String, List<JsonHistoricalBar.V1>>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                StringComparer.Ordinal, cancellationToken, _alpacaRestApiThrottler);
+                StringComparer.Ordinal, cancellationToken);
 
         /// <inheritdoc />
         [CLSCompliant(false)]
@@ -57,8 +54,7 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ILastTrade, JsonLastTrade>(
-                $"v1/last/stocks/{symbol}", cancellationToken,
-                _alpacaRestApiThrottler);
+                $"v1/last/stocks/{symbol}", cancellationToken);
 
         /// <inheritdoc />
         [CLSCompliant(false)]
@@ -66,8 +62,7 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ILastQuote, JsonLastQuote>(
-                $"v1/last_quote/stocks/{symbol}", cancellationToken,
-                _alpacaRestApiThrottler);
+                $"v1/last_quote/stocks/{symbol}", cancellationToken);
 
         /// <inheritdoc />
         [CLSCompliant(false)]
@@ -76,7 +71,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IPage<IHistoricalBar>, JsonBarsPage>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
 
         /// <inheritdoc />
         [CLSCompliant(false)]
@@ -85,7 +80,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IPage<IHistoricalQuote>, JsonQuotesPage>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
 
         /// <inheritdoc />
         [CLSCompliant(false)]
@@ -94,6 +89,6 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IPage<IHistoricalTrade>, JsonTradesPage>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken);
     }
 }

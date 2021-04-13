@@ -757,15 +757,12 @@ Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory.set -> void
 Alpaca.Markets.TakeProfitOrder
 Alpaca.Markets.TakeProfitOrder.LimitPrice.get -> decimal
 Alpaca.Markets.ThrottleParameters
-Alpaca.Markets.ThrottleParameters.MaxRetryAttempts.get -> int
+Alpaca.Markets.ThrottleParameters.GetAsyncPolicy() -> Polly.IAsyncPolicy<System.Net.Http.HttpResponseMessage!>!
+Alpaca.Markets.ThrottleParameters.MaxRetryAttempts.get -> uint
 Alpaca.Markets.ThrottleParameters.MaxRetryAttempts.set -> void
-Alpaca.Markets.ThrottleParameters.Occurrences.get -> int
-Alpaca.Markets.ThrottleParameters.Occurrences.set -> void
-Alpaca.Markets.ThrottleParameters.RetryHttpStatuses.get -> System.Collections.Generic.IEnumerable<int>!
-Alpaca.Markets.ThrottleParameters.RetryHttpStatuses.set -> void
-Alpaca.Markets.ThrottleParameters.ThrottleParameters(int occurrences, System.TimeSpan timeUnit, int maxRetryAttempts, System.Collections.Generic.IEnumerable<int>! retryHttpStatuses) -> void
-Alpaca.Markets.ThrottleParameters.TimeUnit.get -> System.TimeSpan
-Alpaca.Markets.ThrottleParameters.TimeUnit.set -> void
+Alpaca.Markets.ThrottleParameters.RetryHttpStatuses.get -> System.Collections.Generic.ISet<System.Net.HttpStatusCode>!
+Alpaca.Markets.ThrottleParameters.RetrySocketErrorCodes.get -> System.Collections.Generic.ISet<int>!
+Alpaca.Markets.ThrottleParameters.ThrottleParameters(uint maxRetryAttempts, System.Collections.Generic.IEnumerable<int>! retrySocketErrorCodes, System.Collections.Generic.IEnumerable<System.Net.HttpStatusCode>! retryHttpStatuses) -> void
 Alpaca.Markets.TimeFrame
 Alpaca.Markets.TimeFrame.Day = 3 -> Alpaca.Markets.TimeFrame
 Alpaca.Markets.TimeFrame.FifteenMinutes = 2 -> Alpaca.Markets.TimeFrame
