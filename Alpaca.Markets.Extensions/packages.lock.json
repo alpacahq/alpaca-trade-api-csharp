@@ -4,11 +4,12 @@
     ".NETFramework,Version=v4.6.1": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[5.0.2-alpha4, )",
-        "resolved": "5.0.2-alpha4",
-        "contentHash": "LFwHQmJK0VakwD/6gagWuhq864i1Z6hb5gxQpX47k312JNcNDvpXPfNCMqxOGXijoZNkXr0s760H+UYClTjOwg==",
+        "requested": "[5.0.3-alpha1, )",
+        "resolved": "5.0.3-alpha1",
+        "contentHash": "ewdDmLDAQr62MWabIPDF2iUiU5UjVxdea0Il5c/2IQSjgUzAaS8Rr613mxev4KKxUM1KDkClcG9cTklqTzd7hg==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
+          "Polly": "7.2.2",
           "WebSocket4Net": "0.15.2"
         }
       },
@@ -40,6 +41,17 @@
           "Microsoft.Extensions.Logging": "5.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
           "Microsoft.Extensions.Options": "5.0.0"
+        }
+      },
+      "Microsoft.Extensions.Http.Polly": {
+        "type": "Direct",
+        "requested": "[5.0.1, )",
+        "resolved": "5.0.1",
+        "contentHash": "Tzf+x8HVDhri9dkIGCGOP5RVjgXnTZuBcwZHr0sW6KAtVGPDU0xEDXPDpoW5vwq/K12dMI75vuapUtMw0d/pIw==",
+        "dependencies": {
+          "Microsoft.Extensions.Http": "5.0.0",
+          "Polly": "7.1.0",
+          "Polly.Extensions.Http": "3.0.0"
         }
       },
       "Microsoft.SourceLink.GitHub": {
@@ -135,6 +147,22 @@
         "type": "Transitive",
         "resolved": "13.0.1",
         "contentHash": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A=="
+      },
+      "Polly": {
+        "type": "Transitive",
+        "resolved": "7.2.2",
+        "contentHash": "E6CeKyS513j7taKAq4q2MESDBvzuzWnR1rQ2Y2zqJvpiVtKMm699Aubb20MUPBDmb0Ov8PmcLHTCVFdCjoy2kA==",
+        "dependencies": {
+          "System.ValueTuple": "4.5.0"
+        }
+      },
+      "Polly.Extensions.Http": {
+        "type": "Transitive",
+        "resolved": "3.0.0",
+        "contentHash": "drrG+hB3pYFY7w1c3BD+lSGYvH2oIclH8GRSehgfyP5kjnFnHKQuuBhuHLv+PWyFuaTDyk/vfRpnxOzd11+J8g==",
+        "dependencies": {
+          "Polly": "7.1.0"
+        }
       },
       "SuperSocket.ClientEngine.Core": {
         "type": "Transitive",
@@ -296,11 +324,12 @@
     ".NETStandard,Version=v2.0": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[5.0.2-alpha4, )",
-        "resolved": "5.0.2-alpha4",
-        "contentHash": "LFwHQmJK0VakwD/6gagWuhq864i1Z6hb5gxQpX47k312JNcNDvpXPfNCMqxOGXijoZNkXr0s760H+UYClTjOwg==",
+        "requested": "[5.0.3-alpha1, )",
+        "resolved": "5.0.3-alpha1",
+        "contentHash": "ewdDmLDAQr62MWabIPDF2iUiU5UjVxdea0Il5c/2IQSjgUzAaS8Rr613mxev4KKxUM1KDkClcG9cTklqTzd7hg==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
+          "Polly": "7.2.2",
           "WebSocket4Net": "0.15.2"
         }
       },
@@ -332,6 +361,17 @@
           "Microsoft.Extensions.Logging": "5.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
           "Microsoft.Extensions.Options": "5.0.0"
+        }
+      },
+      "Microsoft.Extensions.Http.Polly": {
+        "type": "Direct",
+        "requested": "[5.0.1, )",
+        "resolved": "5.0.1",
+        "contentHash": "Tzf+x8HVDhri9dkIGCGOP5RVjgXnTZuBcwZHr0sW6KAtVGPDU0xEDXPDpoW5vwq/K12dMI75vuapUtMw0d/pIw==",
+        "dependencies": {
+          "Microsoft.Extensions.Http": "5.0.0",
+          "Polly": "7.1.0",
+          "Polly.Extensions.Http": "3.0.0"
         }
       },
       "Microsoft.SourceLink.GitHub": {
@@ -455,6 +495,19 @@
         "type": "Transitive",
         "resolved": "13.0.1",
         "contentHash": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A=="
+      },
+      "Polly": {
+        "type": "Transitive",
+        "resolved": "7.2.2",
+        "contentHash": "E6CeKyS513j7taKAq4q2MESDBvzuzWnR1rQ2Y2zqJvpiVtKMm699Aubb20MUPBDmb0Ov8PmcLHTCVFdCjoy2kA=="
+      },
+      "Polly.Extensions.Http": {
+        "type": "Transitive",
+        "resolved": "3.0.0",
+        "contentHash": "drrG+hB3pYFY7w1c3BD+lSGYvH2oIclH8GRSehgfyP5kjnFnHKQuuBhuHLv+PWyFuaTDyk/vfRpnxOzd11+J8g==",
+        "dependencies": {
+          "Polly": "7.1.0"
+        }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl": {
         "type": "Transitive",
@@ -1208,11 +1261,12 @@
     ".NETStandard,Version=v2.1": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[5.0.2-alpha4, )",
-        "resolved": "5.0.2-alpha4",
-        "contentHash": "LFwHQmJK0VakwD/6gagWuhq864i1Z6hb5gxQpX47k312JNcNDvpXPfNCMqxOGXijoZNkXr0s760H+UYClTjOwg==",
+        "requested": "[5.0.3-alpha1, )",
+        "resolved": "5.0.3-alpha1",
+        "contentHash": "ewdDmLDAQr62MWabIPDF2iUiU5UjVxdea0Il5c/2IQSjgUzAaS8Rr613mxev4KKxUM1KDkClcG9cTklqTzd7hg==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
+          "Polly": "7.2.2",
           "WebSocket4Net": "0.15.2"
         }
       },
@@ -1244,6 +1298,17 @@
           "Microsoft.Extensions.Logging": "5.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
           "Microsoft.Extensions.Options": "5.0.0"
+        }
+      },
+      "Microsoft.Extensions.Http.Polly": {
+        "type": "Direct",
+        "requested": "[5.0.1, )",
+        "resolved": "5.0.1",
+        "contentHash": "Tzf+x8HVDhri9dkIGCGOP5RVjgXnTZuBcwZHr0sW6KAtVGPDU0xEDXPDpoW5vwq/K12dMI75vuapUtMw0d/pIw==",
+        "dependencies": {
+          "Microsoft.Extensions.Http": "5.0.0",
+          "Polly": "7.1.0",
+          "Polly.Extensions.Http": "3.0.0"
         }
       },
       "Microsoft.SourceLink.GitHub": {
@@ -1345,6 +1410,19 @@
         "type": "Transitive",
         "resolved": "13.0.1",
         "contentHash": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A=="
+      },
+      "Polly": {
+        "type": "Transitive",
+        "resolved": "7.2.2",
+        "contentHash": "E6CeKyS513j7taKAq4q2MESDBvzuzWnR1rQ2Y2zqJvpiVtKMm699Aubb20MUPBDmb0Ov8PmcLHTCVFdCjoy2kA=="
+      },
+      "Polly.Extensions.Http": {
+        "type": "Transitive",
+        "resolved": "3.0.0",
+        "contentHash": "drrG+hB3pYFY7w1c3BD+lSGYvH2oIclH8GRSehgfyP5kjnFnHKQuuBhuHLv+PWyFuaTDyk/vfRpnxOzd11+J8g==",
+        "dependencies": {
+          "Polly": "7.1.0"
+        }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl": {
         "type": "Transitive",
@@ -2090,11 +2168,12 @@
     ".NETCoreApp,Version=v5.0": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[5.0.2-alpha4, )",
-        "resolved": "5.0.2-alpha4",
-        "contentHash": "LFwHQmJK0VakwD/6gagWuhq864i1Z6hb5gxQpX47k312JNcNDvpXPfNCMqxOGXijoZNkXr0s760H+UYClTjOwg==",
+        "requested": "[5.0.3-alpha1, )",
+        "resolved": "5.0.3-alpha1",
+        "contentHash": "ewdDmLDAQr62MWabIPDF2iUiU5UjVxdea0Il5c/2IQSjgUzAaS8Rr613mxev4KKxUM1KDkClcG9cTklqTzd7hg==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
+          "Polly": "7.2.2",
           "WebSocket4Net": "0.15.2"
         }
       },
@@ -2126,6 +2205,17 @@
           "Microsoft.Extensions.Logging": "5.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
           "Microsoft.Extensions.Options": "5.0.0"
+        }
+      },
+      "Microsoft.Extensions.Http.Polly": {
+        "type": "Direct",
+        "requested": "[5.0.1, )",
+        "resolved": "5.0.1",
+        "contentHash": "Tzf+x8HVDhri9dkIGCGOP5RVjgXnTZuBcwZHr0sW6KAtVGPDU0xEDXPDpoW5vwq/K12dMI75vuapUtMw0d/pIw==",
+        "dependencies": {
+          "Microsoft.Extensions.Http": "5.0.0",
+          "Polly": "7.1.0",
+          "Polly.Extensions.Http": "3.0.0"
         }
       },
       "Microsoft.SourceLink.GitHub": {
@@ -2221,6 +2311,19 @@
         "type": "Transitive",
         "resolved": "13.0.1",
         "contentHash": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A=="
+      },
+      "Polly": {
+        "type": "Transitive",
+        "resolved": "7.2.2",
+        "contentHash": "E6CeKyS513j7taKAq4q2MESDBvzuzWnR1rQ2Y2zqJvpiVtKMm699Aubb20MUPBDmb0Ov8PmcLHTCVFdCjoy2kA=="
+      },
+      "Polly.Extensions.Http": {
+        "type": "Transitive",
+        "resolved": "3.0.0",
+        "contentHash": "drrG+hB3pYFY7w1c3BD+lSGYvH2oIclH8GRSehgfyP5kjnFnHKQuuBhuHLv+PWyFuaTDyk/vfRpnxOzd11+J8g==",
+        "dependencies": {
+          "Polly": "7.1.0"
+        }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl": {
         "type": "Transitive",

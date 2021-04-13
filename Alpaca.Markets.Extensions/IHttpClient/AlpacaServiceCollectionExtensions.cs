@@ -24,13 +24,27 @@ namespace Alpaca.Markets.Extensions
             this IServiceCollection services,
             IEnvironment environment,
             SecurityKey securityKey) =>
+            services.AddAlpacaDataClient(environment
+                .GetAlpacaDataClientConfiguration(securityKey));
+
+        /// <summary>
+        /// Registers the concrete implementation of the <see cref="IAlpacaDataClient"/>
+        /// interface in the services catalog and make it available in constructors.
+        /// </summary>
+        /// <param name="services">Registered services collection.</param>
+        /// <param name="configuration">Alpaca data client configuration.</param>
+        /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+        public static IServiceCollection AddAlpacaDataClient(
+            this IServiceCollection services,
+            AlpacaDataClientConfiguration configuration) =>
             services
                 .AddHttpClient<IAlpacaDataClient>()
                 .AddTypedClient<IAlpacaDataClient>(
                     httpClient => new AlpacaDataClient(
-                        environment
-                            .GetAlpacaDataClientConfiguration(securityKey)
-                            .withFactoryCreatedHttpClient(httpClient)))
+                        configuration.withFactoryCreatedHttpClient(httpClient)))
+                .AddPolicyHandler(configuration
+                    .EnsureNotNull(nameof(configuration))
+                    .ThrottleParameters.GetAsyncPolicy())
                 .Services;
 
         /// <summary>
@@ -45,13 +59,27 @@ namespace Alpaca.Markets.Extensions
             this IServiceCollection services,
             IEnvironment environment,
             SecurityKey securityKey) =>
+            services.AddAlpacaTradingClient(environment
+                .GetAlpacaTradingClientConfiguration(securityKey));
+
+        /// <summary>
+        /// Registers the concrete implementation of the <see cref="IAlpacaTradingClient"/>
+        /// interface in the services catalog and make it available in constructors.
+        /// </summary>
+        /// <param name="services">Registered services collection.</param>
+        /// <param name="configuration">Alpaca trading client configuration.</param>
+        /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+        public static IServiceCollection AddAlpacaTradingClient(
+            this IServiceCollection services,
+            AlpacaTradingClientConfiguration configuration) =>
             services
                 .AddHttpClient<IAlpacaTradingClient>()
                 .AddTypedClient<IAlpacaTradingClient>(
                     httpClient => new AlpacaTradingClient(
-                        environment
-                            .GetAlpacaTradingClientConfiguration(securityKey)
-                            .withFactoryCreatedHttpClient(httpClient)))
+                        configuration.withFactoryCreatedHttpClient(httpClient)))
+                .AddPolicyHandler(configuration
+                    .EnsureNotNull(nameof(configuration))
+                    .ThrottleParameters.GetAsyncPolicy())
                 .Services;
 
         private static AlpacaDataClientConfiguration withFactoryCreatedHttpClient(
