@@ -30,6 +30,9 @@
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <LangVersion>9.0</LangVersion>
     <PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RestoreLockedMode>true</RestoreLockedMode>
+    <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
