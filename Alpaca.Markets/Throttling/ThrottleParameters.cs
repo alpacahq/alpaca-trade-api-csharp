@@ -36,14 +36,27 @@ namespace Alpaca.Markets
         private const UInt32 DefaultMaxRetryAttempts = 5;
 
         private static readonly HttpStatusCode[] _defaultHttpStatuses =
-            { (HttpStatusCode) 429, (HttpStatusCode) 503 };
+        {
+#if NETSTANDARD2_0 || NETFRAMEWORK
+            (HttpStatusCode) 429,
+#else
+            HttpStatusCode.TooManyRequests,
+#endif
+            HttpStatusCode.BadGateway,
+            HttpStatusCode.GatewayTimeout,
+            HttpStatusCode.ServiceUnavailable
+        };
 
-        private static readonly Int32[] _defaultSocketErrorCodes =
-            { 10060, 11001, 11002 };
+        private static readonly SocketError[] _defaultSocketErrorCodes =
+        {
+            SocketError.TimedOut,
+            SocketError.HostNotFound, 
+            SocketError.TryAgain
+        };
 
         private readonly HashSet<HttpStatusCode> _retryHttpStatuses;
 
-        private readonly HashSet<Int32> _retrySocketErrorCodes;
+        private readonly HashSet<SocketError> _retrySocketErrorCodes;
 
         private readonly Random _random = new ();
 
@@ -65,11 +78,11 @@ namespace Alpaca.Markets
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public ThrottleParameters(
             UInt32 maxRetryAttempts,
-            IEnumerable<Int32> retrySocketErrorCodes,
+            IEnumerable<SocketError> retrySocketErrorCodes,
             IEnumerable<HttpStatusCode> retryHttpStatuses)
         {
             MaxRetryAttempts = maxRetryAttempts;
-            _retrySocketErrorCodes = new HashSet<Int32>(
+            _retrySocketErrorCodes = new HashSet<SocketError>(
                 // ReSharper disable once ConstantNullCoalescingCondition
                 retrySocketErrorCodes ?? _defaultSocketErrorCodes);
             _retryHttpStatuses = new HashSet<HttpStatusCode>(
@@ -96,7 +109,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets set of socket error codes which when received should initiate a retry of the affected request
         /// </summary>
-        public ISet<Int32> RetrySocketErrorCodes => _retrySocketErrorCodes;
+        public ISet<SocketError> RetrySocketErrorCodes => _retrySocketErrorCodes;
 
         /// <summary>
         /// 
@@ -108,7 +121,7 @@ namespace Alpaca.Markets
             var socketErrorsPolicy = Policy
                 .HandleInner<SocketException>(
                     exception =>
-                        RetrySocketErrorCodes.Contains(exception.ErrorCode))
+                        RetrySocketErrorCodes.Contains((SocketError)exception.ErrorCode))
                 .WaitAndRetryAsync(
                     (Int32) MaxRetryAttempts, getRandomDelay);
 

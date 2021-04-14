@@ -761,8 +761,8 @@ Alpaca.Markets.ThrottleParameters.GetAsyncPolicy() -> Polly.IAsyncPolicy<System.
 Alpaca.Markets.ThrottleParameters.MaxRetryAttempts.get -> uint
 Alpaca.Markets.ThrottleParameters.MaxRetryAttempts.set -> void
 Alpaca.Markets.ThrottleParameters.RetryHttpStatuses.get -> System.Collections.Generic.ISet<System.Net.HttpStatusCode>!
-Alpaca.Markets.ThrottleParameters.RetrySocketErrorCodes.get -> System.Collections.Generic.ISet<int>!
-Alpaca.Markets.ThrottleParameters.ThrottleParameters(uint maxRetryAttempts, System.Collections.Generic.IEnumerable<int>! retrySocketErrorCodes, System.Collections.Generic.IEnumerable<System.Net.HttpStatusCode>! retryHttpStatuses) -> void
+Alpaca.Markets.ThrottleParameters.RetrySocketErrorCodes.get -> System.Collections.Generic.ISet<System.Net.Sockets.SocketError>!
+Alpaca.Markets.ThrottleParameters.ThrottleParameters(uint maxRetryAttempts, System.Collections.Generic.IEnumerable<System.Net.Sockets.SocketError>! retrySocketErrorCodes, System.Collections.Generic.IEnumerable<System.Net.HttpStatusCode>! retryHttpStatuses) -> void
 Alpaca.Markets.TimeFrame
 Alpaca.Markets.TimeFrame.Day = 3 -> Alpaca.Markets.TimeFrame
 Alpaca.Markets.TimeFrame.FifteenMinutes = 2 -> Alpaca.Markets.TimeFrame
