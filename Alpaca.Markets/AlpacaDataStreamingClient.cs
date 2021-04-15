@@ -101,7 +101,7 @@ namespace Alpaca.Markets
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
-        private readonly Subscriptions _subscriptions = new Subscriptions();
+        private readonly Subscriptions _subscriptions = new ();
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataStreamingClient"/> object.

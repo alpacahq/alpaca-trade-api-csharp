@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     internal sealed class JsonQuotesPage : IPage<IHistoricalQuote>
     {
         [JsonProperty(PropertyName = "quotes", Required = Required.Always)]
-        public List<JsonHistoricalQuote> ItemsList { get; set; } = new List<JsonHistoricalQuote>();
+        public List<JsonHistoricalQuote> ItemsList { get; set; } = new ();
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;

@@ -38,7 +38,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the pagination parameters for the request (page size and token).
         /// </summary>
-        public Pagination Pagination { get; } = new Pagination();
+        public Pagination Pagination { get; } = new ();
 
         /// <summary>
         /// Gets the last part of the full REST endpoint URL path.
@@ -47,7 +47,7 @@ namespace Alpaca.Markets
 
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress!)
+            new (httpClient.BaseAddress!)
             {
                 Path = $"v2/stocks/{Symbol}/{LastPathSegment}",
                 Query = AddParameters(Pagination.QueryBuilder

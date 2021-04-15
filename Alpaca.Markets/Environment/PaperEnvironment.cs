@@ -10,6 +10,6 @@ namespace Alpaca.Markets
 
         public Uri AlpacaStreamingApi { get; } = new ("wss://paper-api.alpaca.markets/stream");
 
-        public Uri AlpacaDataStreamingApi => new Uri("wss://stream.data.alpaca.markets/v2/iex");
+        public Uri AlpacaDataStreamingApi => new ("wss://stream.data.alpaca.markets/v2/iex");
     }
 }
