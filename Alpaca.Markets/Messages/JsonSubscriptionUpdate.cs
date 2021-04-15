@@ -9,13 +9,13 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "action", Required = Required.Default)]
         public JsonAction Action { get; set; }
 
-        [JsonProperty(PropertyName = "trades", Required = Required.Always)]
-        public List<String> Trades { get; set; } = new List<String>();
+        [JsonProperty(PropertyName = "trades", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public List<String>? Trades { get; set; }
 
-        [JsonProperty(PropertyName = "quotes", Required = Required.Always)]
-        public List<String> Quotes { get; set; } = new List<String>();
+        [JsonProperty(PropertyName = "quotes", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public List<String>? Quotes { get; set; }
 
-        [JsonProperty(PropertyName = "bars", Required = Required.Always)]
-        public List<String> Bars { get; set; } = new List<String>();
+        [JsonProperty(PropertyName = "bars", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public List<String>? Bars { get; set; }
     }
 }

@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Threading;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -12,9 +16,12 @@ namespace Alpaca.Markets.Extensions
     public static partial class AlpacaDataStreamingClientExtensions
     {
         private sealed class ClientWithReconnection :
-            DataClientWithReconnectBase<IAlpacaDataStreamingClient>,
+            ClientWithReconnectBase<IAlpacaDataStreamingClient>,
             IAlpacaDataStreamingClient
         {
+            private readonly ConcurrentDictionary<String, IAlpacaDataSubscription> _subscriptions =
+                new(StringComparer.Ordinal);
+
             public ClientWithReconnection(
                 IAlpacaDataStreamingClient client,
                 ReconnectionParameters reconnectionParameters)
@@ -33,6 +40,68 @@ namespace Alpaca.Markets.Extensions
 
             public IAlpacaDataSubscription<IRealTimeBar> GetMinuteBarSubscription(String symbol) =>
                 Client.GetMinuteBarSubscription(symbol);
+
+            public void Subscribe(
+                IAlpacaDataSubscription subscription)
+            {
+                foreach (var stream in subscription.Streams)
+                {
+                    _subscriptions.TryAdd(stream, subscription);
+                }
+
+                Client.Subscribe(subscription);
+            }
+
+            public void Subscribe(
+                IEnumerable<IAlpacaDataSubscription> subscriptions) =>
+                Subscribe(subscriptions.ToArray());
+
+            public void Subscribe(
+                params IAlpacaDataSubscription[] subscriptions)
+            {
+                foreach (var subscription in subscriptions)
+                {
+                    foreach (var stream in subscription.Streams)
+                    {
+                        _subscriptions.TryAdd(stream, subscription);
+                    }
+                }
+
+                Client.Subscribe(subscriptions);
+            }
+
+            public void Unsubscribe(
+                IAlpacaDataSubscription subscription)
+            {
+                foreach (var stream in subscription.Streams)
+                {
+                    _subscriptions.TryRemove(stream, out _);
+                }
+
+                Client.Unsubscribe(subscription);
+            }
+
+            public void Unsubscribe(
+                IEnumerable<IAlpacaDataSubscription> subscriptions) =>
+                Unsubscribe(subscriptions.ToArray());
+
+            public void Unsubscribe(
+                params IAlpacaDataSubscription[] subscriptions)
+            {
+                foreach (var subscription in subscriptions)
+                {
+                    foreach (var stream in subscription.Streams)
+                    {
+                        _subscriptions.TryRemove(stream, out _);
+                    }
+                }
+
+                Client.Unsubscribe(subscriptions);
+            }
+
+            protected override void OnReconnection(
+                CancellationToken cancellationToken) =>
+                Client.Subscribe(_subscriptions.Values);
         }
 
         /// <summary>

@@ -10,5 +10,8 @@ namespace Alpaca.Markets
 
         public static IReadOnlyList<T> EmptyIfNull<T>(this IReadOnlyList<T>? list) =>
             list ?? Array.Empty<T>();
+
+        public static List<T>? NullIfEmpty<T>(this List<T> list) =>
+            list.Count != 0 ? list : null;
     }
 }

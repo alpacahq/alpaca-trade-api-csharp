@@ -232,9 +232,9 @@ namespace Alpaca.Markets
             var subscriptionUpdate = token.ToObject<JsonSubscriptionUpdate>() ?? new JsonSubscriptionUpdate();
 
             var streams = new HashSet<String>(
-                getStreams(subscriptionUpdate.Trades, TradesChannel)
-                    .Concat(getStreams(subscriptionUpdate.Quotes, QuotesChannel))
-                    .Concat(getStreams(subscriptionUpdate.Bars, BarsChannel)),
+                getStreams(subscriptionUpdate.Trades.EmptyIfNull(), TradesChannel)
+                    .Concat(getStreams(subscriptionUpdate.Quotes.EmptyIfNull(), QuotesChannel))
+                    .Concat(getStreams(subscriptionUpdate.Bars.EmptyIfNull(), BarsChannel)),
                 StringComparer.Ordinal);
 
             try
@@ -317,14 +317,21 @@ namespace Alpaca.Markets
 
         private void sendSubscriptionRequest(
             ILookup<String, String> streamsByChannels,
-            JsonAction action) =>
+            JsonAction action)
+        {
+            if (streamsByChannels.Count == 0)
+            {
+                return;
+            }
+
             SendAsJsonString(new JsonSubscriptionUpdate
             {
                 Action = action,
-                Trades = streamsByChannels[TradesChannel].ToList(),
-                Quotes = streamsByChannels[QuotesChannel].ToList(),
-                Bars = streamsByChannels[BarsChannel].ToList()
+                Trades = getSymbols(streamsByChannels, TradesChannel),
+                Quotes = getSymbols(streamsByChannels, QuotesChannel),
+                Bars = getSymbols(streamsByChannels, BarsChannel)
             });
+        }
 
         private static ILookup<String, String> getLookup(
             IEnumerable<String> streams) =>
@@ -345,5 +352,12 @@ namespace Alpaca.Markets
             String channelName,
             String symbol) =>
             $"{channelName}.{symbol}";
+
+        private static List<String>? getSymbols(
+            ILookup<String, String> streamsByChannels,
+            String stream) =>
+            streamsByChannels[stream]
+                .Where(_ => !String.IsNullOrEmpty(_))
+                .ToList().NullIfEmpty();
     }
 }
