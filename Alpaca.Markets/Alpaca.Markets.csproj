@@ -4,24 +4,25 @@
     <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.3;net45</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>4.1.4</Version>
+    <Version>4.1.5</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>4.1.4.1</AssemblyVersion>
-    <FileVersion>4.1.4.1</FileVersion>
+    <AssemblyVersion>4.1.5.0</AssemblyVersion>
+    <FileVersion>4.1.5.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn></NoWarn>
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- The `IAlpacaStreamingClient.OnAccountUpdate` event and the `IAccountUpdate` interface are marked as obsolete (with error level).
-- The `IOrder` interface extended and supports all the JSON properties provided by the current API.
-- The `IPosition.AccountId` property marked as obsolete (with error level).</PackageReleaseNotes>
+    <PackageReleaseNotes>The `IExchange` interface and two enums `ExchangeType` and `MarketDataType` are marked with the `Obsolete` attribute (with error level).
+- The `BarTimeFrame.Second` and `TimeFrame.Hour` enum members marked as obsolete (with error level).
+- Throttling added for the `GetBarSetAsync` method for preventing the `Too many requests` error message.
+- The max allowed symbols' number in `BarSetRequest` increased up to 200 items.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
