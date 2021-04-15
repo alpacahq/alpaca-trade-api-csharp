@@ -16,7 +16,7 @@ namespace Alpaca.Markets.Extensions
     {
         /// <summary>
         /// Gets all items provided by <see cref="IAlpacaDataClient.ListHistoricalBarsAsync"/> in pagination
-        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IAgg}"/> interface) so they
+        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IHistoricalBar}"/> interface) so they
         /// can be consumed by the <c>await foreach</c> statement on the caller side.
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
@@ -30,7 +30,7 @@ namespace Alpaca.Markets.Extensions
 
         /// <summary>
         /// Gets all items provided by <see cref="IAlpacaDataClient.ListHistoricalBarsAsync"/> in pagination
-        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IAgg}"/> interface) so they
+        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IHistoricalBar}"/> interface) so they
         /// can be consumed by the <c>await foreach</c> statement on the caller side.
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>

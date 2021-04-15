@@ -94,7 +94,7 @@ namespace UsageExamples
             Console.WriteLine("Alpaca streaming client opened.");
 
             var subscription = alpacaDataStreamingClient.GetMinuteBarSubscription(symbol);
-            subscription.Received += async (agg) =>
+            subscription.Received += async (bar) =>
             {
                 // If the market's close to closing, exit position and stop trading.
                 var minutesUntilClose = closingTime - DateTime.UtcNow;
@@ -107,7 +107,7 @@ namespace UsageExamples
                 else
                 {
                     // Decide whether to buy or sell and submit orders.
-                    await HandleMinuteAgg(agg);
+                    await HandleMinuteBar(bar);
                 }
             };
             alpacaDataStreamingClient.Subscribe(subscription);
@@ -135,7 +135,7 @@ namespace UsageExamples
         }
 
         // Determine whether our position should grow or shrink and submit orders.
-        private async Task HandleMinuteAgg(IRealTimeBar agg)
+        private async Task HandleMinuteBar(IRealTimeBar agg)
         {
             closingPrices.Add(agg.Close);
             if (closingPrices.Count > 20)
