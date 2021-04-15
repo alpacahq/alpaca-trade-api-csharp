@@ -4,22 +4,21 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.0.3-alpha1</Version>
+    <Version>5.0.3-alpha2</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.0.3.1</AssemblyVersion>
-    <FileVersion>5.0.3.1</FileVersion>
+    <AssemblyVersion>5.0.3.2</AssemblyVersion>
+    <FileVersion>5.0.3.2</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- The throttling added for the `GetBarSetAsync` method for preventing the `Too many requests` error message.
-- The max allowed numbers of symbols in `BarSetRequest` increased up to 200 items.
-- The custom throttler replaced with the Polly library async retry policies.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Changed the subscription approach to prevent (possibly) the "invalid syntax" error in the `AlpacaDataStreamingClient` class.
+- More HTTP error codes added into the Polly retry policy alongside some ThrottleParameters public API changes.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
