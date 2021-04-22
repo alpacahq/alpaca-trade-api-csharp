@@ -36,7 +36,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
-        IAlpacaDataSubscription<IRealTimeBar> GetMinuteBarSubscription();
+        IAlpacaDataSubscription<IBar> GetMinuteBarSubscription();
 
         /// <summary>
         /// Gets the minute aggregate (bar) subscription for the <paramref name="symbol"/> asset.
@@ -45,7 +45,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
-        IAlpacaDataSubscription<IRealTimeBar> GetMinuteBarSubscription(
+        IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
             String symbol);
     }
 }

@@ -41,12 +41,17 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public Task<IReadOnlyDictionary<String, IReadOnlyList<IHistoricalBar>>> GetBarSetAsync(
+        public Task<IReadOnlyDictionary<String, IReadOnlyList<IBar>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<String, IReadOnlyList<IHistoricalBar>, String, List<JsonHistoricalBar.V1>>(
+            _httpClient.GetAsync<String, IReadOnlyList<IBar>, String, List<JsonHistoricalBar.V1>>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                StringComparer.Ordinal, cancellationToken);
+                StringComparer.Ordinal, kvp =>
+                {
+                    kvp.Value.ForEach(_ => _.Symbol = kvp.Key);
+                    return kvp.Value;
+                },
+                cancellationToken);
 
         /// <inheritdoc />
         [CLSCompliant(false)]
@@ -66,10 +71,10 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public Task<IPage<IHistoricalBar>> ListHistoricalBarsAsync(
+        public Task<IPage<IBar>> ListHistoricalBarsAsync(
             HistoricalBarsRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IPage<IHistoricalBar>, JsonBarsPage>(
+            _httpClient.GetAsync<IPage<IBar>, JsonBarsPage>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
                 cancellationToken);
 

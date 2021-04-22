@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -10,8 +9,11 @@ namespace Alpaca.Markets
         [SuppressMessage(
             "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
             Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-        internal sealed class V1 : IHistoricalBar
+        internal sealed class V1 : IBar
         {
+            [JsonIgnore]
+            public String Symbol { get; internal set; } = String.Empty;
+
             [JsonProperty(PropertyName = "o", Required = Required.Default)]
             public Decimal Open { get; set; }
 
@@ -29,17 +31,17 @@ namespace Alpaca.Markets
 
             [JsonProperty(PropertyName = "t", Required = Required.Default)]
             [JsonConverter(typeof(UnixSecondsDateTimeConverter))]
-            public DateTime? TimeUtc { get; set; }
-
-            [JsonProperty(PropertyName = "n", Required = Required.Default)]
-            public Int32 ItemsInWindow { get; set; }
+            public DateTime TimeUtc { get; set; }
         }
 
         [SuppressMessage(
             "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
             Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-        internal sealed class V2 : IHistoricalBar
+        internal sealed class V2 : IBar
         {
+            [JsonIgnore]
+            public String Symbol { get; internal set; } = String.Empty;
+
             [JsonProperty(PropertyName = "o", Required = Required.Always)]
             public Decimal Open { get; set; }
 
@@ -56,12 +58,7 @@ namespace Alpaca.Markets
             public UInt64 Volume { get; set; }
 
             [JsonProperty(PropertyName = "t", Required = Required.Always)]
-            public DateTime? TimeUtc { get; set; }
-
-            [JsonIgnore]
-            [UsedImplicitly]
-            public Int32 ItemsInWindow { get; }
+            public DateTime TimeUtc { get; set; }
         }
-
     }
 }

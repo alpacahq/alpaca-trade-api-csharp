@@ -7,7 +7,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonRealTimeBar : IRealTimeBar
+    internal sealed class JsonRealTimeBar : IBar
     {
         [JsonProperty(PropertyName = "T", Required = Required.Always)]
         public String Channel { get; set; } = String.Empty;
@@ -27,19 +27,10 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "c", Required = Required.Always)]
         public Decimal Close { get; set; }
 
-        [JsonIgnore]
-        public Decimal Average => throw new InvalidOperationException();
-
         [JsonProperty(PropertyName = "v", Required = Required.Always)]
         public UInt64 Volume { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
-        public DateTime StartTimeUtc { get; set; }
-
-        [JsonIgnore]
-        public DateTime EndTimeUtc => StartTimeUtc;
-
-        [JsonIgnore]
-        public Int32 ItemsInWindow => throw new InvalidOperationException();
+        public DateTime TimeUtc { get; set; }
     }
 }

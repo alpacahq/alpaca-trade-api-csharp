@@ -134,14 +134,14 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public IAlpacaDataSubscription<IRealTimeBar> GetMinuteBarSubscription() => 
-            _subscriptions.GetOrAdd<IRealTimeBar, JsonRealTimeBar>(getStreamName(BarsChannel, WildcardSymbolString));
+        public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() => 
+            _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(BarsChannel, WildcardSymbolString));
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public IAlpacaDataSubscription<IRealTimeBar> GetMinuteBarSubscription(
+        public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
             String symbol) =>
-            _subscriptions.GetOrAdd<IRealTimeBar, JsonRealTimeBar>(getStreamName(BarsChannel, symbol));
+            _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(BarsChannel, symbol));
 
         /// <inheritdoc />
         public void Subscribe(

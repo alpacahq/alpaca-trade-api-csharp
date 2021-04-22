@@ -11,6 +11,16 @@ namespace Alpaca.Markets
     public interface IBar
     {
         /// <summary>
+        /// Gets asset name.
+        /// </summary>
+        String Symbol { get; }
+
+        /// <summary>
+        /// Gets the beginning time of this bar in the UTC.
+        /// </summary>
+        DateTime TimeUtc { get; }
+
+        /// <summary>
         /// Gets bar open price.
         /// </summary>
         Decimal Open { get; }
@@ -34,11 +44,5 @@ namespace Alpaca.Markets
         /// Gets bar trading volume.
         /// </summary>
         UInt64 Volume { get; }
-
-        /// <summary>
-        /// Number of items in aggregate window.
-        /// </summary>
-        [Obsolete("This property will be removed from the next major version of SDK.", false)]
-        Int32 ItemsInWindow { get; }
     }
 }

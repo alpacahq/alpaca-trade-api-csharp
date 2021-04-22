@@ -135,7 +135,7 @@ namespace UsageExamples
         }
 
         // Determine whether our position should grow or shrink and submit orders.
-        private async Task HandleMinuteBar(IRealTimeBar agg)
+        private async Task HandleMinuteBar(IBar agg)
         {
             closingPrices.Add(agg.Close);
             if (closingPrices.Count > 20)
