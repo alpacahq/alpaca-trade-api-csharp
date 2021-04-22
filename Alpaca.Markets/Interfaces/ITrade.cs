@@ -13,6 +13,11 @@ namespace Alpaca.Markets
     public interface ITrade
     {
         /// <summary>
+        /// Gets asset name.
+        /// </summary>
+        String Symbol { get; }
+
+        /// <summary>
         /// Gets trade timestamp in UTC time zone.
         /// </summary>
         DateTime TimestampUtc { get; }

@@ -122,9 +122,9 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public IAlpacaDataSubscription<IRealTimeTrade> GetTradeSubscription(
+        public IAlpacaDataSubscription<ITrade> GetTradeSubscription(
             String symbol) => 
-            _subscriptions.GetOrAdd<IRealTimeTrade, JsonRealTimeTrade>(getStreamName(TradesChannel, symbol));
+            _subscriptions.GetOrAdd<ITrade, JsonRealTimeTrade>(getStreamName(TradesChannel, symbol));
 
         /// <inheritdoc />
         [CLSCompliant(false)]

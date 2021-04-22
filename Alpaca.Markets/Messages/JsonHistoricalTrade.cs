@@ -32,6 +32,9 @@ namespace Alpaca.Markets
         public List<String> ConditionsList { get; } = new ();
 
         [JsonIgnore]
+        public String Symbol { get; internal set; } = String.Empty;
+
+        [JsonIgnore]
         public IReadOnlyList<String> Conditions => 
             ConditionsList.EmptyIfNull();
     }

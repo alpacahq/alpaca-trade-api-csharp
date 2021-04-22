@@ -93,10 +93,10 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public Task<IRealTimeTrade> GetLatestTradeAsync(
+        public Task<ITrade> GetLatestTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IRealTimeTrade, JsonLatestTrade>(
+            _httpClient.GetAsync<ITrade, JsonLatestTrade>(
                 $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/trades/latest",
                 cancellationToken);
 

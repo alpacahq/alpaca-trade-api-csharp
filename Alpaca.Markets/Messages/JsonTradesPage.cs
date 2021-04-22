@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -19,7 +20,15 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "next_page_token", Required = Required.Default)]
         public String? NextPageToken { get; set; }
 
-        [JsonIgnore]
-        public IReadOnlyList<ITrade> Items => ItemsList.EmptyIfNull();
+        [JsonIgnore] 
+        public IReadOnlyList<ITrade> Items { get; private set; } = new List<ITrade>();
+            
+        [OnDeserialized]
+        internal void OnDeserializedMethod(
+            StreamingContext context)
+        {
+            ItemsList?.ForEach(_ => _.Symbol = Symbol);
+            Items = ItemsList.EmptyIfNull();
+        }
     }
 }
