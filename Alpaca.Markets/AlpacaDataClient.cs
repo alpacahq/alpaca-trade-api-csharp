@@ -89,5 +89,25 @@ namespace Alpaca.Markets
             _httpClient.GetAsync<IPage<IHistoricalTrade>, JsonTradesPage>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
                 cancellationToken, _alpacaRestApiThrottler);
+
+        /// <inheritdoc />
+        public Task<IStreamTrade> GetLatestTradeAsync(
+            String symbol,
+            CancellationToken cancellationToken = default)
+        {
+            return _httpClient.GetAsync<IStreamTrade, JsonLatestTrade>(
+                $"v2/stocks/{symbol}/trades/latest", cancellationToken,
+                _alpacaRestApiThrottler);
+        }
+
+        /// <inheritdoc />
+        public Task<IStreamQuote> GetLatestQuoteAsync(
+            String symbol,
+            CancellationToken cancellationToken = default)
+        {
+            return _httpClient.GetAsync<IStreamQuote, JsonLatestQuote>(
+                $"v2/stocks/{symbol}/quotes/latest", cancellationToken,
+                _alpacaRestApiThrottler);
+        }
     }
 }
