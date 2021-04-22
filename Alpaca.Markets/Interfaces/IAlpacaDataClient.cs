@@ -72,5 +72,25 @@ namespace Alpaca.Markets
         Task<IPage<IHistoricalTrade>> ListHistoricalTradesAsync(
             HistoricalTradesRequest request,
             CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets last trade for singe asset from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only last trade information.</returns>
+        Task<IRealTimeTrade> GetLatestTradeAsync(
+            String symbol,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets current quote for singe asset from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only current quote information.</returns>
+        Task<IRealTimeQuote> GetLatestQuoteAsync(
+            String symbol,
+            CancellationToken cancellationToken = default);
     }
 }
