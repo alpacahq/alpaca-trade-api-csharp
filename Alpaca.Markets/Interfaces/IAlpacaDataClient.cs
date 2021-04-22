@@ -89,7 +89,7 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for data retrieval.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only current quote information.</returns>
-        Task<IRealTimeQuote> GetLatestQuoteAsync(
+        Task<IQuote> GetLatestQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default);
     }

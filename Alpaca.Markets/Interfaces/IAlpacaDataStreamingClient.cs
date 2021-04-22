@@ -27,7 +27,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
-        IAlpacaDataSubscription<IRealTimeQuote> GetQuoteSubscription(
+        IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
             String symbol);
 
         /// <summary>

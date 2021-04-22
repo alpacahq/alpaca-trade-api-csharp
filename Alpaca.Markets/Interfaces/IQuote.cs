@@ -13,6 +13,11 @@ namespace Alpaca.Markets
     public interface IQuote
     {
         /// <summary>
+        /// Gets asset name.
+        /// </summary>
+        String Symbol { get; }
+
+        /// <summary>
         /// Gets quote timestamp in UTC time zone.
         /// </summary>
         DateTime TimestampUtc { get; }

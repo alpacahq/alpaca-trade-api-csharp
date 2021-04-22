@@ -102,10 +102,10 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public Task<IRealTimeQuote> GetLatestQuoteAsync(
+        public Task<IQuote> GetLatestQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IRealTimeQuote, JsonLatestQuote>(
+            _httpClient.GetAsync<IQuote, JsonLatestQuote>(
                 $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/quotes/latest",
                 cancellationToken);
     }

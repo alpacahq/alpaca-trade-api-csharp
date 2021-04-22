@@ -34,11 +34,14 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
         public List<String> ConditionsList { get; } = new ();
 
+        [JsonProperty(PropertyName = "z", Required = Required.Default)]
+        public String Tape { get; set; } = String.Empty;
+
+        [JsonIgnore]
+        public String Symbol { get; internal set; } = String.Empty;
+
         [JsonIgnore]
         public IReadOnlyList<String> Conditions => 
             ConditionsList.EmptyIfNull();
-
-        [JsonIgnore]
-        public String Tape => String.Empty;
     }
 }

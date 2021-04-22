@@ -128,9 +128,9 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public IAlpacaDataSubscription<IRealTimeQuote> GetQuoteSubscription(
+        public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
             String symbol) =>
-            _subscriptions.GetOrAdd<IRealTimeQuote, JsonRealTimeQuote>(getStreamName(QuotesChannel, symbol));
+            _subscriptions.GetOrAdd<IQuote, JsonRealTimeQuote>(getStreamName(QuotesChannel, symbol));
 
         /// <inheritdoc />
         [CLSCompliant(false)]
