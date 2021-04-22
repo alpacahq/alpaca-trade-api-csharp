@@ -6,10 +6,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates the basic quote information from Alpaca APIs.
     /// </summary>
-    /// <typeparam name="TExchange">Type of bid/ask exchange properties.</typeparam>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     [CLSCompliant(false)]
-    public interface IQuote<out TExchange>
+    public interface IQuote
     {
         /// <summary>
         /// Gets quote timestamp in UTC time zone.
@@ -19,12 +18,12 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets identifier of bid source exchange.
         /// </summary>
-        TExchange BidExchange { get; }
+        String BidExchange { get; }
 
         /// <summary>
         /// Gets identifier of ask source exchange.
         /// </summary>
-        TExchange AskExchange { get; }
+        String AskExchange { get; }
 
         /// <summary>
         /// Gets bid price level.

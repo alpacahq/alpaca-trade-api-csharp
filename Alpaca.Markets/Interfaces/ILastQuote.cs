@@ -6,9 +6,10 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates last quote information from Alpaca REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     [CLSCompliant(false)]
-    public interface ILastQuote : IQuote<Int64>
+    public interface ILastQuote
     {
         /// <summary>
         /// Gets quote response status.
@@ -19,5 +20,40 @@ namespace Alpaca.Markets
         /// Gets asset name.
         /// </summary>
         String Symbol { get; }
+
+        /// <summary>
+        /// Gets quote timestamp in UTC time zone.
+        /// </summary>
+        DateTime TimestampUtc { get; }
+
+        /// <summary>
+        /// Gets identifier of bid source exchange.
+        /// </summary>
+        Int64 BidExchange { get; }
+
+        /// <summary>
+        /// Gets identifier of ask source exchange.
+        /// </summary>
+        Int64 AskExchange { get; }
+
+        /// <summary>
+        /// Gets bid price level.
+        /// </summary>
+        Decimal BidPrice { get; }
+
+        /// <summary>
+        /// Gets ask price level.
+        /// </summary>
+        Decimal AskPrice { get; }
+
+        /// <summary>
+        /// Gets bid quantity.
+        /// </summary>
+        UInt64 BidSize { get; }
+
+        /// <summary>
+        /// Gets ask quantity.
+        /// </summary>
+        UInt64 AskSize { get; }
     }
 }

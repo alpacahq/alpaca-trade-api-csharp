@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     [CLSCompliant(false)]
     // ReSharper disable once PossibleInterfaceMemberAmbiguity
-    public interface IHistoricalQuote : IQuote<String>
+    public interface IHistoricalQuote : IQuote
     {
         /// <summary>
         /// Gets trade conditions list.

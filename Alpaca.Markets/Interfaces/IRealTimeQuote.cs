@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     [CLSCompliant(false)]
-    public interface IRealTimeQuote : IQuote<String>
+    public interface IRealTimeQuote : IQuote
     {
         /// <summary>
         /// Gets asset name.
