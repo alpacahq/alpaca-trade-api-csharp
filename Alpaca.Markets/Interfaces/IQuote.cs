@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
@@ -6,8 +7,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates the basic quote information from Alpaca APIs.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     [CLSCompliant(false)]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IQuote
     {
         /// <summary>
@@ -49,5 +51,10 @@ namespace Alpaca.Markets
         /// Gets tape where trade occurred.
         /// </summary>
         String Tape { get; }
+
+        /// <summary>
+        /// Gets trade conditions list.
+        /// </summary>
+        IReadOnlyList<String> Conditions { get; }
     }
 }

@@ -59,7 +59,7 @@ namespace Alpaca.Markets
         /// <param name="request">Historical quotes request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical quotes for specified asset (with pagination data).</returns>
-        Task<IPage<IHistoricalQuote>> ListHistoricalQuotesAsync(
+        Task<IPage<IQuote>> ListHistoricalQuotesAsync(
             HistoricalQuotesRequest request,
             CancellationToken cancellationToken = default);
 

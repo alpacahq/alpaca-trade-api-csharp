@@ -75,10 +75,10 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public Task<IPage<IHistoricalQuote>> ListHistoricalQuotesAsync(
+        public Task<IPage<IQuote>> ListHistoricalQuotesAsync(
             HistoricalQuotesRequest request, 
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IPage<IHistoricalQuote>, JsonQuotesPage>(
+            _httpClient.GetAsync<IPage<IQuote>, JsonQuotesPage>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
                 cancellationToken);
 
