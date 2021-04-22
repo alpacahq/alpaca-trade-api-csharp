@@ -10,7 +10,6 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonLatestQuote : IRealTimeQuote
     {
-        [SuppressMessage("ReSharper", "StringLiteralTypo")]
         internal sealed class Quote
         {
             [JsonProperty(PropertyName = "bx", Required = Required.Always)]
@@ -36,10 +35,13 @@ namespace Alpaca.Markets
 
             [JsonProperty(PropertyName = "c", Required = Required.Default)]
             public List<String> ConditionsList { get; } = new ();
+
+            [JsonProperty(PropertyName = "z", Required = Required.Default)]
+            public String Tape { get; set; } = String.Empty;
         }
 
         [JsonProperty(PropertyName = "quote", Required = Required.Always)]
-        public Quote Nested { get; set; } = new Quote();
+        public Quote Nested { get; set; } = new ();
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
@@ -64,6 +66,9 @@ namespace Alpaca.Markets
 
         [JsonIgnore]
         public UInt64 AskSize => Nested.AskSize;
+
+        [JsonIgnore]
+        public String Tape => Nested.Tape;
     
         [JsonIgnore]
         public IReadOnlyList<String> Conditions =>

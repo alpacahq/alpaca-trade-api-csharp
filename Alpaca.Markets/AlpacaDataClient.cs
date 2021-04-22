@@ -54,7 +54,7 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ILastTrade, JsonLastTrade>(
-                $"v1/last/stocks/{symbol}", cancellationToken);
+                $"v1/last/stocks/{symbol.EnsureNotNull(nameof(symbol))}", cancellationToken);
 
         /// <inheritdoc />
         [CLSCompliant(false)]
@@ -62,7 +62,7 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ILastQuote, JsonLastQuote>(
-                $"v1/last_quote/stocks/{symbol}", cancellationToken);
+                $"v1/last_quote/stocks/{symbol.EnsureNotNull(nameof(symbol))}", cancellationToken);
 
         /// <inheritdoc />
         [CLSCompliant(false)]
@@ -97,7 +97,8 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IRealTimeTrade, JsonLatestTrade>(
-                $"v2/stocks/{symbol}/trades/latest", cancellationToken);
+                $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/trades/latest",
+                cancellationToken);
 
         /// <inheritdoc />
         [CLSCompliant(false)]
@@ -105,6 +106,7 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IRealTimeQuote, JsonLatestQuote>(
-                $"v2/stocks/{symbol}/quotes/latest", cancellationToken);
+                $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/quotes/latest",
+                cancellationToken);
     }
 }

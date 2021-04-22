@@ -404,7 +404,6 @@ Alpaca.Markets.IHistoricalQuote
 Alpaca.Markets.IHistoricalQuote.Conditions.get -> System.Collections.Generic.IReadOnlyList<string!>!
 Alpaca.Markets.IHistoricalTrade
 Alpaca.Markets.IHistoricalTrade.Conditions.get -> System.Collections.Generic.IReadOnlyList<string!>!
-Alpaca.Markets.IHistoricalTrade.Tape.get -> ulong
 Alpaca.Markets.IInclusiveTimeInterval
 Alpaca.Markets.ILastQuote
 Alpaca.Markets.ILastQuote.Status.get -> string!
@@ -493,6 +492,7 @@ Alpaca.Markets.IQuote<TExchange>.AskPrice.get -> decimal
 Alpaca.Markets.IQuote<TExchange>.AskSize.get -> ulong
 Alpaca.Markets.IQuote<TExchange>.BidPrice.get -> decimal
 Alpaca.Markets.IQuote<TExchange>.BidSize.get -> ulong
+Alpaca.Markets.IQuote<TExchange>.Tape.get -> string!
 Alpaca.Markets.IQuote<TExchange>.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.IRealTimeBar
 Alpaca.Markets.IRealTimeBar.Average.get -> decimal
@@ -534,8 +534,9 @@ Alpaca.Markets.ITrade
 Alpaca.Markets.ITrade.Exchange.get -> string!
 Alpaca.Markets.ITrade.Price.get -> decimal
 Alpaca.Markets.ITrade.Size.get -> ulong
+Alpaca.Markets.ITrade.Tape.get -> string!
 Alpaca.Markets.ITrade.TimestampUtc.get -> System.DateTime
-Alpaca.Markets.ITrade.TradeId.get -> string?
+Alpaca.Markets.ITrade.TradeId.get -> ulong
 Alpaca.Markets.ITradeUpdate
 Alpaca.Markets.ITradeUpdate.Event.get -> Alpaca.Markets.TradeEvent
 Alpaca.Markets.ITradeUpdate.IntegerQuantity.get -> long?

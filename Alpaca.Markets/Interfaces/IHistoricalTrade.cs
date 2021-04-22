@@ -13,11 +13,6 @@ namespace Alpaca.Markets
     public interface IHistoricalTrade : ITrade
     {
         /// <summary>
-        /// Gets tape where trade occurred.
-        /// </summary>
-        UInt64 Tape { get; }
-
-        /// <summary>
         /// Gets trade conditions list.
         /// </summary>
         IReadOnlyList<String> Conditions { get; }

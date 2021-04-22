@@ -13,10 +13,13 @@ namespace Alpaca.Markets
         internal sealed class Trade
         {
             [JsonProperty(PropertyName = "i", Required = Required.Default)]
-            public String TradeId { get; set; } = String.Empty;
+            public UInt64 TradeId { get; set; }
 
             [JsonProperty(PropertyName = "x", Required = Required.Always)]
             public String Exchange { get; set; } = String.Empty;
+
+            [JsonProperty(PropertyName = "z", Required = Required.Default)]
+            public String Tape { get; set; } = String.Empty;
 
             [JsonProperty(PropertyName = "p", Required = Required.Always)]
             public Decimal Price { get; set; }
@@ -32,7 +35,7 @@ namespace Alpaca.Markets
         }
 
         [JsonProperty(PropertyName = "trade", Required = Required.Always)]
-        public Trade Nested { get; set; } = new Trade();
+        public Trade Nested { get; set; } = new ();
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
@@ -41,7 +44,10 @@ namespace Alpaca.Markets
         public DateTime TimestampUtc => Nested.TimestampUtc;
 
         [JsonIgnore]
-        public String TradeId => Nested.TradeId;
+        public UInt64 TradeId => Nested.TradeId;
+
+        [JsonIgnore]
+        public String Tape => Nested.Tape;
 
         [JsonIgnore]
         public String Exchange => Nested.Exchange;

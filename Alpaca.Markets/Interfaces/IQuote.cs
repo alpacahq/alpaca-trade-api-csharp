@@ -45,5 +45,10 @@ namespace Alpaca.Markets
         /// Gets ask quantity.
         /// </summary>
         UInt64 AskSize { get; }
+
+        /// <summary>
+        /// Gets tape where trade occurred.
+        /// </summary>
+        String Tape { get; }
     }
 }

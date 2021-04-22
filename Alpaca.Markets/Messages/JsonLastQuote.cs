@@ -92,5 +92,8 @@ namespace Alpaca.Markets
 
         [JsonIgnore]
         public DateTime TimestampUtc => Nested.Timestamp;
+
+        [JsonIgnore]
+        public String Tape => String.Empty;
     }
 }

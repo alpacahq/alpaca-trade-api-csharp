@@ -37,5 +37,8 @@ namespace Alpaca.Markets
         [JsonIgnore]
         public IReadOnlyList<String> Conditions => 
             ConditionsList.EmptyIfNull();
+
+        [JsonIgnore]
+        public String Tape => String.Empty;
     }
 }

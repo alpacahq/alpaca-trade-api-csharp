@@ -17,10 +17,13 @@ namespace Alpaca.Markets
         public String Symbol { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
-        public String? TradeId { get; set; }
+        public UInt64 TradeId { get; set; }
 
         [JsonProperty(PropertyName = "x", Required = Required.Always)]
         public String Exchange { get; set; } = String.Empty;
+
+        [JsonProperty(PropertyName = "z", Required = Required.Default)]
+        public String Tape { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "p", Required = Required.Always)]
         public Decimal Price { get; set; }

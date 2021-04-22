@@ -22,11 +22,11 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "s", Required = Required.Always)]
         public UInt64 Size { get; set; }
 
-        [JsonProperty(PropertyName = "z", Required = Required.Default)]
-        public String? TradeId { get; set; }
-
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
-        public UInt64 Tape { get; set; }
+        public UInt64 TradeId { get; set; }
+
+        [JsonProperty(PropertyName = "z", Required = Required.Default)]
+        public String Tape { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
         public List<String> ConditionsList { get; } = new ();

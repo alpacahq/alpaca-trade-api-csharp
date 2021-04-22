@@ -28,11 +28,16 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade identifier.
         /// </summary>
-        String? TradeId { get; }
+        UInt64 TradeId { get; }
 
         /// <summary>
         /// Gets trade source exchange identifier.
         /// </summary>
         String Exchange { get; }
+
+        /// <summary>
+        /// Gets tape where trade occurred.
+        /// </summary>
+        String Tape { get; }
     }
 }
