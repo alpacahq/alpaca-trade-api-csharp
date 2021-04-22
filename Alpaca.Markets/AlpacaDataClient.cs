@@ -84,10 +84,10 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         [CLSCompliant(false)]
-        public Task<IPage<IHistoricalTrade>> ListHistoricalTradesAsync(
+        public Task<IPage<ITrade>> ListHistoricalTradesAsync(
             HistoricalTradesRequest request, 
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IPage<IHistoricalTrade>, JsonTradesPage>(
+            _httpClient.GetAsync<IPage<ITrade>, JsonTradesPage>(
                 request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
                 cancellationToken);
 

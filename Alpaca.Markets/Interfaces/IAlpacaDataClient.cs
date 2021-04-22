@@ -69,7 +69,7 @@ namespace Alpaca.Markets
         /// <param name="request">Historical trades request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical trades for specified asset (with pagination data).</returns>
-        Task<IPage<IHistoricalTrade>> ListHistoricalTradesAsync(
+        Task<IPage<ITrade>> ListHistoricalTradesAsync(
             HistoricalTradesRequest request,
             CancellationToken cancellationToken = default);
 

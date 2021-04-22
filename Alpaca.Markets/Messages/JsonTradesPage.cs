@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonTradesPage : IPage<IHistoricalTrade>
+    internal sealed class JsonTradesPage : IPage<ITrade>
     {
         [JsonProperty(PropertyName = "trades", Required = Required.Always)]
         public List<JsonHistoricalTrade> ItemsList { get; set; } = new ();
@@ -20,6 +20,6 @@ namespace Alpaca.Markets
         public String? NextPageToken { get; set; }
 
         [JsonIgnore]
-        public IReadOnlyList<IHistoricalTrade> Items => ItemsList.EmptyIfNull();
+        public IReadOnlyList<ITrade> Items => ItemsList.EmptyIfNull();
     }
 }
