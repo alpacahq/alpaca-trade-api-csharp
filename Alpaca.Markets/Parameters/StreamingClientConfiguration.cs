@@ -14,12 +14,18 @@ namespace Alpaca.Markets
         {
             ApiEndpoint = apiEndpoint;
             WebSocketFactory = WebSocket4NetFactory.Instance;
+            ThrottleParameters = ThrottleParameters.Default;
         }
 
         /// <summary>
         /// Gets or sets Alpaca streaming API base URL.
         /// </summary>
         public Uri ApiEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or sets Alpaca streaming API throttling parameters.
+        /// </summary>
+        public ThrottleParameters ThrottleParameters { get; set; }
 
         /// <summary>
         /// Gets or sets web sockets connection factory.

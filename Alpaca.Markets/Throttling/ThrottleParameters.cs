@@ -44,14 +44,17 @@ namespace Alpaca.Markets
 #endif
             HttpStatusCode.BadGateway,
             HttpStatusCode.GatewayTimeout,
-            HttpStatusCode.ServiceUnavailable
+            HttpStatusCode.ServiceUnavailable,
+            HttpStatusCode.NotFound
         };
 
         private static readonly SocketError[] _defaultSocketErrorCodes =
         {
             SocketError.TimedOut,
             SocketError.HostNotFound, 
-            SocketError.TryAgain
+            SocketError.TryAgain,
+            SocketError.VersionNotSupported,
+            SocketError.NotConnected
         };
 
         private readonly HashSet<HttpStatusCode> _retryHttpStatuses;
