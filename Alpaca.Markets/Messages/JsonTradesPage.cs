@@ -27,6 +27,7 @@ namespace Alpaca.Markets
         internal void OnDeserializedMethod(
             StreamingContext context)
         {
+            // ReSharper disable once ConstantConditionalAccessQualifier
             ItemsList?.ForEach(_ => _.Symbol = Symbol);
             Items = ItemsList.EmptyIfNull();
         }

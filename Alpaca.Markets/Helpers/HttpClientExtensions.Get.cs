@@ -41,8 +41,7 @@ namespace Alpaca.Markets
                     uriBuilder, cancellationToken)
                 .ConfigureAwait(false);
 
-            return response.ToDictionary<KeyValuePair<TKeyJson, TValueJson>, TKeyApi, TValueApi>(
-                _ => _.Key, elementSelector, comparer);
+            return response.ToDictionary(_ => _.Key, elementSelector, comparer);
         }
     }
 }
