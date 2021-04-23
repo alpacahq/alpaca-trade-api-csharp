@@ -29,16 +29,16 @@ namespace Alpaca.Markets.Extensions
             {
             }
 
-            public IAlpacaDataSubscription<IRealTimeBar> GetMinuteBarSubscription() =>
+            public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() =>
                 Client.GetMinuteBarSubscription();
 
-            public IAlpacaDataSubscription<IRealTimeTrade> GetTradeSubscription(String symbol) =>
+            public IAlpacaDataSubscription<ITrade> GetTradeSubscription(String symbol) =>
                 Client.GetTradeSubscription(symbol);
 
-            public IAlpacaDataSubscription<IRealTimeQuote> GetQuoteSubscription(String symbol) =>
+            public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(String symbol) =>
                 Client.GetQuoteSubscription(symbol);
 
-            public IAlpacaDataSubscription<IRealTimeBar> GetMinuteBarSubscription(String symbol) =>
+            public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(String symbol) =>
                 Client.GetMinuteBarSubscription(symbol);
 
             public void Subscribe(

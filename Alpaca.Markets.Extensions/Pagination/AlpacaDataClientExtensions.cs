@@ -16,21 +16,21 @@ namespace Alpaca.Markets.Extensions
     {
         /// <summary>
         /// Gets all items provided by <see cref="IAlpacaDataClient.ListHistoricalBarsAsync"/> in pagination
-        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IHistoricalBar}"/> interface) so they
+        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IBar}"/> interface) so they
         /// can be consumed by the <c>await foreach</c> statement on the caller side.
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
         /// <param name="request">Original historical minute bars request (with empty next page token).</param>
         /// <returns></returns>
         [CLSCompliant(false)]
-        public static IAsyncEnumerable<IHistoricalBar> GetHistoricalBarsAsAsyncEnumerable(
+        public static IAsyncEnumerable<IBar> GetHistoricalBarsAsAsyncEnumerable(
             this IAlpacaDataClient client,
             HistoricalBarsRequest request) =>
             GetHistoricalBarsAsAsyncEnumerable(client, request, CancellationToken.None);
 
         /// <summary>
         /// Gets all items provided by <see cref="IAlpacaDataClient.ListHistoricalBarsAsync"/> in pagination
-        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IHistoricalBar}"/> interface) so they
+        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IBar}"/> interface) so they
         /// can be consumed by the <c>await foreach</c> statement on the caller side.
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
@@ -38,7 +38,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns></returns>
         [CLSCompliant(false)]
-        public static IAsyncEnumerable<IHistoricalBar> GetHistoricalBarsAsAsyncEnumerable(
+        public static IAsyncEnumerable<IBar> GetHistoricalBarsAsAsyncEnumerable(
             this IAlpacaDataClient client,
             HistoricalBarsRequest request,
             CancellationToken cancellationToken) =>
@@ -54,21 +54,21 @@ namespace Alpaca.Markets.Extensions
 
         /// <summary>
         /// Gets all items provided by <see cref="IAlpacaDataClient.ListHistoricalQuotesAsync"/> in pagination
-        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IHistoricalQuote}"/> interface)
+        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IQuote}"/> interface)
         /// so they can be consumed by the <c>await foreach</c> statement on the caller side.
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
         /// <param name="request">Original historical quotes request (with empty next page token).</param>
         /// <returns></returns>
         [CLSCompliant(false)]
-        public static IAsyncEnumerable<IHistoricalQuote> GetHistoricalQuotesAsAsyncEnumerable(
+        public static IAsyncEnumerable<IQuote> GetHistoricalQuotesAsAsyncEnumerable(
             this IAlpacaDataClient client,
             HistoricalQuotesRequest request) =>
             GetHistoricalQuotesAsAsyncEnumerable(client, request, CancellationToken.None);
 
         /// <summary>
         /// Gets all items provided by <see cref="IAlpacaDataClient.ListHistoricalQuotesAsync"/> in pagination
-        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IHistoricalQuote}"/> interface)
+        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IQuote}"/> interface)
         /// so they can be consumed by the <c>await foreach</c> statement on the caller side.
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
@@ -76,7 +76,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns></returns>
         [CLSCompliant(false)]
-        public static IAsyncEnumerable<IHistoricalQuote> GetHistoricalQuotesAsAsyncEnumerable(
+        public static IAsyncEnumerable<IQuote> GetHistoricalQuotesAsAsyncEnumerable(
             this IAlpacaDataClient client,
             HistoricalQuotesRequest request,
             CancellationToken cancellationToken) =>
@@ -91,21 +91,21 @@ namespace Alpaca.Markets.Extensions
 
         /// <summary>
         /// Gets all items provided by <see cref="IAlpacaDataClient.ListHistoricalTradesAsync"/> in pagination
-        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IHistoricalTrade}"/> interface)
+        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{ITrade}"/> interface)
         /// so they can be consumed by the <c>await foreach</c> statement on the caller side.
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
         /// <param name="request">Original historical trades request (with empty next page token).</param>
         /// <returns></returns>
         [CLSCompliant(false)]
-        public static IAsyncEnumerable<IHistoricalTrade> GetHistoricalTradesAsAsyncEnumerable(
+        public static IAsyncEnumerable<ITrade> GetHistoricalTradesAsAsyncEnumerable(
             this IAlpacaDataClient client,
             HistoricalTradesRequest request) =>
             GetHistoricalTradesAsAsyncEnumerable(client, request, CancellationToken.None);
 
         /// <summary>
         /// Gets all items provided by <see cref="IAlpacaDataClient.ListHistoricalTradesAsync"/> in pagination
-        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IHistoricalTrade}"/> interface)
+        /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{ITrade}"/> interface)
         /// so they can be consumed by the <c>await foreach</c> statement on the caller side.
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
@@ -113,7 +113,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns></returns>
         [CLSCompliant(false)]
-        public static IAsyncEnumerable<IHistoricalTrade> GetHistoricalTradesAsAsyncEnumerable(
+        public static IAsyncEnumerable<ITrade> GetHistoricalTradesAsAsyncEnumerable(
             this IAlpacaDataClient client,
             HistoricalTradesRequest request,
             CancellationToken cancellationToken) =>
