@@ -55,7 +55,7 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ILastTrade, JsonLastTradeAlpaca>(
-                $"v1/last/stocks/{symbol}", cancellationToken,
+                $"v1/last/stocks/{symbol.EnsureNotNull(nameof(symbol))}", cancellationToken,
                 _alpacaRestApiThrottler);
 
         /// <inheritdoc />
@@ -63,7 +63,7 @@ namespace Alpaca.Markets
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ILastQuote, JsonLastQuoteAlpaca>(
-                $"v1/last_quote/stocks/{symbol}", cancellationToken,
+                $"v1/last_quote/stocks/{symbol.EnsureNotNull(nameof(symbol))}", cancellationToken,
                 _alpacaRestApiThrottler);
 
         /// <inheritdoc />
@@ -93,21 +93,17 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public Task<IStreamTrade> GetLatestTradeAsync(
             String symbol,
-            CancellationToken cancellationToken = default)
-        {
-            return _httpClient.GetAsync<IStreamTrade, JsonLatestTrade>(
-                $"v2/stocks/{symbol}/trades/latest", cancellationToken,
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<IStreamTrade, JsonLatestTrade>(
+                $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/trades/latest", cancellationToken,
                 _alpacaRestApiThrottler);
-        }
 
         /// <inheritdoc />
         public Task<IStreamQuote> GetLatestQuoteAsync(
             String symbol,
-            CancellationToken cancellationToken = default)
-        {
-            return _httpClient.GetAsync<IStreamQuote, JsonLatestQuote>(
-                $"v2/stocks/{symbol}/quotes/latest", cancellationToken,
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<IStreamQuote, JsonLatestQuote>(
+                $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/quotes/latest", cancellationToken,
                 _alpacaRestApiThrottler);
-        }
     }
 }

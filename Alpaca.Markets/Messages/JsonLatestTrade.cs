@@ -28,7 +28,7 @@ namespace Alpaca.Markets
         }
 
         [JsonProperty(PropertyName = "trade", Required = Required.Always)]
-        public Trade Nested { get; set; } = new Trade();
+        public Trade Nested { get; set; } = new ();
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
