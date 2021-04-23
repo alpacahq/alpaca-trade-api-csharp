@@ -156,13 +156,13 @@ namespace Alpaca.Markets
             {
                 {Date: not null} => retryAfterHeader.Date.Value.UtcDateTime.Subtract(DateTime.UtcNow),
                 {Delta: not null} => retryAfterHeader.Delta.Value,
-                _ => getRandomDelay(retryCount)
-            };
+                _ => TimeSpan.Zero
+            } + getRandomDelay(retryCount);
 
         private TimeSpan getRandomDelay(
             Int32 retryCount) =>
 #pragma warning disable CA5394 // Do not use insecure randomness
-            TimeSpan.FromMilliseconds(_random.Next(1000, 1000 * retryCount));
+            TimeSpan.FromMilliseconds(_random.Next(200, 400 * retryCount));
 #pragma warning restore CA5394 // Do not use insecure randomness
     }
 }
