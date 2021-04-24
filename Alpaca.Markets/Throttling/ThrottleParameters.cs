@@ -49,9 +49,10 @@ namespace Alpaca.Markets
 
         private static readonly SocketError[] _defaultSocketErrorCodes =
         {
+            SocketError.TryAgain,
             SocketError.TimedOut,
-            SocketError.HostNotFound, 
-            SocketError.TryAgain
+            SocketError.NotConnected,
+            SocketError.HostNotFound 
         };
 
         private readonly HashSet<HttpStatusCode> _retryHttpStatuses;
