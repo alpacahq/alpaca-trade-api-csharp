@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Sockets;
 using System.Threading;
@@ -17,7 +18,9 @@ namespace Alpaca.Markets.Extensions
 
         private readonly ReconnectionParameters _reconnectionParameters;
 
-        private SpinLock _lock = new (false);
+        private SpinLock _closeLock = new (false);
+
+        private SpinLock _errorLock = new (false);
 
         private volatile Int32 _reconnectionAttempts;
 
@@ -89,7 +92,7 @@ namespace Alpaca.Markets.Extensions
         private async void handleSocketClosed()
         {
             var lockTaken = false;
-            _lock.TryEnter(ref lockTaken);
+            _closeLock.TryEnter(ref lockTaken);
 
             if (!lockTaken)
             {
@@ -100,13 +103,17 @@ namespace Alpaca.Markets.Extensions
             {
                 await handleSocketClosedImpl().ConfigureAwait(false);
             }
+            catch (TaskCanceledException)
+            {
+                // Expected one - don't report
+            }
             catch (Exception exception)
             {
                 handleOnError(exception);
             }
             finally
             {
-                _lock.Exit(false);
+                _closeLock.Exit(false);
             }
         }
 
@@ -147,7 +154,40 @@ namespace Alpaca.Markets.Extensions
             }
         }
 
-        private void handleOnError(Exception exception)
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
+        private void handleOnError(
+            Exception exception)
+        {
+            var lockTaken = false;
+            _errorLock.TryEnter(ref lockTaken);
+
+            if (!lockTaken)
+            {
+                return;
+            }
+
+            try
+            {
+                handleErrorImpl(exception);
+            }
+            catch (TaskCanceledException)
+            {
+                // Expected one - don't report
+            }
+            catch (Exception innerException)
+            {
+                Trace.WriteLine(innerException);
+            }
+            finally
+            {
+                _errorLock.Exit(false);
+            }
+        }
+
+        private void handleErrorImpl(
+            Exception exception)
         {
             switch (exception)
             {
@@ -173,24 +213,8 @@ namespace Alpaca.Markets.Extensions
             }
         }
 
-        [SuppressMessage(
-            "Design", "CA1031:Do not catch general exception types",
-            Justification = "Expected behavior - we report exceptions via OnError event.")]
-        private async void disconnectImpl()
-        {
-            try
-            {
-                await DisconnectAsync(_cancellationTokenSource.Token)
-                    .ConfigureAwait(false);
-            }
-            catch (TaskCanceledException)
-            {
-                // Expected one - don't report
-            }
-            catch (Exception exception)
-            {
-                OnError?.Invoke(exception);
-            }
-        }
+        private async void disconnectImpl() =>
+            await DisconnectAsync(_cancellationTokenSource.Token)
+                .ConfigureAwait(false);
     }
 }
