@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO.Pipelines;
@@ -52,9 +53,14 @@ namespace Alpaca.Markets
                 }
             }
         }
-        private readonly ClientWebSocket _webSocket;
+
+        private readonly WebSocketMessageType _webSocketMessageType;
         
-        private WebSocketMessageType _webSocketMessageType;
+        private readonly ClientWebSocket _webSocket;
+
+        private Task _running = Task.CompletedTask;
+
+        private readonly Uri _resolvedUrl;
         
         private volatile bool _aborted;
 
@@ -62,15 +68,24 @@ namespace Alpaca.Markets
 
         private readonly IDuplexPipe _transport;
 
-        internal Task Running { get; private set; } = Task.CompletedTask;
-
         public WebSocketsTransport(
+            Uri url, 
+            WebSocketMessageType webSocketMessageType
             //HttpConnectionOptions httpConnectionOptions
             )
         {
 #pragma warning disable PC001 // API not supported on all platforms
             _webSocket = new ClientWebSocket();
 #pragma warning restore PC001 // API not supported on all platforms
+
+            if (url == null)
+            {
+                throw new ArgumentNullException(nameof(url));
+            }
+
+            _webSocketMessageType = webSocketMessageType;
+
+            _resolvedUrl = resolveWebSocketsUrl(url);
 
             //if (httpConnectionOptions != null)
             //{
@@ -122,26 +137,25 @@ namespace Alpaca.Markets
             _transport = pair.Transport;
             _application = pair.Application;
         }
+        
+        public event Action? Opened;
+
+        public event Action? Closed;
+
+        public event Action<String>? MessageReceived;
+
+        public event Action<Byte[]>? DataReceived;
+
+        public event Action<Exception>? Error;
 
         public async Task StartAsync(
-            Uri url, 
-            WebSocketMessageType webSocketMessageType, 
             CancellationToken cancellationToken = default)
         {
-            if (url == null)
-            {
-                throw new ArgumentNullException(nameof(url));
-            }
-
-            _webSocketMessageType = webSocketMessageType;
-
-            var resolvedUrl = resolveWebSocketsUrl(url);
-
             //Log.StartTransport(_logger, transferFormat, resolvedUrl);
 
             try
             {
-                await _webSocket.ConnectAsync(resolvedUrl, cancellationToken)
+                await _webSocket.ConnectAsync(_resolvedUrl, cancellationToken)
                     .ConfigureAwait(false);
             }
             catch
@@ -152,20 +166,16 @@ namespace Alpaca.Markets
 
             //Log.StartedTransport(_logger);
 
-            Running = processSocketAsync(_webSocket);
+            Opened?.Invoke();
+            _running = processSocketAsync(_webSocket);
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", 
             "CA1031:Do not catch general exception types", Justification = "<Pending>")]
-        public async Task StopAsync()
+        public async Task StopAsync(
+            CancellationToken cancellationToken = default)
         {
             //Log.TransportStopping(_logger);
-
-            if (_application == null)
-            {
-                // We never started
-                return;
-            }
 
             _transport!.Output.Complete();
             _transport!.Input.Complete();
@@ -175,7 +185,10 @@ namespace Alpaca.Markets
 
             try
             {
-                await Running.ConfigureAwait(false);
+                var taskCompletionSource = new TaskCompletionSource<Boolean>();
+                cancellationToken.Register(() => taskCompletionSource.TrySetCanceled());
+                await Task.WhenAny(_running, taskCompletionSource.Task)
+                    .ConfigureAwait(false);
             }
             catch (Exception /*ex*/)
             {
@@ -188,6 +201,7 @@ namespace Alpaca.Markets
                 _webSocket.Dispose();
             }
 
+            Closed?.Invoke();
             //Log.TransportStopped(_logger, null);
         }
 
@@ -321,6 +335,24 @@ namespace Alpaca.Markets
                     {
                         break;
                     }
+
+                    if (receiveResult.EndOfMessage)
+                    {
+                        var readResult = await _transport.Input.ReadAsync().ConfigureAwait(false);
+
+                        switch (receiveResult.MessageType)
+                        {
+                            case WebSocketMessageType.Binary:
+                                DataReceived?.Invoke(readResult.Buffer.ToArray());
+                                break;
+
+                            case WebSocketMessageType.Text:
+                                MessageReceived?.Invoke(Encoding.UTF8.GetString(readResult.Buffer.ToArray()));
+                                break;
+                        }
+
+                        _transport.Input.AdvanceTo(readResult.Buffer.End);
+                    }
                 }
             }
             catch (OperationCanceledException)
@@ -332,6 +364,7 @@ namespace Alpaca.Markets
                 if (!_aborted)
                 {
                     _application.Output.Complete(ex);
+                    Error?.Invoke(ex);
                 }
             }
             finally
@@ -404,6 +437,7 @@ namespace Alpaca.Markets
             }
             catch (Exception ex)
             {
+                Error?.Invoke(ex);
                 error = ex;
             }
             finally
@@ -431,12 +465,10 @@ namespace Alpaca.Markets
             }
         }
 
-        private static bool webSocketCanSend(WebSocket ws)
-        {
-            return !(ws.State == WebSocketState.Aborted ||
-                   ws.State == WebSocketState.Closed ||
-                   ws.State == WebSocketState.CloseSent);
-        }
+        private static bool webSocketCanSend(WebSocket ws) =>
+            !(ws.State == WebSocketState.Aborted ||
+              ws.State == WebSocketState.Closed ||
+              ws.State == WebSocketState.CloseSent);
 
         private static Uri resolveWebSocketsUrl(Uri url)
         {

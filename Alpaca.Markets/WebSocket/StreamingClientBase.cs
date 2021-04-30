@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.Sockets;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace Alpaca.Markets
 
         internal readonly TConfiguration Configuration;
 
-        private readonly IWebSocket _webSocket;
+        private readonly WebSocketsTransport _webSocket;
 
         /// <summary>
         /// Creates new instance of <see cref="StreamingClientBase{TConfiguration}"/> object.
@@ -35,7 +36,8 @@ namespace Alpaca.Markets
             Configuration = configuration.EnsureNotNull(nameof(configuration));
             Configuration.EnsureIsValid();
 
-            _webSocket = configuration.CreateWebSocket();
+            _webSocket = new WebSocketsTransport(
+                Configuration.ApiEndpoint, WebSocketMessageType.Binary);
 
             _webSocket.Opened += OnOpened;
             _webSocket.Closed += OnClosed;
@@ -62,7 +64,7 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public Task ConnectAsync(
             CancellationToken cancellationToken = default)
-            => _webSocket.OpenAsync(cancellationToken);
+            => _webSocket.StartAsync(cancellationToken);
 
         /// <inheritdoc />
         public async Task<AuthStatus> ConnectAndAuthenticateAsync(
@@ -93,7 +95,7 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public Task DisconnectAsync(
             CancellationToken cancellationToken = default)
-            => _webSocket.CloseAsync(cancellationToken);
+            => _webSocket.StopAsync(cancellationToken);
 
         /// <inheritdoc />
         public void Dispose()
@@ -210,14 +212,14 @@ namespace Alpaca.Markets
         /// Send object (JSON serializable) as string into the web socket.
         /// </summary>
         /// <param name="value">Object for serializing and sending.</param>
-        protected void SendAsJsonString(
+        protected Task SendAsJsonString(
             Object value)
         {
             using var textWriter = new StringWriter();
 
             var serializer = new JsonSerializer();
             serializer.Serialize(textWriter, value);
-            _webSocket.Send(textWriter.ToString());
+            return _webSocket.SendAsync(textWriter.ToString());
         }
 
         private void onDataReceived(
