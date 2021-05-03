@@ -157,7 +157,7 @@ namespace Alpaca.Markets.Extensions
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]
-        private void handleOnError(
+        private async void handleOnError(
             Exception exception)
         {
             var lockTaken = false;
@@ -170,7 +170,7 @@ namespace Alpaca.Markets.Extensions
 
             try
             {
-                handleErrorImpl(exception);
+                await handleErrorImpl(exception).ConfigureAwait(false);
             }
             catch (TaskCanceledException)
             {
@@ -186,7 +186,7 @@ namespace Alpaca.Markets.Extensions
             }
         }
 
-        private void handleErrorImpl(
+        private async Task handleErrorImpl(
             Exception exception)
         {
             switch (exception)
@@ -196,7 +196,7 @@ namespace Alpaca.Markets.Extensions
                     {
                         OnError?.Invoke(exception);
                     }
-                    disconnectImpl();
+                    await DisconnectAsync(_cancellationTokenSource.Token).ConfigureAwait(false);
                     break;
 
                 case RestClientErrorException:
@@ -208,13 +208,9 @@ namespace Alpaca.Markets.Extensions
 
                 default:
                     OnError?.Invoke(exception);
-                    disconnectImpl();
+                    await DisconnectAsync(_cancellationTokenSource.Token).ConfigureAwait(false);
                     break;
             }
         }
-
-        private async void disconnectImpl() =>
-            await DisconnectAsync(_cancellationTokenSource.Token)
-                .ConfigureAwait(false);
     }
 }
