@@ -58,6 +58,12 @@ namespace Alpaca.Markets
         /// Account disabled.
         /// </summary>
         [EnumMember(Value = "DISABLED")]
-        Disabled
+        Disabled,
+
+        /// <summary>
+        /// Disable request sent.
+        /// </summary>
+        [EnumMember(Value = "DISABLE_PENDING")]
+        DisablePending
     }
 }
