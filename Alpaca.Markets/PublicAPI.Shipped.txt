@@ -50,6 +50,7 @@ Alpaca.Markets.AccountStatus.AccountUpdated = 3 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.Active = 5 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.ApprovalPending = 4 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.Disabled = 7 -> Alpaca.Markets.AccountStatus
+Alpaca.Markets.AccountStatus.DisablePending = 8 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.Onboarding = 0 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.Rejected = 6 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.SubmissionFailed = 1 -> Alpaca.Markets.AccountStatus
