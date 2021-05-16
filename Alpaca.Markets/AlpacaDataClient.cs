@@ -132,7 +132,8 @@ namespace Alpaca.Markets
                 {
                     Path = "v2/stocks/snapshots",
                     Query = new QueryBuilder()
-                        .AddParameter("symbols", String.Join(",", symbols))
+                        .AddParameter("symbols", String.Join(",",
+                            symbols.EnsureNotNull(nameof(symbols))))
                 },
                 StringComparer.Ordinal, kvp => kvp.Value.WithSymbol(kvp.Key),
                 cancellationToken);

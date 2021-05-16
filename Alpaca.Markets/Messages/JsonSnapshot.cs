@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     internal sealed class JsonSnapshot : ISnapshot
     {
         [JsonProperty(PropertyName = "latestQuote", Required = Required.Always)]
-        public JsonHistoricalQuote QuoteObject { get; set; } = new ();
+        public JsonHistoricalQuote JsonQuote { get; set; } = new ();
 
         [JsonProperty(PropertyName = "latestTrade", Required = Required.Always)]
         public JsonHistoricalTrade JsonTrade { get; set; } = new ();
@@ -29,7 +29,7 @@ namespace Alpaca.Markets
         public String Symbol { get; set; } = String.Empty;
 
         [JsonIgnore]
-        public IQuote Quote => QuoteObject;
+        public IQuote Quote => JsonQuote;
 
         [JsonIgnore]
         public ITrade Trade => JsonTrade;
@@ -53,7 +53,7 @@ namespace Alpaca.Markets
         {
             Symbol = symbol;
             JsonTrade.Symbol = Symbol;
-            QuoteObject.Symbol = Symbol;
+            JsonQuote.Symbol = Symbol;
             return this;
         }
     }
