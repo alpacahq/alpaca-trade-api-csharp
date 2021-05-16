@@ -113,5 +113,28 @@ namespace Alpaca.Markets
             _httpClient.GetAsync<IQuote, JsonLatestQuote>(
                 $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/quotes/latest",
                 cancellationToken);
+
+        /// <inheritdoc />
+        [CLSCompliant(false)]
+        public Task<ISnapshot> GetSnapshotAsync(
+            String symbol,
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<ISnapshot, JsonSnapshot>(
+                $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/snapshot", cancellationToken);
+
+        /// <inheritdoc />
+        [CLSCompliant(false)]
+        public Task<IReadOnlyDictionary<String, ISnapshot>> GetSnapshotsAsync(
+            IEnumerable<String> symbols,
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<String, ISnapshot, String, JsonSnapshot>(
+                new UriBuilder(_httpClient.BaseAddress!)
+                {
+                    Path = "v2/stocks/snapshots",
+                    Query = new QueryBuilder()
+                        .AddParameter("symbols", String.Join(",", symbols))
+                },
+                StringComparer.Ordinal, kvp => kvp.Value.WithSymbol(kvp.Key),
+                cancellationToken);
     }
 }
