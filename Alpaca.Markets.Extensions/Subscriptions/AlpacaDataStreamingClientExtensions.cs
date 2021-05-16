@@ -76,8 +76,6 @@ namespace Alpaca.Markets.Extensions
                 _client.Unsubscribe(_subscription);
         }
 
-        private const Int32 MaxAllowedTradeOrQuoteSubscriptionsCount = 30;
-
         /// <summary>
         /// Gets the trade updates subscription for the all assets from the <paramref name="symbols"/> list.
         /// </summary>
@@ -324,12 +322,12 @@ namespace Alpaca.Markets.Extensions
         private static IAlpacaDataSubscription<IStreamTrade> getTradeSubscription(
             IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
-            getSubscription(client.GetTradeSubscription, symbols.takeNotMoreThan(MaxAllowedTradeOrQuoteSubscriptionsCount));
+            getSubscription(client.GetTradeSubscription, symbols);
 
         private static IAlpacaDataSubscription<IStreamQuote> getQuoteSubscription(
             IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
-            getSubscription(client.GetQuoteSubscription, symbols.takeNotMoreThan(MaxAllowedTradeOrQuoteSubscriptionsCount));
+            getSubscription(client.GetQuoteSubscription, symbols);
 
         private static IAlpacaDataSubscription<IStreamAgg> getMinuteAggSubscription(
             IAlpacaDataStreamingClient client,
@@ -340,21 +338,5 @@ namespace Alpaca.Markets.Extensions
             Func<String, IAlpacaDataSubscription<TItem>> selector,
             IEnumerable<String> symbols) =>
             new MultiSubscription<TItem>(symbols.Select(selector));
-
-        private static IEnumerable<T> takeNotMoreThan<T>(
-            this IEnumerable<T> source,
-            Int32 count)
-        {
-            foreach (var item in source)
-            {
-                if (--count < 0)
-                {
-                    throw new InvalidOperationException(
-                        "Too many symbols in single subscription request.");
-                }
-
-                yield return item;
-            }
-        }
     }
 }
