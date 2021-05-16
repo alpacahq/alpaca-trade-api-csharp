@@ -32,6 +32,7 @@ namespace Alpaca.Markets
                 this HttpClient httpClient,
                 UriBuilder uriBuilder,
                 IEqualityComparer<TKeyApi> comparer,
+                Func<KeyValuePair<TKeyJson, TValueJson>, TValueApi> elementSelector,
                 CancellationToken cancellationToken,
                 IThrottler? throttler = null)
             where TKeyApi : notnull
@@ -44,7 +45,7 @@ namespace Alpaca.Markets
                 .ConfigureAwait(false);
 
             return response.ToDictionary<KeyValuePair<TKeyJson, TValueJson>, TKeyApi, TValueApi>(
-                _ => _.Key, _ => _.Value, comparer);
+                _ => _.Key, elementSelector, comparer);
         }
     }
 }
