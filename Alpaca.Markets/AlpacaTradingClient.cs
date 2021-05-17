@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Net.Http.Headers;
 
 namespace Alpaca.Markets
@@ -6,6 +7,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca Trading API via HTTP/REST.
     /// </summary>
+    [Obsolete("This class will be marked as internal in the next major SDK release.", false)]
     public sealed partial class AlpacaTradingClient : IAlpacaTradingClient
     {
         private readonly HttpClient _httpClient;

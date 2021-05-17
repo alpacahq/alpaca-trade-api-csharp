@@ -10,6 +10,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca Data API via HTTP/REST.
     /// </summary>
+    [Obsolete("This class will be marked as internal in the next major SDK release.", false)]
     public sealed class AlpacaDataClient : IAlpacaDataClient
     {
         private readonly HttpClient _httpClient;

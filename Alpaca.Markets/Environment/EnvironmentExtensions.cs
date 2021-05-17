@@ -19,7 +19,9 @@ namespace Alpaca.Markets
         public static IAlpacaTradingClient GetAlpacaTradingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
+#pragma warning disable 618
             new AlpacaTradingClient(environment.GetAlpacaTradingClientConfiguration(securityKey));
+#pragma warning restore 618
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaTradingClientConfiguration"/> for specific
@@ -31,7 +33,7 @@ namespace Alpaca.Markets
         public static AlpacaTradingClientConfiguration GetAlpacaTradingClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-            new AlpacaTradingClientConfiguration
+            new ()
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .AlpacaTradingApi.EnsureNotNull(nameof(IEnvironment.AlpacaTradingApi)),
@@ -48,7 +50,9 @@ namespace Alpaca.Markets
         public static IAlpacaDataClient GetAlpacaDataClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
+#pragma warning disable CS0618 // Type or member is obsolete
             new AlpacaDataClient(environment.GetAlpacaDataClientConfiguration(securityKey));
+#pragma warning restore CS0618 // Type or member is obsolete
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataClientConfiguration"/> for specific
@@ -60,7 +64,7 @@ namespace Alpaca.Markets
         public static AlpacaDataClientConfiguration GetAlpacaDataClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-            new AlpacaDataClientConfiguration
+            new ()
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .AlpacaDataApi.EnsureNotNull(nameof(IEnvironment.AlpacaDataApi)),
@@ -91,7 +95,7 @@ namespace Alpaca.Markets
         public static PolygonDataClientConfiguration GetPolygonDataClientConfiguration(
             this IEnvironment environment,
             String keyId) =>
-            new PolygonDataClientConfiguration
+            new ()
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .PolygonDataApi.EnsureNotNull(nameof(IEnvironment.PolygonDataApi)),
@@ -108,7 +112,9 @@ namespace Alpaca.Markets
         public static IAlpacaStreamingClient GetAlpacaStreamingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
+#pragma warning disable 618
             new AlpacaStreamingClient(environment.GetAlpacaStreamingClientConfiguration(securityKey));
+#pragma warning restore 618
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaStreamingClientConfiguration"/> for specific
@@ -120,7 +126,7 @@ namespace Alpaca.Markets
         public static AlpacaStreamingClientConfiguration GetAlpacaStreamingClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-            new AlpacaStreamingClientConfiguration()
+            new ()
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .AlpacaStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaStreamingApi)),
@@ -151,7 +157,7 @@ namespace Alpaca.Markets
         public static PolygonStreamingClientConfiguration GetPolygonStreamingClientConfiguration(
             this IEnvironment environment,
             String keyId) =>
-            new PolygonStreamingClientConfiguration()
+            new ()
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .PolygonStreamingApi.EnsureNotNull(nameof(IEnvironment.PolygonStreamingApi)),
@@ -168,7 +174,9 @@ namespace Alpaca.Markets
         public static IAlpacaDataStreamingClient GetAlpacaDataStreamingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
+#pragma warning disable 618
             new AlpacaDataStreamingClient(environment.GetAlpacaDataStreamingClientConfiguration(securityKey));
+#pragma warning restore 618
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataStreamingClientConfiguration"/> for specific
@@ -180,7 +188,7 @@ namespace Alpaca.Markets
         public static AlpacaDataStreamingClientConfiguration GetAlpacaDataStreamingClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-            new AlpacaDataStreamingClientConfiguration()
+            new ()
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .AlpacaDataStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaDataStreamingApi)),
