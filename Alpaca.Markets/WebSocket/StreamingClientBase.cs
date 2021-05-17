@@ -16,7 +16,7 @@ namespace Alpaca.Markets
     /// </summary>
     [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
     [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
-    public abstract class StreamingClientBase<TConfiguration> : IStreamingClient 
+    internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient 
         where TConfiguration : StreamingClientConfiguration
     {
         private readonly SynchronizationQueue _queue = new ();

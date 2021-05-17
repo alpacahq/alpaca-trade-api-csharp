@@ -1,12 +1,1 @@
 ﻿#nullable enable
-Alpaca.Markets.AlpacaDataClient.GetSnapshotAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ISnapshot!>!
-Alpaca.Markets.AlpacaDataClient.GetSnapshotsAsync(System.Collections.Generic.IEnumerable<string!>! symbols, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.ISnapshot!>!>!
-Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ISnapshot!>!
-Alpaca.Markets.IAlpacaDataClient.GetSnapshotsAsync(System.Collections.Generic.IEnumerable<string!>! symbols, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.ISnapshot!>!>!
-Alpaca.Markets.ISnapshot
-Alpaca.Markets.ISnapshot.CurrentDailyBar.get -> Alpaca.Markets.IBar!
-Alpaca.Markets.ISnapshot.MinuteBar.get -> Alpaca.Markets.IBar!
-Alpaca.Markets.ISnapshot.PreviousDailyBar.get -> Alpaca.Markets.IBar!
-Alpaca.Markets.ISnapshot.Quote.get -> Alpaca.Markets.IQuote!
-Alpaca.Markets.ISnapshot.Symbol.get -> string!
-Alpaca.Markets.ISnapshot.Trade.get -> Alpaca.Markets.ITrade!
