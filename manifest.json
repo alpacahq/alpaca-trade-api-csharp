@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AccountActivitiesRequest.html",
-          "hash": "vqSGlk5yPm/oRFnb/yPg2g=="
+          "hash": "D2LsWshmKOSjrq+3EPZTDwIzHvICEN5LTm0KwaJAYtw="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AccountActivityType.html",
-          "hash": "j0fau7OrnhpdZLiv07VXSQ=="
+          "hash": "xmr7iR8E8IavfRXzN7hGjHbkSLuBfSHO12MSQGIvdsM="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AccountStatus.html",
-          "hash": "gTzGICBuQdvWZR6BMm9rHA=="
+          "hash": "b3ziYmHlKqA/7I4uVhrKL/h787ICiK355eUTCMDRfHI="
         }
       },
       "is_incremental": false,
@@ -45,31 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AdvancedOrderBase.html",
-          "hash": "2yO7M8iAZ6y5VtatZ88fdw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Alpaca.Markets.AggregationPeriodUnit.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Alpaca.Markets.AggregationPeriodUnit.html",
-          "hash": "QwkqskP7U4E90Xm2/ugOsg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Alpaca.Markets.AlpacaDataClient.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Alpaca.Markets.AlpacaDataClient.html",
-          "hash": "hjlUjVp57nzVEr1dfqEnDQ=="
+          "hash": "odnD7K3mj/lhVL6xFVX9AerUI1U5MwJZJl8YZGKmZEI="
         }
       },
       "is_incremental": false,
@@ -81,19 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AlpacaDataClientConfiguration.html",
-          "hash": "eCNpi43MQdTeFANsv5FYgw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Alpaca.Markets.AlpacaDataStreamingClient.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Alpaca.Markets.AlpacaDataStreamingClient.html",
-          "hash": "VPHwI5CLv5HN6ufD5SpvQg=="
+          "hash": "wZ+d+vMG0mndWsvsnzQ2YnX/GZfCSOWlPOXWjO4K2Is="
         }
       },
       "is_incremental": false,
@@ -105,19 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AlpacaDataStreamingClientConfiguration.html",
-          "hash": "/BSL98BpUpLefllzs6yB+w=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Alpaca.Markets.AlpacaStreamingClient.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Alpaca.Markets.AlpacaStreamingClient.html",
-          "hash": "zgRC8vHZNucL3dLvPuT9Bw=="
+          "hash": "gp6746ua0IExUXJBKFxC/OO0t84WWJfUwPL8+wu0OUI="
         }
       },
       "is_incremental": false,
@@ -129,19 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AlpacaStreamingClientConfiguration.html",
-          "hash": "rrG82XrMP8Qa03tCN+fyEA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Alpaca.Markets.AlpacaTradingClient.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Alpaca.Markets.AlpacaTradingClient.html",
-          "hash": "Hb9OqkbuGw+BJlm3Vh31zg=="
+          "hash": "jBrHyhzGztyVmhZ36sbm9ufua8ZKjgsdivFCrhsAal0="
         }
       },
       "is_incremental": false,
@@ -153,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AlpacaTradingClientConfiguration.html",
-          "hash": "HKcYxY14BXMFS8DhQEcDYA=="
+          "hash": "Amrzcz61ZQhlLwCRb1kBxxpUy5n8KtuYDXqS32tZlDE="
         }
       },
       "is_incremental": false,
@@ -165,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AssetClass.html",
-          "hash": "bgMDRdJxv5Geu7Llwwyu5A=="
+          "hash": "8sA6iHVFD3IRte3L+Pv2Rxo9EqbJkwIV3hBT6FdOII4="
         }
       },
       "is_incremental": false,
@@ -177,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AssetStatus.html",
-          "hash": "gUdzxgSpxrc2r8zfeOAKAA=="
+          "hash": "lh4g3+L8RWDgAanLnlzYcrEOg2BDTVaqVq4cVayaVSw="
         }
       },
       "is_incremental": false,
@@ -189,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AssetsRequest.html",
-          "hash": "SQF2pawJ4UEISw4xxSqe3Q=="
+          "hash": "AMI7fZLWfyMiVasR5558K3dEFsqBdhq4hhuX3GwRAMw="
         }
       },
       "is_incremental": false,
@@ -201,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AuthStatus.html",
-          "hash": "KktPrGM8Mq3CT2bH6w2K5A=="
+          "hash": "gJjuHIHHglrUyNtyDJ3Vb/+6KhA9+sXIpWCrH+ZDEqM="
         }
       },
       "is_incremental": false,
@@ -213,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.BarSetRequest.html",
-          "hash": "X6ueDZYz9/GTytzCKulJQQ=="
+          "hash": "Uczc32Gj1CvizDPW6qq+yob74426biyJy5fxIXj9afM="
         }
       },
       "is_incremental": false,
@@ -225,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.BarTimeFrame.html",
-          "hash": "A3QYAlATJ79xT9TONoVgFA=="
+          "hash": "eegCAOqTfyP8hmTpWFiKSIB8DJCE4+o3DyDoKtLUI3Q="
         }
       },
       "is_incremental": false,
@@ -237,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.BracketOrder.html",
-          "hash": "YUK2jCP3FoRqjk8rpVGN5w=="
+          "hash": "oRtPtDQbYpmKzwRu/IaPnmqfE/wznN8tduXrr90KmgQ="
         }
       },
       "is_incremental": false,
@@ -249,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.CalendarRequest.html",
-          "hash": "D6rezPF6npawjdB8lVCbRA=="
+          "hash": "au70CjlFujq/eWH8iYkOAi+gFPJugBb6BTyDf7Bt1w0="
         }
       },
       "is_incremental": false,
@@ -261,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.ChangeOrderRequest.html",
-          "hash": "WDGYM9UyiElGECClmPnxxA=="
+          "hash": "8ewhqDsC6Ave8+WM1e0/uHmCJI6syVQ3ldYEkjx3znQ="
         }
       },
       "is_incremental": false,
@@ -273,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.ChangeWatchListRequest-1.html",
-          "hash": "NBcVWKs3FcBhz7F6Pgwm3g=="
+          "hash": "OVaTyow5tPjv0G1zTo80seefOQrmQVNA+hJaORPCoQY="
         }
       },
       "is_incremental": false,
@@ -285,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.DayTradeMarginCallProtection.html",
-          "hash": "Rzsa7hXT7qmGI2j55634TQ=="
+          "hash": "teG/TeCpftFk619xMRSG1VsIAA94EoCW71H3vad3KnY="
         }
       },
       "is_incremental": false,
@@ -297,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.DeleteAllPositionsRequest.html",
-          "hash": "nO/HFf1FDfsYCF82YIQQ9A=="
+          "hash": "in/XkF9hH1Fq07t2j+4PH3CuNg25ZUM1u/IFv7rNEFc="
         }
       },
       "is_incremental": false,
@@ -309,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.DeletePositionRequest.html",
-          "hash": "R4JpQmIJeytY62DkEFWXhw=="
+          "hash": "GY01FrTDTyk4P15eK2c5Yfk7Pjfu0zRkNdaUh0KL13Y="
         }
       },
       "is_incremental": false,
@@ -321,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.EnvironmentExtensions.html",
-          "hash": "lheELiXh2WWHnLlY4ot6yA=="
+          "hash": "F8wH4cFtfEXSu0YqOE9nGt+JcS5IoUEEhIlVePbshuE="
         }
       },
       "is_incremental": false,
@@ -333,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Environments.html",
-          "hash": "KUtw7w3OGEqJLHXWAIgCMw=="
+          "hash": "OYg+NVLMO4O/+RvuCnvd1B/HoV2PNdy2r1W8ln2SCYY="
         }
       },
       "is_incremental": false,
@@ -345,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Exchange.html",
-          "hash": "IRimgWluPXgln+LcPAqVxg=="
+          "hash": "ukkWLhgWNH7jMSUu+nxBtylQdqVObOt++CEDa99Gywk="
         }
       },
       "is_incremental": false,
@@ -357,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Extensions.AlpacaDataClientExtensions.html",
-          "hash": "e4sYwO2+PNZdQxH5eIaCgw=="
+          "hash": "pN74dytXEuNnL88UL9e1kWgFZm1kBgUz7DlVz8+J5YE="
         }
       },
       "is_incremental": false,
@@ -369,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html",
-          "hash": "7Rl55HqwZIP8fuICfKSeHA=="
+          "hash": "ekejyJfHjiZZgh3Gl52THfY1+P7VGQpklC4M7eRj+rI="
         }
       },
       "is_incremental": false,
@@ -381,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.html",
-          "hash": "ZWx+R1NMGQWFf0HcsNVPqw=="
+          "hash": "OqzldOXgsuAFHPhT7fH5TFS1tJqoep+1g9nCkvgaOJ8="
         }
       },
       "is_incremental": false,
@@ -393,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.html",
-          "hash": "dPkiDxzH/K3kGYJPGccfWw=="
+          "hash": "JtxnTNxKxLjdP0Qdu1JunBZCu2nWQU2WxGfGxIgdpb0="
         }
       },
       "is_incremental": false,
@@ -405,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.html",
-          "hash": "47oYaELgOf8OwQeS/OMG9A=="
+          "hash": "gqKimtp8DwF/bgT69vAUfh4MOw4eLvsBgpzNeTNN3gE="
         }
       },
       "is_incremental": false,
@@ -417,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Extensions.EnvironmentExtensions.html",
-          "hash": "Bn1QR5gP22Ihd64ax4koAQ=="
+          "hash": "h/DArhLNKZLWsRzR+QWEa6BKQol0453aGjwceTzGqVM="
         }
       },
       "is_incremental": false,
@@ -429,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html",
-          "hash": "sgCzo0PoCWcuUGKpr1P2Bw=="
+          "hash": "qlCt/4xiAuDhHt/K2a00H7ZJcbU7xIhpS3g7A/5VQtM="
         }
       },
       "is_incremental": false,
@@ -441,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Extensions.ReconnectionParameters.html",
-          "hash": "UkLBvbcsc+SH48XTC89hlQ=="
+          "hash": "ZROSacb1AdrmgW+ixK990Q1k4u+qtwTpUtxqp0A7FZs="
         }
       },
       "is_incremental": false,
@@ -453,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Extensions.html",
-          "hash": "78Nocw452X2AzF7NMH6m5A=="
+          "hash": "BL7Nio7X592T6CE7wWk9r6TrPF3X0hhW8ME6A6M7nBM="
         }
       },
       "is_incremental": false,
@@ -465,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.HistoricalBarsRequest.html",
-          "hash": "ad6mrl+qgBdWfz5eJGAslQ=="
+          "hash": "aCBT6b7tsLxIBZV6N7TPFRNVtHB2RFl+KnZD5UWtZ58="
         }
       },
       "is_incremental": false,
@@ -477,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.HistoricalQuotesRequest.html",
-          "hash": "pJwpYG1s4yN88eapCbxVrQ=="
+          "hash": "zRunIAaDCFUqpFtmOvqYmSHGlVCAQRShdq2QpeOTGQQ="
         }
       },
       "is_incremental": false,
@@ -489,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.HistoricalRequestBase.html",
-          "hash": "ctagcPwnh7olwm8UdDwoUQ=="
+          "hash": "jUXvuoO4FU7O5x5evWvl22eCIm/kIgnQPr+b+AnrKg0="
         }
       },
       "is_incremental": false,
@@ -501,7 +441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.HistoricalRequestBaseExtensions.html",
-          "hash": "scDELjf9fkDWLGRYZXE9xg=="
+          "hash": "MNXbWph6DoRAIte4bMtg5oxZyoq9r0qgyUnq5pWQ3QM="
         }
       },
       "is_incremental": false,
@@ -513,7 +453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.HistoricalTradesRequest.html",
-          "hash": "TjLIfjMrRMwz/ZWly7rrzg=="
+          "hash": "u5U+AVFwzDM0UV8DEuURRWy9DVDIjkSXoBkU53kx7Ro="
         }
       },
       "is_incremental": false,
@@ -525,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.HistoryPeriod.html",
-          "hash": "mHncYmq+XnQ59XVqP9cX1A=="
+          "hash": "OMavW7o2I9R1w165/6xF1mzWMaCLM4MQy/s2bdRDI4o="
         }
       },
       "is_incremental": false,
@@ -537,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.HistoryPeriodUnit.html",
-          "hash": "HQ6Dl7fbrgjJOMwnJn1K4w=="
+          "hash": "koWDrLIzKHaFHONn93jS40HniRb/34J2Zj9dfaVcaro="
         }
       },
       "is_incremental": false,
@@ -549,7 +489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IAccount.html",
-          "hash": "z7/Sy4w8cq0LZgS2FKR4Pw=="
+          "hash": "2Lyzjt+bjCYPItehoNhgA6CKRbohvv2XaGAxgOFZlEo="
         }
       },
       "is_incremental": false,
@@ -561,7 +501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IAccountActivity.html",
-          "hash": "U+hHo2VCsDm3c3wgXUIQ+w=="
+          "hash": "no4cNCdMf9EuyFobX7P6VTG58RyO6XyJrJLwwusSzUg="
         }
       },
       "is_incremental": false,
@@ -573,7 +513,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IAccountConfiguration.html",
-          "hash": "ANdiaHtu5cZ2TSY6DGcjnQ=="
+          "hash": "qI5EFUWUhCHODmJFTlYJqz5WLiIH0xw6h+GJGqxRvTQ="
         }
       },
       "is_incremental": false,
@@ -585,7 +525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IAlpacaDataClient.html",
-          "hash": "s3V+p/Wkx6eSBn+c6qSHuQ=="
+          "hash": "p1r+N120vnXjUvqYlctNZoWGTz85ssO8+v1iciJGBFg="
         }
       },
       "is_incremental": false,
@@ -597,7 +537,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IAlpacaDataStreamingClient.html",
-          "hash": "tkwiAFN3qgcKjIeFQOPZ/w=="
+          "hash": "8Yq9HM8/q2pAApfeAxlBD+c7DUieYXJYIeFMUZ1jKwU="
         }
       },
       "is_incremental": false,
@@ -609,7 +549,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IAlpacaDataSubscription-1.html",
-          "hash": "zMXo5XcSkz/9iq6FXwgWRQ=="
+          "hash": "2SA2K8lE992EMkFsq/EeKpQGbUOmevP/o5lIsQj7UNU="
         }
       },
       "is_incremental": false,
@@ -621,7 +561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IAlpacaDataSubscription.html",
-          "hash": "2Jyb54UXi2jD9MtpW+R7Rw=="
+          "hash": "x7RWzlTu2ZHWw7+odS2lBYUHyeoyebepnBszUcaTH+Y="
         }
       },
       "is_incremental": false,
@@ -633,7 +573,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IAlpacaStreamingClient.html",
-          "hash": "0D2sv9EpS35C++fonFiSDw=="
+          "hash": "yzW0CxsfVj5z9ZpIDbYUv7bkF9S6h5RWAs15tAMMyLc="
         }
       },
       "is_incremental": false,
@@ -645,7 +585,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IAlpacaTradingClient.html",
-          "hash": "vkiJhPPM5b3llJOpQ/eW/w=="
+          "hash": "LS+oMQ9hB/oLvr6huVZvewNjQkEVv2+UmCu9uLk2sqc="
         }
       },
       "is_incremental": false,
@@ -657,7 +597,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IAsset.html",
-          "hash": "hNbpR+796SmggBvF11tAqw=="
+          "hash": "H4MzLDNV8/9e/ey2h9wgliIH89da4/b2WLM08Xo0YzY="
         }
       },
       "is_incremental": false,
@@ -669,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IBar.html",
-          "hash": "gGo4rqVsP+OoQQKYJLlD4Q=="
+          "hash": "fnzP3b/j0RspLgdQJtivgQlxS4zi1IMyaIpD2IjWFD8="
         }
       },
       "is_incremental": false,
@@ -681,7 +621,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.ICalendar.html",
-          "hash": "oOlXRLGe6PxU7orZBMj7ew=="
+          "hash": "j1r8tYQqVJVycWUvqmqIhZJzXRdfzRoQLxRRwW0dV0k="
         }
       },
       "is_incremental": false,
@@ -693,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IClock.html",
-          "hash": "n+Sa2xYdRX3IWmbEiHjEvw=="
+          "hash": "HbeJnZepPqkx5M53YNfkE+bC9RpGKbwksUguKbkjBqw="
         }
       },
       "is_incremental": false,
@@ -705,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IEnvironment.html",
-          "hash": "JASrCaSXuvcC444Q4bn04A=="
+          "hash": "W3+PR6X6CC1HFyvDPDNl1d8swlcPm05fBwWrhUPLN4g="
         }
       },
       "is_incremental": false,
@@ -717,43 +657,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IExclusiveTimeInterval.html",
-          "hash": "N7m7WB0yf9U9l7IyEvhOMQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Alpaca.Markets.IHistoricalBar.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Alpaca.Markets.IHistoricalBar.html",
-          "hash": "GnevobmEv8giZQI0yAR1TQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Alpaca.Markets.IHistoricalQuote.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Alpaca.Markets.IHistoricalQuote.html",
-          "hash": "CtySYv2cX0WwAFkbyt+C3A=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Alpaca.Markets.IHistoricalTrade.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Alpaca.Markets.IHistoricalTrade.html",
-          "hash": "imwTudzWH3HfB9w4aO2dGw=="
+          "hash": "d2cjdNGTygx/t9RdGpMOCyK2rvUDCqaSciKqfVzkbxQ="
         }
       },
       "is_incremental": false,
@@ -765,7 +669,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IInclusiveTimeInterval.html",
-          "hash": "7aRdZ+idBBj5jmt7SCoVGg=="
+          "hash": "vEPbGzO8KV/mUYwuKqDolKDiYOAE4ULfspxIiAyKoJY="
         }
       },
       "is_incremental": false,
@@ -777,7 +681,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.ILastQuote.html",
-          "hash": "Dy1iHN9ocwXDq/ZiqAWmYA=="
+          "hash": "Sw4nb7gNc+piqRg4kymKt6Af/qshgT1pOjgP4s/rCpI="
         }
       },
       "is_incremental": false,
@@ -789,7 +693,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.ILastTrade.html",
-          "hash": "iCeDaXBTm6SsiGmRIho6Eg=="
+          "hash": "o+lVz15rwgKtNQ43VHQKZ81TtaibsZCmmJBVrn+Z/k4="
         }
       },
       "is_incremental": false,
@@ -801,7 +705,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IOrder.html",
-          "hash": "WSe2AtATn8Vh7bW1LK02sw=="
+          "hash": "JI+DmdkjLwz8h+/FE1rgy89OgdXqcTMRTWTuNDG1yGg="
         }
       },
       "is_incremental": false,
@@ -813,7 +717,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IOrderActionStatus.html",
-          "hash": "yaI8xu1nD3iRAOdCLod/XA=="
+          "hash": "4tnw6fU2F2RIfhtyS/PkYzkukh5KRNm8V357loeVXt0="
         }
       },
       "is_incremental": false,
@@ -825,7 +729,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IPage-1.html",
-          "hash": "0zQRj1HqApFQ5ixDEXQpYQ=="
+          "hash": "5edRpY0fcu81xOS1bWb1Jxpw3y5dH4jImAirxI+EWEM="
         }
       },
       "is_incremental": false,
@@ -837,7 +741,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IPortfolioHistory.html",
-          "hash": "z00wja9kdABw457bLR+mRg=="
+          "hash": "ia+tV1pR4gEuwbLjXz+3S48f3rE/F5xRjZiGTqaTeBI="
         }
       },
       "is_incremental": false,
@@ -849,7 +753,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IPortfolioHistoryItem.html",
-          "hash": "y4kMvYXZ1dJH4Z5fcpkPgw=="
+          "hash": "loFIU1Lqsh4yf1nxNBYlG+j6jTXTzQFOZZ91ReV1gpQ="
         }
       },
       "is_incremental": false,
@@ -861,7 +765,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IPosition.html",
-          "hash": "ZySO2o0v8QXq1fVgxCQlhQ=="
+          "hash": "K4QImNQM0kSD4Wb0usHuGd8qML6EUsBHCpl2vQ1eb50="
         }
       },
       "is_incremental": false,
@@ -873,7 +777,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IPositionActionStatus.html",
-          "hash": "Z8Al/X4iD2Wk3PJx6P1Z8w=="
+          "hash": "jamJk58dohgd1gc7TjmpowCYMP4ETUp4bDwOtqPx6Hw="
         }
       },
       "is_incremental": false,
@@ -881,47 +785,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Alpaca.Markets.IQuote-1.yml",
+      "source_relative_path": "api/Alpaca.Markets.IQuote.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Alpaca.Markets.IQuote-1.html",
-          "hash": "ER3g8EoWqFhZ+yzOEiqiMg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Alpaca.Markets.IRealTimeBar.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Alpaca.Markets.IRealTimeBar.html",
-          "hash": "JW6X94j0WBtIQEgQyLGS8A=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Alpaca.Markets.IRealTimeQuote.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Alpaca.Markets.IRealTimeQuote.html",
-          "hash": "I20cnwZGo+IOzsAv7/NCOw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Alpaca.Markets.IRealTimeTrade.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Alpaca.Markets.IRealTimeTrade.html",
-          "hash": "Wmk0tB+Fb1mzaXNnRn8CkA=="
+          "relative_path": "api/Alpaca.Markets.IQuote.html",
+          "hash": "SAuLjM5kBrnPiu4ctFY4abHajorjkk+ijFRclFiXCcs="
         }
       },
       "is_incremental": false,
@@ -933,7 +801,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IRequestWithTimeInterval-1.html",
-          "hash": "vKvOOst3XOgwQmcOzw9a7w=="
+          "hash": "y7m+7IzpSRT+BjffTDnDpYqUAM/j2ZTOzWJEGn+NlLQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Alpaca.Markets.ISnapshot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alpaca.Markets.ISnapshot.html",
+          "hash": "uUHFUeEeX5lU4S/yvmpqt0k7ttUkFggRSspTkE3Rorc="
         }
       },
       "is_incremental": false,
@@ -945,7 +825,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IStopLoss.html",
-          "hash": "vNBUNdjkoPX4jaxQvAXIDA=="
+          "hash": "VwhRCKFw+igTgnMUzgsO4ngKHeSGKP8jy98PwCKlt48="
         }
       },
       "is_incremental": false,
@@ -957,7 +837,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IStreamingClient.html",
-          "hash": "3nRJtGHJr2gRdpfrIrKSqA=="
+          "hash": "HxcWFcF8bHG/waeYLiTqjQZ7Mma2WRq4hjVTryjHrDg="
         }
       },
       "is_incremental": false,
@@ -969,7 +849,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IStreamingDataClient.html",
-          "hash": "emHsC+qeP9jyNiY9D/mwsA=="
+          "hash": "pbNtSXVYbYSCFnR1NgMeHteRIVvCbnXYHv2GyTpY6e4="
         }
       },
       "is_incremental": false,
@@ -981,7 +861,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.ITakeProfit.html",
-          "hash": "cWm9xT3dWp/i/Frtwb4waQ=="
+          "hash": "9ZgcgKG3p989gU4Qhcxq8R1ckSghXxKqGe5BC+nnL70="
         }
       },
       "is_incremental": false,
@@ -993,7 +873,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.ITimeInterval.html",
-          "hash": "Qo6UDsbjd4GOmkEawJmQkQ=="
+          "hash": "/NMCSJdjwLYhiTKYjgTBHy/rhS1bItov9UPB9V2BSL4="
         }
       },
       "is_incremental": false,
@@ -1005,7 +885,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.ITrade.html",
-          "hash": "M4s65HLDHylOgZhgEIg/4A=="
+          "hash": "sscwxkpQGr68UYtEYfD4t5fTC/TI+dk4imcnP5wGHv4="
         }
       },
       "is_incremental": false,
@@ -1017,7 +897,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.ITradeUpdate.html",
-          "hash": "Sk7LTAcgHyUVLbektOib9g=="
+          "hash": "xytwsJ2hw146PeNXwET/4oIgttqQzHE32BWIRC4a/gw="
         }
       },
       "is_incremental": false,
@@ -1029,7 +909,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IWatchList.html",
-          "hash": "zjj4OvNHkplRyhq71z2TAw=="
+          "hash": "M11XvplB6KQCJcbZAmL9jI1w+dEpspQWBEqOrJAspyQ="
         }
       },
       "is_incremental": false,
@@ -1041,7 +921,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IWebSocket.html",
-          "hash": "gjh8tIUS9QXbWaxW2/rMuw=="
+          "hash": "Wly6jN/g9harReHcheJkjHC8BgOB5iY0ACoqbHJIwlU="
         }
       },
       "is_incremental": false,
@@ -1053,7 +933,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IWebSocketFactory.html",
-          "hash": "Hjf6NY5SgTV6/MCWwkyDKA=="
+          "hash": "0lohxjaH7DKQYpn8Iowxnatq2EzV7NZPHn487c3FbJo="
         }
       },
       "is_incremental": false,
@@ -1065,7 +945,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.LimitOrder.html",
-          "hash": "bRTdekg2yqyl123r2Lveyw=="
+          "hash": "njGjy68yAda6+L1zyKUEHqthg4dvh8SvIlbowN7ivus="
         }
       },
       "is_incremental": false,
@@ -1077,7 +957,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.ListOrdersRequest.html",
-          "hash": "n/mLyxnN0g3I9JCrxme6jw=="
+          "hash": "d9hlzm9U3eopjnIYrJY22M0OF5OudJkTUehMHVIJkJs="
         }
       },
       "is_incremental": false,
@@ -1089,7 +969,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.MarketOrder.html",
-          "hash": "flPjse8SQ0RM9XIUzXnH6w=="
+          "hash": "mLzC8Q7hD7nc/txhrD7EwDCMV7ydh+S8wQu43QHd6Jc="
         }
       },
       "is_incremental": false,
@@ -1101,7 +981,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Multiplier.html",
-          "hash": "NtXkS1Y5M6s3W6TXlu7P5g=="
+          "hash": "jernsgiXJ74Tks07EYvaR62J3tVskU5sthnr8xos+o8="
         }
       },
       "is_incremental": false,
@@ -1113,7 +993,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.NewOrderRequest.html",
-          "hash": "gkBPimAv3weCHJfBSnJ+Yg=="
+          "hash": "ekSA/Zm4NFhUBEoUSVV2LwK5xTBlBQKcCmpJ5iKTi4I="
         }
       },
       "is_incremental": false,
@@ -1125,7 +1005,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.NewWatchListRequest.html",
-          "hash": "WA4gwtpV5Tx5W+DHUSU9OA=="
+          "hash": "aWoxn14r3tEN/UXAEyi1CAQjaPcZd44Lkigvak5Sd9A="
         }
       },
       "is_incremental": false,
@@ -1137,7 +1017,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.OAuthKey.html",
-          "hash": "xFKEMo1hGNtzUj5x/lILtA=="
+          "hash": "nm5lA4oZC+kSU/snYn4jmO5BhkvAkhMhNiTrspWdQ4U="
         }
       },
       "is_incremental": false,
@@ -1149,7 +1029,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.OneCancelsOtherOrder.html",
-          "hash": "abbDiMuUAr/8fsx9AxI5DA=="
+          "hash": "6YVAfqs9wRjLCUS/9FGQBQLSAfh36HJg2dMBLvoIFtw="
         }
       },
       "is_incremental": false,
@@ -1161,7 +1041,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.OrderBase.html",
-          "hash": "i7JOrXHXZikfFs2bjVw9wA=="
+          "hash": "x3smI3IoHnBXjtI1AxWEiEc7bt9vs1P4qo3GfT0zIss="
         }
       },
       "is_incremental": false,
@@ -1173,7 +1053,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.OrderBaseExtensions.html",
-          "hash": "xwHt3VgmU0OWTABMWhxyEQ=="
+          "hash": "TPyD+2W2YkyOoYXbyU/6ipO4C8ThBkrdOCbZUSS3OSM="
         }
       },
       "is_incremental": false,
@@ -1185,7 +1065,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.OrderClass.html",
-          "hash": "isE26VCwSJbS9YcA/4PEWg=="
+          "hash": "3nhrEGFX/3IG/CYq5QqkAmNv/Dtj6Njd+SBjzGjkLWg="
         }
       },
       "is_incremental": false,
@@ -1197,7 +1077,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.OrderExtensions.html",
-          "hash": "dmn4Mhz54H3Kuyxw9eJTjg=="
+          "hash": "QftYOegVOUP3yIg77LZFeGwwl21nDt9t+Q8LD+JsgH4="
         }
       },
       "is_incremental": false,
@@ -1209,7 +1089,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.OrderQuantity.html",
-          "hash": "wMsjJTknSMkzWGqEHIf9gQ=="
+          "hash": "/WhSTQ/0Xn6YEo3QIcdqHDRwcWM582GYFwxbfjElskY="
         }
       },
       "is_incremental": false,
@@ -1221,7 +1101,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.OrderSide.html",
-          "hash": "GKnlLtY5T1BK8/RYBKr5VA=="
+          "hash": "hrJlicnBwYKwhaFLwJJDFHQc36UJ2maCjHDdG65bfJU="
         }
       },
       "is_incremental": false,
@@ -1233,7 +1113,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.OrderSideExtensions.html",
-          "hash": "aq72ADotkXXZBmvqp5uezw=="
+          "hash": "xqLVH1I8zMqZNWLFG0Pdp+bqzI9Amtug0YroEw8imW0="
         }
       },
       "is_incremental": false,
@@ -1245,7 +1125,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.OrderStatus.html",
-          "hash": "k8jhwp4fbToLfCO07f3stQ=="
+          "hash": "D/aFBZU0Gj8g6YEowIhUkpBa2WBcuexhxT+3+d7eJ7E="
         }
       },
       "is_incremental": false,
@@ -1257,7 +1137,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.OrderStatusFilter.html",
-          "hash": "BtrFb0SP9PlFmw40Eodjyg=="
+          "hash": "Y/PNh6q0QcaKjHbIqfMe0Dw8oA/Llwc80MbGmgtKTIE="
         }
       },
       "is_incremental": false,
@@ -1269,7 +1149,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.OrderType.html",
-          "hash": "LIfSlnqp5MKplR05i0tXfw=="
+          "hash": "4kvBIIAoFj5DX52bad2cx6qvl0gioh9izfWKA0+vnwc="
         }
       },
       "is_incremental": false,
@@ -1281,7 +1161,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Pagination.html",
-          "hash": "oGuLtFbJ5pOJeFr/89KrPQ=="
+          "hash": "rvSItZJiVOP2cmfCXJkUrFoN1idoslg+OnqCx5DhJAk="
         }
       },
       "is_incremental": false,
@@ -1293,7 +1173,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.PortfolioHistoryRequest.html",
-          "hash": "xEMwGFWZdhBhqkTr5yXpzA=="
+          "hash": "9NCs9ZcEUGX+V+LdDKwNsifyQ9S7ED5sSEJrIgC3PxM="
         }
       },
       "is_incremental": false,
@@ -1305,7 +1185,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.PositionSide.html",
-          "hash": "hjzF0M5FBeA8u2JnN/YAMA=="
+          "hash": "MVeRidxGmEB6jaEm7qtwHZGGburEHg6ZrEcdtJza9kY="
         }
       },
       "is_incremental": false,
@@ -1317,7 +1197,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.RequestValidationException.html",
-          "hash": "HlW1butmXg6h6FyvX6kYEg=="
+          "hash": "qDhtX9vwEmqAHqru5lMJCV8c3qrQGBLaskEB3p6Bho8="
         }
       },
       "is_incremental": false,
@@ -1329,7 +1209,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.RestClientErrorException.html",
-          "hash": "iNsgH9jTawIQDJ3IlUYr4g=="
+          "hash": "qnz9CbC9eW32jR2VKJPEepc6f3dq3N3pPuWf1yF5SVY="
         }
       },
       "is_incremental": false,
@@ -1341,7 +1221,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.SecretKey.html",
-          "hash": "uL74V6XWindzue1ESvsfHg=="
+          "hash": "VGqVFuhsNrMzjPb1tNIwRUg8hpczThiW/FsMeQ+43pI="
         }
       },
       "is_incremental": false,
@@ -1353,7 +1233,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.SecurityKey.html",
-          "hash": "bmpIof+hkCJDVaaUjKBAyQ=="
+          "hash": "gRQ6mWtWp9/q3Rc2UpPKAozcEWnhQdhz6QpX6T/INik="
         }
       },
       "is_incremental": false,
@@ -1365,7 +1245,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.SimpleOrderBase.html",
-          "hash": "bFLaqG9e3qmlgY7HG6jn8A=="
+          "hash": "QR/SfAU3/c9UJVvRyJQ1VaWCAt++HlCKiOQyNvkpdV8="
         }
       },
       "is_incremental": false,
@@ -1377,7 +1257,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.SortDirection.html",
-          "hash": "fFuXwtLSdGSrcFiRdbmU6A=="
+          "hash": "OLm6duo73VWg9FNaKgTF3CvRSineAzfi3Un9eVDYnxY="
         }
       },
       "is_incremental": false,
@@ -1389,7 +1269,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.StopLimitOrder.html",
-          "hash": "QO1Byr/QV2AVICVozQTXew=="
+          "hash": "GWvm8ZSF3/SpIaNhbg+BjU2YHo1QoiIyS6MmYM4BXaU="
         }
       },
       "is_incremental": false,
@@ -1401,7 +1281,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.StopLossOrder.html",
-          "hash": "1KhG5ES4Mo0eKgKF7S89FA=="
+          "hash": "MHVMddp+uUwL2WPxW+gYlr4l6W167kNoUfKYbMZl72w="
         }
       },
       "is_incremental": false,
@@ -1413,19 +1293,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.StopOrder.html",
-          "hash": "yYG2oRZMhTlz0YVuHN/YiA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Alpaca.Markets.StreamingClientBase-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Alpaca.Markets.StreamingClientBase-1.html",
-          "hash": "2wciM5tkUnBFxXixFAY3lA=="
+          "hash": "LYahOc+7giCn2fSsqQINEW4ux3RYv7gwMrl3PylVbl0="
         }
       },
       "is_incremental": false,
@@ -1437,7 +1305,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.StreamingClientConfiguration.html",
-          "hash": "yr+GlyGZRs1FvRkxlS967g=="
+          "hash": "5R1BmZiywiK8B1KHRPN/66pAP889dTaCSvUAI8GwKA4="
         }
       },
       "is_incremental": false,
@@ -1449,7 +1317,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.TakeProfitOrder.html",
-          "hash": "s/41Ar3Bw++4A/+l7Ulv2g=="
+          "hash": "DIRhpSsV1mHmprO3gdRUD4+ooKJEUFc0Hb4j2InVEEc="
         }
       },
       "is_incremental": false,
@@ -1461,7 +1329,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.ThrottleParameters.html",
-          "hash": "Plk74LKhha3Z8mJqhoGA6w=="
+          "hash": "b4vMqfrk3CMbDdHKeEeQd0Zn/jGan3ml0g/MtJCKAzc="
         }
       },
       "is_incremental": false,
@@ -1473,7 +1341,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.TimeFrame.html",
-          "hash": "9KEwPwiRUySGtn8HMCL94w=="
+          "hash": "Bmi0rEsHa9H8c0zfNjfP8W4l+X0zjZLWJdahFr0KL6U="
         }
       },
       "is_incremental": false,
@@ -1485,7 +1353,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.TimeInForce.html",
-          "hash": "LIv8vE5/JsNmSWTMPSJ4Zw=="
+          "hash": "1tnKBbhX9AveeDitYH/dMgkjeS14cPq2yKkRDT70Lhs="
         }
       },
       "is_incremental": false,
@@ -1497,7 +1365,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.TimeInterval.html",
-          "hash": "zZeEnVS5V+xMB8lQREE0dA=="
+          "hash": "qrMDBmk9YHZPJbJ3eSfGOA182Bg3gLqmhCpub5D7gh0="
         }
       },
       "is_incremental": false,
@@ -1509,7 +1377,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.TradeConfirmEmail.html",
-          "hash": "TmdJU8RSsnw5xHwnoyDkHw=="
+          "hash": "wKvVK855U/9vWdOBaah42t4l4+nEDGzO3JnAEuQzlhE="
         }
       },
       "is_incremental": false,
@@ -1521,7 +1389,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.TradeEvent.html",
-          "hash": "ipQTD5cNMWrg3zV1fLAe/w=="
+          "hash": "sRD6NVHkpbJsW/2d2nSJyxAw3KjY7lbkM/s3rglEaoE="
         }
       },
       "is_incremental": false,
@@ -1533,7 +1401,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.TrailOffset.html",
-          "hash": "pGk9+syOiG7HKFvqIW4cEQ=="
+          "hash": "tttFfGmh0S5SIsIpt/3d0oYjUYLHEPckmFjjEZhkZ9Y="
         }
       },
       "is_incremental": false,
@@ -1545,7 +1413,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.TrailingStopOrder.html",
-          "hash": "oozeX6MsNFh4QH7YplP0Ow=="
+          "hash": "9UU+8++OgnpeCXCvifdyWMqEhwOvxepP0GICSBU3Wzc="
         }
       },
       "is_incremental": false,
@@ -1557,7 +1425,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.UpdateWatchListRequest.html",
-          "hash": "bnR+KQj5+QSoHHZEhcQKWA=="
+          "hash": "+aTi9bFiu8C+7JwdbZ9g/j7e8L8rhmLh25nLICh9yxg="
         }
       },
       "is_incremental": false,
@@ -1569,7 +1437,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.html",
-          "hash": "+cgMnlbruE4roV5C1dkvDg=="
+          "hash": "HnqEBHU6rulanXXudLxcHSff7BpIzILqmLZj0I9fiT8="
         }
       },
       "is_incremental": false,
@@ -1581,7 +1449,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "R33/KVJqQmN6nDHvsN8viQ=="
+          "hash": "7/FBUlaGKI0bzne/3qjDW8PoyPXeHYc5ybhFARWwEIg="
         }
       },
       "is_incremental": false,
@@ -1593,7 +1461,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "C8u2/7ZvB32eOYTSk+w5lA=="
+          "hash": "aiMax5SPXX8wLNMAJz1cslAqndNJ5vDu7YYTJU714dA="
         }
       },
       "is_incremental": false,
@@ -1605,7 +1473,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "GLqneXtqqpiuh8HqqPQrag=="
+          "hash": "xaHoW9Ecoq13DR8D68D0LpuhFbfydBZx/D+OPoBnF2A="
         }
       },
       "is_incremental": false,
@@ -1617,7 +1485,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "gB8AESyvNru97tzIZofEEg=="
+          "hash": "BlPxk5mtl2kgfcZUgkEguqiSAR/EUyUTT4EdebwkQvs="
         }
       },
       "is_incremental": false,
@@ -1629,7 +1497,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "PR4WIqXep/63ki/MbPKpZA=="
+          "hash": "er8cAKFoGn/Lwg2FNPzxGHIyEbxSlB2SFqgsrAfLrxA="
         }
       },
       "is_incremental": false,
@@ -1641,7 +1509,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "+rHUkRZHZRi5gd1aTU6lJA=="
+          "hash": "WSuRrYiGwKKMbtdG9z8W9fXmLoCyTnGg9AxbPKLXm2Y="
         }
       },
       "is_incremental": false,
@@ -1668,7 +1536,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 131,
+          "total_file_count": 120,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AlpacaDataClientExtensions
    ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -99,13 +99,13 @@
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_IAlpacaDataClient_HistoricalBarsRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient,HistoricalBarsRequest)">GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient, HistoricalBarsRequest)</h4>
   <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalBarsAsync"></see> in pagination
-mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IAgg>"></see> interface) so they
+mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IBar>"></see> interface) so they
 can be consumed by the <code>await foreach</code> statement on the caller side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IHistoricalBar&gt; GetHistoricalBarsAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalBarsRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IBar&gt; GetHistoricalBarsAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalBarsRequest request)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -141,7 +141,7 @@ can be consumed by the <code>await foreach</code> statement on the caller side.<
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IHistoricalBar</span>&gt;</td>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -156,13 +156,13 @@ can be consumed by the <code>await foreach</code> statement on the caller side.<
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_IAlpacaDataClient_HistoricalBarsRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient,HistoricalBarsRequest,CancellationToken)">GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient, HistoricalBarsRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalBarsAsync"></see> in pagination
-mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IAgg>"></see> interface) so they
+mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IBar>"></see> interface) so they
 can be consumed by the <code>await foreach</code> statement on the caller side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IHistoricalBar&gt; GetHistoricalBarsAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalBarsRequest request, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IBar&gt; GetHistoricalBarsAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalBarsRequest request, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -204,7 +204,7 @@ can be consumed by the <code>await foreach</code> statement on the caller side.<
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IHistoricalBar</span>&gt;</td>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -219,13 +219,13 @@ can be consumed by the <code>await foreach</code> statement on the caller side.<
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_IAlpacaDataClient_HistoricalQuotesRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable(IAlpacaDataClient,HistoricalQuotesRequest)">GetHistoricalQuotesAsAsyncEnumerable(IAlpacaDataClient, HistoricalQuotesRequest)</h4>
   <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalQuotesAsync"></see> in pagination
-mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IHistoricalQuote>"></see> interface)
+mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IQuote>"></see> interface)
 so they can be consumed by the <code>await foreach</code> statement on the caller side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IHistoricalQuote&gt; GetHistoricalQuotesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalQuotesRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IQuote&gt; GetHistoricalQuotesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalQuotesRequest request)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -261,7 +261,7 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IHistoricalQuote</span>&gt;</td>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IQuote</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -276,13 +276,13 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_IAlpacaDataClient_HistoricalQuotesRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable(IAlpacaDataClient,HistoricalQuotesRequest,CancellationToken)">GetHistoricalQuotesAsAsyncEnumerable(IAlpacaDataClient, HistoricalQuotesRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalQuotesAsync"></see> in pagination
-mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IHistoricalQuote>"></see> interface)
+mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IQuote>"></see> interface)
 so they can be consumed by the <code>await foreach</code> statement on the caller side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IHistoricalQuote&gt; GetHistoricalQuotesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalQuotesRequest request, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IQuote&gt; GetHistoricalQuotesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalQuotesRequest request, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -324,7 +324,7 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IHistoricalQuote</span>&gt;</td>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IQuote</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -339,13 +339,13 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_IAlpacaDataClient_HistoricalTradesRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable(IAlpacaDataClient,HistoricalTradesRequest)">GetHistoricalTradesAsAsyncEnumerable(IAlpacaDataClient, HistoricalTradesRequest)</h4>
   <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalTradesAsync"></see> in pagination
-mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IHistoricalTrade>"></see> interface)
+mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;ITrade>"></see> interface)
 so they can be consumed by the <code>await foreach</code> statement on the caller side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IHistoricalTrade&gt; GetHistoricalTradesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalTradesRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;ITrade&gt; GetHistoricalTradesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalTradesRequest request)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -381,7 +381,7 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IHistoricalTrade</span>&gt;</td>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">ITrade</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -396,13 +396,13 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_IAlpacaDataClient_HistoricalTradesRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable(IAlpacaDataClient,HistoricalTradesRequest,CancellationToken)">GetHistoricalTradesAsAsyncEnumerable(IAlpacaDataClient, HistoricalTradesRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalTradesAsync"></see> in pagination
-mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IHistoricalTrade>"></see> interface)
+mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;ITrade>"></see> interface)
 so they can be consumed by the <code>await foreach</code> statement on the caller side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IHistoricalTrade&gt; GetHistoricalTradesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalTradesRequest request, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;ITrade&gt; GetHistoricalTradesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalTradesRequest request, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -444,7 +444,7 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IHistoricalTrade</span>&gt;</td>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">ITrade</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>

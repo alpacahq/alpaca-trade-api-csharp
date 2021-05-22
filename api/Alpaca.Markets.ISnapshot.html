@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ILastTrade
+    <title>Interface ISnapshot
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ILastTrade
+    <meta name="title" content="Interface ISnapshot
    ">
     <meta name="generator" content="docfx 2.57.2.0">
     
@@ -68,38 +68,38 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.ILastTrade">
+            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.ISnapshot">
   
   
-  <h1 id="Alpaca_Markets_ILastTrade" data-uid="Alpaca.Markets.ILastTrade" class="text-break">Interface ILastTrade
+  <h1 id="Alpaca_Markets_ISnapshot" data-uid="Alpaca.Markets.ISnapshot" class="text-break">Interface ISnapshot
   </h1>
-  <div class="markdown level0 summary"><p>Encapsulates last trade information from Alpaca REST API.</p>
+  <div class="markdown level0 summary"><p>Encapsulates snapshot information from the Alpaca REST API.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
-  <h5 id="Alpaca_Markets_ILastTrade_syntax">Syntax</h5>
+  <h5 id="Alpaca_Markets_ISnapshot_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[CLSCompliant(false)]
-public interface ILastTrade</code></pre>
+public interface ISnapshot</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ILastTrade_Exchange.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ILastTrade.Exchange%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ISnapshot_CurrentDailyBar.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ISnapshot.CurrentDailyBar%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ILastTrade.cs/#L27">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ISnapshot.cs/#L36">View Source</a>
   </span>
-  <a id="Alpaca_Markets_ILastTrade_Exchange_" data-uid="Alpaca.Markets.ILastTrade.Exchange*"></a>
-  <h4 id="Alpaca_Markets_ILastTrade_Exchange" data-uid="Alpaca.Markets.ILastTrade.Exchange">Exchange</h4>
-  <div class="markdown level1 summary"><p>Gets asset's exchange identifier.</p>
+  <a id="Alpaca_Markets_ISnapshot_CurrentDailyBar_" data-uid="Alpaca.Markets.ISnapshot.CurrentDailyBar*"></a>
+  <h4 id="Alpaca_Markets_ISnapshot_CurrentDailyBar" data-uid="Alpaca.Markets.ISnapshot.CurrentDailyBar">CurrentDailyBar</h4>
+  <div class="markdown level1 summary"><p>Gets the current daily bar information.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">long Exchange { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">IBar CurrentDailyBar { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -111,26 +111,26 @@ public interface ILastTrade</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int64</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IBar.html">IBar</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ILastTrade_Price.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ILastTrade.Price%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ISnapshot_MinuteBar.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ISnapshot.MinuteBar%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ILastTrade.cs/#L32">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ISnapshot.cs/#L31">View Source</a>
   </span>
-  <a id="Alpaca_Markets_ILastTrade_Price_" data-uid="Alpaca.Markets.ILastTrade.Price*"></a>
-  <h4 id="Alpaca_Markets_ILastTrade_Price" data-uid="Alpaca.Markets.ILastTrade.Price">Price</h4>
-  <div class="markdown level1 summary"><p>Gets trade price level.</p>
+  <a id="Alpaca_Markets_ISnapshot_MinuteBar_" data-uid="Alpaca.Markets.ISnapshot.MinuteBar*"></a>
+  <h4 id="Alpaca_Markets_ISnapshot_MinuteBar" data-uid="Alpaca.Markets.ISnapshot.MinuteBar">MinuteBar</h4>
+  <div class="markdown level1 summary"><p>Gets the current minute bar information.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">decimal Price { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">IBar MinuteBar { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -142,26 +142,26 @@ public interface ILastTrade</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Decimal</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IBar.html">IBar</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ILastTrade_Size.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ILastTrade.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ISnapshot_PreviousDailyBar.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ISnapshot.PreviousDailyBar%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ILastTrade.cs/#L37">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ISnapshot.cs/#L41">View Source</a>
   </span>
-  <a id="Alpaca_Markets_ILastTrade_Size_" data-uid="Alpaca.Markets.ILastTrade.Size*"></a>
-  <h4 id="Alpaca_Markets_ILastTrade_Size" data-uid="Alpaca.Markets.ILastTrade.Size">Size</h4>
-  <div class="markdown level1 summary"><p>Gets trade quantity.</p>
+  <a id="Alpaca_Markets_ISnapshot_PreviousDailyBar_" data-uid="Alpaca.Markets.ISnapshot.PreviousDailyBar*"></a>
+  <h4 id="Alpaca_Markets_ISnapshot_PreviousDailyBar" data-uid="Alpaca.Markets.ISnapshot.PreviousDailyBar">PreviousDailyBar</h4>
+  <div class="markdown level1 summary"><p>Gets the previous minute bar information.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ulong Size { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">IBar PreviousDailyBar { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -173,26 +173,26 @@ public interface ILastTrade</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.UInt64</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IBar.html">IBar</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ILastTrade_Status.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ILastTrade.Status%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ISnapshot_Quote.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ISnapshot.Quote%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ILastTrade.cs/#L17">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ISnapshot.cs/#L21">View Source</a>
   </span>
-  <a id="Alpaca_Markets_ILastTrade_Status_" data-uid="Alpaca.Markets.ILastTrade.Status*"></a>
-  <h4 id="Alpaca_Markets_ILastTrade_Status" data-uid="Alpaca.Markets.ILastTrade.Status">Status</h4>
-  <div class="markdown level1 summary"><p>Gets request status.</p>
+  <a id="Alpaca_Markets_ISnapshot_Quote_" data-uid="Alpaca.Markets.ISnapshot.Quote*"></a>
+  <h4 id="Alpaca_Markets_ISnapshot_Quote" data-uid="Alpaca.Markets.ISnapshot.Quote">Quote</h4>
+  <div class="markdown level1 summary"><p>Gets the latest trade information.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Status { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">IQuote Quote { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -204,21 +204,21 @@ public interface ILastTrade</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IQuote.html">IQuote</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ILastTrade_Symbol.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ILastTrade.Symbol%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ISnapshot_Symbol.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ISnapshot.Symbol%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ILastTrade.cs/#L22">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ISnapshot.cs/#L16">View Source</a>
   </span>
-  <a id="Alpaca_Markets_ILastTrade_Symbol_" data-uid="Alpaca.Markets.ILastTrade.Symbol*"></a>
-  <h4 id="Alpaca_Markets_ILastTrade_Symbol" data-uid="Alpaca.Markets.ILastTrade.Symbol">Symbol</h4>
-  <div class="markdown level1 summary"><p>Gets asset name.</p>
+  <a id="Alpaca_Markets_ISnapshot_Symbol_" data-uid="Alpaca.Markets.ISnapshot.Symbol*"></a>
+  <h4 id="Alpaca_Markets_ISnapshot_Symbol" data-uid="Alpaca.Markets.ISnapshot.Symbol">Symbol</h4>
+  <div class="markdown level1 summary"><p>Gets the snapshot's asset name.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -242,19 +242,19 @@ public interface ILastTrade</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ILastTrade_TimeUtc.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ILastTrade.TimeUtc%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ISnapshot_Trade.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ISnapshot.Trade%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ILastTrade.cs/#L42">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ISnapshot.cs/#L26">View Source</a>
   </span>
-  <a id="Alpaca_Markets_ILastTrade_TimeUtc_" data-uid="Alpaca.Markets.ILastTrade.TimeUtc*"></a>
-  <h4 id="Alpaca_Markets_ILastTrade_TimeUtc" data-uid="Alpaca.Markets.ILastTrade.TimeUtc">TimeUtc</h4>
-  <div class="markdown level1 summary"><p>Gets trade timestamp.</p>
+  <a id="Alpaca_Markets_ISnapshot_Trade_" data-uid="Alpaca.Markets.ISnapshot.Trade*"></a>
+  <h4 id="Alpaca_Markets_ISnapshot_Trade" data-uid="Alpaca.Markets.ISnapshot.Trade">Trade</h4>
+  <div class="markdown level1 summary"><p>Gets the latest quote information.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">DateTime TimeUtc { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">ITrade Trade { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -266,7 +266,7 @@ public interface ILastTrade</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><a class="xref" href="Alpaca.Markets.ITrade.html">ITrade</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -279,10 +279,10 @@ public interface ILastTrade</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ILastTrade.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ILastTrade%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ISnapshot.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ISnapshot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ILastTrade.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ISnapshot.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

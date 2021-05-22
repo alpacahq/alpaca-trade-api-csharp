@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AlpacaServiceCollectionExtensions
    ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -92,6 +92,63 @@ in the default Microsoft dependency injection container used by the most .NET ho
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaServiceCollectionExtensions_AddAlpacaDataClient_IServiceCollection_AlpacaDataClientConfiguration_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaDataClient(IServiceCollection%2CAlpacaDataClientConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/IHttpClient/AlpacaServiceCollectionExtensions.cs/#L37">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaServiceCollectionExtensions_AddAlpacaDataClient_" data-uid="Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaDataClient*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaServiceCollectionExtensions_AddAlpacaDataClient_IServiceCollection_AlpacaDataClientConfiguration_" data-uid="Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaDataClient(IServiceCollection,AlpacaDataClientConfiguration)">AddAlpacaDataClient(IServiceCollection, AlpacaDataClientConfiguration)</h4>
+  <div class="markdown level1 summary"><p>Registers the concrete implementation of the <see cref="!:IAlpacaDataClient"></see>
+interface in the services catalog and make it available in constructors.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddAlpacaDataClient(this IServiceCollection services, AlpacaDataClientConfiguration configuration)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><span class="parametername">services</span></td>
+        <td><p>Registered services collection.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">AlpacaDataClientConfiguration</span></td>
+        <td><span class="parametername">configuration</span></td>
+        <td><p>Alpaca data client configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">services</code> object (fluent interface).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaServiceCollectionExtensions_AddAlpacaDataClient_IServiceCollection_IEnvironment_SecurityKey_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaDataClient(IServiceCollection%2CIEnvironment%2CSecurityKey)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -155,10 +212,67 @@ interface in the services catalog and make it available in constructors.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaServiceCollectionExtensions_AddAlpacaTradingClient_IServiceCollection_AlpacaTradingClientConfiguration_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(IServiceCollection%2CAlpacaTradingClientConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/IHttpClient/AlpacaServiceCollectionExtensions.cs/#L72">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaServiceCollectionExtensions_AddAlpacaTradingClient_" data-uid="Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaServiceCollectionExtensions_AddAlpacaTradingClient_IServiceCollection_AlpacaTradingClientConfiguration_" data-uid="Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(IServiceCollection,AlpacaTradingClientConfiguration)">AddAlpacaTradingClient(IServiceCollection, AlpacaTradingClientConfiguration)</h4>
+  <div class="markdown level1 summary"><p>Registers the concrete implementation of the <see cref="!:IAlpacaTradingClient"></see>
+interface in the services catalog and make it available in constructors.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddAlpacaTradingClient(this IServiceCollection services, AlpacaTradingClientConfiguration configuration)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><span class="parametername">services</span></td>
+        <td><p>Registered services collection.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">AlpacaTradingClientConfiguration</span></td>
+        <td><span class="parametername">configuration</span></td>
+        <td><p>Alpaca trading client configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">services</code> object (fluent interface).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaServiceCollectionExtensions_AddAlpacaTradingClient_IServiceCollection_IEnvironment_SecurityKey_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(IServiceCollection%2CIEnvironment%2CSecurityKey)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/IHttpClient/AlpacaServiceCollectionExtensions.cs/#L44">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/IHttpClient/AlpacaServiceCollectionExtensions.cs/#L58">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaServiceCollectionExtensions_AddAlpacaTradingClient_" data-uid="Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaServiceCollectionExtensions_AddAlpacaTradingClient_IServiceCollection_IEnvironment_SecurityKey_" data-uid="Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(IServiceCollection,IEnvironment,SecurityKey)">AddAlpacaTradingClient(IServiceCollection, IEnvironment, SecurityKey)</h4>

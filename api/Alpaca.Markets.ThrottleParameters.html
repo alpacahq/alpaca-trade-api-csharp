@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ThrottleParameters
    ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="Alpaca_Markets_ThrottleParameters" data-uid="Alpaca.Markets.ThrottleParameters" class="text-break">Class ThrottleParameters
   </h1>
-  <div class="markdown level0 summary"><p>Helper class for storing parameters required for initializing rate throttler in <a class="xref" href="Alpaca.Markets.AlpacaTradingClient.html">AlpacaTradingClient</a> class.</p>
+  <div class="markdown level0 summary"><p>Helper class for storing parameters required for initializing rate throttler in <span class="xref">Alpaca.Markets.AlpacaTradingClient</span> class.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -115,19 +115,20 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ThrottleParameters__ctor_System_Int32_System_TimeSpan_System_Int32_System_Collections_Generic_IEnumerable_System_Int32__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ThrottleParameters.%23ctor(System.Int32%2CSystem.TimeSpan%2CSystem.Int32%2CSystem.Collections.Generic.IEnumerable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ThrottleParameters__ctor_System_UInt32_System_Collections_Generic_IEnumerable_System_Net_Sockets_SocketError__System_Collections_Generic_IEnumerable_System_Net_HttpStatusCode__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ThrottleParameters.%23ctor(System.UInt32%2CSystem.Collections.Generic.IEnumerable%7BSystem.Net.Sockets.SocketError%7D%2CSystem.Collections.Generic.IEnumerable%7BSystem.Net.HttpStatusCode%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L45">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L78">View Source</a>
   </span>
   <a id="Alpaca_Markets_ThrottleParameters__ctor_" data-uid="Alpaca.Markets.ThrottleParameters.#ctor*"></a>
-  <h4 id="Alpaca_Markets_ThrottleParameters__ctor_System_Int32_System_TimeSpan_System_Int32_System_Collections_Generic_IEnumerable_System_Int32__" data-uid="Alpaca.Markets.ThrottleParameters.#ctor(System.Int32,System.TimeSpan,System.Int32,System.Collections.Generic.IEnumerable{System.Int32})">ThrottleParameters(Int32, TimeSpan, Int32, IEnumerable&lt;Int32&gt;)</h4>
+  <h4 id="Alpaca_Markets_ThrottleParameters__ctor_System_UInt32_System_Collections_Generic_IEnumerable_System_Net_Sockets_SocketError__System_Collections_Generic_IEnumerable_System_Net_HttpStatusCode__" data-uid="Alpaca.Markets.ThrottleParameters.#ctor(System.UInt32,System.Collections.Generic.IEnumerable{System.Net.Sockets.SocketError},System.Collections.Generic.IEnumerable{System.Net.HttpStatusCode})">ThrottleParameters(UInt32, IEnumerable&lt;SocketError&gt;, IEnumerable&lt;HttpStatusCode&gt;)</h4>
   <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.ThrottleParameters.html">ThrottleParameters</a> object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ThrottleParameters(int occurrences, TimeSpan timeUnit, int maxRetryAttempts, IEnumerable&lt;int&gt; retryHttpStatuses)</code></pre>
+    <pre><code class="lang-csharp hljs">[CLSCompliant(false)]
+public ThrottleParameters(uint maxRetryAttempts, IEnumerable&lt;SocketError&gt; retrySocketErrorCodes, IEnumerable&lt;HttpStatusCode&gt; retryHttpStatuses)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -140,22 +141,17 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">occurrences</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.TimeSpan</span></td>
-        <td><span class="parametername">timeUnit</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
+        <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">maxRetryAttempts</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Net.Sockets.SocketError</span>&gt;</td>
+        <td><span class="parametername">retrySocketErrorCodes</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Net.HttpStatusCode</span>&gt;</td>
         <td><span class="parametername">retryHttpStatuses</span></td>
         <td></td>
       </tr>
@@ -168,11 +164,11 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ThrottleParameters_Default.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ThrottleParameters.Default%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L156">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L97">View Source</a>
   </span>
   <a id="Alpaca_Markets_ThrottleParameters_Default_" data-uid="Alpaca.Markets.ThrottleParameters.Default*"></a>
   <h4 id="Alpaca_Markets_ThrottleParameters_Default" data-uid="Alpaca.Markets.ThrottleParameters.Default">Default</h4>
-  <div class="markdown level1 summary"><p>Gets throttle parameters initialized with default values or from configuration file.</p>
+  <div class="markdown level1 summary"><p>Gets throttle parameters initialized with default values.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -199,7 +195,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ThrottleParameters_MaxRetryAttempts.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ThrottleParameters.MaxRetryAttempts%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L115">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L102">View Source</a>
   </span>
   <a id="Alpaca_Markets_ThrottleParameters_MaxRetryAttempts_" data-uid="Alpaca.Markets.ThrottleParameters.MaxRetryAttempts*"></a>
   <h4 id="Alpaca_Markets_ThrottleParameters_MaxRetryAttempts" data-uid="Alpaca.Markets.ThrottleParameters.MaxRetryAttempts">MaxRetryAttempts</h4>
@@ -208,7 +204,13 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MaxRetryAttempts { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[CLSCompliant(false)]
+public uint MaxRetryAttempts
+{
+    get;
+    [UsedImplicitly]
+    set;
+}</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -220,38 +222,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ThrottleParameters_Occurrences.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ThrottleParameters.Occurrences%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L63">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_ThrottleParameters_Occurrences_" data-uid="Alpaca.Markets.ThrottleParameters.Occurrences*"></a>
-  <h4 id="Alpaca_Markets_ThrottleParameters_Occurrences" data-uid="Alpaca.Markets.ThrottleParameters.Occurrences">Occurrences</h4>
-  <div class="markdown level1 summary"><p>Gets or sets number of occurrences per unit time.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Occurrences { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
+        <td><span class="xref">System.UInt32</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -261,16 +232,16 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ThrottleParameters_RetryHttpStatuses.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ThrottleParameters.RetryHttpStatuses%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L136">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L108">View Source</a>
   </span>
   <a id="Alpaca_Markets_ThrottleParameters_RetryHttpStatuses_" data-uid="Alpaca.Markets.ThrottleParameters.RetryHttpStatuses*"></a>
   <h4 id="Alpaca_Markets_ThrottleParameters_RetryHttpStatuses" data-uid="Alpaca.Markets.ThrottleParameters.RetryHttpStatuses">RetryHttpStatuses</h4>
-  <div class="markdown level1 summary"><p>Gets or sets list of Http status codes which when received should initiate a retry of the affected request</p>
+  <div class="markdown level1 summary"><p>Gets set of HTTP status codes which when received should initiate a retry of the affected request</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;int&gt; RetryHttpStatuses { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ISet&lt;HttpStatusCode&gt; RetryHttpStatuses { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -282,26 +253,26 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.ISet</span>&lt;<span class="xref">System.Net.HttpStatusCode</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ThrottleParameters_TimeUnit.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ThrottleParameters.TimeUnit%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ThrottleParameters_RetrySocketErrorCodes.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ThrottleParameters.RetrySocketErrorCodes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L84">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L113">View Source</a>
   </span>
-  <a id="Alpaca_Markets_ThrottleParameters_TimeUnit_" data-uid="Alpaca.Markets.ThrottleParameters.TimeUnit*"></a>
-  <h4 id="Alpaca_Markets_ThrottleParameters_TimeUnit" data-uid="Alpaca.Markets.ThrottleParameters.TimeUnit">TimeUnit</h4>
-  <div class="markdown level1 summary"><p>Gets or sets throttling time interval.</p>
+  <a id="Alpaca_Markets_ThrottleParameters_RetrySocketErrorCodes_" data-uid="Alpaca.Markets.ThrottleParameters.RetrySocketErrorCodes*"></a>
+  <h4 id="Alpaca_Markets_ThrottleParameters_RetrySocketErrorCodes" data-uid="Alpaca.Markets.ThrottleParameters.RetrySocketErrorCodes">RetrySocketErrorCodes</h4>
+  <div class="markdown level1 summary"><p>Gets set of socket error codes which when received should initiate a retry of the affected request</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TimeSpan TimeUnit { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ISet&lt;SocketError&gt; RetrySocketErrorCodes { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -313,7 +284,40 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="xref">System.Collections.Generic.ISet</span>&lt;<span class="xref">System.Net.Sockets.SocketError</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ThrottleParameters_GetAsyncPolicy.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ThrottleParameters.GetAsyncPolicy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L119">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_ThrottleParameters_GetAsyncPolicy_" data-uid="Alpaca.Markets.ThrottleParameters.GetAsyncPolicy*"></a>
+  <h4 id="Alpaca_Markets_ThrottleParameters_GetAsyncPolicy" data-uid="Alpaca.Markets.ThrottleParameters.GetAsyncPolicy">GetAsyncPolicy()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[CLSCompliant(false)]
+public IAsyncPolicy&lt;HttpResponseMessage&gt; GetAsyncPolicy()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Polly.IAsyncPolicy</span>&lt;<span class="xref">System.Net.Http.HttpResponseMessage</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -329,7 +333,7 @@
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ThrottleParameters.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ThrottleParameters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Throttling/ThrottleParameters.cs/#L18" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
