@@ -6,8 +6,8 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates basic bar information for Alpaca APIs.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     [CLSCompliant(false)]
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IBar
     {
         /// <summary>

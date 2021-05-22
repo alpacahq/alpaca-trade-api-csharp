@@ -6,8 +6,8 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca data streaming API via websockets.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [CLSCompliant(false)]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public interface IAlpacaDataStreamingClient : IStreamingDataClient
     {
         /// <summary>

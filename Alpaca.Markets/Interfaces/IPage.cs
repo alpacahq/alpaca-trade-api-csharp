@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
@@ -7,6 +8,7 @@ namespace Alpaca.Markets
     /// Encapsulates single page response in Alpaca Data API v2.
     /// </summary>
     /// <typeparam name="TItems"></typeparam>
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IPage<out TItems>
     {
         /// <summary>

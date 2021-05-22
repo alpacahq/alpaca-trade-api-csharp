@@ -20,9 +20,7 @@ namespace Alpaca.Markets
         public static IAlpacaTradingClient GetAlpacaTradingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-#pragma warning disable 618
             new AlpacaTradingClient(environment.GetAlpacaTradingClientConfiguration(securityKey));
-#pragma warning restore 618
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaTradingClientConfiguration"/> for specific
@@ -52,9 +50,7 @@ namespace Alpaca.Markets
         public static IAlpacaDataClient GetAlpacaDataClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-#pragma warning disable CS0618 // Type or member is obsolete
             new AlpacaDataClient(environment.GetAlpacaDataClientConfiguration(securityKey));
-#pragma warning restore CS0618 // Type or member is obsolete
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataClientConfiguration"/> for specific
@@ -84,9 +80,7 @@ namespace Alpaca.Markets
         public static IAlpacaStreamingClient GetAlpacaStreamingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-#pragma warning disable 618
             new AlpacaStreamingClient(environment.GetAlpacaStreamingClientConfiguration(securityKey));
-#pragma warning restore 618
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaStreamingClientConfiguration"/> for specific
@@ -116,9 +110,7 @@ namespace Alpaca.Markets
         public static IAlpacaDataStreamingClient GetAlpacaDataStreamingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-#pragma warning disable 618
             new AlpacaDataStreamingClient(environment.GetAlpacaDataStreamingClientConfiguration(securityKey));
-#pragma warning restore 618
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataStreamingClientConfiguration"/> for specific

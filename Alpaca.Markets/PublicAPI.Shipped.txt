@@ -59,14 +59,6 @@ Alpaca.Markets.AccountStatus.Submitted = 2 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AdvancedOrderBase
 Alpaca.Markets.AdvancedOrderBase.AdvancedOrderBase(Alpaca.Markets.OrderBase! baseOrder, Alpaca.Markets.OrderClass orderClass) -> void
 Alpaca.Markets.AdvancedOrderBase.OrderClass.get -> Alpaca.Markets.OrderClass
-Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Day = 2 -> Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Hour = 1 -> Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Minute = 0 -> Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Month = 4 -> Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Quarter = 5 -> Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Week = 3 -> Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Year = 6 -> Alpaca.Markets.AggregationPeriodUnit
 Alpaca.Markets.AlpacaDataClientConfiguration
 Alpaca.Markets.AlpacaDataClientConfiguration.AlpacaDataClientConfiguration() -> void
 Alpaca.Markets.AlpacaDataClientConfiguration.ApiEndpoint.get -> System.Uri!

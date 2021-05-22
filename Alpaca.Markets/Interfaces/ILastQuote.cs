@@ -6,9 +6,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates last quote information from Alpaca REST API.
     /// </summary>
+    [CLSCompliant(false)]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-    [CLSCompliant(false)]
     public interface ILastQuote
     {
         /// <summary>
