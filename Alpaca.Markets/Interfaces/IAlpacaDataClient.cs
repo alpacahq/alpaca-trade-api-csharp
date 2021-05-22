@@ -9,8 +9,8 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca Data API via HTTP/REST.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [CLSCompliant(false)]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public interface IAlpacaDataClient : IDisposable
     {
         /// <summary>
@@ -91,6 +91,26 @@ namespace Alpaca.Markets
         /// <returns>Read-only current quote information.</returns>
         Task<IQuote> GetLatestQuoteAsync(
             String symbol,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets current snapshot (latest trade/quote and minute/days bars) for singe asset from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only current snapshot information.</returns>
+        Task<ISnapshot> GetSnapshotAsync(
+            String symbol,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets current snapshot (latest trade/quote and minute/days bars) for several assets from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="symbols">List of asset names for data retrieval.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only dictionary with the current snapshot information.</returns>
+        Task<IReadOnlyDictionary<String, ISnapshot>> GetSnapshotsAsync(
+            IEnumerable<String> symbols,
             CancellationToken cancellationToken = default);
     }
 }

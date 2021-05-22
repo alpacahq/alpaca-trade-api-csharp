@@ -6,7 +6,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca Trading API via HTTP/REST.
     /// </summary>
-    public sealed partial class AlpacaTradingClient : IAlpacaTradingClient
+    internal sealed partial class AlpacaTradingClient : IAlpacaTradingClient
     {
         private readonly HttpClient _httpClient;
 

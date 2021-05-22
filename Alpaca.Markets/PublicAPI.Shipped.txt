@@ -49,6 +49,7 @@ Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.AccountUpdated = 3 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.Active = 5 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.ApprovalPending = 4 -> Alpaca.Markets.AccountStatus
+Alpaca.Markets.AccountStatus.Approved = 9 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.Disabled = 7 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.DisablePending = 8 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.Onboarding = 0 -> Alpaca.Markets.AccountStatus
@@ -58,25 +59,6 @@ Alpaca.Markets.AccountStatus.Submitted = 2 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AdvancedOrderBase
 Alpaca.Markets.AdvancedOrderBase.AdvancedOrderBase(Alpaca.Markets.OrderBase! baseOrder, Alpaca.Markets.OrderClass orderClass) -> void
 Alpaca.Markets.AdvancedOrderBase.OrderClass.get -> Alpaca.Markets.OrderClass
-Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Day = 2 -> Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Hour = 1 -> Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Minute = 0 -> Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Month = 4 -> Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Quarter = 5 -> Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Week = 3 -> Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AggregationPeriodUnit.Year = 6 -> Alpaca.Markets.AggregationPeriodUnit
-Alpaca.Markets.AlpacaDataClient
-Alpaca.Markets.AlpacaDataClient.AlpacaDataClient(Alpaca.Markets.AlpacaDataClientConfiguration! configuration) -> void
-Alpaca.Markets.AlpacaDataClient.Dispose() -> void
-Alpaca.Markets.AlpacaDataClient.GetBarSetAsync(Alpaca.Markets.BarSetRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IBar!>!>!>!
-Alpaca.Markets.AlpacaDataClient.GetLastQuoteAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ILastQuote!>!
-Alpaca.Markets.AlpacaDataClient.GetLastTradeAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ILastTrade!>!
-Alpaca.Markets.AlpacaDataClient.GetLatestQuoteAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IQuote!>!
-Alpaca.Markets.AlpacaDataClient.GetLatestTradeAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ITrade!>!
-Alpaca.Markets.AlpacaDataClient.ListHistoricalBarsAsync(Alpaca.Markets.HistoricalBarsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.IBar!>!>!
-Alpaca.Markets.AlpacaDataClient.ListHistoricalQuotesAsync(Alpaca.Markets.HistoricalQuotesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.IQuote!>!>!
-Alpaca.Markets.AlpacaDataClient.ListHistoricalTradesAsync(Alpaca.Markets.HistoricalTradesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.ITrade!>!>!
 Alpaca.Markets.AlpacaDataClientConfiguration
 Alpaca.Markets.AlpacaDataClientConfiguration.AlpacaDataClientConfiguration() -> void
 Alpaca.Markets.AlpacaDataClientConfiguration.ApiEndpoint.get -> System.Uri!
@@ -87,65 +69,14 @@ Alpaca.Markets.AlpacaDataClientConfiguration.SecurityId.get -> Alpaca.Markets.Se
 Alpaca.Markets.AlpacaDataClientConfiguration.SecurityId.set -> void
 Alpaca.Markets.AlpacaDataClientConfiguration.ThrottleParameters.get -> Alpaca.Markets.ThrottleParameters!
 Alpaca.Markets.AlpacaDataClientConfiguration.ThrottleParameters.set -> void
-Alpaca.Markets.AlpacaDataStreamingClient
-Alpaca.Markets.AlpacaDataStreamingClient.AlpacaDataStreamingClient(Alpaca.Markets.AlpacaDataStreamingClientConfiguration! configuration) -> void
-Alpaca.Markets.AlpacaDataStreamingClient.GetMinuteBarSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
-Alpaca.Markets.AlpacaDataStreamingClient.GetMinuteBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
-Alpaca.Markets.AlpacaDataStreamingClient.GetQuoteSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IQuote!>!
-Alpaca.Markets.AlpacaDataStreamingClient.GetTradeSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ITrade!>!
-Alpaca.Markets.AlpacaDataStreamingClient.Subscribe(Alpaca.Markets.IAlpacaDataSubscription! subscription) -> void
-Alpaca.Markets.AlpacaDataStreamingClient.Subscribe(params Alpaca.Markets.IAlpacaDataSubscription![]! subscriptions) -> void
-Alpaca.Markets.AlpacaDataStreamingClient.Subscribe(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions) -> void
-Alpaca.Markets.AlpacaDataStreamingClient.Unsubscribe(Alpaca.Markets.IAlpacaDataSubscription! subscription) -> void
-Alpaca.Markets.AlpacaDataStreamingClient.Unsubscribe(params Alpaca.Markets.IAlpacaDataSubscription![]! subscriptions) -> void
-Alpaca.Markets.AlpacaDataStreamingClient.Unsubscribe(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions) -> void
 Alpaca.Markets.AlpacaDataStreamingClientConfiguration
 Alpaca.Markets.AlpacaDataStreamingClientConfiguration.AlpacaDataStreamingClientConfiguration() -> void
 Alpaca.Markets.AlpacaDataStreamingClientConfiguration.SecurityId.get -> Alpaca.Markets.SecurityKey!
 Alpaca.Markets.AlpacaDataStreamingClientConfiguration.SecurityId.set -> void
-Alpaca.Markets.AlpacaStreamingClient
-Alpaca.Markets.AlpacaStreamingClient.AlpacaStreamingClient(Alpaca.Markets.AlpacaStreamingClientConfiguration! configuration) -> void
-Alpaca.Markets.AlpacaStreamingClient.OnTradeUpdate -> System.Action<Alpaca.Markets.ITradeUpdate!>?
 Alpaca.Markets.AlpacaStreamingClientConfiguration
 Alpaca.Markets.AlpacaStreamingClientConfiguration.AlpacaStreamingClientConfiguration() -> void
 Alpaca.Markets.AlpacaStreamingClientConfiguration.SecurityId.get -> Alpaca.Markets.SecurityKey!
 Alpaca.Markets.AlpacaStreamingClientConfiguration.SecurityId.set -> void
-Alpaca.Markets.AlpacaTradingClient
-Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByIdAsync(Alpaca.Markets.ChangeWatchListRequest<System.Guid>! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
-Alpaca.Markets.AlpacaTradingClient.AddAssetIntoWatchListByNameAsync(Alpaca.Markets.ChangeWatchListRequest<string!>! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
-Alpaca.Markets.AlpacaTradingClient.AlpacaTradingClient(Alpaca.Markets.AlpacaTradingClientConfiguration! configuration) -> void
-Alpaca.Markets.AlpacaTradingClient.CreateWatchListAsync(Alpaca.Markets.NewWatchListRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
-Alpaca.Markets.AlpacaTradingClient.DeleteAllOrdersAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOrderActionStatus!>!>!
-Alpaca.Markets.AlpacaTradingClient.DeleteAllPositionsAsync(Alpaca.Markets.DeleteAllPositionsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IPositionActionStatus!>!>!
-Alpaca.Markets.AlpacaTradingClient.DeleteAllPositionsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IPositionActionStatus!>!>!
-Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByIdAsync(Alpaca.Markets.ChangeWatchListRequest<System.Guid>! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
-Alpaca.Markets.AlpacaTradingClient.DeleteAssetFromWatchListByNameAsync(Alpaca.Markets.ChangeWatchListRequest<string!>! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
-Alpaca.Markets.AlpacaTradingClient.DeleteOrderAsync(System.Guid orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
-Alpaca.Markets.AlpacaTradingClient.DeletePositionAsync(Alpaca.Markets.DeletePositionRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOrder!>!
-Alpaca.Markets.AlpacaTradingClient.DeleteWatchListByIdAsync(System.Guid watchListId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
-Alpaca.Markets.AlpacaTradingClient.DeleteWatchListByNameAsync(string! name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
-Alpaca.Markets.AlpacaTradingClient.Dispose() -> void
-Alpaca.Markets.AlpacaTradingClient.GetAccountAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IAccount!>!
-Alpaca.Markets.AlpacaTradingClient.GetAccountConfigurationAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IAccountConfiguration!>!
-Alpaca.Markets.AlpacaTradingClient.GetAssetAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IAsset!>!
-Alpaca.Markets.AlpacaTradingClient.GetClockAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IClock!>!
-Alpaca.Markets.AlpacaTradingClient.GetOrderAsync(string! clientOrderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOrder!>!
-Alpaca.Markets.AlpacaTradingClient.GetOrderAsync(System.Guid orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOrder!>!
-Alpaca.Markets.AlpacaTradingClient.GetPortfolioHistoryAsync(Alpaca.Markets.PortfolioHistoryRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPortfolioHistory!>!
-Alpaca.Markets.AlpacaTradingClient.GetPositionAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPosition!>!
-Alpaca.Markets.AlpacaTradingClient.GetWatchListByIdAsync(System.Guid watchListId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
-Alpaca.Markets.AlpacaTradingClient.GetWatchListByNameAsync(string! name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
-Alpaca.Markets.AlpacaTradingClient.ListAccountActivitiesAsync(Alpaca.Markets.AccountActivitiesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IAccountActivity!>!>!
-Alpaca.Markets.AlpacaTradingClient.ListAssetsAsync(Alpaca.Markets.AssetsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IAsset!>!>!
-Alpaca.Markets.AlpacaTradingClient.ListCalendarAsync(Alpaca.Markets.CalendarRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.ICalendar!>!>!
-Alpaca.Markets.AlpacaTradingClient.ListOrdersAsync(Alpaca.Markets.ListOrdersRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOrder!>!>!
-Alpaca.Markets.AlpacaTradingClient.ListPositionsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IPosition!>!>!
-Alpaca.Markets.AlpacaTradingClient.ListWatchListsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IWatchList!>!>!
-Alpaca.Markets.AlpacaTradingClient.PatchAccountConfigurationAsync(Alpaca.Markets.IAccountConfiguration! accountConfiguration, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IAccountConfiguration!>!
-Alpaca.Markets.AlpacaTradingClient.PatchOrderAsync(Alpaca.Markets.ChangeOrderRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOrder!>!
-Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(Alpaca.Markets.NewOrderRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOrder!>!
-Alpaca.Markets.AlpacaTradingClient.PostOrderAsync(Alpaca.Markets.OrderBase! orderBase, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOrder!>!
-Alpaca.Markets.AlpacaTradingClient.UpdateWatchListByIdAsync(Alpaca.Markets.UpdateWatchListRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
 Alpaca.Markets.AlpacaTradingClientConfiguration
 Alpaca.Markets.AlpacaTradingClientConfiguration.AlpacaTradingClientConfiguration() -> void
 Alpaca.Markets.AlpacaTradingClientConfiguration.ApiEndpoint.get -> System.Uri!
@@ -314,6 +245,8 @@ Alpaca.Markets.IAlpacaDataClient.GetLastQuoteAsync(string! symbol, System.Thread
 Alpaca.Markets.IAlpacaDataClient.GetLastTradeAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ILastTrade!>!
 Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IQuote!>!
 Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ITrade!>!
+Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ISnapshot!>!
+Alpaca.Markets.IAlpacaDataClient.GetSnapshotsAsync(System.Collections.Generic.IEnumerable<string!>! symbols, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.ISnapshot!>!>!
 Alpaca.Markets.IAlpacaDataClient.ListHistoricalBarsAsync(Alpaca.Markets.HistoricalBarsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.IBar!>!>!
 Alpaca.Markets.IAlpacaDataClient.ListHistoricalQuotesAsync(Alpaca.Markets.HistoricalQuotesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.IQuote!>!>!
 Alpaca.Markets.IAlpacaDataClient.ListHistoricalTradesAsync(Alpaca.Markets.HistoricalTradesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.ITrade!>!>!
@@ -501,6 +434,13 @@ Alpaca.Markets.IQuote.Tape.get -> string!
 Alpaca.Markets.IQuote.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.IRequestWithTimeInterval<TInterval>
 Alpaca.Markets.IRequestWithTimeInterval<TInterval>.SetInterval(TInterval value) -> void
+Alpaca.Markets.ISnapshot
+Alpaca.Markets.ISnapshot.CurrentDailyBar.get -> Alpaca.Markets.IBar!
+Alpaca.Markets.ISnapshot.MinuteBar.get -> Alpaca.Markets.IBar!
+Alpaca.Markets.ISnapshot.PreviousDailyBar.get -> Alpaca.Markets.IBar!
+Alpaca.Markets.ISnapshot.Quote.get -> Alpaca.Markets.IQuote!
+Alpaca.Markets.ISnapshot.Symbol.get -> string!
+Alpaca.Markets.ISnapshot.Trade.get -> Alpaca.Markets.ITrade!
 Alpaca.Markets.IStopLoss
 Alpaca.Markets.IStopLoss.LimitPrice.get -> decimal?
 Alpaca.Markets.IStopLoss.StopPrice.get -> decimal
@@ -740,15 +680,6 @@ Alpaca.Markets.StopLossOrder.LimitPrice.get -> decimal?
 Alpaca.Markets.StopLossOrder.StopPrice.get -> decimal
 Alpaca.Markets.StopOrder
 Alpaca.Markets.StopOrder.StopPrice.get -> decimal
-Alpaca.Markets.StreamingClientBase<TConfiguration>
-Alpaca.Markets.StreamingClientBase<TConfiguration>.ConnectAndAuthenticateAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.AuthStatus>!
-Alpaca.Markets.StreamingClientBase<TConfiguration>.ConnectAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task!
-Alpaca.Markets.StreamingClientBase<TConfiguration>.Connected -> System.Action<Alpaca.Markets.AuthStatus>?
-Alpaca.Markets.StreamingClientBase<TConfiguration>.DisconnectAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task!
-Alpaca.Markets.StreamingClientBase<TConfiguration>.Dispose() -> void
-Alpaca.Markets.StreamingClientBase<TConfiguration>.OnError -> System.Action<System.Exception!>?
-Alpaca.Markets.StreamingClientBase<TConfiguration>.SocketClosed -> System.Action?
-Alpaca.Markets.StreamingClientBase<TConfiguration>.SocketOpened -> System.Action?
 Alpaca.Markets.StreamingClientConfiguration
 Alpaca.Markets.StreamingClientConfiguration.ApiEndpoint.get -> System.Uri!
 Alpaca.Markets.StreamingClientConfiguration.ApiEndpoint.set -> void

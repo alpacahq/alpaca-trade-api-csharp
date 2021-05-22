@@ -8,7 +8,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca streaming API.
     /// </summary>
-    public sealed class AlpacaStreamingClient :
+    internal sealed class AlpacaStreamingClient :
         StreamingClientBase<AlpacaStreamingClientConfiguration>,
         IAlpacaStreamingClient
     {
@@ -39,7 +39,6 @@ namespace Alpaca.Markets
         }
 
         /// <inheritdoc />
-        [CLSCompliant(false)]
         public event Action<ITradeUpdate>? OnTradeUpdate;
 
         /// <inheritdoc/>

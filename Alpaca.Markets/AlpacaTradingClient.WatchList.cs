@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
-    public sealed partial class AlpacaTradingClient
+    internal sealed partial class AlpacaTradingClient
     {
         /// <inheritdoc />
         public Task<IReadOnlyList<IWatchList>> ListWatchListsAsync(

@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca Data API via HTTP/REST.
     /// </summary>
-    public sealed class AlpacaDataClient : IAlpacaDataClient
+    internal sealed class AlpacaDataClient : IAlpacaDataClient
     {
         private readonly HttpClient _httpClient;
 
@@ -40,7 +40,6 @@ namespace Alpaca.Markets
         public void Dispose() => _httpClient.Dispose();
 
         /// <inheritdoc />
-        [CLSCompliant(false)]
         public Task<IReadOnlyDictionary<String, IReadOnlyList<IBar>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default) =>
@@ -54,7 +53,6 @@ namespace Alpaca.Markets
                 cancellationToken);
 
         /// <inheritdoc />
-        [CLSCompliant(false)]
         public Task<ILastTrade> GetLastTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
@@ -62,7 +60,6 @@ namespace Alpaca.Markets
                 $"v1/last/stocks/{symbol.EnsureNotNull(nameof(symbol))}", cancellationToken);
 
         /// <inheritdoc />
-        [CLSCompliant(false)]
         public Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
@@ -70,7 +67,6 @@ namespace Alpaca.Markets
                 $"v1/last_quote/stocks/{symbol.EnsureNotNull(nameof(symbol))}", cancellationToken);
 
         /// <inheritdoc />
-        [CLSCompliant(false)]
         public Task<IPage<IBar>> ListHistoricalBarsAsync(
             HistoricalBarsRequest request,
             CancellationToken cancellationToken = default) =>
@@ -79,7 +75,6 @@ namespace Alpaca.Markets
                 cancellationToken);
 
         /// <inheritdoc />
-        [CLSCompliant(false)]
         public Task<IPage<IQuote>> ListHistoricalQuotesAsync(
             HistoricalQuotesRequest request, 
             CancellationToken cancellationToken = default) =>
@@ -88,7 +83,6 @@ namespace Alpaca.Markets
                 cancellationToken);
 
         /// <inheritdoc />
-        [CLSCompliant(false)]
         public Task<IPage<ITrade>> ListHistoricalTradesAsync(
             HistoricalTradesRequest request, 
             CancellationToken cancellationToken = default) =>
@@ -97,7 +91,6 @@ namespace Alpaca.Markets
                 cancellationToken);
 
         /// <inheritdoc />
-        [CLSCompliant(false)]
         public Task<ITrade> GetLatestTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
@@ -106,12 +99,33 @@ namespace Alpaca.Markets
                 cancellationToken);
 
         /// <inheritdoc />
-        [CLSCompliant(false)]
         public Task<IQuote> GetLatestQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IQuote, JsonLatestQuote>(
                 $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/quotes/latest",
+                cancellationToken);
+
+        /// <inheritdoc />
+        public Task<ISnapshot> GetSnapshotAsync(
+            String symbol,
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<ISnapshot, JsonSnapshot>(
+                $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/snapshot", cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IReadOnlyDictionary<String, ISnapshot>> GetSnapshotsAsync(
+            IEnumerable<String> symbols,
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<String, ISnapshot, String, JsonSnapshot>(
+                new UriBuilder(_httpClient.BaseAddress!)
+                {
+                    Path = "v2/stocks/snapshots",
+                    Query = new QueryBuilder()
+                        .AddParameter("symbols", String.Join(",",
+                            symbols.EnsureNotNull(nameof(symbols))))
+                },
+                StringComparer.Ordinal, kvp => kvp.Value.WithSymbol(kvp.Key),
                 cancellationToken);
     }
 }

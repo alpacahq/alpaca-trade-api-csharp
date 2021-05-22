@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca data streaming API via websockets.
     /// </summary>
-    public sealed class AlpacaDataStreamingClient :
+    internal sealed class AlpacaDataStreamingClient :
         StreamingClientBase<AlpacaDataStreamingClientConfiguration>, 
         IAlpacaDataStreamingClient
     {
@@ -121,24 +121,20 @@ namespace Alpaca.Markets
             };
 
         /// <inheritdoc />
-        [CLSCompliant(false)]
         public IAlpacaDataSubscription<ITrade> GetTradeSubscription(
             String symbol) => 
             _subscriptions.GetOrAdd<ITrade, JsonRealTimeTrade>(getStreamName(TradesChannel, symbol));
 
         /// <inheritdoc />
-        [CLSCompliant(false)]
         public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
             String symbol) =>
             _subscriptions.GetOrAdd<IQuote, JsonRealTimeQuote>(getStreamName(QuotesChannel, symbol));
 
         /// <inheritdoc />
-        [CLSCompliant(false)]
         public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() => 
             _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(BarsChannel, WildcardSymbolString));
 
         /// <inheritdoc />
-        [CLSCompliant(false)]
         public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
             String symbol) =>
             _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(BarsChannel, symbol));

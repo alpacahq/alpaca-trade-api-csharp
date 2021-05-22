@@ -64,6 +64,12 @@ namespace Alpaca.Markets
         /// Disable request sent.
         /// </summary>
         [EnumMember(Value = "DISABLE_PENDING")]
-        DisablePending
+        DisablePending,
+
+        /// <summary>
+        /// Account approved but still not active.
+        /// </summary>
+        [EnumMember(Value = "APPROVED")]
+        Approved
     }
 }
