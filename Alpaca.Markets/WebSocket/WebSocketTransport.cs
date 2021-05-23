@@ -11,15 +11,12 @@ using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
-    [SuppressMessage(
-        "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     [SuppressMessage("ReSharper", "UnusedType.Global")]
     internal sealed class WebSocketsTransport : IDisposable
     {
         private sealed class DuplexPipe : IDuplexPipe
         {
-            public DuplexPipe(PipeReader reader, PipeWriter writer)
+            private DuplexPipe(PipeReader reader, PipeWriter writer)
             {
                 Input = reader;
                 Output = writer;
@@ -170,7 +167,7 @@ namespace Alpaca.Markets
             _running = processSocketAsync(_webSocket);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", 
+        [SuppressMessage("Design", 
             "CA1031:Do not catch general exception types", Justification = "<Pending>")]
         public async Task StopAsync(
             CancellationToken cancellationToken = default)
@@ -212,7 +209,7 @@ namespace Alpaca.Markets
                 .ConfigureAwait(false);
         }
 
-        public void Dispose() => _webSocket?.Dispose();
+        public void Dispose() => _webSocket.Dispose();
 
         private async Task processSocketAsync(WebSocket socket)
         {
@@ -271,7 +268,7 @@ namespace Alpaca.Markets
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design",
+        [SuppressMessage("Design",
             "CA1031:Do not catch general exception types", Justification = "<Pending>")]
         private async Task startReceiving(WebSocket socket)
         {
@@ -376,7 +373,7 @@ namespace Alpaca.Markets
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design",
+        [SuppressMessage("Design",
             "CA1031:Do not catch general exception types", Justification = "<Pending>")]
         private async Task startSending(WebSocket socket)
         {
@@ -466,9 +463,10 @@ namespace Alpaca.Markets
         }
 
         private static bool webSocketCanSend(WebSocket ws) =>
-            !(ws.State == WebSocketState.Aborted ||
-              ws.State == WebSocketState.Closed ||
-              ws.State == WebSocketState.CloseSent);
+            ws.State is not (
+                WebSocketState.Aborted or
+                WebSocketState.Closed or
+                WebSocketState.CloseSent);
 
         private static Uri resolveWebSocketsUrl(Uri url)
         {

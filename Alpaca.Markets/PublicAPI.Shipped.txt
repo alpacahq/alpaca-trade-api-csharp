@@ -487,17 +487,6 @@ Alpaca.Markets.IWatchList.CreatedUtc.get -> System.DateTime
 Alpaca.Markets.IWatchList.Name.get -> string!
 Alpaca.Markets.IWatchList.UpdatedUtc.get -> System.DateTime?
 Alpaca.Markets.IWatchList.WatchListId.get -> System.Guid
-Alpaca.Markets.IWebSocket
-Alpaca.Markets.IWebSocket.CloseAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
-Alpaca.Markets.IWebSocket.Closed -> System.Action!
-Alpaca.Markets.IWebSocket.DataReceived -> System.Action<byte[]!>!
-Alpaca.Markets.IWebSocket.Error -> System.Action<System.Exception!>!
-Alpaca.Markets.IWebSocket.MessageReceived -> System.Action<string!>!
-Alpaca.Markets.IWebSocket.OpenAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
-Alpaca.Markets.IWebSocket.Opened -> System.Action!
-Alpaca.Markets.IWebSocket.Send(string! message) -> void
-Alpaca.Markets.IWebSocketFactory
-Alpaca.Markets.IWebSocketFactory.CreateWebSocket(System.Uri! url) -> Alpaca.Markets.IWebSocket!
 Alpaca.Markets.LimitOrder
 Alpaca.Markets.LimitOrder.LimitPrice.get -> decimal
 Alpaca.Markets.LimitOrder.OneCancelsOther(decimal stopLossStopPrice) -> Alpaca.Markets.OneCancelsOtherOrder!
@@ -684,8 +673,6 @@ Alpaca.Markets.StreamingClientConfiguration
 Alpaca.Markets.StreamingClientConfiguration.ApiEndpoint.get -> System.Uri!
 Alpaca.Markets.StreamingClientConfiguration.ApiEndpoint.set -> void
 Alpaca.Markets.StreamingClientConfiguration.StreamingClientConfiguration(System.Uri! apiEndpoint) -> void
-Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory.get -> Alpaca.Markets.IWebSocketFactory!
-Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory.set -> void
 Alpaca.Markets.TakeProfitOrder
 Alpaca.Markets.TakeProfitOrder.LimitPrice.get -> decimal
 Alpaca.Markets.ThrottleParameters

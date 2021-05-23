@@ -104,20 +104,10 @@ namespace Alpaca.Markets
             GC.SuppressFinalize(this);
         }
 
-        /// <summary>
-        /// Handles <see cref="IWebSocket.Opened"/> event.
-        /// </summary>
         protected virtual void OnOpened() => SocketOpened?.Invoke();
 
-        /// <summary>
-        /// Handles <see cref="IWebSocket.Closed"/> event.
-        /// </summary>
         protected virtual void OnClosed() => SocketClosed?.Invoke();
 
-        /// <summary>
-        /// Handles <see cref="IWebSocket.MessageReceived"/> event.
-        /// </summary>
-        /// <param name="message">Incoming string message for processing.</param>
         protected virtual void OnMessageReceived(
             String message)
         {
@@ -194,10 +184,6 @@ namespace Alpaca.Markets
             AuthStatus authStatus) =>
             Connected?.Invoke(authStatus);
 
-        /// <summary>
-        /// Handles <see cref="IWebSocket.Error"/> event.
-        /// </summary>
-        /// <param name="exception">Exception for routing into <see cref="OnError"/> event.</param>
         protected void HandleError(
             Exception exception)
         {
