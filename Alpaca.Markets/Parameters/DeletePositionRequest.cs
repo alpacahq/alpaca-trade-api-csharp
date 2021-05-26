@@ -21,15 +21,23 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
+        /// Gets or sets the custom position liquidation size (if missed the position will be liquidated completely).
+        /// </summary>
+        public PositionQuantity? PositionQuantity { get; set; }
+
+        /// <summary>
         /// Gets the symbol for liquidation.
         /// </summary>
         public String Symbol { get; }
 
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress)
+            new (httpClient.BaseAddress)
             {
-                Path = $"v2/positions/{Symbol}"
+                Path = $"v2/positions/{Symbol}",
+                Query = new QueryBuilder()
+                    .AddParameter("percentage", PositionQuantity?.AsPercentage())
+                    .AddParameter("qty", PositionQuantity?.AsFractional())
             };
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()

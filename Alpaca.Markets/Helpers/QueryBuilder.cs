@@ -79,7 +79,13 @@ namespace Alpaca.Markets
             String name,
             Int64? value) =>
             addParameter(name, value,
-                time => time.ToString("D", CultureInfo.InvariantCulture));
+                _ => _.ToString("D", CultureInfo.InvariantCulture));
+
+        public QueryBuilder AddParameter(
+            String name,
+            Decimal? value) =>
+            addParameter(name, value,
+                _ => _.ToString("F9", CultureInfo.InvariantCulture));
 
         public override String ToString()
         {

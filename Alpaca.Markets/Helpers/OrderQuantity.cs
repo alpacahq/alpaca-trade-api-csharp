@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
@@ -23,11 +24,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Returns <c>true</c> if <see cref="Value"/> is an amount in dollars.
         /// </summary>
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public Boolean IsInDollars { get; }
 
         /// <summary>
         /// Returns <c>true</c> if <see cref="Value"/> is a number of shares (fractional or integer).
         /// </summary>
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public Boolean IsInShares => !IsInDollars;
 
         /// <summary>
@@ -63,6 +66,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Integer number of shares.</param>
         /// <returns>Initialized <see cref="OrderQuantity"/> object.</returns>
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public static OrderQuantity FromInt64(
             Int64 value) => Fractional(value);
 
@@ -73,8 +77,8 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public override Boolean Equals(
             Object obj) =>
-            obj is OrderQuantity trailOffset &&
-            trailOffset.Equals(this);
+            obj is OrderQuantity orderQuantity &&
+            orderQuantity.Equals(this);
 
         /// <inheritdoc />
         public override Int32 GetHashCode() => 
