@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -23,6 +24,12 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
+        /// Gets or sets the custom position liquidation size (if missed the position will be liquidated completely).
+        /// </summary>
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+        public PositionQuantity? PositionQuantity { get; [UsedImplicitly] set; }
+
+        /// <summary>
         /// Gets the symbol for liquidation.
         /// </summary>
         public String Symbol { get; }
@@ -31,7 +38,10 @@ namespace Alpaca.Markets
             HttpClient httpClient) =>
             new (httpClient.BaseAddress!)
             {
-                Path = $"v2/positions/{Symbol}"
+                Path = $"v2/positions/{Symbol}",
+                Query = new QueryBuilder()
+                    .AddParameter("percentage", PositionQuantity?.AsPercentage())
+                    .AddParameter("qty", PositionQuantity?.AsFractional())
             };
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()

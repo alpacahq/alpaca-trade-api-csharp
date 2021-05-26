@@ -77,8 +77,8 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public override Boolean Equals(
             Object? obj) =>
-            obj is OrderQuantity trailOffset &&
-            trailOffset.Equals(this);
+            obj is OrderQuantity orderQuantity &&
+            orderQuantity.Equals(this);
 
         /// <inheritdoc />
         public override Int32 GetHashCode() => 
