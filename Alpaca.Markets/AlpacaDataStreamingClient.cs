@@ -329,6 +329,7 @@ namespace Alpaca.Markets
             streams
                 .Select(stream => stream.Split(
                     _channelSeparator, 2, StringSplitOptions.RemoveEmptyEntries))
+                .Where(pair => pair.Length == 2)
                 .ToLookup(
                     pair => pair[0], 
                     pair => pair[1], 
