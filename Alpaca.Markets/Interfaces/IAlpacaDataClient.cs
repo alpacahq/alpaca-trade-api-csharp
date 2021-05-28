@@ -16,6 +16,7 @@ namespace Alpaca.Markets
         /// <param name="request">Historical daily bars request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of daily bars for specified asset.</returns>
+        [Obsolete("The underlying endpoint will be deprecated soon - use the `ListHistoricalBarsAsync` method instead.", false)]
         Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default);
@@ -26,6 +27,7 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for data retrieval.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only last trade information.</returns>
+        [Obsolete("The underlying endpoint will be deprecated soon - use the `GetLatestTradeAsync` method instead.", false)]
         Task<ILastTrade> GetLastTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default);
@@ -36,6 +38,7 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for data retrieval.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only current quote information.</returns>
+        [Obsolete("The underlying endpoint will be deprecated soon - use the `GetLatestQuoteAsync` method instead.", false)]
         Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default);
