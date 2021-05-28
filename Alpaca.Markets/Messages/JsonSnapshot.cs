@@ -17,13 +17,13 @@ namespace Alpaca.Markets
         public JsonHistoricalTrade JsonTrade { get; set; } = new ();
 
         [JsonProperty(PropertyName = "minuteBar", Required = Required.Always)]
-        public JsonHistoricalBar.V2 JsonMinuteBar { get; set; } = new ();
+        public JsonHistoricalBar JsonMinuteBar { get; set; } = new ();
 
         [JsonProperty(PropertyName = "dailyBar", Required = Required.Always)]
-        public JsonHistoricalBar.V2 JsonCurrentDailyBar { get; set; } = new ();
+        public JsonHistoricalBar JsonCurrentDailyBar { get; set; } = new ();
 
         [JsonProperty(PropertyName = "prevDailyBar", Required = Required.Always)]
-        public JsonHistoricalBar.V2 JsonPreviousDailyBar { get; set; } = new ();
+        public JsonHistoricalBar JsonPreviousDailyBar { get; set; } = new ();
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Default)]
         public String Symbol { get; set; } = String.Empty;

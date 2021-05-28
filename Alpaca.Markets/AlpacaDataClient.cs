@@ -43,28 +43,22 @@ namespace Alpaca.Markets
         public Task<IReadOnlyDictionary<String, IReadOnlyList<IBar>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<String, IReadOnlyList<IBar>, String, List<JsonHistoricalBar.V1>>(
-                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                StringComparer.Ordinal, kvp =>
-                {
-                    kvp.Value.ForEach(_ => _.Symbol = kvp.Key);
-                    return kvp.Value;
-                },
-                cancellationToken);
+            throw new NotImplementedException(
+                "This Alpaca Data API v1 endpoint will be deprecated soon.");
 
         /// <inheritdoc />
         public Task<ILastTrade> GetLastTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<ILastTrade, JsonLastTrade>(
-                $"v1/last/stocks/{symbol.EnsureNotNull(nameof(symbol))}", cancellationToken);
+            throw new NotImplementedException(
+                "This Alpaca Data API v1 endpoint will be deprecated soon.");
 
         /// <inheritdoc />
         public Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<ILastQuote, JsonLastQuote>(
-                $"v1/last_quote/stocks/{symbol.EnsureNotNull(nameof(symbol))}", cancellationToken);
+            throw new NotImplementedException(
+                "This Alpaca Data API v1 endpoint will be deprecated soon.");
 
         /// <inheritdoc />
         public Task<IPage<IBar>> ListHistoricalBarsAsync(
