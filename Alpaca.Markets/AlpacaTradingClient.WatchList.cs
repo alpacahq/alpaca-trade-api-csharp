@@ -28,11 +28,12 @@ namespace Alpaca.Markets
                 getEndpointUri(watchListId), cancellationToken);
 
         /// <inheritdoc />
-        public Task<IWatchList> GetWatchListByNameAsync(
+        public async Task<IWatchList> GetWatchListByNameAsync(
             String name,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IWatchList, JsonWatchList>(
-                getEndpointUriBuilder(name), cancellationToken);
+            await _httpClient.GetAsync<IWatchList, JsonWatchList>(
+                await getEndpointUriBuilderAsync(name).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
         public Task<IWatchList> UpdateWatchListByIdAsync(
@@ -51,12 +52,12 @@ namespace Alpaca.Markets
                 cancellationToken);
 
         /// <inheritdoc />
-        public Task<IWatchList> AddAssetIntoWatchListByNameAsync(
+        public async Task<IWatchList> AddAssetIntoWatchListByNameAsync(
             ChangeWatchListRequest<String> request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.PostAsync<IWatchList, JsonWatchList, ChangeWatchListRequest<String>>(
-                getEndpointUriBuilder(request.EnsureNotNull(nameof(request)).Validate().Key).Uri, request,
-                cancellationToken);
+            await _httpClient.PostAsync<IWatchList, JsonWatchList, ChangeWatchListRequest<String>>(
+                await getEndpointUriBuilderAsync(request.EnsureNotNull(nameof(request)).Validate().Key).ConfigureAwait(false), request,
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
         public Task<IWatchList> DeleteAssetFromWatchListByIdAsync(
@@ -67,12 +68,14 @@ namespace Alpaca.Markets
                 cancellationToken);
 
         /// <inheritdoc />
-        public Task<IWatchList> DeleteAssetFromWatchListByNameAsync(
+        public async Task<IWatchList> DeleteAssetFromWatchListByNameAsync(
             ChangeWatchListRequest<String> request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.DeleteAsync<IWatchList, JsonWatchList>(
-                getEndpointUriBuilder(request.EnsureNotNull(nameof(request)).Validate().Key, request.Asset),
-                cancellationToken);
+            await _httpClient.DeleteAsync<IWatchList, JsonWatchList>(
+                await getEndpointUriBuilderAsync(
+                        request.EnsureNotNull(nameof(request)).Validate().Key, request.Asset)
+                    .ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
         public Task<Boolean> DeleteWatchListByIdAsync(
@@ -82,13 +85,14 @@ namespace Alpaca.Markets
                 getEndpointUri(watchListId), cancellationToken);
 
         /// <inheritdoc />
-        public Task<Boolean> DeleteWatchListByNameAsync(
+        public async Task<Boolean> DeleteWatchListByNameAsync(
             String name,
             CancellationToken cancellationToken = default) =>
-            _httpClient.TryDeleteAsync(
-                getEndpointUriBuilder(name), cancellationToken);
+            await _httpClient.TryDeleteAsync(
+                await getEndpointUriBuilderAsync(name).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
-        private UriBuilder getEndpointUriBuilder(
+        private async ValueTask<UriBuilder> getEndpointUriBuilderAsync(
             String name,
             String? asset = null) =>
             new (_httpClient.BaseAddress!)
@@ -96,10 +100,11 @@ namespace Alpaca.Markets
                 Path = String.IsNullOrEmpty(asset)
                     ? "v2/watchlists:by_name"
                     : $"v2/watchlists:by_name/{asset}",
-                Query = new QueryBuilder()
+                Query = await new QueryBuilder()
                     .AddParameter("name", 
                         name.ValidateWatchListName() ?? throw new ArgumentException(
                             "Watch list name should be from 1 to 64 characters length.", nameof(name)))
+                    .AsStringAsync().ConfigureAwait(false)
             };
 
         private static String getEndpointUri(

@@ -43,52 +43,49 @@ namespace Alpaca.Markets
         public Task<IReadOnlyDictionary<String, IReadOnlyList<IBar>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<String, IReadOnlyList<IBar>, String, List<JsonHistoricalBar.V1>>(
-                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                StringComparer.Ordinal, kvp =>
-                {
-                    kvp.Value.ForEach(_ => _.Symbol = kvp.Key);
-                    return kvp.Value;
-                },
-                cancellationToken);
+            throw new NotImplementedException(
+                "This Alpaca Data API v1 endpoint will be deprecated soon.");
 
         /// <inheritdoc />
         public Task<ILastTrade> GetLastTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<ILastTrade, JsonLastTrade>(
-                $"v1/last/stocks/{symbol.EnsureNotNull(nameof(symbol))}", cancellationToken);
+            throw new NotImplementedException(
+                "This Alpaca Data API v1 endpoint will be deprecated soon.");
 
         /// <inheritdoc />
         public Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<ILastQuote, JsonLastQuote>(
-                $"v1/last_quote/stocks/{symbol.EnsureNotNull(nameof(symbol))}", cancellationToken);
+            throw new NotImplementedException(
+                "This Alpaca Data API v1 endpoint will be deprecated soon.");
 
         /// <inheritdoc />
-        public Task<IPage<IBar>> ListHistoricalBarsAsync(
+        public async Task<IPage<IBar>> ListHistoricalBarsAsync(
             HistoricalBarsRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IPage<IBar>, JsonBarsPage>(
-                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                cancellationToken);
+            await _httpClient.GetAsync<IPage<IBar>, JsonBarsPage>(
+                await request.EnsureNotNull(nameof(request)).Validate()
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
-        public Task<IPage<IQuote>> ListHistoricalQuotesAsync(
+        public async Task<IPage<IQuote>> ListHistoricalQuotesAsync(
             HistoricalQuotesRequest request, 
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IPage<IQuote>, JsonQuotesPage>(
-                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                cancellationToken);
+            await _httpClient.GetAsync<IPage<IQuote>, JsonQuotesPage>(
+                await request.EnsureNotNull(nameof(request)).Validate()
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
-        public Task<IPage<ITrade>> ListHistoricalTradesAsync(
+        public async Task<IPage<ITrade>> ListHistoricalTradesAsync(
             HistoricalTradesRequest request, 
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IPage<ITrade>, JsonTradesPage>(
-                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                cancellationToken);
+            await _httpClient.GetAsync<IPage<ITrade>, JsonTradesPage>(
+                await request.EnsureNotNull(nameof(request)).Validate()
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
         public Task<ITrade> GetLatestTradeAsync(
@@ -114,18 +111,19 @@ namespace Alpaca.Markets
                 $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/snapshot", cancellationToken);
 
         /// <inheritdoc />
-        public Task<IReadOnlyDictionary<String, ISnapshot>> GetSnapshotsAsync(
+        public async Task<IReadOnlyDictionary<String, ISnapshot>> GetSnapshotsAsync(
             IEnumerable<String> symbols,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<String, ISnapshot, String, JsonSnapshot>(
+            await _httpClient.GetAsync<String, ISnapshot, String, JsonSnapshot>(
                 new UriBuilder(_httpClient.BaseAddress!)
                 {
                     Path = "v2/stocks/snapshots",
-                    Query = new QueryBuilder()
+                    Query = await new QueryBuilder()
                         .AddParameter("symbols", String.Join(",",
                             symbols.EnsureNotNull(nameof(symbols))))
+                        .AsStringAsync().ConfigureAwait(false)
                 },
                 StringComparer.Ordinal, kvp => kvp.Value.WithSymbol(kvp.Key),
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
     }
 }

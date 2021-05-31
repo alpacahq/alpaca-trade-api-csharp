@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace Alpaca.Markets
@@ -21,13 +22,15 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public AssetClass? AssetClass { get; set; }
 
-        internal UriBuilder GetUriBuilder(HttpClient httpClient) =>
+        internal async ValueTask<UriBuilder> GetUriBuilderAsync(
+            HttpClient httpClient) =>
             new (httpClient.BaseAddress!)
             {
                 Path = "v2/assets",
-                Query = new QueryBuilder()
+                Query = await new QueryBuilder()
                     .AddParameter("status", AssetStatus)
                     .AddParameter("asset_class", AssetClass)
+                    .AsStringAsync().ConfigureAwait(false)
             };
     }
 }

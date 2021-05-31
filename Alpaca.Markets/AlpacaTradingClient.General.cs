@@ -27,28 +27,31 @@ namespace Alpaca.Markets
                 "v2/account/configurations", accountConfiguration, cancellationToken);
 
         /// <inheritdoc />
-        public Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
+        public async Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
             AccountActivitiesRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IReadOnlyList<IAccountActivity>, List<JsonAccountActivity>>(
-                request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
-                cancellationToken);
+            await _httpClient.GetAsync<IReadOnlyList<IAccountActivity>, List<JsonAccountActivity>>(
+                await request.EnsureNotNull(nameof(request))
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
-        public Task<IPortfolioHistory> GetPortfolioHistoryAsync(
+        public async Task<IPortfolioHistory> GetPortfolioHistoryAsync(
             PortfolioHistoryRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IPortfolioHistory, JsonPortfolioHistory>(
-                request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
-                cancellationToken);
+            await _httpClient.GetAsync<IPortfolioHistory, JsonPortfolioHistory>(
+                await request.EnsureNotNull(nameof(request))
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
-        public Task<IReadOnlyList<IAsset>> ListAssetsAsync(
+        public async Task<IReadOnlyList<IAsset>> ListAssetsAsync(
             AssetsRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IReadOnlyList<IAsset>, List<JsonAsset>>(
-                request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
-                cancellationToken);
+            await _httpClient.GetAsync<IReadOnlyList<IAsset>, List<JsonAsset>>(
+                await request.EnsureNotNull(nameof(request))
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
         public Task<IAsset> GetAssetAsync(
@@ -76,19 +79,22 @@ namespace Alpaca.Markets
             DeleteAllPositionsAsync(new DeleteAllPositionsRequest(), cancellationToken);
 
         /// <inheritdoc />
-        public Task<IReadOnlyList<IPositionActionStatus>> DeleteAllPositionsAsync(
+        public async Task<IReadOnlyList<IPositionActionStatus>> DeleteAllPositionsAsync(
             DeleteAllPositionsRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.DeleteAsync<IReadOnlyList<IPositionActionStatus>, List<JsonPositionActionStatus>>(
-                request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient), cancellationToken);
+            await _httpClient.DeleteAsync<IReadOnlyList<IPositionActionStatus>, List<JsonPositionActionStatus>>(
+                await request.EnsureNotNull(nameof(request))
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
-        public Task<IOrder> DeletePositionAsync(
+        public async Task<IOrder> DeletePositionAsync(
             DeletePositionRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.DeleteAsync<IOrder, JsonOrder>(
-                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                cancellationToken);
+            await _httpClient.DeleteAsync<IOrder, JsonOrder>(
+                await request.EnsureNotNull(nameof(request)).Validate()
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
         public Task<IClock> GetClockAsync(
@@ -97,11 +103,12 @@ namespace Alpaca.Markets
                 "v2/clock", cancellationToken);
 
         /// <inheritdoc />
-        public Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
+        public async Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
             CalendarRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IReadOnlyList<ICalendar>, List<JsonCalendar>>(
-                request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
-                cancellationToken);
+            await _httpClient.GetAsync<IReadOnlyList<ICalendar>, List<JsonCalendar>>(
+                await request.EnsureNotNull(nameof(request))
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
     }
 }

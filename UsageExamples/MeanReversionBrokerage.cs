@@ -47,7 +47,7 @@ namespace UsageExamples
             // Connect to Alpaca's websocket and listen for updates on our orders.
             alpacaStreamingClient = Environments.Paper.GetAlpacaStreamingClient(new SecretKey(API_KEY, API_SECRET));
 
-            alpacaStreamingClient.ConnectAndAuthenticateAsync().Wait();
+            await alpacaStreamingClient.ConnectAndAuthenticateAsync();
 
             alpacaStreamingClient.OnTradeUpdate += HandleTradeUpdate;
 
@@ -90,7 +90,7 @@ namespace UsageExamples
             // Connect to Alpaca's websocket and listen for price updates.
             alpacaDataStreamingClient = Environments.Live.GetAlpacaDataStreamingClient(new SecretKey(API_KEY, API_SECRET));
 
-            alpacaDataStreamingClient.ConnectAndAuthenticateAsync().Wait();
+            await alpacaDataStreamingClient.ConnectAndAuthenticateAsync();
             Console.WriteLine("Alpaca streaming client opened.");
 
             var subscription = alpacaDataStreamingClient.GetMinuteBarSubscription(symbol);

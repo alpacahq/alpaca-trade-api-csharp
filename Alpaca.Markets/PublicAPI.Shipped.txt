@@ -148,6 +148,8 @@ Alpaca.Markets.DeleteAllPositionsRequest.CancelOrders.set -> void
 Alpaca.Markets.DeleteAllPositionsRequest.DeleteAllPositionsRequest() -> void
 Alpaca.Markets.DeletePositionRequest
 Alpaca.Markets.DeletePositionRequest.DeletePositionRequest(string! symbol) -> void
+Alpaca.Markets.DeletePositionRequest.PositionQuantity.get -> Alpaca.Markets.PositionQuantity?
+Alpaca.Markets.DeletePositionRequest.PositionQuantity.set -> void
 Alpaca.Markets.DeletePositionRequest.Symbol.get -> string!
 Alpaca.Markets.EnvironmentExtensions
 Alpaca.Markets.Environments
@@ -611,12 +613,6 @@ Alpaca.Markets.OrderQuantity.OrderQuantity() -> void
 Alpaca.Markets.OrderQuantity.Value.get -> decimal
 override Alpaca.Markets.OrderQuantity.Equals(object? obj) -> bool
 override Alpaca.Markets.OrderQuantity.GetHashCode() -> int
-static Alpaca.Markets.OrderQuantity.Fractional(decimal value) -> Alpaca.Markets.OrderQuantity
-static Alpaca.Markets.OrderQuantity.FromInt64(long value) -> Alpaca.Markets.OrderQuantity
-static Alpaca.Markets.OrderQuantity.implicit operator Alpaca.Markets.OrderQuantity(long value) -> Alpaca.Markets.OrderQuantity
-static Alpaca.Markets.OrderQuantity.Notional(decimal value) -> Alpaca.Markets.OrderQuantity
-static Alpaca.Markets.OrderQuantity.operator !=(Alpaca.Markets.OrderQuantity lhs, Alpaca.Markets.OrderQuantity rhs) -> bool
-static Alpaca.Markets.OrderQuantity.operator ==(Alpaca.Markets.OrderQuantity lhs, Alpaca.Markets.OrderQuantity rhs) -> bool
 Alpaca.Markets.Pagination
 Alpaca.Markets.Pagination.Pagination() -> void
 Alpaca.Markets.Pagination.Size.get -> uint?
@@ -635,6 +631,14 @@ Alpaca.Markets.PortfolioHistoryRequest.TimeInterval.get -> Alpaca.Markets.IInclu
 Alpaca.Markets.PositionSide
 Alpaca.Markets.PositionSide.Long = 0 -> Alpaca.Markets.PositionSide
 Alpaca.Markets.PositionSide.Short = 1 -> Alpaca.Markets.PositionSide
+Alpaca.Markets.PositionQuantity
+Alpaca.Markets.PositionQuantity.Equals(Alpaca.Markets.PositionQuantity other) -> bool
+Alpaca.Markets.PositionQuantity.IsInPercents.get -> bool
+Alpaca.Markets.PositionQuantity.IsInShares.get -> bool
+Alpaca.Markets.PositionQuantity.PositionQuantity() -> void
+Alpaca.Markets.PositionQuantity.Value.get -> decimal
+override Alpaca.Markets.PositionQuantity.Equals(object? obj) -> bool
+override Alpaca.Markets.PositionQuantity.GetHashCode() -> int
 Alpaca.Markets.RequestValidationException
 Alpaca.Markets.RequestValidationException.PropertyName.get -> string!
 Alpaca.Markets.RequestValidationException.RequestValidationException() -> void
@@ -760,6 +764,16 @@ static Alpaca.Markets.OrderSideExtensions.Market(this Alpaca.Markets.OrderSide o
 static Alpaca.Markets.OrderSideExtensions.Stop(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
 static Alpaca.Markets.OrderSideExtensions.StopLimit(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity, decimal stopPrice, decimal limitPrice) -> Alpaca.Markets.StopLimitOrder!
 static Alpaca.Markets.OrderSideExtensions.TrailingStop(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity, Alpaca.Markets.TrailOffset trailOffset) -> Alpaca.Markets.TrailingStopOrder!
+static Alpaca.Markets.OrderQuantity.Fractional(decimal value) -> Alpaca.Markets.OrderQuantity
+static Alpaca.Markets.OrderQuantity.FromInt64(long value) -> Alpaca.Markets.OrderQuantity
+static Alpaca.Markets.OrderQuantity.implicit operator Alpaca.Markets.OrderQuantity(long value) -> Alpaca.Markets.OrderQuantity
+static Alpaca.Markets.OrderQuantity.Notional(decimal value) -> Alpaca.Markets.OrderQuantity
+static Alpaca.Markets.OrderQuantity.operator !=(Alpaca.Markets.OrderQuantity lhs, Alpaca.Markets.OrderQuantity rhs) -> bool
+static Alpaca.Markets.OrderQuantity.operator ==(Alpaca.Markets.OrderQuantity lhs, Alpaca.Markets.OrderQuantity rhs) -> bool
+static Alpaca.Markets.PositionQuantity.InPercents(decimal value) -> Alpaca.Markets.PositionQuantity
+static Alpaca.Markets.PositionQuantity.InShares(decimal value) -> Alpaca.Markets.PositionQuantity
+static Alpaca.Markets.PositionQuantity.operator !=(Alpaca.Markets.PositionQuantity lhs, Alpaca.Markets.PositionQuantity rhs) -> bool
+static Alpaca.Markets.PositionQuantity.operator ==(Alpaca.Markets.PositionQuantity lhs, Alpaca.Markets.PositionQuantity rhs) -> bool
 static Alpaca.Markets.StopLimitOrder.Buy(string! symbol, long quantity, decimal stopPrice, decimal limitPrice) -> Alpaca.Markets.StopLimitOrder!
 static Alpaca.Markets.StopLimitOrder.Sell(string! symbol, long quantity, decimal stopPrice, decimal limitPrice) -> Alpaca.Markets.StopLimitOrder!
 static Alpaca.Markets.StopOrder.Buy(string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!

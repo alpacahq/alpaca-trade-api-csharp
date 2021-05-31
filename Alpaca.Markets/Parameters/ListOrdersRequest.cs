@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace Alpaca.Markets
@@ -76,12 +77,12 @@ namespace Alpaca.Markets
             return this;
         }
 
-        internal UriBuilder GetUriBuilder(
+        internal async ValueTask<UriBuilder> GetUriBuilderAsync(
             HttpClient httpClient) =>
             new (httpClient.BaseAddress!)
             {
                 Path = "v2/orders",
-                Query = new QueryBuilder()
+                Query = await new QueryBuilder()
                     .AddParameter("status", OrderStatusFilter)
                     .AddParameter("direction", OrderListSorting)
                     .AddParameter("until", TimeInterval.Into, "O")
@@ -89,6 +90,7 @@ namespace Alpaca.Markets
                     .AddParameter("limit", LimitOrderNumber)
                     .AddParameter("nested", RollUpNestedOrders)
                     .AddParameter("symbols", Symbols.ToArray())
+                    .AsStringAsync().ConfigureAwait(false)
             };
 
         void IRequestWithTimeInterval<IExclusiveTimeInterval>.SetInterval(

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
@@ -12,8 +13,6 @@ namespace Alpaca.Markets
 
         private readonly IDictionary<String, String> _queryParameters =
             new Dictionary<String, String>();
-
-        public static implicit operator String(QueryBuilder builder) => builder.ToString();
 
         public QueryBuilder AddParameter(
             String name,
@@ -75,14 +74,20 @@ namespace Alpaca.Markets
             String name,
             Int64? value) =>
             addParameter(name, value,
-                time => time.ToString("D", CultureInfo.InvariantCulture));
+                _ => _.ToString("D", CultureInfo.InvariantCulture));
 
-        public override String ToString()
+        public QueryBuilder AddParameter(
+            String name,
+            Decimal? value) =>
+            addParameter(name, value,
+                _ => _.ToString("F9", CultureInfo.InvariantCulture));
+
+        public async ValueTask<String> AsStringAsync()
         {
 #pragma warning disable 8620
             using var content = new FormUrlEncodedContent(_queryParameters);
 #pragma warning restore 8620
-            return content.ReadAsStringAsync().Result;
+            return await content.ReadAsStringAsync().ConfigureAwait(false);
         }
 
         private QueryBuilder addParameter<TValue>(
