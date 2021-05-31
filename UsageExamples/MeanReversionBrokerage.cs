@@ -110,7 +110,7 @@ namespace UsageExamples
                     await HandleMinuteBar(bar);
                 }
             };
-            alpacaDataStreamingClient.Subscribe(subscription);
+            await alpacaDataStreamingClient.SubscribeAsync(subscription);
         }
 
         public void Dispose()

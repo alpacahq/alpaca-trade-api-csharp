@@ -202,7 +202,7 @@ namespace Alpaca.Markets
             //Log.TransportStopped(_logger, null);
         }
 
-        public async Task SendAsync(
+        public async ValueTask SendAsync(
             String message)
         {
             await _transport.Output.WriteAsync(Encoding.UTF8.GetBytes(message))

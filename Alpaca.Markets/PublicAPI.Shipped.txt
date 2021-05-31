@@ -455,12 +455,12 @@ Alpaca.Markets.IStreamingClient.OnError -> System.Action<System.Exception!>?
 Alpaca.Markets.IStreamingClient.SocketClosed -> System.Action?
 Alpaca.Markets.IStreamingClient.SocketOpened -> System.Action?
 Alpaca.Markets.IStreamingDataClient
-Alpaca.Markets.IStreamingDataClient.Subscribe(Alpaca.Markets.IAlpacaDataSubscription! subscription) -> void
-Alpaca.Markets.IStreamingDataClient.Subscribe(params Alpaca.Markets.IAlpacaDataSubscription![]! subscriptions) -> void
-Alpaca.Markets.IStreamingDataClient.Subscribe(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions) -> void
-Alpaca.Markets.IStreamingDataClient.Unsubscribe(Alpaca.Markets.IAlpacaDataSubscription! subscription) -> void
-Alpaca.Markets.IStreamingDataClient.Unsubscribe(params Alpaca.Markets.IAlpacaDataSubscription![]! subscriptions) -> void
-Alpaca.Markets.IStreamingDataClient.Unsubscribe(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions) -> void
+Alpaca.Markets.IStreamingDataClient.SubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription! subscription) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.IStreamingDataClient.SubscribeAsync(params Alpaca.Markets.IAlpacaDataSubscription![]! subscriptions) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.IStreamingDataClient.SubscribeAsync(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription! subscription) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync(params Alpaca.Markets.IAlpacaDataSubscription![]! subscriptions) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions) -> System.Threading.Tasks.ValueTask
 Alpaca.Markets.ITakeProfit
 Alpaca.Markets.ITakeProfit.LimitPrice.get -> decimal
 Alpaca.Markets.ITimeInterval

@@ -42,14 +42,14 @@ namespace Alpaca.Markets
         public event Action<ITradeUpdate>? OnTradeUpdate;
 
         /// <inheritdoc/>
-        protected override void OnOpened()
+        protected override async void OnOpened()
         {
-            SendAsJsonString(new JsonAuthRequest
+            await SendAsJsonStringAsync(new JsonAuthRequest
             {
                 Action = JsonAction.Authenticate,
                 Data = Configuration.SecurityId
                     .GetAuthenticationData()
-            });
+            }).ConfigureAwait(false);
 
             base.OnOpened();
         }
@@ -85,7 +85,7 @@ namespace Alpaca.Markets
         }
 
         [SuppressMessage("ReSharper", "HeuristicUnreachableCode")]
-        private void handleAuthorization(
+        private async void handleAuthorization(
             JToken token)
         {
             var response = token.ToObject<JsonAuthResponse>();
@@ -109,7 +109,7 @@ namespace Alpaca.Markets
                     }
                 };
 
-                SendAsJsonString(listenRequest);
+                await SendAsJsonStringAsync(listenRequest).ConfigureAwait(false);
             }
         }
 

@@ -198,7 +198,7 @@ namespace Alpaca.Markets
         /// Send object (JSON serializable) as string into the web socket.
         /// </summary>
         /// <param name="value">Object for serializing and sending.</param>
-        protected Task SendAsJsonString(
+        protected ValueTask SendAsJsonStringAsync(
             Object value)
         {
             using var textWriter = new StringWriter();

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
@@ -14,42 +15,42 @@ namespace Alpaca.Markets
         /// Subscribes the single <paramref name="subscription"/> object for receiving data from the server.
         /// </summary>
         /// <param name="subscription">Subscription target - asset and update type holder.</param>
-        void Subscribe(
+        ValueTask SubscribeAsync(
             IAlpacaDataSubscription subscription);
 
         /// <summary>
         /// Subscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
         /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
-        void Subscribe(
+        ValueTask SubscribeAsync(
             params IAlpacaDataSubscription[] subscriptions);
 
         /// <summary>
         /// Subscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
         /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
-        void Subscribe(
+        ValueTask SubscribeAsync(
             IEnumerable<IAlpacaDataSubscription> subscriptions);
 
         /// <summary>
         /// Unsubscribes the single <paramref name="subscription"/> object for receiving data from the server.
         /// </summary>
         /// <param name="subscription">Subscription target - asset and update type holder.</param>
-        void Unsubscribe(
+        ValueTask UnsubscribeAsync(
             IAlpacaDataSubscription subscription);
 
         /// <summary>
         /// Unsubscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
         /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
-        void Unsubscribe(
+        ValueTask UnsubscribeAsync(
             params IAlpacaDataSubscription[] subscriptions);
 
         /// <summary>
         /// Unsubscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
         /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
-        void Unsubscribe(
+        ValueTask UnsubscribeAsync(
             IEnumerable<IAlpacaDataSubscription> subscriptions);
     }
 }
