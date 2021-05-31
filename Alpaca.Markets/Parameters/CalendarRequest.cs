@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace Alpaca.Markets
@@ -15,14 +16,15 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
 
-        internal UriBuilder GetUriBuilder(
+        internal async ValueTask<UriBuilder> GetUriBuilderAsync(
             HttpClient httpClient) =>
             new (httpClient.BaseAddress!)
             {
                 Path = "v2/calendar",
-                Query = new QueryBuilder()
+                Query = await new QueryBuilder()
                     .AddParameter("start", TimeInterval.From, DateTimeHelper.DateFormat)
                     .AddParameter("end", TimeInterval.Into, DateTimeHelper.DateFormat)
+                    .AsStringAsync().ConfigureAwait(false)
             };
 
         void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(

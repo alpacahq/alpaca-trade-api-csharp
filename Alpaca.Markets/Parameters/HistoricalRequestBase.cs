@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
@@ -45,14 +46,15 @@ namespace Alpaca.Markets
         /// </summary>
         protected abstract String LastPathSegment { get; }
 
-        internal UriBuilder GetUriBuilder(
+        internal async ValueTask<UriBuilder> GetUriBuilderAsync(
             HttpClient httpClient) =>
             new (httpClient.BaseAddress!)
             {
                 Path = $"v2/stocks/{Symbol}/{LastPathSegment}",
-                Query = AddParameters(Pagination.QueryBuilder
+                Query = await AddParameters(Pagination.QueryBuilder
                     .AddParameter("start", TimeInterval.From, "O")
                     .AddParameter("end", TimeInterval.Into, "O"))
+                    .AsStringAsync().ConfigureAwait(false)
             };
 
         internal virtual QueryBuilder AddParameters(

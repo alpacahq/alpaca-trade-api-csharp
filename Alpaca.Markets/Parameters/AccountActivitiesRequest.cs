@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace Alpaca.Markets
@@ -85,12 +86,12 @@ namespace Alpaca.Markets
             return this;
         }
 
-        internal UriBuilder GetUriBuilder(
+        internal async ValueTask<UriBuilder> GetUriBuilderAsync(
             HttpClient httpClient) =>
             new (httpClient.BaseAddress!)
             {
                 Path = "v2/account/activities",
-                Query = new QueryBuilder()
+                Query = await new QueryBuilder()
                     .AddParameter("activity_types", ActivityTypes)
                     .AddParameter("date", Date, DateTimeHelper.DateFormat)
                     .AddParameter("until", TimeInterval.Into, "O")
@@ -98,6 +99,7 @@ namespace Alpaca.Markets
                     .AddParameter("direction", Direction)
                     .AddParameter("pageSize", PageSize)
                     .AddParameter("pageToken", PageToken)
+                    .AsStringAsync().ConfigureAwait(false)
             };
 
         void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(IInclusiveTimeInterval value)

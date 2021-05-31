@@ -68,7 +68,7 @@ namespace Alpaca.Markets
         public async Task<AuthStatus> ConnectAndAuthenticateAsync(
             CancellationToken cancellationToken = default)
         {
-            var tcs = new TaskCompletionSource<AuthStatus>();
+            var tcs = new TaskCompletionSource<AuthStatus>(TaskCreationOptions.RunContinuationsAsynchronously);
             Connected += HandleConnected;
             OnError += HandleOnError;
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace Alpaca.Markets
@@ -34,14 +35,15 @@ namespace Alpaca.Markets
         /// </summary>
         public String Symbol { get; }
 
-        internal UriBuilder GetUriBuilder(
+        internal async ValueTask<UriBuilder> GetUriBuilderAsync(
             HttpClient httpClient) =>
             new (httpClient.BaseAddress!)
             {
                 Path = $"v2/positions/{Symbol}",
-                Query = new QueryBuilder()
+                Query = await new QueryBuilder()
                     .AddParameter("percentage", PositionQuantity?.AsPercentage())
                     .AddParameter("qty", PositionQuantity?.AsFractional())
+                    .AsStringAsync().ConfigureAwait(false)
             };
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
