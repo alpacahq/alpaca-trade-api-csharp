@@ -33,6 +33,9 @@ namespace Alpaca.Markets.Extensions
             public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(String symbol) =>
                 Client.GetMinuteAggSubscription(symbol);
 
+            public IAlpacaDataSubscription<IStreamAgg> GetDailyAggSubscription(String symbol) =>
+                Client.GetDailyAggSubscription(symbol);
+
             public void Subscribe(
                 IAlpacaDataSubscription subscription)
             {
