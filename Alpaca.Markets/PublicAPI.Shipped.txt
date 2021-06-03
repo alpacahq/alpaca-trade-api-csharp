@@ -40,6 +40,7 @@ Alpaca.Markets.AccountActivityType.Miscellaneous = 2 -> Alpaca.Markets.AccountAc
 Alpaca.Markets.AccountActivityType.NameChange = 23 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.PassThruCharge = 24 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.PassThruRebate = 25 -> Alpaca.Markets.AccountActivityType
+Alpaca.Markets.AccountActivityType.RefTafFee = 30 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.Reorg = 26 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.StockSpinoff = 28 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.StockSplit = 29 -> Alpaca.Markets.AccountActivityType
@@ -253,6 +254,7 @@ Alpaca.Markets.IAlpacaDataClient.ListHistoricalBarsAsync(Alpaca.Markets.Historic
 Alpaca.Markets.IAlpacaDataClient.ListHistoricalQuotesAsync(Alpaca.Markets.HistoricalQuotesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.IQuote!>!>!
 Alpaca.Markets.IAlpacaDataClient.ListHistoricalTradesAsync(Alpaca.Markets.HistoricalTradesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.ITrade!>!>!
 Alpaca.Markets.IAlpacaDataStreamingClient
+Alpaca.Markets.IAlpacaDataStreamingClient.GetDailyBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetMinuteBarSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetMinuteBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetQuoteSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IQuote!>!

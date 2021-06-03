@@ -87,7 +87,9 @@ namespace Alpaca.Markets
 
         private const String QuotesChannel = "q";
 
-        private const String BarsChannel = "b";
+        private const String DailyBarsChannel = "d";
+
+        private const String MinuteBarsChannel = "b";
 
         private const String ErrorInfo = "error";
 
@@ -112,11 +114,12 @@ namespace Alpaca.Markets
             : base(configuration.EnsureNotNull(nameof(configuration))) =>
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
+                { MinuteBarsChannel, handleRealtimeDataUpdate },
+                { DailyBarsChannel, handleRealtimeDataUpdate },
                 { ConnectionSuccess, handleConnectionSuccess },
                 { Subscription, handleSubscriptionUpdates },
                 { TradesChannel, handleRealtimeDataUpdate },
                 { QuotesChannel, handleRealtimeDataUpdate },
-                { BarsChannel, handleRealtimeDataUpdate },
                 { ErrorInfo, handleErrorMessages }
             };
 
@@ -132,12 +135,17 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() => 
-            _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(BarsChannel, WildcardSymbolString));
+            _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(MinuteBarsChannel, WildcardSymbolString));
 
         /// <inheritdoc />
         public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
             String symbol) =>
-            _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(BarsChannel, symbol));
+            _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(MinuteBarsChannel, symbol));
+
+        /// <inheritdoc />
+        public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
+            String symbol) =>
+            _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(DailyBarsChannel, symbol));
 
         /// <inheritdoc />
         public void Subscribe(
@@ -230,7 +238,8 @@ namespace Alpaca.Markets
             var streams = new HashSet<String>(
                 getStreams(subscriptionUpdate.Trades.EmptyIfNull(), TradesChannel)
                     .Concat(getStreams(subscriptionUpdate.Quotes.EmptyIfNull(), QuotesChannel))
-                    .Concat(getStreams(subscriptionUpdate.Bars.EmptyIfNull(), BarsChannel)),
+                    .Concat(getStreams(subscriptionUpdate.DailyBars.EmptyIfNull(), DailyBarsChannel))
+                    .Concat(getStreams(subscriptionUpdate.MinuteBars.EmptyIfNull(), MinuteBarsChannel)),
                 StringComparer.Ordinal);
 
             try
@@ -256,7 +265,7 @@ namespace Alpaca.Markets
 
                 _subscriptions.OnReceived(getStreamName(channel, symbol), token);
 
-                if (String.Equals(channel, BarsChannel, StringComparison.Ordinal))
+                if (String.Equals(channel, MinuteBarsChannel, StringComparison.Ordinal))
                 {
                     _subscriptions.OnReceived(getStreamName(channel, WildcardSymbolString), token);
                 }
@@ -323,9 +332,10 @@ namespace Alpaca.Markets
             SendAsJsonString(new JsonSubscriptionUpdate
             {
                 Action = action,
+                MinuteBars = getSymbols(streamsByChannels, MinuteBarsChannel),
+                DailyBars = getSymbols(streamsByChannels, DailyBarsChannel),
                 Trades = getSymbols(streamsByChannels, TradesChannel),
                 Quotes = getSymbols(streamsByChannels, QuotesChannel),
-                Bars = getSymbols(streamsByChannels, BarsChannel)
             });
         }
 
