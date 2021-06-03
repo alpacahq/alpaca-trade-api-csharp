@@ -47,6 +47,16 @@ namespace Alpaca.Markets
             String symbol);
 
         /// <summary>
+        /// Gets the daily aggregate (bar) subscription for the <paramref name="symbol"/> asset.
+        /// </summary>
+        /// <param name="symbol">Alpaca asset name.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        IAlpacaDataSubscription<IStreamAgg> GetDailyAggSubscription(
+            String symbol);
+
+        /// <summary>
         /// Subscribes the single <paramref name="subscription"/> object for receiving data from the server.
         /// </summary>
         /// <param name="subscription">Subscription target - asset and update type holder.</param>

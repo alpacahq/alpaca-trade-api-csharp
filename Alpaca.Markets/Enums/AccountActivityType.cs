@@ -195,5 +195,11 @@ namespace Alpaca.Markets
         /// </summary>
         [EnumMember(Value = "SSP")]
         StockSplit,
+
+        /// <summary>
+        /// REG/TAF fees
+        /// </summary>
+        [EnumMember(Value = "FEE")]
+        RefTafFee,
     }
 }
