@@ -4,22 +4,24 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.0.3-rc1</Version>
+    <Version>5.0.3-rc2</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.0.3.7</AssemblyVersion>
-    <FileVersion>5.0.3.7</FileVersion>
+    <AssemblyVersion>5.0.3.8</AssemblyVersion>
+    <FileVersion>5.0.3.8</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- The `DeletePositionRequest' class extended with support for liquidation quantity (in shares and percentage) specification.
-- All public implementations of the `I...Client` interfaces now converted into internal classes.
-- Added the missed (undocumented) `APPROVED` account status.</PackageReleaseNotes>
+    <PackageReleaseNotes>- All Alpaca Data API v1 endpoints marked with the `Obsolete` attribute with error level and remove unused classes.
+- Prevented an error in the `IAlpacaDataStreamingClient.Subscription` method in case of the empty symbol name.
+- Added daily bar subscription support into the `IAlpacaDataStreamingClient` implementation.
+- Some non-breaking changes in asynchronous methods according to MS recommendations.
+- Added the missed in documentation `FEE` account activity type.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
