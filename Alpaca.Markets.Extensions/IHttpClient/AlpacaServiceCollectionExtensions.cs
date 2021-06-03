@@ -24,7 +24,9 @@ namespace Alpaca.Markets.Extensions
             services
                 .AddHttpClient<IAlpacaDataClient>()
                 .AddTypedClient<IAlpacaDataClient>(
+#pragma warning disable 618
                     httpClient => new AlpacaDataClient(
+#pragma warning restore 618
                         environment
                             .GetAlpacaDataClientConfiguration(securityKey)
                             .withFactoryCreatedHttpClient(httpClient)))
@@ -45,7 +47,9 @@ namespace Alpaca.Markets.Extensions
             services
                 .AddHttpClient<IAlpacaTradingClient>()
                 .AddTypedClient<IAlpacaTradingClient>(
+#pragma warning disable 618
                     httpClient => new AlpacaTradingClient(
+#pragma warning restore 618
                         environment
                             .GetAlpacaTradingClientConfiguration(securityKey)
                             .withFactoryCreatedHttpClient(httpClient)))
