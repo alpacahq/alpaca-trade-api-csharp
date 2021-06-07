@@ -4,12 +4,13 @@
     ".NETFramework,Version=v4.6.1": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[5.0.3-beta2, )",
-        "resolved": "5.0.3-beta2",
-        "contentHash": "Ksg92Fx6csMTNVytChfoobHX1NZJBqO/hiKFDp4hH0TbEqkOsUTmm/EWkhT5oZ32RYoKK95uMax9Y+YvY5hOog==",
+        "requested": "[5.0.3-rc2, )",
+        "resolved": "5.0.3-rc2",
+        "contentHash": "Nnc8Ej3oGXns1j9lpWDWPRE+ej/78cRzp7ODR+kCVIUj0pWvNnXJbvMyQKG74Y3y2TLYFS/Aj0h/3ecuGNJC4w==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.2",
+          "System.Threading.Tasks.Extensions": "4.5.4",
           "WebSocket4Net": "0.15.2"
         }
       },
@@ -324,12 +325,13 @@
     ".NETStandard,Version=v2.0": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[5.0.3-beta2, )",
-        "resolved": "5.0.3-beta2",
-        "contentHash": "Ksg92Fx6csMTNVytChfoobHX1NZJBqO/hiKFDp4hH0TbEqkOsUTmm/EWkhT5oZ32RYoKK95uMax9Y+YvY5hOog==",
+        "requested": "[5.0.3-rc2, )",
+        "resolved": "5.0.3-rc2",
+        "contentHash": "Nnc8Ej3oGXns1j9lpWDWPRE+ej/78cRzp7ODR+kCVIUj0pWvNnXJbvMyQKG74Y3y2TLYFS/Aj0h/3ecuGNJC4w==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.2",
+          "System.Threading.Tasks.Extensions": "4.5.4",
           "WebSocket4Net": "0.15.2"
         }
       },
@@ -1261,12 +1263,13 @@
     ".NETStandard,Version=v2.1": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[5.0.3-beta2, )",
-        "resolved": "5.0.3-beta2",
-        "contentHash": "Ksg92Fx6csMTNVytChfoobHX1NZJBqO/hiKFDp4hH0TbEqkOsUTmm/EWkhT5oZ32RYoKK95uMax9Y+YvY5hOog==",
+        "requested": "[5.0.3-rc2, )",
+        "resolved": "5.0.3-rc2",
+        "contentHash": "Nnc8Ej3oGXns1j9lpWDWPRE+ej/78cRzp7ODR+kCVIUj0pWvNnXJbvMyQKG74Y3y2TLYFS/Aj0h/3ecuGNJC4w==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.2",
+          "System.Threading.Tasks.Extensions": "4.5.4",
           "WebSocket4Net": "0.15.2"
         }
       },
@@ -2131,6 +2134,14 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "System.Threading.Tasks.Extensions": {
+        "type": "Transitive",
+        "resolved": "4.5.4",
+        "contentHash": "zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.5.3"
+        }
+      },
       "System.Threading.ThreadPool": {
         "type": "Transitive",
         "resolved": "4.3.0",
@@ -2168,12 +2179,13 @@
     ".NETCoreApp,Version=v5.0": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[5.0.3-beta2, )",
-        "resolved": "5.0.3-beta2",
-        "contentHash": "Ksg92Fx6csMTNVytChfoobHX1NZJBqO/hiKFDp4hH0TbEqkOsUTmm/EWkhT5oZ32RYoKK95uMax9Y+YvY5hOog==",
+        "requested": "[5.0.3-rc2, )",
+        "resolved": "5.0.3-rc2",
+        "contentHash": "Nnc8Ej3oGXns1j9lpWDWPRE+ej/78cRzp7ODR+kCVIUj0pWvNnXJbvMyQKG74Y3y2TLYFS/Aj0h/3ecuGNJC4w==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.2",
+          "System.Threading.Tasks.Extensions": "4.5.4",
           "WebSocket4Net": "0.15.2"
         }
       },
@@ -2992,6 +3004,11 @@
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
+      },
+      "System.Threading.Tasks.Extensions": {
+        "type": "Transitive",
+        "resolved": "4.5.4",
+        "contentHash": "zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg=="
       },
       "System.Threading.ThreadPool": {
         "type": "Transitive",

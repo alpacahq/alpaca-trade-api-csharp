@@ -4,21 +4,24 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.0.3-beta3</Version>
+    <Version>5.0.3-rc2</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.0.3.6</AssemblyVersion>
-    <FileVersion>5.0.3.6</FileVersion>
+    <AssemblyVersion>5.0.3.8</AssemblyVersion>
+    <FileVersion>5.0.3.8</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Added support for getting snapshot(s) endpoints from the Alpaca Data API v2 into the `IAlpacaDataClient` class.
-- Added the missed (undocumented) `DISABLE_PENDING` account status.</PackageReleaseNotes>
+    <PackageReleaseNotes>- All Alpaca Data API v1 endpoints marked with the `Obsolete` attribute with error level and remove unused classes.
+- Prevented an error in the `IAlpacaDataStreamingClient.Subscription` method in case of the empty symbol name.
+- Added daily bar subscription support into the `IAlpacaDataStreamingClient` implementation.
+- Some non-breaking changes in asynchronous methods according to MS recommendations.
+- Added the missed in documentation `FEE` account activity type.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -49,7 +52,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\NullableHelper.cs" Link="NullableHelper.cs" />
     <Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
   </ItemGroup>
 
@@ -76,9 +78,9 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Polly" Version="7.2.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.IO.Pipelines" Version="5.0.1" />
+    <PackageReference Include="Polly" Version="7.2.2" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
   </ItemGroup>
 

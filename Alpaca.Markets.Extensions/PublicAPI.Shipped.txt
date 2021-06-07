@@ -4,6 +4,7 @@ Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions
 Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions
 Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions
 Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions
+Alpaca.Markets.Extensions.ConfigurationExtensions
 Alpaca.Markets.Extensions.EnvironmentExtensions
 Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<TItem>
 Alpaca.Markets.Extensions.ReconnectionParameters
@@ -45,6 +46,10 @@ static Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTrad
 static Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
 static Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaStreamingClient! client) -> Alpaca.Markets.IAlpacaStreamingClient!
 static Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaStreamingClient! client, Alpaca.Markets.Extensions.ReconnectionParameters! parameters) -> Alpaca.Markets.IAlpacaStreamingClient!
+static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaDataClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaDataClient!
+static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaDataStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaDataStreamingClient!
+static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaStreamingClient!
+static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaTradingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaTradingClient!
 static Alpaca.Markets.Extensions.EnvironmentExtensions.WithProxyForAlpacaDataStreamingClient(this Alpaca.Markets.IEnvironment! environment) -> Alpaca.Markets.IEnvironment!
 static Alpaca.Markets.Extensions.EnvironmentExtensions.WithProxyForAlpacaDataStreamingClient(this Alpaca.Markets.IEnvironment! environment, System.Uri! alpacaProxyAgentUrl) -> Alpaca.Markets.IEnvironment!
 static Alpaca.Markets.Extensions.ReconnectionParameters.Default.get -> Alpaca.Markets.Extensions.ReconnectionParameters!

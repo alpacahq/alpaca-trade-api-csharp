@@ -16,6 +16,9 @@ namespace Alpaca.Markets
         public List<String>? Quotes { get; set; }
 
         [JsonProperty(PropertyName = "bars", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-        public List<String>? Bars { get; set; }
+        public List<String>? MinuteBars { get; set; }
+
+        [JsonProperty(PropertyName = "dailyBars", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public List<String>? DailyBars { get; set; }
     }
 }
