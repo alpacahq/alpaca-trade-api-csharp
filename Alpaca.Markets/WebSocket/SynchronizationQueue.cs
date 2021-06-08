@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
@@ -14,11 +13,15 @@ namespace Alpaca.Markets
 
         private readonly CancellationTokenSource _cancellationTokenSource = new ();
 
+        private readonly Thread _processingThread;
+
         public SynchronizationQueue()
         {
-            var factory = new TaskFactory(_cancellationTokenSource.Token);
-            factory.StartNew(processingTask, _cancellationTokenSource.Token,
-                TaskCreationOptions.LongRunning, TaskScheduler.Current);
+            _processingThread = new Thread(processingTask)
+            {
+                IsBackground = true
+            };
+            _processingThread.Start();
         }
 
         public event Action<Exception>? OnError;
@@ -58,6 +61,9 @@ namespace Alpaca.Markets
 
         public void Dispose()
         {
+            _cancellationTokenSource.Cancel(false);
+            _processingThread.Join(TimeSpan.FromSeconds(5));
+
             _cancellationTokenSource.Dispose();
             _actions.Dispose();
         }
