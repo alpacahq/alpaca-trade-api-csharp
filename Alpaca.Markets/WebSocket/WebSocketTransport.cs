@@ -50,8 +50,6 @@ namespace Alpaca.Markets
                 }
             }
         }
-
-        private readonly WebSocketMessageType _webSocketMessageType;
         
         private readonly ClientWebSocket _webSocket;
 
@@ -66,10 +64,7 @@ namespace Alpaca.Markets
         private readonly IDuplexPipe _transport;
 
         public WebSocketsTransport(
-            Uri url, 
-            WebSocketMessageType webSocketMessageType
-            //HttpConnectionOptions httpConnectionOptions
-            )
+            Uri url)
         {
 #pragma warning disable PC001 // API not supported on all platforms
             _webSocket = new ClientWebSocket();
@@ -80,51 +75,8 @@ namespace Alpaca.Markets
                 throw new ArgumentNullException(nameof(url));
             }
 
-            _webSocketMessageType = webSocketMessageType;
+            _resolvedUrl = url;
 
-            _resolvedUrl = resolveWebSocketsUrl(url);
-
-            //if (httpConnectionOptions != null)
-            //{
-            //    if (httpConnectionOptions.Headers.Count > 0)
-            //    {
-            //        foreach (var header in httpConnectionOptions.Headers)
-            //        {
-            //            _webSocket.Options.SetRequestHeader(header.Key, header.Value);
-            //        }
-            //    }
-
-            //    if (httpConnectionOptions.Cookies != null)
-            //    {
-            //        _webSocket.Options.Cookies = httpConnectionOptions.Cookies;
-            //    }
-
-            //    if (httpConnectionOptions.ClientCertificates != null)
-            //    {
-            //        _webSocket.Options.ClientCertificates.AddRange(httpConnectionOptions.ClientCertificates);
-            //    }
-
-            //    if (httpConnectionOptions.Credentials != null)
-            //    {
-            //        _webSocket.Options.Credentials = httpConnectionOptions.Credentials;
-            //    }
-
-            //    if (httpConnectionOptions.Proxy != null)
-            //    {
-            //        _webSocket.Options.Proxy = httpConnectionOptions.Proxy;
-            //    }
-
-            //    if (httpConnectionOptions.UseDefaultCredentials != null)
-            //    {
-            //        _webSocket.Options.UseDefaultCredentials = httpConnectionOptions.UseDefaultCredentials.Value;
-            //    }
-
-            //    httpConnectionOptions.WebSocketConfiguration?.Invoke(_webSocket.Options);
-            //}
-
-            //_closeTimeout = httpConnectionOptions?.CloseTimeout ?? default(TimeSpan);
-
-            // Create the pipe pair (Application's writer is connected to Transport's reader, and vice versa)
             var options = new PipeOptions(
                 writerScheduler: PipeScheduler.ThreadPool,
                 readerScheduler: PipeScheduler.ThreadPool,
@@ -148,8 +100,6 @@ namespace Alpaca.Markets
         public async Task StartAsync(
             CancellationToken cancellationToken = default)
         {
-            //Log.StartTransport(_logger, transferFormat, resolvedUrl);
-
             try
             {
                 await _webSocket.ConnectAsync(_resolvedUrl, cancellationToken)
@@ -161,21 +111,18 @@ namespace Alpaca.Markets
                 throw;
             }
 
-            //Log.StartedTransport(_logger);
-
             Opened?.Invoke();
             _running = processSocketAsync(_webSocket);
         }
 
-        [SuppressMessage("Design", 
-            "CA1031:Do not catch general exception types", Justification = "<Pending>")]
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
         public async Task StopAsync(
             CancellationToken cancellationToken = default)
         {
-            //Log.TransportStopping(_logger);
-
-            _transport!.Output.Complete();
-            _transport!.Input.Complete();
+            await _transport!.Output.CompleteAsync().ConfigureAwait(false);
+            await _transport!.Input.CompleteAsync().ConfigureAwait(false);
 
             // Cancel any pending reads from the application, this should start the entire shutdown process
             _application.Input.CancelPendingRead();
@@ -187,10 +134,10 @@ namespace Alpaca.Markets
                 await Task.WhenAny(_running, taskCompletionSource.Task)
                     .ConfigureAwait(false);
             }
-            catch (Exception /*ex*/)
+            catch (Exception exception)
             {
-                //Log.TransportStopped(_logger, ex);
                 // exceptions have been handled in the Running task continuation by closing the channel with the exception
+                Trace.TraceInformation(exception.Message);
                 return;
             }
             finally
@@ -199,19 +146,18 @@ namespace Alpaca.Markets
             }
 
             Closed?.Invoke();
-            //Log.TransportStopped(_logger, null);
         }
 
         public async ValueTask SendAsync(
-            String message)
-        {
-            await _transport.Output.WriteAsync(Encoding.UTF8.GetBytes(message))
+            String message) =>
+            await _transport.Output
+                .WriteAsync(Encoding.UTF8.GetBytes(message))
                 .ConfigureAwait(false);
-        }
 
         public void Dispose() => _webSocket.Dispose();
 
-        private async Task processSocketAsync(WebSocket socket)
+        private async Task processSocketAsync(
+            WebSocket socket)
         {
             using (socket)
             {
@@ -255,8 +201,7 @@ namespace Alpaca.Markets
                 {
                     // We're waiting on the websocket to close and there are 2 things it could be doing
                     // 1. Waiting for websocket data
-                    // 2. Waiting on a flush to complete (backpressure being applied)
-
+                    // 2. Waiting on a flush to complete (back pressure being applied)
                     _aborted = true;
 
                     // Abort the websocket if we're stuck in a pending receive from the client
@@ -283,8 +228,6 @@ namespace Alpaca.Markets
 
                     if (result.MessageType == WebSocketMessageType.Close)
                     {
-                        //Log.WebSocketClosed(_logger, _webSocket.CloseStatus);
-
                         if (_webSocket.CloseStatus != WebSocketCloseStatus.NormalClosure)
                         {
                             throw new InvalidOperationException($"Websocket closed with error: {_webSocket.CloseStatus}.");
@@ -310,8 +253,6 @@ namespace Alpaca.Markets
                     // Need to check again for netstandard2.1 because a close can happen between a 0-byte read and the actual read
                     if (receiveResult.MessageType == WebSocketMessageType.Close)
                     {
-                        //Log.WebSocketClosed(_logger, _webSocket.CloseStatus);
-
                         if (_webSocket.CloseStatus != WebSocketCloseStatus.NormalClosure)
                         {
                             throw new InvalidOperationException($"Websocket closed with error: {_webSocket.CloseStatus}.");
@@ -319,8 +260,6 @@ namespace Alpaca.Markets
 
                         return;
                     }
-
-                    //Log.MessageReceived(_logger, receiveResult.MessageType, receiveResult.Count, receiveResult.EndOfMessage);
 
                     _application.Output.Advance(receiveResult.Count);
 
@@ -352,24 +291,22 @@ namespace Alpaca.Markets
                     }
                 }
             }
-            catch (OperationCanceledException)
+            catch (OperationCanceledException exception)
             {
-                //Log.ReceiveCanceled(_logger);
+                Trace.TraceInformation(exception.Message);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
                 if (!_aborted)
                 {
-                    _application.Output.Complete(ex);
-                    Error?.Invoke(ex);
+                    await _application.Output.CompleteAsync(exception).ConfigureAwait(false);
+                    Error?.Invoke(exception);
                 }
             }
             finally
             {
                 // We're done writing
-                _application.Output.Complete();
-
-                //Log.ReceiveStopped(_logger);
+                await _application.Output.CompleteAsync().ConfigureAwait(false);
             }
         }
 
@@ -388,7 +325,6 @@ namespace Alpaca.Markets
                     var buffer = result.Buffer;
 
                     // Get a frame from the application
-
                     try
                     {
                         if (result.IsCanceled)
@@ -400,11 +336,9 @@ namespace Alpaca.Markets
                         {
                             try
                             {
-                                //Log.ReceivedFromApp(_logger, buffer.Length);
-
                                 if (webSocketCanSend(socket))
                                 {
-                                    await socket.SendAsync(buffer, _webSocketMessageType)
+                                    await socket.SendAsync(buffer, WebSocketMessageType.Binary)
                                         .ConfigureAwait(false);
                                 }
                                 else
@@ -412,11 +346,11 @@ namespace Alpaca.Markets
                                     break;
                                 }
                             }
-                            catch (Exception /*ex*/)
+                            catch (Exception exception)
                             {
                                 if (!_aborted)
                                 {
-                                    //Log.ErrorSendingMessage(_logger, ex);
+                                    Trace.TraceInformation(exception.Message);
                                 }
                                 break;
                             }
@@ -450,15 +384,13 @@ namespace Alpaca.Markets
                             "", CancellationToken.None)
                             .ConfigureAwait(false);
                     }
-                    catch (Exception /*ex*/)
+                    catch (Exception exception)
                     {
-                        //Log.ClosingWebSocketFailed(_logger, ex);
+                        Trace.TraceInformation(exception.Message);
                     }
                 }
 
-                _application.Input.Complete();
-
-                //Log.SendStopped(_logger);
+                await _application.Input.CompleteAsync().ConfigureAwait(false);
             }
         }
 
@@ -467,20 +399,5 @@ namespace Alpaca.Markets
                 WebSocketState.Aborted or
                 WebSocketState.Closed or
                 WebSocketState.CloseSent);
-
-        private static Uri resolveWebSocketsUrl(Uri url)
-        {
-            var uriBuilder = new UriBuilder(url);
-            if (url.Scheme == "http")
-            {
-                uriBuilder.Scheme = "ws";
-            }
-            else if (url.Scheme == "https")
-            {
-                uriBuilder.Scheme = "wss";
-            }
-
-            return uriBuilder.Uri;
-        }
     }
 }

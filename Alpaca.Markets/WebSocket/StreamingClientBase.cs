@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.Sockets;
-using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -36,8 +35,7 @@ namespace Alpaca.Markets
             Configuration = configuration.EnsureNotNull(nameof(configuration));
             Configuration.EnsureIsValid();
 
-            _webSocket = new WebSocketsTransport(
-                Configuration.ApiEndpoint, WebSocketMessageType.Binary);
+            _webSocket = new WebSocketsTransport(Configuration.ApiEndpoint);
 
             _webSocket.Opened += OnOpened;
             _webSocket.Closed += OnClosed;
