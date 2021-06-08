@@ -132,6 +132,36 @@ namespace Alpaca.Markets.Extensions
                 client.EnsureNotNull(nameof(client)),
                 symbols.EnsureNotNull(nameof(symbols)));
 
+        /// <summary>
+        /// Gets the daily aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        public static IAlpacaDataSubscription<IStreamAgg> GetDailyAggSubscription(
+            this IAlpacaDataStreamingClient client,
+            params String[] symbols) =>
+            getDailyAggSubscription(
+                client.EnsureNotNull(nameof(client)),
+                symbols.EnsureNotNull(nameof(symbols)));
+
+        /// <summary>
+        /// Gets the Daily aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        public static IAlpacaDataSubscription<IStreamAgg> GetDailyAggSubscription(
+            this IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            getDailyAggSubscription(
+                client.EnsureNotNull(nameof(client)),
+                symbols.EnsureNotNull(nameof(symbols)));
+
         private static IAlpacaDataSubscription<IStreamTrade> getTradeSubscription(
             IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
@@ -146,6 +176,11 @@ namespace Alpaca.Markets.Extensions
             IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
             getSubscription(client.GetMinuteAggSubscription, symbols);
+
+        private static IAlpacaDataSubscription<IStreamAgg> getDailyAggSubscription(
+            IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            getSubscription(client.GetDailyAggSubscription, symbols);
 
         private static IAlpacaDataSubscription<TItem> getSubscription<TItem>(
             Func<String, IAlpacaDataSubscription<TItem>> selector,
