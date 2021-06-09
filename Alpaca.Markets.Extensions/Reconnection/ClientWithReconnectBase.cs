@@ -80,11 +80,9 @@ namespace Alpaca.Markets.Extensions
 
         public event Action<Exception>? OnError;
 
-        protected virtual void OnReconnection(
-            CancellationToken cancellationToken)
-        {
-            // DO nothing by default for auto-resubscribed clients.
-        }
+        protected virtual ValueTask OnReconnection(
+            CancellationToken cancellationToken) =>
+            new (); // DO nothing by default for auto-resubscribed clients.
 
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
@@ -146,7 +144,8 @@ namespace Alpaca.Markets.Extensions
             if (Interlocked.Exchange(ref _reconnectionAttempts, 0) <=
                 _reconnectionParameters.MaxReconnectionAttempts)
             {
-                OnReconnection(_cancellationTokenSource.Token);
+                await OnReconnection(_cancellationTokenSource.Token)
+                    .ConfigureAwait(false);
             }
             else
             {

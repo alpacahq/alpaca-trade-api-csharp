@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -44,7 +45,7 @@ namespace Alpaca.Markets.Extensions
             public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(String symbol) =>
                 Client.GetDailyBarSubscription(symbol);
 
-            public void Subscribe(
+            public ValueTask SubscribeAsync(
                 IAlpacaDataSubscription subscription)
             {
                 foreach (var stream in subscription.Streams)
@@ -52,14 +53,14 @@ namespace Alpaca.Markets.Extensions
                     _subscriptions.TryAdd(stream, subscription);
                 }
 
-                Client.Subscribe(subscription);
+                return Client.SubscribeAsync(subscription);
             }
 
-            public void Subscribe(
+            public ValueTask SubscribeAsync(
                 IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-                Subscribe(subscriptions.ToArray());
+                SubscribeAsync(subscriptions.ToArray());
 
-            public void Subscribe(
+            public ValueTask SubscribeAsync(
                 params IAlpacaDataSubscription[] subscriptions)
             {
                 foreach (var subscription in subscriptions)
@@ -70,10 +71,10 @@ namespace Alpaca.Markets.Extensions
                     }
                 }
 
-                Client.Subscribe(subscriptions);
+                return Client.SubscribeAsync(subscriptions);
             }
 
-            public void Unsubscribe(
+            public ValueTask UnsubscribeAsync(
                 IAlpacaDataSubscription subscription)
             {
                 foreach (var stream in subscription.Streams)
@@ -81,14 +82,14 @@ namespace Alpaca.Markets.Extensions
                     _subscriptions.TryRemove(stream, out _);
                 }
 
-                Client.Unsubscribe(subscription);
+                return Client.UnsubscribeAsync(subscription);
             }
 
-            public void Unsubscribe(
+            public ValueTask UnsubscribeAsync(
                 IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-                Unsubscribe(subscriptions.ToArray());
+                UnsubscribeAsync(subscriptions.ToArray());
 
-            public void Unsubscribe(
+            public ValueTask UnsubscribeAsync(
                 params IAlpacaDataSubscription[] subscriptions)
             {
                 foreach (var subscription in subscriptions)
@@ -99,12 +100,12 @@ namespace Alpaca.Markets.Extensions
                     }
                 }
 
-                Client.Unsubscribe(subscriptions);
+                return Client.UnsubscribeAsync(subscriptions);
             }
 
-            protected override void OnReconnection(
+            protected override ValueTask OnReconnection(
                 CancellationToken cancellationToken) =>
-                Client.Subscribe(_subscriptions.Values);
+                Client.SubscribeAsync(_subscriptions.Values);
         }
 
         /// <summary>
