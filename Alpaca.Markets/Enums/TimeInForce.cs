@@ -46,6 +46,6 @@ namespace Alpaca.Markets
         /// The order will become a limit order if a limit price is specified or a market order otherwise at market close.
         /// </summary>
         [EnumMember(Value = "cls")]
-        Cls,
+        Cls
     }
 }

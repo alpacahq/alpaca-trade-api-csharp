@@ -29,6 +29,6 @@ namespace Alpaca.Markets
         /// Check rules on position entry and exit.
         /// </summary>
         [EnumMember(Value = "both")]
-        Both,
+        Both
     }
 }

@@ -1,40 +1,44 @@
 ﻿using System.Buffers;
-using System.Diagnostics;
 using System.Net.WebSockets;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+
+#if !NETCOREAPP
+using System.Runtime.InteropServices;
+#endif
 
 namespace Alpaca.Markets
 {
     internal static class WebSocketExtensions
     {
-        public static ValueTask SendAsync(this WebSocket webSocket, ReadOnlySequence<byte> buffer, WebSocketMessageType webSocketMessageType, CancellationToken cancellationToken = default)
+        public static ValueTask SendAsync(
+            this WebSocket webSocket,
+            ReadOnlySequence<byte> buffer,
+            WebSocketMessageType webSocketMessageType,
+            CancellationToken cancellationToken = default)
         {
 #if NETCOREAPP
-            if (buffer.IsSingleSegment)
-            {
-                return webSocket.SendAsync(buffer.First, webSocketMessageType, endOfMessage: true, cancellationToken);
-            }
-            else
-            {
-                return sendMultiSegmentAsync(webSocket, buffer, webSocketMessageType, cancellationToken);
-            }
+            return buffer.IsSingleSegment
+                ? webSocket.SendAsync(buffer.First, webSocketMessageType, true, cancellationToken)
+                : sendMultiSegmentAsync(webSocket, buffer, webSocketMessageType, cancellationToken);
+
 #else
+            // ReSharper disable once InvertIf
             if (buffer.IsSingleSegment)
             {
-                var isArray = MemoryMarshal.TryGetArray(buffer.First, out var segment);
-                Debug.Assert(isArray);
-                return new ValueTask(webSocket.SendAsync(segment, webSocketMessageType, endOfMessage: true, cancellationToken));
+                var _ = MemoryMarshal.TryGetArray(buffer.First, out var segment);
+                return new ValueTask(webSocket.SendAsync(segment, webSocketMessageType, true, cancellationToken));
             }
-            else
-            {
-                return sendMultiSegmentAsync(webSocket, buffer, webSocketMessageType, cancellationToken);
-            }
+
+            return sendMultiSegmentAsync(webSocket, buffer, webSocketMessageType, cancellationToken);
 #endif
         }
 
-        private static async ValueTask sendMultiSegmentAsync(WebSocket webSocket, ReadOnlySequence<byte> buffer, WebSocketMessageType webSocketMessageType, CancellationToken cancellationToken = default)
+        private static async ValueTask sendMultiSegmentAsync(
+            WebSocket webSocket,
+            ReadOnlySequence<byte> buffer,
+            WebSocketMessageType webSocketMessageType,
+            CancellationToken cancellationToken = default)
         {
             var position = buffer.Start;
             // Get a segment before the loop so we can be one segment behind while writing
@@ -43,22 +47,20 @@ namespace Alpaca.Markets
             while (buffer.TryGet(ref position, out var segment))
             {
 #if NETCOREAPP
-                await webSocket.SendAsync(prevSegment, webSocketMessageType, endOfMessage: false, cancellationToken).ConfigureAwait(false);
+                await webSocket.SendAsync(prevSegment, webSocketMessageType, false, cancellationToken).ConfigureAwait(false);
 #else
-                var isArray = MemoryMarshal.TryGetArray(prevSegment, out var arraySegment);
-                Debug.Assert(isArray);
-                await webSocket.SendAsync(arraySegment, webSocketMessageType, endOfMessage: false, cancellationToken).ConfigureAwait(false);
+                var _ = MemoryMarshal.TryGetArray(prevSegment, out var arraySegment);
+                await webSocket.SendAsync(arraySegment, webSocketMessageType, false, cancellationToken).ConfigureAwait(false);
 #endif
                 prevSegment = segment;
             }
 
             // End of message frame
 #if NETCOREAPP
-            await webSocket.SendAsync(prevSegment, webSocketMessageType, endOfMessage: true, cancellationToken).ConfigureAwait(false);
+            await webSocket.SendAsync(prevSegment, webSocketMessageType, true, cancellationToken).ConfigureAwait(false);
 #else
-            var isArrayEnd = MemoryMarshal.TryGetArray(prevSegment, out var arraySegmentEnd);
-            Debug.Assert(isArrayEnd);
-            await webSocket.SendAsync(arraySegmentEnd, webSocketMessageType, endOfMessage: true, cancellationToken).ConfigureAwait(false);
+            _ = MemoryMarshal.TryGetArray(prevSegment, out var arraySegmentEnd);
+            await webSocket.SendAsync(arraySegmentEnd, webSocketMessageType, true, cancellationToken).ConfigureAwait(false);
 #endif
         }
     }

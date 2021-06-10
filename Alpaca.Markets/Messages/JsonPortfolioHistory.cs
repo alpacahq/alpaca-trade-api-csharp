@@ -66,8 +66,8 @@ namespace Alpaca.Markets
                 {
                     Equity = equities[index],
                     ProfitLoss = profitLosses[index],
-                    ProfitLossPercentage = profitLossesPercentage[index],
                     TimestampUtc = timestamps[index],
+                    ProfitLossPercentage = profitLossesPercentage[index]
                 });
             }
         }

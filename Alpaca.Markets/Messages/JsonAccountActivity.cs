@@ -75,6 +75,7 @@ namespace Alpaca.Markets
             var components = ActivityId.Split(_activityIdSeparator, StringSplitOptions.RemoveEmptyEntries);
 
             if (components.Length > 0 &&
+                // ReSharper disable once StringLiteralTypo
                 DateTime.TryParseExact(components[0], "yyyyMMddHHmmssfff",
                     CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateTime))
             {

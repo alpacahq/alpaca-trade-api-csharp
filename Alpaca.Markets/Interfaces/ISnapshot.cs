@@ -12,6 +12,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the snapshot's asset name.
         /// </summary>
+        [UsedImplicitly]
         String Symbol { get; }
 
         /// <summary>

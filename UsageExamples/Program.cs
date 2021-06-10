@@ -9,8 +9,8 @@ namespace UsageExamples
         {
             try
             {
-                var algo = new MeanReversionBrokerage();
-                await algo.Run();
+                var algorithm = new MeanReversionBrokerage();
+                await algorithm.Run();
             }
             catch (Exception e)
             {

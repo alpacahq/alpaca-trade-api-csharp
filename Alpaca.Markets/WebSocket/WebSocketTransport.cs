@@ -4,14 +4,12 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO.Pipelines;
 using System.Net.WebSockets;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
-    [SuppressMessage("ReSharper", "UnusedType.Global")]
     internal sealed class WebSocketsTransport : IDisposable
     {
         private sealed class DuplexPipe : IDuplexPipe
@@ -242,8 +240,7 @@ namespace Alpaca.Markets
                     var receiveResult = await socket.ReceiveAsync(memory, CancellationToken.None)
                         .ConfigureAwait(false);
 #elif NETSTANDARD2_0 || NET461
-                    var isArray = MemoryMarshal.TryGetArray<byte>(memory, out var arraySegment);
-                    Debug.Assert(isArray);
+                    var _ = System.Runtime.InteropServices.MemoryMarshal.TryGetArray<byte>(memory, out var arraySegment);
 
                     // Exceptions are handled above where the send and receive tasks are being run.
                     var receiveResult = await socket.ReceiveAsync(arraySegment, CancellationToken.None).ConfigureAwait(false);

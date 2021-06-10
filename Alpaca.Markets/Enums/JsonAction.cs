@@ -25,6 +25,6 @@ namespace Alpaca.Markets
         Subscribe,
 
         [EnumMember(Value = "unsubscribe")]
-        Unsubscribe,
+        Unsubscribe
     }
 }

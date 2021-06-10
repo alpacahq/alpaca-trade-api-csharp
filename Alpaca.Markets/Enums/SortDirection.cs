@@ -22,6 +22,6 @@ namespace Alpaca.Markets
         /// Ascending sort order
         /// </summary>
         [EnumMember(Value = "asc")]
-        Ascending,
+        Ascending
     }
 }

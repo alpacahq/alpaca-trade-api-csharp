@@ -67,7 +67,7 @@ namespace UsageExamples
 
             closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 
-            // TODO: olegra - re-enable after Alpaca Data API v2 transition period completion
+            // TODO: re-enable after Alpaca Data API v2 transition period completion
 
             //var today = DateTime.Today;
             //// Get the first group of bars from today if the market has already been open.
@@ -94,7 +94,7 @@ namespace UsageExamples
             Console.WriteLine("Alpaca streaming client opened.");
 
             var subscription = alpacaDataStreamingClient.GetMinuteBarSubscription(symbol);
-            subscription.Received += async (bar) =>
+            subscription.Received += async bar =>
             {
                 // If the market's close to closing, exit position and stop trading.
                 var minutesUntilClose = closingTime - DateTime.UtcNow;
@@ -271,6 +271,7 @@ namespace UsageExamples
                 return;
             }
 
+            // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
             switch (trade.Event)
             {
                 case TradeEvent.Fill:

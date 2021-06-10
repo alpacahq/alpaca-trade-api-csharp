@@ -8,6 +8,7 @@ namespace Alpaca.Markets
     /// Exchanges supported by Alpaca REST API.
     /// </summary>
     [JsonConverter(typeof(ExchangeEnumConverter))]
+    [SuppressMessage("ReSharper", "StringLiteralTypo")]
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public enum Exchange
     {

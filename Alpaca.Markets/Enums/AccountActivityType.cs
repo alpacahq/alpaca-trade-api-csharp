@@ -200,6 +200,6 @@ namespace Alpaca.Markets
         /// REG/TAF fees
         /// </summary>
         [EnumMember(Value = "FEE")]
-        RefTafFee,
+        RefTafFee
     }
 }
