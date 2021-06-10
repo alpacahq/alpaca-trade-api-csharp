@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -11,8 +10,6 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaTradingClient.ListAccountActivitiesAsync(AccountActivitiesRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
-    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public sealed class AccountActivitiesRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>
     {
         private readonly List<AccountActivityType> _accountActivityTypes = new ();
@@ -29,7 +26,6 @@ namespace Alpaca.Markets
         /// Creates new instance of <see cref="AccountActivitiesRequest"/> object for a single activity types.
         /// </summary>
         /// <param name="activityType">The activity type you want to view entries for.</param>
-        [UsedImplicitly]
         public AccountActivitiesRequest(
             AccountActivityType activityType) =>
             _accountActivityTypes.Add(activityType);
@@ -45,31 +41,37 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the activity types you want to view entries for. Empty list means 'all activity types'.
         /// </summary>
+        [UsedImplicitly]
         public IReadOnlyList<AccountActivityType> ActivityTypes => _accountActivityTypes;
 
         /// <summary>
         /// Gets the date for which you want to see activities.
         /// </summary>
+        [UsedImplicitly]
         public DateTime? Date { get; private set; }
 
         /// <summary>
         /// Gets inclusive date interval for filtering items in response.
         /// </summary>
+        [UsedImplicitly]
         public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
 
         /// <summary>
         /// Gets or sets the sorting direction for results.
         /// </summary>
+        [UsedImplicitly]
         public SortDirection? Direction { get; [UsedImplicitly] set; }
 
         /// <summary>
         /// Gets or sets the maximum number of entries to return in the response.
         /// </summary>
+        [UsedImplicitly]
         public Int64? PageSize { get; [UsedImplicitly] set; }
         
         /// <summary>
         /// Gets or sets the ID of the end of your current page of results.
         /// </summary>
+        [UsedImplicitly]
         public String? PageToken { get; [UsedImplicitly] set; }
 
         /// <summary>
@@ -77,7 +79,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="date">Target date for filtering activities.</param>
         /// <returns>Fluent interface method return same <see cref="AccountActivitiesRequest"/> instance.</returns>
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
+        [UsedImplicitly]
         public AccountActivitiesRequest SetSingleDate(
             DateTime date)
         {

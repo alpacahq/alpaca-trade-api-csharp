@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -25,6 +26,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets type of time bars for retrieval.
         /// </summary>
+        [UsedImplicitly]
         public BarTimeFrame TimeFrame { get; }
 
         /// <inheritdoc />

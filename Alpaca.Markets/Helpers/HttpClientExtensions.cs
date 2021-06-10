@@ -29,7 +29,7 @@ namespace Alpaca.Markets
             AppContext.SetSwitch("DontEnableSystemDefaultTlsVersions", false);
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
-            HttpClient httpClient,
+            HttpMessageInvoker httpClient,
             HttpMethod method,
             Uri endpointUri,
             CancellationToken cancellationToken)
@@ -42,7 +42,7 @@ namespace Alpaca.Markets
         }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson, TContent>(
-            HttpClient httpClient,
+            HttpMessageInvoker httpClient,
             HttpMethod method,
             Uri endpointUri,
             TContent content,
@@ -56,7 +56,7 @@ namespace Alpaca.Markets
         }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
-            HttpClient httpClient,
+            HttpMessageInvoker httpClient,
             HttpRequestMessage request,
             CancellationToken cancellationToken)
             where TJson : TApi
@@ -69,7 +69,7 @@ namespace Alpaca.Markets
         }
 
         private static async Task<Boolean> callAndReturnSuccessCodeAsync(
-            HttpClient httpClient,
+            HttpMessageInvoker httpClient,
             HttpMethod method,
             Uri endpointUri,
             CancellationToken cancellationToken)

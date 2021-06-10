@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -34,6 +35,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets inclusive date interval for filtering items in response.
         /// </summary>
+        [UsedImplicitly]
         public IInclusiveTimeInterval TimeInterval { get; }
 
         /// <summary>

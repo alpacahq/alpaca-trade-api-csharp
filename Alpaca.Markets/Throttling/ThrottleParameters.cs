@@ -99,23 +99,27 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets maximal number of retry attempts for single request.
         /// </summary>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public UInt32 MaxRetryAttempts { get; [UsedImplicitly] set; }
 
         /// <summary>
         /// Gets set of HTTP status codes which when received should initiate a retry of the affected request
         /// </summary>
+        [UsedImplicitly]
         public ISet<HttpStatusCode> RetryHttpStatuses => _retryHttpStatuses;
 
         /// <summary>
         /// Gets set of socket error codes which when received should initiate a retry of the affected request
         /// </summary>
+        [UsedImplicitly]
         public ISet<SocketError> RetrySocketErrorCodes => _retrySocketErrorCodes;
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public IAsyncPolicy<HttpResponseMessage> GetAsyncPolicy()
         {

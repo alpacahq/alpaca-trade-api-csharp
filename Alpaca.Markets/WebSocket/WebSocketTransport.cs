@@ -276,7 +276,7 @@ namespace Alpaca.Markets
                     {
                         var readResult = await _transport.Input.ReadAsync().ConfigureAwait(false);
 
-                        switch (receiveResult.MessageType)
+                        switch (receiveResult.MessageType) //-V3002
                         {
                             case WebSocketMessageType.Binary:
                                 DataReceived?.Invoke(readResult.Buffer.ToArray());

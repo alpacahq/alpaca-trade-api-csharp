@@ -63,7 +63,7 @@ namespace Alpaca.Markets
                     stream, key => new AlpacaDataSubscription<TApi, TJson>(key));
 
             public void OnUpdate(
-                ISet<String> streams)
+                ICollection<String> streams)
             {
                 foreach (var kvp in _subscriptions)
                 {

@@ -1,16 +1,14 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Channels;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets.Extensions
 {
     /// <summary>
     /// Set of extension methods for the <see cref="IAlpacaDataSubscription{TApi}"/> interface.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedType.Global")]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class AlpacaDataSubscriptionExtensions
     {
         /// <summary>
@@ -20,6 +18,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="subscription">Original subscription object for wrapping.</param>
         /// <typeparam name="TItem">Type of streaming item provided via <paramref name="subscription"/> object.</typeparam>
         /// <returns>Stream of items received from server in form of async enumerable.</returns>
+        [UsedImplicitly]
         public static IAsyncEnumerable<TItem> AsAsyncEnumerable<TItem>(
             this IAlpacaDataSubscription<TItem> subscription) =>
             AsAsyncEnumerable(subscription, CancellationToken.None);
@@ -32,6 +31,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <typeparam name="TItem">Type of streaming item provided via <paramref name="subscription"/> object.</typeparam>
         /// <returns>Stream of items received from server in form of async enumerable.</returns>
+        [UsedImplicitly]
         public static async IAsyncEnumerable<TItem> AsAsyncEnumerable<TItem>(
             this IAlpacaDataSubscription<TItem> subscription,
             [EnumeratorCancellation] CancellationToken cancellationToken)
