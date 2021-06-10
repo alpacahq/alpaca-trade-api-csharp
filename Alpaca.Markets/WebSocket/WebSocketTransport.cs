@@ -272,23 +272,26 @@ namespace Alpaca.Markets
                         break;
                     }
 
-                    if (receiveResult.EndOfMessage)
+                    if (!receiveResult.EndOfMessage)
                     {
-                        var readResult = await _transport.Input.ReadAsync().ConfigureAwait(false);
-
-                        switch (receiveResult.MessageType) //-V3002
-                        {
-                            case WebSocketMessageType.Binary:
-                                DataReceived?.Invoke(readResult.Buffer.ToArray());
-                                break;
-
-                            case WebSocketMessageType.Text:
-                                MessageReceived?.Invoke(Encoding.UTF8.GetString(readResult.Buffer.ToArray()));
-                                break;
-                        }
-
-                        _transport.Input.AdvanceTo(readResult.Buffer.End);
+                        continue;
                     }
+
+                    var readResult = await _transport.Input.ReadAsync().ConfigureAwait(false);
+
+                    // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
+                    switch (receiveResult.MessageType) //-V3002
+                    {
+                        case WebSocketMessageType.Binary:
+                            DataReceived?.Invoke(readResult.Buffer.ToArray());
+                            break;
+
+                        case WebSocketMessageType.Text:
+                            MessageReceived?.Invoke(Encoding.UTF8.GetString(readResult.Buffer.ToArray()));
+                            break;
+                    }
+
+                    _transport.Input.AdvanceTo(readResult.Buffer.End);
                 }
             }
             catch (OperationCanceledException exception)

@@ -70,12 +70,14 @@ namespace Alpaca.Markets
                     "Symbol shouldn't be empty.", nameof(Symbol));
             }
 
-            if (Pagination is Validation.IRequest validation)
+            if (Pagination is not Validation.IRequest validation)
             {
-                foreach (var exception in validation.GetExceptions())
-                {
-                    yield return exception;
-                }
+                yield break;
+            }
+
+            foreach (var exception in validation.GetExceptions())
+            {
+                yield return exception;
             }
         }
     }

@@ -1,10 +1,12 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaDataClient.ListHistoricalQuotesAsync(HistoricalQuotesRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
+    [UsedImplicitly]
     public sealed class HistoricalQuotesRequest : HistoricalRequestBase
     {
         /// <summary>

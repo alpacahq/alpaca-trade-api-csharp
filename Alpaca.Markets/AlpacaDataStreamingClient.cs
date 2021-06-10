@@ -212,6 +212,7 @@ namespace Alpaca.Markets
             var connectionSuccess = token.ToObject<JsonConnectionSuccess>() ?? new JsonConnectionSuccess();
 
             // ReSharper disable once ConstantConditionalAccessQualifier
+            // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
             switch (connectionSuccess.Status)
             {
                 case ConnectionStatus.Connected:

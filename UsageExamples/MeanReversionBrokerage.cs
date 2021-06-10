@@ -266,23 +266,25 @@ namespace UsageExamples
         // that order before we place another.
         private void HandleTradeUpdate(ITradeUpdate trade)
         {
-            if (trade.Order.OrderId == lastTradeId)
+            if (trade.Order.OrderId != lastTradeId)
             {
-                switch (trade.Event)
-                {
-                    case TradeEvent.Fill:
-                        Console.WriteLine("Trade filled.");
-                        lastTradeOpen = false;
-                        break;
-                    case TradeEvent.Rejected:
-                        Console.WriteLine("Trade rejected.");
-                        lastTradeOpen = false;
-                        break;
-                    case TradeEvent.Canceled:
-                        Console.WriteLine("Trade canceled.");
-                        lastTradeOpen = false;
-                        break;
-                }
+                return;
+            }
+
+            switch (trade.Event)
+            {
+                case TradeEvent.Fill:
+                    Console.WriteLine("Trade filled.");
+                    lastTradeOpen = false;
+                    break;
+                case TradeEvent.Rejected:
+                    Console.WriteLine("Trade rejected.");
+                    lastTradeOpen = false;
+                    break;
+                case TradeEvent.Canceled:
+                    Console.WriteLine("Trade canceled.");
+                    lastTradeOpen = false;
+                    break;
             }
         }
 

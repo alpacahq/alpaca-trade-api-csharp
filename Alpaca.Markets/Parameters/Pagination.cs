@@ -31,7 +31,7 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
-            if (Size < MinPageSize || Size > MaxPageSize)
+            if (Size is < MinPageSize or > MaxPageSize)
             {
                 yield return new RequestValidationException("Invalid page size");
             }
