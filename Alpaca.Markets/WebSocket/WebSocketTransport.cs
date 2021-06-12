@@ -147,9 +147,10 @@ namespace Alpaca.Markets
         }
 
         public async ValueTask SendAsync(
-            String message) =>
+            String message,
+            CancellationToken cancellationToken) =>
             await _transport.Output
-                .WriteAsync(Encoding.UTF8.GetBytes(message))
+                .WriteAsync(Encoding.UTF8.GetBytes(message), cancellationToken)
                 .ConfigureAwait(false);
 
         public void Dispose() => _webSocket.Dispose();

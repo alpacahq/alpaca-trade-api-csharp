@@ -3,14 +3,12 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
 {
-    /// <summary>
-    /// Provides unified type-safe access for Alpaca data streaming API via websockets.
-    /// </summary>
     internal sealed class AlpacaDataStreamingClient :
         StreamingClientBase<AlpacaDataStreamingClientConfiguration>, 
         IAlpacaDataStreamingClient
@@ -106,10 +104,6 @@ namespace Alpaca.Markets
 
         private readonly Subscriptions _subscriptions = new ();
 
-        /// <summary>
-        /// Creates new instance of <see cref="AlpacaDataStreamingClient"/> object.
-        /// </summary>
-        /// <param name="configuration">Configuration parameters object.</param>
         public AlpacaDataStreamingClient(
             AlpacaDataStreamingClientConfiguration configuration)
             : base(configuration.EnsureNotNull(nameof(configuration))) =>
@@ -124,61 +118,45 @@ namespace Alpaca.Markets
                 { ErrorInfo, handleErrorMessages }
             };
 
-        /// <inheritdoc />
         public IAlpacaDataSubscription<ITrade> GetTradeSubscription(
             String symbol) => 
             _subscriptions.GetOrAdd<ITrade, JsonRealTimeTrade>(getStreamName(TradesChannel, symbol));
 
-        /// <inheritdoc />
         public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
             String symbol) =>
             _subscriptions.GetOrAdd<IQuote, JsonRealTimeQuote>(getStreamName(QuotesChannel, symbol));
 
-        /// <inheritdoc />
         public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() => 
             _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(MinuteBarsChannel, WildcardSymbolString));
 
-        /// <inheritdoc />
         public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
             String symbol) =>
             _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(MinuteBarsChannel, symbol));
 
-        /// <inheritdoc />
         public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
             String symbol) =>
             _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(DailyBarsChannel, symbol));
 
-        /// <inheritdoc />
         public ValueTask SubscribeAsync(
-            IAlpacaDataSubscription subscription) =>
-            subscribeAsync(subscription.EnsureNotNull(nameof(subscription)).Streams);
+            IAlpacaDataSubscription subscription,
+            CancellationToken cancellationToken = default) =>
+            subscribeAsync(subscription.EnsureNotNull(nameof(subscription)).Streams, cancellationToken);
 
-        /// <inheritdoc />
         public ValueTask SubscribeAsync(
-            params IAlpacaDataSubscription[] subscriptions) =>
-            SubscribeAsync(subscriptions.AsEnumerable());
+            IEnumerable<IAlpacaDataSubscription> subscriptions,
+            CancellationToken cancellationToken = default) =>
+            subscribeAsync(subscriptions.SelectMany(_ => _.Streams), cancellationToken);
 
-        /// <inheritdoc />
-        public ValueTask SubscribeAsync(
-            IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-            subscribeAsync(subscriptions.SelectMany(_ => _.Streams));
-
-        /// <inheritdoc />
         public ValueTask UnsubscribeAsync(
-            IAlpacaDataSubscription subscription) =>
-            unsubscribeAsync(subscription.EnsureNotNull(nameof(subscription)).Streams);
+            IAlpacaDataSubscription subscription,
+            CancellationToken cancellationToken = default) =>
+            unsubscribeAsync(subscription.EnsureNotNull(nameof(subscription)).Streams, cancellationToken);
 
-        /// <inheritdoc />
         public ValueTask UnsubscribeAsync(
-            params IAlpacaDataSubscription[] subscriptions) =>
-            UnsubscribeAsync(subscriptions.AsEnumerable());
+            IEnumerable<IAlpacaDataSubscription> subscriptions,
+            CancellationToken cancellationToken = default) =>
+            unsubscribeAsync(subscriptions.SelectMany(_ => _.Streams), cancellationToken);
 
-        /// <inheritdoc />
-        public ValueTask UnsubscribeAsync(
-            IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-            unsubscribeAsync(subscriptions.SelectMany(_ => _.Streams));
-
-        /// <inheritdoc/>
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]
@@ -317,16 +295,19 @@ namespace Alpaca.Markets
         }
 
         private ValueTask subscribeAsync(
-            IEnumerable<String> streams) =>
-            sendSubscriptionRequestAsync(getLookup(streams), JsonAction.Subscribe);
+            IEnumerable<String> streams,
+            CancellationToken cancellationToken) =>
+            sendSubscriptionRequestAsync(JsonAction.Subscribe, getLookup(streams), cancellationToken);
 
         private ValueTask unsubscribeAsync(
-            IEnumerable<String> streams) =>
-            sendSubscriptionRequestAsync(getLookup(streams), JsonAction.Unsubscribe);
+            IEnumerable<String> streams,
+            CancellationToken cancellationToken) =>
+            sendSubscriptionRequestAsync(JsonAction.Unsubscribe,getLookup(streams), cancellationToken);
 
         private ValueTask sendSubscriptionRequestAsync(
+            JsonAction action,
             ILookup<String, String> streamsByChannels,
-            JsonAction action) =>
+            CancellationToken cancellationToken) =>
             streamsByChannels.Count != 0
                 ? SendAsJsonStringAsync(new JsonSubscriptionUpdate
                 {
@@ -335,7 +316,7 @@ namespace Alpaca.Markets
                     Quotes = getSymbols(streamsByChannels, QuotesChannel),
                     DailyBars = getSymbols(streamsByChannels, DailyBarsChannel),
                     MinuteBars =getSymbols(streamsByChannels, MinuteBarsChannel)
-                })
+                }, cancellationToken)
                 : new ValueTask();
 
         private static ILookup<String, String> getLookup(
