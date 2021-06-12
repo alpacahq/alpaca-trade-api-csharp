@@ -31,7 +31,7 @@ namespace Alpaca.Markets
             _accountActivityTypes.Add(activityType);
 
         /// <summary>
-        /// Creates new instance of <see cref="BarSetRequest"/> object for several activity types.
+        /// Creates new instance of <see cref="AccountActivitiesRequest"/> object for several activity types.
         /// </summary>
         /// <param name="activityTypes">The list of activity types you want to view entries for.</param>
         public AccountActivitiesRequest(

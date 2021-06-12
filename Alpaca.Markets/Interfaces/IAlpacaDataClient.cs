@@ -14,39 +14,6 @@ namespace Alpaca.Markets
     public interface IAlpacaDataClient : IDisposable
     {
         /// <summary>
-        /// Gets lookup table of historical daily bars lists for all assets from Alpaca REST API endpoint.
-        /// </summary>
-        /// <param name="request">Historical daily bars request parameters.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only list of daily bars for specified asset.</returns>
-        [Obsolete("The underlying endpoint will be deprecated soon - use the `ListHistoricalBarsAsync` method instead.", true)]
-        Task<IReadOnlyDictionary<String, IReadOnlyList<IBar>>> GetBarSetAsync(
-            BarSetRequest request,
-            CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Gets last trade for singe asset from Alpaca REST API endpoint.
-        /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only last trade information.</returns>
-        [Obsolete("The underlying endpoint will be deprecated soon - use the `GetLatestTradeAsync` method instead.", true)]
-        Task<ILastTrade> GetLastTradeAsync(
-            String symbol,
-            CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Gets current quote for singe asset from Alpaca REST API endpoint.
-        /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Read-only current quote information.</returns>
-        [Obsolete("The underlying endpoint will be deprecated soon - use the `GetLatestQuoteAsync` method instead.", true)]
-        Task<ILastQuote> GetLastQuoteAsync(
-            String symbol,
-            CancellationToken cancellationToken = default);
-
-        /// <summary>
         /// Gets historical bars list for single asset from Alpaca REST API endpoint.
         /// </summary>
         /// <param name="request">Historical bars request parameters.</param>
