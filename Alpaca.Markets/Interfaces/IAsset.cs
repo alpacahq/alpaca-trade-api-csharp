@@ -28,9 +28,14 @@ namespace Alpaca.Markets
         Exchange Exchange { get; }
 
         /// <summary>
-        /// Gets asset name.
+        /// Gets asset symbol.
         /// </summary>
         String Symbol { get; }
+
+        /// <summary>
+        /// Gets asset name.
+        /// </summary>
+        String Name { get; }
 
         /// <summary>
         /// Get asset status in API.
