@@ -311,6 +311,7 @@ Alpaca.Markets.IAsset.Marginable.get -> bool
 Alpaca.Markets.IAsset.Shortable.get -> bool
 Alpaca.Markets.IAsset.Status.get -> Alpaca.Markets.AssetStatus
 Alpaca.Markets.IAsset.Symbol.get -> string!
+Alpaca.Markets.IAsset.Name.get -> string!
 Alpaca.Markets.IBar
 Alpaca.Markets.IBar.Close.get -> decimal
 Alpaca.Markets.IBar.High.get -> decimal
