@@ -17,11 +17,7 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- All Alpaca Data API v1 endpoints marked with the `Obsolete` attribute with error level and remove unused classes.
-- Prevented an error in the `IAlpacaDataStreamingClient.Subscription` method in case of the empty symbol name.
-- Added daily bar subscription support into the `IAlpacaDataStreamingClient` implementation.
-- Some non-breaking changes in asynchronous methods according to MS recommendations.
-- Added the missed in documentation `FEE` account activity type.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added missing `Name` field to `IAsset` interface.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
