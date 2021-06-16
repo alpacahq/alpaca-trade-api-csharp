@@ -46,24 +46,24 @@ namespace Alpaca.Markets.Extensions
                 Client.GetDailyBarSubscription(symbol);
 
             public ValueTask SubscribeAsync(
-                IAlpacaDataSubscription subscription)
+                IAlpacaDataSubscription subscription,
+                CancellationToken cancellationToken = default)
             {
                 foreach (var stream in subscription.Streams)
                 {
                     _subscriptions.TryAdd(stream, subscription);
                 }
 
-                return Client.SubscribeAsync(subscription);
+                return Client.SubscribeAsync(subscription, cancellationToken);
             }
 
             public ValueTask SubscribeAsync(
-                IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-                SubscribeAsync(subscriptions.ToArray());
-
-            public ValueTask SubscribeAsync(
-                params IAlpacaDataSubscription[] subscriptions)
+                IEnumerable<IAlpacaDataSubscription> subscriptions,
+                CancellationToken cancellationToken = default)
             {
-                foreach (var subscription in subscriptions)
+                var dataSubscriptions = new List<IAlpacaDataSubscription>(subscriptions);
+
+                foreach (var subscription in dataSubscriptions)
                 {
                     foreach (var stream in subscription.Streams)
                     {
@@ -71,41 +71,39 @@ namespace Alpaca.Markets.Extensions
                     }
                 }
 
-                return Client.SubscribeAsync(subscriptions);
+                return Client.SubscribeAsync(dataSubscriptions, cancellationToken);
             }
 
             public ValueTask UnsubscribeAsync(
-                IAlpacaDataSubscription subscription)
+                IAlpacaDataSubscription subscription,
+                CancellationToken cancellationToken = default)
             {
                 foreach (var stream in subscription.Streams)
                 {
                     _subscriptions.TryRemove(stream, out _);
                 }
 
-                return Client.UnsubscribeAsync(subscription);
+                return Client.UnsubscribeAsync(subscription, cancellationToken);
             }
 
             public ValueTask UnsubscribeAsync(
-                IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-                UnsubscribeAsync(subscriptions.ToArray());
-
-            public ValueTask UnsubscribeAsync(
-                params IAlpacaDataSubscription[] subscriptions)
+                IEnumerable<IAlpacaDataSubscription> subscriptions,
+                CancellationToken cancellationToken = default)
             {
-                foreach (var subscription in subscriptions)
+                var dataSubscriptions = new List<IAlpacaDataSubscription>(subscriptions);
+
+                foreach (var stream in dataSubscriptions
+                    .SelectMany(subscription => subscription.Streams))
                 {
-                    foreach (var stream in subscription.Streams)
-                    {
-                        _subscriptions.TryRemove(stream, out _);
-                    }
+                    _subscriptions.TryRemove(stream, out _);
                 }
 
-                return Client.UnsubscribeAsync(subscriptions);
+                return Client.UnsubscribeAsync(dataSubscriptions, cancellationToken);
             }
 
             protected override ValueTask OnReconnection(
                 CancellationToken cancellationToken) =>
-                Client.SubscribeAsync(_subscriptions.Values);
+                Client.SubscribeAsync(_subscriptions.Values, cancellationToken);
         }
 
         /// <summary>

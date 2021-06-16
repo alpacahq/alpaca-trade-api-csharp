@@ -147,7 +147,7 @@ namespace Alpaca.Markets.Extensions
                     yield return item;
                 }
 
-                request.WithPageToken(response.NextPageToken ?? String.Empty);
+                request = request.WithPageToken(response.NextPageToken ?? String.Empty);
             } while (!String.IsNullOrEmpty(request.Pagination.Token));
         }
     }
