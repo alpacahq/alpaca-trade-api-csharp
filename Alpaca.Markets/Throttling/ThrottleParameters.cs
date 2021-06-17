@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -75,8 +74,8 @@ namespace Alpaca.Markets
         /// <param name="maxRetryAttempts"></param>
         /// <param name="retrySocketErrorCodes"></param>
         /// <param name="retryHttpStatuses"></param>
+        [UsedImplicitly]
         [CLSCompliant(false)]
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public ThrottleParameters(
             UInt32 maxRetryAttempts,
             IEnumerable<SocketError> retrySocketErrorCodes,

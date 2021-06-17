@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates single trading day information from Alpaca REST API.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
-    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface ICalendar
     {
         /// <summary>
         /// Gets trading date in EST time zone.
         /// </summary>
+        [UsedImplicitly]
         DateTime TradingDateEst { get; }
 
         /// <summary>
@@ -23,16 +22,19 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trading date open time in EST time zone.
         /// </summary>
+        [UsedImplicitly]
         DateTime TradingOpenTimeEst { get; }
 
         /// <summary>
         /// Gets trading date open time in UTC time zone.
         /// </summary>
+        [UsedImplicitly]
         DateTime TradingOpenTimeUtc { get; }
 
         /// <summary>
         /// Gets trading date close time in EST time zone.
         /// </summary>
+        [UsedImplicitly]
         DateTime TradingCloseTimeEst { get; }
 
         /// <summary>

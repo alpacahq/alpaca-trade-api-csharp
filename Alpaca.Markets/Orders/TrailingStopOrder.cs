@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 
 namespace Alpaca.Markets
@@ -7,7 +6,6 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates data required for placing the market order on the Alpaca REST API.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public sealed class TrailingStopOrder : SimpleOrderBase
     {
         internal TrailingStopOrder(
@@ -33,6 +31,7 @@ namespace Alpaca.Markets
         /// <param name="quantity">Order quantity.</param>
         /// <param name="trailOffset">Trailing stop order offset.</param>
         /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
+        [UsedImplicitly]
         public static TrailingStopOrder Buy(
             String symbol,
             Int64 quantity,
@@ -47,6 +46,7 @@ namespace Alpaca.Markets
         /// <param name="quantity">Order quantity.</param>
         /// <param name="trailOffset">Trailing stop order offset.</param>
         /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
+        [UsedImplicitly]
         public static TrailingStopOrder Sell(
             String symbol,
             Int64 quantity,

@@ -212,8 +212,9 @@ namespace Alpaca.Markets
             }
         }
 
-        [SuppressMessage("Design",
-            "CA1031:Do not catch general exception types", Justification = "<Pending>")]
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
         private async Task startReceiving(WebSocket socket)
         {
             try
@@ -311,8 +312,9 @@ namespace Alpaca.Markets
             }
         }
 
-        [SuppressMessage("Design",
-            "CA1031:Do not catch general exception types", Justification = "<Pending>")]
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
         private async Task startSending(WebSocket socket)
         {
             Exception? error = null;

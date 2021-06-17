@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -10,7 +9,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaTradingClient.DeletePositionAsync(DeletePositionRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
-    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
+    [UsedImplicitly]
     public sealed class DeletePositionRequest : Validation.IRequest
     {
         /// <summary>
@@ -27,7 +26,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets the custom position liquidation size (if missed the position will be liquidated completely).
         /// </summary>
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+        [UsedImplicitly]
         public PositionQuantity? PositionQuantity { get; [UsedImplicitly] set; }
 
         /// <summary>

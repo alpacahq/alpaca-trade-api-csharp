@@ -1,5 +1,5 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -24,13 +24,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Returns <c>true</c> if <see cref="Value"/> is an amount in dollars.
         /// </summary>
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+        [UsedImplicitly]
         public Boolean IsInDollars { get; }
 
         /// <summary>
         /// Returns <c>true</c> if <see cref="Value"/> is a number of shares (fractional or integer).
         /// </summary>
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+        [UsedImplicitly]
         public Boolean IsInShares => !IsInDollars;
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Integer number of shares.</param>
         /// <returns>Initialized <see cref="OrderQuantity"/> object.</returns>
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
+        [UsedImplicitly]
         public static OrderQuantity FromInt64(
             Int64 value) => Fractional(value);
 

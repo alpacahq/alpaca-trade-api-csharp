@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -8,8 +8,6 @@ namespace Alpaca.Markets.Extensions
     /// <see cref="IAlpacaDataStreamingClient"/>) with custom values or with local proxy
     /// WebSocket URL obtained from environment variables.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedType.Global")]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class EnvironmentExtensions
     {
         private const String EnvironmentVariableName = "DATA_PROXY_WS";
@@ -43,6 +41,7 @@ namespace Alpaca.Markets.Extensions
         /// </summary>
         /// <param name="environment">Original environment URLs for modification.</param>
         /// <returns>New environment URLs object.</returns>
+        [UsedImplicitly]
         public static IEnvironment WithProxyForAlpacaDataStreamingClient(
             this IEnvironment environment) =>
             WithProxyForAlpacaDataStreamingClient(
@@ -60,7 +59,7 @@ namespace Alpaca.Markets.Extensions
         /// in the modified <paramref name="environment"/> object.
         /// </param>
         /// <returns>New environment URLs object.</returns>
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+        [UsedImplicitly]
         public static IEnvironment WithProxyForAlpacaDataStreamingClient(
             this IEnvironment environment,
             Uri alpacaProxyAgentUrl) =>

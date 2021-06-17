@@ -1,15 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Provides unified type-safe access for websocket streaming APIs with data subscriptions.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
-    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IStreamingDataClient : IStreamingClient
     {
         /// <summary>
@@ -26,6 +24,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        [UsedImplicitly]
         ValueTask SubscribeAsync(
             IEnumerable<IAlpacaDataSubscription> subscriptions,
             CancellationToken cancellationToken = default);
@@ -35,6 +34,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="subscription">Subscription target - asset and update type holder.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        [UsedImplicitly]
         ValueTask UnsubscribeAsync(
             IAlpacaDataSubscription subscription,
             CancellationToken cancellationToken = default);
@@ -44,6 +44,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        [UsedImplicitly]
         ValueTask UnsubscribeAsync(
             IEnumerable<IAlpacaDataSubscription> subscriptions,
             CancellationToken cancellationToken = default);

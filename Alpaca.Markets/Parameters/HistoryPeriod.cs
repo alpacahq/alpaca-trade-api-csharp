@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates account history period request duration - value and unit pair.
     /// </summary>
-    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public readonly struct HistoryPeriod : IEquatable<HistoryPeriod>
     {
         /// <summary>
@@ -15,7 +14,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Duration value in units.</param>
         /// <param name="unit">Duration units (days, weeks, etc.)</param>
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
+        [UsedImplicitly]
         public HistoryPeriod(
             Int32 value,
             HistoryPeriodUnit unit)
@@ -27,11 +26,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets specified duration units.
         /// </summary>
+        [UsedImplicitly]
         public HistoryPeriodUnit Unit { get; }
 
         /// <summary>
         /// Gets specified duration value.
         /// </summary>
+        [UsedImplicitly]
         public Int32 Value { get; }
 
         /// <inheritdoc />

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -26,19 +26,19 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the position liquidation quantity in shares or in percentage value.
         /// </summary>
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+        [UsedImplicitly]
         public Decimal Value { get; }
 
         /// <summary>
         /// Returns <c>true</c> if <see cref="Value"/> is a number of shares (fractional or integer).
         /// </summary>
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+        [UsedImplicitly]
         public Boolean IsInShares { get; }
 
         /// <summary>
         /// Returns <c>true</c> if <see cref="Value"/> is an amount in percents (from 0 to 100).
         /// </summary>
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+        [UsedImplicitly]
         public Boolean IsInPercents => !IsInShares;
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Amount of dollars to buy or sell.</param>
         /// <returns>Initialized <see cref="PositionQuantity"/> object.</returns>
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
+        [UsedImplicitly]
         public static PositionQuantity InShares(
             Decimal value) => new (value, true);
 
@@ -57,7 +57,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Number of shares (integer or fractional).</param>
         /// <returns>Initialized <see cref="PositionQuantity"/> object.</returns>
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
+        [UsedImplicitly]
         public static PositionQuantity InPercents(
             Decimal value) => new (value, false);
 

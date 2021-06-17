@@ -11,8 +11,6 @@ using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
 {
-    [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
-    [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
     internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient 
         where TConfiguration : StreamingClientConfiguration
     {
@@ -91,6 +89,7 @@ namespace Alpaca.Markets
 
         protected virtual void OnOpened() => SocketOpened?.Invoke();
 
+        [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
         protected virtual void OnClosed() => SocketClosed?.Invoke();
 
         protected virtual void OnMessageReceived(
@@ -98,6 +97,7 @@ namespace Alpaca.Markets
         {
         }
 
+        [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
         protected virtual void Dispose(
             Boolean disposing)
         {

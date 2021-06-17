@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Set of extensions methods for creating the <see cref="OrderBase"/> inheritors.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class OrderSideExtensions
     {
         /// <summary>
@@ -30,6 +29,7 @@ namespace Alpaca.Markets
         /// <param name="quantity">Order quantity.</param>
         /// <param name="stopPrice">Order stop price.</param>
         /// <returns>The new <see cref="StopOrder"/> object instance.</returns>
+        [UsedImplicitly]
         public static StopOrder Stop(
             this OrderSide orderSide,
             String symbol,
@@ -61,6 +61,7 @@ namespace Alpaca.Markets
         /// <param name="stopPrice">Order stop price.</param>
         /// <param name="limitPrice">Order limit price.</param>
         /// <returns>The new <see cref="StopLimitOrder"/> object instance.</returns>
+        [UsedImplicitly]
         public static StopLimitOrder StopLimit(
             this OrderSide orderSide,
             String symbol,
@@ -77,6 +78,7 @@ namespace Alpaca.Markets
         /// <param name="quantity">Order quantity.</param>
         /// <param name="trailOffset">Order trail offset.</param>
         /// <returns>The new <see cref="TrailingStopOrder"/> object instance.</returns>
+        [UsedImplicitly]
         public static TrailingStopOrder TrailingStop(
             this OrderSide orderSide,
             String symbol,

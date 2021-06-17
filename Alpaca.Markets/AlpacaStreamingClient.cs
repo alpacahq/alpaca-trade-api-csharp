@@ -84,7 +84,6 @@ namespace Alpaca.Markets
             }
         }
 
-        [SuppressMessage("ReSharper", "HeuristicUnreachableCode")]
         private async void handleAuthorization(
             JToken token)
         {
