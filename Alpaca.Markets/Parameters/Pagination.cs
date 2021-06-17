@@ -8,9 +8,12 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed class Pagination : Validation.IRequest
     {
-        private const UInt32 MaxPageSize = 10_000;
-
         private const UInt32 MinPageSize = 1;
+
+        /// <summary>
+        /// Gets ths maximal valid page size for the request supported by Alpaca Data API v2.
+        /// </summary>
+        public static UInt32 MaxPageSize => 10_000;
 
         /// <summary>
         /// Gets and sets the request page size. If equals to <c>null</c> default size will be used.

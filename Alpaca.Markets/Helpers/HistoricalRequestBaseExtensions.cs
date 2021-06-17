@@ -10,7 +10,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Sets the request page size using the fluent interface approach.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="request">Request parameters object.</param>
         /// <param name="pageSize">The request page size.</param>
         /// <returns>The original request parameters object.</returns>
         public static TRequest WithPageSize<TRequest>(
@@ -25,7 +25,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Sets the request page size using the fluent interface approach.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="request">Request parameters object.</param>
         /// <param name="pageToken">The request page size.</param>
         /// <returns>The original request parameters object.</returns>
         public static TRequest WithPageToken<TRequest>(
