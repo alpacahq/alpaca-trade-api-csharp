@@ -786,6 +786,7 @@ static Alpaca.Markets.OrderQuantity.implicit operator Alpaca.Markets.OrderQuanti
 static Alpaca.Markets.OrderQuantity.Notional(decimal value) -> Alpaca.Markets.OrderQuantity
 static Alpaca.Markets.OrderQuantity.operator !=(Alpaca.Markets.OrderQuantity lhs, Alpaca.Markets.OrderQuantity rhs) -> bool
 static Alpaca.Markets.OrderQuantity.operator ==(Alpaca.Markets.OrderQuantity lhs, Alpaca.Markets.OrderQuantity rhs) -> bool
+static Alpaca.Markets.Pagination.MaxPageSize.get -> uint
 static Alpaca.Markets.PositionQuantity.InPercents(decimal value) -> Alpaca.Markets.PositionQuantity
 static Alpaca.Markets.PositionQuantity.InShares(decimal value) -> Alpaca.Markets.PositionQuantity
 static Alpaca.Markets.PositionQuantity.operator !=(Alpaca.Markets.PositionQuantity lhs, Alpaca.Markets.PositionQuantity rhs) -> bool
