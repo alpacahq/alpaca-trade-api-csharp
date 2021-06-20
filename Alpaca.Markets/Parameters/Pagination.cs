@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -10,13 +11,12 @@ namespace Alpaca.Markets
     {
         private const UInt32 MinPageSize = 1;
 
-        private const UInt32 MaxPageSize = 10_000;
-
         /// <summary>
         /// Gets ths maximal valid page size for the request supported by Alpaca Data API v2.
         /// </summary>
+        [UsedImplicitly]
         [CLSCompliant(false)]
-        public static UInt32 MaxAllowedPageSize => MaxPageSize;
+        public static UInt32 MaxPageSize => 10_000;
 
         /// <summary>
         /// Gets and sets the request page size. If equals to <c>null</c> default size will be used.
@@ -37,7 +37,7 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
-            if (Size is < MinPageSize or > MaxPageSize)
+            if (Size < MinPageSize || Size > MaxPageSize)
             {
                 yield return new RequestValidationException("Invalid page size");
             }

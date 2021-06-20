@@ -55,6 +55,7 @@ namespace Alpaca.Markets.Extensions
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
         /// <param name="request">Original historical minute bars request (with empty next page token).</param>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAsyncEnumerable<IReadOnlyList<IBar>> GetHistoricalBarsPagesAsAsyncEnumerable(
             this IAlpacaDataClient client,
@@ -69,6 +70,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
         /// <param name="request">Original historical minute bars request (with empty next page token).</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAsyncEnumerable<IReadOnlyList<IBar>> GetHistoricalBarsPagesAsAsyncEnumerable(
             this IAlpacaDataClient client,
@@ -119,6 +121,7 @@ namespace Alpaca.Markets.Extensions
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
         /// <param name="request">Original historical quotes request (with empty next page token).</param>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAsyncEnumerable<IReadOnlyList<IQuote>> GetHistoricalQuotesPagesAsAsyncEnumerable(
             this IAlpacaDataClient client,
@@ -133,6 +136,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
         /// <param name="request">Original historical quotes request (with empty next page token).</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAsyncEnumerable<IReadOnlyList<IQuote>> GetHistoricalQuotesPagesAsAsyncEnumerable(
             this IAlpacaDataClient client,
@@ -183,6 +187,7 @@ namespace Alpaca.Markets.Extensions
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
         /// <param name="request">Original historical trades request (with empty next page token).</param>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAsyncEnumerable<IReadOnlyList<ITrade>> GetHistoricalTradesPagesAsAsyncEnumerable(
             this IAlpacaDataClient client,
@@ -197,6 +202,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
         /// <param name="request">Original historical trades request (with empty next page token).</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAsyncEnumerable<IReadOnlyList<ITrade>> GetHistoricalTradesPagesAsAsyncEnumerable(
             this IAlpacaDataClient client,
