@@ -40,27 +40,6 @@ namespace Alpaca.Markets
         public void Dispose() => _httpClient.Dispose();
 
         /// <inheritdoc />
-        public Task<IReadOnlyDictionary<String, IReadOnlyList<IBar>>> GetBarSetAsync(
-            BarSetRequest request,
-            CancellationToken cancellationToken = default) =>
-            throw new NotImplementedException(
-                "This Alpaca Data API v1 endpoint will be deprecated soon.");
-
-        /// <inheritdoc />
-        public Task<ILastTrade> GetLastTradeAsync(
-            String symbol,
-            CancellationToken cancellationToken = default) =>
-            throw new NotImplementedException(
-                "This Alpaca Data API v1 endpoint will be deprecated soon.");
-
-        /// <inheritdoc />
-        public Task<ILastQuote> GetLastQuoteAsync(
-            String symbol,
-            CancellationToken cancellationToken = default) =>
-            throw new NotImplementedException(
-                "This Alpaca Data API v1 endpoint will be deprecated soon.");
-
-        /// <inheritdoc />
         public async Task<IPage<IBar>> ListHistoricalBarsAsync(
             HistoricalBarsRequest request,
             CancellationToken cancellationToken = default) =>

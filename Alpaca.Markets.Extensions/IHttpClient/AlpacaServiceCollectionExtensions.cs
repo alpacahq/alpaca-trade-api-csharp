@@ -1,5 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Net.Http;
+﻿using System.Net.Http;
+using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Alpaca.Markets.Extensions
@@ -8,8 +8,6 @@ namespace Alpaca.Markets.Extensions
     /// Set of extensions methods for registering the strongly-typed Alpaca REST API clients
     /// in the default Microsoft dependency injection container used by the most .NET hosts.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedType.Global")]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class AlpacaServiceCollectionExtensions
     {
         /// <summary>
@@ -20,6 +18,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="environment">Alpaca environment data.</param>
         /// <param name="securityKey">Alpaca security key.</param>
         /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+        [UsedImplicitly]
         public static IServiceCollection AddAlpacaDataClient(
             this IServiceCollection services,
             IEnvironment environment,
@@ -34,6 +33,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="services">Registered services collection.</param>
         /// <param name="configuration">Alpaca data client configuration.</param>
         /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+        [UsedImplicitly]
         public static IServiceCollection AddAlpacaDataClient(
             this IServiceCollection services,
             AlpacaDataClientConfiguration configuration) =>
@@ -55,6 +55,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="environment">Alpaca environment data.</param>
         /// <param name="securityKey">Alpaca security key.</param>
         /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+        [UsedImplicitly]
         public static IServiceCollection AddAlpacaTradingClient(
             this IServiceCollection services,
             IEnvironment environment,
@@ -69,6 +70,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="services">Registered services collection.</param>
         /// <param name="configuration">Alpaca trading client configuration.</param>
         /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+        [UsedImplicitly]
         public static IServiceCollection AddAlpacaTradingClient(
             this IServiceCollection services,
             AlpacaTradingClientConfiguration configuration) =>

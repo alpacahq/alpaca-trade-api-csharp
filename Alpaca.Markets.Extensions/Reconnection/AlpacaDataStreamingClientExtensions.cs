@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -11,8 +12,6 @@ namespace Alpaca.Markets.Extensions
     /// Helper extension method for creating special version of the <see cref="IAlpacaDataStreamingClient"/>
     /// implementation with automatic reconnection (with configurable delay and number of attempts) support.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedType.Global")]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static partial class AlpacaDataStreamingClientExtensions
     {
         private sealed class ClientWithReconnection :
@@ -44,25 +43,25 @@ namespace Alpaca.Markets.Extensions
             public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(String symbol) =>
                 Client.GetDailyBarSubscription(symbol);
 
-            public void Subscribe(
-                IAlpacaDataSubscription subscription)
+            public ValueTask SubscribeAsync(
+                IAlpacaDataSubscription subscription,
+                CancellationToken cancellationToken = default)
             {
                 foreach (var stream in subscription.Streams)
                 {
                     _subscriptions.TryAdd(stream, subscription);
                 }
 
-                Client.Subscribe(subscription);
+                return Client.SubscribeAsync(subscription, cancellationToken);
             }
 
-            public void Subscribe(
-                IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-                Subscribe(subscriptions.ToArray());
-
-            public void Subscribe(
-                params IAlpacaDataSubscription[] subscriptions)
+            public ValueTask SubscribeAsync(
+                IEnumerable<IAlpacaDataSubscription> subscriptions,
+                CancellationToken cancellationToken = default)
             {
-                foreach (var subscription in subscriptions)
+                var dataSubscriptions = new List<IAlpacaDataSubscription>(subscriptions);
+
+                foreach (var subscription in dataSubscriptions)
                 {
                     foreach (var stream in subscription.Streams)
                     {
@@ -70,41 +69,39 @@ namespace Alpaca.Markets.Extensions
                     }
                 }
 
-                Client.Subscribe(subscriptions);
+                return Client.SubscribeAsync(dataSubscriptions, cancellationToken);
             }
 
-            public void Unsubscribe(
-                IAlpacaDataSubscription subscription)
+            public ValueTask UnsubscribeAsync(
+                IAlpacaDataSubscription subscription,
+                CancellationToken cancellationToken = default)
             {
                 foreach (var stream in subscription.Streams)
                 {
                     _subscriptions.TryRemove(stream, out _);
                 }
 
-                Client.Unsubscribe(subscription);
+                return Client.UnsubscribeAsync(subscription, cancellationToken);
             }
 
-            public void Unsubscribe(
-                IEnumerable<IAlpacaDataSubscription> subscriptions) =>
-                Unsubscribe(subscriptions.ToArray());
-
-            public void Unsubscribe(
-                params IAlpacaDataSubscription[] subscriptions)
+            public ValueTask UnsubscribeAsync(
+                IEnumerable<IAlpacaDataSubscription> subscriptions,
+                CancellationToken cancellationToken = default)
             {
-                foreach (var subscription in subscriptions)
+                var dataSubscriptions = new List<IAlpacaDataSubscription>(subscriptions);
+
+                foreach (var stream in dataSubscriptions
+                    .SelectMany(subscription => subscription.Streams))
                 {
-                    foreach (var stream in subscription.Streams)
-                    {
-                        _subscriptions.TryRemove(stream, out _);
-                    }
+                    _subscriptions.TryRemove(stream, out _);
                 }
 
-                Client.Unsubscribe(subscriptions);
+                return Client.UnsubscribeAsync(dataSubscriptions, cancellationToken);
             }
 
-            protected override void OnReconnection(
+            protected override ValueTask OnReconnection(
                 CancellationToken cancellationToken) =>
-                Client.Subscribe(_subscriptions.Values);
+                Client.SubscribeAsync(_subscriptions.Values, cancellationToken);
         }
 
         /// <summary>
@@ -113,6 +110,7 @@ namespace Alpaca.Markets.Extensions
         /// </summary>
         /// <param name="client">Original streaming client for wrapping.</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAlpacaDataStreamingClient WithReconnect(
             this IAlpacaDataStreamingClient client) =>
@@ -125,8 +123,8 @@ namespace Alpaca.Markets.Extensions
         /// <param name="client">Original streaming client for wrapping.</param>
         /// <param name="parameters">Reconnection parameters.</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public static IAlpacaDataStreamingClient WithReconnect(
             this IAlpacaDataStreamingClient client,
             ReconnectionParameters parameters) =>

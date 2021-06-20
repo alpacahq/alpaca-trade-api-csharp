@@ -1,5 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -9,18 +9,19 @@ namespace Alpaca.Markets
     /// Trade event in Alpaca trade update stream
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public enum TradeEvent
     {
         /// <summary>
         /// New working order.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "new")]
         New,
 
         /// <summary>
         /// Order partially filled.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "partial_fill")]
         PartialFill,
 
@@ -33,6 +34,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Order processing done.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "done_for_day")]
         DoneForDay,
 
@@ -45,12 +47,14 @@ namespace Alpaca.Markets
         /// <summary>
         /// Order cancellation request pending.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "pending_cancel")]
         PendingCancel,
 
         /// <summary>
         /// Order processing stopped by server.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "stopped")]
         Stopped,
 
@@ -63,48 +67,56 @@ namespace Alpaca.Markets
         /// <summary>
         /// Order processing suspended by server.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "suspended")]
         Suspended,
 
         /// <summary>
         /// Initial new order request pending.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "pending_new")]
         PendingNew,
 
         /// <summary>
         /// Order information calculated by server.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "calculated")]
         Calculated,
 
         /// <summary>
         /// Order expired.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "expired")]
         Expired,
 
         /// <summary>
         /// Order cancellation was rejected.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "order_cancel_rejected")]
         OrderCancelRejected,
 
         /// <summary>
         /// Requested replacement of an order was processed.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "replaced")]
         Replaced,
         
         /// <summary>
         /// The order is awaiting replacement.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "pending_replace")]
         PendingReplace,
         
         /// <summary>
         /// The order replace has been rejected.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "order_replace_rejected")]
         ReplaceRejected
     }

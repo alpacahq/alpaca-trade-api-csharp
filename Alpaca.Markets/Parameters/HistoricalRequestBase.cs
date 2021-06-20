@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -34,6 +35,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets inclusive date interval for filtering items in response.
         /// </summary>
+        [UsedImplicitly]
         public IInclusiveTimeInterval TimeInterval { get; }
 
         /// <summary>
@@ -68,12 +70,14 @@ namespace Alpaca.Markets
                     "Symbol shouldn't be empty.", nameof(Symbol));
             }
 
-            if (Pagination is Validation.IRequest validation)
+            if (Pagination is not Validation.IRequest validation)
             {
-                foreach (var exception in validation.GetExceptions())
-                {
-                    yield return exception;
-                }
+                yield break;
+            }
+
+            foreach (var exception in validation.GetExceptions())
+            {
+                yield return exception;
             }
         }
     }

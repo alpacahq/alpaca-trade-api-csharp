@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -7,7 +8,6 @@ namespace Alpaca.Markets
     /// Encapsulates trade update information from Alpaca streaming API.
     /// </summary>
     [CLSCompliant(false)]
-    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface ITradeUpdate
     {
         /// <summary>
@@ -21,27 +21,31 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets updated trade price level.
         /// </summary>
+        [UsedImplicitly]
         Decimal? Price { get; }
 
         /// <summary>
         /// Gets updated trade quantity (with the fractional part).
         /// </summary>
+        [UsedImplicitly]
         Decimal? Quantity { get; }
 
         /// <summary>
         /// Gets updated trade quantity (rounded to the nearest integer).
         /// </summary>
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
+        [UsedImplicitly]
         Int64? IntegerQuantity { get; }
 
         /// <summary>
         /// Gets update timestamp in UTC time zone.
         /// </summary>
+        [UsedImplicitly]
         DateTime? TimestampUtc { get; }
 
         /// <summary>
         /// Gets related order object.
         /// </summary>
+        [UsedImplicitly]
         IOrder Order { get; }
     }
 }

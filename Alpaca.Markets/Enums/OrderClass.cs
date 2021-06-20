@@ -1,5 +1,5 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -9,12 +9,12 @@ namespace Alpaca.Markets
     /// Order class for advanced orders in the Alpaca REST API.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public enum OrderClass
     {
         /// <summary>
         /// Simple order
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "simple")]
         Simple,
 
@@ -34,6 +34,6 @@ namespace Alpaca.Markets
         /// One Triggers Other order
         /// </summary>
         [EnumMember(Value = "oto")]
-        OneTriggersOther,
+        OneTriggersOther
     }
 }

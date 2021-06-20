@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates base data for ordinal order types, never used directly by any code.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public abstract class SimpleOrderBase : OrderBase
     {
         /// <summary>
@@ -72,6 +71,7 @@ namespace Alpaca.Markets
         /// <param name="takeProfitLimitPrice">Take profit order limit price.</param>
         /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
         /// <returns>New advanced order representing an original order plus pair of take profit and stop loss orders.</returns>
+        [UsedImplicitly]
         public BracketOrder Bracket(
             Decimal takeProfitLimitPrice,
             Decimal stopLossStopPrice) =>
@@ -88,6 +88,7 @@ namespace Alpaca.Markets
         /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
         /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
         /// <returns>New advanced order representing an original order plus pair of take profit and stop loss orders.</returns>
+        [UsedImplicitly]
         public BracketOrder Bracket(
             Decimal takeProfitLimitPrice,
             Decimal stopLossStopPrice,

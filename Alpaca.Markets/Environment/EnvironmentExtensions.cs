@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Collection of helper extension methods for <see cref="IEnvironment"/> interface.
     /// </summary>
-    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public static class EnvironmentExtensions
     {
         /// <summary>
@@ -29,6 +28,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>New instance of <see cref="AlpacaTradingClientConfiguration"/> object.</returns>
+        [UsedImplicitly]
         public static AlpacaTradingClientConfiguration GetAlpacaTradingClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>
@@ -59,6 +59,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>New instance of <see cref="AlpacaDataClientConfiguration"/> object.</returns>
+        [UsedImplicitly]
         public static AlpacaDataClientConfiguration GetAlpacaDataClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>
@@ -89,6 +90,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>New instance of <see cref="AlpacaStreamingClientConfiguration"/> object.</returns>
+        [UsedImplicitly]
         public static AlpacaStreamingClientConfiguration GetAlpacaStreamingClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>
@@ -119,6 +121,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>New instance of <see cref="AlpacaDataStreamingClientConfiguration"/> object.</returns>
+        [UsedImplicitly]
         public static AlpacaDataStreamingClientConfiguration GetAlpacaDataStreamingClientConfiguration(
             this IEnvironment environment,
             SecurityKey securityKey) =>

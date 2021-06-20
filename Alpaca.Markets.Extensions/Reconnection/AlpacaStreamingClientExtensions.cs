@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -7,8 +7,6 @@ namespace Alpaca.Markets.Extensions
     /// Helper extension method for creating special version of the <see cref="IAlpacaStreamingClient"/>
     /// implementation with automatic reconnection (with configurable delay and number of attempts) support.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedType.Global")]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class AlpacaStreamingClientExtensions
     {
         private sealed class ClientWithReconnection :
@@ -35,6 +33,7 @@ namespace Alpaca.Markets.Extensions
         /// </summary>
         /// <param name="client">Original streaming client for wrapping.</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAlpacaStreamingClient WithReconnect(
             this IAlpacaStreamingClient client) =>
@@ -47,8 +46,8 @@ namespace Alpaca.Markets.Extensions
         /// <param name="client">Original streaming client for wrapping.</param>
         /// <param name="parameters">Reconnection parameters (or default if missing).</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public static IAlpacaStreamingClient WithReconnect(
             this IAlpacaStreamingClient client,
             ReconnectionParameters parameters) =>

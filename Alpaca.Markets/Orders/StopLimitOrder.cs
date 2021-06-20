@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 
 namespace Alpaca.Markets
@@ -7,7 +6,6 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates data required for placing the stop limit order on the Alpaca REST API.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public sealed class StopLimitOrder : SimpleOrderBase
     {
         internal StopLimitOrder(
@@ -44,6 +42,7 @@ namespace Alpaca.Markets
         /// <param name="stopPrice">Order stop price.</param>
         /// <param name="limitPrice">Order limit price.</param>
         /// <returns>The new <see cref="StopLimitOrder"/> object instance.</returns>
+        [UsedImplicitly]
         public static StopLimitOrder Buy(
             String symbol,
             Int64 quantity,
@@ -60,6 +59,7 @@ namespace Alpaca.Markets
         /// <param name="stopPrice">Order stop price.</param>
         /// <param name="limitPrice">Order limit price.</param>
         /// <returns>The new <see cref="StopLimitOrder"/> object instance.</returns>
+        [UsedImplicitly]
         public static StopLimitOrder Sell(
             String symbol,
             Int64 quantity,
