@@ -6,11 +6,35 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates full account information from Alpaca REST API.
     /// </summary>
+    [CLSCompliant(false)]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
-#pragma warning disable 618
-    public interface IAccount : IAccountBase
-#pragma warning restore 618
+    public interface IAccount
     {
+        /// <summary>
+        /// Gets unique account identifier.
+        /// </summary>
+        Guid AccountId { get; }
+
+        /// <summary>
+        /// Gets updated account status.
+        /// </summary>
+        AccountStatus Status { get; }
+
+        /// <summary>
+        /// Gets main account currency.
+        /// </summary>
+        String? Currency { get; }
+
+        /// <summary>
+        /// Gets amount of money available for trading.
+        /// </summary>
+        Decimal TradableCash { get; }
+
+        /// <summary>
+        /// Gets timestamp of account creation event in UTC.
+        /// </summary>
+        DateTime CreatedAtUtc { get; }
+
         /// <summary>
         /// Gets account number (string identifier).
         /// </summary>
@@ -44,7 +68,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Buying power multiplier that represents account margin classification.
         /// </summary>
-        Int64 Multiplier { get; }
+        Multiplier Multiplier { get; }
 
         /// <summary>
         /// Current available buying power.
@@ -99,7 +123,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// the current number of day trades that have been made in the last 5 trading days (inclusive of today).
         /// </summary>
-        Int64 DayTradeCount { get; }
+        UInt64 DayTradeCount { get; }
 
         /// <summary>
         /// value of special memorandum account.

@@ -15,6 +15,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Duration value in units.</param>
         /// <param name="unit">Duration units (days, weeks, etc.)</param>
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public HistoryPeriod(
             Int32 value,
             HistoryPeriodUnit unit)
@@ -34,14 +35,15 @@ namespace Alpaca.Markets
         public Int32 Value { get; }
 
         /// <inheritdoc />
-        public bool Equals(HistoryPeriod other) => Unit == other.Unit && Value == other.Value;
+        public Boolean Equals(HistoryPeriod other) => Unit == other.Unit && Value == other.Value;
 
         /// <inheritdoc />
         public override String ToString() =>
             $"{Value.ToString("D", CultureInfo.InvariantCulture)}{Unit.ToEnumString()}";
 
         /// <inheritdoc />
-        public override Boolean Equals(Object? obj) => obj is HistoryPeriod period && Equals(period);
+        public override Boolean Equals(Object? obj) => 
+            obj is HistoryPeriod period && Equals(period);
 
         /// <inheritdoc />
         public override Int32 GetHashCode()

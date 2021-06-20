@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -61,23 +63,26 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets flag indicating that <see cref="TimeInterval"/>  are treated as inclusive.
         /// </summary>
+        [UsedImplicitly] 
         public Boolean AreTimesInclusive => TimeInterval is IInclusiveTimeInterval;
 
         /// <summary>
         /// Gets inclusive or exclusive date interval for filtering items in response.
         /// </summary>
+        [UsedImplicitly] 
         public ITimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
 
-        internal UriBuilder GetUriBuilder(
+        internal async ValueTask<UriBuilder> GetUriBuilderAsync(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress)
+            new (httpClient.BaseAddress!)
             {
                 Path = $"v1/bars/{TimeFrame.ToEnumString()}",
-                Query = new QueryBuilder()
+                Query = await new QueryBuilder()
                     .AddParameter("symbols", String.Join(",", Symbols))
                     .AddParameter((AreTimesInclusive ? "start" : "after"), TimeInterval.From, "O")
                     .AddParameter((AreTimesInclusive ? "end" : "until"), TimeInterval.Into, "O")
                     .AddParameter("limit", Limit)
+                    .AsStringAsync().ConfigureAwait(false)
             };
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()

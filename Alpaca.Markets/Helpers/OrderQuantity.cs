@@ -76,7 +76,7 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         public override Boolean Equals(
-            Object obj) =>
+            Object? obj) =>
             obj is OrderQuantity orderQuantity &&
             orderQuantity.Equals(this);
 

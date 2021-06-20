@@ -10,12 +10,6 @@ namespace Alpaca.Markets
     public interface IPosition
     {
         /// <summary>
-        /// Gets unique account identifier.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major SDK release.", true)]
-        Guid AccountId { get; }
-
-        /// <summary>
         /// Gets unique asset identifier.
         /// </summary>
         Guid AssetId { get; }

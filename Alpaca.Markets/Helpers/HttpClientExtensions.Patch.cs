@@ -11,7 +11,7 @@ namespace Alpaca.Markets
 #if NETSTANDARD2_1
             HttpMethod.Patch;
 #else
-            new HttpMethod("PATCH");
+            new ("PATCH");
 #endif
 
         public static Task<TApi> PatchAsync<TApi, TJson, TRequest>(

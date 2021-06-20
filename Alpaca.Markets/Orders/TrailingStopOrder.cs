@@ -1,10 +1,13 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates data required for placing the market order on the Alpaca REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public sealed class TrailingStopOrder : SimpleOrderBase
     {
         internal TrailingStopOrder(
@@ -20,6 +23,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets order trail offset value (in dollars or percents).
         /// </summary>
+        [UsedImplicitly]
         public TrailOffset TrailOffset { get; }
 
         /// <summary>
@@ -33,7 +37,7 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             TrailOffset trailOffset) =>
-            new TrailingStopOrder(
+            new (
                 symbol, quantity, OrderSide.Buy, trailOffset);
 
         /// <summary>
@@ -47,7 +51,7 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             TrailOffset trailOffset) =>
-            new TrailingStopOrder(
+            new(
                 symbol, quantity, OrderSide.Sell, trailOffset);
 
         internal override JsonNewOrder GetJsonRequest() =>

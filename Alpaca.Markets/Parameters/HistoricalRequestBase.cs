@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
@@ -38,21 +39,22 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the pagination parameters for the request (page size and token).
         /// </summary>
-        public Pagination Pagination { get; } = new Pagination();
+        public Pagination Pagination { get; } = new ();
 
         /// <summary>
         /// Gets the last part of the full REST endpoint URL path.
         /// </summary>
         protected abstract String LastPathSegment { get; }
 
-        internal UriBuilder GetUriBuilder(
+        internal async ValueTask<UriBuilder> GetUriBuilderAsync(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress)
+            new (httpClient.BaseAddress!)
             {
                 Path = $"v2/stocks/{Symbol}/{LastPathSegment}",
-                Query = AddParameters(Pagination.QueryBuilder
+                Query = await AddParameters(Pagination.QueryBuilder
                     .AddParameter("start", TimeInterval.From, "O")
                     .AddParameter("end", TimeInterval.Into, "O"))
+                    .AsStringAsync().ConfigureAwait(false)
             };
 
         internal virtual QueryBuilder AddParameters(

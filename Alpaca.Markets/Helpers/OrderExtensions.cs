@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Set of extension methods for <see cref="IOrder"/> interface.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class OrderExtensions
     {
         /// <summary>
@@ -15,6 +18,7 @@ namespace Alpaca.Markets
         /// Both fractional and notional order quantity values are null.
         /// </exception>
         /// <returns>Fractional or notional order quantity value.</returns>
+        [CLSCompliant(false)]
         public static OrderQuantity GetOrderQuantity(
             this IOrder order)
         {

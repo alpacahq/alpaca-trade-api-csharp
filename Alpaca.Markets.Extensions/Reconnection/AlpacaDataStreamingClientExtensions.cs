@@ -1,6 +1,9 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Threading;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -8,12 +11,17 @@ namespace Alpaca.Markets.Extensions
     /// Helper extension method for creating special version of the <see cref="IAlpacaDataStreamingClient"/>
     /// implementation with automatic reconnection (with configurable delay and number of attempts) support.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static partial class AlpacaDataStreamingClientExtensions
     {
         private sealed class ClientWithReconnection :
-            ClientWithReconnectBase<IAlpacaDataStreamingClient, IAlpacaDataSubscription>,
+            ClientWithReconnectBase<IAlpacaDataStreamingClient>,
             IAlpacaDataStreamingClient
         {
+            private readonly ConcurrentDictionary<String, IAlpacaDataSubscription> _subscriptions =
+                new(StringComparer.Ordinal);
+
             public ClientWithReconnection(
                 IAlpacaDataStreamingClient client,
                 ReconnectionParameters reconnectionParameters)
@@ -21,43 +29,47 @@ namespace Alpaca.Markets.Extensions
             {
             }
 
-            public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription() =>
-                Client.GetMinuteAggSubscription();
+            public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() =>
+                Client.GetMinuteBarSubscription();
 
-            public IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(String symbol) =>
+            public IAlpacaDataSubscription<ITrade> GetTradeSubscription(String symbol) =>
                 Client.GetTradeSubscription(symbol);
 
-            public IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(String symbol) =>
+            public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(String symbol) =>
                 Client.GetQuoteSubscription(symbol);
 
-            public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(String symbol) =>
-                Client.GetMinuteAggSubscription(symbol);
+            public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(String symbol) =>
+                Client.GetMinuteBarSubscription(symbol);
 
-            public IAlpacaDataSubscription<IStreamAgg> GetDailyAggSubscription(String symbol) =>
-                Client.GetDailyAggSubscription(symbol);
+            public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(String symbol) =>
+                Client.GetDailyBarSubscription(symbol);
 
             public void Subscribe(
                 IAlpacaDataSubscription subscription)
             {
                 foreach (var stream in subscription.Streams)
                 {
-                    Subscriptions.TryAdd(stream, subscription);
+                    _subscriptions.TryAdd(stream, subscription);
                 }
+
                 Client.Subscribe(subscription);
             }
 
             public void Subscribe(
-                IEnumerable<IAlpacaDataSubscription> subscriptions) => 
+                IEnumerable<IAlpacaDataSubscription> subscriptions) =>
                 Subscribe(subscriptions.ToArray());
 
             public void Subscribe(
                 params IAlpacaDataSubscription[] subscriptions)
             {
                 foreach (var subscription in subscriptions)
-                foreach (var stream in subscription.Streams)
                 {
-                    Subscriptions.TryAdd(stream, subscription);
+                    foreach (var stream in subscription.Streams)
+                    {
+                        _subscriptions.TryAdd(stream, subscription);
+                    }
                 }
+
                 Client.Subscribe(subscriptions);
             }
 
@@ -66,8 +78,9 @@ namespace Alpaca.Markets.Extensions
             {
                 foreach (var stream in subscription.Streams)
                 {
-                    Subscriptions.TryRemove(stream, out _);
+                    _subscriptions.TryRemove(stream, out _);
                 }
+
                 Client.Unsubscribe(subscription);
             }
 
@@ -79,19 +92,19 @@ namespace Alpaca.Markets.Extensions
                 params IAlpacaDataSubscription[] subscriptions)
             {
                 foreach (var subscription in subscriptions)
-                foreach (var stream in subscription.Streams)
                 {
-                    Subscriptions.TryRemove(stream, out _);
+                    foreach (var stream in subscription.Streams)
+                    {
+                        _subscriptions.TryRemove(stream, out _);
+                    }
                 }
+
                 Client.Unsubscribe(subscriptions);
             }
 
-            protected override void Resubscribe(
-                String symbol, 
-                IAlpacaDataSubscription subscription)
-            {
-                Client.Subscribe(subscription);
-            }
+            protected override void OnReconnection(
+                CancellationToken cancellationToken) =>
+                Client.Subscribe(_subscriptions.Values);
         }
 
         /// <summary>
@@ -99,11 +112,24 @@ namespace Alpaca.Markets.Extensions
         /// with automatic reconnection support and provide optional reconnection parameters.
         /// </summary>
         /// <param name="client">Original streaming client for wrapping.</param>
-        /// <param name="parameters">Reconnection parameters (or default if missing).</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        [CLSCompliant(false)]
+        public static IAlpacaDataStreamingClient WithReconnect(
+            this IAlpacaDataStreamingClient client) =>
+            WithReconnect(client, ReconnectionParameters.Default);
+
+        /// <summary>
+        /// Wraps instance of <see cref="IAlpacaDataStreamingClient"/> into the helper class
+        /// with automatic reconnection support with the default reconnection parameters.
+        /// </summary>
+        /// <param name="client">Original streaming client for wrapping.</param>
+        /// <param name="parameters">Reconnection parameters.</param>
+        /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        [CLSCompliant(false)]
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public static IAlpacaDataStreamingClient WithReconnect(
             this IAlpacaDataStreamingClient client,
-            ReconnectionParameters? parameters = null) =>
-            new ClientWithReconnection(client, parameters ?? ReconnectionParameters.Default);
+            ReconnectionParameters parameters) =>
+            new ClientWithReconnection(client, parameters);
     }
 }

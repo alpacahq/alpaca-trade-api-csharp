@@ -4,8 +4,10 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates last trade information from Polygon REST API.
+    /// Encapsulates last trade information from Alpaca REST API.
     /// </summary>
+    [CLSCompliant(false)]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface ILastTrade
     {
@@ -32,7 +34,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trade quantity.
         /// </summary>
-        Int64 Size { get; }
+        UInt64 Size { get; }
 
         /// <summary>
         /// Gets trade timestamp.

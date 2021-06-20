@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -8,7 +9,14 @@ namespace Alpaca.Markets
     /// </summary>
     public abstract class OrderBase : Validation.IRequest
     {
-        internal OrderBase(
+        /// <summary>
+        /// Creates new instance of the <see cref="OrderBase"/> class.
+        /// </summary>
+        /// <param name="symbol">Alpaca symbol for order.</param>
+        /// <param name="quantity">Order quantity (absolute value).</param>
+        /// <param name="side">Order side (buy or sell).</param>
+        /// <param name="type">Order type (market, limit, stop, stop-limit).</param>
+        protected internal OrderBase(
             String symbol,
             Int64 quantity,
             OrderSide side,
@@ -21,10 +29,14 @@ namespace Alpaca.Markets
             Type = type;
         }
 
-        internal OrderBase(
+        /// <summary>
+        /// Creates new instance of the <see cref="OrderBase"/> class.
+        /// </summary>
+        /// <param name="baseOrder">Base order for getting parameters.</param>
+        protected internal OrderBase(
             OrderBase baseOrder)
             : this(
-                baseOrder.Symbol,
+                baseOrder.EnsureNotNull(nameof(baseOrder)).Symbol,
                 baseOrder.Quantity,
                 baseOrder.Side,
                 baseOrder.Type)
@@ -47,11 +59,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the new order side (buy or sell).
         /// </summary>
+        [UsedImplicitly]
         public OrderSide Side { get; }
 
         /// <summary>
         /// Gets the new order type.
         /// </summary>
+        [UsedImplicitly]
         public OrderType Type { get; }
 
         /// <summary>
@@ -87,7 +101,7 @@ namespace Alpaca.Markets
         }
 
         internal virtual JsonNewOrder GetJsonRequest() =>
-            new JsonNewOrder
+            new ()
             {
                 Symbol = Symbol,
                 Quantity = Quantity,

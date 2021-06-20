@@ -26,9 +26,6 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "cash", Required = Required.Always)]
         public Decimal TradableCash { get; set; }
 
-        [JsonProperty(PropertyName = "cash_withdrawable", Required = Required.Default)]
-        public Decimal WithdrawableCash { get; set; }
-
         [JsonProperty(PropertyName = "pattern_day_trader", Required = Required.Always)]
         public Boolean IsDayPatternTrader { get; set; }
 
@@ -48,7 +45,7 @@ namespace Alpaca.Markets
         public Boolean ShortingEnabled { get; set; }
 
         [JsonProperty(PropertyName = "multiplier", Required = Required.Default)]
-        public Int64 Multiplier { get; set; }
+        public Multiplier Multiplier { get; set; }
 
         [JsonProperty(PropertyName = "buying_power", Required = Required.Always)]
         public Decimal BuyingPower { get; set; }
@@ -81,7 +78,7 @@ namespace Alpaca.Markets
         public Decimal LastMaintenanceMargin { get; set; }
 
         [JsonProperty(PropertyName = "daytrade_count", Required = Required.Default)]
-        public Int64 DayTradeCount { get; set; }
+        public UInt64 DayTradeCount { get; set; }
 
         [JsonProperty(PropertyName = "sma", Required = Required.Default)]
         public Decimal Sma { get; set; }

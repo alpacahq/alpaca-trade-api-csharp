@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace Alpaca.Markets
@@ -15,13 +16,14 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public Boolean? CancelOrders { get; set; }
 
-        internal UriBuilder GetUriBuilder(
+        internal async ValueTask<UriBuilder> GetUriBuilderAsync(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress)
+            new (httpClient.BaseAddress!)
             {
-                Path = $"v2/positions",
-                Query = new QueryBuilder()
+                Path = "v2/positions",
+                Query = await new QueryBuilder()
                     .AddParameter("cancel_orders", CancelOrders)
+                    .AsStringAsync().ConfigureAwait(false)
             };
     }
 }

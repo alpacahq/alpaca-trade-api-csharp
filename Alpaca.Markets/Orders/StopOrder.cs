@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates data required for placing the stop order on the Alpaca REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public sealed class StopOrder : SimpleOrderBase
     {
         internal StopOrder(
@@ -21,6 +24,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets the new order stop price.
         /// </summary>
+        [UsedImplicitly]
         public Decimal StopPrice { get; }
         
         /// <summary>
@@ -34,7 +38,7 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             Decimal stopPrice) =>
-            new StopOrder(
+            new (
                 symbol, quantity, OrderSide.Buy, stopPrice);
 
         /// <summary>
@@ -48,7 +52,7 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             Decimal stopPrice) =>
-            new StopOrder(
+            new (
                 symbol, quantity, OrderSide.Sell, stopPrice);
 
         internal override JsonNewOrder GetJsonRequest() =>

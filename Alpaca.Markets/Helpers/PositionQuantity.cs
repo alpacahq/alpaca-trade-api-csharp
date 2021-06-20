@@ -19,7 +19,7 @@ namespace Alpaca.Markets
                     "The percentage value should be between 0 and 100", nameof(value));
             }
 
-            Value = value;
+            Value = value; //-V3142
             IsInShares = isInShares;
         }
 
@@ -47,7 +47,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Amount of dollars to buy or sell.</param>
         /// <returns>Initialized <see cref="PositionQuantity"/> object.</returns>
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public static PositionQuantity InShares(
             Decimal value) => new (value, true);
 
@@ -57,7 +57,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Number of shares (integer or fractional).</param>
         /// <returns>Initialized <see cref="PositionQuantity"/> object.</returns>
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public static PositionQuantity InPercents(
             Decimal value) => new (value, false);
 
@@ -67,7 +67,7 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         public override Boolean Equals(
-            Object obj) =>
+            Object? obj) =>
             obj is PositionQuantity positionQuantity &&
             positionQuantity.Equals(this);
 

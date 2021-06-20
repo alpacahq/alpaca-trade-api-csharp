@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed class UpdateWatchListRequest : Validation.IRequest
     {
-        private readonly List<String> _assets = new List<String>();
+        private readonly List<String> _assets = new ();
 
         /// <summary>
         /// Creates new instance of <see cref="UpdateWatchListRequest"/> object.

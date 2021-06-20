@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -30,13 +29,6 @@ namespace Alpaca.Markets
         /// </summary>
         [EnumMember(Value = "15Min")]
         FifteenMinutes,
-
-        /// <summary>
-        /// Hour bars.
-        /// </summary>
-        [EnumMember(Value = "1H")]
-        [Obsolete("This enum member will be removed in the next major SDK release.", true)]
-        Hour,
 
         /// <summary>
         /// Daily bars.

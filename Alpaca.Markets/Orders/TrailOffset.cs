@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -18,17 +20,18 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the trailing stop order price offset value.
         /// </summary>
-        public decimal Value { get; }
+        public Decimal Value { get; }
         
         /// <summary>
         /// Returns <c>true</c> if trail offset is an amount in dollars.
         /// </summary>
-        public bool IsInDollars { get; }
+        public Boolean IsInDollars { get; }
 
         /// <summary>
         /// Returns <c>true</c> if trail offset is a percent of HWM value.
         /// </summary>
-        public bool IsInPercent => !IsInDollars;
+        [UsedImplicitly]
+        public Boolean IsInPercent => !IsInDollars;
         
         /// <summary>
         /// Creates new instance of the <see cref="TrailOffset"/> object
@@ -36,9 +39,10 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Trailing stop order offset in dollars.</param>
         /// <returns>Initialized <see cref="TrailOffset"/> object.</returns>
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public static TrailOffset InDollars(
             Decimal value) =>
-            new TrailOffset(value, true);
+            new (value, true);
         
         /// <summary>
         /// Creates new instance of the <see cref="TrailOffset"/> object
@@ -46,13 +50,13 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Trailing stop order offset in percents.</param>
         /// <returns>Initialized <see cref="TrailOffset"/> object.</returns>
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public static TrailOffset InPercent(
             Decimal value) =>
-            new TrailOffset(value, false);
+            new (value, false);
 
         /// <inheritdoc />
-        public override Boolean Equals(
-            Object obj) =>
+        public override Boolean Equals(Object? obj) =>
             obj is TrailOffset trailOffset &&
             trailOffset.Equals(this);
 

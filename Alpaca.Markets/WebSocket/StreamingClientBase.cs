@@ -12,19 +12,18 @@ using Newtonsoft.Json.Linq;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Provides unified type-safe access for websocket streaming APIs.
+    /// Provides base implementation for the websocket streaming APIs clients.
     /// </summary>
     [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
     [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
-    [Obsolete("This class will be marked as internal in the next major SDK release.", false)]
-    public abstract class StreamingClientBase<TConfiguration> : IStreamingClientBase 
+    internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient 
         where TConfiguration : StreamingClientConfiguration
     {
-        private readonly SynchronizationQueue _queue = new SynchronizationQueue();
-
-        private readonly IWebSocket _webSocket;
+        private readonly SynchronizationQueue _queue = new ();
 
         internal readonly TConfiguration Configuration;
+
+        private readonly IWebSocket _webSocket;
 
         /// <summary>
         /// Creates new instance of <see cref="StreamingClientBase{TConfiguration}"/> object.
@@ -69,7 +68,7 @@ namespace Alpaca.Markets
         public async Task<AuthStatus> ConnectAndAuthenticateAsync(
             CancellationToken cancellationToken = default)
         {
-            var tcs = new TaskCompletionSource<AuthStatus>();
+            var tcs = new TaskCompletionSource<AuthStatus>(TaskCreationOptions.RunContinuationsAsynchronously);
             Connected += HandleConnected;
             OnError += HandleOnError;
 
@@ -208,9 +207,9 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// 
+        /// Send object (JSON serializable) as string into the web socket.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">Object for serializing and sending.</param>
         protected void SendAsJsonString(
             Object value)
         {

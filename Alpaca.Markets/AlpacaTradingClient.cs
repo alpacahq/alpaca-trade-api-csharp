@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Net.Http.Headers;
 
 namespace Alpaca.Markets
@@ -7,12 +6,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca Trading API via HTTP/REST.
     /// </summary>
-    [Obsolete("This class will be marked as internal in the next major SDK release.", false)]
-    public sealed partial class AlpacaTradingClient : IAlpacaTradingClient
+    internal sealed partial class AlpacaTradingClient : IAlpacaTradingClient
     {
         private readonly HttpClient _httpClient;
-
-        private readonly IThrottler _alpacaRestApiThrottler;
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaTradingClient"/> object.
@@ -25,9 +21,8 @@ namespace Alpaca.Markets
                 .EnsureNotNull(nameof(configuration))
                 .EnsureIsValid();
 
-            _httpClient = configuration.HttpClient ?? new HttpClient();
-
-            _alpacaRestApiThrottler = configuration.ThrottleParameters.GetThrottler();
+            _httpClient = configuration.HttpClient ??
+                configuration.ThrottleParameters.GetHttpClient();
 
             _httpClient.AddAuthenticationHeaders(configuration.SecurityId);
 

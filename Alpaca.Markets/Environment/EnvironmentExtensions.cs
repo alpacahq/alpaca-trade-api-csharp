@@ -16,12 +16,11 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaTradingClient"/> interface implementation.</returns>
+        [CLSCompliant(false)]
         public static IAlpacaTradingClient GetAlpacaTradingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-#pragma warning disable 618
             new AlpacaTradingClient(environment.GetAlpacaTradingClientConfiguration(securityKey));
-#pragma warning restore 618
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaTradingClientConfiguration"/> for specific
@@ -47,12 +46,11 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaDataClient"/> interface implementation.</returns>
+        [CLSCompliant(false)]
         public static IAlpacaDataClient GetAlpacaDataClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-#pragma warning disable CS0618 // Type or member is obsolete
             new AlpacaDataClient(environment.GetAlpacaDataClientConfiguration(securityKey));
-#pragma warning restore CS0618 // Type or member is obsolete
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataClientConfiguration"/> for specific
@@ -72,49 +70,17 @@ namespace Alpaca.Markets
             };
 
         /// <summary>
-        /// Creates the new instance of <see cref="IPolygonDataClient"/> interface
-        /// implementation for specific environment provided as <paramref name="environment"/> argument.
-        /// </summary>
-        /// <param name="environment">Target environment for new object.</param>
-        /// <param name="keyId">Alpaca API key identifier.</param>
-        /// <returns>The new instance of <see cref="IPolygonDataClient"/> interface implementation.</returns>
-        [Obsolete("This method will be removed in the next major SDK release.", true)]
-        public static IPolygonDataClient GetPolygonDataClient(
-            this IEnvironment environment,
-            String keyId) =>
-            new PolygonDataClient(environment.GetPolygonDataClientConfiguration(keyId));
-
-        /// <summary>
-        /// Creates new instance of <see cref="PolygonDataClientConfiguration"/> for specific
-        /// environment provided as <paramref name="environment"/> argument.
-        /// </summary>
-        /// <param name="environment">Target environment for new object.</param>
-        /// <param name="keyId">Alpaca API key identifier.</param>
-        /// <returns>New instance of <see cref="PolygonDataClientConfiguration"/> object.</returns>
-        [Obsolete("This method will be removed in the next major SDK release.", true)]
-        public static PolygonDataClientConfiguration GetPolygonDataClientConfiguration(
-            this IEnvironment environment,
-            String keyId) =>
-            new ()
-            {
-                ApiEndpoint = environment.EnsureNotNull(nameof(environment))
-                    .PolygonDataApi.EnsureNotNull(nameof(IEnvironment.PolygonDataApi)),
-                KeyId = keyId ?? throw new ArgumentNullException(nameof(keyId))
-            };
-
-        /// <summary>
         /// Creates the new instance of <see cref="IAlpacaStreamingClient"/> interface
         /// implementation for specific environment provided as <paramref name="environment"/> argument.
         /// </summary>
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaStreamingClient"/> interface implementation.</returns>
+        [CLSCompliant(false)]
         public static IAlpacaStreamingClient GetAlpacaStreamingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-#pragma warning disable 618
             new AlpacaStreamingClient(environment.GetAlpacaStreamingClientConfiguration(securityKey));
-#pragma warning restore 618
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaStreamingClientConfiguration"/> for specific
@@ -134,49 +100,17 @@ namespace Alpaca.Markets
             };
 
         /// <summary>
-        /// Creates the new instance of <see cref="IPolygonStreamingClient"/> interface
-        /// implementation for specific environment provided as <paramref name="environment"/> argument.
-        /// </summary>
-        /// <param name="environment">Target environment for new object.</param>
-        /// <param name="keyId">Alpaca API key identifier.</param>
-        /// <returns>The new instance of <see cref="IPolygonStreamingClient"/> interface implementation.</returns>
-        [Obsolete("This method will be removed in the next major SDK release.", true)]
-        public static IPolygonStreamingClient GetPolygonStreamingClient(
-            this IEnvironment environment,
-            String keyId) =>
-            new PolygonStreamingClient(environment.GetPolygonStreamingClientConfiguration(keyId));
-
-        /// <summary>
-        /// Creates new instance of <see cref="PolygonStreamingClientConfiguration"/> for specific
-        /// environment provided as <paramref name="environment"/> argument.
-        /// </summary>
-        /// <param name="environment">Target environment for new object.</param>
-        /// <param name="keyId">Alpaca API key identifier.</param>
-        /// <returns>New instance of <see cref="PolygonStreamingClientConfiguration"/> object.</returns>
-        [Obsolete("This method will be removed in the next major SDK release.", true)]
-        public static PolygonStreamingClientConfiguration GetPolygonStreamingClientConfiguration(
-            this IEnvironment environment,
-            String keyId) =>
-            new ()
-            {
-                ApiEndpoint = environment.EnsureNotNull(nameof(environment))
-                    .PolygonStreamingApi.EnsureNotNull(nameof(IEnvironment.PolygonStreamingApi)),
-                KeyId = keyId.EnsureNotNull(nameof(keyId))
-            };
-
-        /// <summary>
         /// Creates the new instance of <see cref="IAlpacaDataStreamingClient"/> interface
         /// implementation for specific environment provided as <paramref name="environment"/> argument.
         /// </summary>
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaDataStreamingClient"/> interface implementation.</returns>
+        [CLSCompliant(false)]
         public static IAlpacaDataStreamingClient GetAlpacaDataStreamingClient(
             this IEnvironment environment,
             SecurityKey securityKey) =>
-#pragma warning disable 618
             new AlpacaDataStreamingClient(environment.GetAlpacaDataStreamingClientConfiguration(securityKey));
-#pragma warning restore 618
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataStreamingClientConfiguration"/> for specific

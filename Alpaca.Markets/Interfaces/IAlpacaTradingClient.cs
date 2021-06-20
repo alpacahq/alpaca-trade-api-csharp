@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,6 +9,8 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca Trading API via HTTP/REST.
     /// </summary>
+    [CLSCompliant(false)]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public interface IAlpacaTradingClient : IDisposable
     {
         /// <summary>
@@ -124,6 +127,7 @@ namespace Alpaca.Markets
         /// <param name="request">List orders request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of order information objects.</returns>
+        [CLSCompliant(false)]
         Task<IReadOnlyList<IOrder>> ListOrdersAsync(
             ListOrdersRequest request,
             CancellationToken cancellationToken = default);
@@ -294,6 +298,7 @@ namespace Alpaca.Markets
         /// <param name="request">All positions deletion request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>List of position cancellation status objects.</returns>
+        [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
         Task<IReadOnlyList<IPositionActionStatus>> DeleteAllPositionsAsync(
             DeleteAllPositionsRequest request,
             CancellationToken cancellationToken = default);

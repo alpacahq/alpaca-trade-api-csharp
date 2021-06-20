@@ -18,12 +18,12 @@ namespace Alpaca.Markets
 
         public static Task<TApi> PostAsync<TApi, TJson, TRequest>(
             this HttpClient httpClient,
-            Uri endpointUri,
+            UriBuilder uriBuilder,
             TRequest request,
             CancellationToken cancellationToken)
             where TJson : TApi =>
             callAndDeserializeAsync<TApi, TJson, TRequest>(
-                httpClient, HttpMethod.Post, endpointUri, request, cancellationToken);
+                httpClient, HttpMethod.Post, uriBuilder.Uri, request, cancellationToken);
 
         public static Task<TApi> PutAsync<TApi, TJson, TRequest>(
             this HttpClient httpClient,

@@ -8,61 +8,40 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonPolygonHistoricalQuote : IHistoricalQuote
+    internal sealed class JsonHistoricalQuote : IQuote
     {
-        [JsonIgnore]
-        String IQuoteBase<String>.BidExchange => throw new InvalidOperationException();
+        [JsonProperty(PropertyName = "t", Required = Required.Always)]
+        public DateTime TimestampUtc { get; set; }
 
-        [JsonIgnore]
-        String IQuoteBase<String>.AskExchange => throw new InvalidOperationException();
+        [JsonProperty(PropertyName = "ax", Required = Required.Always)]
+        public String AskExchange { get; set; } = String.Empty;
 
-        [JsonProperty(PropertyName = "t", Required = Required.Default)]
-        [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
-        public DateTime? TimestampUtc { get; set; }
-
-        [JsonProperty(PropertyName = "y", Required = Required.Default)]
-        [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
-        public DateTime? ParticipantTimestampUtc { get; set; }
-
-        [JsonProperty(PropertyName = "f", Required = Required.Default)]
-        [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
-        public DateTime? TradeReportingFacilityTimestampUtc { get; set; }
-
-        [JsonProperty(PropertyName = "X", Required = Required.Default)]
-        public Int64 AskExchange { get; set; }
-
-        [JsonProperty(PropertyName = "x", Required = Required.Default)]
-        public Int64 BidExchange { get; set; }
-
-        [JsonProperty(PropertyName = "s", Required = Required.Default)]
-        public Int64 BidSize { get; set; }
-
-        [JsonProperty(PropertyName = "S", Required = Required.Default)]
-        public Int64 AskSize { get; set; }
-
-        [JsonProperty(PropertyName = "p", Required = Required.Default)]
-        public Decimal BidPrice { get; set; }
-
-        [JsonProperty(PropertyName = "P", Required = Required.Default)]
+        [JsonProperty(PropertyName = "ap", Required = Required.Default)]
         public Decimal AskPrice { get; set; }
 
-        [JsonProperty(PropertyName = "z", Required = Required.Default)]
-        public Int64 Tape { get; set; }
+        [JsonProperty(PropertyName = "as", Required = Required.Default)]
+        public UInt64 AskSize { get; set; }
 
-        [JsonProperty(PropertyName = "q", Required = Required.Default)]
-        public Int64 SequenceNumber { get; set; }
+        [JsonProperty(PropertyName = "bx", Required = Required.Always)]
+        public String BidExchange  { get; set; } = String.Empty;
+
+        [JsonProperty(PropertyName = "bp", Required = Required.Default)]
+        public Decimal BidPrice { get; set; }
+
+        [JsonProperty(PropertyName = "bs", Required = Required.Default)]
+        public UInt64 BidSize { get; set; }
 
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
-        public List<Int64>? ConditionsList { get; set; }
+        public List<String> ConditionsList { get; } = new ();
 
-        [JsonProperty(PropertyName = "i", Required = Required.Default)]
-        public List<Int64>? IndicatorsList { get; set; }
-
-        [JsonIgnore]
-        public IReadOnlyList<Int64> Conditions => ConditionsList.EmptyIfNull();
+        [JsonProperty(PropertyName = "z", Required = Required.Default)]
+        public String Tape { get; set; } = String.Empty;
 
         [JsonIgnore]
+        public String Symbol { get; internal set; } = String.Empty;
 
-        public IReadOnlyList<Int64> Indicators => IndicatorsList.EmptyIfNull();
+        [JsonIgnore]
+        public IReadOnlyList<String> Conditions => 
+            ConditionsList.EmptyIfNull();
     }
 }

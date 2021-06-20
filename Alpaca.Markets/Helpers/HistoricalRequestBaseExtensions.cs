@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
@@ -13,6 +14,7 @@ namespace Alpaca.Markets
         /// <param name="request">Request parameters object.</param>
         /// <param name="pageSize">The request page size.</param>
         /// <returns>The original request parameters object.</returns>
+        [CLSCompliant(false)]
         public static TRequest WithPageSize<TRequest>(
             this TRequest request,
             UInt32 pageSize)
@@ -28,6 +30,7 @@ namespace Alpaca.Markets
         /// <param name="request">Request parameters object.</param>
         /// <param name="pageToken">The request page size.</param>
         /// <returns>The original request parameters object.</returns>
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public static TRequest WithPageToken<TRequest>(
             this TRequest request,
             String pageToken)

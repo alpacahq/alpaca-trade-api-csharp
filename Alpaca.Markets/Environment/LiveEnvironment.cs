@@ -4,16 +4,12 @@ namespace Alpaca.Markets
 {
     internal sealed class LiveEnvironment : IEnvironment
     {
-        public Uri AlpacaTradingApi { get; } = new Uri("https://api.alpaca.markets");
+        public Uri AlpacaTradingApi => new ("https://api.alpaca.markets");
 
-        public Uri AlpacaDataApi { get; } = new Uri("https://data.alpaca.markets");
+        public Uri AlpacaDataApi => new ("https://data.alpaca.markets");
 
-        public Uri PolygonDataApi { get; } = new Uri("https://api.polygon.io");
+        public Uri AlpacaStreamingApi => new ("wss://api.alpaca.markets/stream");
 
-        public Uri AlpacaStreamingApi { get; } = new Uri("wss://api.alpaca.markets/stream");
-
-        public Uri PolygonStreamingApi { get; } = new Uri("wss://socket.polygon.io/stocks");
-
-        public Uri AlpacaDataStreamingApi { get; } = new Uri("wss://stream.data.alpaca.markets/v2/sip");
+        public Uri AlpacaDataStreamingApi => new ("wss://stream.data.alpaca.markets/v2/sip");
     }
 }

@@ -20,10 +20,6 @@ namespace Alpaca.Markets
 
         public static DateTime ConvertFromEstToUtc(
             DateTime estDateTime) =>
-#if NETSTANDARD1_3
-            TimeZoneInfo.ConvertTime(estDateTime, Est, TimeZoneInfo.Utc);
-#else
             TimeZoneInfo.ConvertTimeToUtc(estDateTime, Est);
-#endif
     }
 }

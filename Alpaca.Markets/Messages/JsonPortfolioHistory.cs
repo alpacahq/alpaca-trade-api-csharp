@@ -23,7 +23,7 @@ namespace Alpaca.Markets
             public DateTime TimestampUtc { get; set; }
         }
 
-        private readonly List<IPortfolioHistoryItem> _items = new List<IPortfolioHistoryItem>();
+        private readonly List<IPortfolioHistoryItem> _items = new ();
 
         [JsonProperty(PropertyName = "equity", Required = Required.Always)]
         public List<Decimal?>? EquityList { get; set; }
@@ -62,7 +62,7 @@ namespace Alpaca.Markets
 
             for (var index = 0; index < count; ++index)
             {
-                _items.Add(new Item()
+                _items.Add(new Item
                 {
                     Equity = equities[index],
                     ProfitLoss = profitLosses[index],

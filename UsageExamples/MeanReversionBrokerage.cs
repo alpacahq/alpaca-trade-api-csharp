@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UsageExamples
 {
-    // This version of the mean reversion example algorithm utilizes Polygon data that
+    // This version of the mean reversion example algorithm utilizes Alpaca data that
     // is available to users who have a funded Alpaca brokerage account. By default, it
     // is configured to use the paper trading API, but you can change it to use the live
     // trading API by setting the API_URL.
@@ -16,13 +16,13 @@ namespace UsageExamples
     [SuppressMessage("ReSharper", "RedundantDefaultMemberInitializer")]
     internal sealed class MeanReversionBrokerage : IDisposable
     {
-        private string API_KEY = "REPLACEME";
+        private const String API_KEY = "REPLACEME";
 
-        private string API_SECRET = "REPLACEME";
+        private const String API_SECRET = "REPLACEME";
 
-        private string symbol = "AAPL";
+        private const String symbol = "AAPL";
 
-        private Decimal scale = 200;
+        private const Decimal scale = 200;
 
         private IAlpacaDataClient alpacaDataClient;
 
@@ -34,9 +34,9 @@ namespace UsageExamples
 
         private Guid lastTradeId = Guid.NewGuid();
 
-        private bool lastTradeOpen = false;
+        private Boolean lastTradeOpen;
 
-        private readonly List<Decimal> closingPrices = new List<Decimal>();
+        private readonly List<Decimal> closingPrices = new ();
 
         public async Task Run()
         {
@@ -47,7 +47,7 @@ namespace UsageExamples
             // Connect to Alpaca's websocket and listen for updates on our orders.
             alpacaStreamingClient = Environments.Paper.GetAlpacaStreamingClient(new SecretKey(API_KEY, API_SECRET));
 
-            alpacaStreamingClient.ConnectAndAuthenticateAsync().Wait();
+            await alpacaStreamingClient.ConnectAndAuthenticateAsync();
 
             alpacaStreamingClient.OnTradeUpdate += HandleTradeUpdate;
 
@@ -67,15 +67,14 @@ namespace UsageExamples
 
             closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 
-            var today = DateTime.Today;
+            // TODO: olegra - re-enable after Alpaca Data API v2 transition period completion
 
-            // TODO: olegra - temporary disable for the transition period
-
-            // Get the first group of bars from today if the market has already been open.
+            //var today = DateTime.Today;
+            //// Get the first group of bars from today if the market has already been open.
             //var bars = await alpacaDataClient.ListAggregatesAsync(
             //    new AggregatesRequest(symbol, new AggregationPeriod(1, AggregationPeriodUnit.Minute))
             //        .SetInclusiveTimeInterval(today, today.AddDays(1)));
-            //var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count() - 20));
+            //var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count - 20));
             //foreach (var bar in lastBars)
             //{
             //    if (bar.TimeUtc?.Date == today)
@@ -88,16 +87,17 @@ namespace UsageExamples
             await AwaitMarketOpen();
             Console.WriteLine("Market opened.");
 
-            // Connect to Polygon's websocket and listen for price updates.
+            // Connect to Alpaca's websocket and listen for price updates.
             alpacaDataStreamingClient = Environments.Live.GetAlpacaDataStreamingClient(new SecretKey(API_KEY, API_SECRET));
 
-            alpacaDataStreamingClient.ConnectAndAuthenticateAsync().Wait();
-            Console.WriteLine("Polygon client opened.");
-            var subscription = alpacaDataStreamingClient.GetMinuteAggSubscription(symbol);
-            subscription.Received += async (agg) =>
+            await alpacaDataStreamingClient.ConnectAndAuthenticateAsync();
+            Console.WriteLine("Alpaca streaming client opened.");
+
+            var subscription = alpacaDataStreamingClient.GetMinuteBarSubscription(symbol);
+            subscription.Received += async (bar) =>
             {
                 // If the market's close to closing, exit position and stop trading.
-                TimeSpan minutesUntilClose = closingTime - DateTime.UtcNow;
+                var minutesUntilClose = closingTime - DateTime.UtcNow;
                 if (minutesUntilClose.TotalMinutes < 15)
                 {
                     Console.WriteLine("Reached the end of trading window.");
@@ -107,7 +107,7 @@ namespace UsageExamples
                 else
                 {
                     // Decide whether to buy or sell and submit orders.
-                    await HandleMinuteAgg(agg);
+                    await HandleMinuteBar(bar);
                 }
             };
             alpacaDataStreamingClient.Subscribe(subscription);
@@ -135,15 +135,15 @@ namespace UsageExamples
         }
 
         // Determine whether our position should grow or shrink and submit orders.
-        private async Task HandleMinuteAgg(IStreamAgg agg)
+        private async Task HandleMinuteBar(IBar agg)
         {
             closingPrices.Add(agg.Close);
             if (closingPrices.Count > 20)
             {
                 closingPrices.RemoveAt(0);
 
-                Decimal avg = closingPrices.Average();
-                Decimal diff = avg - agg.Close;
+                var avg = closingPrices.Average();
+                var diff = avg - agg.Close;
 
                 // If the last trade hasn't filled yet, we'd rather replace
                 // it than have two orders open at once.
@@ -151,14 +151,14 @@ namespace UsageExamples
                 {
                     // We need to wait for the cancel to process in order to avoid
                     // having long and short orders open at the same time.
-                    bool res = await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
+                    var res = await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
                 }
 
                 // Make sure we know how much we should spend on our position.
                 var account = await alpacaTradingClient.GetAccountAsync();
-                Decimal buyingPower = account.BuyingPower;
-                Decimal equity = account.Equity;
-                long multiplier = account.Multiplier;
+                var buyingPower = account.BuyingPower;
+                var equity = account.Equity;
+                var multiplier = (Int64)account.Multiplier;
 
                 // Check how much we currently have in this position.
                 var positionQuantity = 0L;
@@ -186,9 +186,9 @@ namespace UsageExamples
                     else
                     {
                         // Allocate a percent of portfolio to short position
-                        Decimal portfolioShare = -1 * diff / agg.Close * scale;
-                        Decimal targetPositionValue = -1 * equity * multiplier * portfolioShare;
-                        Decimal amountToShort = targetPositionValue - positionValue;
+                        var portfolioShare = -1 * diff / agg.Close * scale;
+                        var targetPositionValue = -1 * equity * multiplier * portfolioShare;
+                        var amountToShort = targetPositionValue - positionValue;
 
                         if (amountToShort < 0)
                         {
@@ -218,9 +218,9 @@ namespace UsageExamples
                 else
                 {
                     // Allocate a percent of our portfolio to long position.
-                    Decimal portfolioShare = diff / agg.Close * scale;
-                    Decimal targetPositionValue = equity * multiplier * portfolioShare;
-                    Decimal amountToLong = targetPositionValue - positionValue;
+                    var portfolioShare = diff / agg.Close * scale;
+                    var targetPositionValue = equity * multiplier * portfolioShare;
+                    var amountToLong = targetPositionValue - positionValue;
 
                     if (positionQuantity < 0)
                     {
@@ -235,7 +235,7 @@ namespace UsageExamples
                         {
                             amountToLong = buyingPower;
                         }
-                        int qty = (int)(amountToLong / agg.Close);
+                        var qty = (int)(amountToLong / agg.Close);
 
                         await SubmitOrder(qty, agg.Close, OrderSide.Buy);
                         Console.WriteLine($"Adding {qty * agg.Close:C2} to long position.");

@@ -6,6 +6,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates trade update information from Alpaca streaming API.
     /// </summary>
+    [CLSCompliant(false)]
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface ITradeUpdate
     {
@@ -30,6 +31,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets updated trade quantity (rounded to the nearest integer).
         /// </summary>
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         Int64? IntegerQuantity { get; }
 
         /// <summary>

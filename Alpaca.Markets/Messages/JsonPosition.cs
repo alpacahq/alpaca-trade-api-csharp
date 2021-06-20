@@ -10,9 +10,6 @@ namespace Alpaca.Markets
     [SuppressMessage("ReSharper", "StringLiteralTypo")]
     internal sealed class JsonPosition : IPosition
     {
-        [JsonProperty(PropertyName = "account_id", Required = Required.Default)]
-        public Guid AccountId { get; set; }
-
         [JsonProperty(PropertyName = "asset_id", Required = Required.Always)]
         public Guid AssetId { get; set; }
 

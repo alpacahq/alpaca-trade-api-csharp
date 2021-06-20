@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates watch list information from Alpaca REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IWatchList
     {
         /// <summary>
@@ -29,7 +32,7 @@ namespace Alpaca.Markets
         String Name { get; }
 
         /// <summary>
-        /// Gets <see cref="IAccountBase.AccountId"/> for this watch list.
+        /// Gets <see cref="IAccount.AccountId"/> fro this watch list.
         /// </summary>
         Guid AccountId { get; }
 

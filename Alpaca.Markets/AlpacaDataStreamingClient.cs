@@ -10,8 +10,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca data streaming API via websockets.
     /// </summary>
-    [Obsolete("This class will be marked as internal in the next major SDK release.", false)]
-    public sealed class AlpacaDataStreamingClient :
+    internal sealed class AlpacaDataStreamingClient :
         StreamingClientBase<AlpacaDataStreamingClientConfiguration>, 
         IAlpacaDataStreamingClient
     {
@@ -54,8 +53,7 @@ namespace Alpaca.Markets
 
         private sealed class Subscriptions
         {
-            private readonly ConcurrentDictionary<String, ISubscription> _subscriptions =
-                new ConcurrentDictionary<String, ISubscription>(StringComparer.Ordinal);
+            private readonly ConcurrentDictionary<String, ISubscription> _subscriptions = new (StringComparer.Ordinal);
 
             public  IAlpacaDataSubscription<TApi> GetOrAdd<TApi, TJson>(
                 String stream)
@@ -105,7 +103,7 @@ namespace Alpaca.Markets
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
-        private readonly Subscriptions _subscriptions = new Subscriptions();
+        private readonly Subscriptions _subscriptions = new ();
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataStreamingClient"/> object.
@@ -126,28 +124,28 @@ namespace Alpaca.Markets
             };
 
         /// <inheritdoc />
-        public IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
+        public IAlpacaDataSubscription<ITrade> GetTradeSubscription(
             String symbol) => 
-            _subscriptions.GetOrAdd<IStreamTrade, JsonStreamTradeAlpaca>(getStreamName(TradesChannel, symbol));
+            _subscriptions.GetOrAdd<ITrade, JsonRealTimeTrade>(getStreamName(TradesChannel, symbol));
 
         /// <inheritdoc />
-        public IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
+        public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
             String symbol) =>
-            _subscriptions.GetOrAdd<IStreamQuote, JsonStreamQuoteAlpaca>(getStreamName(QuotesChannel, symbol));
+            _subscriptions.GetOrAdd<IQuote, JsonRealTimeQuote>(getStreamName(QuotesChannel, symbol));
 
         /// <inheritdoc />
-        public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription() => 
-            _subscriptions.GetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(getStreamName(MinuteBarsChannel, WildcardSymbolString));
+        public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() => 
+            _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(MinuteBarsChannel, WildcardSymbolString));
 
         /// <inheritdoc />
-        public IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
+        public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
             String symbol) =>
-            _subscriptions.GetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(getStreamName(MinuteBarsChannel, symbol));
+            _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(MinuteBarsChannel, symbol));
 
         /// <inheritdoc />
-        public IAlpacaDataSubscription<IStreamAgg> GetDailyAggSubscription(
+        public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
             String symbol) =>
-            _subscriptions.GetOrAdd<IStreamAgg, JsonStreamAggAlpaca>(getStreamName(DailyBarsChannel, symbol));
+            _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(DailyBarsChannel, symbol));
 
         /// <inheritdoc />
         public void Subscribe(
@@ -238,10 +236,10 @@ namespace Alpaca.Markets
             var subscriptionUpdate = token.ToObject<JsonSubscriptionUpdate>() ?? new JsonSubscriptionUpdate();
 
             var streams = new HashSet<String>(
-                getStreams(subscriptionUpdate.Trades, TradesChannel)
-                    .Concat(getStreams(subscriptionUpdate.Quotes, QuotesChannel))
-                    .Concat(getStreams(subscriptionUpdate.DailyBars, DailyBarsChannel))
-                    .Concat(getStreams(subscriptionUpdate.MinuteBars, MinuteBarsChannel)),
+                getStreams(subscriptionUpdate.Trades.EmptyIfNull(), TradesChannel)
+                    .Concat(getStreams(subscriptionUpdate.Quotes.EmptyIfNull(), QuotesChannel))
+                    .Concat(getStreams(subscriptionUpdate.DailyBars.EmptyIfNull(), DailyBarsChannel))
+                    .Concat(getStreams(subscriptionUpdate.MinuteBars.EmptyIfNull(), MinuteBarsChannel)),
                 StringComparer.Ordinal);
 
             try
@@ -316,23 +314,30 @@ namespace Alpaca.Markets
 
         private void subscribe(
             IEnumerable<String> streams) =>
-            sendSubscriptionRequest(getLookup(streams), JsonAction.PolygonSubscribe);
+            sendSubscriptionRequest(getLookup(streams), JsonAction.Subscribe);
 
         private void unsubscribe(
             IEnumerable<String> streams) =>
-            sendSubscriptionRequest(getLookup(streams), JsonAction.PolygonUnsubscribe);
+            sendSubscriptionRequest(getLookup(streams), JsonAction.Unsubscribe);
 
         private void sendSubscriptionRequest(
             ILookup<String, String> streamsByChannels,
-            JsonAction action) =>
+            JsonAction action)
+        {
+            if (streamsByChannels.Count == 0)
+            {
+                return;
+            }
+
             SendAsJsonString(new JsonSubscriptionUpdate
             {
                 Action = action,
-                Trades = streamsByChannels[TradesChannel].ToList(),
-                Quotes = streamsByChannels[QuotesChannel].ToList(),
-                DailyBars = streamsByChannels[DailyBarsChannel].ToList(),
-                MinuteBars = streamsByChannels[MinuteBarsChannel].ToList()
+                MinuteBars = getSymbols(streamsByChannels, MinuteBarsChannel),
+                DailyBars = getSymbols(streamsByChannels, DailyBarsChannel),
+                Trades = getSymbols(streamsByChannels, TradesChannel),
+                Quotes = getSymbols(streamsByChannels, QuotesChannel),
             });
+        }
 
         private static ILookup<String, String> getLookup(
             IEnumerable<String> streams) =>
@@ -354,5 +359,12 @@ namespace Alpaca.Markets
             String channelName,
             String symbol) =>
             $"{channelName}.{symbol}";
+
+        private static List<String>? getSymbols(
+            ILookup<String, String> streamsByChannels,
+            String stream) =>
+            streamsByChannels[stream]
+                .Where(_ => !String.IsNullOrEmpty(_))
+                .ToList().NullIfEmpty();
     }
 }

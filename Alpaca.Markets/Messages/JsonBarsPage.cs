@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -8,10 +9,10 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonBarsPage : IPage<IAgg>
+    internal sealed class JsonBarsPage : IPage<IBar>
     {
         [JsonProperty(PropertyName = "bars", Required = Required.Always)]
-        public List<JsonAlpacaHistoricalBar> ItemsList { get; set; } = new List<JsonAlpacaHistoricalBar>();
+        public List<JsonHistoricalBar> ItemsList { get; set; } = new ();
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
@@ -20,6 +21,15 @@ namespace Alpaca.Markets
         public String? NextPageToken { get; set; }
 
         [JsonIgnore]
-        public IReadOnlyList<IAgg> Items => ItemsList.EmptyIfNull();
+        public IReadOnlyList<IBar> Items { get; private set; } = new List<IBar>();
+            
+        [OnDeserialized]
+        internal void OnDeserializedMethod(
+            StreamingContext context)
+        {
+            // ReSharper disable once ConstantConditionalAccessQualifier
+            ItemsList?.ForEach(_ => _.Symbol = Symbol);
+            Items = ItemsList.EmptyIfNull();
+        }
     }
 }

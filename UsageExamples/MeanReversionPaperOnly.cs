@@ -12,13 +12,13 @@ namespace UsageExamples
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal sealed class MeanReversionPaperOnly : IDisposable
     {
-        private string API_KEY = "REPLACEME";
+        private const String API_KEY = "REPLACEME";
 
-        private string API_SECRET = "REPLACEME";
+        private const String API_SECRET = "REPLACEME";
 
-        private string symbol = "SPY";
+        private const String symbol = "SPY";
 
-        private Decimal scale = 200;
+        private const Decimal scale = 200;
 
         private IAlpacaTradingClient alpacaTradingClient;
 
@@ -117,7 +117,7 @@ namespace UsageExamples
                         {
                             amountToAdd = buyingPower;
                         }
-                        int qtyToBuy = (int)(amountToAdd / currentPrice);
+                        Int32 qtyToBuy = (Int32)(amountToAdd / currentPrice);
 
                         await SubmitOrder(qtyToBuy, currentPrice, OrderSide.Buy);
                     }

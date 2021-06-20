@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
-    public sealed partial class AlpacaTradingClient
+    internal sealed partial class AlpacaTradingClient
     {
         /// <inheritdoc />
-        public Task<IReadOnlyList<IOrder>> ListOrdersAsync(
+        public async Task<IReadOnlyList<IOrder>> ListOrdersAsync(
             ListOrdersRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IReadOnlyList<IOrder>, List<JsonOrder>>(
-                request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
-                cancellationToken, _alpacaRestApiThrottler);
+            await _httpClient.GetAsync<IReadOnlyList<IOrder>, List<JsonOrder>>(
+                await request.EnsureNotNull(nameof(request))
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
         public Task<IOrder> PostOrderAsync(
@@ -42,24 +43,25 @@ namespace Alpaca.Markets
                 request, cancellationToken);
 
         /// <inheritdoc />
-        public Task<IOrder> GetOrderAsync(
+        public async Task<IOrder> GetOrderAsync(
             String clientOrderId,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IOrder, JsonOrder>(
-                new UriBuilder(_httpClient.BaseAddress)
+            await _httpClient.GetAsync<IOrder, JsonOrder>(
+                new UriBuilder(_httpClient.BaseAddress!)
                 {
                     Path = "v2/orders:by_client_order_id",
-                    Query = new QueryBuilder()
+                    Query = await new QueryBuilder()
                         .AddParameter("client_order_id", clientOrderId)
+                        .AsStringAsync().ConfigureAwait(false)
                 },
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
         public Task<IOrder> GetOrderAsync(
             Guid orderId,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IOrder, JsonOrder>(
-                $"v2/orders/{orderId:D}", cancellationToken, _alpacaRestApiThrottler);
+                $"v2/orders/{orderId:D}", cancellationToken);
 
         /// <inheritdoc />
         public Task<Boolean> DeleteOrderAsync(

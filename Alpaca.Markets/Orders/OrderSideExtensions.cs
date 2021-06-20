@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Set of extensions methods for creating the <see cref="OrderBase"/> inheritors.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class OrderSideExtensions
     {
         /// <summary>
@@ -18,7 +20,7 @@ namespace Alpaca.Markets
             this OrderSide orderSide,
             String symbol,
             Int64 quantity) =>
-            new MarketOrder(symbol, quantity, orderSide);
+            new (symbol, quantity, orderSide);
 
         /// <summary>
         /// Creates new stop order using specified side, symbol, quantity, and stop price.
@@ -33,7 +35,7 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             Decimal stopPrice) =>
-            new StopOrder(symbol, quantity, orderSide, stopPrice);
+            new (symbol, quantity, orderSide, stopPrice);
 
         /// <summary>
         /// Creates new limit order using specified side, symbol, quantity, and limit price.
@@ -48,7 +50,7 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             Decimal limitPrice) =>
-            new LimitOrder(symbol, quantity, orderSide, limitPrice);
+            new (symbol, quantity, orderSide, limitPrice);
 
         /// <summary>
         /// Creates new limit order using specified side, symbol, quantity, stop, and limit prices.
@@ -65,7 +67,7 @@ namespace Alpaca.Markets
             Int64 quantity,
             Decimal stopPrice,
             Decimal limitPrice) =>
-            new StopLimitOrder(symbol, quantity, orderSide, stopPrice, limitPrice);
+            new (symbol, quantity, orderSide, stopPrice, limitPrice);
 
         /// <summary>
         /// Creates new trailing stop order using specified side, symbol, quantity, and trail offset.
@@ -80,6 +82,6 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             TrailOffset trailOffset) =>
-            new TrailingStopOrder(symbol, quantity, orderSide, trailOffset);
+            new (symbol, quantity, orderSide, trailOffset);
     }
 }

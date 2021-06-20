@@ -49,7 +49,7 @@ namespace Alpaca.Markets
 
             public Task OpenAsync(
                 CancellationToken cancellationToken) =>
-#if NET45
+#if NETFRAMEWORK
                 Task.Run(() => _webSocket.Open(), cancellationToken);
 #else
                 _webSocket.OpenAsync();
@@ -57,7 +57,7 @@ namespace Alpaca.Markets
 
             public Task CloseAsync(
                 CancellationToken cancellationToken) =>
-#if NET45
+#if NETFRAMEWORK
                 Task.Run(() => _webSocket.Close(), cancellationToken);
 #else
                 _webSocket.CloseAsync();
@@ -78,27 +78,27 @@ namespace Alpaca.Markets
             public event Action<Exception>? Error;
 
             private void handleOpened(
-                Object sender,
+                Object? sender,
                 EventArgs eventArgs) =>
                 Opened?.Invoke();
 
             private void handleClosed(
-                Object sender,
+                Object? sender,
                 EventArgs eventArgs) =>
                 Closed?.Invoke();
 
             private void handleDataReceived(
-                Object sender,
+                Object? sender,
                 DataReceivedEventArgs eventArgs) =>
                 DataReceived?.Invoke(eventArgs.Data);
 
             private void handleMessageReceived(
-                Object sender,
+                Object? sender,
                 MessageReceivedEventArgs eventArgs) =>
                 MessageReceived?.Invoke(eventArgs.Message);
 
             private void handleError(
-                Object sender,
+                Object? sender,
                 ErrorEventArgs eventArgs) =>
                 Error?.Invoke(eventArgs.Exception);
         }

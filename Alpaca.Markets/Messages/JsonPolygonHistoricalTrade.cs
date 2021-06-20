@@ -8,51 +8,34 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonPolygonHistoricalTrade : IHistoricalTrade
+    internal sealed class JsonHistoricalTrade : ITrade
     {
-        [JsonProperty(PropertyName = "p", Required = Required.Default)]
-        public Decimal Price { get; set; }
-
-        [JsonProperty(PropertyName = "s", Required = Required.Default)]
-        public Int64 Size { get; set; }
-
-        [JsonProperty(PropertyName = "t", Required = Required.Default)]
-        [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
-        public DateTime? TimestampUtc { get; set; }
-
-        [JsonProperty(PropertyName = "y", Required = Required.Default)]
-        [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
-        public DateTime? ParticipantTimestampUtc { get; set; }
-
-        [JsonProperty(PropertyName = "f", Required = Required.Default)]
-        [JsonConverter(typeof(UnixNanosecondsDateTimeConverter))]
-        public DateTime? TradeReportingFacilityTimestampUtc { get; set; }
+        [JsonProperty(PropertyName = "t", Required = Required.Always)]
+        public DateTime TimestampUtc { get; set; }
 
         [JsonProperty(PropertyName = "x", Required = Required.Default)]
-        public Int64 ExchangeId { get; set; }
+        public String Exchange { get; set; } = String.Empty;
 
-        [JsonIgnore]
-        public String Exchange => throw new InvalidOperationException();
+        [JsonProperty(PropertyName = "p", Required = Required.Always)]
+        public Decimal Price { get; set; }
 
-        [JsonProperty(PropertyName = "r", Required = Required.Default)]
-        public Int64 TradeReportingFacilityId { get; set; }
-
-        [JsonProperty(PropertyName = "z", Required = Required.Default)]
-        public Int64 Tape { get; set; }
-
-        [JsonProperty(PropertyName = "q", Required = Required.Default)]
-        public Int64 SequenceNumber { get; set; }
+        [JsonProperty(PropertyName = "s", Required = Required.Always)]
+        public UInt64 Size { get; set; }
 
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
-        public String? TradeId { get; set; }
+        public UInt64 TradeId { get; set; }
 
-        [JsonProperty(PropertyName = "I", Required = Required.Default)]
-        public String? OriginalTradeId { get; set; }
+        [JsonProperty(PropertyName = "z", Required = Required.Default)]
+        public String Tape { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
-        public List<Int64>? ConditionsList { get; set; }
+        public List<String> ConditionsList { get; } = new ();
 
         [JsonIgnore]
-        public IReadOnlyList<Int64> Conditions => ConditionsList.EmptyIfNull();
+        public String Symbol { get; internal set; } = String.Empty;
+
+        [JsonIgnore]
+        public IReadOnlyList<String> Conditions => 
+            ConditionsList.EmptyIfNull();
     }
 }

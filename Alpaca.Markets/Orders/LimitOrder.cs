@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates data required for placing the limit order on the Alpaca REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public sealed class LimitOrder : SimpleOrderBase
     {
         internal LimitOrder(
@@ -33,7 +35,7 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             Decimal limitPrice) =>
-            new LimitOrder(
+            new (
                 symbol, quantity, OrderSide.Buy, limitPrice);
 
         /// <summary>
@@ -47,19 +49,31 @@ namespace Alpaca.Markets
             String symbol,
             Int64 quantity,
             Decimal limitPrice) =>
-            new LimitOrder(
+            new (
                 symbol, quantity, OrderSide.Sell, limitPrice);
 
         /// <summary>
         /// Creates a new instance of the <see cref="OneCancelsOtherOrder"/> order from the current order.
         /// </summary>
         /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
-        /// <param name="stopLossLimitPrice">Stop loss order limit price (optional).</param>
+        /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
+        public OneCancelsOtherOrder OneCancelsOther(
+            Decimal stopLossStopPrice) =>
+            new (
+                this,
+                stopLossStopPrice,
+                null);
+
+        /// <summary>
+        /// Creates a new instance of the <see cref="OneCancelsOtherOrder"/> order from the current order.
+        /// </summary>
+        /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
+        /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
         /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
         public OneCancelsOtherOrder OneCancelsOther(
             Decimal stopLossStopPrice,
-            Decimal? stopLossLimitPrice = null) =>
-            new OneCancelsOtherOrder(
+            Decimal stopLossLimitPrice) =>
+            new (
                 this,
                 stopLossStopPrice,
                 stopLossLimitPrice);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -6,10 +7,12 @@ namespace Alpaca.Markets.Extensions
     /// Helper extension method for creating special version of the <see cref="IAlpacaStreamingClient"/>
     /// implementation with automatic reconnection (with configurable delay and number of attempts) support.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class AlpacaStreamingClientExtensions
     {
         private sealed class ClientWithReconnection :
-            ClientWithReconnectBase<IAlpacaStreamingClient, Int32>,
+            ClientWithReconnectBase<IAlpacaStreamingClient>,
             IAlpacaStreamingClient
         {
             public ClientWithReconnection(
@@ -19,19 +22,23 @@ namespace Alpaca.Markets.Extensions
             {
             }
 
-#pragma warning disable CS0067 // Event never used
-            [Obsolete("This event never raised and will be removed in the next major SDK release.", true)]
-            public event Action<IAccountUpdate>? OnAccountUpdate;
-#pragma warning restore CS0067 // Event never used
-
             public event Action<ITradeUpdate>? OnTradeUpdate
             {
                 add => Client.OnTradeUpdate += value;
                 remove => Client.OnTradeUpdate += value;
             }
-
-            protected override void Resubscribe(String symbol, Int32 subscription) { }
         }
+
+        /// <summary>
+        /// Wraps instance of <see cref="IAlpacaStreamingClient"/> into the helper class
+        /// with automatic reconnection support with the default reconnection parameters.
+        /// </summary>
+        /// <param name="client">Original streaming client for wrapping.</param>
+        /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        [CLSCompliant(false)]
+        public static IAlpacaStreamingClient WithReconnect(
+            this IAlpacaStreamingClient client) =>
+            WithReconnect(client, ReconnectionParameters.Default);
 
         /// <summary>
         /// Wraps instance of <see cref="IAlpacaStreamingClient"/> into the helper class
@@ -40,9 +47,11 @@ namespace Alpaca.Markets.Extensions
         /// <param name="client">Original streaming client for wrapping.</param>
         /// <param name="parameters">Reconnection parameters (or default if missing).</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        [CLSCompliant(false)]
+        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public static IAlpacaStreamingClient WithReconnect(
             this IAlpacaStreamingClient client,
-            ReconnectionParameters? parameters = null) =>
-            new ClientWithReconnection(client, parameters ?? ReconnectionParameters.Default);
+            ReconnectionParameters parameters) =>
+            new ClientWithReconnection(client, parameters);
     }
 }

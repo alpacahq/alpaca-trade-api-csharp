@@ -1,22 +1,31 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates base data for ordinal order types, never used directly by any code.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public abstract class SimpleOrderBase : OrderBase
     {
-        internal SimpleOrderBase(
+        /// <summary>
+        /// Creates new instance of the <see cref="SimpleOrderBase"/> class.
+        /// </summary>
+        /// <param name="symbol">Alpaca symbol for order.</param>
+        /// <param name="quantity">Order quantity (absolute value).</param>
+        /// <param name="side">Order side (buy or sell).</param>
+        /// <param name="type">Order type (market, limit, stop, stop-limit).</param>
+        protected internal SimpleOrderBase(
             String symbol,
             Int64 quantity,
-            OrderSide orderSide,
-            OrderType orderType)
+            OrderSide side,
+            OrderType type)
             : base(
                 symbol, 
                 quantity, 
-                orderSide, 
-                orderType)
+                side, 
+                type)
         {
         }
         
@@ -27,7 +36,7 @@ namespace Alpaca.Markets
         /// <returns>New advanced order representing pair of original order and take profit order.</returns>
         public TakeProfitOrder TakeProfit(
             Decimal takeProfitLimitPrice) =>
-            new TakeProfitOrder(
+            new (
                 this, 
                 takeProfitLimitPrice);
 
@@ -35,12 +44,24 @@ namespace Alpaca.Markets
         /// Creates a new instance of the <see cref="StopLossOrder"/> order from the current order.
         /// </summary>
         /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
-        /// <param name="stopLossLimitPrice">Stop loss order limit price (optional).</param>
+        /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
+        public StopLossOrder StopLoss(
+            Decimal stopLossStopPrice) =>
+            new (
+                this, 
+                stopLossStopPrice,
+                null);
+
+        /// <summary>
+        /// Creates a new instance of the <see cref="StopLossOrder"/> order from the current order.
+        /// </summary>
+        /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
+        /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
         /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
         public StopLossOrder StopLoss(
             Decimal stopLossStopPrice,
-            Decimal? stopLossLimitPrice = null) =>
-            new StopLossOrder(
+            Decimal stopLossLimitPrice) =>
+            new (
                 this, 
                 stopLossStopPrice,
                 stopLossLimitPrice);
@@ -50,13 +71,28 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="takeProfitLimitPrice">Take profit order limit price.</param>
         /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
-        /// <param name="stopLossLimitPrice">Stop loss order limit price (optional).</param>
+        /// <returns>New advanced order representing an original order plus pair of take profit and stop loss orders.</returns>
+        public BracketOrder Bracket(
+            Decimal takeProfitLimitPrice,
+            Decimal stopLossStopPrice) =>
+            new (
+                this, 
+                takeProfitLimitPrice, 
+                stopLossStopPrice, 
+                null);
+
+        /// <summary>
+        /// Creates a new instance of the <see cref="BracketOrder"/> order from the current order.
+        /// </summary>
+        /// <param name="takeProfitLimitPrice">Take profit order limit price.</param>
+        /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
+        /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
         /// <returns>New advanced order representing an original order plus pair of take profit and stop loss orders.</returns>
         public BracketOrder Bracket(
             Decimal takeProfitLimitPrice,
             Decimal stopLossStopPrice,
-            Decimal? stopLossLimitPrice = null) =>
-            new BracketOrder(
+            Decimal stopLossLimitPrice) =>
+            new (
                 this, 
                 takeProfitLimitPrice, 
                 stopLossStopPrice, 

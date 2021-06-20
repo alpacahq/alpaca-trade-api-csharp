@@ -10,12 +10,9 @@ namespace Alpaca.Markets
     /// <summary>
     /// Provides unified type-safe access for Alpaca Data API via HTTP/REST.
     /// </summary>
-    [Obsolete("This class will be marked as internal in the next major SDK release.", false)]
-    public sealed class AlpacaDataClient : IAlpacaDataClient
+    internal sealed class AlpacaDataClient : IAlpacaDataClient
     {
         private readonly HttpClient _httpClient;
-
-        private readonly IThrottler _alpacaRestApiThrottler;
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataClient"/> object.
@@ -28,9 +25,8 @@ namespace Alpaca.Markets
                 .EnsureNotNull(nameof(configuration))
                 .EnsureIsValid();
 
-            _httpClient = configuration.HttpClient ?? new HttpClient();
-
-            _alpacaRestApiThrottler = configuration.ThrottleParameters.GetThrottler();
+            _httpClient = configuration.HttpClient ??
+                          configuration.ThrottleParameters.GetHttpClient();
 
             _httpClient.AddAuthenticationHeaders(configuration.SecurityId);
 
@@ -44,90 +40,90 @@ namespace Alpaca.Markets
         public void Dispose() => _httpClient.Dispose();
 
         /// <inheritdoc />
-        public Task<IReadOnlyDictionary<String, IReadOnlyList<IAgg>>> GetBarSetAsync(
+        public Task<IReadOnlyDictionary<String, IReadOnlyList<IBar>>> GetBarSetAsync(
             BarSetRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<String, IReadOnlyList<IAgg>, String, List<JsonAlpacaAgg>>(
-                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                StringComparer.Ordinal, _ => _.Value,
-                cancellationToken, _alpacaRestApiThrottler);
+            throw new NotImplementedException(
+                "This Alpaca Data API v1 endpoint will be deprecated soon.");
 
         /// <inheritdoc />
         public Task<ILastTrade> GetLastTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<ILastTrade, JsonLastTradeAlpaca>(
-                $"v1/last/stocks/{symbol.EnsureNotNull(nameof(symbol))}", cancellationToken,
-                _alpacaRestApiThrottler);
+            throw new NotImplementedException(
+                "This Alpaca Data API v1 endpoint will be deprecated soon.");
 
         /// <inheritdoc />
         public Task<ILastQuote> GetLastQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<ILastQuote, JsonLastQuoteAlpaca>(
-                $"v1/last_quote/stocks/{symbol.EnsureNotNull(nameof(symbol))}", cancellationToken,
-                _alpacaRestApiThrottler);
+            throw new NotImplementedException(
+                "This Alpaca Data API v1 endpoint will be deprecated soon.");
 
         /// <inheritdoc />
-        public Task<IPage<IAgg>> ListHistoricalBarsAsync(
+        public async Task<IPage<IBar>> ListHistoricalBarsAsync(
             HistoricalBarsRequest request,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IPage<IAgg>, JsonBarsPage>(
-                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                cancellationToken, _alpacaRestApiThrottler);
+            await _httpClient.GetAsync<IPage<IBar>, JsonBarsPage>(
+                await request.EnsureNotNull(nameof(request)).Validate()
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
-        public Task<IPage<IHistoricalQuote>> ListHistoricalQuotesAsync(
+        public async Task<IPage<IQuote>> ListHistoricalQuotesAsync(
             HistoricalQuotesRequest request, 
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IPage<IHistoricalQuote>, JsonQuotesPage>(
-                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                cancellationToken, _alpacaRestApiThrottler);
+            await _httpClient.GetAsync<IPage<IQuote>, JsonQuotesPage>(
+                await request.EnsureNotNull(nameof(request)).Validate()
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
-        public Task<IPage<IHistoricalTrade>> ListHistoricalTradesAsync(
+        public async Task<IPage<ITrade>> ListHistoricalTradesAsync(
             HistoricalTradesRequest request, 
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IPage<IHistoricalTrade>, JsonTradesPage>(
-                request.EnsureNotNull(nameof(request)).Validate().GetUriBuilder(_httpClient),
-                cancellationToken, _alpacaRestApiThrottler);
+            await _httpClient.GetAsync<IPage<ITrade>, JsonTradesPage>(
+                await request.EnsureNotNull(nameof(request)).Validate()
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
-        public Task<IStreamTrade> GetLatestTradeAsync(
+        public Task<ITrade> GetLatestTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IStreamTrade, JsonLatestTrade>(
-                $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/trades/latest", cancellationToken,
-                _alpacaRestApiThrottler);
+            _httpClient.GetAsync<ITrade, JsonLatestTrade>(
+                $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/trades/latest",
+                cancellationToken);
 
         /// <inheritdoc />
-        public Task<IStreamQuote> GetLatestQuoteAsync(
+        public Task<IQuote> GetLatestQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IStreamQuote, JsonLatestQuote>(
-                $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/quotes/latest", cancellationToken,
-                _alpacaRestApiThrottler);
+            _httpClient.GetAsync<IQuote, JsonLatestQuote>(
+                $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/quotes/latest",
+                cancellationToken);
 
         /// <inheritdoc />
         public Task<ISnapshot> GetSnapshotAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ISnapshot, JsonSnapshot>(
-                $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/snapshot", cancellationToken,
-                _alpacaRestApiThrottler);
+                $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/snapshot", cancellationToken);
 
         /// <inheritdoc />
-        public Task<IReadOnlyDictionary<String, ISnapshot>> GetSnapshotsAsync(
+        public async Task<IReadOnlyDictionary<String, ISnapshot>> GetSnapshotsAsync(
             IEnumerable<String> symbols,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<String, ISnapshot, String, JsonSnapshot>(
-                new UriBuilder(_httpClient.BaseAddress)
+            await _httpClient.GetAsync<String, ISnapshot, String, JsonSnapshot>(
+                new UriBuilder(_httpClient.BaseAddress!)
                 {
                     Path = "v2/stocks/snapshots",
-                    Query = new QueryBuilder()
-                        .AddParameter("symbols", String.Join(",", symbols))
+                    Query = await new QueryBuilder()
+                        .AddParameter("symbols", String.Join(",",
+                            symbols.EnsureNotNull(nameof(symbols))))
+                        .AsStringAsync().ConfigureAwait(false)
                 },
                 StringComparer.Ordinal, kvp => kvp.Value.WithSymbol(kvp.Key),
-                cancellationToken, _alpacaRestApiThrottler);
+                cancellationToken).ConfigureAwait(false);
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Secret API key for Alpaca/Polygon APIs authentication.
+    /// Secret API key for Alpaca API authentication.
     /// </summary>
     public sealed class SecretKey : SecurityKey
     {
@@ -23,23 +23,25 @@ namespace Alpaca.Markets
 
         internal override IEnumerable<KeyValuePair<String, String>> GetAuthenticationHeaders()
         {
+            // ReSharper disable StringLiteralTypo
             yield return new KeyValuePair<String, String>(
                 "APCA-API-KEY-ID", KeyId);
             yield return new KeyValuePair<String, String>(
                 "APCA-API-SECRET-KEY", Value);
+            // ReSharper restore StringLiteralTypo
         }
 
         internal override JsonAuthRequest.JsonData GetAuthenticationData() =>
-            new JsonAuthRequest.JsonData
+            new ()
             {
                 KeyId = KeyId,
                 SecretKey = Value
             };
 
         internal override JsonAuthentication GetAuthentication() =>
-            new JsonAuthentication
+            new()
             {
-                Action = JsonAction.PolygonAuthenticate,
+                Action = JsonAction.StreamingAuthenticate,
                 SecretKey = Value,
                 KeyId = KeyId
             };

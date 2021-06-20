@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 
 namespace Alpaca.Markets
@@ -36,17 +37,19 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public Boolean? ExtendedHours { get; set; }
 
-        internal UriBuilder GetUriBuilder(
+        internal async ValueTask<UriBuilder> GetUriBuilderAsync(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress)
+            new (httpClient.BaseAddress!)
             {
                 Path = "v2/account/portfolio/history",
-                Query = new QueryBuilder()
+                Query = await new QueryBuilder()
                     .AddParameter("start_date", TimeInterval.From, DateTimeHelper.DateFormat)
                     .AddParameter("end_date", TimeInterval.Into, DateTimeHelper.DateFormat)
                     .AddParameter("period", Period?.ToString())
+                    // ReSharper disable once StringLiteralTypo
                     .AddParameter("timeframe", TimeFrame)
                     .AddParameter("extended_hours", ExtendedHours)
+                    .AsStringAsync().ConfigureAwait(false)
             };
 
         void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(

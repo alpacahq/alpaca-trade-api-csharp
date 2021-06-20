@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Set of extensions methods for implementing the fluent interface for the <see cref="OrderBase"/> inheritors.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static class OrderBaseExtensions
     {
         /// <summary>

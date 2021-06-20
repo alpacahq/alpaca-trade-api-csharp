@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates snapshot information from the Alpaca REST API.
     /// </summary>
+    [CLSCompliant(false)]
+    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface ISnapshot
     {
         /// <summary>
@@ -15,26 +18,26 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the latest trade information.
         /// </summary>
-        IStreamQuote Quote { get; }
+        IQuote Quote { get; }
 
         /// <summary>
         /// Gets the latest quote information.
         /// </summary>
-        IStreamTrade Trade { get; }
+        ITrade Trade { get; }
 
         /// <summary>
         /// Gets the current minute bar information.
         /// </summary>
-        IAgg MinuteBar { get; }
+        IBar MinuteBar { get; }
 
         /// <summary>
         /// Gets the current daily bar information.
         /// </summary>
-        IAgg CurrentDailyBar { get; }
+        IBar CurrentDailyBar { get; }
 
         /// <summary>
         /// Gets the previous minute bar information.
         /// </summary>
-        IAgg PreviousDailyBar { get; }
+        IBar PreviousDailyBar { get; }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates data required for placing the market order on the Alpaca REST API.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public sealed class MarketOrder : SimpleOrderBase
     {
         internal MarketOrder(
@@ -17,7 +19,7 @@ namespace Alpaca.Markets
             Quantity = quantity;
 
         /// <summary>
-        /// 
+        /// Gets the market orders quantity as fractional or notional value.
         /// </summary>
         public new OrderQuantity Quantity { get; }
 
@@ -30,7 +32,7 @@ namespace Alpaca.Markets
         public static MarketOrder Buy(
             String symbol,
             OrderQuantity quantity) =>
-            new MarketOrder(
+            new (
                 symbol, quantity, OrderSide.Buy);
 
         /// <summary>
@@ -42,7 +44,7 @@ namespace Alpaca.Markets
         public static MarketOrder Sell(
             String symbol,
             OrderQuantity quantity) =>
-            new MarketOrder(
+            new (
                 symbol, quantity, OrderSide.Sell);
 
         internal override JsonNewOrder GetJsonRequest() =>
