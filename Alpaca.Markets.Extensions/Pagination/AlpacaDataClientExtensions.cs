@@ -222,6 +222,7 @@ namespace Alpaca.Markets.Extensions
                 .WithPageSize(request.Pagination.Size ?? MaxPageSize);
 
         private static HistoricalQuotesRequest getValidatedRequestWithoutPageToken(
+            // ReSharper disable once SuggestBaseTypeForParameter
             HistoricalQuotesRequest request) =>
             new HistoricalQuotesRequest(
                     request.Symbol,
@@ -230,6 +231,7 @@ namespace Alpaca.Markets.Extensions
                 .WithPageSize(request.Pagination.Size ?? MaxPageSize);
 
         private static HistoricalTradesRequest getValidatedRequestWithoutPageToken(
+            // ReSharper disable once SuggestBaseTypeForParameter
             HistoricalTradesRequest request) =>
             new HistoricalTradesRequest(
                     request.Symbol,
