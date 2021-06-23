@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Alpaca.Markets.Extensions
 {
+    using static Pagination;
+
     /// <summary>
     /// Set of extension methods for the <see cref="IAlpacaDataClient"/> interface.
     /// </summary>
@@ -15,8 +17,6 @@ namespace Alpaca.Markets.Extensions
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public static class AlpacaDataClientExtensions
     {
-        private const UInt32 MaxPageSize = 10_000;
-
         /// <summary>
         /// Gets all items provided by <see cref="IAlpacaDataClient.ListHistoricalBarsAsync"/> in pagination
         /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{IBar}"/> interface) so they
