@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Struct TrailOffset
+    <title>Struct PositionQuantity
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Struct TrailOffset
+    <meta name="title" content="Struct PositionQuantity
    ">
     <meta name="generator" content="docfx 2.58.0.0">
     
@@ -68,17 +68,17 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.TrailOffset">
+            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.PositionQuantity">
   
   
-  <h1 id="Alpaca_Markets_TrailOffset" data-uid="Alpaca.Markets.TrailOffset" class="text-break">Struct TrailOffset
+  <h1 id="Alpaca_Markets_PositionQuantity" data-uid="Alpaca.Markets.PositionQuantity" class="text-break">Struct PositionQuantity
   </h1>
-  <div class="markdown level0 summary"><p>Represents the trailing stop order offset in dollars or as percent of HWM.</p>
+  <div class="markdown level0 summary"><p>Represents the position liquidation quantity in (possible fractional) number of shares or in percents.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a>&gt;</div>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Alpaca.Markets.PositionQuantity.html">PositionQuantity</a>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -97,59 +97,28 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
-  <h5 id="Alpaca_Markets_TrailOffset_syntax">Syntax</h5>
+  <h5 id="Alpaca_Markets_PositionQuantity_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly struct TrailOffset : IEquatable&lt;TrailOffset&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly struct PositionQuantity : IEquatable&lt;PositionQuantity&gt;</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailOffset_IsInDollars.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailOffset.IsInDollars%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_PositionQuantity_IsInPercents.md&amp;value=---%0Auid%3A%20Alpaca.Markets.PositionQuantity.IsInPercents%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailOffset.cs/#L27">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Helpers/PositionQuantity.cs/#L41">View Source</a>
   </span>
-  <a id="Alpaca_Markets_TrailOffset_IsInDollars_" data-uid="Alpaca.Markets.TrailOffset.IsInDollars*"></a>
-  <h4 id="Alpaca_Markets_TrailOffset_IsInDollars" data-uid="Alpaca.Markets.TrailOffset.IsInDollars">IsInDollars</h4>
-  <div class="markdown level1 summary"><p>Returns <code>true</code> if trail offset is an amount in dollars.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly bool IsInDollars { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailOffset_IsInPercent.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailOffset.IsInPercent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailOffset.cs/#L32">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_TrailOffset_IsInPercent_" data-uid="Alpaca.Markets.TrailOffset.IsInPercent*"></a>
-  <h4 id="Alpaca_Markets_TrailOffset_IsInPercent" data-uid="Alpaca.Markets.TrailOffset.IsInPercent">IsInPercent</h4>
-  <div class="markdown level1 summary"><p>Returns <code>true</code> if trail offset is a percent of HWM value.</p>
+  <a id="Alpaca_Markets_PositionQuantity_IsInPercents_" data-uid="Alpaca.Markets.PositionQuantity.IsInPercents*"></a>
+  <h4 id="Alpaca_Markets_PositionQuantity_IsInPercents" data-uid="Alpaca.Markets.PositionQuantity.IsInPercents">IsInPercents</h4>
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if <a class="xref" href="Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_Value">Value</a> is an amount in percents (from 0 to 100).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public readonly bool IsInPercent { get; }</code></pre>
+public readonly bool IsInPercents { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -168,19 +137,52 @@ public readonly bool IsInPercent { get; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailOffset_Value.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailOffset.Value%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_PositionQuantity_IsInShares.md&amp;value=---%0Auid%3A%20Alpaca.Markets.PositionQuantity.IsInShares%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailOffset.cs/#L22">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Helpers/PositionQuantity.cs/#L35">View Source</a>
   </span>
-  <a id="Alpaca_Markets_TrailOffset_Value_" data-uid="Alpaca.Markets.TrailOffset.Value*"></a>
-  <h4 id="Alpaca_Markets_TrailOffset_Value" data-uid="Alpaca.Markets.TrailOffset.Value">Value</h4>
-  <div class="markdown level1 summary"><p>Gets the trailing stop order price offset value.</p>
+  <a id="Alpaca_Markets_PositionQuantity_IsInShares_" data-uid="Alpaca.Markets.PositionQuantity.IsInShares*"></a>
+  <h4 id="Alpaca_Markets_PositionQuantity_IsInShares" data-uid="Alpaca.Markets.PositionQuantity.IsInShares">IsInShares</h4>
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if <a class="xref" href="Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_Value">Value</a> is a number of shares (fractional or integer).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly decimal Value { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+public readonly bool IsInShares { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_PositionQuantity_Value.md&amp;value=---%0Auid%3A%20Alpaca.Markets.PositionQuantity.Value%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Helpers/PositionQuantity.cs/#L29">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_PositionQuantity_Value_" data-uid="Alpaca.Markets.PositionQuantity.Value*"></a>
+  <h4 id="Alpaca_Markets_PositionQuantity_Value" data-uid="Alpaca.Markets.PositionQuantity.Value">Value</h4>
+  <div class="markdown level1 summary"><p>Gets the position liquidation quantity in shares or in percentage value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+public readonly decimal Value { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -201,18 +203,18 @@ public readonly bool IsInPercent { get; }</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailOffset_Equals_Alpaca_Markets_TrailOffset_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailOffset.Equals(Alpaca.Markets.TrailOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_PositionQuantity_Equals_Alpaca_Markets_PositionQuantity_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.PositionQuantity.Equals(Alpaca.Markets.PositionQuantity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailOffset.cs/#L67">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Helpers/PositionQuantity.cs/#L79">View Source</a>
   </span>
-  <a id="Alpaca_Markets_TrailOffset_Equals_" data-uid="Alpaca.Markets.TrailOffset.Equals*"></a>
-  <h4 id="Alpaca_Markets_TrailOffset_Equals_Alpaca_Markets_TrailOffset_" data-uid="Alpaca.Markets.TrailOffset.Equals(Alpaca.Markets.TrailOffset)">Equals(TrailOffset)</h4>
+  <a id="Alpaca_Markets_PositionQuantity_Equals_" data-uid="Alpaca.Markets.PositionQuantity.Equals*"></a>
+  <h4 id="Alpaca_Markets_PositionQuantity_Equals_Alpaca_Markets_PositionQuantity_" data-uid="Alpaca.Markets.PositionQuantity.Equals(Alpaca.Markets.PositionQuantity)">Equals(PositionQuantity)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly bool Equals(TrailOffset other)</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly bool Equals(PositionQuantity other)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -225,7 +227,7 @@ public readonly bool IsInPercent { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a></td>
+        <td><a class="xref" href="Alpaca.Markets.PositionQuantity.html">PositionQuantity</a></td>
         <td><span class="parametername">other</span></td>
         <td></td>
       </tr>
@@ -248,13 +250,13 @@ public readonly bool IsInPercent { get; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailOffset_Equals_System_Object_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailOffset.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_PositionQuantity_Equals_System_Object_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.PositionQuantity.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailOffset.cs/#L58">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Helpers/PositionQuantity.cs/#L69">View Source</a>
   </span>
-  <a id="Alpaca_Markets_TrailOffset_Equals_" data-uid="Alpaca.Markets.TrailOffset.Equals*"></a>
-  <h4 id="Alpaca_Markets_TrailOffset_Equals_System_Object_" data-uid="Alpaca.Markets.TrailOffset.Equals(System.Object)">Equals(Object)</h4>
+  <a id="Alpaca_Markets_PositionQuantity_Equals_" data-uid="Alpaca.Markets.PositionQuantity.Equals*"></a>
+  <h4 id="Alpaca_Markets_PositionQuantity_Equals_System_Object_" data-uid="Alpaca.Markets.PositionQuantity.Equals(System.Object)">Equals(Object)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -297,13 +299,13 @@ public readonly bool IsInPercent { get; }</code></pre>
   <div><span class="xref">System.ValueType.Equals(System.Object)</span></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailOffset_GetHashCode.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailOffset.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_PositionQuantity_GetHashCode.md&amp;value=---%0Auid%3A%20Alpaca.Markets.PositionQuantity.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailOffset.cs/#L63">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Helpers/PositionQuantity.cs/#L75">View Source</a>
   </span>
-  <a id="Alpaca_Markets_TrailOffset_GetHashCode_" data-uid="Alpaca.Markets.TrailOffset.GetHashCode*"></a>
-  <h4 id="Alpaca_Markets_TrailOffset_GetHashCode" data-uid="Alpaca.Markets.TrailOffset.GetHashCode">GetHashCode()</h4>
+  <a id="Alpaca_Markets_PositionQuantity_GetHashCode_" data-uid="Alpaca.Markets.PositionQuantity.GetHashCode*"></a>
+  <h4 id="Alpaca_Markets_PositionQuantity_GetHashCode" data-uid="Alpaca.Markets.PositionQuantity.GetHashCode">GetHashCode()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -329,21 +331,21 @@ public readonly bool IsInPercent { get; }</code></pre>
   <div><span class="xref">System.ValueType.GetHashCode()</span></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailOffset_InDollars_System_Decimal_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailOffset.InDollars(System.Decimal)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_PositionQuantity_InPercents_System_Decimal_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.PositionQuantity.InPercents(System.Decimal)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailOffset.cs/#L41">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Helpers/PositionQuantity.cs/#L60">View Source</a>
   </span>
-  <a id="Alpaca_Markets_TrailOffset_InDollars_" data-uid="Alpaca.Markets.TrailOffset.InDollars*"></a>
-  <h4 id="Alpaca_Markets_TrailOffset_InDollars_System_Decimal_" data-uid="Alpaca.Markets.TrailOffset.InDollars(System.Decimal)">InDollars(Decimal)</h4>
-  <div class="markdown level1 summary"><p>Creates new instance of the <a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a> object
-initialized with <code data-dev-comment-type="paramref" class="paramref">value</code> as dollars amount.</p>
+  <a id="Alpaca_Markets_PositionQuantity_InPercents_" data-uid="Alpaca.Markets.PositionQuantity.InPercents*"></a>
+  <h4 id="Alpaca_Markets_PositionQuantity_InPercents_System_Decimal_" data-uid="Alpaca.Markets.PositionQuantity.InPercents(System.Decimal)">InPercents(Decimal)</h4>
+  <div class="markdown level1 summary"><p>Creates new instance of the <a class="xref" href="Alpaca.Markets.PositionQuantity.html">PositionQuantity</a> object
+initialized with <code data-dev-comment-type="paramref" class="paramref">value</code> as percentage value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public static TrailOffset InDollars(decimal value)</code></pre>
+public static PositionQuantity InPercents(decimal value)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -358,7 +360,7 @@ public static TrailOffset InDollars(decimal value)</code></pre>
       <tr>
         <td><span class="xref">System.Decimal</span></td>
         <td><span class="parametername">value</span></td>
-        <td><p>Trailing stop order offset in dollars.</p>
+        <td><p>Number of shares (integer or fractional).</p>
 </td>
       </tr>
     </tbody>
@@ -373,29 +375,29 @@ public static TrailOffset InDollars(decimal value)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a></td>
-        <td><p>Initialized <a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a> object.</p>
+        <td><a class="xref" href="Alpaca.Markets.PositionQuantity.html">PositionQuantity</a></td>
+        <td><p>Initialized <a class="xref" href="Alpaca.Markets.PositionQuantity.html">PositionQuantity</a> object.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailOffset_InPercent_System_Decimal_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailOffset.InPercent(System.Decimal)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_PositionQuantity_InShares_System_Decimal_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.PositionQuantity.InShares(System.Decimal)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailOffset.cs/#L52">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Helpers/PositionQuantity.cs/#L50">View Source</a>
   </span>
-  <a id="Alpaca_Markets_TrailOffset_InPercent_" data-uid="Alpaca.Markets.TrailOffset.InPercent*"></a>
-  <h4 id="Alpaca_Markets_TrailOffset_InPercent_System_Decimal_" data-uid="Alpaca.Markets.TrailOffset.InPercent(System.Decimal)">InPercent(Decimal)</h4>
-  <div class="markdown level1 summary"><p>Creates new instance of the <a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a> object
-initialized with <code data-dev-comment-type="paramref" class="paramref">value</code> as percent of HWM.</p>
+  <a id="Alpaca_Markets_PositionQuantity_InShares_" data-uid="Alpaca.Markets.PositionQuantity.InShares*"></a>
+  <h4 id="Alpaca_Markets_PositionQuantity_InShares_System_Decimal_" data-uid="Alpaca.Markets.PositionQuantity.InShares(System.Decimal)">InShares(Decimal)</h4>
+  <div class="markdown level1 summary"><p>Creates new instance of the <a class="xref" href="Alpaca.Markets.PositionQuantity.html">PositionQuantity</a> object
+initialized with <code data-dev-comment-type="paramref" class="paramref">value</code> as number of shares.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public static TrailOffset InPercent(decimal value)</code></pre>
+public static PositionQuantity InShares(decimal value)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -410,7 +412,7 @@ public static TrailOffset InPercent(decimal value)</code></pre>
       <tr>
         <td><span class="xref">System.Decimal</span></td>
         <td><span class="parametername">value</span></td>
-        <td><p>Trailing stop order offset in percents.</p>
+        <td><p>Amount of dollars to buy or sell.</p>
 </td>
       </tr>
     </tbody>
@@ -425,8 +427,8 @@ public static TrailOffset InPercent(decimal value)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a></td>
-        <td><p>Initialized <a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a> object.</p>
+        <td><a class="xref" href="Alpaca.Markets.PositionQuantity.html">PositionQuantity</a></td>
+        <td><p>Initialized <a class="xref" href="Alpaca.Markets.PositionQuantity.html">PositionQuantity</a> object.</p>
 </td>
       </tr>
     </tbody>
@@ -435,19 +437,19 @@ public static TrailOffset InPercent(decimal value)</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailOffset_op_Equality_Alpaca_Markets_TrailOffset_Alpaca_Markets_TrailOffset_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailOffset.op_Equality(Alpaca.Markets.TrailOffset%2CAlpaca.Markets.TrailOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_PositionQuantity_op_Equality_Alpaca_Markets_PositionQuantity_Alpaca_Markets_PositionQuantity_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.PositionQuantity.op_Equality(Alpaca.Markets.PositionQuantity%2CAlpaca.Markets.PositionQuantity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailOffset.cs/#L78">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Helpers/PositionQuantity.cs/#L90">View Source</a>
   </span>
-  <a id="Alpaca_Markets_TrailOffset_op_Equality_" data-uid="Alpaca.Markets.TrailOffset.op_Equality*"></a>
-  <h4 id="Alpaca_Markets_TrailOffset_op_Equality_Alpaca_Markets_TrailOffset_Alpaca_Markets_TrailOffset_" data-uid="Alpaca.Markets.TrailOffset.op_Equality(Alpaca.Markets.TrailOffset,Alpaca.Markets.TrailOffset)">Equality(TrailOffset, TrailOffset)</h4>
+  <a id="Alpaca_Markets_PositionQuantity_op_Equality_" data-uid="Alpaca.Markets.PositionQuantity.op_Equality*"></a>
+  <h4 id="Alpaca_Markets_PositionQuantity_op_Equality_Alpaca_Markets_PositionQuantity_Alpaca_Markets_PositionQuantity_" data-uid="Alpaca.Markets.PositionQuantity.op_Equality(Alpaca.Markets.PositionQuantity,Alpaca.Markets.PositionQuantity)">Equality(PositionQuantity, PositionQuantity)</h4>
   <div class="markdown level1 summary"><p>Returns <code>true</code> if <code data-dev-comment-type="paramref" class="paramref">lhs</code> are equal to <code data-dev-comment-type="paramref" class="paramref">rhs</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator ==(TrailOffset lhs, TrailOffset rhs)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool operator ==(PositionQuantity lhs, PositionQuantity rhs)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -460,13 +462,13 @@ public static TrailOffset InPercent(decimal value)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a></td>
+        <td><a class="xref" href="Alpaca.Markets.PositionQuantity.html">PositionQuantity</a></td>
         <td><span class="parametername">lhs</span></td>
         <td><p>Left hand side object.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a></td>
+        <td><a class="xref" href="Alpaca.Markets.PositionQuantity.html">PositionQuantity</a></td>
         <td><span class="parametername">rhs</span></td>
         <td><p>Right hand side object.</p>
 </td>
@@ -491,19 +493,19 @@ public static TrailOffset InPercent(decimal value)</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailOffset_op_Inequality_Alpaca_Markets_TrailOffset_Alpaca_Markets_TrailOffset_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailOffset.op_Inequality(Alpaca.Markets.TrailOffset%2CAlpaca.Markets.TrailOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_PositionQuantity_op_Inequality_Alpaca_Markets_PositionQuantity_Alpaca_Markets_PositionQuantity_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.PositionQuantity.op_Inequality(Alpaca.Markets.PositionQuantity%2CAlpaca.Markets.PositionQuantity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailOffset.cs/#L89">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Helpers/PositionQuantity.cs/#L101">View Source</a>
   </span>
-  <a id="Alpaca_Markets_TrailOffset_op_Inequality_" data-uid="Alpaca.Markets.TrailOffset.op_Inequality*"></a>
-  <h4 id="Alpaca_Markets_TrailOffset_op_Inequality_Alpaca_Markets_TrailOffset_Alpaca_Markets_TrailOffset_" data-uid="Alpaca.Markets.TrailOffset.op_Inequality(Alpaca.Markets.TrailOffset,Alpaca.Markets.TrailOffset)">Inequality(TrailOffset, TrailOffset)</h4>
+  <a id="Alpaca_Markets_PositionQuantity_op_Inequality_" data-uid="Alpaca.Markets.PositionQuantity.op_Inequality*"></a>
+  <h4 id="Alpaca_Markets_PositionQuantity_op_Inequality_Alpaca_Markets_PositionQuantity_Alpaca_Markets_PositionQuantity_" data-uid="Alpaca.Markets.PositionQuantity.op_Inequality(Alpaca.Markets.PositionQuantity,Alpaca.Markets.PositionQuantity)">Inequality(PositionQuantity, PositionQuantity)</h4>
   <div class="markdown level1 summary"><p>Returns <code>true</code> if <code data-dev-comment-type="paramref" class="paramref">lhs</code> are not equal to <code data-dev-comment-type="paramref" class="paramref">rhs</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator !=(TrailOffset lhs, TrailOffset rhs)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool operator !=(PositionQuantity lhs, PositionQuantity rhs)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -516,13 +518,13 @@ public static TrailOffset InPercent(decimal value)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a></td>
+        <td><a class="xref" href="Alpaca.Markets.PositionQuantity.html">PositionQuantity</a></td>
         <td><span class="parametername">lhs</span></td>
         <td><p>Left hand side object.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.TrailOffset.html">TrailOffset</a></td>
+        <td><a class="xref" href="Alpaca.Markets.PositionQuantity.html">PositionQuantity</a></td>
         <td><span class="parametername">rhs</span></td>
         <td><p>Right hand side object.</p>
 </td>
@@ -557,10 +559,10 @@ public static TrailOffset InPercent(decimal value)</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailOffset.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailOffset%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_PositionQuantity.md&amp;value=---%0Auid%3A%20Alpaca.Markets.PositionQuantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailOffset.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Helpers/PositionQuantity.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

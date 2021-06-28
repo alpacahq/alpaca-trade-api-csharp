@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class EnvironmentExtensions
+    <title>Class StreamingDataClientExtensions
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class EnvironmentExtensions
+    <meta name="title" content="Class StreamingDataClientExtensions
    ">
     <meta name="generator" content="docfx 2.58.0.0">
     
@@ -68,46 +68,42 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.Extensions.EnvironmentExtensions">
+            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.Extensions.StreamingDataClientExtensions">
   
   
-  <h1 id="Alpaca_Markets_Extensions_EnvironmentExtensions" data-uid="Alpaca.Markets.Extensions.EnvironmentExtensions" class="text-break">Class EnvironmentExtensions
+  <h1 id="Alpaca_Markets_Extensions_StreamingDataClientExtensions" data-uid="Alpaca.Markets.Extensions.StreamingDataClientExtensions" class="text-break">Class StreamingDataClientExtensions
   </h1>
-  <div class="markdown level0 summary"><p>Set of extensions methods for replacing target URL for Alpaca data streaming client (
-<see cref="!:IAlpacaDataStreamingClient"></see>) with custom values or with local proxy
-WebSocket URL obtained from environment variables.</p>
+  <div class="markdown level0 summary"><p>Set of extension methods for the <see cref="!:IStreamingDataClient"></see> interface.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">EnvironmentExtensions</span></div>
+    <div class="level1"><span class="xref">StreamingDataClientExtensions</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.Extensions.html">Alpaca.Markets.Extensions</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.Extensions.dll</h6>
-  <h5 id="Alpaca_Markets_Extensions_EnvironmentExtensions_syntax">Syntax</h5>
+  <h5 id="Alpaca_Markets_Extensions_StreamingDataClientExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class EnvironmentExtensions : object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class StreamingDataClientExtensions : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnvironmentExtensions_WithProxyForAlpacaDataStreamingClient_IEnvironment_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnvironmentExtensions.WithProxyForAlpacaDataStreamingClient(IEnvironment)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingDataClientExtensions_SubscribeAsync_IStreamingDataClient_IAlpacaDataSubscription___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingDataClientExtensions.SubscribeAsync(IStreamingDataClient%2CIAlpacaDataSubscription%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/AlpacaProxy/EnvironmentExtensions.cs/#L44">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingDataClientExtensions.cs/#L15">View Source</a>
   </span>
-  <a id="Alpaca_Markets_Extensions_EnvironmentExtensions_WithProxyForAlpacaDataStreamingClient_" data-uid="Alpaca.Markets.Extensions.EnvironmentExtensions.WithProxyForAlpacaDataStreamingClient*"></a>
-  <h4 id="Alpaca_Markets_Extensions_EnvironmentExtensions_WithProxyForAlpacaDataStreamingClient_IEnvironment_" data-uid="Alpaca.Markets.Extensions.EnvironmentExtensions.WithProxyForAlpacaDataStreamingClient(IEnvironment)">WithProxyForAlpacaDataStreamingClient(IEnvironment)</h4>
-  <div class="markdown level1 summary"><p>Replaces <see cref="!:IEnvironment.AlpacaDataStreamingApi"></see> from environment
-variable named <code>DATA_PROXY_WS</code> with default fallback value equal to default
-Alpaca proxy agent local URL (<code>ws://127.0.0.1:8765</code>).</p>
+  <a id="Alpaca_Markets_Extensions_StreamingDataClientExtensions_SubscribeAsync_" data-uid="Alpaca.Markets.Extensions.StreamingDataClientExtensions.SubscribeAsync*"></a>
+  <h4 id="Alpaca_Markets_Extensions_StreamingDataClientExtensions_SubscribeAsync_IStreamingDataClient_IAlpacaDataSubscription___" data-uid="Alpaca.Markets.Extensions.StreamingDataClientExtensions.SubscribeAsync(IStreamingDataClient,IAlpacaDataSubscription[])">SubscribeAsync(IStreamingDataClient, IAlpacaDataSubscription[])</h4>
+  <div class="markdown level1 summary"><p>Subscribes several <code data-dev-comment-type="paramref" class="paramref">subscriptions</code> objects for receiving data from the server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnvironment WithProxyForAlpacaDataStreamingClient(this IEnvironment environment)</code></pre>
+    <pre><code class="lang-csharp hljs">public static AlpacaValueTask SubscribeAsync(this IStreamingDataClient client, params IAlpacaDataSubscription[] subscriptions)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -120,9 +116,15 @@ Alpaca proxy agent local URL (<code>ws://127.0.0.1:8765</code>).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnvironment</span></td>
-        <td><span class="parametername">environment</span></td>
-        <td><p>Original environment URLs for modification.</p>
+        <td><span class="xref">IStreamingDataClient</span></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <see cref="!:IStreamingDataClient"></see> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IAlpacaDataSubscription</span>[]</td>
+        <td><span class="parametername">subscriptions</span></td>
+        <td><p>List of subscription targets - assets and update type holders.</p>
 </td>
       </tr>
     </tbody>
@@ -137,30 +139,26 @@ Alpaca proxy agent local URL (<code>ws://127.0.0.1:8765</code>).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnvironment</span></td>
-        <td><p>New environment URLs object.</p>
-</td>
+        <td><a class="xref" href="Alpaca.Markets.Extensions.AlpacaValueTask.html">AlpacaValueTask</a></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnvironmentExtensions_WithProxyForAlpacaDataStreamingClient_IEnvironment_Uri_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnvironmentExtensions.WithProxyForAlpacaDataStreamingClient(IEnvironment%2CUri)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingDataClientExtensions_UnsubscribeAsync_IStreamingDataClient_IAlpacaDataSubscription___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingDataClientExtensions.UnsubscribeAsync(IStreamingDataClient%2CIAlpacaDataSubscription%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/AlpacaProxy/EnvironmentExtensions.cs/#L62">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingDataClientExtensions.cs/#L26">View Source</a>
   </span>
-  <a id="Alpaca_Markets_Extensions_EnvironmentExtensions_WithProxyForAlpacaDataStreamingClient_" data-uid="Alpaca.Markets.Extensions.EnvironmentExtensions.WithProxyForAlpacaDataStreamingClient*"></a>
-  <h4 id="Alpaca_Markets_Extensions_EnvironmentExtensions_WithProxyForAlpacaDataStreamingClient_IEnvironment_Uri_" data-uid="Alpaca.Markets.Extensions.EnvironmentExtensions.WithProxyForAlpacaDataStreamingClient(IEnvironment,Uri)">WithProxyForAlpacaDataStreamingClient(IEnvironment, Uri)</h4>
-  <div class="markdown level1 summary"><p>Replaces <see cref="!:IEnvironment.AlpacaDataStreamingApi"></see> value with the
-<code data-dev-comment-type="paramref" class="paramref">alpacaProxyAgentUrl</code> value or from environment variable
-named <code>DATA_PROXY_WS</code> with default fallback value equal to default
-Alpaca proxy agent local URL (<code>ws://127.0.0.1:8765</code>).</p>
+  <a id="Alpaca_Markets_Extensions_StreamingDataClientExtensions_UnsubscribeAsync_" data-uid="Alpaca.Markets.Extensions.StreamingDataClientExtensions.UnsubscribeAsync*"></a>
+  <h4 id="Alpaca_Markets_Extensions_StreamingDataClientExtensions_UnsubscribeAsync_IStreamingDataClient_IAlpacaDataSubscription___" data-uid="Alpaca.Markets.Extensions.StreamingDataClientExtensions.UnsubscribeAsync(IStreamingDataClient,IAlpacaDataSubscription[])">UnsubscribeAsync(IStreamingDataClient, IAlpacaDataSubscription[])</h4>
+  <div class="markdown level1 summary"><p>Unsubscribes several <code data-dev-comment-type="paramref" class="paramref">subscriptions</code> objects for receiving data from the server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnvironment WithProxyForAlpacaDataStreamingClient(this IEnvironment environment, Uri alpacaProxyAgentUrl)</code></pre>
+    <pre><code class="lang-csharp hljs">public static AlpacaValueTask UnsubscribeAsync(this IStreamingDataClient client, params IAlpacaDataSubscription[] subscriptions)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -173,16 +171,15 @@ Alpaca proxy agent local URL (<code>ws://127.0.0.1:8765</code>).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnvironment</span></td>
-        <td><span class="parametername">environment</span></td>
-        <td><p>Original environment URLs for modification.</p>
+        <td><span class="xref">IStreamingDataClient</span></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <see cref="!:IStreamingDataClient"></see> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Uri</span></td>
-        <td><span class="parametername">alpacaProxyAgentUrl</span></td>
-        <td><p>New value for the <see cref="!:IEnvironment.AlpacaDataStreamingApi"></see> property
-in the modified <code data-dev-comment-type="paramref" class="paramref">environment</code> object.</p>
+        <td><span class="xref">IAlpacaDataSubscription</span>[]</td>
+        <td><span class="parametername">subscriptions</span></td>
+        <td><p>List of subscription targets - assets and update type holders.</p>
 </td>
       </tr>
     </tbody>
@@ -197,9 +194,8 @@ in the modified <code data-dev-comment-type="paramref" class="paramref">environm
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnvironment</span></td>
-        <td><p>New environment URLs object.</p>
-</td>
+        <td><a class="xref" href="Alpaca.Markets.Extensions.AlpacaValueTask.html">AlpacaValueTask</a></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -211,10 +207,10 @@ in the modified <code data-dev-comment-type="paramref" class="paramref">environm
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnvironmentExtensions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnvironmentExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingDataClientExtensions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingDataClientExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/AlpacaProxy/EnvironmentExtensions.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingDataClientExtensions.cs/#L8" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
