@@ -278,16 +278,14 @@ namespace Alpaca.Markets
 
                     var readResult = await _transport.Input.ReadAsync().ConfigureAwait(false);
 
-                    // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
-                    switch (receiveResult.MessageType) //-V3002
+                    // ReSharper disable once ConvertIfStatementToSwitchStatement
+                    if (receiveResult.MessageType == WebSocketMessageType.Binary)
                     {
-                        case WebSocketMessageType.Binary:
-                            DataReceived?.Invoke(readResult.Buffer.ToArray());
-                            break;
-
-                        case WebSocketMessageType.Text:
-                            MessageReceived?.Invoke(Encoding.UTF8.GetString(readResult.Buffer.ToArray()));
-                            break;
+                        DataReceived?.Invoke(readResult.Buffer.ToArray());
+                    }
+                    else if (receiveResult.MessageType == WebSocketMessageType.Text)
+                    {
+                        MessageReceived?.Invoke(Encoding.UTF8.GetString(readResult.Buffer.ToArray()));
                     }
 
                     _transport.Input.AdvanceTo(readResult.Buffer.End);

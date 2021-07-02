@@ -26,7 +26,7 @@ namespace Alpaca.Markets
             // ReSharper disable once InvertIf
             if (buffer.IsSingleSegment)
             {
-                var _ = MemoryMarshal.TryGetArray(buffer.First, out var segment);
+                MemoryMarshal.TryGetArray(buffer.First, out var segment);
                 return new ValueTask(webSocket.SendAsync(segment, webSocketMessageType, true, cancellationToken));
             }
 
@@ -49,7 +49,7 @@ namespace Alpaca.Markets
 #if NETCOREAPP
                 await webSocket.SendAsync(prevSegment, webSocketMessageType, false, cancellationToken).ConfigureAwait(false);
 #else
-                var _ = MemoryMarshal.TryGetArray(prevSegment, out var arraySegment);
+                MemoryMarshal.TryGetArray(prevSegment, out var arraySegment);
                 await webSocket.SendAsync(arraySegment, webSocketMessageType, false, cancellationToken).ConfigureAwait(false);
 #endif
                 prevSegment = segment;

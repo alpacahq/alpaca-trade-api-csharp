@@ -16,15 +16,14 @@ namespace Alpaca.Markets
             Object? value, 
             JsonSerializer serializer)
         {
-            switch (value)
+            // ReSharper disable once ConvertIfStatementToSwitchStatement
+            if (value is DateTime dateTimeValue)
             {
-                case DateTime dateTimeValue:
-                    writer.WriteValue(dateTimeValue.IntoUnixTimeSeconds());
-                    break;
-
-                case null:
-                    writer.WriteNull();
-                    break;
+                writer.WriteValue(dateTimeValue.IntoUnixTimeSeconds());
+            }
+            else if (value == null)
+            {
+                writer.WriteNull();
             }
         }
 
