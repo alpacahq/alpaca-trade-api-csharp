@@ -184,27 +184,37 @@ namespace Alpaca.Markets
             }
         }
 
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
         private async void handleConnectionSuccess(
             JToken token)
         {
-            var connectionSuccess = token.ToObject<JsonConnectionSuccess>() ?? new JsonConnectionSuccess();
-
-            // ReSharper disable once ConstantConditionalAccessQualifier
-            // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
-            switch (connectionSuccess.Status)
+            try
             {
-                case ConnectionStatus.Connected:
-                    await SendAsJsonStringAsync(Configuration.SecurityId.GetAuthentication())
-                        .ConfigureAwait(false);
-                    break;
+                var connectionSuccess = token.ToObject<JsonConnectionSuccess>() ?? new JsonConnectionSuccess();
 
-                case ConnectionStatus.Authenticated:
-                    OnConnected(AuthStatus.Authorized);
-                    break;
+                // ReSharper disable once ConstantConditionalAccessQualifier
+                // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
+                switch (connectionSuccess.Status)
+                {
+                    case ConnectionStatus.Connected:
+                        await SendAsJsonStringAsync(Configuration.SecurityId.GetAuthentication())
+                            .ConfigureAwait(false);
+                        break;
 
-                default:
-                    HandleError(new InvalidOperationException("Unknown connection status"));
-                    break;
+                    case ConnectionStatus.Authenticated:
+                        OnConnected(AuthStatus.Authorized);
+                        break;
+
+                    default:
+                        HandleError(new InvalidOperationException("Unknown connection status"));
+                        break;
+                }
+            }
+            catch (Exception exception)
+            {
+                HandleError(exception);
             }
         }
         
@@ -214,17 +224,17 @@ namespace Alpaca.Markets
         private void handleSubscriptionUpdates(
             JToken token)
         {
-            var subscriptionUpdate = token.ToObject<JsonSubscriptionUpdate>() ?? new JsonSubscriptionUpdate();
-
-            var streams = new HashSet<String>(
-                getStreams(subscriptionUpdate.Trades.EmptyIfNull(), TradesChannel)
-                    .Concat(getStreams(subscriptionUpdate.Quotes.EmptyIfNull(), QuotesChannel))
-                    .Concat(getStreams(subscriptionUpdate.DailyBars.EmptyIfNull(), DailyBarsChannel))
-                    .Concat(getStreams(subscriptionUpdate.MinuteBars.EmptyIfNull(), MinuteBarsChannel)),
-                StringComparer.Ordinal);
-
             try
             {
+                var subscriptionUpdate = token.ToObject<JsonSubscriptionUpdate>() ?? new JsonSubscriptionUpdate();
+
+                var streams = new HashSet<String>(
+                    getStreams(subscriptionUpdate.Trades.EmptyIfNull(), TradesChannel)
+                        .Concat(getStreams(subscriptionUpdate.Quotes.EmptyIfNull(), QuotesChannel))
+                        .Concat(getStreams(subscriptionUpdate.DailyBars.EmptyIfNull(), DailyBarsChannel))
+                        .Concat(getStreams(subscriptionUpdate.MinuteBars.EmptyIfNull(), MinuteBarsChannel)),
+                    StringComparer.Ordinal);
+
                 _subscriptions.OnUpdate(streams);
             }
             catch (Exception exception)

@@ -84,34 +84,44 @@ namespace Alpaca.Markets
             }
         }
 
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
         private async void handleAuthorization(
             JToken token)
         {
-            var response = token.ToObject<JsonAuthResponse>();
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            if (response is null)
+            try
             {
-                HandleError(new InvalidOperationException("Invalid authentication response."));
-                return;
-            }
-
-            OnConnected(response.Status);
-
-            if (response.Status != AuthStatus.Authorized)
-            {
-                return;
-            }
-
-            var listenRequest = new JsonListenRequest
-            {
-                Action = JsonAction.Listen,
-                Data = new JsonListenRequest.JsonData
+                var response = token.ToObject<JsonAuthResponse>();
+                // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+                if (response is null)
                 {
-                    Streams = new List<String> { TradeUpdates }
+                    HandleError(new InvalidOperationException("Invalid authentication response."));
+                    return;
                 }
-            };
 
-            await SendAsJsonStringAsync(listenRequest).ConfigureAwait(false);
+                OnConnected(response.Status);
+
+                if (response.Status != AuthStatus.Authorized)
+                {
+                    return;
+                }
+
+                var listenRequest = new JsonListenRequest
+                {
+                    Action = JsonAction.Listen,
+                    Data = new JsonListenRequest.JsonData
+                    {
+                        Streams = new List<String> { TradeUpdates }
+                    }
+                };
+
+                await SendAsJsonStringAsync(listenRequest).ConfigureAwait(false);
+            }
+            catch (Exception exception)
+            {
+                HandleError(exception);
+            }
         }
 
         private void handleTradeUpdate(
