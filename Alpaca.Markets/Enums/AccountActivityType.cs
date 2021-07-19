@@ -24,14 +24,15 @@ namespace Alpaca.Markets
         Fill,
 
         /// <summary>
-        /// Cash transactions (both CSD and CSR)
+        /// Cash transactions (both <see cref="CashDeposit"/> and <see cref="CashWithdrawal"/>)
         /// </summary>
         [UsedImplicitly]
         [EnumMember(Value = "TRANS")]
         Transaction,
 
         /// <summary>
-        /// Miscellaneous or rarely used activity types (All types except those in TRANS, DIV, or FILL)
+        /// Miscellaneous or rarely used activity types (All types except those in
+        /// <see cref="Transaction"/>, <see cref="Dividend"/>, or <see cref="Fill"/>)
         /// </summary>
         [UsedImplicitly]
         [EnumMember(Value = "MISC")]
@@ -52,18 +53,16 @@ namespace Alpaca.Markets
         ACATSecurities,
 
         /// <summary>
-        /// Cash disbursement(+)
+        /// Cash deposit (+)
         /// </summary>
-        [UsedImplicitly]
         [EnumMember(Value = "CSD")]
-        CashDisbursement,
+        CashDeposit,
 
         /// <summary>
-        /// Cash receipt(-)
+        /// Cash withdrawal (-)
         /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "CSR")]
-        CashReceipt,
+        [EnumMember(Value = "CSW")]
+        CashWithdrawal,
 
         /// <summary>
         /// Dividends
