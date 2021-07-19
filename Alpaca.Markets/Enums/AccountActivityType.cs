@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -23,13 +24,14 @@ namespace Alpaca.Markets
         Fill,
 
         /// <summary>
-        /// Cash transactions (both CSD and CSR)
+        /// Cash transactions (both <see cref="CashDisbursement"/> and <see cref="CashReceipt"/>)
         /// </summary>
         [EnumMember(Value = "TRANS")]
         Transaction,
 
         /// <summary>
-        /// Miscellaneous or rarely used activity types (All types except those in TRANS, DIV, or FILL)
+        /// Miscellaneous or rarely used activity types (All types except those in
+        /// <see cref="Transaction"/>, <see cref="Dividend"/>, or <see cref="Fill"/>)
         /// </summary>
         [EnumMember(Value = "MISC")]
         Miscellaneous,
@@ -47,15 +49,17 @@ namespace Alpaca.Markets
         ACATSecurities,
 
         /// <summary>
-        /// Cash disbursement(+)
+        /// Cash deposit (+)
         /// </summary>
         [EnumMember(Value = "CSD")]
+        [Obsolete("This enum item will be replaced with the CashDeposit item in the upcoiming SDK release.", false)]
         CashDisbursement,
 
         /// <summary>
-        /// Cash receipt(-)
+        /// Cash withdrawal (-)
         /// </summary>
-        [EnumMember(Value = "CSR")]
+        [EnumMember(Value = "CSW")]
+        [Obsolete("This enum item will be replaced with the CashWithdrawal item in the upcoiming SDK release.", false)]
         CashReceipt,
 
         /// <summary>

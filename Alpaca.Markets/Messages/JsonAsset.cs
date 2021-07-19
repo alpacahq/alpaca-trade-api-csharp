@@ -12,7 +12,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "id", Required = Required.Always)]
         public Guid AssetId { get; set; }
 
-        [JsonProperty(PropertyName = "asset_class", Required = Required.Default)]
+        [JsonProperty(PropertyName = "class", Required = Required.Default)]
         public AssetClass Class { get; set; }
 
         [JsonProperty(PropertyName = "exchange", Required = Required.Always)]
