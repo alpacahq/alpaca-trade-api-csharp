@@ -17,8 +17,10 @@ Alpaca.Markets.AccountActivitiesRequest.TimeInterval.get -> Alpaca.Markets.IIncl
 Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.ACATCash = 3 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.ACATSecurities = 4 -> Alpaca.Markets.AccountActivityType
+Alpaca.Markets.AccountActivityType.CashDeposit = 31 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.CashDisbursement = 5 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.CashReceipt = 6 -> Alpaca.Markets.AccountActivityType
+Alpaca.Markets.AccountActivityType.CashWithdrawal = 32 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.Dividend = 7 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.DividendCapitalGainsLongTerm = 8 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.DividendCapitalGainsShortTerm = 9 -> Alpaca.Markets.AccountActivityType
