@@ -55,12 +55,14 @@ namespace Alpaca.Markets
         /// <summary>
         /// Cash deposit (+)
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "CSD")]
         CashDeposit,
 
         /// <summary>
         /// Cash withdrawal (-)
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "CSW")]
         CashWithdrawal,
 
@@ -230,6 +232,27 @@ namespace Alpaca.Markets
         /// </summary>
         [UsedImplicitly]
         [EnumMember(Value = "FEE")]
-        RefTafFee
+        RefTafFee,
+
+        /// <summary>
+        /// Option assignment
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "OPASN")]
+        OptionAssignment,
+
+        /// <summary>
+        /// Option expiration
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "OPEXP")]
+        OptionExpiration,
+
+        /// <summary>
+        /// Option exercise
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "OPXRC")]
+        OptionExercise
     }
 }
