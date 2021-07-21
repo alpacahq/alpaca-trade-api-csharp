@@ -25,16 +25,16 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the current minute bar information.
         /// </summary>
-        IAgg MinuteBar { get; }
+        IAgg? MinuteBar { get; }
 
         /// <summary>
         /// Gets the current daily bar information.
         /// </summary>
-        IAgg CurrentDailyBar { get; }
+        IAgg? CurrentDailyBar { get; }
 
         /// <summary>
         /// Gets the previous minute bar information.
         /// </summary>
-        IAgg PreviousDailyBar { get; }
+        IAgg? PreviousDailyBar { get; }
     }
 }

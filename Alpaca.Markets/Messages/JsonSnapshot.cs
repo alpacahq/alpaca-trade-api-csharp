@@ -70,14 +70,14 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "latestTrade", Required = Required.Always)]
         public JsonTrade TradeObject { get; set; } = new ();
 
-        [JsonProperty(PropertyName = "minuteBar", Required = Required.Always)]
-        public JsonAlpacaHistoricalBar JsonMinuteBar { get; set; } = new ();
+        [JsonProperty(PropertyName = "minuteBar", Required = Required.Default)]
+        public JsonAlpacaHistoricalBar? JsonMinuteBar { get; set; }
 
-        [JsonProperty(PropertyName = "dailyBar", Required = Required.Always)]
-        public JsonAlpacaHistoricalBar JsonCurrentDailyBar { get; set; } = new ();
+        [JsonProperty(PropertyName = "dailyBar", Required = Required.Default)]
+        public JsonAlpacaHistoricalBar? JsonCurrentDailyBar { get; set; }
 
-        [JsonProperty(PropertyName = "prevDailyBar", Required = Required.Always)]
-        public JsonAlpacaHistoricalBar JsonPreviousDailyBar { get; set; } = new ();
+        [JsonProperty(PropertyName = "prevDailyBar", Required = Required.Default)]
+        public JsonAlpacaHistoricalBar? JsonPreviousDailyBar { get; set; }
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Default)]
         public String Symbol { get; set; } = String.Empty;
@@ -89,13 +89,13 @@ namespace Alpaca.Markets
         public IStreamTrade Trade => TradeObject;
 
         [JsonIgnore]
-        public IAgg MinuteBar => JsonMinuteBar;
+        public IAgg? MinuteBar => JsonMinuteBar;
 
         [JsonIgnore]
-        public IAgg CurrentDailyBar => JsonCurrentDailyBar;
+        public IAgg? CurrentDailyBar => JsonCurrentDailyBar;
 
         [JsonIgnore]
-        public IAgg PreviousDailyBar => JsonPreviousDailyBar;
+        public IAgg? PreviousDailyBar => JsonPreviousDailyBar;
 
         [OnDeserialized]
         internal void OnDeserializedMethod(
