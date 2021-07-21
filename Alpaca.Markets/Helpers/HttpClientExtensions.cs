@@ -61,6 +61,9 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken)
             where TJson : TApi
         {
+#if NET5_0_OR_GREATER || NETSTANDARD2_1
+            request.Version = System.Net.HttpVersion.Version20;
+#endif
             using var response = await httpClient.SendAsync(request, cancellationToken)
                 .ConfigureAwait(false);
 
