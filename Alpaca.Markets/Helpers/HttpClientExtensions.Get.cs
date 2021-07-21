@@ -41,7 +41,9 @@ namespace Alpaca.Markets
                     uriBuilder, cancellationToken)
                 .ConfigureAwait(false);
 
-            return response.ToDictionary(_ => _.Key, elementSelector, comparer);
+            return response
+                .Where(_ => _.Value is not null)
+                .ToDictionary(_ => _.Key, elementSelector, comparer);
         }
     }
 }
