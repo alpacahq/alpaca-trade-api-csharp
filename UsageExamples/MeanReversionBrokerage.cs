@@ -67,21 +67,23 @@ namespace UsageExamples
 
             closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 
-            // TODO: olegra - re-enable after Alpaca Data API v2 transition period completion
+            // Get the first group of bars from today if the market has already been open.
+            var today = DateTime.Today;
+            var calendar = await alpacaTradingClient.ListCalendarAsync(
+                new CalendarRequest().SetInclusiveTimeInterval(today, today));
+            var tradingDay = calendar[0];
 
-            //var today = DateTime.Today;
-            //// Get the first group of bars from today if the market has already been open.
-            //var bars = await alpacaDataClient.ListAggregatesAsync(
-            //    new AggregatesRequest(symbol, new AggregationPeriod(1, AggregationPeriodUnit.Minute))
-            //        .SetInclusiveTimeInterval(today, today.AddDays(1)));
-            //var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count - 20));
-            //foreach (var bar in lastBars)
-            //{
-            //    if (bar.TimeUtc?.Date == today)
-            //    {
-            //        closingPrices.Add(bar.Close);
-            //    }
-            //}
+            var bars = await alpacaDataClient.ListHistoricalBarsAsync(
+                new HistoricalBarsRequest(symbol, tradingDay.TradingOpenTimeUtc, tradingDay.TradingCloseTimeUtc, BarTimeFrame.Minute));
+            var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count - 20));
+
+            foreach (var bar in lastBars)
+            {
+                if (bar.TimeUtc.Date == today)
+                {
+                    closingPrices.Add(bar.Close);
+                }
+            }
 
             Console.WriteLine("Waiting for market open...");
             await AwaitMarketOpen();
