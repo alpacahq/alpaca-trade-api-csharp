@@ -58,7 +58,7 @@
 
   <ItemGroup>
     <PackageReference Include="Alpaca.Markets" Version="5.1.0-alpha2" />
-    <PackageReference Include="JetBrains.Annotations" Version="2021.1.0">
+    <PackageReference Include="JetBrains.Annotations" Version="2021.2.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>compile; analyzers</IncludeAssets>
     </PackageReference>
