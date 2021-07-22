@@ -26,7 +26,7 @@ namespace Alpaca.Markets
             // ReSharper disable once UnusedParameter.Global
             this HttpClient httpClient) =>
             // ReSharper disable once StringLiteralTypo
-            AppContext.SetSwitch("DontEnableSystemDefaultTlsVersions", false);
+            AppContext.SetSwitch("Switch.System.Net.DontEnableSystemDefaultTlsVersions", false);
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
             HttpClient httpClient,
