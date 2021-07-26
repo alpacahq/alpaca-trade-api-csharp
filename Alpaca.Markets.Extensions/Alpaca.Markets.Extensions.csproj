@@ -4,21 +4,21 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.1.0-alpha2</Version>
+    <Version>5.1.0-beta1</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.1.0.1</AssemblyVersion>
-    <FileVersion>5.1.0.1</FileVersion>
+    <AssemblyVersion>5.1.0.2</AssemblyVersion>
+    <FileVersion>5.1.0.2</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Cancellation tokens added into the `SubscribeAsync` and `UnsubscribeAsync` methods of the `IStreamingClient` interface.
-- Reverted back support for subscribing/unsubscribing using `params` argument list (via extensions method).</PackageReleaseNotes>
+    <PackageReleaseNotes>- The new helper methods were added for the calendar requesting and these results usage.
+- Added new extension methods for getting paginated historical data in chunks.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
