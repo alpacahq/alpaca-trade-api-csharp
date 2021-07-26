@@ -23,6 +23,18 @@ namespace Alpaca.Markets
         {
         }
 
+        /// <summary>
+        /// Creates new instance of <see cref="HistoricalTradesRequest"/> object.
+        /// </summary>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+        public HistoricalTradesRequest(
+            String symbol,
+            IInclusiveTimeInterval timeInterval)
+            : base(symbol, timeInterval)
+        {
+        }
+
         /// <inheritdoc />
         protected override String LastPathSegment => "trades";
     }

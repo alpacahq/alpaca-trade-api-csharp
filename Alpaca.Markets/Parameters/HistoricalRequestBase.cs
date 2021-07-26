@@ -17,14 +17,26 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for data retrieval.</param>
         /// <param name="from">Filter data equal to or after this time.</param>
         /// <param name="into">Filter data equal to or before this time.</param>
-        protected HistoricalRequestBase(
+        protected internal HistoricalRequestBase(
             String symbol,
             DateTime from,
             DateTime into)
+            : this(symbol, Markets.TimeInterval.GetInclusive(from, into))
+        {
+        }
+
+        /// <summary>
+        /// Creates new instance of <see cref="HistoricalRequestBase"/> object.
+        /// </summary>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+        protected internal HistoricalRequestBase(
+            String symbol,
+            IInclusiveTimeInterval timeInterval)
         {
             Symbol = symbol ?? throw new ArgumentException(
                 "Symbol name cannot be null.", nameof(symbol));
-            TimeInterval = Markets.TimeInterval.GetInclusive(from, into);
+            TimeInterval = timeInterval;
         }
 
         /// <summary>

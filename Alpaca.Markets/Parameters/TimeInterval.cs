@@ -209,6 +209,11 @@ namespace Alpaca.Markets
             DateTime? into) =>
             new Inclusive(from, into);
 
+        internal static IExclusiveTimeInterval GetExclusive(
+            DateTime? from,
+            DateTime? into) =>
+            new Exclusive(from, into);
+
         internal static IInclusiveTimeInterval InclusiveEmpty { get; } = new Inclusive();
 
         internal static IExclusiveTimeInterval ExclusiveEmpty { get; } = new Exclusive();

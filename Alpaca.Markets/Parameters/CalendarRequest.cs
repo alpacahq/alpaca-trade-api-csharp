@@ -11,6 +11,16 @@ namespace Alpaca.Markets
     public sealed class CalendarRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>
     {
         /// <summary>
+        /// Creates new instance of <see cref="CalendarRequest"/> object with the
+        /// <see cref="TimeInterval"/> property configured for the single day.
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        [UsedImplicitly]
+        public static CalendarRequest GetForSingleDay(DateTime date) =>
+            new CalendarRequest().SetInclusiveTimeInterval(date.Date, date.Date);
+
+        /// <summary>
         /// Gets inclusive date interval for filtering items in response.
         /// </summary>
         [UsedImplicitly]
