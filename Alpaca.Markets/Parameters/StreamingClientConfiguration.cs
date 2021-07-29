@@ -22,7 +22,7 @@ namespace Alpaca.Markets
 
         internal virtual void EnsureIsValid()
         {
-            if (ApiEndpoint == null)
+            if (ApiEndpoint is null)
             {
                 throw new InvalidOperationException(
                     $"The value of '{nameof(ApiEndpoint)}' property shouldn't be null.");

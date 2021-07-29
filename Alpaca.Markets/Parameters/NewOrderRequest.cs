@@ -152,14 +152,14 @@ namespace Alpaca.Markets
                 ClientOrderId = ClientOrderId,
                 ExtendedHours = ExtendedHours,
                 OrderClass = OrderClass,
-                TakeProfit = TakeProfitLimitPrice != null
+                TakeProfit = TakeProfitLimitPrice is not null
                     ? new JsonNewOrderAdvancedAttributes
                     {
                         LimitPrice = TakeProfitLimitPrice
                     }
                     : null,
-                StopLoss = StopLossStopPrice != null ||
-                           StopLossLimitPrice != null
+                StopLoss = StopLossStopPrice is not null ||
+                           StopLossLimitPrice is not null
                     ? new JsonNewOrderAdvancedAttributes
                     {
                         StopPrice = StopLossStopPrice,

@@ -18,7 +18,7 @@ namespace Alpaca.Markets
             String name,
             String? value)
         {
-            if (value != null)
+            if (value is not null)
             {
                 _queryParameters.Add(name, value);
             }
@@ -102,7 +102,7 @@ namespace Alpaca.Markets
             IEnumerable<TValue>? values,
             Func<TValue, String> converter)
             where TValue : struct =>
-            values != null
+            values is not null
                 ? AddParameter(name, String.Join(ListSeparator, values.Select(converter)))
                 : this;
     }

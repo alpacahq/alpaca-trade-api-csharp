@@ -137,7 +137,7 @@ namespace Alpaca.Markets
             var httpResponsesPolicy = Policy<HttpResponseMessage>
                 .HandleResult(response =>
                     RetryHttpStatuses.Contains(response.StatusCode) ||
-                    response.Headers.RetryAfter != null)
+                    response.Headers.RetryAfter is not null)
                 .WaitAndRetryAsync(
                     (Int32) MaxRetryAttempts, getDelayFromHeader,
                     (_, _, _, _) => Task.CompletedTask); // Only for compiler satisfaction

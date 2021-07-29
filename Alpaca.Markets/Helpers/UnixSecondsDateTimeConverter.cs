@@ -21,7 +21,7 @@ namespace Alpaca.Markets
             {
                 writer.WriteValue(dateTimeValue.IntoUnixTimeSeconds());
             }
-            else if (value == null)
+            else if (value is null)
             {
                 writer.WriteNull();
             }

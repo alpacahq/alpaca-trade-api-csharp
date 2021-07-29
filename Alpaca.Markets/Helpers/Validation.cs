@@ -38,7 +38,7 @@ namespace Alpaca.Markets
                 : clientOrderId;
 
         public static Boolean IsWatchListNameInvalid(this String? watchListName) =>
-            watchListName == null ||
+            watchListName is null ||
 #pragma warning disable CA1508 // Avoid dead conditional code
             String.IsNullOrEmpty(watchListName) ||
 #pragma warning restore CA1508 // Avoid dead conditional code

@@ -68,12 +68,7 @@ namespace Alpaca.Markets
             _webSocket = new ClientWebSocket();
 #pragma warning restore PC001 // API not supported on all platforms
 
-            if (url == null)
-            {
-                throw new ArgumentNullException(nameof(url));
-            }
-
-            _resolvedUrl = url;
+            _resolvedUrl = url ?? throw new ArgumentNullException(nameof(url));
 
             var options = new PipeOptions(
                 writerScheduler: PipeScheduler.ThreadPool,
@@ -379,7 +374,7 @@ namespace Alpaca.Markets
                     try
                     {
                         // We're done sending, send the close frame to the client if the websocket is still open
-                        await socket.CloseOutputAsync(error != null
+                        await socket.CloseOutputAsync(error is not null
                             ? WebSocketCloseStatus.InternalServerError
                             : WebSocketCloseStatus.NormalClosure,
                             "", CancellationToken.None)

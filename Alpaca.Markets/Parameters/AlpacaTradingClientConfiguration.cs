@@ -41,19 +41,19 @@ namespace Alpaca.Markets
 
         internal void EnsureIsValid()
         {
-            if (SecurityId == null)
+            if (SecurityId is null)
             {
                 throw new InvalidOperationException(
                     $"The value of '{nameof(SecurityId)}' property shouldn't be null.");
             }
 
-            if (ApiEndpoint == null)
+            if (ApiEndpoint is null)
             {
                 throw new InvalidOperationException(
                     $"The value of '{nameof(ApiEndpoint)}' property shouldn't be null.");
             }
 
-            if (ThrottleParameters == null)
+            if (ThrottleParameters is null)
             {
                 throw new InvalidOperationException(
                     $"The value of '{nameof(ThrottleParameters)}' property shouldn't be null.");
