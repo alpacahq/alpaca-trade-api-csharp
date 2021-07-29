@@ -18,12 +18,12 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the latest trade information.
         /// </summary>
-        IQuote Quote { get; }
+        IQuote? Quote { get; }
 
         /// <summary>
         /// Gets the latest quote information.
         /// </summary>
-        ITrade Trade { get; }
+        ITrade? Trade { get; }
 
         /// <summary>
         /// Gets the current minute bar information.
