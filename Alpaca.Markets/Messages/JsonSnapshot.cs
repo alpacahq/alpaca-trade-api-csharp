@@ -64,11 +64,11 @@ namespace Alpaca.Markets
             Int64 IQuoteBase<Int64>.AskExchange => throw new NotImplementedException();
         }
 
-        [JsonProperty(PropertyName = "latestQuote", Required = Required.Always)]
-        public JsonQuote QuoteObject { get; set; } = new ();
+        [JsonProperty(PropertyName = "latestQuote", Required = Required.Default)]
+        public JsonQuote? QuoteObject { get; set; }
 
-        [JsonProperty(PropertyName = "latestTrade", Required = Required.Always)]
-        public JsonTrade TradeObject { get; set; } = new ();
+        [JsonProperty(PropertyName = "latestTrade", Required = Required.Default)]
+        public JsonTrade? TradeObject { get; set; }
 
         [JsonProperty(PropertyName = "minuteBar", Required = Required.Default)]
         public JsonAlpacaHistoricalBar? JsonMinuteBar { get; set; }
@@ -83,10 +83,10 @@ namespace Alpaca.Markets
         public String Symbol { get; set; } = String.Empty;
 
         [JsonIgnore]
-        public IStreamQuote Quote => QuoteObject;
+        public IStreamQuote? Quote => QuoteObject;
 
         [JsonIgnore]
-        public IStreamTrade Trade => TradeObject;
+        public IStreamTrade? Trade => TradeObject;
 
         [JsonIgnore]
         public IAgg? MinuteBar => JsonMinuteBar;
@@ -106,8 +106,14 @@ namespace Alpaca.Markets
             String symbol)
         {
             Symbol = symbol;
-            TradeObject.Symbol = Symbol;
-            QuoteObject.Symbol = Symbol;
+            if (TradeObject is not null)
+            {
+                TradeObject.Symbol = Symbol;
+            }
+            if (QuoteObject is not null)
+            {
+                QuoteObject.Symbol = Symbol;
+            }
             return this;
         }
     }

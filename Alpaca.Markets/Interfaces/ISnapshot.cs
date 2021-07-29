@@ -15,12 +15,12 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the latest trade information.
         /// </summary>
-        IStreamQuote Quote { get; }
+        IStreamQuote? Quote { get; }
 
         /// <summary>
         /// Gets the latest quote information.
         /// </summary>
-        IStreamTrade Trade { get; }
+        IStreamTrade? Trade { get; }
 
         /// <summary>
         /// Gets the current minute bar information.
