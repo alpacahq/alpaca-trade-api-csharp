@@ -10,11 +10,11 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonSnapshot : ISnapshot
     {
-        [JsonProperty(PropertyName = "latestQuote", Required = Required.Always)]
-        public JsonHistoricalQuote JsonQuote { get; set; } = new ();
+        [JsonProperty(PropertyName = "latestQuote", Required = Required.Default)]
+        public JsonHistoricalQuote? JsonQuote { get; set; } = new ();
 
-        [JsonProperty(PropertyName = "latestTrade", Required = Required.Always)]
-        public JsonHistoricalTrade JsonTrade { get; set; } = new ();
+        [JsonProperty(PropertyName = "latestTrade", Required = Required.Default)]
+        public JsonHistoricalTrade? JsonTrade { get; set; } = new ();
 
         [JsonProperty(PropertyName = "minuteBar", Required = Required.Default)]
         public JsonHistoricalBar? JsonMinuteBar { get; set; }
@@ -29,10 +29,10 @@ namespace Alpaca.Markets
         public String Symbol { get; set; } = String.Empty;
 
         [JsonIgnore]
-        public IQuote Quote => JsonQuote;
+        public IQuote? Quote => JsonQuote;
 
         [JsonIgnore]
-        public ITrade Trade => JsonTrade;
+        public ITrade? Trade => JsonTrade;
 
         [JsonIgnore]
         public IBar? MinuteBar => JsonMinuteBar;
@@ -52,8 +52,14 @@ namespace Alpaca.Markets
             String symbol)
         {
             Symbol = symbol;
-            JsonTrade.Symbol = Symbol;
-            JsonQuote.Symbol = Symbol;
+            if (JsonTrade is not null)
+            {
+                JsonTrade.Symbol = Symbol;
+            }
+            if (JsonQuote is not null)
+            {
+                JsonQuote.Symbol = Symbol;
+            }
             return this;
         }
     }

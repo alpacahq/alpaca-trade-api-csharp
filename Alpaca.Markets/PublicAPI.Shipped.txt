@@ -421,9 +421,9 @@ Alpaca.Markets.ISnapshot
 Alpaca.Markets.ISnapshot.CurrentDailyBar.get -> Alpaca.Markets.IBar?
 Alpaca.Markets.ISnapshot.MinuteBar.get -> Alpaca.Markets.IBar?
 Alpaca.Markets.ISnapshot.PreviousDailyBar.get -> Alpaca.Markets.IBar?
-Alpaca.Markets.ISnapshot.Quote.get -> Alpaca.Markets.IQuote!
+Alpaca.Markets.ISnapshot.Quote.get -> Alpaca.Markets.IQuote?
 Alpaca.Markets.ISnapshot.Symbol.get -> string!
-Alpaca.Markets.ISnapshot.Trade.get -> Alpaca.Markets.ITrade!
+Alpaca.Markets.ISnapshot.Trade.get -> Alpaca.Markets.ITrade?
 Alpaca.Markets.IStopLoss
 Alpaca.Markets.IStopLoss.LimitPrice.get -> decimal?
 Alpaca.Markets.IStopLoss.StopPrice.get -> decimal
