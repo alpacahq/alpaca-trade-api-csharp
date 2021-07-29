@@ -16,7 +16,12 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed class ThrottleParameters
     {
-        private sealed class CustomHttpHandler : HttpClientHandler
+        private sealed class CustomHttpHandler
+#if NETFRAMEWORK
+            : WinHttpHandler
+#else
+            : HttpClientHandler
+#endif
         {
             private readonly IAsyncPolicy<HttpResponseMessage> _asyncPolicy;
 

@@ -10,6 +10,15 @@ namespace Alpaca.Markets
 {
     internal static partial class HttpClientExtensions
     {
+        private static readonly Version _httpVersion =
+#if NET5_0_OR_GREATER || NETSTANDARD2_1
+            System.Net.HttpVersion.Version20;
+#elif NETFRAMEWORK
+            new (2, 0);
+#else
+            System.Net.HttpVersion.Version11;
+#endif
+
         public static void AddAuthenticationHeaders(
             this HttpClient httpClient,
             SecurityKey securityKey)
@@ -61,9 +70,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken)
             where TJson : TApi
         {
-#if NET5_0_OR_GREATER || NETSTANDARD2_1
-            request.Version = System.Net.HttpVersion.Version20;
-#endif
+            request.Version = _httpVersion;
             using var response = await httpClient.SendAsync(request, cancellationToken)
                 .ConfigureAwait(false);
 
