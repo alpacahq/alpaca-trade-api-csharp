@@ -11,7 +11,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Creates new instance of <see cref="HistoricalBarsRequest"/> object.
         /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
+        /// <param name="symbol">Asset name for data retrieval.</param>
         /// <param name="timeFrame">Type of time bars for retrieval.</param>
         /// <param name="from">Filter data equal to or after this time.</param>
         /// <param name="into">Filter data equal to or before this time.</param>
@@ -26,7 +26,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Creates new instance of <see cref="HistoricalBarsRequest"/> object.
         /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
+        /// <param name="symbol">Asset name for data retrieval.</param>
         /// <param name="timeFrame">Type of time bars for retrieval.</param>
         /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
         public HistoricalBarsRequest(
