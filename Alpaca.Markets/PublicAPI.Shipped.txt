@@ -459,8 +459,12 @@ Alpaca.Markets.ITradeUpdate.Event.get -> Alpaca.Markets.TradeEvent
 Alpaca.Markets.ITradeUpdate.IntegerQuantity.get -> long?
 Alpaca.Markets.ITradeUpdate.Order.get -> Alpaca.Markets.IOrder!
 Alpaca.Markets.ITradeUpdate.Price.get -> decimal?
-Alpaca.Markets.ITradeUpdate.Quantity.get -> decimal?
+Alpaca.Markets.ITradeUpdate.PositionIntegerQuantity.get -> long?
+Alpaca.Markets.ITradeUpdate.PositionQuantity.get -> decimal?
 Alpaca.Markets.ITradeUpdate.TimestampUtc.get -> System.DateTime?
+Alpaca.Markets.ITradeUpdate.TradeIntegerQuantity.get -> long?
+Alpaca.Markets.ITradeUpdate.TradeQuantity.get -> decimal?
+Alpaca.Markets.ITradeUpdate.Quantity.get -> decimal?
 Alpaca.Markets.IWatchList
 Alpaca.Markets.IWatchList.AccountId.get -> System.Guid
 Alpaca.Markets.IWatchList.Assets.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IAsset!>!

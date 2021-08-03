@@ -25,16 +25,42 @@ namespace Alpaca.Markets
         Decimal? Price { get; }
 
         /// <summary>
+        /// Gets updated position quantity (with the fractional part).
+        /// </summary>
+        [UsedImplicitly]
+        [Obsolete("This property will be removed from the next major SDK version, use PositionQuantity instead.", false)]
+        Decimal? Quantity { get; }
+
+        /// <summary>
+        /// Gets updated position quantity (rounded to the nearest integer).
+        /// </summary>
+        [UsedImplicitly]
+        [Obsolete("This property will be removed from the next major SDK version, use PositionIntegerQuantity instead.", false)]
+        Int64? IntegerQuantity { get; }
+
+        /// <summary>
+        /// Gets updated position quantity (with the fractional part).
+        /// </summary>
+        [UsedImplicitly]
+        Decimal? PositionQuantity { get; }
+
+        /// <summary>
+        /// Gets updated position quantity (rounded to the nearest integer).
+        /// </summary>
+        [UsedImplicitly]
+        Int64? PositionIntegerQuantity { get; }
+
+        /// <summary>
         /// Gets updated trade quantity (with the fractional part).
         /// </summary>
         [UsedImplicitly]
-        Decimal? Quantity { get; }
+        Decimal? TradeQuantity { get; }
 
         /// <summary>
         /// Gets updated trade quantity (rounded to the nearest integer).
         /// </summary>
         [UsedImplicitly]
-        Int64? IntegerQuantity { get; }
+        Int64? TradeIntegerQuantity { get; }
 
         /// <summary>
         /// Gets update timestamp in UTC time zone.
