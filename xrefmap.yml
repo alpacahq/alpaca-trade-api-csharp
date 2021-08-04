@@ -167,18 +167,18 @@ references:
   commentId: F:Alpaca.Markets.AccountActivityType.ACATSecurities
   fullName: Alpaca.Markets.AccountActivityType.ACATSecurities
   nameWithType: AccountActivityType.ACATSecurities
-- uid: Alpaca.Markets.AccountActivityType.CashDisbursement
-  name: CashDisbursement
-  href: api/Alpaca.Markets.AccountActivityType.html#Alpaca_Markets_AccountActivityType_CashDisbursement
-  commentId: F:Alpaca.Markets.AccountActivityType.CashDisbursement
-  fullName: Alpaca.Markets.AccountActivityType.CashDisbursement
-  nameWithType: AccountActivityType.CashDisbursement
-- uid: Alpaca.Markets.AccountActivityType.CashReceipt
-  name: CashReceipt
-  href: api/Alpaca.Markets.AccountActivityType.html#Alpaca_Markets_AccountActivityType_CashReceipt
-  commentId: F:Alpaca.Markets.AccountActivityType.CashReceipt
-  fullName: Alpaca.Markets.AccountActivityType.CashReceipt
-  nameWithType: AccountActivityType.CashReceipt
+- uid: Alpaca.Markets.AccountActivityType.CashDeposit
+  name: CashDeposit
+  href: api/Alpaca.Markets.AccountActivityType.html#Alpaca_Markets_AccountActivityType_CashDeposit
+  commentId: F:Alpaca.Markets.AccountActivityType.CashDeposit
+  fullName: Alpaca.Markets.AccountActivityType.CashDeposit
+  nameWithType: AccountActivityType.CashDeposit
+- uid: Alpaca.Markets.AccountActivityType.CashWithdrawal
+  name: CashWithdrawal
+  href: api/Alpaca.Markets.AccountActivityType.html#Alpaca_Markets_AccountActivityType_CashWithdrawal
+  commentId: F:Alpaca.Markets.AccountActivityType.CashWithdrawal
+  fullName: Alpaca.Markets.AccountActivityType.CashWithdrawal
+  nameWithType: AccountActivityType.CashWithdrawal
 - uid: Alpaca.Markets.AccountActivityType.Dividend
   name: Dividend
   href: api/Alpaca.Markets.AccountActivityType.html#Alpaca_Markets_AccountActivityType_Dividend
@@ -293,6 +293,24 @@ references:
   commentId: F:Alpaca.Markets.AccountActivityType.NameChange
   fullName: Alpaca.Markets.AccountActivityType.NameChange
   nameWithType: AccountActivityType.NameChange
+- uid: Alpaca.Markets.AccountActivityType.OptionAssignment
+  name: OptionAssignment
+  href: api/Alpaca.Markets.AccountActivityType.html#Alpaca_Markets_AccountActivityType_OptionAssignment
+  commentId: F:Alpaca.Markets.AccountActivityType.OptionAssignment
+  fullName: Alpaca.Markets.AccountActivityType.OptionAssignment
+  nameWithType: AccountActivityType.OptionAssignment
+- uid: Alpaca.Markets.AccountActivityType.OptionExercise
+  name: OptionExercise
+  href: api/Alpaca.Markets.AccountActivityType.html#Alpaca_Markets_AccountActivityType_OptionExercise
+  commentId: F:Alpaca.Markets.AccountActivityType.OptionExercise
+  fullName: Alpaca.Markets.AccountActivityType.OptionExercise
+  nameWithType: AccountActivityType.OptionExercise
+- uid: Alpaca.Markets.AccountActivityType.OptionExpiration
+  name: OptionExpiration
+  href: api/Alpaca.Markets.AccountActivityType.html#Alpaca_Markets_AccountActivityType_OptionExpiration
+  commentId: F:Alpaca.Markets.AccountActivityType.OptionExpiration
+  fullName: Alpaca.Markets.AccountActivityType.OptionExpiration
+  nameWithType: AccountActivityType.OptionExpiration
 - uid: Alpaca.Markets.AccountActivityType.PassThruCharge
   name: PassThruCharge
   href: api/Alpaca.Markets.AccountActivityType.html#Alpaca_Markets_AccountActivityType_PassThruCharge
@@ -810,6 +828,19 @@ references:
   fullName: Alpaca.Markets.CalendarRequest.Alpaca.Markets.IRequestWithTimeInterval<Alpaca.Markets.IInclusiveTimeInterval>.SetInterval
   nameWithType: CalendarRequest.IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval
   nameWithType.vb: CalendarRequest.Alpaca.Markets.IRequestWithTimeInterval<Alpaca.Markets.IInclusiveTimeInterval>.SetInterval
+- uid: Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateTime)
+  name: GetForSingleDay(DateTime)
+  href: api/Alpaca.Markets.CalendarRequest.html#Alpaca_Markets_CalendarRequest_GetForSingleDay_System_DateTime_
+  commentId: M:Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateTime)
+  fullName: Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateTime)
+  nameWithType: CalendarRequest.GetForSingleDay(DateTime)
+- uid: Alpaca.Markets.CalendarRequest.GetForSingleDay*
+  name: GetForSingleDay
+  href: api/Alpaca.Markets.CalendarRequest.html#Alpaca_Markets_CalendarRequest_GetForSingleDay_
+  commentId: Overload:Alpaca.Markets.CalendarRequest.GetForSingleDay
+  isSpec: "True"
+  fullName: Alpaca.Markets.CalendarRequest.GetForSingleDay
+  nameWithType: CalendarRequest.GetForSingleDay
 - uid: Alpaca.Markets.CalendarRequest.TimeInterval
   name: TimeInterval
   href: api/Alpaca.Markets.CalendarRequest.html#Alpaca_Markets_CalendarRequest_TimeInterval
@@ -1282,6 +1313,37 @@ references:
   commentId: T:Alpaca.Markets.Extensions.AlpacaDataClientExtensions
   fullName: Alpaca.Markets.Extensions.AlpacaDataClientExtensions
   nameWithType: AlpacaDataClientExtensions
+- uid: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient,String,DateTime,DateTime)
+  name: GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, DateTime, DateTime)
+  href: api/Alpaca.Markets.Extensions.AlpacaDataClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_IAlpacaDataClient_String_DateTime_DateTime_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient,String,DateTime,DateTime)
+  fullName: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, DateTime, DateTime)
+  nameWithType: AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, DateTime, DateTime)
+- uid: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient,String,DateTime,DateTime,CancellationToken)
+  name: GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, DateTime, DateTime, CancellationToken)
+  href: api/Alpaca.Markets.Extensions.AlpacaDataClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_IAlpacaDataClient_String_DateTime_DateTime_CancellationToken_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient,String,DateTime,DateTime,CancellationToken)
+  fullName: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, DateTime, DateTime, CancellationToken)
+  nameWithType: AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, DateTime, DateTime, CancellationToken)
+- uid: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient,String,IInclusiveTimeInterval)
+  name: GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, IInclusiveTimeInterval)
+  href: api/Alpaca.Markets.Extensions.AlpacaDataClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_IAlpacaDataClient_String_IInclusiveTimeInterval_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient,String,IInclusiveTimeInterval)
+  fullName: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, IInclusiveTimeInterval)
+  nameWithType: AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, IInclusiveTimeInterval)
+- uid: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient,String,IInclusiveTimeInterval,CancellationToken)
+  name: GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, IInclusiveTimeInterval, CancellationToken)
+  href: api/Alpaca.Markets.Extensions.AlpacaDataClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_IAlpacaDataClient_String_IInclusiveTimeInterval_CancellationToken_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient,String,IInclusiveTimeInterval,CancellationToken)
+  fullName: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, IInclusiveTimeInterval, CancellationToken)
+  nameWithType: AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, IInclusiveTimeInterval, CancellationToken)
+- uid: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync*
+  name: GetAverageDailyTradeVolumeAsync
+  href: api/Alpaca.Markets.Extensions.AlpacaDataClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_
+  commentId: Overload:Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync
+  nameWithType: AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync
 - uid: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient,HistoricalBarsRequest)
   name: GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient, HistoricalBarsRequest)
   href: api/Alpaca.Markets.Extensions.AlpacaDataClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_IAlpacaDataClient_HistoricalBarsRequest_
@@ -1396,6 +1458,25 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable
   nameWithType: AlpacaDataClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable
+- uid: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(IAlpacaDataClient,HistoricalBarsRequest,Int32)
+  name: GetSimpleMovingAverageAsync(IAlpacaDataClient, HistoricalBarsRequest, Int32)
+  href: api/Alpaca.Markets.Extensions.AlpacaDataClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetSimpleMovingAverageAsync_IAlpacaDataClient_HistoricalBarsRequest_Int32_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(IAlpacaDataClient,HistoricalBarsRequest,Int32)
+  fullName: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(IAlpacaDataClient, HistoricalBarsRequest, Int32)
+  nameWithType: AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(IAlpacaDataClient, HistoricalBarsRequest, Int32)
+- uid: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(IAlpacaDataClient,HistoricalBarsRequest,Int32,CancellationToken)
+  name: GetSimpleMovingAverageAsync(IAlpacaDataClient, HistoricalBarsRequest, Int32, CancellationToken)
+  href: api/Alpaca.Markets.Extensions.AlpacaDataClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetSimpleMovingAverageAsync_IAlpacaDataClient_HistoricalBarsRequest_Int32_CancellationToken_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(IAlpacaDataClient,HistoricalBarsRequest,Int32,CancellationToken)
+  fullName: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(IAlpacaDataClient, HistoricalBarsRequest, Int32, CancellationToken)
+  nameWithType: AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(IAlpacaDataClient, HistoricalBarsRequest, Int32, CancellationToken)
+- uid: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync*
+  name: GetSimpleMovingAverageAsync
+  href: api/Alpaca.Markets.Extensions.AlpacaDataClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetSimpleMovingAverageAsync_
+  commentId: Overload:Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync
+  nameWithType: AlpacaDataClientExtensions.GetSimpleMovingAverageAsync
 - uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions
   name: AlpacaDataStreamingClientExtensions
   href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html
@@ -1745,6 +1826,25 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect
   nameWithType: AlpacaStreamingClientExtensions.WithReconnect
+- uid: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions
+  name: AlpacaTradingClientExtensions
+  href: api/Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.html
+  commentId: T:Alpaca.Markets.Extensions.AlpacaTradingClientExtensions
+  fullName: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions
+  nameWithType: AlpacaTradingClientExtensions
+- uid: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(IAlpacaTradingClient,DateTime,CancellationToken)
+  name: GetCalendarForSingleDayAsync(IAlpacaTradingClient, DateTime, CancellationToken)
+  href: api/Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_IAlpacaTradingClient_DateTime_CancellationToken_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(IAlpacaTradingClient,DateTime,CancellationToken)
+  fullName: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(IAlpacaTradingClient, DateTime, CancellationToken)
+  nameWithType: AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(IAlpacaTradingClient, DateTime, CancellationToken)
+- uid: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync*
+  name: GetCalendarForSingleDayAsync
+  href: api/Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_
+  commentId: Overload:Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync
+  nameWithType: AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync
 - uid: Alpaca.Markets.Extensions.AlpacaValueTask
   name: AlpacaValueTask
   href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html
@@ -1838,6 +1938,38 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.Extensions.AlpacaValueTask.WithCancellation
   nameWithType: AlpacaValueTask.WithCancellation
+- uid: Alpaca.Markets.Extensions.CalendarExtensions
+  name: CalendarExtensions
+  href: api/Alpaca.Markets.Extensions.CalendarExtensions.html
+  commentId: T:Alpaca.Markets.Extensions.CalendarExtensions
+  fullName: Alpaca.Markets.Extensions.CalendarExtensions
+  nameWithType: CalendarExtensions
+- uid: Alpaca.Markets.Extensions.CalendarExtensions.AsExclusiveTimeIntervalUtc(ICalendar)
+  name: AsExclusiveTimeIntervalUtc(ICalendar)
+  href: api/Alpaca.Markets.Extensions.CalendarExtensions.html#Alpaca_Markets_Extensions_CalendarExtensions_AsExclusiveTimeIntervalUtc_ICalendar_
+  commentId: M:Alpaca.Markets.Extensions.CalendarExtensions.AsExclusiveTimeIntervalUtc(ICalendar)
+  fullName: Alpaca.Markets.Extensions.CalendarExtensions.AsExclusiveTimeIntervalUtc(ICalendar)
+  nameWithType: CalendarExtensions.AsExclusiveTimeIntervalUtc(ICalendar)
+- uid: Alpaca.Markets.Extensions.CalendarExtensions.AsExclusiveTimeIntervalUtc*
+  name: AsExclusiveTimeIntervalUtc
+  href: api/Alpaca.Markets.Extensions.CalendarExtensions.html#Alpaca_Markets_Extensions_CalendarExtensions_AsExclusiveTimeIntervalUtc_
+  commentId: Overload:Alpaca.Markets.Extensions.CalendarExtensions.AsExclusiveTimeIntervalUtc
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.CalendarExtensions.AsExclusiveTimeIntervalUtc
+  nameWithType: CalendarExtensions.AsExclusiveTimeIntervalUtc
+- uid: Alpaca.Markets.Extensions.CalendarExtensions.AsInclusiveTimeIntervalUtc(ICalendar)
+  name: AsInclusiveTimeIntervalUtc(ICalendar)
+  href: api/Alpaca.Markets.Extensions.CalendarExtensions.html#Alpaca_Markets_Extensions_CalendarExtensions_AsInclusiveTimeIntervalUtc_ICalendar_
+  commentId: M:Alpaca.Markets.Extensions.CalendarExtensions.AsInclusiveTimeIntervalUtc(ICalendar)
+  fullName: Alpaca.Markets.Extensions.CalendarExtensions.AsInclusiveTimeIntervalUtc(ICalendar)
+  nameWithType: CalendarExtensions.AsInclusiveTimeIntervalUtc(ICalendar)
+- uid: Alpaca.Markets.Extensions.CalendarExtensions.AsInclusiveTimeIntervalUtc*
+  name: AsInclusiveTimeIntervalUtc
+  href: api/Alpaca.Markets.Extensions.CalendarExtensions.html#Alpaca_Markets_Extensions_CalendarExtensions_AsInclusiveTimeIntervalUtc_
+  commentId: Overload:Alpaca.Markets.Extensions.CalendarExtensions.AsInclusiveTimeIntervalUtc
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.CalendarExtensions.AsInclusiveTimeIntervalUtc
+  nameWithType: CalendarExtensions.AsInclusiveTimeIntervalUtc
 - uid: Alpaca.Markets.Extensions.ConfigurationExtensions
   name: ConfigurationExtensions
   href: api/Alpaca.Markets.Extensions.ConfigurationExtensions.html
@@ -1875,6 +2007,94 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient
   nameWithType: ConfigurationExtensions.GetClient
+- uid: Alpaca.Markets.Extensions.EnumerableExtensions
+  name: EnumerableExtensions
+  href: api/Alpaca.Markets.Extensions.EnumerableExtensions.html
+  commentId: T:Alpaca.Markets.Extensions.EnumerableExtensions
+  fullName: Alpaca.Markets.Extensions.EnumerableExtensions
+  nameWithType: EnumerableExtensions
+- uid: Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolume(IEnumerable{IBar})
+  name: GetAverageDailyTradeVolume(IEnumerable<IBar>)
+  href: api/Alpaca.Markets.Extensions.EnumerableExtensions.html#Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolume_IEnumerable_IBar__
+  commentId: M:Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolume(IEnumerable{IBar})
+  name.vb: GetAverageDailyTradeVolume(IEnumerable(Of IBar))
+  fullName: Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolume(IEnumerable<IBar>)
+  fullName.vb: Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolume(IEnumerable(Of IBar))
+  nameWithType: EnumerableExtensions.GetAverageDailyTradeVolume(IEnumerable<IBar>)
+  nameWithType.vb: EnumerableExtensions.GetAverageDailyTradeVolume(IEnumerable(Of IBar))
+- uid: Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolume*
+  name: GetAverageDailyTradeVolume
+  href: api/Alpaca.Markets.Extensions.EnumerableExtensions.html#Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolume_
+  commentId: Overload:Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolume
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolume
+  nameWithType: EnumerableExtensions.GetAverageDailyTradeVolume
+- uid: Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable{IBar})
+  name: GetAverageDailyTradeVolumeAsync(IAsyncEnumerable<IBar>)
+  href: api/Alpaca.Markets.Extensions.EnumerableExtensions.html#Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolumeAsync_IAsyncEnumerable_IBar__
+  commentId: M:Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable{IBar})
+  name.vb: GetAverageDailyTradeVolumeAsync(IAsyncEnumerable(Of IBar))
+  fullName: Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable<IBar>)
+  fullName.vb: Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable(Of IBar))
+  nameWithType: EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable<IBar>)
+  nameWithType.vb: EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable(Of IBar))
+- uid: Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable{IBar},CancellationToken)
+  name: GetAverageDailyTradeVolumeAsync(IAsyncEnumerable<IBar>, CancellationToken)
+  href: api/Alpaca.Markets.Extensions.EnumerableExtensions.html#Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolumeAsync_IAsyncEnumerable_IBar__CancellationToken_
+  commentId: M:Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable{IBar},CancellationToken)
+  name.vb: GetAverageDailyTradeVolumeAsync(IAsyncEnumerable(Of IBar), CancellationToken)
+  fullName: Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable<IBar>, CancellationToken)
+  fullName.vb: Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable(Of IBar), CancellationToken)
+  nameWithType: EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable<IBar>, CancellationToken)
+  nameWithType.vb: EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable(Of IBar), CancellationToken)
+- uid: Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync*
+  name: GetAverageDailyTradeVolumeAsync
+  href: api/Alpaca.Markets.Extensions.EnumerableExtensions.html#Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolumeAsync_
+  commentId: Overload:Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync
+  nameWithType: EnumerableExtensions.GetAverageDailyTradeVolumeAsync
+- uid: Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverage(IEnumerable{IBar},Int32)
+  name: GetSimpleMovingAverage(IEnumerable<IBar>, Int32)
+  href: api/Alpaca.Markets.Extensions.EnumerableExtensions.html#Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverage_IEnumerable_IBar__Int32_
+  commentId: M:Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverage(IEnumerable{IBar},Int32)
+  name.vb: GetSimpleMovingAverage(IEnumerable(Of IBar), Int32)
+  fullName: Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverage(IEnumerable<IBar>, Int32)
+  fullName.vb: Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverage(IEnumerable(Of IBar), Int32)
+  nameWithType: EnumerableExtensions.GetSimpleMovingAverage(IEnumerable<IBar>, Int32)
+  nameWithType.vb: EnumerableExtensions.GetSimpleMovingAverage(IEnumerable(Of IBar), Int32)
+- uid: Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverage*
+  name: GetSimpleMovingAverage
+  href: api/Alpaca.Markets.Extensions.EnumerableExtensions.html#Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverage_
+  commentId: Overload:Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverage
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverage
+  nameWithType: EnumerableExtensions.GetSimpleMovingAverage
+- uid: Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable{IBar},Int32)
+  name: GetSimpleMovingAverageAsync(IAsyncEnumerable<IBar>, Int32)
+  href: api/Alpaca.Markets.Extensions.EnumerableExtensions.html#Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverageAsync_IAsyncEnumerable_IBar__Int32_
+  commentId: M:Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable{IBar},Int32)
+  name.vb: GetSimpleMovingAverageAsync(IAsyncEnumerable(Of IBar), Int32)
+  fullName: Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable<IBar>, Int32)
+  fullName.vb: Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable(Of IBar), Int32)
+  nameWithType: EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable<IBar>, Int32)
+  nameWithType.vb: EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable(Of IBar), Int32)
+- uid: Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable{IBar},Int32,CancellationToken)
+  name: GetSimpleMovingAverageAsync(IAsyncEnumerable<IBar>, Int32, CancellationToken)
+  href: api/Alpaca.Markets.Extensions.EnumerableExtensions.html#Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverageAsync_IAsyncEnumerable_IBar__Int32_CancellationToken_
+  commentId: M:Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable{IBar},Int32,CancellationToken)
+  name.vb: GetSimpleMovingAverageAsync(IAsyncEnumerable(Of IBar), Int32, CancellationToken)
+  fullName: Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable<IBar>, Int32, CancellationToken)
+  fullName.vb: Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable(Of IBar), Int32, CancellationToken)
+  nameWithType: EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable<IBar>, Int32, CancellationToken)
+  nameWithType.vb: EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable(Of IBar), Int32, CancellationToken)
+- uid: Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync*
+  name: GetSimpleMovingAverageAsync
+  href: api/Alpaca.Markets.Extensions.EnumerableExtensions.html#Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverageAsync_
+  commentId: Overload:Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync
+  nameWithType: EnumerableExtensions.GetSimpleMovingAverageAsync
 - uid: Alpaca.Markets.Extensions.EnvironmentExtensions
   name: EnvironmentExtensions
   href: api/Alpaca.Markets.Extensions.EnvironmentExtensions.html
@@ -2011,6 +2231,12 @@ references:
   commentId: T:Alpaca.Markets.HistoricalBarsRequest
   fullName: Alpaca.Markets.HistoricalBarsRequest
   nameWithType: HistoricalBarsRequest
+- uid: Alpaca.Markets.HistoricalBarsRequest.#ctor(System.String,Alpaca.Markets.BarTimeFrame,Alpaca.Markets.IInclusiveTimeInterval)
+  name: HistoricalBarsRequest(String, BarTimeFrame, IInclusiveTimeInterval)
+  href: api/Alpaca.Markets.HistoricalBarsRequest.html#Alpaca_Markets_HistoricalBarsRequest__ctor_System_String_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_IInclusiveTimeInterval_
+  commentId: M:Alpaca.Markets.HistoricalBarsRequest.#ctor(System.String,Alpaca.Markets.BarTimeFrame,Alpaca.Markets.IInclusiveTimeInterval)
+  fullName: Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(System.String, Alpaca.Markets.BarTimeFrame, Alpaca.Markets.IInclusiveTimeInterval)
+  nameWithType: HistoricalBarsRequest.HistoricalBarsRequest(String, BarTimeFrame, IInclusiveTimeInterval)
 - uid: Alpaca.Markets.HistoricalBarsRequest.#ctor(System.String,System.DateTime,System.DateTime,Alpaca.Markets.BarTimeFrame)
   name: HistoricalBarsRequest(String, DateTime, DateTime, BarTimeFrame)
   href: api/Alpaca.Markets.HistoricalBarsRequest.html#Alpaca_Markets_HistoricalBarsRequest__ctor_System_String_System_DateTime_System_DateTime_Alpaca_Markets_BarTimeFrame_
@@ -2056,6 +2282,12 @@ references:
   commentId: T:Alpaca.Markets.HistoricalQuotesRequest
   fullName: Alpaca.Markets.HistoricalQuotesRequest
   nameWithType: HistoricalQuotesRequest
+- uid: Alpaca.Markets.HistoricalQuotesRequest.#ctor(System.String,Alpaca.Markets.IInclusiveTimeInterval)
+  name: HistoricalQuotesRequest(String, IInclusiveTimeInterval)
+  href: api/Alpaca.Markets.HistoricalQuotesRequest.html#Alpaca_Markets_HistoricalQuotesRequest__ctor_System_String_Alpaca_Markets_IInclusiveTimeInterval_
+  commentId: M:Alpaca.Markets.HistoricalQuotesRequest.#ctor(System.String,Alpaca.Markets.IInclusiveTimeInterval)
+  fullName: Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(System.String, Alpaca.Markets.IInclusiveTimeInterval)
+  nameWithType: HistoricalQuotesRequest.HistoricalQuotesRequest(String, IInclusiveTimeInterval)
 - uid: Alpaca.Markets.HistoricalQuotesRequest.#ctor(System.String,System.DateTime,System.DateTime)
   name: HistoricalQuotesRequest(String, DateTime, DateTime)
   href: api/Alpaca.Markets.HistoricalQuotesRequest.html#Alpaca_Markets_HistoricalQuotesRequest__ctor_System_String_System_DateTime_System_DateTime_
@@ -2088,6 +2320,12 @@ references:
   commentId: T:Alpaca.Markets.HistoricalRequestBase
   fullName: Alpaca.Markets.HistoricalRequestBase
   nameWithType: HistoricalRequestBase
+- uid: Alpaca.Markets.HistoricalRequestBase.#ctor(System.String,Alpaca.Markets.IInclusiveTimeInterval)
+  name: HistoricalRequestBase(String, IInclusiveTimeInterval)
+  href: api/Alpaca.Markets.HistoricalRequestBase.html#Alpaca_Markets_HistoricalRequestBase__ctor_System_String_Alpaca_Markets_IInclusiveTimeInterval_
+  commentId: M:Alpaca.Markets.HistoricalRequestBase.#ctor(System.String,Alpaca.Markets.IInclusiveTimeInterval)
+  fullName: Alpaca.Markets.HistoricalRequestBase.HistoricalRequestBase(System.String, Alpaca.Markets.IInclusiveTimeInterval)
+  nameWithType: HistoricalRequestBase.HistoricalRequestBase(String, IInclusiveTimeInterval)
 - uid: Alpaca.Markets.HistoricalRequestBase.#ctor(System.String,System.DateTime,System.DateTime)
   name: HistoricalRequestBase(String, DateTime, DateTime)
   href: api/Alpaca.Markets.HistoricalRequestBase.html#Alpaca_Markets_HistoricalRequestBase__ctor_System_String_System_DateTime_System_DateTime_
@@ -2197,6 +2435,12 @@ references:
   commentId: T:Alpaca.Markets.HistoricalTradesRequest
   fullName: Alpaca.Markets.HistoricalTradesRequest
   nameWithType: HistoricalTradesRequest
+- uid: Alpaca.Markets.HistoricalTradesRequest.#ctor(System.String,Alpaca.Markets.IInclusiveTimeInterval)
+  name: HistoricalTradesRequest(String, IInclusiveTimeInterval)
+  href: api/Alpaca.Markets.HistoricalTradesRequest.html#Alpaca_Markets_HistoricalTradesRequest__ctor_System_String_Alpaca_Markets_IInclusiveTimeInterval_
+  commentId: M:Alpaca.Markets.HistoricalTradesRequest.#ctor(System.String,Alpaca.Markets.IInclusiveTimeInterval)
+  fullName: Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(System.String, Alpaca.Markets.IInclusiveTimeInterval)
+  nameWithType: HistoricalTradesRequest.HistoricalTradesRequest(String, IInclusiveTimeInterval)
 - uid: Alpaca.Markets.HistoricalTradesRequest.#ctor(System.String,System.DateTime,System.DateTime)
   name: HistoricalTradesRequest(String, DateTime, DateTime)
   href: api/Alpaca.Markets.HistoricalTradesRequest.html#Alpaca_Markets_HistoricalTradesRequest__ctor_System_String_System_DateTime_System_DateTime_
@@ -5586,6 +5830,32 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.ITradeUpdate.Order
   nameWithType: ITradeUpdate.Order
+- uid: Alpaca.Markets.ITradeUpdate.PositionIntegerQuantity
+  name: PositionIntegerQuantity
+  href: api/Alpaca.Markets.ITradeUpdate.html#Alpaca_Markets_ITradeUpdate_PositionIntegerQuantity
+  commentId: P:Alpaca.Markets.ITradeUpdate.PositionIntegerQuantity
+  fullName: Alpaca.Markets.ITradeUpdate.PositionIntegerQuantity
+  nameWithType: ITradeUpdate.PositionIntegerQuantity
+- uid: Alpaca.Markets.ITradeUpdate.PositionIntegerQuantity*
+  name: PositionIntegerQuantity
+  href: api/Alpaca.Markets.ITradeUpdate.html#Alpaca_Markets_ITradeUpdate_PositionIntegerQuantity_
+  commentId: Overload:Alpaca.Markets.ITradeUpdate.PositionIntegerQuantity
+  isSpec: "True"
+  fullName: Alpaca.Markets.ITradeUpdate.PositionIntegerQuantity
+  nameWithType: ITradeUpdate.PositionIntegerQuantity
+- uid: Alpaca.Markets.ITradeUpdate.PositionQuantity
+  name: PositionQuantity
+  href: api/Alpaca.Markets.ITradeUpdate.html#Alpaca_Markets_ITradeUpdate_PositionQuantity
+  commentId: P:Alpaca.Markets.ITradeUpdate.PositionQuantity
+  fullName: Alpaca.Markets.ITradeUpdate.PositionQuantity
+  nameWithType: ITradeUpdate.PositionQuantity
+- uid: Alpaca.Markets.ITradeUpdate.PositionQuantity*
+  name: PositionQuantity
+  href: api/Alpaca.Markets.ITradeUpdate.html#Alpaca_Markets_ITradeUpdate_PositionQuantity_
+  commentId: Overload:Alpaca.Markets.ITradeUpdate.PositionQuantity
+  isSpec: "True"
+  fullName: Alpaca.Markets.ITradeUpdate.PositionQuantity
+  nameWithType: ITradeUpdate.PositionQuantity
 - uid: Alpaca.Markets.ITradeUpdate.Price
   name: Price
   href: api/Alpaca.Markets.ITradeUpdate.html#Alpaca_Markets_ITradeUpdate_Price
@@ -5625,6 +5895,32 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.ITradeUpdate.TimestampUtc
   nameWithType: ITradeUpdate.TimestampUtc
+- uid: Alpaca.Markets.ITradeUpdate.TradeIntegerQuantity
+  name: TradeIntegerQuantity
+  href: api/Alpaca.Markets.ITradeUpdate.html#Alpaca_Markets_ITradeUpdate_TradeIntegerQuantity
+  commentId: P:Alpaca.Markets.ITradeUpdate.TradeIntegerQuantity
+  fullName: Alpaca.Markets.ITradeUpdate.TradeIntegerQuantity
+  nameWithType: ITradeUpdate.TradeIntegerQuantity
+- uid: Alpaca.Markets.ITradeUpdate.TradeIntegerQuantity*
+  name: TradeIntegerQuantity
+  href: api/Alpaca.Markets.ITradeUpdate.html#Alpaca_Markets_ITradeUpdate_TradeIntegerQuantity_
+  commentId: Overload:Alpaca.Markets.ITradeUpdate.TradeIntegerQuantity
+  isSpec: "True"
+  fullName: Alpaca.Markets.ITradeUpdate.TradeIntegerQuantity
+  nameWithType: ITradeUpdate.TradeIntegerQuantity
+- uid: Alpaca.Markets.ITradeUpdate.TradeQuantity
+  name: TradeQuantity
+  href: api/Alpaca.Markets.ITradeUpdate.html#Alpaca_Markets_ITradeUpdate_TradeQuantity
+  commentId: P:Alpaca.Markets.ITradeUpdate.TradeQuantity
+  fullName: Alpaca.Markets.ITradeUpdate.TradeQuantity
+  nameWithType: ITradeUpdate.TradeQuantity
+- uid: Alpaca.Markets.ITradeUpdate.TradeQuantity*
+  name: TradeQuantity
+  href: api/Alpaca.Markets.ITradeUpdate.html#Alpaca_Markets_ITradeUpdate_TradeQuantity_
+  commentId: Overload:Alpaca.Markets.ITradeUpdate.TradeQuantity
+  isSpec: "True"
+  fullName: Alpaca.Markets.ITradeUpdate.TradeQuantity
+  nameWithType: ITradeUpdate.TradeQuantity
 - uid: Alpaca.Markets.IWatchList
   name: IWatchList
   href: api/Alpaca.Markets.IWatchList.html

@@ -121,16 +121,17 @@ public interface ITradeUpdate</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ITradeUpdate_IntegerQuantity.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ITradeUpdate.IntegerQuantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ITradeUpdate.cs/#L36">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ITradeUpdate.cs/#L37">View Source</a>
   </span>
   <a id="Alpaca_Markets_ITradeUpdate_IntegerQuantity_" data-uid="Alpaca.Markets.ITradeUpdate.IntegerQuantity*"></a>
   <h4 id="Alpaca_Markets_ITradeUpdate_IntegerQuantity" data-uid="Alpaca.Markets.ITradeUpdate.IntegerQuantity">IntegerQuantity</h4>
-  <div class="markdown level1 summary"><p>Gets updated trade quantity (rounded to the nearest integer).</p>
+  <div class="markdown level1 summary"><p>Gets updated position quantity (rounded to the nearest integer).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[Obsolete(&quot;This property will be removed from the next major SDK version, use PositionIntegerQuantity instead.&quot;, false)]
 long? IntegerQuantity { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -153,7 +154,7 @@ long? IntegerQuantity { get; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ITradeUpdate_Order.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ITradeUpdate.Order%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ITradeUpdate.cs/#L48">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ITradeUpdate.cs/#L74">View Source</a>
   </span>
   <a id="Alpaca_Markets_ITradeUpdate_Order_" data-uid="Alpaca.Markets.ITradeUpdate.Order*"></a>
   <h4 id="Alpaca_Markets_ITradeUpdate_Order" data-uid="Alpaca.Markets.ITradeUpdate.Order">Order</h4>
@@ -176,6 +177,70 @@ IOrder Order { get; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Alpaca.Markets.IOrder.html">IOrder</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ITradeUpdate_PositionIntegerQuantity.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ITradeUpdate.PositionIntegerQuantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ITradeUpdate.cs/#L50">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_ITradeUpdate_PositionIntegerQuantity_" data-uid="Alpaca.Markets.ITradeUpdate.PositionIntegerQuantity*"></a>
+  <h4 id="Alpaca_Markets_ITradeUpdate_PositionIntegerQuantity" data-uid="Alpaca.Markets.ITradeUpdate.PositionIntegerQuantity">PositionIntegerQuantity</h4>
+  <div class="markdown level1 summary"><p>Gets updated position quantity (rounded to the nearest integer).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+long? PositionIntegerQuantity { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ITradeUpdate_PositionQuantity.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ITradeUpdate.PositionQuantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ITradeUpdate.cs/#L44">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_ITradeUpdate_PositionQuantity_" data-uid="Alpaca.Markets.ITradeUpdate.PositionQuantity*"></a>
+  <h4 id="Alpaca_Markets_ITradeUpdate_PositionQuantity" data-uid="Alpaca.Markets.ITradeUpdate.PositionQuantity">PositionQuantity</h4>
+  <div class="markdown level1 summary"><p>Gets updated position quantity (with the fractional part).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+decimal? PositionQuantity { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Decimal</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -221,12 +286,13 @@ decimal? Price { get; }</code></pre>
   </span>
   <a id="Alpaca_Markets_ITradeUpdate_Quantity_" data-uid="Alpaca.Markets.ITradeUpdate.Quantity*"></a>
   <h4 id="Alpaca_Markets_ITradeUpdate_Quantity" data-uid="Alpaca.Markets.ITradeUpdate.Quantity">Quantity</h4>
-  <div class="markdown level1 summary"><p>Gets updated trade quantity (with the fractional part).</p>
+  <div class="markdown level1 summary"><p>Gets updated position quantity (with the fractional part).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[Obsolete(&quot;This property will be removed from the next major SDK version, use PositionQuantity instead.&quot;, false)]
 decimal? Quantity { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -249,7 +315,7 @@ decimal? Quantity { get; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ITradeUpdate_TimestampUtc.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ITradeUpdate.TimestampUtc%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ITradeUpdate.cs/#L42">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ITradeUpdate.cs/#L68">View Source</a>
   </span>
   <a id="Alpaca_Markets_ITradeUpdate_TimestampUtc_" data-uid="Alpaca.Markets.ITradeUpdate.TimestampUtc*"></a>
   <h4 id="Alpaca_Markets_ITradeUpdate_TimestampUtc" data-uid="Alpaca.Markets.ITradeUpdate.TimestampUtc">TimestampUtc</h4>
@@ -272,6 +338,70 @@ DateTime? TimestampUtc { get; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ITradeUpdate_TradeIntegerQuantity.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ITradeUpdate.TradeIntegerQuantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ITradeUpdate.cs/#L62">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_ITradeUpdate_TradeIntegerQuantity_" data-uid="Alpaca.Markets.ITradeUpdate.TradeIntegerQuantity*"></a>
+  <h4 id="Alpaca_Markets_ITradeUpdate_TradeIntegerQuantity" data-uid="Alpaca.Markets.ITradeUpdate.TradeIntegerQuantity">TradeIntegerQuantity</h4>
+  <div class="markdown level1 summary"><p>Gets updated trade quantity (rounded to the nearest integer).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+long? TradeIntegerQuantity { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ITradeUpdate_TradeQuantity.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ITradeUpdate.TradeQuantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ITradeUpdate.cs/#L56">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_ITradeUpdate_TradeQuantity_" data-uid="Alpaca.Markets.ITradeUpdate.TradeQuantity*"></a>
+  <h4 id="Alpaca_Markets_ITradeUpdate_TradeQuantity" data-uid="Alpaca.Markets.ITradeUpdate.TradeQuantity">TradeQuantity</h4>
+  <div class="markdown level1 summary"><p>Gets updated trade quantity (with the fractional part).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+decimal? TradeQuantity { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Decimal</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
