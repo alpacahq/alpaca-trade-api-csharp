@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -88,5 +89,42 @@ namespace Alpaca.Markets.Extensions
             client.GetHistoricalBarsAsAsyncEnumerable(
                 new HistoricalBarsRequest(symbol, BarTimeFrame.Day, timeInterval), cancellationToken)
                 .GetAverageDailyTradeVolumeAsync(cancellationToken);
+
+        /// <summary>
+        /// Gets the simple moving average values for the given list of <see cref="IBar"/> objects.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
+        /// <param name="request">Original historical minute bars request (with empty next page token).</param>
+        /// <param name="window">Size of the moving average window.</param>
+        /// <returns>The list of bars with SMA values for all <see cref="IBar"/> properties.</returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAsyncEnumerable<IBar> GetSimpleMovingAverageAsync(
+            this IAlpacaDataClient client,
+            HistoricalBarsRequest request,
+            Int32 window) =>
+            GetSimpleMovingAverageAsync(
+                client, request, window, CancellationToken.None);
+
+        /// <summary>
+        /// Gets the simple moving average values for the given list of <see cref="IBar"/> objects.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
+        /// <param name="request">Original historical minute bars request (with empty next page token).</param>
+        /// <param name="window">Size of the moving average window.</param>
+        /// <param name="cancellationToken">
+        /// A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+        /// </param>
+        /// <returns>The list of bars with SMA values for all <see cref="IBar"/> properties.</returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAsyncEnumerable<IBar> GetSimpleMovingAverageAsync(
+            this IAlpacaDataClient client,
+            HistoricalBarsRequest request,
+            Int32 window,
+            CancellationToken cancellationToken) =>
+            client.GetHistoricalBarsAsAsyncEnumerable(request, cancellationToken)
+                .GetSimpleMovingAverageAsync(window, cancellationToken);
+
     }
 }
