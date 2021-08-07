@@ -29,5 +29,11 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
         public DateTime TimeUtc { get; set; }
+
+        [JsonProperty(PropertyName = "vw", Required = Required.Default)]
+        public Decimal Vwap { get; }
+
+        [JsonProperty(PropertyName = "n", Required = Required.Default)]
+        public UInt64 TradeCount { get; }
     }
 }
