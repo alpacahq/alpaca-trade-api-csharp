@@ -44,5 +44,15 @@ namespace Alpaca.Markets
         /// Gets bar trading volume.
         /// </summary>
         UInt64 Volume { get; }
+        
+        /// <summary>
+        /// Gets bar volume weighted average price.
+        /// </summary>
+        Decimal Vwap { get; }
+        
+        /// <summary>
+        /// Gets total trades count for this bar.
+        /// </summary>
+        UInt64 TradeCount { get; }
     }
 }

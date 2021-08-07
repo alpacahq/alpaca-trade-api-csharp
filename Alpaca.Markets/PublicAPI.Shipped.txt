@@ -321,7 +321,9 @@ Alpaca.Markets.IBar.Low.get -> decimal
 Alpaca.Markets.IBar.Open.get -> decimal
 Alpaca.Markets.IBar.Symbol.get -> string!
 Alpaca.Markets.IBar.TimeUtc.get -> System.DateTime
+Alpaca.Markets.IBar.TradeCount.get -> ulong
 Alpaca.Markets.IBar.Volume.get -> ulong
+Alpaca.Markets.IBar.Vwap.get -> decimal
 Alpaca.Markets.ICalendar
 Alpaca.Markets.ICalendar.TradingCloseTimeEst.get -> System.DateTime
 Alpaca.Markets.ICalendar.TradingCloseTimeUtc.get -> System.DateTime
