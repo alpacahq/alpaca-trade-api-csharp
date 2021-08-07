@@ -30,5 +30,11 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "n", Required = Required.Default)]
         public Int32 ItemsInWindow { get; set; }
+ 
+        [JsonIgnore]
+        public Decimal Vwap { get; }
+
+        [JsonIgnore]
+        public UInt64 TradeCount => (UInt64)ItemsInWindow;
     }
 }

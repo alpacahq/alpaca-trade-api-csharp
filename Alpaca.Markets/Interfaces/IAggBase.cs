@@ -40,5 +40,15 @@ namespace Alpaca.Markets
         /// </summary>
         [Obsolete("This property will be removed from the next major SDK release.", true)]
         Int32 ItemsInWindow { get; }
+        
+        /// <summary>
+        /// Gets bar volume weighted average price.
+        /// </summary>
+        Decimal Vwap { get; }
+        
+        /// <summary>
+        /// Gets total trades count for this bar.
+        /// </summary>
+        UInt64 TradeCount { get; }
     }
 }
