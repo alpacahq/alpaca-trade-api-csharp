@@ -14,13 +14,6 @@ namespace Alpaca.Markets
         /// <summary>
         /// One minute bars.
         /// </summary>
-        [EnumMember(Value = "1Sec")]
-        [Obsolete("This enum member will be removed in the next major SDK release.", true)]
-        Second,
-
-        /// <summary>
-        /// One minute bars.
-        /// </summary>
         [EnumMember(Value = "1Min")]
         Minute,
 

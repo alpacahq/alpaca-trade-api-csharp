@@ -8,13 +8,7 @@ namespace Alpaca.Markets
 
         public Uri AlpacaDataApi => Environments.Live.AlpacaDataApi;
 
-        public Uri PolygonDataApi => throw new InvalidOperationException(
-            "Polygon.io REST API is not available on this environment.");
-
         public Uri AlpacaStreamingApi { get; } = new Uri("wss://paper-api.alpaca.markets/stream");
-
-        public Uri PolygonStreamingApi => throw new InvalidOperationException(
-            "Polygon.io streaming API is not available on this environment.");
 
         public Uri AlpacaDataStreamingApi => new Uri("wss://stream.data.alpaca.markets/v2/iex");
     }

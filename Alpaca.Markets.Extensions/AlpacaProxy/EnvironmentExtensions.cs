@@ -57,22 +57,6 @@ namespace Alpaca.Markets.Extensions
                 AlpacaDataStreamingApi = alpacaProxyAgentUrl ?? getFromEnvironmentOrDefault()
             };
 
-        /// Replaces <see cref="IEnvironment.PolygonStreamingApi"/> value with the
-        /// <paramref name="alpacaProxyAgentUrl"/> value or from environment variable
-        /// named <c>DATA_PROXY_WS</c> with default fallback value equal to default
-        /// Alpaca proxy agent local URL (<c>ws://127.0.0.1:8765</c>).
-        /// <param name="environment">Original environment URLs for modification.</param>
-        /// <param name="alpacaProxyAgentUrl">
-        /// New value for the <see cref="IEnvironment.PolygonStreamingApi"/> property
-        /// in the modified <paramref name="environment"/> object.
-        /// </param>
-        /// <returns>New environment URLs object.</returns>
-        [Obsolete("This method will be removed in the next major SDK release.", true)]
-        public static IEnvironment WithProxyForPolygonStreamingClient(
-            this IEnvironment environment,
-            Uri? alpacaProxyAgentUrl = null) =>
-            throw new PlatformNotSupportedException();
-
         private static Uri getFromEnvironmentOrDefault() => 
             new Uri(Environment.GetEnvironmentVariable(EnvironmentVariableName)
                     ?? DefaultAlpacaProxyAgentUri);

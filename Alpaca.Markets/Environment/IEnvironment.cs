@@ -18,21 +18,9 @@ namespace Alpaca.Markets
         Uri AlpacaDataApi { get; }
 
         /// <summary>
-        /// Gets Polygon.io data REST API base URL for this environment.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major SDK release.", true)]
-        Uri PolygonDataApi { get; }
-
-        /// <summary>
         /// Gets Alpaca streaming API base URL for this environment.
         /// </summary>
         Uri AlpacaStreamingApi { get; }
-
-        /// <summary>
-        /// Gets Polygon.io streaming API base URL for this environment.
-        /// </summary>
-        [Obsolete("This property will be removed in the next major SDK release.", true)]
-        Uri PolygonStreamingApi { get; }
 
         /// <summary>
         /// Gets Alpaca data streaming API base URL for this environment.
