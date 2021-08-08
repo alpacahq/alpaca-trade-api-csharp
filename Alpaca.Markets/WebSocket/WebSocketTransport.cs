@@ -114,8 +114,8 @@ namespace Alpaca.Markets
         public async Task StopAsync(
             CancellationToken cancellationToken = default)
         {
-            await _transport!.Output.CompleteAsync().ConfigureAwait(false);
-            await _transport!.Input.CompleteAsync().ConfigureAwait(false);
+            await _transport.Output.CompleteAsync().ConfigureAwait(false);
+            await _transport.Input.CompleteAsync().ConfigureAwait(false);
 
             // Cancel any pending reads from the application, this should start the entire shutdown process
             _application.Input.CancelPendingRead();

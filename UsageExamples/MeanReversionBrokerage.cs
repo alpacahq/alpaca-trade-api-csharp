@@ -96,6 +96,7 @@ namespace UsageExamples
             Console.WriteLine("Alpaca streaming client opened.");
 
             var subscription = alpacaDataStreamingClient.GetMinuteBarSubscription(symbol);
+            // ReSharper disable once AsyncVoidLambda
             subscription.Received += async bar =>
             {
                 // If the market's close to closing, exit position and stop trading.
