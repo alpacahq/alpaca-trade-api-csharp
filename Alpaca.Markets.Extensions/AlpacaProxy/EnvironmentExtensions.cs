@@ -3,9 +3,9 @@
 namespace Alpaca.Markets.Extensions
 {
     /// <summary>
-    /// Set of extensions methods for replacing target URL for Alpaca and Polygon data streaming
-    /// clients (<see cref="AlpacaDataStreamingClient"/> and <see cref="PolygonStreamingClient"/>)
-    /// with custom values or with local proxy WebSocket URL obtained from environment variables.
+    /// Set of extensions methods for replacing target URL for Alpaca data streaming client
+    /// <see cref="AlpacaDataStreamingClient"/>  with custom values or with local proxy
+    /// WebSocket URL obtained from environment variables.
     /// </summary>
     public static class EnvironmentExtensions
     {
@@ -24,15 +24,11 @@ namespace Alpaca.Markets.Extensions
                 AlpacaDataStreamingApi = _environment.AlpacaDataStreamingApi;
             }
 
-            public Uri PolygonStreamingApi => throw new PlatformNotSupportedException();
-
             public Uri AlpacaDataStreamingApi { get; set; }
 
             public Uri AlpacaTradingApi => _environment.AlpacaTradingApi;
 
             public Uri AlpacaDataApi => _environment.AlpacaDataApi;
-
-            public Uri PolygonDataApi => throw new PlatformNotSupportedException();
 
             public Uri AlpacaStreamingApi => _environment.AlpacaStreamingApi;
         }
