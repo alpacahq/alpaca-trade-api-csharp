@@ -48,6 +48,7 @@ namespace Alpaca.Markets
         /// Gets the date for which you want to see activities.
         /// </summary>
         [UsedImplicitly]
+        // TODO: olegra - good candidate for the DateOnly type usage
         public DateTime? Date { get; private set; }
 
         /// <summary>

@@ -20,6 +20,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>Read-only trading date information object.</returns>
         [UsedImplicitly]
         [CLSCompliant(false)]
+        // TODO: olegra - good candidate for the DateOnly type usage
         public static async Task<ICalendar?> GetCalendarForSingleDayAsync(
             this IAlpacaTradingClient client,
             DateTime date,
