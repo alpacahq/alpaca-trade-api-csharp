@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     internal static partial class HttpClientExtensions
     {
         private static readonly Version _httpVersion =
-#if NET5_0_OR_GREATER || NETSTANDARD2_1
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
             System.Net.HttpVersion.Version20;
 #elif NETFRAMEWORK
             new (2, 0);

@@ -1,7 +1,7 @@
 [![Build](https://github.com/alpacahq/alpaca-trade-api-csharp/workflows/Build%20and%20Release/badge.svg?branch=master)](https://github.com/alpacahq/alpaca-trade-api-csharp/actions)
 [![Codacy](https://img.shields.io/codacy/grade/7659cd4379964ef190a1088aa879350a?logo=codacy)](https://www.codacy.com/gh/OlegRa/Alpaca.Markets/dashboard?utm_source=github.com)
 [![Nuget](https://img.shields.io/nuget/dt/Alpaca.Markets?logo=NuGet)](https://www.nuget.org/stats/packages/Alpaca.Markets?groupby=Version)
-[![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=OlegRa/Alpaca.Markets)](https://dependabot.com)
+[![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=alpacahq/alpaca-trade-api-csharp)](https://dependabot.com)
 
 # .NET SDK for Alpaca Markets API
 

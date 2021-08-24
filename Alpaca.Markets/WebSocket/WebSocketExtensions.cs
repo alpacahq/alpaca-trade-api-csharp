@@ -3,7 +3,7 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-#if !NETCOREAPP
+#if !NET5_0_OR_GREATER
 using System.Runtime.InteropServices;
 #endif
 
@@ -17,7 +17,7 @@ namespace Alpaca.Markets
             WebSocketMessageType webSocketMessageType,
             CancellationToken cancellationToken = default)
         {
-#if NETCOREAPP
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
             return buffer.IsSingleSegment
                 ? webSocket.SendAsync(buffer.First, webSocketMessageType, true, cancellationToken)
                 : sendMultiSegmentAsync(webSocket, buffer, webSocketMessageType, cancellationToken);
@@ -46,7 +46,7 @@ namespace Alpaca.Markets
             buffer.TryGet(ref position, out var prevSegment);
             while (buffer.TryGet(ref position, out var segment))
             {
-#if NETCOREAPP
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
                 await webSocket.SendAsync(prevSegment, webSocketMessageType, false, cancellationToken).ConfigureAwait(false);
 #else
                 MemoryMarshal.TryGetArray(prevSegment, out var arraySegment);
@@ -56,7 +56,7 @@ namespace Alpaca.Markets
             }
 
             // End of message frame
-#if NETCOREAPP
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
             await webSocket.SendAsync(prevSegment, webSocketMessageType, true, cancellationToken).ConfigureAwait(false);
 #else
             _ = MemoryMarshal.TryGetArray(prevSegment, out var arraySegmentEnd);

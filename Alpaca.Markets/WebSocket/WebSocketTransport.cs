@@ -216,7 +216,7 @@ namespace Alpaca.Markets
             {
                 while (true)
                 {
-#if NETSTANDARD2_1 || NETCOREAPP
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
                     // Do a 0 byte read so that idle connections don't allocate a buffer when waiting for a read
                     var result = await socket.ReceiveAsync(Memory<byte>.Empty, CancellationToken.None)
                         .ConfigureAwait(false);
@@ -232,7 +232,7 @@ namespace Alpaca.Markets
                     }
 #endif
                     var memory = _application.Output.GetMemory();
-#if NETSTANDARD2_1 || NETCOREAPP
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
                     // Because we checked the CloseStatus from the 0 byte read above, we don't need to check again after reading
                     var receiveResult = await socket.ReceiveAsync(memory, CancellationToken.None)
                         .ConfigureAwait(false);
