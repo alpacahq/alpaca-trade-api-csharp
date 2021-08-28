@@ -157,18 +157,18 @@ namespace UsageExamples
 
                 // Make sure we know how much we should spend on our position.
                 var account = await alpacaTradingClient.GetAccountAsync();
-                Decimal buyingPower = account.BuyingPower;
-                Decimal equity = account.Equity;
+                var buyingPower = account.BuyingPower;
+                var equity = account.Equity;
                 long multiplier = account.Multiplier;
 
                 // Check how much we currently have in this position.
                 var positionQuantity = 0L;
-                Decimal positionValue = 0;
+                var positionValue = 0M;
                 try
                 {
                     var currentPosition = await alpacaTradingClient.GetPositionAsync(symbol);
                     positionQuantity = currentPosition.IntegerQuantity;
-                    positionValue = currentPosition.MarketValue;
+                    positionValue = currentPosition.MarketValue ?? 0M;
                 }
                 catch (Exception)
                 {
@@ -187,9 +187,9 @@ namespace UsageExamples
                     else
                     {
                         // Allocate a percent of portfolio to short position
-                        Decimal portfolioShare = -1 * diff / agg.Close * scale;
-                        Decimal targetPositionValue = -1 * equity * multiplier * portfolioShare;
-                        Decimal amountToShort = targetPositionValue - positionValue;
+                        var portfolioShare = -1 * diff / agg.Close * scale;
+                        var targetPositionValue = -1 * equity * multiplier * portfolioShare;
+                        var amountToShort = targetPositionValue - positionValue;
 
                         if (amountToShort < 0)
                         {
@@ -206,7 +206,7 @@ namespace UsageExamples
                         else
                         {
                             // We want to shrink our existing short position.
-                            var qty = (Int64)(amountToShort / agg.Close);
+                            var qty = (Int64)(amountToShort ?? 0M / agg.Close);
                             if (qty > -1 * positionQuantity)
                             {
                                 qty = -1 * positionQuantity;
@@ -219,9 +219,9 @@ namespace UsageExamples
                 else
                 {
                     // Allocate a percent of our portfolio to long position.
-                    Decimal portfolioShare = diff / agg.Close * scale;
-                    Decimal targetPositionValue = equity * multiplier * portfolioShare;
-                    Decimal amountToLong = targetPositionValue - positionValue;
+                    var portfolioShare = diff / agg.Close * scale;
+                    var targetPositionValue = equity * multiplier * portfolioShare;
+                    var amountToLong = targetPositionValue - positionValue;
 
                     if (positionQuantity < 0)
                     {
@@ -245,7 +245,7 @@ namespace UsageExamples
                     {
                         // We want to shrink our existing long position.
                         amountToLong *= -1;
-                        var qty = (Int64)(amountToLong / agg.Close);
+                        var qty = (Int64)(amountToLong ?? 0M / agg.Close);
                         if (qty > positionQuantity)
                         {
                             qty = positionQuantity;

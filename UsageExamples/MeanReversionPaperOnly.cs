@@ -61,17 +61,17 @@ namespace UsageExamples
 
                 // Get information about current account value.
                 var account = await alpacaTradingClient.GetAccountAsync();
-                Decimal buyingPower = account.BuyingPower;
-                Decimal portfolioValue = account.Equity;
+                var buyingPower = account.BuyingPower;
+                var portfolioValue = account.Equity;
 
                 // Get information about our existing position.
                 var positionQuantity = 0L;
-                Decimal positionValue = 0;
+                var positionValue = 0M;
                 try
                 {
                     var currentPosition = await alpacaTradingClient.GetPositionAsync(symbol);
                     positionQuantity = currentPosition.IntegerQuantity;
-                    positionValue = currentPosition.MarketValue;
+                    positionValue = currentPosition.MarketValue ?? 0M;
                 }
                 catch (Exception)
                 {
@@ -104,9 +104,9 @@ namespace UsageExamples
                 else
                 {
                     // Allocate a percent of our portfolio to this position.
-                    Decimal portfolioShare = diff / currentPrice * scale;
-                    Decimal targetPositionValue = portfolioValue * portfolioShare;
-                    Decimal amountToAdd = targetPositionValue - positionValue;
+                    var portfolioShare = diff / currentPrice * scale;
+                    var targetPositionValue = portfolioValue * portfolioShare;
+                    var amountToAdd = targetPositionValue - positionValue;
 
                     if (amountToAdd > 0)
                     {

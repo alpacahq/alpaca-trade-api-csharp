@@ -37,31 +37,31 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "side", Required = Required.Default)]
         public PositionSide Side { get; set; }
 
-        [JsonProperty(PropertyName = "market_value", Required = Required.Always)]
-        public Decimal MarketValue { get; set; }
+        [JsonProperty(PropertyName = "market_value", Required = Required.Default)]
+        public Decimal? MarketValue { get; set; }
 
         [JsonProperty(PropertyName = "cost_basis", Required = Required.Always)]
         public Decimal CostBasis { get; set; }
 
-        [JsonProperty(PropertyName = "unrealized_pl", Required = Required.Always)]
-        public Decimal UnrealizedProfitLoss { get; set; }
+        [JsonProperty(PropertyName = "unrealized_pl", Required = Required.Default)]
+        public Decimal? UnrealizedProfitLoss { get; set; }
 
-        [JsonProperty(PropertyName = "unrealized_plpc", Required = Required.Always)]
-        public Decimal UnrealizedProfitLossPercent { get; set; }
+        [JsonProperty(PropertyName = "unrealized_plpc", Required = Required.Default)]
+        public Decimal? UnrealizedProfitLossPercent { get; set; }
 
-        [JsonProperty(PropertyName = "unrealized_intraday_pl", Required = Required.Always)]
-        public Decimal IntradayUnrealizedProfitLoss { get; set; }
+        [JsonProperty(PropertyName = "unrealized_intraday_pl", Required = Required.Default)]
+        public Decimal? IntradayUnrealizedProfitLoss { get; set; }
 
-        [JsonProperty(PropertyName = "unrealized_intraday_plpc", Required = Required.Always)]
-        public Decimal IntradayUnrealizedProfitLossPercent { get; set; }
+        [JsonProperty(PropertyName = "unrealized_intraday_plpc", Required = Required.Default)]
+        public Decimal? IntradayUnrealizedProfitLossPercent { get; set; }
 
         [JsonProperty(PropertyName = "current_price", Required = Required.Default)]
-        public Decimal AssetCurrentPrice { get; set; }
+        public Decimal? AssetCurrentPrice { get; set; }
 
-        [JsonProperty(PropertyName = "lastday_price", Required = Required.Always)]
-        public Decimal AssetLastPrice { get; set; }
+        [JsonProperty(PropertyName = "lastday_price", Required = Required.Default)]
+        public Decimal? AssetLastPrice { get; set; }
 
-        [JsonProperty(PropertyName = "change_today", Required = Required.Always)]
-        public Decimal AssetChangePercent { get; set; }
+        [JsonProperty(PropertyName = "change_today", Required = Required.Default)]
+        public Decimal? AssetChangePercent { get; set; }
     }
 }
