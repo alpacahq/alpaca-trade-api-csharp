@@ -92,6 +92,78 @@ namespace Alpaca.Markets.Extensions
                 .GetAverageDailyTradeVolumeAsync(cancellationToken);
 
         /// <summary>
+        /// Gets the historical 5 minute bars for the given <paramref name="symbol"/> and <paramref name="timeInterval"/>.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
+        /// <param name="symbol">Asset name for the data retrieval.</param>
+        /// <param name="timeInterval">Inclusive time interval for historical bars.</param>
+        /// <returns>The historical 5 minutes bars re-sampled from original minute bars.</returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAsyncEnumerable<IBar> Get5MinuteHistoricalBarsAsAsyncEnumerable(
+            this IAlpacaDataClient client,
+            String symbol,
+            IInclusiveTimeInterval timeInterval) =>
+            client.Get5MinuteHistoricalBarsAsAsyncEnumerable(symbol, timeInterval, CancellationToken.None);
+
+        /// <summary>
+        /// Gets the historical 5 minute bars for the given <paramref name="symbol"/> and <paramref name="timeInterval"/>.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
+        /// <param name="symbol">Asset name for the data retrieval.</param>
+        /// <param name="timeInterval">Inclusive time interval for historical bars.</param>
+        /// <param name="cancellationToken">
+        /// A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+        /// </param>
+        /// <returns>The historical 5 minutes bars re-sampled from original minute bars.</returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAsyncEnumerable<IBar> Get5MinuteHistoricalBarsAsAsyncEnumerable(
+            this IAlpacaDataClient client,
+            String symbol,
+            IInclusiveTimeInterval timeInterval,
+            CancellationToken cancellationToken) =>
+            client.GetHistoricalBarsAsAsyncEnumerable(
+                    new HistoricalBarsRequest(symbol, BarTimeFrame.Minute, timeInterval), cancellationToken)
+                .ReSampleAsync(TimeSpan.FromMinutes(5), cancellationToken);
+
+        /// <summary>
+        /// Gets the historical 15 minute bars for the given <paramref name="symbol"/> and <paramref name="timeInterval"/>.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
+        /// <param name="symbol">Asset name for the data retrieval.</param>
+        /// <param name="timeInterval">Inclusive time interval for historical bars.</param>
+        /// <returns>The historical 15 minutes bars re-sampled from original minute bars.</returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAsyncEnumerable<IBar> Get15MinuteHistoricalBarsAsAsyncEnumerable(
+            this IAlpacaDataClient client,
+            String symbol,
+            IInclusiveTimeInterval timeInterval) =>
+            client.Get15MinuteHistoricalBarsAsAsyncEnumerable(symbol, timeInterval, CancellationToken.None);
+
+        /// <summary>
+        /// Gets the historical 15 minutes bars for the given <paramref name="symbol"/> and <paramref name="timeInterval"/>.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
+        /// <param name="symbol">Asset name for the data retrieval.</param>
+        /// <param name="timeInterval">Inclusive time interval for historical bars.</param>
+        /// <param name="cancellationToken">
+        /// A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+        /// </param>
+        /// <returns>The historical 15 minutes bars re-sampled from original minute bars.</returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAsyncEnumerable<IBar> Get15MinuteHistoricalBarsAsAsyncEnumerable(
+            this IAlpacaDataClient client,
+            String symbol,
+            IInclusiveTimeInterval timeInterval,
+            CancellationToken cancellationToken) =>
+            client.GetHistoricalBarsAsAsyncEnumerable(
+                    new HistoricalBarsRequest(symbol, BarTimeFrame.Minute, timeInterval), cancellationToken)
+                .ReSampleAsync(TimeSpan.FromMinutes(15), cancellationToken);
+
+        /// <summary>
         /// Gets the simple moving average values for the given list of <see cref="IBar"/> objects.
         /// </summary>
         /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
