@@ -61,17 +61,17 @@ namespace UsageExamples
 
                 // Get information about current account value.
                 var account = await alpacaTradingClient.GetAccountAsync();
-                Decimal buyingPower = account.BuyingPower;
-                Decimal portfolioValue = account.Equity;
+                var buyingPower = account.BuyingPower;
+                var portfolioValue = account.Equity;
 
                 // Get information about our existing position.
                 var positionQuantity = 0L;
-                Decimal positionValue = 0;
+                var positionValue = 0M;
                 try
                 {
                     var currentPosition = await alpacaTradingClient.GetPositionAsync(symbol);
                     positionQuantity = currentPosition.IntegerQuantity;
-                    positionValue = currentPosition.MarketValue;
+                    positionValue = currentPosition.MarketValue ?? 0M;
                 }
                 catch (Exception)
                 {
@@ -104,11 +104,16 @@ namespace UsageExamples
                 else
                 {
                     // Allocate a percent of our portfolio to this position.
-                    Decimal portfolioShare = diff / currentPrice * scale;
-                    Decimal targetPositionValue = portfolioValue * portfolioShare;
-                    Decimal amountToAdd = targetPositionValue - positionValue;
+                    var portfolioShare = diff / currentPrice * scale;
+                    var targetPositionValue = portfolioValue * portfolioShare;
+                    var amountToAdd = targetPositionValue - positionValue;
 
-                    if (amountToAdd > 0)
+                    if (amountToAdd is null)
+                    {
+                        continue;
+                    }
+
+                    if (amountToAdd.Value > 0)
                     {
                         // Buy as many shares as we can without going over amountToAdd.
 
@@ -117,7 +122,7 @@ namespace UsageExamples
                         {
                             amountToAdd = buyingPower;
                         }
-                        Int32 qtyToBuy = (Int32)(amountToAdd / currentPrice);
+                        var qtyToBuy = (Int64)(amountToAdd ?? 0M / currentPrice);
 
                         await SubmitOrder(qtyToBuy, currentPrice, OrderSide.Buy);
                     }
@@ -127,7 +132,7 @@ namespace UsageExamples
 
                         // Make sure we're not trying to sell more than we have.
                         amountToAdd *= -1;
-                        var qtyToSell = (Int64)(amountToAdd / currentPrice);
+                        var qtyToSell = (Int64)(amountToAdd ?? 0M / currentPrice);
                         if (qtyToSell > positionQuantity)
                         {
                             qtyToSell = positionQuantity;

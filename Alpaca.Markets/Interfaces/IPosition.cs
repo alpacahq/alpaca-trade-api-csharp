@@ -52,7 +52,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Get current position market value.
         /// </summary>
-        Decimal MarketValue { get; }
+        Decimal? MarketValue { get; }
 
         /// <summary>
         /// Get position cost basis.
@@ -62,36 +62,36 @@ namespace Alpaca.Markets
         /// <summary>
         /// Get position unrealized profit loss.
         /// </summary>
-        Decimal UnrealizedProfitLoss { get; }
+        Decimal? UnrealizedProfitLoss { get; }
 
         /// <summary>
         /// Get position unrealized profit loss in percent.
         /// </summary>
-        Decimal UnrealizedProfitLossPercent { get; }
+        Decimal? UnrealizedProfitLossPercent { get; }
 
         /// <summary>
         /// Get position intraday unrealized profit loss.
         /// </summary>
-        Decimal IntradayUnrealizedProfitLoss { get; }
+        Decimal? IntradayUnrealizedProfitLoss { get; }
 
         /// <summary>
         /// Get position intraday unrealized profit loss in percent.
         /// </summary>
-        Decimal IntradayUnrealizedProfitLossPercent { get; }
+        Decimal? IntradayUnrealizedProfitLossPercent { get; }
 
         /// <summary>
         /// Gets position's asset current price.
         /// </summary>
-        Decimal AssetCurrentPrice { get; }
+        Decimal? AssetCurrentPrice { get; }
 
         /// <summary>
         /// Gets position's asset last trade price.
         /// </summary>
-        Decimal AssetLastPrice { get; }
+        Decimal? AssetLastPrice { get; }
 
         /// <summary>
         /// Gets position's asset price change in percent.
         /// </summary>
-        Decimal AssetChangePercent { get; }
+        Decimal? AssetChangePercent { get; }
     }
 }

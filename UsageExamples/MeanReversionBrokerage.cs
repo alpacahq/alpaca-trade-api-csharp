@@ -164,12 +164,12 @@ namespace UsageExamples
 
                 // Check how much we currently have in this position.
                 var positionQuantity = 0L;
-                Decimal positionValue = 0;
+                var positionValue = 0M;
                 try
                 {
                     var currentPosition = await alpacaTradingClient.GetPositionAsync(symbol);
                     positionQuantity = currentPosition.IntegerQuantity;
-                    positionValue = currentPosition.MarketValue;
+                    positionValue = currentPosition.MarketValue ?? 0M;
                 }
                 catch (Exception)
                 {

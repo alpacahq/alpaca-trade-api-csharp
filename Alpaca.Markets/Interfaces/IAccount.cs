@@ -73,32 +73,32 @@ namespace Alpaca.Markets
         /// <summary>
         /// Current available buying power.
         /// </summary>
-        Decimal BuyingPower { get; }
+        Decimal? BuyingPower { get; }
 
         /// <summary>
         /// Your buying power for day trades (continuously updated value).
         /// </summary>
-        Decimal DayTradingBuyingPower { get; }
+        Decimal? DayTradingBuyingPower { get; }
 
         /// <summary>
         /// Your buying power under Regulation T (your excess equity - equity minus margin value - times your margin multiplier).
         /// </summary>
-        Decimal RegulationBuyingPower { get; }
+        Decimal? RegulationBuyingPower { get; }
 
         /// <summary>
         /// Real-time MtM value of all long positions held in the account.
         /// </summary>
-        Decimal LongMarketValue { get; }
+        Decimal? LongMarketValue { get; }
 
         /// <summary>
         /// Real-time MtM value of all short positions held in the account.
         /// </summary>
-        Decimal ShortMarketValue { get; }
+        Decimal? ShortMarketValue { get; }
 
         /// <summary>
         /// Cash + LongMarketValue + ShortMarketValue.
         /// </summary>
-        Decimal Equity { get; }
+        Decimal? Equity { get; }
 
         /// <summary>
         /// Equity as of previous trading day at 16:00:00 ET.
@@ -108,7 +108,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Reg T initial margin requirement (continuously updated value).
         /// </summary>
-        Decimal InitialMargin { get; }
+        Decimal? InitialMargin { get; }
 
         /// <summary>
         /// Maintenance margin requirement (continuously updated value).
