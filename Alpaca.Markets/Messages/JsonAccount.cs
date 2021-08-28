@@ -47,29 +47,29 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "multiplier", Required = Required.Default)]
         public Multiplier Multiplier { get; set; }
 
-        [JsonProperty(PropertyName = "buying_power", Required = Required.Always)]
-        public Decimal BuyingPower { get; set; }
+        [JsonProperty(PropertyName = "buying_power", Required = Required.Default)]
+        public Decimal? BuyingPower { get; set; }
 
         [JsonProperty(PropertyName = "daytrading_buying_power", Required = Required.Default)]
-        public Decimal DayTradingBuyingPower { get; set; }
+        public Decimal? DayTradingBuyingPower { get; set; }
 
         [JsonProperty(PropertyName = "regt_buying_power", Required = Required.Default)]
-        public Decimal RegulationBuyingPower { get; set; }
+        public Decimal? RegulationBuyingPower { get; set; }
 
         [JsonProperty(PropertyName = "long_market_value", Required = Required.Default)]
-        public Decimal LongMarketValue { get; set; }
+        public Decimal? LongMarketValue { get; set; }
 
         [JsonProperty(PropertyName = "short_market_value", Required = Required.Default)]
-        public Decimal ShortMarketValue { get; set; }
+        public Decimal? ShortMarketValue { get; set; }
 
         [JsonProperty(PropertyName = "equity", Required = Required.Default)]
-        public Decimal Equity { get; set; }
+        public Decimal? Equity { get; set; }
 
         [JsonProperty(PropertyName = "last_equity", Required = Required.Default)]
         public Decimal LastEquity { get; set; }
 
         [JsonProperty(PropertyName = "initial_margin", Required = Required.Default)]
-        public Decimal InitialMargin { get; set; }
+        public Decimal? InitialMargin { get; set; }
 
         [JsonProperty(PropertyName = "maintenance_margin", Required = Required.Default)]
         public Decimal MaintenanceMargin { get; set; }

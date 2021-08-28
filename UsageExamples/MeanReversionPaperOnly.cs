@@ -68,12 +68,12 @@ namespace UsageExamples
 
                 // Get information about our existing position.
                 var positionQuantity = 0L;
-                Decimal positionValue = 0;
+                var positionValue = 0M;
                 try
                 {
                     var currentPosition = await alpacaTradingClient.GetPositionAsync(symbol);
                     positionQuantity = currentPosition.IntegerQuantity;
-                    positionValue = currentPosition.MarketValue;
+                    positionValue = currentPosition.MarketValue ?? 0M;
                 }
                 catch (Exception)
                 {
@@ -110,32 +110,38 @@ namespace UsageExamples
                     var targetPositionValue = portfolioValue * portfolioShare;
                     var amountToAdd = targetPositionValue - positionValue;
 
-                    if (amountToAdd > 0)
+                    switch (amountToAdd)
                     {
-                        // Buy as many shares as we can without going over amountToAdd.
-
-                        // Make sure we're not trying to buy more than we can.
-                        if (amountToAdd > buyingPower)
+                        case > 0:
                         {
-                            amountToAdd = buyingPower;
-                        }
-                        var qtyToBuy = (Int32)(amountToAdd / currentPrice);
+                            // Buy as many shares as we can without going over amountToAdd.
 
-                        await SubmitOrder(qtyToBuy, currentPrice, OrderSide.Buy);
-                    }
-                    else
-                    {
-                        // Sell as many shares as we can without going under amountToAdd.
+                            // Make sure we're not trying to buy more than we can.
+                            if (amountToAdd > buyingPower)
+                            {
+                                amountToAdd = buyingPower;
+                            }
+                            var qtyToBuy = (Int32)(amountToAdd / currentPrice);
 
-                        // Make sure we're not trying to sell more than we have.
-                        amountToAdd *= -1;
-                        var qtyToSell = (Int64)(amountToAdd / currentPrice);
-                        if (qtyToSell > positionQuantity)
-                        {
-                            qtyToSell = positionQuantity;
+                            await SubmitOrder(qtyToBuy, currentPrice, OrderSide.Buy);
+                            break;
                         }
 
-                        await SubmitOrder(qtyToSell, currentPrice, OrderSide.Sell);
+                        case < 0:
+                        {
+                            // Sell as many shares as we can without going under amountToAdd.
+
+                            // Make sure we're not trying to sell more than we have.
+                            amountToAdd *= -1;
+                            var qtyToSell = (Int64)(amountToAdd / currentPrice);
+                            if (qtyToSell > positionQuantity)
+                            {
+                                qtyToSell = positionQuantity;
+                            }
+
+                            await SubmitOrder(qtyToSell, currentPrice, OrderSide.Sell);
+                            break;
+                        }
                     }
                 }
 
