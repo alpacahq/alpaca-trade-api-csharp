@@ -122,7 +122,7 @@ namespace UsageExamples
                         {
                             amountToAdd = buyingPower;
                         }
-                        var qtyToBuy = (Int64)(amountToAdd ?? 0M / currentPrice);
+                        var qtyToBuy = (Int64)(amountToAdd ?? 0M / currentPrice); //-V3022
 
                         await SubmitOrder(qtyToBuy, currentPrice, OrderSide.Buy);
                     }
