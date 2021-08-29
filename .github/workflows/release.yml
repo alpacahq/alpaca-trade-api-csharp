@@ -33,12 +33,17 @@ jobs:
           Alpaca.Markets.Unity.dll
           Alpaca.Markets.Unity.pdb
 
+    - name: Save Unity Package
+      uses: actions/upload-artifact@v2
+      with:
+        name: unity-package
+        path: Alpaca.Markets.Unity/bin/Release/netstandard2.0/*.zip
+          
     - name: Save SDK Packages
       uses: actions/upload-artifact@v2
       with:
         name: sdk-packages
         path: |
-          Alpaca.Markets.Unity/bin/Release/netstandard2.0/*.zip
           Alpaca.Markets/bin/Release/*.nupkg
           Alpaca.Markets/bin/Release/*.snupkg
           
@@ -64,14 +69,17 @@ jobs:
 
     - name: Create NuGet Version
       run: dotnet nuget push **.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
+        
+    - name: Load Unity Package
+      uses: actions/download-artifact@v2
+      with:
+        name: unity-package
 
     - name: Create GitHub Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ github.ref }}
         release_name: SDK ${{ github.ref }}
+        files: UnityPackage.zip
         draft: true
 
   publish-ext:
@@ -90,10 +98,7 @@ jobs:
       run: dotnet nuget push **.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
 
     - name: Create GitHub Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ github.ref }}
         release_name: Extensions ${{ github.ref }}
         draft: true
