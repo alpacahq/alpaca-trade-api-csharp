@@ -21,12 +21,24 @@ jobs:
 
     - name: Dotnet Build
       run: dotnet build -c Release
+      
+    - name: Pack Unity Binaries
+      uses: thedoctor0/zip-release@master
+      with:
+        type: zip
+        filename: UnityPackage.zip
+        directory: Alpaca.Markets.Unity/bin/Release/netstandard2.0
+        exclusions: |
+          Alpaca.Markets.Unity.deps.json
+          Alpaca.Markets.Unity.dll
+          Alpaca.Markets.Unity.pdb
 
     - name: Save SDK Packages
       uses: actions/upload-artifact@v2
       with:
         name: sdk-packages
         path: |
+          Alpaca.Markets.Unity/bin/Release/netstandard2.0/*.zip
           Alpaca.Markets/bin/Release/*.nupkg
           Alpaca.Markets/bin/Release/*.snupkg
           
