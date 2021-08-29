@@ -78,7 +78,7 @@ jobs:
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
       with:
-        release_name: SDK ${{ github.ref }}
+        name: SDK ${{ github.ref }}
         files: UnityPackage.zip
         draft: true
 
@@ -100,5 +100,5 @@ jobs:
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
       with:
-        release_name: Extensions ${{ github.ref }}
+        name: Extensions ${{ github.ref }}
         draft: true
