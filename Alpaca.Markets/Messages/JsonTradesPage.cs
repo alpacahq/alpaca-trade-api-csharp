@@ -11,7 +11,7 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonTradesPage : IPage<ITrade>
     {
-        [JsonProperty(PropertyName = "trades", Required = Required.Always)]
+        [JsonProperty(PropertyName = "trades", Required = Required.Default)]
         public List<JsonHistoricalTrade> ItemsList { get; set; } = new ();
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
