@@ -10,8 +10,8 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonQuotesPage : IPage<IHistoricalQuote>
     {
-        [JsonProperty(PropertyName = "quotes", Required = Required.Always)]
-        public List<JsonAlpacaHistoricalQuote> ItemsList { get; set; } = new List<JsonAlpacaHistoricalQuote>();
+        [JsonProperty(PropertyName = "quotes", Required = Required.Default)]
+        public List<JsonAlpacaHistoricalQuote> ItemsList { get; set; } = new ();
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
