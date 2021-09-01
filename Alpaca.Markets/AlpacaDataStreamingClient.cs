@@ -86,6 +86,8 @@ namespace Alpaca.Markets
 
         private const String QuotesChannel = "q";
 
+        private const String StatusesChannel = "s";
+
         private const String DailyBarsChannel = "d";
 
         private const String MinuteBarsChannel = "b";
@@ -112,6 +114,7 @@ namespace Alpaca.Markets
                 { MinuteBarsChannel, handleRealtimeDataUpdate },
                 { DailyBarsChannel, handleRealtimeDataUpdate },
                 { ConnectionSuccess, handleConnectionSuccess },
+                { StatusesChannel, handleRealtimeDataUpdate },
                 { Subscription, handleSubscriptionUpdates },
                 { TradesChannel, handleRealtimeDataUpdate },
                 { QuotesChannel, handleRealtimeDataUpdate },
@@ -136,6 +139,10 @@ namespace Alpaca.Markets
         public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
             String symbol) =>
             _subscriptions.GetOrAdd<IBar, JsonRealTimeBar>(getStreamName(DailyBarsChannel, symbol));
+
+        public IAlpacaDataSubscription<IStatus> GetStatusSubscription(
+            String symbol) =>
+            _subscriptions.GetOrAdd<IStatus, JsonTradingStatus>(getStreamName(StatusesChannel, symbol));
 
         public ValueTask SubscribeAsync(
             IAlpacaDataSubscription subscription,
@@ -324,8 +331,9 @@ namespace Alpaca.Markets
                     Action = action,
                     Trades = getSymbols(streamsByChannels, TradesChannel),
                     Quotes = getSymbols(streamsByChannels, QuotesChannel),
+                    Statuses = getSymbols(streamsByChannels, StatusesChannel),
                     DailyBars = getSymbols(streamsByChannels, DailyBarsChannel),
-                    MinuteBars =getSymbols(streamsByChannels, MinuteBarsChannel)
+                    MinuteBars = getSymbols(streamsByChannels, MinuteBarsChannel)
                 }, cancellationToken)
                 : new ValueTask();
 

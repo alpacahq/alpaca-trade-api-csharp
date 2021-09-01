@@ -253,6 +253,7 @@ Alpaca.Markets.IAlpacaDataStreamingClient.GetDailyBarSubscription(string! symbol
 Alpaca.Markets.IAlpacaDataStreamingClient.GetMinuteBarSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetMinuteBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetQuoteSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IQuote!>!
+Alpaca.Markets.IAlpacaDataStreamingClient.GetStatusSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStatus!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetTradeSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ITrade!>!
 Alpaca.Markets.IAlpacaDataSubscription
 Alpaca.Markets.IAlpacaDataSubscription.Streams.get -> System.Collections.Generic.IEnumerable<string!>!
@@ -426,6 +427,14 @@ Alpaca.Markets.ISnapshot.PreviousDailyBar.get -> Alpaca.Markets.IBar?
 Alpaca.Markets.ISnapshot.Quote.get -> Alpaca.Markets.IQuote?
 Alpaca.Markets.ISnapshot.Symbol.get -> string!
 Alpaca.Markets.ISnapshot.Trade.get -> Alpaca.Markets.ITrade?
+Alpaca.Markets.IStatus
+Alpaca.Markets.IStatus.ReasonCode.get -> string!
+Alpaca.Markets.IStatus.ReasonMessage.get -> string!
+Alpaca.Markets.IStatus.StatusCode.get -> string!
+Alpaca.Markets.IStatus.StatusMessage.get -> string!
+Alpaca.Markets.IStatus.Symbol.get -> string!
+Alpaca.Markets.IStatus.Tape.get -> string!
+Alpaca.Markets.IStatus.TimeUtc.get -> System.DateTime
 Alpaca.Markets.IStopLoss
 Alpaca.Markets.IStopLoss.LimitPrice.get -> decimal?
 Alpaca.Markets.IStopLoss.StopPrice.get -> decimal
