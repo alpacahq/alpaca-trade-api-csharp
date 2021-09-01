@@ -4,13 +4,14 @@
     ".NETFramework,Version=v4.6.1": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[5.1.0-beta2, )",
-        "resolved": "5.1.0-beta2",
-        "contentHash": "QTFH6LO2XxHA+jrVi1V/68+Uil/9rp99elfx3rGbF14xe5rcE/WipiY6tJDZ93Bog0KG530LkLjkywOyRxsC4A==",
+        "requested": "[5.1.0, )",
+        "resolved": "5.1.0",
+        "contentHash": "CU1nng3g/QR/1zVRlstXtTTX6HiDQ+ZXw+KikcnzFQ+cAJ0bO7hY0JZKJis3hfuPdjvDKfpgBU5IsuVOF6crRQ==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.2",
           "System.IO.Pipelines": "5.0.1",
+          "System.Net.Http.WinHttpHandler": "5.0.0",
           "System.Threading.Tasks.Extensions": "4.5.4"
         }
       },
@@ -199,6 +200,15 @@
           "System.Runtime.CompilerServices.Unsafe": "4.5.3"
         }
       },
+      "System.Net.Http.WinHttpHandler": {
+        "type": "Transitive",
+        "resolved": "5.0.0",
+        "contentHash": "Mq6dPidztlkEwzjmzK4gtla8N8MTfjCyd0yub/8DY5UbkbV82wU+kiMoBHHjQ2fY70RrdraEoeZFgH915lHJhg==",
+        "dependencies": {
+          "System.Buffers": "4.5.1",
+          "System.Memory": "4.5.4"
+        }
+      },
       "System.Numerics.Vectors": {
         "type": "Transitive",
         "resolved": "4.5.0",
@@ -226,9 +236,9 @@
     ".NETStandard,Version=v2.0": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[5.1.0-beta2, )",
-        "resolved": "5.1.0-beta2",
-        "contentHash": "QTFH6LO2XxHA+jrVi1V/68+Uil/9rp99elfx3rGbF14xe5rcE/WipiY6tJDZ93Bog0KG530LkLjkywOyRxsC4A==",
+        "requested": "[5.1.0, )",
+        "resolved": "5.1.0",
+        "contentHash": "CU1nng3g/QR/1zVRlstXtTTX6HiDQ+ZXw+KikcnzFQ+cAJ0bO7hY0JZKJis3hfuPdjvDKfpgBU5IsuVOF6crRQ==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.2",
@@ -453,9 +463,9 @@
     ".NETStandard,Version=v2.1": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[5.1.0-beta2, )",
-        "resolved": "5.1.0-beta2",
-        "contentHash": "QTFH6LO2XxHA+jrVi1V/68+Uil/9rp99elfx3rGbF14xe5rcE/WipiY6tJDZ93Bog0KG530LkLjkywOyRxsC4A==",
+        "requested": "[5.1.0, )",
+        "resolved": "5.1.0",
+        "contentHash": "CU1nng3g/QR/1zVRlstXtTTX6HiDQ+ZXw+KikcnzFQ+cAJ0bO7hY0JZKJis3hfuPdjvDKfpgBU5IsuVOF6crRQ==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.2",
@@ -653,9 +663,9 @@
     ".NETCoreApp,Version=v5.0": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[5.1.0-beta2, )",
-        "resolved": "5.1.0-beta2",
-        "contentHash": "QTFH6LO2XxHA+jrVi1V/68+Uil/9rp99elfx3rGbF14xe5rcE/WipiY6tJDZ93Bog0KG530LkLjkywOyRxsC4A==",
+        "requested": "[5.1.0, )",
+        "resolved": "5.1.0",
+        "contentHash": "CU1nng3g/QR/1zVRlstXtTTX6HiDQ+ZXw+KikcnzFQ+cAJ0bO7hY0JZKJis3hfuPdjvDKfpgBU5IsuVOF6crRQ==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.2",
