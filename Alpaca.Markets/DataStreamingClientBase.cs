@@ -92,6 +92,8 @@ namespace Alpaca.Markets
 
         protected const String QuotesChannel = "q";
 
+        protected const String StasusesChannel = "s";
+
         protected const String DailyBarsChannel = "d";
 
         protected const String MinuteBarsChannel = "b";
@@ -113,6 +115,7 @@ namespace Alpaca.Markets
                 { MinuteBarsChannel, handleRealtimeDataUpdate },
                 { DailyBarsChannel, handleRealtimeDataUpdate },
                 { ConnectionSuccess, handleConnectionSuccess },
+                { StasusesChannel, handleRealtimeDataUpdate },
                 { Subscription, handleSubscriptionUpdates },
                 { TradesChannel, handleRealtimeDataUpdate },
                 { QuotesChannel, handleRealtimeDataUpdate },
@@ -220,6 +223,7 @@ namespace Alpaca.Markets
                 var streams = new HashSet<String>(
                     getStreams(subscriptionUpdate.Trades.EmptyIfNull(), TradesChannel)
                         .Concat(getStreams(subscriptionUpdate.Quotes.EmptyIfNull(), QuotesChannel))
+                        .Concat(getStreams(subscriptionUpdate.Statuses.EmptyIfNull(), StasusesChannel))
                         .Concat(getStreams(subscriptionUpdate.DailyBars.EmptyIfNull(), DailyBarsChannel))
                         .Concat(getStreams(subscriptionUpdate.MinuteBars.EmptyIfNull(), MinuteBarsChannel)),
                     StringComparer.Ordinal);
@@ -313,6 +317,7 @@ namespace Alpaca.Markets
                     Action = action,
                     Trades = getSymbols(streamsByChannels, TradesChannel),
                     Quotes = getSymbols(streamsByChannels, QuotesChannel),
+                    Statuses = getSymbols(streamsByChannels, StasusesChannel),
                     DailyBars = getSymbols(streamsByChannels, DailyBarsChannel),
                     MinuteBars = getSymbols(streamsByChannels, MinuteBarsChannel)
                 }, cancellationToken)
