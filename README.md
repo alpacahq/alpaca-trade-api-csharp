@@ -60,6 +60,7 @@ Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method fo
 
 | Branch                                       | Version | Description                                  | Milestone                |
 | -------------------------------------------- | ------- | -------------------------------------------- |--------------------------|
-| [develop](../../tree/develop)                | 5.1.*   | Unstable - experimental, can contain bugs    | [SDK 5.1.x Experimental](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/14) |
-| [master](../../tree/master)                  | 5.0.*   | Stable - good choice for the new development | [SDK 5.0.x Stable](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/12) |
+| [develop](../../tree/develop)                | 6.0.*   | Unstable - experimental, can contain bugs    | [SDK 6.0.x Experimental](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/16) |
+| [master](../../tree/master)                  | 5.1.*   | LTS - good choice for the new development    | [SDK 5.1.x LTS](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/14) |
+| [support/v5.0.x](../../tree/support/v5.0.x)  | 5.0.*   | Stable - upgrade to 5.1.x for longer support | [SDK 5.0.x Stable](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/12) |
 | [support/v4.1.x](../../tree/support/v4.1.x)  | 4.1.*   | LTS - no breaking changes, all hotfixes      | [SDK 4.1.x LTS](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/13) |

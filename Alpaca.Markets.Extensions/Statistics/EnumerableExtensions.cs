@@ -30,6 +30,10 @@ namespace Alpaca.Markets.Extensions
 
             public UInt64 Volume { get; private set; }
 
+            public Decimal Vwap { get; private set; }
+
+            public UInt64 TradeCount { get; private set; }
+
             public Boolean HasData => Volume != 0;
 
             public static Bar operator +(Bar lhs, IBar rhs) =>
@@ -41,7 +45,9 @@ namespace Alpaca.Markets.Extensions
                     High = lhs.High + rhs.High,
                     Low = lhs.Low + rhs.Low,
                     Close = lhs.Close + rhs.Close,
-                    Volume = lhs.Volume + rhs.Volume
+                    Volume = lhs.Volume + rhs.Volume,
+                    Vwap = lhs.Vwap + rhs.Vwap,
+                    TradeCount = lhs.TradeCount + rhs.TradeCount
                 };
 
             public static Bar operator -(Bar lhs, IBar rhs) =>
@@ -53,7 +59,9 @@ namespace Alpaca.Markets.Extensions
                     High = lhs.High - rhs.High,
                     Low = lhs.Low - rhs.Low,
                     Close = lhs.Close - rhs.Close,
-                    Volume = lhs.Volume - rhs.Volume
+                    Volume = lhs.Volume - rhs.Volume,
+                    Vwap = lhs.Vwap - rhs.Vwap,
+                    TradeCount = lhs.TradeCount - rhs.TradeCount
                 };
 
             public static Bar operator /(Bar lhs, Int32 count) =>
@@ -65,7 +73,9 @@ namespace Alpaca.Markets.Extensions
                     High = lhs.High / count,
                     Low = lhs.Low / count,
                     Close = lhs.Close / count,
-                    Volume = lhs.Volume / (UInt64)count
+                    Volume = lhs.Volume / (UInt64)count,
+                    Vwap = lhs.Vwap / count,
+                    TradeCount = lhs.TradeCount / (UInt64)count
                 };
 
             public Boolean TryReSample(IBar bar, TimeSpan scale)
@@ -81,6 +91,7 @@ namespace Alpaca.Markets.Extensions
                     Low = bar.Low;
                     Close = bar.Close;
                     Volume = bar.Volume;
+                    TradeCount = bar.TradeCount;
                     return true;
                 }
 
@@ -93,6 +104,7 @@ namespace Alpaca.Markets.Extensions
                 Low = Math.Min(Low, bar.Low);
                 Close = bar.Close;
                 Volume += bar.Volume;
+                TradeCount += bar.TradeCount;
 
                 return true;
             }
