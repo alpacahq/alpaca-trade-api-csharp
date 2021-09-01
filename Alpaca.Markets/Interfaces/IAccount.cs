@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -7,62 +7,72 @@ namespace Alpaca.Markets
     /// Encapsulates full account information from Alpaca REST API.
     /// </summary>
     [CLSCompliant(false)]
-    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface IAccount
     {
         /// <summary>
         /// Gets unique account identifier.
         /// </summary>
+        [UsedImplicitly]
         Guid AccountId { get; }
 
         /// <summary>
         /// Gets updated account status.
         /// </summary>
+        [UsedImplicitly]
         AccountStatus Status { get; }
 
         /// <summary>
         /// Gets main account currency.
         /// </summary>
+        [UsedImplicitly]
         String? Currency { get; }
 
         /// <summary>
         /// Gets amount of money available for trading.
         /// </summary>
+        [UsedImplicitly]
         Decimal TradableCash { get; }
 
         /// <summary>
         /// Gets timestamp of account creation event in UTC.
         /// </summary>
+        [UsedImplicitly]
         DateTime CreatedAtUtc { get; }
 
         /// <summary>
         /// Gets account number (string identifier).
         /// </summary>
+        [UsedImplicitly]
         String? AccountNumber { get; }
 
         /// <summary>
         /// Gets returns <c>true</c> if account is linked to day pattern trader.
         /// </summary>
+        [UsedImplicitly]
         Boolean IsDayPatternTrader { get;  }
 
         /// <summary>
         /// Gets returns <c>true</c> if account trading functions are blocked.
         /// </summary>
+        [UsedImplicitly]
         Boolean IsTradingBlocked { get; }
 
         /// <summary>
         /// Gets returns <c>true</c> if account transfer functions are blocked.
         /// </summary>
+        [UsedImplicitly]
         Boolean IsTransfersBlocked { get; }
 
         /// <summary>
         /// User setting. If <c>true</c>, the account is not allowed to place orders.
         /// </summary>
+        [UsedImplicitly]
         Boolean TradeSuspendedByUser { get; }
 
         /// <summary>
         /// Flag to denote whether or not the account is permitted to short.
         /// </summary>
+        [UsedImplicitly]
         Boolean ShortingEnabled { get; }
 
         /// <summary>
@@ -78,21 +88,25 @@ namespace Alpaca.Markets
         /// <summary>
         /// Your buying power for day trades (continuously updated value).
         /// </summary>
+        [UsedImplicitly]
         Decimal? DayTradingBuyingPower { get; }
 
         /// <summary>
         /// Your buying power under Regulation T (your excess equity - equity minus margin value - times your margin multiplier).
         /// </summary>
+        [UsedImplicitly]
         Decimal? RegulationBuyingPower { get; }
 
         /// <summary>
         /// Real-time MtM value of all long positions held in the account.
         /// </summary>
+        [UsedImplicitly]
         Decimal? LongMarketValue { get; }
 
         /// <summary>
         /// Real-time MtM value of all short positions held in the account.
         /// </summary>
+        [UsedImplicitly]
         Decimal? ShortMarketValue { get; }
 
         /// <summary>
@@ -103,36 +117,43 @@ namespace Alpaca.Markets
         /// <summary>
         /// Equity as of previous trading day at 16:00:00 ET.
         /// </summary>
+        [UsedImplicitly]
         Decimal LastEquity { get; }
 
         /// <summary>
         /// Reg T initial margin requirement (continuously updated value).
         /// </summary>
+        [UsedImplicitly]
         Decimal? InitialMargin { get; }
 
         /// <summary>
         /// Maintenance margin requirement (continuously updated value).
         /// </summary>
+        [UsedImplicitly]
         Decimal MaintenanceMargin { get; }
 
         /// <summary>
         /// Your maintenance margin requirement on the previous trading day
         /// </summary>
+        [UsedImplicitly]
         Decimal LastMaintenanceMargin { get; }
 
         /// <summary>
         /// the current number of day trades that have been made in the last 5 trading days (inclusive of today).
         /// </summary>
+        [UsedImplicitly]
         UInt64 DayTradeCount { get; }
 
         /// <summary>
         /// value of special memorandum account.
         /// </summary>
+        [UsedImplicitly]
         Decimal Sma { get; }
 
         /// <summary>
         /// Gets returns <c>true</c> if account is completely blocked.
         /// </summary>
+        [UsedImplicitly]
         Boolean IsAccountBlocked { get; }
     }
 }

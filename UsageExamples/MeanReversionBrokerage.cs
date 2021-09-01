@@ -96,7 +96,8 @@ namespace UsageExamples
             Console.WriteLine("Alpaca streaming client opened.");
 
             var subscription = alpacaDataStreamingClient.GetMinuteBarSubscription(symbol);
-            subscription.Received += async (bar) =>
+            // ReSharper disable once AsyncVoidLambda
+            subscription.Received += async bar =>
             {
                 // If the market's close to closing, exit position and stop trading.
                 var minutesUntilClose = closingTime - DateTime.UtcNow;
@@ -112,7 +113,7 @@ namespace UsageExamples
                     await HandleMinuteBar(bar);
                 }
             };
-            alpacaDataStreamingClient.Subscribe(subscription);
+            await alpacaDataStreamingClient.SubscribeAsync(subscription);
         }
 
         public void Dispose()
@@ -140,59 +141,65 @@ namespace UsageExamples
         private async Task HandleMinuteBar(IBar agg)
         {
             closingPrices.Add(agg.Close);
-            if (closingPrices.Count > 20)
+            if (closingPrices.Count <= 20)
             {
-                closingPrices.RemoveAt(0);
+                Console.WriteLine("Waiting on more data.");
+                return;
+            }
 
-                var avg = closingPrices.Average();
-                var diff = avg - agg.Close;
+            closingPrices.RemoveAt(0);
 
-                // If the last trade hasn't filled yet, we'd rather replace
-                // it than have two orders open at once.
-                if (lastTradeOpen)
+            var avg = closingPrices.Average();
+            var diff = avg - agg.Close;
+
+            // If the last trade hasn't filled yet, we'd rather replace
+            // it than have two orders open at once.
+            if (lastTradeOpen)
+            {
+                // We need to wait for the cancel to process in order to avoid
+                // having long and short orders open at the same time.
+                var res = await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
+            }
+
+            // Make sure we know how much we should spend on our position.
+            var account = await alpacaTradingClient.GetAccountAsync();
+            var buyingPower = account.BuyingPower;
+            var equity = account.Equity;
+            var multiplier = (Int64) account.Multiplier;
+
+            // Check how much we currently have in this position.
+            var positionQuantity = 0L;
+            var positionValue = 0M;
+            try
+            {
+                var currentPosition = await alpacaTradingClient.GetPositionAsync(symbol);
+                positionQuantity = currentPosition.IntegerQuantity;
+                positionValue = currentPosition.MarketValue ?? 0M;
+            }
+            catch (Exception)
+            {
+                // No position exists. This exception can be safely ignored.
+            }
+
+            if (diff <= 0)
+            {
+                // Price is above average: we want to short.
+                if (positionQuantity > 0)
                 {
-                    // We need to wait for the cancel to process in order to avoid
-                    // having long and short orders open at the same time.
-                    var res = await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
+                    // There is an existing long position we need to dispose of first
+                    Console.WriteLine($"Removing {positionValue:C2} long position.");
+                    await SubmitOrder(positionQuantity, agg.Close, OrderSide.Sell);
                 }
-
-                // Make sure we know how much we should spend on our position.
-                var account = await alpacaTradingClient.GetAccountAsync();
-                var buyingPower = account.BuyingPower;
-                var equity = account.Equity;
-                var multiplier = (Int64)account.Multiplier;
-
-                // Check how much we currently have in this position.
-                var positionQuantity = 0L;
-                var positionValue = 0M;
-                try
+                else
                 {
-                    var currentPosition = await alpacaTradingClient.GetPositionAsync(symbol);
-                    positionQuantity = currentPosition.IntegerQuantity;
-                    positionValue = currentPosition.MarketValue ?? 0M;
-                }
-                catch (Exception)
-                {
-                    // No position exists. This exception can be safely ignored.
-                }
+                    // Allocate a percent of portfolio to short position
+                    var portfolioShare = -1 * diff / agg.Close * scale;
+                    var targetPositionValue = -1 * equity * multiplier * portfolioShare;
+                    var amountToShort = targetPositionValue - positionValue;
 
-                if (diff <= 0)
-                {
-                    // Price is above average: we want to short.
-                    if (positionQuantity > 0)
+                    switch (amountToShort)
                     {
-                        // There is an existing long position we need to dispose of first
-                        Console.WriteLine($"Removing {positionValue:C2} long position.");
-                        await SubmitOrder(positionQuantity, agg.Close, OrderSide.Sell);
-                    }
-                    else
-                    {
-                        // Allocate a percent of portfolio to short position
-                        var portfolioShare = -1 * diff / agg.Close * scale;
-                        var targetPositionValue = -1 * equity * multiplier * portfolioShare;
-                        var amountToShort = targetPositionValue - positionValue;
-
-                        if (amountToShort < 0)
+                        case < 0:
                         {
                             // We want to expand our existing short position.
                             amountToShort *= -1;
@@ -200,53 +207,64 @@ namespace UsageExamples
                             {
                                 amountToShort = buyingPower;
                             }
-                            var qty = (Int64)(amountToShort / agg.Close);
+
+                            var qty = (Int64) (amountToShort / agg.Close);
                             Console.WriteLine($"Adding {qty * agg.Close:C2} to short position.");
                             await SubmitOrder(qty, agg.Close, OrderSide.Sell);
+                            break;
                         }
-                        else
+
+                        case > 0:
                         {
                             // We want to shrink our existing short position.
-                            var qty = (Int64)(amountToShort / agg.Close);
+                            var qty = (Int64) (amountToShort / agg.Close);
                             if (qty > -1 * positionQuantity)
                             {
                                 qty = -1 * positionQuantity;
                             }
+
                             Console.WriteLine($"Removing {qty * agg.Close:C2} from short position");
                             await SubmitOrder(qty, agg.Close, OrderSide.Buy);
+                            break;
                         }
                     }
                 }
-                else
-                {
-                    // Allocate a percent of our portfolio to long position.
-                    var portfolioShare = diff / agg.Close * scale;
-                    var targetPositionValue = equity * multiplier * portfolioShare;
-                    var amountToLong = targetPositionValue - positionValue;
+            }
+            else
+            {
+                // Allocate a percent of our portfolio to long position.
+                var portfolioShare = diff / agg.Close * scale;
+                var targetPositionValue = equity * multiplier * portfolioShare;
+                var amountToLong = targetPositionValue - positionValue;
 
-                    if (positionQuantity < 0)
-                    {
-                        // There is an existing short position we need to dispose of first
-                        Console.WriteLine($"Removing {positionValue:C2} short position.");
-                        await SubmitOrder(-positionQuantity, agg.Close, OrderSide.Buy);
-                    }
-                    else if (amountToLong > 0)
+                if (positionQuantity < 0)
+                {
+                    // There is an existing short position we need to dispose of first
+                    Console.WriteLine($"Removing {positionValue:C2} short position.");
+                    await SubmitOrder(-positionQuantity, agg.Close, OrderSide.Buy);
+                }
+                else switch (amountToLong)
+                {
+                    case > 0:
                     {
                         // We want to expand our existing long position.
                         if (amountToLong > buyingPower)
                         {
                             amountToLong = buyingPower;
                         }
-                        var qty = (int)(amountToLong / agg.Close);
+
+                        var qty = (int) (amountToLong / agg.Close);
 
                         await SubmitOrder(qty, agg.Close, OrderSide.Buy);
                         Console.WriteLine($"Adding {qty * agg.Close:C2} to long position.");
+                        break;
                     }
-                    else
+
+                    case < 0:
                     {
                         // We want to shrink our existing long position.
                         amountToLong *= -1;
-                        var qty = (Int64)(amountToLong / agg.Close);
+                        var qty = (Int64) (amountToLong / agg.Close);
                         if (qty > positionQuantity)
                         {
                             qty = positionQuantity;
@@ -254,12 +272,9 @@ namespace UsageExamples
 
                         await SubmitOrder(qty, agg.Close, OrderSide.Sell);
                         Console.WriteLine($"Removing {qty * agg.Close:C2} from long position");
+                        break;
                     }
                 }
-            }
-            else
-            {
-                Console.WriteLine("Waiting on more data.");
             }
         }
 
@@ -268,23 +283,26 @@ namespace UsageExamples
         // that order before we place another.
         private void HandleTradeUpdate(ITradeUpdate trade)
         {
-            if (trade.Order.OrderId == lastTradeId)
+            if (trade.Order.OrderId != lastTradeId)
             {
-                switch (trade.Event)
-                {
-                    case TradeEvent.Fill:
-                        Console.WriteLine("Trade filled.");
-                        lastTradeOpen = false;
-                        break;
-                    case TradeEvent.Rejected:
-                        Console.WriteLine("Trade rejected.");
-                        lastTradeOpen = false;
-                        break;
-                    case TradeEvent.Canceled:
-                        Console.WriteLine("Trade canceled.");
-                        lastTradeOpen = false;
-                        break;
-                }
+                return;
+            }
+
+            // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
+            switch (trade.Event)
+            {
+                case TradeEvent.Fill:
+                    Console.WriteLine("Trade filled.");
+                    lastTradeOpen = false;
+                    break;
+                case TradeEvent.Rejected:
+                    Console.WriteLine("Trade rejected.");
+                    lastTradeOpen = false;
+                    break;
+                case TradeEvent.Canceled:
+                    Console.WriteLine("Trade canceled.");
+                    lastTradeOpen = false;
+                    break;
             }
         }
 

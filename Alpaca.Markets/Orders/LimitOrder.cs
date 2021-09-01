@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates data required for placing the limit order on the Alpaca REST API.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public sealed class LimitOrder : SimpleOrderBase
     {
         internal LimitOrder(
@@ -31,6 +30,7 @@ namespace Alpaca.Markets
         /// <param name="quantity">Order quantity.</param>
         /// <param name="limitPrice">Order limit price.</param>
         /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>
+        [UsedImplicitly]
         public static LimitOrder Buy(
             String symbol,
             Int64 quantity,
@@ -45,6 +45,7 @@ namespace Alpaca.Markets
         /// <param name="quantity">Order quantity.</param>
         /// <param name="limitPrice">Order limit price.</param>
         /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>
+        [UsedImplicitly]
         public static LimitOrder Sell(
             String symbol,
             Int64 quantity,
@@ -57,6 +58,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
         /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
+        [UsedImplicitly]
         public OneCancelsOtherOrder OneCancelsOther(
             Decimal stopLossStopPrice) =>
             new (
@@ -70,6 +72,7 @@ namespace Alpaca.Markets
         /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
         /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
         /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
+        [UsedImplicitly]
         public OneCancelsOtherOrder OneCancelsOther(
             Decimal stopLossStopPrice,
             Decimal stopLossLimitPrice) =>

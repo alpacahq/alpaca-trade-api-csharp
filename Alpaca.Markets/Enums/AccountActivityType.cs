@@ -1,6 +1,6 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -14,18 +14,19 @@ namespace Alpaca.Markets
     [SuppressMessage("ReSharper", "IdentifierTypo")]
     [SuppressMessage("ReSharper", "StringLiteralTypo")]
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public enum AccountActivityType
     {
         /// <summary>
         /// Order fills (both partial and full fills)
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "FILL")]
         Fill,
 
         /// <summary>
         /// Cash transactions (both <see cref="CashDeposit"/> and <see cref="CashWithdrawal"/>)
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "TRANS")]
         Transaction,
 
@@ -33,187 +34,225 @@ namespace Alpaca.Markets
         /// Miscellaneous or rarely used activity types (All types except those in
         /// <see cref="Transaction"/>, <see cref="Dividend"/>, or <see cref="Fill"/>)
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "MISC")]
         Miscellaneous,
 
         /// <summary>
         /// ACATS IN/OUT (Cash)
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "ACATC")]
         ACATCash,
 
         /// <summary>
         /// ACATS IN/OUT (Securities)
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "ACATS")]
         ACATSecurities,
 
         /// <summary>
         /// Cash deposit (+)
         /// </summary>
-        [Obsolete("This enum item will be replaced with the CashDeposit item in the upcoiming SDK release.", true)]
-        CashDisbursement,
-
-        /// <summary>
-        /// Cash withdrawal (-)
-        /// </summary>
-        [Obsolete("This enum item will be replaced with the CashWithdrawal item in the upcoiming SDK release.", true)]
-        CashReceipt,
-
-        /// <summary>
-        /// Dividends
-        /// </summary>
-        [EnumMember(Value = "DIV")]
-        Dividend,
-
-        /// <summary>
-        /// Dividend (capital gains long term)
-        /// </summary>
-        [EnumMember(Value = "DIVCGL")]
-        DividendCapitalGainsLongTerm,
-
-        /// <summary>
-        /// Dividend (capital gain short term)
-        /// </summary>
-        [EnumMember(Value = "DIVCGS")]
-        DividendCapitalGainsShortTerm,
-
-        /// <summary>
-        /// Dividend fee
-        /// </summary>
-        [EnumMember(Value = "DIVFEE")]
-        DividendFee,
-
-        /// <summary>
-        /// Dividend adjusted (Foreign Tax Withheld)
-        /// </summary>
-        [EnumMember(Value = "DIVFT")]
-        DividendForeignTaxWithheld,
-
-        /// <summary>
-        /// Dividend adjusted (NRA Withheld)
-        /// </summary>
-        [EnumMember(Value = "DIVNRA")]
-        DividendNRAWithheld,
-
-        /// <summary>
-        /// Dividend return of capital
-        /// </summary>
-        [EnumMember(Value = "DIVROC")]
-        DividendReturnOfCapital,
-
-        /// <summary>
-        /// Dividend adjusted (Tefra Withheld)
-        /// </summary>
-        [EnumMember(Value = "DIVTW")]
-        DividendTefraWithheld,
-
-        /// <summary>
-        /// Dividend (tax exempt)
-        /// </summary>
-        [EnumMember(Value = "DIVTXEX")]
-        DividendTaxExempt,
-
-        /// <summary>
-        /// Interest (credit/margin)
-        /// </summary>
-        [EnumMember(Value = "INT")]
-        Interest,
-
-        /// <summary>
-        /// Interest adjusted (NRA Withheld)
-        /// </summary>
-        [EnumMember(Value = "INTNRA")]
-        InterestNRAWithheld,
-
-        /// <summary>
-        /// Interest adjusted (Tefra Withheld)
-        /// </summary>
-        [EnumMember(Value = "INTTW")]
-        InterestTefraWithheld,
-
-        /// <summary>
-        /// Journal entry
-        /// </summary>
-        [EnumMember(Value = "JNL")]
-        JournalEntry,
-
-        /// <summary>
-        /// Journal entry (cash)
-        /// </summary>
-        [EnumMember(Value = "JNLC")]
-        JournalEntryCash,
-
-        /// <summary>
-        /// Journal entry (stock)
-        /// </summary>
-        [EnumMember(Value = "JNLS")]
-        JournalEntryStock,
-
-        /// <summary>
-        /// Merger/Acquisition
-        /// </summary>
-        [EnumMember(Value = "MA")]
-        MergerAcquisition,
-
-        /// <summary>
-        /// Name change
-        /// </summary>
-        [EnumMember(Value = "NC")]
-        NameChange,
-
-        /// <summary>
-        /// Pass Thru Charge
-        /// </summary>
-        [EnumMember(Value = "PTC")]
-        PassThruCharge,
-
-        /// <summary>
-        /// Pass Thru Rebate
-        /// </summary>
-        [EnumMember(Value = "PTR")]
-        PassThruRebate,
-
-        /// <summary>
-        /// Reorganization
-        /// </summary>
-        [EnumMember(Value = "REORG")]
-        Reorg,
-
-        /// <summary>
-        /// Symbol change
-        /// </summary>
-        [EnumMember(Value = "SC")]
-        SymbolChange,
-
-        /// <summary>
-        /// Stock spinoff
-        /// </summary>
-        [EnumMember(Value = "SSO")]
-        StockSpinoff,
-
-        /// <summary>
-        /// Stock split
-        /// </summary>
-        [EnumMember(Value = "SSP")]
-        StockSplit,
-
-        /// <summary>
-        /// REG/TAF fees
-        /// </summary>
-        [EnumMember(Value = "FEE")]
-        RefTafFee,
-
-        /// <summary>
-        /// Cash deposit (+)
-        /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "CSD")]
         CashDeposit,
 
         /// <summary>
         /// Cash withdrawal (-)
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "CSW")]
         CashWithdrawal,
+
+        /// <summary>
+        /// Dividends
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "DIV")]
+        Dividend,
+
+        /// <summary>
+        /// Dividend (capital gains long term)
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "DIVCGL")]
+        DividendCapitalGainsLongTerm,
+
+        /// <summary>
+        /// Dividend (capital gain short term)
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "DIVCGS")]
+        DividendCapitalGainsShortTerm,
+
+        /// <summary>
+        /// Dividend fee
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "DIVFEE")]
+        DividendFee,
+
+        /// <summary>
+        /// Dividend adjusted (Foreign Tax Withheld)
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "DIVFT")]
+        DividendForeignTaxWithheld,
+
+        /// <summary>
+        /// Dividend adjusted (NRA Withheld)
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "DIVNRA")]
+        DividendNRAWithheld,
+
+        /// <summary>
+        /// Dividend return of capital
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "DIVROC")]
+        DividendReturnOfCapital,
+
+        /// <summary>
+        /// Dividend adjusted (Tefra Withheld)
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "DIVTW")]
+        DividendTefraWithheld,
+
+        /// <summary>
+        /// Dividend (tax exempt)
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "DIVTXEX")]
+        DividendTaxExempt,
+
+        /// <summary>
+        /// Interest (credit/margin)
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "INT")]
+        Interest,
+
+        /// <summary>
+        /// Interest adjusted (NRA Withheld)
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "INTNRA")]
+        InterestNRAWithheld,
+
+        /// <summary>
+        /// Interest adjusted (Tefra Withheld)
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "INTTW")]
+        InterestTefraWithheld,
+
+        /// <summary>
+        /// Journal entry
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "JNL")]
+        JournalEntry,
+
+        /// <summary>
+        /// Journal entry (cash)
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "JNLC")]
+        JournalEntryCash,
+
+        /// <summary>
+        /// Journal entry (stock)
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "JNLS")]
+        JournalEntryStock,
+
+        /// <summary>
+        /// Merger/Acquisition
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "MA")]
+        MergerAcquisition,
+
+        /// <summary>
+        /// Name change
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "NC")]
+        NameChange,
+
+        /// <summary>
+        /// Pass Thru Charge
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "PTC")]
+        PassThruCharge,
+
+        /// <summary>
+        /// Pass Thru Rebate
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "PTR")]
+        PassThruRebate,
+
+        /// <summary>
+        /// Reorganization
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "REORG")]
+        Reorg,
+
+        /// <summary>
+        /// Symbol change
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "SC")]
+        SymbolChange,
+
+        /// <summary>
+        /// Stock spinoff
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "SSO")]
+        StockSpinoff,
+
+        /// <summary>
+        /// Stock split
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "SSP")]
+        StockSplit,
+
+        /// <summary>
+        /// REG/TAF fees
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "FEE")]
+        RefTafFee,
+
+        /// <summary>
+        /// Option assignment
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "OPASN")]
+        OptionAssignment,
+
+        /// <summary>
+        /// Option expiration
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "OPEXP")]
+        OptionExpiration,
+
+        /// <summary>
+        /// Option exercise
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "OPXRC")]
+        OptionExercise
     }
 }

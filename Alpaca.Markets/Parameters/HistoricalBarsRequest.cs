@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -10,7 +11,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Creates new instance of <see cref="HistoricalBarsRequest"/> object.
         /// </summary>
-        /// <param name="symbol">>Asset name for data retrieval.</param>
+        /// <param name="symbol">Asset name for data retrieval.</param>
         /// <param name="timeFrame">Type of time bars for retrieval.</param>
         /// <param name="from">Filter data equal to or after this time.</param>
         /// <param name="into">Filter data equal to or before this time.</param>
@@ -23,8 +24,22 @@ namespace Alpaca.Markets
             TimeFrame = timeFrame;
 
         /// <summary>
+        /// Creates new instance of <see cref="HistoricalBarsRequest"/> object.
+        /// </summary>
+        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="timeFrame">Type of time bars for retrieval.</param>
+        /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+        public HistoricalBarsRequest(
+            String symbol,
+            BarTimeFrame timeFrame,
+            IInclusiveTimeInterval timeInterval)
+            : base(symbol, timeInterval) =>
+            TimeFrame = timeFrame;
+
+        /// <summary>
         /// Gets type of time bars for retrieval.
         /// </summary>
+        [UsedImplicitly]
         public BarTimeFrame TimeFrame { get; }
 
         /// <inheritdoc />
@@ -32,6 +47,7 @@ namespace Alpaca.Markets
 
         internal override QueryBuilder AddParameters(
             QueryBuilder queryBuilder) => 
+            // ReSharper disable once StringLiteralTypo
             queryBuilder.AddParameter("timeframe", TimeFrame);
     }
 }

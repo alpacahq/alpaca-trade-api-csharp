@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -7,7 +7,6 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Alpaca data streaming API via websockets.
     /// </summary>
     [CLSCompliant(false)]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public interface IAlpacaDataStreamingClient : IStreamingDataClient
     {
         /// <summary>
@@ -17,6 +16,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
+        [UsedImplicitly]
         IAlpacaDataSubscription<ITrade> GetTradeSubscription(
             String symbol);
 
@@ -27,6 +27,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
+        [UsedImplicitly]
         IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
             String symbol);
 
@@ -36,6 +37,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
+        [UsedImplicitly]
         IAlpacaDataSubscription<IBar> GetMinuteBarSubscription();
 
         /// <summary>
@@ -45,6 +47,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
+        [UsedImplicitly]
         IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
             String symbol);
 
@@ -55,6 +58,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
+        [UsedImplicitly]
         IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
             String symbol);
     }

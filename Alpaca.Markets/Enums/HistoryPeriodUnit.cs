@@ -1,5 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -9,30 +9,33 @@ namespace Alpaca.Markets
     /// Period units for portfolio history in the Alpaca REST API.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public enum HistoryPeriodUnit
     {
         /// <summary>
         /// Day
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "D")]
         Day,
 
         /// <summary>
         /// Month
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "W")]
         Week,
 
         /// <summary>
         /// Month
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "M")]
         Month,
 
         /// <summary>
         /// 3 month
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "A")]
         Year
     }

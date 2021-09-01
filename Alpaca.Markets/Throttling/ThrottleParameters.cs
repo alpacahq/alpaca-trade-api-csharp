@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -17,7 +16,12 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed class ThrottleParameters
     {
-        private sealed class CustomHttpHandler : HttpClientHandler
+        private sealed class CustomHttpHandler
+#if NETFRAMEWORK
+            : WinHttpHandler
+#else
+            : HttpClientHandler
+#endif
         {
             private readonly IAsyncPolicy<HttpResponseMessage> _asyncPolicy;
 
@@ -75,8 +79,8 @@ namespace Alpaca.Markets
         /// <param name="maxRetryAttempts"></param>
         /// <param name="retrySocketErrorCodes"></param>
         /// <param name="retryHttpStatuses"></param>
+        [UsedImplicitly]
         [CLSCompliant(false)]
-        [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public ThrottleParameters(
             UInt32 maxRetryAttempts,
             IEnumerable<SocketError> retrySocketErrorCodes,
@@ -99,23 +103,27 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets maximal number of retry attempts for single request.
         /// </summary>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public UInt32 MaxRetryAttempts { get; [UsedImplicitly] set; }
 
         /// <summary>
         /// Gets set of HTTP status codes which when received should initiate a retry of the affected request
         /// </summary>
+        [UsedImplicitly]
         public ISet<HttpStatusCode> RetryHttpStatuses => _retryHttpStatuses;
 
         /// <summary>
         /// Gets set of socket error codes which when received should initiate a retry of the affected request
         /// </summary>
+        [UsedImplicitly]
         public ISet<SocketError> RetrySocketErrorCodes => _retrySocketErrorCodes;
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public IAsyncPolicy<HttpResponseMessage> GetAsyncPolicy()
         {
@@ -129,7 +137,7 @@ namespace Alpaca.Markets
             var httpResponsesPolicy = Policy<HttpResponseMessage>
                 .HandleResult(response =>
                     RetryHttpStatuses.Contains(response.StatusCode) ||
-                    response.Headers.RetryAfter != null)
+                    response.Headers.RetryAfter is not null)
                 .WaitAndRetryAsync(
                     (Int32) MaxRetryAttempts, getDelayFromHeader,
                     (_, _, _, _) => Task.CompletedTask); // Only for compiler satisfaction

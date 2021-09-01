@@ -1,7 +1,7 @@
 [![Build](https://github.com/alpacahq/alpaca-trade-api-csharp/workflows/Build%20and%20Release/badge.svg?branch=master)](https://github.com/alpacahq/alpaca-trade-api-csharp/actions)
 [![Codacy](https://img.shields.io/codacy/grade/7659cd4379964ef190a1088aa879350a?logo=codacy)](https://www.codacy.com/gh/OlegRa/Alpaca.Markets/dashboard?utm_source=github.com)
 [![Nuget](https://img.shields.io/nuget/dt/Alpaca.Markets?logo=NuGet)](https://www.nuget.org/stats/packages/Alpaca.Markets?groupby=Version)
-[![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=OlegRa/Alpaca.Markets)](https://dependabot.com)
+[![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=alpacahq/alpaca-trade-api-csharp)](https://dependabot.com)
 
 # .NET SDK for Alpaca Markets API
 
@@ -58,8 +58,9 @@ Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method fo
 
 ## Mapping between branches and SDK versions
 
-| Branch                                       | Version | Description                    | Support Status             |
-| -------------------------------------------- | ------- | ------------------------------ |----------------------------|
-| [develop](../../tree/develop)                | 5.0.*   | New features, breaking changes | Short-term support version |
-| [master](../../tree/master)                  | 4.1.*   | All new features and hot-fixes | Long-term support version  |
-| [support/v4.0.x](../../tree/support/v4.0.x)  | 4.0.*   | Hot fixes only, some features  | Critical fixes only        |
+| Branch                                       | Version | Description                                  | Milestone                |
+| -------------------------------------------- | ------- | -------------------------------------------- |--------------------------|
+| [develop](../../tree/develop)                | 6.0.*   | Unstable - experimental, can contain bugs    | [SDK 6.0.x Experimental](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/16) |
+| [master](../../tree/master)                  | 5.1.*   | LTS - good choice for the new development    | [SDK 5.1.x LTS](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/14) |
+| [support/v5.0.x](../../tree/support/v5.0.x)  | 5.0.*   | Stable - upgrade to 5.1.x for longer support | [SDK 5.0.x Stable](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/12) |
+| [support/v4.1.x](../../tree/support/v4.1.x)  | 4.1.*   | LTS - no breaking changes, all hotfixes      | [SDK 4.1.x LTS](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/13) |

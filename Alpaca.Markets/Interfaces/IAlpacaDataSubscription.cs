@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -17,7 +17,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets boolean flag indicating the current subscription status of this item.
         /// </summary>
-        [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+        [UsedImplicitly]
         Boolean Subscribed { get; }
     }
 

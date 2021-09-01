@@ -10,6 +10,7 @@ namespace UsageExamples
     // This version of the mean reversion example algorithm uses only API features which
     // are available to users with a free account that can only be used for paper trading.
     [SuppressMessage("ReSharper", "InconsistentNaming")]
+    // ReSharper disable once UnusedType.Global
     internal sealed class MeanReversionPaperOnly : IDisposable
     {
         private const String API_KEY = "REPLACEME";
@@ -26,6 +27,7 @@ namespace UsageExamples
 
         private Guid lastTradeId = Guid.NewGuid();
 
+        // ReSharper disable once UnusedMember.Global
         public async Task Run()
         {
             alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(new SecretKey(API_KEY, API_SECRET));
@@ -53,7 +55,7 @@ namespace UsageExamples
             Console.WriteLine("Market opened.");
 
             // Check every minute for price updates.
-            TimeSpan timeUntilClose = closingTime - DateTime.UtcNow;
+            var timeUntilClose = closingTime - DateTime.UtcNow;
             while (timeUntilClose.TotalMinutes > 15)
             {
                 // Cancel old order if it's not already been filled.
@@ -84,9 +86,9 @@ namespace UsageExamples
                     new HistoricalBarsRequest(symbol, from, into, BarTimeFrame.Minute).WithPageSize(20));
                 var bars = barSet.Items;
 
-                Decimal avg = bars.Average(item => item.Close);
-                Decimal currentPrice = bars.Last().Close;
-                Decimal diff = avg - currentPrice;
+                var avg = bars.Average(item => item.Close);
+                var currentPrice = bars.Last().Close;
+                var diff = avg - currentPrice;
 
                 if (diff <= 0)
                 {
@@ -108,37 +110,38 @@ namespace UsageExamples
                     var targetPositionValue = portfolioValue * portfolioShare;
                     var amountToAdd = targetPositionValue - positionValue;
 
-                    if (amountToAdd is null)
+                    switch (amountToAdd)
                     {
-                        continue;
-                    }
-
-                    if (amountToAdd.Value > 0)
-                    {
-                        // Buy as many shares as we can without going over amountToAdd.
-
-                        // Make sure we're not trying to buy more than we can.
-                        if (amountToAdd > buyingPower)
+                        case > 0:
                         {
-                            amountToAdd = buyingPower;
-                        }
-                        var qtyToBuy = (Int64)(amountToAdd ?? 0M / currentPrice); //-V3022
+                            // Buy as many shares as we can without going over amountToAdd.
 
-                        await SubmitOrder(qtyToBuy, currentPrice, OrderSide.Buy);
-                    }
-                    else
-                    {
-                        // Sell as many shares as we can without going under amountToAdd.
+                            // Make sure we're not trying to buy more than we can.
+                            if (amountToAdd > buyingPower)
+                            {
+                                amountToAdd = buyingPower;
+                            }
+                            var qtyToBuy = (Int32)(amountToAdd / currentPrice);
 
-                        // Make sure we're not trying to sell more than we have.
-                        amountToAdd *= -1;
-                        var qtyToSell = (Int64)(amountToAdd ?? 0M / currentPrice);
-                        if (qtyToSell > positionQuantity)
-                        {
-                            qtyToSell = positionQuantity;
+                            await SubmitOrder(qtyToBuy, currentPrice, OrderSide.Buy);
+                            break;
                         }
 
-                        await SubmitOrder(qtyToSell, currentPrice, OrderSide.Sell);
+                        case < 0:
+                        {
+                            // Sell as many shares as we can without going under amountToAdd.
+
+                            // Make sure we're not trying to sell more than we have.
+                            amountToAdd *= -1;
+                            var qtyToSell = (Int64)(amountToAdd / currentPrice);
+                            if (qtyToSell > positionQuantity)
+                            {
+                                qtyToSell = positionQuantity;
+                            }
+
+                            await SubmitOrder(qtyToSell, currentPrice, OrderSide.Sell);
+                            break;
+                        }
                     }
                 }
 

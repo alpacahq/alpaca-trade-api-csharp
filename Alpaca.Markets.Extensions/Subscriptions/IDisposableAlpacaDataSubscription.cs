@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -8,7 +7,6 @@ namespace Alpaca.Markets.Extensions
     /// so caller can use instance of this interface in <c>using</c> and <c>await using</c> statements.
     /// </summary>
     /// <typeparam name="TItem"></typeparam>
-    [SuppressMessage("ReSharper", "UnusedType.Global")]
     public interface IDisposableAlpacaDataSubscription<out TItem>
         : IAlpacaDataSubscription<TItem>, IAsyncDisposable, IDisposable
     {

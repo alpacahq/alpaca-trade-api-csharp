@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -7,37 +7,42 @@ namespace Alpaca.Markets
     /// Encapsulates snapshot information from the Alpaca REST API.
     /// </summary>
     [CLSCompliant(false)]
-    [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
     public interface ISnapshot
     {
         /// <summary>
         /// Gets the snapshot's asset name.
         /// </summary>
+        [UsedImplicitly]
         String Symbol { get; }
 
         /// <summary>
         /// Gets the latest trade information.
         /// </summary>
+        [UsedImplicitly]
         IQuote? Quote { get; }
 
         /// <summary>
         /// Gets the latest quote information.
         /// </summary>
+        [UsedImplicitly]
         ITrade? Trade { get; }
 
         /// <summary>
         /// Gets the current minute bar information.
         /// </summary>
+        [UsedImplicitly]
         IBar? MinuteBar { get; }
 
         /// <summary>
         /// Gets the current daily bar information.
         /// </summary>
+        [UsedImplicitly]
         IBar? CurrentDailyBar { get; }
 
         /// <summary>
         /// Gets the previous minute bar information.
         /// </summary>
+        [UsedImplicitly]
         IBar? PreviousDailyBar { get; }
     }
 }

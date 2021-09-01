@@ -13,7 +13,7 @@ namespace Alpaca.Markets
             this HttpResponseMessage response)
             where TJson : TApi
         {
-#if NETSTANDARD2_1
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
             await using var stream = await response.Content.ReadAsStreamAsync()
 #else
             using var stream = await response.Content.ReadAsStreamAsync()
@@ -44,7 +44,7 @@ namespace Alpaca.Markets
                 return true;
             }
 
-#if NETSTANDARD2_1
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
             await using var stream = await response.Content.ReadAsStreamAsync()
 #else
             using var stream = await response.Content.ReadAsStreamAsync()

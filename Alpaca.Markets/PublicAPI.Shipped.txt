@@ -17,10 +17,8 @@ Alpaca.Markets.AccountActivitiesRequest.TimeInterval.get -> Alpaca.Markets.IIncl
 Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.ACATCash = 3 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.ACATSecurities = 4 -> Alpaca.Markets.AccountActivityType
-Alpaca.Markets.AccountActivityType.CashDeposit = 31 -> Alpaca.Markets.AccountActivityType
-Alpaca.Markets.AccountActivityType.CashDisbursement = 5 -> Alpaca.Markets.AccountActivityType
-Alpaca.Markets.AccountActivityType.CashReceipt = 6 -> Alpaca.Markets.AccountActivityType
-Alpaca.Markets.AccountActivityType.CashWithdrawal = 32 -> Alpaca.Markets.AccountActivityType
+Alpaca.Markets.AccountActivityType.CashDeposit = 5 -> Alpaca.Markets.AccountActivityType
+Alpaca.Markets.AccountActivityType.CashWithdrawal = 6 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.Dividend = 7 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.DividendCapitalGainsLongTerm = 8 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.DividendCapitalGainsShortTerm = 9 -> Alpaca.Markets.AccountActivityType
@@ -40,6 +38,9 @@ Alpaca.Markets.AccountActivityType.JournalEntryStock = 21 -> Alpaca.Markets.Acco
 Alpaca.Markets.AccountActivityType.MergerAcquisition = 22 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.Miscellaneous = 2 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.NameChange = 23 -> Alpaca.Markets.AccountActivityType
+Alpaca.Markets.AccountActivityType.OptionAssignment = 31 -> Alpaca.Markets.AccountActivityType
+Alpaca.Markets.AccountActivityType.OptionExercise = 33 -> Alpaca.Markets.AccountActivityType
+Alpaca.Markets.AccountActivityType.OptionExpiration = 32 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.PassThruCharge = 24 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.PassThruRebate = 25 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.RefTafFee = 30 -> Alpaca.Markets.AccountActivityType
@@ -109,15 +110,6 @@ Alpaca.Markets.BarTimeFrame
 Alpaca.Markets.BarTimeFrame.Day = 2 -> Alpaca.Markets.BarTimeFrame
 Alpaca.Markets.BarTimeFrame.Hour = 1 -> Alpaca.Markets.BarTimeFrame
 Alpaca.Markets.BarTimeFrame.Minute = 0 -> Alpaca.Markets.BarTimeFrame
-Alpaca.Markets.BarSetRequest
-Alpaca.Markets.BarSetRequest.AreTimesInclusive.get -> bool
-Alpaca.Markets.BarSetRequest.BarSetRequest(string! symbol, Alpaca.Markets.TimeFrame timeFrame) -> void
-Alpaca.Markets.BarSetRequest.BarSetRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.TimeFrame timeFrame) -> void
-Alpaca.Markets.BarSetRequest.Limit.get -> int?
-Alpaca.Markets.BarSetRequest.Limit.set -> void
-Alpaca.Markets.BarSetRequest.Symbols.get -> System.Collections.Generic.IReadOnlyList<string!>!
-Alpaca.Markets.BarSetRequest.TimeFrame.get -> Alpaca.Markets.TimeFrame
-Alpaca.Markets.BarSetRequest.TimeInterval.get -> Alpaca.Markets.ITimeInterval!
 Alpaca.Markets.BracketOrder
 Alpaca.Markets.BracketOrder.StopLoss.get -> Alpaca.Markets.IStopLoss!
 Alpaca.Markets.BracketOrder.TakeProfit.get -> Alpaca.Markets.ITakeProfit!
@@ -167,17 +159,21 @@ Alpaca.Markets.Exchange.NyseArca = 2 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.NyseMkt = 1 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.Unknown = 0 -> Alpaca.Markets.Exchange
 Alpaca.Markets.HistoricalBarsRequest
+Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(string! symbol, Alpaca.Markets.BarTimeFrame timeFrame, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(string! symbol, System.DateTime from, System.DateTime into, Alpaca.Markets.BarTimeFrame timeFrame) -> void
 Alpaca.Markets.HistoricalBarsRequest.TimeFrame.get -> Alpaca.Markets.BarTimeFrame
 Alpaca.Markets.HistoricalQuotesRequest
+Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(string! symbol, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoricalRequestBase
+Alpaca.Markets.HistoricalRequestBase.HistoricalRequestBase(string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalRequestBase.HistoricalRequestBase(string! symbol, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoricalRequestBase.Pagination.get -> Alpaca.Markets.Pagination!
 Alpaca.Markets.HistoricalRequestBase.Symbol.get -> string!
 Alpaca.Markets.HistoricalRequestBase.TimeInterval.get -> Alpaca.Markets.IInclusiveTimeInterval!
 Alpaca.Markets.HistoricalRequestBaseExtensions
 Alpaca.Markets.HistoricalTradesRequest
+Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(string! symbol, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoryPeriod
 Alpaca.Markets.HistoryPeriod.Equals(Alpaca.Markets.HistoryPeriod other) -> bool
@@ -245,9 +241,6 @@ Alpaca.Markets.IAccountConfiguration.IsSuspendTrade.set -> void
 Alpaca.Markets.IAccountConfiguration.TradeConfirmEmail.get -> Alpaca.Markets.TradeConfirmEmail
 Alpaca.Markets.IAccountConfiguration.TradeConfirmEmail.set -> void
 Alpaca.Markets.IAlpacaDataClient
-Alpaca.Markets.IAlpacaDataClient.GetBarSetAsync(Alpaca.Markets.BarSetRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IBar!>!>!>!
-Alpaca.Markets.IAlpacaDataClient.GetLastQuoteAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ILastQuote!>!
-Alpaca.Markets.IAlpacaDataClient.GetLastTradeAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ILastTrade!>!
 Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IQuote!>!
 Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ITrade!>!
 Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ISnapshot!>!
@@ -343,23 +336,6 @@ Alpaca.Markets.IEnvironment.AlpacaStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaTradingApi.get -> System.Uri!
 Alpaca.Markets.IExclusiveTimeInterval
 Alpaca.Markets.IInclusiveTimeInterval
-Alpaca.Markets.ILastQuote
-Alpaca.Markets.ILastQuote.AskExchange.get -> long
-Alpaca.Markets.ILastQuote.AskPrice.get -> decimal
-Alpaca.Markets.ILastQuote.AskSize.get -> ulong
-Alpaca.Markets.ILastQuote.BidExchange.get -> long
-Alpaca.Markets.ILastQuote.BidPrice.get -> decimal
-Alpaca.Markets.ILastQuote.BidSize.get -> ulong
-Alpaca.Markets.ILastQuote.Status.get -> string!
-Alpaca.Markets.ILastQuote.Symbol.get -> string!
-Alpaca.Markets.ILastQuote.TimestampUtc.get -> System.DateTime
-Alpaca.Markets.ILastTrade
-Alpaca.Markets.ILastTrade.Exchange.get -> long
-Alpaca.Markets.ILastTrade.Price.get -> decimal
-Alpaca.Markets.ILastTrade.Size.get -> ulong
-Alpaca.Markets.ILastTrade.Status.get -> string!
-Alpaca.Markets.ILastTrade.Symbol.get -> string!
-Alpaca.Markets.ILastTrade.TimeUtc.get -> System.DateTime
 Alpaca.Markets.IOrder
 Alpaca.Markets.IOrder.AssetClass.get -> Alpaca.Markets.AssetClass
 Alpaca.Markets.IOrder.AssetId.get -> System.Guid
@@ -462,12 +438,10 @@ Alpaca.Markets.IStreamingClient.OnError -> System.Action<System.Exception!>?
 Alpaca.Markets.IStreamingClient.SocketClosed -> System.Action?
 Alpaca.Markets.IStreamingClient.SocketOpened -> System.Action?
 Alpaca.Markets.IStreamingDataClient
-Alpaca.Markets.IStreamingDataClient.Subscribe(Alpaca.Markets.IAlpacaDataSubscription! subscription) -> void
-Alpaca.Markets.IStreamingDataClient.Subscribe(params Alpaca.Markets.IAlpacaDataSubscription![]! subscriptions) -> void
-Alpaca.Markets.IStreamingDataClient.Subscribe(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions) -> void
-Alpaca.Markets.IStreamingDataClient.Unsubscribe(Alpaca.Markets.IAlpacaDataSubscription! subscription) -> void
-Alpaca.Markets.IStreamingDataClient.Unsubscribe(params Alpaca.Markets.IAlpacaDataSubscription![]! subscriptions) -> void
-Alpaca.Markets.IStreamingDataClient.Unsubscribe(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions) -> void
+Alpaca.Markets.IStreamingDataClient.SubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription! subscription, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.IStreamingDataClient.SubscribeAsync(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription! subscription, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask
 Alpaca.Markets.ITakeProfit
 Alpaca.Markets.ITakeProfit.LimitPrice.get -> decimal
 Alpaca.Markets.ITimeInterval
@@ -487,8 +461,12 @@ Alpaca.Markets.ITradeUpdate.Event.get -> Alpaca.Markets.TradeEvent
 Alpaca.Markets.ITradeUpdate.IntegerQuantity.get -> long?
 Alpaca.Markets.ITradeUpdate.Order.get -> Alpaca.Markets.IOrder!
 Alpaca.Markets.ITradeUpdate.Price.get -> decimal?
-Alpaca.Markets.ITradeUpdate.Quantity.get -> decimal?
+Alpaca.Markets.ITradeUpdate.PositionIntegerQuantity.get -> long?
+Alpaca.Markets.ITradeUpdate.PositionQuantity.get -> decimal?
 Alpaca.Markets.ITradeUpdate.TimestampUtc.get -> System.DateTime?
+Alpaca.Markets.ITradeUpdate.TradeIntegerQuantity.get -> long?
+Alpaca.Markets.ITradeUpdate.TradeQuantity.get -> decimal?
+Alpaca.Markets.ITradeUpdate.Quantity.get -> decimal?
 Alpaca.Markets.IWatchList
 Alpaca.Markets.IWatchList.AccountId.get -> System.Guid
 Alpaca.Markets.IWatchList.Assets.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IAsset!>!
@@ -496,17 +474,6 @@ Alpaca.Markets.IWatchList.CreatedUtc.get -> System.DateTime
 Alpaca.Markets.IWatchList.Name.get -> string!
 Alpaca.Markets.IWatchList.UpdatedUtc.get -> System.DateTime?
 Alpaca.Markets.IWatchList.WatchListId.get -> System.Guid
-Alpaca.Markets.IWebSocket
-Alpaca.Markets.IWebSocket.CloseAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
-Alpaca.Markets.IWebSocket.Closed -> System.Action!
-Alpaca.Markets.IWebSocket.DataReceived -> System.Action<byte[]!>!
-Alpaca.Markets.IWebSocket.Error -> System.Action<System.Exception!>!
-Alpaca.Markets.IWebSocket.MessageReceived -> System.Action<string!>!
-Alpaca.Markets.IWebSocket.OpenAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
-Alpaca.Markets.IWebSocket.Opened -> System.Action!
-Alpaca.Markets.IWebSocket.Send(string! message) -> void
-Alpaca.Markets.IWebSocketFactory
-Alpaca.Markets.IWebSocketFactory.CreateWebSocket(System.Uri! url) -> Alpaca.Markets.IWebSocket!
 Alpaca.Markets.LimitOrder
 Alpaca.Markets.LimitOrder.LimitPrice.get -> decimal
 Alpaca.Markets.LimitOrder.OneCancelsOther(decimal stopLossStopPrice) -> Alpaca.Markets.OneCancelsOtherOrder!
@@ -695,8 +662,6 @@ Alpaca.Markets.StreamingClientConfiguration
 Alpaca.Markets.StreamingClientConfiguration.ApiEndpoint.get -> System.Uri!
 Alpaca.Markets.StreamingClientConfiguration.ApiEndpoint.set -> void
 Alpaca.Markets.StreamingClientConfiguration.StreamingClientConfiguration(System.Uri! apiEndpoint) -> void
-Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory.get -> Alpaca.Markets.IWebSocketFactory!
-Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory.set -> void
 Alpaca.Markets.TakeProfitOrder
 Alpaca.Markets.TakeProfitOrder.LimitPrice.get -> decimal
 Alpaca.Markets.ThrottleParameters
@@ -757,6 +722,7 @@ override Alpaca.Markets.HistoryPeriod.GetHashCode() -> int
 override Alpaca.Markets.HistoryPeriod.ToString() -> string!
 override Alpaca.Markets.TrailOffset.Equals(object? obj) -> bool
 override Alpaca.Markets.TrailOffset.GetHashCode() -> int
+static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateTime date) -> Alpaca.Markets.CalendarRequest!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaDataClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaDataClient!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaDataClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaDataClientConfiguration!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaDataStreamingClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaDataStreamingClient!

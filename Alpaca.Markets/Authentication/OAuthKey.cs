@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// OAuth key for Alpaca API authentication.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedType.Global")]
+    [UsedImplicitly]
     public sealed class OAuthKey : SecurityKey
     {
         /// <summary>

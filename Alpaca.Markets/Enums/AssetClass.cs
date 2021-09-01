@@ -1,5 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -9,12 +9,12 @@ namespace Alpaca.Markets
     /// Supported asset classes for Alpaca REST API.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public enum AssetClass
     {
         /// <summary>
         /// US equity asset class.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "us_equity")]
         UsEquity
     }

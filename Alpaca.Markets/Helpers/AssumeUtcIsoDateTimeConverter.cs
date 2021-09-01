@@ -16,6 +16,7 @@ namespace Alpaca.Markets
             Object? value, 
             JsonSerializer serializer)
         {
+            // ReSharper disable once ConvertIfStatementToSwitchStatement
             if (value is DateTime dateTimeValue)
             {
                 writer.WriteValue(dateTimeValue.ToString("O"));
@@ -29,13 +30,11 @@ namespace Alpaca.Markets
             JsonReader reader,
             Type objectType,
             Object? existingValue,
-            JsonSerializer serializer)
-        {
-            return DateTimeOffset.TryParse(reader.Value?.ToString(),
+            JsonSerializer serializer) =>
+            DateTimeOffset.TryParse(reader.Value?.ToString(),
                 CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, 
                 out var dateTimeOffset)
                 ? dateTimeOffset.UtcDateTime
                 : null;
-        }
     }
 }

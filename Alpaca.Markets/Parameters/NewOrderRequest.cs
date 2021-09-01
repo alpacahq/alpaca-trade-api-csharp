@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 
 namespace Alpaca.Markets
@@ -8,7 +7,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaTradingClient.PostOrderAsync(NewOrderRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
-    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
+    [UsedImplicitly]
     public sealed class NewOrderRequest : Validation.IRequest
     {
         /// <summary>
@@ -153,14 +152,14 @@ namespace Alpaca.Markets
                 ClientOrderId = ClientOrderId,
                 ExtendedHours = ExtendedHours,
                 OrderClass = OrderClass,
-                TakeProfit = TakeProfitLimitPrice != null
+                TakeProfit = TakeProfitLimitPrice is not null
                     ? new JsonNewOrderAdvancedAttributes
                     {
                         LimitPrice = TakeProfitLimitPrice
                     }
                     : null,
-                StopLoss = StopLossStopPrice != null ||
-                           StopLossLimitPrice != null
+                StopLoss = StopLossStopPrice is not null ||
+                           StopLossLimitPrice is not null
                     ? new JsonNewOrderAdvancedAttributes
                     {
                         StopPrice = StopLossStopPrice,

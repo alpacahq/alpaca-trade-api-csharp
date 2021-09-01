@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 
 namespace Alpaca.Markets
@@ -39,7 +38,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Trailing stop order offset in dollars.</param>
         /// <returns>Initialized <see cref="TrailOffset"/> object.</returns>
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
+        [UsedImplicitly]
         public static TrailOffset InDollars(
             Decimal value) =>
             new (value, true);
@@ -50,7 +49,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Trailing stop order offset in percents.</param>
         /// <returns>Initialized <see cref="TrailOffset"/> object.</returns>
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
+        [UsedImplicitly]
         public static TrailOffset InPercent(
             Decimal value) =>
             new (value, false);

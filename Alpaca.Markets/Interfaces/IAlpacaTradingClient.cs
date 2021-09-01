@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -10,7 +10,6 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Alpaca Trading API via HTTP/REST.
     /// </summary>
     [CLSCompliant(false)]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public interface IAlpacaTradingClient : IDisposable
     {
         /// <summary>
@@ -18,6 +17,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of watch list objects.</returns>
+        [UsedImplicitly]
         Task<IReadOnlyList<IWatchList>> ListWatchListsAsync(
             CancellationToken cancellationToken = default);
 
@@ -27,6 +27,7 @@ namespace Alpaca.Markets
         /// <param name="request">New watch list request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Newly created watch list object.</returns>
+        [UsedImplicitly]
         Task<IWatchList> CreateWatchListAsync(
             NewWatchListRequest request,
             CancellationToken cancellationToken = default);
@@ -37,6 +38,7 @@ namespace Alpaca.Markets
         /// <param name="watchListId">Unique watch list identifier.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Watch list object with proper <paramref name="watchListId"/> value.</returns>
+        [UsedImplicitly]
         Task<IWatchList> GetWatchListByIdAsync(
             Guid watchListId,
             CancellationToken cancellationToken = default);
@@ -47,6 +49,7 @@ namespace Alpaca.Markets
         /// <param name="name">User defined watch list name.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Watch list object with proper <paramref name="name"/> value.</returns>
+        [UsedImplicitly]
         Task<IWatchList> GetWatchListByNameAsync(
             String name,
             CancellationToken cancellationToken = default);
@@ -57,6 +60,7 @@ namespace Alpaca.Markets
         /// <param name="request">Update watch list request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Updated watch list object with proper <paramref name="request.WatchListId"/> value.</returns>
+        [UsedImplicitly]
         Task<IWatchList> UpdateWatchListByIdAsync(
             UpdateWatchListRequest request,
             CancellationToken cancellationToken = default);
@@ -67,6 +71,7 @@ namespace Alpaca.Markets
         /// <param name="request">Asset adding request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Updated watch list object with proper <paramref name="request.Key"/> value.</returns>
+        [UsedImplicitly]
         Task<IWatchList> AddAssetIntoWatchListByIdAsync(
             ChangeWatchListRequest<Guid> request,
             CancellationToken cancellationToken = default);
@@ -77,6 +82,7 @@ namespace Alpaca.Markets
         /// <param name="request">Asset adding request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Updated watch list object with proper <paramref name="request.Key"/> value.</returns>
+        [UsedImplicitly]
         Task<IWatchList> AddAssetIntoWatchListByNameAsync(
             ChangeWatchListRequest<String> request,
             CancellationToken cancellationToken = default);
@@ -87,6 +93,7 @@ namespace Alpaca.Markets
         /// <param name="request">Asset deleting request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Updated watch list object with proper <paramref name="request.Key"/> value.</returns>
+        [UsedImplicitly]
         Task<IWatchList> DeleteAssetFromWatchListByIdAsync(
             ChangeWatchListRequest<Guid> request,
             CancellationToken cancellationToken = default);
@@ -97,6 +104,7 @@ namespace Alpaca.Markets
         /// <param name="request">Asset deleting request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Updated watch list object with proper <paramref name="request.Key"/> value.</returns>
+        [UsedImplicitly]
         Task<IWatchList> DeleteAssetFromWatchListByNameAsync(
             ChangeWatchListRequest<String> request,
             CancellationToken cancellationToken = default);
@@ -107,6 +115,7 @@ namespace Alpaca.Markets
         /// <param name="watchListId">Unique watch list identifier.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Returns <c>true</c> if operation completed successfully.</returns>
+        [UsedImplicitly]
         Task<Boolean> DeleteWatchListByIdAsync(
             Guid watchListId,
             CancellationToken cancellationToken = default);
@@ -117,6 +126,7 @@ namespace Alpaca.Markets
         /// <param name="name">User defined watch list name.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Returns <c>true</c> if operation completed successfully.</returns>
+        [UsedImplicitly]
         Task<Boolean> DeleteWatchListByNameAsync(
             String name,
             CancellationToken cancellationToken = default);
@@ -138,6 +148,7 @@ namespace Alpaca.Markets
         /// <param name="request">New order placement request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for newly created order.</returns>
+        [UsedImplicitly]
         Task<IOrder> PostOrderAsync(
             NewOrderRequest request,
             CancellationToken cancellationToken = default);
@@ -148,6 +159,7 @@ namespace Alpaca.Markets
         /// <param name="orderBase">New order placement request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for newly created order.</returns>
+        [UsedImplicitly]
         Task<IOrder> PostOrderAsync(
             OrderBase orderBase,
             CancellationToken cancellationToken = default);
@@ -158,6 +170,7 @@ namespace Alpaca.Markets
         /// <param name="request">Patch order request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object for updated order.</returns>
+        [UsedImplicitly]
         Task<IOrder> PatchOrderAsync(
             ChangeOrderRequest request,
             CancellationToken cancellationToken = default);
@@ -168,6 +181,7 @@ namespace Alpaca.Markets
         /// <param name="clientOrderId">Client order ID for searching.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object.</returns>
+        [UsedImplicitly]
         Task<IOrder> GetOrderAsync(
             String clientOrderId,
             CancellationToken cancellationToken = default);
@@ -178,6 +192,7 @@ namespace Alpaca.Markets
         /// <param name="orderId">Server order ID for searching.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only order information object.</returns>
+        [UsedImplicitly]
         Task<IOrder> GetOrderAsync(
             Guid orderId,
             CancellationToken cancellationToken = default);
@@ -197,6 +212,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>List of order cancellation status objects.</returns>
+        [UsedImplicitly]
         Task<IReadOnlyList<IOrderActionStatus>> DeleteAllOrdersAsync(
             CancellationToken cancellationToken = default);
 
@@ -205,6 +221,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only account information.</returns>
+        [UsedImplicitly]
         Task<IAccount> GetAccountAsync(
             CancellationToken cancellationToken = default);
 
@@ -213,6 +230,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Mutable version of account configuration object.</returns>
+        [UsedImplicitly]
         Task<IAccountConfiguration> GetAccountConfigurationAsync(
             CancellationToken cancellationToken = default);
 
@@ -222,6 +240,7 @@ namespace Alpaca.Markets
         /// <param name="accountConfiguration">New account configuration object for updating.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Mutable version of updated account configuration object.</returns>
+        [UsedImplicitly]
         Task<IAccountConfiguration> PatchAccountConfigurationAsync(
             IAccountConfiguration accountConfiguration,
             CancellationToken cancellationToken = default);
@@ -232,6 +251,7 @@ namespace Alpaca.Markets
         /// <param name="request">Account activities request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of account activity record objects.</returns>
+        [UsedImplicitly]
         Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
             AccountActivitiesRequest request,
             CancellationToken cancellationToken = default);
@@ -242,6 +262,7 @@ namespace Alpaca.Markets
         /// <param name="request">Portfolio history request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only portfolio history information object.</returns>
+        [UsedImplicitly]
         Task<IPortfolioHistory> GetPortfolioHistoryAsync(
             PortfolioHistoryRequest request,
             CancellationToken cancellationToken = default);
@@ -252,6 +273,7 @@ namespace Alpaca.Markets
         /// <param name="request">Asset list request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of asset information objects.</returns>
+        [UsedImplicitly]
         Task<IReadOnlyList<IAsset>> ListAssetsAsync(
             AssetsRequest request,
             CancellationToken cancellationToken = default);
@@ -262,6 +284,7 @@ namespace Alpaca.Markets
         /// <param name="symbol">Asset name for searching.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only asset information.</returns>
+        [UsedImplicitly]
         Task<IAsset> GetAssetAsync(
             String symbol,
             CancellationToken cancellationToken = default);
@@ -271,6 +294,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of position information objects.</returns>
+        [UsedImplicitly]
         Task<IReadOnlyList<IPosition>> ListPositionsAsync(
             CancellationToken cancellationToken = default);
 
@@ -289,6 +313,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>List of position cancellation status objects.</returns>
+        [UsedImplicitly]
         Task<IReadOnlyList<IPositionActionStatus>> DeleteAllPositionsAsync(
             CancellationToken cancellationToken = default);
 
@@ -298,7 +323,7 @@ namespace Alpaca.Markets
         /// <param name="request">All positions deletion request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>List of position cancellation status objects.</returns>
-        [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
+        [UsedImplicitly]
         Task<IReadOnlyList<IPositionActionStatus>> DeleteAllPositionsAsync(
             DeleteAllPositionsRequest request,
             CancellationToken cancellationToken = default);
@@ -309,6 +334,7 @@ namespace Alpaca.Markets
         /// <param name="request">Position deletion request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>The <see cref="IOrder"/> object that represents the position liquidation order (for tracking).</returns>
+        [UsedImplicitly]
         Task<IOrder> DeletePositionAsync(
             DeletePositionRequest request,
             CancellationToken cancellationToken = default);

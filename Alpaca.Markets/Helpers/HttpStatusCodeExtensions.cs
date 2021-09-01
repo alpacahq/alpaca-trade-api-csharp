@@ -7,8 +7,7 @@ namespace Alpaca.Markets
     {
         private static Boolean isSuccessHttpStatusCode(
             this HttpStatusCode httpStatusCode) =>
-            httpStatusCode >= HttpStatusCode.OK &&
-            httpStatusCode < HttpStatusCode.Ambiguous;
+            httpStatusCode is >= HttpStatusCode.OK and < HttpStatusCode.Ambiguous;
 
         public static Boolean IsSuccessHttpStatusCode(
             this Int64 httpStatusCode) =>

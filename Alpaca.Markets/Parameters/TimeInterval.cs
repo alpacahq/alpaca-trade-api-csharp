@@ -87,6 +87,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Returns <c>true</c> if both <see cref="ITimeInterval.From"/> and <see cref="ITimeInterval.Into"/> equal to <c>null</c>.
         /// </returns>
+        [UsedImplicitly]
         public static Boolean IsEmpty(
             this ITimeInterval interval) =>
             interval.EnsureNotNull(nameof(interval)).Into is null && interval.From is null;
@@ -98,6 +99,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Returns <c>true</c> if both <see cref="ITimeInterval.From"/> or <see cref="ITimeInterval.Into"/> equal to <c>null</c>.
         /// </returns>
+        [UsedImplicitly]
         public static Boolean IsOpen(
             this ITimeInterval interval) =>
             interval.EnsureNotNull(nameof(interval)).Into is null ^ interval.From is null;
@@ -109,6 +111,7 @@ namespace Alpaca.Markets
         /// <param name="from">Starting date/time point for filtering.</param>
         /// <param name="into">Ending date/time point for filtering.</param>
         /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
+        [UsedImplicitly]
         public static TRequest SetInclusiveTimeInterval<TRequest>(
             this TRequest request,
             DateTime from,
@@ -171,6 +174,7 @@ namespace Alpaca.Markets
         /// <param name="request">Target request for setting filtering interval.</param>
         /// <param name="interval">Time interval (date/time pair) for filtering.</param>
         /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
+        [UsedImplicitly]
         public static TRequest SetTimeInterval<TRequest>(
             this TRequest request,
             IExclusiveTimeInterval interval)
@@ -205,6 +209,7 @@ namespace Alpaca.Markets
             DateTime? into) =>
             new Inclusive(from, into);
 
+        [UsedImplicitly]
         internal static IExclusiveTimeInterval GetExclusive(
             DateTime? from,
             DateTime? into) =>

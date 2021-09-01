@@ -5,12 +5,12 @@ namespace UsageExamples
 {
     internal static class Program
     {
-        public static async Task Main(string[] args)
+        public static async Task Main()
         {
             try
             {
-                var algo = new MeanReversionBrokerage();
-                await algo.Run();
+                var algorithm = new MeanReversionBrokerage();
+                await algorithm.Run();
             }
             catch (Exception e)
             {

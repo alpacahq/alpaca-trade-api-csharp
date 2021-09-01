@@ -42,14 +42,14 @@ namespace Alpaca.Markets
         public event Action<ITradeUpdate>? OnTradeUpdate;
 
         /// <inheritdoc/>
-        protected override void OnOpened()
+        protected override async void OnOpened()
         {
-            SendAsJsonString(new JsonAuthRequest
+            await SendAsJsonStringAsync(new JsonAuthRequest
             {
                 Action = JsonAction.Authenticate,
                 Data = Configuration.SecurityId
                     .GetAuthenticationData()
-            });
+            }).ConfigureAwait(false);
 
             base.OnOpened();
         }
@@ -84,22 +84,29 @@ namespace Alpaca.Markets
             }
         }
 
-        [SuppressMessage("ReSharper", "HeuristicUnreachableCode")]
-        private void handleAuthorization(
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
+        private async void handleAuthorization(
             JToken token)
         {
-            var response = token.ToObject<JsonAuthResponse>();
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            if (response is null)
+            try
             {
-                HandleError(new InvalidOperationException("Invalid authentication response."));
-                return;
-            }
+                var response = token.ToObject<JsonAuthResponse>();
+                // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+                if (response is null)
+                {
+                    HandleError(new InvalidOperationException("Invalid authentication response."));
+                    return;
+                }
 
-            OnConnected(response.Status);
+                OnConnected(response.Status);
 
-            if (response.Status == AuthStatus.Authorized)
-            {
+                if (response.Status != AuthStatus.Authorized)
+                {
+                    return;
+                }
+
                 var listenRequest = new JsonListenRequest
                 {
                     Action = JsonAction.Listen,
@@ -109,7 +116,11 @@ namespace Alpaca.Markets
                     }
                 };
 
-                SendAsJsonString(listenRequest);
+                await SendAsJsonStringAsync(listenRequest).ConfigureAwait(false);
+            }
+            catch (Exception exception)
+            {
+                HandleError(exception);
             }
         }
 

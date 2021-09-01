@@ -10,6 +10,15 @@ namespace Alpaca.Markets
 {
     internal static partial class HttpClientExtensions
     {
+        private static readonly Version _httpVersion =
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
+            System.Net.HttpVersion.Version20;
+#elif NETFRAMEWORK
+            new (2, 0);
+#else
+            System.Net.HttpVersion.Version11;
+#endif
+
         public static void AddAuthenticationHeaders(
             this HttpClient httpClient,
             SecurityKey securityKey)
@@ -29,7 +38,7 @@ namespace Alpaca.Markets
             AppContext.SetSwitch("Switch.System.Net.DontEnableSystemDefaultTlsVersions", false);
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
-            HttpClient httpClient,
+            HttpMessageInvoker httpClient,
             HttpMethod method,
             Uri endpointUri,
             CancellationToken cancellationToken)
@@ -42,7 +51,7 @@ namespace Alpaca.Markets
         }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson, TContent>(
-            HttpClient httpClient,
+            HttpMessageInvoker httpClient,
             HttpMethod method,
             Uri endpointUri,
             TContent content,
@@ -56,11 +65,12 @@ namespace Alpaca.Markets
         }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
-            HttpClient httpClient,
+            HttpMessageInvoker httpClient,
             HttpRequestMessage request,
             CancellationToken cancellationToken)
             where TJson : TApi
         {
+            request.Version = _httpVersion;
             using var response = await httpClient.SendAsync(request, cancellationToken)
                 .ConfigureAwait(false);
 
@@ -69,7 +79,7 @@ namespace Alpaca.Markets
         }
 
         private static async Task<Boolean> callAndReturnSuccessCodeAsync(
-            HttpClient httpClient,
+            HttpMessageInvoker httpClient,
             HttpMethod method,
             Uri endpointUri,
             CancellationToken cancellationToken)

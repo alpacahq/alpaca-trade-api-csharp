@@ -1,5 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -9,24 +9,26 @@ namespace Alpaca.Markets
     /// Single asset status in Alpaca REST API.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public enum AssetStatus
     {
         /// <summary>
         /// Active asset.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "active")]
         Active,
 
         /// <summary>
         /// Inactive asset.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "inactive")]
         Inactive,
 
         /// <summary>
         /// Delisted asset.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "delisted")]
         Delisted
     }

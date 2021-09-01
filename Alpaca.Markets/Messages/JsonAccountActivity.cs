@@ -22,6 +22,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "symbol", Required = Required.Default)]
         public String? Symbol { get; set; }
 
+        // TODO: olegra - good candidate for the DateOnly type usage
         [JsonProperty(PropertyName = "date", Required = Required.Default)]
         public DateTime? ActivityDate { get; set; }
 
@@ -75,6 +76,7 @@ namespace Alpaca.Markets
             var components = ActivityId.Split(_activityIdSeparator, StringSplitOptions.RemoveEmptyEntries);
 
             if (components.Length > 0 &&
+                // ReSharper disable once StringLiteralTypo
                 DateTime.TryParseExact(components[0], "yyyyMMddHHmmssfff",
                     CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateTime))
             {

@@ -11,11 +11,6 @@ using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
 {
-    /// <summary>
-    /// Provides base implementation for the websocket streaming APIs clients.
-    /// </summary>
-    [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
-    [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
     internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient 
         where TConfiguration : StreamingClientConfiguration
     {
@@ -23,19 +18,15 @@ namespace Alpaca.Markets
 
         internal readonly TConfiguration Configuration;
 
-        private readonly IWebSocket _webSocket;
+        private readonly WebSocketsTransport _webSocket;
 
-        /// <summary>
-        /// Creates new instance of <see cref="StreamingClientBase{TConfiguration}"/> object.
-        /// </summary>
-        /// <param name="configuration"></param>
         private protected StreamingClientBase(
             TConfiguration configuration)
         {
             Configuration = configuration.EnsureNotNull(nameof(configuration));
             Configuration.EnsureIsValid();
 
-            _webSocket = configuration.CreateWebSocket();
+            _webSocket = new WebSocketsTransport(Configuration.ApiEndpoint);
 
             _webSocket.Opened += OnOpened;
             _webSocket.Closed += OnClosed;
@@ -47,24 +38,18 @@ namespace Alpaca.Markets
             _queue.OnError += HandleError;
         }
 
-        /// <inheritdoc />
         public event Action<AuthStatus>? Connected;
 
-        /// <inheritdoc />
         public event Action? SocketOpened;
 
-        /// <inheritdoc />
         public event Action? SocketClosed;
 
-        /// <inheritdoc />
         public event Action<Exception>? OnError;
 
-        /// <inheritdoc />
         public Task ConnectAsync(
             CancellationToken cancellationToken = default)
-            => _webSocket.OpenAsync(cancellationToken);
+            => _webSocket.StartAsync(cancellationToken);
 
-        /// <inheritdoc />
         public async Task<AuthStatus> ConnectAndAuthenticateAsync(
             CancellationToken cancellationToken = default)
         {
@@ -93,7 +78,7 @@ namespace Alpaca.Markets
         /// <inheritdoc />
         public Task DisconnectAsync(
             CancellationToken cancellationToken = default)
-            => _webSocket.CloseAsync(cancellationToken);
+            => _webSocket.StopAsync(cancellationToken);
 
         /// <inheritdoc />
         public void Dispose()
@@ -102,29 +87,17 @@ namespace Alpaca.Markets
             GC.SuppressFinalize(this);
         }
 
-        /// <summary>
-        /// Handles <see cref="IWebSocket.Opened"/> event.
-        /// </summary>
         protected virtual void OnOpened() => SocketOpened?.Invoke();
 
-        /// <summary>
-        /// Handles <see cref="IWebSocket.Closed"/> event.
-        /// </summary>
+        [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
         protected virtual void OnClosed() => SocketClosed?.Invoke();
 
-        /// <summary>
-        /// Handles <see cref="IWebSocket.MessageReceived"/> event.
-        /// </summary>
-        /// <param name="message">Incoming string message for processing.</param>
         protected virtual void OnMessageReceived(
             String message)
         {
         }
 
-        /// <summary>
-        /// Implement <see cref="IDisposable"/> pattern for inheritable classes.
-        /// </summary>
-        /// <param name="disposing">If <c>true</c> - dispose managed objects.</param>
+        [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
         protected virtual void Dispose(
             Boolean disposing)
         {
@@ -146,16 +119,6 @@ namespace Alpaca.Markets
             _queue.Dispose();
         }
 
-        /// <summary>
-        /// Handles single incoming message. Select handler from generic handlers map
-        /// <paramref name="handlers"/> using <paramref name="messageType"/> parameter
-        /// as a key and pass <paramref name="message"/> parameter as value into the
-        /// selected handler. All exceptions are caught inside this method and reported
-        /// to client via standard <see cref="OnError"/> event.
-        /// </summary>
-        /// <param name="handlers">Message handlers map.</param>
-        /// <param name="messageType">Message type for selecting handler from map.</param>
-        /// <param name="message">Message data for processing by selected handler.</param>
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]
@@ -184,18 +147,10 @@ namespace Alpaca.Markets
             }
         }
 
-        /// <summary>
-        /// Raises <see cref="Connected"/> event with specified <paramref name="authStatus"/> value.
-        /// </summary>
-        /// <param name="authStatus">Authentication status (protocol level) of client.</param>
         protected void OnConnected(
             AuthStatus authStatus) =>
             Connected?.Invoke(authStatus);
 
-        /// <summary>
-        /// Handles <see cref="IWebSocket.Error"/> event.
-        /// </summary>
-        /// <param name="exception">Exception for routing into <see cref="OnError"/> event.</param>
         protected void HandleError(
             Exception exception)
         {
@@ -206,18 +161,15 @@ namespace Alpaca.Markets
             OnError?.Invoke(exception);
         }
 
-        /// <summary>
-        /// Send object (JSON serializable) as string into the web socket.
-        /// </summary>
-        /// <param name="value">Object for serializing and sending.</param>
-        protected void SendAsJsonString(
-            Object value)
+        protected ValueTask SendAsJsonStringAsync(
+            Object value,
+            CancellationToken cancellationToken = default)
         {
             using var textWriter = new StringWriter();
 
             var serializer = new JsonSerializer();
             serializer.Serialize(textWriter, value);
-            _webSocket.Send(textWriter.ToString());
+            return _webSocket.SendAsync(textWriter.ToString(), cancellationToken);
         }
 
         private void onDataReceived(

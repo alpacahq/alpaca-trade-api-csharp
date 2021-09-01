@@ -7,8 +7,8 @@ namespace Alpaca.Markets
 {
     internal static partial class HttpClientExtensions
     {
-        private static readonly HttpMethod _httpMethodPatch = 
-#if NETSTANDARD2_1
+        private static readonly HttpMethod _httpMethodPatch =
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
             HttpMethod.Patch;
 #else
             new ("PATCH");

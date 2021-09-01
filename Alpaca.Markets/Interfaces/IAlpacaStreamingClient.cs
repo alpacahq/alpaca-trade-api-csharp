@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets
 {
@@ -7,7 +6,6 @@ namespace Alpaca.Markets
     /// Provides unified type-safe access for Alpaca streaming API.
     /// </summary>
     [CLSCompliant(false)]
-    [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
     public interface IAlpacaStreamingClient : IStreamingClient
     {
         /// <summary>
