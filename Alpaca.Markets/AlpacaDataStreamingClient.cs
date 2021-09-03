@@ -92,6 +92,8 @@ namespace Alpaca.Markets
 
         private const String MinuteBarsChannel = "b";
 
+        private const String LimitUpDownChannel = "l";
+
         private const String ErrorInfo = "error";
 
         private const String Subscription = "subscription";
@@ -111,6 +113,7 @@ namespace Alpaca.Markets
             : base(configuration.EnsureNotNull(nameof(configuration))) =>
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
+                { LimitUpDownChannel, handleRealtimeDataUpdate },
                 { MinuteBarsChannel, handleRealtimeDataUpdate },
                 { DailyBarsChannel, handleRealtimeDataUpdate },
                 { ConnectionSuccess, handleConnectionSuccess },
@@ -143,6 +146,10 @@ namespace Alpaca.Markets
         public IAlpacaDataSubscription<IStatus> GetStatusSubscription(
             String symbol) =>
             _subscriptions.GetOrAdd<IStatus, JsonTradingStatus>(getStreamName(StatusesChannel, symbol));
+
+        public IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(
+            String symbol) =>
+            _subscriptions.GetOrAdd<ILimitUpLimitDown, JsonLimitUpLimitDown>(getStreamName(LimitUpDownChannel, symbol));
 
         public ValueTask SubscribeAsync(
             IAlpacaDataSubscription subscription,
@@ -238,6 +245,8 @@ namespace Alpaca.Markets
                 var streams = new HashSet<String>(
                     getStreams(subscriptionUpdate.Trades.EmptyIfNull(), TradesChannel)
                         .Concat(getStreams(subscriptionUpdate.Quotes.EmptyIfNull(), QuotesChannel))
+                        .Concat(getStreams(subscriptionUpdate.Statuses.EmptyIfNull(), StatusesChannel))
+                        .Concat(getStreams(subscriptionUpdate.Lulds.EmptyIfNull(), LimitUpDownChannel))
                         .Concat(getStreams(subscriptionUpdate.DailyBars.EmptyIfNull(), DailyBarsChannel))
                         .Concat(getStreams(subscriptionUpdate.MinuteBars.EmptyIfNull(), MinuteBarsChannel)),
                     StringComparer.Ordinal);
@@ -332,6 +341,7 @@ namespace Alpaca.Markets
                     Trades = getSymbols(streamsByChannels, TradesChannel),
                     Quotes = getSymbols(streamsByChannels, QuotesChannel),
                     Statuses = getSymbols(streamsByChannels, StatusesChannel),
+                    Lulds =  getSymbols(streamsByChannels, LimitUpDownChannel),
                     DailyBars = getSymbols(streamsByChannels, DailyBarsChannel),
                     MinuteBars = getSymbols(streamsByChannels, MinuteBarsChannel)
                 }, cancellationToken)

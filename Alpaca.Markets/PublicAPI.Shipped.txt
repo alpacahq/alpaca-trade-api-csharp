@@ -250,6 +250,7 @@ Alpaca.Markets.IAlpacaDataClient.ListHistoricalQuotesAsync(Alpaca.Markets.Histor
 Alpaca.Markets.IAlpacaDataClient.ListHistoricalTradesAsync(Alpaca.Markets.HistoricalTradesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.ITrade!>!>!
 Alpaca.Markets.IAlpacaDataStreamingClient
 Alpaca.Markets.IAlpacaDataStreamingClient.GetDailyBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
+Alpaca.Markets.IAlpacaDataStreamingClient.GetLimitUpLimitDownSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ILimitUpLimitDown!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetMinuteBarSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetMinuteBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetQuoteSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IQuote!>!
@@ -337,6 +338,13 @@ Alpaca.Markets.IEnvironment.AlpacaStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaTradingApi.get -> System.Uri!
 Alpaca.Markets.IExclusiveTimeInterval
 Alpaca.Markets.IInclusiveTimeInterval
+Alpaca.Markets.ILimitUpLimitDown
+Alpaca.Markets.ILimitUpLimitDown.Indicator.get -> string!
+Alpaca.Markets.ILimitUpLimitDown.LimitDownPrice.get -> decimal
+Alpaca.Markets.ILimitUpLimitDown.LimitUpPrice.get -> decimal
+Alpaca.Markets.ILimitUpLimitDown.Symbol.get -> string!
+Alpaca.Markets.ILimitUpLimitDown.Tape.get -> string!
+Alpaca.Markets.ILimitUpLimitDown.TimeUtc.get -> System.DateTime
 Alpaca.Markets.IOrder
 Alpaca.Markets.IOrder.AssetClass.get -> Alpaca.Markets.AssetClass
 Alpaca.Markets.IOrder.AssetId.get -> System.Guid

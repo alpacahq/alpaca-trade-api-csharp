@@ -23,5 +23,8 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "statuses", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public List<String>? Statuses { get; set; }
+
+        [JsonProperty(PropertyName = "lulds", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public List<String>? Lulds { get; set; }
     }
 }
