@@ -34,5 +34,9 @@ namespace Alpaca.Markets
         public IAlpacaDataSubscription<IStatus> GetStatusSubscription(
             String symbol) =>
             GetSubscription<IStatus, JsonTradingStatus>(StatusesChannel, symbol);
+
+        public IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(
+            String symbol) =>
+            GetSubscription<ILimitUpLimitDown, JsonLimitUpLimitDown>(LimitUpDownChannel, symbol);
     }
 }
