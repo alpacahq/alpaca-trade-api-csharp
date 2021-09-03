@@ -36,11 +36,5 @@ namespace Alpaca.Markets
 
         [JsonIgnore]
         public IOrder Order => JsonOrder;
-
-        [JsonIgnore]
-        public Decimal? Quantity => PositionQuantity;
-
-        [JsonIgnore]
-        public Int64? IntegerQuantity => PositionIntegerQuantity;
     }
 }

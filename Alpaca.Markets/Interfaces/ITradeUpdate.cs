@@ -28,20 +28,6 @@ namespace Alpaca.Markets
         /// Gets updated position quantity (with the fractional part).
         /// </summary>
         [UsedImplicitly]
-        [Obsolete("This property will be removed from the next major SDK version, use PositionQuantity instead.", false)]
-        Decimal? Quantity { get; }
-
-        /// <summary>
-        /// Gets updated position quantity (rounded to the nearest integer).
-        /// </summary>
-        [UsedImplicitly]
-        [Obsolete("This property will be removed from the next major SDK version, use PositionIntegerQuantity instead.", false)]
-        Int64? IntegerQuantity { get; }
-
-        /// <summary>
-        /// Gets updated position quantity (with the fractional part).
-        /// </summary>
-        [UsedImplicitly]
         Decimal? PositionQuantity { get; }
 
         /// <summary>
