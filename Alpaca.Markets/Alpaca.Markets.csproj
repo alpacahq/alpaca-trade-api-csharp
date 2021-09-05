@@ -17,7 +17,8 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Trading statuses handlng added into the `IAlpacaDataStreamingClient` implementation.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Limit up / limit down handlng added into the `IAlpacaDataStreamingClient` implementation.
+- Trading statuses handlng added into the `IAlpacaDataStreamingClient` implementation.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
