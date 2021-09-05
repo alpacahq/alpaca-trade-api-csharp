@@ -43,6 +43,12 @@ namespace Alpaca.Markets.Extensions
             public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(String symbol) =>
                 Client.GetDailyBarSubscription(symbol);
 
+            public IAlpacaDataSubscription<IStatus> GetStatusSubscription(String symbol) =>
+                Client.GetStatusSubscription(symbol);
+
+            public IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(String symbol) =>
+                Client.GetLimitUpLimitDownSubscription(symbol);
+
             public ValueTask SubscribeAsync(
                 IAlpacaDataSubscription subscription,
                 CancellationToken cancellationToken = default)
