@@ -73,15 +73,33 @@
   
   <h1 id="Alpaca_Markets_Extensions_IDisposableAlpacaDataSubscription_1" data-uid="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription`1" class="text-break">Interface IDisposableAlpacaDataSubscription&lt;TItem&gt;
   </h1>
-  <div class="markdown level0 summary"><p>Extends the <see cref="!:IAlpacaDataSubscription&lt;TItem>"></see> interface with disposing support
+  <div class="markdown level0 summary"><p>Extends the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription&lt;TApi&gt;</a> interface with disposing support
 so caller can use instance of this interface in <code>using</code> and <code>await using</code> statements.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">IAlpacaDataSubscription&lt;TItem&gt;.Received</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription.html#Alpaca_Markets_IAlpacaDataSubscription_Streams">IAlpacaDataSubscription.Streams</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription.html#Alpaca_Markets_IAlpacaDataSubscription_Subscribed">IAlpacaDataSubscription.Subscribed</a>
+    </div>
+    <div>
+      <span class="xref">System.IAsyncDisposable.DisposeAsync()</span>
+    </div>
+    <div>
+      <span class="xref">System.IDisposable.Dispose()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.Extensions.html">Alpaca.Markets.Extensions</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.Extensions.dll</h6>
   <h5 id="Alpaca_Markets_Extensions_IDisposableAlpacaDataSubscription_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IDisposableAlpacaDataSubscription&lt;out TItem&gt; : IAlpacaDataSubscription&lt;TItem&gt;, IAsyncDisposable, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IDisposableAlpacaDataSubscription&lt;out TItem&gt; : IAlpacaDataSubscription&lt;TItem&gt;, IAlpacaDataSubscription, IAsyncDisposable, IDisposable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -98,6 +116,13 @@ so caller can use instance of this interface in <code>using</code> and <code>awa
       </tr>
     </tbody>
   </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.html#Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_Alpaca_Markets_IAlpacaDataSubscription___0__">AlpacaDataSubscriptionExtensions.AsAsyncEnumerable&lt;TItem&gt;(IAlpacaDataSubscription&lt;TItem&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.html#Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_Alpaca_Markets_IAlpacaDataSubscription___0__System_Threading_CancellationToken_">AlpacaDataSubscriptionExtensions.AsAsyncEnumerable&lt;TItem&gt;(IAlpacaDataSubscription&lt;TItem&gt;, CancellationToken)</a>
+  </div>
 </article>
           </div>
           

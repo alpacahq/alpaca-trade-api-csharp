@@ -73,7 +73,7 @@
   
   <h1 id="Alpaca_Markets_Extensions_AlpacaStreamingClientExtensions" data-uid="Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions" class="text-break">Class AlpacaStreamingClientExtensions
   </h1>
-  <div class="markdown level0 summary"><p>Helper extension method for creating special version of the <see cref="!:IAlpacaStreamingClient"></see>
+  <div class="markdown level0 summary"><p>Helper extension method for creating special version of the <a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a>
 implementation with automatic reconnection (with configurable delay and number of attempts) support.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
@@ -82,30 +82,56 @@ implementation with automatic reconnection (with configurable delay and number o
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">AlpacaStreamingClientExtensions</span></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.Extensions.html">Alpaca.Markets.Extensions</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.Extensions.dll</h6>
   <h5 id="Alpaca_Markets_Extensions_AlpacaStreamingClientExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class AlpacaStreamingClientExtensions : object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class AlpacaStreamingClientExtensions</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaStreamingClientExtensions_WithReconnect_IAlpacaStreamingClient_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(IAlpacaStreamingClient)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaStreamingClientExtensions_WithReconnect_Alpaca_Markets_IAlpacaStreamingClient_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(Alpaca.Markets.IAlpacaStreamingClient)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Reconnection/AlpacaStreamingClientExtensions.cs/#L36">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaStreamingClientExtensions_WithReconnect_" data-uid="Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaStreamingClientExtensions_WithReconnect_IAlpacaStreamingClient_" data-uid="Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(IAlpacaStreamingClient)">WithReconnect(IAlpacaStreamingClient)</h4>
-  <div class="markdown level1 summary"><p>Wraps instance of <see cref="!:IAlpacaStreamingClient"></see> into the helper class
+  <h4 id="Alpaca_Markets_Extensions_AlpacaStreamingClientExtensions_WithReconnect_Alpaca_Markets_IAlpacaStreamingClient_" data-uid="Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(Alpaca.Markets.IAlpacaStreamingClient)">WithReconnect(IAlpacaStreamingClient)</h4>
+  <div class="markdown level1 summary"><p>Wraps instance of <a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a> into the helper class
 with automatic reconnection support with the default reconnection parameters.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaStreamingClient WithReconnect(this IAlpacaStreamingClient client)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAlpacaStreamingClient WithReconnect(this IAlpacaStreamingClient client)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -118,7 +144,7 @@ with automatic reconnection support with the default reconnection parameters.</p
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaStreamingClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a></td>
         <td><span class="parametername">client</span></td>
         <td><p>Original streaming client for wrapping.</p>
 </td>
@@ -135,7 +161,7 @@ with automatic reconnection support with the default reconnection parameters.</p
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaStreamingClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a></td>
         <td><p>Wrapped version of the <code data-dev-comment-type="paramref" class="paramref">client</code> object with reconnect.</p>
 </td>
       </tr>
@@ -143,20 +169,22 @@ with automatic reconnection support with the default reconnection parameters.</p
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaStreamingClientExtensions_WithReconnect_IAlpacaStreamingClient_Alpaca_Markets_Extensions_ReconnectionParameters_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(IAlpacaStreamingClient%2CAlpaca.Markets.Extensions.ReconnectionParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaStreamingClientExtensions_WithReconnect_Alpaca_Markets_IAlpacaStreamingClient_Alpaca_Markets_Extensions_ReconnectionParameters_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(Alpaca.Markets.IAlpacaStreamingClient%2CAlpaca.Markets.Extensions.ReconnectionParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Reconnection/AlpacaStreamingClientExtensions.cs/#L49">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaStreamingClientExtensions_WithReconnect_" data-uid="Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaStreamingClientExtensions_WithReconnect_IAlpacaStreamingClient_Alpaca_Markets_Extensions_ReconnectionParameters_" data-uid="Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(IAlpacaStreamingClient,Alpaca.Markets.Extensions.ReconnectionParameters)">WithReconnect(IAlpacaStreamingClient, ReconnectionParameters)</h4>
-  <div class="markdown level1 summary"><p>Wraps instance of <see cref="!:IAlpacaStreamingClient"></see> into the helper class
+  <h4 id="Alpaca_Markets_Extensions_AlpacaStreamingClientExtensions_WithReconnect_Alpaca_Markets_IAlpacaStreamingClient_Alpaca_Markets_Extensions_ReconnectionParameters_" data-uid="Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(Alpaca.Markets.IAlpacaStreamingClient,Alpaca.Markets.Extensions.ReconnectionParameters)">WithReconnect(IAlpacaStreamingClient, ReconnectionParameters)</h4>
+  <div class="markdown level1 summary"><p>Wraps instance of <a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a> into the helper class
 with automatic reconnection support and provide optional reconnection parameters.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaStreamingClient WithReconnect(this IAlpacaStreamingClient client, ReconnectionParameters parameters)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAlpacaStreamingClient WithReconnect(this IAlpacaStreamingClient client, ReconnectionParameters parameters)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -169,7 +197,7 @@ with automatic reconnection support and provide optional reconnection parameters
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaStreamingClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a></td>
         <td><span class="parametername">client</span></td>
         <td><p>Original streaming client for wrapping.</p>
 </td>
@@ -192,7 +220,7 @@ with automatic reconnection support and provide optional reconnection parameters
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaStreamingClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a></td>
         <td><p>Wrapped version of the <code data-dev-comment-type="paramref" class="paramref">client</code> object with reconnect.</p>
 </td>
       </tr>

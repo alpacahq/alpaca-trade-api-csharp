@@ -73,7 +73,7 @@
   
   <h1 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions" class="text-break">Class AlpacaTradingClientExtensions
   </h1>
-  <div class="markdown level0 summary"><p>Set of extension methods for the <see cref="!:IAlpacaTradingClient"></see> interface.</p>
+  <div class="markdown level0 summary"><p>Set of extension methods for the <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a> interface.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -81,29 +81,55 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">AlpacaTradingClientExtensions</span></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.Extensions.html">Alpaca.Markets.Extensions</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.Extensions.dll</h6>
   <h5 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class AlpacaTradingClientExtensions : object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class AlpacaTradingClientExtensions</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_IAlpacaTradingClient_DateTime_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(IAlpacaTradingClient%2CDateTime%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_Alpaca_Markets_IAlpacaTradingClient_System_DateTime_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(Alpaca.Markets.IAlpacaTradingClient%2CSystem.DateTime%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/TimeInterval/AlpacaTradingClientExtensions.cs/#L21">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_IAlpacaTradingClient_DateTime_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(IAlpacaTradingClient,DateTime,CancellationToken)">GetCalendarForSingleDayAsync(IAlpacaTradingClient, DateTime, CancellationToken)</h4>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_Alpaca_Markets_IAlpacaTradingClient_System_DateTime_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(Alpaca.Markets.IAlpacaTradingClient,System.DateTime,System.Threading.CancellationToken)">GetCalendarForSingleDayAsync(IAlpacaTradingClient, DateTime, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get single trading date information from the Alpaca REST API.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static async Task&lt;ICalendar?&gt; GetCalendarForSingleDayAsync(this IAlpacaTradingClient client, DateTime date, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static async Task&lt;ICalendar&gt; GetCalendarForSingleDayAsync(this IAlpacaTradingClient client, DateTime date, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -116,19 +142,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaTradingClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>The <see cref="!:IAlpacaDataClient"></see> object instance.</p>
+        <td><p>The <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> object instance.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td><span class="parametername">date</span></td>
         <td><p>The trading date (time part will not be used).</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -145,7 +171,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">ICalendar</span>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.ICalendar.html">ICalendar</a>&gt;</td>
         <td><p>Read-only trading date information object.</p>
 </td>
       </tr>

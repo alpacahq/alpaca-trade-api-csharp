@@ -73,7 +73,7 @@
   
   <h1 id="Alpaca_Markets_Extensions_StreamingDataClientExtensions" data-uid="Alpaca.Markets.Extensions.StreamingDataClientExtensions" class="text-break">Class StreamingDataClientExtensions
   </h1>
-  <div class="markdown level0 summary"><p>Set of extension methods for the <see cref="!:IStreamingDataClient"></see> interface.</p>
+  <div class="markdown level0 summary"><p>Set of extension methods for the <a class="xref" href="Alpaca.Markets.IStreamingDataClient.html">IStreamingDataClient</a> interface.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -81,29 +81,54 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">StreamingDataClientExtensions</span></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.Extensions.html">Alpaca.Markets.Extensions</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.Extensions.dll</h6>
   <h5 id="Alpaca_Markets_Extensions_StreamingDataClientExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class StreamingDataClientExtensions : object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class StreamingDataClientExtensions</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingDataClientExtensions_SubscribeAsync_IStreamingDataClient_IAlpacaDataSubscription___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingDataClientExtensions.SubscribeAsync(IStreamingDataClient%2CIAlpacaDataSubscription%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingDataClientExtensions_SubscribeAsync_Alpaca_Markets_IStreamingDataClient_Alpaca_Markets_IAlpacaDataSubscription___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingDataClientExtensions.SubscribeAsync(Alpaca.Markets.IStreamingDataClient%2CAlpaca.Markets.IAlpacaDataSubscription%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingDataClientExtensions.cs/#L15">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingDataClientExtensions_SubscribeAsync_" data-uid="Alpaca.Markets.Extensions.StreamingDataClientExtensions.SubscribeAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_StreamingDataClientExtensions_SubscribeAsync_IStreamingDataClient_IAlpacaDataSubscription___" data-uid="Alpaca.Markets.Extensions.StreamingDataClientExtensions.SubscribeAsync(IStreamingDataClient,IAlpacaDataSubscription[])">SubscribeAsync(IStreamingDataClient, IAlpacaDataSubscription[])</h4>
+  <h4 id="Alpaca_Markets_Extensions_StreamingDataClientExtensions_SubscribeAsync_Alpaca_Markets_IStreamingDataClient_Alpaca_Markets_IAlpacaDataSubscription___" data-uid="Alpaca.Markets.Extensions.StreamingDataClientExtensions.SubscribeAsync(Alpaca.Markets.IStreamingDataClient,Alpaca.Markets.IAlpacaDataSubscription[])">SubscribeAsync(IStreamingDataClient, IAlpacaDataSubscription[])</h4>
   <div class="markdown level1 summary"><p>Subscribes several <code data-dev-comment-type="paramref" class="paramref">subscriptions</code> objects for receiving data from the server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AlpacaValueTask SubscribeAsync(this IStreamingDataClient client, params IAlpacaDataSubscription[] subscriptions)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+public static AlpacaValueTask SubscribeAsync(this IStreamingDataClient client, params IAlpacaDataSubscription[] subscriptions)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -116,13 +141,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IStreamingDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IStreamingDataClient.html">IStreamingDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IStreamingDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IStreamingDataClient.html">IStreamingDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IAlpacaDataSubscription</span>[]</td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription.html">IAlpacaDataSubscription</a>[]</td>
         <td><span class="parametername">subscriptions</span></td>
         <td><p>List of subscription targets - assets and update type holders.</p>
 </td>
@@ -146,19 +171,20 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingDataClientExtensions_UnsubscribeAsync_IStreamingDataClient_IAlpacaDataSubscription___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingDataClientExtensions.UnsubscribeAsync(IStreamingDataClient%2CIAlpacaDataSubscription%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingDataClientExtensions_UnsubscribeAsync_Alpaca_Markets_IStreamingDataClient_Alpaca_Markets_IAlpacaDataSubscription___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingDataClientExtensions.UnsubscribeAsync(Alpaca.Markets.IStreamingDataClient%2CAlpaca.Markets.IAlpacaDataSubscription%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingDataClientExtensions.cs/#L26">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingDataClientExtensions_UnsubscribeAsync_" data-uid="Alpaca.Markets.Extensions.StreamingDataClientExtensions.UnsubscribeAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_StreamingDataClientExtensions_UnsubscribeAsync_IStreamingDataClient_IAlpacaDataSubscription___" data-uid="Alpaca.Markets.Extensions.StreamingDataClientExtensions.UnsubscribeAsync(IStreamingDataClient,IAlpacaDataSubscription[])">UnsubscribeAsync(IStreamingDataClient, IAlpacaDataSubscription[])</h4>
+  <h4 id="Alpaca_Markets_Extensions_StreamingDataClientExtensions_UnsubscribeAsync_Alpaca_Markets_IStreamingDataClient_Alpaca_Markets_IAlpacaDataSubscription___" data-uid="Alpaca.Markets.Extensions.StreamingDataClientExtensions.UnsubscribeAsync(Alpaca.Markets.IStreamingDataClient,Alpaca.Markets.IAlpacaDataSubscription[])">UnsubscribeAsync(IStreamingDataClient, IAlpacaDataSubscription[])</h4>
   <div class="markdown level1 summary"><p>Unsubscribes several <code data-dev-comment-type="paramref" class="paramref">subscriptions</code> objects for receiving data from the server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AlpacaValueTask UnsubscribeAsync(this IStreamingDataClient client, params IAlpacaDataSubscription[] subscriptions)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+public static AlpacaValueTask UnsubscribeAsync(this IStreamingDataClient client, params IAlpacaDataSubscription[] subscriptions)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -171,13 +197,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IStreamingDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IStreamingDataClient.html">IStreamingDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IStreamingDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IStreamingDataClient.html">IStreamingDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IAlpacaDataSubscription</span>[]</td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription.html">IAlpacaDataSubscription</a>[]</td>
         <td><span class="parametername">subscriptions</span></td>
         <td><p>List of subscription targets - assets and update type holders.</p>
 </td>

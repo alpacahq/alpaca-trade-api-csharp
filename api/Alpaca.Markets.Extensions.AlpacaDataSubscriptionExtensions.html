@@ -73,7 +73,7 @@
   
   <h1 id="Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions" data-uid="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions" class="text-break">Class AlpacaDataSubscriptionExtensions
   </h1>
-  <div class="markdown level0 summary"><p>Set of extension methods for the <see cref="!:IAlpacaDataSubscription&lt;TApi>"></see> interface.</p>
+  <div class="markdown level0 summary"><p>Set of extension methods for the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription&lt;TApi&gt;</a> interface.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -81,30 +81,55 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">AlpacaDataSubscriptionExtensions</span></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.Extensions.html">Alpaca.Markets.Extensions</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.Extensions.dll</h6>
   <h5 id="Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class AlpacaDataSubscriptionExtensions : object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class AlpacaDataSubscriptionExtensions</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_IAlpacaDataSubscription___0__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable%60%601(IAlpacaDataSubscription%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_Alpaca_Markets_IAlpacaDataSubscription___0__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable%60%601(Alpaca.Markets.IAlpacaDataSubscription%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaDataSubscriptionExtensions.cs/#L21">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_IAlpacaDataSubscription___0__" data-uid="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable``1(IAlpacaDataSubscription{``0})">AsAsyncEnumerable&lt;TItem&gt;(IAlpacaDataSubscription&lt;TItem&gt;)</h4>
-  <div class="markdown level1 summary"><p>Converts <see cref="!:IAlpacaDataSubscription&lt;TItem>.Received"></see> event into
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_Alpaca_Markets_IAlpacaDataSubscription___0__" data-uid="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable``1(Alpaca.Markets.IAlpacaDataSubscription{``0})">AsAsyncEnumerable&lt;TItem&gt;(IAlpacaDataSubscription&lt;TItem&gt;)</h4>
+  <div class="markdown level1 summary"><p>Converts <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event into
 asynchronous enumerable (reactive event consuming style) using unbound channel.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;TItem&gt; AsAsyncEnumerable&lt;TItem&gt;(this IAlpacaDataSubscription&lt;TItem&gt; subscription)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+public static IAsyncEnumerable&lt;TItem&gt; AsAsyncEnumerable&lt;TItem&gt;(this IAlpacaDataSubscription&lt;TItem&gt; subscription)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -117,7 +142,7 @@ asynchronous enumerable (reactive event consuming style) using unbound channel.<
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataSubscription</span>&lt;TItem&gt;</td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription</a>&lt;TItem&gt;</td>
         <td><span class="parametername">subscription</span></td>
         <td><p>Original subscription object for wrapping.</p>
 </td>
@@ -134,7 +159,7 @@ asynchronous enumerable (reactive event consuming style) using unbound channel.<
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;TItem&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;TItem&gt;</td>
         <td><p>Stream of items received from server in form of async enumerable.</p>
 </td>
       </tr>
@@ -158,20 +183,21 @@ asynchronous enumerable (reactive event consuming style) using unbound channel.<
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_IAlpacaDataSubscription___0__CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable%60%601(IAlpacaDataSubscription%7B%60%600%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_Alpaca_Markets_IAlpacaDataSubscription___0__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable%60%601(Alpaca.Markets.IAlpacaDataSubscription%7B%60%600%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaDataSubscriptionExtensions.cs/#L34">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_IAlpacaDataSubscription___0__CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable``1(IAlpacaDataSubscription{``0},CancellationToken)">AsAsyncEnumerable&lt;TItem&gt;(IAlpacaDataSubscription&lt;TItem&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Converts <see cref="!:IAlpacaDataSubscription&lt;TItem>.Received"></see> event into
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_Alpaca_Markets_IAlpacaDataSubscription___0__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable``1(Alpaca.Markets.IAlpacaDataSubscription{``0},System.Threading.CancellationToken)">AsAsyncEnumerable&lt;TItem&gt;(IAlpacaDataSubscription&lt;TItem&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Converts <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event into
 asynchronous enumerable (reactive event consuming style) using unbound channel.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static async IAsyncEnumerable&lt;TItem&gt; AsAsyncEnumerable&lt;TItem&gt;(this IAlpacaDataSubscription&lt;TItem&gt; subscription, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+public static async IAsyncEnumerable&lt;TItem&gt; AsAsyncEnumerable&lt;TItem&gt;(this IAlpacaDataSubscription&lt;TItem&gt; subscription, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -184,13 +210,13 @@ asynchronous enumerable (reactive event consuming style) using unbound channel.<
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataSubscription</span>&lt;TItem&gt;</td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription</a>&lt;TItem&gt;</td>
         <td><span class="parametername">subscription</span></td>
         <td><p>Original subscription object for wrapping.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -207,7 +233,7 @@ asynchronous enumerable (reactive event consuming style) using unbound channel.<
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;TItem&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;TItem&gt;</td>
         <td><p>Stream of items received from server in form of async enumerable.</p>
 </td>
       </tr>

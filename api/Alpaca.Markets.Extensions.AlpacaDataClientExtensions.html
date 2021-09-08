@@ -73,7 +73,7 @@
   
   <h1 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions" class="text-break">Class AlpacaDataClientExtensions
   </h1>
-  <div class="markdown level0 summary"><p>Set of extension methods for the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+  <div class="markdown level0 summary"><p>Set of extension methods for the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -81,30 +81,458 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">AlpacaDataClientExtensions</span></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.Extensions.html">Alpaca.Markets.Extensions</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.Extensions.dll</h6>
   <h5 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class AlpacaDataClientExtensions : object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class AlpacaDataClientExtensions</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_IAlpacaDataClient_String_DateTime_DateTime_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient%2CString%2CDateTime%2CDateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_Get15MinuteHistoricalBarsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_System_String_Alpaca_Markets_IInclusiveTimeInterval_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.Get15MinuteHistoricalBarsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CSystem.String%2CAlpaca.Markets.IInclusiveTimeInterval)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L137">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_Get15MinuteHistoricalBarsAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.Get15MinuteHistoricalBarsAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_Get15MinuteHistoricalBarsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_System_String_Alpaca_Markets_IInclusiveTimeInterval_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.Get15MinuteHistoricalBarsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,System.String,Alpaca.Markets.IInclusiveTimeInterval)">Get15MinuteHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient, String, IInclusiveTimeInterval)</h4>
+  <div class="markdown level1 summary"><p>Gets the historical 15 minute bars for the given <code data-dev-comment-type="paramref" class="paramref">symbol</code> and <code data-dev-comment-type="paramref" class="paramref">timeInterval</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IBar&gt; Get15MinuteHistoricalBarsAsAsyncEnumerable(this IAlpacaDataClient client, string symbol, IInclusiveTimeInterval timeInterval)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Asset name for the data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IInclusiveTimeInterval.html">IInclusiveTimeInterval</a></td>
+        <td><span class="parametername">timeInterval</span></td>
+        <td><p>Inclusive time interval for historical bars.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
+        <td><p>The historical 15 minutes bars re-sampled from original minute bars.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_Get15MinuteHistoricalBarsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_System_String_Alpaca_Markets_IInclusiveTimeInterval_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.Get15MinuteHistoricalBarsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CSystem.String%2CAlpaca.Markets.IInclusiveTimeInterval%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L155">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_Get15MinuteHistoricalBarsAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.Get15MinuteHistoricalBarsAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_Get15MinuteHistoricalBarsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_System_String_Alpaca_Markets_IInclusiveTimeInterval_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.Get15MinuteHistoricalBarsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,System.String,Alpaca.Markets.IInclusiveTimeInterval,System.Threading.CancellationToken)">Get15MinuteHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient, String, IInclusiveTimeInterval, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the historical 15 minutes bars for the given <code data-dev-comment-type="paramref" class="paramref">symbol</code> and <code data-dev-comment-type="paramref" class="paramref">timeInterval</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IBar&gt; Get15MinuteHistoricalBarsAsAsyncEnumerable(this IAlpacaDataClient client, string symbol, IInclusiveTimeInterval timeInterval, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Asset name for the data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IInclusiveTimeInterval.html">IInclusiveTimeInterval</a></td>
+        <td><span class="parametername">timeInterval</span></td>
+        <td><p>Inclusive time interval for historical bars.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
+        <td><p>The historical 15 minutes bars re-sampled from original minute bars.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_Get5MinuteHistoricalBarsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_System_String_Alpaca_Markets_IInclusiveTimeInterval_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.Get5MinuteHistoricalBarsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CSystem.String%2CAlpaca.Markets.IInclusiveTimeInterval)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L101">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_Get5MinuteHistoricalBarsAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.Get5MinuteHistoricalBarsAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_Get5MinuteHistoricalBarsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_System_String_Alpaca_Markets_IInclusiveTimeInterval_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.Get5MinuteHistoricalBarsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,System.String,Alpaca.Markets.IInclusiveTimeInterval)">Get5MinuteHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient, String, IInclusiveTimeInterval)</h4>
+  <div class="markdown level1 summary"><p>Gets the historical 5 minute bars for the given <code data-dev-comment-type="paramref" class="paramref">symbol</code> and <code data-dev-comment-type="paramref" class="paramref">timeInterval</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IBar&gt; Get5MinuteHistoricalBarsAsAsyncEnumerable(this IAlpacaDataClient client, string symbol, IInclusiveTimeInterval timeInterval)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Asset name for the data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IInclusiveTimeInterval.html">IInclusiveTimeInterval</a></td>
+        <td><span class="parametername">timeInterval</span></td>
+        <td><p>Inclusive time interval for historical bars.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
+        <td><p>The historical 5 minutes bars re-sampled from original minute bars.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_Get5MinuteHistoricalBarsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_System_String_Alpaca_Markets_IInclusiveTimeInterval_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.Get5MinuteHistoricalBarsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CSystem.String%2CAlpaca.Markets.IInclusiveTimeInterval%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L119">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_Get5MinuteHistoricalBarsAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.Get5MinuteHistoricalBarsAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_Get5MinuteHistoricalBarsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_System_String_Alpaca_Markets_IInclusiveTimeInterval_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.Get5MinuteHistoricalBarsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,System.String,Alpaca.Markets.IInclusiveTimeInterval,System.Threading.CancellationToken)">Get5MinuteHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient, String, IInclusiveTimeInterval, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the historical 5 minute bars for the given <code data-dev-comment-type="paramref" class="paramref">symbol</code> and <code data-dev-comment-type="paramref" class="paramref">timeInterval</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IBar&gt; Get5MinuteHistoricalBarsAsAsyncEnumerable(this IAlpacaDataClient client, string symbol, IInclusiveTimeInterval timeInterval, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Asset name for the data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IInclusiveTimeInterval.html">IInclusiveTimeInterval</a></td>
+        <td><span class="parametername">timeInterval</span></td>
+        <td><p>Inclusive time interval for historical bars.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
+        <td><p>The historical 5 minutes bars re-sampled from original minute bars.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_Alpaca_Markets_IAlpacaDataClient_System_String_Alpaca_Markets_IInclusiveTimeInterval_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(Alpaca.Markets.IAlpacaDataClient%2CSystem.String%2CAlpaca.Markets.IInclusiveTimeInterval)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L64">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_Alpaca_Markets_IAlpacaDataClient_System_String_Alpaca_Markets_IInclusiveTimeInterval_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(Alpaca.Markets.IAlpacaDataClient,System.String,Alpaca.Markets.IInclusiveTimeInterval)">GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, IInclusiveTimeInterval)</h4>
+  <div class="markdown level1 summary"><p>Gets the average trade volume for the given <code data-dev-comment-type="paramref" class="paramref">symbol</code> and <code data-dev-comment-type="paramref" class="paramref">timeInterval</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static Task&lt;(decimal, uint)&gt; GetAverageDailyTradeVolumeAsync(this IAlpacaDataClient client, string symbol, IInclusiveTimeInterval timeInterval)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Asset name for the data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IInclusiveTimeInterval.html">IInclusiveTimeInterval</a></td>
+        <td><span class="parametername">timeInterval</span></td>
+        <td><p>Inclusive time interval for the ADTV calculation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Decimal</span>, <span class="xref">System.UInt32</span>&gt;&gt;</td>
+        <td><p>The pair of ADTV value and number of processed day bars.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_Alpaca_Markets_IAlpacaDataClient_System_String_Alpaca_Markets_IInclusiveTimeInterval_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(Alpaca.Markets.IAlpacaDataClient%2CSystem.String%2CAlpaca.Markets.IInclusiveTimeInterval%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L83">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_Alpaca_Markets_IAlpacaDataClient_System_String_Alpaca_Markets_IInclusiveTimeInterval_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(Alpaca.Markets.IAlpacaDataClient,System.String,Alpaca.Markets.IInclusiveTimeInterval,System.Threading.CancellationToken)">GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, IInclusiveTimeInterval, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the average trade volume for the given <code data-dev-comment-type="paramref" class="paramref">symbol</code> and <code data-dev-comment-type="paramref" class="paramref">timeInterval</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static Task&lt;(decimal, uint)&gt; GetAverageDailyTradeVolumeAsync(this IAlpacaDataClient client, string symbol, IInclusiveTimeInterval timeInterval, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Asset name for the data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IInclusiveTimeInterval.html">IInclusiveTimeInterval</a></td>
+        <td><span class="parametername">timeInterval</span></td>
+        <td><p>Inclusive time interval for the ADTV calculation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Decimal</span>, <span class="xref">System.UInt32</span>&gt;&gt;</td>
+        <td><p>The pair of ADTV value and number of processed day bars.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_Alpaca_Markets_IAlpacaDataClient_System_String_System_DateTime_System_DateTime_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(Alpaca.Markets.IAlpacaDataClient%2CSystem.String%2CSystem.DateTime%2CSystem.DateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L23">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_IAlpacaDataClient_String_DateTime_DateTime_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient,String,DateTime,DateTime)">GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, DateTime, DateTime)</h4>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_Alpaca_Markets_IAlpacaDataClient_System_String_System_DateTime_System_DateTime_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(Alpaca.Markets.IAlpacaDataClient,System.String,System.DateTime,System.DateTime)">GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, DateTime, DateTime)</h4>
   <div class="markdown level1 summary"><p>Gets the average trade volume for the given <code data-dev-comment-type="paramref" class="paramref">symbol</code> and time interval
 between <code data-dev-comment-type="paramref" class="paramref">from</code> date to the <code data-dev-comment-type="paramref" class="paramref">into</code> date (inclusive).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Task&lt;(Decimal, UInt32)&gt; GetAverageDailyTradeVolumeAsync(this IAlpacaDataClient client, String symbol, DateTime from, DateTime into)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static Task&lt;(decimal, uint)&gt; GetAverageDailyTradeVolumeAsync(this IAlpacaDataClient client, string symbol, DateTime from, DateTime into)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -117,25 +545,25 @@ between <code data-dev-comment-type="paramref" class="paramref">from</code> date
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">String</span></td>
+        <td><span class="xref">System.String</span></td>
         <td><span class="parametername">symbol</span></td>
         <td><p>Asset name for the data retrieval.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td><span class="parametername">from</span></td>
         <td><p>Filter data equal to or after this time.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td><span class="parametername">into</span></td>
         <td><p>Filter data equal to or before this time.</p>
 </td>
@@ -152,7 +580,7 @@ between <code data-dev-comment-type="paramref" class="paramref">from</code> date
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">Decimal</span>, <span class="xref">UInt32</span>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Decimal</span>, <span class="xref">System.UInt32</span>&gt;&gt;</td>
         <td><p>The pair of ADTV value and number of processed day bars.</p>
 </td>
       </tr>
@@ -160,20 +588,22 @@ between <code data-dev-comment-type="paramref" class="paramref">from</code> date
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_IAlpacaDataClient_String_DateTime_DateTime_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient%2CString%2CDateTime%2CDateTime%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_Alpaca_Markets_IAlpacaDataClient_System_String_System_DateTime_System_DateTime_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(Alpaca.Markets.IAlpacaDataClient%2CSystem.String%2CSystem.DateTime%2CSystem.DateTime%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L45">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L46">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_IAlpacaDataClient_String_DateTime_DateTime_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient,String,DateTime,DateTime,CancellationToken)">GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, DateTime, DateTime, CancellationToken)</h4>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_Alpaca_Markets_IAlpacaDataClient_System_String_System_DateTime_System_DateTime_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(Alpaca.Markets.IAlpacaDataClient,System.String,System.DateTime,System.DateTime,System.Threading.CancellationToken)">GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, DateTime, DateTime, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets the average trade volume for the given <code data-dev-comment-type="paramref" class="paramref">symbol</code> and time interval
 between <code data-dev-comment-type="paramref" class="paramref">from</code> date to the <code data-dev-comment-type="paramref" class="paramref">into</code> date (inclusive).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Task&lt;(Decimal, UInt32)&gt; GetAverageDailyTradeVolumeAsync(this IAlpacaDataClient client, String symbol, DateTime from, DateTime into, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static Task&lt;(decimal, uint)&gt; GetAverageDailyTradeVolumeAsync(this IAlpacaDataClient client, string symbol, DateTime from, DateTime into, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -186,31 +616,31 @@ between <code data-dev-comment-type="paramref" class="paramref">from</code> date
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">String</span></td>
+        <td><span class="xref">System.String</span></td>
         <td><span class="parametername">symbol</span></td>
         <td><p>Asset name for the data retrieval.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td><span class="parametername">from</span></td>
         <td><p>Filter data equal to or after this time.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td><span class="parametername">into</span></td>
         <td><p>Filter data equal to or before this time.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -227,7 +657,7 @@ between <code data-dev-comment-type="paramref" class="paramref">from</code> date
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">Decimal</span>, <span class="xref">UInt32</span>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Decimal</span>, <span class="xref">System.UInt32</span>&gt;&gt;</td>
         <td><p>The pair of ADTV value and number of processed day bars.</p>
 </td>
       </tr>
@@ -235,151 +665,23 @@ between <code data-dev-comment-type="paramref" class="paramref">from</code> date
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_IAlpacaDataClient_String_IInclusiveTimeInterval_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient%2CString%2CIInclusiveTimeInterval)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L63">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_IAlpacaDataClient_String_IInclusiveTimeInterval_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient,String,IInclusiveTimeInterval)">GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, IInclusiveTimeInterval)</h4>
-  <div class="markdown level1 summary"><p>Gets the average trade volume for the given <code data-dev-comment-type="paramref" class="paramref">symbol</code> and <code data-dev-comment-type="paramref" class="paramref">timeInterval</code>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Task&lt;(Decimal, UInt32)&gt; GetAverageDailyTradeVolumeAsync(this IAlpacaDataClient client, String symbol, IInclusiveTimeInterval timeInterval)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
-        <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">String</span></td>
-        <td><span class="parametername">symbol</span></td>
-        <td><p>Asset name for the data retrieval.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">IInclusiveTimeInterval</span></td>
-        <td><span class="parametername">timeInterval</span></td>
-        <td><p>Inclusive time interval for the ADTV calculation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">Decimal</span>, <span class="xref">UInt32</span>&gt;&gt;</td>
-        <td><p>The pair of ADTV value and number of processed day bars.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_IAlpacaDataClient_String_IInclusiveTimeInterval_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient%2CString%2CIInclusiveTimeInterval%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L82">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetAverageDailyTradeVolumeAsync_IAlpacaDataClient_String_IInclusiveTimeInterval_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(IAlpacaDataClient,String,IInclusiveTimeInterval,CancellationToken)">GetAverageDailyTradeVolumeAsync(IAlpacaDataClient, String, IInclusiveTimeInterval, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets the average trade volume for the given <code data-dev-comment-type="paramref" class="paramref">symbol</code> and <code data-dev-comment-type="paramref" class="paramref">timeInterval</code>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Task&lt;(Decimal, UInt32)&gt; GetAverageDailyTradeVolumeAsync(this IAlpacaDataClient client, String symbol, IInclusiveTimeInterval timeInterval, CancellationToken cancellationToken)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
-        <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">String</span></td>
-        <td><span class="parametername">symbol</span></td>
-        <td><p>Asset name for the data retrieval.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">IInclusiveTimeInterval</span></td>
-        <td><span class="parametername">timeInterval</span></td>
-        <td><p>Inclusive time interval for the ADTV calculation.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">Decimal</span>, <span class="xref">UInt32</span>&gt;&gt;</td>
-        <td><p>The pair of ADTV value and number of processed day bars.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_IAlpacaDataClient_HistoricalBarsRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient%2CHistoricalBarsRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalBarsRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalBarsRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L25">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_IAlpacaDataClient_HistoricalBarsRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient,HistoricalBarsRequest)">GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient, HistoricalBarsRequest)</h4>
-  <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalBarsAsync"></see> in pagination
-mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IBar>"></see> interface) so they
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalBarsRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalBarsRequest)">GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient, HistoricalBarsRequest)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListHistoricalBarsAsync_Alpaca_Markets_HistoricalBarsRequest_System_Threading_CancellationToken_">ListHistoricalBarsAsync(HistoricalBarsRequest, CancellationToken)</a> in pagination
+mode as single stream of items (in form of <span class="xref">System.Collections.Generic.IAsyncEnumerable&lt;T&gt;</span> interface) so they
 can be consumed by the <code>await foreach</code> statement on the caller side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IBar&gt; GetHistoricalBarsAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalBarsRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IBar&gt; GetHistoricalBarsAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalBarsRequest request)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -392,13 +694,13 @@ can be consumed by the <code>await foreach</code> statement on the caller side.<
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalBarsRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalBarsRequest.html">HistoricalBarsRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical minute bars request (with empty next page token).</p>
 </td>
@@ -415,28 +717,30 @@ can be consumed by the <code>await foreach</code> statement on the caller side.<
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_IAlpacaDataClient_HistoricalBarsRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient%2CHistoricalBarsRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalBarsRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalBarsRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L43">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_IAlpacaDataClient_HistoricalBarsRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient,HistoricalBarsRequest,CancellationToken)">GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient, HistoricalBarsRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalBarsAsync"></see> in pagination
-mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IBar>"></see> interface) so they
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalBarsRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalBarsRequest,System.Threading.CancellationToken)">GetHistoricalBarsAsAsyncEnumerable(IAlpacaDataClient, HistoricalBarsRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListHistoricalBarsAsync_Alpaca_Markets_HistoricalBarsRequest_System_Threading_CancellationToken_">ListHistoricalBarsAsync(HistoricalBarsRequest, CancellationToken)</a> in pagination
+mode as single stream of items (in form of <span class="xref">System.Collections.Generic.IAsyncEnumerable&lt;T&gt;</span> interface) so they
 can be consumed by the <code>await foreach</code> statement on the caller side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IBar&gt; GetHistoricalBarsAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalBarsRequest request, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IBar&gt; GetHistoricalBarsAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalBarsRequest request, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -449,19 +753,19 @@ can be consumed by the <code>await foreach</code> statement on the caller side.<
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalBarsRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalBarsRequest.html">HistoricalBarsRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical minute bars request (with empty next page token).</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -478,28 +782,30 @@ can be consumed by the <code>await foreach</code> statement on the caller side.<
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsPagesAsAsyncEnumerable_IAlpacaDataClient_HistoricalBarsRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsPagesAsAsyncEnumerable(IAlpacaDataClient%2CHistoricalBarsRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalBarsRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalBarsRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L60">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsPagesAsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsPagesAsAsyncEnumerable_IAlpacaDataClient_HistoricalBarsRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsPagesAsAsyncEnumerable(IAlpacaDataClient,HistoricalBarsRequest)">GetHistoricalBarsPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalBarsRequest)</h4>
-  <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalBarsAsync"></see> in pagination
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalBarsRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalBarsRequest)">GetHistoricalBarsPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalBarsRequest)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListHistoricalBarsAsync_Alpaca_Markets_HistoricalBarsRequest_System_Threading_CancellationToken_">ListHistoricalBarsAsync(HistoricalBarsRequest, CancellationToken)</a> in pagination
 mode as single stream of response pages with items so they can be consumed by the <code>await foreach</code>
 statement on the caller side as sequence of 'batches' instead of sequence of items itself.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IReadOnlyList&lt;IBar&gt;&gt; GetHistoricalBarsPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalBarsRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IReadOnlyList&lt;IBar&gt;&gt; GetHistoricalBarsPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalBarsRequest request)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -512,13 +818,13 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalBarsRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalBarsRequest.html">HistoricalBarsRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical minute bars request (with empty next page token).</p>
 </td>
@@ -535,28 +841,30 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IReadOnlyList</span>&lt;<span class="xref">IBar</span>&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsPagesAsAsyncEnumerable_IAlpacaDataClient_HistoricalBarsRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsPagesAsAsyncEnumerable(IAlpacaDataClient%2CHistoricalBarsRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalBarsRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalBarsRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L77">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsPagesAsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsPagesAsAsyncEnumerable_IAlpacaDataClient_HistoricalBarsRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsPagesAsAsyncEnumerable(IAlpacaDataClient,HistoricalBarsRequest,CancellationToken)">GetHistoricalBarsPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalBarsRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalBarsAsync"></see> in pagination
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalBarsPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalBarsRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalBarsPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalBarsRequest,System.Threading.CancellationToken)">GetHistoricalBarsPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalBarsRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListHistoricalBarsAsync_Alpaca_Markets_HistoricalBarsRequest_System_Threading_CancellationToken_">ListHistoricalBarsAsync(HistoricalBarsRequest, CancellationToken)</a> in pagination
 mode as single stream of response pages with items so they can be consumed by the <code>await foreach</code>
 statement on the caller side as sequence of 'batches' instead of sequence of items itself.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IReadOnlyList&lt;IBar&gt;&gt; GetHistoricalBarsPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalBarsRequest request, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IReadOnlyList&lt;IBar&gt;&gt; GetHistoricalBarsPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalBarsRequest request, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -569,19 +877,19 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalBarsRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalBarsRequest.html">HistoricalBarsRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical minute bars request (with empty next page token).</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -598,28 +906,30 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IReadOnlyList</span>&lt;<span class="xref">IBar</span>&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_IAlpacaDataClient_HistoricalQuotesRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable(IAlpacaDataClient%2CHistoricalQuotesRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalQuotesRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalQuotesRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L95">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_IAlpacaDataClient_HistoricalQuotesRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable(IAlpacaDataClient,HistoricalQuotesRequest)">GetHistoricalQuotesAsAsyncEnumerable(IAlpacaDataClient, HistoricalQuotesRequest)</h4>
-  <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalQuotesAsync"></see> in pagination
-mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IQuote>"></see> interface)
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalQuotesRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalQuotesRequest)">GetHistoricalQuotesAsAsyncEnumerable(IAlpacaDataClient, HistoricalQuotesRequest)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListHistoricalQuotesAsync_Alpaca_Markets_HistoricalQuotesRequest_System_Threading_CancellationToken_">ListHistoricalQuotesAsync(HistoricalQuotesRequest, CancellationToken)</a> in pagination
+mode as single stream of items (in form of <span class="xref">System.Collections.Generic.IAsyncEnumerable&lt;T&gt;</span> interface)
 so they can be consumed by the <code>await foreach</code> statement on the caller side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IQuote&gt; GetHistoricalQuotesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalQuotesRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IQuote&gt; GetHistoricalQuotesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalQuotesRequest request)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -632,13 +942,13 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalQuotesRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalQuotesRequest.html">HistoricalQuotesRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical quotes request (with empty next page token).</p>
 </td>
@@ -655,28 +965,30 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IQuote</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IQuote.html">IQuote</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_IAlpacaDataClient_HistoricalQuotesRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable(IAlpacaDataClient%2CHistoricalQuotesRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalQuotesRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalQuotesRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L113">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_IAlpacaDataClient_HistoricalQuotesRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable(IAlpacaDataClient,HistoricalQuotesRequest,CancellationToken)">GetHistoricalQuotesAsAsyncEnumerable(IAlpacaDataClient, HistoricalQuotesRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalQuotesAsync"></see> in pagination
-mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IQuote>"></see> interface)
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalQuotesRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalQuotesRequest,System.Threading.CancellationToken)">GetHistoricalQuotesAsAsyncEnumerable(IAlpacaDataClient, HistoricalQuotesRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListHistoricalQuotesAsync_Alpaca_Markets_HistoricalQuotesRequest_System_Threading_CancellationToken_">ListHistoricalQuotesAsync(HistoricalQuotesRequest, CancellationToken)</a> in pagination
+mode as single stream of items (in form of <span class="xref">System.Collections.Generic.IAsyncEnumerable&lt;T&gt;</span> interface)
 so they can be consumed by the <code>await foreach</code> statement on the caller side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IQuote&gt; GetHistoricalQuotesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalQuotesRequest request, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IQuote&gt; GetHistoricalQuotesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalQuotesRequest request, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -689,19 +1001,19 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalQuotesRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalQuotesRequest.html">HistoricalQuotesRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical quotes request (with empty next page token).</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -718,28 +1030,30 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IQuote</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IQuote.html">IQuote</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesPagesAsAsyncEnumerable_IAlpacaDataClient_HistoricalQuotesRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesPagesAsAsyncEnumerable(IAlpacaDataClient%2CHistoricalQuotesRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalQuotesRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalQuotesRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L130">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesPagesAsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesPagesAsAsyncEnumerable_IAlpacaDataClient_HistoricalQuotesRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesPagesAsAsyncEnumerable(IAlpacaDataClient,HistoricalQuotesRequest)">GetHistoricalQuotesPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalQuotesRequest)</h4>
-  <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalQuotesAsync"></see> in pagination
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalQuotesRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalQuotesRequest)">GetHistoricalQuotesPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalQuotesRequest)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListHistoricalQuotesAsync_Alpaca_Markets_HistoricalQuotesRequest_System_Threading_CancellationToken_">ListHistoricalQuotesAsync(HistoricalQuotesRequest, CancellationToken)</a> in pagination
 mode as single stream of response pages with items so they can be consumed by the <code>await foreach</code>
 statement on the caller side as sequence of 'batches' instead of sequence of items itself.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IReadOnlyList&lt;IQuote&gt;&gt; GetHistoricalQuotesPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalQuotesRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IReadOnlyList&lt;IQuote&gt;&gt; GetHistoricalQuotesPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalQuotesRequest request)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -752,13 +1066,13 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalQuotesRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalQuotesRequest.html">HistoricalQuotesRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical quotes request (with empty next page token).</p>
 </td>
@@ -775,28 +1089,30 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IReadOnlyList</span>&lt;<span class="xref">IQuote</span>&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IQuote.html">IQuote</a>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesPagesAsAsyncEnumerable_IAlpacaDataClient_HistoricalQuotesRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesPagesAsAsyncEnumerable(IAlpacaDataClient%2CHistoricalQuotesRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalQuotesRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalQuotesRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L147">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesPagesAsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesPagesAsAsyncEnumerable_IAlpacaDataClient_HistoricalQuotesRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesPagesAsAsyncEnumerable(IAlpacaDataClient,HistoricalQuotesRequest,CancellationToken)">GetHistoricalQuotesPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalQuotesRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalQuotesAsync"></see> in pagination
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalQuotesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalQuotesRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalQuotesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalQuotesRequest,System.Threading.CancellationToken)">GetHistoricalQuotesPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalQuotesRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListHistoricalQuotesAsync_Alpaca_Markets_HistoricalQuotesRequest_System_Threading_CancellationToken_">ListHistoricalQuotesAsync(HistoricalQuotesRequest, CancellationToken)</a> in pagination
 mode as single stream of response pages with items so they can be consumed by the <code>await foreach</code>
 statement on the caller side as sequence of 'batches' instead of sequence of items itself.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IReadOnlyList&lt;IQuote&gt;&gt; GetHistoricalQuotesPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalQuotesRequest request, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IReadOnlyList&lt;IQuote&gt;&gt; GetHistoricalQuotesPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalQuotesRequest request, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -809,19 +1125,19 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalQuotesRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalQuotesRequest.html">HistoricalQuotesRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical quotes request (with empty next page token).</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -838,28 +1154,30 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IReadOnlyList</span>&lt;<span class="xref">IQuote</span>&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IQuote.html">IQuote</a>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_IAlpacaDataClient_HistoricalTradesRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable(IAlpacaDataClient%2CHistoricalTradesRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalTradesRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalTradesRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L165">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_IAlpacaDataClient_HistoricalTradesRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable(IAlpacaDataClient,HistoricalTradesRequest)">GetHistoricalTradesAsAsyncEnumerable(IAlpacaDataClient, HistoricalTradesRequest)</h4>
-  <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalTradesAsync"></see> in pagination
-mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;ITrade>"></see> interface)
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalTradesRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalTradesRequest)">GetHistoricalTradesAsAsyncEnumerable(IAlpacaDataClient, HistoricalTradesRequest)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListHistoricalTradesAsync_Alpaca_Markets_HistoricalTradesRequest_System_Threading_CancellationToken_">ListHistoricalTradesAsync(HistoricalTradesRequest, CancellationToken)</a> in pagination
+mode as single stream of items (in form of <span class="xref">System.Collections.Generic.IAsyncEnumerable&lt;T&gt;</span> interface)
 so they can be consumed by the <code>await foreach</code> statement on the caller side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;ITrade&gt; GetHistoricalTradesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalTradesRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;ITrade&gt; GetHistoricalTradesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalTradesRequest request)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -872,13 +1190,13 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalTradesRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalTradesRequest.html">HistoricalTradesRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical trades request (with empty next page token).</p>
 </td>
@@ -895,28 +1213,30 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">ITrade</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.ITrade.html">ITrade</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_IAlpacaDataClient_HistoricalTradesRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable(IAlpacaDataClient%2CHistoricalTradesRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalTradesRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalTradesRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L183">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_IAlpacaDataClient_HistoricalTradesRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable(IAlpacaDataClient,HistoricalTradesRequest,CancellationToken)">GetHistoricalTradesAsAsyncEnumerable(IAlpacaDataClient, HistoricalTradesRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalTradesAsync"></see> in pagination
-mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;ITrade>"></see> interface)
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalTradesRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalTradesRequest,System.Threading.CancellationToken)">GetHistoricalTradesAsAsyncEnumerable(IAlpacaDataClient, HistoricalTradesRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListHistoricalTradesAsync_Alpaca_Markets_HistoricalTradesRequest_System_Threading_CancellationToken_">ListHistoricalTradesAsync(HistoricalTradesRequest, CancellationToken)</a> in pagination
+mode as single stream of items (in form of <span class="xref">System.Collections.Generic.IAsyncEnumerable&lt;T&gt;</span> interface)
 so they can be consumed by the <code>await foreach</code> statement on the caller side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;ITrade&gt; GetHistoricalTradesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalTradesRequest request, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;ITrade&gt; GetHistoricalTradesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalTradesRequest request, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -929,19 +1249,19 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalTradesRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalTradesRequest.html">HistoricalTradesRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical trades request (with empty next page token).</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -958,28 +1278,30 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">ITrade</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.ITrade.html">ITrade</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable_IAlpacaDataClient_HistoricalTradesRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable(IAlpacaDataClient%2CHistoricalTradesRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalTradesRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalTradesRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L200">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable_IAlpacaDataClient_HistoricalTradesRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable(IAlpacaDataClient,HistoricalTradesRequest)">GetHistoricalTradesPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalTradesRequest)</h4>
-  <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalTradesAsync"></see> in pagination
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalTradesRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalTradesRequest)">GetHistoricalTradesPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalTradesRequest)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListHistoricalTradesAsync_Alpaca_Markets_HistoricalTradesRequest_System_Threading_CancellationToken_">ListHistoricalTradesAsync(HistoricalTradesRequest, CancellationToken)</a> in pagination
 mode as single stream of response pages with items so they can be consumed by the <code>await foreach</code>
 statement on the caller side as sequence of 'batches' instead of sequence of items itself.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IReadOnlyList&lt;ITrade&gt;&gt; GetHistoricalTradesPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalTradesRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IReadOnlyList&lt;ITrade&gt;&gt; GetHistoricalTradesPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalTradesRequest request)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -992,13 +1314,13 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalTradesRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalTradesRequest.html">HistoricalTradesRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical trades request (with empty next page token).</p>
 </td>
@@ -1015,28 +1337,30 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IReadOnlyList</span>&lt;<span class="xref">ITrade</span>&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.ITrade.html">ITrade</a>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable_IAlpacaDataClient_HistoricalTradesRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable(IAlpacaDataClient%2CHistoricalTradesRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalTradesRequest_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalTradesRequest%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L217">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable_IAlpacaDataClient_HistoricalTradesRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable(IAlpacaDataClient,HistoricalTradesRequest,CancellationToken)">GetHistoricalTradesPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalTradesRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets all items provided by <see cref="!:IAlpacaDataClient.ListHistoricalTradesAsync"></see> in pagination
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalTradesRequest_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalTradesRequest,System.Threading.CancellationToken)">GetHistoricalTradesPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalTradesRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListHistoricalTradesAsync_Alpaca_Markets_HistoricalTradesRequest_System_Threading_CancellationToken_">ListHistoricalTradesAsync(HistoricalTradesRequest, CancellationToken)</a> in pagination
 mode as single stream of response pages with items so they can be consumed by the <code>await foreach</code>
 statement on the caller side as sequence of 'batches' instead of sequence of items itself.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IReadOnlyList&lt;ITrade&gt;&gt; GetHistoricalTradesPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalTradesRequest request, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IReadOnlyList&lt;ITrade&gt;&gt; GetHistoricalTradesPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalTradesRequest request, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1049,19 +1373,19 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalTradesRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalTradesRequest.html">HistoricalTradesRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical trades request (with empty next page token).</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -1078,26 +1402,28 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IReadOnlyList</span>&lt;<span class="xref">ITrade</span>&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.ITrade.html">ITrade</a>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetSimpleMovingAverageAsync_IAlpacaDataClient_HistoricalBarsRequest_Int32_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(IAlpacaDataClient%2CHistoricalBarsRequest%2CInt32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetSimpleMovingAverageAsync_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalBarsRequest_System_Int32_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalBarsRequest%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L100">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L173">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetSimpleMovingAverageAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetSimpleMovingAverageAsync_IAlpacaDataClient_HistoricalBarsRequest_Int32_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(IAlpacaDataClient,HistoricalBarsRequest,Int32)">GetSimpleMovingAverageAsync(IAlpacaDataClient, HistoricalBarsRequest, Int32)</h4>
-  <div class="markdown level1 summary"><p>Gets the simple moving average values for the given list of <see cref="!:IBar"></see> objects.</p>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetSimpleMovingAverageAsync_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalBarsRequest_System_Int32_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalBarsRequest,System.Int32)">GetSimpleMovingAverageAsync(IAlpacaDataClient, HistoricalBarsRequest, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the simple moving average values for the given list of <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> objects.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IBar&gt; GetSimpleMovingAverageAsync(this IAlpacaDataClient client, HistoricalBarsRequest request, Int32 window)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IBar&gt; GetSimpleMovingAverageAsync(this IAlpacaDataClient client, HistoricalBarsRequest request, int window)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1110,19 +1436,19 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalBarsRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalBarsRequest.html">HistoricalBarsRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical minute bars request (with empty next page token).</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Int32</span></td>
+        <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">window</span></td>
         <td><p>Size of the moving average window.</p>
 </td>
@@ -1139,27 +1465,29 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
-        <td><p>The list of bars with SMA values for all <see cref="!:IBar"></see> properties.</p>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
+        <td><p>The list of bars with SMA values for all <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> properties.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetSimpleMovingAverageAsync_IAlpacaDataClient_HistoricalBarsRequest_Int32_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(IAlpacaDataClient%2CHistoricalBarsRequest%2CInt32%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetSimpleMovingAverageAsync_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalBarsRequest_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalBarsRequest%2CSystem.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L119">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/AlpacaDataClientExtensions.cs/#L192">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetSimpleMovingAverageAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetSimpleMovingAverageAsync_IAlpacaDataClient_HistoricalBarsRequest_Int32_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(IAlpacaDataClient,HistoricalBarsRequest,Int32,CancellationToken)">GetSimpleMovingAverageAsync(IAlpacaDataClient, HistoricalBarsRequest, Int32, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets the simple moving average values for the given list of <see cref="!:IBar"></see> objects.</p>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetSimpleMovingAverageAsync_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalBarsRequest_System_Int32_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetSimpleMovingAverageAsync(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalBarsRequest,System.Int32,System.Threading.CancellationToken)">GetSimpleMovingAverageAsync(IAlpacaDataClient, HistoricalBarsRequest, Int32, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the simple moving average values for the given list of <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> objects.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IBar&gt; GetSimpleMovingAverageAsync(this IAlpacaDataClient client, HistoricalBarsRequest request, Int32 window, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IBar&gt; GetSimpleMovingAverageAsync(this IAlpacaDataClient client, HistoricalBarsRequest request, int window, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1172,25 +1500,25 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
         <td><span class="parametername">client</span></td>
-        <td><p>Target instance of the <see cref="!:IAlpacaDataClient"></see> interface.</p>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HistoricalBarsRequest</span></td>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalBarsRequest.html">HistoricalBarsRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Original historical minute bars request (with empty next page token).</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Int32</span></td>
+        <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">window</span></td>
         <td><p>Size of the moving average window.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -1207,8 +1535,8 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
-        <td><p>The list of bars with SMA values for all <see cref="!:IBar"></see> properties.</p>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
+        <td><p>The list of bars with SMA values for all <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> properties.</p>
 </td>
       </tr>
     </tbody>

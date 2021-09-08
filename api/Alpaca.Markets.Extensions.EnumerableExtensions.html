@@ -80,29 +80,55 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">EnumerableExtensions</span></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.Extensions.html">Alpaca.Markets.Extensions</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.Extensions.dll</h6>
   <h5 id="Alpaca_Markets_Extensions_EnumerableExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class EnumerableExtensions : object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class EnumerableExtensions</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolume_IEnumerable_IBar__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolume(IEnumerable%7BIBar%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolume_System_Collections_Generic_IEnumerable_Alpaca_Markets_IBar__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolume(System.Collections.Generic.IEnumerable%7BAlpaca.Markets.IBar%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/EnumerableExtensions.cs/#L111">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/EnumerableExtensions.cs/#L158">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolume_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolume*"></a>
-  <h4 id="Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolume_IEnumerable_IBar__" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolume(IEnumerable{IBar})">GetAverageDailyTradeVolume(IEnumerable&lt;IBar&gt;)</h4>
-  <div class="markdown level1 summary"><p>Gets the average trade volume for the given list of <see cref="!:IBar"></see> objects.</p>
+  <h4 id="Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolume_System_Collections_Generic_IEnumerable_Alpaca_Markets_IBar__" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolume(System.Collections.Generic.IEnumerable{Alpaca.Markets.IBar})">GetAverageDailyTradeVolume(IEnumerable&lt;IBar&gt;)</h4>
+  <div class="markdown level1 summary"><p>Gets the average trade volume for the given list of <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> objects.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static (Decimal, UInt32) GetAverageDailyTradeVolume(this IEnumerable&lt;IBar&gt; bars)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static (decimal, uint) GetAverageDailyTradeVolume(this IEnumerable&lt;IBar&gt; bars)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -115,9 +141,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
         <td><span class="parametername">bars</span></td>
-        <td><p>Target list of the <see cref="!:IBar"></see> instances.</p>
+        <td><p>Target list of the <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> instances.</p>
 </td>
       </tr>
     </tbody>
@@ -132,7 +158,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.ValueTuple</span>&lt;<span class="xref">Decimal</span>, <span class="xref">UInt32</span>&gt;</td>
+        <td><span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Decimal</span>, <span class="xref">System.UInt32</span>&gt;</td>
         <td><p>The pair of ADTV value and number of processed day bars.</p>
 </td>
       </tr>
@@ -140,19 +166,21 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolumeAsync_IAsyncEnumerable_IBar__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable%7BIBar%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolumeAsync_System_Collections_Generic_IAsyncEnumerable_Alpaca_Markets_IBar__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(System.Collections.Generic.IAsyncEnumerable%7BAlpaca.Markets.IBar%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/EnumerableExtensions.cs/#L73">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/EnumerableExtensions.cs/#L121">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolumeAsync_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolumeAsync_IAsyncEnumerable_IBar__" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable{IBar})">GetAverageDailyTradeVolumeAsync(IAsyncEnumerable&lt;IBar&gt;)</h4>
-  <div class="markdown level1 summary"><p>Gets the average trade volume for the given list of <see cref="!:IBar"></see> objects.</p>
+  <h4 id="Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolumeAsync_System_Collections_Generic_IAsyncEnumerable_Alpaca_Markets_IBar__" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(System.Collections.Generic.IAsyncEnumerable{Alpaca.Markets.IBar})">GetAverageDailyTradeVolumeAsync(IAsyncEnumerable&lt;IBar&gt;)</h4>
+  <div class="markdown level1 summary"><p>Gets the average trade volume for the given list of <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> objects.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Task&lt;(Decimal, UInt32)&gt; GetAverageDailyTradeVolumeAsync(this IAsyncEnumerable&lt;IBar&gt; bars)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static Task&lt;(decimal, uint)&gt; GetAverageDailyTradeVolumeAsync(this IAsyncEnumerable&lt;IBar&gt; bars)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -165,9 +193,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
         <td><span class="parametername">bars</span></td>
-        <td><p>Target list of the <see cref="!:IBar"></see> instances.</p>
+        <td><p>Target list of the <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> instances.</p>
 </td>
       </tr>
     </tbody>
@@ -182,7 +210,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">Decimal</span>, <span class="xref">UInt32</span>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Decimal</span>, <span class="xref">System.UInt32</span>&gt;&gt;</td>
         <td><p>The pair of ADTV value and number of processed day bars.</p>
 </td>
       </tr>
@@ -190,19 +218,20 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolumeAsync_IAsyncEnumerable_IBar__CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable%7BIBar%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolumeAsync_System_Collections_Generic_IAsyncEnumerable_Alpaca_Markets_IBar__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(System.Collections.Generic.IAsyncEnumerable%7BAlpaca.Markets.IBar%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/EnumerableExtensions.cs/#L87">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/EnumerableExtensions.cs/#L135">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolumeAsync_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolumeAsync_IAsyncEnumerable_IBar__CancellationToken_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(IAsyncEnumerable{IBar},CancellationToken)">GetAverageDailyTradeVolumeAsync(IAsyncEnumerable&lt;IBar&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets the average trade volume for the given list of <see cref="!:IBar"></see> objects.</p>
+  <h4 id="Alpaca_Markets_Extensions_EnumerableExtensions_GetAverageDailyTradeVolumeAsync_System_Collections_Generic_IAsyncEnumerable_Alpaca_Markets_IBar__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(System.Collections.Generic.IAsyncEnumerable{Alpaca.Markets.IBar},System.Threading.CancellationToken)">GetAverageDailyTradeVolumeAsync(IAsyncEnumerable&lt;IBar&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the average trade volume for the given list of <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> objects.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static async Task&lt;(Decimal, UInt32)&gt; GetAverageDailyTradeVolumeAsync(this IAsyncEnumerable&lt;IBar&gt; bars, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">[CLSCompliant(false)]
+public static async Task&lt;(decimal, uint)&gt; GetAverageDailyTradeVolumeAsync(this IAsyncEnumerable&lt;IBar&gt; bars, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -215,13 +244,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
         <td><span class="parametername">bars</span></td>
-        <td><p>Target list of the <see cref="!:IBar"></see> instances.</p>
+        <td><p>Target list of the <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> instances.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -238,7 +267,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">Decimal</span>, <span class="xref">UInt32</span>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Decimal</span>, <span class="xref">System.UInt32</span>&gt;&gt;</td>
         <td><p>The pair of ADTV value and number of processed day bars.</p>
 </td>
       </tr>
@@ -246,19 +275,21 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverage_IEnumerable_IBar__Int32_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverage(IEnumerable%7BIBar%7D%2CInt32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverage_System_Collections_Generic_IEnumerable_Alpaca_Markets_IBar__System_Int32_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverage(System.Collections.Generic.IEnumerable%7BAlpaca.Markets.IBar%7D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/EnumerableExtensions.cs/#L193">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/EnumerableExtensions.cs/#L239">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverage_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverage*"></a>
-  <h4 id="Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverage_IEnumerable_IBar__Int32_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverage(IEnumerable{IBar},Int32)">GetSimpleMovingAverage(IEnumerable&lt;IBar&gt;, Int32)</h4>
-  <div class="markdown level1 summary"><p>Gets the simple moving average values for the given list of <see cref="!:IBar"></see> objects.</p>
+  <h4 id="Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverage_System_Collections_Generic_IEnumerable_Alpaca_Markets_IBar__System_Int32_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverage(System.Collections.Generic.IEnumerable{Alpaca.Markets.IBar},System.Int32)">GetSimpleMovingAverage(IEnumerable&lt;IBar&gt;, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the simple moving average values for the given list of <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> objects.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;IBar&gt; GetSimpleMovingAverage(this IEnumerable&lt;IBar&gt; bars, Int32 window)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IEnumerable&lt;IBar&gt; GetSimpleMovingAverage(this IEnumerable&lt;IBar&gt; bars, int window)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -271,13 +302,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
         <td><span class="parametername">bars</span></td>
-        <td><p>Target list of the <see cref="!:IBar"></see> instances.</p>
+        <td><p>Target list of the <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> instances.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Int32</span></td>
+        <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">window</span></td>
         <td><p>Size of the moving average window.</p>
 </td>
@@ -294,27 +325,29 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
-        <td><p>The list of bars with SMA values for all <see cref="!:IBar"></see> properties.</p>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
+        <td><p>The list of bars with SMA values for all <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> properties.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverageAsync_IAsyncEnumerable_IBar__Int32_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable%7BIBar%7D%2CInt32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverageAsync_System_Collections_Generic_IAsyncEnumerable_Alpaca_Markets_IBar__System_Int32_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(System.Collections.Generic.IAsyncEnumerable%7BAlpaca.Markets.IBar%7D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/EnumerableExtensions.cs/#L134">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/EnumerableExtensions.cs/#L181">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverageAsync_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverageAsync_IAsyncEnumerable_IBar__Int32_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable{IBar},Int32)">GetSimpleMovingAverageAsync(IAsyncEnumerable&lt;IBar&gt;, Int32)</h4>
-  <div class="markdown level1 summary"><p>Gets the simple moving average values for the given list of <see cref="!:IBar"></see> objects.</p>
+  <h4 id="Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverageAsync_System_Collections_Generic_IAsyncEnumerable_Alpaca_Markets_IBar__System_Int32_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(System.Collections.Generic.IAsyncEnumerable{Alpaca.Markets.IBar},System.Int32)">GetSimpleMovingAverageAsync(IAsyncEnumerable&lt;IBar&gt;, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the simple moving average values for the given list of <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> objects.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IBar&gt; GetSimpleMovingAverageAsync(this IAsyncEnumerable&lt;IBar&gt; bars, Int32 window)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAsyncEnumerable&lt;IBar&gt; GetSimpleMovingAverageAsync(this IAsyncEnumerable&lt;IBar&gt; bars, int window)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -327,13 +360,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
         <td><span class="parametername">bars</span></td>
-        <td><p>Target list of the <see cref="!:IBar"></see> instances.</p>
+        <td><p>Target list of the <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> instances.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Int32</span></td>
+        <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">window</span></td>
         <td><p>Size of the moving average window.</p>
 </td>
@@ -350,27 +383,28 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
-        <td><p>The list of bars with SMA values for all <see cref="!:IBar"></see> properties.</p>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
+        <td><p>The list of bars with SMA values for all <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> properties.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverageAsync_IAsyncEnumerable_IBar__Int32_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable%7BIBar%7D%2CInt32%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverageAsync_System_Collections_Generic_IAsyncEnumerable_Alpaca_Markets_IBar__System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(System.Collections.Generic.IAsyncEnumerable%7BAlpaca.Markets.IBar%7D%2CSystem.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/EnumerableExtensions.cs/#L150">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Statistics/EnumerableExtensions.cs/#L197">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverageAsync_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverageAsync_IAsyncEnumerable_IBar__Int32_CancellationToken_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(IAsyncEnumerable{IBar},Int32,CancellationToken)">GetSimpleMovingAverageAsync(IAsyncEnumerable&lt;IBar&gt;, Int32, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets the simple moving average values for the given list of <see cref="!:IBar"></see> objects.</p>
+  <h4 id="Alpaca_Markets_Extensions_EnumerableExtensions_GetSimpleMovingAverageAsync_System_Collections_Generic_IAsyncEnumerable_Alpaca_Markets_IBar__System_Int32_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(System.Collections.Generic.IAsyncEnumerable{Alpaca.Markets.IBar},System.Int32,System.Threading.CancellationToken)">GetSimpleMovingAverageAsync(IAsyncEnumerable&lt;IBar&gt;, Int32, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the simple moving average values for the given list of <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> objects.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static async IAsyncEnumerable&lt;IBar&gt; GetSimpleMovingAverageAsync(this IAsyncEnumerable&lt;IBar&gt; bars, Int32 window, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">[CLSCompliant(false)]
+public static async IAsyncEnumerable&lt;IBar&gt; GetSimpleMovingAverageAsync(this IAsyncEnumerable&lt;IBar&gt; bars, int window, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -383,19 +417,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
         <td><span class="parametername">bars</span></td>
-        <td><p>Target list of the <see cref="!:IBar"></see> instances.</p>
+        <td><p>Target list of the <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> instances.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Int32</span></td>
+        <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">window</span></td>
         <td><p>Size of the moving average window.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -412,8 +446,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IBar</span>&gt;</td>
-        <td><p>The list of bars with SMA values for all <see cref="!:IBar"></see> properties.</p>
+        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
+        <td><p>The list of bars with SMA values for all <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a> properties.</p>
 </td>
       </tr>
     </tbody>

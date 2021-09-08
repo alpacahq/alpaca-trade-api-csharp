@@ -81,30 +81,56 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">ConfigurationExtensions</span></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.Extensions.html">Alpaca.Markets.Extensions</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.Extensions.dll</h6>
   <h5 id="Alpaca_Markets_Extensions_ConfigurationExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class ConfigurationExtensions : object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class ConfigurationExtensions</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_AlpacaDataClientConfiguration_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(AlpacaDataClientConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_Alpaca_Markets_AlpacaDataClientConfiguration_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(Alpaca.Markets.AlpacaDataClientConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Factories/ConfigurationExtensions.cs/#L17">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_" data-uid="Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient*"></a>
-  <h4 id="Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_AlpacaDataClientConfiguration_" data-uid="Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(AlpacaDataClientConfiguration)">GetClient(AlpacaDataClientConfiguration)</h4>
-  <div class="markdown level1 summary"><p>Creates the new instance of <see cref="!:IAlpacaTradingClient"></see> interface
+  <h4 id="Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_Alpaca_Markets_AlpacaDataClientConfiguration_" data-uid="Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(Alpaca.Markets.AlpacaDataClientConfiguration)">GetClient(AlpacaDataClientConfiguration)</h4>
+  <div class="markdown level1 summary"><p>Creates the new instance of <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a> interface
 implementation using the <code data-dev-comment-type="paramref" class="paramref">configuration</code> argument.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaDataClient GetClient(this AlpacaDataClientConfiguration configuration)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAlpacaDataClient GetClient(this AlpacaDataClientConfiguration configuration)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -117,7 +143,7 @@ implementation using the <code data-dev-comment-type="paramref" class="paramref"
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">AlpacaDataClientConfiguration</span></td>
+        <td><a class="xref" href="Alpaca.Markets.AlpacaDataClientConfiguration.html">AlpacaDataClientConfiguration</a></td>
         <td><span class="parametername">configuration</span></td>
         <td><p>Client configuration parameters.</p>
 </td>
@@ -134,28 +160,30 @@ implementation using the <code data-dev-comment-type="paramref" class="paramref"
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataClient</span></td>
-        <td><p>The new instance of <see cref="!:IAlpacaTradingClient"></see> interface implementation.</p>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><p>The new instance of <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a> interface implementation.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_AlpacaDataStreamingClientConfiguration_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(AlpacaDataStreamingClientConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_Alpaca_Markets_AlpacaDataStreamingClientConfiguration_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(Alpaca.Markets.AlpacaDataStreamingClientConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Factories/ConfigurationExtensions.cs/#L29">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_" data-uid="Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient*"></a>
-  <h4 id="Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_AlpacaDataStreamingClientConfiguration_" data-uid="Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(AlpacaDataStreamingClientConfiguration)">GetClient(AlpacaDataStreamingClientConfiguration)</h4>
-  <div class="markdown level1 summary"><p>Creates the new instance of <see cref="!:IAlpacaDataStreamingClient"></see> interface
+  <h4 id="Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_Alpaca_Markets_AlpacaDataStreamingClientConfiguration_" data-uid="Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(Alpaca.Markets.AlpacaDataStreamingClientConfiguration)">GetClient(AlpacaDataStreamingClientConfiguration)</h4>
+  <div class="markdown level1 summary"><p>Creates the new instance of <a class="xref" href="Alpaca.Markets.IAlpacaDataStreamingClient.html">IAlpacaDataStreamingClient</a> interface
 implementation using the <code data-dev-comment-type="paramref" class="paramref">configuration</code> argument.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaDataStreamingClient GetClient(this AlpacaDataStreamingClientConfiguration configuration)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAlpacaDataStreamingClient GetClient(this AlpacaDataStreamingClientConfiguration configuration)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -168,7 +196,7 @@ implementation using the <code data-dev-comment-type="paramref" class="paramref"
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">AlpacaDataStreamingClientConfiguration</span></td>
+        <td><a class="xref" href="Alpaca.Markets.AlpacaDataStreamingClientConfiguration.html">AlpacaDataStreamingClientConfiguration</a></td>
         <td><span class="parametername">configuration</span></td>
         <td><p>Client configuration parameters.</p>
 </td>
@@ -185,28 +213,30 @@ implementation using the <code data-dev-comment-type="paramref" class="paramref"
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaDataStreamingClient</span></td>
-        <td><p>The new instance of <see cref="!:IAlpacaDataStreamingClient"></see> interface implementation.</p>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataStreamingClient.html">IAlpacaDataStreamingClient</a></td>
+        <td><p>The new instance of <a class="xref" href="Alpaca.Markets.IAlpacaDataStreamingClient.html">IAlpacaDataStreamingClient</a> interface implementation.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_AlpacaStreamingClientConfiguration_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(AlpacaStreamingClientConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_Alpaca_Markets_AlpacaStreamingClientConfiguration_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(Alpaca.Markets.AlpacaStreamingClientConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Factories/ConfigurationExtensions.cs/#L41">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_" data-uid="Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient*"></a>
-  <h4 id="Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_AlpacaStreamingClientConfiguration_" data-uid="Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(AlpacaStreamingClientConfiguration)">GetClient(AlpacaStreamingClientConfiguration)</h4>
-  <div class="markdown level1 summary"><p>Creates the new instance of <see cref="!:IAlpacaStreamingClient"></see> interface
+  <h4 id="Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_Alpaca_Markets_AlpacaStreamingClientConfiguration_" data-uid="Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(Alpaca.Markets.AlpacaStreamingClientConfiguration)">GetClient(AlpacaStreamingClientConfiguration)</h4>
+  <div class="markdown level1 summary"><p>Creates the new instance of <a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a> interface
 implementation using the <code data-dev-comment-type="paramref" class="paramref">configuration</code> argument.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaStreamingClient GetClient(this AlpacaStreamingClientConfiguration configuration)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAlpacaStreamingClient GetClient(this AlpacaStreamingClientConfiguration configuration)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -219,7 +249,7 @@ implementation using the <code data-dev-comment-type="paramref" class="paramref"
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">AlpacaStreamingClientConfiguration</span></td>
+        <td><a class="xref" href="Alpaca.Markets.AlpacaStreamingClientConfiguration.html">AlpacaStreamingClientConfiguration</a></td>
         <td><span class="parametername">configuration</span></td>
         <td><p>Client configuration parameters.</p>
 </td>
@@ -236,28 +266,30 @@ implementation using the <code data-dev-comment-type="paramref" class="paramref"
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaStreamingClient</span></td>
-        <td><p>The new instance of <see cref="!:IAlpacaStreamingClient"></see> interface implementation.</p>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a></td>
+        <td><p>The new instance of <a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a> interface implementation.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_AlpacaTradingClientConfiguration_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(AlpacaTradingClientConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_Alpaca_Markets_AlpacaTradingClientConfiguration_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(Alpaca.Markets.AlpacaTradingClientConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Factories/ConfigurationExtensions.cs/#L53">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_" data-uid="Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient*"></a>
-  <h4 id="Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_AlpacaTradingClientConfiguration_" data-uid="Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(AlpacaTradingClientConfiguration)">GetClient(AlpacaTradingClientConfiguration)</h4>
-  <div class="markdown level1 summary"><p>Creates the new instance of <see cref="!:IAlpacaTradingClient"></see> interface
+  <h4 id="Alpaca_Markets_Extensions_ConfigurationExtensions_GetClient_Alpaca_Markets_AlpacaTradingClientConfiguration_" data-uid="Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(Alpaca.Markets.AlpacaTradingClientConfiguration)">GetClient(AlpacaTradingClientConfiguration)</h4>
+  <div class="markdown level1 summary"><p>Creates the new instance of <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a> interface
 implementation using the <code data-dev-comment-type="paramref" class="paramref">configuration</code> argument.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaTradingClient GetClient(this AlpacaTradingClientConfiguration configuration)</code></pre>
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+[CLSCompliant(false)]
+public static IAlpacaTradingClient GetClient(this AlpacaTradingClientConfiguration configuration)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -270,7 +302,7 @@ implementation using the <code data-dev-comment-type="paramref" class="paramref"
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">AlpacaTradingClientConfiguration</span></td>
+        <td><a class="xref" href="Alpaca.Markets.AlpacaTradingClientConfiguration.html">AlpacaTradingClientConfiguration</a></td>
         <td><span class="parametername">configuration</span></td>
         <td><p>Client configuration parameters.</p>
 </td>
@@ -287,8 +319,8 @@ implementation using the <code data-dev-comment-type="paramref" class="paramref"
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IAlpacaTradingClient</span></td>
-        <td><p>The new instance of <see cref="!:IAlpacaTradingClient"></see> interface implementation.</p>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a></td>
+        <td><p>The new instance of <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a> interface implementation.</p>
 </td>
       </tr>
     </tbody>
