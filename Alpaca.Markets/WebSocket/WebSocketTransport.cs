@@ -290,6 +290,11 @@ namespace Alpaca.Markets
             {
                 Trace.TraceInformation(exception.Message);
             }
+            catch (WebSocketException exception) when
+                (exception.WebSocketErrorCode == WebSocketError.ConnectionClosedPrematurely)
+            {
+                Trace.TraceInformation(exception.Message);
+            }
             catch (Exception exception)
             {
                 if (!_aborted)
