@@ -23,6 +23,8 @@ namespace Alpaca.Markets
             : HttpClientHandler
 #endif
         {
+            private static readonly TimeSpan _defaultHttpClientTimeout = new HttpClient().Timeout;
+
             private readonly IAsyncPolicy<HttpResponseMessage> _asyncPolicy;
 
             public CustomHttpHandler(
@@ -33,8 +35,41 @@ namespace Alpaca.Markets
             protected override async Task<HttpResponseMessage> SendAsync(
                 HttpRequestMessage request,
                 CancellationToken cancellationToken) =>
-                await _asyncPolicy.ExecuteAsync(() => base.SendAsync(request, cancellationToken))
+                await _asyncPolicy
+                    .ExecuteAsync(() => sendAsyncWithTimeout(request, cancellationToken))
                     .ConfigureAwait(false);
+
+            private Task<HttpResponseMessage> sendAsyncWithTimeout(
+                HttpRequestMessage request,
+                CancellationToken cancellationToken)
+            {
+                using var cancellationTokenSource = CancellationTokenSource
+                    .CreateLinkedTokenSource(cancellationToken);
+                cancellationTokenSource.CancelAfter(getTimeout(request));
+
+                try
+                {
+                    return base.SendAsync(request, cancellationTokenSource.Token);
+                }
+                catch (OperationCanceledException exception)
+                    when (!cancellationToken.IsCancellationRequested)
+                {
+                    throw new TimeoutException("HTTP response timed out.", exception);
+                }
+            }
+
+            private static TimeSpan getTimeout(
+                HttpRequestMessage request) =>
+#if NET5_0_OR_GREATER
+                request.Options.TryGetValue(RequestTimeoutOptionKey,
+                    out var requestSpecificTimeoutValue)
+#else
+                request.Properties.TryGetValue(
+                    RequestTimeoutOptionKey, out var value) &&
+                value is TimeSpan requestSpecificTimeoutValue
+#endif
+                    ? requestSpecificTimeoutValue
+                    : _defaultHttpClientTimeout;
         }
 
         private const UInt32 DefaultMaxRetryAttempts = 5;
@@ -100,6 +135,13 @@ namespace Alpaca.Markets
         /// </summary>
         public static ThrottleParameters Default { get; } = new ();
 
+#if NET5_0_OR_GREATER
+        internal static HttpRequestOptionsKey<TimeSpan> RequestTimeoutOptionKey =
+            new (nameof(RequestTimeoutOptionKey));
+#else
+        internal static String RequestTimeoutOptionKey = nameof(RequestTimeoutOptionKey);
+#endif
+
         /// <summary>
         /// Gets or sets maximal number of retry attempts for single request.
         /// </summary>
@@ -148,9 +190,12 @@ namespace Alpaca.Markets
         internal HttpClient GetHttpClient() => 
 #pragma warning disable CA2000 // Dispose objects before losing scope
 #pragma warning disable CA5399 // HttpClient is created without enabling CheckCertificateRevocationList
-            new (new CustomHttpHandler(GetAsyncPolicy()), true);
+            new (new CustomHttpHandler(GetAsyncPolicy()), true)
 #pragma warning restore CA5399 //  HttpClient is created without enabling CheckCertificateRevocationList
 #pragma warning restore CA2000 // Dispose objects before losing scope
+            {
+                Timeout = Timeout.InfiniteTimeSpan
+            };
 
         private TimeSpan getDelayFromHeader(
             Int32 retryCount,

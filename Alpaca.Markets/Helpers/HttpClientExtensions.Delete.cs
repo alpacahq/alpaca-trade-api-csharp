@@ -31,6 +31,15 @@ namespace Alpaca.Markets
 
         public static Task<TApi> DeleteAsync<TApi, TJson>(
             this HttpClient httpClient,
+            UriBuilder uriBuilder,
+            TimeSpan timeout,
+            CancellationToken cancellationToken)
+            where TJson : TApi =>
+            callAndDeserializeAsync<TApi, TJson>(
+                httpClient, HttpMethod.Delete, uriBuilder.Uri, timeout, cancellationToken);
+
+        public static Task<TApi> DeleteAsync<TApi, TJson>(
+            this HttpClient httpClient,
             String endpointUri,
             CancellationToken cancellationToken)
             where TJson : TApi =>

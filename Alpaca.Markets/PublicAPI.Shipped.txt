@@ -141,6 +141,8 @@ Alpaca.Markets.DeleteAllPositionsRequest
 Alpaca.Markets.DeleteAllPositionsRequest.CancelOrders.get -> bool?
 Alpaca.Markets.DeleteAllPositionsRequest.CancelOrders.set -> void
 Alpaca.Markets.DeleteAllPositionsRequest.DeleteAllPositionsRequest() -> void
+Alpaca.Markets.DeleteAllPositionsRequest.Timeout.get -> System.TimeSpan?
+Alpaca.Markets.DeleteAllPositionsRequest.Timeout.set -> void
 Alpaca.Markets.DeletePositionRequest
 Alpaca.Markets.DeletePositionRequest.DeletePositionRequest(string! symbol) -> void
 Alpaca.Markets.DeletePositionRequest.PositionQuantity.get -> Alpaca.Markets.PositionQuantity?
