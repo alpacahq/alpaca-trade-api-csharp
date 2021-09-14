@@ -41,6 +41,28 @@ namespace Alpaca.Markets
             HttpMessageInvoker httpClient,
             HttpMethod method,
             Uri endpointUri,
+            TimeSpan timeout,
+            CancellationToken cancellationToken)
+            where TJson : TApi
+        {
+            using var request = new HttpRequestMessage(method, endpointUri);
+            if (timeout != Timeout.InfiniteTimeSpan)
+            {
+#if NET5_0_OR_GREATER
+                request.Options.Set(ThrottleParameters.RequestTimeoutOptionKey, timeout);
+#else
+                request.Properties[ThrottleParameters.RequestTimeoutOptionKey] = timeout;
+#endif
+            }
+            return await callAndDeserializeAsync<TApi, TJson>(
+                    httpClient, request, cancellationToken)
+                .ConfigureAwait(false);
+        }
+
+        private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
+            HttpMessageInvoker httpClient,
+            HttpMethod method,
+            Uri endpointUri,
             CancellationToken cancellationToken)
             where TJson : TApi
         {

@@ -54,6 +54,7 @@ namespace Alpaca.Markets
         internal override QueryBuilder AddParameters(
             QueryBuilder queryBuilder) => 
             queryBuilder
+                // ReSharper disable once StringLiteralTypo
                 .AddParameter("timeframe", TimeFrame.ToString())
                 .AddParameter("adjustment", Adjustment);
     }

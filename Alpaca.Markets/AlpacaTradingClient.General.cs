@@ -85,6 +85,7 @@ namespace Alpaca.Markets
             await _httpClient.DeleteAsync<IReadOnlyList<IPositionActionStatus>, List<JsonPositionActionStatus>>(
                 await request.EnsureNotNull(nameof(request))
                     .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                request.Timeout ?? Timeout.InfiniteTimeSpan,
                 cancellationToken).ConfigureAwait(false);
 
         /// <inheritdoc />
