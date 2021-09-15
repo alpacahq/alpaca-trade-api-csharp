@@ -13,7 +13,7 @@ namespace Alpaca.Markets
         /// <param name="baseOrder">Base order object for creating advanced one.</param>
         /// <param name="orderClass">Advanced order class for new smart order.</param>
         protected internal AdvancedOrderBase(
-            OrderBase baseOrder,
+            SimpleOrderBase baseOrder,
             OrderClass orderClass)
             : base(baseOrder.EnsureNotNull(nameof(baseOrder)))
         {
@@ -37,6 +37,6 @@ namespace Alpaca.Markets
                 .WithOrderClass(OrderClass);
         }
 
-        private OrderBase BaseOrder { get; }
+        internal SimpleOrderBase BaseOrder { get; }
     }
 }
