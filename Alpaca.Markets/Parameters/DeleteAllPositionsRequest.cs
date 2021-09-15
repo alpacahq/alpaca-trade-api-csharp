@@ -20,7 +20,7 @@ namespace Alpaca.Markets
         /// GEts or sets the operation timeout. Useful in case of deleting lot of positions. The default
         /// HTTP timeout equal to 100 seconds used in case if this property is equal to <c>null</c>.
         /// </summary>
-        public TimeSpan? Timeout { get; set; }
+        public TimeSpan? Timeout { get; [UsedImplicitly] set; }
 
         internal async ValueTask<UriBuilder> GetUriBuilderAsync(
             HttpClient httpClient) =>

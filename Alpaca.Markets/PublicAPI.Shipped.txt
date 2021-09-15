@@ -61,7 +61,7 @@ Alpaca.Markets.AccountStatus.Rejected = 6 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.SubmissionFailed = 1 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.Submitted = 2 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AdvancedOrderBase
-Alpaca.Markets.AdvancedOrderBase.AdvancedOrderBase(Alpaca.Markets.OrderBase! baseOrder, Alpaca.Markets.OrderClass orderClass) -> void
+Alpaca.Markets.AdvancedOrderBase.AdvancedOrderBase(Alpaca.Markets.SimpleOrderBase! baseOrder, Alpaca.Markets.OrderClass orderClass) -> void
 Alpaca.Markets.AdvancedOrderBase.OrderClass.get -> Alpaca.Markets.OrderClass
 Alpaca.Markets.AlpacaDataClientConfiguration
 Alpaca.Markets.AlpacaDataClientConfiguration.AlpacaDataClientConfiguration() -> void
@@ -673,6 +673,7 @@ Alpaca.Markets.StopLimitOrder.StopPrice.get -> decimal
 Alpaca.Markets.StopLossOrder
 Alpaca.Markets.StopLossOrder.LimitPrice.get -> decimal?
 Alpaca.Markets.StopLossOrder.StopPrice.get -> decimal
+Alpaca.Markets.StopLossOrder.TakeProfit(decimal takeProfitLimitPrice) -> Alpaca.Markets.BracketOrder!
 Alpaca.Markets.StopOrder
 Alpaca.Markets.StopOrder.StopPrice.get -> decimal
 Alpaca.Markets.StreamingClientConfiguration
@@ -681,6 +682,8 @@ Alpaca.Markets.StreamingClientConfiguration.ApiEndpoint.set -> void
 Alpaca.Markets.StreamingClientConfiguration.StreamingClientConfiguration(System.Uri! apiEndpoint) -> void
 Alpaca.Markets.TakeProfitOrder
 Alpaca.Markets.TakeProfitOrder.LimitPrice.get -> decimal
+Alpaca.Markets.TakeProfitOrder.StopLoss(decimal stopLossStopPrice) -> Alpaca.Markets.BracketOrder!
+Alpaca.Markets.TakeProfitOrder.StopLoss(decimal stopLossStopPrice, decimal stopLossLimitPrice) -> Alpaca.Markets.BracketOrder!
 Alpaca.Markets.ThrottleParameters
 Alpaca.Markets.ThrottleParameters.GetAsyncPolicy() -> Polly.IAsyncPolicy<System.Net.Http.HttpResponseMessage!>!
 Alpaca.Markets.ThrottleParameters.MaxRetryAttempts.get -> uint
