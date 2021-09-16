@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -27,11 +28,20 @@ namespace Alpaca.Markets
         /// </summary>
         public BarTimeFrame TimeFrame { get; }
 
+        /// <summary>
+        /// Gets or sets adjustment type of time bars for retrieval.
+        /// </summary>
+        [UsedImplicitly]
+        public Adjustment? Adjustment { get; set; }
+
         /// <inheritdoc />
         protected override String LastPathSegment => "bars";
 
         internal override QueryBuilder AddParameters(
             QueryBuilder queryBuilder) => 
-            queryBuilder.AddParameter("timeframe", TimeFrame);
+            queryBuilder
+                // ReSharper disable once StringLiteralTypo
+                .AddParameter("timeframe", TimeFrame.ToString())
+                .AddParameter("adjustment", Adjustment);
     }
 }
