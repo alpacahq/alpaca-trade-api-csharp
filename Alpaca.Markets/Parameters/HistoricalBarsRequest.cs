@@ -42,12 +42,19 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public BarTimeFrame TimeFrame { get; }
 
+        /// <summary>
+        /// Gets or sets adjustment type of time bars for retrieval.
+        /// </summary>
+        [UsedImplicitly]
+        public Adjustment? Adjustment { get; set; }
+
         /// <inheritdoc />
         protected override String LastPathSegment => "bars";
 
         internal override QueryBuilder AddParameters(
             QueryBuilder queryBuilder) => 
-            // ReSharper disable once StringLiteralTypo
-            queryBuilder.AddParameter("timeframe", TimeFrame);
+            queryBuilder
+                .AddParameter("timeframe", TimeFrame.ToString())
+                .AddParameter("adjustment", Adjustment);
     }
 }
