@@ -60,6 +60,11 @@ Alpaca.Markets.AccountStatus.Onboarding = 0 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.Rejected = 6 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.SubmissionFailed = 1 -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.AccountStatus.Submitted = 2 -> Alpaca.Markets.AccountStatus
+Alpaca.Markets.Adjustment
+Alpaca.Markets.Adjustment.DividendsOnly = 2 -> Alpaca.Markets.Adjustment
+Alpaca.Markets.Adjustment.Nothing = 0 -> Alpaca.Markets.Adjustment
+Alpaca.Markets.Adjustment.SplitsAndDividends = 3 -> Alpaca.Markets.Adjustment
+Alpaca.Markets.Adjustment.SplitsOnly = 1 -> Alpaca.Markets.Adjustment
 Alpaca.Markets.AdvancedOrderBase
 Alpaca.Markets.AdvancedOrderBase.AdvancedOrderBase(Alpaca.Markets.OrderBase! baseOrder, Alpaca.Markets.OrderClass orderClass) -> void
 Alpaca.Markets.AdvancedOrderBase.OrderClass.get -> Alpaca.Markets.OrderClass
@@ -107,9 +112,15 @@ Alpaca.Markets.AuthStatus
 Alpaca.Markets.AuthStatus.Authorized = 0 -> Alpaca.Markets.AuthStatus
 Alpaca.Markets.AuthStatus.Unauthorized = 1 -> Alpaca.Markets.AuthStatus
 Alpaca.Markets.BarTimeFrame
-Alpaca.Markets.BarTimeFrame.Day = 2 -> Alpaca.Markets.BarTimeFrame
-Alpaca.Markets.BarTimeFrame.Hour = 1 -> Alpaca.Markets.BarTimeFrame
-Alpaca.Markets.BarTimeFrame.Minute = 0 -> Alpaca.Markets.BarTimeFrame
+Alpaca.Markets.BarTimeFrame.BarTimeFrame() -> void
+Alpaca.Markets.BarTimeFrame.BarTimeFrame(int value, Alpaca.Markets.BarTimeFrameUnit unit) -> void
+Alpaca.Markets.BarTimeFrame.Equals(Alpaca.Markets.BarTimeFrame other) -> bool
+Alpaca.Markets.BarTimeFrame.Unit.get -> Alpaca.Markets.BarTimeFrameUnit
+Alpaca.Markets.BarTimeFrame.Value.get -> int
+Alpaca.Markets.BarTimeFrameUnit
+Alpaca.Markets.BarTimeFrameUnit.Day = 2 -> Alpaca.Markets.BarTimeFrameUnit
+Alpaca.Markets.BarTimeFrameUnit.Hour = 1 -> Alpaca.Markets.BarTimeFrameUnit
+Alpaca.Markets.BarTimeFrameUnit.Minute = 0 -> Alpaca.Markets.BarTimeFrameUnit
 Alpaca.Markets.BracketOrder
 Alpaca.Markets.BracketOrder.StopLoss.get -> Alpaca.Markets.IStopLoss!
 Alpaca.Markets.BracketOrder.TakeProfit.get -> Alpaca.Markets.ITakeProfit!
@@ -159,6 +170,8 @@ Alpaca.Markets.Exchange.NyseArca = 2 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.NyseMkt = 1 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.Unknown = 0 -> Alpaca.Markets.Exchange
 Alpaca.Markets.HistoricalBarsRequest
+Alpaca.Markets.HistoricalBarsRequest.Adjustment.get -> Alpaca.Markets.Adjustment?
+Alpaca.Markets.HistoricalBarsRequest.Adjustment.set -> void
 Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(string! symbol, Alpaca.Markets.BarTimeFrame timeFrame, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(string! symbol, System.DateTime from, System.DateTime into, Alpaca.Markets.BarTimeFrame timeFrame) -> void
 Alpaca.Markets.HistoricalBarsRequest.TimeFrame.get -> Alpaca.Markets.BarTimeFrame
@@ -717,11 +730,19 @@ Alpaca.Markets.UpdateWatchListRequest.Assets.get -> System.Collections.Generic.I
 Alpaca.Markets.UpdateWatchListRequest.Name.get -> string!
 Alpaca.Markets.UpdateWatchListRequest.UpdateWatchListRequest(System.Guid watchListId, string! name, System.Collections.Generic.IEnumerable<string!>! assets) -> void
 Alpaca.Markets.UpdateWatchListRequest.WatchListId.get -> System.Guid
+override Alpaca.Markets.BarTimeFrame.Equals(object? obj) -> bool
+override Alpaca.Markets.BarTimeFrame.GetHashCode() -> int
+override Alpaca.Markets.BarTimeFrame.ToString() -> string!
 override Alpaca.Markets.HistoryPeriod.Equals(object? obj) -> bool
 override Alpaca.Markets.HistoryPeriod.GetHashCode() -> int
 override Alpaca.Markets.HistoryPeriod.ToString() -> string!
 override Alpaca.Markets.TrailOffset.Equals(object? obj) -> bool
 override Alpaca.Markets.TrailOffset.GetHashCode() -> int
+static Alpaca.Markets.BarTimeFrame.Day.get -> Alpaca.Markets.BarTimeFrame
+static Alpaca.Markets.BarTimeFrame.Hour.get -> Alpaca.Markets.BarTimeFrame
+static Alpaca.Markets.BarTimeFrame.Minute.get -> Alpaca.Markets.BarTimeFrame
+static Alpaca.Markets.BarTimeFrame.operator !=(Alpaca.Markets.BarTimeFrame lhs, Alpaca.Markets.BarTimeFrame rhs) -> bool
+static Alpaca.Markets.BarTimeFrame.operator ==(Alpaca.Markets.BarTimeFrame lhs, Alpaca.Markets.BarTimeFrame rhs) -> bool
 static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateTime date) -> Alpaca.Markets.CalendarRequest!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaDataClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaDataClient!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaDataClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaDataClientConfiguration!
