@@ -10,8 +10,8 @@ namespace Alpaca.Markets
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
     internal sealed class JsonBarsPage : IPage<IAgg>
     {
-        [JsonProperty(PropertyName = "bars", Required = Required.Always)]
-        public List<JsonAlpacaHistoricalBar> ItemsList { get; set; } = new List<JsonAlpacaHistoricalBar>();
+        [JsonProperty(PropertyName = "bars", Required = Required.Default)]
+        public List<JsonAlpacaHistoricalBar> ItemsList { get; set; } = new ();
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
