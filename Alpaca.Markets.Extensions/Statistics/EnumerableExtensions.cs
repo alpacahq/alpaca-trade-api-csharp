@@ -14,8 +14,6 @@ namespace Alpaca.Markets.Extensions
     {
         private struct Bar : IBar
         {
-            private static readonly Int64 _oneMinuteTicks = TimeSpan.FromMinutes(1).Ticks;
-
             public String Symbol { get; private set; }
 
             public DateTime TimeUtc { get; private set; }
@@ -33,8 +31,6 @@ namespace Alpaca.Markets.Extensions
             public Decimal Vwap { get; private set; }
 
             public UInt64 TradeCount { get; private set; }
-
-            public Boolean HasData => Volume != 0;
 
             public static Bar operator +(Bar lhs, IBar rhs) =>
                 new ()
@@ -77,40 +73,6 @@ namespace Alpaca.Markets.Extensions
                     Vwap = lhs.Vwap / count,
                     TradeCount = lhs.TradeCount / (UInt64)count
                 };
-
-            public Boolean TryReSample(IBar bar, TimeSpan scale)
-            {
-                var roundedTime = roundSamplingScale(bar.TimeUtc, scale);
-
-                if (!HasData)
-                {
-                    TimeUtc = roundedTime;
-                    Symbol = bar.Symbol;
-                    Open = bar.Open;
-                    High = bar.High;
-                    Low = bar.Low;
-                    Close = bar.Close;
-                    Volume = bar.Volume;
-                    TradeCount = bar.TradeCount;
-                    return true;
-                }
-
-                if (roundedTime != TimeUtc)
-                {
-                    return false;
-                }
-
-                High = Math.Max(High, bar.High);
-                Low = Math.Min(Low, bar.Low);
-                Close = bar.Close;
-                Volume += bar.Volume;
-                TradeCount += bar.TradeCount;
-
-                return true;
-            }
-
-            private static DateTime roundSamplingScale(DateTime time , TimeSpan scale) =>
-                new (((time.Ticks - _oneMinuteTicks) / scale.Ticks + 1) * scale.Ticks, time.Kind);
         }
 
         /// <summary>
@@ -268,35 +230,6 @@ namespace Alpaca.Markets.Extensions
             }
 
             yield return accumulator;
-        }
-
-        internal static async IAsyncEnumerable<IBar> ReSampleAsync(
-            this IAsyncEnumerable<IBar> bars,
-            TimeSpan scale,
-            [EnumeratorCancellation] CancellationToken cancellationToken)
-        {
-            var accumulator = new Bar();
-
-            await foreach (var bar in bars.EnsureNotNull(nameof(bars)).WithCancellation(cancellationToken))
-            {
-                if (accumulator.TryReSample(bar, scale))
-                {
-                    continue;
-                }
-
-                if (accumulator.HasData)
-                {
-                    yield return accumulator;
-                }
-
-                accumulator = new Bar();
-                accumulator.TryReSample(bar, scale);
-            }
-
-            if (accumulator.HasData)
-            {
-                yield return accumulator;
-            }
         }
     }
 }
