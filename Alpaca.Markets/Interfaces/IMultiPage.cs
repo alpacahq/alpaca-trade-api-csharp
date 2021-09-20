@@ -8,14 +8,8 @@ namespace Alpaca.Markets
     /// Encapsulates single page response in Alpaca Data API v2.
     /// </summary>
     /// <typeparam name="TItems">Type of paged item (bar, trade or quote)</typeparam>
-    public interface IPage<out TItems>
+    public interface IMultiPage<TItems>
     {
-        /// <summary>
-        /// Gets the asset name for all items on page.
-        /// </summary>
-        [UsedImplicitly]
-        public String Symbol { get; }
-
         /// <summary>
         /// Gets the next page token for continuation. If value of this property
         /// equals to <c>null</c> this page is the last one and no more data available.
@@ -24,8 +18,8 @@ namespace Alpaca.Markets
         public String? NextPageToken { get; }
 
         /// <summary>
-        /// Gets list of items for this response.
+        /// Gets list of items for this response grouped by symbols.
         /// </summary>
-        public IReadOnlyList<TItems> Items { get; }
+        public IReadOnlyDictionary<String, IReadOnlyList<TItems>> Items { get; }
     }
 }

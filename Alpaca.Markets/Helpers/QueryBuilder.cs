@@ -59,8 +59,8 @@ namespace Alpaca.Markets
 
         public QueryBuilder AddParameter(
             String name,
-            String[] values) =>
-            values.Length != 0
+            IReadOnlyCollection<String> values) =>
+            values.Count != 0
                 ? AddParameter(name, String.Join(ListSeparator, values))
                 : this;
 

@@ -9,27 +9,22 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonQuotesPage : IPageMutable<IQuote>
+    internal sealed class JsonMultiQuotesPage : IMultiPageMutable<IQuote>
     {
         [JsonProperty(PropertyName = "quotes", Required = Required.Default)]
-        public List<JsonHistoricalQuote> ItemsList { get; set; } = new ();
-
-        [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
-        public String Symbol { get; set; } = String.Empty;
+        public Dictionary<String, List<JsonHistoricalQuote>?> ItemsDictionary { get; set; } = new ();
 
         [JsonProperty(PropertyName = "next_page_token", Required = Required.Default)]
         public String? NextPageToken { get; set; }
 
         [JsonIgnore]
-        public IReadOnlyList<IQuote> Items { get; set; } = new List<IQuote>();
+        public IReadOnlyDictionary<String, IReadOnlyList<IQuote>> Items { get; set; } =
+            new Dictionary<String, IReadOnlyList<IQuote>>();
             
         [OnDeserialized]
         internal void OnDeserializedMethod(
-            StreamingContext context)
-        {
-            // ReSharper disable once ConstantConditionalAccessQualifier
-            ItemsList?.ForEach(_ => _.Symbol = Symbol);
-            Items = ItemsList.EmptyIfNull();
-        }
+            StreamingContext context) =>
+            Items = ItemsDictionary.EmptyIfNull<IQuote, JsonHistoricalQuote>(
+                (symbol, list) => list?.ForEach(item => item.Symbol = symbol));
     }
 }

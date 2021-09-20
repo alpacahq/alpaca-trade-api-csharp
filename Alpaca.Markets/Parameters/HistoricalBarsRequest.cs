@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 
 namespace Alpaca.Markets
@@ -20,8 +21,9 @@ namespace Alpaca.Markets
             DateTime from,
             DateTime into,
             BarTimeFrame timeFrame)
-            : base(symbol, from, into) =>
-            TimeFrame = timeFrame;
+            : this(new[] { symbol }, from, into, timeFrame)
+        {
+        }
 
         /// <summary>
         /// Creates new instance of <see cref="HistoricalBarsRequest"/> object.
@@ -33,7 +35,36 @@ namespace Alpaca.Markets
             String symbol,
             BarTimeFrame timeFrame,
             IInclusiveTimeInterval timeInterval)
-            : base(symbol, timeInterval) =>
+            : this(new [] { symbol }, timeInterval, timeFrame)
+        {
+        }
+
+        /// <summary>
+        /// Creates new instance of <see cref="HistoricalBarsRequest"/> object.
+        /// </summary>
+        /// <param name="symbols">Asset names for data retrieval.</param>
+        /// <param name="timeFrame">Type of time bars for retrieval.</param>
+        /// <param name="from">Filter data equal to or after this time.</param>
+        /// <param name="into">Filter data equal to or before this time.</param>
+        public HistoricalBarsRequest(
+            IEnumerable<String> symbols,
+            DateTime from,
+            DateTime into,
+            BarTimeFrame timeFrame)
+            : base(symbols, from, into) =>
+            TimeFrame = timeFrame;
+
+        /// <summary>
+        /// Creates new instance of <see cref="HistoricalBarsRequest"/> object.
+        /// </summary>
+        /// <param name="symbols">Asset names for data retrieval.</param>
+        /// <param name="timeFrame">Type of time bars for retrieval.</param>
+        /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+        public HistoricalBarsRequest(
+            IEnumerable<String> symbols,
+            IInclusiveTimeInterval timeInterval,
+            BarTimeFrame timeFrame)
+            : base(symbols, timeInterval) =>
             TimeFrame = timeFrame;
 
         /// <summary>

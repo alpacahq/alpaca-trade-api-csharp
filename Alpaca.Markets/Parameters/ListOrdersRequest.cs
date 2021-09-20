@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -89,7 +88,7 @@ namespace Alpaca.Markets
                     .AddParameter("after", TimeInterval.From, "O")
                     .AddParameter("limit", LimitOrderNumber)
                     .AddParameter("nested", RollUpNestedOrders)
-                    .AddParameter("symbols", Symbols.ToArray())
+                    .AddParameter("symbols", _symbols)
                     .AsStringAsync().ConfigureAwait(false)
             };
 

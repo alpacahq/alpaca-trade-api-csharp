@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -11,38 +12,46 @@ namespace Alpaca.Markets
     /// </summary>
     public abstract class HistoricalRequestBase : Validation.IRequest
     {
+        private readonly HashSet<String> _symbols = new (StringComparer.Ordinal);
+
         /// <summary>
         /// Creates new instance of <see cref="HistoricalRequestBase"/> object.
         /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="symbols">Asset names for data retrieval.</param>
         /// <param name="from">Filter data equal to or after this time.</param>
         /// <param name="into">Filter data equal to or before this time.</param>
         protected internal HistoricalRequestBase(
-            String symbol,
+            IEnumerable<String> symbols,
             DateTime from,
             DateTime into)
-            : this(symbol, Markets.TimeInterval.GetInclusive(from, into))
+            : this(symbols, Markets.TimeInterval.GetInclusive(from, into))
         {
         }
 
         /// <summary>
         /// Creates new instance of <see cref="HistoricalRequestBase"/> object.
         /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="symbols">Asset names for data retrieval.</param>
         /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
         protected internal HistoricalRequestBase(
-            String symbol,
+            IEnumerable<String> symbols,
             IInclusiveTimeInterval timeInterval)
         {
-            Symbol = symbol ?? throw new ArgumentException(
-                "Symbol name cannot be null.", nameof(symbol));
-            TimeInterval = timeInterval;
+            _symbols.UnionWith(symbols.EnsureNotNull(nameof(symbols)));
+            TimeInterval = timeInterval.EnsureNotNull(nameof(symbols));
         }
 
         /// <summary>
         /// Gets asset name for data retrieval.
         /// </summary>
-        public String Symbol { get; }
+        [UsedImplicitly]
+        [Obsolete("This property is obsolete and will be removed in the next major version of SDK. Use the `Symbols` property instead of this one.", false)]
+        public String Symbol => _symbols.FirstOrDefault() ?? String.Empty;
+
+        /// <summary>
+        /// Gets assets names list for data retrieval.
+        /// </summary>
+        public IReadOnlyCollection<String> Symbols => _symbols;
 
         /// <summary>
         /// Gets inclusive date interval for filtering items in response.
@@ -62,12 +71,16 @@ namespace Alpaca.Markets
 
         internal async ValueTask<UriBuilder> GetUriBuilderAsync(
             HttpClient httpClient) =>
-            new (httpClient.BaseAddress!)
+            new(httpClient.BaseAddress!)
             {
-                Path = $"v2/stocks/{Symbol}/{LastPathSegment}",
+                Path = Symbols.Count == 1
+                    ? $"v2/stocks/{Symbols.First()}/{LastPathSegment}"
+                    : $"v2/stocks/{LastPathSegment}",
                 Query = await AddParameters(Pagination.QueryBuilder
-                    .AddParameter("start", TimeInterval.From, "O")
-                    .AddParameter("end", TimeInterval.Into, "O"))
+                        .AddParameter("symbols",
+                            Symbols.Count == 1 ? Array.Empty<String>() : Symbols)
+                        .AddParameter("start", TimeInterval.From, "O")
+                        .AddParameter("end", TimeInterval.Into, "O"))
                     .AsStringAsync().ConfigureAwait(false)
             };
 
@@ -76,10 +89,16 @@ namespace Alpaca.Markets
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
-            if (String.IsNullOrEmpty(Symbol))
+            if (_symbols.Count == 0)
             {
                 yield return new RequestValidationException(
-                    "Symbol shouldn't be empty.", nameof(Symbol));
+                    "Symbols list shouldn't be empty.", nameof(Symbols));
+            }
+
+            if (Symbols.Any(String.IsNullOrEmpty))
+            {
+                yield return new RequestValidationException(
+                    "Symbol shouldn't be empty.", nameof(Symbols));
             }
 
             if (Pagination is not Validation.IRequest validation)
