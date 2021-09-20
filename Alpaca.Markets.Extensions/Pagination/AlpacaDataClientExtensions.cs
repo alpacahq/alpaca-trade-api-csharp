@@ -227,7 +227,7 @@ namespace Alpaca.Markets.Extensions
         private static HistoricalBarsRequest getValidatedRequestWithoutPageToken(
             HistoricalBarsRequest request) =>
             new HistoricalBarsRequest(
-                    request.Symbol,
+                    request.Symbols,
                     getValidatedFrom(request),
                     getValidatedInto(request),
                     request.TimeFrame)
@@ -237,7 +237,7 @@ namespace Alpaca.Markets.Extensions
             // ReSharper disable once SuggestBaseTypeForParameter
             HistoricalQuotesRequest request) =>
             new HistoricalQuotesRequest(
-                    request.Symbol,
+                    request.Symbols,
                     getValidatedFrom(request),
                     getValidatedInto(request))
                 .WithPageSize(request.Pagination.Size ?? MaxPageSize);
@@ -246,7 +246,7 @@ namespace Alpaca.Markets.Extensions
             // ReSharper disable once SuggestBaseTypeForParameter
             HistoricalTradesRequest request) =>
             new HistoricalTradesRequest(
-                    request.Symbol,
+                    request.Symbols,
                     getValidatedFrom(request),
                     getValidatedInto(request))
                 .WithPageSize(request.Pagination.Size ?? MaxPageSize);
