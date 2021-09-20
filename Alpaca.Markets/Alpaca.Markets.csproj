@@ -4,21 +4,25 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>6.0.0-alpha1</Version>
+    <Version>6.0.0-alpha2</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>6.0.0.0</AssemblyVersion>
-    <FileVersion>6.0.0.0</FileVersion>
+    <AssemblyVersion>6.0.0.1</AssemblyVersion>
+    <FileVersion>6.0.0.1</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Limit up / limit down handlng added into the `IAlpacaDataStreamingClient` implementation.
-- Trading statuses handlng added into the `IAlpacaDataStreamingClient` implementation.</PackageReleaseNotes>
+    <PackageReleaseNotes>- The `BarTimeFrame` type was converted from the enumerable into a structure with `Value` and `Unit` properties.
+- Added a set of new static factory methods and extensions methods for bracket orders creation.
+- Some web-socket-specific errors related to server-side behavior are now suppressed by SDK.
+- Added support for requesting historical bars/quotes/trades for several symbols at once.
+- Added the optional `Timeout` property into the `DeleteAllPositionsRequest` class.
+- Added the new `Adjustment` property into the `HistoricalBarsRequest` class.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
