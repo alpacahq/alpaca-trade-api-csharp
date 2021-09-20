@@ -361,6 +361,9 @@ Alpaca.Markets.IEnvironment.AlpacaStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaTradingApi.get -> System.Uri!
 Alpaca.Markets.IExclusiveTimeInterval
 Alpaca.Markets.IInclusiveTimeInterval
+Alpaca.Markets.IMultiPage<TItems>
+Alpaca.Markets.IMultiPage<TItems>.Items.get -> System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IReadOnlyList<TItems>!>!
+Alpaca.Markets.IMultiPage<TItems>.NextPageToken.get -> string?
 Alpaca.Markets.IOrder
 Alpaca.Markets.IOrder.AssetClass.get -> Alpaca.Markets.AssetClass
 Alpaca.Markets.IOrder.AssetId.get -> System.Guid
