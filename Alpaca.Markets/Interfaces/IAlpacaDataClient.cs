@@ -23,6 +23,17 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Gets historical bars dictionary for several assets from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="request">Historical bars request parameters.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only dictionary of historical bars for specified assets (with pagination data).</returns>
+        [UsedImplicitly]
+        Task<IMultiPage<IBar>> GetHistoricalBarsAsync(
+            HistoricalBarsRequest request,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Gets historical quotes list for single asset from Alpaca REST API endpoint.
         /// </summary>
         /// <param name="request">Historical quotes request parameters.</param>
@@ -34,6 +45,17 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Gets historical quotes dictionary for several assets from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="request">Historical quotes request parameters.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only dictionary of historical quotes for specified assets (with pagination data).</returns>
+        [UsedImplicitly]
+        Task<IMultiPage<IQuote>> GetHistoricalQuotesAsync(
+            HistoricalQuotesRequest request,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Gets historical trades list for single asset from Alpaca REST API endpoint.
         /// </summary>
         /// <param name="request">Historical trades request parameters.</param>
@@ -41,6 +63,17 @@ namespace Alpaca.Markets
         /// <returns>Read-only list of historical trades for specified asset (with pagination data).</returns>
         [UsedImplicitly]
         Task<IPage<ITrade>> ListHistoricalTradesAsync(
+            HistoricalTradesRequest request,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets historical trades dictionary for several assets from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="request">Historical trades request parameters.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only dictionary of historical trades for specified assets (with pagination data).</returns>
+        [UsedImplicitly]
+        Task<IMultiPage<ITrade>> GetHistoricalTradesAsync(
             HistoricalTradesRequest request,
             CancellationToken cancellationToken = default);
 
