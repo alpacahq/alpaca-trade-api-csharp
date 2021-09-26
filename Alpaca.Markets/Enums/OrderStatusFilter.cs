@@ -6,7 +6,7 @@ using Newtonsoft.Json.Converters;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Order statuses filter for <see cref="AlpacaTradingClient.ListOrdersAsync"/> call from Alpaca REST API.
+    /// Order statuses filter for <see cref="IAlpacaTradingClient.ListOrdersAsync"/> call from Alpaca REST API.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum OrderStatusFilter

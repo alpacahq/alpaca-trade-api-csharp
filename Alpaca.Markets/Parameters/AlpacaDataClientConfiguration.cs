@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Configuration parameters object for <see cref="AlpacaDataClient"/> class.
+    /// Configuration parameters object for <see cref="IAlpacaDataClient"/> instance.
     /// </summary>
     public sealed class AlpacaDataClientConfiguration
     {

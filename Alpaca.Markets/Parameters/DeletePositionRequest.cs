@@ -7,7 +7,7 @@ using JetBrains.Annotations;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates request parameters for <see cref="AlpacaTradingClient.DeletePositionAsync(DeletePositionRequest,System.Threading.CancellationToken)"/> call.
+    /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.DeletePositionAsync(DeletePositionRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
     [UsedImplicitly]
     public sealed class DeletePositionRequest : Validation.IRequest

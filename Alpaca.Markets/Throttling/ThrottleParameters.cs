@@ -12,7 +12,7 @@ using Polly;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Helper class for storing parameters required for initializing rate throttler in <see cref="AlpacaTradingClient"/> class.
+    /// Helper class for storing parameters required for initializing rate throttler in <see cref="IAlpacaTradingClient"/> class.
     /// </summary>
     public sealed class ThrottleParameters
     {

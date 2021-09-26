@@ -8,17 +8,10 @@ using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
-    /// <summary>
-    /// Provides unified type-safe access for Alpaca Data API via HTTP/REST.
-    /// </summary>
     internal sealed class AlpacaDataClient : IAlpacaDataClient
     {
         private readonly HttpClient _httpClient;
 
-        /// <summary>
-        /// Creates new instance of <see cref="AlpacaDataClient"/> object.
-        /// </summary>
-        /// <param name="configuration">Configuration parameters object.</param>
         public AlpacaDataClient(
             AlpacaDataClientConfiguration configuration)
         {
@@ -37,10 +30,8 @@ namespace Alpaca.Markets
             _httpClient.SetSecurityProtocol();
         }
 
-        /// <inheritdoc />
         public void Dispose() => _httpClient.Dispose();
 
-        /// <inheritdoc />
         public async Task<IPage<IBar>> ListHistoricalBarsAsync(
             HistoricalBarsRequest request,
             CancellationToken cancellationToken = default) =>
@@ -49,7 +40,6 @@ namespace Alpaca.Markets
                 : multiPageIntoSinglePage<IBar, JsonBarsPage>(
                     await getHistoricalBarsAsync(request, cancellationToken).ConfigureAwait(false));
 
-        /// <inheritdoc />
         public async Task<IMultiPage<IBar>> GetHistoricalBarsAsync(
             HistoricalBarsRequest request,
             CancellationToken cancellationToken = default) =>
@@ -58,7 +48,6 @@ namespace Alpaca.Markets
                     await listHistoricalBarsAsync(request, cancellationToken).ConfigureAwait(false))
                 : await getHistoricalBarsAsync(request, cancellationToken).ConfigureAwait(false);
 
-        /// <inheritdoc />
         public async Task<IPage<IQuote>> ListHistoricalQuotesAsync(
             HistoricalQuotesRequest request, 
             CancellationToken cancellationToken = default) =>
@@ -67,7 +56,6 @@ namespace Alpaca.Markets
                 : multiPageIntoSinglePage<IQuote, JsonQuotesPage>(
                     await getHistoricalQuotesAsync(request, cancellationToken).ConfigureAwait(false));
 
-        /// <inheritdoc />
         public async Task<IMultiPage<IQuote>> GetHistoricalQuotesAsync(
             HistoricalQuotesRequest request,
             CancellationToken cancellationToken = default) =>
@@ -76,7 +64,6 @@ namespace Alpaca.Markets
                     await listHistoricalQuotesAsync(request, cancellationToken).ConfigureAwait(false))
                 : await getHistoricalQuotesAsync(request, cancellationToken).ConfigureAwait(false);
 
-        /// <inheritdoc />
         public async Task<IPage<ITrade>> ListHistoricalTradesAsync(
             HistoricalTradesRequest request, 
             CancellationToken cancellationToken = default) =>
@@ -85,7 +72,6 @@ namespace Alpaca.Markets
                 : multiPageIntoSinglePage<ITrade, JsonTradesPage>(
                     await getHistoricalTradesAsync(request, cancellationToken).ConfigureAwait(false));
 
-        /// <inheritdoc />
         public async Task<IMultiPage<ITrade>> GetHistoricalTradesAsync(
             HistoricalTradesRequest request, 
             CancellationToken cancellationToken = default) =>
@@ -94,7 +80,6 @@ namespace Alpaca.Markets
                     await listHistoricalTradesAsync(request, cancellationToken).ConfigureAwait(false))
                 : await getHistoricalTradesAsync(request, cancellationToken).ConfigureAwait(false);
 
-        /// <inheritdoc />
         public Task<ITrade> GetLatestTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
@@ -102,7 +87,6 @@ namespace Alpaca.Markets
                 $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/trades/latest",
                 cancellationToken);
 
-        /// <inheritdoc />
         public Task<IQuote> GetLatestQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
@@ -110,14 +94,12 @@ namespace Alpaca.Markets
                 $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/quotes/latest",
                 cancellationToken);
 
-        /// <inheritdoc />
         public Task<ISnapshot> GetSnapshotAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<ISnapshot, JsonSnapshot>(
                 $"v2/stocks/{symbol.EnsureNotNull(nameof(symbol))}/snapshot", cancellationToken);
 
-        /// <inheritdoc />
         public async Task<IReadOnlyDictionary<String, ISnapshot>> GetSnapshotsAsync(
             IEnumerable<String> symbols,
             CancellationToken cancellationToken = default) =>

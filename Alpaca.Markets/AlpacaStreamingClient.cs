@@ -5,9 +5,6 @@ using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets
 {
-    /// <summary>
-    /// Provides unified type-safe access for Alpaca streaming API.
-    /// </summary>
     internal sealed class AlpacaStreamingClient :
         StreamingClientBase<AlpacaStreamingClientConfiguration>,
         IAlpacaStreamingClient
@@ -22,10 +19,6 @@ namespace Alpaca.Markets
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
-        /// <summary>
-        /// Creates new instance of <see cref="AlpacaStreamingClient"/> object.
-        /// </summary>
-        /// <param name="configuration">Configuration parameters object.</param>
         public AlpacaStreamingClient(
             AlpacaStreamingClientConfiguration configuration)
             : base(configuration.EnsureNotNull(nameof(configuration)))
@@ -38,10 +31,8 @@ namespace Alpaca.Markets
             };
         }
 
-        /// <inheritdoc />
         public event Action<ITradeUpdate>? OnTradeUpdate;
 
-        /// <inheritdoc/>
         protected override async void OnOpened()
         {
             await SendAsJsonStringAsync(new JsonAuthRequest
@@ -54,7 +45,6 @@ namespace Alpaca.Markets
             base.OnOpened();
         }
 
-        /// <inheritdoc/>
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]

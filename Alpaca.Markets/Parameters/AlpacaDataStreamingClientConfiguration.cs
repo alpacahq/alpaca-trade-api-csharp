@@ -3,7 +3,7 @@
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Configuration parameters object for <see cref="AlpacaDataStreamingClient"/> class.
+    /// Configuration parameters object for <see cref="IAlpacaDataStreamingClient"/> instance.
     /// </summary>
     public sealed class AlpacaDataStreamingClientConfiguration : StreamingClientConfiguration
     {

@@ -7,27 +7,23 @@ namespace Alpaca.Markets
 {
     internal sealed partial class AlpacaTradingClient
     {
-        /// <inheritdoc />
         public Task<IReadOnlyList<IWatchList>> ListWatchListsAsync(
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IReadOnlyList<IWatchList>, List<JsonWatchList>>(
                 "v2/watchlists", cancellationToken);
 
-        /// <inheritdoc />
         public Task<IWatchList> CreateWatchListAsync(
             NewWatchListRequest request,
             CancellationToken cancellationToken = default) =>
             _httpClient.PostAsync<IWatchList, JsonWatchList, NewWatchListRequest>(
                 "v2/watchlists", request,  cancellationToken);
 
-        /// <inheritdoc />
         public Task<IWatchList> GetWatchListByIdAsync(
             Guid watchListId,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IWatchList, JsonWatchList>(
                 getEndpointUri(watchListId), cancellationToken);
 
-        /// <inheritdoc />
         public async Task<IWatchList> GetWatchListByNameAsync(
             String name,
             CancellationToken cancellationToken = default) =>
@@ -35,7 +31,6 @@ namespace Alpaca.Markets
                 await getEndpointUriBuilderAsync(name).ConfigureAwait(false),
                 cancellationToken).ConfigureAwait(false);
 
-        /// <inheritdoc />
         public Task<IWatchList> UpdateWatchListByIdAsync(
             UpdateWatchListRequest request,
             CancellationToken cancellationToken = default) =>
@@ -43,7 +38,6 @@ namespace Alpaca.Markets
                 getEndpointUri(request.EnsureNotNull(nameof(request)).Validate().WatchListId), request,
                 cancellationToken);
 
-        /// <inheritdoc />
         public Task<IWatchList> AddAssetIntoWatchListByIdAsync(
             ChangeWatchListRequest<Guid> request,
             CancellationToken cancellationToken = default) =>
@@ -51,7 +45,6 @@ namespace Alpaca.Markets
                 getEndpointUri(request.EnsureNotNull(nameof(request)).Validate().Key), request,
                 cancellationToken);
 
-        /// <inheritdoc />
         public async Task<IWatchList> AddAssetIntoWatchListByNameAsync(
             ChangeWatchListRequest<String> request,
             CancellationToken cancellationToken = default) =>
@@ -59,7 +52,6 @@ namespace Alpaca.Markets
                 await getEndpointUriBuilderAsync(request.EnsureNotNull(nameof(request)).Validate().Key).ConfigureAwait(false), request,
                 cancellationToken).ConfigureAwait(false);
 
-        /// <inheritdoc />
         public Task<IWatchList> DeleteAssetFromWatchListByIdAsync(
             ChangeWatchListRequest<Guid> request,
             CancellationToken cancellationToken = default) =>
@@ -67,7 +59,6 @@ namespace Alpaca.Markets
                 getEndpointUri(request.EnsureNotNull(nameof(request)).Validate().Key, request.Asset),
                 cancellationToken);
 
-        /// <inheritdoc />
         public async Task<IWatchList> DeleteAssetFromWatchListByNameAsync(
             ChangeWatchListRequest<String> request,
             CancellationToken cancellationToken = default) =>
@@ -77,14 +68,12 @@ namespace Alpaca.Markets
                     .ConfigureAwait(false),
                 cancellationToken).ConfigureAwait(false);
 
-        /// <inheritdoc />
         public Task<Boolean> DeleteWatchListByIdAsync(
             Guid watchListId,
             CancellationToken cancellationToken = default) =>
             _httpClient.TryDeleteAsync(
                 getEndpointUri(watchListId), cancellationToken);
 
-        /// <inheritdoc />
         public async Task<Boolean> DeleteWatchListByNameAsync(
             String name,
             CancellationToken cancellationToken = default) =>

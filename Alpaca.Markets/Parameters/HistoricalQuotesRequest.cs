@@ -5,7 +5,9 @@ using JetBrains.Annotations;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates request parameters for <see cref="IAlpacaDataClient.ListHistoricalQuotesAsync(HistoricalQuotesRequest,System.Threading.CancellationToken)"/> call.
+    /// Encapsulates request parameters for
+    /// <see cref="IAlpacaDataClient.ListHistoricalQuotesAsync(HistoricalQuotesRequest,System.Threading.CancellationToken)"/> and
+    /// <see cref="IAlpacaDataClient.GetHistoricalQuotesAsync(HistoricalQuotesRequest,System.Threading.CancellationToken)"/> calls.
     /// </summary>
     [UsedImplicitly]
     public sealed class HistoricalQuotesRequest : HistoricalRequestBase

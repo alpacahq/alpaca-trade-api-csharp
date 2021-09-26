@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates request parameters for <see cref="AlpacaTradingClient.CreateWatchListAsync(NewWatchListRequest,System.Threading.CancellationToken)"/> call.
+    /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.CreateWatchListAsync(NewWatchListRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
     public sealed class NewWatchListRequest : Validation.IRequest
     {

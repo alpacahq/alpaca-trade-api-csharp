@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates request parameters for <see cref="AlpacaTradingClient.GetPortfolioHistoryAsync(PortfolioHistoryRequest,System.Threading.CancellationToken)"/> call.
+    /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.GetPortfolioHistoryAsync(PortfolioHistoryRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
     [UsedImplicitly]
     public sealed class PortfolioHistoryRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>

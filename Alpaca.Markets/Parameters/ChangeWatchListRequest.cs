@@ -6,10 +6,10 @@ namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates request parameters for
-    /// <see cref="AlpacaTradingClient.AddAssetIntoWatchListByIdAsync(ChangeWatchListRequest{Guid},System.Threading.CancellationToken)"/>,
-    /// <see cref="AlpacaTradingClient.AddAssetIntoWatchListByNameAsync(ChangeWatchListRequest{String},System.Threading.CancellationToken)"/>,
-    /// <see cref="AlpacaTradingClient.DeleteAssetFromWatchListByIdAsync(ChangeWatchListRequest{Guid},System.Threading.CancellationToken)"/>, and
-    /// <see cref="AlpacaTradingClient.DeleteAssetFromWatchListByNameAsync(ChangeWatchListRequest{String},System.Threading.CancellationToken)"/>
+    /// <see cref="IAlpacaTradingClient.AddAssetIntoWatchListByIdAsync(ChangeWatchListRequest{Guid},System.Threading.CancellationToken)"/>,
+    /// <see cref="IAlpacaTradingClient.AddAssetIntoWatchListByNameAsync(ChangeWatchListRequest{String},System.Threading.CancellationToken)"/>,
+    /// <see cref="IAlpacaTradingClient.DeleteAssetFromWatchListByIdAsync(ChangeWatchListRequest{Guid},System.Threading.CancellationToken)"/>, and
+    /// <see cref="IAlpacaTradingClient.DeleteAssetFromWatchListByNameAsync(ChangeWatchListRequest{String},System.Threading.CancellationToken)"/>
     /// calls.
     /// </summary>
     /// <typeparam name="TKey"></typeparam>

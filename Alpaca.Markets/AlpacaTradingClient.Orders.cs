@@ -7,7 +7,6 @@ namespace Alpaca.Markets
 {
     internal sealed partial class AlpacaTradingClient
     {
-        /// <inheritdoc />
         public async Task<IReadOnlyList<IOrder>> ListOrdersAsync(
             ListOrdersRequest request,
             CancellationToken cancellationToken = default) =>
@@ -16,13 +15,11 @@ namespace Alpaca.Markets
                     .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
                 cancellationToken).ConfigureAwait(false);
 
-        /// <inheritdoc />
         public Task<IOrder> PostOrderAsync(
             NewOrderRequest request,
             CancellationToken cancellationToken = default) =>
             postOrderAsync(request.EnsureNotNull(nameof(request)).Validate().GetJsonRequest(), cancellationToken);
 
-        /// <inheritdoc />
         public Task<IOrder> PostOrderAsync(
             OrderBase orderBase,
             CancellationToken cancellationToken = default) =>
@@ -34,7 +31,6 @@ namespace Alpaca.Markets
             _httpClient.PostAsync<IOrder, JsonOrder, JsonNewOrder>(
                 "v2/orders", jsonNewOrder, cancellationToken);
 
-        /// <inheritdoc />
         public Task<IOrder> PatchOrderAsync(
             ChangeOrderRequest request,
             CancellationToken cancellationToken = default) =>
@@ -42,7 +38,6 @@ namespace Alpaca.Markets
                 request.EnsureNotNull(nameof(request)).Validate().GetEndpointUri(),
                 request, cancellationToken);
 
-        /// <inheritdoc />
         public async Task<IOrder> GetOrderAsync(
             String clientOrderId,
             CancellationToken cancellationToken = default) =>
@@ -56,21 +51,18 @@ namespace Alpaca.Markets
                 },
                 cancellationToken).ConfigureAwait(false);
 
-        /// <inheritdoc />
         public Task<IOrder> GetOrderAsync(
             Guid orderId,
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IOrder, JsonOrder>(
                 $"v2/orders/{orderId:D}", cancellationToken);
 
-        /// <inheritdoc />
         public Task<Boolean> DeleteOrderAsync(
             Guid orderId,
             CancellationToken cancellationToken = default) =>
             _httpClient.TryDeleteAsync(
                 $"v2/orders/{orderId:D}", cancellationToken);
 
-        /// <inheritdoc />
         public Task<IReadOnlyList<IOrderActionStatus>> DeleteAllOrdersAsync(
             CancellationToken cancellationToken = default) =>
             _httpClient.DeleteAsync<IReadOnlyList<IOrderActionStatus>, List<JsonOrderActionStatus>>(
