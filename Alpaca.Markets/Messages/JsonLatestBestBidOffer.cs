@@ -8,10 +8,10 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonLatestTrade : ITrade
+    internal sealed class JsonLatestBestBidOffer : IQuote
     {
-        [JsonProperty(PropertyName = "trade", Required = Required.Always)]
-        public JsonHistoricalTrade Nested { get; set; } = new ();
+        [JsonProperty(PropertyName = "xbbo", Required = Required.Always)]
+        public JsonHistoricalQuote Nested { get; set; } = new ();
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
@@ -20,24 +20,27 @@ namespace Alpaca.Markets
         public DateTime TimestampUtc => Nested.TimestampUtc;
 
         [JsonIgnore]
-        public UInt64 TradeId => Nested.TradeId;
+        public String AskExchange => Nested.AskExchange;
+
+        [JsonIgnore]
+        public String BidExchange => Nested.BidExchange;
+
+        [JsonIgnore]
+        public Decimal BidPrice => Nested.BidPrice;
+
+        [JsonIgnore]
+        public Decimal AskPrice => Nested.AskPrice;
+
+        [JsonIgnore]
+        public Decimal BidSize => Nested.BidSize;
+
+        [JsonIgnore]
+        public Decimal AskSize => Nested.AskSize;
 
         [JsonIgnore]
         public String Tape => Nested.Tape;
-
-        [JsonIgnore]
-        public String Exchange => Nested.Exchange;
-
-        [JsonIgnore]
-        public Decimal Price => Nested.Price;
-
-        [JsonIgnore]
-        public Decimal Size => Nested.Size;
-
+    
         [JsonIgnore]
         public IReadOnlyList<String> Conditions => Nested.Conditions;
-
-        [JsonIgnore]
-        public TakerSide TakerSide => Nested.TakerSide;
     }
 }

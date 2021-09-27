@@ -20,7 +20,7 @@ namespace Alpaca.Markets
         public Decimal Price { get; set; }
 
         [JsonProperty(PropertyName = "s", Required = Required.Always)]
-        public UInt64 Size { get; set; }
+        public Decimal Size { get; set; }
 
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
         public UInt64 TradeId { get; set; }
@@ -30,6 +30,9 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
         public List<String> ConditionsList { get; } = new ();
+
+        [JsonProperty(PropertyName = "tks", Required = Required.Default)]
+        public TakerSide TakerSide { get; set; } = TakerSide.Unknown;
 
         [JsonIgnore]
         public String Symbol { get; internal set; } = String.Empty;

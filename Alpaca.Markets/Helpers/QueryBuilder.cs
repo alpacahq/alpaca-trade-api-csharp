@@ -36,12 +36,6 @@ namespace Alpaca.Markets
             where TValue : struct, Enum =>
             addParameter(name, value, EnumExtensions.ToEnumString);
 
-        public QueryBuilder AddParameter<TValue>(
-            String name,
-            IEnumerable<TValue>? values)
-            where TValue : struct, Enum =>
-            addParameter(name, values, EnumExtensions.ToEnumString);
-
         public QueryBuilder AddParameter(
             String name,
             DateTime? value,
@@ -62,6 +56,14 @@ namespace Alpaca.Markets
             IReadOnlyCollection<String> values) =>
             values.Count != 0
                 ? AddParameter(name, String.Join(ListSeparator, values))
+                : this;
+
+        public QueryBuilder AddParameter<TValue>(
+            String name,
+            IReadOnlyCollection<TValue> values)
+            where TValue : struct, Enum =>
+            values.Count != 0
+                ? addParameter(name, values, EnumExtensions.ToEnumString)
                 : this;
 
         public QueryBuilder AddParameter(

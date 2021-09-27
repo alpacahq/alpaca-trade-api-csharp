@@ -8,10 +8,11 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonLatestQuote : IQuote
+    internal sealed class JsonLatestQuote<TQuote> : IQuote
+        where TQuote : IQuote, new ()
     {
         [JsonProperty(PropertyName = "quote", Required = Required.Always)]
-        public JsonHistoricalQuote Nested { get; set; } = new ();
+        public TQuote Nested { get; set; } = new ();
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
@@ -32,16 +33,15 @@ namespace Alpaca.Markets
         public Decimal AskPrice => Nested.AskPrice;
 
         [JsonIgnore]
-        public UInt64 BidSize => Nested.BidSize;
+        public Decimal BidSize => Nested.BidSize;
 
         [JsonIgnore]
-        public UInt64 AskSize => Nested.AskSize;
+        public Decimal AskSize => Nested.AskSize;
 
         [JsonIgnore]
         public String Tape => Nested.Tape;
     
         [JsonIgnore]
-        public IReadOnlyList<String> Conditions =>
-            Nested.ConditionsList.EmptyIfNull();
+        public IReadOnlyList<String> Conditions => Nested.Conditions;
     }
 }

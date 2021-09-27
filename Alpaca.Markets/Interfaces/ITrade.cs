@@ -32,7 +32,7 @@ namespace Alpaca.Markets
         /// Gets trade quantity.
         /// </summary>
         [UsedImplicitly]
-        UInt64 Size { get; }
+        Decimal Size { get; }
 
         /// <summary>
         /// Gets trade identifier.
@@ -57,5 +57,11 @@ namespace Alpaca.Markets
         /// </summary>
         [UsedImplicitly]
         IReadOnlyList<String> Conditions { get; }
+
+        /// <summary>
+        /// Gets crypto trade taker side.
+        /// </summary>
+        [UsedImplicitly]
+        TakerSide TakerSide { get; }
     }
 }

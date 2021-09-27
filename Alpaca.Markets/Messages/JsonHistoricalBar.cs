@@ -25,7 +25,7 @@ namespace Alpaca.Markets
         public Decimal High { get; set; }
 
         [JsonProperty(PropertyName = "v", Required = Required.Always)]
-        public UInt64 Volume { get; set; }
+        public Decimal Volume { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
         public DateTime TimeUtc { get; set; }

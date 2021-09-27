@@ -9,10 +9,11 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonMultiQuotesPage : IMultiPageMutable<IQuote>
+    internal sealed class JsonMultiQuotesPage<TQuote> : IMultiPageMutable<IQuote>
+        where TQuote : IQuote, ISymbolMutable
     {
         [JsonProperty(PropertyName = "quotes", Required = Required.Default)]
-        public Dictionary<String, List<JsonHistoricalQuote>?> ItemsDictionary { get; set; } = new ();
+        public Dictionary<String, List<TQuote>?> ItemsDictionary { get; set; } = new ();
 
         [JsonProperty(PropertyName = "next_page_token", Required = Required.Default)]
         public String? NextPageToken { get; set; }
@@ -24,7 +25,7 @@ namespace Alpaca.Markets
         [OnDeserialized]
         internal void OnDeserializedMethod(
             StreamingContext context) =>
-            Items = ItemsDictionary.EmptyIfNull<IQuote, JsonHistoricalQuote>(
-                (symbol, list) => list?.ForEach(item => item.Symbol = symbol));
+            Items = ItemsDictionary.EmptyIfNull<IQuote, TQuote>(
+                (symbol, list) => list?.ForEach(item => item.SetSymbol(symbol)));
     }
 }
