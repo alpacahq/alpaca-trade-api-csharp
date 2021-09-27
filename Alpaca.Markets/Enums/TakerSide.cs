@@ -12,21 +12,21 @@ namespace Alpaca.Markets
     public enum TakerSide
     {
         /// <summary>
-        /// Raw data - no adjustment.
+        /// Unspecified crypto trade take side.
         /// </summary>
         [UsedImplicitly]
         [EnumMember(Value = "-")]
         Unknown,
 
         /// <summary>
-        /// Stock split adjustments.
+        /// Buy crypto trade take side.
         /// </summary>
         [UsedImplicitly]
         [EnumMember(Value = "B")]
         Buy,
 
         /// <summary>
-        /// Stock dividend adjustments.
+        /// Bell crypto trade take side.
         /// </summary>
         [UsedImplicitly]
         [EnumMember(Value = "S")]

@@ -110,6 +110,34 @@ namespace Alpaca.Markets
                 StringComparer.Ordinal, kvp => kvp.Value.WithSymbol(kvp.Key),
                 cancellationToken).ConfigureAwait(false);
 
+        public Task<IReadOnlyDictionary<String, String>> ListExchangesAsync(
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<IReadOnlyDictionary<String, String>, Dictionary<String, String>>(
+                "meta/exchanges", cancellationToken);
+
+        public Task<IReadOnlyDictionary<String, String>> ListTradeConditionsAsync(
+            Tape tape,
+            CancellationToken cancellationToken = default) =>
+            listConditionsAsync(tape, "trade", cancellationToken);
+
+        public Task<IReadOnlyDictionary<String, String>> ListQuoteConditionsAsync(
+            Tape tape,
+            CancellationToken cancellationToken = default) =>
+            listConditionsAsync(tape, "quote", cancellationToken);
+
+        private async Task<IReadOnlyDictionary<String, String>> listConditionsAsync(
+            Tape tape,
+            String tickType,
+            CancellationToken cancellationToken = default) =>
+            await _httpClient.GetAsync<IReadOnlyDictionary<String, String>, Dictionary<String, String>>(
+                new UriBuilder(_httpClient.BaseAddress!)
+                {
+                    Query = await new QueryBuilder()
+                        .AddParameter("tape", tape.ToEnumString())
+                        .AsStringAsync().ConfigureAwait(false)
+                }.AppendPath($"meta/conditions/{tickType}"),
+                cancellationToken).ConfigureAwait(false);
+
         private async Task<IPage<IBar>> listHistoricalBarsAsync(
             HistoricalBarsRequest request,
             CancellationToken cancellationToken = default) =>

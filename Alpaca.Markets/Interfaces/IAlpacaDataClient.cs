@@ -120,5 +120,36 @@ namespace Alpaca.Markets
         Task<IReadOnlyDictionary<String, ISnapshot>> GetSnapshotsAsync(
             IEnumerable<String> symbols,
             CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets dictionary with exchange code to the exchange name mappings.
+        /// </summary>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns></returns>
+        [UsedImplicitly]
+        Task<IReadOnlyDictionary<String, String>> ListExchangesAsync(
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets dictionary with trades conditions code to the condition description mappings.
+        /// </summary>
+        /// <param name="tape">SIP tape identifier for retrieving trade conditions.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns></returns>
+        [UsedImplicitly]
+        Task<IReadOnlyDictionary<String, String>> ListTradeConditionsAsync(
+            Tape tape,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets dictionary with quotes conditions code to the condition description mappings.
+        /// </summary>
+        /// <param name="tape">SIP tape identifier for retrieving quote conditions.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns></returns>
+        [UsedImplicitly]
+        Task<IReadOnlyDictionary<String, String>> ListQuoteConditionsAsync(
+            Tape tape,
+            CancellationToken cancellationToken = default);
     }
 }
