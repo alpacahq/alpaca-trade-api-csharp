@@ -9,10 +9,11 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonQuotesPage : IPageMutable<IQuote>
+    internal sealed class JsonQuotesPage<TQuote> : IPageMutable<IQuote>
+        where TQuote : IQuote, ISymbolMutable
     {
         [JsonProperty(PropertyName = "quotes", Required = Required.Default)]
-        public List<JsonHistoricalQuote> ItemsList { get; set; } = new ();
+        public List<TQuote> ItemsList { get; set; } = new ();
 
         [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
         public String Symbol { get; set; } = String.Empty;
@@ -28,8 +29,8 @@ namespace Alpaca.Markets
             StreamingContext context)
         {
             // ReSharper disable once ConstantConditionalAccessQualifier
-            ItemsList?.ForEach(_ => _.Symbol = Symbol);
-            Items = ItemsList.EmptyIfNull();
+            ItemsList?.ForEach(_ => _.SetSymbol(Symbol));
+            Items = ItemsList.EmptyIfNull<IQuote, TQuote>();
         }
     }
 }

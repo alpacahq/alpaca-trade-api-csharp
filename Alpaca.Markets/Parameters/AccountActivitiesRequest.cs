@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -12,7 +11,7 @@ namespace Alpaca.Markets
     /// </summary>
     public sealed class AccountActivitiesRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>
     {
-        private readonly List<AccountActivityType> _accountActivityTypes = new ();
+        private readonly HashSet<AccountActivityType> _accountActivityTypes = new ();
 
         /// <summary>
         /// Creates new instance of <see cref="AccountActivitiesRequest"/> object for all activity types.
@@ -36,13 +35,13 @@ namespace Alpaca.Markets
         /// <param name="activityTypes">The list of activity types you want to view entries for.</param>
         public AccountActivitiesRequest(
             IEnumerable<AccountActivityType> activityTypes) =>
-            _accountActivityTypes.AddRange(activityTypes.Distinct());
+            _accountActivityTypes.UnionWith(activityTypes);
 
         /// <summary>
         /// Gets the activity types you want to view entries for. Empty list means 'all activity types'.
         /// </summary>
         [UsedImplicitly]
-        public IReadOnlyList<AccountActivityType> ActivityTypes => _accountActivityTypes;
+        public IReadOnlyCollection<AccountActivityType> ActivityTypes => _accountActivityTypes;
 
         /// <summary>
         /// Gets the date for which you want to see activities.

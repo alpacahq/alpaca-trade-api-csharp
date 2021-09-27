@@ -7,7 +7,6 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates the basic quote information from Alpaca APIs.
     /// </summary>
-    [CLSCompliant(false)]
     public interface IQuote
     {
         /// <summary>
@@ -50,13 +49,13 @@ namespace Alpaca.Markets
         /// Gets bid quantity.
         /// </summary>
         [UsedImplicitly]
-        UInt64 BidSize { get; }
+        Decimal BidSize { get; }
 
         /// <summary>
         /// Gets ask quantity.
         /// </summary>
         [UsedImplicitly]
-        UInt64 AskSize { get; }
+        Decimal AskSize { get; }
 
         /// <summary>
         /// Gets tape where trade occurred.

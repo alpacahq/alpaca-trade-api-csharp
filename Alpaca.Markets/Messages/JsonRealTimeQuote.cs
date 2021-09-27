@@ -29,10 +29,10 @@ namespace Alpaca.Markets
         public Decimal AskPrice { get; set; }
 
         [JsonProperty(PropertyName = "bs", Required = Required.Always)]
-        public UInt64 BidSize { get; set; }
+        public Decimal BidSize { get; set; }
 
         [JsonProperty(PropertyName = "as", Required = Required.Always)]
-        public UInt64 AskSize { get; set; }
+        public Decimal AskSize { get; set; }
 
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
         public DateTime TimestampUtc { get; set; }

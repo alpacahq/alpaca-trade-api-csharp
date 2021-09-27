@@ -71,21 +71,22 @@ namespace Alpaca.Markets
 
         internal async ValueTask<UriBuilder> GetUriBuilderAsync(
             HttpClient httpClient) =>
-            new(httpClient.BaseAddress!)
+            new UriBuilder(httpClient.BaseAddress!)
             {
-                Path = Symbols.Count == 1
-                    ? $"v2/stocks/{Symbols.First()}/{LastPathSegment}"
-                    : $"v2/stocks/{LastPathSegment}",
                 Query = await AddParameters(Pagination.QueryBuilder
                         .AddParameter("symbols",
-                            Symbols.Count == 1 ? Array.Empty<String>() : Symbols)
+                            IsSingleSymbol ? Array.Empty<String>() : Symbols)
                         .AddParameter("start", TimeInterval.From, "O")
                         .AddParameter("end", TimeInterval.Into, "O"))
                     .AsStringAsync().ConfigureAwait(false)
-            };
+            }.AppendPath(IsSingleSymbol
+                ? $"{Symbols.First()}/{LastPathSegment}"
+                : $"{LastPathSegment}");
 
         internal virtual QueryBuilder AddParameters(
             QueryBuilder queryBuilder) => queryBuilder;
+
+        private bool IsSingleSymbol => Symbols.Count == 1;
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {

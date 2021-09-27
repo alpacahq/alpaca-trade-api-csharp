@@ -71,6 +71,38 @@ namespace Alpaca.Markets
             };
 
         /// <summary>
+        /// Creates the new instance of <see cref="IAlpacaCryptoDataClient"/> interface
+        /// implementation for specific environment provided as <paramref name="environment"/> argument.
+        /// </summary>
+        /// <param name="environment">Target environment for new object.</param>
+        /// <param name="securityKey">Alpaca API security key.</param>
+        /// <returns>The new instance of <see cref="IAlpacaCryptoDataClient"/> interface implementation.</returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAlpacaCryptoDataClient GetAlpacaCryptoDataClient(
+            this IEnvironment environment,
+            SecurityKey securityKey) =>
+            new AlpacaCryptoDataClient(environment.GetAlpacaCryptoDataClientConfiguration(securityKey));
+
+        /// <summary>
+        /// Creates new instance of <see cref="AlpacaCryptoDataClientConfiguration"/> for specific
+        /// environment provided as <paramref name="environment"/> argument.
+        /// </summary>
+        /// <param name="environment">Target environment for new object.</param>
+        /// <param name="securityKey">Alpaca API security key.</param>
+        /// <returns>New instance of <see cref="AlpacaCryptoDataClientConfiguration"/> object.</returns>
+        [UsedImplicitly]
+        public static AlpacaCryptoDataClientConfiguration GetAlpacaCryptoDataClientConfiguration(
+            this IEnvironment environment,
+            SecurityKey securityKey) =>
+            new ()
+            {
+                ApiEndpoint = environment.EnsureNotNull(nameof(environment))
+                    .AlpacaDataApi.EnsureNotNull(nameof(IEnvironment.AlpacaDataApi)),
+                SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
+            };
+
+        /// <summary>
         /// Creates the new instance of <see cref="IAlpacaStreamingClient"/> interface
         /// implementation for specific environment provided as <paramref name="environment"/> argument.
         /// </summary>

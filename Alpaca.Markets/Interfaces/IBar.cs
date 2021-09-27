@@ -49,7 +49,7 @@ namespace Alpaca.Markets
         /// Gets bar trading volume.
         /// </summary>
         [UsedImplicitly]
-        UInt64 Volume { get; }
+        Decimal Volume { get; }
         
         /// <summary>
         /// Gets bar volume weighted average price.
