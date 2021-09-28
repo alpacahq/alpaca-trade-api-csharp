@@ -11,6 +11,43 @@ namespace Alpaca.Markets.Extensions
     public static class AlpacaServiceCollectionExtensions
     {
         /// <summary>
+        /// Registers the concrete implementation of the <see cref="IAlpacaCryptoDataClient"/>
+        /// interface in the services catalog and make it available in constructors.
+        /// </summary>
+        /// <param name="services">Registered services collection.</param>
+        /// <param name="environment">Alpaca environment data.</param>
+        /// <param name="securityKey">Alpaca security key.</param>
+        /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+        [UsedImplicitly]
+        public static IServiceCollection AddAlpacaCryptoDataClient(
+            this IServiceCollection services,
+            IEnvironment environment,
+            SecurityKey securityKey) =>
+            services.AddAlpacaCryptoDataClient(environment
+                .GetAlpacaCryptoDataClientConfiguration(securityKey));
+
+        /// <summary>
+        /// Registers the concrete implementation of the <see cref="IAlpacaCryptoDataClient"/>
+        /// interface in the services catalog and make it available in constructors.
+        /// </summary>
+        /// <param name="services">Registered services collection.</param>
+        /// <param name="configuration">Alpaca data client configuration.</param>
+        /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+        [UsedImplicitly]
+        public static IServiceCollection AddAlpacaCryptoDataClient(
+            this IServiceCollection services,
+            AlpacaCryptoDataClientConfiguration configuration) =>
+            services
+                .AddHttpClient<IAlpacaCryptoDataClient>()
+                .AddTypedClient<IAlpacaCryptoDataClient>(
+                    httpClient => new AlpacaCryptoDataClient(
+                        configuration.withFactoryCreatedHttpClient(httpClient)))
+                .AddPolicyHandler(configuration
+                    .EnsureNotNull(nameof(configuration))
+                    .ThrottleParameters.GetAsyncPolicy())
+                .Services;
+
+        /// <summary>
         /// Registers the concrete implementation of the <see cref="IAlpacaDataClient"/>
         /// interface in the services catalog and make it available in constructors.
         /// </summary>
@@ -83,6 +120,14 @@ namespace Alpaca.Markets.Extensions
                     .EnsureNotNull(nameof(configuration))
                     .ThrottleParameters.GetAsyncPolicy())
                 .Services;
+
+        private static AlpacaCryptoDataClientConfiguration withFactoryCreatedHttpClient(
+            this AlpacaCryptoDataClientConfiguration configuration,
+            HttpClient httpClient)
+        {
+            configuration.HttpClient = httpClient;
+            return configuration;
+        }
 
         private static AlpacaDataClientConfiguration withFactoryCreatedHttpClient(
             this AlpacaDataClientConfiguration configuration,

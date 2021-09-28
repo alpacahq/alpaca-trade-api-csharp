@@ -9,11 +9,23 @@ namespace Alpaca.Markets.Extensions
     public static class ConfigurationExtensions
     {
         /// <summary>
-        /// Creates the new instance of <see cref="IAlpacaTradingClient"/> interface
+        /// Creates the new instance of <see cref="IAlpacaCryptoDataClient"/> interface
         /// implementation using the <paramref name="configuration"/> argument.
         /// </summary>
         /// <param name="configuration">Client configuration parameters.</param>
-        /// <returns>The new instance of <see cref="IAlpacaTradingClient"/> interface implementation.</returns>
+        /// <returns>The new instance of <see cref="IAlpacaCryptoDataClient"/> interface implementation.</returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAlpacaCryptoDataClient GetClient(
+            this AlpacaCryptoDataClientConfiguration configuration) =>
+            new AlpacaCryptoDataClient(configuration);
+
+        /// <summary>
+        /// Creates the new instance of <see cref="IAlpacaDataClient"/> interface
+        /// implementation using the <paramref name="configuration"/> argument.
+        /// </summary>
+        /// <param name="configuration">Client configuration parameters.</param>
+        /// <returns>The new instance of <see cref="IAlpacaDataClient"/> interface implementation.</returns>
         [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAlpacaDataClient GetClient(

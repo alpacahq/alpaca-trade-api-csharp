@@ -8,7 +8,7 @@ using JetBrains.Annotations;
 namespace Alpaca.Markets.Extensions
 {
     /// <summary>
-    /// 
+    /// Set of extensions methods for obtaining simple statistical functions from bars list.
     /// </summary>
     public static class EnumerableExtensions
     {
@@ -26,7 +26,7 @@ namespace Alpaca.Markets.Extensions
 
             public Decimal Close { get; private set; }
 
-            public UInt64 Volume { get; private set; }
+            public Decimal Volume { get; private set; }
 
             public Decimal Vwap { get; private set; }
 
