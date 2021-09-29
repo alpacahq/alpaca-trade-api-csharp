@@ -29,8 +29,11 @@ namespace Alpaca.Markets
             public DateTime? Into { get; }
 
             public Boolean Equals(Inclusive other) =>
-                Nullable.Equals(From, other.From) && 
-                Nullable.Equals(Into, other.Into);
+                Equals((IInclusiveTimeInterval)other);
+
+            public Boolean Equals(IInclusiveTimeInterval? other) =>
+                Nullable.Equals(From, other?.From) && 
+                Nullable.Equals(Into, other?.Into);
 
             public override Boolean Equals(Object? obj) => 
                 obj is Inclusive other && Equals(other);
@@ -65,8 +68,11 @@ namespace Alpaca.Markets
             public DateTime? Into { get; }
 
             public Boolean Equals(Exclusive other) =>
-                Nullable.Equals(From, other.From) && 
-                Nullable.Equals(Into, other.Into);
+                Equals((IExclusiveTimeInterval)other);
+
+            public Boolean Equals(IExclusiveTimeInterval? other) =>
+                Nullable.Equals(From, other?.From) && 
+                Nullable.Equals(Into, other?.Into);
 
             public override Boolean Equals(Object? obj) => 
                 obj is Exclusive other && Equals(other);
@@ -218,5 +224,91 @@ namespace Alpaca.Markets
         internal static IInclusiveTimeInterval InclusiveEmpty { get; } = new Inclusive();
 
         internal static IExclusiveTimeInterval ExclusiveEmpty { get; } = new Exclusive();
+
+        /// <summary>
+        /// Deconstructs the <see cref="IInclusiveTimeInterval"/> instance
+        /// into two <see cref="Nullable{DateTime}"/> values (tuple).
+        /// </summary>
+        /// <param name="timeInterval">Original time interval.</param>
+        /// <param name="from">Time interval starting point.</param>
+        /// <param name="into">Time interval ending point.</param>
+        [UsedImplicitly]
+        public static void Deconstruct(
+            this IInclusiveTimeInterval timeInterval,
+            out DateTime? from,
+            out DateTime? into)
+        {
+            from = timeInterval.EnsureNotNull(nameof(timeInterval)).From;
+            into = timeInterval.Into;
+        }
+
+        /// <summary>
+        /// Deconstructs the <see cref="IExclusiveTimeInterval"/> instance
+        /// into two <see cref="Nullable{DateTime}"/> values (tuple).
+        /// </summary>
+        /// <param name="timeInterval">Original time interval.</param>
+        /// <param name="from">Time interval starting point.</param>
+        /// <param name="into">Time interval ending point.</param>
+        [UsedImplicitly]
+        public static void Deconstruct(
+            this IExclusiveTimeInterval timeInterval,
+            out DateTime? from,
+            out DateTime? into)
+        {
+            from = timeInterval.EnsureNotNull(nameof(timeInterval)).From;
+            into = timeInterval.Into;
+        }
+
+        /// <summary>
+        /// Creates new instance of <see cref="IInclusiveTimeInterval"/> object
+        /// with the modified <see cref="ITimeInterval.Into"/> property value.
+        /// </summary>
+        /// <param name="timeInterval">Original time interval.</param>
+        /// <param name="into">New ending date/time point for interval.</param>
+        /// <returns>The new instance of <see cref="IInclusiveTimeInterval"/> object.</returns>
+        [UsedImplicitly]
+        public static IInclusiveTimeInterval WithInto(
+            this IInclusiveTimeInterval timeInterval,
+            DateTime into) =>
+            GetInclusive(timeInterval.EnsureNotNull(nameof(timeInterval)).From, into);
+
+        /// <summary>
+        /// Creates new instance of <see cref="IExclusiveTimeInterval"/> object
+        /// with the modified <see cref="ITimeInterval.Into"/> property value.
+        /// </summary>
+        /// <param name="timeInterval">Original time interval.</param>
+        /// <param name="into">New ending date/time point for interval.</param>
+        /// <returns>The new instance of <see cref="IExclusiveTimeInterval"/> object.</returns>
+        [UsedImplicitly]
+        public static IExclusiveTimeInterval WithInto(
+            this IExclusiveTimeInterval timeInterval,
+            DateTime into) =>
+            GetExclusive(timeInterval.EnsureNotNull(nameof(timeInterval)).From, into);
+
+        /// <summary>
+        /// Creates new instance of <see cref="IInclusiveTimeInterval"/> object
+        /// with the modified <see cref="ITimeInterval.From"/> property value.
+        /// </summary>
+        /// <param name="timeInterval">Original time interval.</param>
+        /// <param name="from">New starting date/time point for interval.</param>
+        /// <returns>The new instance of <see cref="IInclusiveTimeInterval"/> object.</returns>
+        [UsedImplicitly]
+        public static IInclusiveTimeInterval WithFrom(
+            this IInclusiveTimeInterval timeInterval,
+            DateTime from) =>
+            GetInclusive(from, timeInterval.EnsureNotNull(nameof(timeInterval)).Into);
+
+        /// <summary>
+        /// Creates new instance of <see cref="IExclusiveTimeInterval"/> object
+        /// with the modified <see cref="ITimeInterval.From"/> property value.
+        /// </summary>
+        /// <param name="timeInterval">Original time interval.</param>
+        /// <param name="from">New starting date/time point for interval.</param>
+        /// <returns>The new instance of <see cref="IExclusiveTimeInterval"/> object.</returns>
+        [UsedImplicitly]
+        public static IExclusiveTimeInterval WithFrom(
+            this IExclusiveTimeInterval timeInterval,
+            DateTime from) =>
+            GetExclusive(from, timeInterval.EnsureNotNull(nameof(timeInterval)).Into);
     }
 }
