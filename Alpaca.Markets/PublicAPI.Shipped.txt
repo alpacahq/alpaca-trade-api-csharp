@@ -812,6 +812,8 @@ static Alpaca.Markets.StopLimitOrder.Sell(string! symbol, long quantity, decimal
 static Alpaca.Markets.StopOrder.Buy(string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
 static Alpaca.Markets.StopOrder.Sell(string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
 static Alpaca.Markets.ThrottleParameters.Default.get -> Alpaca.Markets.ThrottleParameters!
+static Alpaca.Markets.TimeInterval.Deconstruct(this Alpaca.Markets.IExclusiveTimeInterval! timeInterval, out System.DateTime? from, out System.DateTime? into) -> void
+static Alpaca.Markets.TimeInterval.Deconstruct(this Alpaca.Markets.IInclusiveTimeInterval! timeInterval, out System.DateTime? from, out System.DateTime? into) -> void
 static Alpaca.Markets.TimeInterval.GetExclusiveIntervalFromThat(this System.DateTime from) -> Alpaca.Markets.IExclusiveTimeInterval!
 static Alpaca.Markets.TimeInterval.GetExclusiveIntervalTillThat(this System.DateTime into) -> Alpaca.Markets.IExclusiveTimeInterval!
 static Alpaca.Markets.TimeInterval.GetInclusiveIntervalFromThat(this System.DateTime from) -> Alpaca.Markets.IInclusiveTimeInterval!
@@ -822,6 +824,10 @@ static Alpaca.Markets.TimeInterval.SetExclusiveTimeInterval<TRequest>(this TRequ
 static Alpaca.Markets.TimeInterval.SetInclusiveTimeInterval<TRequest>(this TRequest request, System.DateTime from, System.DateTime into) -> TRequest
 static Alpaca.Markets.TimeInterval.SetTimeInterval<TRequest>(this TRequest request, Alpaca.Markets.IExclusiveTimeInterval! interval) -> TRequest
 static Alpaca.Markets.TimeInterval.SetTimeInterval<TRequest>(this TRequest request, Alpaca.Markets.IInclusiveTimeInterval! interval) -> TRequest
+static Alpaca.Markets.TimeInterval.WithFrom(this Alpaca.Markets.IExclusiveTimeInterval! timeInterval, System.DateTime from) -> Alpaca.Markets.IExclusiveTimeInterval!
+static Alpaca.Markets.TimeInterval.WithFrom(this Alpaca.Markets.IInclusiveTimeInterval! timeInterval, System.DateTime from) -> Alpaca.Markets.IInclusiveTimeInterval!
+static Alpaca.Markets.TimeInterval.WithInto(this Alpaca.Markets.IExclusiveTimeInterval! timeInterval, System.DateTime into) -> Alpaca.Markets.IExclusiveTimeInterval!
+static Alpaca.Markets.TimeInterval.WithInto(this Alpaca.Markets.IInclusiveTimeInterval! timeInterval, System.DateTime into) -> Alpaca.Markets.IInclusiveTimeInterval!
 static Alpaca.Markets.TrailingStopOrder.Buy(string! symbol, long quantity, Alpaca.Markets.TrailOffset trailOffset) -> Alpaca.Markets.TrailingStopOrder!
 static Alpaca.Markets.TrailingStopOrder.Sell(string! symbol, long quantity, Alpaca.Markets.TrailOffset trailOffset) -> Alpaca.Markets.TrailingStopOrder!
 static Alpaca.Markets.TrailOffset.InDollars(decimal value) -> Alpaca.Markets.TrailOffset

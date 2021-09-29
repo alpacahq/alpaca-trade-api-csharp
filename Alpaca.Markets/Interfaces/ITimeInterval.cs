@@ -21,10 +21,10 @@ namespace Alpaca.Markets
     /// <summary>
     /// Represents the inclusive version of the <see cref="ITimeInterval"/> interface.
     /// </summary>
-    public interface IInclusiveTimeInterval : ITimeInterval {}
+    public interface IInclusiveTimeInterval : ITimeInterval, IEquatable<IInclusiveTimeInterval> {}
 
     /// <summary>
     /// Represents the exclusive version of the <see cref="ITimeInterval"/> interface.
     /// </summary>
-    public interface IExclusiveTimeInterval : ITimeInterval {}
+    public interface IExclusiveTimeInterval : ITimeInterval, IEquatable<IExclusiveTimeInterval> {}
 }
