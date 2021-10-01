@@ -78,6 +78,11 @@ Alpaca.Markets.AlpacaCryptoDataClientConfiguration.SecurityId.get -> Alpaca.Mark
 Alpaca.Markets.AlpacaCryptoDataClientConfiguration.SecurityId.set -> void
 Alpaca.Markets.AlpacaCryptoDataClientConfiguration.ThrottleParameters.get -> Alpaca.Markets.ThrottleParameters!
 Alpaca.Markets.AlpacaCryptoDataClientConfiguration.ThrottleParameters.set -> void
+Alpaca.Markets.AlpacaCryptoStreamingClientConfiguration
+Alpaca.Markets.AlpacaCryptoStreamingClientConfiguration.AlpacaCryptoStreamingClientConfiguration() -> void
+Alpaca.Markets.AlpacaCryptoStreamingClientConfiguration.Exchanges.get -> System.Collections.Generic.IReadOnlyCollection<Alpaca.Markets.CryptoExchange>!
+Alpaca.Markets.AlpacaCryptoStreamingClientConfiguration.WithExchanges(params Alpaca.Markets.CryptoExchange[]! exchanges) -> Alpaca.Markets.AlpacaCryptoStreamingClientConfiguration!
+Alpaca.Markets.AlpacaCryptoStreamingClientConfiguration.WithExchanges(System.Collections.Generic.IEnumerable<Alpaca.Markets.CryptoExchange>! exchanges) -> Alpaca.Markets.AlpacaCryptoStreamingClientConfiguration!
 Alpaca.Markets.AlpacaDataClientConfiguration
 Alpaca.Markets.AlpacaDataClientConfiguration.AlpacaDataClientConfiguration() -> void
 Alpaca.Markets.AlpacaDataClientConfiguration.ApiEndpoint.get -> System.Uri!
@@ -90,12 +95,8 @@ Alpaca.Markets.AlpacaDataClientConfiguration.ThrottleParameters.get -> Alpaca.Ma
 Alpaca.Markets.AlpacaDataClientConfiguration.ThrottleParameters.set -> void
 Alpaca.Markets.AlpacaDataStreamingClientConfiguration
 Alpaca.Markets.AlpacaDataStreamingClientConfiguration.AlpacaDataStreamingClientConfiguration() -> void
-Alpaca.Markets.AlpacaDataStreamingClientConfiguration.SecurityId.get -> Alpaca.Markets.SecurityKey!
-Alpaca.Markets.AlpacaDataStreamingClientConfiguration.SecurityId.set -> void
 Alpaca.Markets.AlpacaStreamingClientConfiguration
 Alpaca.Markets.AlpacaStreamingClientConfiguration.AlpacaStreamingClientConfiguration() -> void
-Alpaca.Markets.AlpacaStreamingClientConfiguration.SecurityId.get -> Alpaca.Markets.SecurityKey!
-Alpaca.Markets.AlpacaStreamingClientConfiguration.SecurityId.set -> void
 Alpaca.Markets.AlpacaTradingClientConfiguration
 Alpaca.Markets.AlpacaTradingClientConfiguration.AlpacaTradingClientConfiguration() -> void
 Alpaca.Markets.AlpacaTradingClientConfiguration.ApiEndpoint.get -> System.Uri!
@@ -313,6 +314,11 @@ Alpaca.Markets.IAlpacaCryptoDataClient.GetLatestTradeAsync(Alpaca.Markets.Latest
 Alpaca.Markets.IAlpacaCryptoDataClient.ListHistoricalBarsAsync(Alpaca.Markets.HistoricalCryptoBarsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.IBar!>!>!
 Alpaca.Markets.IAlpacaCryptoDataClient.ListHistoricalQuotesAsync(Alpaca.Markets.HistoricalCryptoQuotesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.IQuote!>!>!
 Alpaca.Markets.IAlpacaCryptoDataClient.ListHistoricalTradesAsync(Alpaca.Markets.HistoricalCryptoTradesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.ITrade!>!>!
+Alpaca.Markets.IAlpacaCryptoStreamingClient
+Alpaca.Markets.IAlpacaCryptoStreamingClient.GetMinuteBarSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
+Alpaca.Markets.IAlpacaCryptoStreamingClient.GetMinuteBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
+Alpaca.Markets.IAlpacaCryptoStreamingClient.GetQuoteSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IQuote!>!
+Alpaca.Markets.IAlpacaCryptoStreamingClient.GetTradeSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ITrade!>!
 Alpaca.Markets.IAlpacaDataClient
 Alpaca.Markets.IAlpacaDataClient.GetHistoricalBarsAsync(Alpaca.Markets.HistoricalBarsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IMultiPage<Alpaca.Markets.IBar!>!>!
 Alpaca.Markets.IAlpacaDataClient.GetHistoricalQuotesAsync(Alpaca.Markets.HistoricalQuotesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IMultiPage<Alpaca.Markets.IQuote!>!>!
@@ -409,6 +415,7 @@ Alpaca.Markets.IClock.NextCloseUtc.get -> System.DateTime
 Alpaca.Markets.IClock.NextOpenUtc.get -> System.DateTime
 Alpaca.Markets.IClock.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.IEnvironment
+Alpaca.Markets.IEnvironment.AlpacaCryptoStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaDataApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaDataStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaStreamingApi.get -> System.Uri!
@@ -755,6 +762,8 @@ Alpaca.Markets.StopOrder.StopPrice.get -> decimal
 Alpaca.Markets.StreamingClientConfiguration
 Alpaca.Markets.StreamingClientConfiguration.ApiEndpoint.get -> System.Uri!
 Alpaca.Markets.StreamingClientConfiguration.ApiEndpoint.set -> void
+Alpaca.Markets.StreamingClientConfiguration.SecurityId.get -> Alpaca.Markets.SecurityKey!
+Alpaca.Markets.StreamingClientConfiguration.SecurityId.set -> void
 Alpaca.Markets.StreamingClientConfiguration.StreamingClientConfiguration(System.Uri! apiEndpoint) -> void
 Alpaca.Markets.TakeProfitOrder
 Alpaca.Markets.TakeProfitOrder.LimitPrice.get -> decimal
@@ -837,6 +846,8 @@ static Alpaca.Markets.BarTimeFrame.operator ==(Alpaca.Markets.BarTimeFrame lhs, 
 static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateTime date) -> Alpaca.Markets.CalendarRequest!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoDataClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaCryptoDataClient!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoDataClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaCryptoDataClientConfiguration!
+static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoStreamingClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaCryptoStreamingClient!
+static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoStreamingClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaCryptoStreamingClientConfiguration!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaDataClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaDataClient!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaDataClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaDataClientConfiguration!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaDataStreamingClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaDataStreamingClient!

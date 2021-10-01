@@ -2,12 +2,12 @@
 
 namespace Alpaca.Markets
 {
-    internal sealed class AlpacaDataStreamingClient :
-        DataStreamingClientBase<AlpacaDataStreamingClientConfiguration>, 
-        IAlpacaDataStreamingClient
+    internal sealed class AlpacaCryptoStreamingClient :
+        DataStreamingClientBase<AlpacaCryptoStreamingClientConfiguration>, 
+        IAlpacaCryptoStreamingClient
     {
-        public AlpacaDataStreamingClient(
-            AlpacaDataStreamingClientConfiguration configuration)
+        public AlpacaCryptoStreamingClient(
+            AlpacaCryptoStreamingClientConfiguration configuration)
             : base(configuration.EnsureNotNull(nameof(configuration)))
         {
         }
@@ -18,7 +18,7 @@ namespace Alpaca.Markets
 
         public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
             String symbol) =>
-            GetSubscription<IQuote, JsonRealTimeQuote>(QuotesChannel, symbol);
+            GetSubscription<IQuote, JsonRealTimeCryptoQuote>(QuotesChannel, symbol);
 
         public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() => 
             GetSubscription<IBar, JsonRealTimeBar>(MinuteBarsChannel, WildcardSymbolString);
@@ -26,9 +26,5 @@ namespace Alpaca.Markets
         public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
             String symbol) =>
             GetSubscription<IBar, JsonRealTimeBar>(MinuteBarsChannel, symbol);
-
-        public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
-            String symbol) =>
-            GetSubscription<IBar, JsonRealTimeBar>(DailyBarsChannel, symbol);
     }
 }
