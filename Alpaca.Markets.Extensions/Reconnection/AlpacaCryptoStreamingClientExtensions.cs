@@ -4,17 +4,17 @@ using JetBrains.Annotations;
 namespace Alpaca.Markets.Extensions
 {
     /// <summary>
-    /// Helper extension method for creating special version of the <see cref="IAlpacaDataStreamingClient"/>
+    /// Helper extension method for creating special version of the <see cref="IAlpacaCryptoStreamingClient"/>
     /// implementation with automatic reconnection (with configurable delay and number of attempts) support.
     /// </summary>
-    public static partial class AlpacaDataStreamingClientExtensions
+    public static partial class AlpacaCryptoStreamingClientExtensions
     {
         private sealed class ClientWithReconnection :
-            ClientWithSubscriptionReconnectBase<IAlpacaDataStreamingClient>,
-            IAlpacaDataStreamingClient
+            ClientWithSubscriptionReconnectBase<IAlpacaCryptoStreamingClient>,
+            IAlpacaCryptoStreamingClient
         {
             public ClientWithReconnection(
-                IAlpacaDataStreamingClient client,
+                IAlpacaCryptoStreamingClient client,
                 ReconnectionParameters reconnectionParameters)
                 : base (client, reconnectionParameters)
             {
@@ -31,27 +31,18 @@ namespace Alpaca.Markets.Extensions
 
             public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(String symbol) =>
                 Client.GetMinuteBarSubscription(symbol);
-
-            public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(String symbol) =>
-                Client.GetDailyBarSubscription(symbol);
-
-            public IAlpacaDataSubscription<IStatus> GetStatusSubscription(String symbol) =>
-                Client.GetStatusSubscription(symbol);
-
-            public IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(String symbol) =>
-                Client.GetLimitUpLimitDownSubscription(symbol);
         }
 
         /// <summary>
-        /// Wraps instance of <see cref="IAlpacaDataStreamingClient"/> into the helper class
+        /// Wraps instance of <see cref="IAlpacaCryptoStreamingClient"/> into the helper class
         /// with automatic reconnection support and provide optional reconnection parameters.
         /// </summary>
         /// <param name="client">Original streaming client for wrapping.</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
         [UsedImplicitly]
         [CLSCompliant(false)]
-        public static IAlpacaDataStreamingClient WithReconnect(
-            this IAlpacaDataStreamingClient client) =>
+        public static IAlpacaCryptoStreamingClient WithReconnect(
+            this IAlpacaCryptoStreamingClient client) =>
             WithReconnect(client, ReconnectionParameters.Default);
 
         /// <summary>
@@ -63,8 +54,8 @@ namespace Alpaca.Markets.Extensions
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
         [UsedImplicitly]
         [CLSCompliant(false)]
-        public static IAlpacaDataStreamingClient WithReconnect(
-            this IAlpacaDataStreamingClient client,
+        public static IAlpacaCryptoStreamingClient WithReconnect(
+            this IAlpacaCryptoStreamingClient client,
             ReconnectionParameters parameters) =>
             new ClientWithReconnection(client, parameters);
     }

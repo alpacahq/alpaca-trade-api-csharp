@@ -171,6 +171,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaCryptoStreamingClient"/> interface implementation.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAlpacaCryptoStreamingClient GetAlpacaCryptoStreamingClient(
             this IEnvironment environment,
