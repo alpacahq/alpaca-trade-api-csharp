@@ -26,7 +26,7 @@ namespace Alpaca.Markets
             Configuration = configuration.EnsureNotNull(nameof(configuration));
             Configuration.EnsureIsValid();
 
-            _webSocket = new WebSocketsTransport(Configuration.ApiEndpoint);
+            _webSocket = new WebSocketsTransport(Configuration.GetApiEndpoint());
 
             _webSocket.Opened += OnOpened;
             _webSocket.Closed += OnClosed;

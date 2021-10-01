@@ -26,5 +26,10 @@ namespace Alpaca.Markets
         /// Gets Alpaca data streaming API base URL for this environment.
         /// </summary>
         Uri AlpacaDataStreamingApi { get; }
+
+        /// <summary>
+        /// Gets Alpaca crypto streaming API base URL for this environment.
+        /// </summary>
+        Uri AlpacaCryptoStreamingApi { get; }
     }
 }

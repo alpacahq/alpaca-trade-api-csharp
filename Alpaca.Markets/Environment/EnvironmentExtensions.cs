@@ -163,5 +163,36 @@ namespace Alpaca.Markets
                     .AlpacaDataStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaDataStreamingApi)),
                 SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
             };
+
+        /// <summary>
+        /// Creates the new instance of <see cref="IAlpacaCryptoStreamingClient"/> interface
+        /// implementation for specific environment provided as <paramref name="environment"/> argument.
+        /// </summary>
+        /// <param name="environment">Target environment for new object.</param>
+        /// <param name="securityKey">Alpaca API security key.</param>
+        /// <returns>The new instance of <see cref="IAlpacaCryptoStreamingClient"/> interface implementation.</returns>
+        [CLSCompliant(false)]
+        public static IAlpacaCryptoStreamingClient GetAlpacaCryptoStreamingClient(
+            this IEnvironment environment,
+            SecurityKey securityKey) =>
+            new AlpacaCryptoStreamingClient(environment.GetAlpacaCryptoStreamingClientConfiguration(securityKey));
+
+        /// <summary>
+        /// Creates new instance of <see cref="AlpacaCryptoStreamingClientConfiguration"/> for specific
+        /// environment provided as <paramref name="environment"/> argument.
+        /// </summary>
+        /// <param name="environment">Target environment for new object.</param>
+        /// <param name="securityKey">Alpaca API security key.</param>
+        /// <returns>New instance of <see cref="AlpacaCryptoStreamingClientConfiguration"/> object.</returns>
+        [UsedImplicitly]
+        public static AlpacaCryptoStreamingClientConfiguration GetAlpacaCryptoStreamingClientConfiguration(
+            this IEnvironment environment,
+            SecurityKey securityKey) =>
+            new ()
+            {
+                ApiEndpoint = environment.EnsureNotNull(nameof(environment))
+                    .AlpacaCryptoStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaCryptoStreamingApi)),
+                SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
+            };
     }
 }

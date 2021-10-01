@@ -11,5 +11,7 @@ namespace Alpaca.Markets
         public Uri AlpacaStreamingApi => new ("wss://api.alpaca.markets/stream");
 
         public Uri AlpacaDataStreamingApi => new ("wss://stream.data.alpaca.markets/v2/sip");
+
+        public Uri AlpacaCryptoStreamingApi => new ("wss://stream.data.alpaca.markets/v1beta1/crypto");
     }
 }
