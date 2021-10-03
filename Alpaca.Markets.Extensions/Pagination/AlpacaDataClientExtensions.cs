@@ -5,8 +5,6 @@ using JetBrains.Annotations;
 
 namespace Alpaca.Markets.Extensions
 {
-    using static Pagination;
-
     /// <summary>
     /// Set of extension methods for the <see cref="IAlpacaDataClient"/> interface.
     /// </summary>

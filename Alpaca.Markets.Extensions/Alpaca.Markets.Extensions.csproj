@@ -17,7 +17,8 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Added a set of new static factory methods and extensions methods for bracket orders creation.</PackageReleaseNotes>
+    <PackageReleaseNotes>- First version of Alpaca Crypto Data API (v1-beta1) implementation (streaming API part).
+- First version of Alpaca Crypto Data API (v1-beta1) implementation (RESTfull API part).</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
