@@ -82,12 +82,6 @@ namespace Alpaca.Markets
 
         // Available Alpaca data streaming message types
 
-        private const String StatusesChannel = "s";
-
-        private const String DailyBarsChannel = "d";
-
-        private const String LimitUpDownChannel = "l";
-
         private const String ErrorInfo = "error";
 
         private const String Subscription = "subscription";
@@ -98,7 +92,13 @@ namespace Alpaca.Markets
 
         protected const String QuotesChannel = "q";
 
+        protected const String StatusesChannel = "s";
+
+        protected const String DailyBarsChannel = "d";
+
         protected const String MinuteBarsChannel = "b";
+
+        protected const String LimitUpDownChannel = "l";
 
         protected const String WildcardSymbolString = "*";
 

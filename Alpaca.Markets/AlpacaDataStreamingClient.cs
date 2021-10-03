@@ -6,14 +6,6 @@ namespace Alpaca.Markets
         DataStreamingClientBase<AlpacaDataStreamingClientConfiguration>, 
         IAlpacaDataStreamingClient
     {
-        // Available Alpaca data streaming message types
-
-        private const String StatusesChannel = "s";
-
-        private const String DailyBarsChannel = "d";
-
-        private const String LimitUpDownChannel = "l";
-
         public AlpacaDataStreamingClient(
             AlpacaDataStreamingClientConfiguration configuration)
             : base(configuration.EnsureNotNull(nameof(configuration)))
