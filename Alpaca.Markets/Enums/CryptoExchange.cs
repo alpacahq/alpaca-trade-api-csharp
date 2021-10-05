@@ -2,13 +2,14 @@
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Exchanges supported by Alpaca REST API.
     /// </summary>
-    [JsonConverter(typeof(ExchangeEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     [SuppressMessage("ReSharper", "IdentifierTypo")]
     [SuppressMessage("ReSharper", "StringLiteralTypo")]
     public enum CryptoExchange
