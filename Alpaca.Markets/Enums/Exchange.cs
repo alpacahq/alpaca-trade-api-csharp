@@ -63,6 +63,12 @@ namespace Alpaca.Markets
         /// International Exchange (IEX).
         /// </summary>
         [EnumMember(Value = "IEX")]
-        Iex
+        Iex,
+
+        /// <summary>
+        /// Over the counter (OTC).
+        /// </summary>
+        [EnumMember(Value = "OTC")]
+        Otc
     }
 }

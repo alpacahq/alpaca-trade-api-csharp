@@ -176,6 +176,7 @@ Alpaca.Markets.Exchange.Nasdaq = 4 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.Nyse = 3 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.NyseArca = 2 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.NyseMkt = 1 -> Alpaca.Markets.Exchange
+Alpaca.Markets.Exchange.Otc = 9 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.Unknown = 0 -> Alpaca.Markets.Exchange
 Alpaca.Markets.HistoricalBarsRequest
 Alpaca.Markets.HistoricalBarsRequest.Adjustment.get -> Alpaca.Markets.Adjustment?
