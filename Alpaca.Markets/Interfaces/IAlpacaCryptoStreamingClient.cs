@@ -50,5 +50,16 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
             String symbol);
+
+        /// <summary>
+        /// Gets the daily aggregate (bar) subscription for the <paramref name="symbol"/> asset.
+        /// </summary>
+        /// <param name="symbol">Alpaca asset name.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
+            String symbol);
     }
 }
