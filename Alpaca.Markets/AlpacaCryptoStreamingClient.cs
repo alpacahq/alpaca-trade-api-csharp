@@ -26,5 +26,9 @@ namespace Alpaca.Markets
         public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
             String symbol) =>
             GetSubscription<IBar, JsonRealTimeBar>(MinuteBarsChannel, symbol);
+
+        public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
+            String symbol) =>
+            GetSubscription<IBar, JsonRealTimeBar>(DailyBarsChannel, symbol);
     }
 }
