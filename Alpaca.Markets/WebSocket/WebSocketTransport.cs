@@ -71,8 +71,8 @@ namespace Alpaca.Markets
             _resolvedUrl = url ?? throw new ArgumentNullException(nameof(url));
 
             var options = new PipeOptions(
-                writerScheduler: PipeScheduler.ThreadPool,
-                readerScheduler: PipeScheduler.ThreadPool,
+                writerScheduler: PipeScheduler.Inline,
+                readerScheduler: PipeScheduler.Inline,
                 useSynchronizationContext: false);
             var pair = DuplexPipe.CreateConnectionPair(options, options);
 
@@ -143,10 +143,13 @@ namespace Alpaca.Markets
 
         public async ValueTask SendAsync(
             String message,
-            CancellationToken cancellationToken) =>
+            CancellationToken cancellationToken)
+        {
             await _transport.Output
                 .WriteAsync(Encoding.UTF8.GetBytes(message), cancellationToken)
                 .ConfigureAwait(false);
+            await _transport.Output.FlushAsync(cancellationToken).ConfigureAwait(false);
+        }
 
         public void Dispose() => _webSocket.Dispose();
 
