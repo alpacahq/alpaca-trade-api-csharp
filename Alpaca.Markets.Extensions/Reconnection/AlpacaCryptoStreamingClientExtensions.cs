@@ -31,6 +31,9 @@ namespace Alpaca.Markets.Extensions
 
             public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(String symbol) =>
                 Client.GetMinuteBarSubscription(symbol);
+
+            public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(String symbol) =>
+                Client.GetDailyBarSubscription(symbol);
         }
 
         /// <summary>
