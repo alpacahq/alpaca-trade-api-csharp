@@ -4,21 +4,21 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>6.0.0-alpha4</Version>
+    <Version>6.0.0-alpha5</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>6.0.0.3</AssemblyVersion>
-    <FileVersion>6.0.0.3</FileVersion>
+    <AssemblyVersion>6.0.0.4</AssemblyVersion>
+    <FileVersion>6.0.0.4</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- First version of Alpaca Crypto Data API (v1-beta1) implementation (streaming API part).
- - Added more helper methods for time intervals handling.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Fixed problem with the incorrect binary message concatenation on sending in the `WebSocketTransport` class.
+- Added daily bars subscription/processing into the `IAlpacaCryptoStreamingClient` implementation.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
