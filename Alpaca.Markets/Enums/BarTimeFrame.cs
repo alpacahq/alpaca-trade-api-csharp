@@ -57,6 +57,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Minute bars.
         /// </summary>
+        [UsedImplicitly]
         public static BarTimeFrame Minute => new (1, BarTimeFrameUnit.Minute);
 
         /// <summary>

@@ -13,6 +13,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets unique server-side order identifier.
         /// </summary>
+        [UsedImplicitly]
         Guid OrderId { get; }
 
         /// <summary>

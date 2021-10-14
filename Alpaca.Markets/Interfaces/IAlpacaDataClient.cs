@@ -18,6 +18,7 @@ namespace Alpaca.Markets
         /// <param name="request">Historical bars request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of historical bars for specified asset (with pagination data).</returns>
+        [UsedImplicitly]
         Task<IPage<IBar>> ListHistoricalBarsAsync(
             HistoricalBarsRequest request,
             CancellationToken cancellationToken = default);

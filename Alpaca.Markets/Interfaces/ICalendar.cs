@@ -18,6 +18,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trading date in UTC time zone.
         /// </summary>
+        [UsedImplicitly]
         DateTime TradingDateUtc { get; }
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trading date close time in UTC time zone.
         /// </summary>
+        [UsedImplicitly]
         DateTime TradingCloseTimeUtc { get; }
     }
 }

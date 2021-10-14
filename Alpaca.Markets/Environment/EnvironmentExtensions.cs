@@ -15,6 +15,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaTradingClient"/> interface implementation.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAlpacaTradingClient GetAlpacaTradingClient(
             this IEnvironment environment,
@@ -46,6 +47,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaDataClient"/> interface implementation.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAlpacaDataClient GetAlpacaDataClient(
             this IEnvironment environment,
@@ -109,6 +111,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaStreamingClient"/> interface implementation.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAlpacaStreamingClient GetAlpacaStreamingClient(
             this IEnvironment environment,
@@ -140,6 +143,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaDataStreamingClient"/> interface implementation.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAlpacaDataStreamingClient GetAlpacaDataStreamingClient(
             this IEnvironment environment,

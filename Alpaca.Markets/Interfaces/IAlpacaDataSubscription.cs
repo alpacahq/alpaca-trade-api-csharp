@@ -30,6 +30,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Occurred when a new <typeparamref name="TApi"/> item received from the stream.
         /// </summary>
+        [UsedImplicitly]
         event Action<TApi> Received;
     }
 }

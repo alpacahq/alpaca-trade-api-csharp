@@ -78,11 +78,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Buying power multiplier that represents account margin classification.
         /// </summary>
+        [UsedImplicitly]
         Multiplier Multiplier { get; }
 
         /// <summary>
         /// Current available buying power.
         /// </summary>
+        [UsedImplicitly]
         Decimal? BuyingPower { get; }
 
         /// <summary>
@@ -112,6 +114,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Cash + LongMarketValue + ShortMarketValue.
         /// </summary>
+        [UsedImplicitly]
         Decimal? Equity { get; }
 
         /// <summary>

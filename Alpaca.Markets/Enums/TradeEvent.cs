@@ -28,6 +28,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Order completely filled.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "fill")]
         Fill,
 
@@ -41,6 +42,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Order cancelled.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "canceled")]
         Canceled,
 
@@ -61,6 +63,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Order rejected by server side.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "rejected")]
         Rejected,
 

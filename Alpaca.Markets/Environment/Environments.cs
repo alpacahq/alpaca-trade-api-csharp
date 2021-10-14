@@ -1,4 +1,6 @@
-﻿namespace Alpaca.Markets
+﻿using JetBrains.Annotations;
+
+namespace Alpaca.Markets
 {
     /// <summary>
     /// Provides single entry point for obtaining information about different environments.
@@ -13,6 +15,7 @@
         /// <summary>
         /// Gets environment used by all Alpaca users who have no registered accounts.
         /// </summary>
+        [UsedImplicitly]
         public static IEnvironment Paper { get; } = new PaperEnvironment();
     }
 }
