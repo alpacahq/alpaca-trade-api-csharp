@@ -39,7 +39,7 @@ namespace Alpaca.Markets
                     .ExecuteAsync(() => sendAsyncWithTimeout(request, cancellationToken))
                     .ConfigureAwait(false);
 
-            private Task<HttpResponseMessage> sendAsyncWithTimeout(
+            private async Task<HttpResponseMessage> sendAsyncWithTimeout(
                 HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
@@ -49,7 +49,8 @@ namespace Alpaca.Markets
 
                 try
                 {
-                    return base.SendAsync(request, cancellationTokenSource.Token);
+                    return await base.SendAsync(request, cancellationTokenSource.Token)
+                        .ConfigureAwait(false);
                 }
                 catch (OperationCanceledException exception)
                     when (!cancellationToken.IsCancellationRequested)
