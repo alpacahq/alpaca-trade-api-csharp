@@ -16,6 +16,13 @@ namespace Alpaca.Markets
         /// </summary>
         [UsedImplicitly]
         [EnumMember(Value = "us_equity")]
-        UsEquity
+        UsEquity,
+
+        /// <summary>
+        /// Crypto currency asset class.
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "crypto")]
+        Crypto
     }
 }
