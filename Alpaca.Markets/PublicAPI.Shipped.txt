@@ -96,6 +96,7 @@ Alpaca.Markets.AlpacaTradingClientConfiguration.SecurityId.set -> void
 Alpaca.Markets.AlpacaTradingClientConfiguration.ThrottleParameters.get -> Alpaca.Markets.ThrottleParameters!
 Alpaca.Markets.AlpacaTradingClientConfiguration.ThrottleParameters.set -> void
 Alpaca.Markets.AssetClass
+Alpaca.Markets.AssetClass.Crypto = 1 -> Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetClass.UsEquity = 0 -> Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetsRequest
 Alpaca.Markets.AssetsRequest.AssetClass.get -> Alpaca.Markets.AssetClass?
