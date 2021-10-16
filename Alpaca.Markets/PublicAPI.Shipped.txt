@@ -793,7 +793,6 @@ Alpaca.Markets.TakerSide.Buy = 1 -> Alpaca.Markets.TakerSide
 Alpaca.Markets.TakerSide.Sell = 2 -> Alpaca.Markets.TakerSide
 Alpaca.Markets.TakerSide.Unknown = 0 -> Alpaca.Markets.TakerSide
 Alpaca.Markets.ThrottleParameters
-Alpaca.Markets.ThrottleParameters.GetAsyncPolicy() -> Polly.IAsyncPolicy<System.Net.Http.HttpResponseMessage!>!
 Alpaca.Markets.ThrottleParameters.MaxRetryAttempts.get -> uint
 Alpaca.Markets.ThrottleParameters.MaxRetryAttempts.set -> void
 Alpaca.Markets.ThrottleParameters.RetryHttpStatuses.get -> System.Collections.Generic.ISet<System.Net.HttpStatusCode>!

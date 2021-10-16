@@ -28,8 +28,11 @@ namespace Alpaca.Markets
             private readonly IAsyncPolicy<HttpResponseMessage> _asyncPolicy;
 
             public CustomHttpHandler(
-                IAsyncPolicy<HttpResponseMessage> asyncPolicy) =>
+                IAsyncPolicy<HttpResponseMessage> asyncPolicy)
+            {
+                AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
                 _asyncPolicy = asyncPolicy;
+            }
 
             /// <inheritdoc />
             protected override async Task<HttpResponseMessage> SendAsync(
@@ -162,13 +165,20 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public ISet<SocketError> RetrySocketErrorCodes => _retrySocketErrorCodes;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         [UsedImplicitly]
-        [CLSCompliant(false)]
-        public IAsyncPolicy<HttpResponseMessage> GetAsyncPolicy()
+        internal HttpMessageHandler GetMessageHandler() => new CustomHttpHandler(getAsyncPolicy());
+
+        internal HttpClient GetHttpClient() => 
+#pragma warning disable CA2000 // Dispose objects before losing scope
+#pragma warning disable CA5399 // HttpClient is created without enabling CheckCertificateRevocationList
+            new (GetMessageHandler(), true)
+#pragma warning restore CA5399 //  HttpClient is created without enabling CheckCertificateRevocationList
+#pragma warning restore CA2000 // Dispose objects before losing scope
+            {
+                Timeout = Timeout.InfiniteTimeSpan
+            };
+
+        private IAsyncPolicy<HttpResponseMessage> getAsyncPolicy()
         {
             var socketErrorsPolicy = Policy
                 .HandleInner<SocketException>(
@@ -187,16 +197,6 @@ namespace Alpaca.Markets
 
             return socketErrorsPolicy.WrapAsync(httpResponsesPolicy);
         }
-
-        internal HttpClient GetHttpClient() => 
-#pragma warning disable CA2000 // Dispose objects before losing scope
-#pragma warning disable CA5399 // HttpClient is created without enabling CheckCertificateRevocationList
-            new (new CustomHttpHandler(GetAsyncPolicy()), true)
-#pragma warning restore CA5399 //  HttpClient is created without enabling CheckCertificateRevocationList
-#pragma warning restore CA2000 // Dispose objects before losing scope
-            {
-                Timeout = Timeout.InfiniteTimeSpan
-            };
 
         private TimeSpan getDelayFromHeader(
             Int32 retryCount,
