@@ -25,6 +25,8 @@ namespace Alpaca.Markets
 
             _httpClient.DefaultRequestHeaders.Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _httpClient.DefaultRequestHeaders.AcceptEncoding
+                .Add(new StringWithQualityHeaderValue("gzip"));
             _httpClient.BaseAddress = new UriBuilder(
                     configuration.ApiEndpoint) { Path = "v2/stocks/" }.Uri;
             _httpClient.SetSecurityProtocol();
