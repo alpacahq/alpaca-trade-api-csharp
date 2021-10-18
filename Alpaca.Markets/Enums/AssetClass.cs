@@ -21,7 +21,6 @@ namespace Alpaca.Markets
         /// <summary>
         /// Crypto currency asset class.
         /// </summary>
-        [UsedImplicitly]
         [EnumMember(Value = "crypto")]
         Crypto
     }
