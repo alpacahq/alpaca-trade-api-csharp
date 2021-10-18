@@ -11,18 +11,17 @@
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>4.1.15.0</AssemblyVersion>
-    <FileVersion>4.1.15.0</FileVersion>
+    <AssemblyVersion>4.1.16.0</AssemblyVersion>
+    <FileVersion>4.1.16.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn></NoWarn>
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- The `BarTimeFrame` type was converted from the enumerable into a structure with `Value` and `Unit` properties.
-- Changed nullable attributes of some properties in the `IAccount` and `IPosition` interfaces.
-- Added the new `Adjustment` property into the `HistoricalBarsRequest` class.
-</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added the new asset class into the list of supported asset classes.
+
+- Added the new `Otc` member into the `Exchange` enumeration.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
