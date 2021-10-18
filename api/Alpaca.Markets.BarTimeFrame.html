@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Enum BarTimeFrame
+    <title>Struct BarTimeFrame
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Enum BarTimeFrame
+    <meta name="title" content="Struct BarTimeFrame
    ">
     <meta name="generator" content="docfx 2.58.4.0">
     
@@ -71,45 +71,518 @@
             <article class="content wrap" id="_content" data-uid="Alpaca.Markets.BarTimeFrame">
   
   
-  <h1 id="Alpaca_Markets_BarTimeFrame" data-uid="Alpaca.Markets.BarTimeFrame" class="text-break">Enum BarTimeFrame
+  <h1 id="Alpaca_Markets_BarTimeFrame" data-uid="Alpaca.Markets.BarTimeFrame" class="text-break">Struct BarTimeFrame
   </h1>
   <div class="markdown level0 summary"><p>Supported bar duration for Alpaca Data API.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Alpaca.Markets.BarTimeFrame.html">BarTimeFrame</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_BarTimeFrame_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(StringEnumConverter))]
-public enum BarTimeFrame</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly struct BarTimeFrame : IEquatable&lt;BarTimeFrame&gt;</code></pre>
   </div>
-  <h3 id="fields">Fields
+  <h3 id="constructors">Constructors
   </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_BarTimeFrame__ctor_System_Int32_Alpaca_Markets_BarTimeFrameUnit_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BarTimeFrame.%23ctor(System.Int32%2CAlpaca.Markets.BarTimeFrameUnit)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L17">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BarTimeFrame__ctor_" data-uid="Alpaca.Markets.BarTimeFrame.#ctor*"></a>
+  <h4 id="Alpaca_Markets_BarTimeFrame__ctor_System_Int32_Alpaca_Markets_BarTimeFrameUnit_" data-uid="Alpaca.Markets.BarTimeFrame.#ctor(System.Int32,Alpaca.Markets.BarTimeFrameUnit)">BarTimeFrame(Int32, BarTimeFrameUnit)</h4>
+  <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.BarTimeFrame.html">BarTimeFrame</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+public BarTimeFrame(int value, BarTimeFrameUnit unit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
+        <th>Type</th>
         <th>Name</th>
         <th>Description</th>
       </tr>
-    <thead>
+    </thead>
     <tbody>
       <tr>
-        <td id="Alpaca_Markets_BarTimeFrame_Day">Day</td>
-        <td><p>Daily bars.</p>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Duration value in units.</p>
 </td>
       </tr>
       <tr>
-        <td id="Alpaca_Markets_BarTimeFrame_Hour">Hour</td>
-        <td><p>Hour bars.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="Alpaca_Markets_BarTimeFrame_Minute">Minute</td>
-        <td><p>One minute bars.</p>
+        <td><a class="xref" href="Alpaca.Markets.BarTimeFrameUnit.html">BarTimeFrameUnit</a></td>
+        <td><span class="parametername">unit</span></td>
+        <td><p>Duration units (minutes, hours, days)</p>
 </td>
       </tr>
     </tbody>
-  </thead></thead></table>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_BarTimeFrame_Day.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BarTimeFrame.Day%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L72">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BarTimeFrame_Day_" data-uid="Alpaca.Markets.BarTimeFrame.Day*"></a>
+  <h4 id="Alpaca_Markets_BarTimeFrame_Day" data-uid="Alpaca.Markets.BarTimeFrame.Day">Day</h4>
+  <div class="markdown level1 summary"><p>Daily bars.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+public static readonly BarTimeFrame Day { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.BarTimeFrame.html">BarTimeFrame</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_BarTimeFrame_Hour.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BarTimeFrame.Hour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L66">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BarTimeFrame_Hour_" data-uid="Alpaca.Markets.BarTimeFrame.Hour*"></a>
+  <h4 id="Alpaca_Markets_BarTimeFrame_Hour" data-uid="Alpaca.Markets.BarTimeFrame.Hour">Hour</h4>
+  <div class="markdown level1 summary"><p>Hour bars.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+public static readonly BarTimeFrame Hour { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.BarTimeFrame.html">BarTimeFrame</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_BarTimeFrame_Minute.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BarTimeFrame.Minute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L60">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BarTimeFrame_Minute_" data-uid="Alpaca.Markets.BarTimeFrame.Minute*"></a>
+  <h4 id="Alpaca_Markets_BarTimeFrame_Minute" data-uid="Alpaca.Markets.BarTimeFrame.Minute">Minute</h4>
+  <div class="markdown level1 summary"><p>Minute bars.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+public static readonly BarTimeFrame Minute { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.BarTimeFrame.html">BarTimeFrame</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_BarTimeFrame_Unit.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BarTimeFrame.Unit%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L29">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BarTimeFrame_Unit_" data-uid="Alpaca.Markets.BarTimeFrame.Unit*"></a>
+  <h4 id="Alpaca_Markets_BarTimeFrame_Unit" data-uid="Alpaca.Markets.BarTimeFrame.Unit">Unit</h4>
+  <div class="markdown level1 summary"><p>Gets specified duration units.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+public readonly BarTimeFrameUnit Unit { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.BarTimeFrameUnit.html">BarTimeFrameUnit</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_BarTimeFrame_Value.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BarTimeFrame.Value%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L35">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BarTimeFrame_Value_" data-uid="Alpaca.Markets.BarTimeFrame.Value*"></a>
+  <h4 id="Alpaca_Markets_BarTimeFrame_Value" data-uid="Alpaca.Markets.BarTimeFrame.Value">Value</h4>
+  <div class="markdown level1 summary"><p>Gets specified duration value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[UsedImplicitly]
+public readonly int Value { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_BarTimeFrame_Equals_Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BarTimeFrame.Equals(Alpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L39">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BarTimeFrame_Equals_" data-uid="Alpaca.Markets.BarTimeFrame.Equals*"></a>
+  <h4 id="Alpaca_Markets_BarTimeFrame_Equals_Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.BarTimeFrame.Equals(Alpaca.Markets.BarTimeFrame)">Equals(BarTimeFrame)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly bool Equals(BarTimeFrame other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.BarTimeFrame.html">BarTimeFrame</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_BarTimeFrame_Equals_System_Object_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BarTimeFrame.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L46">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BarTimeFrame_Equals_" data-uid="Alpaca.Markets.BarTimeFrame.Equals*"></a>
+  <h4 id="Alpaca_Markets_BarTimeFrame_Equals_System_Object_" data-uid="Alpaca.Markets.BarTimeFrame.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override readonly bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.ValueType.Equals(System.Object)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_BarTimeFrame_GetHashCode.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BarTimeFrame.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L49">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BarTimeFrame_GetHashCode_" data-uid="Alpaca.Markets.BarTimeFrame.GetHashCode*"></a>
+  <h4 id="Alpaca_Markets_BarTimeFrame_GetHashCode" data-uid="Alpaca.Markets.BarTimeFrame.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override readonly int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.ValueType.GetHashCode()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_BarTimeFrame_ToString.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BarTimeFrame.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L42">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BarTimeFrame_ToString_" data-uid="Alpaca.Markets.BarTimeFrame.ToString*"></a>
+  <h4 id="Alpaca_Markets_BarTimeFrame_ToString" data-uid="Alpaca.Markets.BarTimeFrame.ToString">ToString()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override readonly string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.ValueType.ToString()</span></div>
+  <h3 id="operators">Operators
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_BarTimeFrame_op_Equality_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BarTimeFrame.op_Equality(Alpaca.Markets.BarTimeFrame%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L81">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BarTimeFrame_op_Equality_" data-uid="Alpaca.Markets.BarTimeFrame.op_Equality*"></a>
+  <h4 id="Alpaca_Markets_BarTimeFrame_op_Equality_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.BarTimeFrame.op_Equality(Alpaca.Markets.BarTimeFrame,Alpaca.Markets.BarTimeFrame)">Equality(BarTimeFrame, BarTimeFrame)</h4>
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if compared objects are equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(BarTimeFrame lhs, BarTimeFrame rhs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.BarTimeFrame.html">BarTimeFrame</a></td>
+        <td><span class="parametername">lhs</span></td>
+        <td><p>Left hand side for compare./</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.BarTimeFrame.html">BarTimeFrame</a></td>
+        <td><span class="parametername">rhs</span></td>
+        <td><p>Right hand side for compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Returns <code>true</code> if compared objects are equal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_BarTimeFrame_op_Inequality_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BarTimeFrame.op_Inequality(Alpaca.Markets.BarTimeFrame%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L89">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_BarTimeFrame_op_Inequality_" data-uid="Alpaca.Markets.BarTimeFrame.op_Inequality*"></a>
+  <h4 id="Alpaca_Markets_BarTimeFrame_op_Inequality_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.BarTimeFrame.op_Inequality(Alpaca.Markets.BarTimeFrame,Alpaca.Markets.BarTimeFrame)">Inequality(BarTimeFrame, BarTimeFrame)</h4>
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if compared objects are not equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(BarTimeFrame lhs, BarTimeFrame rhs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.BarTimeFrame.html">BarTimeFrame</a></td>
+        <td><span class="parametername">lhs</span></td>
+        <td><p>Left hand side for compare./</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.BarTimeFrame.html">BarTimeFrame</a></td>
+        <td><span class="parametername">rhs</span></td>
+        <td><p>Right hand side for compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Returns <code>true</code> if compared objects are not equal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
 </article>
           </div>
           
@@ -121,7 +594,7 @@ public enum BarTimeFrame</code></pre>
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_BarTimeFrame.md&amp;value=---%0Auid%3A%20Alpaca.Markets.BarTimeFrame%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Enums/BarTimeFrame.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

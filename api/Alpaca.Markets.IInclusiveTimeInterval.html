@@ -84,12 +84,15 @@
     <div>
       <a class="xref" href="Alpaca.Markets.ITimeInterval.html#Alpaca_Markets_ITimeInterval_Into">ITimeInterval.Into</a>
     </div>
+    <div>
+      <span class="xref">System.IEquatable&lt;Alpaca.Markets.IInclusiveTimeInterval&gt;.Equals(Alpaca.Markets.IInclusiveTimeInterval)</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_IInclusiveTimeInterval_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IInclusiveTimeInterval : ITimeInterval</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IInclusiveTimeInterval : ITimeInterval, IEquatable&lt;IInclusiveTimeInterval&gt;</code></pre>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
@@ -97,6 +100,15 @@
   </div>
   <div>
       <a class="xref" href="Alpaca.Markets.TimeInterval.html#Alpaca_Markets_TimeInterval_IsOpen_Alpaca_Markets_ITimeInterval_">TimeInterval.IsOpen(ITimeInterval)</a>
+  </div>
+  <div>
+      <a class="xref" href="Alpaca.Markets.TimeInterval.html#Alpaca_Markets_TimeInterval_Deconstruct_Alpaca_Markets_IInclusiveTimeInterval_System_Nullable_System_DateTime___System_Nullable_System_DateTime___">TimeInterval.Deconstruct(IInclusiveTimeInterval, out Nullable&lt;DateTime&gt;, out Nullable&lt;DateTime&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Alpaca.Markets.TimeInterval.html#Alpaca_Markets_TimeInterval_WithInto_Alpaca_Markets_IInclusiveTimeInterval_System_DateTime_">TimeInterval.WithInto(IInclusiveTimeInterval, DateTime)</a>
+  </div>
+  <div>
+      <a class="xref" href="Alpaca.Markets.TimeInterval.html#Alpaca_Markets_TimeInterval_WithFrom_Alpaca_Markets_IInclusiveTimeInterval_System_DateTime_">TimeInterval.WithFrom(IInclusiveTimeInterval, DateTime)</a>
   </div>
 </article>
           </div>

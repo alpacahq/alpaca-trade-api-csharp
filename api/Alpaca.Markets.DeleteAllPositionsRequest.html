@@ -73,7 +73,7 @@
   
   <h1 id="Alpaca_Markets_DeleteAllPositionsRequest" data-uid="Alpaca.Markets.DeleteAllPositionsRequest" class="text-break">Class DeleteAllPositionsRequest
   </h1>
-  <div class="markdown level0 summary"><p>Encapsulates request parameters for <span class="xref">Alpaca.Markets.AlpacaTradingClient.DeleteAllPositionsAsync(Alpaca.Markets.DeleteAllPositionsRequest,System.Threading.CancellationToken)</span> call.</p>
+  <div class="markdown level0 summary"><p>Encapsulates request parameters for <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_DeleteAllPositionsAsync_Alpaca_Markets_DeleteAllPositionsRequest_System_Threading_CancellationToken_">DeleteAllPositionsAsync(DeleteAllPositionsRequest, CancellationToken)</a> call.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -160,7 +160,10 @@ HTTP timeout equal to 100 seconds used in case if this property is equal to <cod
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TimeSpan? Timeout { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TimeSpan? Timeout { get;
+    [UsedImplicitly]
+    set;
+}</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
