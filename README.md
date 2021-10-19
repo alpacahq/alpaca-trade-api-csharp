@@ -54,7 +54,7 @@ See the [UsageExamples](../../tree/develop/UsageExamples) project for near-to-re
 
 Alpaca provides 3 different subscription plans for the Data API v2 real-time streaming data: Free, Unlimited, and Business. The first one provides only IEX data and has some subscription limits. Other plans provide full SIP data without data subscription limits. The `IAlpacaDataStreamingClient` interface and its implementation from SDK provide unified access for both streams.
 
-Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method for creating client connected to the Free IEX data stream. For the Unlimied and Business SIP data stream use the `Environments.Live.GetAlpacaDataStreamingClient(...)` code. So _Paper_ environment for free data tier and _Live_ for paid subscriptions.
+Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method for creating client connected to the Free IEX data stream. For the Unlimited and Business SIP data stream use the `Environments.Live.GetAlpacaDataStreamingClient(...)` code. So _Paper_ environment for free data tier and _Live_ for paid subscriptions.
 
 ## Mapping between branches and SDK versions
 
