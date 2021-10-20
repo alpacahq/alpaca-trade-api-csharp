@@ -53,6 +53,8 @@ namespace Alpaca.Markets
 
         private Task _running = Task.CompletedTask;
 
+        private SpinLock _sendLock = new (false);
+
         private readonly Uri _resolvedUrl;
         
         private volatile bool _aborted;
@@ -145,10 +147,24 @@ namespace Alpaca.Markets
             String message,
             CancellationToken cancellationToken)
         {
-            await _transport.Output
-                .WriteAsync(Encoding.UTF8.GetBytes(message), cancellationToken)
-                .ConfigureAwait(false);
-            await _transport.Output.FlushAsync(cancellationToken).ConfigureAwait(false);
+            var lockTaken = false;
+            _sendLock.TryEnter(ref lockTaken);
+            if (!lockTaken)
+            {
+                return;
+            }
+
+            try
+            {
+                await _transport.Output
+                    .WriteAsync(Encoding.UTF8.GetBytes(message), cancellationToken)
+                    .ConfigureAwait(false);
+                await _transport.Output.FlushAsync(cancellationToken).ConfigureAwait(false);
+            }
+            finally
+            {
+                _sendLock.Exit(false);
+            }
         }
 
         public void Dispose() => _webSocket.Dispose();
