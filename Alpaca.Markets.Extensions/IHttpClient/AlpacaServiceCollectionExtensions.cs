@@ -42,9 +42,9 @@ namespace Alpaca.Markets.Extensions
                 .AddTypedClient<IAlpacaCryptoDataClient>(
                     httpClient => new AlpacaCryptoDataClient(
                         configuration.withFactoryCreatedHttpClient(httpClient)))
-                .AddPolicyHandler(configuration
+                .ConfigurePrimaryHttpMessageHandler(() => configuration
                     .EnsureNotNull(nameof(configuration))
-                    .ThrottleParameters.GetAsyncPolicy())
+                    .ThrottleParameters.GetMessageHandler())
                 .Services;
 
         /// <summary>
@@ -79,9 +79,9 @@ namespace Alpaca.Markets.Extensions
                 .AddTypedClient<IAlpacaDataClient>(
                     httpClient => new AlpacaDataClient(
                         configuration.withFactoryCreatedHttpClient(httpClient)))
-                .AddPolicyHandler(configuration
+                .ConfigurePrimaryHttpMessageHandler(() => configuration
                     .EnsureNotNull(nameof(configuration))
-                    .ThrottleParameters.GetAsyncPolicy())
+                    .ThrottleParameters.GetMessageHandler())
                 .Services;
 
         /// <summary>
@@ -116,9 +116,9 @@ namespace Alpaca.Markets.Extensions
                 .AddTypedClient<IAlpacaTradingClient>(
                     httpClient => new AlpacaTradingClient(
                         configuration.withFactoryCreatedHttpClient(httpClient)))
-                .AddPolicyHandler(configuration
+                .ConfigurePrimaryHttpMessageHandler(() => configuration
                     .EnsureNotNull(nameof(configuration))
-                    .ThrottleParameters.GetAsyncPolicy())
+                    .ThrottleParameters.GetMessageHandler())
                 .Services;
 
         private static AlpacaCryptoDataClientConfiguration withFactoryCreatedHttpClient(
