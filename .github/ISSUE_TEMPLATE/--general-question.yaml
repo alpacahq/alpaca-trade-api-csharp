@@ -20,4 +20,3 @@ body:
     description: Add any other context, code examples, or references about the question?
   validations:
     required: false
-    

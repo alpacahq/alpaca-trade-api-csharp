@@ -42,7 +42,7 @@ body:
     label: Environment
     description: |
       Enter the Environment Details:
-    value: | , 
+    value: |
       - SDK Version: 
       - OS (version, bitness): 
       - .NET SDK (version):

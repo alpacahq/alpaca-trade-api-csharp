@@ -39,4 +39,3 @@ body:
       Links? References? Anything that will give us more context about the issue you are encountering!
   validations:
     required: false
-    
