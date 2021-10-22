@@ -10,9 +10,9 @@
       },
       "Microsoft.CodeAnalysis.PublicApiAnalyzers": {
         "type": "Direct",
-        "requested": "[3.3.2, )",
-        "resolved": "3.3.2",
-        "contentHash": "jlQnHJZX+Y3WygwqKNRTp/BtnSb/o+a2FFn/Ot7jeSCC5ZtrHtOi04gw5o3WSEU3OpVzrKjZVQRUwKFJncxKyA=="
+        "requested": "[3.3.3, )",
+        "resolved": "3.3.3",
+        "contentHash": "DWLeZtw2jszmzAh/MZXVo/Dy8fD9vcRaCIRZTaf2ppqaug8BGIV81dQdZfaYFlNuw7FyuZLVC5SZPZsCcePZhQ=="
       },
       "Microsoft.DotNet.Analyzers.Compatibility": {
         "type": "Direct",
@@ -125,9 +125,9 @@
       },
       "Microsoft.CodeAnalysis.PublicApiAnalyzers": {
         "type": "Direct",
-        "requested": "[3.3.2, )",
-        "resolved": "3.3.2",
-        "contentHash": "jlQnHJZX+Y3WygwqKNRTp/BtnSb/o+a2FFn/Ot7jeSCC5ZtrHtOi04gw5o3WSEU3OpVzrKjZVQRUwKFJncxKyA=="
+        "requested": "[3.3.3, )",
+        "resolved": "3.3.3",
+        "contentHash": "DWLeZtw2jszmzAh/MZXVo/Dy8fD9vcRaCIRZTaf2ppqaug8BGIV81dQdZfaYFlNuw7FyuZLVC5SZPZsCcePZhQ=="
       },
       "Microsoft.DotNet.Analyzers.Compatibility": {
         "type": "Direct",
@@ -236,9 +236,9 @@
       },
       "Microsoft.CodeAnalysis.PublicApiAnalyzers": {
         "type": "Direct",
-        "requested": "[3.3.2, )",
-        "resolved": "3.3.2",
-        "contentHash": "jlQnHJZX+Y3WygwqKNRTp/BtnSb/o+a2FFn/Ot7jeSCC5ZtrHtOi04gw5o3WSEU3OpVzrKjZVQRUwKFJncxKyA=="
+        "requested": "[3.3.3, )",
+        "resolved": "3.3.3",
+        "contentHash": "DWLeZtw2jszmzAh/MZXVo/Dy8fD9vcRaCIRZTaf2ppqaug8BGIV81dQdZfaYFlNuw7FyuZLVC5SZPZsCcePZhQ=="
       },
       "Microsoft.DotNet.Analyzers.Compatibility": {
         "type": "Direct",
@@ -333,9 +333,9 @@
       },
       "Microsoft.CodeAnalysis.PublicApiAnalyzers": {
         "type": "Direct",
-        "requested": "[3.3.2, )",
-        "resolved": "3.3.2",
-        "contentHash": "jlQnHJZX+Y3WygwqKNRTp/BtnSb/o+a2FFn/Ot7jeSCC5ZtrHtOi04gw5o3WSEU3OpVzrKjZVQRUwKFJncxKyA=="
+        "requested": "[3.3.3, )",
+        "resolved": "3.3.3",
+        "contentHash": "DWLeZtw2jszmzAh/MZXVo/Dy8fD9vcRaCIRZTaf2ppqaug8BGIV81dQdZfaYFlNuw7FyuZLVC5SZPZsCcePZhQ=="
       },
       "Microsoft.DotNet.Analyzers.Compatibility": {
         "type": "Direct",
