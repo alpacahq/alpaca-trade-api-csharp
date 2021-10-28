@@ -49,39 +49,24 @@ namespace Alpaca.Markets
             }
         }
         
-        private readonly ClientWebSocket _webSocket;
-
         private Task _running = Task.CompletedTask;
 
         private SpinLock _sendLock = new (false);
+
+        private ClientWebSocket? _webSocket;
 
         private readonly Uri _resolvedUrl;
         
         private volatile bool _aborted;
 
-        private readonly IDuplexPipe _application;
+        private IDuplexPipe? _application;
 
-        private readonly IDuplexPipe _transport;
+        private IDuplexPipe? _transport;
 
         public WebSocketsTransport(
-            Uri url)
-        {
-#pragma warning disable PC001 // API not supported on all platforms
-            _webSocket = new ClientWebSocket();
-#pragma warning restore PC001 // API not supported on all platforms
-
+            Uri url) =>
             _resolvedUrl = url ?? throw new ArgumentNullException(nameof(url));
 
-            var options = new PipeOptions(
-                writerScheduler: PipeScheduler.Inline,
-                readerScheduler: PipeScheduler.Inline,
-                useSynchronizationContext: false);
-            var pair = DuplexPipe.CreateConnectionPair(options, options);
-
-            _transport = pair.Transport;
-            _application = pair.Application;
-        }
-        
         public event Action? Opened;
 
         public event Action? Closed;
@@ -97,17 +82,30 @@ namespace Alpaca.Markets
         {
             try
             {
+#pragma warning disable PC001 // API not supported on all platforms
+                _webSocket = new ClientWebSocket();
+#pragma warning restore PC001 // API not supported on all platforms
+
+                var options = new PipeOptions(
+                    writerScheduler: PipeScheduler.Inline,
+                    readerScheduler: PipeScheduler.Inline,
+                    useSynchronizationContext: false);
+                var pair = DuplexPipe.CreateConnectionPair(options, options);
+
+                _transport = pair.Transport;
+                _application = pair.Application;
+
                 await _webSocket.ConnectAsync(_resolvedUrl, cancellationToken)
                     .ConfigureAwait(false);
             }
             catch
             {
-                _webSocket.Dispose();
+                _webSocket?.Dispose();
                 throw;
             }
 
             Opened?.Invoke();
-            _running = processSocketAsync(_webSocket);
+            _running = processSocketAsync(_webSocket, _application, _transport);
         }
 
         [SuppressMessage(
@@ -116,11 +114,14 @@ namespace Alpaca.Markets
         public async Task StopAsync(
             CancellationToken cancellationToken = default)
         {
-            await _transport.Output.CompleteAsync().ConfigureAwait(false);
-            await _transport.Input.CompleteAsync().ConfigureAwait(false);
+            if (_transport is not null)
+            {
+                await _transport.Output.CompleteAsync().ConfigureAwait(false);
+                await _transport.Input.CompleteAsync().ConfigureAwait(false);
+            }
 
             // Cancel any pending reads from the application, this should start the entire shutdown process
-            _application.Input.CancelPendingRead();
+            _application?.Input.CancelPendingRead();
 
             try
             {
@@ -133,20 +134,23 @@ namespace Alpaca.Markets
             {
                 // exceptions have been handled in the Running task continuation by closing the channel with the exception
                 Trace.TraceInformation(exception.Message);
-                return;
             }
             finally
             {
-                _webSocket.Dispose();
+                _webSocket?.Dispose();
             }
-
-            Closed?.Invoke();
         }
 
         public async ValueTask SendAsync(
             String message,
             CancellationToken cancellationToken)
         {
+            if (_transport is null)
+            {
+                return;
+
+            }
+
             var lockTaken = false;
             _sendLock.TryEnter(ref lockTaken);
             if (!lockTaken)
@@ -167,16 +171,18 @@ namespace Alpaca.Markets
             }
         }
 
-        public void Dispose() => _webSocket.Dispose();
+        public void Dispose() => _webSocket?.Dispose();
 
         private async Task processSocketAsync(
-            WebSocket socket)
+            WebSocket socket,
+            IDuplexPipe application,
+            IDuplexPipe transport)
         {
             using (socket)
             {
                 // Begin sending and receiving.
-                var receiving = startReceiving(socket);
-                var sending = startSending(socket);
+                var receiving = startReceiving(socket, application, transport);
+                var sending = startSending(socket, application);
 
                 // Wait for send or receive to complete
                 var trigger = await Task.WhenAny(receiving, sending)
@@ -189,7 +195,7 @@ namespace Alpaca.Markets
                     // 2. Waiting for a websocket send to complete
 
                     // Cancel the application so that ReadAsync yields
-                    _application.Input.CancelPendingRead();
+                    application.Input.CancelPendingRead();
 
                     using var delayCts = new CancellationTokenSource();
 
@@ -221,15 +227,20 @@ namespace Alpaca.Markets
                     socket.Abort();
 
                     // Cancel any pending flush so that we can quit
-                    _application.Output.CancelPendingFlush();
+                    application.Output.CancelPendingFlush();
                 }
+
+                Closed?.Invoke();
             }
         }
 
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]
-        private async Task startReceiving(WebSocket socket)
+        private async Task startReceiving(
+            WebSocket socket,
+            IDuplexPipe application,
+            IDuplexPipe transport)
         {
             try
             {
@@ -242,15 +253,15 @@ namespace Alpaca.Markets
 
                     if (result.MessageType == WebSocketMessageType.Close)
                     {
-                        if (_webSocket.CloseStatus != WebSocketCloseStatus.NormalClosure)
+                        if (socket.CloseStatus != WebSocketCloseStatus.NormalClosure)
                         {
-                            throw new InvalidOperationException($"Websocket closed with error: {_webSocket.CloseStatus}.");
+                            throw new InvalidOperationException($"Websocket closed with error: {socket.CloseStatus}.");
                         }
 
                         return;
                     }
 #endif
-                    var memory = _application.Output.GetMemory();
+                    var memory = application.Output.GetMemory();
 #if NETSTANDARD2_1 || NET5_0_OR_GREATER
                     // Because we checked the CloseStatus from the 0 byte read above, we don't need to check again after reading
                     var receiveResult = await socket.ReceiveAsync(memory, CancellationToken.None)
@@ -266,17 +277,17 @@ namespace Alpaca.Markets
                     // Need to check again for netstandard2.1 because a close can happen between a 0-byte read and the actual read
                     if (receiveResult.MessageType == WebSocketMessageType.Close)
                     {
-                        if (_webSocket.CloseStatus != WebSocketCloseStatus.NormalClosure)
+                        if (socket.CloseStatus != WebSocketCloseStatus.NormalClosure)
                         {
-                            throw new InvalidOperationException($"Websocket closed with error: {_webSocket.CloseStatus}.");
+                            throw new InvalidOperationException($"Websocket closed with error: {socket.CloseStatus}.");
                         }
 
                         return;
                     }
 
-                    _application.Output.Advance(receiveResult.Count);
+                    application.Output.Advance(receiveResult.Count);
 
-                    var flushResult = await _application.Output.FlushAsync().ConfigureAwait(false);
+                    var flushResult = await application.Output.FlushAsync().ConfigureAwait(false);
 
                     // We canceled in the middle of applying back pressure
                     // or if the consumer is done
@@ -290,7 +301,7 @@ namespace Alpaca.Markets
                         continue;
                     }
 
-                    var readResult = await _transport.Input.ReadAsync().ConfigureAwait(false);
+                    var readResult = await transport.Input.ReadAsync().ConfigureAwait(false);
 
                     // ReSharper disable once ConvertIfStatementToSwitchStatement
                     if (receiveResult.MessageType == WebSocketMessageType.Binary)
@@ -302,7 +313,7 @@ namespace Alpaca.Markets
                         MessageReceived?.Invoke(Encoding.UTF8.GetString(readResult.Buffer.ToArray()));
                     }
 
-                    _transport.Input.AdvanceTo(readResult.Buffer.End);
+                    transport.Input.AdvanceTo(readResult.Buffer.End);
                 }
             }
             catch (OperationCanceledException exception)
@@ -318,21 +329,23 @@ namespace Alpaca.Markets
             {
                 if (!_aborted)
                 {
-                    await _application.Output.CompleteAsync(exception).ConfigureAwait(false);
-                    Error?.Invoke(exception);
+                    await application.Output.CompleteAsync(exception).ConfigureAwait(false);
+                    Trace.TraceInformation(exception.Message);
                 }
             }
             finally
             {
                 // We're done writing
-                await _application.Output.CompleteAsync().ConfigureAwait(false);
+                await application.Output.CompleteAsync().ConfigureAwait(false);
             }
         }
 
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]
-        private async Task startSending(WebSocket socket)
+        private async Task startSending(
+            WebSocket socket,
+            IDuplexPipe application)
         {
             Exception? error = null;
 
@@ -340,7 +353,7 @@ namespace Alpaca.Markets
             {
                 while (true)
                 {
-                    var result = await _application.Input.ReadAsync()
+                    var result = await application.Input.ReadAsync()
                         .ConfigureAwait(false);
                     var buffer = result.Buffer;
 
@@ -382,7 +395,7 @@ namespace Alpaca.Markets
                     }
                     finally
                     {
-                        _application.Input.AdvanceTo(buffer.End);
+                        application.Input.AdvanceTo(buffer.End);
                     }
                 }
             }
@@ -410,11 +423,12 @@ namespace Alpaca.Markets
                     }
                 }
 
-                await _application.Input.CompleteAsync().ConfigureAwait(false);
+                await application.Input.CompleteAsync().ConfigureAwait(false);
             }
         }
 
-        private static bool webSocketCanSend(WebSocket ws) =>
+        private static bool webSocketCanSend(
+            WebSocket ws) =>
             ws.State is not (
                 WebSocketState.Aborted or
                 WebSocketState.Closed or
