@@ -80,6 +80,7 @@ namespace Alpaca.Markets
         /// <param name="date">Target date for filtering activities.</param>
         /// <returns>Fluent interface method return same <see cref="AccountActivitiesRequest"/> instance.</returns>
         [UsedImplicitly]
+        // TODO: olegra - good candidate for the DateOnly type usage
         public AccountActivitiesRequest SetSingleDate(
             DateTime date)
         {
