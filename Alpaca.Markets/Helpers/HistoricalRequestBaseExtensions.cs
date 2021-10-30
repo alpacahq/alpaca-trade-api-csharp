@@ -8,6 +8,8 @@ namespace Alpaca.Markets
     /// </summary>
     public static class HistoricalRequestBaseExtensions
     {
+        private const UInt32 MaxPageSize = 10_000;
+
         /// <summary>
         /// Sets the request page size using the fluent interface approach.
         /// </summary>
@@ -40,5 +42,23 @@ namespace Alpaca.Markets
             request.EnsureNotNull(nameof(request)).Pagination.Token = pageToken;
             return request;
         }
+
+        internal static DateTime GetValidatedFrom(
+            this HistoricalRequestBase request) =>
+            getValidatedDate(request.TimeInterval.From, nameof(request.TimeInterval.From));
+
+        internal static DateTime GetValidatedInto(
+            this HistoricalRequestBase request) =>
+            getValidatedDate(request.TimeInterval.Into, nameof(request.TimeInterval.Into));
+
+        internal static UInt32 GetPageSize(
+            this HistoricalRequestBase request) =>
+            request.Pagination.Size ?? MaxPageSize;
+
+        private static DateTime getValidatedDate(
+            DateTime? date,
+            String paramName) =>
+            date ?? throw new ArgumentException(
+                "Invalid request time interval - empty date", paramName);
     }
 }

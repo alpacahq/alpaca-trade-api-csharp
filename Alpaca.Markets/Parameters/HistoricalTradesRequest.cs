@@ -6,11 +6,11 @@ namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates request parameters for
-    /// <see cref="IAlpacaDataClient.ListHistoricalTradesAsync(HistoricalTradesRequest,System.Threading.CancellationToken)"/> and
-    /// <see cref="IAlpacaDataClient.GetHistoricalTradesAsync(HistoricalTradesRequest,System.Threading.CancellationToken)"/> calls.
+    /// <see cref="IHistoricalTradesClient{TRequest}.ListHistoricalTradesAsync(TRequest,System.Threading.CancellationToken)"/> and
+    /// <see cref="IHistoricalTradesClient{TRequest}.GetHistoricalTradesAsync(TRequest,System.Threading.CancellationToken)"/> calls.
     /// </summary>
     [UsedImplicitly]
-    public sealed class HistoricalTradesRequest : HistoricalRequestBase
+    public sealed class HistoricalTradesRequest : HistoricalRequestBase, IHistoricalRequest<HistoricalTradesRequest, ITrade>
     {
         /// <summary>
         /// Creates new instance of <see cref="HistoricalTradesRequest"/> object.
@@ -66,5 +66,9 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         protected override String LastPathSegment => "trades";
+
+        HistoricalTradesRequest IHistoricalRequest<HistoricalTradesRequest, ITrade>.GetValidatedRequestWithoutPageToken() =>
+            new HistoricalTradesRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto())
+                .WithPageSize(this.GetPageSize());
     }
 }

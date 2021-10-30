@@ -75,18 +75,18 @@ namespace Alpaca.Markets
             {
                 Query = await AddParameters(Pagination.QueryBuilder
                         .AddParameter("symbols",
-                            IsSingleSymbol ? Array.Empty<String>() : Symbols)
+                            HasSingleSymbol ? Array.Empty<String>() : Symbols)
                         .AddParameter("start", TimeInterval.From, "O")
                         .AddParameter("end", TimeInterval.Into, "O"))
                     .AsStringAsync().ConfigureAwait(false)
-            }.AppendPath(IsSingleSymbol
+            }.AppendPath(HasSingleSymbol
                 ? $"{Symbols.First()}/{LastPathSegment}"
                 : $"{LastPathSegment}");
 
         internal virtual QueryBuilder AddParameters(
             QueryBuilder queryBuilder) => queryBuilder;
 
-        private bool IsSingleSymbol => Symbols.Count == 1;
+        internal bool HasSingleSymbol => Symbols.Count == 1;
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {

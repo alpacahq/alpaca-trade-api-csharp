@@ -1,5 +1,4 @@
 ﻿using System.Net.Http;
-using System.Net.Http.Headers;
 
 namespace Alpaca.Markets
 {
@@ -8,24 +7,10 @@ namespace Alpaca.Markets
         private readonly HttpClient _httpClient;
 
         public AlpacaTradingClient(
-            AlpacaTradingClientConfiguration configuration)
-        {
-            configuration
+            AlpacaTradingClientConfiguration configuration) =>
+            _httpClient = configuration
                 .EnsureNotNull(nameof(configuration))
-                .EnsureIsValid();
-
-            _httpClient = configuration.HttpClient ??
-                configuration.ThrottleParameters.GetHttpClient();
-
-            _httpClient.AddAuthenticationHeaders(configuration.SecurityId);
-
-            _httpClient.DefaultRequestHeaders.Accept
-                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _httpClient.DefaultRequestHeaders.AcceptEncoding
-                .Add(new StringWithQualityHeaderValue("gzip"));
-            _httpClient.BaseAddress = configuration.ApiEndpoint;
-            _httpClient.SetSecurityProtocol();
-        }
+                .GetConfiguredHttpClient();
 
         public void Dispose() => _httpClient.Dispose();
     }

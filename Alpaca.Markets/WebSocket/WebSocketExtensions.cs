@@ -3,7 +3,7 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-#if !NET5_0_OR_GREATER
+#if !(NETSTANDARD2_1 || NET5_0_OR_GREATER)
 using System.Runtime.InteropServices;
 #endif
 

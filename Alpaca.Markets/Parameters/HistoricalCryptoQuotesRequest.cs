@@ -7,11 +7,11 @@ namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates request parameters for
-    /// <see cref="IAlpacaCryptoDataClient.ListHistoricalQuotesAsync(HistoricalCryptoQuotesRequest,System.Threading.CancellationToken)"/> and
-    /// <see cref="IAlpacaCryptoDataClient.GetHistoricalQuotesAsync(HistoricalCryptoQuotesRequest,System.Threading.CancellationToken)"/> calls.
+    /// <see cref="IHistoricalQuotesClient{TRequest}.ListHistoricalQuotesAsync(TRequest,System.Threading.CancellationToken)"/> and
+    /// <see cref="IHistoricalQuotesClient{TRequest}.GetHistoricalQuotesAsync(TRequest,System.Threading.CancellationToken)"/> calls.
     /// </summary>
     [UsedImplicitly]
-    public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase
+    public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase, IHistoricalRequest<HistoricalCryptoQuotesRequest, IQuote>
     {
         /// <summary>
         /// Creates new instance of <see cref="HistoricalCryptoQuotesRequest"/> object.
@@ -97,5 +97,9 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         protected override String LastPathSegment => "quotes";
+
+        HistoricalCryptoQuotesRequest IHistoricalRequest<HistoricalCryptoQuotesRequest, IQuote>.GetValidatedRequestWithoutPageToken() =>
+            new HistoricalCryptoQuotesRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto())
+                .WithPageSize(this.GetPageSize());
     }
 }

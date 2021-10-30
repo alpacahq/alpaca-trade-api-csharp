@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -19,23 +19,29 @@ namespace Alpaca.Markets
             System.Net.HttpVersion.Version11;
 #endif
 
-        public static void AddAuthenticationHeaders(
+        public static HttpClient Configure(
             this HttpClient httpClient,
-            SecurityKey securityKey)
+            SecurityKey securityKey,
+            Uri baseAddress)
         {
             foreach (var pair in securityKey.GetAuthenticationHeaders())
             {
                 httpClient.DefaultRequestHeaders.Add(pair.Key, pair.Value);
             }
-        }
 
-        // ReSharper disable once StringLiteralTypo
-        [Conditional("NETFRAMEWORK")]
-        public static void SetSecurityProtocol(
-            // ReSharper disable once UnusedParameter.Global
-            this HttpClient httpClient) =>
+            httpClient.DefaultRequestHeaders.Accept
+                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DefaultRequestHeaders.AcceptEncoding
+                .Add(new StringWithQualityHeaderValue("gzip"));
+            httpClient.BaseAddress = baseAddress;
+
+#if NETFRAMEWORK
             // ReSharper disable once StringLiteralTypo
             AppContext.SetSwitch("Switch.System.Net.DontEnableSystemDefaultTlsVersions", false);
+#endif
+
+            return httpClient;
+        }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
             HttpMessageInvoker httpClient,

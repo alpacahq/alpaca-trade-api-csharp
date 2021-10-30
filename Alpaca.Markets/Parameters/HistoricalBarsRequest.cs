@@ -6,10 +6,10 @@ namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates request parameters for
-    /// <see cref="IAlpacaDataClient.ListHistoricalBarsAsync(HistoricalBarsRequest,System.Threading.CancellationToken)"/> and
-    /// <see cref="IAlpacaDataClient.GetHistoricalBarsAsync(HistoricalBarsRequest,System.Threading.CancellationToken)"/> calls.
+    /// <see cref="IHistoricalBarsClient{TRequest}.ListHistoricalBarsAsync(TRequest,System.Threading.CancellationToken)"/> and
+    /// <see cref="IHistoricalBarsClient{TRequest}.GetHistoricalBarsAsync(TRequest,System.Threading.CancellationToken)"/> calls.
     /// </summary>
-    public sealed class HistoricalBarsRequest : HistoricalRequestBase
+    public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRequest<HistoricalBarsRequest, IBar>
     {
         /// <summary>
         /// Creates new instance of <see cref="HistoricalBarsRequest"/> object.
@@ -90,5 +90,9 @@ namespace Alpaca.Markets
                 // ReSharper disable once StringLiteralTypo
                 .AddParameter("timeframe", TimeFrame.ToString())
                 .AddParameter("adjustment", Adjustment);
+
+        HistoricalBarsRequest IHistoricalRequest<HistoricalBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
+            new HistoricalBarsRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto(), TimeFrame)
+                .WithPageSize(this.GetPageSize());
     }
 }

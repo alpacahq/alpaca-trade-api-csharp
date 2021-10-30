@@ -7,10 +7,10 @@ namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates request parameters for
-    /// <see cref="IAlpacaCryptoDataClient.ListHistoricalBarsAsync(HistoricalCryptoBarsRequest,System.Threading.CancellationToken)"/> and
-    /// <see cref="IAlpacaCryptoDataClient.GetHistoricalBarsAsync(HistoricalCryptoBarsRequest,System.Threading.CancellationToken)"/> calls.
+    /// <see cref="IHistoricalBarsClient{TRequest}.ListHistoricalBarsAsync(TRequest,System.Threading.CancellationToken)"/> and
+    /// <see cref="IHistoricalBarsClient{TRequest}.GetHistoricalBarsAsync(TRequest,System.Threading.CancellationToken)"/> calls.
     /// </summary>
-    public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase
+    public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, IHistoricalRequest<HistoricalCryptoBarsRequest, IBar>
     {
         /// <summary>
         /// Creates new instance of <see cref="HistoricalCryptoBarsRequest"/> object.
@@ -114,5 +114,9 @@ namespace Alpaca.Markets
             base.AddParameters(queryBuilder)
                 // ReSharper disable once StringLiteralTypo
                 .AddParameter("timeframe", TimeFrame.ToString());
+
+        HistoricalCryptoBarsRequest IHistoricalRequest<HistoricalCryptoBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
+            new HistoricalCryptoBarsRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto(), TimeFrame)
+                .WithPageSize(this.GetPageSize());
     }
 }

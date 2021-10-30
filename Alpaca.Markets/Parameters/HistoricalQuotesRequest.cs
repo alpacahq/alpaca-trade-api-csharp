@@ -6,11 +6,11 @@ namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates request parameters for
-    /// <see cref="IAlpacaDataClient.ListHistoricalQuotesAsync(HistoricalQuotesRequest,System.Threading.CancellationToken)"/> and
-    /// <see cref="IAlpacaDataClient.GetHistoricalQuotesAsync(HistoricalQuotesRequest,System.Threading.CancellationToken)"/> calls.
+    /// <see cref="IHistoricalQuotesClient{TRequest}.ListHistoricalQuotesAsync(TRequest,System.Threading.CancellationToken)"/> and
+    /// <see cref="IHistoricalQuotesClient{TRequest}.GetHistoricalQuotesAsync(TRequest,System.Threading.CancellationToken)"/> calls.
     /// </summary>
     [UsedImplicitly]
-    public sealed class HistoricalQuotesRequest : HistoricalRequestBase
+    public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistoricalRequest<HistoricalQuotesRequest, IQuote>
     {
         /// <summary>
         /// Creates new instance of <see cref="HistoricalQuotesRequest"/> object.
@@ -66,5 +66,9 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         protected override String LastPathSegment => "quotes";
+
+        HistoricalQuotesRequest IHistoricalRequest<HistoricalQuotesRequest, IQuote>.GetValidatedRequestWithoutPageToken() =>
+            new HistoricalQuotesRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto())
+                .WithPageSize(this.GetPageSize());
     }
 }

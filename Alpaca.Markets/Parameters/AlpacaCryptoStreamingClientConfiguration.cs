@@ -18,6 +18,7 @@ namespace Alpaca.Markets
             : base(Environments.Live.AlpacaCryptoStreamingApi)
         {
         }
+
         private AlpacaCryptoStreamingClientConfiguration(
             AlpacaCryptoStreamingClientConfiguration configuration,
             IEnumerable<CryptoExchange> exchanges)

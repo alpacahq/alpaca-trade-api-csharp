@@ -7,11 +7,11 @@ namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates request parameters for
-    /// <see cref="IAlpacaCryptoDataClient.ListHistoricalTradesAsync(HistoricalCryptoTradesRequest,System.Threading.CancellationToken)"/> and
-    /// <see cref="IAlpacaCryptoDataClient.GetHistoricalTradesAsync(HistoricalCryptoTradesRequest,System.Threading.CancellationToken)"/> calls.
+    /// <see cref="IHistoricalTradesClient{TRequest}.ListHistoricalTradesAsync(TRequest,System.Threading.CancellationToken)"/> and
+    /// <see cref="IHistoricalTradesClient{TRequest}.GetHistoricalTradesAsync(TRequest,System.Threading.CancellationToken)"/> calls.
     /// </summary>
     [UsedImplicitly]
-    public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase
+    public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase, IHistoricalRequest<HistoricalCryptoTradesRequest, ITrade>
     {
         /// <summary>
         /// Creates new instance of <see cref="HistoricalCryptoTradesRequest"/> object.
@@ -97,5 +97,9 @@ namespace Alpaca.Markets
 
         /// <inheritdoc />
         protected override String LastPathSegment => "trades";
+ 
+        HistoricalCryptoTradesRequest IHistoricalRequest<HistoricalCryptoTradesRequest, ITrade>.GetValidatedRequestWithoutPageToken() =>
+            new HistoricalCryptoTradesRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto())
+                .WithPageSize(this.GetPageSize());
     }
 }
