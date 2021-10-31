@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -9,7 +8,7 @@ namespace Alpaca.Markets.Extensions
     /// <summary>
     /// Set of extension methods for the <see cref="IAlpacaCryptoDataClient"/> interface.
     /// </summary>
-    public static partial class AlpacaCryptoDataClientExtensions
+    public static class AlpacaCryptoDataClientExtensions
     {
         /// <summary>
         /// Gets the average trade volume for the given <paramref name="symbol"/> and time interval
@@ -90,42 +89,5 @@ namespace Alpaca.Markets.Extensions
             client.GetHistoricalBarsAsAsyncEnumerable(
                     new HistoricalCryptoBarsRequest(symbol, BarTimeFrame.Day, timeInterval), cancellationToken)
                 .GetAverageDailyTradeVolumeAsync(cancellationToken);
-
-        /// <summary>
-        /// Gets the simple moving average values for the given list of <see cref="IBar"/> objects.
-        /// </summary>
-        /// <param name="client">Target instance of the <see cref="IAlpacaCryptoDataClient"/> interface.</param>
-        /// <param name="request">Original historical minute bars request (with empty next page token).</param>
-        /// <param name="window">Size of the moving average window.</param>
-        /// <returns>The list of bars with SMA values for all <see cref="IBar"/> properties.</returns>
-        [UsedImplicitly]
-        [CLSCompliant(false)]
-        public static IAsyncEnumerable<IBar> GetSimpleMovingAverageAsync(
-            this IAlpacaCryptoDataClient client,
-            HistoricalCryptoBarsRequest request,
-            Int32 window) =>
-            GetSimpleMovingAverageAsync(
-                client, request, window, CancellationToken.None);
-
-        /// <summary>
-        /// Gets the simple moving average values for the given list of <see cref="IBar"/> objects.
-        /// </summary>
-        /// <param name="client">Target instance of the <see cref="IAlpacaCryptoDataClient"/> interface.</param>
-        /// <param name="request">Original historical minute bars request (with empty next page token).</param>
-        /// <param name="window">Size of the moving average window.</param>
-        /// <param name="cancellationToken">
-        /// A cancellation token that can be used by other objects or threads to receive notice of cancellation.
-        /// </param>
-        /// <returns>The list of bars with SMA values for all <see cref="IBar"/> properties.</returns>
-        [UsedImplicitly]
-        [CLSCompliant(false)]
-        public static IAsyncEnumerable<IBar> GetSimpleMovingAverageAsync(
-            this IAlpacaCryptoDataClient client,
-            HistoricalCryptoBarsRequest request,
-            Int32 window,
-            CancellationToken cancellationToken) =>
-            client.GetHistoricalBarsAsAsyncEnumerable(request, cancellationToken)
-                .GetSimpleMovingAverageAsync(window, cancellationToken);
-
     }
 }

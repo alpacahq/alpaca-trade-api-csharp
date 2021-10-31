@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -13,6 +14,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="client">Target instance of the <see cref="IStreamingDataClient"/> interface.</param>
         /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
         [UsedImplicitly]
+        [CLSCompliant(false)]
         public static AlpacaValueTask SubscribeAsync(
             this IStreamingDataClient client,
             params IAlpacaDataSubscription[] subscriptions) =>
@@ -24,6 +26,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="client">Target instance of the <see cref="IStreamingDataClient"/> interface.</param>
         /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
         [UsedImplicitly]
+        [CLSCompliant(false)]
         public static AlpacaValueTask UnsubscribeAsync(
             this IStreamingDataClient client,
             params IAlpacaDataSubscription[] subscriptions) =>
