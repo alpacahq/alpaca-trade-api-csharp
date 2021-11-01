@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -230,7 +231,7 @@ namespace Alpaca.Markets.Extensions
                 buffer.Enqueue(bar);
             }
 
-            yield return accumulator;
+            yield return accumulator / window;
         }
 
         /// <summary>
@@ -243,34 +244,7 @@ namespace Alpaca.Markets.Extensions
         [CLSCompliant(false)]
         public static IEnumerable<IBar> GetSimpleMovingAverage(
             this IEnumerable<IBar> bars,
-            Int32 window)
-        {
-            if (window < 1)
-            {
-                yield break;
-            }
-
-            var buffer = new Queue<IBar>(window);
-            var accumulator = new Bar();
-
-            foreach (var bar in bars.EnsureNotNull(nameof(bars)))
-            {
-                if (buffer.Count != window)
-                {
-                    buffer.Enqueue(bar);
-                    accumulator += bar;
-                    continue;
-                }
-
-                yield return accumulator / window;
-
-                accumulator -= buffer.Dequeue();
-                accumulator += bar;
-
-                buffer.Enqueue(bar);
-            }
-
-            yield return accumulator;
-        }
+            Int32 window) =>
+            GetSimpleMovingAverageAsync(bars.ToAsyncEnumerable(), window).ToEnumerable();
     }
 }

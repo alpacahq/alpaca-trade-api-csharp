@@ -1,10 +1,11 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Alpaca.Markets
 {
-    internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistoricalQuotesRequest, THistoricalQuote, THistoricalTradesRequest>
+    internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistoricalQuotesRequest, THistoricalQuote, THistoricalTradesRequest> : IDisposable
         where THistoricalQuotesRequest : HistoricalRequestBase, Validation.IRequest
         where THistoricalTradesRequest : HistoricalRequestBase, Validation.IRequest
         where THistoricalBarsRequest : HistoricalRequestBase, Validation.IRequest

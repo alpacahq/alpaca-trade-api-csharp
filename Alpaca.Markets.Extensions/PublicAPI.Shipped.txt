@@ -1,7 +1,5 @@
 ﻿#nullable enable
-Alpaca.Markets.Extensions.AlpacaCryptoDataClientExtensions
 Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions
-Alpaca.Markets.Extensions.AlpacaDataClientExtensions
 Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions
 Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions
 Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions
@@ -34,16 +32,8 @@ Alpaca.Markets.Extensions.StreamingClientExtensions
 Alpaca.Markets.Extensions.StreamingDataClientExtensions
 override Alpaca.Markets.Extensions.AlpacaValueTask.Equals(object? obj) -> bool
 override Alpaca.Markets.Extensions.AlpacaValueTask.GetHashCode() -> int
-static Alpaca.Markets.Extensions.AlpacaCryptoDataClientExtensions.GetAverageDailyTradeVolumeAsync(this Alpaca.Markets.IAlpacaCryptoDataClient! client, string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> System.Threading.Tasks.Task<(decimal, uint)>!
-static Alpaca.Markets.Extensions.AlpacaCryptoDataClientExtensions.GetAverageDailyTradeVolumeAsync(this Alpaca.Markets.IAlpacaCryptoDataClient! client, string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<(decimal, uint)>!
-static Alpaca.Markets.Extensions.AlpacaCryptoDataClientExtensions.GetAverageDailyTradeVolumeAsync(this Alpaca.Markets.IAlpacaCryptoDataClient! client, string! symbol, System.DateTime from, System.DateTime into) -> System.Threading.Tasks.Task<(decimal, uint)>!
-static Alpaca.Markets.Extensions.AlpacaCryptoDataClientExtensions.GetAverageDailyTradeVolumeAsync(this Alpaca.Markets.IAlpacaCryptoDataClient! client, string! symbol, System.DateTime from, System.DateTime into, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<(decimal, uint)>!
 static Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaCryptoStreamingClient! client) -> Alpaca.Markets.IAlpacaCryptoStreamingClient!
 static Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaCryptoStreamingClient! client, Alpaca.Markets.Extensions.ReconnectionParameters! parameters) -> Alpaca.Markets.IAlpacaCryptoStreamingClient!
-static Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(this Alpaca.Markets.IAlpacaDataClient! client, string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> System.Threading.Tasks.Task<(decimal, uint)>!
-static Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(this Alpaca.Markets.IAlpacaDataClient! client, string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<(decimal, uint)>!
-static Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(this Alpaca.Markets.IAlpacaDataClient! client, string! symbol, System.DateTime from, System.DateTime into) -> System.Threading.Tasks.Task<(decimal, uint)>!
-static Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetAverageDailyTradeVolumeAsync(this Alpaca.Markets.IAlpacaDataClient! client, string! symbol, System.DateTime from, System.DateTime into, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<(decimal, uint)>!
 static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetLimitUpLimitDownSubscription(this Alpaca.Markets.IAlpacaDataStreamingClient! client, params string![]! symbols) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ILimitUpLimitDown!>!
 static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetLimitUpLimitDownSubscription(this Alpaca.Markets.IAlpacaDataStreamingClient! client, System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ILimitUpLimitDown!>!
 static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetStatusSubscription(this Alpaca.Markets.IAlpacaDataStreamingClient! client, params string![]! symbols) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStatus!>!
@@ -89,6 +79,10 @@ static Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsyn
 static Alpaca.Markets.Extensions.EnumerableExtensions.GetSimpleMovingAverageAsync(this System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IBar!>! bars, int window, System.Threading.CancellationToken cancellationToken) -> System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IBar!>!
 static Alpaca.Markets.Extensions.EnvironmentExtensions.WithProxyForAlpacaDataStreamingClient(this Alpaca.Markets.IEnvironment! environment) -> Alpaca.Markets.IEnvironment!
 static Alpaca.Markets.Extensions.EnvironmentExtensions.WithProxyForAlpacaDataStreamingClient(this Alpaca.Markets.IEnvironment! environment, System.Uri! alpacaProxyAgentUrl) -> Alpaca.Markets.IEnvironment!
+static Alpaca.Markets.Extensions.HistoricalBarsClientExtensions.GetAverageDailyTradeVolumeAsync<TRequest>(this Alpaca.Markets.IHistoricalBarsClient<TRequest!>! client, string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> System.Threading.Tasks.Task<(decimal, uint)>!
+static Alpaca.Markets.Extensions.HistoricalBarsClientExtensions.GetAverageDailyTradeVolumeAsync<TRequest>(this Alpaca.Markets.IHistoricalBarsClient<TRequest!>! client, string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<(decimal, uint)>!
+static Alpaca.Markets.Extensions.HistoricalBarsClientExtensions.GetAverageDailyTradeVolumeAsync<TRequest>(this Alpaca.Markets.IHistoricalBarsClient<TRequest!>! client, string! symbol, System.DateTime from, System.DateTime into) -> System.Threading.Tasks.Task<(decimal, uint)>!
+static Alpaca.Markets.Extensions.HistoricalBarsClientExtensions.GetAverageDailyTradeVolumeAsync<TRequest>(this Alpaca.Markets.IHistoricalBarsClient<TRequest!>! client, string! symbol, System.DateTime from, System.DateTime into, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<(decimal, uint)>!
 static Alpaca.Markets.Extensions.HistoricalBarsClientExtensions.GetHistoricalBarsAsAsyncEnumerable<TRequest>(this Alpaca.Markets.IHistoricalBarsClient<TRequest!>! client, TRequest! request) -> System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IBar!>!
 static Alpaca.Markets.Extensions.HistoricalBarsClientExtensions.GetHistoricalBarsAsAsyncEnumerable<TRequest>(this Alpaca.Markets.IHistoricalBarsClient<TRequest!>! client, TRequest! request, System.Threading.CancellationToken cancellationToken) -> System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IBar!>!
 static Alpaca.Markets.Extensions.HistoricalBarsClientExtensions.GetHistoricalBarsDictionaryOfAsyncEnumerable<TRequest>(this Alpaca.Markets.IHistoricalBarsClient<TRequest!>! client, TRequest! request) -> System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IBar!>!>!

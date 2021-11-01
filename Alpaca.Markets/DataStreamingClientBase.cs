@@ -125,6 +125,21 @@ namespace Alpaca.Markets
                 { ErrorInfo, handleErrorMessages }
             };
 
+        public IAlpacaDataSubscription<ITrade> GetTradeSubscription(
+            String symbol) => 
+            GetSubscription<ITrade, JsonRealTimeTrade>(TradesChannel, symbol);
+
+        public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() => 
+            GetSubscription<IBar, JsonRealTimeBar>(MinuteBarsChannel, WildcardSymbolString);
+
+        public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
+            String symbol) =>
+            GetSubscription<IBar, JsonRealTimeBar>(MinuteBarsChannel, symbol);
+
+        public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
+            String symbol) =>
+            GetSubscription<IBar, JsonRealTimeBar>(DailyBarsChannel, symbol);
+
         public ValueTask SubscribeAsync(
             IAlpacaDataSubscription subscription,
             CancellationToken cancellationToken = default) =>
