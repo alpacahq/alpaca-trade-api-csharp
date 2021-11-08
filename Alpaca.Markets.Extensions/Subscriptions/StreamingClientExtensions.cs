@@ -9,7 +9,7 @@ namespace Alpaca.Markets.Extensions
     /// <summary>
     /// Set of extension methods for the <see cref="IStreamingDataClient"/> interface.
     /// </summary>
-    public static partial class StreamingClientExtensions
+    public static class StreamingClientExtensions
     {
         /// <summary>
         /// Gets the trade updates subscription for the all assets from the <paramref name="symbols"/> list.

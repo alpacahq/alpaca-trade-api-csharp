@@ -88,19 +88,19 @@ namespace Alpaca.Markets
 
         private const String ConnectionSuccess = "success";
 
-        protected const String TradesChannel = "t";
+        private const String TradesChannel = "t";
 
         protected const String QuotesChannel = "q";
 
         protected const String StatusesChannel = "s";
 
-        protected const String DailyBarsChannel = "d";
+        private const String DailyBarsChannel = "d";
 
-        protected const String MinuteBarsChannel = "b";
+        private const String MinuteBarsChannel = "b";
 
         protected const String LimitUpDownChannel = "l";
 
-        protected const String WildcardSymbolString = "*";
+        private const String WildcardSymbolString = "*";
 
         // ReSharper disable once StaticMemberInGenericType
         private static readonly Char[] _channelSeparator = { '.' };

@@ -1,4 +1,6 @@
-﻿namespace Alpaca.Markets
+﻿using JetBrains.Annotations;
+
+namespace Alpaca.Markets
 {
     /// <summary>
     /// Provides unified type-safe access to the historical data request parameters.
@@ -11,6 +13,9 @@
         /// <summary>
         /// Gets copy of the current request without page token and max allowed page size.
         /// </summary>
+        [UsedImplicitly]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design",
+            "CA1024:Use properties where appropriate", Justification = "Factory method")]
         TRequest GetValidatedRequestWithoutPageToken();
     }
 }
