@@ -22,23 +22,6 @@ jobs:
     - name: Dotnet Build
       run: dotnet build -c Release
       
-    - name: Pack Unity Binaries
-      uses: thedoctor0/zip-release@master
-      with:
-        type: zip
-        filename: UnityPackage.zip
-        directory: Alpaca.Markets.Unity/bin/Release/netstandard2.0
-        exclusions: |
-          Alpaca.Markets.Unity.deps.json
-          Alpaca.Markets.Unity.dll
-          Alpaca.Markets.Unity.pdb
-
-    - name: Save Unity Package
-      uses: actions/upload-artifact@v2
-      with:
-        name: unity-package
-        path: Alpaca.Markets.Unity/bin/Release/netstandard2.0/*.zip
-          
     - name: Save SDK Packages
       uses: actions/upload-artifact@v2
       with:
@@ -69,17 +52,11 @@ jobs:
 
     - name: Create NuGet Version
       run: dotnet nuget push **.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
-        
-    - name: Load Unity Package
-      uses: actions/download-artifact@v2
-      with:
-        name: unity-package
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
       with:
         name: SDK ${{ github.ref }}
-        files: UnityPackage.zip
         draft: true
 
   publish-ext:
