@@ -13,12 +13,12 @@ namespace Alpaca.Markets
             this HttpResponseMessage response)
             where TJson : TApi
         {
-#if NETSTANDARD2_1
-            await using var stream = await response.Content.ReadAsStreamAsync()
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
+            var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            await using var _ = stream.ConfigureAwait(false);
 #else
-            using var stream = await response.Content.ReadAsStreamAsync()
+            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 #endif
-                .ConfigureAwait(false);
             using var reader = new JsonTextReader(new StreamReader(stream));
 
             if (response.IsSuccessStatusCode)
@@ -44,12 +44,12 @@ namespace Alpaca.Markets
                 return true;
             }
 
-#if NETSTANDARD2_1
-            await using var stream = await response.Content.ReadAsStreamAsync()
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
+            var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            await using var _ = stream.ConfigureAwait(false);
 #else
-            using var stream = await response.Content.ReadAsStreamAsync()
+            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 #endif
-                .ConfigureAwait(false);
             using var reader = new JsonTextReader(new StreamReader(stream));
 
             throw getException(response, reader);
