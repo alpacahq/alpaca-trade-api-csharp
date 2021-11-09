@@ -38,6 +38,8 @@ namespace UsageExamples
 
         private readonly List<Decimal> closingPrices = new ();
 
+        private Boolean isAssetShortable;
+
         public async Task Run()
         {
             alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(new SecretKey(API_KEY, API_SECRET));
@@ -50,6 +52,9 @@ namespace UsageExamples
             await alpacaStreamingClient.ConnectAndAuthenticateAsync();
 
             alpacaStreamingClient.OnTradeUpdate += HandleTradeUpdate;
+
+            var asset = await alpacaTradingClient.GetAssetAsync(symbol);
+            isAssetShortable = asset.Shortable;
 
             // First, cancel any existing orders so they don't impact our buying power.
             var orders = await alpacaTradingClient.ListOrdersAsync(new ListOrdersRequest());
@@ -163,7 +168,8 @@ namespace UsageExamples
 
             // Make sure we know how much we should spend on our position.
             var account = await alpacaTradingClient.GetAccountAsync();
-            var buyingPower = account.BuyingPower;
+            // Use maximum 10% of total account buying power for single trade
+            var buyingPower = account.BuyingPower * 0.10M ?? 0M;
             var equity = account.Equity;
             var multiplier = (Int64) account.Multiplier;
 
@@ -209,8 +215,15 @@ namespace UsageExamples
                             }
 
                             var qty = (Int64) (amountToShort / agg.Close);
-                            Console.WriteLine($"Adding {qty * agg.Close:C2} to short position.");
-                            await SubmitOrder(qty, agg.Close, OrderSide.Sell);
+                            if (isAssetShortable)
+                            {
+                                Console.WriteLine($"Adding {qty * agg.Close:C2} to short position.");
+                                await SubmitOrder(qty, agg.Close, OrderSide.Sell);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Unable to place short order - asset is not shortable.");
+                            }
                             break;
                         }
 
@@ -270,8 +283,15 @@ namespace UsageExamples
                             qty = positionQuantity;
                         }
 
-                        await SubmitOrder(qty, agg.Close, OrderSide.Sell);
-                        Console.WriteLine($"Removing {qty * agg.Close:C2} from long position");
+                        if (isAssetShortable)
+                        {
+                            await SubmitOrder(qty, agg.Close, OrderSide.Sell);
+                            Console.WriteLine($"Removing {qty * agg.Close:C2} from long position");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Unable to place short order - asset is not shortable.");
+                        }
                         break;
                     }
                 }

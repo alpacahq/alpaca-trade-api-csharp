@@ -27,12 +27,17 @@ namespace UsageExamples
 
         private Guid lastTradeId = Guid.NewGuid();
 
+        private Boolean isAssetShortable;
+
         // ReSharper disable once UnusedMember.Global
         public async Task Run()
         {
             alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(new SecretKey(API_KEY, API_SECRET));
 
             alpacaDataClient = Environments.Paper.GetAlpacaDataClient(new SecretKey(API_KEY, API_SECRET));
+
+            var asset = await alpacaTradingClient.GetAssetAsync(symbol);
+            isAssetShortable = asset.Shortable;
 
             // First, cancel any existing orders so they don't impact our buying power.
             var orders = await alpacaTradingClient.ListOrdersAsync(new ListOrdersRequest());
@@ -63,7 +68,8 @@ namespace UsageExamples
 
                 // Get information about current account value.
                 var account = await alpacaTradingClient.GetAccountAsync();
-                var buyingPower = account.BuyingPower;
+                // Use maximum 10% of total account buying power for single trade
+                var buyingPower = account.BuyingPower * 0.10M ?? 0M;
                 var portfolioValue = account.Equity;
 
                 // Get information about our existing position.
@@ -139,7 +145,15 @@ namespace UsageExamples
                                 qtyToSell = positionQuantity;
                             }
 
-                            await SubmitOrder(qtyToSell, currentPrice, OrderSide.Sell);
+                            if (isAssetShortable)
+                            {
+                                await SubmitOrder(qtyToSell, currentPrice, OrderSide.Sell);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Unable to place short order - asset is not shortable.");
+                            }
+
                             break;
                         }
                     }
@@ -176,6 +190,7 @@ namespace UsageExamples
                 Console.WriteLine("No order necessary.");
                 return;
             }
+
             Console.WriteLine($"Submitting {side} order for {quantity} shares at ${price}.");
             var order = await alpacaTradingClient.PostOrderAsync(
                 side.Limit(symbol, quantity, price));
