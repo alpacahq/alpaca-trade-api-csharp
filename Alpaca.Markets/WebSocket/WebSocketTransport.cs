@@ -266,7 +266,7 @@ namespace Alpaca.Markets
                     // Because we checked the CloseStatus from the 0 byte read above, we don't need to check again after reading
                     var receiveResult = await socket.ReceiveAsync(memory, CancellationToken.None)
                         .ConfigureAwait(false);
-#elif NETSTANDARD2_0 || NET461
+#elif NETSTANDARD2_0 || NETFRAMEWORK
                     var _ = System.Runtime.InteropServices.MemoryMarshal.TryGetArray<byte>(memory, out var arraySegment);
 
                     // Exceptions are handled above where the send and receive tasks are being run.
