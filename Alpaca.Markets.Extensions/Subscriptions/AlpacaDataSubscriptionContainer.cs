@@ -1,37 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿namespace Alpaca.Markets.Extensions;
 
-namespace Alpaca.Markets.Extensions
+internal sealed class AlpacaDataSubscriptionContainer<TItem>
+    : IAlpacaDataSubscription<TItem>
 {
-    internal sealed class AlpacaDataSubscriptionContainer<TItem>
-        : IAlpacaDataSubscription<TItem>
+    private readonly IReadOnlyList<IAlpacaDataSubscription<TItem>> _subscriptions;
+
+    public AlpacaDataSubscriptionContainer(
+        IEnumerable<IAlpacaDataSubscription<TItem>> subscriptions) =>
+        _subscriptions = subscriptions.ToList();
+
+    public IEnumerable<String> Streams => _subscriptions.SelectMany(_ => _.Streams);
+
+    public Boolean Subscribed => _subscriptions.All(_ => _.Subscribed);
+
+    public event Action<TItem>? Received
     {
-        private readonly IReadOnlyList<IAlpacaDataSubscription<TItem>> _subscriptions;
-
-        public AlpacaDataSubscriptionContainer(
-            IEnumerable<IAlpacaDataSubscription<TItem>> subscriptions) =>
-            _subscriptions = subscriptions.ToList();
-
-        public IEnumerable<String> Streams => _subscriptions.SelectMany(_ => _.Streams);
-
-        public Boolean Subscribed => _subscriptions.All(_ => _.Subscribed);
-
-        public event Action<TItem>? Received
+        add
         {
-            add
+            foreach (var subscription in _subscriptions)
             {
-                foreach (var subscription in _subscriptions)
-                {
-                    subscription.Received += value;
-                }
+                subscription.Received += value;
             }
-            remove
+        }
+        remove
+        {
+            foreach (var subscription in _subscriptions)
             {
-                foreach (var subscription in _subscriptions)
-                {
-                    subscription.Received -= value;
-                }
+                subscription.Received -= value;
             }
         }
     }
