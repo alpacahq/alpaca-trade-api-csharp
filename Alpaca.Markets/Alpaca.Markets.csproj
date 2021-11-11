@@ -2,7 +2,12 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net5</TargetFrameworks>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<LangVersion>latest</LangVersion>
+	<Nullable>enable</Nullable>
+	<PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
+	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>6.0.1-alpha3</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
@@ -13,7 +18,6 @@
     <Product>.NET SDK for Alpaca Trade API</Product>
     <AssemblyVersion>6.0.1.2</AssemblyVersion>
     <FileVersion>6.0.1.2</FileVersion>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
@@ -22,13 +26,10 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IncludeSymbols>true</IncludeSymbols>
-    <Nullable>enable</Nullable>
     <AssemblyOriginatorKeyFile>..\Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <LangVersion>9.0</LangVersion>
-    <PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <RestoreLockedMode>true</RestoreLockedMode>
     <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
