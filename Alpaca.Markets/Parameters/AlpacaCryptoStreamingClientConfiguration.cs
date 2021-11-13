@@ -25,21 +25,21 @@ public sealed class AlpacaCryptoStreamingClientConfiguration : StreamingClientCo
     }
 
     /// <summary>
-    /// 
+    /// Gets crypto exchanges list for data subscription (empty list means 'all exchanges').
     /// </summary>
     [UsedImplicitly]
     public IReadOnlyCollection<CryptoExchange> Exchanges => _exchanges;
-
+        
     /// <summary>
     /// Creates new instance of <see cref="AlpacaCryptoStreamingClientConfiguration"/> object
-    /// with the updated <see cref="Exchanges"/> list.
+    /// with the updated <see cref="AlpacaCryptoStreamingClientConfiguration.Exchanges"/> list.
     /// </summary>
     /// <param name="exchanges">Crypto exchanges to add into the list.</param>
     /// <returns>The new instance of the <see cref="AlpacaCryptoStreamingClientConfiguration"/> object.</returns>
     [UsedImplicitly]
     public AlpacaCryptoStreamingClientConfiguration WithExchanges(
         IEnumerable<CryptoExchange> exchanges) =>
-        new(this, exchanges);
+        new (this, exchanges);
 
     /// <summary>
     /// Creates new instance of <see cref="AlpacaCryptoStreamingClientConfiguration"/> object

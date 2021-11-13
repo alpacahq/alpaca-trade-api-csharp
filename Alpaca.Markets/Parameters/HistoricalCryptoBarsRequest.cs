@@ -69,9 +69,8 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
         HistoricalCryptoBarsRequest request,
         IEnumerable<CryptoExchange> exchanges)
         : base(request.Symbols, request.TimeInterval,
-            request.Exchanges.Concat(exchanges))
-    {
-    }
+            request.Exchanges.Concat(exchanges)) =>
+        TimeFrame = request.TimeFrame;
 
     /// <summary>
     /// Gets type of time bars for retrieval.

@@ -31,7 +31,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
         IInclusiveTimeInterval timeInterval)
     {
         _symbols.UnionWith(symbols.EnsureNotNull(nameof(symbols)));
-        TimeInterval = timeInterval.EnsureNotNull(nameof(symbols));
+        TimeInterval = timeInterval.EnsureNotNull(nameof(timeInterval));
     }
 
     /// <summary>
