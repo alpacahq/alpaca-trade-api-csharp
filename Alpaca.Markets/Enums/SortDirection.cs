@@ -1,28 +1,25 @@
 ﻿using System.Runtime.Serialization;
-using JetBrains.Annotations;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Alpaca.Markets
+namespace Alpaca.Markets;
+
+/// <summary>
+/// Supported sort directions in Alpaca REST API.
+/// </summary>
+[JsonConverter(typeof(StringEnumConverter))]
+public enum SortDirection
 {
     /// <summary>
-    /// Supported sort directions in Alpaca REST API.
+    /// Descending sort order
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum SortDirection
-    {
-        /// <summary>
-        /// Descending sort order
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "desc")]
-        Descending,
+    [UsedImplicitly]
+    [EnumMember(Value = "desc")]
+    Descending,
 
-        /// <summary>
-        /// Ascending sort order
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "asc")]
-        Ascending
-    }
+    /// <summary>
+    /// Ascending sort order
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "asc")]
+    Ascending
 }

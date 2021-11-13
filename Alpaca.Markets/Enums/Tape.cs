@@ -1,31 +1,28 @@
-﻿using JetBrains.Annotations;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using Newtonsoft.Json.Converters;
 
-namespace Alpaca.Markets
+namespace Alpaca.Markets;
+
+/// <summary>
+/// Supported tape types for Alpaca Data API.
+/// </summary>
+[JsonConverter(typeof(StringEnumConverter))]
+public enum Tape
 {
     /// <summary>
-    /// Supported tape types for Alpaca Data API.
+    /// Tape A - NYSE.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum Tape
-    {
-        /// <summary>
-        /// Tape A - NYSE.
-        /// </summary>
-        [UsedImplicitly]
-        A,
+    [UsedImplicitly]
+    A,
 
-        /// <summary>
-        /// Tape B - NYSE Arca and NYSE Amex.
-        /// </summary>
-        [UsedImplicitly]
-        B,
+    /// <summary>
+    /// Tape B - NYSE Arca and NYSE Amex.
+    /// </summary>
+    [UsedImplicitly]
+    B,
 
-        /// <summary>
-        /// Tape C - NAsDAQ.
-        /// </summary>
-        [UsedImplicitly]
-        C
-    }
+    /// <summary>
+    /// Tape C - NAsDAQ.
+    /// </summary>
+    [UsedImplicitly]
+    C
 }

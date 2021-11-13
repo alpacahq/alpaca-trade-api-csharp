@@ -1,34 +1,30 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// Provides unified type-safe access for Alpaca data streaming API via websockets.
+/// </summary>
+[CLSCompliant(false)]
+public interface IAlpacaDataStreamingClient : IStreamingDataClient
 {
     /// <summary>
-    /// Provides unified type-safe access for Alpaca data streaming API via websockets.
+    /// Gets the trading statuses subscription for the <paramref name="symbol"/> asset.
     /// </summary>
-    [CLSCompliant(false)]
-    public interface IAlpacaDataStreamingClient : IStreamingDataClient
-    {
-        /// <summary>
-        /// Gets the trading statuses subscription for the <paramref name="symbol"/> asset.
-        /// </summary>
-        /// <param name="symbol">Alpaca asset name.</param>
-        /// <returns>
-        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
-        /// </returns>
-        [UsedImplicitly]
-        IAlpacaDataSubscription<IStatus> GetStatusSubscription(
-            String symbol);
+    /// <param name="symbol">Alpaca asset name.</param>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    IAlpacaDataSubscription<IStatus> GetStatusSubscription(
+        String symbol);
 
-        /// <summary>
-        /// Gets the LULD (limit up / limit down) subscription for the <paramref name="symbol"/> asset.
-        /// </summary>
-        /// <param name="symbol">Alpaca asset name.</param>
-        /// <returns>
-        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
-        /// </returns>
-        [UsedImplicitly]
-        IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(
-            String symbol);
-    }
+    /// <summary>
+    /// Gets the LULD (limit up / limit down) subscription for the <paramref name="symbol"/> asset.
+    /// </summary>
+    /// <param name="symbol">Alpaca asset name.</param>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(
+        String symbol);
 }

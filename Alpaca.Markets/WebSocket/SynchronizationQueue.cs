@@ -1,71 +1,67 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Threading;
 
-namespace Alpaca.Markets
+namespace Alpaca.Markets;
+
+internal sealed class SynchronizationQueue : IDisposable
 {
-    internal sealed class SynchronizationQueue : IDisposable
+    private readonly BlockingCollection<Action> _actions =
+        new(new ConcurrentQueue<Action>());
+
+    private readonly CancellationTokenSource _cancellationTokenSource = new();
+
+    private readonly Thread _processingThread;
+
+    public SynchronizationQueue()
     {
-        private readonly BlockingCollection<Action> _actions =
-            new (new ConcurrentQueue<Action>());
-
-        private readonly CancellationTokenSource _cancellationTokenSource = new ();
-
-        private readonly Thread _processingThread;
-
-        public SynchronizationQueue()
+        _processingThread = new Thread(processingTask)
         {
-            _processingThread = new Thread(processingTask)
-            {
-                IsBackground = true
-            };
-            _processingThread.Start();
-        }
+            IsBackground = true
+        };
+        _processingThread.Start();
+    }
 
-        public event Action<Exception>? OnError;
+    public event Action<Exception>? OnError;
 
-        public void Enqueue(Action action) => 
-            _actions.Add(action, _cancellationTokenSource.Token);
+    public void Enqueue(Action action) =>
+        _actions.Add(action, _cancellationTokenSource.Token);
 
-        [SuppressMessage(
-            "Design", "CA1031:Do not catch general exception types",
-            Justification = "Expected behavior - we report exceptions via OnError event.")]
-        private void processingTask()
+    [SuppressMessage(
+        "Design", "CA1031:Do not catch general exception types",
+        Justification = "Expected behavior - we report exceptions via OnError event.")]
+    private void processingTask()
+    {
+        try
         {
-            try
+            foreach (var action in _actions
+                .GetConsumingEnumerable(_cancellationTokenSource.Token))
             {
-                foreach (var action in _actions
-                    .GetConsumingEnumerable(_cancellationTokenSource.Token))
+                try
                 {
-                    try
-                    {
-                        action();
-                    }
-                    catch (Exception exception)
-                    {
-                        OnError?.Invoke(exception);
-                    }
+                    action();
+                }
+                catch (Exception exception)
+                {
+                    OnError?.Invoke(exception);
                 }
             }
-            catch (ObjectDisposedException exception)
-            {
-                Trace.TraceInformation(exception.Message);
-            }
-            catch (OperationCanceledException exception)
-            {
-                Trace.TraceInformation(exception.Message);
-            }
         }
-
-        public void Dispose()
+        catch (ObjectDisposedException exception)
         {
-            _cancellationTokenSource.Cancel(false);
-            _processingThread.Join(TimeSpan.FromSeconds(5));
-
-            _cancellationTokenSource.Dispose();
-            _actions.Dispose();
+            Trace.TraceInformation(exception.Message);
         }
+        catch (OperationCanceledException exception)
+        {
+            Trace.TraceInformation(exception.Message);
+        }
+    }
+
+    public void Dispose()
+    {
+        _cancellationTokenSource.Cancel(false);
+        _processingThread.Join(TimeSpan.FromSeconds(5));
+
+        _cancellationTokenSource.Dispose();
+        _actions.Dispose();
     }
 }

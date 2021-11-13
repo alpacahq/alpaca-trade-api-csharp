@@ -1,5 +1,6 @@
 ﻿// This file is used by Code Analysis to maintain SuppressMessage attributes that are applied to this project.
 
+global using Newtonsoft.Json;
 global using JetBrains.Annotations;
 global using System.Diagnostics.CodeAnalysis;
 
