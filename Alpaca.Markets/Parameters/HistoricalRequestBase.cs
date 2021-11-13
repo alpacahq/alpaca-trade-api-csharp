@@ -38,7 +38,7 @@ namespace Alpaca.Markets
             IInclusiveTimeInterval timeInterval)
         {
             _symbols.UnionWith(symbols.EnsureNotNull(nameof(symbols)));
-            TimeInterval = timeInterval.EnsureNotNull(nameof(symbols));
+            TimeInterval = timeInterval.EnsureNotNull(nameof(timeInterval));
         }
 
         /// <summary>
