@@ -28,7 +28,7 @@ namespace Alpaca.Markets
         }
 
         /// <summary>
-        /// 
+        /// Gets crypto exchanges list for data subscription (empty list means 'all exchanges').
         /// </summary>
         [UsedImplicitly]
         public IReadOnlyCollection<CryptoExchange> Exchanges => _exchanges;
