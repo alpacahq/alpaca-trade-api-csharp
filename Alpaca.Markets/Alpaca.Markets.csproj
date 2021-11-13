@@ -33,6 +33,7 @@
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <RestoreLockedMode>true</RestoreLockedMode>
     <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -74,7 +75,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.DotNet.Analyzers.Compatibility" Version="0.2.12-alpha">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -82,7 +83,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.IO.Pipelines" Version="6.0.0" />
     <PackageReference Include="Polly" Version="7.2.2" />
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="5.0.0" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="6.0.0" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
   </ItemGroup>
 
@@ -93,6 +94,10 @@
   <ItemGroup Condition="'$(TargetFramework)'=='net461'">
     <PackageReference Include="System.Net.Http.WinHttpHandler" Version="5.0.0" />
     <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  
+  <ItemGroup>
+	  <None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
