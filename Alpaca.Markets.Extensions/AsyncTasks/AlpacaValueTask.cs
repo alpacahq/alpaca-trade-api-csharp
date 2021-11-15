@@ -11,6 +11,15 @@ public readonly struct AlpacaValueTask : IEquatable<AlpacaValueTask>
 
     private readonly CancellationToken _cancellationToken;
 
+    /// <summary>
+    /// Creates new instance of the <see cref="AlpacaValueTask"/> structure.
+    /// </summary>
+    public AlpacaValueTask()
+    {
+        _capturedFunction = (CancellationToken _) => new ValueTask();
+        _cancellationToken = CancellationToken.None;
+    }
+
     internal AlpacaValueTask(
         Func<CancellationToken, ValueTask> capturedFunction,
         CancellationToken cancellationToken)

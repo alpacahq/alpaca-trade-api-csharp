@@ -5,6 +5,15 @@
 /// </summary>
 public readonly struct PositionQuantity : IEquatable<PositionQuantity>
 {
+    /// <summary>
+    /// Creates new instance of the <see cref="PositionQuantity"/> structure.
+    /// </summary>
+    public PositionQuantity()
+    {
+        Value = 0M;
+        IsInShares = false;
+    }
+
     private PositionQuantity(
         Decimal value,
         Boolean isInShares)

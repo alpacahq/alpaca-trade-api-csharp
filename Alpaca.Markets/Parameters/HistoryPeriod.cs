@@ -8,6 +8,15 @@ namespace Alpaca.Markets;
 public readonly struct HistoryPeriod : IEquatable<HistoryPeriod>
 {
     /// <summary>
+    /// Creates new instance of the <see cref="HistoryPeriod"/> structure.
+    /// </summary>
+    public HistoryPeriod()
+    {
+        Value = 0;
+        Unit = HistoryPeriodUnit.Day;
+    }
+
+    /// <summary>
     /// Creates new instance of <see cref="HistoryPeriod"/> object.
     /// </summary>
     /// <param name="value">Duration value in units.</param>

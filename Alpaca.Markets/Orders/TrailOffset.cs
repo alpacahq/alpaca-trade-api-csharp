@@ -5,6 +5,15 @@ namespace Alpaca.Markets;
 /// </summary>
 public readonly struct TrailOffset : IEquatable<TrailOffset>
 {
+    /// <summary>
+    /// Creates new instance of the <see cref="TrailOffset"/> structure.
+    /// </summary>
+    public TrailOffset()
+    {
+        Value = 0M;
+        IsInDollars = false;
+    }
+
     private TrailOffset(
         Decimal value,
         Boolean isInDollars)

@@ -5,6 +5,15 @@ namespace Alpaca.Markets;
 /// </summary>
 public readonly struct OrderQuantity : IEquatable<OrderQuantity>
 {
+    /// <summary>
+    /// Creates new instance of the <see cref="OrderQuantity"/> structure.
+    /// </summary>
+    public OrderQuantity()
+    {
+        Value = 0M;
+        IsInDollars = false;
+    }
+
     private OrderQuantity(
         Decimal value,
         Boolean isInDollars)
