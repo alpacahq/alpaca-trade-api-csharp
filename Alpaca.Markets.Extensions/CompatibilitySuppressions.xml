@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Suppressions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Suppression>
+    <DiagnosticId>CP1003</DiagnosticId>
+    <Target>lib/net5.0/Alpaca.Markets.Extensions.dll</Target>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaValueTask.#ctor</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/net5.0/Alpaca.Markets.Extensions.dll</Right>
+  </Suppression>
+</Suppressions>

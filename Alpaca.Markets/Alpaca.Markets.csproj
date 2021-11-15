@@ -2,7 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.3;net45</TargetFrameworks>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <!--<PackageValidationBaselineVersion>6.0.1-alpha2</PackageValidationBaselineVersion>-->
+	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	<WarningLevel>5</WarningLevel>
+	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>4.1.16</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
@@ -33,7 +36,11 @@
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <LangVersion>9.0</LangVersion>
     <PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+	<!--<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>-->
+	<EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
+	<EnableStrictModeForCompatibleTfms>true</EnableStrictModeForCompatibleTfms>
+	<EnablePackageValidation>true</EnablePackageValidation>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
