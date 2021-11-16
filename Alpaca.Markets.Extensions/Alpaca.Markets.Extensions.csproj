@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net5</TargetFrameworks>
+	<!--<PackageValidationBaselineVersion>6.0.1-alpha2</PackageValidationBaselineVersion>-->
 	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	<ImplicitUsings>enable</ImplicitUsings>
 	<LangVersion>latest</LangVersion>
@@ -9,19 +10,19 @@
 	<Nullable>enable</Nullable>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>6.0.1-alpha2</Version>
+    <Version>6.0.1-alpha3</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>6.0.1.1</AssemblyVersion>
-    <FileVersion>6.0.1.1</FileVersion>
+    <AssemblyVersion>6.0.1.2</AssemblyVersion>
+    <FileVersion>6.0.1.2</FileVersion>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Decreased code duplication in REST and streaming API clients.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Codebase moved into C# 10 and .NET SDK 6.0 for the build.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -84,7 +85,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <None Include="README.md" Pack="true" PackagePath="\"/>
+	  <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
