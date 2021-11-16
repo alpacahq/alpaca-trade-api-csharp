@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5</TargetFrameworks>
-    <!--<PackageValidationBaselineVersion>6.0.1-alpha2</PackageValidationBaselineVersion>-->
+    <PackageValidationBaselineVersion>5.2.0</PackageValidationBaselineVersion>
 	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	<WarningLevel>5</WarningLevel>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
