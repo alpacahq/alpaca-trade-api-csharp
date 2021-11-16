@@ -10,4 +10,25 @@
     <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
     <Right>lib/net5.0/Alpaca.Markets.Extensions.dll</Right>
   </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.EnvironmentExtensions.WithProxyForPolygonStreamingClient(Alpaca.Markets.IEnvironment,System.Uri)</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.Extensions.PolygonServiceCollectionExtensions</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.Extensions.PolygonStreamingClientExtensions</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
 </Suppressions>
