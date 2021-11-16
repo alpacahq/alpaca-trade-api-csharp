@@ -1,8 +1,4 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using Newtonsoft.Json;
-
-namespace Alpaca.Markets
+﻿namespace Alpaca.Markets
 {
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",

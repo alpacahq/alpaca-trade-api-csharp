@@ -1,19 +1,16 @@
-﻿using System;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+internal sealed class AlpacaCryptoStreamingClient :
+    DataStreamingClientBase<AlpacaCryptoStreamingClientConfiguration>,
+    IAlpacaCryptoStreamingClient
 {
-    internal sealed class AlpacaCryptoStreamingClient :
-        DataStreamingClientBase<AlpacaCryptoStreamingClientConfiguration>, 
-        IAlpacaCryptoStreamingClient
+    public AlpacaCryptoStreamingClient(
+        AlpacaCryptoStreamingClientConfiguration configuration)
+        : base(configuration.EnsureNotNull(nameof(configuration)))
     {
-        public AlpacaCryptoStreamingClient(
-            AlpacaCryptoStreamingClientConfiguration configuration)
-            : base(configuration.EnsureNotNull(nameof(configuration)))
-        {
-        }
-
-        public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
-            String symbol) =>
-            GetSubscription<IQuote, JsonRealTimeCryptoQuote>(QuotesChannel, symbol);
     }
+
+    public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
+        String symbol) =>
+        GetSubscription<IQuote, JsonRealTimeCryptoQuote>(QuotesChannel, symbol);
 }

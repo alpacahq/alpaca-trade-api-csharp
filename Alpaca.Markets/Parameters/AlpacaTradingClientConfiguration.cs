@@ -1,20 +1,17 @@
-﻿using System;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// Configuration parameters object for <see cref="IAlpacaTradingClient"/> instance.
+/// </summary>
+public sealed class AlpacaTradingClientConfiguration : AlpacaClientConfigurationBase
 {
     /// <summary>
-    /// Configuration parameters object for <see cref="IAlpacaTradingClient"/> instance.
+    /// Creates new instance of <see cref="AlpacaTradingClientConfiguration"/> class.
     /// </summary>
-    public sealed class AlpacaTradingClientConfiguration : AlpacaClientConfigurationBase
+    public AlpacaTradingClientConfiguration()
+        : base(Environments.Live.AlpacaTradingApi)
     {
-        /// <summary>
-        /// Creates new instance of <see cref="AlpacaTradingClientConfiguration"/> class.
-        /// </summary>
-        public AlpacaTradingClientConfiguration()
-            : base(Environments.Live.AlpacaTradingApi)
-        {
-        }
-
-        internal override Uri GetApiEndpoint() => ApiEndpoint;
     }
+
+    internal override Uri GetApiEndpoint() => ApiEndpoint;
 }

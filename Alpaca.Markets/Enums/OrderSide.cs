@@ -1,24 +1,22 @@
 ﻿using System.Runtime.Serialization;
-using Newtonsoft.Json;
 
-namespace Alpaca.Markets
+namespace Alpaca.Markets;
+
+/// <summary>
+/// Order side in Alpaca REST API.
+/// </summary>
+[JsonConverter(typeof(OrderSideEnumConverter))]
+public enum OrderSide
 {
     /// <summary>
-    /// Order side in Alpaca REST API.
+    /// Buy order.
     /// </summary>
-    [JsonConverter(typeof(OrderSideEnumConverter))]
-    public enum OrderSide
-    {
-        /// <summary>
-        /// Buy order.
-        /// </summary>
-        [EnumMember(Value = "buy")]
-        Buy,
+    [EnumMember(Value = "buy")]
+    Buy,
 
-        /// <summary>
-        /// Sell order.
-        /// </summary>
-        [EnumMember(Value = "sell")]
-        Sell
-    }
+    /// <summary>
+    /// Sell order.
+    /// </summary>
+    [EnumMember(Value = "sell")]
+    Sell
 }

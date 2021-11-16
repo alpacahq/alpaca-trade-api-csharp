@@ -1,11 +1,9 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 
-namespace Alpaca.Markets.Extensions
+namespace Alpaca.Markets.Extensions;
+
+internal static class NullableHelper
 {
-    internal static class NullableHelper
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T EnsureNotNull<T>(this T value, String name) where T : class => value ?? throw new ArgumentNullException(name);
-    }
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static T EnsureNotNull<T>(this T value, String name) where T : class => value ?? throw new ArgumentNullException(name);
 }

@@ -1,10 +1,7 @@
-﻿using System;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+internal interface ISymbolMutable
 {
-    internal interface ISymbolMutable
-    {
-        void SetSymbol(
-            String symbol);
-    }
+    void SetSymbol(
+        String symbol);
 }

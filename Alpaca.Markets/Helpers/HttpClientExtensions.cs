@@ -1,16 +1,10 @@
-﻿using System;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using System.Net.Http.Headers;
 
-namespace Alpaca.Markets
+namespace Alpaca.Markets;
+
+internal static partial class HttpClientExtensions
 {
-    internal static partial class HttpClientExtensions
-    {
-        private static readonly Version _httpVersion =
+    private static readonly Version _httpVersion =
 #if NETSTANDARD2_1 || NET5_0_OR_GREATER
             System.Net.HttpVersion.Version20;
 #elif NETFRAMEWORK
@@ -19,117 +13,116 @@ namespace Alpaca.Markets
             System.Net.HttpVersion.Version11;
 #endif
 
-        public static HttpClient Configure(
-            this HttpClient httpClient,
-            SecurityKey securityKey,
-            Uri baseAddress)
+    public static HttpClient Configure(
+        this HttpClient httpClient,
+        SecurityKey securityKey,
+        Uri baseAddress)
+    {
+        foreach (var pair in securityKey.GetAuthenticationHeaders())
         {
-            foreach (var pair in securityKey.GetAuthenticationHeaders())
-            {
-                httpClient.DefaultRequestHeaders.Add(pair.Key, pair.Value);
-            }
+            httpClient.DefaultRequestHeaders.Add(pair.Key, pair.Value);
+        }
 
-            httpClient.DefaultRequestHeaders.Accept
-                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            httpClient.DefaultRequestHeaders.AcceptEncoding
-                .Add(new StringWithQualityHeaderValue("gzip"));
-            httpClient.BaseAddress = baseAddress;
+        httpClient.DefaultRequestHeaders.Accept
+            .Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        httpClient.DefaultRequestHeaders.AcceptEncoding
+            .Add(new StringWithQualityHeaderValue("gzip"));
+        httpClient.BaseAddress = baseAddress;
 
 #if NETFRAMEWORK
             // ReSharper disable once StringLiteralTypo
             AppContext.SetSwitch("Switch.System.Net.DontEnableSystemDefaultTlsVersions", false);
 #endif
 
-            return httpClient;
-        }
+        return httpClient;
+    }
 
-        private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
-            HttpMessageInvoker httpClient,
-            HttpMethod method,
-            Uri endpointUri,
-            TimeSpan timeout,
-            CancellationToken cancellationToken)
-            where TJson : TApi
+    private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
+        HttpMessageInvoker httpClient,
+        HttpMethod method,
+        Uri endpointUri,
+        TimeSpan timeout,
+        CancellationToken cancellationToken)
+        where TJson : TApi
+    {
+        using var request = new HttpRequestMessage(method, endpointUri);
+        if (timeout != Timeout.InfiniteTimeSpan)
         {
-            using var request = new HttpRequestMessage(method, endpointUri);
-            if (timeout != Timeout.InfiniteTimeSpan)
-            {
 #if NET5_0_OR_GREATER
                 request.Options.Set(ThrottleParameters.RequestTimeoutOptionKey, timeout);
 #else
-                request.Properties[ThrottleParameters.RequestTimeoutOptionKey] = timeout;
+            request.Properties[ThrottleParameters.RequestTimeoutOptionKey] = timeout;
 #endif
-            }
-            return await callAndDeserializeAsync<TApi, TJson>(
-                    httpClient, request, cancellationToken)
-                .ConfigureAwait(false);
         }
-
-        private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
-            HttpMessageInvoker httpClient,
-            HttpMethod method,
-            Uri endpointUri,
-            CancellationToken cancellationToken)
-            where TJson : TApi
-        {
-            using var request = new HttpRequestMessage(method, endpointUri);
-            return await callAndDeserializeAsync<TApi, TJson>(
+        return await callAndDeserializeAsync<TApi, TJson>(
                 httpClient, request, cancellationToken)
-                .ConfigureAwait(false);
-        }
+            .ConfigureAwait(false);
+    }
 
-        private static async Task<TApi> callAndDeserializeAsync<TApi, TJson, TContent>(
-            HttpMessageInvoker httpClient,
-            HttpMethod method,
-            Uri endpointUri,
-            TContent content,
-            CancellationToken cancellationToken)
-            where TJson : TApi
-        {
-            using var request = new HttpRequestMessage(method, endpointUri) { Content = toStringContent(content) };
-            return await callAndDeserializeAsync<TApi, TJson>(
-                httpClient, request, cancellationToken)
-                .ConfigureAwait(false);
-        }
+    private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
+        HttpMessageInvoker httpClient,
+        HttpMethod method,
+        Uri endpointUri,
+        CancellationToken cancellationToken)
+        where TJson : TApi
+    {
+        using var request = new HttpRequestMessage(method, endpointUri);
+        return await callAndDeserializeAsync<TApi, TJson>(
+            httpClient, request, cancellationToken)
+            .ConfigureAwait(false);
+    }
 
-        private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
-            HttpMessageInvoker httpClient,
-            HttpRequestMessage request,
-            CancellationToken cancellationToken)
-            where TJson : TApi
-        {
-            request.Version = _httpVersion;
-            using var response = await httpClient.SendAsync(request, cancellationToken)
-                .ConfigureAwait(false);
+    private static async Task<TApi> callAndDeserializeAsync<TApi, TJson, TContent>(
+        HttpMessageInvoker httpClient,
+        HttpMethod method,
+        Uri endpointUri,
+        TContent content,
+        CancellationToken cancellationToken)
+        where TJson : TApi
+    {
+        using var request = new HttpRequestMessage(method, endpointUri) { Content = toStringContent(content) };
+        return await callAndDeserializeAsync<TApi, TJson>(
+            httpClient, request, cancellationToken)
+            .ConfigureAwait(false);
+    }
 
-            return await response.DeserializeAsync<TApi, TJson>()
-                .ConfigureAwait(false);
-        }
+    private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
+        HttpMessageInvoker httpClient,
+        HttpRequestMessage request,
+        CancellationToken cancellationToken)
+        where TJson : TApi
+    {
+        request.Version = _httpVersion;
+        using var response = await httpClient.SendAsync(request, cancellationToken)
+            .ConfigureAwait(false);
 
-        private static async Task<Boolean> callAndReturnSuccessCodeAsync(
-            HttpMessageInvoker httpClient,
-            HttpMethod method,
-            Uri endpointUri,
-            CancellationToken cancellationToken)
-        {
-            using var request = new HttpRequestMessage(method, endpointUri);
+        return await response.DeserializeAsync<TApi, TJson>()
+            .ConfigureAwait(false);
+    }
 
-            using var response = await httpClient.SendAsync(request, cancellationToken)
-                .ConfigureAwait(false);
+    private static async Task<Boolean> callAndReturnSuccessCodeAsync(
+        HttpMessageInvoker httpClient,
+        HttpMethod method,
+        Uri endpointUri,
+        CancellationToken cancellationToken)
+    {
+        using var request = new HttpRequestMessage(method, endpointUri);
 
-            return await response.IsSuccessStatusCodeAsync()
-                .ConfigureAwait(false);
-        }
+        using var response = await httpClient.SendAsync(request, cancellationToken)
+            .ConfigureAwait(false);
 
-        private static Uri asUri(String endpointUri) => new (endpointUri, UriKind.RelativeOrAbsolute);
+        return await response.IsSuccessStatusCodeAsync()
+            .ConfigureAwait(false);
+    }
 
-        private static StringContent toStringContent<T>(T value)
-        {
-            var serializer = new JsonSerializer();
-            using var stringWriter = new StringWriter();
+    private static Uri asUri(String endpointUri) => new(endpointUri, UriKind.RelativeOrAbsolute);
 
-            serializer.Serialize(stringWriter, value);
-            return new StringContent(stringWriter.ToString());
-        }
+    private static StringContent toStringContent<T>(T value)
+    {
+        var serializer = new JsonSerializer();
+        using var stringWriter = new StringWriter();
+
+        serializer.Serialize(stringWriter, value);
+        return new StringContent(stringWriter.ToString());
     }
 }

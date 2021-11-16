@@ -1,56 +1,52 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
-namespace Alpaca.Markets
+namespace Alpaca.Markets;
+
+[SuppressMessage(
+    "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+internal sealed class JsonCalendar : ICalendar
 {
-    [SuppressMessage(
-        "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonCalendar : ICalendar
+    [JsonConverter(typeof(AssumeLocalIsoDateConverter))]
+    [JsonProperty(PropertyName = "date", Required = Required.Always)]
+    public DateTime TradingDateEst { get; set; }
+
+    [JsonConverter(typeof(AssumeLocalIsoTimeConverter))]
+    [JsonProperty(PropertyName = "open", Required = Required.Always)]
+    public DateTime TradingOpenTimeEst { get; set; }
+
+    [JsonConverter(typeof(AssumeLocalIsoTimeConverter))]
+    [JsonProperty(PropertyName = "close", Required = Required.Always)]
+    public DateTime TradingCloseTimeEst { get; set; }
+
+    [JsonIgnore]
+    public DateTime TradingDateUtc { get; private set; }
+
+    [JsonIgnore]
+    public DateTime TradingOpenTimeUtc { get; private set; }
+
+    [JsonIgnore]
+    public DateTime TradingCloseTimeUtc { get; private set; }
+
+    [OnDeserialized]
+    internal void OnDeserializedMethod(
+        StreamingContext context)
     {
-        [JsonConverter(typeof(AssumeLocalIsoDateConverter))]
-        [JsonProperty(PropertyName = "date", Required = Required.Always)]
-        public DateTime TradingDateEst { get; set; }
+        TradingDateEst = DateTime.SpecifyKind(
+            TradingDateEst.Date, DateTimeKind.Unspecified);
 
-        [JsonConverter(typeof(AssumeLocalIsoTimeConverter))]
-        [JsonProperty(PropertyName = "open", Required = Required.Always)]
-        public DateTime TradingOpenTimeEst { get; set; }
+        TradingOpenTimeEst = DateTime.SpecifyKind(
+            TradingDateEst.Date.Add(TradingOpenTimeEst.TimeOfDay),
+            DateTimeKind.Unspecified);
+        TradingCloseTimeEst = DateTime.SpecifyKind(
+            TradingDateEst.Date.Add(TradingCloseTimeEst.TimeOfDay),
+            DateTimeKind.Unspecified);
 
-        [JsonConverter(typeof(AssumeLocalIsoTimeConverter))]
-        [JsonProperty(PropertyName = "close", Required = Required.Always)]
-        public DateTime TradingCloseTimeEst { get; set; }
+        TradingOpenTimeUtc = CustomTimeZone
+            .ConvertFromEstToUtc(TradingOpenTimeEst);
+        TradingCloseTimeUtc = CustomTimeZone
+            .ConvertFromEstToUtc(TradingCloseTimeEst);
 
-        [JsonIgnore]
-        public DateTime TradingDateUtc { get; private set; }
-
-        [JsonIgnore]
-        public DateTime TradingOpenTimeUtc { get; private set; }
-
-        [JsonIgnore]
-        public DateTime TradingCloseTimeUtc { get; private set; }
-
-        [OnDeserialized]
-        internal void OnDeserializedMethod(
-            StreamingContext context)
-        {
-            TradingDateEst = DateTime.SpecifyKind(
-                TradingDateEst.Date, DateTimeKind.Unspecified);
-
-            TradingOpenTimeEst = DateTime.SpecifyKind(
-                TradingDateEst.Date.Add(TradingOpenTimeEst.TimeOfDay),
-                DateTimeKind.Unspecified);
-            TradingCloseTimeEst = DateTime.SpecifyKind(
-                TradingDateEst.Date.Add(TradingCloseTimeEst.TimeOfDay), 
-                DateTimeKind.Unspecified);
-
-            TradingOpenTimeUtc = CustomTimeZone
-                .ConvertFromEstToUtc(TradingOpenTimeEst);
-            TradingCloseTimeUtc = CustomTimeZone
-                .ConvertFromEstToUtc(TradingCloseTimeEst);
-
-            TradingDateUtc = TradingDateEst.AsUtcDateTime();
-        }
+        TradingDateUtc = TradingDateEst.AsUtcDateTime();
     }
 }

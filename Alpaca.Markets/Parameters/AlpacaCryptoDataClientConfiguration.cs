@@ -1,21 +1,18 @@
-﻿using System;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// Configuration parameters object for <see cref="IAlpacaCryptoDataClient"/> instance.
+/// </summary>
+public sealed class AlpacaCryptoDataClientConfiguration : AlpacaClientConfigurationBase
 {
     /// <summary>
-    /// Configuration parameters object for <see cref="IAlpacaCryptoDataClient"/> instance.
+    /// Creates new instance of <see cref="AlpacaCryptoDataClientConfiguration"/> class.
     /// </summary>
-    public sealed class AlpacaCryptoDataClientConfiguration : AlpacaClientConfigurationBase
+    public AlpacaCryptoDataClientConfiguration()
+        : base(Environments.Live.AlpacaDataApi)
     {
-        /// <summary>
-        /// Creates new instance of <see cref="AlpacaCryptoDataClientConfiguration"/> class.
-        /// </summary>
-        public AlpacaCryptoDataClientConfiguration()
-            : base(Environments.Live.AlpacaDataApi)
-        {
-        }
-
-        internal override Uri GetApiEndpoint() =>
-            new UriBuilder(ApiEndpoint) { Path = "v1beta1/crypto/" }.Uri;
     }
+
+    internal override Uri GetApiEndpoint() =>
+        new UriBuilder(ApiEndpoint) { Path = "v1beta1/crypto/" }.Uri;
 }

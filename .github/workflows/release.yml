@@ -11,6 +11,11 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v2
 
+    - name: Setup .NET 6.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
     - name: Cache NuGet Packages
       uses: actions/cache@v2
       with:
