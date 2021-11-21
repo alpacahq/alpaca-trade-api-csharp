@@ -5,7 +5,7 @@ Alpaca.Markets.AccountActivitiesRequest.AccountActivitiesRequest() -> void
 Alpaca.Markets.AccountActivitiesRequest.AccountActivitiesRequest(Alpaca.Markets.AccountActivityType activityType) -> void
 Alpaca.Markets.AccountActivitiesRequest.AccountActivitiesRequest(System.Collections.Generic.IEnumerable<Alpaca.Markets.AccountActivityType>! activityTypes) -> void
 Alpaca.Markets.AccountActivitiesRequest.ActivityTypes.get -> System.Collections.Generic.IReadOnlyCollection<Alpaca.Markets.AccountActivityType>!
-Alpaca.Markets.AccountActivitiesRequest.Date.get -> System.DateTime?
+Alpaca.Markets.AccountActivitiesRequest.Date.get -> System.DateOnly?
 Alpaca.Markets.AccountActivitiesRequest.Direction.get -> Alpaca.Markets.SortDirection?
 Alpaca.Markets.AccountActivitiesRequest.Direction.set -> void
 Alpaca.Markets.AccountActivitiesRequest.PageSize.get -> long?
@@ -13,6 +13,7 @@ Alpaca.Markets.AccountActivitiesRequest.PageSize.set -> void
 Alpaca.Markets.AccountActivitiesRequest.PageToken.get -> string?
 Alpaca.Markets.AccountActivitiesRequest.PageToken.set -> void
 Alpaca.Markets.AccountActivitiesRequest.SetSingleDate(System.DateTime date) -> Alpaca.Markets.AccountActivitiesRequest!
+Alpaca.Markets.AccountActivitiesRequest.SetSingleDate(System.DateOnly date) -> Alpaca.Markets.AccountActivitiesRequest!
 Alpaca.Markets.AccountActivitiesRequest.TimeInterval.get -> Alpaca.Markets.IInclusiveTimeInterval!
 Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.ACATCash = 3 -> Alpaca.Markets.AccountActivityType
@@ -840,6 +841,7 @@ static Alpaca.Markets.BarTimeFrame.Hour.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.BarTimeFrame.Minute.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.BarTimeFrame.operator !=(Alpaca.Markets.BarTimeFrame lhs, Alpaca.Markets.BarTimeFrame rhs) -> bool
 static Alpaca.Markets.BarTimeFrame.operator ==(Alpaca.Markets.BarTimeFrame lhs, Alpaca.Markets.BarTimeFrame rhs) -> bool
+static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateOnly date) -> Alpaca.Markets.CalendarRequest!
 static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateTime date) -> Alpaca.Markets.CalendarRequest!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoDataClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaCryptoDataClient!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoDataClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaCryptoDataClientConfiguration!

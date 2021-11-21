@@ -3,6 +3,7 @@
 global using Newtonsoft.Json;
 global using JetBrains.Annotations;
 global using System.Diagnostics.CodeAnalysis;
+global using System.Runtime.CompilerServices;
 
 [assembly: CLSCompliant(true)]
 

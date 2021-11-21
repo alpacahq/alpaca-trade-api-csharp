@@ -346,4 +346,8 @@
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
   </Suppression>
+  <Suppression>
+    <DiagnosticId>CP1003</DiagnosticId>
+    <Target>lib/net6.0/Alpaca.Markets.dll</Target>
+  </Suppression>
 </Suppressions>

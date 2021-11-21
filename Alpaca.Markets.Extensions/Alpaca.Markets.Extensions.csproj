@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net5</TargetFrameworks>
-	<PackageValidationBaselineVersion>6.0.1-alpha3</PackageValidationBaselineVersion>
-	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-	<ImplicitUsings>enable</ImplicitUsings>
-	<LangVersion>latest</LangVersion>
-	<WarningLevel>5</WarningLevel>
-	<Nullable>enable</Nullable>
-	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net5;net6</TargetFrameworks>
+    <PackageValidationBaselineVersion>6.0.1-alpha3</PackageValidationBaselineVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <WarningLevel>5</WarningLevel>
+    <Nullable>enable</Nullable>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>6.0.1-alpha3</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
@@ -35,11 +35,11 @@
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <RestoreLockedMode>true</RestoreLockedMode>
     <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
-	<!--<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>-->
-	<EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
-	<EnableStrictModeForCompatibleTfms>true</EnableStrictModeForCompatibleTfms>
-	<EnablePackageValidation>true</EnablePackageValidation>
-	<PackageReadmeFile>README.md</PackageReadmeFile>
+    <!--<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>-->
+    <EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
+    <EnableStrictModeForCompatibleTfms>true</EnableStrictModeForCompatibleTfms>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -84,8 +84,12 @@
     <PackageReference Include="System.Threading.Channels" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup Condition="!($(TargetFramework.StartsWith('net6')))">
+   <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.0-alpha2" />
+ </ItemGroup>
+    
   <ItemGroup>
-	  <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

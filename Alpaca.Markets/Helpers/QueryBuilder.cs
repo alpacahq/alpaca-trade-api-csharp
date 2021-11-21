@@ -48,6 +48,11 @@ namespace Alpaca.Markets
 
         public QueryBuilder AddParameter(
             String name,
+            DateOnly? value) =>
+            addParameter(name, value, date => date.ToString("O", CultureInfo.InvariantCulture));
+
+        public QueryBuilder AddParameter(
+            String name,
             IReadOnlyCollection<String> values) =>
             values.Count != 0
                 ? AddParameter(name, String.Join(ListSeparator, values))

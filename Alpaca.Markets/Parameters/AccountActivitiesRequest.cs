@@ -41,8 +41,7 @@ public sealed class AccountActivitiesRequest : IRequestWithTimeInterval<IInclusi
     /// Gets the date for which you want to see activities.
     /// </summary>
     [UsedImplicitly]
-    // TODO: olegra - good candidate for the DateOnly type usage
-    public DateTime? Date { get; private set; }
+    public DateOnly? Date { get; private set; }
 
     /// <summary>
     /// Gets inclusive date interval for filtering items in response.
@@ -74,9 +73,19 @@ public sealed class AccountActivitiesRequest : IRequestWithTimeInterval<IInclusi
     /// <param name="date">Target date for filtering activities.</param>
     /// <returns>Fluent interface method return same <see cref="AccountActivitiesRequest"/> instance.</returns>
     [UsedImplicitly]
-    // TODO: olegra - good candidate for the DateOnly type usage
+    [Obsolete("Use another method overload that takes the DateOnly argument.", false)]
     public AccountActivitiesRequest SetSingleDate(
-        DateTime date)
+        DateTime date) =>
+        SetSingleDate(DateOnly.FromDateTime(date));
+
+    /// <summary>
+    /// Sets filtering for single <paramref name="date"/> activities.
+    /// </summary>
+    /// <param name="date">Target date for filtering activities.</param>
+    /// <returns>Fluent interface method return same <see cref="AccountActivitiesRequest"/> instance.</returns>
+    [UsedImplicitly]
+    public AccountActivitiesRequest SetSingleDate(
+        DateOnly date)
     {
         TimeInterval = Markets.TimeInterval.InclusiveEmpty;
         Date = date;
@@ -90,7 +99,7 @@ public sealed class AccountActivitiesRequest : IRequestWithTimeInterval<IInclusi
             Path = "v2/account/activities",
             Query = await new QueryBuilder()
                 .AddParameter("activity_types", ActivityTypes)
-                .AddParameter("date", Date, DateTimeHelper.DateFormat)
+                .AddParameter("date", Date)
                 .AddParameter("until", TimeInterval.Into, "O")
                 .AddParameter("after", TimeInterval.From, "O")
                 .AddParameter("direction", Direction)
@@ -99,6 +108,7 @@ public sealed class AccountActivitiesRequest : IRequestWithTimeInterval<IInclusi
                 .AsStringAsync().ConfigureAwait(false)
         };
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(IInclusiveTimeInterval value)
     {
         TimeInterval = value;

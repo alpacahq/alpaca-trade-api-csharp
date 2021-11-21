@@ -12,9 +12,20 @@ public sealed class CalendarRequest : IRequestWithTimeInterval<IInclusiveTimeInt
     /// <param name="date"></param>
     /// <returns></returns>
     [UsedImplicitly]
-    // TODO: olegra - good candidate for the DateOnly type usage
+    [Obsolete("Use another method overload that takes the DateOnly argument.", false)]
     public static CalendarRequest GetForSingleDay(DateTime date) =>
         new CalendarRequest().SetInclusiveTimeInterval(date.Date, date.Date);
+
+    /// <summary>
+    /// Creates new instance of <see cref="CalendarRequest"/> object with the
+    /// <see cref="TimeInterval"/> property configured for the single day.
+    /// </summary>
+    /// <param name="date"></param>
+    /// <returns></returns>
+    [UsedImplicitly]
+    public static CalendarRequest GetForSingleDay(DateOnly date) =>
+        new CalendarRequest().SetInclusiveTimeInterval(
+            date.ToDateTime(TimeOnly.MinValue), date.ToDateTime(TimeOnly.MinValue));
 
     /// <summary>
     /// Gets inclusive date interval for filtering items in response.
@@ -29,11 +40,16 @@ public sealed class CalendarRequest : IRequestWithTimeInterval<IInclusiveTimeInt
         {
             Path = "v2/calendar",
             Query = await new QueryBuilder()
-                .AddParameter("start", TimeInterval.From, DateTimeHelper.DateFormat)
-                .AddParameter("end", TimeInterval.Into, DateTimeHelper.DateFormat)
+                .AddParameter("start", asDateOnly(TimeInterval.From))
+                .AddParameter("end", asDateOnly(TimeInterval.Into))
                 .AsStringAsync().ConfigureAwait(false)
         };
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
         IInclusiveTimeInterval value) => TimeInterval = value.EnsureNotNull(nameof(value));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static DateOnly? asDateOnly(DateTime? date) =>
+        date.HasValue ? DateOnly.FromDateTime(date.Value) : null;
 }
