@@ -125,6 +125,7 @@ Alpaca.Markets.BracketOrder.StopLoss.get -> Alpaca.Markets.IStopLoss!
 Alpaca.Markets.BracketOrder.TakeProfit.get -> Alpaca.Markets.ITakeProfit!
 Alpaca.Markets.CalendarRequest
 Alpaca.Markets.CalendarRequest.CalendarRequest() -> void
+Alpaca.Markets.CalendarRequest.DateInterval.get -> Alpaca.Markets.IDateInterval!
 Alpaca.Markets.CalendarRequest.TimeInterval.get -> Alpaca.Markets.IInclusiveTimeInterval!
 Alpaca.Markets.ChangeOrderRequest
 Alpaca.Markets.ChangeOrderRequest.ChangeOrderRequest(System.Guid orderId) -> void
@@ -147,6 +148,7 @@ Alpaca.Markets.CryptoExchange
 Alpaca.Markets.CryptoExchange.Cbse = 2 -> Alpaca.Markets.CryptoExchange
 Alpaca.Markets.CryptoExchange.Ersx = 0 -> Alpaca.Markets.CryptoExchange
 Alpaca.Markets.CryptoExchange.Gnss = 1 -> Alpaca.Markets.CryptoExchange
+Alpaca.Markets.DateInterval
 Alpaca.Markets.DayTradeMarginCallProtection
 Alpaca.Markets.DayTradeMarginCallProtection.Both = 2 -> Alpaca.Markets.DayTradeMarginCallProtection
 Alpaca.Markets.DayTradeMarginCallProtection.Entry = 0 -> Alpaca.Markets.DayTradeMarginCallProtection
@@ -266,7 +268,7 @@ Alpaca.Markets.IAccount.Status.get -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.IAccount.TradableCash.get -> decimal
 Alpaca.Markets.IAccount.TradeSuspendedByUser.get -> bool
 Alpaca.Markets.IAccountActivity
-Alpaca.Markets.IAccountActivity.ActivityDate.get -> System.DateTime?
+Alpaca.Markets.IAccountActivity.ActivityDate.get -> System.DateOnly?
 Alpaca.Markets.IAccountActivity.ActivityDateTimeUtc.get -> System.DateTime
 Alpaca.Markets.IAccountActivity.ActivityGuid.get -> System.Guid
 Alpaca.Markets.IAccountActivity.ActivityId.get -> string!
@@ -373,8 +375,13 @@ Alpaca.Markets.IBar.TradeCount.get -> ulong
 Alpaca.Markets.IBar.Volume.get -> decimal
 Alpaca.Markets.IBar.Vwap.get -> decimal
 Alpaca.Markets.ICalendar
+Alpaca.Markets.ICalendar.CloseTimeEst.get -> System.TimeOnly
+Alpaca.Markets.ICalendar.CloseTimeUtc.get -> System.TimeOnly
+Alpaca.Markets.ICalendar.OpenTimeEst.get -> System.TimeOnly
+Alpaca.Markets.ICalendar.OpenTimeUtc.get -> System.TimeOnly
 Alpaca.Markets.ICalendar.TradingCloseTimeEst.get -> System.DateTime
 Alpaca.Markets.ICalendar.TradingCloseTimeUtc.get -> System.DateTime
+Alpaca.Markets.ICalendar.TradingDate.get -> System.DateOnly
 Alpaca.Markets.ICalendar.TradingDateEst.get -> System.DateTime
 Alpaca.Markets.ICalendar.TradingDateUtc.get -> System.DateTime
 Alpaca.Markets.ICalendar.TradingOpenTimeEst.get -> System.DateTime
@@ -384,6 +391,9 @@ Alpaca.Markets.IClock.IsOpen.get -> bool
 Alpaca.Markets.IClock.NextCloseUtc.get -> System.DateTime
 Alpaca.Markets.IClock.NextOpenUtc.get -> System.DateTime
 Alpaca.Markets.IClock.TimestampUtc.get -> System.DateTime
+Alpaca.Markets.IDateInterval
+Alpaca.Markets.IDateInterval.From.get -> System.DateOnly?
+Alpaca.Markets.IDateInterval.Into.get -> System.DateOnly?
 Alpaca.Markets.IEnvironment
 Alpaca.Markets.IEnvironment.AlpacaCryptoStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaDataApi.get -> System.Uri!
@@ -494,6 +504,8 @@ Alpaca.Markets.IQuote.Conditions.get -> System.Collections.Generic.IReadOnlyList
 Alpaca.Markets.IQuote.Symbol.get -> string!
 Alpaca.Markets.IQuote.Tape.get -> string!
 Alpaca.Markets.IQuote.TimestampUtc.get -> System.DateTime
+Alpaca.Markets.IRequestWithDateInterval
+Alpaca.Markets.IRequestWithDateInterval.SetInterval(Alpaca.Markets.IDateInterval! value) -> void
 Alpaca.Markets.IRequestWithTimeInterval<TInterval>
 Alpaca.Markets.IRequestWithTimeInterval<TInterval>.SetInterval(TInterval value) -> void
 Alpaca.Markets.ISnapshot
@@ -704,6 +716,7 @@ Alpaca.Markets.Pagination.Size.set -> void
 Alpaca.Markets.Pagination.Token.get -> string?
 Alpaca.Markets.Pagination.Token.set -> void
 Alpaca.Markets.PortfolioHistoryRequest
+Alpaca.Markets.PortfolioHistoryRequest.DateInterval.get -> Alpaca.Markets.IDateInterval!
 Alpaca.Markets.PortfolioHistoryRequest.ExtendedHours.get -> bool?
 Alpaca.Markets.PortfolioHistoryRequest.ExtendedHours.set -> void
 Alpaca.Markets.PortfolioHistoryRequest.Period.get -> Alpaca.Markets.HistoryPeriod?
@@ -843,6 +856,16 @@ static Alpaca.Markets.BarTimeFrame.operator !=(Alpaca.Markets.BarTimeFrame lhs, 
 static Alpaca.Markets.BarTimeFrame.operator ==(Alpaca.Markets.BarTimeFrame lhs, Alpaca.Markets.BarTimeFrame rhs) -> bool
 static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateOnly date) -> Alpaca.Markets.CalendarRequest!
 static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateTime date) -> Alpaca.Markets.CalendarRequest!
+static Alpaca.Markets.DateInterval.AsTimeInterval(this Alpaca.Markets.IDateInterval! interval) -> Alpaca.Markets.IInclusiveTimeInterval!
+static Alpaca.Markets.DateInterval.Deconstruct(this Alpaca.Markets.IDateInterval! timeInterval, out System.DateOnly? from, out System.DateOnly? into) -> void
+static Alpaca.Markets.DateInterval.GetIntervalFromThat(this System.DateOnly from) -> Alpaca.Markets.IDateInterval!
+static Alpaca.Markets.DateInterval.GetIntervalTillThat(this System.DateOnly into) -> Alpaca.Markets.IDateInterval!
+static Alpaca.Markets.DateInterval.IsEmpty(this Alpaca.Markets.IDateInterval! interval) -> bool
+static Alpaca.Markets.DateInterval.IsOpen(this Alpaca.Markets.IDateInterval! interval) -> bool
+static Alpaca.Markets.DateInterval.SetDateInterval<TRequest>(this TRequest request, System.DateOnly from, System.DateOnly into) -> TRequest
+static Alpaca.Markets.DateInterval.SetDateInterval<TRequest>(this TRequest request, Alpaca.Markets.IDateInterval! interval) -> TRequest
+static Alpaca.Markets.DateInterval.WithFrom(this Alpaca.Markets.IDateInterval! timeInterval, System.DateOnly from) -> Alpaca.Markets.IDateInterval!
+static Alpaca.Markets.DateInterval.WithInto(this Alpaca.Markets.IDateInterval! timeInterval, System.DateOnly into) -> Alpaca.Markets.IDateInterval!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoDataClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaCryptoDataClient!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoDataClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaCryptoDataClientConfiguration!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoStreamingClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaCryptoStreamingClient!
@@ -890,6 +913,7 @@ static Alpaca.Markets.StopLimitOrder.Sell(string! symbol, long quantity, decimal
 static Alpaca.Markets.StopOrder.Buy(string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
 static Alpaca.Markets.StopOrder.Sell(string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
 static Alpaca.Markets.ThrottleParameters.Default.get -> Alpaca.Markets.ThrottleParameters!
+static Alpaca.Markets.TimeInterval.AsDateInterval(this Alpaca.Markets.IInclusiveTimeInterval! interval) -> Alpaca.Markets.IDateInterval!
 static Alpaca.Markets.TimeInterval.Deconstruct(this Alpaca.Markets.IExclusiveTimeInterval! timeInterval, out System.DateTime? from, out System.DateTime? into) -> void
 static Alpaca.Markets.TimeInterval.Deconstruct(this Alpaca.Markets.IInclusiveTimeInterval! timeInterval, out System.DateTime? from, out System.DateTime? into) -> void
 static Alpaca.Markets.TimeInterval.GetExclusiveIntervalFromThat(this System.DateTime from) -> Alpaca.Markets.IExclusiveTimeInterval!

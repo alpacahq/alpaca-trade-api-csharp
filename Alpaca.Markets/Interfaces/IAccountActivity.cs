@@ -38,9 +38,8 @@ public interface IAccountActivity
     /// <summary>
     /// The date on which the activity occurred or on which the transaction associated with the activity settled in the UTC.
     /// </summary>
-    // TODO: olegra - good candidate for the DateOnly type usage
     [UsedImplicitly]
-    DateTime? ActivityDate { get; }
+    DateOnly? ActivityDate { get; }
 
     /// <summary>
     /// The net amount of money (positive or negative) associated with the activity.

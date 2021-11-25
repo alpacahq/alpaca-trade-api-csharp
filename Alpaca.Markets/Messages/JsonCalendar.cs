@@ -23,10 +23,25 @@ internal sealed class JsonCalendar : ICalendar
     public DateTime TradingDateUtc { get; private set; }
 
     [JsonIgnore]
+    public DateOnly TradingDate { get; private set; }
+
+    [JsonIgnore]
     public DateTime TradingOpenTimeUtc { get; private set; }
 
     [JsonIgnore]
+    public TimeOnly OpenTimeEst { get; private set; }
+
+    [JsonIgnore]
+    public TimeOnly OpenTimeUtc { get; private set; }
+
+    [JsonIgnore]
     public DateTime TradingCloseTimeUtc { get; private set; }
+
+    [JsonIgnore]
+    public TimeOnly CloseTimeEst { get; private set; }
+
+    [JsonIgnore]
+    public TimeOnly CloseTimeUtc { get; private set; }
 
     [OnDeserialized]
     internal void OnDeserializedMethod(
@@ -48,5 +63,11 @@ internal sealed class JsonCalendar : ICalendar
             .ConvertFromEstToUtc(TradingCloseTimeEst);
 
         TradingDateUtc = TradingDateEst.AsUtcDateTime();
+
+        TradingDate = DateOnly.FromDateTime(TradingDateUtc);
+        OpenTimeEst = TimeOnly.FromDateTime(TradingOpenTimeEst);
+        OpenTimeUtc = TimeOnly.FromDateTime(TradingOpenTimeUtc);
+        CloseTimeEst = TimeOnly.FromDateTime(TradingCloseTimeEst);
+        CloseTimeUtc = TimeOnly.FromDateTime(TradingCloseTimeUtc);
     }
 }

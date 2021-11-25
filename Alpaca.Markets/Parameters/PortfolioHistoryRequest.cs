@@ -4,14 +4,20 @@
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.GetPortfolioHistoryAsync(PortfolioHistoryRequest,CancellationToken)"/> call.
 /// </summary>
 [UsedImplicitly]
-public sealed class PortfolioHistoryRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>
+public sealed class PortfolioHistoryRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>, IRequestWithDateInterval
 {
     /// <summary>
     /// Gets inclusive date interval for filtering items in response.
     /// </summary>
     [UsedImplicitly]
-    // TODO: olegra - good candidate for the DateOnly type usage
-    public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
+    [Obsolete("Use the DateInterval property instead of this one.", false)]
+    public IInclusiveTimeInterval TimeInterval => DateInterval.AsTimeInterval();
+
+    /// <summary>
+    /// Gets inclusive date interval for filtering items in response.
+    /// </summary>
+    [UsedImplicitly]
+    public IDateInterval DateInterval { get; private set; } = Markets.DateInterval.Empty;
 
     /// <summary>
     /// Gets or sets the time frame value for desired history. Default value (if <c>null</c>) is 1 minute
@@ -39,8 +45,8 @@ public sealed class PortfolioHistoryRequest : IRequestWithTimeInterval<IInclusiv
         {
             Path = "v2/account/portfolio/history",
             Query = await new QueryBuilder()
-                .AddParameter("start_date", TimeInterval.From, DateTimeHelper.DateFormat)
-                .AddParameter("end_date", TimeInterval.Into, DateTimeHelper.DateFormat)
+                .AddParameter("start_date", DateInterval.From)
+                .AddParameter("end_date", DateInterval.Into)
                 .AddParameter("period", Period?.ToString())
                 // ReSharper disable once StringLiteralTypo
                 .AddParameter("timeframe", TimeFrame)
@@ -48,6 +54,12 @@ public sealed class PortfolioHistoryRequest : IRequestWithTimeInterval<IInclusiv
                 .AsStringAsync().ConfigureAwait(false)
         };
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
-        IInclusiveTimeInterval value) => TimeInterval = value.EnsureNotNull(nameof(value));
+        IInclusiveTimeInterval value) =>
+        DateInterval = value.EnsureNotNull(nameof(value)).AsDateInterval();
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    void IRequestWithDateInterval.SetInterval(
+        IDateInterval value) => DateInterval = value.EnsureNotNull(nameof(value));
 }

@@ -8,9 +8,11 @@ namespace Alpaca.Markets;
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
 internal sealed class AssumeLocalIsoDateConverter : IsoDateTimeConverter
 {
+    private const String DateFormat = "yyyy-MM-dd";
+
     public AssumeLocalIsoDateConverter()
     {
         DateTimeStyles = DateTimeStyles.AssumeLocal;
-        DateTimeFormat = DateTimeHelper.DateFormat;
+        DateTimeFormat = DateFormat;
     }
 }

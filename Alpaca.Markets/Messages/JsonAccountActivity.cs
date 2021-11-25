@@ -19,8 +19,8 @@ internal sealed class JsonAccountActivity : IAccountActivity
     [JsonProperty(PropertyName = "symbol", Required = Required.Default)]
     public String? Symbol { get; set; }
 
-    [JsonProperty(PropertyName = "date", Required = Required.Default)]
-    public DateTime? ActivityDate { get; set; }
+    [JsonIgnore]
+    public DateOnly? ActivityDate { get; set; }
 
     [JsonProperty(PropertyName = "net_amount", Required = Required.Default)]
     public Decimal? NetAmount { get; set; }
@@ -55,6 +55,9 @@ internal sealed class JsonAccountActivity : IAccountActivity
     [JsonProperty(PropertyName = "type", Required = Required.Default)]
     public TradeEvent? Type { get; set; }
 
+    [JsonProperty(PropertyName = "date", Required = Required.Default)]
+    public DateTime? ActivityDateTime { get; set; }
+
     [JsonIgnore]
     public DateTime ActivityDateTimeUtc { get; private set; }
 
@@ -85,6 +88,7 @@ internal sealed class JsonAccountActivity : IAccountActivity
             ActivityGuid = guid;
         }
 
-        ActivityDate = ActivityDate?.Date.AsUtcDateTime();
+        ActivityDateTime = ActivityDateTime?.Date.AsUtcDateTime();
+        ActivityDate = ActivityDateTime.AsDateOnly();
     }
 }

@@ -3,7 +3,7 @@
 /// <summary>
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListCalendarAsync(CalendarRequest,CancellationToken)"/> call.
 /// </summary>
-public sealed class CalendarRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>
+public sealed class CalendarRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>, IRequestWithDateInterval
 {
     /// <summary>
     /// Creates new instance of <see cref="CalendarRequest"/> object with the
@@ -14,7 +14,8 @@ public sealed class CalendarRequest : IRequestWithTimeInterval<IInclusiveTimeInt
     [UsedImplicitly]
     [Obsolete("Use another method overload that takes the DateOnly argument.", false)]
     public static CalendarRequest GetForSingleDay(DateTime date) =>
-        new CalendarRequest().SetInclusiveTimeInterval(date.Date, date.Date);
+        new CalendarRequest().SetDateInterval(
+            DateOnly.FromDateTime(date), DateOnly.FromDateTime(date));
 
     /// <summary>
     /// Creates new instance of <see cref="CalendarRequest"/> object with the
@@ -24,15 +25,20 @@ public sealed class CalendarRequest : IRequestWithTimeInterval<IInclusiveTimeInt
     /// <returns></returns>
     [UsedImplicitly]
     public static CalendarRequest GetForSingleDay(DateOnly date) =>
-        new CalendarRequest().SetInclusiveTimeInterval(
-            date.ToDateTime(TimeOnly.MinValue), date.ToDateTime(TimeOnly.MinValue));
+        new CalendarRequest().SetDateInterval(date, date);
 
     /// <summary>
     /// Gets inclusive date interval for filtering items in response.
     /// </summary>
     [UsedImplicitly]
-    // TODO: olegra - good candidate for the DateOnly type usage
-    public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
+    [Obsolete("Use the DateInterval property instead of this one.", false)]
+    public IInclusiveTimeInterval TimeInterval => DateInterval.AsTimeInterval();
+
+    /// <summary>
+    /// Gets inclusive date interval for filtering items in response.
+    /// </summary>
+    [UsedImplicitly]
+    public IDateInterval DateInterval { get; private set; } = Markets.DateInterval.Empty;
 
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
         HttpClient httpClient) =>
@@ -40,16 +46,17 @@ public sealed class CalendarRequest : IRequestWithTimeInterval<IInclusiveTimeInt
         {
             Path = "v2/calendar",
             Query = await new QueryBuilder()
-                .AddParameter("start", asDateOnly(TimeInterval.From))
-                .AddParameter("end", asDateOnly(TimeInterval.Into))
+                .AddParameter("start", DateInterval.From)
+                .AddParameter("end", DateInterval.Into)
                 .AsStringAsync().ConfigureAwait(false)
         };
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
-        IInclusiveTimeInterval value) => TimeInterval = value.EnsureNotNull(nameof(value));
+        IInclusiveTimeInterval value) =>
+        DateInterval = value.EnsureNotNull(nameof(value)).AsDateInterval();
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static DateOnly? asDateOnly(DateTime? date) =>
-        date.HasValue ? DateOnly.FromDateTime(date.Value) : null;
+    void IRequestWithDateInterval.SetInterval(
+        IDateInterval value) => DateInterval = value.EnsureNotNull(nameof(value));
 }

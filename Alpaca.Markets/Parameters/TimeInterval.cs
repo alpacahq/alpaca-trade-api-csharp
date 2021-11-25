@@ -5,9 +5,12 @@
 /// </summary>
 public static class TimeInterval
 {
-    private readonly struct Inclusive : IInclusiveTimeInterval, IEquatable<Inclusive>
+    private readonly struct Interval :
+        IInclusiveTimeInterval,
+        IExclusiveTimeInterval,
+        IEquatable<Interval>
     {
-        internal Inclusive(
+        internal Interval(
             DateTime? from,
             DateTime? into)
         {
@@ -25,54 +28,19 @@ public static class TimeInterval
 
         public DateTime? Into { get; }
 
-        public Boolean Equals(Inclusive other) =>
+        public Boolean Equals(Interval other) =>
             Equals((IInclusiveTimeInterval)other);
 
         public Boolean Equals(IInclusiveTimeInterval? other) =>
             Nullable.Equals(From, other?.From) &&
             Nullable.Equals(Into, other?.Into);
 
-        public override Boolean Equals(Object? obj) =>
-            obj is Inclusive other && Equals(other);
-
-        public override Int32 GetHashCode()
-        {
-            unchecked
-            {
-                return (From.GetHashCode() * 397) ^ Into.GetHashCode();
-            }
-        }
-    }
-
-    private readonly struct Exclusive : IExclusiveTimeInterval, IEquatable<Exclusive>
-    {
-        internal Exclusive(
-            DateTime? from,
-            DateTime? into)
-        {
-            if (from > into)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(from), "Time interval should be valid.");
-            }
-
-            From = from;
-            Into = into;
-        }
-
-        public DateTime? From { get; }
-
-        public DateTime? Into { get; }
-
-        public Boolean Equals(Exclusive other) =>
-            Equals((IExclusiveTimeInterval)other);
-
         public Boolean Equals(IExclusiveTimeInterval? other) =>
             Nullable.Equals(From, other?.From) &&
             Nullable.Equals(Into, other?.Into);
 
         public override Boolean Equals(Object? obj) =>
-            obj is Exclusive other && Equals(other);
+            obj is Interval other && Equals(other);
 
         public override Int32 GetHashCode()
         {
@@ -82,6 +50,17 @@ public static class TimeInterval
             }
         }
     }
+
+    /// <summary>
+    /// Gets the <see cref="IDateInterval"/> instance from to the <see cref="IInclusiveTimeInterval"/> instance dates.
+    /// </summary>
+    /// <param name="interval">Input inclusive time interval for converting.</param>
+    /// <returns>Date interval initialized with data from the original inclusive time interval.</returns>
+    public static IDateInterval AsDateInterval(
+        this IInclusiveTimeInterval interval) =>
+        DateInterval.GetInclusive(
+            interval.EnsureNotNull(nameof(interval)).From.AsDateOnly(),
+            interval.Into.AsDateOnly());
 
     /// <summary>
     /// Gets boolean flag signals that time interval is empty (both start and end date equal to <c>null</c>).
@@ -120,7 +99,7 @@ public static class TimeInterval
         DateTime from,
         DateTime into)
         where TRequest : IRequestWithTimeInterval<IInclusiveTimeInterval> =>
-        request.SetTimeInterval(new Inclusive(from, into));
+        request.SetTimeInterval(new Interval(from, into));
 
     /// <summary>
     /// Set inclusive time interval for <paramref name="request"/> object.
@@ -146,7 +125,7 @@ public static class TimeInterval
     [UsedImplicitly]
     public static IInclusiveTimeInterval GetInclusiveIntervalFromThat(
         this DateTime from) =>
-        new Inclusive(from, null);
+        new Interval(from, null);
 
     /// <summary>
     /// Gets inclusive open time interval ending at the <paramref name="into"/> date/time point.
@@ -156,7 +135,7 @@ public static class TimeInterval
     [UsedImplicitly]
     public static IInclusiveTimeInterval GetInclusiveIntervalTillThat(
         this DateTime into) =>
-        new Inclusive(null, into);
+        new Interval(null, into);
 
     /// <summary>
     /// Set exclusive time interval for <paramref name="request"/> object.
@@ -171,7 +150,7 @@ public static class TimeInterval
         DateTime from,
         DateTime into)
         where TRequest : IRequestWithTimeInterval<IExclusiveTimeInterval> =>
-        request.SetTimeInterval(new Exclusive(from, into));
+        request.SetTimeInterval(new Interval(from, into));
 
     /// <summary>
     /// Set exclusive time interval for <paramref name="request"/> object.
@@ -197,7 +176,7 @@ public static class TimeInterval
     [UsedImplicitly]
     public static IExclusiveTimeInterval GetExclusiveIntervalFromThat(
         this DateTime from) =>
-        new Exclusive(from, null);
+        new Interval(from, null);
 
     /// <summary>
     /// Gets exclusive open time interval ending at the <paramref name="into"/> date/time point.
@@ -207,22 +186,22 @@ public static class TimeInterval
     [UsedImplicitly]
     public static IExclusiveTimeInterval GetExclusiveIntervalTillThat(
         this DateTime into) =>
-        new Exclusive(null, into);
+        new Interval(null, into);
 
     internal static IInclusiveTimeInterval GetInclusive(
         DateTime? from,
         DateTime? into) =>
-        new Inclusive(from, into);
+        new Interval(from, into);
 
     [UsedImplicitly]
     internal static IExclusiveTimeInterval GetExclusive(
         DateTime? from,
         DateTime? into) =>
-        new Exclusive(from, into);
+        new Interval(from, into);
 
-    internal static IInclusiveTimeInterval InclusiveEmpty { get; } = new Inclusive();
+    internal static IInclusiveTimeInterval InclusiveEmpty { get; } = new Interval();
 
-    internal static IExclusiveTimeInterval ExclusiveEmpty { get; } = new Exclusive();
+    internal static IExclusiveTimeInterval ExclusiveEmpty { get; } = new Interval();
 
     /// <summary>
     /// Deconstructs the <see cref="IInclusiveTimeInterval"/> instance
