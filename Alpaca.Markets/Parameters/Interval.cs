@@ -1,14 +1,14 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// 
+/// Encapsulates interval starting and ending points - used for date/time filtering in requests.
 /// </summary>
-/// <typeparam name="TItem"></typeparam>
+/// <typeparam name="TItem">Interval range data type.</typeparam>
 public readonly record struct Interval<TItem>
     where TItem : struct, IComparable<TItem>
 {
     /// <summary>
-    /// 
+    /// Creates the new instance of the <see cref="Interval{TItem}"/> structure.
     /// </summary>
     public Interval()
     {
@@ -33,12 +33,12 @@ public readonly record struct Interval<TItem>
     }
 
     /// <summary>
-    /// 
-    /// </summary>
+    /// Gets the starting /time point of interval.
+    /// /// </summary>
     public TItem? From { get; }
 
     /// <summary>
-    /// 
+    /// Gets the ending /time point of interval.
     /// </summary>
     public TItem? Into { get; }
 

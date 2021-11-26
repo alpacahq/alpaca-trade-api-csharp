@@ -3,7 +3,10 @@
 /// <summary>
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListAccountActivitiesAsync(AccountActivitiesRequest,CancellationToken)"/> call.
 /// </summary>
-public sealed class AccountActivitiesRequest
+public sealed class AccountActivitiesRequest :
+#pragma warning disable CS0618 // Type or member is obsolete
+    IRequestWithTimeInterval<IInclusiveTimeInterval>
+#pragma warning restore CS0618 // Type or member is obsolete
 {
     private readonly HashSet<AccountActivityType> _accountActivityTypes = new();
 
@@ -109,10 +112,10 @@ public sealed class AccountActivitiesRequest
         };
 
     /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="value"></param>
-    /// <returns></returns>
+    /// Sets time interval for filtering data returned by this request.
+    /// /// </summary>
+    /// <param name="value">New filtering interval.</param>
+    /// <returns>Request with applied filtering.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public AccountActivitiesRequest WithInterval(
         Interval<DateTime> value)
@@ -121,4 +124,8 @@ public sealed class AccountActivitiesRequest
         Date = null;
         return this;
     }
+
+    [Obsolete("Use WithInterval method instead of this one.", false)]
+    void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
+        IInclusiveTimeInterval value) => WithInterval(new Interval<DateTime>(value?.From, value?.Into));
 }

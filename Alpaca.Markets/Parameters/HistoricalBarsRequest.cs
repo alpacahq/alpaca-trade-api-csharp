@@ -66,6 +66,35 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
         TimeFrame = timeFrame;
 
     /// <summary>
+    /// Creates new instance of <see cref="HistoricalBarsRequest"/> object.
+    /// </summary>
+    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="timeFrame">Type of time bars for retrieval.</param>
+    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    public HistoricalBarsRequest(
+        String symbol,
+        BarTimeFrame timeFrame,
+        IInclusiveTimeInterval timeInterval)
+        : this(new[] { symbol }, timeInterval, timeFrame)
+    {
+    }
+
+    /// <summary>
+    /// Creates new instance of <see cref="HistoricalBarsRequest"/> object.
+    /// </summary>
+    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="timeFrame">Type of time bars for retrieval.</param>
+    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    public HistoricalBarsRequest(
+        IEnumerable<String> symbols,
+        IInclusiveTimeInterval timeInterval,
+        BarTimeFrame timeFrame)
+        : base(symbols, timeInterval) =>
+        TimeFrame = timeFrame;
+
+    /// <summary>
     /// Gets type of time bars for retrieval.
     /// </summary>
     [UsedImplicitly]

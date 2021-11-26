@@ -60,6 +60,32 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
     {
     }
 
+    /// <summary>
+    /// Creates new instance of <see cref="HistoricalCryptoTradesRequest"/> object.
+    /// </summary>
+    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    public HistoricalCryptoTradesRequest(
+        String symbol,
+        IInclusiveTimeInterval timeInterval)
+        : this(new[] { symbol }, timeInterval)
+    {
+    }
+
+    /// <summary>
+    /// Creates new instance of <see cref="HistoricalCryptoTradesRequest"/> object.
+    /// </summary>
+    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    public HistoricalCryptoTradesRequest(
+        IEnumerable<String> symbols,
+        IInclusiveTimeInterval timeInterval)
+        : base(symbols, timeInterval)
+    {
+    }
+
     private HistoricalCryptoTradesRequest(
         HistoricalCryptoTradesRequest request,
         IEnumerable<CryptoExchange> exchanges)

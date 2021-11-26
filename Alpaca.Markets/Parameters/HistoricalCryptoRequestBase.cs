@@ -47,6 +47,34 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
         _exchanges.UnionWith(exchanges);
 
     /// <summary>
+    /// Creates new instance of <see cref="HistoricalRequestBase"/> object.
+    /// </summary>
+    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    protected internal HistoricalCryptoRequestBase(
+        IEnumerable<String> symbols,
+        IInclusiveTimeInterval timeInterval)
+        : this(symbols, new Interval<DateTime>(timeInterval?.From, timeInterval?.Into))
+    {
+    }
+
+    /// <summary>
+    /// Creates new instance of <see cref="HistoricalCryptoRequestBase"/> object.
+    /// </summary>
+    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    /// <param name="exchanges">Crypto exchanges list for data retrieval.</param>
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    protected internal HistoricalCryptoRequestBase(
+        IEnumerable<String> symbols,
+        IInclusiveTimeInterval timeInterval,
+        IEnumerable<CryptoExchange> exchanges)
+        : this(symbols, new Interval<DateTime>(timeInterval?.From, timeInterval?.Into), exchanges)
+    {
+    }
+
+    /// <summary>
     /// Gets crypto exchanges list for data retrieval (empty list means 'all exchanges').
     /// </summary>
     [UsedImplicitly]

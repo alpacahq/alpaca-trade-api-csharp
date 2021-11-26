@@ -1,7 +1,7 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// 
+/// Set of extensions methods for the <see cref="Interval{TItem}"/> structure.
 /// </summary>
 public static class IntervalExtensions
 {
@@ -26,7 +26,7 @@ public static class IntervalExtensions
     /// <summary>
     /// Gets exclusive open time interval starting from the <paramref name="from"/> date/time point.
     /// </summary>
-    /// <param name="from">Starting date/time point for filtering.</param>
+    /// <param name="from">Starting point for filtering.</param>
     /// <returns>Exclusive open time interval.</returns>
     [UsedImplicitly]
     public static Interval<TItem> GetIntervalFromThat<TItem>(
@@ -37,7 +37,7 @@ public static class IntervalExtensions
     /// <summary>
     /// Gets exclusive open time interval ending at the <paramref name="into"/> date/time point.
     /// </summary>
-    /// <param name="into">Ending date/time point for filtering.</param>
+    /// <param name="into">Ending point for filtering.</param>
     /// <returns>Exclusive open time interval.</returns>
     [UsedImplicitly]
     public static Interval<TItem> GetIntervalTillThat<TItem>(

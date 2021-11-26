@@ -3,8 +3,11 @@
 /// <summary>
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListCalendarAsync(CalendarRequest,CancellationToken)"/> call.
 /// </summary>
-public sealed class CalendarRequest
-{
+public sealed class CalendarRequest :
+#pragma warning disable CS0618 // Type or member is obsolete
+    IRequestWithTimeInterval<IInclusiveTimeInterval>
+#pragma warning restore CS0618 // Type or member is obsolete
+ {
     /// <summary>
     /// Creates new instance of <see cref="CalendarRequest"/> object with the
     /// <see cref="TimeInterval"/> property configured for the single day.
@@ -53,10 +56,10 @@ public sealed class CalendarRequest
         };
 
     /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="value"></param>
-    /// <returns></returns>
+    /// Sets time interval for filtering data returned by this request.
+    /// /// </summary>
+    /// <param name="value">New filtering interval.</param>
+    /// <returns>Request with applied filtering.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public CalendarRequest WithInterval(
         Interval<DateTime> value)
@@ -66,10 +69,10 @@ public sealed class CalendarRequest
     }
 
     /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="value"></param>
-    /// <returns></returns>
+    /// Sets time interval for filtering data returned by this request.
+    /// /// </summary>
+    /// <param name="value">New filtering interval.</param>
+    /// <returns>Request with applied filtering.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public CalendarRequest WithInterval(
         Interval<DateOnly> value)
@@ -77,4 +80,9 @@ public sealed class CalendarRequest
         DateInterval = value;
         return this;
     }
+
+    [Obsolete("Use WithInterval method instead of this one.", false)]
+    void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
+        IInclusiveTimeInterval value) =>
+        WithInterval(new Interval<DateOnly>(value?.From.AsDateOnly(), value?.Into.AsDateOnly()));
 }

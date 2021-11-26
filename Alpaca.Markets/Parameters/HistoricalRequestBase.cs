@@ -35,6 +35,19 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     }
 
     /// <summary>
+    /// Creates new instance of <see cref="HistoricalRequestBase"/> object.
+    /// </summary>
+    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    protected internal HistoricalRequestBase(
+        IEnumerable<String> symbols,
+        IInclusiveTimeInterval timeInterval)
+        : this (symbols, new Interval<DateTime>(timeInterval?.From, timeInterval?.Into))
+    {
+    }
+
+    /// <summary>
     /// Gets asset name for data retrieval.
     /// </summary>
     [UsedImplicitly]

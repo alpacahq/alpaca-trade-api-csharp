@@ -65,6 +65,35 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
         : base(symbols, timeInterval) =>
         TimeFrame = timeFrame;
 
+    /// <summary>
+    /// Creates new instance of <see cref="HistoricalCryptoBarsRequest"/> object.
+    /// </summary>
+    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="timeFrame">Type of time bars for retrieval.</param>
+    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    public HistoricalCryptoBarsRequest(
+        String symbol,
+        BarTimeFrame timeFrame,
+        IInclusiveTimeInterval timeInterval)
+        : this(new[] { symbol }, timeInterval, timeFrame)
+    {
+    }
+
+    /// <summary>
+    /// Creates new instance of <see cref="HistoricalCryptoBarsRequest"/> object.
+    /// </summary>
+    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="timeFrame">Type of time bars for retrieval.</param>
+    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    public HistoricalCryptoBarsRequest(
+        IEnumerable<String> symbols,
+        IInclusiveTimeInterval timeInterval,
+        BarTimeFrame timeFrame)
+        : base(symbols, timeInterval) =>
+        TimeFrame = timeFrame;
+
     private HistoricalCryptoBarsRequest(
         HistoricalCryptoBarsRequest request,
         IEnumerable<CryptoExchange> exchanges)
