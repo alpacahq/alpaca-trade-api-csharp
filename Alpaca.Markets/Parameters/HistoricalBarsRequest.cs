@@ -32,7 +32,7 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
     public HistoricalBarsRequest(
         String symbol,
         BarTimeFrame timeFrame,
-        IInclusiveTimeInterval timeInterval)
+        Interval<DateTime> timeInterval)
         : this(new[] { symbol }, timeInterval, timeFrame)
     {
     }
@@ -60,7 +60,7 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     public HistoricalBarsRequest(
         IEnumerable<String> symbols,
-        IInclusiveTimeInterval timeInterval,
+        Interval<DateTime> timeInterval,
         BarTimeFrame timeFrame)
         : base(symbols, timeInterval) =>
         TimeFrame = timeFrame;

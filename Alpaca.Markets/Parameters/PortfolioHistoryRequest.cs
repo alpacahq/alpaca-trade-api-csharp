@@ -4,20 +4,20 @@
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.GetPortfolioHistoryAsync(PortfolioHistoryRequest,CancellationToken)"/> call.
 /// </summary>
 [UsedImplicitly]
-public sealed class PortfolioHistoryRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>, IRequestWithDateInterval
+public sealed class PortfolioHistoryRequest
 {
     /// <summary>
     /// Gets inclusive date interval for filtering items in response.
     /// </summary>
     [UsedImplicitly]
     [Obsolete("Use the DateInterval property instead of this one.", false)]
-    public IInclusiveTimeInterval TimeInterval => DateInterval.AsTimeInterval();
+    public Interval<DateTime> TimeInterval => DateInterval.AsTimeInterval();
 
     /// <summary>
     /// Gets inclusive date interval for filtering items in response.
     /// </summary>
     [UsedImplicitly]
-    public IDateInterval DateInterval { get; private set; } = Markets.DateInterval.Empty;
+    public Interval<DateOnly> DateInterval { get; private set; }
 
     /// <summary>
     /// Gets or sets the time frame value for desired history. Default value (if <c>null</c>) is 1 minute
@@ -54,12 +54,29 @@ public sealed class PortfolioHistoryRequest : IRequestWithTimeInterval<IInclusiv
                 .AsStringAsync().ConfigureAwait(false)
         };
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
-        IInclusiveTimeInterval value) =>
-        DateInterval = value.EnsureNotNull(nameof(value)).AsDateInterval();
+    public PortfolioHistoryRequest WithInterval(
+        Interval<DateTime> value)
+    {
+        DateInterval = value.AsDateInterval();
+        return this;
+    }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    void IRequestWithDateInterval.SetInterval(
-        IDateInterval value) => DateInterval = value.EnsureNotNull(nameof(value));
+    public PortfolioHistoryRequest WithInterval(
+        Interval<DateOnly> value)
+    {
+        DateInterval = value;
+        return this;
+    }
 }

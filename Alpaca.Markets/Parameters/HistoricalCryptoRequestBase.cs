@@ -28,7 +28,7 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     protected internal HistoricalCryptoRequestBase(
         IEnumerable<String> symbols,
-        IInclusiveTimeInterval timeInterval)
+        Interval<DateTime> timeInterval)
         : base(symbols, timeInterval)
     {
     }
@@ -41,7 +41,7 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     /// <param name="exchanges">Crypto exchanges list for data retrieval.</param>
     protected internal HistoricalCryptoRequestBase(
         IEnumerable<String> symbols,
-        IInclusiveTimeInterval timeInterval,
+        Interval<DateTime> timeInterval,
         IEnumerable<CryptoExchange> exchanges)
         : base(symbols, timeInterval) =>
         _exchanges.UnionWith(exchanges);

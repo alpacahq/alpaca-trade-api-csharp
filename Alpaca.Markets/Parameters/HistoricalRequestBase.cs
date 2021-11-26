@@ -17,7 +17,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
         IEnumerable<String> symbols,
         DateTime from,
         DateTime into)
-        : this(symbols, Markets.TimeInterval.GetInclusive(from, into))
+        : this(symbols, new Interval<DateTime>(from, into))
     {
     }
 
@@ -28,10 +28,10 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     protected internal HistoricalRequestBase(
         IEnumerable<String> symbols,
-        IInclusiveTimeInterval timeInterval)
+        Interval<DateTime> timeInterval)
     {
         _symbols.UnionWith(symbols.EnsureNotNull(nameof(symbols)));
-        TimeInterval = timeInterval.EnsureNotNull(nameof(timeInterval));
+        TimeInterval = timeInterval;
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     /// Gets inclusive date interval for filtering items in response.
     /// </summary>
     [UsedImplicitly]
-    public IInclusiveTimeInterval TimeInterval { get; }
+    public Interval<DateTime> TimeInterval { get; }
 
     /// <summary>
     /// Gets the pagination parameters for the request (page size and token).

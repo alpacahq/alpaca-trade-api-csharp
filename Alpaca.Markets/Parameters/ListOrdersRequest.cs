@@ -3,7 +3,7 @@
 /// <summary>
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListOrdersAsync(ListOrdersRequest,CancellationToken)"/> call.
 /// </summary>
-public sealed class ListOrdersRequest : IRequestWithTimeInterval<IExclusiveTimeInterval>
+public sealed class ListOrdersRequest
 {
     private readonly HashSet<String> _symbols = new(StringComparer.Ordinal);
 
@@ -23,7 +23,7 @@ public sealed class ListOrdersRequest : IRequestWithTimeInterval<IExclusiveTimeI
     /// Gets exclusive date time interval for filtering orders in response.
     /// </summary>
     [UsedImplicitly]
-    public IExclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.ExclusiveEmpty;
+    public Interval<DateTime> TimeInterval { get; private set; }
 
     /// <summary>
     /// Gets or sets maximal number of orders in response.
@@ -86,8 +86,17 @@ public sealed class ListOrdersRequest : IRequestWithTimeInterval<IExclusiveTimeI
                 .AsStringAsync().ConfigureAwait(false)
         };
 
-    void IRequestWithTimeInterval<IExclusiveTimeInterval>.SetInterval(
-        IExclusiveTimeInterval value) => TimeInterval = value.EnsureNotNull(nameof(value));
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public ListOrdersRequest WithInterval(
+        Interval<DateTime> value)
+    {
+        TimeInterval = value;
+        return this;
+    }
 
     private void addSymbolWithCheck(String symbol, String paramName)
     {

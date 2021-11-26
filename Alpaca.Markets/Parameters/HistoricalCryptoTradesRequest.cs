@@ -29,7 +29,7 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     public HistoricalCryptoTradesRequest(
         String symbol,
-        IInclusiveTimeInterval timeInterval)
+        Interval<DateTime> timeInterval)
         : this(new[] { symbol }, timeInterval)
     {
     }
@@ -55,7 +55,7 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     public HistoricalCryptoTradesRequest(
         IEnumerable<String> symbols,
-        IInclusiveTimeInterval timeInterval)
+        Interval<DateTime> timeInterval)
         : base(symbols, timeInterval)
     {
     }

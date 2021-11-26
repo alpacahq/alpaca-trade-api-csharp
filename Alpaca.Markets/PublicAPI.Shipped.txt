@@ -14,7 +14,6 @@ Alpaca.Markets.AccountActivitiesRequest.PageToken.get -> string?
 Alpaca.Markets.AccountActivitiesRequest.PageToken.set -> void
 Alpaca.Markets.AccountActivitiesRequest.SetSingleDate(System.DateTime date) -> Alpaca.Markets.AccountActivitiesRequest!
 Alpaca.Markets.AccountActivitiesRequest.SetSingleDate(System.DateOnly date) -> Alpaca.Markets.AccountActivitiesRequest!
-Alpaca.Markets.AccountActivitiesRequest.TimeInterval.get -> Alpaca.Markets.IInclusiveTimeInterval!
 Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.ACATCash = 3 -> Alpaca.Markets.AccountActivityType
 Alpaca.Markets.AccountActivityType.ACATSecurities = 4 -> Alpaca.Markets.AccountActivityType
@@ -125,8 +124,6 @@ Alpaca.Markets.BracketOrder.StopLoss.get -> Alpaca.Markets.IStopLoss!
 Alpaca.Markets.BracketOrder.TakeProfit.get -> Alpaca.Markets.ITakeProfit!
 Alpaca.Markets.CalendarRequest
 Alpaca.Markets.CalendarRequest.CalendarRequest() -> void
-Alpaca.Markets.CalendarRequest.DateInterval.get -> Alpaca.Markets.IDateInterval!
-Alpaca.Markets.CalendarRequest.TimeInterval.get -> Alpaca.Markets.IInclusiveTimeInterval!
 Alpaca.Markets.ChangeOrderRequest
 Alpaca.Markets.ChangeOrderRequest.ChangeOrderRequest(System.Guid orderId) -> void
 Alpaca.Markets.ChangeOrderRequest.ClientOrderId.get -> string?
@@ -148,7 +145,6 @@ Alpaca.Markets.CryptoExchange
 Alpaca.Markets.CryptoExchange.Cbse = 2 -> Alpaca.Markets.CryptoExchange
 Alpaca.Markets.CryptoExchange.Ersx = 0 -> Alpaca.Markets.CryptoExchange
 Alpaca.Markets.CryptoExchange.Gnss = 1 -> Alpaca.Markets.CryptoExchange
-Alpaca.Markets.DateInterval
 Alpaca.Markets.DayTradeMarginCallProtection
 Alpaca.Markets.DayTradeMarginCallProtection.Both = 2 -> Alpaca.Markets.DayTradeMarginCallProtection
 Alpaca.Markets.DayTradeMarginCallProtection.Entry = 0 -> Alpaca.Markets.DayTradeMarginCallProtection
@@ -180,55 +176,36 @@ Alpaca.Markets.Exchange.Unknown = 0 -> Alpaca.Markets.Exchange
 Alpaca.Markets.HistoricalBarsRequest
 Alpaca.Markets.HistoricalBarsRequest.Adjustment.get -> Alpaca.Markets.Adjustment?
 Alpaca.Markets.HistoricalBarsRequest.Adjustment.set -> void
-Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(string! symbol, Alpaca.Markets.BarTimeFrame timeFrame, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(string! symbol, System.DateTime from, System.DateTime into, Alpaca.Markets.BarTimeFrame timeFrame) -> void
-Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval, Alpaca.Markets.BarTimeFrame timeFrame) -> void
 Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into, Alpaca.Markets.BarTimeFrame timeFrame) -> void
 Alpaca.Markets.HistoricalBarsRequest.TimeFrame.get -> Alpaca.Markets.BarTimeFrame
 Alpaca.Markets.HistoricalCryptoBarsRequest
-Alpaca.Markets.HistoricalCryptoBarsRequest.HistoricalCryptoBarsRequest(string! symbol, Alpaca.Markets.BarTimeFrame timeFrame, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalCryptoBarsRequest.HistoricalCryptoBarsRequest(string! symbol, System.DateTime from, System.DateTime into, Alpaca.Markets.BarTimeFrame timeFrame) -> void
-Alpaca.Markets.HistoricalCryptoBarsRequest.HistoricalCryptoBarsRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval, Alpaca.Markets.BarTimeFrame timeFrame) -> void
-Alpaca.Markets.HistoricalCryptoBarsRequest.HistoricalCryptoBarsRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into, Alpaca.Markets.BarTimeFrame timeFrame) -> void
 Alpaca.Markets.HistoricalCryptoBarsRequest.TimeFrame.get -> Alpaca.Markets.BarTimeFrame
 Alpaca.Markets.HistoricalCryptoBarsRequest.WithExchanges(params Alpaca.Markets.CryptoExchange[]! exchanges) -> Alpaca.Markets.HistoricalCryptoBarsRequest!
 Alpaca.Markets.HistoricalCryptoBarsRequest.WithExchanges(System.Collections.Generic.IEnumerable<Alpaca.Markets.CryptoExchange>! exchanges) -> Alpaca.Markets.HistoricalCryptoBarsRequest!
 Alpaca.Markets.HistoricalCryptoQuotesRequest
-Alpaca.Markets.HistoricalCryptoQuotesRequest.HistoricalCryptoQuotesRequest(string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalCryptoQuotesRequest.HistoricalCryptoQuotesRequest(string! symbol, System.DateTime from, System.DateTime into) -> void
-Alpaca.Markets.HistoricalCryptoQuotesRequest.HistoricalCryptoQuotesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalCryptoQuotesRequest.HistoricalCryptoQuotesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoricalCryptoQuotesRequest.WithExchanges(params Alpaca.Markets.CryptoExchange[]! exchanges) -> Alpaca.Markets.HistoricalCryptoQuotesRequest!
 Alpaca.Markets.HistoricalCryptoQuotesRequest.WithExchanges(System.Collections.Generic.IEnumerable<Alpaca.Markets.CryptoExchange>! exchanges) -> Alpaca.Markets.HistoricalCryptoQuotesRequest!
 Alpaca.Markets.HistoricalCryptoRequestBase
 Alpaca.Markets.HistoricalCryptoRequestBase.Exchanges.get -> System.Collections.Generic.IReadOnlyCollection<Alpaca.Markets.CryptoExchange>!
-Alpaca.Markets.HistoricalCryptoRequestBase.HistoricalCryptoRequestBase(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
-Alpaca.Markets.HistoricalCryptoRequestBase.HistoricalCryptoRequestBase(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval, System.Collections.Generic.IEnumerable<Alpaca.Markets.CryptoExchange>! exchanges) -> void
-Alpaca.Markets.HistoricalCryptoRequestBase.HistoricalCryptoRequestBase(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoricalCryptoTradesRequest
-Alpaca.Markets.HistoricalCryptoTradesRequest.HistoricalCryptoTradesRequest(string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalCryptoTradesRequest.HistoricalCryptoTradesRequest(string! symbol, System.DateTime from, System.DateTime into) -> void
-Alpaca.Markets.HistoricalCryptoTradesRequest.HistoricalCryptoTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalCryptoTradesRequest.HistoricalCryptoTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoricalCryptoTradesRequest.WithExchanges(params Alpaca.Markets.CryptoExchange[]! exchanges) -> Alpaca.Markets.HistoricalCryptoTradesRequest!
 Alpaca.Markets.HistoricalCryptoTradesRequest.WithExchanges(System.Collections.Generic.IEnumerable<Alpaca.Markets.CryptoExchange>! exchanges) -> Alpaca.Markets.HistoricalCryptoTradesRequest!
 Alpaca.Markets.HistoricalQuotesRequest
-Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(string! symbol, System.DateTime from, System.DateTime into) -> void
-Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoricalRequestBase
-Alpaca.Markets.HistoricalRequestBase.HistoricalRequestBase(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalRequestBase.HistoricalRequestBase(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoricalRequestBase.Pagination.get -> Alpaca.Markets.Pagination!
 Alpaca.Markets.HistoricalRequestBase.Symbol.get -> string!
-Alpaca.Markets.HistoricalRequestBase.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
-Alpaca.Markets.HistoricalRequestBase.TimeInterval.get -> Alpaca.Markets.IInclusiveTimeInterval!
 Alpaca.Markets.HistoricalRequestBaseExtensions
 Alpaca.Markets.HistoricalTradesRequest
-Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(string! symbol, System.DateTime from, System.DateTime into) -> void
-Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoryPeriod
 Alpaca.Markets.HistoryPeriod.Equals(Alpaca.Markets.HistoryPeriod other) -> bool
@@ -391,16 +368,12 @@ Alpaca.Markets.IClock.IsOpen.get -> bool
 Alpaca.Markets.IClock.NextCloseUtc.get -> System.DateTime
 Alpaca.Markets.IClock.NextOpenUtc.get -> System.DateTime
 Alpaca.Markets.IClock.TimestampUtc.get -> System.DateTime
-Alpaca.Markets.IDateInterval
-Alpaca.Markets.IDateInterval.From.get -> System.DateOnly?
-Alpaca.Markets.IDateInterval.Into.get -> System.DateOnly?
 Alpaca.Markets.IEnvironment
 Alpaca.Markets.IEnvironment.AlpacaCryptoStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaDataApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaDataStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaTradingApi.get -> System.Uri!
-Alpaca.Markets.IExclusiveTimeInterval
 Alpaca.Markets.IHistoricalBarsClient<TRequest>
 Alpaca.Markets.IHistoricalBarsClient<TRequest>.GetHistoricalBarsAsync(TRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IMultiPage<Alpaca.Markets.IBar!>!>!
 Alpaca.Markets.IHistoricalBarsClient<TRequest>.ListHistoricalBarsAsync(TRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.IBar!>!>!
@@ -412,7 +385,6 @@ Alpaca.Markets.IHistoricalRequest<TRequest, TItem>.GetValidatedRequestWithoutPag
 Alpaca.Markets.IHistoricalTradesClient<TRequest>
 Alpaca.Markets.IHistoricalTradesClient<TRequest>.GetHistoricalTradesAsync(TRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IMultiPage<Alpaca.Markets.ITrade!>!>!
 Alpaca.Markets.IHistoricalTradesClient<TRequest>.ListHistoricalTradesAsync(TRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.ITrade!>!>!
-Alpaca.Markets.IInclusiveTimeInterval
 Alpaca.Markets.ILimitUpLimitDown
 Alpaca.Markets.ILimitUpLimitDown.Indicator.get -> string!
 Alpaca.Markets.ILimitUpLimitDown.LimitDownPrice.get -> decimal
@@ -504,10 +476,6 @@ Alpaca.Markets.IQuote.Conditions.get -> System.Collections.Generic.IReadOnlyList
 Alpaca.Markets.IQuote.Symbol.get -> string!
 Alpaca.Markets.IQuote.Tape.get -> string!
 Alpaca.Markets.IQuote.TimestampUtc.get -> System.DateTime
-Alpaca.Markets.IRequestWithDateInterval
-Alpaca.Markets.IRequestWithDateInterval.SetInterval(Alpaca.Markets.IDateInterval! value) -> void
-Alpaca.Markets.IRequestWithTimeInterval<TInterval>
-Alpaca.Markets.IRequestWithTimeInterval<TInterval>.SetInterval(TInterval value) -> void
 Alpaca.Markets.ISnapshot
 Alpaca.Markets.ISnapshot.CurrentDailyBar.get -> Alpaca.Markets.IBar?
 Alpaca.Markets.ISnapshot.MinuteBar.get -> Alpaca.Markets.IBar?
@@ -546,9 +514,6 @@ Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync(Alpaca.Markets.IAlpacaDataS
 Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask
 Alpaca.Markets.ITakeProfit
 Alpaca.Markets.ITakeProfit.LimitPrice.get -> decimal
-Alpaca.Markets.ITimeInterval
-Alpaca.Markets.ITimeInterval.From.get -> System.DateTime?
-Alpaca.Markets.ITimeInterval.Into.get -> System.DateTime?
 Alpaca.Markets.ITrade
 Alpaca.Markets.ITrade.Exchange.get -> string!
 Alpaca.Markets.ITrade.Conditions.get -> System.Collections.Generic.IReadOnlyList<string!>!
@@ -600,7 +565,6 @@ Alpaca.Markets.ListOrdersRequest.OrderStatusFilter.set -> void
 Alpaca.Markets.ListOrdersRequest.RollUpNestedOrders.get -> bool?
 Alpaca.Markets.ListOrdersRequest.RollUpNestedOrders.set -> void
 Alpaca.Markets.ListOrdersRequest.Symbols.get -> System.Collections.Generic.IEnumerable<string!>!
-Alpaca.Markets.ListOrdersRequest.TimeInterval.get -> Alpaca.Markets.IExclusiveTimeInterval!
 Alpaca.Markets.ListOrdersRequest.WithSymbol(string! symbol) -> Alpaca.Markets.ListOrdersRequest!
 Alpaca.Markets.ListOrdersRequest.WithSymbols(System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.ListOrdersRequest!
 Alpaca.Markets.MarketOrder
@@ -716,7 +680,6 @@ Alpaca.Markets.Pagination.Size.set -> void
 Alpaca.Markets.Pagination.Token.get -> string?
 Alpaca.Markets.Pagination.Token.set -> void
 Alpaca.Markets.PortfolioHistoryRequest
-Alpaca.Markets.PortfolioHistoryRequest.DateInterval.get -> Alpaca.Markets.IDateInterval!
 Alpaca.Markets.PortfolioHistoryRequest.ExtendedHours.get -> bool?
 Alpaca.Markets.PortfolioHistoryRequest.ExtendedHours.set -> void
 Alpaca.Markets.PortfolioHistoryRequest.Period.get -> Alpaca.Markets.HistoryPeriod?
@@ -724,7 +687,6 @@ Alpaca.Markets.PortfolioHistoryRequest.Period.set -> void
 Alpaca.Markets.PortfolioHistoryRequest.PortfolioHistoryRequest() -> void
 Alpaca.Markets.PortfolioHistoryRequest.TimeFrame.get -> Alpaca.Markets.TimeFrame?
 Alpaca.Markets.PortfolioHistoryRequest.TimeFrame.set -> void
-Alpaca.Markets.PortfolioHistoryRequest.TimeInterval.get -> Alpaca.Markets.IInclusiveTimeInterval!
 Alpaca.Markets.PositionSide
 Alpaca.Markets.PositionSide.Long = 0 -> Alpaca.Markets.PositionSide
 Alpaca.Markets.PositionSide.Short = 1 -> Alpaca.Markets.PositionSide
@@ -807,7 +769,6 @@ Alpaca.Markets.TimeInForce.Fok = 4 -> Alpaca.Markets.TimeInForce
 Alpaca.Markets.TimeInForce.Gtc = 1 -> Alpaca.Markets.TimeInForce
 Alpaca.Markets.TimeInForce.Ioc = 3 -> Alpaca.Markets.TimeInForce
 Alpaca.Markets.TimeInForce.Opg = 2 -> Alpaca.Markets.TimeInForce
-Alpaca.Markets.TimeInterval
 Alpaca.Markets.TradeConfirmEmail
 Alpaca.Markets.TradeConfirmEmail.All = 1 -> Alpaca.Markets.TradeConfirmEmail
 Alpaca.Markets.TradeConfirmEmail.None = 0 -> Alpaca.Markets.TradeConfirmEmail
@@ -856,16 +817,6 @@ static Alpaca.Markets.BarTimeFrame.operator !=(Alpaca.Markets.BarTimeFrame lhs, 
 static Alpaca.Markets.BarTimeFrame.operator ==(Alpaca.Markets.BarTimeFrame lhs, Alpaca.Markets.BarTimeFrame rhs) -> bool
 static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateOnly date) -> Alpaca.Markets.CalendarRequest!
 static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateTime date) -> Alpaca.Markets.CalendarRequest!
-static Alpaca.Markets.DateInterval.AsTimeInterval(this Alpaca.Markets.IDateInterval! interval) -> Alpaca.Markets.IInclusiveTimeInterval!
-static Alpaca.Markets.DateInterval.Deconstruct(this Alpaca.Markets.IDateInterval! timeInterval, out System.DateOnly? from, out System.DateOnly? into) -> void
-static Alpaca.Markets.DateInterval.GetIntervalFromThat(this System.DateOnly from) -> Alpaca.Markets.IDateInterval!
-static Alpaca.Markets.DateInterval.GetIntervalTillThat(this System.DateOnly into) -> Alpaca.Markets.IDateInterval!
-static Alpaca.Markets.DateInterval.IsEmpty(this Alpaca.Markets.IDateInterval! interval) -> bool
-static Alpaca.Markets.DateInterval.IsOpen(this Alpaca.Markets.IDateInterval! interval) -> bool
-static Alpaca.Markets.DateInterval.SetDateInterval<TRequest>(this TRequest request, System.DateOnly from, System.DateOnly into) -> TRequest
-static Alpaca.Markets.DateInterval.SetDateInterval<TRequest>(this TRequest request, Alpaca.Markets.IDateInterval! interval) -> TRequest
-static Alpaca.Markets.DateInterval.WithFrom(this Alpaca.Markets.IDateInterval! timeInterval, System.DateOnly from) -> Alpaca.Markets.IDateInterval!
-static Alpaca.Markets.DateInterval.WithInto(this Alpaca.Markets.IDateInterval! timeInterval, System.DateOnly into) -> Alpaca.Markets.IDateInterval!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoDataClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaCryptoDataClient!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoDataClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaCryptoDataClientConfiguration!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoStreamingClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaCryptoStreamingClient!
@@ -913,23 +864,6 @@ static Alpaca.Markets.StopLimitOrder.Sell(string! symbol, long quantity, decimal
 static Alpaca.Markets.StopOrder.Buy(string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
 static Alpaca.Markets.StopOrder.Sell(string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
 static Alpaca.Markets.ThrottleParameters.Default.get -> Alpaca.Markets.ThrottleParameters!
-static Alpaca.Markets.TimeInterval.AsDateInterval(this Alpaca.Markets.IInclusiveTimeInterval! interval) -> Alpaca.Markets.IDateInterval!
-static Alpaca.Markets.TimeInterval.Deconstruct(this Alpaca.Markets.IExclusiveTimeInterval! timeInterval, out System.DateTime? from, out System.DateTime? into) -> void
-static Alpaca.Markets.TimeInterval.Deconstruct(this Alpaca.Markets.IInclusiveTimeInterval! timeInterval, out System.DateTime? from, out System.DateTime? into) -> void
-static Alpaca.Markets.TimeInterval.GetExclusiveIntervalFromThat(this System.DateTime from) -> Alpaca.Markets.IExclusiveTimeInterval!
-static Alpaca.Markets.TimeInterval.GetExclusiveIntervalTillThat(this System.DateTime into) -> Alpaca.Markets.IExclusiveTimeInterval!
-static Alpaca.Markets.TimeInterval.GetInclusiveIntervalFromThat(this System.DateTime from) -> Alpaca.Markets.IInclusiveTimeInterval!
-static Alpaca.Markets.TimeInterval.GetInclusiveIntervalTillThat(this System.DateTime into) -> Alpaca.Markets.IInclusiveTimeInterval!
-static Alpaca.Markets.TimeInterval.IsEmpty(this Alpaca.Markets.ITimeInterval! interval) -> bool
-static Alpaca.Markets.TimeInterval.IsOpen(this Alpaca.Markets.ITimeInterval! interval) -> bool
-static Alpaca.Markets.TimeInterval.SetExclusiveTimeInterval<TRequest>(this TRequest request, System.DateTime from, System.DateTime into) -> TRequest
-static Alpaca.Markets.TimeInterval.SetInclusiveTimeInterval<TRequest>(this TRequest request, System.DateTime from, System.DateTime into) -> TRequest
-static Alpaca.Markets.TimeInterval.SetTimeInterval<TRequest>(this TRequest request, Alpaca.Markets.IExclusiveTimeInterval! interval) -> TRequest
-static Alpaca.Markets.TimeInterval.SetTimeInterval<TRequest>(this TRequest request, Alpaca.Markets.IInclusiveTimeInterval! interval) -> TRequest
-static Alpaca.Markets.TimeInterval.WithFrom(this Alpaca.Markets.IExclusiveTimeInterval! timeInterval, System.DateTime from) -> Alpaca.Markets.IExclusiveTimeInterval!
-static Alpaca.Markets.TimeInterval.WithFrom(this Alpaca.Markets.IInclusiveTimeInterval! timeInterval, System.DateTime from) -> Alpaca.Markets.IInclusiveTimeInterval!
-static Alpaca.Markets.TimeInterval.WithInto(this Alpaca.Markets.IExclusiveTimeInterval! timeInterval, System.DateTime into) -> Alpaca.Markets.IExclusiveTimeInterval!
-static Alpaca.Markets.TimeInterval.WithInto(this Alpaca.Markets.IInclusiveTimeInterval! timeInterval, System.DateTime into) -> Alpaca.Markets.IInclusiveTimeInterval!
 static Alpaca.Markets.TrailingStopOrder.Buy(string! symbol, long quantity, Alpaca.Markets.TrailOffset trailOffset) -> Alpaca.Markets.TrailingStopOrder!
 static Alpaca.Markets.TrailingStopOrder.Sell(string! symbol, long quantity, Alpaca.Markets.TrailOffset trailOffset) -> Alpaca.Markets.TrailingStopOrder!
 static Alpaca.Markets.TrailOffset.InDollars(decimal value) -> Alpaca.Markets.TrailOffset

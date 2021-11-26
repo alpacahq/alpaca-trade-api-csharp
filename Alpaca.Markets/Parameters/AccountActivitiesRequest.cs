@@ -3,7 +3,7 @@
 /// <summary>
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListAccountActivitiesAsync(AccountActivitiesRequest,CancellationToken)"/> call.
 /// </summary>
-public sealed class AccountActivitiesRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>
+public sealed class AccountActivitiesRequest
 {
     private readonly HashSet<AccountActivityType> _accountActivityTypes = new();
 
@@ -47,7 +47,7 @@ public sealed class AccountActivitiesRequest : IRequestWithTimeInterval<IInclusi
     /// Gets inclusive date interval for filtering items in response.
     /// </summary>
     [UsedImplicitly]
-    public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
+    public Interval<DateTime> TimeInterval { get; private set; }
 
     /// <summary>
     /// Gets or sets the sorting direction for results.
@@ -87,7 +87,7 @@ public sealed class AccountActivitiesRequest : IRequestWithTimeInterval<IInclusi
     public AccountActivitiesRequest SetSingleDate(
         DateOnly date)
     {
-        TimeInterval = Markets.TimeInterval.InclusiveEmpty;
+        TimeInterval = new Interval<DateTime>();
         Date = date;
         return this;
     }
@@ -108,10 +108,17 @@ public sealed class AccountActivitiesRequest : IRequestWithTimeInterval<IInclusi
                 .AsStringAsync().ConfigureAwait(false)
         };
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(IInclusiveTimeInterval value)
+    public AccountActivitiesRequest WithInterval(
+        Interval<DateTime> value)
     {
         TimeInterval = value;
         Date = null;
+        return this;
     }
 }
