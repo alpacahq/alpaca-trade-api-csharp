@@ -14,18 +14,18 @@ public static partial class HistoricalBarsClientExtensions
 
         public TRequest Create(
             String symbol,
-            IInclusiveTimeInterval timeInterval) =>
+            Interval<DateOnly> timeInterval) =>
             createImpl(symbol, timeInterval) ?? throw new InvalidCastException();
 
         private TRequest? createImpl(
             String symbol,
-            IInclusiveTimeInterval timeInterval) =>
+            Interval<DateOnly> timeInterval) =>
             this switch
             {
                 RequestFactory<HistoricalBarsRequest> =>
-                    new HistoricalBarsRequest(symbol, BarTimeFrame.Day, timeInterval) as TRequest,
+                    new HistoricalBarsRequest(symbol, BarTimeFrame.Day, timeInterval.AsTimeInterval()) as TRequest,
                 RequestFactory<HistoricalCryptoBarsRequest> =>
-                    new HistoricalCryptoBarsRequest(symbol, BarTimeFrame.Day, timeInterval) as TRequest,
+                    new HistoricalCryptoBarsRequest(symbol, BarTimeFrame.Day, timeInterval.AsTimeInterval()) as TRequest,
                 _ => throw new InvalidOperationException()
             };
     }
@@ -49,7 +49,9 @@ public static partial class HistoricalBarsClientExtensions
         DateTime into)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
         GetAverageDailyTradeVolumeAsync(
-            client, symbol, TimeInterval.GetInclusive(from, into), CancellationToken.None);
+            client, symbol, new Interval<DateOnly>(
+                DateOnly.FromDateTime(from), DateOnly.FromDateTime(into)),
+            CancellationToken.None);
 
     /// <summary>
     /// Gets the average trade volume for the given <paramref name="symbol"/> and time interval
@@ -69,9 +71,7 @@ public static partial class HistoricalBarsClientExtensions
         DateOnly into)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
         GetAverageDailyTradeVolumeAsync(
-            client, symbol, TimeInterval.GetInclusive(
-                from.ToDateTime(TimeOnly.MinValue), into.ToDateTime(TimeOnly.MinValue)),
-            CancellationToken.None);
+            client, symbol, new Interval<DateOnly>(from, into), CancellationToken.None);
 
     /// <summary>
     /// Gets the average trade volume for the given <paramref name="symbol"/> and time interval
@@ -96,7 +96,9 @@ public static partial class HistoricalBarsClientExtensions
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
         GetAverageDailyTradeVolumeAsync(
-            client, symbol, TimeInterval.GetInclusive(from, into), cancellationToken);
+            client, symbol, new Interval<DateOnly>(
+                DateOnly.FromDateTime(from), DateOnly.FromDateTime(into)),
+            cancellationToken);
 
     /// <summary>
     /// Gets the average trade volume for the given <paramref name="symbol"/> and time interval
@@ -120,9 +122,25 @@ public static partial class HistoricalBarsClientExtensions
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
         GetAverageDailyTradeVolumeAsync(
-            client, symbol, TimeInterval.GetInclusive(
-                from.ToDateTime(TimeOnly.MinValue), into.ToDateTime(TimeOnly.MinValue)),
-            cancellationToken);
+            client, symbol, new Interval<DateOnly>(from, into), cancellationToken);
+
+    /// <summary>
+    /// Gets the average trade volume for the given <paramref name="symbol"/> and <paramref name="timeInterval"/>.
+    /// </summary>
+    /// <param name="client">Target instance of the <see cref="IHistoricalBarsClient{TRequest}"/> interface.</param>
+    /// <param name="symbol">Asset name for the data retrieval.</param>
+    /// <param name="timeInterval">Inclusive time interval for the ADTV calculation.</param>
+    /// <returns>The pair of ADTV value and number of processed day bars.</returns>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    [Obsolete("Use another method overload that takes the Interval<DateOnly> argument.", false)]
+    public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync<TRequest>(
+        this IHistoricalBarsClient<TRequest> client,
+        String symbol,
+        IInclusiveTimeInterval timeInterval)
+        where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
+        GetAverageDailyTradeVolumeAsync(
+            client, symbol, timeInterval, CancellationToken.None);
 
     /// <summary>
     /// Gets the average trade volume for the given <paramref name="symbol"/> and <paramref name="timeInterval"/>.
@@ -136,7 +154,7 @@ public static partial class HistoricalBarsClientExtensions
     public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync<TRequest>(
         this IHistoricalBarsClient<TRequest> client,
         String symbol,
-        IInclusiveTimeInterval timeInterval)
+        Interval<DateOnly> timeInterval)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
         GetAverageDailyTradeVolumeAsync(
             client, symbol, timeInterval, CancellationToken.None);
@@ -153,10 +171,34 @@ public static partial class HistoricalBarsClientExtensions
     /// <returns>The pair of ADTV value and number of processed day bars.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [Obsolete("Use another method overload that takes the Interval<DateOnly> argument.", false)]
     public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync<TRequest>(
         this IHistoricalBarsClient<TRequest> client,
         String symbol,
         IInclusiveTimeInterval timeInterval,
+        CancellationToken cancellationToken)
+        where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
+       GetAverageDailyTradeVolumeAsync(
+           client, symbol,
+           new Interval<DateOnly>(timeInterval?.From.AsDateOnly(), timeInterval?.From.AsDateOnly()),
+           cancellationToken);
+
+    /// <summary>
+    /// Gets the average trade volume for the given <paramref name="symbol"/> and <paramref name="timeInterval"/>.
+    /// </summary>
+    /// <param name="client">Target instance of the <see cref="IHistoricalBarsClient{TRequest}"/> interface.</param>
+    /// <param name="symbol">Asset name for the data retrieval.</param>
+    /// <param name="timeInterval">Inclusive time interval for the ADTV calculation.</param>
+    /// <param name="cancellationToken">
+    /// A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+    /// </param>
+    /// <returns>The pair of ADTV value and number of processed day bars.</returns>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync<TRequest>(
+        this IHistoricalBarsClient<TRequest> client,
+        String symbol,
+        Interval<DateOnly> timeInterval,
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
         client.GetHistoricalBarsAsAsyncEnumerable(

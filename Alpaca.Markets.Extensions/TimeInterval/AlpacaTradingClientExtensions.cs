@@ -36,7 +36,7 @@ public static class AlpacaTradingClientExtensions
         CancellationToken cancellationToken = default)
     {
         var calendars = await client.EnsureNotNull(nameof(client))
-            .ListCalendarAsync(CalendarRequest.GetForSingleDay(date.ToDateTime(TimeOnly.MinValue)), cancellationToken)
+            .ListCalendarAsync(CalendarRequest.GetForSingleDay(date), cancellationToken)
             .ConfigureAwait(false);
         return calendars.SingleOrDefault();
     }
