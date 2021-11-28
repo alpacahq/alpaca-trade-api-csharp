@@ -31,7 +31,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
             get { yield return _stream; }
         }
 
-        public Boolean Subscribed { get; private set; }
+        public long? Subscribed { get; private set; }
 
         public event Action<TApi>? Received;
 
@@ -41,7 +41,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                              ?? throw new RestClientErrorException());
 
         public void OnUpdate(
-            Boolean isSubscribed) => Subscribed = isSubscribed;
+            Boolean isSubscribed) => Subscribed = DateTime.UtcNow.Ticks;
     }
 
     private sealed class SubscriptionsDictionary

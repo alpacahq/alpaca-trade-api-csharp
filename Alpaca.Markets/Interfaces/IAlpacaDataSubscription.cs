@@ -14,7 +14,7 @@ public interface IAlpacaDataSubscription
     /// Gets boolean flag indicating the current subscription status of this item.
     /// </summary>
     [UsedImplicitly]
-    Boolean Subscribed { get; }
+    long? Subscribed { get; }
 }
 
 /// <summary>
