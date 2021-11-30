@@ -441,6 +441,7 @@ Alpaca.Markets.Interval<TItem>
 Alpaca.Markets.Interval<TItem>.Deconstruct(out TItem? from, out TItem? into) -> void
 Alpaca.Markets.Interval<TItem>.From.get -> TItem?
 Alpaca.Markets.Interval<TItem>.Interval() -> void
+Alpaca.Markets.Interval<TItem>.Interval(TItem? from, TItem? into) -> void
 Alpaca.Markets.Interval<TItem>.Into.get -> TItem?
 Alpaca.Markets.Interval<TItem>.IsEmpty() -> bool
 Alpaca.Markets.Interval<TItem>.IsOpen() -> bool

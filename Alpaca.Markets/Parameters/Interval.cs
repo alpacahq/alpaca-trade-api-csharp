@@ -16,13 +16,18 @@ public readonly record struct Interval<TItem>
         Into = null;
     }
 
-    internal Interval(
+    /// <summary>
+    /// Creates the new instance of the <see cref="Interval{TItem}"/> structure.
+    /// </summary>
+    /// <param name="from">Initial value for the <see cref="From"/> property.</param>
+    /// <param name="into">Initial value for the <see cref="Into"/> property.</param>
+    public Interval(
         TItem? from,
         TItem? into)
     {
         if (from is not null &&
             into is not null &&
-            from.Value.CompareTo(into.Value) < 0)
+            from.Value.CompareTo(into.Value) > 0)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(from), "Time interval should be valid.");

@@ -502,4 +502,10 @@
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/net5.0/Alpaca.Markets.dll</Right>
   </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Interval`1.#ctor(System.Nullable{`0},System.Nullable{`0})</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/net5.0/Alpaca.Markets.dll</Right>
+  </Suppression>
 </Suppressions>
