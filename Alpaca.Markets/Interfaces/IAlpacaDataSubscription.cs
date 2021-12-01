@@ -17,6 +17,11 @@ namespace Alpaca.Markets
         /// Gets boolean flag indicating the current subscription status of this item.
         /// </summary>
         Boolean Subscribed { get; }
+
+        /// <summary>
+        /// Occurred when a <see cref="Subscribed"/> property value changed.
+        /// </summary>
+        event Action? OnSubscribedChanged;
     }
 
     /// <summary>

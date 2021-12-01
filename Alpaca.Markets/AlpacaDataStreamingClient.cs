@@ -29,6 +29,7 @@ namespace Alpaca.Markets
             where TJson : class, TApi
         {
             private readonly String _stream;
+            private Boolean _subscribed;
 
             internal AlpacaDataSubscription(
                 String stream) =>
@@ -39,9 +40,24 @@ namespace Alpaca.Markets
                 get { yield return _stream; }
             }
 
-            public Boolean Subscribed { get; private set; }
+            public Boolean Subscribed
+            {
+                get => _subscribed;
+                private set
+                {
+                    if (_subscribed == value)
+                    {
+                        return;
+                    }
+
+                    _subscribed = value;
+                    OnSubscribedChanged?.Invoke();
+                }
+            }
 
             public event Action<TApi>? Received;
+
+            public event Action? OnSubscribedChanged;
 
             public void OnReceived(
                 JToken token) =>
