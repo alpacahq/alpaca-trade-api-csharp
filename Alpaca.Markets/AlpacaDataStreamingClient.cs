@@ -29,6 +29,8 @@ namespace Alpaca.Markets
         {
             private readonly String _stream;
 
+            private Boolean _subscribed;
+
             internal AlpacaDataSubscription(
                 String stream) =>
                 _stream = stream;
@@ -38,7 +40,22 @@ namespace Alpaca.Markets
                 get { yield return _stream; }
             }
 
-            public Boolean Subscribed { get; private set; }
+            public Boolean Subscribed
+            {
+                get => _subscribed;
+                private set
+                {
+                    if (_subscribed == value)
+                    {
+                        return;
+                    }
+
+                    OnSubscribedChanged?.Invoke();
+                    _subscribed = value;
+                }
+            }
+
+            public event Action? OnSubscribedChanged;
 
             public event Action<TApi>? Received;
 

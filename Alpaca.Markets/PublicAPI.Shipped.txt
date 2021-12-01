@@ -277,6 +277,7 @@ Alpaca.Markets.IAlpacaDataStreamingClient.GetMinuteBarSubscription(string! symbo
 Alpaca.Markets.IAlpacaDataStreamingClient.GetQuoteSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IQuote!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetTradeSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ITrade!>!
 Alpaca.Markets.IAlpacaDataSubscription
+Alpaca.Markets.IAlpacaDataSubscription.OnSubscribedChanged -> System.Action?
 Alpaca.Markets.IAlpacaDataSubscription.Streams.get -> System.Collections.Generic.IEnumerable<string!>!
 Alpaca.Markets.IAlpacaDataSubscription.Subscribed.get -> bool
 Alpaca.Markets.IAlpacaDataSubscription<TApi>

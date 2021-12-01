@@ -19,6 +19,12 @@ namespace Alpaca.Markets
         /// </summary>
         [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
         Boolean Subscribed { get; }
+
+        /// <summary>
+        /// Occurred when a <see cref="Subscribed"/> property value changed.
+        /// </summary>
+        [SuppressMessage("ReSharper", "EventNeverSubscribedTo.Global")]
+        event Action? OnSubscribedChanged;
     }
 
     /// <summary>
