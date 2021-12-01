@@ -22,6 +22,8 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
     {
         private readonly String _stream;
 
+        private Boolean _subscribed;
+
         internal AlpacaDataSubscription(
             String stream) =>
             _stream = stream;
@@ -31,9 +33,24 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
             get { yield return _stream; }
         }
 
-        public Boolean Subscribed { get; private set; }
+        public Boolean Subscribed
+        {
+            get => _subscribed;
+            private set
+            {
+                if (_subscribed == value)
+                {
+                    return;
+                }
+
+                _subscribed = value;
+                OnSubscribedChanged?.Invoke();
+            }
+        }
 
         public event Action<TApi>? Received;
+
+        public event Action? OnSubscribedChanged;
 
         public void OnReceived(
             JToken token) =>

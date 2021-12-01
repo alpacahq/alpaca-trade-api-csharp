@@ -329,6 +329,7 @@ Alpaca.Markets.IAlpacaDataStreamingClient
 Alpaca.Markets.IAlpacaDataStreamingClient.GetLimitUpLimitDownSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ILimitUpLimitDown!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetStatusSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStatus!>!
 Alpaca.Markets.IAlpacaDataSubscription
+Alpaca.Markets.IAlpacaDataSubscription.OnSubscribedChanged -> System.Action?
 Alpaca.Markets.IAlpacaDataSubscription.Streams.get -> System.Collections.Generic.IEnumerable<string!>!
 Alpaca.Markets.IAlpacaDataSubscription.Subscribed.get -> bool
 Alpaca.Markets.IAlpacaDataSubscription<TApi>
