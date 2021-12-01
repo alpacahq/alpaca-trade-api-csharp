@@ -191,7 +191,7 @@ namespace Alpaca.Markets
                     var messageType = token["T"];
                     if (messageType is null)
                     {
-                        HandleError(new InvalidOperationException());
+                        HandleWarning("Incoming message missing message type.");
                     }
                     else
                     {
@@ -222,7 +222,7 @@ namespace Alpaca.Markets
                     break;
 
                 default:
-                    HandleError(new InvalidOperationException("Unknown connection status"));
+                    HandleWarning($"Unknown connection status `{connectionSuccess.Status}` found.");
                     break;
             }
         }
