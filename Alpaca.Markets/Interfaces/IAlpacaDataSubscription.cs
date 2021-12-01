@@ -19,6 +19,12 @@ namespace Alpaca.Markets
         /// </summary>
         [UsedImplicitly]
         Boolean Subscribed { get; }
+
+        /// <summary>
+        /// Occurred when a <see cref="Subscribed"/> property value changed.
+        /// </summary>
+        [UsedImplicitly]
+        event Action? OnSubscribedChanged;
     }
 
     /// <summary>

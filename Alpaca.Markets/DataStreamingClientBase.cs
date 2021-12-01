@@ -28,6 +28,8 @@ namespace Alpaca.Markets
         {
             private readonly String _stream;
 
+            private Boolean _subscribed;
+
             internal AlpacaDataSubscription(
                 String stream) =>
                 _stream = stream;
@@ -36,10 +38,24 @@ namespace Alpaca.Markets
             {
                 get { yield return _stream; }
             }
+            public Boolean Subscribed
+            {
+                get => _subscribed;
+                private set
+                {
+                    if (_subscribed == value)
+                    {
+                        return;
+                    }
 
-            public Boolean Subscribed { get; private set; }
+                    _subscribed = value;
+                    OnSubscribedChanged?.Invoke();
+                }
+            }
 
             public event Action<TApi>? Received;
+
+            public event Action? OnSubscribedChanged;
 
             public void OnReceived(
                 JToken token) =>
