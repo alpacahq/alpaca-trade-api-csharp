@@ -544,6 +544,7 @@ Alpaca.Markets.IStreamingClient.ConnectAsync(System.Threading.CancellationToken 
 Alpaca.Markets.IStreamingClient.Connected -> System.Action<Alpaca.Markets.AuthStatus>?
 Alpaca.Markets.IStreamingClient.DisconnectAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task!
 Alpaca.Markets.IStreamingClient.OnError -> System.Action<System.Exception!>?
+Alpaca.Markets.IStreamingClient.OnWarning -> System.Action<string!>?
 Alpaca.Markets.IStreamingClient.SocketClosed -> System.Action?
 Alpaca.Markets.IStreamingClient.SocketOpened -> System.Action?
 Alpaca.Markets.IStreamingDataClient

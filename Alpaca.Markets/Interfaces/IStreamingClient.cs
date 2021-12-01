@@ -35,6 +35,12 @@ namespace Alpaca.Markets
         event Action<Exception>? OnError;
 
         /// <summary>
+        /// Occurred in case of non-critical events.
+        /// </summary>
+        [UsedImplicitly]
+        event Action<String>? OnWarning;
+
+        /// <summary>
         /// Opens connection to a streaming API.
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>

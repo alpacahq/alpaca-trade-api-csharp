@@ -44,6 +44,8 @@ namespace Alpaca.Markets
 
         public event Action? SocketClosed;
 
+        public event Action<String>? OnWarning;
+
         public event Action<Exception>? OnError;
 
         public Task ConnectAsync(
@@ -137,8 +139,7 @@ namespace Alpaca.Markets
                 }
                 else
                 {
-                    HandleError(new InvalidOperationException(
-                        $"Unexpected message type '{messageType}' received."));
+                    HandleWarning($"Unexpected message type '{messageType}' received.");
                 }
             }
             catch (Exception exception)
@@ -160,6 +161,9 @@ namespace Alpaca.Markets
             }
             OnError?.Invoke(exception);
         }
+        protected void HandleWarning(
+            String message) =>
+            OnWarning?.Invoke(message);
 
         protected ValueTask SendAsJsonStringAsync(
             Object value,

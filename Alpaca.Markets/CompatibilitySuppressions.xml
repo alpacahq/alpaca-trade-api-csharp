@@ -370,4 +370,32 @@
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/net461/Alpaca.Markets.dll</Right>
   </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>E:Alpaca.Markets.IStreamingClient.OnWarning</Target>
+    <Left>lib/net461/Alpaca.Markets.dll</Left>
+    <Right>lib/net461/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>E:Alpaca.Markets.IStreamingClient.OnWarning</Target>
+    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net5.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>E:Alpaca.Markets.IStreamingClient.OnWarning</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>E:Alpaca.Markets.IStreamingClient.OnWarning</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
 </Suppressions>
