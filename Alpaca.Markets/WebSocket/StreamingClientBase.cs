@@ -58,6 +58,9 @@ namespace Alpaca.Markets
         public event Action? SocketClosed;
 
         /// <inheritdoc />
+        public event Action<String>? OnWarning;
+
+        /// <inheritdoc />
         public event Action<Exception>? OnError;
 
         /// <inheritdoc />
@@ -175,8 +178,7 @@ namespace Alpaca.Markets
                 }
                 else
                 {
-                    HandleError(new InvalidOperationException(
-                        $"Unexpected message type '{messageType}' received."));
+                    HandleWarning($"Unexpected message type '{messageType}' received.");
                 }
             }
             catch (Exception exception)
@@ -206,6 +208,14 @@ namespace Alpaca.Markets
             }
             OnError?.Invoke(exception);
         }
+
+        /// <summary>
+        /// Raises the <see cref="OnWarning"/> event.
+        /// </summary>
+        /// <param name="message">Warning message for the <see cref="OnWarning"/> event.</param>
+        protected void HandleWarning(
+            String message) =>
+            OnWarning?.Invoke(message);
 
         /// <summary>
         /// 
