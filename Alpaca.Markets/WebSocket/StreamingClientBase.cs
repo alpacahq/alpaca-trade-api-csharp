@@ -37,6 +37,8 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
 
     public event Action? SocketClosed;
 
+    public event Action<String>? OnWarning;
+
     public event Action<Exception>? OnError;
 
     public Task ConnectAsync(
@@ -130,8 +132,7 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
             }
             else
             {
-                HandleError(new InvalidOperationException(
-                    $"Unexpected message type '{messageType}' received."));
+                HandleWarning($"Unexpected message type '{messageType}' received.");
             }
         }
         catch (Exception exception)
@@ -153,6 +154,10 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
         }
         OnError?.Invoke(exception);
     }
+
+    protected void HandleWarning(
+        String message) => 
+        OnWarning?.Invoke(message);
 
     protected ValueTask SendAsJsonStringAsync(
         Object value,

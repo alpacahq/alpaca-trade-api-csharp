@@ -58,7 +58,7 @@ internal sealed class AlpacaStreamingClient :
             if (payload is null ||
                 messageType is null)
             {
-                HandleError(new InvalidOperationException());
+                HandleWarning("Incoming message missing message type.");
             }
             else
             {
@@ -83,7 +83,7 @@ internal sealed class AlpacaStreamingClient :
             // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             if (response is null)
             {
-                HandleError(new InvalidOperationException("Invalid authentication response."));
+                HandleWarning("Invalid (empty) authentication response.");
                 return;
             }
 
