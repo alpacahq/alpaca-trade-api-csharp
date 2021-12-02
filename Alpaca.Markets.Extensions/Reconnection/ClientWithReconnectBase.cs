@@ -80,6 +80,12 @@ namespace Alpaca.Markets.Extensions
 
         public event Action<Exception>? OnError;
 
+        public event Action<String>? OnWarning
+        {
+            add => Client.OnWarning += value;
+            remove => Client.OnWarning -= value;
+        }
+
         protected virtual void OnReconnection(
             CancellationToken cancellationToken)
         {

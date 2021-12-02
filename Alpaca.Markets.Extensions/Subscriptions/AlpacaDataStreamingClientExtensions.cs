@@ -27,6 +27,24 @@ namespace Alpaca.Markets.Extensions
 
             public Boolean Subscribed => _subscriptions.All(_ => _.Subscribed);
 
+            public event Action? OnSubscribedChanged
+            {
+                add
+                {
+                    foreach (var subscription in _subscriptions)
+                    {
+                        subscription.OnSubscribedChanged += value;
+                    }
+                }
+                remove
+                {
+                    foreach (var subscription in _subscriptions)
+                    {
+                        subscription.OnSubscribedChanged -= value;
+                    }
+                }
+            }
+
             public event Action<TItem>? Received
             {
                 add
@@ -66,6 +84,12 @@ namespace Alpaca.Markets.Extensions
             public IEnumerable<String> Streams => _subscription.Streams;
 
             public Boolean Subscribed => _subscription.Subscribed;
+
+            public event Action? OnSubscribedChanged
+            {
+                add => _subscription.OnSubscribedChanged += value;
+                remove => _subscription.OnSubscribedChanged -= value;
+            }
 
             public event Action<TItem> Received
             {
