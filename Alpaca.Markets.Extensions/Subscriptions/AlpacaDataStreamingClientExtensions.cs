@@ -11,7 +11,6 @@ namespace Alpaca.Markets.Extensions
     /// </summary>
     public static partial class AlpacaDataStreamingClientExtensions
     {
-
         /// <summary>
         /// Gets the trade updates subscription for the all assets from the <paramref name="symbols"/> list.
         /// </summary>
