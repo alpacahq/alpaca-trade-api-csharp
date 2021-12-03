@@ -118,6 +118,8 @@ namespace Alpaca.Markets
 
         protected const String WildcardSymbolString = "*";
 
+        private const Int32 SubscriptionChunkSize = 100;
+
         // ReSharper disable once StaticMemberInGenericType
         private static readonly Char[] _channelSeparator = { '.' };
 
@@ -320,12 +322,25 @@ namespace Alpaca.Markets
         private ValueTask subscribeAsync(
             IEnumerable<String> streams,
             CancellationToken cancellationToken) =>
-            sendSubscriptionRequestAsync(JsonAction.Subscribe, getLookup(streams), cancellationToken);
+            sendSubscriptionRequestsAsync(JsonAction.Subscribe, streams, cancellationToken);
 
         private ValueTask unsubscribeAsync(
             IEnumerable<String> streams,
             CancellationToken cancellationToken) =>
-            sendSubscriptionRequestAsync(JsonAction.Unsubscribe,getLookup(streams), cancellationToken);
+            sendSubscriptionRequestsAsync(JsonAction.Unsubscribe, streams, cancellationToken);
+
+        private async ValueTask sendSubscriptionRequestsAsync(
+            JsonAction action,
+            IEnumerable<String> streams,
+            CancellationToken cancellationToken)
+        {
+            foreach (var chunk in streams.Chunk(SubscriptionChunkSize))
+            {
+                await sendSubscriptionRequestAsync(
+                        action, getLookup(chunk), cancellationToken)
+                    .ConfigureAwait(false);
+            }
+        }
 
         private ValueTask sendSubscriptionRequestAsync(
             JsonAction action,
