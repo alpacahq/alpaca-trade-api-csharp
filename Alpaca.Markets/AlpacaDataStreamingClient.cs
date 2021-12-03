@@ -116,6 +116,8 @@ namespace Alpaca.Markets
 
         private const String WildcardSymbolString = "*";
 
+        private const Int32 SubscriptionChunkSize = 100;
+
         private static readonly Char[] _channelSeparator = { '.' };
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
@@ -331,11 +333,21 @@ namespace Alpaca.Markets
 
         private void subscribe(
             IEnumerable<String> streams) =>
-            sendSubscriptionRequest(getLookup(streams), JsonAction.Subscribe);
+            sendSubscriptionRequests(JsonAction.Subscribe, streams);
 
         private void unsubscribe(
             IEnumerable<String> streams) =>
-            sendSubscriptionRequest(getLookup(streams), JsonAction.Unsubscribe);
+            sendSubscriptionRequests(JsonAction.Unsubscribe, streams);
+
+        private void sendSubscriptionRequests(
+            JsonAction action,
+            IEnumerable<String> streams)
+        {
+            foreach (var chunk in streams.Chunk(SubscriptionChunkSize))
+            {
+                sendSubscriptionRequest(getLookup(chunk), action);
+            }
+        }
 
         private void sendSubscriptionRequest(
             ILookup<String, String> streamsByChannels,
