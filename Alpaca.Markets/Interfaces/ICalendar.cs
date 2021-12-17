@@ -3,7 +3,6 @@
 /// <summary>
 /// Encapsulates single trading day information from Alpaca REST API.
 /// </summary>
-// TODO: olegra - good candidate for the DateOnly and TimeOnly types usage
 public interface ICalendar
 {
     /// <summary>

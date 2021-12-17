@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Alpaca.Markets.Extensions;
+﻿namespace Alpaca.Markets.Extensions;
 
 /// <summary>
 /// Helper task-like type for providing cancellation support for `params`-style extension methods.
@@ -16,7 +14,7 @@ public readonly struct AlpacaValueTask : IEquatable<AlpacaValueTask>
     /// </summary>
     public AlpacaValueTask()
     {
-        _capturedFunction = (CancellationToken _) => new ValueTask();
+        _capturedFunction = _ => new ValueTask();
         _cancellationToken = CancellationToken.None;
     }
 

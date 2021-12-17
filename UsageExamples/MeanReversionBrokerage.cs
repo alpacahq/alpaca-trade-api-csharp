@@ -253,44 +253,44 @@ internal sealed class MeanReversionBrokerage : IDisposable
                 await SubmitOrder(-positionQuantity, agg.Close, OrderSide.Buy);
             }
             else switch (amountToLong)
+            {
+                case > 0:
                 {
-                    case > 0:
-                        {
-                            // We want to expand our existing long position.
-                            if (amountToLong > buyingPower)
-                            {
-                                amountToLong = buyingPower;
-                            }
+                    // We want to expand our existing long position.
+                    if (amountToLong > buyingPower)
+                    {
+                        amountToLong = buyingPower;
+                    }
 
-                            var qty = (int)(amountToLong / agg.Close);
+                    var qty = (int)(amountToLong / agg.Close);
 
-                            await SubmitOrder(qty, agg.Close, OrderSide.Buy);
-                            Console.WriteLine($"Adding {qty * agg.Close:C2} to long position.");
-                            break;
-                        }
-
-                    case < 0:
-                        {
-                            // We want to shrink our existing long position.
-                            amountToLong *= -1;
-                            var qty = (Int64)(amountToLong / agg.Close);
-                            if (qty > positionQuantity)
-                            {
-                                qty = positionQuantity;
-                            }
-
-                            if (isAssetShortable)
-                            {
-                                await SubmitOrder(qty, agg.Close, OrderSide.Sell);
-                                Console.WriteLine($"Removing {qty * agg.Close:C2} from long position");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Unable to place short order - asset is not shortable.");
-                            }
-                            break;
-                        }
+                    await SubmitOrder(qty, agg.Close, OrderSide.Buy);
+                    Console.WriteLine($"Adding {qty * agg.Close:C2} to long position.");
+                    break;
                 }
+
+                case < 0:
+                {
+                    // We want to shrink our existing long position.
+                    amountToLong *= -1;
+                    var qty = (Int64)(amountToLong / agg.Close);
+                    if (qty > positionQuantity)
+                    {
+                        qty = positionQuantity;
+                    }
+
+                    if (isAssetShortable)
+                    {
+                        await SubmitOrder(qty, agg.Close, OrderSide.Sell);
+                        Console.WriteLine($"Removing {qty * agg.Close:C2} from long position");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Unable to place short order - asset is not shortable.");
+                    }
+                    break;
+                }
+            }
         }
     }
 

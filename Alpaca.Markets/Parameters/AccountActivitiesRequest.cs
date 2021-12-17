@@ -116,6 +116,7 @@ public sealed class AccountActivitiesRequest :
     /// /// </summary>
     /// <param name="value">New filtering interval.</param>
     /// <returns>Request with applied filtering.</returns>
+    [UsedImplicitly]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public AccountActivitiesRequest WithInterval(
         Interval<DateTime> value)

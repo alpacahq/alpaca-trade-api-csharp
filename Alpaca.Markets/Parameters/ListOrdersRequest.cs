@@ -94,6 +94,7 @@ public sealed class ListOrdersRequest :
     /// /// </summary>
     /// <param name="value">New filtering interval.</param>
     /// <returns>Request with applied filtering.</returns>
+    [UsedImplicitly]
     public ListOrdersRequest WithInterval(
         Interval<DateTime> value)
     {

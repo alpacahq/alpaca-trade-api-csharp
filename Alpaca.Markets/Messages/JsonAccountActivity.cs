@@ -20,7 +20,7 @@ internal sealed class JsonAccountActivity : IAccountActivity
     public String? Symbol { get; set; }
 
     [JsonIgnore]
-    public DateOnly? ActivityDate { get; set; }
+    public DateOnly? ActivityDate { get; private set; }
 
     [JsonProperty(PropertyName = "net_amount", Required = Required.Default)]
     public Decimal? NetAmount { get; set; }

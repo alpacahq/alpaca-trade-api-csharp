@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Alpaca.Markets.Extensions;
+﻿namespace Alpaca.Markets.Extensions;
 
 /// <summary>
 /// Set of extensions methods for obtaining simple statistical functions from bars list.

@@ -60,6 +60,7 @@ public sealed class CalendarRequest :
     /// /// </summary>
     /// <param name="value">New filtering interval.</param>
     /// <returns>Request with applied filtering.</returns>
+    [UsedImplicitly]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public CalendarRequest WithInterval(
         Interval<DateTime> value)
@@ -73,6 +74,7 @@ public sealed class CalendarRequest :
     /// /// </summary>
     /// <param name="value">New filtering interval.</param>
     /// <returns>Request with applied filtering.</returns>
+    [UsedImplicitly]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public CalendarRequest WithInterval(
         Interval<DateOnly> value)

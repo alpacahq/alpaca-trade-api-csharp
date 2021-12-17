@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 internal static class NullableHelper
 {

@@ -62,6 +62,7 @@ public sealed class PortfolioHistoryRequest :
     /// /// </summary>
     /// <param name="value">New filtering interval.</param>
     /// <returns>Request with applied filtering.</returns>
+    [UsedImplicitly]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public PortfolioHistoryRequest WithInterval(
         Interval<DateTime> value)
@@ -75,6 +76,7 @@ public sealed class PortfolioHistoryRequest :
     /// /// </summary>
     /// <param name="value">New filtering interval.</param>
     /// <returns>Request with applied filtering.</returns>
+    [UsedImplicitly]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public PortfolioHistoryRequest WithInterval(
         Interval<DateOnly> value)
