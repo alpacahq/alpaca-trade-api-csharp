@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -10,6 +10,9 @@ namespace Alpaca.Markets
 {
     internal static partial class HttpClientExtensions
     {
+        private static readonly String _sdkVersion =
+            typeof(HttpClientExtensions).Assembly.GetName().Version!.ToString();
+
         public static void AddAuthenticationHeaders(
             this HttpClient httpClient,
             SecurityKey securityKey)
@@ -20,13 +23,25 @@ namespace Alpaca.Markets
             }
         }
 
-        // ReSharper disable once StringLiteralTypo
-        [Conditional("NETFRAMEWORK")]
-        public static void SetSecurityProtocol(
-            // ReSharper disable once UnusedParameter.Global
-            this HttpClient httpClient) =>
+        public static HttpClient Configure(
+            this HttpClient httpClient,
+            Uri baseAddress)
+        {
+            httpClient.DefaultRequestHeaders.Accept
+                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DefaultRequestHeaders.AcceptEncoding
+                .Add(new StringWithQualityHeaderValue("gzip"));
+            httpClient.DefaultRequestHeaders.UserAgent.Add(
+                new ProductInfoHeaderValue("Alpaca-dotNET-SDK", _sdkVersion));
+            httpClient.BaseAddress = baseAddress;
+
+#if NETFRAMEWORK
             // ReSharper disable once StringLiteralTypo
             AppContext.SetSwitch("Switch.System.Net.DontEnableSystemDefaultTlsVersions", false);
+#endif
+
+            return httpClient;
+        }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
             HttpClient httpClient,
