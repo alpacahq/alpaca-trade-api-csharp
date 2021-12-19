@@ -30,11 +30,7 @@ namespace Alpaca.Markets
             _alpacaRestApiThrottler = configuration.ThrottleParameters.GetThrottler();
 
             _httpClient.AddAuthenticationHeaders(configuration.SecurityId);
-
-            _httpClient.DefaultRequestHeaders.Accept
-                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _httpClient.BaseAddress = configuration.ApiEndpoint;
-            _httpClient.SetSecurityProtocol();
+            _httpClient.Configure(configuration.ApiEndpoint);
         }
 
         /// <inheritdoc />

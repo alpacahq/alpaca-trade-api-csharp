@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -10,6 +10,11 @@ namespace Alpaca.Markets
 {
     internal static partial class HttpClientExtensions
     {
+#if !NETSTANDARD1_3
+        private static readonly String _sdkVersion =
+            typeof(HttpClientExtensions).Assembly.GetName().Version!.ToString();
+#endif
+
         public static void AddAuthenticationHeaders(
             this HttpClient httpClient,
             SecurityKey securityKey)
@@ -20,11 +25,20 @@ namespace Alpaca.Markets
             }
         }
 
-        [Conditional("NET45")]
-        public static void SetSecurityProtocol(
-            // ReSharper disable once UnusedParameter.Global
-            this HttpClient httpClient)
+        public static HttpClient Configure(
+            this HttpClient httpClient,
+            Uri baseAddress)
         {
+            httpClient.DefaultRequestHeaders.Accept
+                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DefaultRequestHeaders.AcceptEncoding
+                .Add(new StringWithQualityHeaderValue("gzip"));
+#if !NETSTANDARD1_3
+            httpClient.DefaultRequestHeaders.UserAgent.Add(
+                new ProductInfoHeaderValue("Alpaca-dotNET-SDK", _sdkVersion));
+#endif
+            httpClient.BaseAddress = baseAddress;
+
 #if NET45
             System.Net.ServicePointManager.SecurityProtocol =
 #pragma warning disable CA5364 // Do Not Use Deprecated Security Protocols
@@ -33,6 +47,7 @@ namespace Alpaca.Markets
 #pragma warning restore CA5386 // Avoid hard coding SecurityProtocolType value
 #pragma warning restore CA5364 // Do Not Use Deprecated Security Protocols
 #endif
+            return httpClient;
         }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
