@@ -21,14 +21,8 @@ namespace Alpaca.Markets
                           configuration.ThrottleParameters.GetHttpClient();
 
             _httpClient.AddAuthenticationHeaders(configuration.SecurityId);
-
-            _httpClient.DefaultRequestHeaders.Accept
-                .Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _httpClient.DefaultRequestHeaders.AcceptEncoding
-                .Add(new StringWithQualityHeaderValue("gzip"));
-            _httpClient.BaseAddress = new UriBuilder(
-                configuration.ApiEndpoint) { Path = "v1beta1/crypto/" }.Uri;
-            _httpClient.SetSecurityProtocol();
+            _httpClient.Configure(new UriBuilder(
+                configuration.ApiEndpoint) { Path = "v1beta1/crypto/" }.Uri);
         }
 
         public void Dispose() => _httpClient.Dispose();
