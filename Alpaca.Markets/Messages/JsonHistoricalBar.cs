@@ -27,8 +27,8 @@ internal sealed class JsonHistoricalBar : IBar
     public DateTime TimeUtc { get; set; }
 
     [JsonProperty(PropertyName = "vw", Required = Required.Default)]
-    public Decimal Vwap { get; }
+    public Decimal Vwap { get; set; }
 
     [JsonProperty(PropertyName = "n", Required = Required.Default)]
-    public UInt64 TradeCount { get; }
+    public UInt64 TradeCount { get; set; }
 }
