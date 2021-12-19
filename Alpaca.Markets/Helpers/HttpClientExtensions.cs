@@ -4,13 +4,16 @@ namespace Alpaca.Markets;
 
 internal static partial class HttpClientExtensions
 {
+    private static readonly String _sdkVersion =
+        typeof(HttpClientExtensions).Assembly.GetName().Version!.ToString();
+
     private static readonly Version _httpVersion =
 #if NETSTANDARD2_1 || NET5_0_OR_GREATER
-            System.Net.HttpVersion.Version20;
+        System.Net.HttpVersion.Version20;
 #elif NETFRAMEWORK
-            new (2, 0);
+        new (2, 0);
 #else
-            System.Net.HttpVersion.Version11;
+        System.Net.HttpVersion.Version11;
 #endif
 
     public static HttpClient Configure(
@@ -27,11 +30,13 @@ internal static partial class HttpClientExtensions
             .Add(new MediaTypeWithQualityHeaderValue("application/json"));
         httpClient.DefaultRequestHeaders.AcceptEncoding
             .Add(new StringWithQualityHeaderValue("gzip"));
+        httpClient.DefaultRequestHeaders.UserAgent.Add(
+            new ProductInfoHeaderValue("Alpaca-dotNET-SDK", _sdkVersion));
         httpClient.BaseAddress = baseAddress;
 
 #if NETFRAMEWORK
-            // ReSharper disable once StringLiteralTypo
-            AppContext.SetSwitch("Switch.System.Net.DontEnableSystemDefaultTlsVersions", false);
+        // ReSharper disable once StringLiteralTypo
+        AppContext.SetSwitch("Switch.System.Net.DontEnableSystemDefaultTlsVersions", false);
 #endif
 
         return httpClient;
@@ -49,7 +54,7 @@ internal static partial class HttpClientExtensions
         if (timeout != Timeout.InfiniteTimeSpan)
         {
 #if NET5_0_OR_GREATER
-                request.Options.Set(ThrottleParameters.RequestTimeoutOptionKey, timeout);
+            request.Options.Set(ThrottleParameters.RequestTimeoutOptionKey, timeout);
 #else
             request.Properties[ThrottleParameters.RequestTimeoutOptionKey] = timeout;
 #endif
