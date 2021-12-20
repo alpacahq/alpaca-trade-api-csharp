@@ -22,10 +22,6 @@ internal sealed class JsonQuotesPage<TQuote> : IPageMutable<IQuote>
 
     [OnDeserialized]
     internal void OnDeserializedMethod(
-        StreamingContext context)
-    {
-        // ReSharper disable once ConstantConditionalAccessQualifier
-        ItemsList?.ForEach(_ => _.SetSymbol(Symbol));
-        Items = ItemsList.EmptyIfNull<IQuote, TQuote>();
-    }
+        StreamingContext context) =>
+        Items = ItemsList.SetSymbol(Symbol).EmptyIfNull<IQuote, TQuote>();
 }

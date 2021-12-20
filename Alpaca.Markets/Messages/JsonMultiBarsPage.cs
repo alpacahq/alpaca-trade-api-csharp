@@ -20,6 +20,5 @@ internal sealed class JsonMultiBarsPage : IMultiPageMutable<IBar>
     [OnDeserialized]
     internal void OnDeserializedMethod(
         StreamingContext context) =>
-        Items = ItemsDictionary.EmptyIfNull<IBar, JsonHistoricalBar>(
-            (symbol, list) => list?.ForEach(item => item.SetSymbol(symbol)));
+        Items = ItemsDictionary.SetSymbol<IBar, JsonHistoricalBar>();
 }
