@@ -35,5 +35,6 @@ internal sealed class JsonHistoricalCryptoQuote : IQuote, ISymbolMutable
     [JsonIgnore]
     public String Tape => String.Empty;
 
-    void ISymbolMutable.SetSymbol(String symbol) => Symbol = symbol;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void SetSymbol(String symbol) => Symbol = symbol;
 }

@@ -3,7 +3,7 @@
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-internal sealed class JsonHistoricalTrade : ITrade
+internal sealed class JsonHistoricalTrade : ITrade, ISymbolMutable
 {
     [JsonProperty(PropertyName = "t", Required = Required.Always)]
     public DateTime TimestampUtc { get; set; }
@@ -30,9 +30,12 @@ internal sealed class JsonHistoricalTrade : ITrade
     public TakerSide TakerSide { get; set; } = TakerSide.Unknown;
 
     [JsonIgnore]
-    public String Symbol { get; internal set; } = String.Empty;
+    public String Symbol { get; private set; } = String.Empty;
 
     [JsonIgnore]
     public IReadOnlyList<String> Conditions =>
         ConditionsList.EmptyIfNull();
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void SetSymbol(String symbol) => Symbol = symbol;
 }

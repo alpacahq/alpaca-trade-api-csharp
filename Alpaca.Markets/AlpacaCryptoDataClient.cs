@@ -33,4 +33,12 @@ internal sealed class AlpacaCryptoDataClient :
             await request.EnsureNotNull(nameof(request))
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
+
+    public async Task<ISnapshot> GetSnapshotAsync(
+        SnapshotDataRequest request,
+        CancellationToken cancellationToken = default) =>
+        await HttpClient.GetAsync<ISnapshot, JsonCryptoSnapshot>(
+            await request.EnsureNotNull(nameof(request))
+                .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
+            cancellationToken).ConfigureAwait(false);
 }

@@ -1,16 +1,16 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// Encapsulates data for latest crypto data requests on Alpaca Data API v2.
+/// Encapsulates data for snapshot crypto data requests on Alpaca Data API v2.
 /// </summary>
-public sealed class LatestDataRequest : Validation.IRequest
+public sealed class SnapshotDataRequest : Validation.IRequest
 {
     /// <summary>
-    /// Creates new instance of <see cref="LatestDataRequest"/> object.
+    /// Creates new instance of <see cref="SnapshotDataRequest"/> object.
     /// </summary>
     /// <param name="symbol">Asset name for data retrieval.</param>
     /// <param name="exchange">Crypto exchange for data retrieval.</param>
-    public LatestDataRequest(
+    public SnapshotDataRequest(
         String symbol,
         CryptoExchange exchange)
     {
@@ -31,14 +31,13 @@ public sealed class LatestDataRequest : Validation.IRequest
     public CryptoExchange Exchange { get; }
 
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
-        HttpClient httpClient,
-        String lastPathSegment) =>
+        HttpClient httpClient) =>
         new UriBuilder(httpClient.BaseAddress!)
         {
             Query = await new QueryBuilder()
                 .AddParameter("exchange", Exchange.ToEnumString())
                 .AsStringAsync().ConfigureAwait(false)
-        }.AppendPath($"{Symbol}/{lastPathSegment}/latest");
+        }.AppendPath($"{Symbol}/snapshot");
 
     IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
     {

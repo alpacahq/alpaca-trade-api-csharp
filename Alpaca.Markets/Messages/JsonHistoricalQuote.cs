@@ -33,11 +33,12 @@ internal sealed class JsonHistoricalQuote : IQuote, ISymbolMutable
     public String Tape { get; set; } = String.Empty;
 
     [JsonIgnore]
-    public String Symbol { get; internal set; } = String.Empty;
+    public String Symbol { get; private set; } = String.Empty;
 
     [JsonIgnore]
     public IReadOnlyList<String> Conditions =>
         ConditionsList.EmptyIfNull();
 
-    void ISymbolMutable.SetSymbol(String symbol) => Symbol = symbol;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void SetSymbol(String symbol) => Symbol = symbol;
 }

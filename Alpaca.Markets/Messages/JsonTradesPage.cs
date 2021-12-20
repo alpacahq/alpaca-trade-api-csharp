@@ -24,7 +24,7 @@ internal sealed class JsonTradesPage : IPageMutable<ITrade>
         StreamingContext context)
     {
         // ReSharper disable once ConstantConditionalAccessQualifier
-        ItemsList?.ForEach(_ => _.Symbol = Symbol);
+        ItemsList?.ForEach(_ => _.SetSymbol(Symbol));
         Items = ItemsList.EmptyIfNull();
     }
 }

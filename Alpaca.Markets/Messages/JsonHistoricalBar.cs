@@ -3,10 +3,10 @@
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-internal sealed class JsonHistoricalBar : IBar
+internal sealed class JsonHistoricalBar : IBar, ISymbolMutable
 {
     [JsonIgnore]
-    public String Symbol { get; internal set; } = String.Empty;
+    public String Symbol { get; private set; } = String.Empty;
 
     [JsonProperty(PropertyName = "o", Required = Required.Always)]
     public Decimal Open { get; set; }
@@ -31,4 +31,7 @@ internal sealed class JsonHistoricalBar : IBar
 
     [JsonProperty(PropertyName = "n", Required = Required.Default)]
     public UInt64 TradeCount { get; set; }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void SetSymbol(String symbol) => Symbol = symbol;
 }
