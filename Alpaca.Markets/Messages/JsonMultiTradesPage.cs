@@ -24,7 +24,6 @@ namespace Alpaca.Markets
         [OnDeserialized]
         internal void OnDeserializedMethod(
             StreamingContext context) =>
-            Items = ItemsDictionary.EmptyIfNull<ITrade, JsonHistoricalTrade>(
-            (symbol, list) => list?.ForEach(item => item.SetSymbol(symbol)));
+            Items = ItemsDictionary.SetSymbol<ITrade, JsonHistoricalTrade>();
     }
 }
