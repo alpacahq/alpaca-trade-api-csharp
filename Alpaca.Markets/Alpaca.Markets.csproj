@@ -12,13 +12,16 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.2.1</AssemblyVersion>
-    <FileVersion>6.0.2.1</FileVersion>
-    <Version>6.0.2-alpha2</Version>
+    <AssemblyVersion>6.0.2.2</AssemblyVersion>
+    <FileVersion>6.0.2.2</FileVersion>
+    <Version>6.0.2-alpha3</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Fixed problem with incorrect invariant check in the `Interval&lt;T&gt;` type.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added the specific User-agent HTTP request header with the Alpaca-dotNET-SDK name and valid version string.
+- Streaming clients send subscription requests in chunks (max 100 symbols per request) now.
+- Added method for requesting the cryptocurrency snapshot for given symbol/exchange pair.
+- Fixed problem with the IBar.Vwap and IBar.TradeCount properties deserialization.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
