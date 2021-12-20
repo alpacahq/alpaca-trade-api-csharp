@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
+
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
@@ -23,7 +25,7 @@ namespace Alpaca.Markets
         public Decimal AskSize { get; set; }
 
         [JsonProperty(PropertyName = "bx", Required = Required.Always)]
-        public String BidExchange  { get; set; } = String.Empty;
+        public String BidExchange { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "bp", Required = Required.Default)]
         public Decimal BidPrice { get; set; }
@@ -32,18 +34,18 @@ namespace Alpaca.Markets
         public Decimal BidSize { get; set; }
 
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
-        public List<String> ConditionsList { get; } = new ();
+        public List<String> ConditionsList { get; } = new();
 
         [JsonProperty(PropertyName = "z", Required = Required.Default)]
         public String Tape { get; set; } = String.Empty;
 
-        [JsonIgnore]
-        public String Symbol { get; internal set; } = String.Empty;
+        [JsonIgnore] public String Symbol { get; private set; } = String.Empty;
 
         [JsonIgnore]
-        public IReadOnlyList<String> Conditions => 
+        public IReadOnlyList<String> Conditions =>
             ConditionsList.EmptyIfNull();
 
-        void ISymbolMutable.SetSymbol(String symbol) => Symbol = symbol;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetSymbol(String symbol) => Symbol = symbol;
     }
 }

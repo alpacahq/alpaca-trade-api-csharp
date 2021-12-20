@@ -142,5 +142,12 @@ namespace Alpaca.Markets
                 await request.EnsureNotNull(nameof(request)).Validate()
                     .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
                 cancellationToken).ConfigureAwait(false);
+        public async Task<ISnapshot> GetSnapshotAsync(
+            SnapshotDataRequest request,
+            CancellationToken cancellationToken = default) =>
+            await _httpClient.GetAsync<ISnapshot, JsonCryptoSnapshot>(
+                await request.EnsureNotNull(nameof(request))
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
     }
 }

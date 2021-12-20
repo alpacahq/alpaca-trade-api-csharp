@@ -5,16 +5,17 @@ using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
+
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonSnapshot : ISnapshot
+    internal sealed class JsonCryptoSnapshot : ISnapshot
     {
         [JsonProperty(PropertyName = "latestQuote", Required = Required.Default)]
-        public JsonHistoricalQuote? JsonQuote { get; set; } = new ();
+        public JsonHistoricalCryptoQuote? JsonQuote { get; set; } = new();
 
         [JsonProperty(PropertyName = "latestTrade", Required = Required.Default)]
-        public JsonHistoricalTrade? JsonTrade { get; set; } = new ();
+        public JsonHistoricalTrade? JsonTrade { get; set; } = new();
 
         [JsonProperty(PropertyName = "minuteBar", Required = Required.Default)]
         public JsonHistoricalBar? JsonMinuteBar { get; set; }
@@ -28,36 +29,25 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "symbol", Required = Required.Default)]
         public String Symbol { get; set; } = String.Empty;
 
-        [JsonIgnore]
-        public IQuote? Quote => JsonQuote;
+        [JsonIgnore] public IQuote? Quote => JsonQuote;
 
-        [JsonIgnore]
-        public ITrade? Trade => JsonTrade;
+        [JsonIgnore] public ITrade? Trade => JsonTrade;
 
-        [JsonIgnore]
-        public IBar? MinuteBar => JsonMinuteBar;
+        [JsonIgnore] public IBar? MinuteBar => JsonMinuteBar;
 
-        [JsonIgnore]
-        public IBar? CurrentDailyBar => JsonCurrentDailyBar;
+        [JsonIgnore] public IBar? CurrentDailyBar => JsonCurrentDailyBar;
 
-        [JsonIgnore]
-        public IBar? PreviousDailyBar => JsonPreviousDailyBar;
+        [JsonIgnore] public IBar? PreviousDailyBar => JsonPreviousDailyBar;
 
         [OnDeserialized]
         internal void OnDeserializedMethod(
-            StreamingContext context) =>
-            WithSymbol(Symbol);
-
-        public ISnapshot WithSymbol(
-            String symbol)
+            StreamingContext context)
         {
-            Symbol = symbol;
             JsonTrade?.SetSymbol(Symbol);
             JsonQuote?.SetSymbol(Symbol);
             JsonMinuteBar?.SetSymbol(Symbol);
             JsonCurrentDailyBar?.SetSymbol(Symbol);
             JsonPreviousDailyBar?.SetSymbol(Symbol);
-            return this;
         }
     }
 }

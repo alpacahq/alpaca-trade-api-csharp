@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -40,6 +41,7 @@ namespace Alpaca.Markets
         [JsonIgnore]
         public String Tape => String.Empty;
 
-        void ISymbolMutable.SetSymbol(String symbol) => Symbol = symbol;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetSymbol(String symbol) => Symbol = symbol;
     }
 }

@@ -109,5 +109,16 @@ namespace Alpaca.Markets
         Task<IQuote> GetLatestBestBidOfferAsync(
             LatestBestBidOfferRequest request,
             CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets current snapshot data for singe asset from Alpaca REST API endpoint.
+        /// </summary>
+        /// <param name="request">Asset name and exchange pair for data retrieval.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Read-only current snapshot information.</returns>
+        [UsedImplicitly]
+        Task<ISnapshot> GetSnapshotAsync(
+            SnapshotDataRequest request,
+            CancellationToken cancellationToken = default);
     }
 }

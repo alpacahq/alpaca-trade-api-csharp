@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
+
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonHistoricalTrade : ITrade
+    internal sealed class JsonHistoricalTrade : ITrade, ISymbolMutable
     {
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
         public DateTime TimestampUtc { get; set; }
@@ -29,16 +31,18 @@ namespace Alpaca.Markets
         public String Tape { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
-        public List<String> ConditionsList { get; } = new ();
+        public List<String> ConditionsList { get; } = new();
 
         [JsonProperty(PropertyName = "tks", Required = Required.Default)]
         public TakerSide TakerSide { get; set; } = TakerSide.Unknown;
 
-        [JsonIgnore]
-        public String Symbol { get; internal set; } = String.Empty;
+        [JsonIgnore] public String Symbol { get; private set; } = String.Empty;
 
         [JsonIgnore]
-        public IReadOnlyList<String> Conditions => 
+        public IReadOnlyList<String> Conditions =>
             ConditionsList.EmptyIfNull();
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetSymbol(String symbol) => Symbol = symbol;
     }
 }
