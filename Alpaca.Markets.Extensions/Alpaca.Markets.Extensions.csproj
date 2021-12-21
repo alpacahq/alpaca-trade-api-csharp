@@ -12,14 +12,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.2.0</AssemblyVersion>
-    <FileVersion>6.0.2.0</FileVersion>
-    <Version>6.0.2-alpha1</Version>
+    <AssemblyVersion>6.0.2.1</AssemblyVersion>
+    <FileVersion>6.0.2.1</FileVersion>
+    <Version>6.0.2-alpha2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Added support for the `DateOnly` type for filtering in requests.
-- Redesigned date/time intervals handling approach.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Re-integrated latest changes in the main SDK (added missed methods/events implementations).</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
