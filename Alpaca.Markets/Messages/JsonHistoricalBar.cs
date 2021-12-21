@@ -11,7 +11,7 @@ namespace Alpaca.Markets
     internal sealed class JsonHistoricalBar : IBar, ISymbolMutable
     {
         [JsonIgnore]
-        public String Symbol { get; internal set; } = String.Empty;
+        public String Symbol { get; private set; } = String.Empty;
 
         [JsonProperty(PropertyName = "o", Required = Required.Always)]
         public Decimal Open { get; set; }

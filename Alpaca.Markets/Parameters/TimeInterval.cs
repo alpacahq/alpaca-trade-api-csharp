@@ -131,6 +131,7 @@ namespace Alpaca.Markets
         /// <param name="request">Target request for setting filtering interval.</param>
         /// <param name="interval">Time interval (date/time pair) for filtering.</param>
         /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
+        [UsedImplicitly]
         public static TRequest SetTimeInterval<TRequest>(
             this TRequest request,
             IInclusiveTimeInterval interval)

@@ -9,13 +9,13 @@ namespace Alpaca.Markets
             this IEnumerable<TSource> source,
             int size)
         {
-            using IEnumerator<TSource> e = source.GetEnumerator();
+            using var e = source.GetEnumerator();
             while (e.MoveNext())
             {
-                TSource[] chunk = new TSource[size];
+                var chunk = new TSource[size];
                 chunk[0] = e.Current;
 
-                int i = 1;
+                var i = 1;
                 for (; i < chunk.Length && e.MoveNext(); i++)
                 {
                     chunk[i] = e.Current;

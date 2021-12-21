@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -11,6 +12,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Occurred when new trade update received from stream.
         /// </summary>
+        [UsedImplicitly]
         event Action<ITradeUpdate>? OnTradeUpdate;
     }
 }
