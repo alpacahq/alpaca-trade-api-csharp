@@ -29,13 +29,16 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
     {
         Client = client;
         _reconnectionParameters = reconnectionParameters;
+
         Client.SocketClosed += handleSocketClosed;
         Client.OnError += handleOnError;
     }
 
     public void Dispose()
     {
+        Client.OnError -= handleOnError;
         Client.SocketClosed -= handleSocketClosed;
+
         _cancellationTokenSource.Cancel();
 
         Client.Dispose();
@@ -69,6 +72,12 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
     {
         add => Client.SocketOpened += value;
         remove => Client.SocketOpened -= value;
+    }
+
+    public event Action<String>? OnWarning
+    {
+        add => Client.OnWarning += value;
+        remove => Client.OnWarning -= value;
     }
 
     public event Action? SocketClosed;

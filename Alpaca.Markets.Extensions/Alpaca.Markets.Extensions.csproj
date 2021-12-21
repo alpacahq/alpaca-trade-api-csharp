@@ -78,7 +78,7 @@
   </ItemGroup>
 
   <ItemGroup>
-      <PackageReference Include="Alpaca.Markets" Version="6.0.2-alpha1" />
+      <PackageReference Include="Alpaca.Markets" Version="6.0.2-alpha4" />
   </ItemGroup>
 
   <ItemGroup>

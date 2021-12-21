@@ -27,6 +27,12 @@ internal sealed class DisposableAlpacaDataSubscription<TItem> :
 
     public Boolean Subscribed => _subscription.Subscribed;
 
+    public event Action? OnSubscribedChanged
+    {
+        add => _subscription.OnSubscribedChanged += value;
+        remove => _subscription.OnSubscribedChanged -= value;
+    }
+
     public event Action<TItem> Received
     {
         add => _subscription.Received += value;

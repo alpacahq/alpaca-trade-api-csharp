@@ -13,6 +13,24 @@ internal sealed class AlpacaDataSubscriptionContainer<TItem>
 
     public Boolean Subscribed => _subscriptions.All(_ => _.Subscribed);
 
+    public event Action? OnSubscribedChanged
+    {
+        add
+        {
+            foreach (var subscription in _subscriptions)
+            {
+                subscription.OnSubscribedChanged += value;
+            }
+        }
+        remove
+        {
+            foreach (var subscription in _subscriptions)
+            {
+                subscription.OnSubscribedChanged -= value;
+            }
+        }
+    }
+
     public event Action<TItem>? Received
     {
         add

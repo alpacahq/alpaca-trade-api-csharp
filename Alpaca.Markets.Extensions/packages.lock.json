@@ -4,14 +4,14 @@
     ".NETFramework,Version=v4.6.2": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[6.0.2-alpha1, )",
-        "resolved": "6.0.2-alpha1",
-        "contentHash": "gd20qYb3uh5a8VEt7oEFR1zLKb7J5bLXvcZd0J+UUhNRsUtzPcriQp3EgciBduy8HzpBEmJzQJ6UWWkL9b40kg==",
+        "requested": "[6.0.2-alpha4, )",
+        "resolved": "6.0.2-alpha4",
+        "contentHash": "mvJ/KbW1HrJ2O5EnBVpkqSP/RPGeZII1mwYk3X3Z1li6D9G9af7ZsORCK47AzmAblaI8rR0BgTqt1azAhWqGcA==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.2",
           "Portable.System.DateTimeOnly": "6.0.0-alpha2",
-          "System.IO.Pipelines": "6.0.0",
+          "System.IO.Pipelines": "6.0.1",
           "System.Net.Http.WinHttpHandler": "6.0.0"
         }
       },
@@ -209,8 +209,8 @@
       },
       "System.IO.Pipelines": {
         "type": "Transitive",
-        "resolved": "6.0.0",
-        "contentHash": "mXX66shZ4xLlI3vNLaJ0lt8OIZdmXTvIqXRdQX5HLVGSkLhINLsVhyZuX2UdRFnOGkqnwmMUs40pIIQ7mna4+A==",
+        "resolved": "6.0.1",
+        "contentHash": "1j1pZX1ICzEyjafyssU3BzWVxUsaN3zq0wEmGKj3bxINC6NkmS30eEVuZ7k/QX2UKYNCaUch6g46taYKxcpFtw==",
         "dependencies": {
           "System.Buffers": "4.5.1",
           "System.Memory": "4.5.4",
@@ -263,14 +263,14 @@
     ".NETStandard,Version=v2.0": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[6.0.2-alpha1, )",
-        "resolved": "6.0.2-alpha1",
-        "contentHash": "gd20qYb3uh5a8VEt7oEFR1zLKb7J5bLXvcZd0J+UUhNRsUtzPcriQp3EgciBduy8HzpBEmJzQJ6UWWkL9b40kg==",
+        "requested": "[6.0.2-alpha4, )",
+        "resolved": "6.0.2-alpha4",
+        "contentHash": "mvJ/KbW1HrJ2O5EnBVpkqSP/RPGeZII1mwYk3X3Z1li6D9G9af7ZsORCK47AzmAblaI8rR0BgTqt1azAhWqGcA==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.2",
           "Portable.System.DateTimeOnly": "6.0.0-alpha2",
-          "System.IO.Pipelines": "6.0.0"
+          "System.IO.Pipelines": "6.0.1"
         }
       },
       "JetBrains.Annotations": {
@@ -483,8 +483,8 @@
       },
       "System.IO.Pipelines": {
         "type": "Transitive",
-        "resolved": "6.0.0",
-        "contentHash": "mXX66shZ4xLlI3vNLaJ0lt8OIZdmXTvIqXRdQX5HLVGSkLhINLsVhyZuX2UdRFnOGkqnwmMUs40pIIQ7mna4+A==",
+        "resolved": "6.0.1",
+        "contentHash": "1j1pZX1ICzEyjafyssU3BzWVxUsaN3zq0wEmGKj3bxINC6NkmS30eEVuZ7k/QX2UKYNCaUch6g46taYKxcpFtw==",
         "dependencies": {
           "System.Buffers": "4.5.1",
           "System.Memory": "4.5.4",
@@ -523,14 +523,14 @@
     ".NETStandard,Version=v2.1": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[6.0.2-alpha1, )",
-        "resolved": "6.0.2-alpha1",
-        "contentHash": "gd20qYb3uh5a8VEt7oEFR1zLKb7J5bLXvcZd0J+UUhNRsUtzPcriQp3EgciBduy8HzpBEmJzQJ6UWWkL9b40kg==",
+        "requested": "[6.0.2-alpha4, )",
+        "resolved": "6.0.2-alpha4",
+        "contentHash": "mvJ/KbW1HrJ2O5EnBVpkqSP/RPGeZII1mwYk3X3Z1li6D9G9af7ZsORCK47AzmAblaI8rR0BgTqt1azAhWqGcA==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.2",
           "Portable.System.DateTimeOnly": "6.0.0-alpha2",
-          "System.IO.Pipelines": "6.0.0"
+          "System.IO.Pipelines": "6.0.1"
         }
       },
       "JetBrains.Annotations": {
@@ -699,8 +699,8 @@
       },
       "System.IO.Pipelines": {
         "type": "Transitive",
-        "resolved": "6.0.0",
-        "contentHash": "mXX66shZ4xLlI3vNLaJ0lt8OIZdmXTvIqXRdQX5HLVGSkLhINLsVhyZuX2UdRFnOGkqnwmMUs40pIIQ7mna4+A==",
+        "resolved": "6.0.1",
+        "contentHash": "1j1pZX1ICzEyjafyssU3BzWVxUsaN3zq0wEmGKj3bxINC6NkmS30eEVuZ7k/QX2UKYNCaUch6g46taYKxcpFtw==",
         "dependencies": {
           "System.Buffers": "4.5.1",
           "System.Memory": "4.5.4",
@@ -739,14 +739,14 @@
     ".NETCoreApp,Version=v5.0": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[6.0.2-alpha1, )",
-        "resolved": "6.0.2-alpha1",
-        "contentHash": "gd20qYb3uh5a8VEt7oEFR1zLKb7J5bLXvcZd0J+UUhNRsUtzPcriQp3EgciBduy8HzpBEmJzQJ6UWWkL9b40kg==",
+        "requested": "[6.0.2-alpha4, )",
+        "resolved": "6.0.2-alpha4",
+        "contentHash": "mvJ/KbW1HrJ2O5EnBVpkqSP/RPGeZII1mwYk3X3Z1li6D9G9af7ZsORCK47AzmAblaI8rR0BgTqt1azAhWqGcA==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.2",
           "Portable.System.DateTimeOnly": "6.0.0-alpha2",
-          "System.IO.Pipelines": "6.0.0"
+          "System.IO.Pipelines": "6.0.1"
         }
       },
       "JetBrains.Annotations": {
@@ -913,8 +913,8 @@
       },
       "System.IO.Pipelines": {
         "type": "Transitive",
-        "resolved": "6.0.0",
-        "contentHash": "mXX66shZ4xLlI3vNLaJ0lt8OIZdmXTvIqXRdQX5HLVGSkLhINLsVhyZuX2UdRFnOGkqnwmMUs40pIIQ7mna4+A=="
+        "resolved": "6.0.1",
+        "contentHash": "1j1pZX1ICzEyjafyssU3BzWVxUsaN3zq0wEmGKj3bxINC6NkmS30eEVuZ7k/QX2UKYNCaUch6g46taYKxcpFtw=="
       },
       "System.Memory": {
         "type": "Transitive",
@@ -930,13 +930,13 @@
     "net6.0": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[6.0.2-alpha1, )",
-        "resolved": "6.0.2-alpha1",
-        "contentHash": "gd20qYb3uh5a8VEt7oEFR1zLKb7J5bLXvcZd0J+UUhNRsUtzPcriQp3EgciBduy8HzpBEmJzQJ6UWWkL9b40kg==",
+        "requested": "[6.0.2-alpha4, )",
+        "resolved": "6.0.2-alpha4",
+        "contentHash": "mvJ/KbW1HrJ2O5EnBVpkqSP/RPGeZII1mwYk3X3Z1li6D9G9af7ZsORCK47AzmAblaI8rR0BgTqt1azAhWqGcA==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.2",
-          "System.IO.Pipelines": "6.0.0"
+          "System.IO.Pipelines": "6.0.1"
         }
       },
       "JetBrains.Annotations": {
@@ -1088,8 +1088,8 @@
       },
       "System.IO.Pipelines": {
         "type": "Transitive",
-        "resolved": "6.0.0",
-        "contentHash": "mXX66shZ4xLlI3vNLaJ0lt8OIZdmXTvIqXRdQX5HLVGSkLhINLsVhyZuX2UdRFnOGkqnwmMUs40pIIQ7mna4+A=="
+        "resolved": "6.0.1",
+        "contentHash": "1j1pZX1ICzEyjafyssU3BzWVxUsaN3zq0wEmGKj3bxINC6NkmS30eEVuZ7k/QX2UKYNCaUch6g46taYKxcpFtw=="
       },
       "System.Runtime.CompilerServices.Unsafe": {
         "type": "Transitive",
