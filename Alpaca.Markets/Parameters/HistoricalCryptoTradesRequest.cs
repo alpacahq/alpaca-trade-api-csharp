@@ -49,7 +49,7 @@ namespace Alpaca.Markets
             IEnumerable<String> symbols,
             DateTime from,
             DateTime into)
-            : base(symbols, into, from)
+            : base(symbols, from, into)
         {
         }
 
