@@ -18,6 +18,16 @@ internal sealed class AlpacaDataStreamingClient :
         String symbol) =>
         GetSubscription<IStatus, JsonTradingStatus>(StatusesChannel, symbol);
 
+    public IAlpacaDataSubscription<ITrade> GetCancellationSubscription(
+        String symbol) =>
+        GetSubscription<ITrade, JsonRealTimeTrade>(CancellationsChannel, symbol,
+            GetTradeSubscription(symbol));
+
+    public IAlpacaDataSubscription<ICorrection> GetCorrectionSubscription(
+        String symbol) =>
+        GetSubscription<ICorrection, JsonCorrection>(CorrectionsChannel, symbol,
+            GetTradeSubscription(symbol));
+        
     public IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(
         String symbol) =>
         GetSubscription<ILimitUpLimitDown, JsonLimitUpLimitDown>(LimitUpDownChannel, symbol);

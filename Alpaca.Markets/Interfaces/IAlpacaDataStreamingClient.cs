@@ -18,6 +18,28 @@ public interface IAlpacaDataStreamingClient : IStreamingDataClient
         String symbol);
 
     /// <summary>
+    /// Gets the trade cancellations subscription for the <paramref name="symbol"/> asset.
+    /// </summary>
+    /// <param name="symbol">Alpaca asset name.</param>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    IAlpacaDataSubscription<ITrade> GetCancellationSubscription(
+        String symbol);
+
+    /// <summary>
+    /// Gets the trade corrections subscription for the <paramref name="symbol"/> asset.
+    /// </summary>
+    /// <param name="symbol">Alpaca asset name.</param>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    IAlpacaDataSubscription<ICorrection> GetCorrectionSubscription(
+        String symbol);
+
+    /// <summary>
     /// Gets the LULD (limit up / limit down) subscription for the <paramref name="symbol"/> asset.
     /// </summary>
     /// <param name="symbol">Alpaca asset name.</param>

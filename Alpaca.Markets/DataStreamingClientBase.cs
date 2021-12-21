@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Diagnostics;
 using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets;
@@ -16,7 +17,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
             JToken token);
     }
 
-    private sealed class AlpacaDataSubscription<TApi, TJson>
+    private sealed class AlpacaExplicitDataSubscription<TApi, TJson>
         : IAlpacaDataSubscription<TApi>, ISubscription
         where TJson : class, TApi
     {
@@ -24,7 +25,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
 
         private Boolean _subscribed;
 
-        internal AlpacaDataSubscription(
+        internal AlpacaExplicitDataSubscription(
             String stream) =>
             _stream = stream;
 
@@ -54,11 +55,50 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
 
         public void OnReceived(
             JToken token) =>
-            Received?.Invoke(token.ToObject<TJson>()
-                             ?? throw new RestClientErrorException());
+            Received?.Invoke(token.ToObject<TJson>() ?? throw new RestClientErrorException());
 
         public void OnUpdate(
             Boolean isSubscribed) => Subscribed = isSubscribed;
+    }
+
+    private sealed class AlpacaImplicitDataSubscription<TApi, TJson>
+        : IAlpacaDataSubscription<TApi>, ISubscription
+        where TJson : class, TApi
+    {
+        private readonly IAlpacaDataSubscription _parent;
+
+        private readonly String _stream;
+
+        internal AlpacaImplicitDataSubscription(
+            String stream,
+            IAlpacaDataSubscription parent)
+        {
+            _stream = stream;
+            _parent = parent;
+        }
+
+        public IEnumerable<String> Streams
+        {
+            get { yield return _stream; }
+        }
+
+        public Boolean Subscribed => _parent.Subscribed;
+
+        public event Action<TApi>? Received;
+
+        public event Action? OnSubscribedChanged
+        {
+            add => _parent.OnSubscribedChanged += value;
+            remove => _parent.OnSubscribedChanged -= value;
+        }
+
+        public void OnReceived(
+            JToken token) =>
+            Received?.Invoke(token.ToObject<TJson>() ?? throw new RestClientErrorException());
+
+        public void OnUpdate(
+            Boolean isSubscribed) =>
+            Trace.WriteLine($"Update received for the channel '{_stream}' - not expected.");
     }
 
     private sealed class SubscriptionsDictionary
@@ -69,7 +109,16 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
             String stream)
             where TJson : class, TApi =>
             (IAlpacaDataSubscription<TApi>)_subscriptions.GetOrAdd(
-                stream, key => new AlpacaDataSubscription<TApi, TJson>(key));
+                stream, key => new AlpacaExplicitDataSubscription<TApi, TJson>(key));
+
+        public IAlpacaDataSubscription<TApi> GetOrAdd<TApi, TJson>(
+            String stream,
+            IAlpacaDataSubscription parent)
+            where TJson : class, TApi
+        {
+            return (IAlpacaDataSubscription<TApi>)_subscriptions.GetOrAdd(
+                stream, key => new AlpacaImplicitDataSubscription<TApi, TJson>(key, parent));
+        }
 
         public void OnUpdate(
             ICollection<String> streams)
@@ -111,12 +160,23 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
 
     protected const String LimitUpDownChannel = "l";
 
+    protected const String CorrectionsChannel = "c";
+
+    protected const String CancellationsChannel = "x";
+
     private const String WildcardSymbolString = "*";
 
     private const Int32 SubscriptionChunkSize = 100;
 
     // ReSharper disable once StaticMemberInGenericType
     private static readonly Char[] _channelSeparator = { '.' };
+
+    // ReSharper disable once StaticMemberInGenericType
+    private static readonly SortedSet<String> _implicitChannels = new (StringComparer.Ordinal)
+    {
+        CancellationsChannel,
+        CorrectionsChannel
+    };
 
     private readonly IDictionary<String, Action<JToken>> _handlers;
 
@@ -127,6 +187,8 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         : base(configuration.EnsureNotNull(nameof(configuration))) =>
         _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
         {
+                { CancellationsChannel, handleRealtimeDataUpdate },
+                { CorrectionsChannel, handleRealtimeDataUpdate },
                 { LimitUpDownChannel, handleRealtimeDataUpdate },
                 { MinuteBarsChannel, handleRealtimeDataUpdate },
                 { DailyBarsChannel, handleRealtimeDataUpdate },
@@ -179,6 +241,12 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         where TJson : class, TApi =>
         _subscriptions.GetOrAdd<TApi, TJson>(getStreamName(channelName, symbol));
 
+    protected IAlpacaDataSubscription<TApi> GetSubscription<TApi, TJson>(
+        String channelName,
+        String symbol,
+        IAlpacaDataSubscription parent)
+        where TJson : class, TApi =>
+        _subscriptions.GetOrAdd<TApi, TJson>(getStreamName(channelName, symbol), parent);
 
     [SuppressMessage(
         "Design", "CA1031:Do not catch general exception types",
@@ -375,6 +443,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
             .Select(stream => stream.Split(
                 _channelSeparator, 2, StringSplitOptions.RemoveEmptyEntries))
             .Where(pair => pair.Length == 2)
+            .Where(pair => !_implicitChannels.Contains(pair[0]))
             .ToLookup(
                 pair => pair[0],
                 pair => pair[1],
