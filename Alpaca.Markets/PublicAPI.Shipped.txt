@@ -338,6 +338,8 @@ Alpaca.Markets.IAlpacaDataClient.ListHistoricalTradesAsync(Alpaca.Markets.Histor
 Alpaca.Markets.IAlpacaDataClient.ListQuoteConditionsAsync(Alpaca.Markets.Tape tape, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, string!>!>!
 Alpaca.Markets.IAlpacaDataClient.ListTradeConditionsAsync(Alpaca.Markets.Tape tape, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, string!>!>!
 Alpaca.Markets.IAlpacaDataStreamingClient
+Alpaca.Markets.IAlpacaDataStreamingClient.GetCancellationSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ITrade!>!
+Alpaca.Markets.IAlpacaDataStreamingClient.GetCorrectionSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ICorrection!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetDailyBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetLimitUpLimitDownSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ILimitUpLimitDown!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetMinuteBarSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
@@ -421,6 +423,9 @@ Alpaca.Markets.IClock.IsOpen.get -> bool
 Alpaca.Markets.IClock.NextCloseUtc.get -> System.DateTime
 Alpaca.Markets.IClock.NextOpenUtc.get -> System.DateTime
 Alpaca.Markets.IClock.TimestampUtc.get -> System.DateTime
+Alpaca.Markets.ICorrection
+Alpaca.Markets.ICorrection.CorrectedTrade.get -> Alpaca.Markets.ITrade!
+Alpaca.Markets.ICorrection.OriginalTrade.get -> Alpaca.Markets.ITrade!
 Alpaca.Markets.IEnvironment
 Alpaca.Markets.IEnvironment.AlpacaCryptoStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaDataApi.get -> System.Uri!

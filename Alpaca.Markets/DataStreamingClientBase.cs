@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
@@ -22,7 +23,7 @@ namespace Alpaca.Markets
                 JToken token);
         }
 
-        private sealed class AlpacaDataSubscription<TApi, TJson>
+        private sealed class AlpacaExplicitDataSubscription<TApi, TJson>
             : IAlpacaDataSubscription<TApi>, ISubscription
             where TJson : class, TApi
         {
@@ -30,7 +31,7 @@ namespace Alpaca.Markets
 
             private Boolean _subscribed;
 
-            internal AlpacaDataSubscription(
+            internal AlpacaExplicitDataSubscription(
                 String stream) =>
                 _stream = stream;
 
@@ -38,6 +39,7 @@ namespace Alpaca.Markets
             {
                 get { yield return _stream; }
             }
+
             public Boolean Subscribed
             {
                 get => _subscribed;
@@ -59,22 +61,70 @@ namespace Alpaca.Markets
 
             public void OnReceived(
                 JToken token) =>
-                Received?.Invoke(token.ToObject<TJson>()
-                                 ?? throw new RestClientErrorException());
+                Received?.Invoke(token.ToObject<TJson>() ?? throw new RestClientErrorException());
 
             public void OnUpdate(
                 Boolean isSubscribed) => Subscribed = isSubscribed;
         }
 
+        private sealed class AlpacaImplicitDataSubscription<TApi, TJson>
+            : IAlpacaDataSubscription<TApi>, ISubscription
+            where TJson : class, TApi
+        {
+            private readonly IAlpacaDataSubscription _parent;
+
+            private readonly String _stream;
+
+            internal AlpacaImplicitDataSubscription(
+                String stream,
+                IAlpacaDataSubscription parent)
+            {
+                _stream = stream;
+                _parent = parent;
+            }
+
+            public IEnumerable<String> Streams
+            {
+                get { yield return _stream; }
+            }
+
+            public Boolean Subscribed => _parent.Subscribed;
+
+            public event Action<TApi>? Received;
+
+            public event Action? OnSubscribedChanged
+            {
+                add => _parent.OnSubscribedChanged += value;
+                remove => _parent.OnSubscribedChanged -= value;
+            }
+
+            public void OnReceived(
+                JToken token) =>
+                Received?.Invoke(token.ToObject<TJson>() ?? throw new RestClientErrorException());
+
+            public void OnUpdate(
+                Boolean isSubscribed) =>
+                Trace.WriteLine($"Update received for the channel '{_stream}' - not expected.");
+        }
+
         private sealed class SubscriptionsDictionary
         {
-            private readonly ConcurrentDictionary<String, ISubscription> _subscriptions = new (StringComparer.Ordinal);
+            private readonly ConcurrentDictionary<String, ISubscription> _subscriptions = new(StringComparer.Ordinal);
 
-            public  IAlpacaDataSubscription<TApi> GetOrAdd<TApi, TJson>(
+            public IAlpacaDataSubscription<TApi> GetOrAdd<TApi, TJson>(
                 String stream)
                 where TJson : class, TApi =>
-                (IAlpacaDataSubscription<TApi>) _subscriptions.GetOrAdd(
-                    stream, key => new AlpacaDataSubscription<TApi, TJson>(key));
+                (IAlpacaDataSubscription<TApi>)_subscriptions.GetOrAdd(
+                    stream, key => new AlpacaExplicitDataSubscription<TApi, TJson>(key));
+
+            public IAlpacaDataSubscription<TApi> GetOrAdd<TApi, TJson>(
+                String stream,
+                IAlpacaDataSubscription parent)
+                where TJson : class, TApi
+            {
+                return (IAlpacaDataSubscription<TApi>)_subscriptions.GetOrAdd(
+                    stream, key => new AlpacaImplicitDataSubscription<TApi, TJson>(key, parent));
+            }
 
             public void OnUpdate(
                 ICollection<String> streams)
@@ -116,6 +166,10 @@ namespace Alpaca.Markets
 
         protected const String LimitUpDownChannel = "l";
 
+        protected const String CorrectionsChannel = "c";
+
+        protected const String CancellationsChannel = "x";
+
         protected const String WildcardSymbolString = "*";
 
         private const Int32 SubscriptionChunkSize = 100;
@@ -123,15 +177,24 @@ namespace Alpaca.Markets
         // ReSharper disable once StaticMemberInGenericType
         private static readonly Char[] _channelSeparator = { '.' };
 
+        // ReSharper disable once StaticMemberInGenericType
+        private static readonly SortedSet<String> _implicitChannels = new(StringComparer.Ordinal)
+        {
+            CancellationsChannel,
+            CorrectionsChannel
+        };
+
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
-        private readonly SubscriptionsDictionary _subscriptions = new ();
+        private readonly SubscriptionsDictionary _subscriptions = new();
 
         protected DataStreamingClientBase(
             TConfiguration configuration)
             : base(configuration.EnsureNotNull(nameof(configuration))) =>
             _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {
+                { CancellationsChannel, handleRealtimeDataUpdate },
+                { CorrectionsChannel, handleRealtimeDataUpdate },
                 { LimitUpDownChannel, handleRealtimeDataUpdate },
                 { MinuteBarsChannel, handleRealtimeDataUpdate },
                 { DailyBarsChannel, handleRealtimeDataUpdate },
@@ -166,9 +229,15 @@ namespace Alpaca.Markets
         protected IAlpacaDataSubscription<TApi> GetSubscription<TApi, TJson>(
             String channelName,
             String symbol)
-            where TJson : class, TApi => 
+            where TJson : class, TApi =>
             _subscriptions.GetOrAdd<TApi, TJson>(getStreamName(channelName, symbol));
 
+        protected IAlpacaDataSubscription<TApi> GetSubscription<TApi, TJson>(
+            String channelName,
+            String symbol,
+            IAlpacaDataSubscription parent)
+            where TJson : class, TApi =>
+            _subscriptions.GetOrAdd<TApi, TJson>(getStreamName(channelName, symbol), parent);
 
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
@@ -230,7 +299,7 @@ namespace Alpaca.Markets
                 HandleError(exception);
             }
         }
-        
+
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]
@@ -281,7 +350,7 @@ namespace Alpaca.Markets
                 HandleError(exception);
             }
         }
-        
+
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]
@@ -353,7 +422,7 @@ namespace Alpaca.Markets
                     Trades = getSymbols(streamsByChannels, TradesChannel),
                     Quotes = getSymbols(streamsByChannels, QuotesChannel),
                     Statuses = getSymbols(streamsByChannels, StatusesChannel),
-                    Lulds =  getSymbols(streamsByChannels, LimitUpDownChannel),
+                    Lulds = getSymbols(streamsByChannels, LimitUpDownChannel),
                     DailyBars = getSymbols(streamsByChannels, DailyBarsChannel),
                     MinuteBars = getSymbols(streamsByChannels, MinuteBarsChannel)
                 }, cancellationToken)
@@ -365,9 +434,10 @@ namespace Alpaca.Markets
                 .Select(stream => stream.Split(
                     _channelSeparator, 2, StringSplitOptions.RemoveEmptyEntries))
                 .Where(pair => pair.Length == 2)
+                .Where(pair => !_implicitChannels.Contains(pair[0]))
                 .ToLookup(
-                    pair => pair[0], 
-                    pair => pair[1], 
+                    pair => pair[0],
+                    pair => pair[1],
                     StringComparer.Ordinal);
 
         private static IEnumerable<String> getStreams(

@@ -3,7 +3,7 @@
 namespace Alpaca.Markets
 {
     internal sealed class AlpacaDataStreamingClient :
-        DataStreamingClientBase<AlpacaDataStreamingClientConfiguration>, 
+        DataStreamingClientBase<AlpacaDataStreamingClientConfiguration>,
         IAlpacaDataStreamingClient
     {
         public AlpacaDataStreamingClient(
@@ -13,14 +13,14 @@ namespace Alpaca.Markets
         }
 
         public IAlpacaDataSubscription<ITrade> GetTradeSubscription(
-            String symbol) => 
+            String symbol) =>
             GetSubscription<ITrade, JsonRealTimeTrade>(TradesChannel, symbol);
 
         public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
             String symbol) =>
             GetSubscription<IQuote, JsonRealTimeQuote>(QuotesChannel, symbol);
 
-        public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() => 
+        public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() =>
             GetSubscription<IBar, JsonRealTimeBar>(MinuteBarsChannel, WildcardSymbolString);
 
         public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
@@ -34,6 +34,16 @@ namespace Alpaca.Markets
         public IAlpacaDataSubscription<IStatus> GetStatusSubscription(
             String symbol) =>
             GetSubscription<IStatus, JsonTradingStatus>(StatusesChannel, symbol);
+
+        public IAlpacaDataSubscription<ITrade> GetCancellationSubscription(
+            String symbol) =>
+            GetSubscription<ITrade, JsonRealTimeTrade>(CancellationsChannel, symbol,
+                GetTradeSubscription(symbol));
+
+        public IAlpacaDataSubscription<ICorrection> GetCorrectionSubscription(
+            String symbol) =>
+            GetSubscription<ICorrection, JsonCorrection>(CorrectionsChannel, symbol,
+                GetTradeSubscription(symbol));
 
         public IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(
             String symbol) =>

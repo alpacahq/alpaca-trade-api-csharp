@@ -35,7 +35,7 @@ namespace Alpaca.Markets
         public DateTime TimestampUtc { get; set; }
 
         [JsonProperty(PropertyName = "c", Required = Required.Default)]
-        public List<String> ConditionsList { get; } = new ();
+        public List<String> ConditionsList { get; set; } = new ();
 
         [JsonProperty(PropertyName = "tks", Required = Required.Default)]
         public TakerSide TakerSide { get; set; } = TakerSide.Unknown;
