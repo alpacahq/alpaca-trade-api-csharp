@@ -44,7 +44,7 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
         IEnumerable<String> symbols,
         DateTime from,
         DateTime into)
-        : base(symbols, into, from)
+        : base(symbols, from, into)
     {
     }
 
