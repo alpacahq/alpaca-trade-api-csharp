@@ -46,7 +46,9 @@ public static class TimeInterval
     [UsedImplicitly]
     [Obsolete("Use the IsEmpty() method of Interval<DateTime> structure instead of this one.", false)]
     public static Boolean IsEmpty(this ITimeInterval interval) =>
-        interval is Interval wrapper ? wrapper.IsEmpty() : new Interval<DateTime>(interval?.From, interval?.Into).IsEmpty();
+        interval is Interval wrapper ? wrapper.IsEmpty()
+            // ReSharper disable once ConstantConditionalAccessQualifier
+            : new Interval<DateTime>(interval?.From, interval?.Into).IsEmpty();
 
     /// <summary>
     /// Gets boolean flag signals that time interval is open (both start or end date equal to <c>null</c>).
@@ -58,7 +60,9 @@ public static class TimeInterval
     [UsedImplicitly]
     [Obsolete("Use the IsOpen() method of Interval<DateTime> structure instead of this one.", false)]
     public static Boolean IsOpen(this ITimeInterval interval) =>
-        interval is Interval wrapper ? wrapper.IsOpen() : new Interval<DateTime>(interval?.From, interval?.Into).IsOpen();
+        interval is Interval wrapper ? wrapper.IsOpen()
+            // ReSharper disable once ConstantConditionalAccessQualifier
+            : new Interval<DateTime>(interval?.From, interval?.Into).IsOpen();
 
     /// <summary>
     /// Gets exclusive open time interval ending at the <paramref name="value"/> date/time point.
@@ -228,6 +232,7 @@ public static class TimeInterval
         out DateTime? from,
         out DateTime? into)
     {
+        // ReSharper disable once ConstantConditionalAccessQualifier
         from = interval?.From;
         into = interval?.Into;
     }
@@ -246,6 +251,7 @@ public static class TimeInterval
         out DateTime? from,
         out DateTime? into)
     {
+        // ReSharper disable once ConstantConditionalAccessQualifier
         from = interval?.From;
         into = interval?.Into;
     }

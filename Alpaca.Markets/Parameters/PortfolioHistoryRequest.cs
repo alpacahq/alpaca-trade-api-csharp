@@ -88,5 +88,6 @@ public sealed class PortfolioHistoryRequest :
     [Obsolete("Use WithInterval method instead of this one.", false)]
     void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
         IInclusiveTimeInterval value) =>
+        // ReSharper disable once ConstantConditionalAccessQualifier
         WithInterval(new Interval<DateOnly>(value?.From.AsDateOnly(), value?.Into.AsDateOnly()));
 }

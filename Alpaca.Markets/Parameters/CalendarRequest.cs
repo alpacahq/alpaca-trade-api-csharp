@@ -86,5 +86,6 @@ public sealed class CalendarRequest :
     [Obsolete("Use WithInterval method instead of this one.", false)]
     void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
         IInclusiveTimeInterval value) =>
+        // ReSharper disable once ConstantConditionalAccessQualifier
         WithInterval(new Interval<DateOnly>(value?.From.AsDateOnly(), value?.Into.AsDateOnly()));
 }

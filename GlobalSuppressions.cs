@@ -1,9 +1,11 @@
 ﻿// This file is used by Code Analysis to maintain SuppressMessage attributes that are applied to this project.
 
-global using Newtonsoft.Json;
 global using JetBrains.Annotations;
 global using System.Diagnostics.CodeAnalysis;
 global using System.Runtime.CompilerServices;
+
+// ReSharper disable once RedundantUsingDirective.Global
+global using Newtonsoft.Json;
 
 [assembly: CLSCompliant(true)]
 

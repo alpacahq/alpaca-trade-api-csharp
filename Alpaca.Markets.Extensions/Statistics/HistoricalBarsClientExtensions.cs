@@ -180,6 +180,7 @@ public static partial class HistoricalBarsClientExtensions
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
        GetAverageDailyTradeVolumeAsync(
            client, symbol,
+           // ReSharper disable once ConstantConditionalAccessQualifier
            new Interval<DateOnly>(timeInterval?.From.AsDateOnly(), timeInterval?.From.AsDateOnly()),
            cancellationToken);
 

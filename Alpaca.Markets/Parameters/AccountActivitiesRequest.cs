@@ -128,5 +128,7 @@ public sealed class AccountActivitiesRequest :
 
     [Obsolete("Use WithInterval method instead of this one.", false)]
     void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
-        IInclusiveTimeInterval value) => WithInterval(new Interval<DateTime>(value?.From, value?.Into));
+        IInclusiveTimeInterval value) =>
+        // ReSharper disable once ConstantConditionalAccessQualifier
+        WithInterval(new Interval<DateTime>(value?.From, value?.Into));
 }

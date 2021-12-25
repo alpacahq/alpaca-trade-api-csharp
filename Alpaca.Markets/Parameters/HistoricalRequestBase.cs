@@ -43,6 +43,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     protected internal HistoricalRequestBase(
         IEnumerable<String> symbols,
         IInclusiveTimeInterval timeInterval)
+        // ReSharper disable once ConstantConditionalAccessQualifier
         : this (symbols, new Interval<DateTime>(timeInterval?.From, timeInterval?.Into))
     {
     }

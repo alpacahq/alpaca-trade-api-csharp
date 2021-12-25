@@ -104,7 +104,9 @@ public sealed class ListOrdersRequest :
 
     [Obsolete("Use WithInterval method instead of this one.", false)]
     void IRequestWithTimeInterval<IExclusiveTimeInterval>.SetInterval(
-        IExclusiveTimeInterval value) => WithInterval(new Interval<DateTime>(value?.From, value?.Into));
+        IExclusiveTimeInterval value) =>
+        // ReSharper disable once ConstantConditionalAccessQualifier
+        WithInterval(new Interval<DateTime>(value?.From, value?.Into));
 
     private void addSymbolWithCheck(String symbol, String paramName)
     {
