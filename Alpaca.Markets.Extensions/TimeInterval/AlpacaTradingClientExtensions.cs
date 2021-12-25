@@ -3,7 +3,7 @@
 /// <summary>
 /// Set of extension methods for the <see cref="IAlpacaTradingClient"/> interface.
 /// </summary>
-public static class AlpacaTradingClientExtensions
+public static partial class AlpacaTradingClientExtensions
 {
     /// <summary>
     /// Get single trading date information from the Alpaca REST API.
