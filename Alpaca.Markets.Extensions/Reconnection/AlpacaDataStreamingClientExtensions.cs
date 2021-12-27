@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -86,9 +87,7 @@ namespace Alpaca.Markets.Extensions
                 Client.Unsubscribe(subscriptions);
             }
 
-            protected override void Resubscribe(
-                String symbol, 
-                IAlpacaDataSubscription subscription)
+            protected override void Resubscribe(IAlpacaDataSubscription subscription)
             {
                 Client.Subscribe(subscription);
             }
@@ -101,6 +100,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="client">Original streaming client for wrapping.</param>
         /// <param name="parameters">Reconnection parameters (or default if missing).</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        [UsedImplicitly]
         public static IAlpacaDataStreamingClient WithReconnect(
             this IAlpacaDataStreamingClient client,
             ReconnectionParameters? parameters = null) =>

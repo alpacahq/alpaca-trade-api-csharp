@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -11,6 +12,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets asset name.
         /// </summary>
+        [UsedImplicitly]
         [Obsolete("This property will be moved up in the interface hierarchy in the next major SDK release.", false)]
         String Symbol { get; }
     }

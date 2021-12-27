@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -15,6 +16,7 @@ namespace Alpaca.Markets
         /// Both fractional and notional order quantity values are null.
         /// </exception>
         /// <returns>Fractional or notional order quantity value.</returns>
+        [UsedImplicitly]
         public static OrderQuantity GetOrderQuantity(
             this IOrder order)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -44,68 +45,81 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the new order side (buy or sell).
         /// </summary>
+        [UsedImplicitly]
         public OrderSide Side { get; }
 
         /// <summary>
         /// Gets the new order type.
         /// </summary>
+        [UsedImplicitly]
         public OrderType Type { get; }
 
         /// <summary>
         /// Gets the new order duration.
         /// </summary>
+        [UsedImplicitly]
         public TimeInForce Duration { get; }
 
         /// <summary>
         /// Gets or sets the new order limit price.
         /// </summary>
+        [UsedImplicitly]
         public Decimal? LimitPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the new order stop price.
         /// </summary>
+        [UsedImplicitly]
         public Decimal? StopPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the new trailing order trail price offset in dollars.
         /// </summary>
+        [UsedImplicitly]
         public Decimal? TrailOffsetInDollars { get; set; }
 
         /// <summary>
         /// Gets or sets the new trailing order trail price offset in percent.
         /// </summary>
+        [UsedImplicitly]
         public Decimal? TrailOffsetInPercent { get; set; }
 
         /// <summary>
         /// Gets or sets the client order ID.
         /// </summary>
+        [UsedImplicitly]
         public String? ClientOrderId { get; set; }
 
         /// <summary>
         /// Gets or sets flag indicating that order should be allowed to execute during extended hours trading.
         /// </summary>
+        [UsedImplicitly]
         public Boolean? ExtendedHours { get; set; }
 
         /// <summary>
         /// Gets or sets the order class for advanced order types.
         /// </summary>
+        [UsedImplicitly]
         public OrderClass? OrderClass { get; set; }
 
         /// <summary>
         /// Gets or sets the profit taking limit price for advanced order types.
         /// </summary>
+        [UsedImplicitly]
         public Decimal? TakeProfitLimitPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the stop loss stop price for advanced order types.
         /// </summary>
+        [UsedImplicitly]
         public Decimal? StopLossStopPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the stop loss limit price for advanced order types.
         /// </summary>
+        [UsedImplicitly]
         public Decimal? StopLossLimitPrice { get; set; }
-        
+
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
             ClientOrderId = ClientOrderId?.ValidateClientOrderId();

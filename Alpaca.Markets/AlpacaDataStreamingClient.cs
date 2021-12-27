@@ -70,8 +70,7 @@ namespace Alpaca.Markets
 
         private sealed class Subscriptions
         {
-            private readonly ConcurrentDictionary<String, ISubscription> _subscriptions =
-                new ConcurrentDictionary<String, ISubscription>(StringComparer.Ordinal);
+            private readonly ConcurrentDictionary<String, ISubscription> _subscriptions = new (StringComparer.Ordinal);
 
             public  IAlpacaDataSubscription<TApi> GetOrAdd<TApi, TJson>(
                 String stream)
@@ -80,8 +79,9 @@ namespace Alpaca.Markets
                     stream, key => new AlpacaDataSubscription<TApi, TJson>(key));
 
             public void OnUpdate(
-                ISet<String> streams)
+                ICollection<String> streams)
             {
+                // ReSharper disable once UseDeconstruction
                 foreach (var kvp in _subscriptions)
                 {
                     kvp.Value.OnUpdate(streams.Contains(kvp.Key));
@@ -123,7 +123,7 @@ namespace Alpaca.Markets
 
         private readonly IDictionary<String, Action<JToken>> _handlers;
 
-        private readonly Subscriptions _subscriptions = new Subscriptions();
+        private readonly Subscriptions _subscriptions = new ();
 
         /// <summary>
         /// Creates new instance of <see cref="AlpacaDataStreamingClient"/> object.
@@ -231,6 +231,7 @@ namespace Alpaca.Markets
             var connectionSuccess = token.ToObject<JsonConnectionSuccess>() ?? new JsonConnectionSuccess();
 
             // ReSharper disable once ConstantConditionalAccessQualifier
+            // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
             switch (connectionSuccess.Status)
             {
                 case ConnectionStatus.Connected:

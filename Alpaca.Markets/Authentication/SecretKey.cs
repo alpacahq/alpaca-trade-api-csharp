@@ -30,14 +30,14 @@ namespace Alpaca.Markets
         }
 
         internal override JsonAuthRequest.JsonData GetAuthenticationData() =>
-            new JsonAuthRequest.JsonData
+            new ()
             {
                 KeyId = KeyId,
                 SecretKey = Value
             };
 
         internal override JsonAuthentication GetAuthentication() =>
-            new JsonAuthentication
+            new ()
             {
                 Action = JsonAction.PolygonAuthenticate,
                 SecretKey = Value,

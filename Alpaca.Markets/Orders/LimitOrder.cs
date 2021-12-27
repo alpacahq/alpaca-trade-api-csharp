@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -29,12 +30,12 @@ namespace Alpaca.Markets
         /// <param name="quantity">Order quantity.</param>
         /// <param name="limitPrice">Order limit price.</param>
         /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>
+        [UsedImplicitly]
         public static LimitOrder Buy(
             String symbol,
             Int64 quantity,
             Decimal limitPrice) =>
-            new LimitOrder(
-                symbol, quantity, OrderSide.Buy, limitPrice);
+            new (symbol, quantity, OrderSide.Buy, limitPrice);
 
         /// <summary>
         /// Creates new sell market order using specified symbol and quantity.
@@ -43,12 +44,12 @@ namespace Alpaca.Markets
         /// <param name="quantity">Order quantity.</param>
         /// <param name="limitPrice">Order limit price.</param>
         /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>
+        [UsedImplicitly]
         public static LimitOrder Sell(
             String symbol,
             Int64 quantity,
             Decimal limitPrice) =>
-            new LimitOrder(
-                symbol, quantity, OrderSide.Sell, limitPrice);
+            new (symbol, quantity, OrderSide.Sell, limitPrice);
 
         /// <summary>
         /// Creates a new instance of the <see cref="OneCancelsOtherOrder"/> order from the current order.
@@ -56,10 +57,11 @@ namespace Alpaca.Markets
         /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
         /// <param name="stopLossLimitPrice">Stop loss order limit price (optional).</param>
         /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
+        [UsedImplicitly]
         public OneCancelsOtherOrder OneCancelsOther(
             Decimal stopLossStopPrice,
             Decimal? stopLossLimitPrice = null) =>
-            new OneCancelsOtherOrder(
+            new (
                 this,
                 stopLossStopPrice,
                 stopLossLimitPrice);

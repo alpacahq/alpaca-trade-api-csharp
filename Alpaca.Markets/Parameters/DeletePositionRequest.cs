@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -23,6 +24,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets the custom position liquidation size (if missed the position will be liquidated completely).
         /// </summary>
+        [UsedImplicitly]
         public PositionQuantity? PositionQuantity { get; set; }
 
         /// <summary>

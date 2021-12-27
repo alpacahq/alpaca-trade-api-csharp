@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -28,6 +29,7 @@ namespace Alpaca.Markets
         /// <param name="request">Request parameters object.</param>
         /// <param name="pageToken">The request page size.</param>
         /// <returns>The original request parameters object.</returns>
+        [UsedImplicitly]
         public static TRequest WithPageToken<TRequest>(
             this TRequest request,
             String pageToken)

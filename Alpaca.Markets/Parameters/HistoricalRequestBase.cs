@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -33,12 +34,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets inclusive date interval for filtering items in response.
         /// </summary>
+        [UsedImplicitly]
         public IInclusiveTimeInterval TimeInterval { get; }
 
         /// <summary>
         /// Gets the pagination parameters for the request (page size and token).
         /// </summary>
-        public Pagination Pagination { get; } = new Pagination();
+        public Pagination Pagination { get; } = new ();
 
         /// <summary>
         /// Gets the last part of the full REST endpoint URL path.
@@ -47,7 +49,7 @@ namespace Alpaca.Markets
 
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress)
+            new (httpClient.BaseAddress)
             {
                 Path = $"v2/stocks/{Symbol}/{LastPathSegment}",
                 Query = AddParameters(Pagination.QueryBuilder
@@ -66,12 +68,14 @@ namespace Alpaca.Markets
                     "Symbol shouldn't be empty.", nameof(Symbol));
             }
 
-            if (Pagination is Validation.IRequest validation)
+            if (Pagination is not Validation.IRequest validation)
             {
-                foreach (var exception in validation.GetExceptions())
-                {
-                    yield return exception;
-                }
+                yield break;
+            }
+
+            foreach (var exception in validation.GetExceptions())
+            {
+                yield return exception;
             }
         }
     }

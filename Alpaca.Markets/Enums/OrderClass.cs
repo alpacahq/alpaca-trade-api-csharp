@@ -34,6 +34,6 @@ namespace Alpaca.Markets
         /// One Triggers Other order
         /// </summary>
         [EnumMember(Value = "oto")]
-        OneTriggersOther,
+        OneTriggersOther
     }
 }

@@ -17,6 +17,7 @@ namespace Alpaca.Markets
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Connection opening task for awaiting (if needed).</returns>
         Task OpenAsync(
+            // ReSharper disable once UnusedParameter.Global
             CancellationToken cancellationToken);
 
         /// <summary>
@@ -26,6 +27,7 @@ namespace Alpaca.Markets
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Connection closing task for awaiting (if needed).</returns>
         Task CloseAsync(
+            // ReSharper disable once UnusedParameter.Global
             CancellationToken cancellationToken);
 
         /// <summary>

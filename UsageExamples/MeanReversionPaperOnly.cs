@@ -9,16 +9,19 @@ namespace UsageExamples
 {
     // This version of the mean reversion example algorithm uses only API features which
     // are available to users with a free account that can only be used for paper trading.
+    [SuppressMessage("ReSharper", "StringLiteralTypo")]
     [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("ReSharper", "ConvertToConstant.Local")]
+    // ReSharper disable once UnusedType.Global
     internal sealed class MeanReversionPaperOnly : IDisposable
     {
-        private string API_KEY = "REPLACEME";
+        private readonly String API_KEY = "REPLACEME";
 
-        private string API_SECRET = "REPLACEME";
+        private readonly String API_SECRET = "REPLACEME";
 
-        private string symbol = "SPY";
+        private readonly String symbol = "SPY";
 
-        private Decimal scale = 200;
+        private readonly Decimal scale = 200;
 
         private IAlpacaTradingClient alpacaTradingClient;
 
@@ -26,6 +29,7 @@ namespace UsageExamples
 
         private Guid lastTradeId = Guid.NewGuid();
 
+        // ReSharper disable once UnusedMember.Global
         public async Task Run()
         {
             alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(new SecretKey(API_KEY, API_SECRET));
@@ -53,7 +57,7 @@ namespace UsageExamples
             Console.WriteLine("Market opened.");
 
             // Check every minute for price updates.
-            TimeSpan timeUntilClose = closingTime - DateTime.UtcNow;
+            var timeUntilClose = closingTime - DateTime.UtcNow;
             while (timeUntilClose.TotalMinutes > 15)
             {
                 // Cancel old order if it's not already been filled.
@@ -84,9 +88,9 @@ namespace UsageExamples
                     new HistoricalBarsRequest(symbol, from, into, BarTimeFrame.Minute).WithPageSize(20));
                 var bars = barSet.Items;
 
-                Decimal avg = bars.Average(item => item.Close);
-                Decimal currentPrice = bars.Last().Close;
-                Decimal diff = avg - currentPrice;
+                var avg = bars.Average(item => item.Close);
+                var currentPrice = bars.Last().Close;
+                var diff = avg - currentPrice;
 
                 if (diff <= 0)
                 {
@@ -117,7 +121,7 @@ namespace UsageExamples
                         {
                             amountToAdd = buyingPower;
                         }
-                        int qtyToBuy = (int)(amountToAdd / currentPrice);
+                        var qtyToBuy = (Int32)(amountToAdd / currentPrice);
 
                         await SubmitOrder(qtyToBuy, currentPrice, OrderSide.Buy);
                     }

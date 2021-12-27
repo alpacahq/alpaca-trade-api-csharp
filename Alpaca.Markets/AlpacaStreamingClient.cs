@@ -105,19 +105,21 @@ namespace Alpaca.Markets
 
             OnConnected(response.Status);
 
-            if (response.Status == AuthStatus.Authorized)
+            if (response.Status != AuthStatus.Authorized)
             {
-                var listenRequest = new JsonListenRequest
-                {
-                    Action = JsonAction.Listen,
-                    Data = new JsonListenRequest.JsonData
-                    {
-                        Streams = new List<String> { TradeUpdates }
-                    }
-                };
-
-                SendAsJsonString(listenRequest);
+                return;
             }
+
+            var listenRequest = new JsonListenRequest
+            {
+                Action = JsonAction.Listen,
+                Data = new JsonListenRequest.JsonData
+                {
+                    Streams = new List<String> { TradeUpdates }
+                }
+            };
+
+            SendAsJsonString(listenRequest);
         }
 
         private void handleTradeUpdate(

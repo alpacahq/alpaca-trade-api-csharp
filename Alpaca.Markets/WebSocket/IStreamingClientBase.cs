@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -12,26 +13,31 @@ namespace Alpaca.Markets
         /// <summary>
         /// Occurred when stream successfully connected.
         /// </summary>
+        [UsedImplicitly]
         event Action<AuthStatus>? Connected;
 
         /// <summary>
         /// Occurred when underlying web socket successfully opened.
         /// </summary>
+        [UsedImplicitly]
         event Action? SocketOpened;
 
         /// <summary>
         /// Occurred when underlying web socket successfully closed.
         /// </summary>
+        [UsedImplicitly]
         event Action? SocketClosed;
 
         /// <summary>
         /// Occurred when any error happened in stream.
         /// </summary>
+        [UsedImplicitly]
         event Action<Exception>? OnError;
 
         /// <summary>
         /// Occurred in case of non-critical events.
         /// </summary>
+        [UsedImplicitly]
         event Action<String>? OnWarning;
 
         /// <summary>
@@ -39,6 +45,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Awaitable task object for handling action completion in asynchronous mode.</returns>
+        [UsedImplicitly]
         Task ConnectAsync(
             CancellationToken cancellationToken = default);
 

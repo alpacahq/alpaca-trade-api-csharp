@@ -19,13 +19,14 @@ namespace Alpaca.Markets
             this HttpClient httpClient,
             SecurityKey securityKey)
         {
+            // ReSharper disable once UseDeconstruction
             foreach (var pair in securityKey.GetAuthenticationHeaders())
             {
                 httpClient.DefaultRequestHeaders.Add(pair.Key, pair.Value);
             }
         }
 
-        public static HttpClient Configure(
+        public static void Configure(
             this HttpClient httpClient,
             Uri baseAddress)
         {
@@ -47,7 +48,6 @@ namespace Alpaca.Markets
 #pragma warning restore CA5386 // Avoid hard coding SecurityProtocolType value
 #pragma warning restore CA5364 // Do Not Use Deprecated Security Protocols
 #endif
-            return httpClient;
         }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
@@ -141,7 +141,7 @@ namespace Alpaca.Markets
                 $"Unable to successfully call REST API endpoint `{request.RequestUri}` after {throttler.MaxRetryAttempts} attempts.");
         }
 
-        private static Uri asUri(String endpointUri) => new Uri(endpointUri, UriKind.RelativeOrAbsolute);
+        private static Uri asUri(String endpointUri) => new (endpointUri, UriKind.RelativeOrAbsolute);
 
         private static StringContent toStringContent<T>(T value)
         {

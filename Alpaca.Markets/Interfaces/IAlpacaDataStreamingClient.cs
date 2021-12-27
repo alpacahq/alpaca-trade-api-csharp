@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -15,6 +16,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
+        [UsedImplicitly]
         IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
             String symbol);
 
@@ -25,6 +27,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
+        [UsedImplicitly]
         IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
             String symbol);
 
@@ -34,6 +37,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
+        [UsedImplicitly]
         IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription();
 
         /// <summary>
@@ -43,6 +47,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
+        [UsedImplicitly]
         IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
             String symbol);
 
@@ -53,6 +58,7 @@ namespace Alpaca.Markets
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
+        [UsedImplicitly]
         IAlpacaDataSubscription<IStreamAgg> GetDailyAggSubscription(
             String symbol);
 
@@ -67,6 +73,7 @@ namespace Alpaca.Markets
         /// Subscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
         /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
+        [UsedImplicitly]
         void Subscribe(
             params IAlpacaDataSubscription[] subscriptions);
 
@@ -74,6 +81,7 @@ namespace Alpaca.Markets
         /// Subscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
         /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
+        [UsedImplicitly]
         void Subscribe(
             IEnumerable<IAlpacaDataSubscription> subscriptions);
 
@@ -81,6 +89,7 @@ namespace Alpaca.Markets
         /// Unsubscribes the single <paramref name="subscription"/> object for receiving data from the server.
         /// </summary>
         /// <param name="subscription">Subscription target - asset and update type holder.</param>
+        [UsedImplicitly]
         void Unsubscribe(
             IAlpacaDataSubscription subscription);
 
@@ -88,6 +97,7 @@ namespace Alpaca.Markets
         /// Unsubscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
         /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
+        [UsedImplicitly]
         void Unsubscribe(
             params IAlpacaDataSubscription[] subscriptions);
 
@@ -95,6 +105,7 @@ namespace Alpaca.Markets
         /// Unsubscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
         /// </summary>
         /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
+        [UsedImplicitly]
         void Unsubscribe(
             IEnumerable<IAlpacaDataSubscription> subscriptions);
     }

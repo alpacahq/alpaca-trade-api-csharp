@@ -15,7 +15,7 @@ namespace Alpaca.Markets
 
         public static IThrottler Instance { get; } = new FakeThrottler();
 
-        public Int32 MaxRetryAttempts { get; } = 1;
+        public Int32 MaxRetryAttempts => 1;
 
 #if NET45
         public Task WaitToProceed(CancellationToken _) => _completedTask.Value;

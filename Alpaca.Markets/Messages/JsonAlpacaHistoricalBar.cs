@@ -28,7 +28,7 @@ namespace Alpaca.Markets
         public DateTime? TimeUtc { get; set; }
 
         [JsonIgnore] 
-        public Int32 ItemsInWindow { get; } = 0;
+        public Int32 ItemsInWindow => 0;
 
         [JsonProperty(PropertyName = "vw", Required = Required.Default)]
         public Decimal Vwap { get; set; }

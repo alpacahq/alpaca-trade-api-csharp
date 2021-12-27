@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -26,6 +27,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets quote conditions.
         /// </summary>
+        [UsedImplicitly]
         [Obsolete("This property will be removed in the next major SDK release.", true)]
         IReadOnlyList<Int64> Conditions { get; }
     }

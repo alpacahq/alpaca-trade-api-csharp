@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -30,7 +31,7 @@ namespace Alpaca.Markets.Extensions
                 remove => Client.OnTradeUpdate += value;
             }
 
-            protected override void Resubscribe(String symbol, Int32 subscription) { }
+            protected override void Resubscribe(Int32 subscription) { }
         }
 
         /// <summary>
@@ -40,6 +41,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="client">Original streaming client for wrapping.</param>
         /// <param name="parameters">Reconnection parameters (or default if missing).</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
+        [UsedImplicitly]
         public static IAlpacaStreamingClient WithReconnect(
             this IAlpacaStreamingClient client,
             ReconnectionParameters? parameters = null) =>

@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -28,6 +29,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Returns <c>true</c> if trail offset is a percent of HWM value.
         /// </summary>
+        [UsedImplicitly]
         public bool IsInPercent => !IsInDollars;
         
         /// <summary>
@@ -36,9 +38,10 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Trailing stop order offset in dollars.</param>
         /// <returns>Initialized <see cref="TrailOffset"/> object.</returns>
+        [UsedImplicitly]
         public static TrailOffset InDollars(
             Decimal value) =>
-            new TrailOffset(value, true);
+            new (value, true);
         
         /// <summary>
         /// Creates new instance of the <see cref="TrailOffset"/> object
@@ -46,9 +49,10 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Trailing stop order offset in percents.</param>
         /// <returns>Initialized <see cref="TrailOffset"/> object.</returns>
+        [UsedImplicitly]
         public static TrailOffset InPercent(
             Decimal value) =>
-            new TrailOffset(value, false);
+            new (value, false);
 
         /// <inheritdoc />
         public override Boolean Equals(

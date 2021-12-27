@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -20,6 +21,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets order trail offset value (in dollars or percents).
         /// </summary>
+        [UsedImplicitly] 
         public TrailOffset TrailOffset { get; }
 
         /// <summary>
@@ -29,12 +31,12 @@ namespace Alpaca.Markets
         /// <param name="quantity">Order quantity.</param>
         /// <param name="trailOffset">Trailing stop order offset.</param>
         /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
+        [UsedImplicitly] 
         public static TrailingStopOrder Buy(
             String symbol,
             Int64 quantity,
             TrailOffset trailOffset) =>
-            new TrailingStopOrder(
-                symbol, quantity, OrderSide.Buy, trailOffset);
+            new (symbol, quantity, OrderSide.Buy, trailOffset);
 
         /// <summary>
         /// Creates new sell market order using specified symbol and quantity.
@@ -43,12 +45,12 @@ namespace Alpaca.Markets
         /// <param name="quantity">Order quantity.</param>
         /// <param name="trailOffset">Trailing stop order offset.</param>
         /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
+        [UsedImplicitly] 
         public static TrailingStopOrder Sell(
             String symbol,
             Int64 quantity,
             TrailOffset trailOffset) =>
-            new TrailingStopOrder(
-                symbol, quantity, OrderSide.Sell, trailOffset);
+            new (symbol, quantity, OrderSide.Sell, trailOffset);
 
         internal override JsonNewOrder GetJsonRequest() =>
             base.GetJsonRequest()

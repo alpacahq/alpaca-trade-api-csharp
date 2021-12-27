@@ -12,12 +12,12 @@ namespace Alpaca.Markets
     {
         private sealed class NextRetryGuard : IDisposable
         {
-            private readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
+            private readonly ReaderWriterLockSlim _lock = new (LockRecursionPolicy.NoRecursion);
 
             /// <summary>
             /// Used to create a random length delay when server responds with a Http status like 503, but provides no Retry-After header.
             /// </summary>
-            private readonly Random _randomRetryWait = new Random();
+            private readonly Random _randomRetryWait = new ();
 
             private DateTime _nextRetryTime = DateTime.MinValue;
 
@@ -77,7 +77,7 @@ namespace Alpaca.Markets
             public void Dispose() => _lock.Dispose();
         }
 
-        private readonly NextRetryGuard _nextRetryGuard = new NextRetryGuard();
+        private readonly NextRetryGuard _nextRetryGuard = new ();
 
         /// <summary>
         /// Times (in millisecond ticks) at which the semaphore should be exited.
@@ -219,20 +219,15 @@ namespace Alpaca.Markets
             }
 
             // Server unavailable, or Too many requests (429 can happen when this client competes with another client, e.g. mobile app)
-            if (response.StatusCode == (HttpStatusCode)429 ||
-                response.StatusCode == (HttpStatusCode)503)
+            // ReSharper disable once InvertIf
+            if (response.StatusCode is (HttpStatusCode)429 or (HttpStatusCode)503)
             {
                 _nextRetryGuard.SetNextRetryTimeRandom();
                 return false;
             }
 
             // Accomodate retries on statuses indicated by caller
-            if (_retryHttpStatuses.Contains((Int32)response.StatusCode))
-            {
-                return false;
-            }
-
-            return true;
+            return !_retryHttpStatuses.Contains((Int32)response.StatusCode);
         }
     }
 }

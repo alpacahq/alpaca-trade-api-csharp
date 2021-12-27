@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -13,15 +14,13 @@ namespace Alpaca.Markets
         /// Creates new instance of <see cref="ChangeOrderRequest"/> object.
         /// </summary>
         /// <param name="orderId">Server side order identifier.</param>
-        public ChangeOrderRequest(Guid orderId)
-        {
-            OrderId = orderId;
-        }
+        public ChangeOrderRequest(Guid orderId) => OrderId = orderId;
 
         /// <summary>
         /// Gets server side order identifier.
         /// </summary>
         [JsonIgnore]
+        [UsedImplicitly]
         public Guid OrderId { get; }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -30,6 +31,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets updated trade quantity (rounded to the nearest integer).
         /// </summary>
+        [UsedImplicitly]
         Int64? IntegerQuantity { get; }
 
         /// <summary>

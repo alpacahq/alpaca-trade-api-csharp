@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -16,11 +17,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets boolean flag indicating the current subscription status of this item.
         /// </summary>
+        [UsedImplicitly]
         Boolean Subscribed { get; }
 
         /// <summary>
         /// Occurred when a <see cref="Subscribed"/> property value changed.
         /// </summary>
+        [UsedImplicitly]
         event Action? OnSubscribedChanged;
     }
 

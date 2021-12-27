@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// OAuth key for Alpaca/Polygon APIs authentication.
     /// </summary>
+    [UsedImplicitly]
     public sealed class OAuthKey : SecurityKey
     {
         /// <summary>
@@ -25,7 +27,7 @@ namespace Alpaca.Markets
         }
 
         internal override JsonAuthRequest.JsonData GetAuthenticationData() =>
-            new JsonAuthRequest.JsonData
+            new ()
             {
                 OAuthToken = Value
             };

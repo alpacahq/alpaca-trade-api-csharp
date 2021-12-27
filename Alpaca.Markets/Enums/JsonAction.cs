@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -13,6 +14,7 @@ namespace Alpaca.Markets
         [EnumMember(Value = "listen")]
         Listen,
 
+        [UsedImplicitly]
         [EnumMember(Value = "unlisten")]
         Unlisten,
 
@@ -23,6 +25,6 @@ namespace Alpaca.Markets
         PolygonSubscribe,
 
         [EnumMember(Value = "unsubscribe")]
-        PolygonUnsubscribe,
+        PolygonUnsubscribe
     }
 }

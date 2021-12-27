@@ -9,11 +9,9 @@ namespace Alpaca.Markets
 {
     internal sealed class SynchronizationQueue : IDisposable
     {
-        private readonly BlockingCollection<Action> _actions =
-            new BlockingCollection<Action>(new ConcurrentQueue<Action>());
+        private readonly BlockingCollection<Action> _actions = new (new ConcurrentQueue<Action>());
 
-        private readonly CancellationTokenSource _cancellationTokenSource =
-            new CancellationTokenSource();
+        private readonly CancellationTokenSource _cancellationTokenSource = new ();
 
         public SynchronizationQueue()
         {

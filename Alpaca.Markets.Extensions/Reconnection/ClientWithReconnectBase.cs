@@ -10,14 +10,13 @@ namespace Alpaca.Markets.Extensions
         where TClient : IStreamingClientBase
     {
             protected readonly ConcurrentDictionary<String, TSubscription> Subscriptions =
-                new ConcurrentDictionary<String, TSubscription>(StringComparer.Ordinal);
+                new (StringComparer.Ordinal);
 
-            private readonly CancellationTokenSource _cancellationTokenSource =
-                new CancellationTokenSource();
+            private readonly CancellationTokenSource _cancellationTokenSource = new ();
 
             private readonly ReconnectionParameters _reconnectionParameters;
 
-            private readonly Random _random = new Random();
+            private readonly Random _random = new ();
 
             protected readonly TClient Client;
 
@@ -79,7 +78,7 @@ namespace Alpaca.Markets.Extensions
                 remove => Client.OnWarning -= value;
             }
 
-            protected abstract void Resubscribe(String symbol, TSubscription subscription);
+            protected abstract void Resubscribe(TSubscription subscription);
 
             [SuppressMessage(
                 "Design", "CA1031:Do not catch general exception types",
@@ -112,7 +111,7 @@ namespace Alpaca.Markets.Extensions
                                 {
                                     return;
                                 }
-                                Resubscribe(kvp.Key, kvp.Value);
+                                Resubscribe(kvp.Value);
                             }
 
                             return; // Reconnected, authorized and re-subscribed

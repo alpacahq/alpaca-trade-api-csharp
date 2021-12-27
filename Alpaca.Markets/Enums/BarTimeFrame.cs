@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -13,7 +14,8 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Duration value in units.</param>
         /// <param name="unit">Duration units (minutes, hours, days)</param>
-         public BarTimeFrame(
+        [UsedImplicitly] 
+        public BarTimeFrame(
             Int32 value,
             BarTimeFrameUnit unit)
         {
@@ -24,11 +26,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets specified duration units.
         /// </summary>
+        [UsedImplicitly] 
         public BarTimeFrameUnit Unit { get; }
 
         /// <summary>
         /// Gets specified duration value.
         /// </summary>
+        [UsedImplicitly] 
         public Int32 Value { get; }
 
         /// <inheritdoc />
@@ -58,11 +62,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Hour bars.
         /// </summary>
+        [UsedImplicitly] 
         public static BarTimeFrame Hour => new (1, BarTimeFrameUnit.Hour);
 
         /// <summary>
         /// Daily bars.
         /// </summary>
+        [UsedImplicitly] 
         public static BarTimeFrame Day => new (1, BarTimeFrameUnit.Day);
 
         /// <summary>

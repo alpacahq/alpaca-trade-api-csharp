@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -24,6 +25,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets read-only collection of historical items.
         /// </summary>
+        [UsedImplicitly]
         IReadOnlyList<TItem> Items { get; }
 
         /// <summary>

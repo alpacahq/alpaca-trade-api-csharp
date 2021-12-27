@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -17,6 +18,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Returns <c>true</c> if requested action completed successfully.
         /// </summary>
+        [UsedImplicitly]
         Boolean IsSuccess { get; }
     }
 }

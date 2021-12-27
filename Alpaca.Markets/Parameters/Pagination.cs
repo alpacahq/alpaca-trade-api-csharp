@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -13,6 +14,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets ths maximal valid page size for the request supported by Alpaca Data API v2.
         /// </summary>
+        [UsedImplicitly]
         public static UInt32 MaxPageSize => 10_000;
 
         /// <summary>

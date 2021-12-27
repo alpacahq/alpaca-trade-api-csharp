@@ -9,7 +9,7 @@ namespace Alpaca.Markets
         internal sealed class JsonData
         {
             [JsonProperty(PropertyName = "streams", Required = Required.Always)]
-            public List<String> Streams { get; set; } = new List<String>();
+            public List<String> Streams { get; set; } = new ();
         }
 
         [JsonProperty(PropertyName = "action", Required = Required.Always)]

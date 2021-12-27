@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -23,11 +24,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets prices for take profit order for the bracket order.
         /// </summary>
+        [UsedImplicitly] 
         public ITakeProfit TakeProfit { get; }
         
         /// <summary>
         /// Gets prices for stop loss order for the bracket order.
         /// </summary>
+        [UsedImplicitly] 
         public IStopLoss StopLoss { get; }
 
         internal override JsonNewOrder GetJsonRequest() =>

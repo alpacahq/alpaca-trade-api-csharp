@@ -91,7 +91,7 @@ namespace Alpaca.Markets
         private UriBuilder getEndpointUriBuilder(
             String name,
             String? asset = null) =>
-            new UriBuilder(_httpClient.BaseAddress)
+            new (_httpClient.BaseAddress)
             {
                 Path = String.IsNullOrEmpty(asset)
                     ? "v2/watchlists:by_name"

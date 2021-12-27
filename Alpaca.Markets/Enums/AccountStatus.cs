@@ -31,7 +31,7 @@ namespace Alpaca.Markets
         Submitted,
 
         /// <summary>
-        /// Accouunt data updated.
+        /// Account data updated.
         /// </summary>
         [EnumMember(Value = "ACCOUNT_UPDATED")]
         AccountUpdated,

@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -25,11 +26,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets the new order stop price.
         /// </summary>
+        [UsedImplicitly] 
         public Decimal StopPrice { get; }
 
         /// <summary>
         /// Gets or sets the new order limit price.
         /// </summary>
+        [UsedImplicitly] 
         public Decimal LimitPrice { get; set; }
                 
         /// <summary>
@@ -40,13 +43,13 @@ namespace Alpaca.Markets
         /// <param name="stopPrice">Order stop price.</param>
         /// <param name="limitPrice">Order limit price.</param>
         /// <returns>The new <see cref="StopLimitOrder"/> object instance.</returns>
+        [UsedImplicitly] 
         public static StopLimitOrder Buy(
             String symbol,
             Int64 quantity,
             Decimal stopPrice,
             Decimal limitPrice) =>
-            new StopLimitOrder(
-                symbol, quantity, OrderSide.Buy, stopPrice, limitPrice);
+            new (symbol, quantity, OrderSide.Buy, stopPrice, limitPrice);
 
         /// <summary>
         /// Creates new sell stop limit order using specified symbol and quantity.
@@ -56,13 +59,13 @@ namespace Alpaca.Markets
         /// <param name="stopPrice">Order stop price.</param>
         /// <param name="limitPrice">Order limit price.</param>
         /// <returns>The new <see cref="StopLimitOrder"/> object instance.</returns>
+        [UsedImplicitly] 
         public static StopLimitOrder Sell(
             String symbol,
             Int64 quantity,
             Decimal stopPrice,
             Decimal limitPrice) =>
-            new StopLimitOrder(
-                symbol, quantity, OrderSide.Sell, stopPrice, limitPrice);
+            new (symbol, quantity, OrderSide.Sell, stopPrice, limitPrice);
 
         internal override JsonNewOrder GetJsonRequest() =>
             base.GetJsonRequest()

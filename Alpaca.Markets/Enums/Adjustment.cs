@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -13,24 +14,28 @@ namespace Alpaca.Markets
         /// <summary>
         /// Raw data - no adjustment.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "raw")]
         Nothing,
 
         /// <summary>
         /// Stock split adjustments.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "split")]
         SplitsOnly,
 
         /// <summary>
         /// Stock dividend adjustments.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "dividend")]
         DividendsOnly,
 
         /// <summary>
         /// Stock splits and dividend adjustments.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "all")]
         SplitsAndDividends
     }

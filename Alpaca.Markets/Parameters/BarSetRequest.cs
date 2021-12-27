@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Http;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaDataClient.GetBarSetAsync(BarSetRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public sealed class BarSetRequest : Validation.IRequest, 
         IRequestWithTimeInterval<IInclusiveTimeInterval>, IRequestWithTimeInterval<IExclusiveTimeInterval>
     {
@@ -34,6 +33,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="symbols">>Asset names for data retrieval.</param>
         /// <param name="timeFrame">Type of time bars for retrieval.</param>
+        [UsedImplicitly] 
         public BarSetRequest(
             IEnumerable<String> symbols,
             TimeFrame timeFrame)
@@ -51,32 +51,36 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets type of time bars for retrieval.
         /// </summary>
+        [UsedImplicitly] 
         public TimeFrame TimeFrame { get; }
 
         /// <summary>
         /// Gets of sets maximal number of daily bars in data response.
         /// </summary>
+        [UsedImplicitly] 
         public Int32? Limit { get; set; }
 
         /// <summary>
         /// Gets flag indicating that <see cref="TimeInterval"/>  are treated as inclusive.
         /// </summary>
+        [UsedImplicitly] 
         public Boolean AreTimesInclusive => TimeInterval is IInclusiveTimeInterval;
 
         /// <summary>
         /// Gets inclusive or exclusive date interval for filtering items in response.
         /// </summary>
+        [UsedImplicitly] 
         public ITimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
 
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress)
+            new (httpClient.BaseAddress)
             {
                 Path = $"v1/bars/{TimeFrame.ToEnumString()}",
                 Query = new QueryBuilder()
                     .AddParameter("symbols", String.Join(",", Symbols))
-                    .AddParameter((AreTimesInclusive ? "start" : "after"), TimeInterval.From, "O")
-                    .AddParameter((AreTimesInclusive ? "end" : "until"), TimeInterval.Into, "O")
+                    .AddParameter(AreTimesInclusive ? "start" : "after", TimeInterval.From, "O")
+                    .AddParameter(AreTimesInclusive ? "end" : "until", TimeInterval.Into, "O")
                     .AddParameter("limit", Limit)
             };
 
@@ -107,13 +111,5 @@ namespace Alpaca.Markets
 
         void IRequestWithTimeInterval<IExclusiveTimeInterval>.SetInterval(
             IExclusiveTimeInterval value) => TimeInterval = value;
-
-        internal BarSetRequest SetTimeInterval(
-            Boolean areTimesInclusive,
-            DateTime? timeFrom,
-            DateTime? timeInto) =>
-            areTimesInclusive
-                ? this.SetTimeInterval(Markets.TimeInterval.GetInclusive(timeFrom, timeInto))
-                : this.SetTimeInterval(Markets.TimeInterval.GetExclusive(timeFrom, timeInto));
     }
 }

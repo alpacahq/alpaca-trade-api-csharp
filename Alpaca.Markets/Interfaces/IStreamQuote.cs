@@ -8,6 +8,7 @@ namespace Alpaca.Markets
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
 #pragma warning disable 618
+    // ReSharper disable once PossibleInterfaceMemberAmbiguity
     public interface IStreamQuote : IQuoteBase<String>, IQuoteBase<Int64>, IStreamBase
 #pragma warning restore 618
     {

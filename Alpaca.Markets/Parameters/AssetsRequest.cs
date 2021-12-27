@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -11,15 +12,17 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets or sets asset status for filtering.
         /// </summary>
+        [UsedImplicitly] 
         public AssetStatus? AssetStatus { get; set; }
 
         /// <summary>
         /// Gets or sets asset class for filtering.
         /// </summary>
+        [UsedImplicitly] 
         public AssetClass? AssetClass { get; set; }
 
         internal UriBuilder GetUriBuilder(HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress)
+            new (httpClient.BaseAddress)
             {
                 Path = "v2/assets",
                 Query = new QueryBuilder()

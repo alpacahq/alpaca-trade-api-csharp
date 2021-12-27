@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -45,6 +46,7 @@ namespace Alpaca.Markets.Extensions
         /// in the modified <paramref name="environment"/> object.
         /// </param>
         /// <returns>New environment URLs object.</returns>
+        [UsedImplicitly]
         public static IEnvironment WithProxyForAlpacaDataStreamingClient(
             this IEnvironment environment,
             Uri? alpacaProxyAgentUrl = null) =>
@@ -54,7 +56,7 @@ namespace Alpaca.Markets.Extensions
             };
 
         private static Uri getFromEnvironmentOrDefault() => 
-            new Uri(Environment.GetEnvironmentVariable(EnvironmentVariableName)
+            new (Environment.GetEnvironmentVariable(EnvironmentVariableName)
                     ?? DefaultAlpacaProxyAgentUri);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -17,8 +18,9 @@ namespace Alpaca.Markets
             Quantity = quantity;
 
         /// <summary>
-        /// 
+        /// Gets order quantity value
         /// </summary>
+        [UsedImplicitly] 
         public new OrderQuantity Quantity { get; }
 
         /// <summary>
@@ -27,11 +29,11 @@ namespace Alpaca.Markets
         /// <param name="symbol">Order asset name.</param>
         /// <param name="quantity">Order quantity.</param>
         /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
+        [UsedImplicitly] 
         public static MarketOrder Buy(
             String symbol,
             OrderQuantity quantity) =>
-            new MarketOrder(
-                symbol, quantity, OrderSide.Buy);
+            new (symbol, quantity, OrderSide.Buy);
 
         /// <summary>
         /// Creates new sell market order using specified symbol and quantity.
@@ -39,11 +41,11 @@ namespace Alpaca.Markets
         /// <param name="symbol">Order asset name.</param>
         /// <param name="quantity">Order quantity.</param>
         /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
+        [UsedImplicitly] 
         public static MarketOrder Sell(
             String symbol,
             OrderQuantity quantity) =>
-            new MarketOrder(
-                symbol, quantity, OrderSide.Sell);
+            new (symbol, quantity, OrderSide.Sell);
 
         internal override JsonNewOrder GetJsonRequest() =>
             base.GetJsonRequest().WithQuantity(Quantity);

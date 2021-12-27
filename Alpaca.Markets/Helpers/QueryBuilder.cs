@@ -43,12 +43,6 @@ namespace Alpaca.Markets
 
         public QueryBuilder AddParameter<TValue>(
             String name,
-            TValue value)
-            where TValue : struct, Enum =>
-            AddParameter(name, value.ToEnumString());
-
-        public QueryBuilder AddParameter<TValue>(
-            String name,
             IEnumerable<TValue>? values)
             where TValue : struct, Enum =>
             addParameter(name, values, EnumExtensions.ToEnumString);

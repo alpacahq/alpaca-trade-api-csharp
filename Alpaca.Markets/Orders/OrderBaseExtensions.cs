@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -14,6 +15,7 @@ namespace Alpaca.Markets
         /// <param name="duration">The new <see cref="OrderBase.Duration"/> property value.</param>
         /// <typeparam name="TOrder">Type of target order for altering.</typeparam>
         /// <returns>Fluent interface - returns the <paramref name="order"/> object.</returns>
+        [UsedImplicitly]
         public static TOrder WithDuration<TOrder>(
             this TOrder order,
             TimeInForce duration)
@@ -30,6 +32,7 @@ namespace Alpaca.Markets
         /// <param name="clientOrderId">The new <see cref="OrderBase.ClientOrderId"/> property value.</param>
         /// <typeparam name="TOrder">Type of target order for altering.</typeparam>
         /// <returns>Fluent interface - returns the <paramref name="order"/> object.</returns>
+        [UsedImplicitly]
         public static TOrder WithClientOrderId<TOrder>(
             this TOrder order,
             String clientOrderId)
@@ -46,6 +49,7 @@ namespace Alpaca.Markets
         /// <param name="extendedHours">The new <see cref="OrderBase.ExtendedHours"/> property value.</param>
         /// <typeparam name="TOrder">Type of target order for altering.</typeparam>
         /// <returns>Fluent interface - returns the <paramref name="order"/> object.</returns>
+        [UsedImplicitly]
         public static TOrder WithExtendedHours<TOrder>(
             this TOrder order,
             Boolean extendedHours)

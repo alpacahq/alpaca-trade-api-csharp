@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -22,21 +23,25 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets asset's exchange identifier.
         /// </summary>
+        [UsedImplicitly]
         Int64 Exchange { get; }
 
         /// <summary>
         /// Gets trade price level.
         /// </summary>
+        [UsedImplicitly]
         Decimal Price { get; }
 
         /// <summary>
         /// Gets trade quantity.
         /// </summary>
+        [UsedImplicitly]
         Int64 Size { get; }
 
         /// <summary>
         /// Gets trade timestamp.
         /// </summary>
+        [UsedImplicitly]
         DateTime TimeUtc { get; }
     }
 }

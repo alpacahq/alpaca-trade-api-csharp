@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -19,42 +20,49 @@ namespace Alpaca.Markets
         /// <summary>
         /// Client successfully authorized.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "auth_success")]
         AuthenticationSuccess,
 
         /// <summary>
         /// Client authentication required.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "auth_required")]
         AuthenticationRequired,
 
         /// <summary>
         /// Client authentication failed.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "auth_failed")]
         AuthenticationFailed,
 
         /// <summary>
         /// Requested operation successfully completed.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "success")]
         Success,
 
         /// <summary>
         /// Requested operation failed.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "failed")]
         Failed,
 
         /// <summary>
         /// Client successfully authorized.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "authorized")]
         AlpacaDataStreamingAuthorized,
 
         /// <summary>
         /// Client authentication failed.
         /// </summary>
+        [UsedImplicitly]
         [EnumMember(Value = "unauthorized")]
         AlpacaDataStreamingUnauthorized,
 

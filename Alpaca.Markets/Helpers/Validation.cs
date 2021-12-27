@@ -34,7 +34,8 @@ namespace Alpaca.Markets
 
         public static String? ValidateClientOrderId(this String? clientOrderId) => 
             clientOrderId?.Length > ClientOrderIdMaxLength
-                ? clientOrderId.Substring(0, ClientOrderIdMaxLength) 
+                // ReSharper disable once ReplaceSubstringWithRangeIndexer
+                ? clientOrderId.Substring(0, ClientOrderIdMaxLength)
                 : clientOrderId;
 
         public static Boolean IsWatchListNameInvalid(this String? watchListName) =>

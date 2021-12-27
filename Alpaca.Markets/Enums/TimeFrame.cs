@@ -42,6 +42,6 @@ namespace Alpaca.Markets
         /// Daily bars.
         /// </summary>
         [EnumMember(Value = "1D")]
-        Day,
+        Day
     }
 }

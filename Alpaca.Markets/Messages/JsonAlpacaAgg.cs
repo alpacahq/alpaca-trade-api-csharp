@@ -32,6 +32,7 @@ namespace Alpaca.Markets
         public Int32 ItemsInWindow { get; set; }
 
         [JsonIgnore]
+        // ReSharper disable once UnassignedGetOnlyAutoProperty
         public Decimal Vwap { get; }
 
         [JsonIgnore]

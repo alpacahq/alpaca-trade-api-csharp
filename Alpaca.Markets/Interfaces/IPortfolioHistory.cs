@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -13,6 +14,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets historical information items list with timestamps.
         /// </summary>
+        [UsedImplicitly]
         IReadOnlyList<IPortfolioHistoryItem> Items { get; }
 
         /// <summary>

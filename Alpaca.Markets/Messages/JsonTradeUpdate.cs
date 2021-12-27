@@ -26,7 +26,7 @@ namespace Alpaca.Markets
         public DateTime? TimestampUtc { get; set; }
 
         [JsonProperty(PropertyName = "order", Required = Required.Always)]
-        public JsonOrder JsonOrder { get; set; } = new JsonOrder();
+        public JsonOrder JsonOrder { get; set; } = new ();
 
         [JsonIgnore]
         public IOrder Order => JsonOrder;

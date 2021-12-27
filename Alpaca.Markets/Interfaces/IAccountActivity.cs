@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -67,16 +68,19 @@ namespace Alpaca.Markets
         /// <summary>
         /// The number of shares that contributed to the transaction (rounded to the nearest integer). Not present for all activity types.
         /// </summary>
+        [UsedImplicitly]
         Int64? IntegerQuantity { get; }
 
         /// <summary>
         /// The cumulative quantity of shares involved in the execution (rounded to the nearest integer).
         /// </summary>
+        [UsedImplicitly]
         Int64? IntegerCumulativeQuantity { get; }
 
         /// <summary>
         /// For partially_filled orders, the quantity of shares that are left to be filled (rounded to the nearest integer).
         /// </summary>
+        [UsedImplicitly]
         Int64? IntegerLeavesQuantity { get; }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -47,6 +48,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Amount of dollars to buy or sell.</param>
         /// <returns>Initialized <see cref="PositionQuantity"/> object.</returns>
+        [UsedImplicitly]
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public static PositionQuantity InShares(
             Decimal value) => new (value, true);
@@ -57,6 +59,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Number of shares (integer or fractional).</param>
         /// <returns>Initialized <see cref="PositionQuantity"/> object.</returns>
+        [UsedImplicitly]
         [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
         public static PositionQuantity InPercents(
             Decimal value) => new (value, false);

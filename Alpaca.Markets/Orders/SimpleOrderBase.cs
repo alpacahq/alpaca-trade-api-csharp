@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -27,8 +28,8 @@ namespace Alpaca.Markets
         /// <returns>New advanced order representing pair of original order and take profit order.</returns>
         public TakeProfitOrder TakeProfit(
             Decimal takeProfitLimitPrice) =>
-            new TakeProfitOrder(
-                this, 
+            new (
+                this,
                 takeProfitLimitPrice);
 
         /// <summary>
@@ -40,10 +41,9 @@ namespace Alpaca.Markets
         public StopLossOrder StopLoss(
             Decimal stopLossStopPrice,
             Decimal? stopLossLimitPrice = null) =>
-            new StopLossOrder(
-                this, 
-                stopLossStopPrice,
-                stopLossLimitPrice);
+            new (
+                this,
+                stopLossStopPrice, stopLossLimitPrice);
 
         /// <summary>
         /// Creates a new instance of the <see cref="BracketOrder"/> order from the current order.
@@ -52,11 +52,12 @@ namespace Alpaca.Markets
         /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
         /// <param name="stopLossLimitPrice">Stop loss order limit price (optional).</param>
         /// <returns>New advanced order representing an original order plus pair of take profit and stop loss orders.</returns>
+        [UsedImplicitly]
         public BracketOrder Bracket(
             Decimal takeProfitLimitPrice,
             Decimal stopLossStopPrice,
             Decimal? stopLossLimitPrice = null) =>
-            new BracketOrder(
+            new (
                 this, 
                 takeProfitLimitPrice, 
                 stopLossStopPrice, 

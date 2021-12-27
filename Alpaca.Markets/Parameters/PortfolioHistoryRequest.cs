@@ -38,13 +38,14 @@ namespace Alpaca.Markets
 
         internal UriBuilder GetUriBuilder(
             HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress)
+            new (httpClient.BaseAddress)
             {
                 Path = "v2/account/portfolio/history",
                 Query = new QueryBuilder()
                     .AddParameter("start_date", TimeInterval.From, DateTimeHelper.DateFormat)
                     .AddParameter("end_date", TimeInterval.Into, DateTimeHelper.DateFormat)
                     .AddParameter("period", Period?.ToString())
+                    // ReSharper disable once StringLiteralTypo
                     .AddParameter("timeframe", TimeFrame)
                     .AddParameter("extended_hours", ExtendedHours)
             };

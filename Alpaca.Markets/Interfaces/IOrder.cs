@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -93,11 +94,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets original order quantity (rounded to the nearest integer).
         /// </summary>
+        [UsedImplicitly]
         Int64 IntegerQuantity { get; }
 
         /// <summary>
         /// Gets filled order quantity (rounded to the nearest integer).
         /// </summary>
+        [UsedImplicitly]
         Int64 IntegerFilledQuantity { get; }
 
         /// <summary>
@@ -168,6 +171,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets legs for this order.
         /// </summary>
+        [UsedImplicitly]
         IReadOnlyList<IOrder>? Legs { get; }
     }
 }

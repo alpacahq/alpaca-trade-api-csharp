@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets.Extensions
 {
@@ -108,6 +109,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
@@ -123,6 +125,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IAlpacaDataSubscription<IStreamTrade> GetTradeSubscription(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
@@ -138,6 +141,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamQuote}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
@@ -153,6 +157,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamQuote}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IAlpacaDataSubscription<IStreamQuote> GetQuoteSubscription(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
@@ -168,6 +173,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
@@ -183,6 +189,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IAlpacaDataSubscription<IStreamAgg> GetMinuteAggSubscription(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
@@ -198,6 +205,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IAlpacaDataSubscription<IStreamAgg> GetDailyAggSubscription(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
@@ -213,6 +221,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IAlpacaDataSubscription<IStreamAgg> GetDailyAggSubscription(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
@@ -230,6 +239,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IDisposableAlpacaDataSubscription<IStreamTrade> SubscribeTrade(
             this IAlpacaDataStreamingClient client,
             String symbol) =>
@@ -247,6 +257,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IDisposableAlpacaDataSubscription<IStreamTrade> SubscribeTrade(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
@@ -264,6 +275,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IDisposableAlpacaDataSubscription<IStreamTrade> SubscribeTrade(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
@@ -281,6 +293,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamQuote}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IDisposableAlpacaDataSubscription<IStreamQuote> SubscribeQuote(
             this IAlpacaDataStreamingClient client,
             String symbol) =>
@@ -298,6 +311,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IDisposableAlpacaDataSubscription<IStreamQuote> SubscribeQuote(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
@@ -315,6 +329,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IDisposableAlpacaDataSubscription<IStreamQuote> SubscribeQuote(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
@@ -332,6 +347,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IDisposableAlpacaDataSubscription<IStreamAgg> SubscribeMinuteBar(
             this IAlpacaDataStreamingClient client,
             String symbol) =>
@@ -349,6 +365,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IDisposableAlpacaDataSubscription<IStreamAgg> SubscribeMinuteBar(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
@@ -366,6 +383,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IDisposableAlpacaDataSubscription<IStreamAgg> SubscribeMinuteBar(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
@@ -383,6 +401,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IDisposableAlpacaDataSubscription<IStreamAgg> SubscribeDailyBar(
             this IAlpacaDataStreamingClient client,
             String symbol) =>
@@ -400,6 +419,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IDisposableAlpacaDataSubscription<IStreamAgg> SubscribeDailyBar(
             this IAlpacaDataStreamingClient client,
             params String[] symbols) =>
@@ -417,6 +437,7 @@ namespace Alpaca.Markets.Extensions
         /// <returns>
         /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
         /// </returns>
+        [UsedImplicitly] 
         public static IDisposableAlpacaDataSubscription<IStreamAgg> SubscribeDailyBar(
             this IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>

@@ -44,6 +44,7 @@ namespace Alpaca.Markets
         public Int64 SequenceNumber => throw new InvalidOperationException();
 
         [JsonIgnore] 
+        // ReSharper disable once ReturnTypeCanBeNotNullable
         public String? OriginalTradeId => throw new InvalidOperationException();
 
         [JsonIgnore]

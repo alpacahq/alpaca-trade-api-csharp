@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -11,32 +12,38 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets unique account identifier.
         /// </summary>
+        [UsedImplicitly]
         Guid AccountId { get; }
 
         /// <summary>
         /// Gets updated account status.
         /// </summary>
+        [UsedImplicitly]
         AccountStatus Status { get; }
 
         /// <summary>
         /// Gets main account currency.
         /// </summary>
+        [UsedImplicitly]
         String? Currency { get; }
 
         /// <summary>
         /// Gets amount of money available for trading.
         /// </summary>
+        [UsedImplicitly]
         Decimal TradableCash { get; }
 
         /// <summary>
         /// Gets amount of money available for withdraw.
         /// </summary>
+        [UsedImplicitly]
         [Obsolete("This property will be removed in the next major SDK release. Use TradableCash instead.", true)]
         Decimal WithdrawableCash { get; }
 
         /// <summary>
         /// Gets timestamp of account creation event in UTC.
         /// </summary>
+        [UsedImplicitly]
         DateTime CreatedAtUtc { get; }
     }
 }

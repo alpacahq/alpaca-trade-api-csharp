@@ -12,17 +12,19 @@ namespace UsageExamples
     // is configured to use the paper trading API, but you can change it to use the live
     // trading API by setting the API_URL.
     [SuppressMessage("ReSharper", "UnusedVariable")]
+    [SuppressMessage("ReSharper", "StringLiteralTypo")]
     [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("ReSharper", "ConvertToConstant.Local")]
     [SuppressMessage("ReSharper", "RedundantDefaultMemberInitializer")]
     internal sealed class MeanReversionBrokerage : IDisposable
     {
-        private string API_KEY = "REPLACEME";
+        private readonly String API_KEY = "REPLACEME";
 
-        private string API_SECRET = "REPLACEME";
+        private readonly String API_SECRET = "REPLACEME";
 
-        private string symbol = "AAPL";
+        private readonly String symbol = "AAPL";
 
-        private Decimal scale = 200;
+        private readonly Decimal scale = 200;
 
         private IAlpacaDataClient alpacaDataClient;
 
@@ -34,9 +36,9 @@ namespace UsageExamples
 
         private Guid lastTradeId = Guid.NewGuid();
 
-        private bool lastTradeOpen = false;
+        private Boolean lastTradeOpen = false;
 
-        private readonly List<Decimal> closingPrices = new List<Decimal>();
+        private readonly List<Decimal> closingPrices = new ();
 
         public async Task Run()
         {
@@ -95,10 +97,10 @@ namespace UsageExamples
             alpacaDataStreamingClient.ConnectAndAuthenticateAsync().Wait();
             Console.WriteLine("Polygon client opened.");
             var subscription = alpacaDataStreamingClient.GetMinuteAggSubscription(symbol);
-            subscription.Received += async (agg) =>
+            subscription.Received += async agg =>
             {
                 // If the market's close to closing, exit position and stop trading.
-                TimeSpan minutesUntilClose = closingTime - DateTime.UtcNow;
+                var minutesUntilClose = closingTime - DateTime.UtcNow;
                 if (minutesUntilClose.TotalMinutes < 15)
                 {
                     Console.WriteLine("Reached the end of trading window.");
@@ -136,6 +138,7 @@ namespace UsageExamples
         }
 
         // Determine whether our position should grow or shrink and submit orders.
+        // ReSharper disable once SuggestBaseTypeForParameter
         private async Task HandleMinuteAgg(IStreamAgg agg)
         {
             closingPrices.Add(agg.Close);
@@ -143,8 +146,8 @@ namespace UsageExamples
             {
                 closingPrices.RemoveAt(0);
 
-                Decimal avg = closingPrices.Average();
-                Decimal diff = avg - agg.Close;
+                var avg = closingPrices.Average();
+                var diff = avg - agg.Close;
 
                 // If the last trade hasn't filled yet, we'd rather replace
                 // it than have two orders open at once.
@@ -152,14 +155,14 @@ namespace UsageExamples
                 {
                     // We need to wait for the cancel to process in order to avoid
                     // having long and short orders open at the same time.
-                    bool res = await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
+                    var res = await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
                 }
 
                 // Make sure we know how much we should spend on our position.
                 var account = await alpacaTradingClient.GetAccountAsync();
                 var buyingPower = account.BuyingPower;
                 var equity = account.Equity;
-                long multiplier = account.Multiplier;
+                var multiplier = account.Multiplier;
 
                 // Check how much we currently have in this position.
                 var positionQuantity = 0L;
@@ -236,7 +239,7 @@ namespace UsageExamples
                         {
                             amountToLong = buyingPower;
                         }
-                        int qty = (int)(amountToLong / agg.Close);
+                        var qty = (Int32)(amountToLong / agg.Close);
 
                         await SubmitOrder(qty, agg.Close, OrderSide.Buy);
                         Console.WriteLine($"Adding {qty * agg.Close:C2} to long position.");
@@ -267,23 +270,26 @@ namespace UsageExamples
         // that order before we place another.
         private void HandleTradeUpdate(ITradeUpdate trade)
         {
-            if (trade.Order.OrderId == lastTradeId)
+            if (trade.Order.OrderId != lastTradeId)
             {
-                switch (trade.Event)
-                {
-                    case TradeEvent.Fill:
-                        Console.WriteLine("Trade filled.");
-                        lastTradeOpen = false;
-                        break;
-                    case TradeEvent.Rejected:
-                        Console.WriteLine("Trade rejected.");
-                        lastTradeOpen = false;
-                        break;
-                    case TradeEvent.Canceled:
-                        Console.WriteLine("Trade canceled.");
-                        lastTradeOpen = false;
-                        break;
-                }
+                return;
+            }
+
+            // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
+            switch (trade.Event)
+            {
+                case TradeEvent.Fill:
+                    Console.WriteLine("Trade filled.");
+                    lastTradeOpen = false;
+                    break;
+                case TradeEvent.Rejected:
+                    Console.WriteLine("Trade rejected.");
+                    lastTradeOpen = false;
+                    break;
+                case TradeEvent.Canceled:
+                    Console.WriteLine("Trade canceled.");
+                    lastTradeOpen = false;
+                    break;
             }
         }
 

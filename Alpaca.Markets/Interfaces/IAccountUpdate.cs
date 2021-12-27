@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -13,11 +14,13 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets timestamp of last account update event in the UTC.
         /// </summary>
+        [UsedImplicitly]
         DateTime UpdatedAtUtc { get; }
 
         /// <summary>
         /// Gets timestamp of account deletion event in the UTC.
         /// </summary>
+        [UsedImplicitly]
         DateTime? DeletedAtUtc { get; }
     }
 }

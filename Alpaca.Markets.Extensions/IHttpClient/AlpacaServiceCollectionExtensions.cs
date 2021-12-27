@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Alpaca.Markets.Extensions
@@ -17,6 +18,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="environment">Alpaca environment data.</param>
         /// <param name="securityKey">Alpaca security key.</param>
         /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+        [UsedImplicitly]
         public static IServiceCollection AddAlpacaDataClient(
             this IServiceCollection services,
             IEnvironment environment,
@@ -40,6 +42,7 @@ namespace Alpaca.Markets.Extensions
         /// <param name="environment">Alpaca environment data.</param>
         /// <param name="securityKey">Alpaca security key.</param>
         /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+        [UsedImplicitly]
         public static IServiceCollection AddAlpacaTradingClient(
             this IServiceCollection services,
             IEnvironment environment,

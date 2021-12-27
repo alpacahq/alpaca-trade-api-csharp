@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -15,6 +16,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="value">Duration value in units.</param>
         /// <param name="unit">Duration units (days, weeks, etc.)</param>
+        [UsedImplicitly]
         public HistoryPeriod(
             Int32 value,
             HistoryPeriodUnit unit)

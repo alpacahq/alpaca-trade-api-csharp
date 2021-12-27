@@ -10,15 +10,15 @@ namespace Alpaca.Markets
         public JsonAction Action { get; set; }
 
         [JsonProperty(PropertyName = "trades", Required = Required.Always)]
-        public List<String> Trades { get; set; } = new List<String>();
+        public List<String> Trades { get; set; } = new ();
 
         [JsonProperty(PropertyName = "quotes", Required = Required.Always)]
-        public List<String> Quotes { get; set; } = new List<String>();
+        public List<String> Quotes { get; set; } = new ();
 
         [JsonProperty(PropertyName = "bars", Required = Required.Always)]
-        public List<String> MinuteBars { get; set; } = new List<String>();
+        public List<String> MinuteBars { get; set; } = new ();
 
         [JsonProperty(PropertyName = "dailyBars", Required = Required.Always)]
-        public List<String> DailyBars { get; set; } = new List<String>();
+        public List<String> DailyBars { get; set; } = new ();
     }
 }
