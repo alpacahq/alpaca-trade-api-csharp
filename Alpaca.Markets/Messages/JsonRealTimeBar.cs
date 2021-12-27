@@ -3,14 +3,8 @@
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-internal sealed class JsonRealTimeBar : IBar
+internal sealed class JsonRealTimeBar : JsonRealTimeBase, IBar
 {
-    [JsonProperty(PropertyName = "T", Required = Required.Always)]
-    public String Channel { get; set; } = String.Empty;
-
-    [JsonProperty(PropertyName = "S", Required = Required.Always)]
-    public String Symbol { get; set; } = String.Empty;
-
     [JsonProperty(PropertyName = "o", Required = Required.Always)]
     public Decimal Open { get; set; }
 
@@ -25,9 +19,6 @@ internal sealed class JsonRealTimeBar : IBar
 
     [JsonProperty(PropertyName = "v", Required = Required.Always)]
     public Decimal Volume { get; set; }
-
-    [JsonProperty(PropertyName = "t", Required = Required.Always)]
-    public DateTime TimeUtc { get; set; }
 
     [JsonProperty(PropertyName = "vw", Required = Required.Default)]
     public Decimal Vwap { get; set; }

@@ -55,8 +55,7 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     protected internal HistoricalCryptoRequestBase(
         IEnumerable<String> symbols,
         IInclusiveTimeInterval timeInterval)
-        // ReSharper disable once ConstantConditionalAccessQualifier
-        : this(symbols, new Interval<DateTime>(timeInterval?.From, timeInterval?.Into))
+        : this(symbols, timeInterval.AsDateTimeInterval())
     {
     }
 
@@ -71,8 +70,7 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
         IEnumerable<String> symbols,
         IInclusiveTimeInterval timeInterval,
         IEnumerable<CryptoExchange> exchanges)
-        // ReSharper disable once ConstantConditionalAccessQualifier
-        : this(symbols, new Interval<DateTime>(timeInterval?.From, timeInterval?.Into), exchanges)
+        : this(symbols, timeInterval.AsDateTimeInterval(), exchanges)
     {
     }
 

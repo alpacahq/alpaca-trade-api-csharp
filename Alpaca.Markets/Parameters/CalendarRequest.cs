@@ -17,8 +17,7 @@ public sealed class CalendarRequest :
     [UsedImplicitly]
     [Obsolete("Use another method overload that takes the DateOnly argument.", false)]
     public static CalendarRequest GetForSingleDay(DateTime date) =>
-        new CalendarRequest().WithInterval(
-            new Interval<DateOnly>(DateOnly.FromDateTime(date), DateOnly.FromDateTime(date)));
+        GetForSingleDay(DateOnly.FromDateTime(date));
 
     /// <summary>
     /// Creates new instance of <see cref="CalendarRequest"/> object with the
@@ -28,8 +27,7 @@ public sealed class CalendarRequest :
     /// <returns></returns>
     [UsedImplicitly]
     public static CalendarRequest GetForSingleDay(DateOnly date) =>
-        new CalendarRequest().WithInterval(
-            new Interval<DateOnly>(date, date));
+        new CalendarRequest().WithInterval(new Interval<DateOnly>(date));
 
     /// <summary>
     /// Gets inclusive date interval for filtering items in response.
@@ -63,11 +61,8 @@ public sealed class CalendarRequest :
     [UsedImplicitly]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public CalendarRequest WithInterval(
-        Interval<DateTime> value)
-    {
-        DateInterval = value.AsDateInterval();
-        return this;
-    }
+        Interval<DateTime> value) =>
+        WithInterval(value.AsDateInterval());
 
     /// <summary>
     /// Sets time interval for filtering data returned by this request.
@@ -85,7 +80,5 @@ public sealed class CalendarRequest :
 
     [Obsolete("Use WithInterval method instead of this one.", false)]
     void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
-        IInclusiveTimeInterval value) =>
-        // ReSharper disable once ConstantConditionalAccessQualifier
-        WithInterval(new Interval<DateOnly>(value?.From.AsDateOnly(), value?.Into.AsDateOnly()));
+        IInclusiveTimeInterval value) => WithInterval(value.AsDateOnlyInterval());
 }

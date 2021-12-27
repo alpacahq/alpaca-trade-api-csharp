@@ -256,5 +256,17 @@ public static class TimeInterval
         into = interval?.Into;
     }
 
+    [Obsolete("Used only for reducing code duplication.", false)]
+    internal static Interval<DateTime> AsDateTimeInterval(
+        this ITimeInterval interval) =>
+        // ReSharper disable once ConstantConditionalAccessQualifier
+        new (interval?.From, interval?.Into);
+
+    [Obsolete("Used only for reducing code duplication.", false)]
+    internal static Interval<DateOnly> AsDateOnlyInterval(
+        this ITimeInterval interval) =>
+        // ReSharper disable once ConstantConditionalAccessQualifier
+        new (interval?.From.AsDateOnly(), interval?.Into.AsDateOnly());
+
     private static Interval wrap(this Interval<DateTime> interval) => new (interval);
 }

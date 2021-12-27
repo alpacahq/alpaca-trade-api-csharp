@@ -11,9 +11,8 @@ public readonly record struct Interval<TItem>
     /// Creates the new instance of the <see cref="Interval{TItem}"/> structure.
     /// </summary>
     public Interval()
+        : this (null)
     {
-        From = null;
-        Into = null;
     }
 
     /// <summary>
@@ -35,6 +34,13 @@ public readonly record struct Interval<TItem>
 
         From = from;
         Into = into;
+    }
+
+    internal Interval(
+        TItem? value)
+    {
+        From = value;
+        Into = value;
     }
 
     /// <summary>

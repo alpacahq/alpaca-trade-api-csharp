@@ -5,22 +5,13 @@ namespace Alpaca.Markets;
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-internal sealed class JsonCorrection : ICorrection, ITrade
+internal sealed class JsonCorrection : JsonRealTimeBase, ICorrection, ITrade
 {
-    [JsonProperty(PropertyName = "T", Required = Required.Always)]
-    public String Channel { get; set; } = String.Empty;
-
-    [JsonProperty(PropertyName = "S", Required = Required.Always)]
-    public String Symbol { get; set; } = String.Empty;
-
     [JsonProperty(PropertyName = "x", Required = Required.Always)]
     public String Exchange { get; set; } = String.Empty;
 
     [JsonProperty(PropertyName = "z", Required = Required.Default)]
     public String Tape { get; set; } = String.Empty;
-
-    [JsonProperty(PropertyName = "t", Required = Required.Always)]
-    public DateTime TimestampUtc { get; set; }
 
     [JsonProperty(PropertyName = "oi", Required = Required.Default)]
     public UInt64 TradeId { get; set; }

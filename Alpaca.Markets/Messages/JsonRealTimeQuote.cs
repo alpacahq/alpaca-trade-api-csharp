@@ -3,14 +3,8 @@
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-internal sealed class JsonRealTimeQuote : IQuote
+internal sealed class JsonRealTimeQuote : JsonRealTimeBase, IQuote
 {
-    [JsonProperty(PropertyName = "T", Required = Required.Always)]
-    public String Channel { get; set; } = String.Empty;
-
-    [JsonProperty(PropertyName = "S", Required = Required.Always)]
-    public String Symbol { get; set; } = String.Empty;
-
     [JsonProperty(PropertyName = "bx", Required = Required.Always)]
     public String BidExchange { get; set; } = String.Empty;
 
@@ -28,9 +22,6 @@ internal sealed class JsonRealTimeQuote : IQuote
 
     [JsonProperty(PropertyName = "as", Required = Required.Always)]
     public Decimal AskSize { get; set; }
-
-    [JsonProperty(PropertyName = "t", Required = Required.Always)]
-    public DateTime TimestampUtc { get; set; }
 
     [JsonProperty(PropertyName = "c", Required = Required.Default)]
     public List<String> ConditionsList { get; } = new();

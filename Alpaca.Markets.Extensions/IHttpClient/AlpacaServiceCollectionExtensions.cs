@@ -37,13 +37,8 @@ public static class AlpacaServiceCollectionExtensions
         AlpacaCryptoDataClientConfiguration configuration) =>
         services
             .AddHttpClient<IAlpacaCryptoDataClient>()
-            .AddTypedClient<IAlpacaCryptoDataClient>(
-                httpClient => new AlpacaCryptoDataClient(
-                    configuration.withFactoryCreatedHttpClient(httpClient)))
-            .ConfigurePrimaryHttpMessageHandler(() => configuration
-                .EnsureNotNull(nameof(configuration))
-                .ThrottleParameters.GetMessageHandler())
-            .Services;
+            .AddTypedClient(httpClient => configuration.withFactoryCreatedHttpClient(httpClient).GetClient())
+            .withConfiguredPrimaryHttpMessageHandler(configuration);
 
     /// <summary>
     /// Registers the concrete implementation of the <see cref="IAlpacaDataClient"/>
@@ -74,13 +69,8 @@ public static class AlpacaServiceCollectionExtensions
         AlpacaDataClientConfiguration configuration) =>
         services
             .AddHttpClient<IAlpacaDataClient>()
-            .AddTypedClient<IAlpacaDataClient>(
-                httpClient => new AlpacaDataClient(
-                    configuration.withFactoryCreatedHttpClient(httpClient)))
-            .ConfigurePrimaryHttpMessageHandler(() => configuration
-                .EnsureNotNull(nameof(configuration))
-                .ThrottleParameters.GetMessageHandler())
-            .Services;
+            .AddTypedClient(httpClient => configuration.withFactoryCreatedHttpClient(httpClient).GetClient())
+            .withConfiguredPrimaryHttpMessageHandler(configuration);
 
     /// <summary>
     /// Registers the concrete implementation of the <see cref="IAlpacaTradingClient"/>
@@ -111,35 +101,23 @@ public static class AlpacaServiceCollectionExtensions
         AlpacaTradingClientConfiguration configuration) =>
         services
             .AddHttpClient<IAlpacaTradingClient>()
-            .AddTypedClient<IAlpacaTradingClient>(
-                httpClient => new AlpacaTradingClient(
-                    configuration.withFactoryCreatedHttpClient(httpClient)))
-            .ConfigurePrimaryHttpMessageHandler(() => configuration
-                .EnsureNotNull(nameof(configuration))
-                .ThrottleParameters.GetMessageHandler())
+            .AddTypedClient(httpClient => configuration.withFactoryCreatedHttpClient(httpClient).GetClient())
+            .withConfiguredPrimaryHttpMessageHandler(configuration);
+
+    private static TConfiguration withFactoryCreatedHttpClient<TConfiguration>(
+        this TConfiguration configuration,
+        HttpClient httpClient)
+        where TConfiguration : AlpacaClientConfigurationBase
+    {
+        configuration.HttpClient = httpClient;
+        return configuration;
+    }
+
+    private static IServiceCollection withConfiguredPrimaryHttpMessageHandler<TConfiguration>(
+        this IHttpClientBuilder builder,
+        TConfiguration configuration)
+        where TConfiguration : AlpacaClientConfigurationBase =>
+        builder
+            .ConfigurePrimaryHttpMessageHandler(() => configuration.ThrottleParameters.GetMessageHandler())
             .Services;
-
-    private static AlpacaCryptoDataClientConfiguration withFactoryCreatedHttpClient(
-        this AlpacaCryptoDataClientConfiguration configuration,
-        HttpClient httpClient)
-    {
-        configuration.HttpClient = httpClient;
-        return configuration;
-    }
-
-    private static AlpacaDataClientConfiguration withFactoryCreatedHttpClient(
-        this AlpacaDataClientConfiguration configuration,
-        HttpClient httpClient)
-    {
-        configuration.HttpClient = httpClient;
-        return configuration;
-    }
-
-    private static AlpacaTradingClientConfiguration withFactoryCreatedHttpClient(
-        this AlpacaTradingClientConfiguration configuration,
-        HttpClient httpClient)
-    {
-        configuration.HttpClient = httpClient;
-        return configuration;
-    }
 }
