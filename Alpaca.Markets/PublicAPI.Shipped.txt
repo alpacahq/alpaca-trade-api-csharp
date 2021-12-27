@@ -440,6 +440,7 @@ Alpaca.Markets.ILimitUpLimitDown.LimitDownPrice.get -> decimal
 Alpaca.Markets.ILimitUpLimitDown.LimitUpPrice.get -> decimal
 Alpaca.Markets.ILimitUpLimitDown.Symbol.get -> string!
 Alpaca.Markets.ILimitUpLimitDown.Tape.get -> string!
+Alpaca.Markets.ILimitUpLimitDown.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.ILimitUpLimitDown.TimeUtc.get -> System.DateTime
 Alpaca.Markets.IMultiPage<TItems>
 Alpaca.Markets.IMultiPage<TItems>.Items.get -> System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IReadOnlyList<TItems>!>!
@@ -555,6 +556,7 @@ Alpaca.Markets.IStatus.StatusCode.get -> string!
 Alpaca.Markets.IStatus.StatusMessage.get -> string!
 Alpaca.Markets.IStatus.Symbol.get -> string!
 Alpaca.Markets.IStatus.Tape.get -> string!
+Alpaca.Markets.IStatus.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.IStatus.TimeUtc.get -> System.DateTime
 Alpaca.Markets.IStopLoss
 Alpaca.Markets.IStopLoss.LimitPrice.get -> decimal?

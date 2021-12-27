@@ -12,10 +12,17 @@ public interface IStatus
     String Symbol { get; }
 
     /// <summary>
-    /// Gets the beginning time of this bar in the UTC.
+    /// Gets status timestamp in UTC time zone.
     /// </summary>
     [UsedImplicitly]
+    [Obsolete("This property will be removed in the next major version of SDK. Use the TimestampUtc property instead.", true)]
     DateTime TimeUtc { get; }
+
+    /// <summary>
+    /// Gets status timestamp in UTC time zone.
+    /// </summary>
+    [UsedImplicitly]
+    DateTime TimestampUtc { get; }
 
     /// <summary>
     /// Gets status code.

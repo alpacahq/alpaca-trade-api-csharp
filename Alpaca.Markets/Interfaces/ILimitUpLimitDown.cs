@@ -12,10 +12,17 @@ public interface ILimitUpLimitDown
     String Symbol { get; }
 
     /// <summary>
-    /// Gets the beginning time of this bar in the UTC.
+    /// Gets the LULD update timestamp in the UTC.
     /// </summary>
     [UsedImplicitly]
+    [Obsolete("This property will be removed in the next major version of SDK. Use the TimestampUtc property instead.", true)]
     DateTime TimeUtc { get; }
+
+    /// <summary>
+    /// Gets the LULD update timestamp in the UTC.
+    /// </summary>
+    [UsedImplicitly]
+    DateTime TimestampUtc { get; }
 
     /// <summary>
     /// Gets the current limit up price.
