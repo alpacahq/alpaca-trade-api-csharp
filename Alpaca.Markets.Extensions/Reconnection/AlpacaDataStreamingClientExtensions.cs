@@ -38,6 +38,12 @@ namespace Alpaca.Markets.Extensions
             public IAlpacaDataSubscription<IStatus> GetStatusSubscription(String symbol) =>
                 Client.GetStatusSubscription(symbol);
 
+            public IAlpacaDataSubscription<ITrade> GetCancellationSubscription(String symbol) =>
+                Client.GetCancellationSubscription(symbol);
+
+            public IAlpacaDataSubscription<ICorrection> GetCorrectionSubscription(String symbol) =>
+                Client.GetCorrectionSubscription(symbol);
+
             public IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(String symbol) =>
                 Client.GetLimitUpLimitDownSubscription(symbol);
         }
