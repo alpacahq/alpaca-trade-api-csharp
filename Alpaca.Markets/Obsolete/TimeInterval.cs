@@ -3,6 +3,7 @@
 /// <summary>
 /// Encapsulates implementations of the <see cref="ITimeInterval"/> interface and helper methods for it.
 /// </summary>
+[ExcludeFromCodeCoverage]
 public static class TimeInterval
 {
     private readonly record struct Interval :

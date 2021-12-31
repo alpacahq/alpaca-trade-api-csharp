@@ -7,7 +7,7 @@ internal sealed class JsonLatestQuote<TQuote> : IQuote
     where TQuote : IQuote, new()
 {
     [JsonProperty(PropertyName = "quote", Required = Required.Always)]
-    public TQuote Nested { get; set; } = new();
+    public TQuote Nested { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
     public String Symbol { get; set; } = String.Empty;

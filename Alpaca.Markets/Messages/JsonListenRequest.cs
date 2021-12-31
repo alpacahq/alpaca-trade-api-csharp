@@ -11,9 +11,6 @@ internal sealed class JsonListenRequest
     [JsonProperty(PropertyName = "action", Required = Required.Always)]
     public JsonAction Action { get; set; }
 
-    [JsonProperty(PropertyName = "params", Required = Required.Default)]
-    public String? Params { get; set; }
-
     [JsonProperty(PropertyName = "data", Required = Required.Default)]
     public JsonData? Data { get; set; }
 }
