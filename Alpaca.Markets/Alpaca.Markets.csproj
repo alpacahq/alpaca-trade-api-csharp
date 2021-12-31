@@ -7,21 +7,22 @@
 	<WarningLevel>5</WarningLevel>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.2.6</Version>
+    <Version>5.2.7</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.2.6.0</AssemblyVersion>
-    <FileVersion>5.2.6.0</FileVersion>
+    <AssemblyVersion>5.2.7.0</AssemblyVersion>
+    <FileVersion>5.2.7.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Fixed problem with swapped `from` and `into` parameters in the `HistoricalCryptoTradeRequest` constructor.
-- Added method for requesting the cryptocurrency snapshot for given symbol/exchange pair.</PackageReleaseNotes>
+    <PackageReleaseNotes>- The `IStatus.TimeUtc` and `ILimitUpLimitDown.TimeUtc` properties marked as obsolete. The `TimestampUtc` properties should be used instead.
+- Implemented trade cancellations/corrections handling in the `IAlpacaDataStreamingClient` implementation.
+    </PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
