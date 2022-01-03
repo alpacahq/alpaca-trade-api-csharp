@@ -12,17 +12,16 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.2.3</AssemblyVersion>
-    <FileVersion>6.0.2.3</FileVersion>
-    <Version>6.0.2-alpha4</Version>
+    <AssemblyVersion>6.0.2.4</AssemblyVersion>
+    <FileVersion>6.0.2.4</FileVersion>
+    <Version>6.0.2-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Fixed problem with swapped `from` and `into` parameters in the `HistoricalCryptoTradeRequest` constructor.
-- Implemented trade cancellations/corrections handling in the `IAlpacaDataStreamingClient` implementation.</PackageReleaseNotes>
+    <PackageReleaseNotes>- The `IStatus.TimeUtc` and `ILimitUpLimitDown.TimeUtc` properties marked as obsolete. The `TimestampUtc` properties should be used instead.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
-    <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>

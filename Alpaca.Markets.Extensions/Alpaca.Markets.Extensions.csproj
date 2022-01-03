@@ -12,13 +12,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.2.1</AssemblyVersion>
-    <FileVersion>6.0.2.1</FileVersion>
-    <Version>6.0.2-alpha2</Version>
+    <AssemblyVersion>6.0.2.2</AssemblyVersion>
+    <FileVersion>6.0.2.2</FileVersion>
+    <Version>6.0.2-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Re-integrated latest changes in the main SDK (added missed methods/events implementations).</PackageReleaseNotes>
+    <PackageReleaseNotes>-Added extensions method for requesting all account activities in pagination mode.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
