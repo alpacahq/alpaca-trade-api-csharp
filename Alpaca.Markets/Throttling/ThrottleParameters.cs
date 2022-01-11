@@ -137,7 +137,7 @@ public sealed class ThrottleParameters
     internal static readonly HttpRequestOptionsKey<TimeSpan> RequestTimeoutOptionKey =
         new (nameof(RequestTimeoutOptionKey));
 #else
-    internal static readonly String RequestTimeoutOptionKey = nameof(RequestTimeoutOptionKey);
+    internal const String RequestTimeoutOptionKey = nameof(RequestTimeoutOptionKey);
 #endif
 
     /// <summary>
