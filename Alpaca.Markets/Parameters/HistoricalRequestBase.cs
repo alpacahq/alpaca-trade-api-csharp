@@ -39,6 +39,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     /// </summary>
     /// <param name="symbols">Asset names for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
     protected internal HistoricalRequestBase(
         IEnumerable<String> symbols,
@@ -51,6 +52,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     /// Gets asset name for data retrieval.
     /// </summary>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [Obsolete("This property is obsolete and will be removed in the next major version of SDK. Use the `Symbols` property instead of this one.", false)]
     public String Symbol => _symbols.FirstOrDefault() ?? String.Empty;
 
@@ -108,14 +110,13 @@ public abstract class HistoricalRequestBase : Validation.IRequest
                 "Symbol shouldn't be empty.", nameof(Symbols));
         }
 
-        if (Pagination is not Validation.IRequest validation)
+        // ReSharper disable once InvertIf
+        if (Pagination is Validation.IRequest validation)
         {
-            yield break;
-        }
-
-        foreach (var exception in validation.GetExceptions())
-        {
-            yield return exception;
+            foreach (var exception in validation.GetExceptions())
+            {
+                yield return exception;
+            }
         }
     }
 }

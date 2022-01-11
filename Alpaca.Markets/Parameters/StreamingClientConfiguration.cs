@@ -34,7 +34,7 @@ public abstract class StreamingClientConfiguration
                 $"The value of '{nameof(ApiEndpoint)}' property shouldn't be null.");
         }
 
-        if (String.IsNullOrEmpty(SecurityId.Value))
+        if (SecurityId is null)
         {
             throw new InvalidOperationException(
                 $"The value of '{nameof(SecurityId)}' property shouldn't be null or empty.");

@@ -62,4 +62,4 @@ Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method fo
 | -------------------------------------------- | ------- | -------------------------------------------- |--------------------------|
 | [develop](../../tree/develop)                | 6.0.x   | Unstable - experimental, can contain bugs    | [SDK 6.0.x Experimental](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/16) |
 | [master](../../tree/master)                  | 5.x.x   | LTS - good choice for the new development    | [SDK 5.x LTS](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/14) |
-| [support/v4.1.x](../../tree/support/v4.1.x)  | 4.x.x   | LTS - no breaking changes, all hotfixes      | [SDK 4.x LTS](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/13) |
+| [support/v4.1.x](../../tree/support/v4.1.x)  | 4.x.x   | LTS - no new featues, security fixes only    | [SDK 4.x LTS](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/13) |

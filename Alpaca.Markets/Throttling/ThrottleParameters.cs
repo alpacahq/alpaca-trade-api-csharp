@@ -134,10 +134,10 @@ public sealed class ThrottleParameters
     public static ThrottleParameters Default { get; } = new();
 
 #if NET5_0_OR_GREATER
-    internal static HttpRequestOptionsKey<TimeSpan> RequestTimeoutOptionKey =
+    internal static readonly HttpRequestOptionsKey<TimeSpan> RequestTimeoutOptionKey =
         new (nameof(RequestTimeoutOptionKey));
 #else
-    internal static String RequestTimeoutOptionKey = nameof(RequestTimeoutOptionKey);
+    internal static readonly String RequestTimeoutOptionKey = nameof(RequestTimeoutOptionKey);
 #endif
 
     /// <summary>

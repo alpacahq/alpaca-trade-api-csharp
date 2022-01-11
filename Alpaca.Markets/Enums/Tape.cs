@@ -21,7 +21,7 @@ public enum Tape
     B,
 
     /// <summary>
-    /// Tape C - NAsDAQ.
+    /// Tape C - NASDAQ.
     /// </summary>
     [UsedImplicitly]
     C

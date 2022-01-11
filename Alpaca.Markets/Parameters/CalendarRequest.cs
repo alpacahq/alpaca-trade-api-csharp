@@ -15,6 +15,7 @@ public sealed class CalendarRequest :
     /// <param name="date"></param>
     /// <returns></returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use another method overload that takes the DateOnly argument.", false)]
     public static CalendarRequest GetForSingleDay(DateTime date) =>
         GetForSingleDay(DateOnly.FromDateTime(date));
@@ -33,6 +34,7 @@ public sealed class CalendarRequest :
     /// Gets inclusive date interval for filtering items in response.
     /// </summary>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use the DateInterval property instead of this one.", false)]
     public Interval<DateTime> TimeInterval => DateInterval.AsTimeInterval();
 
@@ -59,6 +61,7 @@ public sealed class CalendarRequest :
     /// <param name="value">New filtering interval.</param>
     /// <returns>Request with applied filtering.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public CalendarRequest WithInterval(
         Interval<DateTime> value) =>
@@ -78,6 +81,7 @@ public sealed class CalendarRequest :
         return this;
     }
 
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use WithInterval method instead of this one.", false)]
     void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
         IInclusiveTimeInterval value) => WithInterval(value.AsDateOnlyInterval());

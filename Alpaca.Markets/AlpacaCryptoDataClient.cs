@@ -14,7 +14,7 @@ internal sealed class AlpacaCryptoDataClient :
         LatestDataRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<ITrade, JsonLatestTrade>(
-            await request.EnsureNotNull(nameof(request))
+            await request.EnsureNotNull(nameof(request)).Validate()
                 .GetUriBuilderAsync(HttpClient, "trades").ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -22,7 +22,7 @@ internal sealed class AlpacaCryptoDataClient :
         LatestDataRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IQuote, JsonLatestQuote<JsonHistoricalCryptoQuote>>(
-            await request.EnsureNotNull(nameof(request))
+            await request.EnsureNotNull(nameof(request)).Validate()
                 .GetUriBuilderAsync(HttpClient, "quotes").ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -30,7 +30,7 @@ internal sealed class AlpacaCryptoDataClient :
         LatestBestBidOfferRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IQuote, JsonLatestBestBidOffer>(
-            await request.EnsureNotNull(nameof(request))
+            await request.EnsureNotNull(nameof(request)).Validate()
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -38,7 +38,7 @@ internal sealed class AlpacaCryptoDataClient :
         SnapshotDataRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<ISnapshot, JsonCryptoSnapshot>(
-            await request.EnsureNotNull(nameof(request))
+            await request.EnsureNotNull(nameof(request)).Validate()
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 }
