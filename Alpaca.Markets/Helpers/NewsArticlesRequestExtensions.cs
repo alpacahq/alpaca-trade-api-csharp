@@ -4,9 +4,9 @@ using JetBrains.Annotations;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Set of extension methods for <see cref="HistoricalRequestBase"/> inheritors' initialization.
+    /// Set of extension methods for <see cref="NewsArticlesRequest"/> initialization.
     /// </summary>
-    public static class HistoricalRequestBaseExtensions
+    public static class NewsArticlesRequestExtensions
     {
         /// <summary>
         /// Sets the request page size using the fluent interface approach.
@@ -16,10 +16,9 @@ namespace Alpaca.Markets
         /// <returns>The original request parameters object.</returns>
         [UsedImplicitly]
         [CLSCompliant(false)]
-        public static TRequest WithPageSize<TRequest>(
-            this TRequest request,
+        public static NewsArticlesRequest WithPageSize(
+            this NewsArticlesRequest request,
             UInt32 pageSize)
-            where TRequest: HistoricalRequestBase
         {
             request.EnsureNotNull(nameof(request)).Pagination.Size = pageSize;
             return request;
@@ -32,10 +31,9 @@ namespace Alpaca.Markets
         /// <param name="pageToken">The request page size.</param>
         /// <returns>The original request parameters object.</returns>
         [UsedImplicitly]
-        public static TRequest WithPageToken<TRequest>(
-            this TRequest request,
+        public static NewsArticlesRequest WithPageToken(
+            this NewsArticlesRequest request,
             String pageToken)
-            where TRequest: HistoricalRequestBase
         {
             request.EnsureNotNull(nameof(request)).Pagination.Token = pageToken;
             return request;

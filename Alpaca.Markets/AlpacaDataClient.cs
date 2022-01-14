@@ -120,6 +120,14 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken = default) =>
             listConditionsAsync(tape, "quote", cancellationToken);
 
+        public async Task<IPage<INewsArticle>> ListNewsArticlesAsync(
+            NewsArticlesRequest request,
+            CancellationToken cancellationToken = default) =>
+            await _httpClient.GetAsync<IPage<INewsArticle>, JsonNewsPage>(
+                await request.EnsureNotNull(nameof(request)).Validate()
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
+
         private async Task<IReadOnlyDictionary<String, String>> listConditionsAsync(
             Tape tape,
             String tickType,
