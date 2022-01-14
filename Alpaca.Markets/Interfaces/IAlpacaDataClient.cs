@@ -84,4 +84,15 @@ public interface IAlpacaDataClient :
     Task<IReadOnlyDictionary<String, String>> ListQuoteConditionsAsync(
         Tape tape,
         CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets historical new articles list from Alpaca REST API endpoint.
+    /// </summary>
+    /// <param name="request">Historical news articles request parameters.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Read-only list of historical news articles for specified parameters (with pagination data).</returns>
+    [UsedImplicitly]
+    Task<IPage<INewsArticle>> ListNewsArticlesAsync(
+        NewsArticlesRequest request,
+        CancellationToken cancellationToken = default);
 }

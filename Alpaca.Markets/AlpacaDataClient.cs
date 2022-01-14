@@ -58,6 +58,14 @@ internal sealed class AlpacaDataClient :
         Tape tape,
         CancellationToken cancellationToken = default) =>
         listConditionsAsync(tape, "quote", cancellationToken);
+    
+    public async Task<IPage<INewsArticle>> ListNewsArticlesAsync(
+        NewsArticlesRequest request,
+        CancellationToken cancellationToken = default) =>
+        await HttpClient.GetAsync<IPage<INewsArticle>, JsonNewsPage>(
+            await request.EnsureNotNull(nameof(request)).Validate()
+                .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
+            cancellationToken).ConfigureAwait(false);
 
     private async Task<IReadOnlyDictionary<String, String>> listConditionsAsync(
         Tape tape,

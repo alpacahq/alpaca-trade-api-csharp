@@ -324,6 +324,7 @@ Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(string! symbol, System.Thre
 Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ISnapshot!>!
 Alpaca.Markets.IAlpacaDataClient.GetSnapshotsAsync(System.Collections.Generic.IEnumerable<string!>! symbols, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.ISnapshot!>!>!
 Alpaca.Markets.IAlpacaDataClient.ListExchangesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, string!>!>!
+Alpaca.Markets.IAlpacaDataClient.ListNewsArticlesAsync(Alpaca.Markets.NewsArticlesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.INewsArticle!>!>!
 Alpaca.Markets.IAlpacaDataClient.ListQuoteConditionsAsync(Alpaca.Markets.Tape tape, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, string!>!>!
 Alpaca.Markets.IAlpacaDataClient.ListTradeConditionsAsync(Alpaca.Markets.Tape tape, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, string!>!>!
 Alpaca.Markets.IAlpacaDataStreamingClient
@@ -456,6 +457,20 @@ Alpaca.Markets.Interval<TItem>.IsOpen() -> bool
 Alpaca.Markets.Interval<TItem>.WithFrom(TItem from) -> Alpaca.Markets.Interval<TItem>
 Alpaca.Markets.Interval<TItem>.WithInto(TItem into) -> Alpaca.Markets.Interval<TItem>
 Alpaca.Markets.IntervalExtensions
+Alpaca.Markets.INewsArticle
+Alpaca.Markets.INewsArticle.ArticleUrl.get -> System.Uri?
+Alpaca.Markets.INewsArticle.Author.get -> string!
+Alpaca.Markets.INewsArticle.Content.get -> string!
+Alpaca.Markets.INewsArticle.CreatedAtUtc.get -> System.DateTime
+Alpaca.Markets.INewsArticle.Headline.get -> string!
+Alpaca.Markets.INewsArticle.Id.get -> long
+Alpaca.Markets.INewsArticle.LargeImageUrl.get -> System.Uri?
+Alpaca.Markets.INewsArticle.SmallImageUrl.get -> System.Uri?
+Alpaca.Markets.INewsArticle.Source.get -> string!
+Alpaca.Markets.INewsArticle.Summary.get -> string!
+Alpaca.Markets.INewsArticle.Symbols.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Alpaca.Markets.INewsArticle.ThumbImageUrl.get -> System.Uri?
+Alpaca.Markets.INewsArticle.UpdatedAtUtc.get -> System.DateTime
 Alpaca.Markets.IOrder
 Alpaca.Markets.IOrder.AssetClass.get -> Alpaca.Markets.AssetClass
 Alpaca.Markets.IOrder.AssetId.get -> System.Guid
@@ -671,6 +686,20 @@ Alpaca.Markets.NewOrderRequest.TrailOffsetInDollars.set -> void
 Alpaca.Markets.NewOrderRequest.TrailOffsetInPercent.get -> decimal?
 Alpaca.Markets.NewOrderRequest.TrailOffsetInPercent.set -> void
 Alpaca.Markets.NewOrderRequest.Type.get -> Alpaca.Markets.OrderType
+Alpaca.Markets.NewsArticlesRequest
+Alpaca.Markets.NewsArticlesRequest.ExcludeItemsWithoutContent.get -> bool?
+Alpaca.Markets.NewsArticlesRequest.ExcludeItemsWithoutContent.set -> void
+Alpaca.Markets.NewsArticlesRequest.NewsArticlesRequest() -> void
+Alpaca.Markets.NewsArticlesRequest.NewsArticlesRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
+Alpaca.Markets.NewsArticlesRequest.Pagination.get -> Alpaca.Markets.Pagination!
+Alpaca.Markets.NewsArticlesRequest.SendFullContentForItems.get -> bool?
+Alpaca.Markets.NewsArticlesRequest.SendFullContentForItems.set -> void
+Alpaca.Markets.NewsArticlesRequest.SortDirection.get -> Alpaca.Markets.SortDirection?
+Alpaca.Markets.NewsArticlesRequest.SortDirection.set -> void
+Alpaca.Markets.NewsArticlesRequest.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
+Alpaca.Markets.NewsArticlesRequest.TimeInterval.get -> Alpaca.Markets.Interval<System.DateTime>?
+Alpaca.Markets.NewsArticlesRequest.TimeInterval.set -> void
+Alpaca.Markets.NewsArticlesRequestExtensions
 Alpaca.Markets.NewWatchListRequest
 Alpaca.Markets.NewWatchListRequest.Assets.get -> System.Collections.Generic.IReadOnlyList<string!>!
 Alpaca.Markets.NewWatchListRequest.Name.get -> string!
@@ -922,6 +951,8 @@ static Alpaca.Markets.LimitOrder.Buy(string! symbol, long quantity, decimal limi
 static Alpaca.Markets.LimitOrder.Sell(string! symbol, long quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
 static Alpaca.Markets.MarketOrder.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
 static Alpaca.Markets.MarketOrder.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
+static Alpaca.Markets.NewsArticlesRequestExtensions.WithPageSize(this Alpaca.Markets.NewsArticlesRequest! request, uint pageSize) -> Alpaca.Markets.NewsArticlesRequest!
+static Alpaca.Markets.NewsArticlesRequestExtensions.WithPageToken(this Alpaca.Markets.NewsArticlesRequest! request, string! pageToken) -> Alpaca.Markets.NewsArticlesRequest!
 static Alpaca.Markets.OrderBaseExtensions.WithClientOrderId<TOrder>(this TOrder! order, string! clientOrderId) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithDuration<TOrder>(this TOrder! order, Alpaca.Markets.TimeInForce duration) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithExtendedHours<TOrder>(this TOrder! order, bool extendedHours) -> TOrder!
