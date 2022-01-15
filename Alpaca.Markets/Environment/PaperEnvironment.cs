@@ -11,4 +11,6 @@ internal sealed class PaperEnvironment : IEnvironment
     public Uri AlpacaDataStreamingApi => new("wss://stream.data.alpaca.markets/v2/iex");
 
     public Uri AlpacaCryptoStreamingApi => Environments.Live.AlpacaCryptoStreamingApi;
+
+    public Uri AlpacaNewsStreamingApi => Environments.Live.AlpacaNewsStreamingApi;
 }

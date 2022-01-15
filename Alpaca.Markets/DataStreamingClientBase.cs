@@ -148,6 +148,8 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
 
     private const String ConnectionSuccess = "success";
 
+    protected const String NewsChannel = "n";
+
     private const String TradesChannel = "t";
 
     protected const String QuotesChannel = "q";
@@ -164,7 +166,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
 
     protected const String CancellationsChannel = "x";
 
-    private const String WildcardSymbolString = "*";
+    protected const String WildcardSymbolString = "*";
 
     private const Int32 SubscriptionChunkSize = 100;
 
@@ -197,6 +199,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                 { Subscription, handleSubscriptionUpdates },
                 { TradesChannel, handleRealtimeDataUpdate },
                 { QuotesChannel, handleRealtimeDataUpdate },
+                { NewsChannel, handleRealtimeNewsUpdate },
                 { ErrorInfo, handleErrorMessages }
         };
 
@@ -353,6 +356,30 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
             {
                 _subscriptions.OnReceived(getStreamName(channel, WildcardSymbolString), token);
             }
+        }
+        catch (Exception exception)
+        {
+            HandleError(exception);
+        }
+    }
+
+    [SuppressMessage(
+        "Design", "CA1031:Do not catch general exception types",
+        Justification = "Expected behavior - we report exceptions via OnError event.")]
+    private void handleRealtimeNewsUpdate(
+        JToken token)
+    {
+        try
+        {
+            var channel = token["T"]?.ToString() ?? String.Empty;
+            var symbols = token["S"]?.Values<String>() ?? Enumerable.Empty<String>();
+
+            foreach (var symbol in symbols.Where(_ => !String.IsNullOrEmpty(_)))
+            {
+                _subscriptions.OnReceived(getStreamName(channel, symbol!), token);
+            }
+
+            _subscriptions.OnReceived(getStreamName(channel, WildcardSymbolString), token);
         }
         catch (Exception exception)
         {
