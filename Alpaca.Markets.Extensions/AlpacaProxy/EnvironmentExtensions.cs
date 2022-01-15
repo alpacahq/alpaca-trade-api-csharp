@@ -27,6 +27,8 @@ namespace Alpaca.Markets.Extensions
 
             public Uri AlpacaDataStreamingApi { get; set; }
 
+            public Uri AlpacaNewsStreamingApi => _environment.AlpacaNewsStreamingApi;
+
             public Uri AlpacaCryptoStreamingApi => _environment.AlpacaCryptoStreamingApi;
 
             public Uri AlpacaTradingApi => _environment.AlpacaTradingApi;
