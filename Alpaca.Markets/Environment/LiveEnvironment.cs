@@ -12,6 +12,8 @@ namespace Alpaca.Markets
 
         public Uri AlpacaDataStreamingApi => new ("wss://stream.data.alpaca.markets/v2/sip");
 
+        public Uri AlpacaNewsStreamingApi => new ("wss://stream.data.tradetalk.us/v1beta1/news");
+
         public Uri AlpacaCryptoStreamingApi => new ("wss://stream.data.alpaca.markets/v1beta1/crypto");
     }
 }

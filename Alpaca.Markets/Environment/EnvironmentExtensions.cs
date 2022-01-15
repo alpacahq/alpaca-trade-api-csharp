@@ -15,6 +15,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaTradingClient"/> interface implementation.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAlpacaTradingClient GetAlpacaTradingClient(
             this IEnvironment environment,
@@ -46,6 +47,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaDataClient"/> interface implementation.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAlpacaDataClient GetAlpacaDataClient(
             this IEnvironment environment,
@@ -109,6 +111,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaStreamingClient"/> interface implementation.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAlpacaStreamingClient GetAlpacaStreamingClient(
             this IEnvironment environment,
@@ -140,6 +143,7 @@ namespace Alpaca.Markets
         /// <param name="environment">Target environment for new object.</param>
         /// <param name="securityKey">Alpaca API security key.</param>
         /// <returns>The new instance of <see cref="IAlpacaDataStreamingClient"/> interface implementation.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         public static IAlpacaDataStreamingClient GetAlpacaDataStreamingClient(
             this IEnvironment environment,
@@ -193,6 +197,38 @@ namespace Alpaca.Markets
             {
                 ApiEndpoint = environment.EnsureNotNull(nameof(environment))
                     .AlpacaCryptoStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaCryptoStreamingApi)),
+                SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
+            };
+
+        /// <summary>
+        /// Creates the new instance of <see cref="IAlpacaNewsStreamingClient"/> interface
+        /// implementation for specific environment provided as <paramref name="environment"/> argument.
+        /// </summary>
+        /// <param name="environment">Target environment for new object.</param>
+        /// <param name="securityKey">Alpaca API security key.</param>
+        /// <returns>The new instance of <see cref="IAlpacaNewsStreamingClient"/> interface implementation.</returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAlpacaNewsStreamingClient GetAlpacaNewsStreamingClient(
+            this IEnvironment environment,
+            SecurityKey securityKey) =>
+            new AlpacaNewsStreamingClient(environment.GetAlpacaNewsStreamingClientConfiguration(securityKey));
+
+        /// <summary>
+        /// Creates new instance of <see cref="AlpacaNewsStreamingClientConfiguration"/> for specific
+        /// environment provided as <paramref name="environment"/> argument.
+        /// </summary>
+        /// <param name="environment">Target environment for new object.</param>
+        /// <param name="securityKey">Alpaca API security key.</param>
+        /// <returns>New instance of <see cref="AlpacaNewsStreamingClientConfiguration"/> object.</returns>
+        [UsedImplicitly]
+        public static AlpacaNewsStreamingClientConfiguration GetAlpacaNewsStreamingClientConfiguration(
+            this IEnvironment environment,
+            SecurityKey securityKey) =>
+            new ()
+            {
+                ApiEndpoint = environment.EnsureNotNull(nameof(environment))
+                    .AlpacaNewsStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaNewsStreamingApi)),
                 SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
             };
     }

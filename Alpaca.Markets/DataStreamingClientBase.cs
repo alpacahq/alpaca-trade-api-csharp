@@ -154,6 +154,8 @@ namespace Alpaca.Markets
 
         private const String ConnectionSuccess = "success";
 
+        protected const String NewsChannel = "n";
+
         protected const String TradesChannel = "t";
 
         protected const String QuotesChannel = "q";
@@ -203,6 +205,7 @@ namespace Alpaca.Markets
                 { Subscription, handleSubscriptionUpdates },
                 { TradesChannel, handleRealtimeDataUpdate },
                 { QuotesChannel, handleRealtimeDataUpdate },
+                { NewsChannel, handleRealtimeNewsUpdate },
                 { ErrorInfo, handleErrorMessages }
             };
 
@@ -354,6 +357,30 @@ namespace Alpaca.Markets
         [SuppressMessage(
             "Design", "CA1031:Do not catch general exception types",
             Justification = "Expected behavior - we report exceptions via OnError event.")]
+        private void handleRealtimeNewsUpdate(
+            JToken token)
+        {
+            try
+            {
+                var channel = token["T"]?.ToString() ?? String.Empty;
+                var symbols = token["S"]?.Values<String>() ?? Enumerable.Empty<String>();
+
+                foreach (var symbol in symbols.Where(_ => !String.IsNullOrEmpty(_)))
+                {
+                    _subscriptions.OnReceived(getStreamName(channel, symbol!), token);
+                }
+
+                _subscriptions.OnReceived(getStreamName(channel, WildcardSymbolString), token);
+            }
+            catch (Exception exception)
+            {
+                HandleError(exception);
+            }
+        }
+
+        [SuppressMessage(
+            "Design", "CA1031:Do not catch general exception types",
+            Justification = "Expected behavior - we report exceptions via OnError event.")]
         private async void handleErrorMessages(
             JToken token)
         {
@@ -419,6 +446,7 @@ namespace Alpaca.Markets
                 ? SendAsJsonStringAsync(new JsonSubscriptionUpdate
                 {
                     Action = action,
+                    News = getSymbols(streamsByChannels, NewsChannel),
                     Trades = getSymbols(streamsByChannels, TradesChannel),
                     Quotes = getSymbols(streamsByChannels, QuotesChannel),
                     Statuses = getSymbols(streamsByChannels, StatusesChannel),
