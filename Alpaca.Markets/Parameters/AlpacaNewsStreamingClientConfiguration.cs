@@ -1,16 +1,15 @@
-﻿namespace Alpaca.Markets
+﻿namespace Alpaca.Markets;
+
+/// <summary>
+/// Configuration parameters object for <see cref="IAlpacaNewsStreamingClient"/> implementation.
+/// </summary>
+public sealed class AlpacaNewsStreamingClientConfiguration : StreamingClientConfiguration
 {
     /// <summary>
-    /// Configuration parameters object for <see cref="IAlpacaNewsStreamingClient"/> implementation.
+    /// Creates new instance of <see cref="AlpacaNewsStreamingClientConfiguration"/> class.
     /// </summary>
-    public sealed class AlpacaNewsStreamingClientConfiguration : StreamingClientConfiguration
+    public AlpacaNewsStreamingClientConfiguration()
+        : base(Environments.Live.AlpacaNewsStreamingApi)
     {
-        /// <summary>
-        /// Creates new instance of <see cref="AlpacaNewsStreamingClientConfiguration"/> class.
-        /// </summary>
-        public AlpacaNewsStreamingClientConfiguration()
-            : base(Environments.Live.AlpacaNewsStreamingApi)
-        {
-        }
     }
 }
