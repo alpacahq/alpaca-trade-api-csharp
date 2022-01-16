@@ -15,6 +15,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="subscription">Subscription target - asset and update type holder.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        [UsedImplicitly]
         ValueTask SubscribeAsync(
             IAlpacaDataSubscription subscription,
             CancellationToken cancellationToken = default);

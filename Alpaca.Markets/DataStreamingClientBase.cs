@@ -315,6 +315,7 @@ namespace Alpaca.Markets
 
                 var streams = new HashSet<String>(
                     getStreams(subscriptionUpdate.Trades.EmptyIfNull(), TradesChannel)
+                        .Concat(getStreams(subscriptionUpdate.News.EmptyIfNull(), NewsChannel))
                         .Concat(getStreams(subscriptionUpdate.Quotes.EmptyIfNull(), QuotesChannel))
                         .Concat(getStreams(subscriptionUpdate.Statuses.EmptyIfNull(), StatusesChannel))
                         .Concat(getStreams(subscriptionUpdate.Lulds.EmptyIfNull(), LimitUpDownChannel))
