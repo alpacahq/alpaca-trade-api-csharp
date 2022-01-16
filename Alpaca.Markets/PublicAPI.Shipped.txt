@@ -597,10 +597,15 @@ Alpaca.Markets.IStreamingDataClient.GetMinuteBarSubscription() -> Alpaca.Markets
 Alpaca.Markets.IStreamingDataClient.GetMinuteBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IStreamingDataClient.GetQuoteSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IQuote!>!
 Alpaca.Markets.IStreamingDataClient.GetTradeSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ITrade!>!
-Alpaca.Markets.IStreamingDataClient.SubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription! subscription, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask
-Alpaca.Markets.IStreamingDataClient.SubscribeAsync(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask
-Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription! subscription, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask
-Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.ISubscriptionHandler
+Alpaca.Markets.ISubscriptionHandler.SubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription! subscription) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.ISubscriptionHandler.SubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription! subscription, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.ISubscriptionHandler.SubscribeAsync(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.ISubscriptionHandler.SubscribeAsync(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.ISubscriptionHandler.UnsubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription! subscription) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.ISubscriptionHandler.UnsubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription! subscription, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.ISubscriptionHandler.UnsubscribeAsync(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.ISubscriptionHandler.UnsubscribeAsync(System.Collections.Generic.IEnumerable<Alpaca.Markets.IAlpacaDataSubscription!>! subscriptions, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask
 Alpaca.Markets.ITakeProfit
 Alpaca.Markets.ITakeProfit.LimitPrice.get -> decimal
 Alpaca.Markets.ITrade

@@ -219,23 +219,39 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         GetSubscription<IBar, JsonRealTimeBar>(DailyBarsChannel, symbol);
 
     public ValueTask SubscribeAsync(
+        IAlpacaDataSubscription subscription) =>
+        SubscribeAsync(subscription, CancellationToken.None);
+
+    public ValueTask SubscribeAsync(
         IAlpacaDataSubscription subscription,
-        CancellationToken cancellationToken = default) =>
+        CancellationToken cancellationToken) =>
         subscribeAsync(subscription.EnsureNotNull(nameof(subscription)).Streams, cancellationToken);
 
     public ValueTask SubscribeAsync(
+        IEnumerable<IAlpacaDataSubscription> subscriptions) =>
+        SubscribeAsync(subscriptions, CancellationToken.None);
+
+    public ValueTask SubscribeAsync(
         IEnumerable<IAlpacaDataSubscription> subscriptions,
-        CancellationToken cancellationToken = default) =>
+        CancellationToken cancellationToken) =>
         subscribeAsync(subscriptions.SelectMany(_ => _.Streams), cancellationToken);
 
     public ValueTask UnsubscribeAsync(
+        IAlpacaDataSubscription subscription) =>
+        UnsubscribeAsync(subscription, CancellationToken.None);
+
+    public ValueTask UnsubscribeAsync(
         IAlpacaDataSubscription subscription,
-        CancellationToken cancellationToken = default) =>
+        CancellationToken cancellationToken) =>
         unsubscribeAsync(subscription.EnsureNotNull(nameof(subscription)).Streams, cancellationToken);
 
     public ValueTask UnsubscribeAsync(
+        IEnumerable<IAlpacaDataSubscription> subscriptions) =>
+        UnsubscribeAsync(subscriptions, CancellationToken.None);
+
+    public ValueTask UnsubscribeAsync(
         IEnumerable<IAlpacaDataSubscription> subscriptions,
-        CancellationToken cancellationToken = default) =>
+        CancellationToken cancellationToken) =>
         unsubscribeAsync(subscriptions.SelectMany(_ => _.Streams), cancellationToken);
 
     protected IAlpacaDataSubscription<TApi> GetSubscription<TApi, TJson>(

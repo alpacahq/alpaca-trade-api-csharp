@@ -16,8 +16,4 @@ internal sealed class AlpacaNewsStreamingClient :
     public IAlpacaDataSubscription<INewsArticle> GetNewsSubscription(
         String symbol) => 
         GetSubscription<INewsArticle, JsonNewsArticle>(NewsChannel, symbol);
-
-    public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
-        String symbol) =>
-        throw new NotImplementedException("This method will be removed soon.");
 }

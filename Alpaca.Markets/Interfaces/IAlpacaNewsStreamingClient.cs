@@ -4,7 +4,7 @@
 /// Provides unified type-safe access for Alpaca data streaming API via websockets.
 /// </summary>
 [CLSCompliant(false)]
-public interface IAlpacaNewsStreamingClient : IStreamingDataClient
+public interface IAlpacaNewsStreamingClient : IStreamingClient, ISubscriptionHandler
 {
     /// <summary>
     /// Gets the news articles' updates subscription for all stock and crypto assets.
