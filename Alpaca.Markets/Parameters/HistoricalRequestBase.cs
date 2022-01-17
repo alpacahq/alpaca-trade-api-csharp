@@ -110,13 +110,9 @@ public abstract class HistoricalRequestBase : Validation.IRequest
                 "Symbol shouldn't be empty.", nameof(Symbols));
         }
 
-        // ReSharper disable once InvertIf
-        if (Pagination is Validation.IRequest validation)
+        if (Pagination.TryGetException(Pagination.MaxPageSize, out var exception))
         {
-            foreach (var exception in validation.GetExceptions())
-            {
-                yield return exception;
-            }
+            yield return exception!;
         }
     }
 }

@@ -1,18 +1,22 @@
-﻿namespace Alpaca.Markets;
+namespace Alpaca.Markets;
 
 /// <summary>
 /// Encapsulates all data required for the pagination support in Alpaca Data API v2
 /// </summary>
-public sealed class Pagination : Validation.IRequest
+public sealed class Pagination
 {
     private const UInt32 MinPageSize = 1;
 
     /// <summary>
     /// Gets ths maximal valid page size for the request supported by Alpaca Data API v2.
     /// </summary>
-    [UsedImplicitly]
     [CLSCompliant(false)]
     public static UInt32 MaxPageSize => 10_000;
+
+    /// <summary>
+    /// Gets ths maximal valid page size for the news request supported by Alpaca Data API v2.
+    /// </summary>
+    internal static UInt32 MaxNewsPageSize => 100;
 
     /// <summary>
     /// Gets and sets the request page size. If equals to <c>null</c> default size will be used.
@@ -30,12 +34,17 @@ public sealed class Pagination : Validation.IRequest
             .AddParameter("page_token", Token)
             .AddParameter("limit", Size);
 
-    /// <inheritdoc />
-    IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
+    internal Boolean TryGetException(
+        UInt32 maxPageSize,
+        out RequestValidationException? exception)
     {
-        if (Size < MinPageSize || Size > MaxPageSize)
+        if (Size >= MinPageSize && Size <= maxPageSize)
         {
-            yield return new RequestValidationException("Invalid page size");
+            exception = null;
+            return false;
         }
+
+        exception = new RequestValidationException("Invalid page size");
+        return true;
     }
 }
