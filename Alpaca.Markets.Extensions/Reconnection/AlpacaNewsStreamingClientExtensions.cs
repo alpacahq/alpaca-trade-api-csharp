@@ -4,48 +4,39 @@ using JetBrains.Annotations;
 namespace Alpaca.Markets.Extensions
 {
     /// <summary>
-    /// Helper extension method for creating special version of the <see cref="IAlpacaCryptoStreamingClient"/>
+    /// Helper extension method for creating special version of the <see cref="IAlpacaNewsStreamingClient"/>
     /// implementation with automatic reconnection (with configurable delay and number of attempts) support.
     /// </summary>
-    public static partial class AlpacaCryptoStreamingClientExtensions
+    public static partial class AlpacaNewsStreamingClientExtensions
     {
         private sealed class ClientWithReconnection :
-            ClientWithSubscriptionReconnectBase<IAlpacaCryptoStreamingClient>,
-            IAlpacaCryptoStreamingClient
+            ClientWithSubscriptionReconnectBase<IAlpacaNewsStreamingClient>,
+            IAlpacaNewsStreamingClient
         {
             public ClientWithReconnection(
-                IAlpacaCryptoStreamingClient client,
+                IAlpacaNewsStreamingClient client,
                 ReconnectionParameters reconnectionParameters)
                 : base (client, reconnectionParameters)
             {
             }
 
-            public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() =>
-                Client.GetMinuteBarSubscription();
+            public IAlpacaDataSubscription<INewsArticle> GetNewsSubscription() =>
+                Client.GetNewsSubscription();
 
-            public IAlpacaDataSubscription<ITrade> GetTradeSubscription(String symbol) =>
-                Client.GetTradeSubscription(symbol);
-
-            public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(String symbol) =>
-                Client.GetQuoteSubscription(symbol);
-
-            public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(String symbol) =>
-                Client.GetMinuteBarSubscription(symbol);
-
-            public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(String symbol) =>
-                Client.GetDailyBarSubscription(symbol);
+            public IAlpacaDataSubscription<INewsArticle> GetNewsSubscription(String symbol) =>
+                Client.GetNewsSubscription(symbol);
         }
 
         /// <summary>
-        /// Wraps instance of <see cref="IAlpacaCryptoStreamingClient"/> into the helper class
+        /// Wraps instance of <see cref="IAlpacaNewsStreamingClient"/> into the helper class
         /// with automatic reconnection support and provide optional reconnection parameters.
         /// </summary>
         /// <param name="client">Original streaming client for wrapping.</param>
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
         [UsedImplicitly]
         [CLSCompliant(false)]
-        public static IAlpacaCryptoStreamingClient WithReconnect(
-            this IAlpacaCryptoStreamingClient client) =>
+        public static IAlpacaNewsStreamingClient WithReconnect(
+            this IAlpacaNewsStreamingClient client) =>
             WithReconnect(client, ReconnectionParameters.Default);
 
         /// <summary>
@@ -57,8 +48,8 @@ namespace Alpaca.Markets.Extensions
         /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
         [UsedImplicitly]
         [CLSCompliant(false)]
-        public static IAlpacaCryptoStreamingClient WithReconnect(
-            this IAlpacaCryptoStreamingClient client,
+        public static IAlpacaNewsStreamingClient WithReconnect(
+            this IAlpacaNewsStreamingClient client,
             ReconnectionParameters parameters) =>
             new ClientWithReconnection(client, parameters);
     }

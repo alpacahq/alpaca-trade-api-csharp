@@ -33,6 +33,18 @@ namespace Alpaca.Markets.Extensions
             new AlpacaCryptoStreamingClient(configuration);
 
         /// <summary>
+        /// Creates the new instance of <see cref="IAlpacaNewsStreamingClient"/> interface
+        /// implementation using the <paramref name="configuration"/> argument.
+        /// </summary>
+        /// <param name="configuration">Client configuration parameters.</param>
+        /// <returns>The new instance of <see cref="IAlpacaNewsStreamingClient"/> interface implementation.</returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAlpacaNewsStreamingClient GetClient(
+            this AlpacaNewsStreamingClientConfiguration configuration) =>
+            new AlpacaNewsStreamingClient(configuration);
+
+        /// <summary>
         /// Creates the new instance of <see cref="IAlpacaDataClient"/> interface
         /// implementation using the <paramref name="configuration"/> argument.
         /// </summary>
