@@ -102,14 +102,9 @@ namespace Alpaca.Markets
                     "Symbol shouldn't be empty.", nameof(Symbols));
             }
 
-            if (Pagination is not Validation.IRequest validation)
+            if (Pagination.TryGetException(Pagination.MaxPageSize, out var exception))
             {
-                yield break;
-            }
-
-            foreach (var exception in validation.GetExceptions())
-            {
-                yield return exception;
+                yield return exception!;
             }
         }
     }
