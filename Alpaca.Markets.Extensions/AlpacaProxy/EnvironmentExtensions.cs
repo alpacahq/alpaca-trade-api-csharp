@@ -26,6 +26,8 @@ public static class EnvironmentExtensions
 
         public Uri AlpacaCryptoStreamingApi => _environment.AlpacaCryptoStreamingApi;
 
+        public Uri AlpacaNewsStreamingApi => _environment.AlpacaNewsStreamingApi;
+
         public Uri AlpacaTradingApi => _environment.AlpacaTradingApi;
 
         public Uri AlpacaDataApi => _environment.AlpacaDataApi;

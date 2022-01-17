@@ -4,7 +4,7 @@ namespace Alpaca.Markets.Extensions;
 
 internal abstract class ClientWithSubscriptionReconnectBase<TClient> :
     ClientWithReconnectBase<TClient>
-    where TClient : IStreamingDataClient
+    where TClient : IStreamingClient, ISubscriptionHandler
 {
     private readonly ConcurrentDictionary<String, IAlpacaDataSubscription> _subscriptions =
         new(StringComparer.Ordinal);
@@ -17,8 +17,12 @@ internal abstract class ClientWithSubscriptionReconnectBase<TClient> :
     }
 
     public ValueTask SubscribeAsync(
+        IAlpacaDataSubscription subscription) =>
+        SubscribeAsync(subscription, CancellationToken.None);
+
+    public ValueTask SubscribeAsync(
         IAlpacaDataSubscription subscription,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken)
     {
         foreach (var stream in subscription.Streams)
         {
@@ -29,8 +33,12 @@ internal abstract class ClientWithSubscriptionReconnectBase<TClient> :
     }
 
     public ValueTask SubscribeAsync(
+        IEnumerable<IAlpacaDataSubscription> subscriptions) =>
+        SubscribeAsync(subscriptions, CancellationToken.None);
+
+    public ValueTask SubscribeAsync(
         IEnumerable<IAlpacaDataSubscription> subscriptions,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken)
     {
         var dataSubscriptions = new List<IAlpacaDataSubscription>(subscriptions);
 
@@ -46,8 +54,12 @@ internal abstract class ClientWithSubscriptionReconnectBase<TClient> :
     }
 
     public ValueTask UnsubscribeAsync(
+        IAlpacaDataSubscription subscription) =>
+        UnsubscribeAsync(subscription, CancellationToken.None);
+
+    public ValueTask UnsubscribeAsync(
         IAlpacaDataSubscription subscription,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken)
     {
         foreach (var stream in subscription.Streams)
         {
@@ -58,8 +70,12 @@ internal abstract class ClientWithSubscriptionReconnectBase<TClient> :
     }
 
     public ValueTask UnsubscribeAsync(
+        IEnumerable<IAlpacaDataSubscription> subscriptions) =>
+        UnsubscribeAsync(subscriptions, CancellationToken.None);
+
+    public ValueTask UnsubscribeAsync(
         IEnumerable<IAlpacaDataSubscription> subscriptions,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken)
     {
         var dataSubscriptions = new List<IAlpacaDataSubscription>(subscriptions);
 

@@ -5,11 +5,11 @@ internal sealed class DisposableAlpacaDataSubscription<TItem> :
 {
     private readonly IAlpacaDataSubscription<TItem> _subscription;
 
-    private IStreamingDataClient? _client;
+    private ISubscriptionHandler? _client;
 
     private DisposableAlpacaDataSubscription(
         IAlpacaDataSubscription<TItem> subscription,
-        IStreamingDataClient client)
+        ISubscriptionHandler client)
     {
         _subscription = subscription;
         _client = client;
@@ -17,7 +17,7 @@ internal sealed class DisposableAlpacaDataSubscription<TItem> :
 
     public static async ValueTask<IDisposableAlpacaDataSubscription<TItem>> CreateAsync(
         IAlpacaDataSubscription<TItem> subscription,
-        IStreamingDataClient client)
+        ISubscriptionHandler client)
     {
         await client.SubscribeAsync(subscription).ConfigureAwait(false);
         return new DisposableAlpacaDataSubscription<TItem>(subscription, client);

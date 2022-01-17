@@ -8,7 +8,7 @@ internal static class PaginationExtensions
         this TRequest singlePageOfItemsRequestWithEmptyPageToken,
         Func<TRequest, CancellationToken, Task<IPage<TItem>>> getSinglePage,
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
-        where TRequest : HistoricalRequestBase
+        where TRequest : HistoricalRequestBase, IHistoricalRequest
     {
         await foreach (var page in GetResponsesByPages(
                 singlePageOfItemsRequestWithEmptyPageToken, getSinglePage, cancellationToken)
@@ -25,7 +25,7 @@ internal static class PaginationExtensions
         this TRequest singlePageOfItemsRequestWithEmptyPageToken,
         Func<TRequest, CancellationToken, Task<IMultiPage<TItem>>> getSinglePage,
         CancellationToken cancellationToken = default)
-        where TRequest : HistoricalRequestBase
+        where TRequest : HistoricalRequestBase, IHistoricalRequest
     {
         var channelsBySymbols =
             singlePageOfItemsRequestWithEmptyPageToken.Symbols
@@ -86,7 +86,7 @@ internal static class PaginationExtensions
         this TRequest singlePageOfItemsRequestWithEmptyPageToken,
         Func<TRequest, CancellationToken, Task<IPage<TItem>>> getSinglePage,
         CancellationToken cancellationToken = default)
-        where TRequest : HistoricalRequestBase =>
+        where TRequest : class, IHistoricalRequest =>
         getResponses(
             singlePageOfItemsRequestWithEmptyPageToken,
             (request, ct) => getItemsAndNextPageToken(getSinglePage, request, ct),
@@ -96,7 +96,7 @@ internal static class PaginationExtensions
         this TRequest singlePageOfItemsRequestWithEmptyPageToken,
         Func<TRequest, CancellationToken, Task<IMultiPage<TItem>>> getSinglePage,
         CancellationToken cancellationToken = default)
-        where TRequest : HistoricalRequestBase =>
+        where TRequest : class, IHistoricalRequest =>
         getResponses(
             singlePageOfItemsRequestWithEmptyPageToken,
             (request, ct) => getItemsAndNextPageToken(getSinglePage, request, ct),
@@ -106,7 +106,7 @@ internal static class PaginationExtensions
         TRequest singlePageOfItemsRequestWithEmptyPageToken,
         Func<TRequest, CancellationToken, Task<(TResponse, String?)>> getItemsAndNextPageToken,
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
-        where TRequest : HistoricalRequestBase
+        where TRequest : class, IHistoricalRequest
     {
         var request = singlePageOfItemsRequestWithEmptyPageToken;
         do
