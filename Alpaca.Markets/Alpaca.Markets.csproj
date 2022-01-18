@@ -12,13 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.2.4</AssemblyVersion>
-    <FileVersion>6.0.2.4</FileVersion>
-    <Version>6.0.2-beta1</Version>
+    <AssemblyVersion>6.0.2.5</AssemblyVersion>
+    <FileVersion>6.0.2.5</FileVersion>
+    <Version>6.0.2-beta2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- The `IStatus.TimeUtc` and `ILimitUpLimitDown.TimeUtc` properties marked as obsolete. The `TimestampUtc` properties should be used instead.</PackageReleaseNotes>
+    <PackageReleaseNotes>- The historical news articles requesting method `IAlpacaDataClient.ListNewsArticlesAsync`and related classes/interfaces added into the SDK.
+- The real-time news articles streaming client `IAlpacaNewsStreamingClient` were added into the SDK.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
