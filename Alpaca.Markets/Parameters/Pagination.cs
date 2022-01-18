@@ -38,13 +38,13 @@ public sealed class Pagination
         UInt32 maxPageSize,
         out RequestValidationException? exception)
     {
-        if (Size >= MinPageSize && Size <= maxPageSize)
+        if (Size < MinPageSize || Size > maxPageSize)
         {
-            exception = null;
-            return false;
+            exception = new RequestValidationException("Invalid page size");
+            return true;
         }
 
-        exception = new RequestValidationException("Invalid page size");
-        return true;
+        exception = null;
+        return false;
     }
 }
