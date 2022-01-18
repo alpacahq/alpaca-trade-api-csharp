@@ -104,7 +104,7 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.IO.Pipelines" Version="6.0.1" />
-    <PackageReference Include="Polly" Version="7.2.2" />
+    <PackageReference Include="Polly" Version="7.2.3" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">

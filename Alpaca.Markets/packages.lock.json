@@ -38,9 +38,9 @@
       },
       "Polly": {
         "type": "Direct",
-        "requested": "[7.2.2, )",
-        "resolved": "7.2.2",
-        "contentHash": "E6CeKyS513j7taKAq4q2MESDBvzuzWnR1rQ2Y2zqJvpiVtKMm699Aubb20MUPBDmb0Ov8PmcLHTCVFdCjoy2kA==",
+        "requested": "[7.2.3, )",
+        "resolved": "7.2.3",
+        "contentHash": "DeCY0OFbNdNxsjntr1gTXHJ5pKUwYzp04Er2LLeN3g6pWhffsGuKVfMBLe1lw7x76HrPkLxKEFxBlpRxS2nDEQ==",
         "dependencies": {
           "System.ValueTuple": "4.5.0"
         }
@@ -170,9 +170,9 @@
       },
       "Polly": {
         "type": "Direct",
-        "requested": "[7.2.2, )",
-        "resolved": "7.2.2",
-        "contentHash": "E6CeKyS513j7taKAq4q2MESDBvzuzWnR1rQ2Y2zqJvpiVtKMm699Aubb20MUPBDmb0Ov8PmcLHTCVFdCjoy2kA=="
+        "requested": "[7.2.3, )",
+        "resolved": "7.2.3",
+        "contentHash": "DeCY0OFbNdNxsjntr1gTXHJ5pKUwYzp04Er2LLeN3g6pWhffsGuKVfMBLe1lw7x76HrPkLxKEFxBlpRxS2nDEQ=="
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
@@ -280,9 +280,9 @@
       },
       "Polly": {
         "type": "Direct",
-        "requested": "[7.2.2, )",
-        "resolved": "7.2.2",
-        "contentHash": "E6CeKyS513j7taKAq4q2MESDBvzuzWnR1rQ2Y2zqJvpiVtKMm699Aubb20MUPBDmb0Ov8PmcLHTCVFdCjoy2kA=="
+        "requested": "[7.2.3, )",
+        "resolved": "7.2.3",
+        "contentHash": "DeCY0OFbNdNxsjntr1gTXHJ5pKUwYzp04Er2LLeN3g6pWhffsGuKVfMBLe1lw7x76HrPkLxKEFxBlpRxS2nDEQ=="
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
@@ -382,9 +382,9 @@
       },
       "Polly": {
         "type": "Direct",
-        "requested": "[7.2.2, )",
-        "resolved": "7.2.2",
-        "contentHash": "E6CeKyS513j7taKAq4q2MESDBvzuzWnR1rQ2Y2zqJvpiVtKMm699Aubb20MUPBDmb0Ov8PmcLHTCVFdCjoy2kA=="
+        "requested": "[7.2.3, )",
+        "resolved": "7.2.3",
+        "contentHash": "DeCY0OFbNdNxsjntr1gTXHJ5pKUwYzp04Er2LLeN3g6pWhffsGuKVfMBLe1lw7x76HrPkLxKEFxBlpRxS2nDEQ=="
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
@@ -446,9 +446,9 @@
       },
       "Polly": {
         "type": "Direct",
-        "requested": "[7.2.2, )",
-        "resolved": "7.2.2",
-        "contentHash": "E6CeKyS513j7taKAq4q2MESDBvzuzWnR1rQ2Y2zqJvpiVtKMm699Aubb20MUPBDmb0Ov8PmcLHTCVFdCjoy2kA=="
+        "requested": "[7.2.3, )",
+        "resolved": "7.2.3",
+        "contentHash": "DeCY0OFbNdNxsjntr1gTXHJ5pKUwYzp04Er2LLeN3g6pWhffsGuKVfMBLe1lw7x76HrPkLxKEFxBlpRxS2nDEQ=="
       },
       "System.IO.Pipelines": {
         "type": "Direct",
