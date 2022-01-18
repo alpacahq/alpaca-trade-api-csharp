@@ -7,20 +7,21 @@
 	<WarningLevel>5</WarningLevel>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.2.4-alpha1</Version>
+    <Version>5.2.4-beta1</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.2.4.0</AssemblyVersion>
-    <FileVersion>5.2.4.0</FileVersion>
+    <AssemblyVersion>5.2.4.1</AssemblyVersion>
+    <FileVersion>5.2.4.1</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Added extensions method for requesting all account activities in pagination mode.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Implemented a set of extensions methods for the `IAlpacaNewsStreamingClient` interface.
+- Implemented a set of news-related extensions methods for the `IAlpacaDataClient` interface.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
