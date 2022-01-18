@@ -8,7 +8,7 @@ internal static class PaginationExtensions
         this TRequest singlePageOfItemsRequestWithEmptyPageToken,
         Func<TRequest, CancellationToken, Task<IPage<TItem>>> getSinglePage,
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
-        where TRequest : HistoricalRequestBase, IHistoricalRequest
+        where TRequest : class, IHistoricalRequest
     {
         await foreach (var page in GetResponsesByPages(
                 singlePageOfItemsRequestWithEmptyPageToken, getSinglePage, cancellationToken)
@@ -137,5 +137,4 @@ internal static class PaginationExtensions
         var response = await getSinglePage(request, cancellationToken).ConfigureAwait(false);
         return (response.Items, response.NextPageToken);
     }
-
 }

@@ -1,5 +1,6 @@
 ﻿#nullable enable
 Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions
+Alpaca.Markets.Extensions.AlpacaDataClientExtensions
 Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions
 Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions
 Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions
@@ -35,6 +36,10 @@ override Alpaca.Markets.Extensions.AlpacaValueTask.Equals(object? obj) -> bool
 override Alpaca.Markets.Extensions.AlpacaValueTask.GetHashCode() -> int
 static Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaCryptoStreamingClient! client) -> Alpaca.Markets.IAlpacaCryptoStreamingClient!
 static Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaCryptoStreamingClient! client, Alpaca.Markets.Extensions.ReconnectionParameters! parameters) -> Alpaca.Markets.IAlpacaCryptoStreamingClient!
+static Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesAsAsyncEnumerable(this Alpaca.Markets.IAlpacaDataClient! client, Alpaca.Markets.NewsArticlesRequest! request) -> System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.INewsArticle!>!
+static Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesAsAsyncEnumerable(this Alpaca.Markets.IAlpacaDataClient! client, Alpaca.Markets.NewsArticlesRequest! request, System.Threading.CancellationToken cancellationToken) -> System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.INewsArticle!>!
+static Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesPagesAsAsyncEnumerable(this Alpaca.Markets.IAlpacaDataClient! client, Alpaca.Markets.NewsArticlesRequest! request) -> System.Collections.Generic.IAsyncEnumerable<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.INewsArticle!>!>!
+static Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesPagesAsAsyncEnumerable(this Alpaca.Markets.IAlpacaDataClient! client, Alpaca.Markets.NewsArticlesRequest! request, System.Threading.CancellationToken cancellationToken) -> System.Collections.Generic.IAsyncEnumerable<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.INewsArticle!>!>!
 static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetLimitUpLimitDownSubscription(this Alpaca.Markets.IAlpacaDataStreamingClient! client, params string![]! symbols) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ILimitUpLimitDown!>!
 static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetLimitUpLimitDownSubscription(this Alpaca.Markets.IAlpacaDataStreamingClient! client, System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ILimitUpLimitDown!>!
 static Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetStatusSubscription(this Alpaca.Markets.IAlpacaDataStreamingClient! client, params string![]! symbols) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStatus!>!
