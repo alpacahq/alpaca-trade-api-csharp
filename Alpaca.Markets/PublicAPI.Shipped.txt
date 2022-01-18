@@ -436,6 +436,8 @@ Alpaca.Markets.IHistoricalBarsClient<TRequest>.ListHistoricalBarsAsync(TRequest 
 Alpaca.Markets.IHistoricalQuotesClient<TRequest>
 Alpaca.Markets.IHistoricalQuotesClient<TRequest>.GetHistoricalQuotesAsync(TRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IMultiPage<Alpaca.Markets.IQuote!>!>!
 Alpaca.Markets.IHistoricalQuotesClient<TRequest>.ListHistoricalQuotesAsync(TRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.IQuote!>!>!
+Alpaca.Markets.IHistoricalRequest
+Alpaca.Markets.IHistoricalRequest.Pagination.get -> Alpaca.Markets.Pagination!
 Alpaca.Markets.IHistoricalRequest<TRequest, TItem>
 Alpaca.Markets.IHistoricalRequest<TRequest, TItem>.GetValidatedRequestWithoutPageToken() -> TRequest
 Alpaca.Markets.IHistoricalTradesClient<TRequest>
@@ -710,7 +712,6 @@ Alpaca.Markets.NewsArticlesRequest.SortDirection.set -> void
 Alpaca.Markets.NewsArticlesRequest.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
 Alpaca.Markets.NewsArticlesRequest.TimeInterval.get -> Alpaca.Markets.Interval<System.DateTime>?
 Alpaca.Markets.NewsArticlesRequest.TimeInterval.set -> void
-Alpaca.Markets.NewsArticlesRequestExtensions
 Alpaca.Markets.NewWatchListRequest
 Alpaca.Markets.NewWatchListRequest.Assets.get -> System.Collections.Generic.IReadOnlyList<string!>!
 Alpaca.Markets.NewWatchListRequest.Name.get -> string!
@@ -964,8 +965,6 @@ static Alpaca.Markets.LimitOrder.Buy(string! symbol, long quantity, decimal limi
 static Alpaca.Markets.LimitOrder.Sell(string! symbol, long quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
 static Alpaca.Markets.MarketOrder.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
 static Alpaca.Markets.MarketOrder.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
-static Alpaca.Markets.NewsArticlesRequestExtensions.WithPageSize(this Alpaca.Markets.NewsArticlesRequest! request, uint pageSize) -> Alpaca.Markets.NewsArticlesRequest!
-static Alpaca.Markets.NewsArticlesRequestExtensions.WithPageToken(this Alpaca.Markets.NewsArticlesRequest! request, string! pageToken) -> Alpaca.Markets.NewsArticlesRequest!
 static Alpaca.Markets.OrderBaseExtensions.WithClientOrderId<TOrder>(this TOrder! order, string! clientOrderId) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithDuration<TOrder>(this TOrder! order, Alpaca.Markets.TimeInForce duration) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithExtendedHours<TOrder>(this TOrder! order, bool extendedHours) -> TOrder!

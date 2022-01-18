@@ -3,7 +3,7 @@
 /// <summary>
 /// Encapsulates request parameters for <see cref="AlpacaDataClient.ListNewsArticlesAsync(NewsArticlesRequest,System.Threading.CancellationToken)"/> call.
 /// </summary>
-public sealed class NewsArticlesRequest : Validation.IRequest
+public sealed class NewsArticlesRequest : Validation.IRequest, IHistoricalRequest<NewsArticlesRequest, INewsArticle>
 {
     private readonly HashSet<String> _symbols = new (StringComparer.Ordinal);
 
@@ -85,4 +85,14 @@ public sealed class NewsArticlesRequest : Validation.IRequest
             yield return exception!;
         }
     }
+
+    NewsArticlesRequest IHistoricalRequest<NewsArticlesRequest, INewsArticle>.GetValidatedRequestWithoutPageToken() =>
+        new NewsArticlesRequest(Symbols)
+            {
+                TimeInterval = TimeInterval,
+                SortDirection = SortDirection,
+                SendFullContentForItems = SendFullContentForItems,
+                ExcludeItemsWithoutContent = ExcludeItemsWithoutContent
+            }
+            .WithPageSize(Pagination.Size ?? Pagination.MaxNewsPageSize);
 }

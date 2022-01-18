@@ -18,7 +18,7 @@ public static class HistoricalRequestBaseExtensions
     public static TRequest WithPageSize<TRequest>(
         this TRequest request,
         UInt32 pageSize)
-        where TRequest : HistoricalRequestBase
+        where TRequest : class, IHistoricalRequest
     {
         request.EnsureNotNull(nameof(request)).Pagination.Size = pageSize;
         return request;
@@ -34,7 +34,7 @@ public static class HistoricalRequestBaseExtensions
     public static TRequest WithPageToken<TRequest>(
         this TRequest request,
         String pageToken)
-        where TRequest : HistoricalRequestBase
+        where TRequest : class, IHistoricalRequest
     {
         request.EnsureNotNull(nameof(request)).Pagination.Token = pageToken;
         return request;
@@ -49,7 +49,7 @@ public static class HistoricalRequestBaseExtensions
         getValidatedDate(request.TimeInterval.Into, nameof(request.TimeInterval.Into));
 
     internal static UInt32 GetPageSize(
-        this HistoricalRequestBase request) =>
+        this IHistoricalRequest request) =>
         request.Pagination.Size ?? MaxPageSize;
 
     private static DateTime getValidatedDate(
