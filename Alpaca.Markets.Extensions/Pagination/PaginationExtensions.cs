@@ -27,6 +27,22 @@ namespace Alpaca.Markets.Extensions
             }
         }
 
+        public static async IAsyncEnumerable<INewsArticle> GetResponsesByItems(
+            this NewsArticlesRequest singlePageOfItemsRequestWithEmptyPageToken,
+            Func<NewsArticlesRequest, CancellationToken, Task<IPage<INewsArticle>>> getSinglePage,
+            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+        {
+            await foreach (var page in GetResponsesByPages(
+                    singlePageOfItemsRequestWithEmptyPageToken, getSinglePage, cancellationToken)
+                .ConfigureAwait(false))
+            {
+                foreach (var item in page)
+                {
+                    yield return item;
+                }
+            }
+        }
+
         public static IReadOnlyDictionary<String, IAsyncEnumerable<TItem>> GetResponsesByItems<TRequest, TItem>(
             this TRequest singlePageOfItemsRequestWithEmptyPageToken,
             Func<TRequest, CancellationToken, Task<IMultiPage<TItem>>> getSinglePage,
@@ -98,6 +114,15 @@ namespace Alpaca.Markets.Extensions
                 (request, ct) => getItemsAndNextPageToken(getSinglePage, request, ct),
                 cancellationToken);
 
+        public static IAsyncEnumerable<IReadOnlyList<INewsArticle>> GetResponsesByPages(
+            this NewsArticlesRequest singlePageOfItemsRequestWithEmptyPageToken,
+            Func<NewsArticlesRequest, CancellationToken, Task<IPage<INewsArticle>>> getSinglePage,
+            CancellationToken cancellationToken = default) =>
+            getResponses(
+                singlePageOfItemsRequestWithEmptyPageToken,
+                (request, ct) => getItemsAndNextPageToken(getSinglePage, request, ct),
+                cancellationToken);
+
         public static IAsyncEnumerable<IReadOnlyDictionary<String, IReadOnlyList<TItem>>> GetResponsesByPages<TRequest, TItem>(
             this TRequest singlePageOfItemsRequestWithEmptyPageToken,
             Func<TRequest, CancellationToken, Task<IMultiPage<TItem>>> getSinglePage,
@@ -113,6 +138,23 @@ namespace Alpaca.Markets.Extensions
             Func<TRequest, CancellationToken, Task<(TResponse, String?)>> getItemsAndNextPageToken,
             [EnumeratorCancellation] CancellationToken cancellationToken = default)
             where TRequest : HistoricalRequestBase
+        {
+            var request = singlePageOfItemsRequestWithEmptyPageToken;
+            do
+            {
+                var (items, nextPageToken) = await getItemsAndNextPageToken(
+                    request, cancellationToken).ConfigureAwait(false);
+
+                yield return items;
+
+                request = request.WithPageToken(nextPageToken ?? String.Empty);
+            } while (!String.IsNullOrEmpty(request.Pagination.Token));
+        }
+
+        private static async IAsyncEnumerable<IReadOnlyList<INewsArticle>> getResponses(
+            NewsArticlesRequest singlePageOfItemsRequestWithEmptyPageToken,
+            Func<NewsArticlesRequest, CancellationToken, Task<(IReadOnlyList<INewsArticle>, String?)>> getItemsAndNextPageToken,
+            [EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
             var request = singlePageOfItemsRequestWithEmptyPageToken;
             do
