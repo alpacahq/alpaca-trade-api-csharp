@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.2.3</AssemblyVersion>
-    <FileVersion>6.0.2.3</FileVersion>
-    <Version>6.0.2-beta2</Version>
+    <AssemblyVersion>6.0.2.4</AssemblyVersion>
+    <FileVersion>6.0.2.4</FileVersion>
+    <Version>6.0.2-beta3</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -78,7 +78,7 @@
   </ItemGroup>
 
   <ItemGroup>
-      <PackageReference Include="Alpaca.Markets" Version="6.0.2-beta2" />
+      <PackageReference Include="Alpaca.Markets" Version="6.0.2-beta3" />
   </ItemGroup>
 
   <ItemGroup>
