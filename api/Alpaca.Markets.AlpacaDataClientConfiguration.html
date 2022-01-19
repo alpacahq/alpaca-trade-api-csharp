@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AlpacaDataClientConfiguration
    ">
-    <meta name="generator" content="docfx 2.58.4.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -79,10 +79,23 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">AlpacaDataClientConfiguration</span></div>
+    <div class="level1"><a class="xref" href="Alpaca.Markets.AlpacaClientConfigurationBase.html">AlpacaClientConfigurationBase</a></div>
+    <div class="level2"><span class="xref">AlpacaDataClientConfiguration</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Alpaca.Markets.AlpacaClientConfigurationBase.html#Alpaca_Markets_AlpacaClientConfigurationBase_SecurityId">AlpacaClientConfigurationBase.SecurityId</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.AlpacaClientConfigurationBase.html#Alpaca_Markets_AlpacaClientConfigurationBase_ApiEndpoint">AlpacaClientConfigurationBase.ApiEndpoint</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.AlpacaClientConfigurationBase.html#Alpaca_Markets_AlpacaClientConfigurationBase_ThrottleParameters">AlpacaClientConfigurationBase.ThrottleParameters</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.AlpacaClientConfigurationBase.html#Alpaca_Markets_AlpacaClientConfigurationBase_HttpClient">AlpacaClientConfigurationBase.HttpClient</a>
+    </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
@@ -109,7 +122,7 @@
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_AlpacaDataClientConfiguration_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class AlpacaDataClientConfiguration</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class AlpacaDataClientConfiguration : AlpacaClientConfigurationBase</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -118,7 +131,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AlpacaDataClientConfiguration__ctor.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaDataClientConfiguration.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AlpacaDataClientConfiguration.cs/#L15">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AlpacaDataClientConfiguration.cs/#L11">View Source</a>
   </span>
   <a id="Alpaca_Markets_AlpacaDataClientConfiguration__ctor_" data-uid="Alpaca.Markets.AlpacaDataClientConfiguration.#ctor*"></a>
   <h4 id="Alpaca_Markets_AlpacaDataClientConfiguration__ctor" data-uid="Alpaca.Markets.AlpacaDataClientConfiguration.#ctor">AlpacaDataClientConfiguration()</h4>
@@ -129,135 +142,6 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public AlpacaDataClientConfiguration()</code></pre>
   </div>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AlpacaDataClientConfiguration_ApiEndpoint.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaDataClientConfiguration.ApiEndpoint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AlpacaDataClientConfiguration.cs/#L30">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaDataClientConfiguration_ApiEndpoint_" data-uid="Alpaca.Markets.AlpacaDataClientConfiguration.ApiEndpoint*"></a>
-  <h4 id="Alpaca_Markets_AlpacaDataClientConfiguration_ApiEndpoint" data-uid="Alpaca.Markets.AlpacaDataClientConfiguration.ApiEndpoint">ApiEndpoint</h4>
-  <div class="markdown level1 summary"><p>Gets or sets Alpaca Data API base URL.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Uri ApiEndpoint { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Uri</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AlpacaDataClientConfiguration_HttpClient.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaDataClientConfiguration.HttpClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AlpacaDataClientConfiguration.cs/#L40">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaDataClientConfiguration_HttpClient_" data-uid="Alpaca.Markets.AlpacaDataClientConfiguration.HttpClient*"></a>
-  <h4 id="Alpaca_Markets_AlpacaDataClientConfiguration_HttpClient" data-uid="Alpaca.Markets.AlpacaDataClientConfiguration.HttpClient">HttpClient</h4>
-  <div class="markdown level1 summary"><p>Gets or sets <a class="xref" href="Alpaca.Markets.AlpacaDataClientConfiguration.html#Alpaca_Markets_AlpacaDataClientConfiguration_HttpClient">HttpClient</a> instance for connecting.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HttpClient HttpClient { get;
-    [UsedImplicitly]
-    set;
-}</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Net.Http.HttpClient</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AlpacaDataClientConfiguration_SecurityId.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaDataClientConfiguration.SecurityId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AlpacaDataClientConfiguration.cs/#L25">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaDataClientConfiguration_SecurityId_" data-uid="Alpaca.Markets.AlpacaDataClientConfiguration.SecurityId*"></a>
-  <h4 id="Alpaca_Markets_AlpacaDataClientConfiguration_SecurityId" data-uid="Alpaca.Markets.AlpacaDataClientConfiguration.SecurityId">SecurityId</h4>
-  <div class="markdown level1 summary"><p>Security identifier for API authentication.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SecurityKey SecurityId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Alpaca.Markets.SecurityKey.html">SecurityKey</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AlpacaDataClientConfiguration_ThrottleParameters.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaDataClientConfiguration.ThrottleParameters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AlpacaDataClientConfiguration.cs/#L35">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_AlpacaDataClientConfiguration_ThrottleParameters_" data-uid="Alpaca.Markets.AlpacaDataClientConfiguration.ThrottleParameters*"></a>
-  <h4 id="Alpaca_Markets_AlpacaDataClientConfiguration_ThrottleParameters" data-uid="Alpaca.Markets.AlpacaDataClientConfiguration.ThrottleParameters">ThrottleParameters</h4>
-  <div class="markdown level1 summary"><p>Gets or sets REST API throttling parameters.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ThrottleParameters ThrottleParameters { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Alpaca.Markets.ThrottleParameters.html">ThrottleParameters</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           
@@ -269,7 +153,7 @@
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_AlpacaDataClientConfiguration.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaDataClientConfiguration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AlpacaDataClientConfiguration.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/AlpacaDataClientConfiguration.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface ICalendar
    ">
-    <meta name="generator" content="docfx 2.58.4.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -86,20 +86,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ICalendar_TradingCloseTimeEst.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ICalendar.TradingCloseTimeEst%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ICalendar_CloseTimeEst.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ICalendar.CloseTimeEst%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L39">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L59">View Source</a>
   </span>
-  <a id="Alpaca_Markets_ICalendar_TradingCloseTimeEst_" data-uid="Alpaca.Markets.ICalendar.TradingCloseTimeEst*"></a>
-  <h4 id="Alpaca_Markets_ICalendar_TradingCloseTimeEst" data-uid="Alpaca.Markets.ICalendar.TradingCloseTimeEst">TradingCloseTimeEst</h4>
+  <a id="Alpaca_Markets_ICalendar_CloseTimeEst_" data-uid="Alpaca.Markets.ICalendar.CloseTimeEst*"></a>
+  <h4 id="Alpaca_Markets_ICalendar_CloseTimeEst" data-uid="Alpaca.Markets.ICalendar.CloseTimeEst">CloseTimeEst</h4>
   <div class="markdown level1 summary"><p>Gets trading date close time in EST time zone.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-DateTime TradingCloseTimeEst { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">TimeOnly CloseTimeEst { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -111,7 +110,131 @@ DateTime TradingCloseTimeEst { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="xref">TimeOnly</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ICalendar_CloseTimeUtc.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ICalendar.CloseTimeUtc%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L71">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_ICalendar_CloseTimeUtc_" data-uid="Alpaca.Markets.ICalendar.CloseTimeUtc*"></a>
+  <h4 id="Alpaca_Markets_ICalendar_CloseTimeUtc" data-uid="Alpaca.Markets.ICalendar.CloseTimeUtc">CloseTimeUtc</h4>
+  <div class="markdown level1 summary"><p>Gets trading date close time in EST time zone.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">TimeOnly CloseTimeUtc { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TimeOnly</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ICalendar_OpenTimeEst.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ICalendar.OpenTimeEst%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L35">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_ICalendar_OpenTimeEst_" data-uid="Alpaca.Markets.ICalendar.OpenTimeEst*"></a>
+  <h4 id="Alpaca_Markets_ICalendar_OpenTimeEst" data-uid="Alpaca.Markets.ICalendar.OpenTimeEst">OpenTimeEst</h4>
+  <div class="markdown level1 summary"><p>Gets trading date open time in EST time zone.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">TimeOnly OpenTimeEst { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TimeOnly</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ICalendar_OpenTimeUtc.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ICalendar.OpenTimeUtc%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L47">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_ICalendar_OpenTimeUtc_" data-uid="Alpaca.Markets.ICalendar.OpenTimeUtc*"></a>
+  <h4 id="Alpaca_Markets_ICalendar_OpenTimeUtc" data-uid="Alpaca.Markets.ICalendar.OpenTimeUtc">OpenTimeUtc</h4>
+  <div class="markdown level1 summary"><p>Gets trading date open time in UTC time zone.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">TimeOnly OpenTimeUtc { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TimeOnly</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ICalendar_TradingCloseTimeEst.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ICalendar.TradingCloseTimeEst%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L53">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_ICalendar_TradingCloseTimeEst_" data-uid="Alpaca.Markets.ICalendar.TradingCloseTimeEst*"></a>
+  <h4 id="Alpaca_Markets_ICalendar_TradingCloseTimeEst" data-uid="Alpaca.Markets.ICalendar.TradingCloseTimeEst">TradingCloseTimeEst</h4>
+  <div class="markdown level1 summary"><p>Gets trading date close time in EST time zone.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DateTime TradingCloseTimeEst { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DateTime</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -121,7 +244,7 @@ DateTime TradingCloseTimeEst { get; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ICalendar_TradingCloseTimeUtc.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ICalendar.TradingCloseTimeUtc%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L45">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L65">View Source</a>
   </span>
   <a id="Alpaca_Markets_ICalendar_TradingCloseTimeUtc_" data-uid="Alpaca.Markets.ICalendar.TradingCloseTimeUtc*"></a>
   <h4 id="Alpaca_Markets_ICalendar_TradingCloseTimeUtc" data-uid="Alpaca.Markets.ICalendar.TradingCloseTimeUtc">TradingCloseTimeUtc</h4>
@@ -130,8 +253,7 @@ DateTime TradingCloseTimeEst { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-DateTime TradingCloseTimeUtc { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">DateTime TradingCloseTimeUtc { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -143,7 +265,38 @@ DateTime TradingCloseTimeUtc { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="xref">DateTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ICalendar_TradingDate.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ICalendar.TradingDate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L23">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_ICalendar_TradingDate_" data-uid="Alpaca.Markets.ICalendar.TradingDate*"></a>
+  <h4 id="Alpaca_Markets_ICalendar_TradingDate" data-uid="Alpaca.Markets.ICalendar.TradingDate">TradingDate</h4>
+  <div class="markdown level1 summary"><p>Gets trading date.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DateOnly TradingDate { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DateOnly</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -153,7 +306,7 @@ DateTime TradingCloseTimeUtc { get; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ICalendar_TradingDateEst.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ICalendar.TradingDateEst%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L15">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L11">View Source</a>
   </span>
   <a id="Alpaca_Markets_ICalendar_TradingDateEst_" data-uid="Alpaca.Markets.ICalendar.TradingDateEst*"></a>
   <h4 id="Alpaca_Markets_ICalendar_TradingDateEst" data-uid="Alpaca.Markets.ICalendar.TradingDateEst">TradingDateEst</h4>
@@ -162,8 +315,7 @@ DateTime TradingCloseTimeUtc { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-DateTime TradingDateEst { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">DateTime TradingDateEst { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -175,7 +327,7 @@ DateTime TradingDateEst { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="xref">DateTime</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -185,7 +337,7 @@ DateTime TradingDateEst { get; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ICalendar_TradingDateUtc.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ICalendar.TradingDateUtc%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L21">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L17">View Source</a>
   </span>
   <a id="Alpaca_Markets_ICalendar_TradingDateUtc_" data-uid="Alpaca.Markets.ICalendar.TradingDateUtc*"></a>
   <h4 id="Alpaca_Markets_ICalendar_TradingDateUtc" data-uid="Alpaca.Markets.ICalendar.TradingDateUtc">TradingDateUtc</h4>
@@ -194,8 +346,7 @@ DateTime TradingDateEst { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-DateTime TradingDateUtc { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">DateTime TradingDateUtc { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -207,7 +358,7 @@ DateTime TradingDateUtc { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="xref">DateTime</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -217,7 +368,7 @@ DateTime TradingDateUtc { get; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ICalendar_TradingOpenTimeEst.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ICalendar.TradingOpenTimeEst%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L27">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L29">View Source</a>
   </span>
   <a id="Alpaca_Markets_ICalendar_TradingOpenTimeEst_" data-uid="Alpaca.Markets.ICalendar.TradingOpenTimeEst*"></a>
   <h4 id="Alpaca_Markets_ICalendar_TradingOpenTimeEst" data-uid="Alpaca.Markets.ICalendar.TradingOpenTimeEst">TradingOpenTimeEst</h4>
@@ -226,8 +377,7 @@ DateTime TradingDateUtc { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-DateTime TradingOpenTimeEst { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">DateTime TradingOpenTimeEst { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -239,7 +389,7 @@ DateTime TradingOpenTimeEst { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="xref">DateTime</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -249,7 +399,7 @@ DateTime TradingOpenTimeEst { get; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ICalendar_TradingOpenTimeUtc.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ICalendar.TradingOpenTimeUtc%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L33">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L41">View Source</a>
   </span>
   <a id="Alpaca_Markets_ICalendar_TradingOpenTimeUtc_" data-uid="Alpaca.Markets.ICalendar.TradingOpenTimeUtc*"></a>
   <h4 id="Alpaca_Markets_ICalendar_TradingOpenTimeUtc" data-uid="Alpaca.Markets.ICalendar.TradingOpenTimeUtc">TradingOpenTimeUtc</h4>
@@ -258,8 +408,7 @@ DateTime TradingOpenTimeEst { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-DateTime TradingOpenTimeUtc { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">DateTime TradingOpenTimeUtc { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -271,7 +420,7 @@ DateTime TradingOpenTimeUtc { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="xref">DateTime</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -287,7 +436,7 @@ DateTime TradingOpenTimeUtc { get; }</code></pre>
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ICalendar.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ICalendar%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/ICalendar.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

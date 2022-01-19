@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class HistoricalCryptoBarsRequest
    ">
-    <meta name="generator" content="docfx 2.58.4.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -74,8 +74,8 @@
   <h1 id="Alpaca_Markets_HistoricalCryptoBarsRequest" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest" class="text-break">Class HistoricalCryptoBarsRequest
   </h1>
   <div class="markdown level0 summary"><p>Encapsulates request parameters for
-<a class="xref" href="Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_ListHistoricalBarsAsync_Alpaca_Markets_HistoricalCryptoBarsRequest_System_Threading_CancellationToken_">ListHistoricalBarsAsync(HistoricalCryptoBarsRequest, CancellationToken)</a> and
-<a class="xref" href="Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_GetHistoricalBarsAsync_Alpaca_Markets_HistoricalCryptoBarsRequest_System_Threading_CancellationToken_">GetHistoricalBarsAsync(HistoricalCryptoBarsRequest, CancellationToken)</a> calls.</p>
+<a class="xref" href="Alpaca.Markets.IHistoricalBarsClient-1.html#Alpaca_Markets_IHistoricalBarsClient_1_ListHistoricalBarsAsync__0_CancellationToken_">ListHistoricalBarsAsync(TRequest, CancellationToken)</a> and
+<a class="xref" href="Alpaca.Markets.IHistoricalBarsClient-1.html#Alpaca_Markets_IHistoricalBarsClient_1_GetHistoricalBarsAsync__0_CancellationToken_">GetHistoricalBarsAsync(TRequest, CancellationToken)</a> calls.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -84,6 +84,11 @@
     <div class="level1"><a class="xref" href="Alpaca.Markets.HistoricalRequestBase.html">HistoricalRequestBase</a></div>
     <div class="level2"><a class="xref" href="Alpaca.Markets.HistoricalCryptoRequestBase.html">HistoricalCryptoRequestBase</a></div>
     <div class="level3"><span class="xref">HistoricalCryptoBarsRequest</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Alpaca.Markets.IHistoricalRequest-2.html">IHistoricalRequest</a>&lt;<a class="xref" href="Alpaca.Markets.HistoricalCryptoBarsRequest.html">HistoricalCryptoBarsRequest</a>, <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</div>
+    <div><a class="xref" href="Alpaca.Markets.IHistoricalRequest.html">IHistoricalRequest</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -128,25 +133,25 @@
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_HistoricalCryptoBarsRequest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, Validation.IRequest</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, IHistoricalRequest&lt;HistoricalCryptoBarsRequest, IBar&gt;, IHistoricalRequest</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_System_Collections_Generic_IEnumerable_System_String__Alpaca_Markets_IInclusiveTimeInterval_Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.%23ctor(System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CAlpaca.Markets.IInclusiveTimeInterval%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_IEnumerable_String__Alpaca_Markets_IInclusiveTimeInterval_Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.%23ctor(IEnumerable%7BString%7D%2CAlpaca.Markets.IInclusiveTimeInterval%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L66">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L90">View Source</a>
   </span>
   <a id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor*"></a>
-  <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_System_Collections_Generic_IEnumerable_System_String__Alpaca_Markets_IInclusiveTimeInterval_Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor(System.Collections.Generic.IEnumerable{System.String},Alpaca.Markets.IInclusiveTimeInterval,Alpaca.Markets.BarTimeFrame)">HistoricalCryptoBarsRequest(IEnumerable&lt;String&gt;, IInclusiveTimeInterval, BarTimeFrame)</h4>
+  <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_IEnumerable_String__Alpaca_Markets_IInclusiveTimeInterval_Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor(IEnumerable{String},Alpaca.Markets.IInclusiveTimeInterval,Alpaca.Markets.BarTimeFrame)">HistoricalCryptoBarsRequest(IEnumerable&lt;String&gt;, IInclusiveTimeInterval, BarTimeFrame)</h4>
   <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.HistoricalCryptoBarsRequest.html">HistoricalCryptoBarsRequest</a> object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HistoricalCryptoBarsRequest(IEnumerable&lt;string&gt; symbols, IInclusiveTimeInterval timeInterval, BarTimeFrame timeFrame)</code></pre>
+    <pre><code class="lang-csharp hljs">public HistoricalCryptoBarsRequest(IEnumerable&lt;String&gt; symbols, IInclusiveTimeInterval timeInterval, BarTimeFrame timeFrame)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -159,7 +164,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
         <td><span class="parametername">symbols</span></td>
         <td><p>Asset names for data retrieval.</p>
 </td>
@@ -180,19 +185,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_System_Collections_Generic_IEnumerable_System_String__System_DateTime_System_DateTime_Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.%23ctor(System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.DateTime%2CSystem.DateTime%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_IEnumerable_String__Alpaca_Markets_Interval_DateTime__Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.%23ctor(IEnumerable%7BString%7D%2CAlpaca.Markets.Interval%7BDateTime%7D%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L52">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L61">View Source</a>
   </span>
   <a id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor*"></a>
-  <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_System_Collections_Generic_IEnumerable_System_String__System_DateTime_System_DateTime_Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor(System.Collections.Generic.IEnumerable{System.String},System.DateTime,System.DateTime,Alpaca.Markets.BarTimeFrame)">HistoricalCryptoBarsRequest(IEnumerable&lt;String&gt;, DateTime, DateTime, BarTimeFrame)</h4>
+  <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_IEnumerable_String__Alpaca_Markets_Interval_DateTime__Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor(IEnumerable{String},Alpaca.Markets.Interval{DateTime},Alpaca.Markets.BarTimeFrame)">HistoricalCryptoBarsRequest(IEnumerable&lt;String&gt;, Interval&lt;DateTime&gt;, BarTimeFrame)</h4>
   <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.HistoricalCryptoBarsRequest.html">HistoricalCryptoBarsRequest</a> object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HistoricalCryptoBarsRequest(IEnumerable&lt;string&gt; symbols, DateTime from, DateTime into, BarTimeFrame timeFrame)</code></pre>
+    <pre><code class="lang-csharp hljs">public HistoricalCryptoBarsRequest(IEnumerable&lt;String&gt; symbols, Interval&lt;DateTime&gt; timeInterval, BarTimeFrame timeFrame)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -205,19 +210,65 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
         <td><span class="parametername">symbols</span></td>
         <td><p>Asset names for data retrieval.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="xref">Alpaca.Markets.Interval</span>&lt;<span class="xref">DateTime</span>&gt;</td>
+        <td><span class="parametername">timeInterval</span></td>
+        <td><p>Inclusive time interval for filtering items in response.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.BarTimeFrame.html">BarTimeFrame</a></td>
+        <td><span class="parametername">timeFrame</span></td>
+        <td><p>Type of time bars for retrieval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_IEnumerable_String__DateTime_DateTime_Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.%23ctor(IEnumerable%7BString%7D%2CDateTime%2CDateTime%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L47">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor*"></a>
+  <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_IEnumerable_String__DateTime_DateTime_Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor(IEnumerable{String},DateTime,DateTime,Alpaca.Markets.BarTimeFrame)">HistoricalCryptoBarsRequest(IEnumerable&lt;String&gt;, DateTime, DateTime, BarTimeFrame)</h4>
+  <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.HistoricalCryptoBarsRequest.html">HistoricalCryptoBarsRequest</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HistoricalCryptoBarsRequest(IEnumerable&lt;String&gt; symbols, DateTime from, DateTime into, BarTimeFrame timeFrame)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
+        <td><span class="parametername">symbols</span></td>
+        <td><p>Asset names for data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DateTime</span></td>
         <td><span class="parametername">from</span></td>
         <td><p>Filter data equal to or after this time.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="xref">DateTime</span></td>
         <td><span class="parametername">into</span></td>
         <td><p>Filter data equal to or before this time.</p>
 </td>
@@ -232,19 +283,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_System_String_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_IInclusiveTimeInterval_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.%23ctor(System.String%2CAlpaca.Markets.BarTimeFrame%2CAlpaca.Markets.IInclusiveTimeInterval)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_String_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_IInclusiveTimeInterval_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.%23ctor(String%2CAlpaca.Markets.BarTimeFrame%2CAlpaca.Markets.IInclusiveTimeInterval)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L37">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L74">View Source</a>
   </span>
   <a id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor*"></a>
-  <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_System_String_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_IInclusiveTimeInterval_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor(System.String,Alpaca.Markets.BarTimeFrame,Alpaca.Markets.IInclusiveTimeInterval)">HistoricalCryptoBarsRequest(String, BarTimeFrame, IInclusiveTimeInterval)</h4>
+  <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_String_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_IInclusiveTimeInterval_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor(String,Alpaca.Markets.BarTimeFrame,Alpaca.Markets.IInclusiveTimeInterval)">HistoricalCryptoBarsRequest(String, BarTimeFrame, IInclusiveTimeInterval)</h4>
   <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.HistoricalCryptoBarsRequest.html">HistoricalCryptoBarsRequest</a> object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HistoricalCryptoBarsRequest(string symbol, BarTimeFrame timeFrame, IInclusiveTimeInterval timeInterval)</code></pre>
+    <pre><code class="lang-csharp hljs">public HistoricalCryptoBarsRequest(String symbol, BarTimeFrame timeFrame, IInclusiveTimeInterval timeInterval)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -257,7 +308,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">String</span></td>
         <td><span class="parametername">symbol</span></td>
         <td><p>Asset name for data retrieval.</p>
 </td>
@@ -278,19 +329,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_System_String_System_DateTime_System_DateTime_Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.%23ctor(System.String%2CSystem.DateTime%2CSystem.DateTime%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_String_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_Interval_DateTime__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.%23ctor(String%2CAlpaca.Markets.BarTimeFrame%2CAlpaca.Markets.Interval%7BDateTime%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L22">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L32">View Source</a>
   </span>
   <a id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor*"></a>
-  <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_System_String_System_DateTime_System_DateTime_Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor(System.String,System.DateTime,System.DateTime,Alpaca.Markets.BarTimeFrame)">HistoricalCryptoBarsRequest(String, DateTime, DateTime, BarTimeFrame)</h4>
+  <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_String_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_Interval_DateTime__" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor(String,Alpaca.Markets.BarTimeFrame,Alpaca.Markets.Interval{DateTime})">HistoricalCryptoBarsRequest(String, BarTimeFrame, Interval&lt;DateTime&gt;)</h4>
   <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.HistoricalCryptoBarsRequest.html">HistoricalCryptoBarsRequest</a> object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HistoricalCryptoBarsRequest(string symbol, DateTime from, DateTime into, BarTimeFrame timeFrame)</code></pre>
+    <pre><code class="lang-csharp hljs">public HistoricalCryptoBarsRequest(String symbol, BarTimeFrame timeFrame, Interval&lt;DateTime&gt; timeInterval)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -303,19 +354,65 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">String</span></td>
         <td><span class="parametername">symbol</span></td>
         <td><p>Asset name for data retrieval.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><a class="xref" href="Alpaca.Markets.BarTimeFrame.html">BarTimeFrame</a></td>
+        <td><span class="parametername">timeFrame</span></td>
+        <td><p>Type of time bars for retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Alpaca.Markets.Interval</span>&lt;<span class="xref">DateTime</span>&gt;</td>
+        <td><span class="parametername">timeInterval</span></td>
+        <td><p>Inclusive time interval for filtering items in response.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_String_DateTime_DateTime_Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.%23ctor(String%2CDateTime%2CDateTime%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L17">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor*"></a>
+  <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest__ctor_String_DateTime_DateTime_Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.#ctor(String,DateTime,DateTime,Alpaca.Markets.BarTimeFrame)">HistoricalCryptoBarsRequest(String, DateTime, DateTime, BarTimeFrame)</h4>
+  <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.HistoricalCryptoBarsRequest.html">HistoricalCryptoBarsRequest</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HistoricalCryptoBarsRequest(String symbol, DateTime from, DateTime into, BarTimeFrame timeFrame)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Asset name for data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DateTime</span></td>
         <td><span class="parametername">from</span></td>
         <td><p>Filter data equal to or after this time.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="xref">DateTime</span></td>
         <td><span class="parametername">into</span></td>
         <td><p>Filter data equal to or before this time.</p>
 </td>
@@ -335,7 +432,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest_LastPathSegment.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.LastPathSegment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L110">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L135">View Source</a>
   </span>
   <a id="Alpaca_Markets_HistoricalCryptoBarsRequest_LastPathSegment_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.LastPathSegment*"></a>
   <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest_LastPathSegment" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.LastPathSegment">LastPathSegment</h4>
@@ -344,7 +441,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override string LastPathSegment { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">protected override String LastPathSegment { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -356,7 +453,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">String</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -368,7 +465,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest_TimeFrame.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.TimeFrame%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L84">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L109">View Source</a>
   </span>
   <a id="Alpaca_Markets_HistoricalCryptoBarsRequest_TimeFrame_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.TimeFrame*"></a>
   <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest_TimeFrame" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.TimeFrame">TimeFrame</h4>
@@ -377,8 +474,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public BarTimeFrame TimeFrame { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public BarTimeFrame TimeFrame { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -402,7 +498,7 @@ public BarTimeFrame TimeFrame { get; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest_WithExchanges_Alpaca_Markets_CryptoExchange___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.WithExchanges(Alpaca.Markets.CryptoExchange%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L104">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L129">View Source</a>
   </span>
   <a id="Alpaca_Markets_HistoricalCryptoBarsRequest_WithExchanges_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.WithExchanges*"></a>
   <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest_WithExchanges_Alpaca_Markets_CryptoExchange___" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.WithExchanges(Alpaca.Markets.CryptoExchange[])">WithExchanges(CryptoExchange[])</h4>
@@ -412,8 +508,7 @@ with the updated <a class="xref" href="Alpaca.Markets.HistoricalCryptoRequestBas
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public HistoricalCryptoBarsRequest WithExchanges(params CryptoExchange[] exchanges)</code></pre>
+    <pre><code class="lang-csharp hljs">public HistoricalCryptoBarsRequest WithExchanges(params CryptoExchange[] exchanges)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -451,21 +546,20 @@ public HistoricalCryptoBarsRequest WithExchanges(params CryptoExchange[] exchang
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest_WithExchanges_System_Collections_Generic_IEnumerable_Alpaca_Markets_CryptoExchange__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.WithExchanges(System.Collections.Generic.IEnumerable%7BAlpaca.Markets.CryptoExchange%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest_WithExchanges_IEnumerable_Alpaca_Markets_CryptoExchange__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.WithExchanges(IEnumerable%7BAlpaca.Markets.CryptoExchange%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L93">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L118">View Source</a>
   </span>
   <a id="Alpaca_Markets_HistoricalCryptoBarsRequest_WithExchanges_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.WithExchanges*"></a>
-  <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest_WithExchanges_System_Collections_Generic_IEnumerable_Alpaca_Markets_CryptoExchange__" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.WithExchanges(System.Collections.Generic.IEnumerable{Alpaca.Markets.CryptoExchange})">WithExchanges(IEnumerable&lt;CryptoExchange&gt;)</h4>
+  <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest_WithExchanges_IEnumerable_Alpaca_Markets_CryptoExchange__" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.WithExchanges(IEnumerable{Alpaca.Markets.CryptoExchange})">WithExchanges(IEnumerable&lt;CryptoExchange&gt;)</h4>
   <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.HistoricalCryptoBarsRequest.html">HistoricalCryptoBarsRequest</a> object
 with the updated <a class="xref" href="Alpaca.Markets.HistoricalCryptoRequestBase.html#Alpaca_Markets_HistoricalCryptoRequestBase_Exchanges">Exchanges</a> list.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public HistoricalCryptoBarsRequest WithExchanges(IEnumerable&lt;CryptoExchange&gt; exchanges)</code></pre>
+    <pre><code class="lang-csharp hljs">public HistoricalCryptoBarsRequest WithExchanges(IEnumerable&lt;CryptoExchange&gt; exchanges)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -478,7 +572,7 @@ public HistoricalCryptoBarsRequest WithExchanges(IEnumerable&lt;CryptoExchange&g
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.CryptoExchange.html">CryptoExchange</a>&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.CryptoExchange.html">CryptoExchange</a>&gt;</td>
         <td><span class="parametername">exchanges</span></td>
         <td><p>Crypto exchanges to add into the list.</p>
 </td>
@@ -501,12 +595,51 @@ public HistoricalCryptoBarsRequest WithExchanges(IEnumerable&lt;CryptoExchange&g
       </tr>
     </tbody>
   </table>
-  <h3 id="extensionmethods">Extension Methods</h3>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest_Alpaca_Markets_IHistoricalRequest_Alpaca_Markets_HistoricalCryptoBarsRequest_Alpaca_Markets_IBar__GetValidatedRequestWithoutPageToken.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest.Alpaca%23Markets%23IHistoricalRequest%7BAlpaca%23Markets%23HistoricalCryptoBarsRequest%2CAlpaca%23Markets%23IBar%7D%23GetValidatedRequestWithoutPageToken%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L143">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_HistoricalCryptoBarsRequest_Alpaca_Markets_IHistoricalRequest_Alpaca_Markets_HistoricalCryptoBarsRequest_Alpaca_Markets_IBar__GetValidatedRequestWithoutPageToken_" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.Alpaca#Markets#IHistoricalRequest{Alpaca#Markets#HistoricalCryptoBarsRequest,Alpaca#Markets#IBar}#GetValidatedRequestWithoutPageToken*"></a>
+  <h4 id="Alpaca_Markets_HistoricalCryptoBarsRequest_Alpaca_Markets_IHistoricalRequest_Alpaca_Markets_HistoricalCryptoBarsRequest_Alpaca_Markets_IBar__GetValidatedRequestWithoutPageToken" data-uid="Alpaca.Markets.HistoricalCryptoBarsRequest.Alpaca#Markets#IHistoricalRequest{Alpaca#Markets#HistoricalCryptoBarsRequest,Alpaca#Markets#IBar}#GetValidatedRequestWithoutPageToken">IHistoricalRequest&lt;HistoricalCryptoBarsRequest, IBar&gt;.GetValidatedRequestWithoutPageToken()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">HistoricalCryptoBarsRequest IHistoricalRequest&lt;HistoricalCryptoBarsRequest, IBar&gt;.GetValidatedRequestWithoutPageToken()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalCryptoBarsRequest.html">HistoricalCryptoBarsRequest</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="Alpaca.Markets.HistoricalRequestBaseExtensions.html#Alpaca_Markets_HistoricalRequestBaseExtensions_WithPageSize__1___0_System_UInt32_">HistoricalRequestBaseExtensions.WithPageSize&lt;TRequest&gt;(TRequest, UInt32)</a>
+      <a class="xref" href="Alpaca.Markets.IHistoricalRequest-2.html">IHistoricalRequest&lt;TRequest, TItem&gt;</a>
   </div>
   <div>
-      <a class="xref" href="Alpaca.Markets.HistoricalRequestBaseExtensions.html#Alpaca_Markets_HistoricalRequestBaseExtensions_WithPageToken__1___0_System_String_">HistoricalRequestBaseExtensions.WithPageToken&lt;TRequest&gt;(TRequest, String)</a>
+      <a class="xref" href="Alpaca.Markets.IHistoricalRequest.html">IHistoricalRequest</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Alpaca.Markets.HistoricalRequestBaseExtensions.html#Alpaca_Markets_HistoricalRequestBaseExtensions_WithPageSize__1___0_UInt32_">HistoricalRequestBaseExtensions.WithPageSize&lt;TRequest&gt;(TRequest, UInt32)</a>
+  </div>
+  <div>
+      <a class="xref" href="Alpaca.Markets.HistoricalRequestBaseExtensions.html#Alpaca_Markets_HistoricalRequestBaseExtensions_WithPageToken__1___0_String_">HistoricalRequestBaseExtensions.WithPageToken&lt;TRequest&gt;(TRequest, String)</a>
   </div>
 </article>
           </div>
@@ -519,7 +652,7 @@ public HistoricalCryptoBarsRequest WithExchanges(IEnumerable&lt;CryptoExchange&g
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_HistoricalCryptoBarsRequest.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalCryptoBarsRequest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L13" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/HistoricalCryptoBarsRequest.cs/#L8" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

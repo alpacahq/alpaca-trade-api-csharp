@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IAlpacaStreamingClient
    ">
-    <meta name="generator" content="docfx 2.58.4.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -91,24 +91,23 @@
       <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_OnError">IStreamingClient.OnError</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_ConnectAsync_System_Threading_CancellationToken_">IStreamingClient.ConnectAsync(CancellationToken)</a>
+      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_OnWarning">IStreamingClient.OnWarning</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_ConnectAndAuthenticateAsync_System_Threading_CancellationToken_">IStreamingClient.ConnectAndAuthenticateAsync(CancellationToken)</a>
+      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_ConnectAsync_CancellationToken_">IStreamingClient.ConnectAsync(CancellationToken)</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_DisconnectAsync_System_Threading_CancellationToken_">IStreamingClient.DisconnectAsync(CancellationToken)</a>
+      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_ConnectAndAuthenticateAsync_CancellationToken_">IStreamingClient.ConnectAndAuthenticateAsync(CancellationToken)</a>
     </div>
     <div>
-      <span class="xref">System.IDisposable.Dispose()</span>
+      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_DisconnectAsync_CancellationToken_">IStreamingClient.DisconnectAsync(CancellationToken)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_IAlpacaStreamingClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[CLSCompliant(false)]
-public interface IAlpacaStreamingClient : IStreamingClient, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IAlpacaStreamingClient : IStreamingClient</code></pre>
   </div>
   <h3 id="events">Events
   </h3>
@@ -117,7 +116,7 @@ public interface IAlpacaStreamingClient : IStreamingClient, IDisposable</code></
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IAlpacaStreamingClient_OnTradeUpdate.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaStreamingClient.OnTradeUpdate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IAlpacaStreamingClient.cs/#L16">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IAlpacaStreamingClient.cs/#L13">View Source</a>
   </span>
   <h4 id="Alpaca_Markets_IAlpacaStreamingClient_OnTradeUpdate" data-uid="Alpaca.Markets.IAlpacaStreamingClient.OnTradeUpdate">OnTradeUpdate</h4>
   <div class="markdown level1 summary"><p>Occurred when new trade update received from stream.</p>
@@ -125,8 +124,7 @@ public interface IAlpacaStreamingClient : IStreamingClient, IDisposable</code></
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-event Action&lt;ITradeUpdate&gt; OnTradeUpdate</code></pre>
+    <pre><code class="lang-csharp hljs">event Action&lt;ITradeUpdate&gt;? OnTradeUpdate</code></pre>
   </div>
   <h5 class="eventType">Event Type</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -138,7 +136,7 @@ event Action&lt;ITradeUpdate&gt; OnTradeUpdate</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="Alpaca.Markets.ITradeUpdate.html">ITradeUpdate</a>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Action</span>&lt;<a class="xref" href="Alpaca.Markets.ITradeUpdate.html">ITradeUpdate</a>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -154,7 +152,7 @@ event Action&lt;ITradeUpdate&gt; OnTradeUpdate</code></pre>
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IAlpacaStreamingClient.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaStreamingClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IAlpacaStreamingClient.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IAlpacaStreamingClient.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

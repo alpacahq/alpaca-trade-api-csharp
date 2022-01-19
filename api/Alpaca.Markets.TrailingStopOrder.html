@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class TrailingStopOrder
    ">
-    <meta name="generator" content="docfx 2.58.4.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -86,19 +86,19 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_TakeProfit_System_Decimal_">SimpleOrderBase.TakeProfit(Decimal)</a>
+      <a class="xref" href="Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_TakeProfit_Decimal_">SimpleOrderBase.TakeProfit(Decimal)</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_StopLoss_System_Decimal_">SimpleOrderBase.StopLoss(Decimal)</a>
+      <a class="xref" href="Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_StopLoss_Decimal_">SimpleOrderBase.StopLoss(Decimal)</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_StopLoss_System_Decimal_System_Decimal_">SimpleOrderBase.StopLoss(Decimal, Decimal)</a>
+      <a class="xref" href="Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_StopLoss_Decimal_Decimal_">SimpleOrderBase.StopLoss(Decimal, Decimal)</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_Bracket_System_Decimal_System_Decimal_">SimpleOrderBase.Bracket(Decimal, Decimal)</a>
+      <a class="xref" href="Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_Bracket_Decimal_Decimal_">SimpleOrderBase.Bracket(Decimal, Decimal)</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_Bracket_System_Decimal_System_Decimal_System_Decimal_">SimpleOrderBase.Bracket(Decimal, Decimal, Decimal)</a>
+      <a class="xref" href="Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase_Bracket_Decimal_Decimal_Decimal_">SimpleOrderBase.Bracket(Decimal, Decimal, Decimal)</a>
     </div>
     <div>
       <a class="xref" href="Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase_Symbol">OrderBase.Symbol</a>
@@ -147,7 +147,7 @@
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_TrailingStopOrder_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class TrailingStopOrder : SimpleOrderBase, Validation.IRequest</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class TrailingStopOrder : SimpleOrderBase</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -156,7 +156,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailingStopOrder_TrailOffset.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailingStopOrder.TrailOffset%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailingStopOrder.cs/#L24">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailingStopOrder.cs/#L21">View Source</a>
   </span>
   <a id="Alpaca_Markets_TrailingStopOrder_TrailOffset_" data-uid="Alpaca.Markets.TrailingStopOrder.TrailOffset*"></a>
   <h4 id="Alpaca_Markets_TrailingStopOrder_TrailOffset" data-uid="Alpaca.Markets.TrailingStopOrder.TrailOffset">TrailOffset</h4>
@@ -165,8 +165,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public TrailOffset TrailOffset { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TrailOffset TrailOffset { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -187,20 +186,19 @@ public TrailOffset TrailOffset { get; }</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailingStopOrder_Buy_System_String_System_Int64_Alpaca_Markets_TrailOffset_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailingStopOrder.Buy(System.String%2CSystem.Int64%2CAlpaca.Markets.TrailOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailingStopOrder_Buy_String_Int64_Alpaca_Markets_TrailOffset_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailingStopOrder.Buy(String%2CInt64%2CAlpaca.Markets.TrailOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailingStopOrder.cs/#L34">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailingStopOrder.cs/#L31">View Source</a>
   </span>
   <a id="Alpaca_Markets_TrailingStopOrder_Buy_" data-uid="Alpaca.Markets.TrailingStopOrder.Buy*"></a>
-  <h4 id="Alpaca_Markets_TrailingStopOrder_Buy_System_String_System_Int64_Alpaca_Markets_TrailOffset_" data-uid="Alpaca.Markets.TrailingStopOrder.Buy(System.String,System.Int64,Alpaca.Markets.TrailOffset)">Buy(String, Int64, TrailOffset)</h4>
+  <h4 id="Alpaca_Markets_TrailingStopOrder_Buy_String_Int64_Alpaca_Markets_TrailOffset_" data-uid="Alpaca.Markets.TrailingStopOrder.Buy(String,Int64,Alpaca.Markets.TrailOffset)">Buy(String, Int64, TrailOffset)</h4>
   <div class="markdown level1 summary"><p>Creates new buy market order using specified symbol and quantity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public static TrailingStopOrder Buy(string symbol, long quantity, TrailOffset trailOffset)</code></pre>
+    <pre><code class="lang-csharp hljs">public static TrailingStopOrder Buy(String symbol, Int64 quantity, TrailOffset trailOffset)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -213,13 +211,13 @@ public static TrailingStopOrder Buy(string symbol, long quantity, TrailOffset tr
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">String</span></td>
         <td><span class="parametername">symbol</span></td>
         <td><p>Order asset name.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Int64</span></td>
+        <td><span class="xref">Int64</span></td>
         <td><span class="parametername">quantity</span></td>
         <td><p>Order quantity.</p>
 </td>
@@ -250,20 +248,19 @@ public static TrailingStopOrder Buy(string symbol, long quantity, TrailOffset tr
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailingStopOrder_Sell_System_String_System_Int64_Alpaca_Markets_TrailOffset_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailingStopOrder.Sell(System.String%2CSystem.Int64%2CAlpaca.Markets.TrailOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailingStopOrder_Sell_String_Int64_Alpaca_Markets_TrailOffset_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailingStopOrder.Sell(String%2CInt64%2CAlpaca.Markets.TrailOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailingStopOrder.cs/#L49">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailingStopOrder.cs/#L46">View Source</a>
   </span>
   <a id="Alpaca_Markets_TrailingStopOrder_Sell_" data-uid="Alpaca.Markets.TrailingStopOrder.Sell*"></a>
-  <h4 id="Alpaca_Markets_TrailingStopOrder_Sell_System_String_System_Int64_Alpaca_Markets_TrailOffset_" data-uid="Alpaca.Markets.TrailingStopOrder.Sell(System.String,System.Int64,Alpaca.Markets.TrailOffset)">Sell(String, Int64, TrailOffset)</h4>
+  <h4 id="Alpaca_Markets_TrailingStopOrder_Sell_String_Int64_Alpaca_Markets_TrailOffset_" data-uid="Alpaca.Markets.TrailingStopOrder.Sell(String,Int64,Alpaca.Markets.TrailOffset)">Sell(String, Int64, TrailOffset)</h4>
   <div class="markdown level1 summary"><p>Creates new sell market order using specified symbol and quantity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public static TrailingStopOrder Sell(string symbol, long quantity, TrailOffset trailOffset)</code></pre>
+    <pre><code class="lang-csharp hljs">public static TrailingStopOrder Sell(String symbol, Int64 quantity, TrailOffset trailOffset)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -276,13 +273,13 @@ public static TrailingStopOrder Sell(string symbol, long quantity, TrailOffset t
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">String</span></td>
         <td><span class="parametername">symbol</span></td>
         <td><p>Order asset name.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Int64</span></td>
+        <td><span class="xref">Int64</span></td>
         <td><span class="parametername">quantity</span></td>
         <td><p>Order quantity.</p>
 </td>
@@ -316,10 +313,10 @@ public static TrailingStopOrder Sell(string symbol, long quantity, TrailOffset t
       <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithDuration__1___0_Alpaca_Markets_TimeInForce_">OrderBaseExtensions.WithDuration&lt;TOrder&gt;(TOrder, TimeInForce)</a>
   </div>
   <div>
-      <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithClientOrderId__1___0_System_String_">OrderBaseExtensions.WithClientOrderId&lt;TOrder&gt;(TOrder, String)</a>
+      <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithClientOrderId__1___0_String_">OrderBaseExtensions.WithClientOrderId&lt;TOrder&gt;(TOrder, String)</a>
   </div>
   <div>
-      <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithExtendedHours__1___0_System_Boolean_">OrderBaseExtensions.WithExtendedHours&lt;TOrder&gt;(TOrder, Boolean)</a>
+      <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithExtendedHours__1___0_Boolean_">OrderBaseExtensions.WithExtendedHours&lt;TOrder&gt;(TOrder, Boolean)</a>
   </div>
 </article>
           </div>
@@ -332,7 +329,7 @@ public static TrailingStopOrder Sell(string symbol, long quantity, TrailOffset t
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_TrailingStopOrder.md&amp;value=---%0Auid%3A%20Alpaca.Markets.TrailingStopOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailingStopOrder.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/TrailingStopOrder.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

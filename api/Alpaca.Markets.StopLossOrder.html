@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class StopLossOrder
    ">
-    <meta name="generator" content="docfx 2.58.4.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -139,7 +139,7 @@
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_StopLossOrder_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class StopLossOrder : AdvancedOrderBase, Validation.IRequest, IStopLoss</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class StopLossOrder : AdvancedOrderBase, IStopLoss</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -148,7 +148,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_StopLossOrder_LimitPrice.md&amp;value=---%0Auid%3A%20Alpaca.Markets.StopLossOrder.LimitPrice%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/StopLossOrder.cs/#L27">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/StopLossOrder.cs/#L24">View Source</a>
   </span>
   <a id="Alpaca_Markets_StopLossOrder_LimitPrice_" data-uid="Alpaca.Markets.StopLossOrder.LimitPrice*"></a>
   <h4 id="Alpaca_Markets_StopLossOrder_LimitPrice" data-uid="Alpaca.Markets.StopLossOrder.LimitPrice">LimitPrice</h4>
@@ -157,7 +157,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public decimal? LimitPrice { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Decimal? LimitPrice { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -169,7 +169,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Decimal</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Decimal</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -179,7 +179,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_StopLossOrder_StopPrice.md&amp;value=---%0Auid%3A%20Alpaca.Markets.StopLossOrder.StopPrice%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/StopLossOrder.cs/#L24">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/StopLossOrder.cs/#L21">View Source</a>
   </span>
   <a id="Alpaca_Markets_StopLossOrder_StopPrice_" data-uid="Alpaca.Markets.StopLossOrder.StopPrice*"></a>
   <h4 id="Alpaca_Markets_StopLossOrder_StopPrice" data-uid="Alpaca.Markets.StopLossOrder.StopPrice">StopPrice</h4>
@@ -188,7 +188,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public decimal StopPrice { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Decimal StopPrice { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -200,7 +200,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Decimal</span></td>
+        <td><span class="xref">Decimal</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -209,20 +209,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_StopLossOrder_TakeProfit_System_Decimal_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.StopLossOrder.TakeProfit(System.Decimal)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_StopLossOrder_TakeProfit_Decimal_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.StopLossOrder.TakeProfit(Decimal)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/StopLossOrder.cs/#L34">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/StopLossOrder.cs/#L31">View Source</a>
   </span>
   <a id="Alpaca_Markets_StopLossOrder_TakeProfit_" data-uid="Alpaca.Markets.StopLossOrder.TakeProfit*"></a>
-  <h4 id="Alpaca_Markets_StopLossOrder_TakeProfit_System_Decimal_" data-uid="Alpaca.Markets.StopLossOrder.TakeProfit(System.Decimal)">TakeProfit(Decimal)</h4>
+  <h4 id="Alpaca_Markets_StopLossOrder_TakeProfit_Decimal_" data-uid="Alpaca.Markets.StopLossOrder.TakeProfit(Decimal)">TakeProfit(Decimal)</h4>
   <div class="markdown level1 summary"><p>Creates a new instance of the <a class="xref" href="Alpaca.Markets.BracketOrder.html">BracketOrder</a> order from the current order.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public BracketOrder TakeProfit(decimal takeProfitLimitPrice)</code></pre>
+    <pre><code class="lang-csharp hljs">public BracketOrder TakeProfit(Decimal takeProfitLimitPrice)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -235,7 +234,7 @@ public BracketOrder TakeProfit(decimal takeProfitLimitPrice)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Decimal</span></td>
+        <td><span class="xref">Decimal</span></td>
         <td><span class="parametername">takeProfitLimitPrice</span></td>
         <td><p>Take profit order limit price.</p>
 </td>
@@ -267,10 +266,10 @@ public BracketOrder TakeProfit(decimal takeProfitLimitPrice)</code></pre>
       <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithDuration__1___0_Alpaca_Markets_TimeInForce_">OrderBaseExtensions.WithDuration&lt;TOrder&gt;(TOrder, TimeInForce)</a>
   </div>
   <div>
-      <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithClientOrderId__1___0_System_String_">OrderBaseExtensions.WithClientOrderId&lt;TOrder&gt;(TOrder, String)</a>
+      <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithClientOrderId__1___0_String_">OrderBaseExtensions.WithClientOrderId&lt;TOrder&gt;(TOrder, String)</a>
   </div>
   <div>
-      <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithExtendedHours__1___0_System_Boolean_">OrderBaseExtensions.WithExtendedHours&lt;TOrder&gt;(TOrder, Boolean)</a>
+      <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithExtendedHours__1___0_Boolean_">OrderBaseExtensions.WithExtendedHours&lt;TOrder&gt;(TOrder, Boolean)</a>
   </div>
 </article>
           </div>
@@ -283,7 +282,7 @@ public BracketOrder TakeProfit(decimal takeProfitLimitPrice)</code></pre>
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_StopLossOrder.md&amp;value=---%0Auid%3A%20Alpaca.Markets.StopLossOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/StopLossOrder.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/StopLossOrder.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

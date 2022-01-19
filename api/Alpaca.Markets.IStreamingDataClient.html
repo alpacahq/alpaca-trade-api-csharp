@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IStreamingDataClient
    ">
-    <meta name="generator" content="docfx 2.58.4.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -91,42 +91,65 @@
       <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_OnError">IStreamingClient.OnError</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_ConnectAsync_System_Threading_CancellationToken_">IStreamingClient.ConnectAsync(CancellationToken)</a>
+      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_OnWarning">IStreamingClient.OnWarning</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_ConnectAndAuthenticateAsync_System_Threading_CancellationToken_">IStreamingClient.ConnectAndAuthenticateAsync(CancellationToken)</a>
+      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_ConnectAsync_CancellationToken_">IStreamingClient.ConnectAsync(CancellationToken)</a>
     </div>
     <div>
-      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_DisconnectAsync_System_Threading_CancellationToken_">IStreamingClient.DisconnectAsync(CancellationToken)</a>
+      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_ConnectAndAuthenticateAsync_CancellationToken_">IStreamingClient.ConnectAndAuthenticateAsync(CancellationToken)</a>
     </div>
     <div>
-      <span class="xref">System.IDisposable.Dispose()</span>
+      <a class="xref" href="Alpaca.Markets.IStreamingClient.html#Alpaca_Markets_IStreamingClient_DisconnectAsync_CancellationToken_">IStreamingClient.DisconnectAsync(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.ISubscriptionHandler.html#Alpaca_Markets_ISubscriptionHandler_SubscribeAsync_Alpaca_Markets_IAlpacaDataSubscription_">ISubscriptionHandler.SubscribeAsync(IAlpacaDataSubscription)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.ISubscriptionHandler.html#Alpaca_Markets_ISubscriptionHandler_SubscribeAsync_Alpaca_Markets_IAlpacaDataSubscription_CancellationToken_">ISubscriptionHandler.SubscribeAsync(IAlpacaDataSubscription, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.ISubscriptionHandler.html#Alpaca_Markets_ISubscriptionHandler_SubscribeAsync_IEnumerable_Alpaca_Markets_IAlpacaDataSubscription__">ISubscriptionHandler.SubscribeAsync(IEnumerable&lt;IAlpacaDataSubscription&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.ISubscriptionHandler.html#Alpaca_Markets_ISubscriptionHandler_SubscribeAsync_IEnumerable_Alpaca_Markets_IAlpacaDataSubscription__CancellationToken_">ISubscriptionHandler.SubscribeAsync(IEnumerable&lt;IAlpacaDataSubscription&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.ISubscriptionHandler.html#Alpaca_Markets_ISubscriptionHandler_UnsubscribeAsync_Alpaca_Markets_IAlpacaDataSubscription_">ISubscriptionHandler.UnsubscribeAsync(IAlpacaDataSubscription)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.ISubscriptionHandler.html#Alpaca_Markets_ISubscriptionHandler_UnsubscribeAsync_Alpaca_Markets_IAlpacaDataSubscription_CancellationToken_">ISubscriptionHandler.UnsubscribeAsync(IAlpacaDataSubscription, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.ISubscriptionHandler.html#Alpaca_Markets_ISubscriptionHandler_UnsubscribeAsync_IEnumerable_Alpaca_Markets_IAlpacaDataSubscription__">ISubscriptionHandler.UnsubscribeAsync(IEnumerable&lt;IAlpacaDataSubscription&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.ISubscriptionHandler.html#Alpaca_Markets_ISubscriptionHandler_UnsubscribeAsync_IEnumerable_Alpaca_Markets_IAlpacaDataSubscription__CancellationToken_">ISubscriptionHandler.UnsubscribeAsync(IEnumerable&lt;IAlpacaDataSubscription&gt;, CancellationToken)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_IStreamingDataClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IStreamingDataClient : IStreamingClient, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IStreamingDataClient : IStreamingClient, ISubscriptionHandler</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingDataClient_SubscribeAsync_Alpaca_Markets_IAlpacaDataSubscription_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingDataClient.SubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingDataClient_GetDailyBarSubscription_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingDataClient.GetDailyBarSubscription(String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingDataClient.cs/#L18">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingDataClient.cs/#L58">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IStreamingDataClient_SubscribeAsync_" data-uid="Alpaca.Markets.IStreamingDataClient.SubscribeAsync*"></a>
-  <h4 id="Alpaca_Markets_IStreamingDataClient_SubscribeAsync_Alpaca_Markets_IAlpacaDataSubscription_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.IStreamingDataClient.SubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription,System.Threading.CancellationToken)">SubscribeAsync(IAlpacaDataSubscription, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Subscribes the single <code data-dev-comment-type="paramref" class="paramref">subscription</code> object for receiving data from the server.</p>
+  <a id="Alpaca_Markets_IStreamingDataClient_GetDailyBarSubscription_" data-uid="Alpaca.Markets.IStreamingDataClient.GetDailyBarSubscription*"></a>
+  <h4 id="Alpaca_Markets_IStreamingDataClient_GetDailyBarSubscription_String_" data-uid="Alpaca.Markets.IStreamingDataClient.GetDailyBarSubscription(String)">GetDailyBarSubscription(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the daily aggregate (bar) subscription for the <code data-dev-comment-type="paramref" class="paramref">symbol</code> asset.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-ValueTask SubscribeAsync(IAlpacaDataSubscription subscription, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">IAlpacaDataSubscription&lt;IBar&gt; GetDailyBarSubscription(String symbol)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -139,15 +162,9 @@ ValueTask SubscribeAsync(IAlpacaDataSubscription subscription, CancellationToken
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription.html">IAlpacaDataSubscription</a></td>
-        <td><span class="parametername">subscription</span></td>
-        <td><p>Subscription target - asset and update type holder.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+        <td><span class="xref">String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Alpaca asset name.</p>
 </td>
       </tr>
     </tbody>
@@ -162,52 +179,28 @@ ValueTask SubscribeAsync(IAlpacaDataSubscription subscription, CancellationToken
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
-        <td></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
+        <td><p>Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingDataClient_SubscribeAsync_System_Collections_Generic_IEnumerable_Alpaca_Markets_IAlpacaDataSubscription__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingDataClient.SubscribeAsync(System.Collections.Generic.IEnumerable%7BAlpaca.Markets.IAlpacaDataSubscription%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingDataClient_GetMinuteBarSubscription.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingDataClient.GetMinuteBarSubscription%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingDataClient.cs/#L28">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingDataClient.cs/#L37">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IStreamingDataClient_SubscribeAsync_" data-uid="Alpaca.Markets.IStreamingDataClient.SubscribeAsync*"></a>
-  <h4 id="Alpaca_Markets_IStreamingDataClient_SubscribeAsync_System_Collections_Generic_IEnumerable_Alpaca_Markets_IAlpacaDataSubscription__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.IStreamingDataClient.SubscribeAsync(System.Collections.Generic.IEnumerable{Alpaca.Markets.IAlpacaDataSubscription},System.Threading.CancellationToken)">SubscribeAsync(IEnumerable&lt;IAlpacaDataSubscription&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Subscribes several <code data-dev-comment-type="paramref" class="paramref">subscriptions</code> objects for receiving data from the server.</p>
+  <a id="Alpaca_Markets_IStreamingDataClient_GetMinuteBarSubscription_" data-uid="Alpaca.Markets.IStreamingDataClient.GetMinuteBarSubscription*"></a>
+  <h4 id="Alpaca_Markets_IStreamingDataClient_GetMinuteBarSubscription" data-uid="Alpaca.Markets.IStreamingDataClient.GetMinuteBarSubscription">GetMinuteBarSubscription()</h4>
+  <div class="markdown level1 summary"><p>Gets the minute aggregate (bar) subscription for the all assets.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-ValueTask SubscribeAsync(IEnumerable&lt;IAlpacaDataSubscription&gt; subscriptions, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">IAlpacaDataSubscription&lt;IBar&gt; GetMinuteBarSubscription()</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription.html">IAlpacaDataSubscription</a>&gt;</td>
-        <td><span class="parametername">subscriptions</span></td>
-        <td><p>List of subscription targets - assets and update type holders.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -218,27 +211,27 @@ ValueTask SubscribeAsync(IEnumerable&lt;IAlpacaDataSubscription&gt; subscription
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
-        <td></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
+        <td><p>Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingDataClient_UnsubscribeAsync_Alpaca_Markets_IAlpacaDataSubscription_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingDataClient_GetMinuteBarSubscription_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingDataClient.GetMinuteBarSubscription(String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingDataClient.cs/#L38">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingDataClient.cs/#L47">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IStreamingDataClient_UnsubscribeAsync_" data-uid="Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync*"></a>
-  <h4 id="Alpaca_Markets_IStreamingDataClient_UnsubscribeAsync_Alpaca_Markets_IAlpacaDataSubscription_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription,System.Threading.CancellationToken)">UnsubscribeAsync(IAlpacaDataSubscription, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Unsubscribes the single <code data-dev-comment-type="paramref" class="paramref">subscription</code> object for receiving data from the server.</p>
+  <a id="Alpaca_Markets_IStreamingDataClient_GetMinuteBarSubscription_" data-uid="Alpaca.Markets.IStreamingDataClient.GetMinuteBarSubscription*"></a>
+  <h4 id="Alpaca_Markets_IStreamingDataClient_GetMinuteBarSubscription_String_" data-uid="Alpaca.Markets.IStreamingDataClient.GetMinuteBarSubscription(String)">GetMinuteBarSubscription(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the minute aggregate (bar) subscription for the <code data-dev-comment-type="paramref" class="paramref">symbol</code> asset.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-ValueTask UnsubscribeAsync(IAlpacaDataSubscription subscription, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">IAlpacaDataSubscription&lt;IBar&gt; GetMinuteBarSubscription(String symbol)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -251,15 +244,9 @@ ValueTask UnsubscribeAsync(IAlpacaDataSubscription subscription, CancellationTok
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription.html">IAlpacaDataSubscription</a></td>
-        <td><span class="parametername">subscription</span></td>
-        <td><p>Subscription target - asset and update type holder.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+        <td><span class="xref">String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Alpaca asset name.</p>
 </td>
       </tr>
     </tbody>
@@ -274,27 +261,27 @@ ValueTask UnsubscribeAsync(IAlpacaDataSubscription subscription, CancellationTok
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
-        <td></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
+        <td><p>Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingDataClient_UnsubscribeAsync_System_Collections_Generic_IEnumerable_Alpaca_Markets_IAlpacaDataSubscription__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync(System.Collections.Generic.IEnumerable%7BAlpaca.Markets.IAlpacaDataSubscription%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingDataClient_GetQuoteSubscription_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingDataClient.GetQuoteSubscription(String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingDataClient.cs/#L48">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingDataClient.cs/#L27">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IStreamingDataClient_UnsubscribeAsync_" data-uid="Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync*"></a>
-  <h4 id="Alpaca_Markets_IStreamingDataClient_UnsubscribeAsync_System_Collections_Generic_IEnumerable_Alpaca_Markets_IAlpacaDataSubscription__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.IStreamingDataClient.UnsubscribeAsync(System.Collections.Generic.IEnumerable{Alpaca.Markets.IAlpacaDataSubscription},System.Threading.CancellationToken)">UnsubscribeAsync(IEnumerable&lt;IAlpacaDataSubscription&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Unsubscribes several <code data-dev-comment-type="paramref" class="paramref">subscriptions</code> objects for receiving data from the server.</p>
+  <a id="Alpaca_Markets_IStreamingDataClient_GetQuoteSubscription_" data-uid="Alpaca.Markets.IStreamingDataClient.GetQuoteSubscription*"></a>
+  <h4 id="Alpaca_Markets_IStreamingDataClient_GetQuoteSubscription_String_" data-uid="Alpaca.Markets.IStreamingDataClient.GetQuoteSubscription(String)">GetQuoteSubscription(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the quote updates subscription for the <code data-dev-comment-type="paramref" class="paramref">symbol</code> asset.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-ValueTask UnsubscribeAsync(IEnumerable&lt;IAlpacaDataSubscription&gt; subscriptions, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">IAlpacaDataSubscription&lt;IQuote&gt; GetQuoteSubscription(String symbol)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -307,15 +294,9 @@ ValueTask UnsubscribeAsync(IEnumerable&lt;IAlpacaDataSubscription&gt; subscripti
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription.html">IAlpacaDataSubscription</a>&gt;</td>
-        <td><span class="parametername">subscriptions</span></td>
-        <td><p>List of subscription targets - assets and update type holders.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+        <td><span class="xref">String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Alpaca asset name.</p>
 </td>
       </tr>
     </tbody>
@@ -330,8 +311,59 @@ ValueTask UnsubscribeAsync(IEnumerable&lt;IAlpacaDataSubscription&gt; subscripti
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.ValueTask</span></td>
-        <td></td>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.IQuote.html">IQuote</a>&gt;</td>
+        <td><p>Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingDataClient_GetTradeSubscription_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingDataClient.GetTradeSubscription(String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingDataClient.cs/#L16">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_IStreamingDataClient_GetTradeSubscription_" data-uid="Alpaca.Markets.IStreamingDataClient.GetTradeSubscription*"></a>
+  <h4 id="Alpaca_Markets_IStreamingDataClient_GetTradeSubscription_String_" data-uid="Alpaca.Markets.IStreamingDataClient.GetTradeSubscription(String)">GetTradeSubscription(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the trade updates subscription for the <code data-dev-comment-type="paramref" class="paramref">symbol</code> asset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAlpacaDataSubscription&lt;ITrade&gt; GetTradeSubscription(String symbol)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Alpaca asset name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.ITrade.html">ITrade</a>&gt;</td>
+        <td><p>Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -346,7 +378,7 @@ ValueTask UnsubscribeAsync(IEnumerable&lt;IAlpacaDataSubscription&gt; subscripti
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingDataClient.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingDataClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingDataClient.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingDataClient.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

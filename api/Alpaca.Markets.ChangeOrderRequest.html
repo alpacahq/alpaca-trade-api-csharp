@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ChangeOrderRequest
    ">
-    <meta name="generator" content="docfx 2.58.4.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="Alpaca_Markets_ChangeOrderRequest" data-uid="Alpaca.Markets.ChangeOrderRequest" class="text-break">Class ChangeOrderRequest
   </h1>
-  <div class="markdown level0 summary"><p>Encapsulates request parameters for <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_PatchOrderAsync_Alpaca_Markets_ChangeOrderRequest_System_Threading_CancellationToken_">PatchOrderAsync(ChangeOrderRequest, CancellationToken)</a> call.</p>
+  <div class="markdown level0 summary"><p>Encapsulates request parameters for <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_PatchOrderAsync_Alpaca_Markets_ChangeOrderRequest_CancellationToken_">PatchOrderAsync(ChangeOrderRequest, CancellationToken)</a> call.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -109,19 +109,19 @@
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_ChangeOrderRequest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class ChangeOrderRequest : Validation.IRequest</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class ChangeOrderRequest</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ChangeOrderRequest__ctor_System_Guid_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ChangeOrderRequest.%23ctor(System.Guid)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ChangeOrderRequest__ctor_Guid_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ChangeOrderRequest.%23ctor(Guid)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L17">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L12">View Source</a>
   </span>
   <a id="Alpaca_Markets_ChangeOrderRequest__ctor_" data-uid="Alpaca.Markets.ChangeOrderRequest.#ctor*"></a>
-  <h4 id="Alpaca_Markets_ChangeOrderRequest__ctor_System_Guid_" data-uid="Alpaca.Markets.ChangeOrderRequest.#ctor(System.Guid)">ChangeOrderRequest(Guid)</h4>
+  <h4 id="Alpaca_Markets_ChangeOrderRequest__ctor_Guid_" data-uid="Alpaca.Markets.ChangeOrderRequest.#ctor(Guid)">ChangeOrderRequest(Guid)</h4>
   <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.ChangeOrderRequest.html">ChangeOrderRequest</a> object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -140,7 +140,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Guid</span></td>
+        <td><span class="xref">Guid</span></td>
         <td><span class="parametername">orderId</span></td>
         <td><p>Server side order identifier.</p>
 </td>
@@ -154,7 +154,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ChangeOrderRequest_ClientOrderId.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ChangeOrderRequest.ClientOrderId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L55">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L50">View Source</a>
   </span>
   <a id="Alpaca_Markets_ChangeOrderRequest_ClientOrderId_" data-uid="Alpaca.Markets.ChangeOrderRequest.ClientOrderId*"></a>
   <h4 id="Alpaca_Markets_ChangeOrderRequest_ClientOrderId" data-uid="Alpaca.Markets.ChangeOrderRequest.ClientOrderId">ClientOrderId</h4>
@@ -163,8 +163,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;client_order_id&quot;, Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-public string ClientOrderId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public String? ClientOrderId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -176,7 +175,7 @@ public string ClientOrderId { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -186,7 +185,7 @@ public string ClientOrderId { get; set; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ChangeOrderRequest_Duration.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ChangeOrderRequest.Duration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L37">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L32">View Source</a>
   </span>
   <a id="Alpaca_Markets_ChangeOrderRequest_Duration_" data-uid="Alpaca.Markets.ChangeOrderRequest.Duration*"></a>
   <h4 id="Alpaca_Markets_ChangeOrderRequest_Duration" data-uid="Alpaca.Markets.ChangeOrderRequest.Duration">Duration</h4>
@@ -195,8 +194,7 @@ public string ClientOrderId { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;time_in_force&quot;, Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-public TimeInForce? Duration { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TimeInForce? Duration { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -218,7 +216,7 @@ public TimeInForce? Duration { get; set; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ChangeOrderRequest_LimitPrice.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ChangeOrderRequest.LimitPrice%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L43">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L38">View Source</a>
   </span>
   <a id="Alpaca_Markets_ChangeOrderRequest_LimitPrice_" data-uid="Alpaca.Markets.ChangeOrderRequest.LimitPrice*"></a>
   <h4 id="Alpaca_Markets_ChangeOrderRequest_LimitPrice" data-uid="Alpaca.Markets.ChangeOrderRequest.LimitPrice">LimitPrice</h4>
@@ -227,8 +225,7 @@ public TimeInForce? Duration { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;limit_price&quot;, Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-public decimal? LimitPrice { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Decimal? LimitPrice { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -240,7 +237,7 @@ public decimal? LimitPrice { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Decimal</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Decimal</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -250,7 +247,7 @@ public decimal? LimitPrice { get; set; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ChangeOrderRequest_OrderId.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ChangeOrderRequest.OrderId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L24">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L19">View Source</a>
   </span>
   <a id="Alpaca_Markets_ChangeOrderRequest_OrderId_" data-uid="Alpaca.Markets.ChangeOrderRequest.OrderId*"></a>
   <h4 id="Alpaca_Markets_ChangeOrderRequest_OrderId" data-uid="Alpaca.Markets.ChangeOrderRequest.OrderId">OrderId</h4>
@@ -259,9 +256,7 @@ public decimal? LimitPrice { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
-[UsedImplicitly]
-public Guid OrderId { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Guid OrderId { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -273,7 +268,7 @@ public Guid OrderId { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Guid</span></td>
+        <td><span class="xref">Guid</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -283,7 +278,7 @@ public Guid OrderId { get; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ChangeOrderRequest_Quantity.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ChangeOrderRequest.Quantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L31">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L26">View Source</a>
   </span>
   <a id="Alpaca_Markets_ChangeOrderRequest_Quantity_" data-uid="Alpaca.Markets.ChangeOrderRequest.Quantity*"></a>
   <h4 id="Alpaca_Markets_ChangeOrderRequest_Quantity" data-uid="Alpaca.Markets.ChangeOrderRequest.Quantity">Quantity</h4>
@@ -292,8 +287,7 @@ public Guid OrderId { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;qty&quot;, Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-public long? Quantity { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Int64? Quantity { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -305,7 +299,7 @@ public long? Quantity { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Int64</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -315,7 +309,7 @@ public long? Quantity { get; set; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ChangeOrderRequest_StopPrice.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ChangeOrderRequest.StopPrice%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L49">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L44">View Source</a>
   </span>
   <a id="Alpaca_Markets_ChangeOrderRequest_StopPrice_" data-uid="Alpaca.Markets.ChangeOrderRequest.StopPrice*"></a>
   <h4 id="Alpaca_Markets_ChangeOrderRequest_StopPrice" data-uid="Alpaca.Markets.ChangeOrderRequest.StopPrice">StopPrice</h4>
@@ -324,8 +318,7 @@ public long? Quantity { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;stop_price&quot;, Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-public decimal? StopPrice { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Decimal? StopPrice { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -337,7 +330,7 @@ public decimal? StopPrice { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Decimal</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Decimal</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -353,7 +346,7 @@ public decimal? StopPrice { get; set; }</code></pre>
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ChangeOrderRequest.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ChangeOrderRequest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ChangeOrderRequest.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

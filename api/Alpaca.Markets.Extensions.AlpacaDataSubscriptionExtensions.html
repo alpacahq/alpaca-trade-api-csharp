@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AlpacaDataSubscriptionExtensions
    ">
-    <meta name="generator" content="docfx 2.58.4.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -118,7 +118,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_Alpaca_Markets_IAlpacaDataSubscription___0__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable%60%601(Alpaca.Markets.IAlpacaDataSubscription%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaDataSubscriptionExtensions.cs/#L21">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaDataSubscriptionExtensions.cs/#L17">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_Alpaca_Markets_IAlpacaDataSubscription___0__" data-uid="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable``1(Alpaca.Markets.IAlpacaDataSubscription{``0})">AsAsyncEnumerable&lt;TItem&gt;(IAlpacaDataSubscription&lt;TItem&gt;)</h4>
@@ -128,8 +128,7 @@ asynchronous enumerable (reactive event consuming style) using unbound channel.<
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public static IAsyncEnumerable&lt;TItem&gt; AsAsyncEnumerable&lt;TItem&gt;(this IAlpacaDataSubscription&lt;TItem&gt; subscription)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;TItem&gt; AsAsyncEnumerable&lt;TItem&gt;(this IAlpacaDataSubscription&lt;TItem&gt; subscription)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -159,7 +158,7 @@ public static IAsyncEnumerable&lt;TItem&gt; AsAsyncEnumerable&lt;TItem&gt;(this 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;TItem&gt;</td>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;TItem&gt;</td>
         <td><p>Stream of items received from server in form of async enumerable.</p>
 </td>
       </tr>
@@ -183,21 +182,20 @@ public static IAsyncEnumerable&lt;TItem&gt; AsAsyncEnumerable&lt;TItem&gt;(this 
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_Alpaca_Markets_IAlpacaDataSubscription___0__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable%60%601(Alpaca.Markets.IAlpacaDataSubscription%7B%60%600%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_Alpaca_Markets_IAlpacaDataSubscription___0__CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable%60%601(Alpaca.Markets.IAlpacaDataSubscription%7B%60%600%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaDataSubscriptionExtensions.cs/#L34">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaDataSubscriptionExtensions.cs/#L30">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_Alpaca_Markets_IAlpacaDataSubscription___0__System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable``1(Alpaca.Markets.IAlpacaDataSubscription{``0},System.Threading.CancellationToken)">AsAsyncEnumerable&lt;TItem&gt;(IAlpacaDataSubscription&lt;TItem&gt;, CancellationToken)</h4>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions_AsAsyncEnumerable__1_Alpaca_Markets_IAlpacaDataSubscription___0__CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions.AsAsyncEnumerable``1(Alpaca.Markets.IAlpacaDataSubscription{``0},CancellationToken)">AsAsyncEnumerable&lt;TItem&gt;(IAlpacaDataSubscription&lt;TItem&gt;, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Converts <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event into
 asynchronous enumerable (reactive event consuming style) using unbound channel.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public static async IAsyncEnumerable&lt;TItem&gt; AsAsyncEnumerable&lt;TItem&gt;(this IAlpacaDataSubscription&lt;TItem&gt; subscription, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public static async IAsyncEnumerable&lt;TItem&gt; AsAsyncEnumerable&lt;TItem&gt;(this IAlpacaDataSubscription&lt;TItem&gt; subscription, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -216,7 +214,7 @@ public static async IAsyncEnumerable&lt;TItem&gt; AsAsyncEnumerable&lt;TItem&gt;
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -233,7 +231,7 @@ public static async IAsyncEnumerable&lt;TItem&gt; AsAsyncEnumerable&lt;TItem&gt;
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IAsyncEnumerable</span>&lt;TItem&gt;</td>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;TItem&gt;</td>
         <td><p>Stream of items received from server in form of async enumerable.</p>
 </td>
       </tr>
@@ -266,7 +264,7 @@ public static async IAsyncEnumerable&lt;TItem&gt; AsAsyncEnumerable&lt;TItem&gt;
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataSubscriptionExtensions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaDataSubscriptionExtensions.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaDataSubscriptionExtensions.cs/#L8" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

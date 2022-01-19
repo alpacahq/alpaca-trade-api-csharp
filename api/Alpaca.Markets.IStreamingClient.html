@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IStreamingClient
    ">
-    <meta name="generator" content="docfx 2.58.4.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -76,36 +76,29 @@
   <div class="markdown level0 summary"><p>Provides unified type-safe access for websocket streaming APIs.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.IDisposable.Dispose()</span>
-    </div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_IStreamingClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IStreamingClient : IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IStreamingClient</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingClient_ConnectAndAuthenticateAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingClient.ConnectAndAuthenticateAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingClient_ConnectAndAuthenticateAsync_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingClient.ConnectAndAuthenticateAsync(CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L51">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L52">View Source</a>
   </span>
   <a id="Alpaca_Markets_IStreamingClient_ConnectAndAuthenticateAsync_" data-uid="Alpaca.Markets.IStreamingClient.ConnectAndAuthenticateAsync*"></a>
-  <h4 id="Alpaca_Markets_IStreamingClient_ConnectAndAuthenticateAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.IStreamingClient.ConnectAndAuthenticateAsync(System.Threading.CancellationToken)">ConnectAndAuthenticateAsync(CancellationToken)</h4>
+  <h4 id="Alpaca_Markets_IStreamingClient_ConnectAndAuthenticateAsync_CancellationToken_" data-uid="Alpaca.Markets.IStreamingClient.ConnectAndAuthenticateAsync(CancellationToken)">ConnectAndAuthenticateAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Opens connection to a streaming API and awaits for authentication response.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-Task&lt;AuthStatus&gt; ConnectAndAuthenticateAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;AuthStatus&gt; ConnectAndAuthenticateAsync(CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -118,7 +111,7 @@ Task&lt;AuthStatus&gt; ConnectAndAuthenticateAsync(CancellationToken cancellatio
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -135,7 +128,7 @@ Task&lt;AuthStatus&gt; ConnectAndAuthenticateAsync(CancellationToken cancellatio
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.AuthStatus.html">AuthStatus</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Alpaca.Markets.AuthStatus.html">AuthStatus</a>&gt;</td>
         <td><p>Awaitable task object for handling client authentication event in asynchronous mode.</p>
 </td>
       </tr>
@@ -143,20 +136,19 @@ Task&lt;AuthStatus&gt; ConnectAndAuthenticateAsync(CancellationToken cancellatio
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingClient_ConnectAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingClient.ConnectAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingClient_ConnectAsync_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingClient.ConnectAsync(CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L42">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L43">View Source</a>
   </span>
   <a id="Alpaca_Markets_IStreamingClient_ConnectAsync_" data-uid="Alpaca.Markets.IStreamingClient.ConnectAsync*"></a>
-  <h4 id="Alpaca_Markets_IStreamingClient_ConnectAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.IStreamingClient.ConnectAsync(System.Threading.CancellationToken)">ConnectAsync(CancellationToken)</h4>
+  <h4 id="Alpaca_Markets_IStreamingClient_ConnectAsync_CancellationToken_" data-uid="Alpaca.Markets.IStreamingClient.ConnectAsync(CancellationToken)">ConnectAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Opens connection to a streaming API.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-Task ConnectAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task ConnectAsync(CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -169,7 +161,7 @@ Task ConnectAsync(CancellationToken cancellationToken = default(CancellationToke
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -186,7 +178,7 @@ Task ConnectAsync(CancellationToken cancellationToken = default(CancellationToke
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><span class="xref">Task</span></td>
         <td><p>Awaitable task object for handling action completion in asynchronous mode.</p>
 </td>
       </tr>
@@ -194,20 +186,19 @@ Task ConnectAsync(CancellationToken cancellationToken = default(CancellationToke
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingClient_DisconnectAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingClient.DisconnectAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingClient_DisconnectAsync_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingClient.DisconnectAsync(CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L60">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L61">View Source</a>
   </span>
   <a id="Alpaca_Markets_IStreamingClient_DisconnectAsync_" data-uid="Alpaca.Markets.IStreamingClient.DisconnectAsync*"></a>
-  <h4 id="Alpaca_Markets_IStreamingClient_DisconnectAsync_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.IStreamingClient.DisconnectAsync(System.Threading.CancellationToken)">DisconnectAsync(CancellationToken)</h4>
+  <h4 id="Alpaca_Markets_IStreamingClient_DisconnectAsync_CancellationToken_" data-uid="Alpaca.Markets.IStreamingClient.DisconnectAsync(CancellationToken)">DisconnectAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Closes connection to a streaming API.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-Task DisconnectAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task DisconnectAsync(CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -220,7 +211,7 @@ Task DisconnectAsync(CancellationToken cancellationToken = default(CancellationT
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -237,7 +228,7 @@ Task DisconnectAsync(CancellationToken cancellationToken = default(CancellationT
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><span class="xref">Task</span></td>
         <td><p>Awaitable task object for handling action completion in asynchronous mode.</p>
 </td>
       </tr>
@@ -250,7 +241,7 @@ Task DisconnectAsync(CancellationToken cancellationToken = default(CancellationT
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingClient_Connected.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingClient.Connected%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L17">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L12">View Source</a>
   </span>
   <h4 id="Alpaca_Markets_IStreamingClient_Connected" data-uid="Alpaca.Markets.IStreamingClient.Connected">Connected</h4>
   <div class="markdown level1 summary"><p>Occurred when stream successfully connected.</p>
@@ -258,8 +249,7 @@ Task DisconnectAsync(CancellationToken cancellationToken = default(CancellationT
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-event Action&lt;AuthStatus&gt; Connected</code></pre>
+    <pre><code class="lang-csharp hljs">event Action&lt;AuthStatus&gt;? Connected</code></pre>
   </div>
   <h5 class="eventType">Event Type</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -271,7 +261,7 @@ event Action&lt;AuthStatus&gt; Connected</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="Alpaca.Markets.AuthStatus.html">AuthStatus</a>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Action</span>&lt;<a class="xref" href="Alpaca.Markets.AuthStatus.html">AuthStatus</a>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -281,7 +271,7 @@ event Action&lt;AuthStatus&gt; Connected</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingClient_OnError.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingClient.OnError%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L35">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L30">View Source</a>
   </span>
   <h4 id="Alpaca_Markets_IStreamingClient_OnError" data-uid="Alpaca.Markets.IStreamingClient.OnError">OnError</h4>
   <div class="markdown level1 summary"><p>Occurred when any error happened in stream.</p>
@@ -289,8 +279,7 @@ event Action&lt;AuthStatus&gt; Connected</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-event Action&lt;Exception&gt; OnError</code></pre>
+    <pre><code class="lang-csharp hljs">event Action&lt;Exception&gt;? OnError</code></pre>
   </div>
   <h5 class="eventType">Event Type</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -302,7 +291,37 @@ event Action&lt;Exception&gt; OnError</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.Exception</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Action</span>&lt;<span class="xref">Exception</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingClient_OnWarning.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingClient.OnWarning%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L36">View Source</a>
+  </span>
+  <h4 id="Alpaca_Markets_IStreamingClient_OnWarning" data-uid="Alpaca.Markets.IStreamingClient.OnWarning">OnWarning</h4>
+  <div class="markdown level1 summary"><p>Occurred in case of non-critical events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action&lt;String&gt;? OnWarning</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Action</span>&lt;<span class="xref">String</span>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -312,7 +331,7 @@ event Action&lt;Exception&gt; OnError</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingClient_SocketClosed.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingClient.SocketClosed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L29">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L24">View Source</a>
   </span>
   <h4 id="Alpaca_Markets_IStreamingClient_SocketClosed" data-uid="Alpaca.Markets.IStreamingClient.SocketClosed">SocketClosed</h4>
   <div class="markdown level1 summary"><p>Occurred when underlying web socket successfully closed.</p>
@@ -320,8 +339,7 @@ event Action&lt;Exception&gt; OnError</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-event Action SocketClosed</code></pre>
+    <pre><code class="lang-csharp hljs">event Action? SocketClosed</code></pre>
   </div>
   <h5 class="eventType">Event Type</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -333,7 +351,7 @@ event Action SocketClosed</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Action</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Action</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -343,7 +361,7 @@ event Action SocketClosed</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingClient_SocketOpened.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingClient.SocketOpened%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L23">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L18">View Source</a>
   </span>
   <h4 id="Alpaca_Markets_IStreamingClient_SocketOpened" data-uid="Alpaca.Markets.IStreamingClient.SocketOpened">SocketOpened</h4>
   <div class="markdown level1 summary"><p>Occurred when underlying web socket successfully opened.</p>
@@ -351,8 +369,7 @@ event Action SocketClosed</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-event Action SocketOpened</code></pre>
+    <pre><code class="lang-csharp hljs">event Action? SocketOpened</code></pre>
   </div>
   <h5 class="eventType">Event Type</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -364,7 +381,7 @@ event Action SocketOpened</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Action</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Action</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -380,7 +397,7 @@ event Action SocketOpened</code></pre>
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IStreamingClient.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IStreamingClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Interfaces/IStreamingClient.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

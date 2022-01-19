@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class OrderBase
    ">
-    <meta name="generator" content="docfx 2.58.4.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -111,7 +111,7 @@
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_OrderBase_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class OrderBase : Validation.IRequest</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class OrderBase</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -120,7 +120,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OrderBase__ctor_Alpaca_Markets_OrderBase_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OrderBase.%23ctor(Alpaca.Markets.OrderBase)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L36">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L32">View Source</a>
   </span>
   <a id="Alpaca_Markets_OrderBase__ctor_" data-uid="Alpaca.Markets.OrderBase.#ctor*"></a>
   <h4 id="Alpaca_Markets_OrderBase__ctor_Alpaca_Markets_OrderBase_" data-uid="Alpaca.Markets.OrderBase.#ctor(Alpaca.Markets.OrderBase)">OrderBase(OrderBase)</h4>
@@ -151,19 +151,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OrderBase__ctor_System_String_System_Int64_Alpaca_Markets_OrderSide_Alpaca_Markets_OrderType_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OrderBase.%23ctor(System.String%2CSystem.Int64%2CAlpaca.Markets.OrderSide%2CAlpaca.Markets.OrderType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OrderBase__ctor_String_Int64_Alpaca_Markets_OrderSide_Alpaca_Markets_OrderType_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OrderBase.%23ctor(String%2CInt64%2CAlpaca.Markets.OrderSide%2CAlpaca.Markets.OrderType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L19">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L15">View Source</a>
   </span>
   <a id="Alpaca_Markets_OrderBase__ctor_" data-uid="Alpaca.Markets.OrderBase.#ctor*"></a>
-  <h4 id="Alpaca_Markets_OrderBase__ctor_System_String_System_Int64_Alpaca_Markets_OrderSide_Alpaca_Markets_OrderType_" data-uid="Alpaca.Markets.OrderBase.#ctor(System.String,System.Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)">OrderBase(String, Int64, OrderSide, OrderType)</h4>
+  <h4 id="Alpaca_Markets_OrderBase__ctor_String_Int64_Alpaca_Markets_OrderSide_Alpaca_Markets_OrderType_" data-uid="Alpaca.Markets.OrderBase.#ctor(String,Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)">OrderBase(String, Int64, OrderSide, OrderType)</h4>
   <div class="markdown level1 summary"><p>Creates new instance of the <a class="xref" href="Alpaca.Markets.OrderBase.html">OrderBase</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected OrderBase(string symbol, long quantity, OrderSide side, OrderType type)</code></pre>
+    <pre><code class="lang-csharp hljs">protected OrderBase(String symbol, Int64 quantity, OrderSide side, OrderType type)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -176,13 +176,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">String</span></td>
         <td><span class="parametername">symbol</span></td>
         <td><p>Alpaca symbol for order.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Int64</span></td>
+        <td><span class="xref">Int64</span></td>
         <td><span class="parametername">quantity</span></td>
         <td><p>Order quantity (absolute value).</p>
 </td>
@@ -208,7 +208,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OrderBase_ClientOrderId.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OrderBase.ClientOrderId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L79">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L75">View Source</a>
   </span>
   <a id="Alpaca_Markets_OrderBase_ClientOrderId_" data-uid="Alpaca.Markets.OrderBase.ClientOrderId*"></a>
   <h4 id="Alpaca_Markets_OrderBase_ClientOrderId" data-uid="Alpaca.Markets.OrderBase.ClientOrderId">ClientOrderId</h4>
@@ -217,7 +217,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ClientOrderId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public String? ClientOrderId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -229,7 +229,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -239,7 +239,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OrderBase_Duration.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OrderBase.Duration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L74">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L70">View Source</a>
   </span>
   <a id="Alpaca_Markets_OrderBase_Duration_" data-uid="Alpaca.Markets.OrderBase.Duration*"></a>
   <h4 id="Alpaca_Markets_OrderBase_Duration" data-uid="Alpaca.Markets.OrderBase.Duration">Duration</h4>
@@ -270,7 +270,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OrderBase_ExtendedHours.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OrderBase.ExtendedHours%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L84">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L80">View Source</a>
   </span>
   <a id="Alpaca_Markets_OrderBase_ExtendedHours_" data-uid="Alpaca.Markets.OrderBase.ExtendedHours*"></a>
   <h4 id="Alpaca_Markets_OrderBase_ExtendedHours" data-uid="Alpaca.Markets.OrderBase.ExtendedHours">ExtendedHours</h4>
@@ -279,7 +279,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool? ExtendedHours { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Boolean? ExtendedHours { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -291,7 +291,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Boolean</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -301,7 +301,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OrderBase_Quantity.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OrderBase.Quantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L57">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L53">View Source</a>
   </span>
   <a id="Alpaca_Markets_OrderBase_Quantity_" data-uid="Alpaca.Markets.OrderBase.Quantity*"></a>
   <h4 id="Alpaca_Markets_OrderBase_Quantity" data-uid="Alpaca.Markets.OrderBase.Quantity">Quantity</h4>
@@ -310,7 +310,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public long Quantity { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Int64 Quantity { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -322,7 +322,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int64</span></td>
+        <td><span class="xref">Int64</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -332,7 +332,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OrderBase_Side.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OrderBase.Side%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L62">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L58">View Source</a>
   </span>
   <a id="Alpaca_Markets_OrderBase_Side_" data-uid="Alpaca.Markets.OrderBase.Side*"></a>
   <h4 id="Alpaca_Markets_OrderBase_Side" data-uid="Alpaca.Markets.OrderBase.Side">Side</h4>
@@ -341,8 +341,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public OrderSide Side { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public OrderSide Side { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -364,7 +363,7 @@ public OrderSide Side { get; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OrderBase_Symbol.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OrderBase.Symbol%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L52">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L48">View Source</a>
   </span>
   <a id="Alpaca_Markets_OrderBase_Symbol_" data-uid="Alpaca.Markets.OrderBase.Symbol*"></a>
   <h4 id="Alpaca_Markets_OrderBase_Symbol" data-uid="Alpaca.Markets.OrderBase.Symbol">Symbol</h4>
@@ -373,7 +372,7 @@ public OrderSide Side { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Symbol { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public String Symbol { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -385,7 +384,7 @@ public OrderSide Side { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">String</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -395,7 +394,7 @@ public OrderSide Side { get; }</code></pre>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OrderBase_Type.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OrderBase.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L68">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L64">View Source</a>
   </span>
   <a id="Alpaca_Markets_OrderBase_Type_" data-uid="Alpaca.Markets.OrderBase.Type*"></a>
   <h4 id="Alpaca_Markets_OrderBase_Type" data-uid="Alpaca.Markets.OrderBase.Type">Type</h4>
@@ -404,8 +403,7 @@ public OrderSide Side { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-public OrderType Type { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public OrderType Type { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -427,10 +425,10 @@ public OrderType Type { get; }</code></pre>
       <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithDuration__1___0_Alpaca_Markets_TimeInForce_">OrderBaseExtensions.WithDuration&lt;TOrder&gt;(TOrder, TimeInForce)</a>
   </div>
   <div>
-      <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithClientOrderId__1___0_System_String_">OrderBaseExtensions.WithClientOrderId&lt;TOrder&gt;(TOrder, String)</a>
+      <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithClientOrderId__1___0_String_">OrderBaseExtensions.WithClientOrderId&lt;TOrder&gt;(TOrder, String)</a>
   </div>
   <div>
-      <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithExtendedHours__1___0_System_Boolean_">OrderBaseExtensions.WithExtendedHours&lt;TOrder&gt;(TOrder, Boolean)</a>
+      <a class="xref" href="Alpaca.Markets.OrderBaseExtensions.html#Alpaca_Markets_OrderBaseExtensions_WithExtendedHours__1___0_Boolean_">OrderBaseExtensions.WithExtendedHours&lt;TOrder&gt;(TOrder, Boolean)</a>
   </div>
 </article>
           </div>
@@ -443,7 +441,7 @@ public OrderType Type { get; }</code></pre>
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OrderBase.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OrderBase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OrderBase.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

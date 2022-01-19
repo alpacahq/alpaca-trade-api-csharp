@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AlpacaTradingClientExtensions
    ">
-    <meta name="generator" content="docfx 2.58.4.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -115,21 +115,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_Alpaca_Markets_IAlpacaTradingClient_System_DateTime_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(Alpaca.Markets.IAlpacaTradingClient%2CSystem.DateTime%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_Alpaca_Markets_IAlpacaTradingClient_DateOnly_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(Alpaca.Markets.IAlpacaTradingClient%2CDateOnly%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/TimeInterval/AlpacaTradingClientExtensions.cs/#L21">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/TimeInterval/AlpacaTradingClientExtensions.cs/#L31">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_Alpaca_Markets_IAlpacaTradingClient_System_DateTime_System_Threading_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(Alpaca.Markets.IAlpacaTradingClient,System.DateTime,System.Threading.CancellationToken)">GetCalendarForSingleDayAsync(IAlpacaTradingClient, DateTime, CancellationToken)</h4>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_Alpaca_Markets_IAlpacaTradingClient_DateOnly_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(Alpaca.Markets.IAlpacaTradingClient,DateOnly,CancellationToken)">GetCalendarForSingleDayAsync(IAlpacaTradingClient, DateOnly, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get single trading date information from the Alpaca REST API.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[UsedImplicitly]
-[CLSCompliant(false)]
-public static async Task&lt;ICalendar&gt; GetCalendarForSingleDayAsync(this IAlpacaTradingClient client, DateTime date, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public static async Task&lt;ICalendar&gt; GetCalendarForSingleDayAsync(this IAlpacaTradingClient client, DateOnly date, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -148,13 +146,13 @@ public static async Task&lt;ICalendar&gt; GetCalendarForSingleDayAsync(this IAlp
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="xref">DateOnly</span></td>
         <td><span class="parametername">date</span></td>
         <td><p>The trading date (time part will not be used).</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
@@ -171,8 +169,188 @@ public static async Task&lt;ICalendar&gt; GetCalendarForSingleDayAsync(this IAlp
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Alpaca.Markets.ICalendar.html">ICalendar</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Alpaca.Markets.ICalendar.html">ICalendar</a>&gt;</td>
         <td><p>Read-only trading date information object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_Alpaca_Markets_IAlpacaTradingClient_DateTime_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(Alpaca.Markets.IAlpacaTradingClient%2CDateTime%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/TimeInterval/AlpacaTradingClientExtensions.cs/#L15">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_Alpaca_Markets_IAlpacaTradingClient_DateTime_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(Alpaca.Markets.IAlpacaTradingClient,DateTime,CancellationToken)">GetCalendarForSingleDayAsync(IAlpacaTradingClient, DateTime, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Get single trading date information from the Alpaca REST API.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;ICalendar&gt; GetCalendarForSingleDayAsync(this IAlpacaTradingClient client, DateTime date, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>The <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> object instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DateTime</span></td>
+        <td><span class="parametername">date</span></td>
+        <td><p>The trading date (time part will not be used).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Alpaca.Markets.ICalendar.html">ICalendar</a>&gt;</td>
+        <td><p>Read-only trading date information object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_ListAccountActivitiesAsAsyncEnumerable_Alpaca_Markets_IAlpacaTradingClient_Alpaca_Markets_AccountActivitiesRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.ListAccountActivitiesAsAsyncEnumerable(Alpaca.Markets.IAlpacaTradingClient%2CAlpaca.Markets.AccountActivitiesRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaTradingClientExtensions.cs/#L14">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_ListAccountActivitiesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.ListAccountActivitiesAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_ListAccountActivitiesAsAsyncEnumerable_Alpaca_Markets_IAlpacaTradingClient_Alpaca_Markets_AccountActivitiesRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.ListAccountActivitiesAsAsyncEnumerable(Alpaca.Markets.IAlpacaTradingClient,Alpaca.Markets.AccountActivitiesRequest)">ListAccountActivitiesAsAsyncEnumerable(IAlpacaTradingClient, AccountActivitiesRequest)</h4>
+  <div class="markdown level1 summary"><p>Gets all account activities from Alpaca REST API endpoint as async enumerable stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IAccountActivity&gt; ListAccountActivitiesAsAsyncEnumerable(this IAlpacaTradingClient client, AccountActivitiesRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>The <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> object instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.AccountActivitiesRequest.html">AccountActivitiesRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Account activities request parameters.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IAccountActivity.html">IAccountActivity</a>&gt;</td>
+        <td><p>Account activity record objects obtained page by page.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_ListAccountActivitiesAsAsyncEnumerable_Alpaca_Markets_IAlpacaTradingClient_Alpaca_Markets_AccountActivitiesRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.ListAccountActivitiesAsAsyncEnumerable(Alpaca.Markets.IAlpacaTradingClient%2CAlpaca.Markets.AccountActivitiesRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/AlpacaTradingClientExtensions.cs/#L28">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_ListAccountActivitiesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.ListAccountActivitiesAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_ListAccountActivitiesAsAsyncEnumerable_Alpaca_Markets_IAlpacaTradingClient_Alpaca_Markets_AccountActivitiesRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.ListAccountActivitiesAsAsyncEnumerable(Alpaca.Markets.IAlpacaTradingClient,Alpaca.Markets.AccountActivitiesRequest,CancellationToken)">ListAccountActivitiesAsAsyncEnumerable(IAlpacaTradingClient, AccountActivitiesRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets all account activities from Alpaca REST API endpoint as async enumerable stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IAccountActivity&gt; ListAccountActivitiesAsAsyncEnumerable(this IAlpacaTradingClient client, AccountActivitiesRequest request, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>The <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> object instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.AccountActivitiesRequest.html">AccountActivitiesRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Account activities request parameters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IAccountActivity.html">IAccountActivity</a>&gt;</td>
+        <td><p>Account activity record objects obtained page by page.</p>
 </td>
       </tr>
     </tbody>
@@ -188,7 +366,7 @@ public static async Task&lt;ICalendar&gt; GetCalendarForSingleDayAsync(this IAlp
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaTradingClientExtensions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaTradingClientExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/TimeInterval/AlpacaTradingClientExtensions.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/TimeInterval/AlpacaTradingClientExtensions.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
