@@ -113,7 +113,7 @@
   </ItemGroup>
   
   <ItemGroup Condition="!$(TargetFramework.StartsWith('net6'))">
-   <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.0" />
+   <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.1-beta1" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
