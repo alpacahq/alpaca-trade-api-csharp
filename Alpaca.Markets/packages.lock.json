@@ -47,9 +47,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[6.0.1-beta1, )",
-        "resolved": "6.0.1-beta1",
-        "contentHash": "mqGyvlDnSeN6hqR1bTliBfSm5/XSkE2jTTzeRlqnYXttpGBC8izGMOXrUybCRvj2r1AAGI21rwjlAyncdjs+Hg==",
+        "requested": "[6.0.1-beta2, )",
+        "resolved": "6.0.1-beta2",
+        "contentHash": "qkgWwGLiU8FknzcuH92PK4sgv1Bpudd/w87LrSvHIv3KJw9x8K4R//kva9PG9FkQu5077psyl/ps4vAycZ2Bvg==",
         "dependencies": {
           "System.Memory": "4.5.4"
         }
@@ -176,9 +176,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[6.0.1-beta1, )",
-        "resolved": "6.0.1-beta1",
-        "contentHash": "mqGyvlDnSeN6hqR1bTliBfSm5/XSkE2jTTzeRlqnYXttpGBC8izGMOXrUybCRvj2r1AAGI21rwjlAyncdjs+Hg==",
+        "requested": "[6.0.1-beta2, )",
+        "resolved": "6.0.1-beta2",
+        "contentHash": "qkgWwGLiU8FknzcuH92PK4sgv1Bpudd/w87LrSvHIv3KJw9x8K4R//kva9PG9FkQu5077psyl/ps4vAycZ2Bvg==",
         "dependencies": {
           "System.Memory": "4.5.4"
         }
@@ -286,9 +286,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[6.0.1-beta1, )",
-        "resolved": "6.0.1-beta1",
-        "contentHash": "mqGyvlDnSeN6hqR1bTliBfSm5/XSkE2jTTzeRlqnYXttpGBC8izGMOXrUybCRvj2r1AAGI21rwjlAyncdjs+Hg=="
+        "requested": "[6.0.1-beta2, )",
+        "resolved": "6.0.1-beta2",
+        "contentHash": "qkgWwGLiU8FknzcuH92PK4sgv1Bpudd/w87LrSvHIv3KJw9x8K4R//kva9PG9FkQu5077psyl/ps4vAycZ2Bvg=="
       },
       "System.IO.Pipelines": {
         "type": "Direct",
@@ -388,9 +388,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[6.0.1-beta1, )",
-        "resolved": "6.0.1-beta1",
-        "contentHash": "mqGyvlDnSeN6hqR1bTliBfSm5/XSkE2jTTzeRlqnYXttpGBC8izGMOXrUybCRvj2r1AAGI21rwjlAyncdjs+Hg=="
+        "requested": "[6.0.1-beta2, )",
+        "resolved": "6.0.1-beta2",
+        "contentHash": "qkgWwGLiU8FknzcuH92PK4sgv1Bpudd/w87LrSvHIv3KJw9x8K4R//kva9PG9FkQu5077psyl/ps4vAycZ2Bvg=="
       },
       "System.IO.Pipelines": {
         "type": "Direct",
