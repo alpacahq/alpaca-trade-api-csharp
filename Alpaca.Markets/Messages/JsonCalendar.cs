@@ -5,7 +5,9 @@ namespace Alpaca.Markets;
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+#pragma warning disable CS0618
 internal sealed class JsonCalendar : ICalendar, IIntervalCalendar
+#pragma warning restore CS0618
 {
     [JsonConverter(typeof(DateOnlyConverter))]
     [JsonProperty(PropertyName = "date", Required = Required.Always)]
@@ -41,38 +43,23 @@ internal sealed class JsonCalendar : ICalendar, IIntervalCalendar
 
     [JsonIgnore]
     public DateTime TradingDateEst =>
-        TradingDate.ToDateTime(TimeOnly.MinValue, DateTimeKind.Unspecified);
+        this.GetTradingDateFast().ToDateTime(TimeOnly.MinValue, DateTimeKind.Unspecified);
 
     [JsonIgnore]
     public DateTime TradingDateUtc =>
-        TradingDate.ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc);
-
-    [JsonIgnore] public DateTime TradingOpenTimeEst =>
-        TradingOpenCloseEst.From!.Value.DateTime;
+        this.GetTradingDateFast().ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc);
 
     [JsonIgnore]
-    public DateTime TradingCloseTimeEst =>
-        TradingOpenCloseEst.Into!.Value.DateTime;
+    public DateTime TradingOpenTimeEst => this.GetTradingOpenTimeEstFast();
 
     [JsonIgnore]
-    public DateTime TradingOpenTimeUtc =>
-        TradingOpenCloseEst.From!.Value.UtcDateTime;
+    public DateTime TradingCloseTimeEst => this.GetTradingCloseTimeEstFast();
 
     [JsonIgnore]
-    public DateTime TradingCloseTimeUtc =>
-        TradingOpenCloseEst.Into!.Value.UtcDateTime;
+    public DateTime TradingOpenTimeUtc => this.GetTradingOpenTimeUtcFast();
 
     [JsonIgnore]
-    public TimeOnly OpenTimeEst => TimeOnly.FromDateTime(TradingOpenTimeEst);
-
-    [JsonIgnore]
-    public TimeOnly OpenTimeUtc => TimeOnly.FromDateTime(TradingOpenTimeUtc);
-
-    [JsonIgnore]
-    public TimeOnly CloseTimeEst => TimeOnly.FromDateTime(TradingCloseTimeEst);
-
-    [JsonIgnore]
-    public TimeOnly CloseTimeUtc => TimeOnly.FromDateTime(TradingCloseTimeUtc);
+    public DateTime TradingCloseTimeUtc => this.GetTradingCloseTimeUtcFast();
 
     [OnDeserialized]
     internal void OnDeserializedMethod(

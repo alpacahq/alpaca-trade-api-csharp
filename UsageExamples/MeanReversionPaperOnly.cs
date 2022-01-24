@@ -44,10 +44,10 @@ internal sealed class MeanReversionPaperOnly : IDisposable
 
         // Figure out when the market will close so we can prepare to sell beforehand.
         var calendars = (await alpacaTradingClient
-            .ListCalendarAsync(new CalendarRequest().WithInterval(DateTime.Today.GetIntervalFromThat())))
+            .ListIntervalCalendarAsync(new CalendarRequest().WithInterval(DateTime.Today.GetIntervalFromThat())))
             .ToList();
-        var calendarDate = calendars.First().TradingDateUtc;
-        var closingTime = calendars.First().TradingCloseTimeUtc;
+        var calendarDate = calendars.First().GetTradingDate();
+        var closingTime = calendars.First().GetTradingCloseTimeUtc();
 
         closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 

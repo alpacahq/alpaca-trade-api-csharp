@@ -61,21 +61,21 @@ internal sealed class MeanReversionBrokerage : IDisposable
 
         // Figure out when the market will close so we can prepare to sell beforehand.
         var calendars = (await alpacaTradingClient
-            .ListCalendarAsync(new CalendarRequest().WithInterval(DateTime.Today.GetIntervalFromThat())))
+            .ListIntervalCalendarAsync(new CalendarRequest().WithInterval(DateTime.Today.GetIntervalFromThat())))
             .ToList();
-        var calendarDate = calendars.First().TradingDateUtc;
-        var closingTime = calendars.First().TradingCloseTimeUtc;
+        var calendarDate = calendars.First().GetTradingDate();
+        var closingTime = calendars.First().GetTradingCloseTimeUtc();
 
         closingTime = new DateTime(calendarDate.Year, calendarDate.Month, calendarDate.Day, closingTime.Hour, closingTime.Minute, closingTime.Second);
 
         // Get the first group of bars from today if the market has already been open.
         var today = DateTime.Today;
-        var calendar = await alpacaTradingClient.ListCalendarAsync(
+        var calendar = await alpacaTradingClient.ListIntervalCalendarAsync(
             CalendarRequest.GetForSingleDay(DateOnly.FromDateTime(today)));
         var tradingDay = calendar[0];
 
         var bars = await alpacaDataClient.ListHistoricalBarsAsync(
-            new HistoricalBarsRequest(symbol, tradingDay.TradingOpenTimeUtc, tradingDay.TradingCloseTimeUtc, BarTimeFrame.Minute));
+            new HistoricalBarsRequest(symbol, BarTimeFrame.Minute, tradingDay.TradingOpenCloseUtc));
         var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count - 20));
 
         foreach (var bar in lastBars)

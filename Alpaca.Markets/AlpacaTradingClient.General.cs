@@ -85,6 +85,7 @@ internal sealed partial class AlpacaTradingClient
         _httpClient.GetAsync<IClock, JsonClock>(
             "v2/clock", cancellationToken);
 
+    [Obsolete]
     public async Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
         CalendarRequest request,
         CancellationToken cancellationToken = default) =>

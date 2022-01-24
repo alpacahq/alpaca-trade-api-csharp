@@ -12,6 +12,7 @@ public static class CalendarExtensions
     /// <param name="calendar">The source open/close times information.</param>
     /// <returns>The inclusive time interval constructed from the <paramref name="calendar"/> data.</returns>
     [UsedImplicitly]
+    [Obsolete("Use IIntervalCalendar.TradingOpenCloseUtc property instead of this extension method.", false)]
     public static Interval<DateTime> AsIntervalUtc(
         this ICalendar calendar) =>
         new (calendar.EnsureNotNull(nameof(calendar)).TradingOpenTimeUtc, calendar.TradingCloseTimeUtc);
@@ -23,7 +24,7 @@ public static class CalendarExtensions
     /// <param name="calendar">The source open/close times information.</param>
     /// <returns>The inclusive time interval constructed from the <paramref name="calendar"/> data.</returns>
     [UsedImplicitly]
-    [Obsolete("Use AsIntervalUtc() extension method instead of this one.", false)]
+    [Obsolete("Use IIntervalCalendar.TradingOpenCloseUtc property instead of this extension method.", false)]
     public static IInclusiveTimeInterval AsInclusiveTimeIntervalUtc(
         this ICalendar calendar) => TimeInterval
         .GetInclusiveIntervalFromThat(calendar.EnsureNotNull(nameof(calendar)).TradingOpenTimeUtc)
@@ -36,7 +37,7 @@ public static class CalendarExtensions
     /// <param name="calendar">The source open/close times information.</param>
     /// <returns>The exclusive time interval constructed from the <paramref name="calendar"/> data.</returns>
     [UsedImplicitly]
-    [Obsolete("Use AsIntervalUtc() extension method instead of this one.", false)]
+    [Obsolete("Use IIntervalCalendar.TradingOpenCloseUtc property instead of this extension method.", false)]
     public static IExclusiveTimeInterval AsExclusiveTimeIntervalUtc(
         this ICalendar calendar) => TimeInterval
         .GetExclusiveIntervalFromThat(calendar.EnsureNotNull(nameof(calendar)).TradingOpenTimeUtc)

@@ -403,13 +403,8 @@ Alpaca.Markets.IBar.TradeCount.get -> ulong
 Alpaca.Markets.IBar.Volume.get -> decimal
 Alpaca.Markets.IBar.Vwap.get -> decimal
 Alpaca.Markets.ICalendar
-Alpaca.Markets.ICalendar.CloseTimeEst.get -> System.TimeOnly
-Alpaca.Markets.ICalendar.CloseTimeUtc.get -> System.TimeOnly
-Alpaca.Markets.ICalendar.OpenTimeEst.get -> System.TimeOnly
-Alpaca.Markets.ICalendar.OpenTimeUtc.get -> System.TimeOnly
 Alpaca.Markets.ICalendar.TradingCloseTimeEst.get -> System.DateTime
 Alpaca.Markets.ICalendar.TradingCloseTimeUtc.get -> System.DateTime
-Alpaca.Markets.ICalendar.TradingDate.get -> System.DateOnly
 Alpaca.Markets.ICalendar.TradingDateEst.get -> System.DateTime
 Alpaca.Markets.ICalendar.TradingDateUtc.get -> System.DateTime
 Alpaca.Markets.ICalendar.TradingOpenTimeEst.get -> System.DateTime
@@ -470,6 +465,7 @@ Alpaca.Markets.Interval<TItem>.IsEmpty() -> bool
 Alpaca.Markets.Interval<TItem>.IsOpen() -> bool
 Alpaca.Markets.Interval<TItem>.WithFrom(TItem from) -> Alpaca.Markets.Interval<TItem>
 Alpaca.Markets.Interval<TItem>.WithInto(TItem into) -> Alpaca.Markets.Interval<TItem>
+Alpaca.Markets.IntervalCalenderExtensions
 Alpaca.Markets.IntervalExtensions
 Alpaca.Markets.INewsArticle
 Alpaca.Markets.INewsArticle.ArticleUrl.get -> System.Uri?
@@ -963,6 +959,15 @@ static Alpaca.Markets.HistoricalRequestBaseExtensions.WithPageSize<TRequest>(thi
 static Alpaca.Markets.HistoricalRequestBaseExtensions.WithPageToken<TRequest>(this TRequest! request, string! pageToken) -> TRequest!
 static Alpaca.Markets.HistoryPeriod.operator !=(Alpaca.Markets.HistoryPeriod lhs, Alpaca.Markets.HistoryPeriod rhs) -> bool
 static Alpaca.Markets.HistoryPeriod.operator ==(Alpaca.Markets.HistoryPeriod lhs, Alpaca.Markets.HistoryPeriod rhs) -> bool
+static Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeEst(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateTime
+static Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeUtc(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateTime
+static Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeEst(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateTime
+static Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeUtc(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateTime
+static Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeEst(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateTime
+static Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeUtc(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateTime
+static Alpaca.Markets.IntervalCalenderExtensions.GetTradingDate(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateOnly
+static Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeEst(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateTime
+static Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeUtc(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateTime
 static Alpaca.Markets.IntervalExtensions.AsDateInterval(this Alpaca.Markets.Interval<System.DateTime> interval) -> Alpaca.Markets.Interval<System.DateOnly>
 static Alpaca.Markets.IntervalExtensions.AsTimeInterval(this Alpaca.Markets.Interval<System.DateOnly> interval) -> Alpaca.Markets.Interval<System.DateTime>
 static Alpaca.Markets.IntervalExtensions.GetIntervalFromThat<TItem>(this TItem from) -> Alpaca.Markets.Interval<TItem>
