@@ -92,4 +92,12 @@ internal sealed partial class AlpacaTradingClient
             await request.EnsureNotNull(nameof(request))
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
+
+    public async Task<IReadOnlyList<IIntervalCalendar>> ListIntervalCalendarAsync(
+        CalendarRequest request,
+        CancellationToken cancellationToken = default) =>
+        await _httpClient.GetAsync<IReadOnlyList<IIntervalCalendar>, List<JsonCalendar>>(
+            await request.EnsureNotNull(nameof(request))
+                .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+            cancellationToken).ConfigureAwait(false);
 }

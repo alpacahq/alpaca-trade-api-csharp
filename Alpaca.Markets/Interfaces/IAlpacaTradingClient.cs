@@ -355,4 +355,15 @@ public interface IAlpacaTradingClient : IDisposable
     Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
         CalendarRequest request,
         CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets list of trading open/close intervals for each day from Alpaca REST API endpoint.
+    /// </summary>
+    /// <param name="request">Calendar items request parameters.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Read-only list of trading date information object.</returns>
+    [UsedImplicitly]
+    Task<IReadOnlyList<IIntervalCalendar>> ListIntervalCalendarAsync(
+        CalendarRequest request,
+        CancellationToken cancellationToken = default);
 }

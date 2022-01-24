@@ -17,7 +17,18 @@ internal static class CustomTimeZone
                 : "America/New_York");
 #endif
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static DateTime ConvertFromEstToUtc(
         DateTime estDateTime) =>
         TimeZoneInfo.ConvertTimeToUtc(estDateTime, Est);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static DateTimeOffset AsDateTimeOffset(
+        in DateOnly date, in TimeOnly time) =>
+        date.ToDateTime(time, DateTimeKind.Unspecified).asDateTimeOffset();
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static DateTimeOffset asDateTimeOffset(
+        this DateTime estDateTime) =>
+        new (estDateTime, Est.GetUtcOffset(estDateTime));
 }

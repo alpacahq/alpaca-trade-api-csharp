@@ -5,69 +5,92 @@ namespace Alpaca.Markets;
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-internal sealed class JsonCalendar : ICalendar
+internal sealed class JsonCalendar : ICalendar, IIntervalCalendar
 {
-    [JsonConverter(typeof(AssumeLocalIsoDateConverter))]
+    [JsonConverter(typeof(DateOnlyConverter))]
     [JsonProperty(PropertyName = "date", Required = Required.Always)]
-    public DateTime TradingDateEst { get; set; }
+    public DateOnly TradingDate { get; set; }
 
-    [JsonConverter(typeof(AssumeLocalIsoTimeConverter))]
+    [JsonConverter(typeof(TimeOnlyConverter))]
     [JsonProperty(PropertyName = "open", Required = Required.Always)]
-    public DateTime TradingOpenTimeEst { get; set; }
+    public TimeOnly TradingOpen { get; set; }
 
-    [JsonConverter(typeof(AssumeLocalIsoTimeConverter))]
+    [JsonConverter(typeof(TimeOnlyConverter))]
     [JsonProperty(PropertyName = "close", Required = Required.Always)]
-    public DateTime TradingCloseTimeEst { get; set; }
+    public TimeOnly TradingClose { get; set; }
+
+    [JsonConverter(typeof(TimeOnlyConverter))]
+    [JsonProperty(PropertyName = "session_open", Required = Required.Always)]
+    public TimeOnly SessionOpen { get; set; }
+
+    [JsonConverter(typeof(TimeOnlyConverter))]
+    [JsonProperty(PropertyName = "session_close", Required = Required.Always)]
+    public TimeOnly SessionClose { get; set; }
 
     [JsonIgnore]
-    public DateTime TradingDateUtc { get; private set; }
+    public Interval<DateTime> TradingOpenCloseUtc { get; private set; }
 
     [JsonIgnore]
-    public DateOnly TradingDate { get; private set; }
+    public Interval<DateTime> SessionOpenCloseUtc { get; private set; }
 
     [JsonIgnore]
-    public DateTime TradingOpenTimeUtc { get; private set; }
+    public Interval<DateTimeOffset> TradingOpenCloseEst { get; private set; }
 
     [JsonIgnore]
-    public TimeOnly OpenTimeEst { get; private set; }
+    public Interval<DateTimeOffset> SessionOpenCloseEst { get; private set; }
 
     [JsonIgnore]
-    public TimeOnly OpenTimeUtc { get; private set; }
+    public DateTime TradingDateEst =>
+        TradingDate.ToDateTime(TimeOnly.MinValue, DateTimeKind.Unspecified);
 
     [JsonIgnore]
-    public DateTime TradingCloseTimeUtc { get; private set; }
+    public DateTime TradingDateUtc =>
+        TradingDate.ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc);
+
+    [JsonIgnore] public DateTime TradingOpenTimeEst =>
+        TradingOpenCloseEst.From!.Value.DateTime;
 
     [JsonIgnore]
-    public TimeOnly CloseTimeEst { get; private set; }
+    public DateTime TradingCloseTimeEst =>
+        TradingOpenCloseEst.Into!.Value.DateTime;
 
     [JsonIgnore]
-    public TimeOnly CloseTimeUtc { get; private set; }
+    public DateTime TradingOpenTimeUtc =>
+        TradingOpenCloseEst.From!.Value.UtcDateTime;
+
+    [JsonIgnore]
+    public DateTime TradingCloseTimeUtc =>
+        TradingOpenCloseEst.Into!.Value.UtcDateTime;
+
+    [JsonIgnore]
+    public TimeOnly OpenTimeEst => TimeOnly.FromDateTime(TradingOpenTimeEst);
+
+    [JsonIgnore]
+    public TimeOnly OpenTimeUtc => TimeOnly.FromDateTime(TradingOpenTimeUtc);
+
+    [JsonIgnore]
+    public TimeOnly CloseTimeEst => TimeOnly.FromDateTime(TradingCloseTimeEst);
+
+    [JsonIgnore]
+    public TimeOnly CloseTimeUtc => TimeOnly.FromDateTime(TradingCloseTimeUtc);
 
     [OnDeserialized]
     internal void OnDeserializedMethod(
         StreamingContext context)
     {
-        TradingDateEst = DateTime.SpecifyKind(
-            TradingDateEst.Date, DateTimeKind.Unspecified);
+        TradingOpenCloseEst = new Interval<DateTimeOffset>(
+            CustomTimeZone.AsDateTimeOffset(TradingDate, TradingOpen),
+            CustomTimeZone.AsDateTimeOffset(TradingDate, TradingClose));
+        TradingOpenCloseUtc = asDateTimeInterval(TradingOpenCloseEst);
 
-        TradingOpenTimeEst = DateTime.SpecifyKind(
-            TradingDateEst.Date.Add(TradingOpenTimeEst.TimeOfDay),
-            DateTimeKind.Unspecified);
-        TradingCloseTimeEst = DateTime.SpecifyKind(
-            TradingDateEst.Date.Add(TradingCloseTimeEst.TimeOfDay),
-            DateTimeKind.Unspecified);
-
-        TradingOpenTimeUtc = CustomTimeZone
-            .ConvertFromEstToUtc(TradingOpenTimeEst);
-        TradingCloseTimeUtc = CustomTimeZone
-            .ConvertFromEstToUtc(TradingCloseTimeEst);
-
-        TradingDateUtc = TradingDateEst.AsUtcDateTime();
-
-        TradingDate = DateOnly.FromDateTime(TradingDateUtc);
-        OpenTimeEst = TimeOnly.FromDateTime(TradingOpenTimeEst);
-        OpenTimeUtc = TimeOnly.FromDateTime(TradingOpenTimeUtc);
-        CloseTimeEst = TimeOnly.FromDateTime(TradingCloseTimeEst);
-        CloseTimeUtc = TimeOnly.FromDateTime(TradingCloseTimeUtc);
+        SessionOpenCloseEst = new Interval<DateTimeOffset>(
+            CustomTimeZone.AsDateTimeOffset(TradingDate, SessionOpen),
+            CustomTimeZone.AsDateTimeOffset(TradingDate, SessionClose));
+        SessionOpenCloseUtc = asDateTimeInterval(SessionOpenCloseEst);
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static Interval<DateTime> asDateTimeInterval(
+        in Interval<DateTimeOffset> interval) =>
+        new (interval.From?.UtcDateTime, interval.Into?.UtcDateTime);
 }
