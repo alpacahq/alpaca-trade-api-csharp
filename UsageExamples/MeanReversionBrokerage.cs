@@ -75,7 +75,7 @@ internal sealed class MeanReversionBrokerage : IDisposable
         var tradingDay = calendar[0];
 
         var bars = await alpacaDataClient.ListHistoricalBarsAsync(
-            new HistoricalBarsRequest(symbol, BarTimeFrame.Minute, tradingDay.TradingOpenCloseUtc));
+            new HistoricalBarsRequest(symbol, BarTimeFrame.Minute, tradingDay.Trading));
         var lastBars = bars.Items.Skip(Math.Max(0, bars.Items.Count - 20));
 
         foreach (var bar in lastBars)

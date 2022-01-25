@@ -1,7 +1,7 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// 
+/// Set of extensions methods for the <see cref="IIntervalCalendar"/> interface.
 /// </summary>
 public static class IntervalCalenderExtensions
 {
@@ -57,7 +57,7 @@ public static class IntervalCalenderExtensions
     [UsedImplicitly]
     public static DateTime GetSessionOpenTimeEst(
         this IIntervalCalendar calendar) =>
-        calendar.EnsureNotNull(nameof(calendar)).SessionOpenCloseEst.From!.Value.DateTime;
+        calendar.EnsureNotNull(nameof(calendar)).Session.OpenEst.DateTime;
 
     /// <summary>
     /// Gets session close time in EST time zone.
@@ -66,7 +66,7 @@ public static class IntervalCalenderExtensions
     [UsedImplicitly]
     public static DateTime GetSessionCloseTimeEst(
         this IIntervalCalendar calendar) =>
-        calendar.EnsureNotNull(nameof(calendar)).SessionOpenCloseEst.Into!.Value.DateTime;
+        calendar.EnsureNotNull(nameof(calendar)).Session.CloseEst.DateTime;
 
     /// <summary>
     /// Gets session open time in UTC time zone.
@@ -75,7 +75,7 @@ public static class IntervalCalenderExtensions
     [UsedImplicitly]
     public static DateTime GetSessionOpenTimeUtc(
         this IIntervalCalendar calendar) =>
-        calendar.EnsureNotNull(nameof(calendar)).SessionOpenCloseUtc.From!.Value;
+        calendar.EnsureNotNull(nameof(calendar)).Session.OpenEst.UtcDateTime;
 
     /// <summary>
     /// Gets session close time in UTC time zone.
@@ -84,30 +84,30 @@ public static class IntervalCalenderExtensions
     [UsedImplicitly]
     public static DateTime GetSessionCloseTimeUtc(
         this IIntervalCalendar calendar) =>
-        calendar.EnsureNotNull(nameof(calendar)).SessionOpenCloseUtc.Into!.Value;
+        calendar.EnsureNotNull(nameof(calendar)).Session.CloseEst.UtcDateTime;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static DateOnly GetTradingDateFast(
         this IIntervalCalendar calendar) =>
-        DateOnly.FromDateTime(calendar.SessionOpenCloseUtc.From!.Value);
+        DateOnly.FromDateTime(calendar.Session.OpenEst.DateTime);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static DateTime GetTradingOpenTimeEstFast(
         this IIntervalCalendar calendar) =>
-        calendar.TradingOpenCloseEst.From!.Value.DateTime;
+        calendar.Trading.OpenEst.DateTime;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static DateTime GetTradingCloseTimeEstFast(
         this IIntervalCalendar calendar) =>
-        calendar.TradingOpenCloseEst.Into!.Value.DateTime;
+        calendar.Trading.CloseEst.DateTime;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static DateTime GetTradingOpenTimeUtcFast(
         this IIntervalCalendar calendar) =>
-        calendar.TradingOpenCloseUtc.From!.Value;
+        calendar.Trading.OpenEst.UtcDateTime;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static DateTime GetTradingCloseTimeUtcFast(
         this IIntervalCalendar calendar) =>
-        calendar.TradingOpenCloseUtc.Into!.Value;
+        calendar.Trading.CloseEst.UtcDateTime;
 }

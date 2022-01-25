@@ -427,10 +427,8 @@ Alpaca.Markets.IEnvironment.AlpacaTradingApi.get -> System.Uri!
 Alpaca.Markets.IExclusiveTimeInterval
 Alpaca.Markets.IInclusiveTimeInterval
 Alpaca.Markets.IIntervalCalendar
-Alpaca.Markets.IIntervalCalendar.SessionOpenCloseEst.get -> Alpaca.Markets.Interval<System.DateTimeOffset>
-Alpaca.Markets.IIntervalCalendar.SessionOpenCloseUtc.get -> Alpaca.Markets.Interval<System.DateTime>
-Alpaca.Markets.IIntervalCalendar.TradingOpenCloseEst.get -> Alpaca.Markets.Interval<System.DateTimeOffset>
-Alpaca.Markets.IIntervalCalendar.TradingOpenCloseUtc.get -> Alpaca.Markets.Interval<System.DateTime>
+Alpaca.Markets.IIntervalCalendar.Session.get -> Alpaca.Markets.OpenClose
+Alpaca.Markets.IIntervalCalendar.Trading.get -> Alpaca.Markets.OpenClose
 Alpaca.Markets.IHistoricalBarsClient<TRequest>
 Alpaca.Markets.IHistoricalBarsClient<TRequest>.GetHistoricalBarsAsync(TRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IMultiPage<Alpaca.Markets.IBar!>!>!
 Alpaca.Markets.IHistoricalBarsClient<TRequest>.ListHistoricalBarsAsync(TRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.IBar!>!>!
@@ -724,6 +722,11 @@ Alpaca.Markets.OAuthKey.OAuthKey(string! value) -> void
 Alpaca.Markets.OneCancelsOtherOrder
 Alpaca.Markets.OneCancelsOtherOrder.StopLoss.get -> Alpaca.Markets.IStopLoss!
 Alpaca.Markets.OneCancelsOtherOrder.TakeProfit.get -> Alpaca.Markets.ITakeProfit!
+Alpaca.Markets.OpenClose
+Alpaca.Markets.OpenClose.CloseEst.get -> System.DateTimeOffset
+Alpaca.Markets.OpenClose.OpenClose() -> void
+Alpaca.Markets.OpenClose.OpenEst.get -> System.DateTimeOffset
+Alpaca.Markets.OpenClose.ToInterval() -> Alpaca.Markets.Interval<System.DateTime>
 Alpaca.Markets.OrderBase
 Alpaca.Markets.OrderBase.ClientOrderId.get -> string?
 Alpaca.Markets.OrderBase.ClientOrderId.set -> void
@@ -976,6 +979,7 @@ static Alpaca.Markets.LimitOrder.Buy(string! symbol, long quantity, decimal limi
 static Alpaca.Markets.LimitOrder.Sell(string! symbol, long quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
 static Alpaca.Markets.MarketOrder.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
 static Alpaca.Markets.MarketOrder.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
+static Alpaca.Markets.OpenClose.implicit operator Alpaca.Markets.Interval<System.DateTime>(Alpaca.Markets.OpenClose openClose) -> Alpaca.Markets.Interval<System.DateTime>
 static Alpaca.Markets.OrderBaseExtensions.WithClientOrderId<TOrder>(this TOrder! order, string! clientOrderId) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithDuration<TOrder>(this TOrder! order, Alpaca.Markets.TimeInForce duration) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithExtendedHours<TOrder>(this TOrder! order, bool extendedHours) -> TOrder!

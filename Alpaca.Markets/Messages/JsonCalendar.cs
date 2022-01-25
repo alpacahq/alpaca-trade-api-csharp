@@ -30,16 +30,10 @@ internal sealed class JsonCalendar : ICalendar, IIntervalCalendar
     public TimeOnly SessionClose { get; set; }
 
     [JsonIgnore]
-    public Interval<DateTime> TradingOpenCloseUtc { get; private set; }
+    public OpenClose Trading { get; private set; }
 
     [JsonIgnore]
-    public Interval<DateTime> SessionOpenCloseUtc { get; private set; }
-
-    [JsonIgnore]
-    public Interval<DateTimeOffset> TradingOpenCloseEst { get; private set; }
-
-    [JsonIgnore]
-    public Interval<DateTimeOffset> SessionOpenCloseEst { get; private set; }
+    public OpenClose Session { get; private set; }
 
     [JsonIgnore]
     public DateTime TradingDateEst =>
@@ -65,19 +59,7 @@ internal sealed class JsonCalendar : ICalendar, IIntervalCalendar
     internal void OnDeserializedMethod(
         StreamingContext context)
     {
-        TradingOpenCloseEst = new Interval<DateTimeOffset>(
-            CustomTimeZone.AsDateTimeOffset(TradingDate, TradingOpen),
-            CustomTimeZone.AsDateTimeOffset(TradingDate, TradingClose));
-        TradingOpenCloseUtc = asDateTimeInterval(TradingOpenCloseEst);
-
-        SessionOpenCloseEst = new Interval<DateTimeOffset>(
-            CustomTimeZone.AsDateTimeOffset(TradingDate, SessionOpen),
-            CustomTimeZone.AsDateTimeOffset(TradingDate, SessionClose));
-        SessionOpenCloseUtc = asDateTimeInterval(SessionOpenCloseEst);
+        Trading = new OpenClose(TradingDate, TradingOpen, TradingClose);
+        Session = new OpenClose(TradingDate, SessionOpen, SessionClose);
     }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static Interval<DateTime> asDateTimeInterval(
-        in Interval<DateTimeOffset> interval) =>
-        new (interval.From?.UtcDateTime, interval.Into?.UtcDateTime);
 }

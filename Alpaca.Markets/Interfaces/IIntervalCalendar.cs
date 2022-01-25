@@ -6,22 +6,12 @@
 public interface IIntervalCalendar
 {
     /// <summary>
-    /// Gets trading open and close time in UTC time zone.
+    /// Gets trading open and close times in EST time zone.
     /// </summary>
-    public Interval<DateTime> TradingOpenCloseUtc { get; }
+    public OpenClose Trading { get; }
 
     /// <summary>
-    /// Gets session open and close time in UTC time zone.
+    /// Gets session open and close times in EST time zone.
     /// </summary>
-    public Interval<DateTime> SessionOpenCloseUtc { get; }
-
-    /// <summary>
-    /// Gets trading open and close time in EST time zone.
-    /// </summary>
-    public Interval<DateTimeOffset> TradingOpenCloseEst { get; }
-
-    /// <summary>
-    /// Gets session open and close time in EST time zone.
-    /// </summary>
-    public Interval<DateTimeOffset> SessionOpenCloseEst { get; }
+    public OpenClose Session { get; }
 }
