@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets..html",
-          "hash": "0YiPMaTRMgS7qcAlm8+LCK2nfGnm3lH4QlTNv9ESq0E="
+          "hash": "vjzWvoHkHecbHjSaavKV3sTojTntp5JIZg9o2PKV7eo="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.AlpacaClientConfigurationBase.html",
-          "hash": "CSgZK2S9U04kMVQS5uIY+W/+u66wPwyrQYXzSjmVICs="
+          "hash": "r5IeZRgwDSvTFSBxxHh1vgKzldaGaKa1zcjFRvb7z1M="
         }
       },
       "is_incremental": false,
@@ -465,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.html",
-          "hash": "HoY+/wJbKGQbiG6OoYgul6qenN9aKENx8s16Xhq4WXk="
+          "hash": "MYSrB4SZ/SzJ4ydlb0oiTFxh0yNF20C4q6y+cZyuJsc="
         }
       },
       "is_incremental": false,
@@ -501,7 +501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.Extensions.CalendarExtensions.html",
-          "hash": "YrVee5RjDn8lBgGPrvvBAFym403zb+EhRkZtlSyN0vQ="
+          "hash": "XGWgcto3Yciscdn1KiNloCJtKIKZokdrK1wRQmgh3Mg="
         }
       },
       "is_incremental": false,
@@ -921,7 +921,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.IAlpacaTradingClient.html",
-          "hash": "INQGImzXyUTHHggqqkSKxID0R9zUpUwB3GiSJzDWsUk="
+          "hash": "EDy/dsKx/+g94m+dYyhgcvaenKDJnX4YiTOTBGE99tU="
         }
       },
       "is_incremental": false,
@@ -957,7 +957,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.ICalendar.html",
-          "hash": "b2FMkP53AYwODPoj9X2RrtD+l+AqDHYsgCdzzpqM6EE="
+          "hash": "B0qpHYg3oEg/kH8GpCX2kxaGrUsvwN7Cd/mfeuiVK6g="
         }
       },
       "is_incremental": false,
@@ -1078,6 +1078,18 @@
         ".html": {
           "relative_path": "api/Alpaca.Markets.IInclusiveTimeInterval.html",
           "hash": "EaOWeJclbQ7ESRbHzHUNPdY47He/569TcfbA6M6EA6o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Alpaca.Markets.IIntervalCalendar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alpaca.Markets.IIntervalCalendar.html",
+          "hash": "7VKJ+01MaLd4pbJo579/eE627Ggu/C1u+5ZXpb2Lr5E="
         }
       },
       "is_incremental": false,
@@ -1354,6 +1366,18 @@
         ".html": {
           "relative_path": "api/Alpaca.Markets.IWatchList.html",
           "hash": "k9JI2akUxtpQrIUgLW2ouhvIHDwsceoBfIAAXy770XE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Alpaca.Markets.IntervalCalenderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Alpaca.Markets.IntervalCalenderExtensions.html",
+          "hash": "FBitXSo49I7uFqQ0EYErlIpyuM3BLSQ2hmXlWuPFbS8="
         }
       },
       "is_incremental": false,
@@ -1797,7 +1821,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.StreamingClientConfiguration.html",
-          "hash": "n/itRosTSNESdrUc4beqD7YlGnU4dYnGH91lB5QmaSc="
+          "hash": "grqwjnJGmD/M0kfahK8aFQOZo4mn7VQVYGZVXlFpIwM="
         }
       },
       "is_incremental": false,
@@ -1953,7 +1977,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Alpaca.Markets.html",
-          "hash": "Hu7e0UX+nLqlVgTbNWqyjSdCf8OKGgjtCmtIrajfE4s="
+          "hash": "+zBzKru1uaxtzJ6X9l2yqEARgwoRZhFE22VEuqCuGUY="
         }
       },
       "is_incremental": false,
@@ -1977,7 +2001,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "33QY4/YIGly2e/z0ruWZNakQ4zzoZDfg3YBX/EC3YFw="
+          "hash": "T1e+h9YWkS2Sr4f9g3l37vk08/7R6VD49WVByvegh3Q="
         }
       },
       "is_incremental": false,
@@ -2052,7 +2076,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 163,
+          "total_file_count": 165,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

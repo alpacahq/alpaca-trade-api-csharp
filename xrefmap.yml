@@ -5650,6 +5650,19 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.IAlpacaTradingClient.ListCalendarAsync
   nameWithType: IAlpacaTradingClient.ListCalendarAsync
+- uid: Alpaca.Markets.IAlpacaTradingClient.ListIntervalCalendarAsync(Alpaca.Markets.CalendarRequest,CancellationToken)
+  name: ListIntervalCalendarAsync(CalendarRequest, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_ListIntervalCalendarAsync_Alpaca_Markets_CalendarRequest_CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaTradingClient.ListIntervalCalendarAsync(Alpaca.Markets.CalendarRequest,CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaTradingClient.ListIntervalCalendarAsync(Alpaca.Markets.CalendarRequest, CancellationToken)
+  nameWithType: IAlpacaTradingClient.ListIntervalCalendarAsync(CalendarRequest, CancellationToken)
+- uid: Alpaca.Markets.IAlpacaTradingClient.ListIntervalCalendarAsync*
+  name: ListIntervalCalendarAsync
+  href: api/Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_ListIntervalCalendarAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaTradingClient.ListIntervalCalendarAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaTradingClient.ListIntervalCalendarAsync
+  nameWithType: IAlpacaTradingClient.ListIntervalCalendarAsync
 - uid: Alpaca.Markets.IAlpacaTradingClient.ListOrdersAsync(Alpaca.Markets.ListOrdersRequest,CancellationToken)
   name: ListOrdersAsync(ListOrdersRequest, CancellationToken)
   href: api/Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_ListOrdersAsync_Alpaca_Markets_ListOrdersRequest_CancellationToken_
@@ -6025,58 +6038,6 @@ references:
   commentId: T:Alpaca.Markets.ICalendar
   fullName: Alpaca.Markets.ICalendar
   nameWithType: ICalendar
-- uid: Alpaca.Markets.ICalendar.CloseTimeEst
-  name: CloseTimeEst
-  href: api/Alpaca.Markets.ICalendar.html#Alpaca_Markets_ICalendar_CloseTimeEst
-  commentId: P:Alpaca.Markets.ICalendar.CloseTimeEst
-  fullName: Alpaca.Markets.ICalendar.CloseTimeEst
-  nameWithType: ICalendar.CloseTimeEst
-- uid: Alpaca.Markets.ICalendar.CloseTimeEst*
-  name: CloseTimeEst
-  href: api/Alpaca.Markets.ICalendar.html#Alpaca_Markets_ICalendar_CloseTimeEst_
-  commentId: Overload:Alpaca.Markets.ICalendar.CloseTimeEst
-  isSpec: "True"
-  fullName: Alpaca.Markets.ICalendar.CloseTimeEst
-  nameWithType: ICalendar.CloseTimeEst
-- uid: Alpaca.Markets.ICalendar.CloseTimeUtc
-  name: CloseTimeUtc
-  href: api/Alpaca.Markets.ICalendar.html#Alpaca_Markets_ICalendar_CloseTimeUtc
-  commentId: P:Alpaca.Markets.ICalendar.CloseTimeUtc
-  fullName: Alpaca.Markets.ICalendar.CloseTimeUtc
-  nameWithType: ICalendar.CloseTimeUtc
-- uid: Alpaca.Markets.ICalendar.CloseTimeUtc*
-  name: CloseTimeUtc
-  href: api/Alpaca.Markets.ICalendar.html#Alpaca_Markets_ICalendar_CloseTimeUtc_
-  commentId: Overload:Alpaca.Markets.ICalendar.CloseTimeUtc
-  isSpec: "True"
-  fullName: Alpaca.Markets.ICalendar.CloseTimeUtc
-  nameWithType: ICalendar.CloseTimeUtc
-- uid: Alpaca.Markets.ICalendar.OpenTimeEst
-  name: OpenTimeEst
-  href: api/Alpaca.Markets.ICalendar.html#Alpaca_Markets_ICalendar_OpenTimeEst
-  commentId: P:Alpaca.Markets.ICalendar.OpenTimeEst
-  fullName: Alpaca.Markets.ICalendar.OpenTimeEst
-  nameWithType: ICalendar.OpenTimeEst
-- uid: Alpaca.Markets.ICalendar.OpenTimeEst*
-  name: OpenTimeEst
-  href: api/Alpaca.Markets.ICalendar.html#Alpaca_Markets_ICalendar_OpenTimeEst_
-  commentId: Overload:Alpaca.Markets.ICalendar.OpenTimeEst
-  isSpec: "True"
-  fullName: Alpaca.Markets.ICalendar.OpenTimeEst
-  nameWithType: ICalendar.OpenTimeEst
-- uid: Alpaca.Markets.ICalendar.OpenTimeUtc
-  name: OpenTimeUtc
-  href: api/Alpaca.Markets.ICalendar.html#Alpaca_Markets_ICalendar_OpenTimeUtc
-  commentId: P:Alpaca.Markets.ICalendar.OpenTimeUtc
-  fullName: Alpaca.Markets.ICalendar.OpenTimeUtc
-  nameWithType: ICalendar.OpenTimeUtc
-- uid: Alpaca.Markets.ICalendar.OpenTimeUtc*
-  name: OpenTimeUtc
-  href: api/Alpaca.Markets.ICalendar.html#Alpaca_Markets_ICalendar_OpenTimeUtc_
-  commentId: Overload:Alpaca.Markets.ICalendar.OpenTimeUtc
-  isSpec: "True"
-  fullName: Alpaca.Markets.ICalendar.OpenTimeUtc
-  nameWithType: ICalendar.OpenTimeUtc
 - uid: Alpaca.Markets.ICalendar.TradingCloseTimeEst
   name: TradingCloseTimeEst
   href: api/Alpaca.Markets.ICalendar.html#Alpaca_Markets_ICalendar_TradingCloseTimeEst
@@ -6103,19 +6064,6 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.ICalendar.TradingCloseTimeUtc
   nameWithType: ICalendar.TradingCloseTimeUtc
-- uid: Alpaca.Markets.ICalendar.TradingDate
-  name: TradingDate
-  href: api/Alpaca.Markets.ICalendar.html#Alpaca_Markets_ICalendar_TradingDate
-  commentId: P:Alpaca.Markets.ICalendar.TradingDate
-  fullName: Alpaca.Markets.ICalendar.TradingDate
-  nameWithType: ICalendar.TradingDate
-- uid: Alpaca.Markets.ICalendar.TradingDate*
-  name: TradingDate
-  href: api/Alpaca.Markets.ICalendar.html#Alpaca_Markets_ICalendar_TradingDate_
-  commentId: Overload:Alpaca.Markets.ICalendar.TradingDate
-  isSpec: "True"
-  fullName: Alpaca.Markets.ICalendar.TradingDate
-  nameWithType: ICalendar.TradingDate
 - uid: Alpaca.Markets.ICalendar.TradingDateEst
   name: TradingDateEst
   href: api/Alpaca.Markets.ICalendar.html#Alpaca_Markets_ICalendar_TradingDateEst
@@ -6528,6 +6476,38 @@ references:
   commentId: T:Alpaca.Markets.IInclusiveTimeInterval
   fullName: Alpaca.Markets.IInclusiveTimeInterval
   nameWithType: IInclusiveTimeInterval
+- uid: Alpaca.Markets.IIntervalCalendar
+  name: IIntervalCalendar
+  href: api/Alpaca.Markets.IIntervalCalendar.html
+  commentId: T:Alpaca.Markets.IIntervalCalendar
+  fullName: Alpaca.Markets.IIntervalCalendar
+  nameWithType: IIntervalCalendar
+- uid: Alpaca.Markets.IIntervalCalendar.Session
+  name: Session
+  href: api/Alpaca.Markets.IIntervalCalendar.html#Alpaca_Markets_IIntervalCalendar_Session
+  commentId: P:Alpaca.Markets.IIntervalCalendar.Session
+  fullName: Alpaca.Markets.IIntervalCalendar.Session
+  nameWithType: IIntervalCalendar.Session
+- uid: Alpaca.Markets.IIntervalCalendar.Session*
+  name: Session
+  href: api/Alpaca.Markets.IIntervalCalendar.html#Alpaca_Markets_IIntervalCalendar_Session_
+  commentId: Overload:Alpaca.Markets.IIntervalCalendar.Session
+  isSpec: "True"
+  fullName: Alpaca.Markets.IIntervalCalendar.Session
+  nameWithType: IIntervalCalendar.Session
+- uid: Alpaca.Markets.IIntervalCalendar.Trading
+  name: Trading
+  href: api/Alpaca.Markets.IIntervalCalendar.html#Alpaca_Markets_IIntervalCalendar_Trading
+  commentId: P:Alpaca.Markets.IIntervalCalendar.Trading
+  fullName: Alpaca.Markets.IIntervalCalendar.Trading
+  nameWithType: IIntervalCalendar.Trading
+- uid: Alpaca.Markets.IIntervalCalendar.Trading*
+  name: Trading
+  href: api/Alpaca.Markets.IIntervalCalendar.html#Alpaca_Markets_IIntervalCalendar_Trading_
+  commentId: Overload:Alpaca.Markets.IIntervalCalendar.Trading
+  isSpec: "True"
+  fullName: Alpaca.Markets.IIntervalCalendar.Trading
+  nameWithType: IIntervalCalendar.Trading
 - uid: Alpaca.Markets.ILimitUpLimitDown
   name: ILimitUpLimitDown
   href: api/Alpaca.Markets.ILimitUpLimitDown.html
@@ -6843,6 +6823,129 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.INewsArticle.UpdatedAtUtc
   nameWithType: INewsArticle.UpdatedAtUtc
+- uid: Alpaca.Markets.IntervalCalenderExtensions
+  name: IntervalCalenderExtensions
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html
+  commentId: T:Alpaca.Markets.IntervalCalenderExtensions
+  fullName: Alpaca.Markets.IntervalCalenderExtensions
+  nameWithType: IntervalCalenderExtensions
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeEst(Alpaca.Markets.IIntervalCalendar)
+  name: GetSessionCloseTimeEst(IIntervalCalendar)
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetSessionCloseTimeEst_Alpaca_Markets_IIntervalCalendar_
+  commentId: M:Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeEst(Alpaca.Markets.IIntervalCalendar)
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeEst(Alpaca.Markets.IIntervalCalendar)
+  nameWithType: IntervalCalenderExtensions.GetSessionCloseTimeEst(IIntervalCalendar)
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeEst*
+  name: GetSessionCloseTimeEst
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetSessionCloseTimeEst_
+  commentId: Overload:Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeEst
+  isSpec: "True"
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeEst
+  nameWithType: IntervalCalenderExtensions.GetSessionCloseTimeEst
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeUtc(Alpaca.Markets.IIntervalCalendar)
+  name: GetSessionCloseTimeUtc(IIntervalCalendar)
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetSessionCloseTimeUtc_Alpaca_Markets_IIntervalCalendar_
+  commentId: M:Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeUtc(Alpaca.Markets.IIntervalCalendar)
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeUtc(Alpaca.Markets.IIntervalCalendar)
+  nameWithType: IntervalCalenderExtensions.GetSessionCloseTimeUtc(IIntervalCalendar)
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeUtc*
+  name: GetSessionCloseTimeUtc
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetSessionCloseTimeUtc_
+  commentId: Overload:Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeUtc
+  isSpec: "True"
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeUtc
+  nameWithType: IntervalCalenderExtensions.GetSessionCloseTimeUtc
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeEst(Alpaca.Markets.IIntervalCalendar)
+  name: GetSessionOpenTimeEst(IIntervalCalendar)
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetSessionOpenTimeEst_Alpaca_Markets_IIntervalCalendar_
+  commentId: M:Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeEst(Alpaca.Markets.IIntervalCalendar)
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeEst(Alpaca.Markets.IIntervalCalendar)
+  nameWithType: IntervalCalenderExtensions.GetSessionOpenTimeEst(IIntervalCalendar)
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeEst*
+  name: GetSessionOpenTimeEst
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetSessionOpenTimeEst_
+  commentId: Overload:Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeEst
+  isSpec: "True"
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeEst
+  nameWithType: IntervalCalenderExtensions.GetSessionOpenTimeEst
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeUtc(Alpaca.Markets.IIntervalCalendar)
+  name: GetSessionOpenTimeUtc(IIntervalCalendar)
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetSessionOpenTimeUtc_Alpaca_Markets_IIntervalCalendar_
+  commentId: M:Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeUtc(Alpaca.Markets.IIntervalCalendar)
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeUtc(Alpaca.Markets.IIntervalCalendar)
+  nameWithType: IntervalCalenderExtensions.GetSessionOpenTimeUtc(IIntervalCalendar)
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeUtc*
+  name: GetSessionOpenTimeUtc
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetSessionOpenTimeUtc_
+  commentId: Overload:Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeUtc
+  isSpec: "True"
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeUtc
+  nameWithType: IntervalCalenderExtensions.GetSessionOpenTimeUtc
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeEst(Alpaca.Markets.IIntervalCalendar)
+  name: GetTradingCloseTimeEst(IIntervalCalendar)
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetTradingCloseTimeEst_Alpaca_Markets_IIntervalCalendar_
+  commentId: M:Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeEst(Alpaca.Markets.IIntervalCalendar)
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeEst(Alpaca.Markets.IIntervalCalendar)
+  nameWithType: IntervalCalenderExtensions.GetTradingCloseTimeEst(IIntervalCalendar)
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeEst*
+  name: GetTradingCloseTimeEst
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetTradingCloseTimeEst_
+  commentId: Overload:Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeEst
+  isSpec: "True"
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeEst
+  nameWithType: IntervalCalenderExtensions.GetTradingCloseTimeEst
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeUtc(Alpaca.Markets.IIntervalCalendar)
+  name: GetTradingCloseTimeUtc(IIntervalCalendar)
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetTradingCloseTimeUtc_Alpaca_Markets_IIntervalCalendar_
+  commentId: M:Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeUtc(Alpaca.Markets.IIntervalCalendar)
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeUtc(Alpaca.Markets.IIntervalCalendar)
+  nameWithType: IntervalCalenderExtensions.GetTradingCloseTimeUtc(IIntervalCalendar)
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeUtc*
+  name: GetTradingCloseTimeUtc
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetTradingCloseTimeUtc_
+  commentId: Overload:Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeUtc
+  isSpec: "True"
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetTradingCloseTimeUtc
+  nameWithType: IntervalCalenderExtensions.GetTradingCloseTimeUtc
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetTradingDate(Alpaca.Markets.IIntervalCalendar)
+  name: GetTradingDate(IIntervalCalendar)
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetTradingDate_Alpaca_Markets_IIntervalCalendar_
+  commentId: M:Alpaca.Markets.IntervalCalenderExtensions.GetTradingDate(Alpaca.Markets.IIntervalCalendar)
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetTradingDate(Alpaca.Markets.IIntervalCalendar)
+  nameWithType: IntervalCalenderExtensions.GetTradingDate(IIntervalCalendar)
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetTradingDate*
+  name: GetTradingDate
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetTradingDate_
+  commentId: Overload:Alpaca.Markets.IntervalCalenderExtensions.GetTradingDate
+  isSpec: "True"
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetTradingDate
+  nameWithType: IntervalCalenderExtensions.GetTradingDate
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeEst(Alpaca.Markets.IIntervalCalendar)
+  name: GetTradingOpenTimeEst(IIntervalCalendar)
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetTradingOpenTimeEst_Alpaca_Markets_IIntervalCalendar_
+  commentId: M:Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeEst(Alpaca.Markets.IIntervalCalendar)
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeEst(Alpaca.Markets.IIntervalCalendar)
+  nameWithType: IntervalCalenderExtensions.GetTradingOpenTimeEst(IIntervalCalendar)
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeEst*
+  name: GetTradingOpenTimeEst
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetTradingOpenTimeEst_
+  commentId: Overload:Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeEst
+  isSpec: "True"
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeEst
+  nameWithType: IntervalCalenderExtensions.GetTradingOpenTimeEst
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeUtc(Alpaca.Markets.IIntervalCalendar)
+  name: GetTradingOpenTimeUtc(IIntervalCalendar)
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetTradingOpenTimeUtc_Alpaca_Markets_IIntervalCalendar_
+  commentId: M:Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeUtc(Alpaca.Markets.IIntervalCalendar)
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeUtc(Alpaca.Markets.IIntervalCalendar)
+  nameWithType: IntervalCalenderExtensions.GetTradingOpenTimeUtc(IIntervalCalendar)
+- uid: Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeUtc*
+  name: GetTradingOpenTimeUtc
+  href: api/Alpaca.Markets.IntervalCalenderExtensions.html#Alpaca_Markets_IntervalCalenderExtensions_GetTradingOpenTimeUtc_
+  commentId: Overload:Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeUtc
+  isSpec: "True"
+  fullName: Alpaca.Markets.IntervalCalenderExtensions.GetTradingOpenTimeUtc
+  nameWithType: IntervalCalenderExtensions.GetTradingOpenTimeUtc
 - uid: Alpaca.Markets.IntervalExtensions
   name: IntervalExtensions
   href: api/Alpaca.Markets.IntervalExtensions.html
