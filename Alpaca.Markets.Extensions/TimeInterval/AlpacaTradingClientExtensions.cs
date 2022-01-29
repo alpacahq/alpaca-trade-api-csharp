@@ -15,11 +15,16 @@ public static partial class AlpacaTradingClientExtensions
     [UsedImplicitly]
     [CLSCompliant(false)]
     [Obsolete("Use another method overload that takes the DateOnly argument.", false)]
-    public static Task<ICalendar?> GetCalendarForSingleDayAsync(
+    public static async Task<ICalendar?> GetCalendarForSingleDayAsync(
         this IAlpacaTradingClient client,
         DateTime date,
-        CancellationToken cancellationToken = default) =>
-        GetCalendarForSingleDayAsync(client, DateOnly.FromDateTime(date), cancellationToken);
+        CancellationToken cancellationToken = default)
+    {
+        var calendars = await client.EnsureNotNull(nameof(client))
+            .ListCalendarAsync(CalendarRequest.GetForSingleDay(DateOnly.FromDateTime(date)), cancellationToken)
+            .ConfigureAwait(false);
+        return calendars.SingleOrDefault();
+    }
 
     /// <summary>
     /// Get single trading date information from the Alpaca REST API.
@@ -30,13 +35,13 @@ public static partial class AlpacaTradingClientExtensions
     /// <returns>Read-only trading date information object.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
-    public static async Task<ICalendar?> GetCalendarForSingleDayAsync(
+    public static async Task<IIntervalCalendar?> GetCalendarForSingleDayAsync(
         this IAlpacaTradingClient client,
         DateOnly date,
         CancellationToken cancellationToken = default)
     {
         var calendars = await client.EnsureNotNull(nameof(client))
-            .ListCalendarAsync(CalendarRequest.GetForSingleDay(date), cancellationToken)
+            .ListIntervalCalendarAsync(CalendarRequest.GetForSingleDay(date), cancellationToken)
             .ConfigureAwait(false);
         return calendars.SingleOrDefault();
     }
