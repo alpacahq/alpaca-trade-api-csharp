@@ -11,7 +11,6 @@ namespace Alpaca.Markets
         private static TimeZoneInfo Est { get; } =
             TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
 #else
-        // TODO: olegra - we can use the method above for the .NET 6.0 and later
         private static TimeZoneInfo Est { get; } =
             TimeZoneInfo.FindSystemTimeZoneById(
                 RuntimeInformation.IsOSPlatform(OSPlatform.Windows)

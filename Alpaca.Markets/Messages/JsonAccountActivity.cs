@@ -22,7 +22,6 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "symbol", Required = Required.Default)]
         public String? Symbol { get; set; }
 
-        // TODO: olegra - good candidate for the DateOnly type usage
         [JsonProperty(PropertyName = "date", Required = Required.Default)]
         public DateTime? ActivityDate { get; set; }
 

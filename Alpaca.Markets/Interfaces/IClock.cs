@@ -17,6 +17,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Returns <c>true</c> if trading day is open now.
         /// </summary>
+        [UsedImplicitly]
         Boolean IsOpen { get; }
 
         /// <summary>

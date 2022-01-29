@@ -6,7 +6,6 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates single trading day information from Alpaca REST API.
     /// </summary>
-    // TODO: olegra - good candidate for the DateOnly and TimeOnly types usage
     public interface ICalendar
     {
         /// <summary>
@@ -18,6 +17,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trading date in UTC time zone.
         /// </summary>
+        [UsedImplicitly]
         DateTime TradingDateUtc { get; }
 
         /// <summary>
@@ -41,6 +41,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets trading date close time in UTC time zone.
         /// </summary>
+        [UsedImplicitly]
         DateTime TradingCloseTimeUtc { get; }
     }
 }

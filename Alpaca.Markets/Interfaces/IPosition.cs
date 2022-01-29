@@ -47,6 +47,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Get position quantity (rounded to the nearest integer).
         /// </summary>
+        [UsedImplicitly]
         Int64 IntegerQuantity { get; }
 
         /// <summary>
@@ -58,6 +59,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Get current position market value.
         /// </summary>
+        [UsedImplicitly]
         Decimal? MarketValue { get; }
 
         /// <summary>

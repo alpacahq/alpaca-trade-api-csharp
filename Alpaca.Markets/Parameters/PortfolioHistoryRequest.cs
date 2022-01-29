@@ -15,7 +15,6 @@ namespace Alpaca.Markets
         /// Gets inclusive date interval for filtering items in response.
         /// </summary>
         [UsedImplicitly]
-        // TODO: olegra - good candidate for the DateOnly type usage
         public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
 
         /// <summary>

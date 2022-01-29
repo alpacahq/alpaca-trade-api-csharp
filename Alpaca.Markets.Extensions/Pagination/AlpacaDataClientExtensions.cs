@@ -520,7 +520,7 @@ namespace Alpaca.Markets.Extensions
                     TimeInterval = request.TimeInterval,
                     SortDirection = request.SortDirection,
                     SendFullContentForItems = request.SendFullContentForItems,
-                    ExcludeItemsWithoutContent = request.ExcludeItemsWithoutContent,
+                    ExcludeItemsWithoutContent = request.ExcludeItemsWithoutContent
                 }
                 .WithPageSize(request.Pagination.Size ?? Pagination.MaxNewsPageSize);
     }

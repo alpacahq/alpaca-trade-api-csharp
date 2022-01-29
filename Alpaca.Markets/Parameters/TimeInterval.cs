@@ -146,6 +146,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="from">Starting date/time point for filtering.</param>
         /// <returns>Inclusive open time interval.</returns>
+        [UsedImplicitly]
         public static IInclusiveTimeInterval GetInclusiveIntervalFromThat(
             this DateTime from) =>
             new Inclusive(from, null);

@@ -32,7 +32,7 @@ namespace Alpaca.Markets
             }
         }
 
-        public static HttpClient Configure(
+        public static void Configure(
             this HttpClient httpClient,
             Uri baseAddress)
         {
@@ -48,8 +48,6 @@ namespace Alpaca.Markets
             // ReSharper disable once StringLiteralTypo
             AppContext.SetSwitch("Switch.System.Net.DontEnableSystemDefaultTlsVersions", false);
 #endif
-
-            return httpClient;
         }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(

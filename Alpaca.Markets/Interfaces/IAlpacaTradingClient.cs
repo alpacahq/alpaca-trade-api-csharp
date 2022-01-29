@@ -137,6 +137,7 @@ namespace Alpaca.Markets
         /// <param name="request">List orders request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of order information objects.</returns>
+        [UsedImplicitly]
         [CLSCompliant(false)]
         Task<IReadOnlyList<IOrder>> ListOrdersAsync(
             ListOrdersRequest request,
@@ -203,6 +204,7 @@ namespace Alpaca.Markets
         /// <param name="orderId">Server order ID for cancelling.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns><c>True</c> if order cancellation was accepted.</returns>
+        [UsedImplicitly]
         Task<Boolean> DeleteOrderAsync(
             Guid orderId,
             CancellationToken cancellationToken = default);
@@ -304,6 +306,7 @@ namespace Alpaca.Markets
         /// <param name="symbol">Position asset name.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only position information object.</returns>
+        [UsedImplicitly]
         Task<IPosition> GetPositionAsync(
             String symbol,
             CancellationToken cancellationToken = default);
@@ -344,6 +347,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only clock information object.</returns>
+        [UsedImplicitly]
         Task<IClock> GetClockAsync(
             CancellationToken cancellationToken = default);
 
@@ -353,6 +357,7 @@ namespace Alpaca.Markets
         /// <param name="request">Calendar items request parameters.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Read-only list of trading date information object.</returns>
+        [UsedImplicitly]
         Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
             CalendarRequest request,
             CancellationToken cancellationToken = default);

@@ -17,7 +17,6 @@ namespace Alpaca.Markets
         /// <param name="date"></param>
         /// <returns></returns>
         [UsedImplicitly]
-        // TODO: olegra - good candidate for the DateOnly type usage
         public static CalendarRequest GetForSingleDay(DateTime date) =>
             new CalendarRequest().SetInclusiveTimeInterval(date.Date, date.Date);
 
@@ -25,7 +24,6 @@ namespace Alpaca.Markets
         /// Gets inclusive date interval for filtering items in response.
         /// </summary>
         [UsedImplicitly]
-        // TODO: olegra - good candidate for the DateOnly type usage
         public IInclusiveTimeInterval TimeInterval { get; private set; } = Markets.TimeInterval.InclusiveEmpty;
 
         internal async ValueTask<UriBuilder> GetUriBuilderAsync(

@@ -15,6 +15,7 @@ namespace Alpaca.Markets
         /// <param name="symbol">Order asset name.</param>
         /// <param name="quantity">Order quantity.</param>
         /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
+        [UsedImplicitly]
         public static MarketOrder Market(
             this OrderSide orderSide,
             String symbol,
@@ -45,6 +46,7 @@ namespace Alpaca.Markets
         /// <param name="quantity">Order quantity.</param>
         /// <param name="limitPrice">Order limit price.</param>
         /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>
+        [UsedImplicitly]
         public static LimitOrder Limit(
             this OrderSide orderSide,
             String symbol,

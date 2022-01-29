@@ -22,7 +22,6 @@ namespace Alpaca.Markets.Extensions
         /// <returns>The pair of ADTV value and number of processed day bars.</returns>
         [UsedImplicitly]
         [CLSCompliant(false)]
-        // TODO: olegra - good candidate for the DateOnly type usage
         public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync(
             this IAlpacaDataClient client,
             String symbol,

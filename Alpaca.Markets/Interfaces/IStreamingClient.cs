@@ -54,6 +54,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Awaitable task object for handling client authentication event in asynchronous mode.</returns>
+        [UsedImplicitly]
         Task<AuthStatus> ConnectAndAuthenticateAsync(
             CancellationToken cancellationToken = default);
 
@@ -62,6 +63,7 @@ namespace Alpaca.Markets
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Awaitable task object for handling action completion in asynchronous mode.</returns>
+        [UsedImplicitly]
         Task DisconnectAsync(
             CancellationToken cancellationToken = default);
     }
