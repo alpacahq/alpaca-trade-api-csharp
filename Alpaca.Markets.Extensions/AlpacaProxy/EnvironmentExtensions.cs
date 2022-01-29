@@ -22,7 +22,7 @@ public static class EnvironmentExtensions
             AlpacaDataStreamingApi = _environment.AlpacaDataStreamingApi;
         }
 
-        public Uri AlpacaDataStreamingApi { get; set; }
+        public Uri AlpacaDataStreamingApi { get; init; }
 
         public Uri AlpacaCryptoStreamingApi => _environment.AlpacaCryptoStreamingApi;
 

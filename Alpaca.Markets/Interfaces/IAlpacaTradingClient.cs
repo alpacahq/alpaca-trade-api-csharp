@@ -351,6 +351,7 @@ public interface IAlpacaTradingClient : IDisposable
     /// <param name="request">Calendar items request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only list of trading date information object.</returns>
+    [UsedImplicitly]
     [Obsolete("This method will be removed in the next major release. Use the ListIntervalCalendarAsync method instead.", false)]
     Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
         CalendarRequest request,

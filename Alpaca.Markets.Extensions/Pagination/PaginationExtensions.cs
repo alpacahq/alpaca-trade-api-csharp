@@ -44,9 +44,9 @@ internal static class PaginationExtensions
                     singlePageOfItemsRequestWithEmptyPageToken, getSinglePage, cancellationToken)
                 .ConfigureAwait(false))
             {
-                foreach (var kvp in page)
+                foreach (var (symbol, items) in page)
                 {
-                    await WriteAllAsync(channelsBySymbols[kvp.Key].Writer, kvp.Value, cancellationToken)
+                    await WriteAllAsync(channelsBySymbols[symbol].Writer, items, cancellationToken)
                         .ConfigureAwait(false);
                 }
             }

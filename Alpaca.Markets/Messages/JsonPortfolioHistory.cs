@@ -10,13 +10,13 @@ internal sealed class JsonPortfolioHistory : IPortfolioHistory
 {
     private sealed class Item : IPortfolioHistoryItem
     {
-        public Decimal? Equity { get; set; }
+        public Decimal? Equity { get; init; }
 
-        public Decimal? ProfitLoss { get; set; }
+        public Decimal? ProfitLoss { get; init; }
 
-        public Decimal? ProfitLossPercentage { get; set; }
+        public Decimal? ProfitLossPercentage { get; init; }
 
-        public DateTime TimestampUtc { get; set; }
+        public DateTime TimestampUtc { get; init; }
     }
 
     private readonly List<IPortfolioHistoryItem> _items = new();

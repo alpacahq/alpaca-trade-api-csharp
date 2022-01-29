@@ -3,6 +3,7 @@
 /// <summary>
 /// Configuration parameters object for <see cref="StreamingClientBase{TConfiguration}"/> class.
 /// </summary>
+[SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
 public abstract class StreamingClientConfiguration
 {
     /// <summary>

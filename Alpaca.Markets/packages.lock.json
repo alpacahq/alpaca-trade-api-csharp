@@ -2,6 +2,12 @@
   "version": 1,
   "dependencies": {
     ".NETFramework,Version=v4.6.2": {
+      "IsExternalInit": {
+        "type": "Direct",
+        "requested": "[1.0.2, )",
+        "resolved": "1.0.2",
+        "contentHash": "Vcztz9HRFvJfpjobZy6fqFVtd8bqQ1KCHp5jQBlqA6q3tu7HVp122g0ESxM/V7uqsCvbub55mCybHC7E96Uunw=="
+      },
       "JetBrains.Annotations": {
         "type": "Direct",
         "requested": "[2021.3.0, )",
@@ -125,6 +131,12 @@
       }
     },
     ".NETStandard,Version=v2.0": {
+      "IsExternalInit": {
+        "type": "Direct",
+        "requested": "[1.0.2, )",
+        "resolved": "1.0.2",
+        "contentHash": "Vcztz9HRFvJfpjobZy6fqFVtd8bqQ1KCHp5jQBlqA6q3tu7HVp122g0ESxM/V7uqsCvbub55mCybHC7E96Uunw=="
+      },
       "JetBrains.Annotations": {
         "type": "Direct",
         "requested": "[2021.3.0, )",
@@ -244,6 +256,12 @@
       }
     },
     ".NETStandard,Version=v2.1": {
+      "IsExternalInit": {
+        "type": "Direct",
+        "requested": "[1.0.2, )",
+        "resolved": "1.0.2",
+        "contentHash": "Vcztz9HRFvJfpjobZy6fqFVtd8bqQ1KCHp5jQBlqA6q3tu7HVp122g0ESxM/V7uqsCvbub55mCybHC7E96Uunw=="
+      },
       "JetBrains.Annotations": {
         "type": "Direct",
         "requested": "[2021.3.0, )",
@@ -346,6 +364,12 @@
       }
     },
     ".NETCoreApp,Version=v5.0": {
+      "IsExternalInit": {
+        "type": "Direct",
+        "requested": "[1.0.2, )",
+        "resolved": "1.0.2",
+        "contentHash": "Vcztz9HRFvJfpjobZy6fqFVtd8bqQ1KCHp5jQBlqA6q3tu7HVp122g0ESxM/V7uqsCvbub55mCybHC7E96Uunw=="
+      },
       "JetBrains.Annotations": {
         "type": "Direct",
         "requested": "[2021.3.0, )",
@@ -410,6 +434,12 @@
       }
     },
     "net6.0": {
+      "IsExternalInit": {
+        "type": "Direct",
+        "requested": "[1.0.2, )",
+        "resolved": "1.0.2",
+        "contentHash": "Vcztz9HRFvJfpjobZy6fqFVtd8bqQ1KCHp5jQBlqA6q3tu7HVp122g0ESxM/V7uqsCvbub55mCybHC7E96Uunw=="
+      },
       "JetBrains.Annotations": {
         "type": "Direct",
         "requested": "[2021.3.0, )",

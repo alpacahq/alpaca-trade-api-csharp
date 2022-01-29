@@ -3,6 +3,7 @@
 /// <summary>
 /// Configuration parameters object for all REST API client instances.
 /// </summary>
+[SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
 public abstract class AlpacaClientConfigurationBase
 {
     /// <summary>

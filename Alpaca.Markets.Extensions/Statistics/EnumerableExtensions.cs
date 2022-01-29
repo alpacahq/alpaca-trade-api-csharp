@@ -5,25 +5,25 @@
 /// </summary>
 public static class EnumerableExtensions
 {
-    private struct Bar : IBar, IEquatable<Bar>
+    private readonly struct Bar : IBar, IEquatable<Bar>
     {
-        public String Symbol { get; private set; }
+        public String Symbol { get; private init; }
 
-        public DateTime TimeUtc { get; private set; }
+        public DateTime TimeUtc { get; private init; }
 
-        public Decimal Open { get; private set; }
+        public Decimal Open { get; private init; }
 
-        public Decimal High { get; private set; }
+        public Decimal High { get; private init; }
 
-        public Decimal Low { get; private set; }
+        public Decimal Low { get; private init; }
 
-        public Decimal Close { get; private set; }
+        public Decimal Close { get; private init; }
 
-        public Decimal Volume { get; private set; }
+        public Decimal Volume { get; private init; }
 
-        public Decimal Vwap { get; private set; }
+        public Decimal Vwap { get; private init; }
 
-        public UInt64 TradeCount { get; private set; }
+        public UInt64 TradeCount { get; private init; }
 
         public static Bar operator +(Bar lhs, IBar rhs) =>
             new()

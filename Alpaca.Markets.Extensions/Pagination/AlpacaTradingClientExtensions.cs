@@ -61,7 +61,7 @@ public static partial class AlpacaTradingClientExtensions
                 yield return item;
             }
 
-            request.PageToken = activities[activities.Count - 1].ActivityId;
+            request.PageToken = activities[^1].ActivityId;
         } while (!String.IsNullOrEmpty(request.PageToken));
     }
 }

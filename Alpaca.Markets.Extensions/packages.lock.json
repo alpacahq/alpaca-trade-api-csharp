@@ -15,6 +15,12 @@
           "System.Net.Http.WinHttpHandler": "6.0.0"
         }
       },
+      "IsExternalInit": {
+        "type": "Direct",
+        "requested": "[1.0.2, )",
+        "resolved": "1.0.2",
+        "contentHash": "Vcztz9HRFvJfpjobZy6fqFVtd8bqQ1KCHp5jQBlqA6q3tu7HVp122g0ESxM/V7uqsCvbub55mCybHC7E96Uunw=="
+      },
       "JetBrains.Annotations": {
         "type": "Direct",
         "requested": "[2021.3.0, )",
@@ -272,6 +278,12 @@
           "Portable.System.DateTimeOnly": "6.0.0",
           "System.IO.Pipelines": "6.0.1"
         }
+      },
+      "IsExternalInit": {
+        "type": "Direct",
+        "requested": "[1.0.2, )",
+        "resolved": "1.0.2",
+        "contentHash": "Vcztz9HRFvJfpjobZy6fqFVtd8bqQ1KCHp5jQBlqA6q3tu7HVp122g0ESxM/V7uqsCvbub55mCybHC7E96Uunw=="
       },
       "JetBrains.Annotations": {
         "type": "Direct",
@@ -533,6 +545,12 @@
           "System.IO.Pipelines": "6.0.1"
         }
       },
+      "IsExternalInit": {
+        "type": "Direct",
+        "requested": "[1.0.2, )",
+        "resolved": "1.0.2",
+        "contentHash": "Vcztz9HRFvJfpjobZy6fqFVtd8bqQ1KCHp5jQBlqA6q3tu7HVp122g0ESxM/V7uqsCvbub55mCybHC7E96Uunw=="
+      },
       "JetBrains.Annotations": {
         "type": "Direct",
         "requested": "[2021.3.0, )",
@@ -749,6 +767,12 @@
           "System.IO.Pipelines": "6.0.1"
         }
       },
+      "IsExternalInit": {
+        "type": "Direct",
+        "requested": "[1.0.2, )",
+        "resolved": "1.0.2",
+        "contentHash": "Vcztz9HRFvJfpjobZy6fqFVtd8bqQ1KCHp5jQBlqA6q3tu7HVp122g0ESxM/V7uqsCvbub55mCybHC7E96Uunw=="
+      },
       "JetBrains.Annotations": {
         "type": "Direct",
         "requested": "[2021.3.0, )",
@@ -938,6 +962,12 @@
           "Polly": "7.2.3",
           "System.IO.Pipelines": "6.0.1"
         }
+      },
+      "IsExternalInit": {
+        "type": "Direct",
+        "requested": "[1.0.2, )",
+        "resolved": "1.0.2",
+        "contentHash": "Vcztz9HRFvJfpjobZy6fqFVtd8bqQ1KCHp5jQBlqA6q3tu7HVp122g0ESxM/V7uqsCvbub55mCybHC7E96Uunw=="
       },
       "JetBrains.Annotations": {
         "type": "Direct",
