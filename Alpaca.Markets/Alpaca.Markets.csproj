@@ -12,14 +12,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.2.6</AssemblyVersion>
-    <FileVersion>6.0.2.6</FileVersion>
-    <Version>6.0.2-beta3</Version>
+    <AssemblyVersion>6.0.3.0</AssemblyVersion>
+    <FileVersion>6.0.3.0</FileVersion>
+    <Version>6.0.3-alpha1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- The historical news articles requesting method `IAlpacaDataClient.ListNewsArticlesAsync`and related classes/interfaces added into the SDK.
-- The real-time news articles streaming client `IAlpacaNewsStreamingClient` were added into the SDK.</PackageReleaseNotes>
+    <PackageReleaseNotes>- The new `IIntervalCalender` interface was added for more clear work with trading/session intervals.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
