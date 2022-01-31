@@ -107,6 +107,10 @@
     <PackageReference Include="System.Linq.Async" Version="5.1.0" />
   </ItemGroup>
 
+  <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
+  </ItemGroup>
+
   <ItemGroup Condition="!($(TargetFramework.StartsWith('net6')))">
    <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.1-beta2" />
  </ItemGroup>
