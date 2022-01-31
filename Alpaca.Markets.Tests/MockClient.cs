@@ -18,9 +18,21 @@ public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
 
     public TClient Client { get; }
 
+    public void AddGet<TJson>(
+        String request,
+        TJson response) =>
+        Handler.Expect(request).RespondJson(response);
+
+    public void AddGet<TJson>(
+        String request,
+        TJson[] responses) =>
+        Handler.Expect(request).RespondJson(responses);
+
     public void Dispose()
     {
-        Client.Dispose();
+        Handler.VerifyNoOutstandingExpectation();
         Handler.Dispose();
+
+        Client.Dispose();
     }
 }

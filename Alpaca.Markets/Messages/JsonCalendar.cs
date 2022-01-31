@@ -2,9 +2,6 @@
 
 namespace Alpaca.Markets;
 
-[SuppressMessage(
-    "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
-    Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
 #pragma warning disable CS0618
 internal sealed class JsonCalendar : ICalendar, IIntervalCalendar
 #pragma warning restore CS0618
@@ -36,23 +33,29 @@ internal sealed class JsonCalendar : ICalendar, IIntervalCalendar
     public OpenClose Session { get; private set; }
 
     [JsonIgnore]
+    [ExcludeFromCodeCoverage]
     public DateTime TradingDateEst =>
         this.GetTradingDateFast().ToDateTime(TimeOnly.MinValue, DateTimeKind.Unspecified);
 
     [JsonIgnore]
+    [ExcludeFromCodeCoverage]
     public DateTime TradingDateUtc =>
         this.GetTradingDateFast().ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc);
 
     [JsonIgnore]
+    [ExcludeFromCodeCoverage]
     public DateTime TradingOpenTimeEst => this.GetTradingOpenTimeEstFast();
 
     [JsonIgnore]
+    [ExcludeFromCodeCoverage]
     public DateTime TradingCloseTimeEst => this.GetTradingCloseTimeEstFast();
 
     [JsonIgnore]
+    [ExcludeFromCodeCoverage]
     public DateTime TradingOpenTimeUtc => this.GetTradingOpenTimeUtcFast();
 
     [JsonIgnore]
+    [ExcludeFromCodeCoverage]
     public DateTime TradingCloseTimeUtc => this.GetTradingCloseTimeUtcFast();
 
     [OnDeserialized]
