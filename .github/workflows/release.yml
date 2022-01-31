@@ -24,7 +24,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-nuget-
 
-    - name: Dotnet Build
+    - name: Dotnet Test (Debug)
+      run: dotnet test
+
+    - name: Dotnet Build (Release)
       run: dotnet build -c Release
       
     - name: Save SDK Packages
