@@ -3,33 +3,17 @@ using Xunit;
 namespace Alpaca.Markets.Tests;
 
 [Collection("MockEnvironment")]
-public sealed class AlpacaTradingClientTest
+public sealed partial class AlpacaTradingClientTest
 {
+    private const String Crypto = "BTCUSD";
+
+    private const String Stock = "AAPL";
+
     private readonly MockClientsFactoryFixture _mockClientsFactory;
 
     public AlpacaTradingClientTest(
         MockClientsFactoryFixture mockClientsFactory) =>
         _mockClientsFactory = mockClientsFactory;
-
-    [Fact]
-    public async Task GetClockAsyncWorks()
-    {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
-
-        mock.AddGet("/v2/clock", new JsonClock
-        {
-            NextCloseUtc = DateTime.Today.AddDays(2),
-            NextOpenUtc = DateTime.Today.AddDays(1),
-            TimestampUtc = DateTime.UtcNow,
-            IsOpen = true
-        });
-
-        var clock = await mock.Client.GetClockAsync();
-
-        Assert.True(clock.IsOpen);
-        Assert.True(clock.TimestampUtc <= DateTime.UtcNow);
-        Assert.True(clock.NextOpenUtc < clock.NextCloseUtc);
-    }
 
     [Fact]
     public async Task ListIntervalCalendarAsyncWorks()
@@ -68,7 +52,30 @@ public sealed class AlpacaTradingClientTest
         Interval<DateTime> tradingInterval = calendar.Trading;
         var (open, close) = calendar.Session.ToInterval();
 
+        Assert.False(tradingInterval.IsOpen());
+        Assert.False(tradingInterval.IsEmpty());
+
         Assert.InRange(tradingInterval.From!.Value, open!.Value, close!.Value);
-        Assert.InRange(tradingInterval.Into!.Value, open!.Value, close!.Value);
+        Assert.InRange(tradingInterval.Into!.Value, open.Value, close.Value);
+    }
+
+    [Fact]
+    public async Task GetClockAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        mock.AddGet("/v2/clock", new JsonClock
+        {
+            NextCloseUtc = DateTime.Today.AddDays(2),
+            NextOpenUtc = DateTime.Today.AddDays(1),
+            TimestampUtc = DateTime.UtcNow,
+            IsOpen = true
+        });
+
+        var clock = await mock.Client.GetClockAsync();
+
+        Assert.True(clock.IsOpen);
+        Assert.True(clock.TimestampUtc <= DateTime.UtcNow);
+        Assert.True(clock.NextOpenUtc < clock.NextCloseUtc);
     }
 }

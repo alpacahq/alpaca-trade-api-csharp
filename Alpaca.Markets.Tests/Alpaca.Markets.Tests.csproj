@@ -27,4 +27,10 @@
     <ProjectReference Include="..\Alpaca.Markets\Alpaca.Markets.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="AlpacaTradingClientTest.*.cs">
+      <DependentUpon>AlpacaTradingClientTest.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

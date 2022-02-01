@@ -8,6 +8,33 @@ public sealed class CalendarRequest :
     IRequestWithTimeInterval<IInclusiveTimeInterval>
 #pragma warning restore CS0618 // Type or member is obsolete
  {
+     /// <summary>
+     /// Creates new instance of <see cref="CalendarRequest"/> object.
+     /// </summary>
+     public CalendarRequest()
+     {
+     }
+
+     /// <summary>
+     /// Creates new instance of <see cref="CalendarRequest"/> object.
+     /// </summary>
+     /// <param name="from">Start date for the resulting data set.</param>
+     /// <param name="into">End date for the resulting data set.</param>
+     public CalendarRequest(
+         DateOnly? from,
+         DateOnly? into)
+         : this(new Interval<DateOnly>(from, into))
+     {
+     }
+
+     /// <summary>
+     /// Creates new instance of <see cref="CalendarRequest"/> object.
+     /// </summary>
+     /// <param name="dateInterval">Initial value of the <see cref="DateInterval"/> property.</param>
+     public CalendarRequest(
+         Interval<DateOnly> dateInterval) =>
+         DateInterval = dateInterval;
+     
     /// <summary>
     /// Creates new instance of <see cref="CalendarRequest"/> object with the
     /// <see cref="TimeInterval"/> property configured for the single day.
@@ -28,7 +55,7 @@ public sealed class CalendarRequest :
     /// <returns></returns>
     [UsedImplicitly]
     public static CalendarRequest GetForSingleDay(DateOnly date) =>
-        new CalendarRequest().WithInterval(new Interval<DateOnly>(date));
+        new (new Interval<DateOnly>(date));
 
     /// <summary>
     /// Gets inclusive date interval for filtering items in response.

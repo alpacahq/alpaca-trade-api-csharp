@@ -16,10 +16,6 @@ internal sealed class DateOnlyConverter : JsonConverter
         {
             writer.WriteValue(dateOnlyValue.ToString(DateFormat, CultureInfo.InvariantCulture));
         }
-        else if (value is null)
-        {
-            writer.WriteNull();
-        }
     }
 
     public override Object? ReadJson(
@@ -31,6 +27,7 @@ internal sealed class DateOnlyConverter : JsonConverter
             ? dateOnlyValue
             : null;
 
+    [ExcludeFromCodeCoverage]
     public override bool CanConvert(Type objectType) =>
-        objectType == typeof(DateOnly) || objectType == typeof(DateOnly?);
+        objectType == typeof(DateOnly);
 }

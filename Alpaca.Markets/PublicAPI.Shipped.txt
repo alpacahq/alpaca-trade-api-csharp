@@ -128,6 +128,8 @@ Alpaca.Markets.BracketOrder.StopLoss.get -> Alpaca.Markets.IStopLoss!
 Alpaca.Markets.BracketOrder.TakeProfit.get -> Alpaca.Markets.ITakeProfit!
 Alpaca.Markets.CalendarRequest
 Alpaca.Markets.CalendarRequest.CalendarRequest() -> void
+Alpaca.Markets.CalendarRequest.CalendarRequest(Alpaca.Markets.Interval<System.DateOnly> dateInterval) -> void
+Alpaca.Markets.CalendarRequest.CalendarRequest(System.DateOnly? from, System.DateOnly? into) -> void
 Alpaca.Markets.CalendarRequest.DateInterval.get -> Alpaca.Markets.Interval<System.DateOnly>
 Alpaca.Markets.CalendarRequest.TimeInterval.get -> Alpaca.Markets.Interval<System.DateTime>
 Alpaca.Markets.CalendarRequest.WithInterval(Alpaca.Markets.Interval<System.DateOnly> value) -> Alpaca.Markets.CalendarRequest!

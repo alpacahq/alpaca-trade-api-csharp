@@ -788,4 +788,10 @@
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.CalendarRequest.#ctor(System.Nullable{System.DateOnly},System.Nullable{System.DateOnly})</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/net5.0/Alpaca.Markets.dll</Right>
+  </Suppression>
 </Suppressions>

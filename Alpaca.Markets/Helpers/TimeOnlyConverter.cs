@@ -16,10 +16,6 @@ internal sealed class TimeOnlyConverter : JsonConverter
         {
             writer.WriteValue(timeOnlyValue.ToString(_timeFormats[0], CultureInfo.InvariantCulture));
         }
-        else if (value is null)
-        {
-            writer.WriteNull();
-        }
     }
 
     public override Object? ReadJson(
@@ -31,6 +27,7 @@ internal sealed class TimeOnlyConverter : JsonConverter
             ? timeOnlyValue
             : null;
 
+    [ExcludeFromCodeCoverage]
     public override bool CanConvert(Type objectType) =>
-        objectType == typeof(TimeOnly) || objectType == typeof(TimeOnly?);
+        objectType == typeof(TimeOnly);
 }
