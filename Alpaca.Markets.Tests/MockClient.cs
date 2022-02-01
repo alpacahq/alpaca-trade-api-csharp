@@ -28,6 +28,11 @@ public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
         TJson[] responses) =>
         Handler.Expect(request).RespondJson(responses);
 
+    public void AddPatch<TJson>(
+        String request,
+        TJson response) =>
+        Handler.Expect(HttpMethod.Patch, request).RespondJson(response);
+
     public void Dispose()
     {
         Handler.VerifyNoOutstandingExpectation();
