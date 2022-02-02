@@ -76,6 +76,7 @@ public sealed class AccountActivitiesRequest :
     /// <param name="date">Target date for filtering activities.</param>
     /// <returns>Fluent interface method return same <see cref="AccountActivitiesRequest"/> instance.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use another method overload that takes the DateOnly argument.", false)]
     public AccountActivitiesRequest SetSingleDate(
         DateTime date) =>
@@ -126,6 +127,7 @@ public sealed class AccountActivitiesRequest :
         return this;
     }
 
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use WithInterval method instead of this one.", false)]
     void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
         IInclusiveTimeInterval value) => WithInterval(value.AsDateTimeInterval());

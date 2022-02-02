@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -30,6 +30,9 @@
   <ItemGroup>
     <Compile Update="AlpacaTradingClientTest.*.cs">
       <DependentUpon>AlpacaTradingClientTest.cs</DependentUpon>
+    </Compile>
+    <Compile Update="AlpacaDataClientTest.*.cs">
+      <DependentUpon>AlpacaDataClientTest.cs</DependentUpon>
     </Compile>
   </ItemGroup>
 
