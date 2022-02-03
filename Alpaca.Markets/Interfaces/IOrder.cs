@@ -194,5 +194,5 @@ public interface IOrder
     /// Gets legs for this order.
     /// </summary>
     [UsedImplicitly]
-    IReadOnlyList<IOrder>? Legs { get; }
+    IReadOnlyList<IOrder> Legs { get; }
 }

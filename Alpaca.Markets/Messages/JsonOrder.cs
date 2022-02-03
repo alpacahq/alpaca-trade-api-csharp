@@ -8,7 +8,7 @@ internal sealed class JsonOrder : IOrder
     [JsonProperty(PropertyName = "id", Required = Required.Always)]
     public Guid OrderId { get; set; }
 
-    [JsonProperty(PropertyName = "client_order_id", Required = Required.Always)]
+    [JsonProperty(PropertyName = "client_order_id", Required = Required.Default)]
     public String? ClientOrderId { get; set; }
 
     [JsonProperty(PropertyName = "created_at", Required = Required.Default)]

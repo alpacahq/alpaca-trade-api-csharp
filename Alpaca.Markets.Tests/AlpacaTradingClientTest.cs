@@ -22,9 +22,9 @@ public sealed partial class AlpacaTradingClientTest
 
         var today = DateOnly.FromDateTime(DateTime.Today);
 
-        mock.AddGet("/v2/calendar", new []
+        mock.AddGet("/v2/calendar", new JsonCalendar []
         {
-            new JsonCalendar
+            new ()
             {
                 TradingDate = today,
                 SessionOpen = new TimeOnly(08, 00),
