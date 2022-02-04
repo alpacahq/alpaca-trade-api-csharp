@@ -21,17 +21,22 @@ public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
     public void AddGet<TJson>(
         String request,
         TJson response) =>
-        Handler.Expect(request).RespondJson(response);
-
-    public void AddGet<TJson>(
-        String request,
-        TJson[] responses) =>
-        Handler.Expect(request).RespondJson(responses);
+        addExpectRespond(HttpMethod.Get, request, response);
 
     public void AddPatch<TJson>(
         String request,
         TJson response) =>
-        Handler.Expect(HttpMethod.Patch, request).RespondJson(response);
+        addExpectRespond(HttpMethod.Patch, request, response);
+
+    public void AddPost<TJson>(
+        String request,
+        TJson response) =>
+        addExpectRespond(HttpMethod.Post, request, response);
+
+    public void AddDelete<TJson>(
+        String request,
+        TJson response) =>
+        addExpectRespond(HttpMethod.Delete, request, response);
 
     public void Dispose()
     {
@@ -40,4 +45,10 @@ public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
 
         Client.Dispose();
     }
+
+    private void addExpectRespond<TJson>(
+        HttpMethod method,
+        String request,
+        TJson response) =>
+        Handler.Expect(method, request).RespondJson(response);
 }

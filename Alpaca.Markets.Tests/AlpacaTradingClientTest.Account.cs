@@ -50,6 +50,39 @@ public sealed partial class AlpacaTradingClientTest
         Assert.Equal(1235L, activity.IntegerLeavesQuantity);
         Assert.Equal(12L, activity.IntegerQuantity);
     }
+    
+    [Fact]
+    public async Task GetPortfolioHistoryAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        var today = DateTime.UtcNow.Date;
+
+        mock.AddGet("/v2/account/portfolio/history", new JsonPortfolioHistory
+        {
+            ProfitLossPercentageList = new List<Decimal?> { 0.01M },
+            TimestampsList = new List<DateTime> { today },
+            ProfitLossList = new List<Decimal?> { 10M },
+            EquityList = new List<Decimal?> { 20M },
+            TimeFrame = TimeFrame.Day,
+            BaseValue = 1234.56M
+        });
+
+        var history = await mock.Client.GetPortfolioHistoryAsync(
+            new PortfolioHistoryRequest
+            {
+                Period = new HistoryPeriod(5, HistoryPeriodUnit.Day),
+                ExtendedHours = true
+            }.WithInterval(new Interval<DateTime>(today)));
+
+        Assert.NotNull(history.Items);
+        var item = history.Items.Single();
+
+        Assert.Equal(0.01M, item.ProfitLossPercentage);
+        Assert.Equal(today, item.TimestampUtc);
+        Assert.Equal(10M, item.ProfitLoss);
+        Assert.Equal(20M, item.Equity);
+    }
 
     [Fact]
     public async Task GetAccountConfigurationAsyncWorks()
