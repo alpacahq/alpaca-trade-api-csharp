@@ -7,6 +7,8 @@ public sealed partial class AlpacaDataClientTest
 {
     private const String Stock = "AAPL";
 
+    private const String Other = "MSFT";
+
     private readonly MockClientsFactoryFixture _mockClientsFactory;
 
     public AlpacaDataClientTest(
