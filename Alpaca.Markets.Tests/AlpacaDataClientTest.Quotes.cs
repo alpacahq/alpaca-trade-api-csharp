@@ -62,23 +62,23 @@ public sealed partial class AlpacaDataClientTest
         new () { ConditionsList = { condition } };
 
     private static void validateQuotesList(
-        IEnumerable<IQuote> trades,
+        IEnumerable<IQuote> quotes,
         String condition,
         String symbol)
     {
-        foreach (var trade in trades)
+        foreach (var quote in quotes)
         {
-            validateQuote(trade, symbol, condition);
+            validateQuote(quote, symbol, condition);
         }
     }
 
     private static void validateQuote(
-        IQuote trade,
+        IQuote quote,
         String symbol,
         String condition)
     {
-        Assert.NotEmpty(trade.Conditions);
-        Assert.Equal(symbol, trade.Symbol);
-        Assert.Equal(condition, trade.Conditions.Single());
+        Assert.NotEmpty(quote.Conditions);
+        Assert.Equal(symbol, quote.Symbol);
+        Assert.Equal(condition, quote.Conditions.Single());
     }
 }

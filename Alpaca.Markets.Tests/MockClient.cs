@@ -23,15 +23,20 @@ public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
         TJson response) =>
         addExpectRespond(HttpMethod.Get, request, response);
 
-    public void AddPatch<TJson>(
+    public void AddPut<TJson>(
         String request,
         TJson response) =>
-        addExpectRespond(HttpMethod.Patch, request, response);
+        addExpectRespond(HttpMethod.Put, request, response);
 
     public void AddPost<TJson>(
         String request,
         TJson response) =>
         addExpectRespond(HttpMethod.Post, request, response);
+
+    public void AddPatch<TJson>(
+        String request,
+        TJson response) =>
+        addExpectRespond(HttpMethod.Patch, request, response);
 
     public void AddDelete<TJson>(
         String request,

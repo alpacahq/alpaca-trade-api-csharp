@@ -62,24 +62,26 @@ public sealed partial class AlpacaCryptoDataClientTest
         new () { AskExchange = exchange };
 
     private static void validateQuotesList(
-        IEnumerable<IQuote> trades,
+        IEnumerable<IQuote> quotes,
         String exchange,
         String symbol)
     {
-        foreach (var trade in trades)
+        foreach (var quote in quotes)
         {
-            validateQuote(trade, symbol, exchange);
+            validateQuote(quote, symbol, exchange);
         }
     }
 
     private static void validateQuote(
-        IQuote trade,
+        IQuote quote,
         String symbol,
         String exchange)
     {
-        Assert.Empty(trade.Conditions);
-        Assert.Equal(symbol, trade.Symbol);
-        Assert.Equal(exchange, trade.AskExchange);
-        Assert.Equal(exchange, trade.BidExchange);
+        Assert.Empty(quote.Conditions);
+        Assert.Equal(symbol, quote.Symbol);
+        Assert.Equal(exchange, quote.AskExchange);
+        Assert.Equal(exchange, quote.BidExchange);
+
+        Assert.Equal(String.Empty, quote.Tape);
     }
 }
