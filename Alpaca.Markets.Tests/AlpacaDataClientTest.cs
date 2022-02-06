@@ -16,7 +16,7 @@ public sealed partial class AlpacaDataClientTest
         _mockClientsFactory = mockClientsFactory;
 
     [Fact]
-    public async Task ListIntervalCalendarAsyncWorks()
+    public async Task ListNewsArticlesAsyncWorks()
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 

@@ -28,11 +28,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="AlpacaDataClientTest.*.cs">
+      <DependentUpon>AlpacaDataClientTest.cs</DependentUpon>
+    </Compile>
     <Compile Update="AlpacaTradingClientTest.*.cs">
       <DependentUpon>AlpacaTradingClientTest.cs</DependentUpon>
     </Compile>
-    <Compile Update="AlpacaDataClientTest.*.cs">
-      <DependentUpon>AlpacaDataClientTest.cs</DependentUpon>
+    <Compile Update="AlpacaCryptoDataClientTest.*.cs">
+      <DependentUpon>AlpacaCryptoDataClientTest.cs</DependentUpon>
     </Compile>
   </ItemGroup>
 

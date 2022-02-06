@@ -14,6 +14,9 @@ public sealed class MockClientsFactoryFixture
 
     public MockClient<AlpacaTradingClientConfiguration, IAlpacaTradingClient> GetAlpacaTradingClientMock() =>
         new (Environments.Paper.GetAlpacaTradingClientConfiguration(_securityKey), _ => new AlpacaTradingClient(_));
+
+    public MockClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> GetAlpacaCryptoDataClientMock() =>
+        new (Environments.Live.GetAlpacaCryptoDataClientConfiguration(_securityKey), _ => new AlpacaCryptoDataClient(_));
 }
 
 [CollectionDefinition("MockEnvironment")]
