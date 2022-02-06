@@ -19,6 +19,30 @@ public sealed partial class AlpacaTradingClientTest
     }
 
     [Fact]
+    public async Task GetOrderByClientOrderIdAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        mock.AddGet("/v2/orders:by_client_order_id", createOrder());
+
+        var order = await mock.Client.GetOrderAsync(Guid.NewGuid().ToString("D"));
+
+        validateOrder(order);
+    }
+
+    [Fact]
+    public async Task GetOrderByServerOrderIdAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        mock.AddGet("/v2/orders/**", createOrder());
+
+        var order = await mock.Client.GetOrderAsync(Guid.NewGuid());
+
+        validateOrder(order);
+    }
+
+    [Fact]
     public async Task PostRawOrderAsyncWorks()
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();

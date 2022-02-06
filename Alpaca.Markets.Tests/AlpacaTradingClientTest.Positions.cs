@@ -1,3 +1,4 @@
+using System.Net;
 using Xunit;
 
 namespace Alpaca.Markets.Tests;
@@ -26,6 +27,39 @@ public sealed partial class AlpacaTradingClientTest
         var position = await mock.Client.GetPositionAsync(Stock);
 
         validatePosition(position);
+    }
+
+    [Fact]
+    public async Task DeletePositionAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        mock.AddDelete("/v2/positions/**", createOrder());
+
+        var order = await mock.Client.DeletePositionAsync(
+            new DeletePositionRequest(Stock)
+            {
+                PositionQuantity = PositionQuantity.InPercents(50)
+            });
+
+        validateOrder(order);
+    }
+
+    [Fact]
+    public async Task DeleteAllPositionsAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        mock.AddDelete("/v2/positions", new JsonPositionActionStatus[]
+        {
+            new () { StatusCode = (Int64)HttpStatusCode.OK, Symbol = Stock },
+            new () { StatusCode = (Int64)HttpStatusCode.OK, Symbol = Crypto }
+        });
+
+        var statuses = await mock.Client.DeleteAllPositionsAsync();
+
+        Assert.NotNull(statuses);
+        Assert.NotEmpty(statuses);
     }
 
     private static JsonPosition createPosition() =>
