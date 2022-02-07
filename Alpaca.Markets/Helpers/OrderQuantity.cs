@@ -3,7 +3,7 @@ namespace Alpaca.Markets;
 /// <summary>
 /// Represents the market day order quantity in dollars or as (possible fractional) number of shares.
 /// </summary>
-public readonly struct OrderQuantity : IEquatable<OrderQuantity>
+public readonly record struct OrderQuantity
 {
     /// <summary>
     /// Creates new instance of the <see cref="OrderQuantity"/> structure.
@@ -79,42 +79,4 @@ public readonly struct OrderQuantity : IEquatable<OrderQuantity>
     internal Decimal? AsNotional() => IsInDollars ? Value : null;
 
     internal Decimal? AsFractional() => IsInShares ? Value : null;
-
-    /// <inheritdoc />
-    public override Boolean Equals(
-        Object? obj) =>
-        obj is OrderQuantity orderQuantity &&
-        orderQuantity.Equals(this);
-
-    /// <inheritdoc />
-    public override Int32 GetHashCode() =>
-        Value.GetHashCode();
-
-    /// <inheritdoc />
-    public Boolean Equals(
-        OrderQuantity other) =>
-        IsInDollars == other.IsInDollars &&
-        Decimal.Equals(Value, other.Value);
-
-    /// <summary>
-    /// Returns <c>true</c> if <paramref name="lhs"/> are equal to <paramref name="rhs"/>.
-    /// </summary>
-    /// <param name="lhs">Left hand side object.</param>
-    /// <param name="rhs">Right hand side object.</param>
-    /// <returns>True if both objects are equal.</returns>
-    public static Boolean operator ==(
-        OrderQuantity lhs,
-        OrderQuantity rhs) =>
-        lhs.Equals(rhs);
-
-    /// <summary>
-    /// Returns <c>true</c> if <paramref name="lhs"/> are not equal to <paramref name="rhs"/>.
-    /// </summary>
-    /// <param name="lhs">Left hand side object.</param>
-    /// <param name="rhs">Right hand side object.</param>
-    /// <returns>True if both objects are not equal.</returns>
-    public static Boolean operator !=(
-        OrderQuantity lhs,
-        OrderQuantity rhs) =>
-        !(lhs == rhs);
 }

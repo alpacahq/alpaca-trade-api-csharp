@@ -116,7 +116,6 @@ Alpaca.Markets.AuthStatus.Unauthorized = 1 -> Alpaca.Markets.AuthStatus
 Alpaca.Markets.BarTimeFrame
 Alpaca.Markets.BarTimeFrame.BarTimeFrame() -> void
 Alpaca.Markets.BarTimeFrame.BarTimeFrame(int value, Alpaca.Markets.BarTimeFrameUnit unit) -> void
-Alpaca.Markets.BarTimeFrame.Equals(Alpaca.Markets.BarTimeFrame other) -> bool
 Alpaca.Markets.BarTimeFrame.Unit.get -> Alpaca.Markets.BarTimeFrameUnit
 Alpaca.Markets.BarTimeFrame.Value.get -> int
 Alpaca.Markets.BarTimeFrameUnit
@@ -252,7 +251,6 @@ Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(System.Collection
 Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.Interval<System.DateTime> timeInterval) -> void
 Alpaca.Markets.HistoryPeriod
-Alpaca.Markets.HistoryPeriod.Equals(Alpaca.Markets.HistoryPeriod other) -> bool
 Alpaca.Markets.HistoryPeriod.HistoryPeriod() -> void
 Alpaca.Markets.HistoryPeriod.HistoryPeriod(int value, Alpaca.Markets.HistoryPeriodUnit unit) -> void
 Alpaca.Markets.HistoryPeriod.Unit.get -> Alpaca.Markets.HistoryPeriodUnit
@@ -784,7 +782,6 @@ Alpaca.Markets.OrderType.Stop = 1 -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderType.StopLimit = 3 -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderType.TrailingStop = 4 -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderQuantity
-Alpaca.Markets.OrderQuantity.Equals(Alpaca.Markets.OrderQuantity other) -> bool
 Alpaca.Markets.OrderQuantity.IsInDollars.get -> bool
 Alpaca.Markets.OrderQuantity.IsInShares.get -> bool
 Alpaca.Markets.OrderQuantity.OrderQuantity() -> void
@@ -811,7 +808,6 @@ Alpaca.Markets.PositionSide
 Alpaca.Markets.PositionSide.Long = 0 -> Alpaca.Markets.PositionSide
 Alpaca.Markets.PositionSide.Short = 1 -> Alpaca.Markets.PositionSide
 Alpaca.Markets.PositionQuantity
-Alpaca.Markets.PositionQuantity.Equals(Alpaca.Markets.PositionQuantity other) -> bool
 Alpaca.Markets.PositionQuantity.IsInPercents.get -> bool
 Alpaca.Markets.PositionQuantity.IsInShares.get -> bool
 Alpaca.Markets.PositionQuantity.PositionQuantity() -> void
@@ -925,23 +921,13 @@ Alpaca.Markets.UpdateWatchListRequest.Assets.get -> System.Collections.Generic.I
 Alpaca.Markets.UpdateWatchListRequest.Name.get -> string!
 Alpaca.Markets.UpdateWatchListRequest.UpdateWatchListRequest(System.Guid watchListId, string! name, System.Collections.Generic.IEnumerable<string!>! assets) -> void
 Alpaca.Markets.UpdateWatchListRequest.WatchListId.get -> System.Guid
-override Alpaca.Markets.BarTimeFrame.Equals(object? obj) -> bool
-override Alpaca.Markets.BarTimeFrame.GetHashCode() -> int
 override Alpaca.Markets.BarTimeFrame.ToString() -> string!
-override Alpaca.Markets.HistoryPeriod.Equals(object? obj) -> bool
-override Alpaca.Markets.HistoryPeriod.GetHashCode() -> int
 override Alpaca.Markets.HistoryPeriod.ToString() -> string!
-override Alpaca.Markets.OrderQuantity.Equals(object? obj) -> bool
-override Alpaca.Markets.OrderQuantity.GetHashCode() -> int
-override Alpaca.Markets.PositionQuantity.Equals(object? obj) -> bool
-override Alpaca.Markets.PositionQuantity.GetHashCode() -> int
 override Alpaca.Markets.TrailOffset.Equals(object? obj) -> bool
 override Alpaca.Markets.TrailOffset.GetHashCode() -> int
 static Alpaca.Markets.BarTimeFrame.Day.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.BarTimeFrame.Hour.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.BarTimeFrame.Minute.get -> Alpaca.Markets.BarTimeFrame
-static Alpaca.Markets.BarTimeFrame.operator !=(Alpaca.Markets.BarTimeFrame lhs, Alpaca.Markets.BarTimeFrame rhs) -> bool
-static Alpaca.Markets.BarTimeFrame.operator ==(Alpaca.Markets.BarTimeFrame lhs, Alpaca.Markets.BarTimeFrame rhs) -> bool
 static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateOnly date) -> Alpaca.Markets.CalendarRequest!
 static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateTime date) -> Alpaca.Markets.CalendarRequest!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoDataClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaCryptoDataClient!
@@ -962,8 +948,6 @@ static Alpaca.Markets.Environments.Live.get -> Alpaca.Markets.IEnvironment!
 static Alpaca.Markets.Environments.Paper.get -> Alpaca.Markets.IEnvironment!
 static Alpaca.Markets.HistoricalRequestBaseExtensions.WithPageSize<TRequest>(this TRequest! request, uint pageSize) -> TRequest!
 static Alpaca.Markets.HistoricalRequestBaseExtensions.WithPageToken<TRequest>(this TRequest! request, string! pageToken) -> TRequest!
-static Alpaca.Markets.HistoryPeriod.operator !=(Alpaca.Markets.HistoryPeriod lhs, Alpaca.Markets.HistoryPeriod rhs) -> bool
-static Alpaca.Markets.HistoryPeriod.operator ==(Alpaca.Markets.HistoryPeriod lhs, Alpaca.Markets.HistoryPeriod rhs) -> bool
 static Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeEst(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateTime
 static Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeUtc(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateTime
 static Alpaca.Markets.IntervalCalenderExtensions.GetSessionOpenTimeEst(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateTime
@@ -995,13 +979,9 @@ static Alpaca.Markets.OrderQuantity.Fractional(decimal value) -> Alpaca.Markets.
 static Alpaca.Markets.OrderQuantity.FromInt64(long value) -> Alpaca.Markets.OrderQuantity
 static Alpaca.Markets.OrderQuantity.implicit operator Alpaca.Markets.OrderQuantity(long value) -> Alpaca.Markets.OrderQuantity
 static Alpaca.Markets.OrderQuantity.Notional(decimal value) -> Alpaca.Markets.OrderQuantity
-static Alpaca.Markets.OrderQuantity.operator !=(Alpaca.Markets.OrderQuantity lhs, Alpaca.Markets.OrderQuantity rhs) -> bool
-static Alpaca.Markets.OrderQuantity.operator ==(Alpaca.Markets.OrderQuantity lhs, Alpaca.Markets.OrderQuantity rhs) -> bool
 static Alpaca.Markets.Pagination.MaxPageSize.get -> uint
 static Alpaca.Markets.PositionQuantity.InPercents(decimal value) -> Alpaca.Markets.PositionQuantity
 static Alpaca.Markets.PositionQuantity.InShares(decimal value) -> Alpaca.Markets.PositionQuantity
-static Alpaca.Markets.PositionQuantity.operator !=(Alpaca.Markets.PositionQuantity lhs, Alpaca.Markets.PositionQuantity rhs) -> bool
-static Alpaca.Markets.PositionQuantity.operator ==(Alpaca.Markets.PositionQuantity lhs, Alpaca.Markets.PositionQuantity rhs) -> bool
 static Alpaca.Markets.StopLimitOrder.Buy(string! symbol, long quantity, decimal stopPrice, decimal limitPrice) -> Alpaca.Markets.StopLimitOrder!
 static Alpaca.Markets.StopLimitOrder.Sell(string! symbol, long quantity, decimal stopPrice, decimal limitPrice) -> Alpaca.Markets.StopLimitOrder!
 static Alpaca.Markets.StopOrder.Buy(string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!

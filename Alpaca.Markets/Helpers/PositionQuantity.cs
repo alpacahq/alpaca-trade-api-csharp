@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents the position liquidation quantity in (possible fractional) number of shares or in percents.
 /// </summary>
-public readonly struct PositionQuantity : IEquatable<PositionQuantity>
+public readonly record struct PositionQuantity
 {
     /// <summary>
     /// Creates new instance of the <see cref="PositionQuantity"/> structure.
@@ -70,42 +70,4 @@ public readonly struct PositionQuantity : IEquatable<PositionQuantity>
     internal Decimal? AsPercentage() => IsInPercents ? Value : null;
 
     internal Decimal? AsFractional() => IsInShares ? Value : null;
-
-    /// <inheritdoc />
-    public override Boolean Equals(
-        Object? obj) =>
-        obj is PositionQuantity positionQuantity &&
-        positionQuantity.Equals(this);
-
-    /// <inheritdoc />
-    public override Int32 GetHashCode() =>
-        Value.GetHashCode();
-
-    /// <inheritdoc />
-    public Boolean Equals(
-        PositionQuantity other) =>
-        IsInShares == other.IsInShares &&
-        Decimal.Equals(Value, other.Value);
-
-    /// <summary>
-    /// Returns <c>true</c> if <paramref name="lhs"/> are equal to <paramref name="rhs"/>.
-    /// </summary>
-    /// <param name="lhs">Left hand side object.</param>
-    /// <param name="rhs">Right hand side object.</param>
-    /// <returns>True if both objects are equal.</returns>
-    public static Boolean operator ==(
-        PositionQuantity lhs,
-        PositionQuantity rhs) =>
-        lhs.Equals(rhs);
-
-    /// <summary>
-    /// Returns <c>true</c> if <paramref name="lhs"/> are not equal to <paramref name="rhs"/>.
-    /// </summary>
-    /// <param name="lhs">Left hand side object.</param>
-    /// <param name="rhs">Right hand side object.</param>
-    /// <returns>True if both objects are not equal.</returns>
-    public static Boolean operator !=(
-        PositionQuantity lhs,
-        PositionQuantity rhs) =>
-        !(lhs == rhs);
 }

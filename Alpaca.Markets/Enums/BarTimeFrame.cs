@@ -5,7 +5,7 @@ namespace Alpaca.Markets;
 /// <summary>
 /// Supported bar duration for Alpaca Data API.
 /// </summary>
-public readonly struct BarTimeFrame : IEquatable<BarTimeFrame>
+public readonly record struct BarTimeFrame
 {
     /// <summary>
     /// Creates new instance of <see cref="BarTimeFrame"/> object.
@@ -34,23 +34,8 @@ public readonly struct BarTimeFrame : IEquatable<BarTimeFrame>
     public Int32 Value { get; }
 
     /// <inheritdoc />
-    public bool Equals(BarTimeFrame other) => Unit == other.Unit && Value == other.Value;
-
-    /// <inheritdoc />
     public override String ToString() =>
         $"{Value.ToString("D", CultureInfo.InvariantCulture)}{Unit.ToEnumString()}";
-
-    /// <inheritdoc />
-    public override Boolean Equals(Object? obj) => obj is BarTimeFrame period && Equals(period);
-
-    /// <inheritdoc />
-    public override Int32 GetHashCode()
-    {
-        var hashCode = -2109781847;
-        hashCode = hashCode * -1521134295 + Unit.GetHashCode();
-        hashCode = hashCode * -1521134295 + Value.GetHashCode();
-        return hashCode;
-    }
 
     /// <summary>
     /// Minute bars.
@@ -69,20 +54,4 @@ public readonly struct BarTimeFrame : IEquatable<BarTimeFrame>
     /// </summary>
     [UsedImplicitly]
     public static BarTimeFrame Day => new(1, BarTimeFrameUnit.Day);
-
-    /// <summary>
-    /// Returns <c>true</c> if compared objects are equal.
-    /// </summary>
-    /// <param name="lhs">Left hand side for compare./</param>
-    /// <param name="rhs">Right hand side for compare.</param>
-    /// <returns>Returns <c>true</c> if compared objects are equal.</returns>
-    public static Boolean operator ==(BarTimeFrame lhs, BarTimeFrame rhs) => lhs.Equals(rhs);
-
-    /// <summary>
-    /// Returns <c>true</c> if compared objects are not equal.
-    /// </summary>
-    /// <param name="lhs">Left hand side for compare./</param>
-    /// <param name="rhs">Right hand side for compare.</param>
-    /// <returns>Returns <c>true</c> if compared objects are not equal.</returns>
-    public static Boolean operator !=(BarTimeFrame lhs, BarTimeFrame rhs) => !(lhs == rhs);
 }
