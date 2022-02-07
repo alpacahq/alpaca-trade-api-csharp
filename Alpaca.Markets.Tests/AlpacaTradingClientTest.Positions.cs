@@ -62,6 +62,28 @@ public sealed partial class AlpacaTradingClientTest
         Assert.NotEmpty(statuses);
     }
 
+    [Fact]
+    public async Task DeleteAllPositionsWithOrdersAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        mock.AddDelete("/v2/positions", new JsonPositionActionStatus[]
+        {
+            new () { StatusCode = (Int64)HttpStatusCode.OK, Symbol = Stock },
+            new () { StatusCode = (Int64)HttpStatusCode.OK, Symbol = Crypto }
+        });
+
+        var statuses = await mock.Client.DeleteAllPositionsAsync(
+            new DeleteAllPositionsRequest
+            {
+                Timeout = TimeSpan.FromMinutes(5),
+                CancelOrders = true
+            });
+
+        Assert.NotNull(statuses);
+        Assert.NotEmpty(statuses);
+    }
+
     private static JsonPosition createPosition() =>
         new ()
         {

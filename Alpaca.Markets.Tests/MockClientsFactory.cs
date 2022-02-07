@@ -13,7 +13,7 @@ public sealed class MockClientsFactoryFixture
         new (Environments.Live.GetAlpacaDataClientConfiguration(_securityKey), _ => new AlpacaDataClient(_));
 
     public MockClient<AlpacaTradingClientConfiguration, IAlpacaTradingClient> GetAlpacaTradingClientMock() =>
-        new (Environments.Paper.GetAlpacaTradingClientConfiguration(_securityKey), _ => new AlpacaTradingClient(_));
+        new (Environments.Live.GetAlpacaTradingClientConfiguration(_securityKey), _ => new AlpacaTradingClient(_));
 
     public MockClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> GetAlpacaCryptoDataClientMock() =>
         new (Environments.Live.GetAlpacaCryptoDataClientConfiguration(_securityKey), _ => new AlpacaCryptoDataClient(_));

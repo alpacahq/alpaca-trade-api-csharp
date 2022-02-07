@@ -51,6 +51,7 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     /// </summary>
     /// <param name="symbols">Asset names for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
     protected internal HistoricalCryptoRequestBase(
         IEnumerable<String> symbols,
@@ -65,6 +66,7 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     /// <param name="symbols">Asset names for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     /// <param name="exchanges">Crypto exchanges list for data retrieval.</param>
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
     protected internal HistoricalCryptoRequestBase(
         IEnumerable<String> symbols,

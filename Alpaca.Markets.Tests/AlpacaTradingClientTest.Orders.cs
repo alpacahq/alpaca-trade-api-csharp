@@ -13,7 +13,15 @@ public sealed partial class AlpacaTradingClientTest
         mock.AddGet("/v2/orders", new [] { createOrder() });
 
         var orders = await mock.Client
-            .ListOrdersAsync(new ListOrdersRequest());
+            .ListOrdersAsync(new ListOrdersRequest
+                {
+                    OrderListSorting = SortDirection.Descending,
+                    OrderStatusFilter = OrderStatusFilter.Open,
+                    RollUpNestedOrders = false,
+                    LimitOrderNumber = 100
+                }
+                .WithInterval(new Interval<DateTime>())
+                .WithSymbol(Stock));
 
         validateOrder(orders.Single());
     }
@@ -151,7 +159,7 @@ public sealed partial class AlpacaTradingClientTest
         new ()
         {
             FilledQuantity = 56.43M,
-            Quantity = 1234.56M,
+            Quantity = 1234.56M
         };
 
     private static void validateOrder(

@@ -65,6 +65,7 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// </summary>
     /// <param name="symbol">Asset name for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
     public HistoricalQuotesRequest(
         String symbol,
@@ -78,6 +79,7 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// </summary>
     /// <param name="symbols">Asset names for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
     public HistoricalQuotesRequest(
         IEnumerable<String> symbols,

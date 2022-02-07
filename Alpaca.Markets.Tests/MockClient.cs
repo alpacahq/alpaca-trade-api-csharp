@@ -6,15 +6,15 @@ public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
     where TClientConfiguration : AlpacaClientConfigurationBase
     where TClient : class, IDisposable
 {
+    private readonly MockHttpMessageHandler _handler = new ();
+
     public MockClient(
         TClientConfiguration configuration,
         Func<TClientConfiguration, TClient> factory)
     {
-        configuration.HttpClient = Handler.ToHttpClient();
+        configuration.HttpClient = _handler.ToHttpClient();
         Client = factory(configuration);
     }
-
-    public MockHttpMessageHandler Handler { get; } = new ();
 
     public TClient Client { get; }
 
@@ -45,8 +45,8 @@ public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
 
     public void Dispose()
     {
-        Handler.VerifyNoOutstandingExpectation();
-        Handler.Dispose();
+        _handler.VerifyNoOutstandingExpectation();
+        _handler.Dispose();
 
         Client.Dispose();
     }
@@ -55,5 +55,5 @@ public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
         HttpMethod method,
         String request,
         TJson response) =>
-        Handler.Expect(method, request).RespondJson(response);
+        _handler.Expect(method, request).RespondJson(response);
 }

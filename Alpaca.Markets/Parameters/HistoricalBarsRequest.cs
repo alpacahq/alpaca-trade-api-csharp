@@ -71,6 +71,7 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
     /// <param name="symbol">Asset name for data retrieval.</param>
     /// <param name="timeFrame">Type of time bars for retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
     public HistoricalBarsRequest(
         String symbol,
@@ -86,6 +87,7 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
     /// <param name="symbols">Asset names for data retrieval.</param>
     /// <param name="timeFrame">Type of time bars for retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
     public HistoricalBarsRequest(
         IEnumerable<String> symbols,

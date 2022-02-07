@@ -9,26 +9,34 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        var today = DateTime.Today;
-        var exchange = Guid.NewGuid().ToString("D");
-
-        mock.AddGet("/v1beta1/crypto/quotes", new JsonMultiQuotesPage<JsonHistoricalCryptoQuote>
-        {
-            ItemsDictionary = new Dictionary<String, List<JsonHistoricalCryptoQuote>?>
-            {
-                { Crypto, createQuotesList(exchange) },
-                { Other, createQuotesList(exchange) }
-            }
-        });
+        addMultiQuotesPageExpectation(mock);
 
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
-            new HistoricalCryptoQuotesRequest(new[] { Crypto, Other }, today, today));
+            new HistoricalCryptoQuotesRequest(_symbols, _yesterday, _today)
+                .WithExchanges(CryptoExchange.Cbse));
 
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes.Items);
 
-        validateQuotesList(quotes.Items[Crypto], exchange, Crypto);
-        validateQuotesList(quotes.Items[Other], exchange, Other);
+        validateQuotesList(quotes.Items[Crypto], Crypto);
+        validateQuotesList(quotes.Items[Other], Other);
+    }
+
+    [Fact]
+    public async Task GetHistoricalQuotesAsyncForSingleWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+
+        addSingleQuotesPageExpectation(mock);
+
+        var quotes = await mock.Client.GetHistoricalQuotesAsync(
+            new HistoricalCryptoQuotesRequest(Crypto, _timeInterval)
+                .WithExchanges(CryptoExchange.Cbse));
+
+        Assert.NotNull(quotes);
+        Assert.NotEmpty(quotes.Items);
+
+        validateQuotesList(quotes.Items[Crypto], Crypto);
     }
 
     [Fact]
@@ -36,51 +44,81 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        var today = DateTime.Today;
-        var condition = Guid.NewGuid().ToString("D");
-
-        mock.AddGet("/v1beta1/crypto/**/quotes", new JsonQuotesPage<JsonHistoricalCryptoQuote>
-        {
-            ItemsList = createQuotesList(condition),
-            Symbol = Crypto
-        });
+        addSingleQuotesPageExpectation(mock);
 
         var quotes = await mock.Client.ListHistoricalQuotesAsync(
-            new HistoricalCryptoQuotesRequest(Crypto, today, today));
+            new HistoricalCryptoQuotesRequest(Crypto, _yesterday, _today)
+                .WithExchanges(_exchangesList));
 
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes.Items);
         Assert.Equal(Crypto, quotes.Symbol);
 
-        validateQuotesList(quotes.Items, condition, Crypto);
+        validateQuotesList(quotes.Items, Crypto);
     }
 
-    private static List<JsonHistoricalCryptoQuote> createQuotesList(String exchange) => 
-        new () { createQuote(exchange), createQuote(exchange) };
+    [Fact]
+    public async Task ListHistoricalQuotesAsyncForManyWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-    private static JsonHistoricalCryptoQuote createQuote(String exchange) =>
-        new () { AskExchange = exchange };
+        addMultiQuotesPageExpectation(mock);
+
+        var quotes = await mock.Client.ListHistoricalQuotesAsync(
+            new HistoricalCryptoQuotesRequest(_symbols, _timeInterval)
+                .WithExchanges(_exchangesList));
+
+        Assert.NotNull(quotes);
+        Assert.NotEmpty(quotes.Items);
+        Assert.Equal(String.Empty, quotes.Symbol);
+
+        validateQuotesList(quotes.Items.Where(_ => _.Symbol == Crypto), Crypto);
+        validateQuotesList(quotes.Items.Where(_ => _.Symbol != Crypto), Other);
+    }
+
+    private static void addMultiQuotesPageExpectation(
+        MockClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> mock) =>
+        mock.AddGet("/v1beta1/crypto/quotes", new JsonMultiQuotesPage<JsonHistoricalCryptoQuote>
+        {
+            ItemsDictionary = new Dictionary<String, List<JsonHistoricalCryptoQuote>?>
+            {
+                { Crypto, createQuotesList() },
+                { Other, createQuotesList() }
+            }
+        });
+
+    private static void addSingleQuotesPageExpectation(
+        MockClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> mock) =>
+        mock.AddGet("/v1beta1/crypto/**/quotes", new JsonQuotesPage<JsonHistoricalCryptoQuote>
+        {
+            ItemsList = createQuotesList(),
+            Symbol = Crypto
+        });
+
+    private static List<JsonHistoricalCryptoQuote> createQuotesList() => 
+        new () { createQuote(), createQuote() };
+
+    private static JsonHistoricalCryptoQuote createQuote() =>
+        new () { AskExchange = _exchange };
 
     private static void validateQuotesList(
         IEnumerable<IQuote> quotes,
-        String exchange,
         String symbol)
     {
         foreach (var quote in quotes)
         {
-            validateQuote(quote, symbol, exchange);
+            validateQuote(quote, symbol);
         }
     }
 
     private static void validateQuote(
         IQuote quote,
-        String symbol,
-        String exchange)
+        String symbol)
     {
         Assert.Empty(quote.Conditions);
         Assert.Equal(symbol, quote.Symbol);
-        Assert.Equal(exchange, quote.AskExchange);
-        Assert.Equal(exchange, quote.BidExchange);
+        Assert.Equal(_exchange, quote.AskExchange);
+        Assert.Equal(_exchange, quote.BidExchange);
 
         Assert.Equal(String.Empty, quote.Tape);
     }

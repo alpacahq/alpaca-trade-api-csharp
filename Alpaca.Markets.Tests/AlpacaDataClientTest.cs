@@ -5,11 +5,28 @@ namespace Alpaca.Markets.Tests;
 [Collection("MockEnvironment")]
 public sealed partial class AlpacaDataClientTest
 {
+    private static readonly String _condition = Guid.NewGuid().ToString("D");
+
+    private readonly MockClientsFactoryFixture _mockClientsFactory;
+
+    private static readonly String[] _symbols = { Stock, Other };
+
+    private static readonly Interval<DateTime> _timeInterval;
+
+    private static readonly DateTime _yesterday;
+
+    private static readonly DateTime _today;
+
     private const String Stock = "AAPL";
 
     private const String Other = "MSFT";
 
-    private readonly MockClientsFactoryFixture _mockClientsFactory;
+    static AlpacaDataClientTest()
+    {
+        _today = DateTime.Today;
+        _yesterday = _today.AddDays(-1);
+        _timeInterval = new Interval<DateTime>(_yesterday, _today);
+    }
 
     public AlpacaDataClientTest(
         MockClientsFactoryFixture mockClientsFactory) =>

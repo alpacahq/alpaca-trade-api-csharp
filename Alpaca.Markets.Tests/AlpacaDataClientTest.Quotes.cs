@@ -9,26 +9,32 @@ public sealed partial class AlpacaDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-        var today = DateTime.Today;
-        var condition = Guid.NewGuid().ToString("D");
-
-        mock.AddGet("/v2/stocks/quotes", new JsonMultiQuotesPage<JsonHistoricalQuote>
-        {
-            ItemsDictionary = new Dictionary<String, List<JsonHistoricalQuote>?>
-            {
-                { Stock, createQuotesList(condition) },
-                { Other, createQuotesList(condition) }
-            }
-        });
+        addMultiQuotesPageExpectation(mock);
 
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
-            new HistoricalQuotesRequest(new[] { Stock, Other }, today, today));
+            new HistoricalQuotesRequest(_symbols, _yesterday, _today));
 
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes.Items);
 
-        validateQuotesList(quotes.Items[Stock], condition, Stock);
-        validateQuotesList(quotes.Items[Other], condition, Other);
+        validateQuotesList(quotes.Items[Stock], Stock);
+        validateQuotesList(quotes.Items[Other], Other);
+    }
+
+    [Fact]
+    public async Task GetHistoricalQuotesAsyncForSingleWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+
+        addSingleQuotesPageExpectation(mock);
+
+        var quotes = await mock.Client.GetHistoricalQuotesAsync(
+            new HistoricalQuotesRequest(Stock, _timeInterval));
+
+        Assert.NotNull(quotes);
+        Assert.NotEmpty(quotes.Items);
+
+        validateQuotesList(quotes.Items[Stock], Stock);
     }
 
     [Fact]
@@ -36,49 +42,77 @@ public sealed partial class AlpacaDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-        var today = DateTime.Today;
-        var condition = Guid.NewGuid().ToString("D");
-
-        mock.AddGet("/v2/stocks/**/quotes", new JsonQuotesPage<JsonHistoricalQuote>
-        {
-            ItemsList = createQuotesList(condition),
-            Symbol = Stock
-        });
+        addSingleQuotesPageExpectation(mock);
 
         var quotes = await mock.Client.ListHistoricalQuotesAsync(
-            new HistoricalQuotesRequest(Stock, today, today));
+            new HistoricalQuotesRequest(Stock, _yesterday, _today));
 
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes.Items);
         Assert.Equal(Stock, quotes.Symbol);
 
-        validateQuotesList(quotes.Items, condition, Stock);
+        validateQuotesList(quotes.Items, Stock);
     }
 
-    private static List<JsonHistoricalQuote> createQuotesList(String condition) => 
-        new () { createQuote(condition), createQuote(condition) };
+    [Fact]
+    public async Task ListHistoricalQuotesAsyncForManyWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-    private static JsonHistoricalQuote createQuote(String condition) =>
-        new () { ConditionsList = { condition } };
+        addMultiQuotesPageExpectation(mock);
+
+        var quotes = await mock.Client.ListHistoricalQuotesAsync(
+            new HistoricalQuotesRequest(_symbols, _timeInterval));
+
+        Assert.NotNull(quotes);
+        Assert.NotEmpty(quotes.Items);
+        Assert.Equal(String.Empty, quotes.Symbol);
+
+        validateQuotesList(quotes.Items.Where(_ => _.Symbol == Stock), Stock);
+        validateQuotesList(quotes.Items.Where(_ => _.Symbol != Stock), Other);
+    }
+
+    private static void addMultiQuotesPageExpectation(
+        MockClient<AlpacaDataClientConfiguration, IAlpacaDataClient> mock) =>
+        mock.AddGet("/v2/stocks/quotes", new JsonMultiQuotesPage<JsonHistoricalQuote>
+        {
+            ItemsDictionary = new Dictionary<String, List<JsonHistoricalQuote>?>
+            {
+                { Stock, createQuotesList() },
+                { Other, createQuotesList() }
+            }
+        });
+
+    private static void addSingleQuotesPageExpectation(
+        MockClient<AlpacaDataClientConfiguration, IAlpacaDataClient> mock) =>
+        mock.AddGet("/v2/stocks/**/quotes", new JsonQuotesPage<JsonHistoricalQuote>
+        {
+            ItemsList = createQuotesList(),
+            Symbol = Stock
+        });
+
+    private static List<JsonHistoricalQuote> createQuotesList() => 
+        new () { createQuote(), createQuote() };
+
+    private static JsonHistoricalQuote createQuote() =>
+        new () { ConditionsList = { _condition } };
 
     private static void validateQuotesList(
         IEnumerable<IQuote> quotes,
-        String condition,
         String symbol)
     {
         foreach (var quote in quotes)
         {
-            validateQuote(quote, symbol, condition);
+            validateQuote(quote, symbol);
         }
     }
 
     private static void validateQuote(
         IQuote quote,
-        String symbol,
-        String condition)
+        String symbol)
     {
         Assert.NotEmpty(quote.Conditions);
         Assert.Equal(symbol, quote.Symbol);
-        Assert.Equal(condition, quote.Conditions.Single());
+        Assert.Equal(_condition, quote.Conditions.Single());
     }
 }
