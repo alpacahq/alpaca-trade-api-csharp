@@ -60,6 +60,10 @@ public sealed partial class AlpacaTradingClientTest
 
         Assert.NotNull(statuses);
         Assert.NotEmpty(statuses);
+        foreach (var status in statuses)
+        {
+            Assert.True(status.IsSuccess);
+        }
     }
 
     [Fact]

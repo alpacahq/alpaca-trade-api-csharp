@@ -13,14 +13,9 @@ internal sealed class UnixSecondsDateTimeConverter : DateTimeConverterBase
         Object? value,
         JsonSerializer serializer)
     {
-        // ReSharper disable once ConvertIfStatementToSwitchStatement
         if (value is DateTime dateTimeValue)
         {
             writer.WriteValue(dateTimeValue.IntoUnixTimeSeconds());
-        }
-        else if (value is null)
-        {
-            writer.WriteNull();
         }
     }
 

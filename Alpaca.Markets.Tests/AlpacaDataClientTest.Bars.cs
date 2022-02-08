@@ -12,7 +12,10 @@ public sealed partial class AlpacaDataClientTest
         addMultiBarsPageExpectation(mock);
 
         var bars = await mock.Client.GetHistoricalBarsAsync(
-            new HistoricalBarsRequest(_symbols, _yesterday, _today, BarTimeFrame.Hour));
+            new HistoricalBarsRequest(_symbols, _yesterday, _today, BarTimeFrame.Hour)
+            {
+                Adjustment = Adjustment.SplitsAndDividends
+            });
 
         Assert.NotNull(bars);
         Assert.NotEmpty(bars.Items);
@@ -29,7 +32,10 @@ public sealed partial class AlpacaDataClientTest
         addSingleBarsPageExpectation(mock);
 
         var bars = await mock.Client.GetHistoricalBarsAsync(
-            new HistoricalBarsRequest(Stock, BarTimeFrame.Hour, _timeInterval));
+            new HistoricalBarsRequest(Stock, BarTimeFrame.Hour, _timeInterval)
+            {
+                Adjustment = Adjustment.DividendsOnly
+            });
 
         Assert.NotNull(bars);
         Assert.NotEmpty(bars.Items);
@@ -45,7 +51,10 @@ public sealed partial class AlpacaDataClientTest
         addSingleBarsPageExpectation(mock);
 
         var bars = await mock.Client.ListHistoricalBarsAsync(
-            new HistoricalBarsRequest(Stock, _yesterday, _today, BarTimeFrame.Hour));
+            new HistoricalBarsRequest(Stock, _yesterday, _today, BarTimeFrame.Hour)
+            {
+                Adjustment = Adjustment.SplitsOnly
+            });
 
         Assert.NotNull(bars);
         Assert.NotEmpty(bars.Items);
@@ -62,7 +71,10 @@ public sealed partial class AlpacaDataClientTest
         addMultiBarsPageExpectation(mock);
 
         var bars = await mock.Client.ListHistoricalBarsAsync(
-            new HistoricalBarsRequest(_symbols, _timeInterval, BarTimeFrame.Hour));
+            new HistoricalBarsRequest(_symbols, _timeInterval, BarTimeFrame.Hour)
+            {
+                Adjustment = Adjustment.Nothing
+            });
 
         Assert.NotNull(bars);
         Assert.NotEmpty(bars.Items);

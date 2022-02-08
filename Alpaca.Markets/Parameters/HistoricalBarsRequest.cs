@@ -119,6 +119,6 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
             .AddParameter("adjustment", Adjustment);
 
     HistoricalBarsRequest IHistoricalRequest<HistoricalBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
-        new HistoricalBarsRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto(), TimeFrame)
+        new HistoricalBarsRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto(), TimeFrame) { Adjustment = Adjustment }
             .WithPageSize(this.GetPageSize());
 }

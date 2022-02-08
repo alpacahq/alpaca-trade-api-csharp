@@ -3,7 +3,7 @@
 /// <summary>
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListOrdersAsync(ListOrdersRequest,CancellationToken)"/> call.
 /// </summary>
-public sealed class ListOrdersRequest :
+public sealed class ListOrdersRequest : Validation.IRequest,
 #pragma warning disable CS0618 // Type or member is obsolete
     IRequestWithTimeInterval<IExclusiveTimeInterval>
 #pragma warning restore CS0618 // Type or member is obsolete
@@ -44,7 +44,7 @@ public sealed class ListOrdersRequest :
     /// Gets list of symbols used for filtering the resulting list, if empty - orders for all symbols will be included.
     /// </summary>
     [UsedImplicitly]
-    public IEnumerable<String> Symbols => _symbols;
+    public IReadOnlyCollection<String> Symbols => _symbols;
 
     /// <summary>
     /// Adds a single <paramref name="symbol"/> item into the <see cref="Symbols"/> list.
@@ -54,7 +54,7 @@ public sealed class ListOrdersRequest :
     [UsedImplicitly]
     public ListOrdersRequest WithSymbol(String symbol)
     {
-        addSymbolWithCheck(symbol, nameof(symbol));
+        _symbols.Add(symbol.EnsureNotNull(symbol));
         return this;
     }
 
@@ -66,10 +66,20 @@ public sealed class ListOrdersRequest :
     [UsedImplicitly]
     public ListOrdersRequest WithSymbols(IEnumerable<String> symbols)
     {
-        foreach (var symbol in symbols.EnsureNotNull(nameof(symbols)))
-        {
-            addSymbolWithCheck(symbol, nameof(symbols));
-        }
+        _symbols.UnionWith(symbols.EnsureNotNull(nameof(symbols)));
+        return this;
+    }
+
+    /// <summary>
+    /// Sets time interval for filtering data returned by this request.
+    /// /// </summary>
+    /// <param name="value">New filtering interval.</param>
+    /// <returns>Request with applied filtering.</returns>
+    [UsedImplicitly]
+    public ListOrdersRequest WithInterval(
+        Interval<DateTime> value)
+    {
+        TimeInterval = value;
         return this;
     }
 
@@ -89,31 +99,16 @@ public sealed class ListOrdersRequest :
                 .AsStringAsync().ConfigureAwait(false)
         };
 
-    /// <summary>
-    /// Sets time interval for filtering data returned by this request.
-    /// /// </summary>
-    /// <param name="value">New filtering interval.</param>
-    /// <returns>Request with applied filtering.</returns>
-    [UsedImplicitly]
-    public ListOrdersRequest WithInterval(
-        Interval<DateTime> value)
+    IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
     {
-        TimeInterval = value;
-        return this;
+        if (_symbols.Contains(String.Empty))
+        {
+            yield return new RequestValidationException("Symbol name shouldn't be empty.", nameof(Symbols));
+        }
     }
 
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use WithInterval method instead of this one.", false)]
     void IRequestWithTimeInterval<IExclusiveTimeInterval>.SetInterval(
         IExclusiveTimeInterval value) => WithInterval(value.AsDateTimeInterval());
-
-    private void addSymbolWithCheck(String symbol, String paramName)
-    {
-        if (String.IsNullOrEmpty(symbol))
-        {
-            throw new ArgumentException(
-                "Symbol should be not null nor empty.", paramName);
-        }
-
-        _symbols.Add(symbol);
-    }
 }

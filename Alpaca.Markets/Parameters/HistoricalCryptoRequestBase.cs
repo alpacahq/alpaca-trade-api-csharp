@@ -76,6 +76,12 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     {
     }
 
+    internal void CopyPagination(Pagination pagination)
+    {
+        Pagination.Token = pagination.Token;
+        Pagination.Size = pagination.Size;
+    }
+
     /// <summary>
     /// Gets crypto exchanges list for data retrieval (empty list means 'all exchanges').
     /// </summary>

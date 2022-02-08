@@ -85,6 +85,7 @@ public sealed class PortfolioHistoryRequest :
         return this;
     }
 
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use WithInterval method instead of this one.", false)]
     void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
         IInclusiveTimeInterval value) => WithInterval(value.AsDateOnlyInterval());

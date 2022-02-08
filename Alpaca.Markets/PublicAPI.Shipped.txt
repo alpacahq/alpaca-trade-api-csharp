@@ -660,7 +660,7 @@ Alpaca.Markets.ListOrdersRequest.OrderStatusFilter.get -> Alpaca.Markets.OrderSt
 Alpaca.Markets.ListOrdersRequest.OrderStatusFilter.set -> void
 Alpaca.Markets.ListOrdersRequest.RollUpNestedOrders.get -> bool?
 Alpaca.Markets.ListOrdersRequest.RollUpNestedOrders.set -> void
-Alpaca.Markets.ListOrdersRequest.Symbols.get -> System.Collections.Generic.IEnumerable<string!>!
+Alpaca.Markets.ListOrdersRequest.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
 Alpaca.Markets.ListOrdersRequest.TimeInterval.get -> Alpaca.Markets.Interval<System.DateTime>
 Alpaca.Markets.ListOrdersRequest.WithInterval(Alpaca.Markets.Interval<System.DateTime> value) -> Alpaca.Markets.ListOrdersRequest!
 Alpaca.Markets.ListOrdersRequest.WithSymbol(string! symbol) -> Alpaca.Markets.ListOrdersRequest!

@@ -169,5 +169,7 @@ public sealed partial class AlpacaTradingClientTest
         Assert.Empty(order.Legs);
         Assert.Equal(1235L, order.IntegerQuantity);
         Assert.Equal(56L, order.IntegerFilledQuantity);
+
+        Assert.True(order.GetOrderQuantity().IsInShares);
     }
 }

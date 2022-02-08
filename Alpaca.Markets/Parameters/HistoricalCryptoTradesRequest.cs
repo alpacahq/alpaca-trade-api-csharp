@@ -92,9 +92,8 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
         HistoricalCryptoTradesRequest request,
         IEnumerable<CryptoExchange> exchanges)
         : base(request.Symbols, request.TimeInterval,
-            request.Exchanges.Concat(exchanges))
-    {
-    }
+            request.Exchanges.Concat(exchanges)) =>
+        CopyPagination(request.Pagination);
 
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoTradesRequest"/> object
@@ -123,5 +122,5 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
 
     HistoricalCryptoTradesRequest IHistoricalRequest<HistoricalCryptoTradesRequest, ITrade>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalCryptoTradesRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto())
-            .WithPageSize(this.GetPageSize());
+            .WithPageSize(this.GetPageSize()).WithExchanges(Exchanges);
 }

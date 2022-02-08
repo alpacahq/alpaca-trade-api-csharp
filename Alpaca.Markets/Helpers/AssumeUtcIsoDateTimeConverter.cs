@@ -13,16 +13,12 @@ internal sealed class AssumeUtcIsoDateTimeConverter : DateTimeConverterBase
         Object? value,
         JsonSerializer serializer)
     {
-        // ReSharper disable once ConvertIfStatementToSwitchStatement
         if (value is DateTime dateTimeValue)
         {
             writer.WriteValue(dateTimeValue.ToString("O"));
         }
-        else if (value is null)
-        {
-            writer.WriteNull();
-        }
     }
+
     public override Object? ReadJson(
         JsonReader reader,
         Type objectType,

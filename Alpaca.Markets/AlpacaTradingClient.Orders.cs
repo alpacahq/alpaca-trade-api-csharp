@@ -6,7 +6,7 @@ internal sealed partial class AlpacaTradingClient
         ListOrdersRequest request,
         CancellationToken cancellationToken = default) =>
         await _httpClient.GetAsync<IReadOnlyList<IOrder>, List<JsonOrder>>(
-            await request.EnsureNotNull(nameof(request))
+            await request.EnsureNotNull(nameof(request)).Validate()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 

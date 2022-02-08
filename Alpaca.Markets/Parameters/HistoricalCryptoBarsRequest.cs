@@ -100,8 +100,11 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
         HistoricalCryptoBarsRequest request,
         IEnumerable<CryptoExchange> exchanges)
         : base(request.Symbols, request.TimeInterval,
-            request.Exchanges.Concat(exchanges)) =>
+            request.Exchanges.Concat(exchanges))
+    {
+        CopyPagination(request.Pagination);
         TimeFrame = request.TimeFrame;
+    }
 
     /// <summary>
     /// Gets type of time bars for retrieval.
@@ -142,5 +145,5 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
 
     HistoricalCryptoBarsRequest IHistoricalRequest<HistoricalCryptoBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalCryptoBarsRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto(), TimeFrame)
-            .WithPageSize(this.GetPageSize());
+            .WithPageSize(this.GetPageSize()).WithExchanges(Exchanges);
 }

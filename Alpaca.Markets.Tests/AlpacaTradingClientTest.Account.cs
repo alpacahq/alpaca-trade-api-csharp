@@ -22,7 +22,7 @@ public sealed partial class AlpacaTradingClientTest
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         var activityGuid = Guid.NewGuid();
-        var timestamp = DateTime.UtcNow;
+        var timestamp = CustomTimeZone.ConvertFromUtcToEst(DateTime.UtcNow);
 
         mock.AddGet("/v2/account/activities", new JsonAccountActivity[]
         {
