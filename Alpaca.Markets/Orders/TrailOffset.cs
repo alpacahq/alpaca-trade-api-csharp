@@ -3,7 +3,7 @@ namespace Alpaca.Markets;
 /// <summary>
 /// Represents the trailing stop order offset in dollars or as percent of HWM.
 /// </summary>
-public readonly struct TrailOffset : IEquatable<TrailOffset>
+public readonly record struct TrailOffset
 {
     /// <summary>
     /// Creates new instance of the <see cref="TrailOffset"/> structure.
@@ -59,41 +59,4 @@ public readonly struct TrailOffset : IEquatable<TrailOffset>
     public static TrailOffset InPercent(
         Decimal value) =>
         new(value, false);
-
-    /// <inheritdoc />
-    public override Boolean Equals(Object? obj) =>
-        obj is TrailOffset trailOffset &&
-        trailOffset.Equals(this);
-
-    /// <inheritdoc />
-    public override Int32 GetHashCode() =>
-        Value.GetHashCode();
-
-    /// <inheritdoc />
-    public Boolean Equals(
-        TrailOffset other) =>
-        IsInDollars == other.IsInDollars &&
-        Decimal.Equals(Value, other.Value);
-
-    /// <summary>
-    /// Returns <c>true</c> if <paramref name="lhs"/> are equal to <paramref name="rhs"/>.
-    /// </summary>
-    /// <param name="lhs">Left hand side object.</param>
-    /// <param name="rhs">Right hand side object.</param>
-    /// <returns>True if both objects are equal.</returns>
-    public static Boolean operator ==(
-        TrailOffset lhs,
-        TrailOffset rhs) =>
-        lhs.Equals(rhs);
-
-    /// <summary>
-    /// Returns <c>true</c> if <paramref name="lhs"/> are not equal to <paramref name="rhs"/>.
-    /// </summary>
-    /// <param name="lhs">Left hand side object.</param>
-    /// <param name="rhs">Right hand side object.</param>
-    /// <returns>True if both objects are not equal.</returns>
-    public static Boolean operator !=(
-        TrailOffset lhs,
-        TrailOffset rhs) =>
-        !(lhs == rhs);
 }

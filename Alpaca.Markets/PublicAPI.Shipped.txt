@@ -911,7 +911,6 @@ Alpaca.Markets.TradeEvent.Suspended = 8 -> Alpaca.Markets.TradeEvent
 Alpaca.Markets.TrailingStopOrder
 Alpaca.Markets.TrailingStopOrder.TrailOffset.get -> Alpaca.Markets.TrailOffset
 Alpaca.Markets.TrailOffset
-Alpaca.Markets.TrailOffset.Equals(Alpaca.Markets.TrailOffset other) -> bool
 Alpaca.Markets.TrailOffset.IsInDollars.get -> bool
 Alpaca.Markets.TrailOffset.IsInPercent.get -> bool
 Alpaca.Markets.TrailOffset.TrailOffset() -> void
@@ -923,8 +922,6 @@ Alpaca.Markets.UpdateWatchListRequest.UpdateWatchListRequest(System.Guid watchLi
 Alpaca.Markets.UpdateWatchListRequest.WatchListId.get -> System.Guid
 override Alpaca.Markets.BarTimeFrame.ToString() -> string!
 override Alpaca.Markets.HistoryPeriod.ToString() -> string!
-override Alpaca.Markets.TrailOffset.Equals(object? obj) -> bool
-override Alpaca.Markets.TrailOffset.GetHashCode() -> int
 static Alpaca.Markets.BarTimeFrame.Day.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.BarTimeFrame.Hour.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.BarTimeFrame.Minute.get -> Alpaca.Markets.BarTimeFrame
@@ -1007,5 +1004,3 @@ static Alpaca.Markets.TrailingStopOrder.Buy(string! symbol, long quantity, Alpac
 static Alpaca.Markets.TrailingStopOrder.Sell(string! symbol, long quantity, Alpaca.Markets.TrailOffset trailOffset) -> Alpaca.Markets.TrailingStopOrder!
 static Alpaca.Markets.TrailOffset.InDollars(decimal value) -> Alpaca.Markets.TrailOffset
 static Alpaca.Markets.TrailOffset.InPercent(decimal value) -> Alpaca.Markets.TrailOffset
-static Alpaca.Markets.TrailOffset.operator !=(Alpaca.Markets.TrailOffset lhs, Alpaca.Markets.TrailOffset rhs) -> bool
-static Alpaca.Markets.TrailOffset.operator ==(Alpaca.Markets.TrailOffset lhs, Alpaca.Markets.TrailOffset rhs) -> bool
