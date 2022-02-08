@@ -101,7 +101,33 @@ public sealed partial class AlpacaTradingClientTest
 
         var order = await mock.Client.PostOrderAsync(
             MarketOrder.Sell(Stock, OrderQuantity.Fractional(0.55M))
-                .Bracket(123.45M, 678.90M, 612.34M));
+                .Bracket(123.45M, 678.90M));
+
+        validateOrder(order);
+    }
+
+    [Fact]
+    public async Task PostTakeProfitOrderAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        mock.AddPost("/v2/orders", createOrder());
+
+        var order = await mock.Client.PostOrderAsync(OrderSide.Buy
+            .Limit(Stock, 42L, 12.34M).TakeProfit(14.15M));
+
+        validateOrder(order);
+    }
+
+    [Fact]
+    public async Task PostStopLossOrderAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        mock.AddPost("/v2/orders", createOrder());
+
+        var order = await mock.Client.PostOrderAsync(OrderSide.Buy
+            .Limit(Stock, 42L, 12.34M).StopLoss(10.11M));
 
         validateOrder(order);
     }

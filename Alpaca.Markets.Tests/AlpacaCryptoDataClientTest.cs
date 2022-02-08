@@ -37,7 +37,6 @@ public sealed partial class AlpacaCryptoDataClientTest
         MockClientsFactoryFixture mockClientsFactory) =>
         _mockClientsFactory = mockClientsFactory;
 
-
     [Fact]
     public void AlpacaCryptoDataClientConfigurationValidationWorks()
     {
