@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: CodeQL Analyis
 
 on:
   pull_request:

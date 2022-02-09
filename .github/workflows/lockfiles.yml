@@ -1,4 +1,4 @@
-name: Update NuGet lock files
+name: Update NuGet Lock Files
 on:
   workflow_dispatch:
 
@@ -16,9 +16,10 @@ jobs:
       with:
         dotnet-version: '6.0.x'
 
-    - name: Restore dependencies
+    - name: Restore Dependencies
       run: dotnet restore --force-evaluate
 
-    - uses: stefanzweifel/git-auto-commit-action@v4
+    - name: Auto-commit changed files
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: Update NuGet lock files
+        commit_message: Update NuGet lock files after Dependabot dependency update.
