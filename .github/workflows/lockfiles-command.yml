@@ -1,0 +1,27 @@
+name: Update NuGet lock files
+on:
+  workflow_dispatch:
+
+jobs:
+  lockfiles:
+    name: Update and Commit
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.PAT_REPO_FULL }}
+
+    - name: Setup .NET 6.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore --force-evaluate
+
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Update NuGet lock files
