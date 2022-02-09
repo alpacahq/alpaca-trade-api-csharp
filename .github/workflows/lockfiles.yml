@@ -10,9 +10,6 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-        token: ${{ secrets.PAT_REPO_FULL }}
 
     - name: Setup .NET 6.0.x
       uses: actions/setup-dotnet@v1
