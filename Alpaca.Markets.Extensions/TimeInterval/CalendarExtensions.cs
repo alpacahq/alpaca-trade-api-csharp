@@ -12,6 +12,7 @@ public static class CalendarExtensions
     /// <param name="calendar">The source open/close times information.</param>
     /// <returns>The inclusive time interval constructed from the <paramref name="calendar"/> data.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use IIntervalCalendar.TradingOpenCloseUtc property instead of this extension method.", false)]
     public static Interval<DateTime> AsIntervalUtc(
         this ICalendar calendar) =>
@@ -24,6 +25,7 @@ public static class CalendarExtensions
     /// <param name="calendar">The source open/close times information.</param>
     /// <returns>The inclusive time interval constructed from the <paramref name="calendar"/> data.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use IIntervalCalendar.TradingOpenCloseUtc property instead of this extension method.", false)]
     public static IInclusiveTimeInterval AsInclusiveTimeIntervalUtc(
         this ICalendar calendar) => TimeInterval
@@ -37,6 +39,7 @@ public static class CalendarExtensions
     /// <param name="calendar">The source open/close times information.</param>
     /// <returns>The exclusive time interval constructed from the <paramref name="calendar"/> data.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use IIntervalCalendar.TradingOpenCloseUtc property instead of this extension method.", false)]
     public static IExclusiveTimeInterval AsExclusiveTimeIntervalUtc(
         this ICalendar calendar) => TimeInterval

@@ -6,6 +6,49 @@ namespace Alpaca.Markets.Extensions.Tests;
 public sealed partial class AlpacaDataClientTest
 {
     [Fact]
+    public async Task GetAverageDailyTradeVolumeAsyncWithDatesWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+
+        addPaginatedResponses(mock, addSingleBarsPageExpectation);
+
+        var (from, into) = _timeInterval.AsDateInterval();
+        var (adtv, count) = await mock.Client.GetAverageDailyTradeVolumeAsync(
+            Stock, from!.Value, into!.Value);
+
+        Assert.Equal(1000M, adtv);
+        Assert.True(count != 0);
+    }
+
+    [Fact]
+    public async Task GetAverageDailyTradeVolumeAsyncWithIntervalWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+
+        addPaginatedResponses(mock, addSingleBarsPageExpectation);
+
+        var (adtv, count) = await mock.Client.GetAverageDailyTradeVolumeAsync(
+            Stock, _timeInterval.AsDateInterval());
+
+        Assert.Equal(1000M, adtv);
+        Assert.True(count != 0);
+    }
+
+    [Fact]
+    public async Task GetSimpleMovingAverageAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+
+        addPaginatedResponses(mock, addSingleBarsPageExpectation);
+
+        var counter = await validateList(
+            mock.Client.GetSimpleMovingAverageAsync(
+                new HistoricalBarsRequest(Stock, BarTimeFrame.Hour, _timeInterval), 3));
+
+        Assert.NotEqual(0, counter);
+    }
+
+    [Fact]
     public async Task GetHistoricalBarsAsAsyncEnumerableWorks()
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();

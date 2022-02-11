@@ -5,7 +5,7 @@
 /// </summary>
 public static class EnumerableExtensions
 {
-    private readonly struct Bar : IBar, IEquatable<Bar>
+    private readonly record struct Bar : IBar
     {
         public String Symbol { get; private init; }
 
@@ -66,46 +66,6 @@ public static class EnumerableExtensions
                 Vwap = lhs.Vwap / count,
                 TradeCount = lhs.TradeCount / (UInt64)count
             };
-
-        public Boolean Equals(Bar other) =>
-            String.Equals(Symbol, other.Symbol, StringComparison.Ordinal) &&
-            TimeUtc.Equals(other.TimeUtc) &&
-            Open == other.Open &&
-            High == other.High &&
-            Low == other.Low &&
-            Close == other.Close &&
-            Volume == other.Volume &&
-            Vwap == other.Vwap &&
-            TradeCount == other.TradeCount;
-
-        public override Boolean Equals(Object? obj) =>
-            obj is Bar other && Equals(other);
-
-        [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
-        public override Int32 GetHashCode()
-        {
-            unchecked
-            {
-#if NET5_0_OR_GREATER || NETSTANDARD2_1
-                    var hashCode = Symbol.GetHashCode(StringComparison.Ordinal);
-#else
-                var hashCode = Symbol.GetHashCode();
-#endif
-                hashCode = (hashCode * 397) ^ TimeUtc.GetHashCode();
-                hashCode = (hashCode * 397) ^ Open.GetHashCode();
-                hashCode = (hashCode * 397) ^ High.GetHashCode();
-                hashCode = (hashCode * 397) ^ Low.GetHashCode();
-                hashCode = (hashCode * 397) ^ Close.GetHashCode();
-                hashCode = (hashCode * 397) ^ Volume.GetHashCode();
-                hashCode = (hashCode * 397) ^ Vwap.GetHashCode();
-                hashCode = (hashCode * 397) ^ TradeCount.GetHashCode();
-                return hashCode;
-            }
-        }
-
-        public static Boolean operator ==(Bar left, Bar right) => left.Equals(right);
-
-        public static Boolean operator !=(Bar left, Bar right) => !left.Equals(right);
     }
 
     /// <summary>

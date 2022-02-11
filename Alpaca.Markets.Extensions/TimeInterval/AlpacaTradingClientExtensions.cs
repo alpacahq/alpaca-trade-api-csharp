@@ -14,6 +14,7 @@ public static partial class AlpacaTradingClientExtensions
     /// <returns>Read-only trading date information object.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use another method overload that takes the DateOnly argument.", false)]
     public static async Task<ICalendar?> GetCalendarForSingleDayAsync(
         this IAlpacaTradingClient client,

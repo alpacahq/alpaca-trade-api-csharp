@@ -41,6 +41,7 @@ public static partial class HistoricalBarsClientExtensions
     /// <returns>The pair of ADTV value and number of processed day bars.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use another method overload that takes the DateOnly arguments.", false)]
     public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync<TRequest>(
         this IHistoricalBarsClient<TRequest> client,
@@ -71,7 +72,7 @@ public static partial class HistoricalBarsClientExtensions
         DateOnly into)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
         GetAverageDailyTradeVolumeAsync(
-            client, symbol, new Interval<DateOnly>(from, into), CancellationToken.None);
+            client, symbol, from, into, CancellationToken.None);
 
     /// <summary>
     /// Gets the average trade volume for the given <paramref name="symbol"/> and time interval
@@ -87,6 +88,7 @@ public static partial class HistoricalBarsClientExtensions
     /// <returns>The pair of ADTV value and number of processed day bars.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use another method overload that takes the DateOnly arguments.", false)]
     public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync<TRequest>(
         this IHistoricalBarsClient<TRequest> client,
@@ -133,6 +135,7 @@ public static partial class HistoricalBarsClientExtensions
     /// <returns>The pair of ADTV value and number of processed day bars.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use another method overload that takes the Interval<DateOnly> argument.", false)]
     public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync<TRequest>(
         this IHistoricalBarsClient<TRequest> client,
@@ -171,6 +174,7 @@ public static partial class HistoricalBarsClientExtensions
     /// <returns>The pair of ADTV value and number of processed day bars.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use another method overload that takes the Interval<DateOnly> argument.", false)]
     public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync<TRequest>(
         this IHistoricalBarsClient<TRequest> client,
