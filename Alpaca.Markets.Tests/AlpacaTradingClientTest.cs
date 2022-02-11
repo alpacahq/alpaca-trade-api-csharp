@@ -16,6 +16,28 @@ public sealed partial class AlpacaTradingClientTest
         _mockClientsFactory = mockClientsFactory;
 
     [Fact]
+    public void AlpacaTradingClientConfigurationValidationWorks()
+    {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+        var nullSecurityId = new AlpacaTradingClientConfiguration { SecurityId = null };
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+        Assert.Throws<InvalidOperationException>(() =>
+            _mockClientsFactory.GetAlpacaTradingClientMock(nullSecurityId));
+
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+        var nullApiEndpoint = new AlpacaTradingClientConfiguration { ApiEndpoint = null };
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+        Assert.Throws<InvalidOperationException>(() =>
+            _mockClientsFactory.GetAlpacaTradingClientMock(nullApiEndpoint));
+
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+        var nullThrottleParameters = new AlpacaTradingClientConfiguration { ThrottleParameters = null };
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+        Assert.Throws<InvalidOperationException>(() =>
+            _mockClientsFactory.GetAlpacaTradingClientMock(nullThrottleParameters));
+    }
+
+    [Fact]
     public async Task ListIntervalCalendarAsyncWorks()
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
