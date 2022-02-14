@@ -1,4 +1,3 @@
-using Newtonsoft.Json.Linq;
 using RichardSzalay.MockHttp;
 
 namespace Alpaca.Markets.Extensions.Tests;

@@ -33,12 +33,6 @@
         "resolved": "3.3.3",
         "contentHash": "DWLeZtw2jszmzAh/MZXVo/Dy8fD9vcRaCIRZTaf2ppqaug8BGIV81dQdZfaYFlNuw7FyuZLVC5SZPZsCcePZhQ=="
       },
-      "Microsoft.DotNet.Analyzers.Compatibility": {
-        "type": "Direct",
-        "requested": "[0.2.12-alpha, )",
-        "resolved": "0.2.12-alpha",
-        "contentHash": "uu3yAa6hQZJoJZfBwXSvh+bN03KO06sWNZXwodxz7J1wva1g1+O4TnWJxX4dmsP6tLDTZtKy8IHiPLOOZIwt9w=="
-      },
       "Microsoft.Extensions.Http": {
         "type": "Direct",
         "requested": "[6.0.0, )",
@@ -311,12 +305,6 @@
         "resolved": "3.3.3",
         "contentHash": "DWLeZtw2jszmzAh/MZXVo/Dy8fD9vcRaCIRZTaf2ppqaug8BGIV81dQdZfaYFlNuw7FyuZLVC5SZPZsCcePZhQ=="
       },
-      "Microsoft.DotNet.Analyzers.Compatibility": {
-        "type": "Direct",
-        "requested": "[0.2.12-alpha, )",
-        "resolved": "0.2.12-alpha",
-        "contentHash": "uu3yAa6hQZJoJZfBwXSvh+bN03KO06sWNZXwodxz7J1wva1g1+O4TnWJxX4dmsP6tLDTZtKy8IHiPLOOZIwt9w=="
-      },
       "Microsoft.Extensions.Http": {
         "type": "Direct",
         "requested": "[6.0.0, )",
@@ -577,12 +565,6 @@
         "resolved": "3.3.3",
         "contentHash": "DWLeZtw2jszmzAh/MZXVo/Dy8fD9vcRaCIRZTaf2ppqaug8BGIV81dQdZfaYFlNuw7FyuZLVC5SZPZsCcePZhQ=="
       },
-      "Microsoft.DotNet.Analyzers.Compatibility": {
-        "type": "Direct",
-        "requested": "[0.2.12-alpha, )",
-        "resolved": "0.2.12-alpha",
-        "contentHash": "uu3yAa6hQZJoJZfBwXSvh+bN03KO06sWNZXwodxz7J1wva1g1+O4TnWJxX4dmsP6tLDTZtKy8IHiPLOOZIwt9w=="
-      },
       "Microsoft.Extensions.Http": {
         "type": "Direct",
         "requested": "[6.0.0, )",
@@ -799,12 +781,6 @@
         "resolved": "3.3.3",
         "contentHash": "DWLeZtw2jszmzAh/MZXVo/Dy8fD9vcRaCIRZTaf2ppqaug8BGIV81dQdZfaYFlNuw7FyuZLVC5SZPZsCcePZhQ=="
       },
-      "Microsoft.DotNet.Analyzers.Compatibility": {
-        "type": "Direct",
-        "requested": "[0.2.12-alpha, )",
-        "resolved": "0.2.12-alpha",
-        "contentHash": "uu3yAa6hQZJoJZfBwXSvh+bN03KO06sWNZXwodxz7J1wva1g1+O4TnWJxX4dmsP6tLDTZtKy8IHiPLOOZIwt9w=="
-      },
       "Microsoft.Extensions.Http": {
         "type": "Direct",
         "requested": "[6.0.0, )",
@@ -994,12 +970,6 @@
         "requested": "[3.3.3, )",
         "resolved": "3.3.3",
         "contentHash": "DWLeZtw2jszmzAh/MZXVo/Dy8fD9vcRaCIRZTaf2ppqaug8BGIV81dQdZfaYFlNuw7FyuZLVC5SZPZsCcePZhQ=="
-      },
-      "Microsoft.DotNet.Analyzers.Compatibility": {
-        "type": "Direct",
-        "requested": "[0.2.12-alpha, )",
-        "resolved": "0.2.12-alpha",
-        "contentHash": "uu3yAa6hQZJoJZfBwXSvh+bN03KO06sWNZXwodxz7J1wva1g1+O4TnWJxX4dmsP6tLDTZtKy8IHiPLOOZIwt9w=="
       },
       "Microsoft.Extensions.Http": {
         "type": "Direct",

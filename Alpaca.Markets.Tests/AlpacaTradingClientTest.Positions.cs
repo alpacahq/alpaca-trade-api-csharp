@@ -1,6 +1,3 @@
-using System.Net;
-using Xunit;
-
 namespace Alpaca.Markets.Tests;
 
 public sealed partial class AlpacaTradingClientTest

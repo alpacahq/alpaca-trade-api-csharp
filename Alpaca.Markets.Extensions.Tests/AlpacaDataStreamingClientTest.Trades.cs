@@ -1,7 +1,4 @@
-﻿using Moq;
-using Xunit;
-
-namespace Alpaca.Markets.Extensions.Tests;
+﻿namespace Alpaca.Markets.Extensions.Tests;
 
 public sealed partial class AlpacaDataStreamingClientTest
 {

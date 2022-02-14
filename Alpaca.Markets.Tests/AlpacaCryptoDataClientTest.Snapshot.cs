@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Alpaca.Markets.Tests;
+﻿namespace Alpaca.Markets.Tests;
 
 public sealed partial class AlpacaCryptoDataClientTest
 {

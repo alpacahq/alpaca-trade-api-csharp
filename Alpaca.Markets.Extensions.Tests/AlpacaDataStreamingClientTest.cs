@@ -1,7 +1,5 @@
 ﻿using System.Collections.Concurrent;
 using System.Linq.Expressions;
-using Moq;
-using Xunit;
 
 namespace Alpaca.Markets.Extensions.Tests;
 

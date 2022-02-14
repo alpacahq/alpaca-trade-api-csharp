@@ -1,5 +1,3 @@
-using Xunit;
-
 namespace Alpaca.Markets.Tests;
 
 [Collection("MockEnvironment")]

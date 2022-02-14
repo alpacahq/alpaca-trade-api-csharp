@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Alpaca.Markets.Extensions.Tests;
+﻿namespace Alpaca.Markets.Extensions.Tests;
 
 public sealed class StatisticsTest
 {

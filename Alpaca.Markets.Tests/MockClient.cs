@@ -1,5 +1,3 @@
-using RichardSzalay.MockHttp;
-
 namespace Alpaca.Markets.Tests;
 
 public sealed class MockClient<TClientConfiguration, TClient> : IDisposable

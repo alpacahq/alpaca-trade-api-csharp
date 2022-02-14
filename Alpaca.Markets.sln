@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alpaca.Markets.Tests", "Alpaca.Markets.Tests\Alpaca.Markets.Tests.csproj", "{7573A263-9A73-460F-ABB5-5C9B96B44022}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpaca.Markets.Extensions.Tests", "Alpaca.Markets.Extensions.Tests\Alpaca.Markets.Extensions.Tests.csproj", "{4D9511D5-CB47-47B1-98E3-A92E02960CD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alpaca.Markets.Extensions.Tests", "Alpaca.Markets.Extensions.Tests\Alpaca.Markets.Extensions.Tests.csproj", "{4D9511D5-CB47-47B1-98E3-A92E02960CD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

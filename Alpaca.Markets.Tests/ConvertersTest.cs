@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using Xunit;
-
-namespace Alpaca.Markets.Tests;
+﻿namespace Alpaca.Markets.Tests;
 
 public sealed class ConvertersTest
 {

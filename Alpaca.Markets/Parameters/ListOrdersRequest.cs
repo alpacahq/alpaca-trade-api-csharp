@@ -54,7 +54,7 @@ public sealed class ListOrdersRequest : Validation.IRequest,
     [UsedImplicitly]
     public ListOrdersRequest WithSymbol(String symbol)
     {
-        _symbols.Add(symbol.EnsureNotNull(symbol));
+        _symbols.Add(symbol.EnsureNotNull(nameof(symbol)));
         return this;
     }
 

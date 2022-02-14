@@ -1,6 +1,3 @@
-using Newtonsoft.Json.Linq;
-using Xunit;
-
 namespace Alpaca.Markets.Extensions.Tests;
 
 [Collection("MockEnvironment")]
