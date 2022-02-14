@@ -9,7 +9,6 @@ Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions
 Alpaca.Markets.Extensions.AlpacaTradingClientExtensions
 Alpaca.Markets.Extensions.AlpacaValueTask
 Alpaca.Markets.Extensions.AlpacaValueTask.AlpacaValueTask() -> void
-Alpaca.Markets.Extensions.AlpacaValueTask.Equals(Alpaca.Markets.Extensions.AlpacaValueTask other) -> bool
 Alpaca.Markets.Extensions.AlpacaValueTask.GetAwaiter() -> System.Runtime.CompilerServices.ValueTaskAwaiter
 Alpaca.Markets.Extensions.AlpacaValueTask.WithCancellation(System.Threading.CancellationToken cancellationToken) -> Alpaca.Markets.Extensions.AlpacaValueTask
 Alpaca.Markets.Extensions.Bracket
@@ -32,8 +31,6 @@ Alpaca.Markets.Extensions.ReconnectionParameters.MinReconnectionDelay.set -> voi
 Alpaca.Markets.Extensions.ReconnectionParameters.ReconnectionParameters() -> void
 Alpaca.Markets.Extensions.StreamingClientExtensions
 Alpaca.Markets.Extensions.StreamingDataClientExtensions
-override Alpaca.Markets.Extensions.AlpacaValueTask.Equals(object? obj) -> bool
-override Alpaca.Markets.Extensions.AlpacaValueTask.GetHashCode() -> int
 static Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaCryptoStreamingClient! client) -> Alpaca.Markets.IAlpacaCryptoStreamingClient!
 static Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaCryptoStreamingClient! client, Alpaca.Markets.Extensions.ReconnectionParameters! parameters) -> Alpaca.Markets.IAlpacaCryptoStreamingClient!
 static Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesAsAsyncEnumerable(this Alpaca.Markets.IAlpacaDataClient! client, Alpaca.Markets.NewsArticlesRequest! request) -> System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.INewsArticle!>!
@@ -73,8 +70,6 @@ static Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTrad
 static Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
 static Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaStreamingClient! client) -> Alpaca.Markets.IAlpacaStreamingClient!
 static Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaStreamingClient! client, Alpaca.Markets.Extensions.ReconnectionParameters! parameters) -> Alpaca.Markets.IAlpacaStreamingClient!
-static Alpaca.Markets.Extensions.AlpacaValueTask.operator !=(Alpaca.Markets.Extensions.AlpacaValueTask lhs, Alpaca.Markets.Extensions.AlpacaValueTask rhs) -> bool
-static Alpaca.Markets.Extensions.AlpacaValueTask.operator ==(Alpaca.Markets.Extensions.AlpacaValueTask lhs, Alpaca.Markets.Extensions.AlpacaValueTask rhs) -> bool
 static Alpaca.Markets.Extensions.Bracket.Buy(string! symbol, long quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice) -> Alpaca.Markets.BracketOrder!
 static Alpaca.Markets.Extensions.Bracket.Buy(string! symbol, long quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice, decimal stopLossLimitPrice) -> Alpaca.Markets.BracketOrder!
 static Alpaca.Markets.Extensions.Bracket.Sell(string! symbol, long quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice) -> Alpaca.Markets.BracketOrder!

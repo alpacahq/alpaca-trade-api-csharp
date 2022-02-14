@@ -1,0 +1,73 @@
+﻿using Moq;
+using Xunit;
+
+namespace Alpaca.Markets.Extensions.Tests;
+
+public sealed partial class AlpacaDataStreamingClientTest
+{
+    [Fact]
+    public void GetDailyBarSubscriptionWorks()
+    {
+        var client = createMockClient(
+            _ => _.GetDailyBarSubscription(It.IsAny<String>()));
+
+        var subscriptionOne = client.Object.GetDailyBarSubscription(_symbols);
+        var subscriptionTwo = client.Object.GetDailyBarSubscription(Stock, Other);
+
+        verifySubscriptions(subscriptionOne, subscriptionTwo);
+        verifySubscriptionEvents(subscriptionOne, 4);
+
+        client.VerifyAll();
+    }
+
+    [Fact]
+    public async Task SubscribeDailyBarAsyncWorks()
+    {
+        var client = createMockClient(
+            _ => _.GetDailyBarSubscription(It.IsAny<String>()));
+
+        await using var subscription = await client.Object.SubscribeDailyBarAsync(Stock);
+        await using var subscriptionOne = await client.Object.SubscribeDailyBarAsync(_symbols);
+        // ReSharper disable once UseAwaitUsing
+        using var subscriptionTwo = await client.Object.SubscribeDailyBarAsync(Stock, Other);
+
+        verifySubscriptions(subscriptionOne, subscriptionTwo);
+        verifySubscriptionEvents(subscription, 2);
+
+        await subscriptionOne.DisposeAsync();
+        client.VerifyAll();
+    }
+
+    [Fact]
+    public void GetMinuteBarSubscriptionWorks()
+    {
+        var client = createMockClient(
+            _ => _.GetMinuteBarSubscription(It.IsAny<String>()));
+
+        var subscriptionOne = client.Object.GetMinuteBarSubscription(_symbols);
+        var subscriptionTwo = client.Object.GetMinuteBarSubscription(Stock, Other);
+
+        verifySubscriptions(subscriptionOne, subscriptionTwo);
+        verifySubscriptionEvents(subscriptionOne, 4);
+
+        client.VerifyAll();
+    }
+
+    [Fact]
+    public async Task SubscribeMinuteBarAsyncWorks()
+    {
+        var client = createMockClient(
+            _ => _.GetMinuteBarSubscription(It.IsAny<String>()));
+
+        await using var subscription = await client.Object.SubscribeMinuteBarAsync(Stock);
+        await using var subscriptionOne = await client.Object.SubscribeMinuteBarAsync(_symbols);
+        // ReSharper disable once UseAwaitUsing
+        using var subscriptionTwo = await client.Object.SubscribeMinuteBarAsync(Stock, Other);
+
+        verifySubscriptions(subscriptionOne, subscriptionTwo);
+        verifySubscriptionEvents(subscription, 2);
+
+        await subscriptionOne.DisposeAsync();
+        client.VerifyAll();
+    }
+}
