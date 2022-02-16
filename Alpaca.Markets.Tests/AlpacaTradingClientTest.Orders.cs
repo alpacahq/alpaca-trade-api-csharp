@@ -163,9 +163,9 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddDelete("/v2/orders", new JsonOrderActionStatus[]
+        mock.AddDelete("/v2/orders", new []
         {
-            new ()
+            new JsonOrderActionStatus
             {
                 StatusCode = (Int64)HttpStatusCode.OK,
                 OrderId = Guid.NewGuid()

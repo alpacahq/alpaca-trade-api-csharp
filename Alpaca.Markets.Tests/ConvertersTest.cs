@@ -2,7 +2,7 @@
 
 public sealed class ConvertersTest
 {
-    private struct EnumWrapper<T>
+    private record struct EnumWrapper<T>
     {
         public T Item { get; set; }
     }

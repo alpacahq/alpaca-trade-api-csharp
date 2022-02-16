@@ -18,13 +18,11 @@ public sealed class HistoricalRequestTest
     [Fact]
     public void HistoricalBarsRequestWorks()
     {
-        var original =
+        var original = addPagination(
             new HistoricalBarsRequest(_stocks, _timeInterval, BarTimeFrame.Hour)
                 {
                     Adjustment = Adjustment.DividendsOnly
-                }
-                .WithPageToken(Guid.NewGuid().ToString("D"))
-                .WithPageSize(42);
+                });
         var validated = getValidatedRequest(original);
 
         Assert.Equal(original.Adjustment, validated.Adjustment);
@@ -35,35 +33,25 @@ public sealed class HistoricalRequestTest
     [Fact]
     public void HistoricalTradesRequestWorks()
     {
-        var original =
-            new HistoricalTradesRequest(_stocks, _timeInterval)
-                .WithPageToken(Guid.NewGuid().ToString("D"))
-                .WithPageSize(42);
-        var validated = getValidatedRequest(original);
-
-        validateCopiedProperties(original, validated);
+        var original = addPagination(
+            new HistoricalTradesRequest(_stocks, _timeInterval));
+        validateCopiedProperties(original, getValidatedRequest(original));
     }
 
     [Fact]
     public void HistoricalQuotesRequestWorks()
     {
-        var original =
-            new HistoricalQuotesRequest(_stocks, _timeInterval)
-                .WithPageToken(Guid.NewGuid().ToString("D"))
-                .WithPageSize(42);
-        var validated = getValidatedRequest(original);
-
-        validateCopiedProperties(original, validated);
+        var original = addPagination(
+            new HistoricalQuotesRequest(_stocks, _timeInterval));
+        validateCopiedProperties(original, getValidatedRequest(original));
     }
 
     [Fact]
     public void HistoricalCryptoBarsRequestWorks()
     {
-        var original =
+        var original = addPagination(
             new HistoricalCryptoBarsRequest(_crypto, _timeInterval, BarTimeFrame.Hour)
-                .WithPageToken(Guid.NewGuid().ToString("D"))
-                .WithExchanges(_cryptoExchanges)
-                .WithPageSize(42);
+                .WithExchanges(_cryptoExchanges));
         var validated = getValidatedRequest(original);
 
         Assert.Equal(original.TimeFrame, validated.TimeFrame);
@@ -73,29 +61,21 @@ public sealed class HistoricalRequestTest
     [Fact]
     public void HistoricalCryptoTradesRequestWorks()
     {
-        var original =
+        var original = addPagination(
             new HistoricalCryptoTradesRequest(_stocks, _timeInterval)
-                .WithPageToken(Guid.NewGuid().ToString("D"))
-                .WithExchanges(_cryptoExchanges)
-                .WithPageSize(42);
-        var validated = getValidatedRequest(original);
-
-        validateCopiedProperties(original, validated);
+                .WithExchanges(_cryptoExchanges));
+        validateCopiedProperties(original, getValidatedRequest(original));
     }
 
     [Fact]
     public void HistoricalCryptoQuotesRequestWorks()
     {
-        var original =
+        var original = addPagination(
             new HistoricalCryptoQuotesRequest(_stocks, _timeInterval)
-                .WithPageToken(Guid.NewGuid().ToString("D"))
-                .WithExchanges(_cryptoExchanges)
-                .WithPageSize(42);
-        var validated = getValidatedRequest(original);
-
-        validateCopiedProperties(original, validated);
+                .WithExchanges(_cryptoExchanges));
+        validateCopiedProperties(original, getValidatedRequest(original));
     }
-    
+
     [Fact]
     public void HistoricalNewsArticlesRequestWorks()
     {
@@ -123,6 +103,12 @@ public sealed class HistoricalRequestTest
         Assert.NotEqual(original.Pagination.Token, validated.Pagination.Token);
         Assert.Null(validated.Pagination.Token);
     }
+
+    private static TRequest addPagination<TRequest>(TRequest request)
+        where TRequest : class, IHistoricalRequest =>
+        request
+            .WithPageToken(Guid.NewGuid().ToString("D"))
+            .WithPageSize(42);
 
     private static TRequest getValidatedRequest<TRequest, TItem>(
         IHistoricalRequest<TRequest, TItem> original)

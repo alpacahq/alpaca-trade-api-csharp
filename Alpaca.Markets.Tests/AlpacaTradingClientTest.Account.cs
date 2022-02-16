@@ -22,9 +22,9 @@ public sealed partial class AlpacaTradingClientTest
         var activityGuid = Guid.NewGuid();
         var timestamp = CustomTimeZone.ConvertFromUtcToEst(DateTime.UtcNow);
 
-        mock.AddGet("/v2/account/activities", new JsonAccountActivity[]
+        mock.AddGet("/v2/account/activities", new []
         {
-            new ()
+            new JsonAccountActivity
             {
                 ActivityDateTime = timestamp,
                 ActivityId = $"{timestamp:yyyyMMddHHmmssfff}:{activityGuid:D}",

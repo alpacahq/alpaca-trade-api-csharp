@@ -47,7 +47,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddDelete("/v2/positions", new JsonPositionActionStatus[]
+        mock.AddDelete("/v2/positions", new JsonPositionActionStatus []
         {
             new () { StatusCode = (Int64)HttpStatusCode.OK, Symbol = Stock },
             new () { StatusCode = (Int64)HttpStatusCode.OK, Symbol = Crypto }
@@ -68,7 +68,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddDelete("/v2/positions", new JsonPositionActionStatus[]
+        mock.AddDelete("/v2/positions", new JsonPositionActionStatus []
         {
             new () { StatusCode = (Int64)HttpStatusCode.OK, Symbol = Stock },
             new () { StatusCode = (Int64)HttpStatusCode.OK, Symbol = Crypto }
