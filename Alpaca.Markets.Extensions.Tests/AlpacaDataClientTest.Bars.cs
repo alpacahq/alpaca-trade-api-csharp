@@ -46,6 +46,18 @@ public sealed partial class AlpacaDataClientTest
     }
 
     [Fact]
+    public async Task GetSimpleMovingAverageAsyncZeroWindowWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+
+        var counter = await validateList(
+            mock.Client.GetSimpleMovingAverageAsync(
+                new HistoricalBarsRequest(Stock, BarTimeFrame.Hour, _timeInterval), 0));
+
+        Assert.Equal(0, counter);
+    }
+
+    [Fact]
     public async Task GetHistoricalBarsAsAsyncEnumerableWorks()
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();

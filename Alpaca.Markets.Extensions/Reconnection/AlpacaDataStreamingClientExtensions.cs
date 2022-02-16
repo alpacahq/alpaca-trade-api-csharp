@@ -17,30 +17,39 @@ public static partial class AlpacaDataStreamingClientExtensions
         {
         }
 
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() =>
             Client.GetMinuteBarSubscription();
 
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<ITrade> GetTradeSubscription(String symbol) =>
             Client.GetTradeSubscription(symbol);
 
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(String symbol) =>
             Client.GetQuoteSubscription(symbol);
 
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(String symbol) =>
             Client.GetMinuteBarSubscription(symbol);
 
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(String symbol) =>
             Client.GetDailyBarSubscription(symbol);
 
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<IStatus> GetStatusSubscription(String symbol) =>
             Client.GetStatusSubscription(symbol);
 
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<ITrade> GetCancellationSubscription(String symbol) =>
             Client.GetCancellationSubscription(symbol);
 
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<ICorrection> GetCorrectionSubscription(String symbol) =>
             Client.GetCorrectionSubscription(symbol);
 
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(String symbol) =>
             Client.GetLimitUpLimitDownSubscription(symbol);
     }

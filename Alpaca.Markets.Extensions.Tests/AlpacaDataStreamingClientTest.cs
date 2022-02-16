@@ -39,7 +39,19 @@ public sealed partial class AlpacaDataStreamingClientTest
     private const String Stock = "AAPL";
 
     private const String Other = "MSFT";
-    
+
+    [Fact]
+    public async Task WithReconnectWorks()
+    {
+        var client = createMockClient(
+            _ => _.GetTradeSubscription(It.IsAny<String>()));
+
+        var wrapped = client.Object.WithReconnect();
+        var result = await wrapped.ConnectAndAuthenticateAsync();
+
+        Assert.Equal(AuthStatus.Authorized, result);
+    }
+
     private static Mock<IAlpacaDataStreamingClient> createMockClient<TItem>(
         Expression<Func<IAlpacaDataStreamingClient, IAlpacaDataSubscription<TItem>>> subscriptionFactory)
         where TItem : class
