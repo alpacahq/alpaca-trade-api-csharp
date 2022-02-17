@@ -28,6 +28,8 @@ public static class AlpacaDataSubscriptionExtensions
     /// <typeparam name="TItem">Type of streaming item provided via <paramref name="subscription"/> object.</typeparam>
     /// <returns>Stream of items received from server in form of async enumerable.</returns>
     [UsedImplicitly]
+    [SuppressMessage("Design", "CA1062:Validate arguments of public methods",
+        Justification = "First validation using the EnsureNotNull call is enough.")]
     public static async IAsyncEnumerable<TItem> AsAsyncEnumerable<TItem>(
         this IAlpacaDataSubscription<TItem> subscription,
         [EnumeratorCancellation] CancellationToken cancellationToken)

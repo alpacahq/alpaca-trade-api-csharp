@@ -17,7 +17,8 @@ internal sealed class JsonTradesPage : IPageMutable<ITrade>
     public IReadOnlyList<ITrade> Items { get; set; } = new List<ITrade>();
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context) =>
+        StreamingContext _) =>
         Items = ItemsList.SetSymbol(Symbol).EmptyIfNull();
 }

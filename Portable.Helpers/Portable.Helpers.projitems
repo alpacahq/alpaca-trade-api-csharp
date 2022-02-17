@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>b628bf16-ab9c-4a2c-b13f-3fcc491d15d7</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>System</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CallerArgumentExpressionAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GlobalSuppressions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Index.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)KeyValuePairExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NullableHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Range.cs" />
+  </ItemGroup>
+</Project>

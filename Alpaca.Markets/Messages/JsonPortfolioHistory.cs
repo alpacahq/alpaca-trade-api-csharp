@@ -41,8 +41,9 @@ internal sealed class JsonPortfolioHistory : IPortfolioHistory
     public Decimal BaseValue { get; set; }
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context)
+        StreamingContext _)
     {
         var equities = EquityList.EmptyIfNull();
         var timestamps = TimestampsList.EmptyIfNull();

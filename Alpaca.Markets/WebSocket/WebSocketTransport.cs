@@ -53,7 +53,7 @@ internal sealed class WebSocketsTransport : IDisposable
 
     private readonly Uri _resolvedUrl;
 
-    private volatile bool _aborted;
+    private volatile Boolean _aborted;
 
     private IDuplexPipe? _application;
 
@@ -240,77 +240,7 @@ internal sealed class WebSocketsTransport : IDisposable
     {
         try
         {
-            while (true)
-            {
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
-                    // Do a 0 byte read so that idle connections don't allocate a buffer when waiting for a read
-                    var result = await socket.ReceiveAsync(Memory<byte>.Empty, CancellationToken.None)
-                        .ConfigureAwait(false);
-
-                    if (result.MessageType == WebSocketMessageType.Close)
-                    {
-                        if (socket.CloseStatus != WebSocketCloseStatus.NormalClosure)
-                        {
-                            throw new InvalidOperationException($"Websocket closed with error: {socket.CloseStatus}.");
-                        }
-
-                        return;
-                    }
-#endif
-                var memory = application.Output.GetMemory();
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
-                    // Because we checked the CloseStatus from the 0 byte read above, we don't need to check again after reading
-                    var receiveResult = await socket.ReceiveAsync(memory, CancellationToken.None)
-                        .ConfigureAwait(false);
-#elif NETSTANDARD2_0 || NETFRAMEWORK
-                var _ = System.Runtime.InteropServices.MemoryMarshal.TryGetArray<byte>(memory, out var arraySegment);
-
-                // Exceptions are handled above where the send and receive tasks are being run.
-                var receiveResult = await socket.ReceiveAsync(arraySegment, CancellationToken.None).ConfigureAwait(false);
-#else
-#error TFMs need to be updated
-#endif
-                // Need to check again for netstandard2.1 because a close can happen between a 0-byte read and the actual read
-                if (receiveResult.MessageType == WebSocketMessageType.Close)
-                {
-                    if (socket.CloseStatus != WebSocketCloseStatus.NormalClosure)
-                    {
-                        throw new InvalidOperationException($"Websocket closed with error: {socket.CloseStatus}.");
-                    }
-
-                    return;
-                }
-
-                application.Output.Advance(receiveResult.Count);
-
-                var flushResult = await application.Output.FlushAsync().ConfigureAwait(false);
-
-                // We canceled in the middle of applying back pressure
-                // or if the consumer is done
-                if (flushResult.IsCanceled || flushResult.IsCompleted)
-                {
-                    break;
-                }
-
-                if (!receiveResult.EndOfMessage)
-                {
-                    continue;
-                }
-
-                var readResult = await transport.Input.ReadAsync().ConfigureAwait(false);
-
-                // ReSharper disable once ConvertIfStatementToSwitchStatement
-                if (receiveResult.MessageType == WebSocketMessageType.Binary)
-                {
-                    DataReceived?.Invoke(readResult.Buffer.ToArray());
-                }
-                else if (receiveResult.MessageType == WebSocketMessageType.Text)
-                {
-                    MessageReceived?.Invoke(Encoding.UTF8.GetString(readResult.Buffer.ToArray()));
-                }
-
-                transport.Input.AdvanceTo(readResult.Buffer.End);
-            }
+            while (await startReceivingImpl(socket, application, transport).ConfigureAwait(false)) { }
         }
         catch (OperationCanceledException exception)
         {
@@ -336,6 +266,89 @@ internal sealed class WebSocketsTransport : IDisposable
         }
     }
 
+    private async Task<Boolean> startReceivingImpl(
+        WebSocket socket,
+        IDuplexPipe application,
+        IDuplexPipe transport)
+    {
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
+        // Do a 0 byte read so that idle connections don't allocate a buffer when waiting for a read
+        var result = await socket.ReceiveAsync(Memory<Byte>.Empty, CancellationToken.None)
+            .ConfigureAwait(false);
+
+        if (isReceiveResultClose(result.MessageType, socket.CloseStatus))
+        {
+            return false;
+        }
+#endif
+        var memory = application.Output.GetMemory();
+#if NETSTANDARD2_1 || NET5_0_OR_GREATER
+        // Because we checked the CloseStatus from the 0 byte read above, we don't need to check again after reading
+        var receiveResult = await socket.ReceiveAsync(memory, CancellationToken.None)
+            .ConfigureAwait(false);
+#elif NETSTANDARD2_0 || NETFRAMEWORK
+        var _ = System.Runtime.InteropServices.MemoryMarshal.TryGetArray<Byte>(memory, out var arraySegment);
+
+        // Exceptions are handled above where the send and receive tasks are being run.
+        var receiveResult = await socket.ReceiveAsync(arraySegment, CancellationToken.None).ConfigureAwait(false);
+#else
+#error TFMs need to be updated
+#endif
+        // Need to check again for netstandard2.1 because a close can happen between a 0-byte read and the actual read
+        if (isReceiveResultClose(receiveResult.MessageType, socket.CloseStatus))
+        {
+            return false;
+        }
+
+        application.Output.Advance(receiveResult.Count);
+
+        var flushResult = await application.Output.FlushAsync().ConfigureAwait(false);
+
+        // We canceled in the middle of applying back pressure
+        // or if the consumer is done
+        if (flushResult.IsCanceled || flushResult.IsCompleted)
+        {
+            return false;
+        }
+
+        if (!receiveResult.EndOfMessage)
+        {
+            return true;
+        }
+
+        var readResult = await transport.Input.ReadAsync().ConfigureAwait(false);
+
+        // ReSharper disable once ConvertIfStatementToSwitchStatement
+        if (receiveResult.MessageType == WebSocketMessageType.Binary)
+        {
+            DataReceived?.Invoke(readResult.Buffer.ToArray());
+        }
+        else if (receiveResult.MessageType == WebSocketMessageType.Text)
+        {
+            MessageReceived?.Invoke(Encoding.UTF8.GetString(readResult.Buffer.ToArray()));
+        }
+
+        transport.Input.AdvanceTo(readResult.Buffer.End);
+        return true;
+    }
+
+    private static Boolean isReceiveResultClose(
+        WebSocketMessageType messageType,
+        WebSocketCloseStatus? closeStatus)
+    {
+        if (messageType != WebSocketMessageType.Close)
+        {
+            return false;
+        }
+
+        if (closeStatus != WebSocketCloseStatus.NormalClosure)
+        {
+            throw new InvalidOperationException($"Websocket closed with error: {closeStatus}.");
+        }
+
+        return true;
+    }
+
     [SuppressMessage(
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
@@ -347,53 +360,7 @@ internal sealed class WebSocketsTransport : IDisposable
 
         try
         {
-            while (true)
-            {
-                var result = await application.Input.ReadAsync()
-                    .ConfigureAwait(false);
-                var buffer = result.Buffer;
-
-                // Get a frame from the application
-                try
-                {
-                    if (result.IsCanceled)
-                    {
-                        break;
-                    }
-
-                    if (!buffer.IsEmpty)
-                    {
-                        try
-                        {
-                            if (webSocketCanSend(socket))
-                            {
-                                await socket.SendAsync(buffer, WebSocketMessageType.Binary)
-                                    .ConfigureAwait(false);
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        }
-                        catch (Exception exception)
-                        {
-                            if (!_aborted)
-                            {
-                                Trace.TraceInformation(exception.Message);
-                            }
-                            break;
-                        }
-                    }
-                    else if (result.IsCompleted)
-                    {
-                        break;
-                    }
-                }
-                finally
-                {
-                    application.Input.AdvanceTo(buffer.End);
-                }
-            }
+            while (await startSendingImpl(socket, application).ConfigureAwait(false)) { }
         }
         catch (Exception ex)
         {
@@ -402,28 +369,91 @@ internal sealed class WebSocketsTransport : IDisposable
         }
         finally
         {
-            if (webSocketCanSend(socket))
-            {
-                try
-                {
-                    // We're done sending, send the close frame to the client if the websocket is still open
-                    await socket.CloseOutputAsync(error is not null
-                        ? WebSocketCloseStatus.InternalServerError
-                        : WebSocketCloseStatus.NormalClosure,
-                        "", CancellationToken.None)
-                        .ConfigureAwait(false);
-                }
-                catch (Exception exception)
-                {
-                    Trace.TraceInformation(exception.Message);
-                }
-            }
-
-            await application.Input.CompleteAsync().ConfigureAwait(false);
+            await closeWebSocketAsync(socket, application, error).ConfigureAwait(false);
         }
     }
 
-    private static bool webSocketCanSend(
+    [SuppressMessage(
+        "Design", "CA1031:Do not catch general exception types",
+        Justification = "Expected behavior - we report exceptions via OnError event.")]
+    private async Task<Boolean> startSendingImpl(
+        WebSocket socket,
+        IDuplexPipe application)
+    {
+        var result = await application.Input.ReadAsync().ConfigureAwait(false);
+        var buffer = result.Buffer;
+
+        // Get a frame from the application
+        try
+        {
+            if (result.IsCanceled)
+            {
+                return false;
+            }
+
+            if (buffer.IsEmpty)
+            {
+                return !result.IsCompleted;
+            }
+
+            try
+            {
+                if (webSocketCanSend(socket))
+                {
+                    await socket.SendAsync(buffer, WebSocketMessageType.Binary)
+                        .ConfigureAwait(false);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception exception)
+            {
+                if (!_aborted)
+                {
+                    Trace.TraceInformation(exception.Message);
+                }
+                return false;
+            }
+
+            return !result.IsCompleted;
+        }
+        finally
+        {
+            application.Input.AdvanceTo(buffer.End);
+        }
+    }
+
+    [SuppressMessage(
+        "Design", "CA1031:Do not catch general exception types",
+        Justification = "Expected behavior - we report exceptions via OnError event.")]
+    private static async Task closeWebSocketAsync(
+        WebSocket socket,
+        IDuplexPipe application,
+        Exception? error)
+    {
+        if (webSocketCanSend(socket))
+        {
+            try
+            {
+                // We're done sending, send the close frame to the client if the websocket is still open
+                await socket.CloseOutputAsync(error is not null
+                            ? WebSocketCloseStatus.InternalServerError
+                            : WebSocketCloseStatus.NormalClosure,
+                        "", CancellationToken.None)
+                    .ConfigureAwait(false);
+            }
+            catch (Exception exception)
+            {
+                Trace.TraceInformation(exception.Message);
+            }
+        }
+
+        await application.Input.CompleteAsync().ConfigureAwait(false);
+    }
+
+    private static Boolean webSocketCanSend(
         WebSocket ws) =>
         ws.State is not (
             WebSocketState.Aborted or

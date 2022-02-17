@@ -51,8 +51,9 @@ internal sealed class JsonCorrection : JsonRealTimeBase, ICorrection, ITrade
     public ITrade CorrectedTrade { get; private set; } = new JsonRealTimeTrade();
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context) =>
+        StreamingContext _) =>
         CorrectedTrade = new JsonRealTimeTrade
         {
             Tape = Tape,

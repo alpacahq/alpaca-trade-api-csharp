@@ -5,7 +5,7 @@ internal static class EnumerableExtensions
 {
     public static IEnumerable<TSource[]> Chunk<TSource>(
         this IEnumerable<TSource> source,
-        int size)
+        Int32 size)
     {
         using var e = source.GetEnumerator();
         while (e.MoveNext())

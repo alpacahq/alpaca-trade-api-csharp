@@ -14,14 +14,20 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7CB95A13-09E5-49B1-803C-409F25BD1AAA}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		GlobalSuppressions.cs = GlobalSuppressions.cs
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alpaca.Markets.Tests", "Alpaca.Markets.Tests\Alpaca.Markets.Tests.csproj", "{7573A263-9A73-460F-ABB5-5C9B96B44022}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alpaca.Markets.Extensions.Tests", "Alpaca.Markets.Extensions.Tests\Alpaca.Markets.Extensions.Tests.csproj", "{4D9511D5-CB47-47B1-98E3-A92E02960CD4}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Portable.Helpers", "Portable.Helpers\Portable.Helpers.shproj", "{B628BF16-AB9C-4A2C-B13F-3FCC491D15D7}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Portable.Helpers\Portable.Helpers.projitems*{4cce5c4a-688a-40da-befd-12e6803b41d3}*SharedItemsImports = 5
+		Portable.Helpers\Portable.Helpers.projitems*{b628bf16-ab9c-4a2c-b13f-3fcc491d15d7}*SharedItemsImports = 13
+		Portable.Helpers\Portable.Helpers.projitems*{f339d73b-347f-47d4-9bfb-ebea010fc6f7}*SharedItemsImports = 5
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Documentation|Any CPU = Documentation|Any CPU

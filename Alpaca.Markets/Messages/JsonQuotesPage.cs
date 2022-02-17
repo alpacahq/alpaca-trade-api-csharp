@@ -21,7 +21,8 @@ internal sealed class JsonQuotesPage<TQuote> : IPageMutable<IQuote>
     public IReadOnlyList<IQuote> Items { get; set; } = new List<IQuote>();
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context) =>
+        StreamingContext _) =>
         Items = ItemsList.SetSymbol(Symbol).EmptyIfNull<IQuote, TQuote>();
 }

@@ -61,8 +61,9 @@ internal sealed class JsonNewsArticle : INewsArticle
     public Uri? ThumbImageUrl { get; private set; }
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context)
+        StreamingContext _)
     {
         SmallImageUrl = getImageUrlBySize("small");
         LargeImageUrl = getImageUrlBySize("large");

@@ -82,8 +82,9 @@ internal sealed class JsonAccount : IAccount
     public DateTime CreatedAtUtc { get; set; }
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context)
+        StreamingContext _)
     {
         if (String.IsNullOrEmpty(Currency))
         {

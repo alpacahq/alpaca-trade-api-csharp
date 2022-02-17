@@ -90,7 +90,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         String symbol) =>
         DisposableAlpacaDataSubscription<IStatus>.CreateAsync(
             client.EnsureNotNull(nameof(client)).GetStatusSubscription(symbol),
-            client);
+            client.EnsureNotNull(nameof(client)));
 
     /// <summary>
     /// Gets the trading status updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -109,7 +109,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<IStatus>.CreateAsync(
             client.EnsureNotNull(nameof(client)).GetStatusSubscription(symbols),
-            client);
+            client.EnsureNotNull(nameof(client)));
 
     /// <summary>
     /// Gets the trading status updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -128,7 +128,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<IStatus>.CreateAsync(
             client.EnsureNotNull(nameof(client)).GetStatusSubscription(symbols),
-            client);
+            client.EnsureNotNull(nameof(client)));
 
     /// <summary>
     /// Gets the LULD (limit up / limit down) subscription for the <paramref name="symbol"/> asset. This subscription is
@@ -147,7 +147,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         String symbol) =>
         DisposableAlpacaDataSubscription<ILimitUpLimitDown>.CreateAsync(
             client.EnsureNotNull(nameof(client)).GetLimitUpLimitDownSubscription(symbol),
-            client);
+            client.EnsureNotNull(nameof(client)));
 
     /// <summary>
     /// Gets the LULD (limit up / limit down) subscription for all assets from the <paramref name="symbols"/> list.
@@ -166,7 +166,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<ILimitUpLimitDown>.CreateAsync(
             client.EnsureNotNull(nameof(client)).GetLimitUpLimitDownSubscription(symbols),
-            client);
+            client.EnsureNotNull(nameof(client)));
 
     /// <summary>
     /// Gets the LULD (limit up / limit down) subscription for all assets from the <paramref name="symbols"/> list.
@@ -185,7 +185,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<ILimitUpLimitDown>.CreateAsync(
             client.EnsureNotNull(nameof(client)).GetLimitUpLimitDownSubscription(symbols),
-            client);
+            client.EnsureNotNull(nameof(client)));
 
     private static IAlpacaDataSubscription<IStatus> getStatusSubscription(
         IAlpacaDataStreamingClient client,

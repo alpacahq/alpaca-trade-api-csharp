@@ -1,7 +1,7 @@
-﻿// ReSharper disable once CheckNamespace
+﻿#if NETFRAMEWORK || NETSTANDARD2_0
+
 namespace System;
 
-#if !NETSTANDARD2_1 && !NET5_0_OR_GREATER
 internal readonly struct Index : IEquatable<Index>
 {
     private readonly Int32 _value;
@@ -34,4 +34,5 @@ internal readonly struct Index : IEquatable<Index>
 
     public static implicit operator Index(Int32 value) => new(value);
 }
+
 #endif

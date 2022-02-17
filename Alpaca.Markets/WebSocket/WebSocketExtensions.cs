@@ -11,7 +11,7 @@ internal static class WebSocketExtensions
 {
     public static ValueTask SendAsync(
         this WebSocket webSocket,
-        ReadOnlySequence<byte> buffer,
+        ReadOnlySequence<Byte> buffer,
         WebSocketMessageType webSocketMessageType,
         CancellationToken cancellationToken = default)
     {
@@ -34,7 +34,7 @@ internal static class WebSocketExtensions
 
     private static async ValueTask sendMultiSegmentAsync(
         WebSocket webSocket,
-        ReadOnlySequence<byte> buffer,
+        ReadOnlySequence<Byte> buffer,
         WebSocketMessageType webSocketMessageType,
         CancellationToken cancellationToken = default)
     {

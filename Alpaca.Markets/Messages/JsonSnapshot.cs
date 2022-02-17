@@ -38,8 +38,9 @@ internal sealed class JsonSnapshot : ISnapshot
     public IBar? PreviousDailyBar => JsonPreviousDailyBar;
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context) =>
+        StreamingContext _) =>
         WithSymbol(Symbol);
 
     public ISnapshot WithSymbol(

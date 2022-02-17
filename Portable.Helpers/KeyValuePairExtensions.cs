@@ -1,8 +1,10 @@
-﻿namespace Alpaca.Markets.Extensions;
+﻿#if NETFRAMEWORK || NETSTANDARD2_0
 
-#if !NETSTANDARD2_1 && !NET5_0_OR_GREATER
+namespace System;
+
 internal static class KeyValuePairExtensions
 {
+    [UsedImplicitly]
     public static void Deconstruct<TKey, TValue>(
         // ReSharper disable once UseDeconstructionOnParameter
         this KeyValuePair<TKey, TValue> pair,
@@ -13,4 +15,5 @@ internal static class KeyValuePairExtensions
         value = pair.Value;
     }
 }
+
 #endif

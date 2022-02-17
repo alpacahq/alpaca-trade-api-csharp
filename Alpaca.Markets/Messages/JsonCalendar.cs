@@ -59,8 +59,9 @@ internal sealed class JsonCalendar : ICalendar, IIntervalCalendar
     public DateTime TradingCloseTimeUtc => this.GetTradingCloseTimeUtcFast();
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context)
+        StreamingContext _)
     {
         Trading = new OpenClose(TradingDate, TradingOpen, TradingClose);
         Session = new OpenClose(TradingDate, SessionOpen, SessionClose);

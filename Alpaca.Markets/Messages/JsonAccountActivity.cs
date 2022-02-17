@@ -66,8 +66,9 @@ internal sealed class JsonAccountActivity : IAccountActivity
     public Guid ActivityGuid { get; private set; }
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context)
+        StreamingContext _)
     {
         var components = ActivityId.Split(_activityIdSeparator, StringSplitOptions.RemoveEmptyEntries);
 

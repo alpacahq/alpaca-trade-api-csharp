@@ -15,7 +15,8 @@ internal sealed class JsonMultiTradesPage : IMultiPageMutable<ITrade>
         new Dictionary<String, IReadOnlyList<ITrade>>();
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context) =>
+        StreamingContext _) =>
         Items = ItemsDictionary.SetSymbol<ITrade, JsonHistoricalTrade>();
 }

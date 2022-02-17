@@ -262,7 +262,7 @@ internal sealed class MeanReversionBrokerage : IDisposable
                         amountToLong = buyingPower;
                     }
 
-                    var qty = (int)(amountToLong / agg.Close);
+                    var qty = (Int32)(amountToLong / agg.Close);
 
                     await SubmitOrder(qty, agg.Close, OrderSide.Buy);
                     Console.WriteLine($"Adding {qty * agg.Close:C2} to long position.");

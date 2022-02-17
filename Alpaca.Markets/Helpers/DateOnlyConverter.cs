@@ -28,6 +28,6 @@ internal sealed class DateOnlyConverter : JsonConverter
             : null;
 
     [ExcludeFromCodeCoverage]
-    public override bool CanConvert(Type objectType) =>
+    public override Boolean CanConvert(Type objectType) =>
         objectType == typeof(DateOnly);
 }

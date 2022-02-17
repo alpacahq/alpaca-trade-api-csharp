@@ -21,9 +21,9 @@ internal static partial class HttpClientExtensions
         SecurityKey securityKey,
         Uri baseAddress)
     {
-        foreach (var pair in securityKey.GetAuthenticationHeaders())
+        foreach (var (header, value) in securityKey.GetAuthenticationHeaders())
         {
-            httpClient.DefaultRequestHeaders.Add(pair.Key, pair.Value);
+            httpClient.DefaultRequestHeaders.Add(header, value);
         }
 
         httpClient.DefaultRequestHeaders.Accept

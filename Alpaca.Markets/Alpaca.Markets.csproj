@@ -82,10 +82,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="IsExternalInit" Version="1.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -116,5 +112,7 @@
   <ItemGroup Condition="!$(TargetFramework.StartsWith('net6'))">
     <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.1-beta2" />
   </ItemGroup>
+
+  <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />
 
 </Project>

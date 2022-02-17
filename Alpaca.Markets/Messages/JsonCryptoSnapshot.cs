@@ -38,8 +38,9 @@ internal sealed class JsonCryptoSnapshot : ISnapshot
     public IBar? PreviousDailyBar => JsonPreviousDailyBar;
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context)
+        StreamingContext _)
     {
         JsonTrade?.SetSymbol(Symbol);
         JsonQuote?.SetSymbol(Symbol);

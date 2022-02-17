@@ -123,9 +123,9 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         public void OnUpdate(
             ICollection<String> streams)
         {
-            foreach (var kvp in _subscriptions)
+            foreach (var (stream, subscription) in _subscriptions)
             {
-                kvp.Value.OnUpdate(streams.Contains(kvp.Key));
+                subscription.OnUpdate(streams.Contains(stream));
             }
         }
 

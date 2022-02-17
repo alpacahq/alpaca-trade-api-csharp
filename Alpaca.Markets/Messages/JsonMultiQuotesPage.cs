@@ -19,7 +19,8 @@ internal sealed class JsonMultiQuotesPage<TQuote> : IMultiPageMutable<IQuote>
         new Dictionary<String, IReadOnlyList<IQuote>>();
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context) =>
+        StreamingContext _) =>
         Items = ItemsDictionary.SetSymbol<IQuote, TQuote>();
 }

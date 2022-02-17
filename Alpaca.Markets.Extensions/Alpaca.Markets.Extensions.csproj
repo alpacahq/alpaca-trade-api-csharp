@@ -73,10 +73,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
       <PackageReference Include="Alpaca.Markets" Version="6.0.3-alpha1" />
       <PackageReference Include="IsExternalInit" Version="1.0.2">
         <PrivateAssets>all</PrivateAssets>
@@ -110,5 +106,7 @@
   <ItemGroup Condition="!($(TargetFramework.StartsWith('net6')))">
    <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.1-beta2" />
  </ItemGroup>
+
+  <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />
 
 </Project>

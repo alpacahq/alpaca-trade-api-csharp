@@ -31,7 +31,7 @@ internal static class Validation
 
     public static String? ValidateClientOrderId(this String? clientOrderId) =>
         clientOrderId?.Length > ClientOrderIdMaxLength
-            ? clientOrderId.Substring(0, ClientOrderIdMaxLength)
+            ? clientOrderId[..ClientOrderIdMaxLength]
             : clientOrderId;
 
     public static Boolean IsWatchListNameInvalid(this String? watchListName) =>

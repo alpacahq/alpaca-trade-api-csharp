@@ -15,7 +15,8 @@ internal sealed class JsonMultiBarsPage : IMultiPageMutable<IBar>
         new Dictionary<String, IReadOnlyList<IBar>>();
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context) =>
+        StreamingContext _) =>
         Items = ItemsDictionary.SetSymbol<IBar, JsonHistoricalBar>();
 }

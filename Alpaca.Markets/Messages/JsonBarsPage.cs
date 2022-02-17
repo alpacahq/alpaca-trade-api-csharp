@@ -17,7 +17,8 @@ internal sealed class JsonBarsPage : IPageMutable<IBar>
     public IReadOnlyList<IBar> Items { get; set; } = new List<IBar>();
 
     [OnDeserialized]
+    [UsedImplicitly]
     internal void OnDeserializedMethod(
-        StreamingContext context) =>
+        StreamingContext _) =>
         Items = ItemsList.SetSymbol(Symbol).EmptyIfNull();
 }
