@@ -22,7 +22,7 @@ internal sealed partial class AlpacaTradingClient
         AccountActivitiesRequest request,
         CancellationToken cancellationToken = default) =>
         await _httpClient.GetAsync<IReadOnlyList<IAccountActivity>, List<JsonAccountActivity>>(
-            await request.EnsureNotNull(nameof(request))
+            await request.EnsureNotNull()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -30,7 +30,7 @@ internal sealed partial class AlpacaTradingClient
         PortfolioHistoryRequest request,
         CancellationToken cancellationToken = default) =>
         await _httpClient.GetAsync<IPortfolioHistory, JsonPortfolioHistory>(
-            await request.EnsureNotNull(nameof(request))
+            await request.EnsureNotNull()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -38,7 +38,7 @@ internal sealed partial class AlpacaTradingClient
         AssetsRequest request,
         CancellationToken cancellationToken = default) =>
         await _httpClient.GetAsync<IReadOnlyList<IAsset>, List<JsonAsset>>(
-            await request.EnsureNotNull(nameof(request))
+            await request.EnsureNotNull()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -67,7 +67,7 @@ internal sealed partial class AlpacaTradingClient
         DeleteAllPositionsRequest request,
         CancellationToken cancellationToken = default) =>
         await _httpClient.DeleteAsync<IReadOnlyList<IPositionActionStatus>, List<JsonPositionActionStatus>>(
-            await request.EnsureNotNull(nameof(request))
+            await request.EnsureNotNull()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             request.Timeout ?? Timeout.InfiniteTimeSpan,
             cancellationToken).ConfigureAwait(false);
@@ -76,7 +76,7 @@ internal sealed partial class AlpacaTradingClient
         DeletePositionRequest request,
         CancellationToken cancellationToken = default) =>
         await _httpClient.DeleteAsync<IOrder, JsonOrder>(
-            await request.EnsureNotNull(nameof(request)).Validate()
+            await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -91,7 +91,7 @@ internal sealed partial class AlpacaTradingClient
         CalendarRequest request,
         CancellationToken cancellationToken = default) =>
         await _httpClient.GetAsync<IReadOnlyList<ICalendar>, List<JsonCalendar>>(
-            await request.EnsureNotNull(nameof(request))
+            await request.EnsureNotNull()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -99,7 +99,7 @@ internal sealed partial class AlpacaTradingClient
         CalendarRequest request,
         CancellationToken cancellationToken = default) =>
         await _httpClient.GetAsync<IReadOnlyList<IIntervalCalendar>, List<JsonCalendar>>(
-            await request.EnsureNotNull(nameof(request))
+            await request.EnsureNotNull()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 }

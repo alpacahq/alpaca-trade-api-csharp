@@ -30,7 +30,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
         IEnumerable<String> symbols,
         Interval<DateTime> timeInterval)
     {
-        _symbols.UnionWith(symbols.EnsureNotNull(nameof(symbols)));
+        _symbols.UnionWith(symbols.EnsureNotNull());
         TimeInterval = timeInterval;
     }
 
@@ -96,23 +96,10 @@ public abstract class HistoricalRequestBase : Validation.IRequest
 
     internal Boolean HasSingleSymbol => Symbols.Count == 1;
 
-    IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
+    IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
-        if (_symbols.Count == 0)
-        {
-            yield return new RequestValidationException(
-                "Symbols list shouldn't be empty.", nameof(Symbols));
-        }
-
-        if (Symbols.Any(String.IsNullOrEmpty))
-        {
-            yield return new RequestValidationException(
-                "Symbol shouldn't be empty.", nameof(Symbols));
-        }
-
-        if (Pagination.TryGetException(Pagination.MaxPageSize, out var exception))
-        {
-            yield return exception!;
-        }
+        yield return Pagination.TryValidatePageSize(Pagination.MaxPageSize);
+        yield return Symbols.TryValidateSymbolsList();
+        yield return Symbols.TryValidateSymbolName();
     }
 }

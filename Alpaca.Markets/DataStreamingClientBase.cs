@@ -186,7 +186,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
 
     protected DataStreamingClientBase(
         TConfiguration configuration)
-        : base(configuration.EnsureNotNull(nameof(configuration))) =>
+        : base(configuration.EnsureNotNull()) =>
         _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
         {
                 { CancellationsChannel, handleRealtimeDataUpdate },
@@ -225,7 +225,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
     public ValueTask SubscribeAsync(
         IAlpacaDataSubscription subscription,
         CancellationToken cancellationToken) =>
-        subscribeAsync(subscription.EnsureNotNull(nameof(subscription)).Streams, cancellationToken);
+        subscribeAsync(subscription.EnsureNotNull().Streams, cancellationToken);
 
     public ValueTask SubscribeAsync(
         IEnumerable<IAlpacaDataSubscription> subscriptions) =>
@@ -243,7 +243,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
     public ValueTask UnsubscribeAsync(
         IAlpacaDataSubscription subscription,
         CancellationToken cancellationToken) =>
-        unsubscribeAsync(subscription.EnsureNotNull(nameof(subscription)).Streams, cancellationToken);
+        unsubscribeAsync(subscription.EnsureNotNull().Streams, cancellationToken);
 
     public ValueTask UnsubscribeAsync(
         IEnumerable<IAlpacaDataSubscription> subscriptions) =>

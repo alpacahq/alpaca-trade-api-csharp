@@ -18,7 +18,7 @@ internal sealed class AlpacaStreamingClient :
 
     public AlpacaStreamingClient(
         AlpacaStreamingClientConfiguration configuration)
-        : base(configuration.EnsureNotNull(nameof(configuration)))
+        : base(configuration.EnsureNotNull())
     {
         _handlers = new Dictionary<String, Action<JToken>>(StringComparer.Ordinal)
             {

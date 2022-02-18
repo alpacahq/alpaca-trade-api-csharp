@@ -32,9 +32,8 @@ public static class EnvironmentExtensions
         SecurityKey securityKey) =>
         new()
         {
-            ApiEndpoint = environment.EnsureNotNull(nameof(environment))
-                .AlpacaTradingApi.EnsureNotNull(nameof(IEnvironment.AlpacaTradingApi)),
-            SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
+            ApiEndpoint = environment.EnsureNotNull().AlpacaTradingApi,
+            SecurityId = securityKey.EnsureNotNull()
         };
 
     /// <summary>
@@ -64,9 +63,8 @@ public static class EnvironmentExtensions
         SecurityKey securityKey) =>
         new()
         {
-            ApiEndpoint = environment.EnsureNotNull(nameof(environment))
-                .AlpacaDataApi.EnsureNotNull(nameof(IEnvironment.AlpacaDataApi)),
-            SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
+            ApiEndpoint = environment.EnsureNotNull().AlpacaDataApi,
+            SecurityId = securityKey.EnsureNotNull()
         };
 
     /// <summary>
@@ -96,9 +94,8 @@ public static class EnvironmentExtensions
         SecurityKey securityKey) =>
         new()
         {
-            ApiEndpoint = environment.EnsureNotNull(nameof(environment))
-                .AlpacaDataApi.EnsureNotNull(nameof(IEnvironment.AlpacaDataApi)),
-            SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
+            ApiEndpoint = environment.EnsureNotNull().AlpacaDataApi,
+            SecurityId = securityKey.EnsureNotNull()
         };
 
     /// <summary>
@@ -128,9 +125,8 @@ public static class EnvironmentExtensions
         SecurityKey securityKey) =>
         new()
         {
-            ApiEndpoint = environment.EnsureNotNull(nameof(environment))
-                .AlpacaStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaStreamingApi)),
-            SecurityId = securityKey
+            ApiEndpoint = environment.EnsureNotNull().AlpacaStreamingApi,
+            SecurityId = securityKey.EnsureNotNull()
         };
 
     /// <summary>
@@ -160,9 +156,8 @@ public static class EnvironmentExtensions
         SecurityKey securityKey) =>
         new()
         {
-            ApiEndpoint = environment.EnsureNotNull(nameof(environment))
-                .AlpacaDataStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaDataStreamingApi)),
-            SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
+            ApiEndpoint = environment.EnsureNotNull().AlpacaDataStreamingApi,
+            SecurityId = securityKey.EnsureNotNull()
         };
 
     /// <summary>
@@ -192,9 +187,8 @@ public static class EnvironmentExtensions
         SecurityKey securityKey) =>
         new()
         {
-            ApiEndpoint = environment.EnsureNotNull(nameof(environment))
-                .AlpacaCryptoStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaCryptoStreamingApi)),
-            SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
+            ApiEndpoint = environment.EnsureNotNull().AlpacaCryptoStreamingApi,
+            SecurityId = securityKey.EnsureNotNull()
         };
 
     /// <summary>
@@ -224,8 +218,7 @@ public static class EnvironmentExtensions
         SecurityKey securityKey) =>
         new ()
         {
-            ApiEndpoint = environment.EnsureNotNull(nameof(environment))
-                .AlpacaNewsStreamingApi.EnsureNotNull(nameof(IEnvironment.AlpacaNewsStreamingApi)),
-            SecurityId = securityKey.EnsureNotNull(nameof(securityKey))
+            ApiEndpoint = environment.EnsureNotNull().AlpacaNewsStreamingApi,
+            SecurityId = securityKey.EnsureNotNull()
         };
 }

@@ -6,9 +6,7 @@ internal sealed partial class AlpacaTradingClient : IAlpacaTradingClient
 
     public AlpacaTradingClient(
         AlpacaTradingClientConfiguration configuration) =>
-        _httpClient = configuration
-            .EnsureNotNull(nameof(configuration))
-            .GetConfiguredHttpClient();
+        _httpClient = configuration.EnsureNotNull().GetConfiguredHttpClient();
 
     public void Dispose() => _httpClient.Dispose();
 }

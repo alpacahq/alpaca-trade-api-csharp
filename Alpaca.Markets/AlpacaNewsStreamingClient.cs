@@ -6,7 +6,7 @@ internal sealed class AlpacaNewsStreamingClient :
 {
     public AlpacaNewsStreamingClient(
         AlpacaNewsStreamingClientConfiguration configuration)
-        : base(configuration.EnsureNotNull(nameof(configuration)))
+        : base(configuration.EnsureNotNull())
     {
     }
 

@@ -12,7 +12,7 @@ public static class IntervalCalenderExtensions
     [UsedImplicitly]
     public static DateOnly GetTradingDate(
         this IIntervalCalendar calendar) =>
-        calendar.EnsureNotNull(nameof(calendar)).GetTradingDateFast();
+        calendar.EnsureNotNull().GetTradingDateFast();
 
     /// <summary>
     /// Gets trading open time in EST time zone.
@@ -21,7 +21,7 @@ public static class IntervalCalenderExtensions
     [UsedImplicitly]
     public static DateTime GetTradingOpenTimeEst(
         this IIntervalCalendar calendar) =>
-        calendar.EnsureNotNull(nameof(calendar)).GetTradingOpenTimeEstFast();
+        calendar.EnsureNotNull().GetTradingOpenTimeEstFast();
 
     /// <summary>
     /// Gets trading close time in EST time zone.
@@ -30,7 +30,7 @@ public static class IntervalCalenderExtensions
     [UsedImplicitly]
     public static DateTime GetTradingCloseTimeEst(
         this IIntervalCalendar calendar) =>
-        calendar.EnsureNotNull(nameof(calendar)).GetTradingCloseTimeEstFast();
+        calendar.EnsureNotNull().GetTradingCloseTimeEstFast();
 
     /// <summary>
     /// Gets trading open time in UTC time zone.
@@ -39,7 +39,7 @@ public static class IntervalCalenderExtensions
     [UsedImplicitly]
     public static DateTime GetTradingOpenTimeUtc(
         this IIntervalCalendar calendar) =>
-        calendar.EnsureNotNull(nameof(calendar)).GetTradingOpenTimeUtcFast();
+        calendar.EnsureNotNull().GetTradingOpenTimeUtcFast();
 
     /// <summary>
     /// Gets trading close time in UTC time zone.
@@ -48,7 +48,7 @@ public static class IntervalCalenderExtensions
     [UsedImplicitly]
     public static DateTime GetTradingCloseTimeUtc(
         this IIntervalCalendar calendar) =>
-        calendar.EnsureNotNull(nameof(calendar)).GetTradingCloseTimeUtcFast();
+        calendar.EnsureNotNull().GetTradingCloseTimeUtcFast();
 
     /// <summary>
     /// Gets session open time in EST time zone.
@@ -57,7 +57,7 @@ public static class IntervalCalenderExtensions
     [UsedImplicitly]
     public static DateTime GetSessionOpenTimeEst(
         this IIntervalCalendar calendar) =>
-        calendar.EnsureNotNull(nameof(calendar)).Session.OpenEst.DateTime;
+        calendar.EnsureNotNull().Session.OpenEst.DateTime;
 
     /// <summary>
     /// Gets session close time in EST time zone.
@@ -66,7 +66,7 @@ public static class IntervalCalenderExtensions
     [UsedImplicitly]
     public static DateTime GetSessionCloseTimeEst(
         this IIntervalCalendar calendar) =>
-        calendar.EnsureNotNull(nameof(calendar)).Session.CloseEst.DateTime;
+        calendar.EnsureNotNull().Session.CloseEst.DateTime;
 
     /// <summary>
     /// Gets session open time in UTC time zone.
@@ -75,7 +75,7 @@ public static class IntervalCalenderExtensions
     [UsedImplicitly]
     public static DateTime GetSessionOpenTimeUtc(
         this IIntervalCalendar calendar) =>
-        calendar.EnsureNotNull(nameof(calendar)).Session.OpenEst.UtcDateTime;
+        calendar.EnsureNotNull().Session.OpenEst.UtcDateTime;
 
     /// <summary>
     /// Gets session close time in UTC time zone.
@@ -84,7 +84,7 @@ public static class IntervalCalenderExtensions
     [UsedImplicitly]
     public static DateTime GetSessionCloseTimeUtc(
         this IIntervalCalendar calendar) =>
-        calendar.EnsureNotNull(nameof(calendar)).Session.CloseEst.UtcDateTime;
+        calendar.EnsureNotNull().Session.CloseEst.UtcDateTime;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static DateOnly GetTradingDateFast(

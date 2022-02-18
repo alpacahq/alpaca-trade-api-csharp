@@ -22,6 +22,6 @@ public sealed class IntervalTest
 
     [Fact]
     public void InvalidIntervalValidationWorks() =>
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
+        Assert.Throws<ArgumentException>(() =>
             new Interval<DateTime>().WithFrom(DateTime.MaxValue).WithInto(DateTime.MinValue));
 }

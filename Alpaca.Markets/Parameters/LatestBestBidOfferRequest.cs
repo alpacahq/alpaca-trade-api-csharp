@@ -35,7 +35,7 @@ public sealed class LatestBestBidOfferRequest : Validation.IRequest
     /// <param name="symbol">Asset name for data retrieval.</param>
     public LatestBestBidOfferRequest(
         String symbol) =>
-        Symbol = symbol.EnsureNotNull(nameof(symbol));
+        Symbol = symbol.EnsureNotNull();
 
     /// <summary>
     /// Gets asset name for data retrieval.
@@ -58,12 +58,8 @@ public sealed class LatestBestBidOfferRequest : Validation.IRequest
                 .AsStringAsync().ConfigureAwait(false)
         }.AppendPath($"{Symbol}/xbbo/latest");
 
-    IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
+    IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
-        if (String.IsNullOrEmpty(Symbol))
-        {
-            yield return new RequestValidationException(
-                "Symbol shouldn't be empty.", nameof(Symbol));
-        }
+        yield return Symbol.TryValidateSymbolName();
     }
 }

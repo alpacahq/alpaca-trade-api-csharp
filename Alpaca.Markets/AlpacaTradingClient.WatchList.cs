@@ -30,28 +30,28 @@ internal sealed partial class AlpacaTradingClient
         UpdateWatchListRequest request,
         CancellationToken cancellationToken = default) =>
         _httpClient.PutAsync<IWatchList, JsonWatchList, UpdateWatchListRequest>(
-            getEndpointUri(request.EnsureNotNull(nameof(request)).Validate().WatchListId), request,
+            getEndpointUri(request.EnsureNotNull().Validate().WatchListId), request,
             cancellationToken);
 
     public Task<IWatchList> AddAssetIntoWatchListByIdAsync(
         ChangeWatchListRequest<Guid> request,
         CancellationToken cancellationToken = default) =>
         _httpClient.PostAsync<IWatchList, JsonWatchList, ChangeWatchListRequest<Guid>>(
-            getEndpointUri(request.EnsureNotNull(nameof(request)).Validate().Key), request,
+            getEndpointUri(request.EnsureNotNull().Validate().Key), request,
             cancellationToken);
 
     public async Task<IWatchList> AddAssetIntoWatchListByNameAsync(
         ChangeWatchListRequest<String> request,
         CancellationToken cancellationToken = default) =>
         await _httpClient.PostAsync<IWatchList, JsonWatchList, ChangeWatchListRequest<String>>(
-            await getEndpointUriBuilderAsync(request.EnsureNotNull(nameof(request)).Validate().Key).ConfigureAwait(false), request,
+            await getEndpointUriBuilderAsync(request.EnsureNotNull().Validate().Key).ConfigureAwait(false), request,
             cancellationToken).ConfigureAwait(false);
 
     public Task<IWatchList> DeleteAssetFromWatchListByIdAsync(
         ChangeWatchListRequest<Guid> request,
         CancellationToken cancellationToken = default) =>
         _httpClient.DeleteAsync<IWatchList, JsonWatchList>(
-            getEndpointUri(request.EnsureNotNull(nameof(request)).Validate().Key, request.Asset),
+            getEndpointUri(request.EnsureNotNull().Validate().Key, request.Asset),
             cancellationToken);
 
     public async Task<IWatchList> DeleteAssetFromWatchListByNameAsync(
@@ -59,7 +59,7 @@ internal sealed partial class AlpacaTradingClient
         CancellationToken cancellationToken = default) =>
         await _httpClient.DeleteAsync<IWatchList, JsonWatchList>(
             await getEndpointUriBuilderAsync(
-                    request.EnsureNotNull(nameof(request)).Validate().Key, request.Asset)
+                    request.EnsureNotNull().Validate().Key, request.Asset)
                 .ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -85,9 +85,7 @@ internal sealed partial class AlpacaTradingClient
                 ? "v2/watchlists:by_name"
                 : $"v2/watchlists:by_name/{asset}",
             Query = await new QueryBuilder()
-                .AddParameter("name", 
-                    name.ValidateWatchListName() ?? throw new ArgumentException(
-                        "Watch list name should be from 1 to 64 characters length.", nameof(name)))
+                .AddParameter("name", name.ValidateWatchListName())
                 .AsStringAsync().ConfigureAwait(false)
         };
 

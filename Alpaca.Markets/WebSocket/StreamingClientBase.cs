@@ -16,7 +16,7 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
     private protected StreamingClientBase(
         TConfiguration configuration)
     {
-        Configuration = configuration.EnsureNotNull(nameof(configuration));
+        Configuration = configuration.EnsureNotNull();
         Configuration.EnsureIsValid();
 
         _webSocket = new WebSocketsTransport(Configuration.GetApiEndpoint());
@@ -125,8 +125,7 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
     {
         try
         {
-            if (handlers.EnsureNotNull(nameof(handlers))
-                .TryGetValue(messageType, out var handler))
+            if (handlers.EnsureNotNull().TryGetValue(messageType, out var handler))
             {
                 _queue.Enqueue(() => handler(message));
             }

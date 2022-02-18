@@ -29,16 +29,7 @@ public abstract class StreamingClientConfiguration
 
     internal void EnsureIsValid()
     {
-        if (ApiEndpoint is null)
-        {
-            throw new InvalidOperationException(
-                $"The value of '{nameof(ApiEndpoint)}' property shouldn't be null.");
-        }
-
-        if (SecurityId is null)
-        {
-            throw new InvalidOperationException(
-                $"The value of '{nameof(SecurityId)}' property shouldn't be null or empty.");
-        }
+        ApiEndpoint.EnsurePropertyNotNull();
+        SecurityId.EnsurePropertyNotNull();
     }
 }

@@ -20,7 +20,7 @@ public static class HistoricalRequestBaseExtensions
         UInt32 pageSize)
         where TRequest : class, IHistoricalRequest
     {
-        request.EnsureNotNull(nameof(request)).Pagination.Size = pageSize;
+        request.EnsureNotNull().Pagination.Size = pageSize;
         return request;
     }
 
@@ -36,17 +36,17 @@ public static class HistoricalRequestBaseExtensions
         String pageToken)
         where TRequest : class, IHistoricalRequest
     {
-        request.EnsureNotNull(nameof(request)).Pagination.Token = pageToken;
+        request.EnsureNotNull().Pagination.Token = pageToken;
         return request;
     }
 
     internal static DateTime GetValidatedFrom(
         this HistoricalRequestBase request) =>
-        getValidatedDate(request.TimeInterval.From, nameof(request.TimeInterval.From));
+        getValidatedDate(request.TimeInterval.From);
 
     internal static DateTime GetValidatedInto(
         this HistoricalRequestBase request) =>
-        getValidatedDate(request.TimeInterval.Into, nameof(request.TimeInterval.Into));
+        getValidatedDate(request.TimeInterval.Into);
 
     internal static UInt32 GetPageSize(
         this IHistoricalRequest request) =>
@@ -54,7 +54,7 @@ public static class HistoricalRequestBaseExtensions
 
     private static DateTime getValidatedDate(
         DateTime? date,
-        String paramName) =>
+        [CallerArgumentExpression("date")] String paramName = "") =>
         date ?? throw new ArgumentException(
             "Invalid request time interval - empty date", paramName);
 }

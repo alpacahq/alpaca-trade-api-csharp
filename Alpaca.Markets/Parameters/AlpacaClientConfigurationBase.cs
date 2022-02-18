@@ -30,7 +30,8 @@ public abstract class AlpacaClientConfigurationBase
     /// <summary>
     /// Gets or sets REST API throttling parameters.
     /// </summary>
-    public ThrottleParameters ThrottleParameters { get; set; }
+    [UsedImplicitly]
+    public ThrottleParameters ThrottleParameters { get; [UsedImplicitly] set; }
 
     /// <summary>
     /// Gets or sets <see cref="HttpClient"/> instance for connecting.
@@ -46,23 +47,9 @@ public abstract class AlpacaClientConfigurationBase
 
     private HttpClient ensureIsValidAndGetHttpClient()
     {
-        if (SecurityId is null)
-        {
-            throw new InvalidOperationException(
-                $"The value of '{nameof(SecurityId)}' property shouldn't be null.");
-        }
-
-        if (ApiEndpoint is null)
-        {
-            throw new InvalidOperationException(
-                $"The value of '{nameof(ApiEndpoint)}' property shouldn't be null.");
-        }
-
-        if (ThrottleParameters is null)
-        {
-            throw new InvalidOperationException(
-                $"The value of '{nameof(ThrottleParameters)}' property shouldn't be null.");
-        }
+        ThrottleParameters.EnsurePropertyNotNull();
+        ApiEndpoint.EnsurePropertyNotNull();
+        SecurityId.EnsurePropertyNotNull();
 
         return HttpClient ?? ThrottleParameters.GetHttpClient();
     }

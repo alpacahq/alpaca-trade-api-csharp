@@ -62,7 +62,7 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
         THistoricalBarsRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IPage<IBar>, JsonBarsPage>(
-            await request.EnsureNotNull(nameof(request)).Validate()
+            await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -70,7 +70,7 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
         THistoricalBarsRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IMultiPage<IBar>, JsonMultiBarsPage>(
-            await request.EnsureNotNull(nameof(request)).Validate()
+            await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -78,7 +78,7 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
         THistoricalQuotesRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IPage<IQuote>, JsonQuotesPage<THistoricalQuote>>(
-            await request.EnsureNotNull(nameof(request)).Validate()
+            await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -86,7 +86,7 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
         THistoricalQuotesRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IMultiPage<IQuote>, JsonMultiQuotesPage<THistoricalQuote>>(
-            await request.EnsureNotNull(nameof(request)).Validate()
+            await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -94,7 +94,7 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
         THistoricalTradesRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IPage<ITrade>, JsonTradesPage>(
-            await request.EnsureNotNull(nameof(request)).Validate()
+            await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
@@ -102,7 +102,7 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
         THistoricalTradesRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IMultiPage<ITrade>, JsonMultiTradesPage>(
-            await request.EnsureNotNull(nameof(request)).Validate()
+            await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 }

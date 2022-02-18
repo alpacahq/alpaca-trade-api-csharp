@@ -6,19 +6,19 @@ internal sealed partial class AlpacaTradingClient
         ListOrdersRequest request,
         CancellationToken cancellationToken = default) =>
         await _httpClient.GetAsync<IReadOnlyList<IOrder>, List<JsonOrder>>(
-            await request.EnsureNotNull(nameof(request)).Validate()
+            await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
     public Task<IOrder> PostOrderAsync(
         NewOrderRequest request,
         CancellationToken cancellationToken = default) =>
-        postOrderAsync(request.EnsureNotNull(nameof(request)).Validate().GetJsonRequest(), cancellationToken);
+        postOrderAsync(request.EnsureNotNull().Validate().GetJsonRequest(), cancellationToken);
 
     public Task<IOrder> PostOrderAsync(
         OrderBase orderBase,
         CancellationToken cancellationToken = default) =>
-        postOrderAsync(orderBase.EnsureNotNull(nameof(orderBase)).Validate().GetJsonRequest(), cancellationToken);
+        postOrderAsync(orderBase.EnsureNotNull().Validate().GetJsonRequest(), cancellationToken);
 
     private Task<IOrder> postOrderAsync(
         JsonNewOrder jsonNewOrder,
@@ -30,7 +30,7 @@ internal sealed partial class AlpacaTradingClient
         ChangeOrderRequest request,
         CancellationToken cancellationToken = default) =>
         _httpClient.PatchAsync<IOrder, JsonOrder, ChangeOrderRequest>(
-            request.EnsureNotNull(nameof(request)).Validate().GetEndpointUri(),
+            request.EnsureNotNull().Validate().GetEndpointUri(),
             request, cancellationToken);
 
     public async Task<IOrder> GetOrderAsync(

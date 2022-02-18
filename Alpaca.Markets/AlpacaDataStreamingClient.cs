@@ -6,7 +6,7 @@ internal sealed class AlpacaDataStreamingClient :
 {
     public AlpacaDataStreamingClient(
         AlpacaDataStreamingClientConfiguration configuration)
-        : base(configuration.EnsureNotNull(nameof(configuration)))
+        : base(configuration.EnsureNotNull())
     {
     }
 

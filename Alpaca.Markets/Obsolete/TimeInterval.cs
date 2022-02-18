@@ -112,7 +112,7 @@ public static class TimeInterval
     [Obsolete("Use the WithInto extension method of Interval<DateTime> structure instead of this one.", false)]
     public static IExclusiveTimeInterval WithInto(
         this IExclusiveTimeInterval interval,
-        DateTime into) => new Interval<DateTime>(interval.EnsureNotNull(nameof(interval)).From, into).wrap();
+        DateTime into) => new Interval<DateTime>(interval.EnsureNotNull().From, into).wrap();
 
     /// <summary>
     /// Creates new instance of <see cref="IInclusiveTimeInterval"/> object
@@ -125,7 +125,7 @@ public static class TimeInterval
     [Obsolete("Use the WithInto extension method of Interval<DateTime> structure instead of this one.", false)]
     public static IInclusiveTimeInterval WithInto(
         this IInclusiveTimeInterval interval,
-        DateTime into) => new Interval<DateTime>(interval.EnsureNotNull(nameof(interval)).From, into).wrap();
+        DateTime into) => new Interval<DateTime>(interval.EnsureNotNull().From, into).wrap();
 
     /// <summary>
     /// Creates new instance of <see cref="IExclusiveTimeInterval"/> object
@@ -138,7 +138,7 @@ public static class TimeInterval
     [Obsolete("Use the WithFrom extension method of Interval<DateTime> structure instead of this one.", false)]
     public static IExclusiveTimeInterval WithFrom(
         this IExclusiveTimeInterval interval,
-        DateTime from) => new Interval<DateTime>(from, interval.EnsureNotNull(nameof(interval)).Into).wrap();
+        DateTime from) => new Interval<DateTime>(from, interval.EnsureNotNull().Into).wrap();
 
     /// <summary>
     /// Creates new instance of <see cref="IInclusiveTimeInterval"/> object
@@ -151,7 +151,7 @@ public static class TimeInterval
     [Obsolete("Use the WithFrom extension method of Interval<DateTime> structure instead of this one.", false)]
     public static IInclusiveTimeInterval WithFrom(
         this IInclusiveTimeInterval interval,
-        DateTime from) => new Interval<DateTime>(from, interval.EnsureNotNull(nameof(interval)).Into).wrap();
+        DateTime from) => new Interval<DateTime>(from, interval.EnsureNotNull().Into).wrap();
 
     /// <summary>
     /// Set exclusive time interval for <paramref name="request"/> object.
@@ -182,7 +182,7 @@ public static class TimeInterval
         IExclusiveTimeInterval interval)
         where TRequest : IRequestWithTimeInterval<IExclusiveTimeInterval>
     {
-        request.SetInterval(interval.EnsureNotNull(nameof(interval)));
+        request.SetInterval(interval.EnsureNotNull());
         return request;
     }
 
@@ -215,7 +215,7 @@ public static class TimeInterval
         IInclusiveTimeInterval interval)
         where TRequest : IRequestWithTimeInterval<IInclusiveTimeInterval>
     {
-        request.SetInterval(interval.EnsureNotNull(nameof(interval)));
+        request.SetInterval(interval.EnsureNotNull());
         return request;
     }
 

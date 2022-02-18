@@ -39,18 +39,9 @@ public sealed class NewWatchListRequest : Validation.IRequest
     [JsonProperty(PropertyName = "symbols", Required = Required.Always)]
     public IReadOnlyList<String> Assets => _assets;
 
-    IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
+    IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
-        if (Name.IsWatchListNameInvalid())
-        {
-            yield return new RequestValidationException(
-                "Watch list name should be from 1 to 64 characters length.", nameof(Name));
-        }
-
-        if (Assets.Any(String.IsNullOrEmpty))
-        {
-            yield return new RequestValidationException(
-                "Assets list shouldn't contain null or empty items.", nameof(Assets));
-        }
+        yield return Name.TryValidateWatchListName();
+        yield return Assets.TryValidateSymbolName();
     }
 }

@@ -6,7 +6,7 @@ internal sealed class AlpacaDataClient :
 {
     public AlpacaDataClient(
         AlpacaDataClientConfiguration configuration)
-        : base(configuration.EnsureNotNull(nameof(configuration)).GetConfiguredHttpClient())
+        : base(configuration.EnsureNotNull().GetConfiguredHttpClient())
     {
     }
 
@@ -14,21 +14,21 @@ internal sealed class AlpacaDataClient :
         String symbol,
         CancellationToken cancellationToken = default) =>
         HttpClient.GetAsync<ITrade, JsonLatestTrade>(
-            $"{symbol.EnsureNotNull(nameof(symbol))}/trades/latest",
+            $"{symbol.EnsureNotNull()}/trades/latest",
             cancellationToken);
 
     public Task<IQuote> GetLatestQuoteAsync(
         String symbol,
         CancellationToken cancellationToken = default) =>
         HttpClient.GetAsync<IQuote, JsonLatestQuote<JsonHistoricalQuote>>(
-            $"{symbol.EnsureNotNull(nameof(symbol))}/quotes/latest",
+            $"{symbol.EnsureNotNull()}/quotes/latest",
             cancellationToken);
 
     public Task<ISnapshot> GetSnapshotAsync(
         String symbol,
         CancellationToken cancellationToken = default) =>
         HttpClient.GetAsync<ISnapshot, JsonSnapshot>(
-            $"{symbol.EnsureNotNull(nameof(symbol))}/snapshot", cancellationToken);
+            $"{symbol.EnsureNotNull()}/snapshot", cancellationToken);
 
     public async Task<IReadOnlyDictionary<String, ISnapshot>> GetSnapshotsAsync(
         IEnumerable<String> symbols,
@@ -37,8 +37,7 @@ internal sealed class AlpacaDataClient :
             new UriBuilder(HttpClient.BaseAddress!)
             {
                 Query = await new QueryBuilder()
-                    .AddParameter("symbols", String.Join(",",
-                        symbols.EnsureNotNull(nameof(symbols))))
+                    .AddParameter("symbols", String.Join(",", symbols.EnsureNotNull()))
                     .AsStringAsync().ConfigureAwait(false)
             }.AppendPath("snapshots"),
             StringComparer.Ordinal, kvp => kvp.Value.WithSymbol(kvp.Key),
@@ -63,7 +62,7 @@ internal sealed class AlpacaDataClient :
         NewsArticlesRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IPage<INewsArticle>, JsonNewsPage>(
-            await request.EnsureNotNull(nameof(request)).Validate()
+            await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 

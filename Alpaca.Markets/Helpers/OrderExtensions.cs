@@ -18,7 +18,7 @@ public static class OrderExtensions
     public static OrderQuantity GetOrderQuantity(
         this IOrder order)
     {
-        var notNullOrder = order.EnsureNotNull(nameof(order));
+        var notNullOrder = order.EnsureNotNull();
         return notNullOrder.Quantity.HasValue
             ? OrderQuantity.Fractional(notNullOrder.Quantity.Value)
             : notNullOrder.Notional.HasValue

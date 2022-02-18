@@ -5,7 +5,7 @@ namespace Alpaca.Markets;
 /// </summary>
 public sealed class Pagination
 {
-    private const UInt32 MinPageSize = 1;
+    internal const UInt32 MinPageSize = 1;
 
     /// <summary>
     /// Gets ths maximal valid page size for the request supported by Alpaca Data API v2.
@@ -33,18 +33,4 @@ public sealed class Pagination
         new QueryBuilder()
             .AddParameter("page_token", Token)
             .AddParameter("limit", Size);
-
-    internal Boolean TryGetException(
-        UInt32 maxPageSize,
-        out RequestValidationException? exception)
-    {
-        if (Size < MinPageSize || Size > maxPageSize)
-        {
-            exception = new RequestValidationException("Invalid page size");
-            return true;
-        }
-
-        exception = null;
-        return false;
-    }
 }

@@ -52,14 +52,9 @@ public sealed class ChangeOrderRequest : Validation.IRequest
 
     internal String GetEndpointUri() => $"v2/orders/{OrderId:D}";
 
-    IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
+    IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
-        ClientOrderId = ClientOrderId?.ValidateClientOrderId();
-
-        if (Quantity <= 0)
-        {
-            yield return new RequestValidationException(
-                "Order quantity should be positive value.", nameof(Quantity));
-        }
+        ClientOrderId = ClientOrderId?.TrimClientOrderId();
+        yield return Quantity.TryValidateQuantity();
     }
 }

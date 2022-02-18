@@ -54,7 +54,7 @@ public sealed class ListOrdersRequest : Validation.IRequest,
     [UsedImplicitly]
     public ListOrdersRequest WithSymbol(String symbol)
     {
-        _symbols.Add(symbol.EnsureNotNull(nameof(symbol)));
+        _symbols.Add(symbol.EnsureNotNull());
         return this;
     }
 
@@ -66,7 +66,7 @@ public sealed class ListOrdersRequest : Validation.IRequest,
     [UsedImplicitly]
     public ListOrdersRequest WithSymbols(IEnumerable<String> symbols)
     {
-        _symbols.UnionWith(symbols.EnsureNotNull(nameof(symbols)));
+        _symbols.UnionWith(symbols.EnsureNotNull());
         return this;
     }
 
@@ -99,12 +99,9 @@ public sealed class ListOrdersRequest : Validation.IRequest,
                 .AsStringAsync().ConfigureAwait(false)
         };
 
-    IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
+    IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
-        if (_symbols.Contains(String.Empty))
-        {
-            yield return new RequestValidationException("Symbol name shouldn't be empty.", nameof(Symbols));
-        }
+        yield return Symbols.TryValidateSymbolName();
     }
 
     [ExcludeFromCodeCoverage]

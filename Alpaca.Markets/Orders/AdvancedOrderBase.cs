@@ -13,7 +13,7 @@ public abstract class AdvancedOrderBase : OrderBase
     protected internal AdvancedOrderBase(
         SimpleOrderBase baseOrder,
         OrderClass orderClass)
-        : base(baseOrder.EnsureNotNull(nameof(baseOrder)))
+        : base(baseOrder.EnsureNotNull())
     {
         BaseOrder = baseOrder;
         OrderClass = orderClass;

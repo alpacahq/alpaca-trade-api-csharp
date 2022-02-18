@@ -6,7 +6,7 @@ internal sealed class AlpacaCryptoStreamingClient :
 {
     public AlpacaCryptoStreamingClient(
         AlpacaCryptoStreamingClientConfiguration configuration)
-        : base(configuration.EnsureNotNull(nameof(configuration)))
+        : base(configuration.EnsureNotNull())
     {
     }
 

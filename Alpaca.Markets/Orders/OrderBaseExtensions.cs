@@ -19,7 +19,7 @@ public static class OrderBaseExtensions
         TimeInForce duration)
         where TOrder : OrderBase
     {
-        order.EnsureNotNull(nameof(order)).Duration = duration;
+        order.EnsureNotNull().Duration = duration;
         return order;
     }
 
@@ -36,7 +36,7 @@ public static class OrderBaseExtensions
         String clientOrderId)
         where TOrder : OrderBase
     {
-        order.EnsureNotNull(nameof(order)).ClientOrderId = clientOrderId;
+        order.EnsureNotNull().ClientOrderId = clientOrderId;
         return order;
     }
 
@@ -53,7 +53,7 @@ public static class OrderBaseExtensions
         Boolean extendedHours)
         where TOrder : OrderBase
     {
-        order.EnsureNotNull(nameof(order)).ExtendedHours = extendedHours;
+        order.EnsureNotNull().ExtendedHours = extendedHours;
         return order;
     }
 }

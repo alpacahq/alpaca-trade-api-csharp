@@ -11,21 +11,19 @@ public sealed class DeletePositionRequest : Validation.IRequest
     /// </summary>
     /// <param name="symbol">Symbol for liquidation.</param>
     public DeletePositionRequest(
-        String symbol)
-    {
-        Symbol = symbol ?? throw new ArgumentException(
-            "Symbol name cannot be null.", nameof(symbol));
-    }
+        String symbol) =>
+        Symbol = symbol.EnsureNotNull();
 
     /// <summary>
     /// Gets or sets the custom position liquidation size (if missed the position will be liquidated completely).
     /// </summary>
     [UsedImplicitly]
-    public PositionQuantity? PositionQuantity { get; [UsedImplicitly] set; }
+    public PositionQuantity? PositionQuantity { get; set; }
 
     /// <summary>
     /// Gets the symbol for liquidation.
     /// </summary>
+    [UsedImplicitly]
     public String Symbol { get; }
 
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
@@ -39,12 +37,8 @@ public sealed class DeletePositionRequest : Validation.IRequest
                 .AsStringAsync().ConfigureAwait(false)
         };
 
-    IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
+    IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
-        if (String.IsNullOrEmpty(Symbol))
-        {
-            yield return new RequestValidationException(
-                "Symbols shouldn't be empty.", nameof(Symbol));
-        }
+        yield return Symbol.TryValidateSymbolName();
     }
 }

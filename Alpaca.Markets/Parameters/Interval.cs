@@ -28,8 +28,7 @@ public readonly record struct Interval<TItem>
             into is not null &&
             from.Value.CompareTo(into.Value) > 0)
         {
-            throw new ArgumentOutOfRangeException(
-                nameof(from), "Time interval should be valid.");
+            throw new ArgumentException("Time interval should be valid.");
         }
 
         From = from;

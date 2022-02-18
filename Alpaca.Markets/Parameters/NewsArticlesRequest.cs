@@ -20,11 +20,12 @@ public sealed class NewsArticlesRequest : Validation.IRequest, IHistoricalReques
     /// <param name="symbols">Asset names for data retrieval.</param>
     public NewsArticlesRequest(
         IEnumerable<String> symbols) =>
-        _symbols.UnionWith(symbols.EnsureNotNull(nameof(symbols)));
+        _symbols.UnionWith(symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets assets names list for data retrieval.
     /// </summary>
+    [UsedImplicitly]
     public IReadOnlyCollection<String> Symbols => _symbols;
 
     /// <summary>
@@ -72,18 +73,10 @@ public sealed class NewsArticlesRequest : Validation.IRequest, IHistoricalReques
                 .AsStringAsync().ConfigureAwait(false)
         }.AppendPath("../../v1beta1/news");
 
-    IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
+    IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
-        if (Symbols.Any(String.IsNullOrEmpty))
-        {
-            yield return new RequestValidationException(
-                "Symbol shouldn't be empty.", nameof(Symbols));
-        }
-
-        if (Pagination.TryGetException(Pagination.MaxNewsPageSize, out var exception))
-        {
-            yield return exception!;
-        }
+        yield return Pagination.TryValidatePageSize(Pagination.MaxNewsPageSize);
+        yield return Symbols.TryValidateSymbolName();
     }
 
     NewsArticlesRequest IHistoricalRequest<NewsArticlesRequest, INewsArticle>.GetValidatedRequestWithoutPageToken() =>

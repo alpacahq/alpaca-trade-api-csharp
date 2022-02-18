@@ -18,8 +18,7 @@ public abstract class OrderBase : Validation.IRequest
         OrderSide side,
         OrderType type)
     {
-        Symbol = symbol ?? throw new ArgumentException(
-            "Symbol name cannot be null.", nameof(symbol));
+        Symbol = symbol.EnsureNotNull();
         Quantity = quantity;
         Side = side;
         Type = type;
@@ -32,7 +31,7 @@ public abstract class OrderBase : Validation.IRequest
     protected internal OrderBase(
         OrderBase baseOrder)
         : this(
-            baseOrder.EnsureNotNull(nameof(baseOrder)).Symbol,
+            baseOrder.EnsureNotNull().Symbol,
             baseOrder.Quantity,
             baseOrder.Side,
             baseOrder.Type)
@@ -45,11 +44,13 @@ public abstract class OrderBase : Validation.IRequest
     /// <summary>
     /// Gets the new order asset name.
     /// </summary>
+    [UsedImplicitly]
     public String Symbol { get; }
 
     /// <summary>
     /// Gets the new order quantity.
     /// </summary>
+    [UsedImplicitly]
     public Int64 Quantity { get; }
 
     /// <summary>
@@ -79,21 +80,11 @@ public abstract class OrderBase : Validation.IRequest
     /// </summary>
     public Boolean? ExtendedHours { get; set; }
 
-    IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
+    IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
-        ClientOrderId = ClientOrderId?.ValidateClientOrderId();
-
-        if (String.IsNullOrEmpty(Symbol))
-        {
-            yield return new RequestValidationException(
-                "Symbols shouldn't be empty.", nameof(Symbol));
-        }
-
-        if (Quantity <= 0)
-        {
-            yield return new RequestValidationException(
-                "Order quantity should be positive value.", nameof(Quantity));
-        }
+        ClientOrderId = ClientOrderId?.TrimClientOrderId();
+        yield return Symbol.TryValidateSymbolName();
+        yield return Quantity.TryValidateQuantity();
     }
 
     internal virtual JsonNewOrder GetJsonRequest() =>

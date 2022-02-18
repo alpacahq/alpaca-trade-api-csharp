@@ -61,7 +61,7 @@ internal sealed class WebSocketsTransport : IDisposable
 
     public WebSocketsTransport(
         Uri url) =>
-        _resolvedUrl = url ?? throw new ArgumentNullException(nameof(url));
+        _resolvedUrl = url.EnsureNotNull();
 
     public event Action? Opened;
 

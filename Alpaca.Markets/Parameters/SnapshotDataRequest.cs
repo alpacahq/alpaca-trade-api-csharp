@@ -14,7 +14,7 @@ public sealed class SnapshotDataRequest : Validation.IRequest
         String symbol,
         CryptoExchange exchange)
     {
-        Symbol = symbol.EnsureNotNull(nameof(symbol));
+        Symbol = symbol.EnsureNotNull();
         Exchange = exchange;
     }
 
@@ -39,12 +39,8 @@ public sealed class SnapshotDataRequest : Validation.IRequest
                 .AsStringAsync().ConfigureAwait(false)
         }.AppendPath($"{Symbol}/snapshot");
 
-    IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
+    IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
-        if (String.IsNullOrEmpty(Symbol))
-        {
-            yield return new RequestValidationException(
-                "Symbol shouldn't be empty.", nameof(Symbol));
-        }
+        yield return Symbol.TryValidateSymbolName();
     }
 }
