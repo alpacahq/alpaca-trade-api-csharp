@@ -31,6 +31,9 @@ public static class AlpacaCryptoStreamingClientExtensions
 
         public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(String symbol) =>
             Client.GetDailyBarSubscription(symbol);
+
+        public IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(String symbol) =>
+            Client.GetUpdatedBarSubscription(symbol);
     }
 
     /// <summary>

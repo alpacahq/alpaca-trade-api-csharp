@@ -12,13 +12,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.0</AssemblyVersion>
-    <FileVersion>6.0.3.0</FileVersion>
-    <Version>6.0.3-alpha1</Version>
+    <AssemblyVersion>6.0.3.1</AssemblyVersion>
+    <FileVersion>6.0.3.1</FileVersion>
+    <Version>6.0.3-alpha2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- The new `IIntervalCalender` interface was added for more clear work with trading/session intervals.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added support for updated bars subscription into both stocks and crypto streaming clients.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
@@ -69,11 +69,12 @@
   <ItemGroup>
     <None Include="..\Icon.png" Pack="true" PackagePath="icon.png" />
     <None Remove="Alpaca.Markets.Extensions.csproj.DotSettings" />
+    <Compile Include="..\Portable.Helpers\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
     <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
-      <PackageReference Include="Alpaca.Markets" Version="6.0.3-alpha1" />
+      <PackageReference Include="Alpaca.Markets" Version="6.0.3-alpha2" />
       <PackageReference Include="IsExternalInit" Version="1.0.2">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -106,7 +107,5 @@
   <ItemGroup Condition="!($(TargetFramework.StartsWith('net6')))">
    <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.1-beta2" />
  </ItemGroup>
-
-  <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />
 
 </Project>
