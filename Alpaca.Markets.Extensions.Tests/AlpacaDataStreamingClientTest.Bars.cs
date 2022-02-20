@@ -67,4 +67,37 @@ public sealed partial class AlpacaDataStreamingClientTest
         await subscriptionOne.DisposeAsync();
         client.VerifyAll();
     }
+
+    [Fact]
+    public void GetUpdatedBarSubscriptionWorks()
+    {
+        var client = createMockClient(
+            _ => _.GetUpdatedBarSubscription(It.IsAny<String>()));
+
+        var subscriptionOne = client.Object.GetUpdatedBarSubscription(_symbols);
+        var subscriptionTwo = client.Object.GetUpdatedBarSubscription(Stock, Other);
+
+        verifySubscriptions(subscriptionOne, subscriptionTwo);
+        verifySubscriptionEvents(subscriptionOne, 4);
+
+        client.VerifyAll();
+    }
+
+    [Fact]
+    public async Task SubscribeUpdatedBarAsyncWorks()
+    {
+        var client = createMockClient(
+            _ => _.GetUpdatedBarSubscription(It.IsAny<String>()));
+
+        await using var subscription = await client.Object.SubscribeUpdatedBarAsync(Stock);
+        await using var subscriptionOne = await client.Object.SubscribeUpdatedBarAsync(_symbols);
+        // ReSharper disable once UseAwaitUsing
+        using var subscriptionTwo = await client.Object.SubscribeUpdatedBarAsync(Stock, Other);
+
+        verifySubscriptions(subscriptionOne, subscriptionTwo);
+        verifySubscriptionEvents(subscription, 2);
+
+        await subscriptionOne.DisposeAsync();
+        client.VerifyAll();
+    }
 }
