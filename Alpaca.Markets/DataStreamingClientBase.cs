@@ -160,6 +160,8 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
 
     private const String MinuteBarsChannel = "b";
 
+    private const String UpdatedBarsChannel = "u";
+
     protected const String LimitUpDownChannel = "l";
 
     protected const String CorrectionsChannel = "c";
@@ -192,6 +194,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                 { CancellationsChannel, handleRealtimeDataUpdate },
                 { CorrectionsChannel, handleRealtimeDataUpdate },
                 { LimitUpDownChannel, handleRealtimeDataUpdate },
+                { UpdatedBarsChannel, handleRealtimeDataUpdate },
                 { MinuteBarsChannel, handleRealtimeDataUpdate },
                 { DailyBarsChannel, handleRealtimeDataUpdate },
                 { ConnectionSuccess, handleConnectionSuccess },
@@ -217,6 +220,10 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
     public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
         String symbol) =>
         GetSubscription<IBar, JsonRealTimeBar>(DailyBarsChannel, symbol);
+
+    public IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(
+        String symbol) =>
+        GetSubscription<IBar, JsonRealTimeBar>(UpdatedBarsChannel, symbol);
 
     public ValueTask SubscribeAsync(
         IAlpacaDataSubscription subscription) =>
@@ -345,7 +352,8 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                     .Concat(getStreams(subscriptionUpdate.Statuses.EmptyIfNull(), StatusesChannel))
                     .Concat(getStreams(subscriptionUpdate.Lulds.EmptyIfNull(), LimitUpDownChannel))
                     .Concat(getStreams(subscriptionUpdate.DailyBars.EmptyIfNull(), DailyBarsChannel))
-                    .Concat(getStreams(subscriptionUpdate.MinuteBars.EmptyIfNull(), MinuteBarsChannel)),
+                    .Concat(getStreams(subscriptionUpdate.MinuteBars.EmptyIfNull(), MinuteBarsChannel))
+                    .Concat(getStreams(subscriptionUpdate.UpdatedBars.EmptyIfNull(), UpdatedBarsChannel)),
                 StringComparer.Ordinal);
 
             _subscriptions.OnUpdate(streams);
@@ -477,7 +485,8 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                 Statuses = getSymbols(streamsByChannels, StatusesChannel),
                 Lulds = getSymbols(streamsByChannels, LimitUpDownChannel),
                 DailyBars = getSymbols(streamsByChannels, DailyBarsChannel),
-                MinuteBars = getSymbols(streamsByChannels, MinuteBarsChannel)
+                MinuteBars = getSymbols(streamsByChannels, MinuteBarsChannel),
+                UpdatedBars = getSymbols(streamsByChannels, UpdatedBarsChannel)
             }, cancellationToken)
             : new ValueTask();
 

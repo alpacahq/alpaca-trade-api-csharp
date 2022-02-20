@@ -58,4 +58,15 @@ public interface IStreamingDataClient : IStreamingClient, ISubscriptionHandler
     [UsedImplicitly]
     IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
         String symbol);
+
+    /// <summary>
+    /// Gets the updated aggregate (bar) subscription for the <paramref name="symbol"/> asset.
+    /// </summary>
+    /// <param name="symbol">Alpaca asset name.</param>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(
+        String symbol);
 }
