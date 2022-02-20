@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5</TargetFrameworks>
     <PackageValidationBaselineVersion>5.2.0</PackageValidationBaselineVersion>
-	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-	<WarningLevel>5</WarningLevel>
-	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>5</WarningLevel>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>5.2.8</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
@@ -36,11 +36,11 @@
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <RestoreLockedMode>true</RestoreLockedMode>
     <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
-	<!--<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>-->
-	<EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
-	<EnableStrictModeForCompatibleTfms>true</EnableStrictModeForCompatibleTfms>
-	<EnablePackageValidation>true</EnablePackageValidation>
-	<PackageReadmeFile>README.md</PackageReadmeFile>
+    <!--<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>-->
+    <EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
+    <EnableStrictModeForCompatibleTfms>true</EnableStrictModeForCompatibleTfms>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -83,27 +83,20 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.DotNet.Analyzers.Compatibility" Version="0.2.12-alpha">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="System.IO.Pipelines" Version="6.0.1" />
+    <PackageReference Include="System.IO.Pipelines" Version="6.0.2" />
     <PackageReference Include="Polly" Version="7.2.3" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
   </ItemGroup>
 
-  <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
+  <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
-  </ItemGroup>
-  
-  <ItemGroup Condition="'$(TargetFramework)'=='net461'">
     <PackageReference Include="System.Net.Http.WinHttpHandler" Version="6.0.0" />
-	<Reference Include="System.Net.Http" />
+  <Reference Include="System.Net.Http" />
   </ItemGroup>
   
   <ItemGroup>
-	  <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

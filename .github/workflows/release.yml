@@ -5,7 +5,7 @@ on: [push]
 jobs:
   build:
     name: Create Release
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     
     steps:
     - name: Checkout Code
