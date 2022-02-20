@@ -325,6 +325,7 @@ Alpaca.Markets.IAlpacaCryptoStreamingClient.GetMinuteBarSubscription() -> Alpaca
 Alpaca.Markets.IAlpacaCryptoStreamingClient.GetMinuteBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IAlpacaCryptoStreamingClient.GetQuoteSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IQuote!>!
 Alpaca.Markets.IAlpacaCryptoStreamingClient.GetTradeSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ITrade!>!
+Alpaca.Markets.IAlpacaCryptoStreamingClient.GetUpdatedBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IAlpacaDataClient
 Alpaca.Markets.IAlpacaDataClient.GetHistoricalBarsAsync(Alpaca.Markets.HistoricalBarsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IMultiPage<Alpaca.Markets.IBar!>!>!
 Alpaca.Markets.IAlpacaDataClient.GetHistoricalQuotesAsync(Alpaca.Markets.HistoricalQuotesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IMultiPage<Alpaca.Markets.IQuote!>!>!
@@ -350,6 +351,7 @@ Alpaca.Markets.IAlpacaDataStreamingClient.GetMinuteBarSubscription(string! symbo
 Alpaca.Markets.IAlpacaDataStreamingClient.GetQuoteSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IQuote!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetStatusSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IStatus!>!
 Alpaca.Markets.IAlpacaDataStreamingClient.GetTradeSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ITrade!>!
+Alpaca.Markets.IAlpacaDataStreamingClient.GetUpdatedBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IAlpacaDataSubscription
 Alpaca.Markets.IAlpacaDataSubscription.OnSubscribedChanged -> System.Action?
 Alpaca.Markets.IAlpacaDataSubscription.Streams.get -> System.Collections.Generic.IEnumerable<string!>!

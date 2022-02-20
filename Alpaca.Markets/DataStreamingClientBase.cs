@@ -166,6 +166,8 @@ namespace Alpaca.Markets
 
         protected const String MinuteBarsChannel = "b";
 
+        protected const String UpdatedBarsChannel = "u";
+
         protected const String LimitUpDownChannel = "l";
 
         protected const String CorrectionsChannel = "c";
@@ -198,6 +200,7 @@ namespace Alpaca.Markets
                 { CancellationsChannel, handleRealtimeDataUpdate },
                 { CorrectionsChannel, handleRealtimeDataUpdate },
                 { LimitUpDownChannel, handleRealtimeDataUpdate },
+                { UpdatedBarsChannel, handleRealtimeDataUpdate },
                 { MinuteBarsChannel, handleRealtimeDataUpdate },
                 { DailyBarsChannel, handleRealtimeDataUpdate },
                 { ConnectionSuccess, handleConnectionSuccess },
@@ -320,7 +323,8 @@ namespace Alpaca.Markets
                         .Concat(getStreams(subscriptionUpdate.Statuses.EmptyIfNull(), StatusesChannel))
                         .Concat(getStreams(subscriptionUpdate.Lulds.EmptyIfNull(), LimitUpDownChannel))
                         .Concat(getStreams(subscriptionUpdate.DailyBars.EmptyIfNull(), DailyBarsChannel))
-                        .Concat(getStreams(subscriptionUpdate.MinuteBars.EmptyIfNull(), MinuteBarsChannel)),
+                        .Concat(getStreams(subscriptionUpdate.MinuteBars.EmptyIfNull(), MinuteBarsChannel))
+                        .Concat(getStreams(subscriptionUpdate.UpdatedBars.EmptyIfNull(), UpdatedBarsChannel)),
                     StringComparer.Ordinal);
 
                 _subscriptions.OnUpdate(streams);
@@ -453,7 +457,8 @@ namespace Alpaca.Markets
                     Statuses = getSymbols(streamsByChannels, StatusesChannel),
                     Lulds = getSymbols(streamsByChannels, LimitUpDownChannel),
                     DailyBars = getSymbols(streamsByChannels, DailyBarsChannel),
-                    MinuteBars = getSymbols(streamsByChannels, MinuteBarsChannel)
+                    MinuteBars = getSymbols(streamsByChannels, MinuteBarsChannel),
+                    UpdatedBars = getSymbols(streamsByChannels, UpdatedBarsChannel)
                 }, cancellationToken)
                 : new ValueTask();
 
