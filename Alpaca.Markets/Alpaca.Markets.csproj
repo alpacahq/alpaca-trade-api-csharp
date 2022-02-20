@@ -7,21 +7,20 @@
     <WarningLevel>5</WarningLevel>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.2.8</Version>
+    <Version>5.2.9-beta1</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.2.8.3</AssemblyVersion>
-    <FileVersion>5.2.8.3</FileVersion>
+    <AssemblyVersion>5.2.9.0</AssemblyVersion>
+    <FileVersion>5.2.9.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- The historical news articles requesting method `IAlpacaDataClient.ListNewsArticlesAsync`and related classes/interfaces added into the SDK.
-- The real-time news articles streaming client `IAlpacaNewsStreamingClient` were added into the SDK.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added support for updated bars subscription into both stocks and crypto streaming clients.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
