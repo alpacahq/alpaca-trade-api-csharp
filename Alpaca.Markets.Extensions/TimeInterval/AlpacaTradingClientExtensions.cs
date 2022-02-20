@@ -21,7 +21,7 @@ public static partial class AlpacaTradingClientExtensions
         DateTime date,
         CancellationToken cancellationToken = default)
     {
-        var calendars = await client.EnsureNotNull(nameof(client))
+        var calendars = await client.EnsureNotNull()
             .ListCalendarAsync(CalendarRequest.GetForSingleDay(DateOnly.FromDateTime(date)), cancellationToken)
             .ConfigureAwait(false);
         return calendars.SingleOrDefault();
@@ -41,7 +41,7 @@ public static partial class AlpacaTradingClientExtensions
         DateOnly date,
         CancellationToken cancellationToken = default)
     {
-        var calendars = await client.EnsureNotNull(nameof(client))
+        var calendars = await client.EnsureNotNull()
             .ListIntervalCalendarAsync(CalendarRequest.GetForSingleDay(date), cancellationToken)
             .ConfigureAwait(false);
         return calendars.SingleOrDefault();

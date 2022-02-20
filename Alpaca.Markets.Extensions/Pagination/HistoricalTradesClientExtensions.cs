@@ -39,8 +39,8 @@ public static class HistoricalTradesClientExtensions
         TRequest request,
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, ITrade> =>
-        request.EnsureNotNull(nameof(request)).GetValidatedRequestWithoutPageToken()
-            .GetResponsesByItems(client.EnsureNotNull(nameof(client)).ListHistoricalTradesAsync, cancellationToken);
+        request.EnsureNotNull().GetValidatedRequestWithoutPageToken()
+            .GetResponsesByItems(client.EnsureNotNull().ListHistoricalTradesAsync, cancellationToken);
 
     /// <summary>
     /// Gets all items provided by <see cref="IHistoricalTradesClient{TRequest}.GetHistoricalTradesAsync"/> in pagination
@@ -76,8 +76,8 @@ public static class HistoricalTradesClientExtensions
         TRequest request,
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, ITrade> =>
-        request.EnsureNotNull(nameof(request)).GetValidatedRequestWithoutPageToken()
-            .GetResponsesByItems(client.EnsureNotNull(nameof(client)).GetHistoricalTradesAsync, cancellationToken);
+        request.EnsureNotNull().GetValidatedRequestWithoutPageToken()
+            .GetResponsesByItems(client.EnsureNotNull().GetHistoricalTradesAsync, cancellationToken);
 
     /// <summary>
     /// Gets all items provided by <see cref="IHistoricalTradesClient{TRequest}.ListHistoricalTradesAsync"/> in pagination
@@ -111,8 +111,8 @@ public static class HistoricalTradesClientExtensions
         TRequest request,
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, ITrade> =>
-        request.EnsureNotNull(nameof(request)).GetValidatedRequestWithoutPageToken()
-            .GetResponsesByPages(client.EnsureNotNull(nameof(client)).ListHistoricalTradesAsync, cancellationToken);
+        request.EnsureNotNull().GetValidatedRequestWithoutPageToken()
+            .GetResponsesByPages(client.EnsureNotNull().ListHistoricalTradesAsync, cancellationToken);
 
     /// <summary>
     /// Gets all items provided by <see cref="IHistoricalTradesClient{TRequest}.ListHistoricalTradesAsync"/> in pagination
@@ -148,6 +148,6 @@ public static class HistoricalTradesClientExtensions
             TRequest request,
             CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, ITrade> =>
-        request.EnsureNotNull(nameof(request)).GetValidatedRequestWithoutPageToken()
-            .GetResponsesByPages(client.EnsureNotNull(nameof(client)).GetHistoricalTradesAsync, cancellationToken);
+        request.EnsureNotNull().GetValidatedRequestWithoutPageToken()
+            .GetResponsesByPages(client.EnsureNotNull().GetHistoricalTradesAsync, cancellationToken);
 }

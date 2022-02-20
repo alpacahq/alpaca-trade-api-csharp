@@ -39,8 +39,8 @@ public static partial class HistoricalBarsClientExtensions
         TRequest request,
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
-        request.EnsureNotNull(nameof(request)).GetValidatedRequestWithoutPageToken()
-            .GetResponsesByItems(client.EnsureNotNull(nameof(client)).ListHistoricalBarsAsync, cancellationToken);
+        request.EnsureNotNull().GetValidatedRequestWithoutPageToken()
+            .GetResponsesByItems(client.EnsureNotNull().ListHistoricalBarsAsync, cancellationToken);
 
     /// <summary>
     /// Gets all items provided by <see cref="IHistoricalBarsClient{TRequest}.GetHistoricalBarsAsync"/> in pagination
@@ -78,8 +78,8 @@ public static partial class HistoricalBarsClientExtensions
             TRequest request,
             CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
-        request.EnsureNotNull(nameof(request)).GetValidatedRequestWithoutPageToken()
-            .GetResponsesByItems(client.EnsureNotNull(nameof(client)).GetHistoricalBarsAsync, cancellationToken);
+        request.EnsureNotNull().GetValidatedRequestWithoutPageToken()
+            .GetResponsesByItems(client.EnsureNotNull().GetHistoricalBarsAsync, cancellationToken);
 
     /// <summary>
     /// Gets all items provided by <see cref="IHistoricalBarsClient{TRequest}.ListHistoricalBarsAsync"/> in pagination
@@ -113,8 +113,8 @@ public static partial class HistoricalBarsClientExtensions
         TRequest request,
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
-        request.EnsureNotNull(nameof(request)).GetValidatedRequestWithoutPageToken()
-            .GetResponsesByPages(client.EnsureNotNull(nameof(client)).ListHistoricalBarsAsync, cancellationToken);
+        request.EnsureNotNull().GetValidatedRequestWithoutPageToken()
+            .GetResponsesByPages(client.EnsureNotNull().ListHistoricalBarsAsync, cancellationToken);
 
     /// <summary>
     /// Gets all items provided by <see cref="IHistoricalBarsClient{TRequest}.GetHistoricalBarsAsync"/> in pagination
@@ -150,6 +150,6 @@ public static partial class HistoricalBarsClientExtensions
             TRequest request,
             CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
-        request.EnsureNotNull(nameof(request)).GetValidatedRequestWithoutPageToken()
-            .GetResponsesByPages(client.EnsureNotNull(nameof(client)).GetHistoricalBarsAsync, cancellationToken);
+        request.EnsureNotNull().GetValidatedRequestWithoutPageToken()
+            .GetResponsesByPages(client.EnsureNotNull().GetHistoricalBarsAsync, cancellationToken);
 }

@@ -39,8 +39,8 @@ public static class HistoricalQuotesClientExtensions
         TRequest request,
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IQuote> =>
-        request.EnsureNotNull(nameof(request)).GetValidatedRequestWithoutPageToken()
-            .GetResponsesByItems(client.EnsureNotNull(nameof(client)).ListHistoricalQuotesAsync, cancellationToken);
+        request.EnsureNotNull().GetValidatedRequestWithoutPageToken()
+            .GetResponsesByItems(client.EnsureNotNull().ListHistoricalQuotesAsync, cancellationToken);
 
     /// <summary>
     /// Gets all items provided by <see cref="IHistoricalQuotesClient{TRequest}.GetHistoricalQuotesAsync"/> in pagination
@@ -78,8 +78,8 @@ public static class HistoricalQuotesClientExtensions
             TRequest request,
             CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IQuote> =>
-        request.EnsureNotNull(nameof(request)).GetValidatedRequestWithoutPageToken()
-            .GetResponsesByItems(client.EnsureNotNull(nameof(client)).GetHistoricalQuotesAsync, cancellationToken);
+        request.EnsureNotNull().GetValidatedRequestWithoutPageToken()
+            .GetResponsesByItems(client.EnsureNotNull().GetHistoricalQuotesAsync, cancellationToken);
 
     /// <summary>
     /// Gets all items provided by <see cref="IHistoricalQuotesClient{TRequest}.ListHistoricalQuotesAsync"/> in pagination
@@ -113,8 +113,8 @@ public static class HistoricalQuotesClientExtensions
         TRequest request,
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IQuote> =>
-        request.EnsureNotNull(nameof(request)).GetValidatedRequestWithoutPageToken()
-            .GetResponsesByPages(client.EnsureNotNull(nameof(client)).ListHistoricalQuotesAsync, cancellationToken);
+        request.EnsureNotNull().GetValidatedRequestWithoutPageToken()
+            .GetResponsesByPages(client.EnsureNotNull().ListHistoricalQuotesAsync, cancellationToken);
 
     /// <summary>
     /// Gets all items provided by <see cref="IHistoricalQuotesClient{TRequest}.ListHistoricalQuotesAsync"/> in pagination
@@ -150,6 +150,6 @@ public static class HistoricalQuotesClientExtensions
             TRequest request,
             CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IQuote> =>
-        request.EnsureNotNull(nameof(request)).GetValidatedRequestWithoutPageToken()
-            .GetResponsesByPages(client.EnsureNotNull(nameof(client)).GetHistoricalQuotesAsync, cancellationToken);
+        request.EnsureNotNull().GetValidatedRequestWithoutPageToken()
+            .GetResponsesByPages(client.EnsureNotNull().GetHistoricalQuotesAsync, cancellationToken);
 }

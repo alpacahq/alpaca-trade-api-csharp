@@ -34,7 +34,7 @@ public static class AlpacaDataSubscriptionExtensions
         this IAlpacaDataSubscription<TItem> subscription,
         [EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        subscription.EnsureNotNull(nameof(subscription));
+        subscription.EnsureNotNull();
 
         var buffer = Channel.CreateUnbounded<TItem>();
         subscription.Received += HandleReceived;

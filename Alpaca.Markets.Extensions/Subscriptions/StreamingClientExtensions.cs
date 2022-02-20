@@ -19,8 +19,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         params String[] symbols) =>
         getTradeSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the trade updates subscription for the all assets from the <paramref name="symbols"/> list.
@@ -36,8 +36,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         getTradeSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the quote updates subscription for the all assets from the <paramref name="symbols"/> list.
@@ -53,8 +53,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         params String[] symbols) =>
         getQuoteSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the quote updates subscription for the all assets from the <paramref name="symbols"/> list.
@@ -70,8 +70,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         getQuoteSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the minute aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
@@ -87,8 +87,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         params String[] symbols) =>
         getMinuteBarSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the minute aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
@@ -104,8 +104,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         getMinuteBarSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the daily aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
@@ -121,8 +121,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         params String[] symbols) =>
         getDailyBarSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the daily aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
@@ -138,8 +138,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         getUpdatedBarSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the updated aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
@@ -155,8 +155,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         params String[] symbols) =>
         getUpdatedBarSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the updated aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
@@ -172,8 +172,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         getDailyBarSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the trade updates subscription for the <paramref name="symbol"/> asset. This subscription is
@@ -191,8 +191,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         String symbol) =>
         DisposableAlpacaDataSubscription<ITrade>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetTradeSubscription(symbol),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetTradeSubscription(symbol),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the trade updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -210,8 +210,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<ITrade>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetTradeSubscription(symbols),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetTradeSubscription(symbols),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the trade updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -229,8 +229,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<ITrade>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetTradeSubscription(symbols),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetTradeSubscription(symbols),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the quote updates subscription for the <paramref name="symbol"/> asset. This subscription is
@@ -248,8 +248,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         String symbol) =>
         DisposableAlpacaDataSubscription<IQuote>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetQuoteSubscription(symbol),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetQuoteSubscription(symbol),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the quote updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -267,8 +267,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<IQuote>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetQuoteSubscription(symbols),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetQuoteSubscription(symbols),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the quote updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -286,8 +286,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<IQuote>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetQuoteSubscription(symbols),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetQuoteSubscription(symbols),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the minute bar updates subscription for the <paramref name="symbol"/> asset. This subscription is
@@ -305,8 +305,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         String symbol) =>
         DisposableAlpacaDataSubscription<IBar>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetMinuteBarSubscription(symbol),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetMinuteBarSubscription(symbol),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the minute bar updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -324,8 +324,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<IBar>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetMinuteBarSubscription(symbols),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetMinuteBarSubscription(symbols),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the minute bar updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -343,8 +343,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<IBar>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetMinuteBarSubscription(symbols),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetMinuteBarSubscription(symbols),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the daily bar updates subscription for the <paramref name="symbol"/> asset. This subscription is
@@ -362,8 +362,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         String symbol) =>
         DisposableAlpacaDataSubscription<IBar>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetDailyBarSubscription(symbol),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetDailyBarSubscription(symbol),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the daily bar updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -381,8 +381,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<IBar>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetDailyBarSubscription(symbols),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetDailyBarSubscription(symbols),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the daily bar updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -400,8 +400,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<IBar>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetDailyBarSubscription(symbols),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetDailyBarSubscription(symbols),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the updated bar updates subscription for the <paramref name="symbol"/> asset. This subscription is
@@ -419,8 +419,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         String symbol) =>
         DisposableAlpacaDataSubscription<IBar>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetUpdatedBarSubscription(symbol),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetUpdatedBarSubscription(symbol),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the updated bar updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -438,8 +438,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<IBar>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetUpdatedBarSubscription(symbols),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetUpdatedBarSubscription(symbols),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the updated bar updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -457,8 +457,8 @@ public static class StreamingClientExtensions
         this IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<IBar>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetUpdatedBarSubscription(symbols),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetUpdatedBarSubscription(symbols),
+            client.EnsureNotNull());
 
     private static IAlpacaDataSubscription<ITrade> getTradeSubscription(
         IStreamingDataClient client,

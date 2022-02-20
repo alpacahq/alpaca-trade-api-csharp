@@ -118,7 +118,7 @@ public static class EnumerableExtensions
         var accumulator = 0M;
         var count = 0U;
 
-        foreach (var bar in bars.EnsureNotNull(nameof(bars)))
+        foreach (var bar in bars.EnsureNotNull())
         {
             accumulator += bar.Volume;
             ++count;

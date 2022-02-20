@@ -16,8 +16,8 @@ public static class CalendarExtensions
     [Obsolete("Use IIntervalCalendar.TradingOpenCloseUtc property instead of this extension method.", false)]
     public static Interval<DateTime> AsIntervalUtc(
         this ICalendar calendar) =>
-        new (calendar.EnsureNotNull(nameof(calendar)).TradingOpenTimeUtc,
-            calendar.EnsureNotNull(nameof(calendar)).TradingCloseTimeUtc);
+        new (calendar.EnsureNotNull().TradingOpenTimeUtc,
+            calendar.EnsureNotNull().TradingCloseTimeUtc);
 
     /// <summary>
     /// Converts the <see cref="ICalendar"/> open/close times into the
@@ -30,8 +30,8 @@ public static class CalendarExtensions
     [Obsolete("Use IIntervalCalendar.TradingOpenCloseUtc property instead of this extension method.", false)]
     public static IInclusiveTimeInterval AsInclusiveTimeIntervalUtc(
         this ICalendar calendar) => TimeInterval
-        .GetInclusiveIntervalFromThat(calendar.EnsureNotNull(nameof(calendar)).TradingOpenTimeUtc)
-        .WithInto(calendar.EnsureNotNull(nameof(calendar)).TradingCloseTimeUtc);
+        .GetInclusiveIntervalFromThat(calendar.EnsureNotNull().TradingOpenTimeUtc)
+        .WithInto(calendar.EnsureNotNull().TradingCloseTimeUtc);
 
     /// <summary>
     /// Converts the <see cref="ICalendar"/> open/close times into the
@@ -44,6 +44,6 @@ public static class CalendarExtensions
     [Obsolete("Use IIntervalCalendar.TradingOpenCloseUtc property instead of this extension method.", false)]
     public static IExclusiveTimeInterval AsExclusiveTimeIntervalUtc(
         this ICalendar calendar) => TimeInterval
-        .GetExclusiveIntervalFromThat(calendar.EnsureNotNull(nameof(calendar)).TradingOpenTimeUtc)
-        .WithInto(calendar.EnsureNotNull(nameof(calendar)).TradingCloseTimeUtc);
+        .GetExclusiveIntervalFromThat(calendar.EnsureNotNull().TradingOpenTimeUtc)
+        .WithInto(calendar.EnsureNotNull().TradingCloseTimeUtc);
 }

@@ -31,8 +31,8 @@ public static partial class AlpacaTradingClientExtensions
         this IAlpacaTradingClient client,
         AccountActivitiesRequest request,
         CancellationToken cancellationToken) =>
-        getAllAccountActivitiesPages(client.EnsureNotNull(nameof(client)),
-            getRequestWithoutPageToken(request.EnsureNotNull(nameof(request))), cancellationToken);
+        getAllAccountActivitiesPages(client.EnsureNotNull(),
+            getRequestWithoutPageToken(request.EnsureNotNull()), cancellationToken);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private static AccountActivitiesRequest getRequestWithoutPageToken(

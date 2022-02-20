@@ -37,8 +37,8 @@ public static class AlpacaDataClientExtensions
         this IAlpacaDataClient client,
         NewsArticlesRequest request,
         CancellationToken cancellationToken) =>
-        getValidatedRequestWithoutPageToken(request.EnsureNotNull(nameof(request)))
-            .GetResponsesByItems(client.EnsureNotNull(nameof(client)).ListNewsArticlesAsync, cancellationToken);
+        getValidatedRequestWithoutPageToken(request.EnsureNotNull())
+            .GetResponsesByItems(client.EnsureNotNull().ListNewsArticlesAsync, cancellationToken);
 
     /// <summary>
     /// Gets all items provided by <see cref="IAlpacaDataClient.ListNewsArticlesAsync"/> in pagination
@@ -70,8 +70,8 @@ public static class AlpacaDataClientExtensions
         this IAlpacaDataClient client,
         NewsArticlesRequest request,
         CancellationToken cancellationToken) =>
-        getValidatedRequestWithoutPageToken(request.EnsureNotNull(nameof(request)))
-            .GetResponsesByPages(client.EnsureNotNull(nameof(client)).ListNewsArticlesAsync, cancellationToken);
+        getValidatedRequestWithoutPageToken(request.EnsureNotNull())
+            .GetResponsesByPages(client.EnsureNotNull().ListNewsArticlesAsync, cancellationToken);
 
     private static NewsArticlesRequest getValidatedRequestWithoutPageToken(
         IHistoricalRequest<NewsArticlesRequest, INewsArticle> request) =>

@@ -19,8 +19,8 @@ public static partial class AlpacaNewsStreamingClientExtensions
         this IAlpacaNewsStreamingClient client,
         params String[] symbols) =>
         getNewsSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the news articles updates subscription for the all assets from the <paramref name="symbols"/> list.
@@ -36,8 +36,8 @@ public static partial class AlpacaNewsStreamingClientExtensions
         this IAlpacaNewsStreamingClient client,
         IEnumerable<String> symbols) =>
         getNewsSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the news articles updates subscription for the <paramref name="symbol"/> asset. This subscription is
@@ -55,8 +55,8 @@ public static partial class AlpacaNewsStreamingClientExtensions
         this IAlpacaNewsStreamingClient client,
         String symbol) =>
         DisposableAlpacaDataSubscription<INewsArticle>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetNewsSubscription(symbol),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetNewsSubscription(symbol),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the news articles updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -74,8 +74,8 @@ public static partial class AlpacaNewsStreamingClientExtensions
         this IAlpacaNewsStreamingClient client,
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<INewsArticle>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetNewsSubscription(symbols),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetNewsSubscription(symbols),
+            client.EnsureNotNull());
 
     /// <summary>
     /// Gets the news articles updates subscription for all assets from the <paramref name="symbols"/> list.
@@ -93,8 +93,8 @@ public static partial class AlpacaNewsStreamingClientExtensions
         this IAlpacaNewsStreamingClient client,
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<INewsArticle>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetNewsSubscription(symbols),
-            client.EnsureNotNull(nameof(client)));
+            client.EnsureNotNull().GetNewsSubscription(symbols),
+            client.EnsureNotNull());
 
     private static IAlpacaDataSubscription<INewsArticle> getNewsSubscription(
         IAlpacaNewsStreamingClient client,
