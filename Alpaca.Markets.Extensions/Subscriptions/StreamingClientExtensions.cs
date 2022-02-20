@@ -125,7 +125,41 @@ public static class StreamingClientExtensions
             symbols.EnsureNotNull(nameof(symbols)));
 
     /// <summary>
-    /// Gets the Daily aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
+    /// Gets the daily aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
+    /// </summary>
+    /// <param name="client">Target instance of the <see cref="IStreamingDataClient"/> interface.</param>
+    /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    public static IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(
+        this IStreamingDataClient client,
+        IEnumerable<String> symbols) =>
+        getUpdatedBarSubscription(
+            client.EnsureNotNull(nameof(client)),
+            symbols.EnsureNotNull(nameof(symbols)));
+
+    /// <summary>
+    /// Gets the updated aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
+    /// </summary>
+    /// <param name="client">Target instance of the <see cref="IStreamingDataClient"/> interface.</param>
+    /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    public static IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(
+        this IStreamingDataClient client,
+        params String[] symbols) =>
+        getUpdatedBarSubscription(
+            client.EnsureNotNull(nameof(client)),
+            symbols.EnsureNotNull(nameof(symbols)));
+
+    /// <summary>
+    /// Gets the updated aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IStreamingDataClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
@@ -369,6 +403,63 @@ public static class StreamingClientExtensions
             client.EnsureNotNull(nameof(client)).GetDailyBarSubscription(symbols),
             client.EnsureNotNull(nameof(client)));
 
+    /// <summary>
+    /// Gets the updated bar updates subscription for the <paramref name="symbol"/> asset. This subscription is
+    /// returned with pending subscription state and will be unsubscribed on disposing so you can use it
+    /// inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+    /// </summary>
+    /// <param name="client">Target instance of the <see cref="IStreamingDataClient"/> interface.</param>
+    /// <param name="symbol">Alpaca asset name for minute bar updates subscribing.</param>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    public static ValueTask<IDisposableAlpacaDataSubscription<IBar>> SubscribeUpdatedBarAsync(
+        this IStreamingDataClient client,
+        String symbol) =>
+        DisposableAlpacaDataSubscription<IBar>.CreateAsync(
+            client.EnsureNotNull(nameof(client)).GetUpdatedBarSubscription(symbol),
+            client.EnsureNotNull(nameof(client)));
+
+    /// <summary>
+    /// Gets the updated bar updates subscription for all assets from the <paramref name="symbols"/> list.
+    /// This subscription is returned with pending subscription state and will be unsubscribed on disposing
+    /// so you can use it inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+    /// </summary>
+    /// <param name="client">Target instance of the <see cref="IStreamingDataClient"/> interface.</param>
+    /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    public static ValueTask<IDisposableAlpacaDataSubscription<IBar>> SubscribeUpdatedBarAsync(
+        this IStreamingDataClient client,
+        params String[] symbols) =>
+        DisposableAlpacaDataSubscription<IBar>.CreateAsync(
+            client.EnsureNotNull(nameof(client)).GetUpdatedBarSubscription(symbols),
+            client.EnsureNotNull(nameof(client)));
+
+    /// <summary>
+    /// Gets the updated bar updates subscription for all assets from the <paramref name="symbols"/> list.
+    /// This subscription is returned with pending subscription state and will be unsubscribed on disposing
+    /// so you can use it inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+    /// </summary>
+    /// <param name="client">Target instance of the <see cref="IStreamingDataClient"/> interface.</param>
+    /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    public static ValueTask<IDisposableAlpacaDataSubscription<IBar>> SubscribeUpdatedBarAsync(
+        this IStreamingDataClient client,
+        IEnumerable<String> symbols) =>
+        DisposableAlpacaDataSubscription<IBar>.CreateAsync(
+            client.EnsureNotNull(nameof(client)).GetUpdatedBarSubscription(symbols),
+            client.EnsureNotNull(nameof(client)));
+
     private static IAlpacaDataSubscription<ITrade> getTradeSubscription(
         IStreamingDataClient client,
         IEnumerable<String> symbols) =>
@@ -388,6 +479,11 @@ public static class StreamingClientExtensions
         IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         getSubscription(client.GetDailyBarSubscription, symbols);
+
+    private static IAlpacaDataSubscription<IBar> getUpdatedBarSubscription(
+        IStreamingDataClient client,
+        IEnumerable<String> symbols) =>
+        getSubscription(client.GetUpdatedBarSubscription, symbols);
 
     private static IAlpacaDataSubscription<TItem> getSubscription<TItem>(
         Func<String, IAlpacaDataSubscription<TItem>> selector,
