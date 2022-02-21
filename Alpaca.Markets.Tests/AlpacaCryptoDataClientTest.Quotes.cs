@@ -7,7 +7,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        addMultiQuotesPageExpectation(mock);
+        mock.AddMultiQuotesPageExpectation(PathPrefix, _symbols);
 
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
             new HistoricalCryptoQuotesRequest(_symbols, _yesterday, _today)
@@ -16,8 +16,8 @@ public sealed partial class AlpacaCryptoDataClientTest
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes.Items);
 
-        validateQuotesList(quotes.Items[Crypto], Crypto);
-        validateQuotesList(quotes.Items[Other], Other);
+        quotes.Items[Crypto].Validate(Crypto);
+        quotes.Items[Other].Validate(Other);
     }
 
     [Fact]
@@ -25,7 +25,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        addSingleQuotesPageExpectation(mock);
+        mock.AddSingleQuotesPageExpectation(PathPrefix, Crypto);
 
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
             new HistoricalCryptoQuotesRequest(Crypto, _timeInterval)
@@ -34,7 +34,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes.Items);
 
-        validateQuotesList(quotes.Items[Crypto], Crypto);
+        quotes.Items[Crypto].Validate(Crypto);
     }
 
     [Fact]
@@ -42,7 +42,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        addSingleQuotesPageExpectation(mock);
+        mock.AddSingleQuotesPageExpectation(PathPrefix, Crypto);
 
         var quotes = await mock.Client.ListHistoricalQuotesAsync(
             new HistoricalCryptoQuotesRequest(Crypto, _yesterday, _today)
@@ -52,7 +52,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         Assert.NotEmpty(quotes.Items);
         Assert.Equal(Crypto, quotes.Symbol);
 
-        validateQuotesList(quotes.Items, Crypto);
+        quotes.Items.Validate(Crypto);
     }
 
     [Fact]
@@ -60,7 +60,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        addMultiQuotesPageExpectation(mock);
+        mock.AddMultiQuotesPageExpectation(PathPrefix, _symbols);
 
         var quotes = await mock.Client.ListHistoricalQuotesAsync(
             new HistoricalCryptoQuotesRequest(_symbols, _timeInterval)
@@ -70,54 +70,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         Assert.NotEmpty(quotes.Items);
         Assert.Equal(String.Empty, quotes.Symbol);
 
-        validateQuotesList(quotes.Items.Where(_ => _.Symbol == Crypto), Crypto);
-        validateQuotesList(quotes.Items.Where(_ => _.Symbol != Crypto), Other);
-    }
-
-    private static void addMultiQuotesPageExpectation(
-        MockClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> mock) =>
-        mock.AddGet("/v1beta1/crypto/quotes", new JsonMultiQuotesPage<JsonHistoricalCryptoQuote>
-        {
-            ItemsDictionary = new Dictionary<String, List<JsonHistoricalCryptoQuote>?>
-            {
-                { Crypto, createQuotesList() },
-                { Other, createQuotesList() }
-            }
-        });
-
-    private static void addSingleQuotesPageExpectation(
-        MockClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> mock) =>
-        mock.AddGet("/v1beta1/crypto/**/quotes", new JsonQuotesPage<JsonHistoricalCryptoQuote>
-        {
-            ItemsList = createQuotesList(),
-            Symbol = Crypto
-        });
-
-    private static List<JsonHistoricalCryptoQuote> createQuotesList() => 
-        new () { createQuote(), createQuote() };
-
-    private static JsonHistoricalCryptoQuote createQuote() =>
-        new () { AskExchange = _exchange };
-
-    private static void validateQuotesList(
-        IEnumerable<IQuote> quotes,
-        String symbol)
-    {
-        foreach (var quote in quotes)
-        {
-            validateQuote(quote, symbol);
-        }
-    }
-
-    private static void validateQuote(
-        IQuote quote,
-        String symbol)
-    {
-        Assert.Empty(quote.Conditions);
-        Assert.Equal(symbol, quote.Symbol);
-        Assert.Equal(_exchange, quote.AskExchange);
-        Assert.Equal(_exchange, quote.BidExchange);
-
-        Assert.Equal(String.Empty, quote.Tape);
+        quotes.Items.Where(_ => _.Symbol == Crypto).Validate(Crypto);
+        quotes.Items.Where(_ => _.Symbol != Crypto).Validate( Other);
     }
 }

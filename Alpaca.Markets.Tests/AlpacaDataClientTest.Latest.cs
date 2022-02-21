@@ -7,12 +7,11 @@ public sealed partial class AlpacaDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-        mock.AddGet("/v2/stocks/**/quotes/latest", 
-            new JsonLatestQuote<JsonHistoricalQuote> { Symbol = Stock });
+        mock.AddLatestQuoteExpectation(PathPrefix, Stock);
 
         var quote = await mock.Client.GetLatestQuoteAsync(Stock);
 
-        Assert.Equal(Stock, quote.Symbol);
+        Assert.True(quote.Validate(Stock));
     }
 
     [Fact]
@@ -20,11 +19,10 @@ public sealed partial class AlpacaDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-        mock.AddGet("/v2/stocks/**/trades/latest",
-            new JsonLatestTrade { Symbol = Stock });
+        mock.AddLatestTradeExpectation(PathPrefix, Stock);
 
         var trade = await mock.Client.GetLatestTradeAsync(Stock);
 
-        Assert.Equal(Stock, trade.Symbol);
+        Assert.True(trade.Validate(Stock));
     }
 }

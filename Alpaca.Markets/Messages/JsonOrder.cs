@@ -9,39 +9,39 @@ internal sealed class JsonOrder : IOrder
     public Guid OrderId { get; set; }
 
     [JsonProperty(PropertyName = "client_order_id", Required = Required.Default)]
-    public String? ClientOrderId { get; set; }
+    public String? ClientOrderId { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "created_at", Required = Required.Default)]
     [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
-    public DateTime? CreatedAtUtc { get; set; }
+    public DateTime? CreatedAtUtc { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "updated_at", Required = Required.Default)]
     [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
-    public DateTime? UpdatedAtUtc { get; set; }
+    public DateTime? UpdatedAtUtc { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "submitted_at", Required = Required.Default)]
     [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
-    public DateTime? SubmittedAtUtc { get; set; }
+    public DateTime? SubmittedAtUtc { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "filled_at", Required = Required.Default)]
     [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
-    public DateTime? FilledAtUtc { get; set; }
+    public DateTime? FilledAtUtc { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "expired_at ", Required = Required.Default)]
     [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
-    public DateTime? ExpiredAtUtc { get; set; }
+    public DateTime? ExpiredAtUtc { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "canceled_at", Required = Required.Default)]
     [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
-    public DateTime? CancelledAtUtc { get; set; }
+    public DateTime? CancelledAtUtc { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "failed_at", Required = Required.Default)]
     [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
-    public DateTime? FailedAtUtc { get; set; }
+    public DateTime? FailedAtUtc { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "replaced_at", Required = Required.Default)]
     [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
-    public DateTime? ReplacedAtUtc { get; }
+    public DateTime? ReplacedAtUtc { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "asset_id", Required = Required.Always)]
     public Guid AssetId { get; set; }
@@ -53,7 +53,7 @@ internal sealed class JsonOrder : IOrder
     public AssetClass AssetClass { get; set; }
 
     [JsonProperty(PropertyName = "notional", Required = Required.Default)]
-    public Decimal? Notional { get; set; }
+    public Decimal? Notional { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "qty", Required = Required.Default)]
     public Decimal? Quantity { get; set; }
@@ -80,31 +80,31 @@ internal sealed class JsonOrder : IOrder
     public TimeInForce TimeInForce { get; set; }
 
     [JsonProperty(PropertyName = "limit_price", Required = Required.Default)]
-    public Decimal? LimitPrice { get; set; }
+    public Decimal? LimitPrice { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "stop_price", Required = Required.Default)]
-    public Decimal? StopPrice { get; set; }
+    public Decimal? StopPrice { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "trail_price", Required = Required.Default)]
-    public Decimal? TrailOffsetInDollars { get; set; }
+    public Decimal? TrailOffsetInDollars { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "trail_percent", Required = Required.Default)]
-    public Decimal? TrailOffsetInPercent { get; set; }
+    public Decimal? TrailOffsetInPercent { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "hwm", Required = Required.Default)]
-    public Decimal? HighWaterMark { get; set; }
+    public Decimal? HighWaterMark { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "filled_avg_price", Required = Required.Default)]
-    public Decimal? AverageFillPrice { get; set; }
+    public Decimal? AverageFillPrice { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "status", Required = Required.Always)]
     public OrderStatus OrderStatus { get; set; }
 
     [JsonProperty(PropertyName = "replaced_by", Required = Required.Default)]
-    public Guid? ReplacedByOrderId { get; }
+    public Guid? ReplacedByOrderId { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "replaces", Required = Required.Default)]
-    public Guid? ReplacesOrderId { get; }
+    public Guid? ReplacesOrderId { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "legs", Required = Required.Default)]
     public List<JsonOrder>? LegsList { get; set; }

@@ -23,7 +23,7 @@ public sealed partial class AlpacaTradingClientTest
 
         var assetId = Guid.NewGuid();
 
-        mock.AddGet("/v2/assets", new[] { createAsset(assetId, Crypto) });
+        mock.AddGet("/v2/assets", new JArray(createAsset(assetId, Crypto)));
 
         var assets = await mock.Client.ListAssetsAsync(new AssetsRequest
         {
@@ -34,17 +34,17 @@ public sealed partial class AlpacaTradingClientTest
         validateAsset(assets.Single(), assetId, Crypto);
     }
 
-    private static JsonAsset createAsset(
+    private static JObject createAsset(
         Guid assetId,
         String symbol) =>
-        new ()
-        {
-            AssetId = assetId,
-            IsTradable = true,
-            Shortable = true,
-            Symbol = symbol,
-            Name = symbol
-        };
+        new (
+            new JProperty("status", AssetStatus.Active),
+            new JProperty("exchange", Exchange.Amex),
+            new JProperty("shortable", true),
+            new JProperty("tradable", true),
+            new JProperty("symbol", symbol),
+            new JProperty("name", symbol),
+            new JProperty("id", assetId));
 
     private static void validateAsset(
         IAsset asset,

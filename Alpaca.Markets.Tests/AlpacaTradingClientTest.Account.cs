@@ -7,7 +7,15 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddGet("/v2/account", new JsonAccount());
+        mock.AddGet("/v2/account", new JObject(
+            new JProperty("status", AccountStatus.Active),
+            new JProperty("created_at", DateTime.UtcNow),
+            new JProperty("pattern_day_trader", false),
+            new JProperty("transfers_blocked", false),
+            new JProperty("trading_blocked", false),
+            new JProperty("account_blocked", false),
+            new JProperty("id", Guid.NewGuid()),
+            new JProperty("cash", 10000M)));
 
         var account = await mock.Client.GetAccountAsync();
 
@@ -22,17 +30,14 @@ public sealed partial class AlpacaTradingClientTest
         var activityGuid = Guid.NewGuid();
         var timestamp = CustomTimeZone.ConvertFromUtcToEst(DateTime.UtcNow);
 
-        mock.AddGet("/v2/account/activities", new []
-        {
-            new JsonAccountActivity
-            {
-                ActivityDateTime = timestamp,
-                ActivityId = $"{timestamp:yyyyMMddHHmmssfff}:{activityGuid:D}",
-                CumulativeQuantity = 1234567.89M,
-                LeavesQuantity = 1234.56M,
-                Quantity = 12.34M
-            }
-        });
+        mock.AddGet("/v2/account/activities", new JArray(
+            new JObject(
+                new JProperty("id", $"{timestamp:yyyyMMddHHmmssfff}:{activityGuid:D}"),
+                new JProperty("activity_type", AccountActivityType.Fill),
+                new JProperty("leaves_qty", 1234.56M),
+                new JProperty("cum_qty", 1234567.89M),
+                new JProperty("date", timestamp),
+                new JProperty("qty", 12.34M))));
 
         var activities = await mock.Client.ListAccountActivitiesAsync(
             new AccountActivitiesRequest(AccountActivityType.Fill)
@@ -56,15 +61,13 @@ public sealed partial class AlpacaTradingClientTest
 
         var today = DateTime.UtcNow.Date;
 
-        mock.AddGet("/v2/account/portfolio/history", new JsonPortfolioHistory
-        {
-            ProfitLossPercentageList = new List<Decimal?> { 0.01M },
-            TimestampsList = new List<DateTime> { today },
-            ProfitLossList = new List<Decimal?> { 10M },
-            EquityList = new List<Decimal?> { 20M },
-            TimeFrame = TimeFrame.Day,
-            BaseValue = 1234.56M
-        });
+        mock.AddGet("/v2/account/portfolio/history", new JObject(
+            new JProperty("timestamp", new JArray(today.IntoUnixTimeSeconds())),
+            new JProperty("profit_loss_pct", new JArray(0.01M)),
+            new JProperty("profit_loss", new JArray(10M)),
+            new JProperty("timeframe", TimeFrame.Day),
+            new JProperty("equity", new JArray(20M)),
+            new JProperty("base_value", 1234.56M)));
 
         var history = await mock.Client.GetPortfolioHistoryAsync(
             new PortfolioHistoryRequest
@@ -99,27 +102,28 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
+        mock.AddGet("/v2/account/configurations", createConfiguration());
         mock.AddPatch("/v2/account/configurations",createConfiguration());
 
         var configuration = await mock.Client.PatchAccountConfigurationAsync(
-            new JsonAccountConfiguration());
+            await mock.Client.GetAccountConfigurationAsync());
 
         validateConfiguration(configuration);
     }
 
-    private static JsonAccountConfiguration createConfiguration() =>
-        new ()
-        {
-            DayTradeMarginCallProtection = DayTradeMarginCallProtection.Both,
-            TradeConfirmEmail = TradeConfirmEmail.All,
-            IsNoShorting = true
-        };
+    private static JObject createConfiguration() =>
+        new (
+            new JProperty("dtbp_check", DayTradeMarginCallProtection.Both),
+            new JProperty("trade_confirm_email", TradeConfirmEmail.All),
+            new JProperty("suspend_trade", false),
+            new JProperty("no_shorting", true));
 
     private static void validateConfiguration(
         IAccountConfiguration configuration)
     {
         Assert.Equal(DayTradeMarginCallProtection.Both, configuration.DayTradeMarginCallProtection);
         Assert.Equal(TradeConfirmEmail.All, configuration.TradeConfirmEmail);
+        Assert.False(configuration.IsSuspendTrade);
         Assert.True(configuration.IsNoShorting);
     }
 }

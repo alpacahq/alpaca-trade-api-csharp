@@ -34,10 +34,11 @@ public sealed partial class AlpacaDataClientTest
         verifyDictionary(await mock.Client.ListQuoteConditionsAsync(Tape.B));
     }
 
-    private static Dictionary<String, String> createDictionary() =>
-        Enumerable.Range(1, 10).ToDictionary(
-            _ => _.ToString("D", CultureInfo.InvariantCulture),
-            _ => Guid.NewGuid().ToString("D"));
+    private static JObject createDictionary() =>
+        new (Enumerable.Range(1, 10)
+            .Select(_ => new JProperty(
+                _.ToString("D", CultureInfo.InvariantCulture),
+                Guid.NewGuid().ToString("D"))));
 
     private static void verifyDictionary(
         IReadOnlyDictionary<String, String> dictionary)

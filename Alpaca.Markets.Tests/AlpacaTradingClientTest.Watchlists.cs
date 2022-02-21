@@ -7,7 +7,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddGet("/v2/watchlists", new [] { createWatchList() });
+        mock.AddGet("/v2/watchlists", new JArray(createWatchList()));
 
         var watchLists = await mock.Client.ListWatchListsAsync();
 
@@ -138,11 +138,30 @@ public sealed partial class AlpacaTradingClientTest
         Assert.True(await mock.Client.DeleteWatchListByNameAsync(Guid.NewGuid().ToString("D")));
     }
 
-    private static JsonWatchList createWatchList() =>
-        new () { AssetsList = new List<JsonAsset> { new () { Symbol = Stock } } };
+    private static JToken createWatchList() =>
+        new JObject(
+            new JProperty("name", Guid.NewGuid().ToString("D")),
+            new JProperty("created_at", DateTime.UtcNow),
+            new JProperty("updated_at", DateTime.UtcNow),
+            new JProperty("account_id", Guid.NewGuid()),
+            new JProperty("id", Guid.NewGuid()),
+            new JProperty("assets", new JArray(
+                new JObject(
+                    new JProperty("name", Guid.NewGuid().ToString()),
+                    new JProperty("status", AssetStatus.Active),
+                    new JProperty("exchange", Exchange.Nyse),
+                    new JProperty("id", Guid.NewGuid()),
+                    new JProperty("tradable", true),
+                    new JProperty("symbol", Stock)))));
 
     private static void validateWatchList(IWatchList watchList)
     {
+        Assert.NotNull(watchList);
+
+        Assert.NotEqual(Guid.Empty, watchList.WatchListId);
+        Assert.NotEqual(Guid.Empty, watchList.AccountId);
+        Assert.NotNull(watchList.Name);
+
         Assert.NotNull(watchList.Assets);
         Assert.NotEmpty(watchList.Assets);
 

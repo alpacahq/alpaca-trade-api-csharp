@@ -7,7 +7,7 @@ public sealed partial class AlpacaDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-        addMultiTradesPageExpectation(mock);
+        mock.AddMultiTradesPageExpectation(PathPrefix, _symbols);
 
         var trades = await mock.Client.GetHistoricalTradesAsync(
             new HistoricalTradesRequest(_symbols, _yesterday, _today));
@@ -15,8 +15,8 @@ public sealed partial class AlpacaDataClientTest
         Assert.NotNull(trades);
         Assert.NotEmpty(trades.Items);
 
-        validateTradesList(trades.Items[Stock], Stock);
-        validateTradesList(trades.Items[Other], Other);
+        trades.Items[Stock].Validate(Stock);
+        trades.Items[Other].Validate(Other);
     }
 
     [Fact]
@@ -24,7 +24,7 @@ public sealed partial class AlpacaDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-        addSingleTradesPageExpectation(mock);
+        mock.AddSingleTradesPageExpectation(PathPrefix, Stock);
 
         var trades = await mock.Client.GetHistoricalTradesAsync(
             new HistoricalTradesRequest(Stock, _timeInterval));
@@ -32,7 +32,7 @@ public sealed partial class AlpacaDataClientTest
         Assert.NotNull(trades);
         Assert.NotEmpty(trades.Items);
 
-        validateTradesList(trades.Items[Stock], Stock);
+        trades.Items[Stock].Validate(Stock);
     }
 
     [Fact]
@@ -40,7 +40,7 @@ public sealed partial class AlpacaDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-        addSingleTradesPageExpectation(mock);
+        mock.AddSingleTradesPageExpectation(PathPrefix, Stock);
 
         var trades = await mock.Client.ListHistoricalTradesAsync(
             new HistoricalTradesRequest(Stock, _yesterday, _today));
@@ -49,7 +49,7 @@ public sealed partial class AlpacaDataClientTest
         Assert.NotEmpty(trades.Items);
         Assert.Equal(Stock, trades.Symbol);
 
-        validateTradesList(trades.Items, Stock);
+        trades.Items.Validate(Stock);
     }
 
     [Fact]
@@ -57,7 +57,7 @@ public sealed partial class AlpacaDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-        addMultiTradesPageExpectation(mock);
+        mock.AddMultiTradesPageExpectation(PathPrefix, _symbols);
 
         var trades = await mock.Client.ListHistoricalTradesAsync(
             new HistoricalTradesRequest(_symbols, _timeInterval));
@@ -66,51 +66,7 @@ public sealed partial class AlpacaDataClientTest
         Assert.NotEmpty(trades.Items);
         Assert.Equal(String.Empty, trades.Symbol);
 
-        validateTradesList(trades.Items.Where(_ => _.Symbol == Stock), Stock);
-        validateTradesList(trades.Items.Where(_ => _.Symbol != Stock), Other);
-    }
-
-    private static void addMultiTradesPageExpectation(
-        MockClient<AlpacaDataClientConfiguration, IAlpacaDataClient> mock) =>
-        mock.AddGet("/v2/stocks/trades", new JsonMultiTradesPage
-        {
-            ItemsDictionary = new Dictionary<String, List<JsonHistoricalTrade>?>
-            {
-                { Stock, createTradesList() },
-                { Other, createTradesList() }
-            }
-        });
-
-    private static void addSingleTradesPageExpectation(
-        MockClient<AlpacaDataClientConfiguration, IAlpacaDataClient> mock) =>
-        mock.AddGet("/v2/stocks/**/trades", new JsonTradesPage
-        {
-            ItemsList = createTradesList(),
-            Symbol = Stock
-        });
-
-    private static List<JsonHistoricalTrade> createTradesList() => 
-        new () { createTrade(), createTrade() };
-
-    private static JsonHistoricalTrade createTrade() =>
-        new () { ConditionsList = { _condition } };
-
-    private static void validateTradesList(
-        IEnumerable<ITrade> trades,
-        String symbol)
-    {
-        foreach (var trade in trades)
-        {
-            validateTrade(trade, symbol);
-        }
-    }
-
-    private static void validateTrade(
-        ITrade trade,
-        String symbol)
-    {
-        Assert.NotEmpty(trade.Conditions);
-        Assert.Equal(symbol, trade.Symbol);
-        Assert.Equal(_condition, trade.Conditions.Single());
+        trades.Items.Where(_ => _.Symbol == Stock).Validate(Stock);
+        trades.Items.Where(_ => _.Symbol != Stock).Validate(Other);
     }
 }

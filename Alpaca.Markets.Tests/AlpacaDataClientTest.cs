@@ -3,13 +3,13 @@
 [Collection("MockEnvironment")]
 public sealed partial class AlpacaDataClientTest
 {
-    private static readonly String _condition = Guid.NewGuid().ToString("D");
-
     private readonly MockClientsFactoryFixture _mockClientsFactory;
 
     private static readonly String[] _symbols = { Stock, Other };
 
     private static readonly Interval<DateTime> _timeInterval;
+
+    private const String PathPrefix = "/v2/stocks";
 
     private static readonly DateTime _yesterday;
 
@@ -57,25 +57,21 @@ public sealed partial class AlpacaDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-        mock.AddGet("/v1beta1/news", new JsonNewsPage
-        {
-            ItemsList = new List<JsonNewsArticle>
-            {
-                new ()
-                {
-                    Images = new List<JsonNewsArticle.Image>
-                    {
-                        new ()
-                        {
-                            Url = new Uri("https://www.google.com"),
-                            Size = "large"
-                        }
-                    },
-                    SymbolsList = new List<String> { Stock },
-                    Id = 1234567890L
-                }
-            }
-        });
+        mock.AddGet("/v1beta1/news", new JObject(
+            new JProperty("news", new JArray(
+                new JObject(
+                    new JProperty("images", new JArray(
+                        new JObject(
+                            new JProperty("url", new Uri("https://www.google.com")),
+                            new JProperty("size", "large")))),
+                    new JProperty("headline", Guid.NewGuid().ToString("D")),
+                    new JProperty("source", Guid.NewGuid().ToString("D")),
+                    new JProperty("author", Guid.NewGuid().ToString("D")),
+                    new JProperty("created_at", DateTime.UtcNow),
+                    new JProperty("updated_at", DateTime.UtcNow),
+                    new JProperty("symbols", new JArray(Stock)),
+                    new JProperty("id", 1234567890L)
+                    )))));
 
         var articles = await mock.Client.ListNewsArticlesAsync(
             new NewsArticlesRequest

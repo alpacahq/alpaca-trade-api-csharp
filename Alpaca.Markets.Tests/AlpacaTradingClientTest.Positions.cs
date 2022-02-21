@@ -7,7 +7,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddGet("/v2/positions", new [] { createPosition() });
+        mock.AddGet("/v2/positions", new JArray(createPosition()));
 
         var positions = await mock.Client.ListPositionsAsync();
 
@@ -47,18 +47,16 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddDelete("/v2/positions", new JsonPositionActionStatus []
-        {
-            new () { StatusCode = (Int64)HttpStatusCode.OK, Symbol = Stock },
-            new () { StatusCode = (Int64)HttpStatusCode.OK, Symbol = Crypto }
-        });
+        mock.AddDelete("/v2/positions", getDeletePositionsResponse());
 
         var statuses = await mock.Client.DeleteAllPositionsAsync();
 
         Assert.NotNull(statuses);
         Assert.NotEmpty(statuses);
+
         foreach (var status in statuses)
         {
+            Assert.NotNull(status.Symbol);
             Assert.True(status.IsSuccess);
         }
     }
@@ -68,11 +66,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddDelete("/v2/positions", new JsonPositionActionStatus []
-        {
-            new () { StatusCode = (Int64)HttpStatusCode.OK, Symbol = Stock },
-            new () { StatusCode = (Int64)HttpStatusCode.OK, Symbol = Crypto }
-        });
+        mock.AddDelete("/v2/positions", getDeletePositionsResponse());
 
         var statuses = await mock.Client.DeleteAllPositionsAsync(
             new DeleteAllPositionsRequest
@@ -85,16 +79,29 @@ public sealed partial class AlpacaTradingClientTest
         Assert.NotEmpty(statuses);
     }
 
-    private static JsonPosition createPosition() =>
-        new ()
-        {
-            Quantity = 123.45M,
-            Symbol = Stock
-        };
+    private static JObject createPosition() =>
+        new(
+            new JProperty("asset_class", AssetClass.UsEquity),
+            new JProperty("asset_id", Guid.NewGuid()),
+            new JProperty("avg_entry_price", 123.45M),
+            new JProperty("exchange", Exchange.Iex),
+            new JProperty("cost_basis", 123.45M),
+            new JProperty("symbol", Stock),
+            new JProperty("qty", 123.45M));
 
-    private static void validatePosition(IPosition position)
+    private static void validatePosition(
+        IPosition position)
     {
         Assert.Equal(Stock, position.Symbol);
         Assert.Equal(123, position.IntegerQuantity);
     }
+
+    private static JArray getDeletePositionsResponse() =>
+        new (
+            new JObject(
+                new JProperty("status", (Int64)HttpStatusCode.OK),
+                new JProperty("symbol", Stock)),
+            new JObject(
+                new JProperty("status", (Int64)HttpStatusCode.OK),
+                new JProperty("symbol", Stock)));
 }

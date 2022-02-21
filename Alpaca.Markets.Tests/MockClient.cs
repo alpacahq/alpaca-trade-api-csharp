@@ -1,14 +1,14 @@
 namespace Alpaca.Markets.Tests;
 
-public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
-    where TClientConfiguration : AlpacaClientConfigurationBase
+public sealed class MockClient<TConfiguration, TClient> : IMock, IDisposable
+    where TConfiguration : AlpacaClientConfigurationBase
     where TClient : class, IDisposable
 {
     private readonly MockHttpMessageHandler _handler = new ();
 
     public MockClient(
-        TClientConfiguration configuration,
-        Func<TClientConfiguration, TClient> factory)
+        TConfiguration configuration,
+        Func<TConfiguration, TClient> factory)
     {
         configuration.HttpClient = _handler.ToHttpClient();
         Client = factory(configuration);
@@ -16,29 +16,29 @@ public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
 
     public TClient Client { get; }
 
-    public void AddGet<TJson>(
+    public void AddGet(
         String request,
-        TJson response) =>
+        JToken response) =>
         addExpectRespond(HttpMethod.Get, request, response);
 
-    public void AddPut<TJson>(
+    public void AddPut(
         String request,
-        TJson response) =>
+        JToken response) =>
         addExpectRespond(HttpMethod.Put, request, response);
 
-    public void AddPost<TJson>(
+    public void AddPost(
         String request,
-        TJson response) =>
+        JToken response) =>
         addExpectRespond(HttpMethod.Post, request, response);
 
-    public void AddPatch<TJson>(
+    public void AddPatch(
         String request,
-        TJson response) =>
+        JToken response) =>
         addExpectRespond(HttpMethod.Patch, request, response);
 
-    public void AddDelete<TJson>(
+    public void AddDelete(
         String request,
-        TJson response) =>
+        JToken response) =>
         addExpectRespond(HttpMethod.Delete, request, response);
 
     public void Dispose()
@@ -49,9 +49,10 @@ public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
         Client.Dispose();
     }
 
-    private void addExpectRespond<TJson>(
+    private void addExpectRespond(
         HttpMethod method,
         String request,
-        TJson response) =>
-        _handler.Expect(method, request).RespondJson(response);
+        JToken response) =>
+        _handler.Expect(method, request)
+            .Respond("application/json", response.ToString());
 }

@@ -7,7 +7,7 @@ public sealed partial class AlpacaDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-        addMultiQuotesPageExpectation(mock);
+        mock.AddMultiQuotesPageExpectation(PathPrefix, _symbols);
 
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
             new HistoricalQuotesRequest(_symbols, _yesterday, _today));
@@ -15,8 +15,8 @@ public sealed partial class AlpacaDataClientTest
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes.Items);
 
-        validateQuotesList(quotes.Items[Stock], Stock);
-        validateQuotesList(quotes.Items[Other], Other);
+        quotes.Items[Stock].Validate(Stock);
+        quotes.Items[Other].Validate(Other);
     }
 
     [Fact]
@@ -24,7 +24,7 @@ public sealed partial class AlpacaDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-        addSingleQuotesPageExpectation(mock);
+        mock.AddSingleQuotesPageExpectation(PathPrefix, Stock);
 
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
             new HistoricalQuotesRequest(Stock, _timeInterval));
@@ -32,7 +32,7 @@ public sealed partial class AlpacaDataClientTest
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes.Items);
 
-        validateQuotesList(quotes.Items[Stock], Stock);
+        quotes.Items[Stock].Validate(Stock);
     }
 
     [Fact]
@@ -40,7 +40,7 @@ public sealed partial class AlpacaDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-        addSingleQuotesPageExpectation(mock);
+        mock.AddSingleQuotesPageExpectation(PathPrefix, Stock);
 
         var quotes = await mock.Client.ListHistoricalQuotesAsync(
             new HistoricalQuotesRequest(Stock, _yesterday, _today));
@@ -49,7 +49,7 @@ public sealed partial class AlpacaDataClientTest
         Assert.NotEmpty(quotes.Items);
         Assert.Equal(Stock, quotes.Symbol);
 
-        validateQuotesList(quotes.Items, Stock);
+        quotes.Items.Validate(Stock);
     }
 
     [Fact]
@@ -57,7 +57,7 @@ public sealed partial class AlpacaDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
-        addMultiQuotesPageExpectation(mock);
+        mock.AddMultiQuotesPageExpectation(PathPrefix, _symbols);
 
         var quotes = await mock.Client.ListHistoricalQuotesAsync(
             new HistoricalQuotesRequest(_symbols, _timeInterval));
@@ -66,51 +66,7 @@ public sealed partial class AlpacaDataClientTest
         Assert.NotEmpty(quotes.Items);
         Assert.Equal(String.Empty, quotes.Symbol);
 
-        validateQuotesList(quotes.Items.Where(_ => _.Symbol == Stock), Stock);
-        validateQuotesList(quotes.Items.Where(_ => _.Symbol != Stock), Other);
-    }
-
-    private static void addMultiQuotesPageExpectation(
-        MockClient<AlpacaDataClientConfiguration, IAlpacaDataClient> mock) =>
-        mock.AddGet("/v2/stocks/quotes", new JsonMultiQuotesPage<JsonHistoricalQuote>
-        {
-            ItemsDictionary = new Dictionary<String, List<JsonHistoricalQuote>?>
-            {
-                { Stock, createQuotesList() },
-                { Other, createQuotesList() }
-            }
-        });
-
-    private static void addSingleQuotesPageExpectation(
-        MockClient<AlpacaDataClientConfiguration, IAlpacaDataClient> mock) =>
-        mock.AddGet("/v2/stocks/**/quotes", new JsonQuotesPage<JsonHistoricalQuote>
-        {
-            ItemsList = createQuotesList(),
-            Symbol = Stock
-        });
-
-    private static List<JsonHistoricalQuote> createQuotesList() => 
-        new () { createQuote(), createQuote() };
-
-    private static JsonHistoricalQuote createQuote() =>
-        new () { ConditionsList = { _condition } };
-
-    private static void validateQuotesList(
-        IEnumerable<IQuote> quotes,
-        String symbol)
-    {
-        foreach (var quote in quotes)
-        {
-            validateQuote(quote, symbol);
-        }
-    }
-
-    private static void validateQuote(
-        IQuote quote,
-        String symbol)
-    {
-        Assert.NotEmpty(quote.Conditions);
-        Assert.Equal(symbol, quote.Symbol);
-        Assert.Equal(_condition, quote.Conditions.Single());
+        quotes.Items.Where(_ => _.Symbol == Stock).Validate(Stock);
+        quotes.Items.Where(_ => _.Symbol != Stock).Validate(Other);
     }
 }

@@ -3,10 +3,6 @@
 [Collection("MockEnvironment")]
 public sealed partial class AlpacaCryptoDataClientTest
 {
-    private static readonly String _condition = Guid.NewGuid().ToString("D");
-
-    private static readonly String _exchange = CryptoExchange.Ersx.ToString();
-
     private readonly MockClientsFactoryFixture _mockClientsFactory;
 
     private static readonly String[] _symbols = { Crypto, Other };
@@ -15,6 +11,8 @@ public sealed partial class AlpacaCryptoDataClientTest
         new () { CryptoExchange.Ersx, CryptoExchange.Gnss };
 
     private static readonly Interval<DateTime> _timeInterval;
+
+    private const String PathPrefix = "/v1beta1/crypto";
 
     private static readonly DateTime _yesterday;
 

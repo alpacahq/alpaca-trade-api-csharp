@@ -7,7 +7,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        addMultiTradesPageExpectation(mock);
+        mock.AddMultiTradesPageExpectation(PathPrefix, _symbols);
 
         var trades = await mock.Client.GetHistoricalTradesAsync(
             new HistoricalCryptoTradesRequest(_symbols, _yesterday, _today)
@@ -16,8 +16,8 @@ public sealed partial class AlpacaCryptoDataClientTest
         Assert.NotNull(trades);
         Assert.NotEmpty(trades.Items);
 
-        validateTradesList(trades.Items[Crypto], Crypto);
-        validateTradesList(trades.Items[Other], Other);
+        trades.Items[Crypto].Validate(Crypto);
+        trades.Items[Other].Validate(Other);
     }
 
     [Fact]
@@ -25,7 +25,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        addSingleTradesPageExpectation(mock);
+        mock.AddSingleTradesPageExpectation(PathPrefix, Crypto);
 
         var trades = await mock.Client.GetHistoricalTradesAsync(
             new HistoricalCryptoTradesRequest(Crypto, _timeInterval)
@@ -34,7 +34,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         Assert.NotNull(trades);
         Assert.NotEmpty(trades.Items);
 
-        validateTradesList(trades.Items[Crypto], Crypto);
+        trades.Items[Crypto].Validate(Crypto);
     }
 
     [Fact]
@@ -42,7 +42,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        addSingleTradesPageExpectation(mock);
+        mock.AddSingleTradesPageExpectation(PathPrefix, Crypto);
 
         var trades = await mock.Client.ListHistoricalTradesAsync(
             new HistoricalCryptoTradesRequest(Crypto, _yesterday, _today)
@@ -52,7 +52,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         Assert.NotEmpty(trades.Items);
         Assert.Equal(Crypto, trades.Symbol);
 
-        validateTradesList(trades.Items, Crypto);
+        trades.Items.Validate(Crypto);
     }
 
     [Fact]
@@ -60,7 +60,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        addMultiTradesPageExpectation(mock);
+        mock.AddMultiTradesPageExpectation(PathPrefix, _symbols);
 
         var trades = await mock.Client.ListHistoricalTradesAsync(
             new HistoricalCryptoTradesRequest(_symbols, _timeInterval)
@@ -70,51 +70,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         Assert.NotEmpty(trades.Items);
         Assert.Equal(String.Empty, trades.Symbol);
 
-        validateTradesList(trades.Items.Where(_ => _.Symbol == Crypto), Crypto);
-        validateTradesList(trades.Items.Where(_ => _.Symbol != Crypto), Other);
-    }
-
-    private static void addSingleTradesPageExpectation(
-        MockClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> mock) =>
-        mock.AddGet("/v1beta1/crypto/**/trades", new JsonTradesPage
-        {
-            ItemsList = createTradesList(),
-            Symbol = Crypto
-        });
-
-    private static void addMultiTradesPageExpectation(
-        MockClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> mock) =>
-        mock.AddGet("/v1beta1/crypto/trades", new JsonMultiTradesPage
-        {
-            ItemsDictionary = new Dictionary<String, List<JsonHistoricalTrade>?>
-            {
-                { Crypto, createTradesList() },
-                { Other, createTradesList() }
-            }
-        });
-
-    private static List<JsonHistoricalTrade> createTradesList() => 
-        new () { createTrade(), createTrade() };
-
-    private static JsonHistoricalTrade createTrade() =>
-        new () { ConditionsList = { _condition } };
-
-    private static void validateTradesList(
-        IEnumerable<ITrade> trades,
-        String symbol)
-    {
-        foreach (var trade in trades)
-        {
-            validateTrade(trade, symbol);
-        }
-    }
-
-    private static void validateTrade(
-        ITrade trade,
-        String symbol)
-    {
-        Assert.NotEmpty(trade.Conditions);
-        Assert.Equal(symbol, trade.Symbol);
-        Assert.Equal(_condition, trade.Conditions.Single());
+        trades.Items.Where(_ => _.Symbol == Crypto).Validate(Crypto);
+        trades.Items.Where(_ => _.Symbol != Crypto).Validate(Other);
     }
 }

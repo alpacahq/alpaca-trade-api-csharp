@@ -7,7 +7,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddGet("/v2/orders", new [] { createOrder() });
+        mock.AddGet("/v2/orders", new JArray( createOrder()));
 
         var orders = await mock.Client
             .ListOrdersAsync(new ListOrdersRequest
@@ -163,36 +163,67 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddDelete("/v2/orders", new []
-        {
-            new JsonOrderActionStatus
-            {
-                StatusCode = (Int64)HttpStatusCode.OK,
-                OrderId = Guid.NewGuid()
-            }
-        });
+        mock.AddDelete("/v2/orders", new JArray(
+            new JObject(
+                new JProperty("status", (Int64)HttpStatusCode.OK),
+                new JProperty("id", Guid.NewGuid()))));
 
         var statuses = await mock.Client.DeleteAllOrdersAsync();
 
         var status = statuses.Single();
+
+        Assert.NotEqual(Guid.Empty, status.OrderId);
         Assert.True(status.IsSuccess);
     }
 
-    private static JsonOrder createOrder() =>
-        new ()
-        {
-            FilledQuantity = 56.43M,
-            Quantity = 1234.56M
-        };
+    private static JToken createOrder() =>
+        new JObject(
+            new JProperty("status", OrderStatus.PartiallyFilled),
+            new JProperty("asset_class", AssetClass.UsEquity),
+            new JProperty("time_in_force", TimeInForce.Day),
+            new JProperty("order_class", OrderClass.Simple),
+            new JProperty("asset_id", Guid.NewGuid()),
+            new JProperty("type", OrderType.Market),
+            new JProperty("side", OrderSide.Sell),
+            new JProperty("id", Guid.NewGuid()),
+            new JProperty("filled_qty", 56.43M),
+            new JProperty("qty", 1234.56M),
+            new JProperty("symbol", Stock),
+            new JProperty("legs"));
 
     private static void validateOrder(
         IOrder order)
     {
         Assert.NotNull(order);
-        Assert.Empty(order.Legs);
-        Assert.Equal(1235L, order.IntegerQuantity);
-        Assert.Equal(56L, order.IntegerFilledQuantity);
 
+        Assert.NotEqual(Guid.Empty, order.AssetId);
+        Assert.NotEqual(Guid.Empty, order.OrderId);
+        Assert.Equal(Stock, order.Symbol);
+
+        Assert.Equal(56L, order.IntegerFilledQuantity);
+        Assert.Equal(1235L, order.IntegerQuantity);
         Assert.True(order.GetOrderQuantity().IsInShares);
+
+        Assert.Null(order.TrailOffsetInPercent);
+        Assert.Null(order.TrailOffsetInDollars);
+        Assert.Null(order.ReplacedByOrderId);
+        Assert.Null(order.AverageFillPrice);
+        Assert.Null(order.ReplacesOrderId);
+        Assert.Null(order.ClientOrderId);
+        Assert.Null(order.HighWaterMark);
+        Assert.Null(order.LimitPrice);
+        Assert.Null(order.StopPrice);
+        Assert.Null(order.Notional);
+
+        Assert.Null(order.SubmittedAtUtc);
+        Assert.Null(order.CancelledAtUtc);
+        Assert.Null(order.ReplacedAtUtc);
+        Assert.Null(order.CreatedAtUtc);
+        Assert.Null(order.UpdatedAtUtc);
+        Assert.Null(order.ExpiredAtUtc);
+        Assert.Null(order.FilledAtUtc);
+        Assert.Null(order.FailedAtUtc);
+
+        Assert.Empty(order.Legs);
     }
 }
