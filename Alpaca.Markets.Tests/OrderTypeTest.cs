@@ -1,8 +1,16 @@
-﻿namespace Alpaca.Markets.Tests;
+﻿using System.Reflection;
+
+namespace Alpaca.Markets.Tests;
 
 public  sealed class OrderTypeTest
 {
     private const String Stock = "AAPL";
+
+    private static readonly MethodInfo? _getJsonRequest;
+
+    static OrderTypeTest() =>
+        _getJsonRequest = typeof(OrderBase).GetMethod(
+            "GetJsonRequest", BindingFlags.Instance | BindingFlags.NonPublic);
 
     [Fact]
     public void MarketOrderCreationWorks()
@@ -224,6 +232,10 @@ public  sealed class OrderTypeTest
         OrderBase lhs,
         OrderBase rhs) =>
         Assert.Equal(
-            JsonConvert.SerializeObject(lhs.GetJsonRequest()),
-            JsonConvert.SerializeObject(rhs.GetJsonRequest()));
+            JsonConvert.SerializeObject(getJsonRequest(lhs)),
+            JsonConvert.SerializeObject(getJsonRequest(rhs)));
+
+    private static Object? getJsonRequest(
+        OrderBase order) =>
+        _getJsonRequest?.Invoke(order, null);
 }

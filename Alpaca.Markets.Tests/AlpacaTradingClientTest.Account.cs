@@ -28,7 +28,7 @@ public sealed partial class AlpacaTradingClientTest
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         var activityGuid = Guid.NewGuid();
-        var timestamp = CustomTimeZone.ConvertFromUtcToEst(DateTime.UtcNow);
+        var timestamp = DateTime.UtcNow;
 
         mock.AddGet("/v2/account/activities", new JArray(
             new JObject(
@@ -62,7 +62,8 @@ public sealed partial class AlpacaTradingClientTest
         var today = DateTime.UtcNow.Date;
 
         mock.AddGet("/v2/account/portfolio/history", new JObject(
-            new JProperty("timestamp", new JArray(today.IntoUnixTimeSeconds())),
+            new JProperty("timestamp", new JArray(
+                new DateTimeOffset(today).ToUnixTimeSeconds())),
             new JProperty("profit_loss_pct", new JArray(0.01M)),
             new JProperty("profit_loss", new JArray(10M)),
             new JProperty("timeframe", TimeFrame.Day),
@@ -74,7 +75,7 @@ public sealed partial class AlpacaTradingClientTest
             {
                 Period = new HistoryPeriod(5, HistoryPeriodUnit.Day),
                 ExtendedHours = true
-            }.WithInterval(new Interval<DateTime>(today)));
+            }.WithInterval(new Interval<DateTime>(today, today)));
 
         Assert.NotNull(history.Items);
         var item = history.Items.Single();

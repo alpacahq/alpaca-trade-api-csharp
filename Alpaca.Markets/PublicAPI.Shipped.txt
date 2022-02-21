@@ -182,6 +182,7 @@ Alpaca.Markets.Exchange.NyseArca = 2 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.NyseMkt = 1 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.Otc = 9 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.Unknown = 0 -> Alpaca.Markets.Exchange
+Alpaca.Markets.Extensions.ConfigurationExtensions
 Alpaca.Markets.HistoricalBarsRequest
 Alpaca.Markets.HistoricalBarsRequest.Adjustment.get -> Alpaca.Markets.Adjustment?
 Alpaca.Markets.HistoricalBarsRequest.Adjustment.set -> void
@@ -944,6 +945,13 @@ static Alpaca.Markets.EnvironmentExtensions.GetAlpacaTradingClient(this Alpaca.M
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaTradingClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaTradingClientConfiguration!
 static Alpaca.Markets.Environments.Live.get -> Alpaca.Markets.IEnvironment!
 static Alpaca.Markets.Environments.Paper.get -> Alpaca.Markets.IEnvironment!
+static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaCryptoDataClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaCryptoDataClient!
+static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaCryptoStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaCryptoStreamingClient!
+static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaDataClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaDataClient!
+static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaDataStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaDataStreamingClient!
+static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaNewsStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaNewsStreamingClient!
+static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaStreamingClient!
+static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaTradingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaTradingClient!
 static Alpaca.Markets.HistoricalRequestBaseExtensions.WithPageSize<TRequest>(this TRequest! request, uint pageSize) -> TRequest!
 static Alpaca.Markets.HistoricalRequestBaseExtensions.WithPageToken<TRequest>(this TRequest! request, string! pageToken) -> TRequest!
 static Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeEst(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateTime

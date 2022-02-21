@@ -25,7 +25,7 @@ public sealed class RequestValidationTest
 
     [Fact]
     public void NewsArticlesRequestBigPageValidationWorks() =>
-        validate(new NewsArticlesRequest().WithPageSize(Pagination.MaxNewsPageSize + 1));
+        validate(new NewsArticlesRequest().WithPageSize(101)); // Pagination.MaxNewsPageSize + 1
 
     [Fact]
     public void HistoricalRequestBaseHugePageValidationWorks() =>
@@ -89,11 +89,11 @@ public sealed class RequestValidationTest
 
     [Fact]
     public void OrderBaseEmptySymbolValidationWorks() =>
-        validate(new MarketOrder(String.Empty, OrderQuantity.Fractional(42M), OrderSide.Buy));
+        validate(MarketOrder.Buy(String.Empty, OrderQuantity.Fractional(42M)));
 
     [Fact]
     public void OrderBaseNegativeQuantityValidationWorks() =>
-        validate(new MarketOrder(Symbol, OrderQuantity.Fractional(-42M), OrderSide.Buy));
+        validate(MarketOrder.Buy(Symbol, OrderQuantity.Fractional(-42M)));
 
     [Fact]
     public void ListOrdersRequestEmptySymbolValidationWorks() =>
@@ -141,6 +141,20 @@ public sealed class RequestValidationTest
         Assert.Contains(Symbol, request.Symbols);
     }
 
-    private static void validate(Validation.IRequest request) =>
-        Assert.NotNull(Assert.Throws<RequestValidationException>(request.Validate).PropertyName);
+    private static void validate<TRequest>(TRequest request) =>
+        Assert.NotNull(Assert.Throws<RequestValidationException>(() => forceValidation(request)).PropertyName);
+
+    private static void forceValidation<TRequest>(TRequest request)
+    {
+        var method = typeof(TRequest).GetInterfaces()
+            .SelectMany(_ => _.GetMethods())
+            .Single(_ => _.Name == "GetExceptions");
+
+        if (method.Invoke(request, null) is IEnumerable<RequestValidationException?> exceptions)
+        {
+            var exception = exceptions.OfType<RequestValidationException>().First() ??
+                            throw new InvalidOperationException();
+            throw exception;
+        }
+    }
 }
