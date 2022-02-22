@@ -150,11 +150,14 @@ public sealed class RequestValidationTest
             .SelectMany(_ => _.GetMethods())
             .Single(_ => _.Name == "GetExceptions");
 
-        if (method.Invoke(request, null) is IEnumerable<RequestValidationException?> exceptions)
+        if (method.Invoke(request, null) is not
+            IEnumerable<RequestValidationException?> exceptions)
         {
-            var exception = exceptions.OfType<RequestValidationException>().First() ??
-                            throw new InvalidOperationException();
-            throw exception;
+            return;
         }
+
+        var exception = exceptions.OfType<RequestValidationException>().First() ??
+                        throw new InvalidOperationException();
+        throw exception;
     }
 }

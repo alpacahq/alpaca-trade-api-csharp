@@ -6,10 +6,10 @@
 internal sealed class JsonNewsPage : IPage<INewsArticle>
 {
     [JsonProperty(PropertyName = "news", Required = Required.Default)]
-    public List<JsonNewsArticle> ItemsList { get; set; } = new ();
+    public List<JsonNewsArticle> ItemsList { get; [ExcludeFromCodeCoverage] set; } = new ();
 
     [JsonProperty(PropertyName = "next_page_token", Required = Required.Default)]
-    public String? NextPageToken { get; set; }
+    public String? NextPageToken { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonIgnore]
     public IReadOnlyList<INewsArticle> Items => ItemsList.EmptyIfNull();

@@ -24,7 +24,7 @@ internal sealed class JsonHistoricalQuote : IQuote, ISymbolMutable
     public Decimal BidSize { get; set; }
 
     [JsonProperty(PropertyName = "c", Required = Required.Default)]
-    public List<String> ConditionsList { get; set; } = new();
+    public List<String> ConditionsList { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "z", Required = Required.Default)]
     public String Tape { get; set; } = String.Empty;

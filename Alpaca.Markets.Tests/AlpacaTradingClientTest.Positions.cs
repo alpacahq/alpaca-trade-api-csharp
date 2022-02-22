@@ -81,10 +81,19 @@ public sealed partial class AlpacaTradingClientTest
 
     private static JObject createPosition() =>
         new(
+            new JProperty("unrealized_pl", 42M),
+            new JProperty("unrealized_plpc", 0.42M),
+            new JProperty("unrealized_intraday_pl", 42M),
+            new JProperty("unrealized_intraday_plpc", 0.42M),
             new JProperty("asset_class", AssetClass.UsEquity),
             new JProperty("asset_id", Guid.NewGuid()),
             new JProperty("avg_entry_price", 123.45M),
+            new JProperty("side", PositionSide.Long),
             new JProperty("exchange", Exchange.Iex),
+            new JProperty("current_price", 234.56M),
+            new JProperty("lastday_price", 234.56M),
+            new JProperty("change_today", 234.56M),
+            new JProperty("market_value", 123.45M),
             new JProperty("cost_basis", 123.45M),
             new JProperty("symbol", Stock),
             new JProperty("qty", 123.45M));
@@ -93,7 +102,23 @@ public sealed partial class AlpacaTradingClientTest
         IPosition position)
     {
         Assert.Equal(Stock, position.Symbol);
+
         Assert.Equal(123, position.IntegerQuantity);
+        Assert.Equal(PositionSide.Long, position.Side);
+
+        Assert.NotEqual(Guid.Empty, position.AssetId);
+
+        Assert.True(position.AssetChangePercent != 0M);
+        Assert.True(position.AverageEntryPrice != 0M);
+        Assert.True(position.AssetCurrentPrice!= 0M);
+        Assert.True(position.AssetLastPrice != 0M);
+        Assert.True(position.MarketValue != 0M);
+        Assert.True(position.CostBasis != 0M);
+
+        Assert.True(position.UnrealizedProfitLoss != 0M);
+        Assert.True(position.UnrealizedProfitLossPercent != 0M);
+        Assert.True(position.IntradayUnrealizedProfitLoss != 0M);
+        Assert.True(position.IntradayUnrealizedProfitLossPercent != 0M);
     }
 
     private static JArray getDeletePositionsResponse() =>

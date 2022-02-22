@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets.Tests;
 
+[SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Global")]
 internal static class HistoricalDataHelpers
 {
     private static readonly String _condition = Guid.NewGuid().ToString("D");
@@ -89,7 +90,6 @@ internal static class HistoricalDataHelpers
             _ => throw new NotSupportedException()
         }));
     
-    [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Local")]
     public static Boolean Validate(
         this ITrade trade,
         String symbol)
@@ -111,7 +111,6 @@ internal static class HistoricalDataHelpers
         return true;
     }
 
-    [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Local")]
     public static Boolean Validate(
         this IQuote quote,
         String symbol)
@@ -141,14 +140,13 @@ internal static class HistoricalDataHelpers
         return true;
     }
 
-    [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Local")]
     public static Boolean Validate(
         this ISnapshot snapshot,
         String symbol) =>
-        snapshot.PreviousDailyBar!.validate(symbol) &&
-        snapshot.CurrentDailyBar!.validate(symbol) &&
-        snapshot.MinuteBar!.validate(symbol) &&
-        snapshot.Quote!.Validate(symbol) &&
+        snapshot.PreviousDailyBar!.validate(symbol) &
+        snapshot.CurrentDailyBar!.validate(symbol) &
+        snapshot.MinuteBar!.validate(symbol) &
+        snapshot.Quote!.Validate(symbol) &
         snapshot.Trade!.Validate(symbol);
 
     private static JArray createItemsList(
@@ -157,6 +155,7 @@ internal static class HistoricalDataHelpers
     private static JObject createBar() =>
         new (
             new JProperty("t", DateTime.UtcNow),
+            new JProperty("vw", 1234.56M),
             new JProperty("n", 100),
             new JProperty("v", 1000M),
             new JProperty("o", 100M),
@@ -197,10 +196,11 @@ internal static class HistoricalDataHelpers
             new JProperty("dailyBar", createBar()),
             new JProperty("symbol", symbol));
 
-    [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Local")]
     private static Boolean validate(
+        // ReSharper disable ParameterOnlyUsedForPreconditionCheck.Local
         this IBar bar,
         String symbol)
+        // ReSharper restore ParameterOnlyUsedForPreconditionCheck.Local
     {
         Assert.True(bar.TimeUtc <= DateTime.UtcNow);
         Assert.Equal(symbol, bar.Symbol);
@@ -211,6 +211,7 @@ internal static class HistoricalDataHelpers
         Assert.True(bar.TimeUtc <= DateTime.UtcNow);
         Assert.True(bar.TradeCount != 0);
         Assert.True(bar.Volume != 0M);
+        Assert.True(bar.Vwap != 0M);
 
         return true;
     }

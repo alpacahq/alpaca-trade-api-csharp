@@ -5,7 +5,7 @@ namespace Alpaca.Markets;
 internal sealed class JsonTradesPage : IPageMutable<ITrade>
 {
     [JsonProperty(PropertyName = "trades", Required = Required.Default)]
-    public List<JsonHistoricalTrade> ItemsList { get; set; } = new();
+    public List<JsonHistoricalTrade> ItemsList { get; [ExcludeFromCodeCoverage] set; } = new ();
 
     [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
     public String Symbol { get; set; } = String.Empty;

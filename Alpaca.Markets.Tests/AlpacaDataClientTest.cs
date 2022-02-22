@@ -65,8 +65,11 @@ public sealed partial class AlpacaDataClientTest
                             new JProperty("url", new Uri("https://www.google.com")),
                             new JProperty("size", "large")))),
                     new JProperty("headline", Guid.NewGuid().ToString("D")),
+                    new JProperty("content", Guid.NewGuid().ToString("D")),
+                    new JProperty("summary", Guid.NewGuid().ToString("D")),
                     new JProperty("source", Guid.NewGuid().ToString("D")),
                     new JProperty("author", Guid.NewGuid().ToString("D")),
+                    new JProperty("url", new Uri("https://www.google.com")),
                     new JProperty("created_at", DateTime.UtcNow),
                     new JProperty("updated_at", DateTime.UtcNow),
                     new JProperty("symbols", new JArray(Stock)),
@@ -82,10 +85,20 @@ public sealed partial class AlpacaDataClientTest
             });
 
         Assert.NotNull(articles.Symbol);
+        Assert.Null(articles.NextPageToken);
+
         var article = articles.Items.Single();
         Assert.Equal(1234567890L, article.Id);
 
         Assert.Equal(Stock, article.Symbols.Single());
+
+        Assert.NotNull(article.ArticleUrl);
+        Assert.NotNull(article.Headline);
+        Assert.NotNull(article.Content);
+        Assert.NotNull(article.Summary);
+        Assert.NotNull(article.Author);
+        Assert.NotNull(article.Source);
+
         Assert.NotNull(article.LargeImageUrl);
         Assert.Null(article.SmallImageUrl);
         Assert.Null(article.ThumbImageUrl);

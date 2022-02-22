@@ -3,7 +3,7 @@
 internal sealed class JsonLatestBestBidOffer : IQuote
 {
     [JsonProperty(PropertyName = "xbbo", Required = Required.Always)]
-    public JsonHistoricalQuote Nested { get; set; } = new();
+    public JsonHistoricalQuote Nested { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
     public String Symbol { get; set; } = String.Empty;

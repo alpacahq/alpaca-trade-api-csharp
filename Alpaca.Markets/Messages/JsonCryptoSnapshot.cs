@@ -5,10 +5,10 @@ namespace Alpaca.Markets;
 internal sealed class JsonCryptoSnapshot : ISnapshot
 {
     [JsonProperty(PropertyName = "latestQuote", Required = Required.Default)]
-    public JsonHistoricalCryptoQuote? JsonQuote { get; set; } = new();
+    public JsonHistoricalCryptoQuote? JsonQuote { get; set; }
 
     [JsonProperty(PropertyName = "latestTrade", Required = Required.Default)]
-    public JsonHistoricalTrade? JsonTrade { get; set; } = new();
+    public JsonHistoricalTrade? JsonTrade { get; set; }
 
     [JsonProperty(PropertyName = "minuteBar", Required = Required.Default)]
     public JsonHistoricalBar? JsonMinuteBar { get; set; }

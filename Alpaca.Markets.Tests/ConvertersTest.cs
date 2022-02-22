@@ -4,7 +4,7 @@ public sealed class ConvertersTest
 {
     private record struct EnumWrapper<T>
     {
-        public T Item { get; set; }
+        public T Item { get; init; }
     }
 
     [Fact]

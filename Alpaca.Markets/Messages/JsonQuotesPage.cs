@@ -9,7 +9,7 @@ internal sealed class JsonQuotesPage<TQuote> : IPageMutable<IQuote>
     where TQuote : IQuote, ISymbolMutable
 {
     [JsonProperty(PropertyName = "quotes", Required = Required.Default)]
-    public List<TQuote> ItemsList { get; set; } = new();
+    public List<TQuote> ItemsList { get; [ExcludeFromCodeCoverage] set; } = new ();
 
     [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
     public String Symbol { get; set; } = String.Empty;

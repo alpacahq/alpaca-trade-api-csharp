@@ -39,7 +39,11 @@ public sealed partial class AlpacaTradingClientTest
         String symbol) =>
         new (
             new JProperty("status", AssetStatus.Active),
+            new JProperty("class", AssetClass.UsEquity),
             new JProperty("exchange", Exchange.Amex),
+            new JProperty("easy_to_borrow", true),
+            new JProperty("fractionable", false),
+            new JProperty("marginable", false),
             new JProperty("shortable", true),
             new JProperty("tradable", true),
             new JProperty("symbol", symbol),
@@ -53,8 +57,14 @@ public sealed partial class AlpacaTradingClientTest
     {
         Assert.True(asset.Shortable);
         Assert.True(asset.IsTradable);
+        Assert.False(asset.Marginable);
+        Assert.True(asset.EasyToBorrow);
+        Assert.False(asset.Fractionable);
+
         Assert.Equal(symbol, asset.Name);
         Assert.Equal(symbol, asset.Symbol);
         Assert.Equal(assetId, asset.AssetId);
+
+        Assert.Equal(AssetClass.UsEquity, asset.Class);
     }
 }

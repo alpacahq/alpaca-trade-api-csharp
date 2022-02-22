@@ -24,7 +24,7 @@ internal sealed class JsonHistoricalTrade : ITrade, ISymbolMutable
     public List<String> ConditionsList { get; } = new();
 
     [JsonProperty(PropertyName = "tks", Required = Required.Default)]
-    public TakerSide TakerSide { get; set; } = TakerSide.Unknown;
+    public TakerSide TakerSide { get; [ExcludeFromCodeCoverage] set; } = TakerSide.Unknown;
 
     [JsonIgnore]
     public String Symbol { get; private set; } = String.Empty;
