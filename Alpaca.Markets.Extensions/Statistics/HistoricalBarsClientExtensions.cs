@@ -185,7 +185,7 @@ public static partial class HistoricalBarsClientExtensions
        GetAverageDailyTradeVolumeAsync(
            client, symbol,
            // ReSharper disable once ConstantConditionalAccessQualifier
-           new Interval<DateOnly>(timeInterval?.From.AsDateOnly(), timeInterval?.From.AsDateOnly()),
+           new Interval<DateOnly>(timeInterval?.From.asDateOnly(), timeInterval?.From.asDateOnly()),
            cancellationToken);
 
     /// <summary>
@@ -247,4 +247,8 @@ public static partial class HistoricalBarsClientExtensions
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
         client.GetHistoricalBarsAsAsyncEnumerable(request, cancellationToken)
             .GetSimpleMovingAverageAsync(window, cancellationToken);
+
+    private static DateOnly? asDateOnly(
+        this in DateTime? dateTime)
+        => dateTime.HasValue ? DateOnly.FromDateTime(dateTime.Value) : null;
 }

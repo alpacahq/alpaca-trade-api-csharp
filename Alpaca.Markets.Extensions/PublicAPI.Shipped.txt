@@ -13,7 +13,6 @@ Alpaca.Markets.Extensions.AlpacaValueTask.GetAwaiter() -> System.Runtime.Compile
 Alpaca.Markets.Extensions.AlpacaValueTask.WithCancellation(System.Threading.CancellationToken cancellationToken) -> Alpaca.Markets.Extensions.AlpacaValueTask
 Alpaca.Markets.Extensions.Bracket
 Alpaca.Markets.Extensions.CalendarExtensions
-Alpaca.Markets.Extensions.ConfigurationExtensions
 Alpaca.Markets.Extensions.EnvironmentExtensions
 Alpaca.Markets.Extensions.EnumerableExtensions
 Alpaca.Markets.Extensions.HistoricalBarsClientExtensions
@@ -77,13 +76,6 @@ static Alpaca.Markets.Extensions.Bracket.Sell(string! symbol, long quantity, dec
 static Alpaca.Markets.Extensions.CalendarExtensions.AsExclusiveTimeIntervalUtc(this Alpaca.Markets.ICalendar! calendar) -> Alpaca.Markets.IExclusiveTimeInterval!
 static Alpaca.Markets.Extensions.CalendarExtensions.AsInclusiveTimeIntervalUtc(this Alpaca.Markets.ICalendar! calendar) -> Alpaca.Markets.IInclusiveTimeInterval!
 static Alpaca.Markets.Extensions.CalendarExtensions.AsIntervalUtc(this Alpaca.Markets.ICalendar! calendar) -> Alpaca.Markets.Interval<System.DateTime>
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaCryptoDataClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaCryptoDataClient!
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaCryptoStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaCryptoStreamingClient!
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaDataClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaDataClient!
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaDataStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaDataStreamingClient!
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaNewsStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaNewsStreamingClient!
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaStreamingClient!
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaTradingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaTradingClient!
 static Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolume(this System.Collections.Generic.IEnumerable<Alpaca.Markets.IBar!>! bars) -> (decimal, uint)
 static Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(this System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IBar!>! bars) -> System.Threading.Tasks.Task<(decimal, uint)>!
 static Alpaca.Markets.Extensions.EnumerableExtensions.GetAverageDailyTradeVolumeAsync(this System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IBar!>! bars, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<(decimal, uint)>!

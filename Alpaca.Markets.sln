@@ -24,6 +24,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Portable.Helpers", "Portabl
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Portable.Helpers\Portable.Helpers.projitems*{4cce5c4a-688a-40da-befd-12e6803b41d3}*SharedItemsImports = 5
 		Portable.Helpers\Portable.Helpers.projitems*{b628bf16-ab9c-4a2c-b13f-3fcc491d15d7}*SharedItemsImports = 13
 		Portable.Helpers\Portable.Helpers.projitems*{f339d73b-347f-47d4-9bfb-ebea010fc6f7}*SharedItemsImports = 5
 	EndGlobalSection
