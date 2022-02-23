@@ -12,13 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.1</AssemblyVersion>
-    <FileVersion>6.0.3.1</FileVersion>
-    <Version>6.0.3-alpha2</Version>
+    <AssemblyVersion>6.0.3.2</AssemblyVersion>
+    <FileVersion>6.0.3.2</FileVersion>
+    <Version>6.0.3-alpha3</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Added support for updated bars subscription into both stocks and crypto streaming clients.</PackageReleaseNotes>
+    <PackageReleaseNotes>- All `GetClient` extension methods moved into the main SDK package with proper forwarding.
+- The `IntervalsVisibleTo` attribute was removed from the main SDK package.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
