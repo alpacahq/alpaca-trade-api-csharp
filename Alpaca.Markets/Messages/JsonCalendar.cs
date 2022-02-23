@@ -3,6 +3,9 @@
 namespace Alpaca.Markets;
 
 #pragma warning disable CS0618
+[SuppressMessage(
+    "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
 internal sealed class JsonCalendar : ICalendar, IIntervalCalendar
 #pragma warning restore CS0618
 {

@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alpaca.Markets.Tests;
 
 public sealed partial class AlpacaTradingClientTest
@@ -79,6 +81,7 @@ public sealed partial class AlpacaTradingClientTest
         Assert.NotEmpty(statuses);
     }
 
+    [SuppressMessage("ReSharper", "StringLiteralTypo")]
     private static JObject createPosition() =>
         new(
             new JProperty("unrealized_pl", 42M),

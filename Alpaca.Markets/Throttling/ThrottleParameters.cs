@@ -159,8 +159,11 @@ public sealed class ThrottleParameters
     [UsedImplicitly]
     public ISet<SocketError> RetrySocketErrorCodes => _retrySocketErrorCodes;
 
+    /// <summary>
+    /// Gets the custom message handler that supports reconnection logic configured with the current settings.
+    /// </summary>
     [UsedImplicitly]
-    internal HttpMessageHandler GetMessageHandler() => new CustomHttpHandler(getAsyncPolicy());
+    public HttpMessageHandler GetMessageHandler() => new CustomHttpHandler(getAsyncPolicy());
 
     internal HttpClient GetHttpClient() =>
 #pragma warning disable CA2000 // Dispose objects before losing scope

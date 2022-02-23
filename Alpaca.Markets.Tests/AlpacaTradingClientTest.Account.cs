@@ -1,8 +1,11 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alpaca.Markets.Tests;
 
 public sealed partial class AlpacaTradingClientTest
 {
     [Fact]
+    [SuppressMessage("ReSharper", "StringLiteralTypo")]
     public async Task GetAccountAsyncWorks()
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
