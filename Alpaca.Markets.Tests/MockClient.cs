@@ -21,6 +21,12 @@ public sealed class MockClient<TConfiguration, TClient> : IMock, IDisposable
         JToken response) =>
         addExpectRespond(HttpMethod.Get, request, response);
 
+    public void AddGet(
+        String request,
+        String response,
+        HttpStatusCode code) =>
+        _handler.Expect(HttpMethod.Get, request).Respond(code, new StringContent(response));
+
     public void AddPut(
         String request,
         JToken response) =>
@@ -40,6 +46,12 @@ public sealed class MockClient<TConfiguration, TClient> : IMock, IDisposable
         String request,
         JToken response) =>
         addExpectRespond(HttpMethod.Delete, request, response);
+
+    public void AddDelete(
+        String request,
+        String response,
+        HttpStatusCode code) =>
+        _handler.Expect(HttpMethod.Delete, request).Respond(code, new StringContent(response));
 
     public void Dispose()
     {

@@ -59,7 +59,6 @@ internal static class HttpResponseMethodExtensions
     {
         try
         {
-            // ReSharper disable once ConstantNullCoalescingCondition
             var jsonError = new JsonSerializer()
                 .Deserialize<JsonError>(reader) ?? new JsonError();
 

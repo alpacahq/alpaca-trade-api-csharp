@@ -13,6 +13,7 @@ public sealed class PortfolioHistoryRequest :
     /// Gets inclusive date interval for filtering items in response.
     /// </summary>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use the DateInterval property instead of this one.", false)]
     public Interval<DateTime> TimeInterval => DateInterval.AsTimeInterval();
 
@@ -63,7 +64,9 @@ public sealed class PortfolioHistoryRequest :
     /// <param name="value">New filtering interval.</param>
     /// <returns>Request with applied filtering.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [Obsolete("Use the override that gets Interval<DateOnly> instead of this one.", false)]
     public PortfolioHistoryRequest WithInterval(
         Interval<DateTime> value)
     {

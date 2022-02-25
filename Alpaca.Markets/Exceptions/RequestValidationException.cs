@@ -18,6 +18,7 @@ public sealed class RequestValidationException : Exception
     /// Creates new instance of <see cref="RequestValidationException"/> class with specified error message.
     /// </summary>
     /// <param name="message">The message that describes the error.</param>
+    [ExcludeFromCodeCoverage]
     public RequestValidationException(
         String message)
         : base(message)

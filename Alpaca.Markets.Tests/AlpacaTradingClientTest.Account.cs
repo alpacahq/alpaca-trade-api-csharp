@@ -118,6 +118,7 @@ public sealed partial class AlpacaTradingClientTest
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         var today = DateTime.UtcNow.Date;
+        var todayDateOnly = DateOnly.FromDateTime(today);
 
         mock.AddGet("/v2/account/portfolio/history", new JObject(
             new JProperty("timestamp", new JArray(
@@ -133,8 +134,9 @@ public sealed partial class AlpacaTradingClientTest
             new PortfolioHistoryRequest
             {
                 Period = new HistoryPeriod(5, HistoryPeriodUnit.Day),
+                TimeFrame = TimeFrame.FifteenMinutes,
                 ExtendedHours = true
-            }.WithInterval(new Interval<DateTime>(today, today)));
+            }.WithInterval(new Interval<DateOnly>(todayDateOnly, todayDateOnly)));
 
         Assert.Equal(1234.56M, history.BaseValue);
 
