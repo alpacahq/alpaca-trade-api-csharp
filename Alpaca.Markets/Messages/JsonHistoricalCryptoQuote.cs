@@ -14,7 +14,7 @@ namespace Alpaca.Markets
         [JsonProperty(PropertyName = "t", Required = Required.Always)]
         public DateTime TimestampUtc { get; set; }
 
-        [JsonProperty(PropertyName = "x", Required = Required.Always)]
+        [JsonProperty(PropertyName = "x", Required = Required.Default)]
         public String AskExchange { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "ap", Required = Required.Default)]

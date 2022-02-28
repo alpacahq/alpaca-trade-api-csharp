@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -9,45 +10,47 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates data for latest crypto XBBO request on Alpaca Data API v2.
     /// </summary>
-    public sealed class LatestBestBidOfferRequest : Validation.IRequest
+    public sealed class LatestBestBidOfferListRequest : Validation.IRequest
     {
-        private readonly HashSet<CryptoExchange> _exchanges = new ();
+        private readonly HashSet<String> _symbols = new(StringComparer.Ordinal);
+
+        private readonly HashSet<CryptoExchange> _exchanges = new();
 
         /// <summary>
-        /// Creates new instance of <see cref="LatestBestBidOfferRequest"/> object.
+        /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
         /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="symbols">Asset names list for data retrieval.</param>
         /// <param name="exchanges">Crypto exchanges list for data retrieval.</param>
-        public LatestBestBidOfferRequest(
-            String symbol,
+        public LatestBestBidOfferListRequest(
+            IEnumerable<String> symbols,
             IEnumerable<CryptoExchange> exchanges)
-            : this(symbol) =>
+            : this(symbols) =>
             _exchanges.UnionWith(exchanges);
 
         /// <summary>
-        /// Creates new instance of <see cref="LatestBestBidOfferRequest"/> object.
+        /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
         /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
+        /// <param name="symbols">Asset names list for data retrieval.</param>
         /// <param name="exchange">Crypto exchange for data retrieval.</param>
-        public LatestBestBidOfferRequest(
-            String symbol,
+        public LatestBestBidOfferListRequest(
+            IEnumerable<String> symbols,
             CryptoExchange exchange)
-            : this(symbol) =>
+            : this(symbols) =>
             _exchanges.Add(exchange);
 
         /// <summary>
-        /// Creates new instance of <see cref="LatestBestBidOfferRequest"/> object.
+        /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
         /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
-        public LatestBestBidOfferRequest(
-            String symbol) =>
-            Symbol = symbol.EnsureNotNull(nameof(symbol));
+        /// <param name="symbols">Asset names list for data retrieval.</param>
+        public LatestBestBidOfferListRequest(
+            IEnumerable<String> symbols) =>
+            _symbols.UnionWith(symbols.EnsureNotNull(nameof(symbols)));
 
         /// <summary>
         /// Gets asset name for data retrieval.
         /// </summary>
         [UsedImplicitly]
-        public String Symbol { get; }
+        public IReadOnlyCollection<String> Symbols => _symbols;
 
         /// <summary>
         /// Gets crypto exchanges list for data retrieval (empty list means 'all exchanges').
@@ -61,15 +64,22 @@ namespace Alpaca.Markets
             {
                 Query = await new QueryBuilder()
                     .AddParameter("exchanges", Exchanges)
+                    .AddParameter("symbols", Symbols)
                     .AsStringAsync().ConfigureAwait(false)
-            }.AppendPath($"{Symbol}/xbbo/latest");
+            }.AppendPath($"xbbos/latest");
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
-            if (String.IsNullOrEmpty(Symbol))
+            if (_symbols.Count == 0)
             {
                 yield return new RequestValidationException(
-                    "Symbol shouldn't be empty.", nameof(Symbol));
+                    "Symbols list shouldn't be empty.", nameof(Symbols));
+            }
+
+            if (Symbols.Any(String.IsNullOrEmpty))
+            {
+                yield return new RequestValidationException(
+                    "Symbol shouldn't be empty.", nameof(Symbols));
             }
         }
     }

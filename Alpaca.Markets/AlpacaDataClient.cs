@@ -220,7 +220,7 @@ namespace Alpaca.Markets
         private async Task<IReadOnlyDictionary<String, TApi>> getLatestAsync<TApi, TJson>(
             IEnumerable<String> symbols,
             String items,
-            Func<JsonLatestData, Dictionary<String, TJson>> itemsSelector,
+            Func<JsonLatestData<JsonHistoricalQuote>, Dictionary<String, TJson>> itemsSelector,
             CancellationToken cancellationToken)
             where TJson : TApi, ISymbolMutable =>
             await _httpClient.GetAsync(

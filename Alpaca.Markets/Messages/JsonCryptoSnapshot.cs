@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
 {
-
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonCryptoSnapshot : ISnapshot
+    internal sealed class JsonCryptoSnapshot : ISnapshot, ISymbolMutable
     {
         [JsonProperty(PropertyName = "latestQuote", Required = Required.Default)]
         public JsonHistoricalCryptoQuote? JsonQuote { get; set; } = new();
@@ -40,9 +40,15 @@ namespace Alpaca.Markets
         [JsonIgnore] public IBar? PreviousDailyBar => JsonPreviousDailyBar;
 
         [OnDeserialized]
+        [UsedImplicitly]
         internal void OnDeserializedMethod(
-            StreamingContext context)
+            StreamingContext _) =>
+            SetSymbol(Symbol);
+
+        public void SetSymbol(
+            String symbol)
         {
+            Symbol = symbol;
             JsonTrade?.SetSymbol(Symbol);
             JsonQuote?.SetSymbol(Symbol);
             JsonMinuteBar?.SetSymbol(Symbol);
