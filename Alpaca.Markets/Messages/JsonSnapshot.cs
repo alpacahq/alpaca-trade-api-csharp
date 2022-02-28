@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Alpaca.Markets
@@ -8,13 +9,13 @@ namespace Alpaca.Markets
     [SuppressMessage(
         "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
         Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonSnapshot : ISnapshot
+    internal sealed class JsonSnapshot : ISnapshot, ISymbolMutable
     {
         [JsonProperty(PropertyName = "latestQuote", Required = Required.Default)]
-        public JsonHistoricalQuote? JsonQuote { get; set; } = new ();
+        public JsonHistoricalQuote? JsonQuote { get; set; } = new();
 
         [JsonProperty(PropertyName = "latestTrade", Required = Required.Default)]
-        public JsonHistoricalTrade? JsonTrade { get; set; } = new ();
+        public JsonHistoricalTrade? JsonTrade { get; set; } = new();
 
         [JsonProperty(PropertyName = "minuteBar", Required = Required.Default)]
         public JsonHistoricalBar? JsonMinuteBar { get; set; }
@@ -44,11 +45,12 @@ namespace Alpaca.Markets
         public IBar? PreviousDailyBar => JsonPreviousDailyBar;
 
         [OnDeserialized]
+        [UsedImplicitly]
         internal void OnDeserializedMethod(
-            StreamingContext context) =>
-            WithSymbol(Symbol);
+            StreamingContext _) =>
+            SetSymbol(Symbol);
 
-        public ISnapshot WithSymbol(
+        public void SetSymbol(
             String symbol)
         {
             Symbol = symbol;
@@ -57,7 +59,6 @@ namespace Alpaca.Markets
             JsonMinuteBar?.SetSymbol(Symbol);
             JsonCurrentDailyBar?.SetSymbol(Symbol);
             JsonPreviousDailyBar?.SetSymbol(Symbol);
-            return this;
         }
     }
 }

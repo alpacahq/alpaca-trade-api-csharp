@@ -41,9 +41,35 @@ namespace Alpaca.Markets
                     uriBuilder, cancellationToken)
                 .ConfigureAwait(false);
 
-            return response
+            return getReadOnlyDictionary(response, elementSelector, comparer);
+        }
+
+        public static async Task<IReadOnlyDictionary<String, TValueApi>> GetAsync
+            <TValueApi, TValueJson, TStorage>(
+                this HttpClient httpClient,
+                UriBuilder uriBuilder,
+                Func<TStorage, Dictionary<String, TValueJson>> itemsSelector,
+                Func<KeyValuePair<String, TValueJson>, TValueApi> elementSelector,
+                CancellationToken cancellationToken)
+            where TValueJson : TValueApi, ISymbolMutable
+        {
+            var response = await httpClient.GetAsync<TStorage, TStorage>(
+                    uriBuilder, cancellationToken)
+                .ConfigureAwait(false);
+
+            return getReadOnlyDictionary<String, TValueApi, String, TValueJson>(
+                itemsSelector(response), elementSelector, StringComparer.Ordinal);
+        }
+
+        private static IReadOnlyDictionary<TKeyApi, TValueApi> getReadOnlyDictionary<TKeyApi, TValueApi, TKeyJson, TValueJson>(
+            Dictionary<TKeyJson, TValueJson> response, 
+            Func<KeyValuePair<TKeyJson, TValueJson>, TValueApi> elementSelector,
+            IEqualityComparer<TKeyApi> comparer)
+            where TKeyApi : notnull
+            where TKeyJson : TKeyApi
+            where TValueJson : TValueApi =>
+            response
                 .Where(_ => _.Value is not null)
                 .ToDictionary(_ => _.Key, elementSelector, comparer);
-        }
     }
 }
