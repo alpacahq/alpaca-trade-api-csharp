@@ -68,11 +68,21 @@ internal static class HistoricalDataHelpers
         mock.AddGet($"{pathPrefix}/snapshots", new JObject(
             symbols.Select(_ => new JProperty(_, createSnapshot()))) );
 
+    public static void AddCryptoSnapshotsExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
+        mock.AddGet($"{pathPrefix}/snapshots", new JObject(
+            new JProperty("snapshots", new JObject(
+                symbols.Select(_ => new JProperty(_, createSnapshot()))))));
+
     public static void AddXbboExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
         mock.AddGet($"{pathPrefix}/{symbol}/xbbo/latest", new JObject(
             new JProperty("xbbo", createQuote()),
             new JProperty("symbol", symbol)));
+
+    public static void AddXbbosExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
+        mock.addLatestExpectation(pathPrefix, symbols, "xbbos", createQuote);
 
     private static void addSinglePageExpectation(
         this IMock mock, String pathPrefix, String symbol,
@@ -107,10 +117,11 @@ internal static class HistoricalDataHelpers
         String symbol) =>
         Assert.True(items.All(_ => _ switch
         {
+            IBar bar => bar.Validate(symbol),
             ITrade trade => trade.Validate(symbol),
             IQuote quote => quote.Validate(symbol),
-            IBar bar => bar.Validate(symbol),
-            _ => throw new NotSupportedException()
+            _ => throw new NotSupportedException(
+                $"The {typeof(TItem)} not supported yet!")
         }));
 
     public static Boolean Validate(
@@ -227,8 +238,11 @@ internal static class HistoricalDataHelpers
             new JProperty("x", _exchange),
             new JProperty("z", _tape));
 
+    private static JObject createSnapshot() =>
+        createSnapshot(String.Empty);
+
     private static JObject createSnapshot(
-        String symbol = "") =>
+        String symbol) =>
         new (
             new JProperty("latestQuote", createQuote()),
             new JProperty("latestTrade", createTrade()),

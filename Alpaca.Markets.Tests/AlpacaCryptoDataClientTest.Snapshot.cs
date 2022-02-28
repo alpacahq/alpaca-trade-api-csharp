@@ -16,6 +16,23 @@ public sealed partial class AlpacaCryptoDataClientTest
     }
 
     [Fact]
+    public async Task ListSnapshotsAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+
+        mock.AddCryptoSnapshotsExpectation(PathPrefix, _symbols);
+
+        var snapshots = await mock.Client.ListSnapshotsAsync(
+            new SnapshotDataListRequest(_symbols, CryptoExchange.Cbse));
+
+        Assert.NotNull(snapshots);
+        Assert.NotEmpty(snapshots);
+
+        Assert.True(snapshots[Crypto].Validate(Crypto));
+        Assert.True(snapshots[Other].Validate(Other));
+    }
+
+    [Fact]
     public async Task GetLatestBestBidOfferAsyncWorks()
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
@@ -26,5 +43,22 @@ public sealed partial class AlpacaCryptoDataClientTest
             new LatestBestBidOfferRequest(Crypto, new [] { CryptoExchange.Ersx, CryptoExchange.Gnss }));
 
         Assert.True(bbo.Validate(Crypto));
+    }
+
+    [Fact]
+    public async Task ListLatestBestBidOffersAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+
+        mock.AddXbbosExpectation(PathPrefix, _symbols);
+
+        var xbbos = await mock.Client.ListLatestBestBidOffersAsync(
+            new LatestBestBidOfferListRequest(_symbols, new [] { CryptoExchange.Ersx, CryptoExchange.Gnss }));
+
+        Assert.NotNull(xbbos);
+        Assert.NotEmpty(xbbos);
+
+        Assert.True(xbbos[Crypto].Validate(Crypto));
+        Assert.True(xbbos[Other].Validate(Other));
     }
 }

@@ -22,7 +22,7 @@ public sealed partial class AlpacaDataClientTest
         mock.AddSnapshotsExpectation(PathPrefix, _symbols);
 
         var snapshots = await mock.Client
-            .ListSnapshotsAsync(new [] { Stock });
+            .ListSnapshotsAsync(_symbols);
 
         Assert.NotNull(snapshots);
         Assert.NotEmpty(snapshots);
