@@ -15,14 +15,14 @@ public sealed partial class AlpacaDataClientTest
     }
 
     [Fact]
-    public async Task GetSnapshotsAsyncWorks()
+    public async Task ListSnapshotsAsyncWorks()
     {
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddSnapshotsExpectation(PathPrefix, _symbols);
 
         var snapshots = await mock.Client
-            .GetSnapshotsAsync(new [] { Stock });
+            .ListSnapshotsAsync(new [] { Stock });
 
         Assert.NotNull(snapshots);
         Assert.NotEmpty(snapshots);

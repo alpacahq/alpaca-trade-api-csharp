@@ -5,7 +5,7 @@ namespace Alpaca.Markets;
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-internal sealed class JsonSnapshot : ISnapshot
+internal sealed class JsonSnapshot : ISnapshot, ISymbolMutable
 {
     [JsonProperty(PropertyName = "latestQuote", Required = Required.Default)]
     public JsonHistoricalQuote? JsonQuote { get; set; }
@@ -44,9 +44,9 @@ internal sealed class JsonSnapshot : ISnapshot
     [UsedImplicitly]
     internal void OnDeserializedMethod(
         StreamingContext _) =>
-        WithSymbol(Symbol);
+        SetSymbol(Symbol);
 
-    public ISnapshot WithSymbol(
+    public void SetSymbol(
         String symbol)
     {
         Symbol = symbol;
@@ -55,6 +55,5 @@ internal sealed class JsonSnapshot : ISnapshot
         JsonMinuteBar?.SetSymbol(Symbol);
         JsonCurrentDailyBar?.SetSymbol(Symbol);
         JsonPreviousDailyBar?.SetSymbol(Symbol);
-        return this;
     }
 }

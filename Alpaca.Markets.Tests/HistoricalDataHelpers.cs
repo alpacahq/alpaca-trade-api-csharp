@@ -19,6 +19,14 @@ internal static class HistoricalDataHelpers
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
         mock.addMultiPageExpectation(pathPrefix, symbols, "bars", createBar);
 
+    public static void AddLatestBarExpectation(
+        this IMock mock, String pathPrefix, String symbol) =>
+        mock.addLatestExpectation(pathPrefix, symbol, "bars", createBar);
+
+    public static void AddLatestBarsExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
+        mock.addLatestExpectation(pathPrefix, symbols, "bars", createBar);
+
     public static void AddSingleTradesPageExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
         mock.addSinglePageExpectation(pathPrefix, symbol, "trades", createTrade);
@@ -31,6 +39,10 @@ internal static class HistoricalDataHelpers
         this IMock mock, String pathPrefix, String symbol) =>
         mock.addLatestExpectation(pathPrefix, symbol, "trades", createTrade);
 
+    public static void AddLatestTradesExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
+        mock.addLatestExpectation(pathPrefix, symbols, "trades", createTrade);
+
     public static void AddSingleQuotesPageExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
         mock.addSinglePageExpectation(pathPrefix, symbol, "quotes", createQuote);
@@ -42,6 +54,10 @@ internal static class HistoricalDataHelpers
     public static void AddLatestQuoteExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
         mock.addLatestExpectation(pathPrefix, symbol, "quotes", createQuote);
+
+    public static void AddLatestQuotesExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
+        mock.addLatestExpectation(pathPrefix, symbols, "quotes", createQuote);
 
     public static void AddSnapshotExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
@@ -79,6 +95,13 @@ internal static class HistoricalDataHelpers
             new JProperty(items[..^1], createItem()), // Without last `s` character
             new JProperty("symbol", symbol)));
 
+    private static void addLatestExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols,
+        String items, Func<JObject> createItem) =>
+        mock.AddGet($"{pathPrefix}/{items}/latest", new JObject(
+            new JProperty(items, new JObject(
+                symbols.Select(_ => new JProperty(_, createItem()))))));
+
     public static void Validate<TItem>(
         this IEnumerable<TItem> items,
         String symbol) =>
@@ -86,9 +109,27 @@ internal static class HistoricalDataHelpers
         {
             ITrade trade => trade.Validate(symbol),
             IQuote quote => quote.Validate(symbol),
-            IBar bar => bar.validate(symbol),
+            IBar bar => bar.Validate(symbol),
             _ => throw new NotSupportedException()
         }));
+
+    public static Boolean Validate(
+        this IBar bar,
+        String symbol)
+    {
+        Assert.True(bar.TimeUtc <= DateTime.UtcNow);
+        Assert.Equal(symbol, bar.Symbol);
+
+        Assert.InRange(bar.Close, bar.Low, bar.High);
+        Assert.InRange(bar.Open, bar.Low, bar.High);
+
+        Assert.True(bar.TimeUtc <= DateTime.UtcNow);
+        Assert.True(bar.TradeCount != 0);
+        Assert.True(bar.Volume != 0M);
+        Assert.True(bar.Vwap != 0M);
+
+        return true;
+    }
     
     public static Boolean Validate(
         this ITrade trade,
@@ -143,9 +184,9 @@ internal static class HistoricalDataHelpers
     public static Boolean Validate(
         this ISnapshot snapshot,
         String symbol) =>
-        snapshot.PreviousDailyBar!.validate(symbol) &
-        snapshot.CurrentDailyBar!.validate(symbol) &
-        snapshot.MinuteBar!.validate(symbol) &
+        snapshot.PreviousDailyBar!.Validate(symbol) &
+        snapshot.CurrentDailyBar!.Validate(symbol) &
+        snapshot.MinuteBar!.Validate(symbol) &
         snapshot.Quote!.Validate(symbol) &
         snapshot.Trade!.Validate(symbol);
 
@@ -195,24 +236,4 @@ internal static class HistoricalDataHelpers
             new JProperty("minuteBar", createBar()),
             new JProperty("dailyBar", createBar()),
             new JProperty("symbol", symbol));
-
-    private static Boolean validate(
-        // ReSharper disable ParameterOnlyUsedForPreconditionCheck.Local
-        this IBar bar,
-        String symbol)
-        // ReSharper restore ParameterOnlyUsedForPreconditionCheck.Local
-    {
-        Assert.True(bar.TimeUtc <= DateTime.UtcNow);
-        Assert.Equal(symbol, bar.Symbol);
-
-        Assert.InRange(bar.Close, bar.Low, bar.High);
-        Assert.InRange(bar.Open, bar.Low, bar.High);
-
-        Assert.True(bar.TimeUtc <= DateTime.UtcNow);
-        Assert.True(bar.TradeCount != 0);
-        Assert.True(bar.Volume != 0M);
-        Assert.True(bar.Vwap != 0M);
-
-        return true;
-    }
 }
