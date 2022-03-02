@@ -77,7 +77,7 @@ public readonly record struct Interval<TItem>
     public Boolean IsEmpty() => Into is null && From is null;
 
     /// <summary>
-    /// Gets boolean flag signals that time interval is open (both start or end date equal to <c>null</c>).
+    /// Gets boolean flag signals that time interval is open (start or end date equal to <c>null</c>).
     /// </summary>
     /// <returns>
     /// Returns <c>true</c> if both <see cref="From"/> or <see cref="Into"/> equal to <c>null</c>.

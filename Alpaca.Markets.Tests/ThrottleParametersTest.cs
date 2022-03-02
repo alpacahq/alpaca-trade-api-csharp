@@ -47,4 +47,22 @@ public sealed class ThrottleParametersTest
         Assert.NotEqual("HTTP 500: Unknown server error.",exception.Message);
         Assert.Equal(500, exception.ErrorCode);
     }
+
+    [Fact]
+    public async Task ThrottlingWithInvalidErrorMessageWorks()
+    {
+        var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        var errorMessage = new JObject(
+            new JProperty("msg", "Fahrenheit"),
+            new JProperty("id", 451)).ToString();
+
+        mock.AddDelete("/v2/orders/**", errorMessage, HttpStatusCode.InternalServerError);
+
+        var exception = await Assert.ThrowsAsync<RestClientErrorException>(
+            () => mock.Client.DeleteOrderAsync(Guid.NewGuid()));
+
+        Assert.NotEqual("Fahrenheit",exception.Message);
+        Assert.Equal(500, exception.ErrorCode);
+    }
 }

@@ -94,6 +94,11 @@ public sealed partial class AlpacaTradingClientTest
 
         var activities = await mock.Client.ListAccountActivitiesAsync(
             new AccountActivitiesRequest(AccountActivityType.Fill)
+                {
+                    PageToken = Guid.NewGuid().ToString("D"),
+                    Direction = SortDirection.Ascending,
+                    PageSize = 1000
+                }
                 .SetSingleDate(DateOnly.FromDateTime(timestamp)));
 
         var activity = activities.Single();
@@ -148,6 +153,8 @@ public sealed partial class AlpacaTradingClientTest
         Assert.Equal(today, item.TimestampUtc);
         Assert.Equal(10M, item.ProfitLoss);
         Assert.Equal(20M, item.Equity);
+
+        Assert.NotNull(JsonConvert.SerializeObject(history));
     }
 
     [Fact]

@@ -7,6 +7,8 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
+        var date = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Unspecified);
+
         mock.AddGet("/v2/orders", new JArray( createOrder()));
 
         var orders = await mock.Client
@@ -17,7 +19,7 @@ public sealed partial class AlpacaTradingClientTest
                     RollUpNestedOrders = false,
                     LimitOrderNumber = 100
                 }
-                .WithInterval(new Interval<DateTime>())
+                .WithInterval(new Interval<DateTime>(date, date))
                 .WithSymbol(Stock));
 
         validateOrder(orders.Single());
@@ -127,6 +129,15 @@ public sealed partial class AlpacaTradingClientTest
             .Limit(Stock, 42L, 12.34M).StopLoss(10.11M));
 
         validateOrder(order);
+    }
+
+    [Fact]
+    public void NewOrderRequestValidationWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        Assert.ThrowsAsync<AggregateException>(() => mock.Client.PostOrderAsync(
+            MarketOrder.Buy(String.Empty, OrderQuantity.Fractional(-42M))));
     }
 
     [Fact]

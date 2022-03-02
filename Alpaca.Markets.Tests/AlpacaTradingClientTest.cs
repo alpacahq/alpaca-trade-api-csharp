@@ -75,6 +75,8 @@ public sealed partial class AlpacaTradingClientTest
 
         Assert.InRange(tradingInterval.From!.Value, open!.Value, close!.Value);
         Assert.InRange(tradingInterval.Into!.Value, open.Value, close.Value);
+
+        Assert.NotNull(JsonConvert.SerializeObject(calendar));
     }
 
     [Fact]
@@ -93,5 +95,7 @@ public sealed partial class AlpacaTradingClientTest
         Assert.True(clock.IsOpen);
         Assert.True(clock.TimestampUtc <= DateTime.UtcNow);
         Assert.True(clock.NextOpenUtc < clock.NextCloseUtc);
+
+        Assert.NotNull(JsonConvert.SerializeObject(clock));
     }
 }
