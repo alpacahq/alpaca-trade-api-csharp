@@ -47,7 +47,7 @@ namespace Alpaca.Markets
                     .AddParameter("exchange", Exchange.ToEnumString())
                     .AddParameter("symbols", Symbols)
                     .AsStringAsync().ConfigureAwait(false)
-            }.AppendPath($"snapshots");
+            }.AppendPath("snapshots");
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
