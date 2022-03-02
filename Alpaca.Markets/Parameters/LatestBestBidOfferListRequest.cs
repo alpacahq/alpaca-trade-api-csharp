@@ -59,7 +59,7 @@ public sealed class LatestBestBidOfferListRequest : Validation.IRequest
                 .AddParameter("exchanges", Exchanges)
                 .AddParameter("symbols", Symbols)
                 .AsStringAsync().ConfigureAwait(false)
-        }.AppendPath($"xbbos/latest");
+        }.AppendPath("xbbos/latest");
 
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {

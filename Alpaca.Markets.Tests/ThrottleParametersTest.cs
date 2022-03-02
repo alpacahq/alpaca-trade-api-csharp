@@ -37,7 +37,7 @@ public sealed class ThrottleParametersTest
     {
         var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        var errorMessage = "<html><body>HTTP 500: Unknown server error.</body></html>";
+        const String errorMessage = "<html><body>HTTP 500: Unknown server error.</body></html>";
 
         mock.AddDelete("/v2/orders/**", errorMessage, HttpStatusCode.InternalServerError);
 
