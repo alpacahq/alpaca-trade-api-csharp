@@ -936,8 +936,13 @@ override Alpaca.Markets.PositionQuantity.GetHashCode() -> int
 override Alpaca.Markets.TrailOffset.Equals(object? obj) -> bool
 override Alpaca.Markets.TrailOffset.GetHashCode() -> int
 static Alpaca.Markets.BarTimeFrame.Day.get -> Alpaca.Markets.BarTimeFrame
+static Alpaca.Markets.BarTimeFrame.HalfYear.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.BarTimeFrame.Hour.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.BarTimeFrame.Minute.get -> Alpaca.Markets.BarTimeFrame
+static Alpaca.Markets.BarTimeFrame.Month.get -> Alpaca.Markets.BarTimeFrame
+static Alpaca.Markets.BarTimeFrame.Quarter.get -> Alpaca.Markets.BarTimeFrame
+static Alpaca.Markets.BarTimeFrame.Week.get -> Alpaca.Markets.BarTimeFrame
+static Alpaca.Markets.BarTimeFrame.Year.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.BarTimeFrame.operator !=(Alpaca.Markets.BarTimeFrame lhs, Alpaca.Markets.BarTimeFrame rhs) -> bool
 static Alpaca.Markets.BarTimeFrame.operator ==(Alpaca.Markets.BarTimeFrame lhs, Alpaca.Markets.BarTimeFrame rhs) -> bool
 static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateTime date) -> Alpaca.Markets.CalendarRequest!

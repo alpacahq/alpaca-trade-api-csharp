@@ -65,12 +65,42 @@ namespace Alpaca.Markets
         /// </summary>
         [UsedImplicitly]
         public static BarTimeFrame Hour => new (1, BarTimeFrameUnit.Hour);
-            
+
         /// <summary>
         /// Daily bars.
         /// </summary>
         [UsedImplicitly]
         public static BarTimeFrame Day => new (1, BarTimeFrameUnit.Day);
+
+        /// <summary>
+        /// Weekly bars.
+        /// </summary>
+        [UsedImplicitly]
+        public static BarTimeFrame Week => new (1, BarTimeFrameUnit.Week);
+
+        /// <summary>
+        /// Monthly bars.
+        /// </summary>
+        [UsedImplicitly]
+        public static BarTimeFrame Month => new (1, BarTimeFrameUnit.Month);
+
+        /// <summary>
+        /// Quarterly (3 months) bars.
+        /// </summary>
+        [UsedImplicitly]
+        public static BarTimeFrame Quarter => new (3, BarTimeFrameUnit.Month);
+
+        /// <summary>
+        /// Half year (6 month) bars.
+        /// </summary>
+        [UsedImplicitly]
+        public static BarTimeFrame HalfYear => new (6, BarTimeFrameUnit.Month);
+
+        /// <summary>
+        /// Year (12 months) bars.
+        /// </summary>
+        [UsedImplicitly]
+        public static BarTimeFrame Year => new (12, BarTimeFrameUnit.Month);
 
         /// <summary>
         /// Returns <c>true</c> if compared objects are equal.
