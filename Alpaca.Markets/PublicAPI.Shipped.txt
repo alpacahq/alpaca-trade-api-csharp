@@ -122,6 +122,8 @@ Alpaca.Markets.BarTimeFrameUnit
 Alpaca.Markets.BarTimeFrameUnit.Day = 2 -> Alpaca.Markets.BarTimeFrameUnit
 Alpaca.Markets.BarTimeFrameUnit.Hour = 1 -> Alpaca.Markets.BarTimeFrameUnit
 Alpaca.Markets.BarTimeFrameUnit.Minute = 0 -> Alpaca.Markets.BarTimeFrameUnit
+Alpaca.Markets.BarTimeFrameUnit.Month = 4 -> Alpaca.Markets.BarTimeFrameUnit
+Alpaca.Markets.BarTimeFrameUnit.Week = 3 -> Alpaca.Markets.BarTimeFrameUnit
 Alpaca.Markets.BracketOrder
 Alpaca.Markets.BracketOrder.StopLoss.get -> Alpaca.Markets.IStopLoss!
 Alpaca.Markets.BracketOrder.TakeProfit.get -> Alpaca.Markets.ITakeProfit!

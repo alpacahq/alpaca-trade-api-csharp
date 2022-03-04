@@ -25,5 +25,19 @@ public enum BarTimeFrameUnit
     /// Daily bars.
     /// </summary>
     [EnumMember(Value = "Day")]
-    Day
+    Day,
+    
+    /// <summary>
+    /// Weekly bars.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "Week")]
+    Week,
+
+    /// <summary>
+    /// Monthly bars
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "Month")]
+    Month
 }

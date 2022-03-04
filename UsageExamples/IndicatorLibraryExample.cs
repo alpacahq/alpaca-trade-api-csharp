@@ -7,7 +7,9 @@ using static OoplesFinance.StockIndicators.Calculations;
 
 namespace UsageExamples;
 
+[SuppressMessage("ReSharper", "UnusedType.Global")]
 [SuppressMessage("ReSharper", "InconsistentNaming")]
+[SuppressMessage("ReSharper", "UnusedMember.Global")]
 internal sealed class IndicatorLibraryExample : IDisposable
 {
     private const String API_KEY = "REPLACEME";
@@ -84,7 +86,7 @@ internal sealed class IndicatorLibraryExample : IDisposable
             var date = stockData.Dates[row].ToShortDateString();
             var values = String.Join("\t\t", 
                 stockData.OutputValues.Values
-
+                    // ReSharper disable once AccessToModifiedClosure
                     .Select(_ => _[row].ToString("F2")));
 
             Console.WriteLine($"{date}\t{values}");
