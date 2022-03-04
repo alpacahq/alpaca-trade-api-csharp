@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -26,6 +27,20 @@ namespace Alpaca.Markets
         /// Daily bars.
         /// </summary>
         [EnumMember(Value = "Day")]
-        Day
+        Day,
+    
+        /// <summary>
+        /// Weekly bars.
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "Week")]
+        Week,
+
+        /// <summary>
+        /// Monthly bars
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "Month")]
+        Month
     }
 }
