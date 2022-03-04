@@ -953,8 +953,13 @@ Alpaca.Markets.UpdateWatchListRequest.WatchListId.get -> System.Guid
 override Alpaca.Markets.BarTimeFrame.ToString() -> string!
 override Alpaca.Markets.HistoryPeriod.ToString() -> string!
 static Alpaca.Markets.BarTimeFrame.Day.get -> Alpaca.Markets.BarTimeFrame
+static Alpaca.Markets.BarTimeFrame.HalfYear.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.BarTimeFrame.Hour.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.BarTimeFrame.Minute.get -> Alpaca.Markets.BarTimeFrame
+static Alpaca.Markets.BarTimeFrame.Month.get -> Alpaca.Markets.BarTimeFrame
+static Alpaca.Markets.BarTimeFrame.Quarter.get -> Alpaca.Markets.BarTimeFrame
+static Alpaca.Markets.BarTimeFrame.Week.get -> Alpaca.Markets.BarTimeFrame
+static Alpaca.Markets.BarTimeFrame.Year.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateOnly date) -> Alpaca.Markets.CalendarRequest!
 static Alpaca.Markets.CalendarRequest.GetForSingleDay(System.DateTime date) -> Alpaca.Markets.CalendarRequest!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaCryptoDataClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaCryptoDataClient!
