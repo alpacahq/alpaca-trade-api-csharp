@@ -7,24 +7,22 @@
 	<WarningLevel>5</WarningLevel>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>4.1.18</Version>
+    <Version>4.1.19</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
-    <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>4.1.18.0</AssemblyVersion>
-    <FileVersion>4.1.18.0</FileVersion>
+    <AssemblyVersion>4.1.19.0</AssemblyVersion>
+    <FileVersion>4.1.19.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn></NoWarn>
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Added the specific `User-agent` HTTP request header with the `Alpaca-dotNET-SDK` name and valid version string.
-- Streaming clients send subscription requests in chunks (max 100 symbols per request) now.
-- Fixed problem with the `IBar.Vwap` and `IBar.TradeCount` properties deserialization.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added support for the new historical bar time frames - `Week` and `Month` values of `BarTimeFrameUnit` enumeration.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -75,10 +73,6 @@
       <IncludeAssets>compile; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.DotNet.Analyzers.Compatibility" Version="0.2.12-alpha">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="WebSocket4Net" Version="0.15.2" />
   </ItemGroup>
