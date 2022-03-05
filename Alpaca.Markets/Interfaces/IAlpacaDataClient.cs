@@ -105,7 +105,7 @@ public interface IAlpacaDataClient :
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only dictionary with the current snapshot information.</returns>
     [UsedImplicitly]
-    [Obsolete("This method will be removed in the next major release, use the ListSnapshotsAsync method instead.", false)]
+    [Obsolete("This method will be removed in the next major release, use the ListSnapshotsAsync method instead.", true)]
     Task<IReadOnlyDictionary<String, ISnapshot>> GetSnapshotsAsync(
         IEnumerable<String> symbols,
         CancellationToken cancellationToken = default);

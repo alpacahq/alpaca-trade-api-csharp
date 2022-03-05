@@ -17,9 +17,11 @@ public static partial class AlpacaNewsStreamingClientExtensions
         {
         }
 
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<INewsArticle> GetNewsSubscription() =>
             Client.GetNewsSubscription();
 
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<INewsArticle> GetNewsSubscription(String symbol) =>
             Client.GetNewsSubscription(symbol);
     }

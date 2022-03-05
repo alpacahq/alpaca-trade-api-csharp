@@ -3,6 +3,16 @@
 public sealed class DefaultValuesTest
 {
     [Fact]
+    public void BarTimeFrameWorks()
+    {
+        Assert.Equal(BarTimeFrame.Week, new BarTimeFrame(1, BarTimeFrameUnit.Week));
+        Assert.Equal(BarTimeFrame.Month, new BarTimeFrame(1, BarTimeFrameUnit.Month));
+        Assert.Equal(BarTimeFrame.Year, new BarTimeFrame(12, BarTimeFrameUnit.Month));
+        Assert.Equal(BarTimeFrame.Quarter, new BarTimeFrame(3, BarTimeFrameUnit.Month));
+        Assert.Equal(BarTimeFrame.HalfYear, new BarTimeFrame(6, BarTimeFrameUnit.Month));
+    }
+
+    [Fact]
     public void PositionQuantityWorks()
     {
         var inPercent = new PositionQuantity();

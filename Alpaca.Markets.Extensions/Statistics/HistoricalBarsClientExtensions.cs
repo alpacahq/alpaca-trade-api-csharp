@@ -248,6 +248,7 @@ public static partial class HistoricalBarsClientExtensions
         client.GetHistoricalBarsAsAsyncEnumerable(request, cancellationToken)
             .GetSimpleMovingAverageAsync(window, cancellationToken);
 
+    [ExcludeFromCodeCoverage]
     private static DateOnly? asDateOnly(
         this in DateTime? dateTime)
         => dateTime.HasValue ? DateOnly.FromDateTime(dateTime.Value) : null;
