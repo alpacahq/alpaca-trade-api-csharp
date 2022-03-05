@@ -40,10 +40,12 @@ internal sealed class IndicatorLibraryExample : IDisposable
         UseDefaultBollingerBands(stockData);
 
         stockData.SignalsList.Clear();
+        stockData.CustomValuesList.Clear();
         // we can also do completely custom indicators with very little effort such as below
         UseCustomBollingerBands(stockData);
 
         stockData.SignalsList.Clear();
+        stockData.CustomValuesList.Clear();
         // can also create indicators out of any other indicators such as a MACD of a RSI
         UseRelativeStrengthIndexMacd(stockData);
     }
