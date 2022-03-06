@@ -31,7 +31,7 @@ public sealed partial class AlpacaDataStreamingClientTest
         {
             MaxReconnectionAttempts = ReconnectionParameters.Default.MaxReconnectionAttempts,
             MaxReconnectionDelay = ReconnectionParameters.Default.MaxReconnectionDelay,
-            MinReconnectionDelay = ReconnectionParameters.Default.MinReconnectionDelay,
+            MinReconnectionDelay = ReconnectionParameters.Default.MinReconnectionDelay
         };
 
         Assert.NotEqual(parameters, ReconnectionParameters.Default);

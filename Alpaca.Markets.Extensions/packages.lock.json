@@ -77,9 +77,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[6.0.1-beta2, )",
-        "resolved": "6.0.1-beta2",
-        "contentHash": "qkgWwGLiU8FknzcuH92PK4sgv1Bpudd/w87LrSvHIv3KJw9x8K4R//kva9PG9FkQu5077psyl/ps4vAycZ2Bvg==",
+        "requested": "[6.0.1, )",
+        "resolved": "6.0.1",
+        "contentHash": "zYjaLhKPuyz2+namKOd3KqM48aQuCE1DlxTnNv59qJG+wzVFPhUq8h5/Ff4zHJ0iC4M22EWJ+CW1mTSJYb3Bew==",
         "dependencies": {
           "System.Memory": "4.5.4"
         }
@@ -349,9 +349,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[6.0.1-beta2, )",
-        "resolved": "6.0.1-beta2",
-        "contentHash": "qkgWwGLiU8FknzcuH92PK4sgv1Bpudd/w87LrSvHIv3KJw9x8K4R//kva9PG9FkQu5077psyl/ps4vAycZ2Bvg==",
+        "requested": "[6.0.1, )",
+        "resolved": "6.0.1",
+        "contentHash": "zYjaLhKPuyz2+namKOd3KqM48aQuCE1DlxTnNv59qJG+wzVFPhUq8h5/Ff4zHJ0iC4M22EWJ+CW1mTSJYb3Bew==",
         "dependencies": {
           "System.Memory": "4.5.4"
         }
@@ -600,9 +600,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[6.0.1-beta2, )",
-        "resolved": "6.0.1-beta2",
-        "contentHash": "qkgWwGLiU8FknzcuH92PK4sgv1Bpudd/w87LrSvHIv3KJw9x8K4R//kva9PG9FkQu5077psyl/ps4vAycZ2Bvg=="
+        "requested": "[6.0.1, )",
+        "resolved": "6.0.1",
+        "contentHash": "zYjaLhKPuyz2+namKOd3KqM48aQuCE1DlxTnNv59qJG+wzVFPhUq8h5/Ff4zHJ0iC4M22EWJ+CW1mTSJYb3Bew=="
       },
       "System.Linq.Async": {
         "type": "Direct",
@@ -816,9 +816,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[6.0.1-beta2, )",
-        "resolved": "6.0.1-beta2",
-        "contentHash": "qkgWwGLiU8FknzcuH92PK4sgv1Bpudd/w87LrSvHIv3KJw9x8K4R//kva9PG9FkQu5077psyl/ps4vAycZ2Bvg=="
+        "requested": "[6.0.1, )",
+        "resolved": "6.0.1",
+        "contentHash": "zYjaLhKPuyz2+namKOd3KqM48aQuCE1DlxTnNv59qJG+wzVFPhUq8h5/Ff4zHJ0iC4M22EWJ+CW1mTSJYb3Bew=="
       },
       "System.Linq.Async": {
         "type": "Direct",
