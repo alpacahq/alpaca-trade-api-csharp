@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.2</AssemblyVersion>
-    <FileVersion>6.0.3.2</FileVersion>
-    <Version>6.0.3-alpha3</Version>
+    <AssemblyVersion>6.0.3.3</AssemblyVersion>
+    <FileVersion>6.0.3.3</FileVersion>
+    <Version>6.0.3-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- All `GetClient` extension methods moved into the main SDK package with proper forwarding.
-- The `IntervalsVisibleTo` attribute was removed from the main SDK package.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added support for the new historical bar time frames - `Week` and `Month` values of `BarTimeFrameUnit` enumeration.
+- Added multi-symbols requests support for the latest bars, quotes, and trades (for stocks and crypto clients).</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
