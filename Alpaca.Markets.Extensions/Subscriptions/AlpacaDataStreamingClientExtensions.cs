@@ -182,6 +182,142 @@ namespace Alpaca.Markets.Extensions
                 symbols.EnsureNotNull(nameof(symbols)));
 
         /// <summary>
+        /// Gets the trade status updates subscription for the all assets from the <paramref name="symbols"/> list.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAlpacaDataSubscription<IStatus> GetStatusSubscription(
+            this IAlpacaDataStreamingClient client,
+            params String[] symbols) =>
+            getStatusSubscription(
+                client.EnsureNotNull(nameof(client)),
+                symbols.EnsureNotNull(nameof(symbols)));
+
+        /// <summary>
+        /// Gets the trade status updates  subscription for the all assets from the <paramref name="symbols"/> list.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAlpacaDataSubscription<IStatus> GetStatusSubscription(
+            this IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            getStatusSubscription(
+                client.EnsureNotNull(nameof(client)),
+                symbols.EnsureNotNull(nameof(symbols)));
+
+        /// <summary>
+        /// Gets the trade corrections subscription for the all assets from the <paramref name="symbols"/> list.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAlpacaDataSubscription<ICorrection> GetCorrectionSubscription(
+            this IAlpacaDataStreamingClient client,
+            params String[] symbols) =>
+            getCorrectionSubscription(
+                client.EnsureNotNull(nameof(client)),
+                symbols.EnsureNotNull(nameof(symbols)));
+
+        /// <summary>
+        /// Gets the trade corrections subscription for the all assets from the <paramref name="symbols"/> list.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAlpacaDataSubscription<ICorrection> GetCorrectionSubscription(
+            this IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            getCorrectionSubscription(
+                client.EnsureNotNull(nameof(client)),
+                symbols.EnsureNotNull(nameof(symbols)));
+
+        /// <summary>
+        /// Gets the trade cancellation subscription for the all assets from the <paramref name="symbols"/> list.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAlpacaDataSubscription<ITrade> GetCancellationSubscription(
+            this IAlpacaDataStreamingClient client,
+            params String[] symbols) =>
+            getCancellationSubscription(
+                client.EnsureNotNull(nameof(client)),
+                symbols.EnsureNotNull(nameof(symbols)));
+
+        /// <summary>
+        /// Gets the trade cancellation subscription for the all assets from the <paramref name="symbols"/> list.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAlpacaDataSubscription<ITrade> GetCancellationSubscription(
+            this IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            getCancellationSubscription(
+                client.EnsureNotNull(nameof(client)),
+                symbols.EnsureNotNull(nameof(symbols)));
+
+        /// <summary>
+        /// Gets the LULD (limit up / limit down) updates subscription for the all assets from the <paramref name="symbols"/> list.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(
+            this IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            getLimitUpLimitDownSubscription(
+                client.EnsureNotNull(nameof(client)),
+                symbols.EnsureNotNull(nameof(symbols)));
+
+        /// <summary>
+        /// Gets the LULD (limit up / limit down) updates subscription for the all assets from the <paramref name="symbols"/> list.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(
+            this IAlpacaDataStreamingClient client,
+            params String[] symbols) =>
+            getLimitUpLimitDownSubscription(
+                client.EnsureNotNull(nameof(client)),
+                symbols.EnsureNotNull(nameof(symbols)));
+
+        /// <summary>
         /// Gets the trade updates subscription for the <paramref name="symbol"/> asset. This subscription is
         /// returned with pending subscription state and will be unsubscribed on disposing so you can use it
         /// inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
@@ -466,6 +602,234 @@ namespace Alpaca.Markets.Extensions
                 client.EnsureNotNull(nameof(client)).GetUpdatedBarSubscription(symbols),
                 client);
 
+        /// <summary>
+        /// Gets the trade status updates subscription for the <paramref name="symbol"/> asset.
+        /// This subscription is returned with pending subscription state and will be unsubscribed on disposing
+        /// so you can use it inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbol">Alpaca asset name for minute bar updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static ValueTask<IDisposableAlpacaDataSubscription<IStatus>> SubscribeStatusAsync(
+            this IAlpacaDataStreamingClient client,
+            String symbol) =>
+            DisposableAlpacaDataSubscription<IStatus>.CreateAsync(
+                client.EnsureNotNull(nameof(client)).GetStatusSubscription(symbol),
+                client.EnsureNotNull(nameof(client)));
+
+        /// <summary>
+        /// Gets the trade status updates subscription for all assets from the <paramref name="symbols"/> list.
+        /// This subscription is returned with pending subscription state and will be unsubscribed on disposing
+        /// so you can use it inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static ValueTask<IDisposableAlpacaDataSubscription<IStatus>> SubscribeStatusAsync(
+            this IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            DisposableAlpacaDataSubscription<IStatus>.CreateAsync(
+                client.EnsureNotNull(nameof(client)).GetStatusSubscription(symbols),
+                client.EnsureNotNull(nameof(client)));
+
+        /// <summary>
+        /// Gets the trade status updates subscription for all assets from the <paramref name="symbols"/> list.
+        /// This subscription is returned with pending subscription state and will be unsubscribed on disposing
+        /// so you can use it inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static ValueTask<IDisposableAlpacaDataSubscription<IStatus>> SubscribeStatusAsync(
+            this IAlpacaDataStreamingClient client,
+            params String[] symbols) =>
+            DisposableAlpacaDataSubscription<IStatus>.CreateAsync(
+                client.EnsureNotNull(nameof(client)).GetStatusSubscription(symbols),
+                client.EnsureNotNull(nameof(client)));
+
+        /// <summary>
+        /// Gets the trade corrections updates subscription for all assets from the <paramref name="symbols"/> list.
+        /// This subscription is returned with pending subscription state and will be unsubscribed on disposing
+        /// so you can use it inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static ValueTask<IDisposableAlpacaDataSubscription<ICorrection>> SubscribeCorrectionAsync(
+            this IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            DisposableAlpacaDataSubscription<ICorrection>.CreateAsync(
+                client.EnsureNotNull(nameof(client)).GetCorrectionSubscription(symbols),
+                client.EnsureNotNull(nameof(client)));
+
+        /// <summary>
+        /// Gets the trade corrections subscription for the <paramref name="symbol"/> asset. This subscription is
+        /// returned with pending subscription state and will be unsubscribed on disposing so you can use it
+        /// inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbol">Alpaca asset name for minute bar updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static ValueTask<IDisposableAlpacaDataSubscription<ICorrection>> SubscribeCorrectionAsync(
+            this IAlpacaDataStreamingClient client,
+            String symbol) =>
+            DisposableAlpacaDataSubscription<ICorrection>.CreateAsync(
+                client.EnsureNotNull(nameof(client)).GetCorrectionSubscription(symbol),
+                client.EnsureNotNull(nameof(client)));
+
+        /// <summary>
+        /// Gets the trade corrections updates subscription for all assets from the <paramref name="symbols"/> list.
+        /// This subscription is returned with pending subscription state and will be unsubscribed on disposing
+        /// so you can use it inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static ValueTask<IDisposableAlpacaDataSubscription<ICorrection>> SubscribeCorrectionAsync(
+            this IAlpacaDataStreamingClient client,
+            params String[] symbols) =>
+            DisposableAlpacaDataSubscription<ICorrection>.CreateAsync(
+                client.EnsureNotNull(nameof(client)).GetCorrectionSubscription(symbols),
+                client.EnsureNotNull(nameof(client)));
+
+        /// <summary>
+        /// Gets the trade cancellations updates subscription for all assets from the <paramref name="symbols"/> list.
+        /// This subscription is returned with pending subscription state and will be unsubscribed on disposing
+        /// so you can use it inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static ValueTask<IDisposableAlpacaDataSubscription<ITrade>> SubscribeCancellationAsync(
+            this IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            DisposableAlpacaDataSubscription<ITrade>.CreateAsync(
+                client.EnsureNotNull(nameof(client)).GetCancellationSubscription(symbols),
+                client.EnsureNotNull(nameof(client)));
+
+        /// <summary>
+        /// Gets the trade cancellations subscription for the <paramref name="symbol"/> asset. This subscription is
+        /// returned with pending subscription state and will be unsubscribed on disposing so you can use it
+        /// inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbol">Alpaca asset name for minute bar updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static ValueTask<IDisposableAlpacaDataSubscription<ITrade>> SubscribeCancellationAsync(
+            this IAlpacaDataStreamingClient client,
+            String symbol) =>
+            DisposableAlpacaDataSubscription<ITrade>.CreateAsync(
+                client.EnsureNotNull(nameof(client)).GetCancellationSubscription(symbol),
+                client.EnsureNotNull(nameof(client)));
+
+        /// <summary>
+        /// Gets the trade cancellations updates subscription for all assets from the <paramref name="symbols"/> list.
+        /// This subscription is returned with pending subscription state and will be unsubscribed on disposing
+        /// so you can use it inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static ValueTask<IDisposableAlpacaDataSubscription<ITrade>> SubscribeCancellationAsync(
+            this IAlpacaDataStreamingClient client,
+            params String[] symbols) =>
+            DisposableAlpacaDataSubscription<ITrade>.CreateAsync(
+                client.EnsureNotNull(nameof(client)).GetCancellationSubscription(symbols),
+                client.EnsureNotNull(nameof(client)));
+
+        /// <summary>
+        /// Gets the LULD (limit up / limit down) subscription for the <paramref name="symbol"/> asset. This subscription is
+        /// returned with pending subscription state and will be unsubscribed on disposing so you can use it
+        /// inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbol">Alpaca asset name for minute bar updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static ValueTask<IDisposableAlpacaDataSubscription<ILimitUpLimitDown>> SubscribeLimitUpLimitDownAsync(
+            this IAlpacaDataStreamingClient client,
+            String symbol) =>
+            DisposableAlpacaDataSubscription<ILimitUpLimitDown>.CreateAsync(
+                client.EnsureNotNull(nameof(client)).GetLimitUpLimitDownSubscription(symbol),
+                client.EnsureNotNull(nameof(client)));
+
+        /// <summary>
+        /// Gets the LULD (limit up / limit down) subscription for all assets from the <paramref name="symbols"/> list.
+        /// This subscription is returned with pending subscription state and will be unsubscribed on disposing
+        /// so you can use it inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static ValueTask<IDisposableAlpacaDataSubscription<ILimitUpLimitDown>> SubscribeLimitUpLimitDownAsync(
+            this IAlpacaDataStreamingClient client,
+            params String[] symbols) =>
+            DisposableAlpacaDataSubscription<ILimitUpLimitDown>.CreateAsync(
+                client.EnsureNotNull(nameof(client)).GetLimitUpLimitDownSubscription(symbols),
+                client.EnsureNotNull(nameof(client)));
+
+        /// <summary>
+        /// Gets the LULD (limit up / limit down) subscription for all assets from the <paramref name="symbols"/> list.
+        /// This subscription is returned with pending subscription state and will be unsubscribed on disposing
+        /// so you can use it inside the <c>using</c> or <c>await using</c> statements for more clear resource management.
+        /// </summary>
+        /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
+        /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        [CLSCompliant(false)]
+        public static ValueTask<IDisposableAlpacaDataSubscription<ILimitUpLimitDown>> SubscribeLimitUpLimitDownAsync(
+            this IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            DisposableAlpacaDataSubscription<ILimitUpLimitDown>.CreateAsync(
+                client.EnsureNotNull(nameof(client)).GetLimitUpLimitDownSubscription(symbols),
+                client.EnsureNotNull(nameof(client)));
+
         private static IAlpacaDataSubscription<ITrade> getTradeSubscription(
             IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
@@ -490,6 +854,26 @@ namespace Alpaca.Markets.Extensions
             IAlpacaDataStreamingClient client,
             IEnumerable<String> symbols) =>
             getSubscription(client.GetUpdatedBarSubscription, symbols);
+
+        private static IAlpacaDataSubscription<IStatus> getStatusSubscription(
+            IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            getSubscription(client.GetStatusSubscription, symbols);
+
+        private static IAlpacaDataSubscription<ILimitUpLimitDown> getLimitUpLimitDownSubscription(
+            IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            getSubscription(client.GetLimitUpLimitDownSubscription, symbols);
+
+        private static IAlpacaDataSubscription<ITrade> getCancellationSubscription(
+            IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            getSubscription(client.GetCancellationSubscription, symbols);
+
+        private static IAlpacaDataSubscription<ICorrection> getCorrectionSubscription(
+            IAlpacaDataStreamingClient client,
+            IEnumerable<String> symbols) =>
+            getSubscription(client.GetCorrectionSubscription, symbols);
 
         private static IAlpacaDataSubscription<TItem> getSubscription<TItem>(
             Func<String, IAlpacaDataSubscription<TItem>> selector,
