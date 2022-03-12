@@ -6,29 +6,44 @@ namespace Alpaca.Markets;
 /// <summary>
 /// Exchanges supported by Alpaca REST API.
 /// </summary>
-[JsonConverter(typeof(StringEnumConverter))]
+[JsonConverter(typeof(CryptoExchangeEnumConverter))]
 [SuppressMessage("ReSharper", "IdentifierTypo")]
 [SuppressMessage("ReSharper", "StringLiteralTypo")]
 public enum CryptoExchange
 {
     /// <summary>
-    /// Unknown exchange (not supported by this version of SDK).
+    /// ErisX Exchange.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "UNKNOWN")]
+    Unknown,
+
+    /// <summary>
+    /// ErisX Exchange.
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "ERSX")]
     Ersx,
 
     /// <summary>
-    /// NYSE American Stock Exchange.
+    /// FTX Exchange.
     /// </summary>
     [UsedImplicitly]
-    [EnumMember(Value = "GNSS")]
-    Gnss,
+    [EnumMember(Value = "FTXU")]
+    Ftx,
 
     /// <summary>
-    /// NYSE Arca Stock Exchange.
+    /// Coinbase Exchange.
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "CBSE")]
-    Cbse
+    Cbse,
+
+    /// <summary>
+    /// Not supported now.
+    /// </summary>
+    [UsedImplicitly]
+    [Obsolete("This enum member is not obsolete and will be deleted in upcoming major release.", true)]
+    [EnumMember(Value = "GNSS")]
+    Gnss
 }

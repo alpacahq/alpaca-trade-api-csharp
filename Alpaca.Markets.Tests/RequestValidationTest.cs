@@ -42,7 +42,7 @@ public sealed class RequestValidationTest
 
     [Fact]
     public void LatestBestBidOfferRequestEmptySymbolValidationWorks() =>
-        validate(new LatestBestBidOfferRequest(String.Empty, CryptoExchange.Gnss));
+        validate(new LatestBestBidOfferRequest(String.Empty, CryptoExchange.Ftx));
 
     [Fact]
     public void DeletePositionRequestEmptySymbolValidationWorks() =>

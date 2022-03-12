@@ -8,7 +8,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     private static readonly String[] _symbols = { Crypto, Other };
 
     private static readonly List<CryptoExchange> _exchangesList =
-        new () { CryptoExchange.Ersx, CryptoExchange.Gnss };
+        new () { CryptoExchange.Ersx, CryptoExchange.Ftx };
 
     private static readonly Interval<DateTime> _timeInterval;
 

@@ -153,9 +153,11 @@ Alpaca.Markets.ChangeWatchListRequest<TKey>.Asset.get -> string!
 Alpaca.Markets.ChangeWatchListRequest<TKey>.ChangeWatchListRequest(TKey key, string! asset) -> void
 Alpaca.Markets.ChangeWatchListRequest<TKey>.Key.get -> TKey
 Alpaca.Markets.CryptoExchange
-Alpaca.Markets.CryptoExchange.Cbse = 2 -> Alpaca.Markets.CryptoExchange
-Alpaca.Markets.CryptoExchange.Ersx = 0 -> Alpaca.Markets.CryptoExchange
-Alpaca.Markets.CryptoExchange.Gnss = 1 -> Alpaca.Markets.CryptoExchange
+Alpaca.Markets.CryptoExchange.Cbse = 3 -> Alpaca.Markets.CryptoExchange
+Alpaca.Markets.CryptoExchange.Ersx = 1 -> Alpaca.Markets.CryptoExchange
+Alpaca.Markets.CryptoExchange.Ftx = 2 -> Alpaca.Markets.CryptoExchange
+Alpaca.Markets.CryptoExchange.Gnss = 4 -> Alpaca.Markets.CryptoExchange
+Alpaca.Markets.CryptoExchange.Unknown = 0 -> Alpaca.Markets.CryptoExchange
 Alpaca.Markets.DayTradeMarginCallProtection
 Alpaca.Markets.DayTradeMarginCallProtection.Both = 2 -> Alpaca.Markets.DayTradeMarginCallProtection
 Alpaca.Markets.DayTradeMarginCallProtection.Entry = 0 -> Alpaca.Markets.DayTradeMarginCallProtection
