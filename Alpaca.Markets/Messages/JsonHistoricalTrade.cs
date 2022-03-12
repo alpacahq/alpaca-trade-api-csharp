@@ -1,5 +1,8 @@
-﻿namespace Alpaca.Markets;
+﻿using System.Diagnostics;
 
+namespace Alpaca.Markets;
+
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(ITrade))]
 internal sealed class JsonHistoricalTrade : ITrade, ISymbolMutable
 {
     [JsonProperty(PropertyName = "t", Required = Required.Always)]
@@ -20,6 +23,7 @@ internal sealed class JsonHistoricalTrade : ITrade, ISymbolMutable
     [JsonProperty(PropertyName = "z", Required = Required.Default)]
     public String Tape { get; set; } = String.Empty;
 
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "c", Required = Required.Default)]
     public List<String> ConditionsList { get; } = new();
 
@@ -35,4 +39,13 @@ internal sealed class JsonHistoricalTrade : ITrade, ISymbolMutable
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void SetSymbol(String symbol) => Symbol = symbol;
+
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        this.ToDebuggerDisplayString();
 }

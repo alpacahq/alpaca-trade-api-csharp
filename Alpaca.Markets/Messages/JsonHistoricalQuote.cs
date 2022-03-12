@@ -1,5 +1,8 @@
-﻿namespace Alpaca.Markets;
+﻿using System.Diagnostics;
 
+namespace Alpaca.Markets;
+
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IQuote))]
 internal sealed class JsonHistoricalQuote : IQuote, ISymbolMutable
 {
     [JsonProperty(PropertyName = "t", Required = Required.Always)]
@@ -23,6 +26,7 @@ internal sealed class JsonHistoricalQuote : IQuote, ISymbolMutable
     [JsonProperty(PropertyName = "bs", Required = Required.Default)]
     public Decimal BidSize { get; set; }
 
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "c", Required = Required.Default)]
     public List<String> ConditionsList { get; [ExcludeFromCodeCoverage] set; } = new();
 
@@ -38,4 +42,13 @@ internal sealed class JsonHistoricalQuote : IQuote, ISymbolMutable
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void SetSymbol(String symbol) => Symbol = symbol;
+
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        this.ToDebuggerDisplayString();
 }

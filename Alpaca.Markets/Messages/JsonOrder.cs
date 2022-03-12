@@ -1,5 +1,8 @@
-﻿namespace Alpaca.Markets;
+﻿using System.Diagnostics;
 
+namespace Alpaca.Markets;
+
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IOrder))]
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
@@ -106,9 +109,19 @@ internal sealed class JsonOrder : IOrder
     [JsonProperty(PropertyName = "replaces", Required = Required.Default)]
     public Guid? ReplacesOrderId { get; [ExcludeFromCodeCoverage] set; }
 
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "legs", Required = Required.Default)]
     public List<JsonOrder>? LegsList { get; set; }
 
     [JsonIgnore]
     public IReadOnlyList<IOrder> Legs => LegsList.EmptyIfNull<IOrder, JsonOrder>();
+
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        $"{nameof(IOrder)} {{ ID = {OrderId:B}, Symbol = \"{Symbol}\", Side = {OrderSide}, Status = {OrderStatus}, Type = {OrderType} }}";
 }

@@ -1,9 +1,12 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace Alpaca.Markets;
 
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IPage<ITrade>) + "<" + nameof(IBar) + ">")]
 internal sealed class JsonMultiBarsPage : IMultiPageMutable<IBar>
 {
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "bars", Required = Required.Default)]
     public Dictionary<String, List<JsonHistoricalBar>?> ItemsDictionary { get; [ExcludeFromCodeCoverage] set; } = new ();
 
@@ -19,4 +22,13 @@ internal sealed class JsonMultiBarsPage : IMultiPageMutable<IBar>
     internal void OnDeserializedMethod(
         StreamingContext _) =>
         Items = ItemsDictionary.SetSymbol<IBar, JsonHistoricalBar>();
+
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        this.ToDebuggerDisplayString();
 }

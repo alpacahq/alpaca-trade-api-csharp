@@ -1,11 +1,13 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace Alpaca.Markets;
 
-#pragma warning disable CS0618
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IAccount))]
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+#pragma warning disable CS0618
 internal sealed class JsonCalendar : ICalendar, IIntervalCalendar
 #pragma warning restore CS0618
 {
@@ -69,4 +71,13 @@ internal sealed class JsonCalendar : ICalendar, IIntervalCalendar
         Trading = new OpenClose(TradingDate, TradingOpen, TradingClose);
         Session = new OpenClose(TradingDate, SessionOpen, SessionClose);
     }
+
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        $"{nameof(IAccountActivity)} {{ Date = {TradingDate}, Trading (EST) {{ {TradingOpen} - {TradingClose} }}, Session (EST) {{ {SessionOpen} - {SessionClose} }} }}";
 }

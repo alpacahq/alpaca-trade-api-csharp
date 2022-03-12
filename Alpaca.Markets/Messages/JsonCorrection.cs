@@ -1,7 +1,9 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace Alpaca.Markets;
 
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(ICorrection))]
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
@@ -34,6 +36,7 @@ internal sealed class JsonCorrection : JsonRealTimeBase, ICorrection, ITrade
     [JsonProperty(PropertyName = "cs", Required = Required.Always)]
     public Decimal CorrectedSize { get; set; }
 
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "cc", Required = Required.Default)]
     public List<String> CorrectedConditionsList { get; } = new();
 
@@ -65,4 +68,13 @@ internal sealed class JsonCorrection : JsonRealTimeBase, ICorrection, ITrade
             TradeId = CorrectedTradeId,
             ConditionsList = CorrectedConditionsList
         };
+
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        $"{nameof(ICorrection)} {{ {OriginalTrade.ToDebuggerDisplayString()} => {CorrectedTrade.ToDebuggerDisplayString()} }}";
 }

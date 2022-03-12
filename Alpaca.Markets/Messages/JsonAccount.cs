@@ -1,11 +1,13 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace Alpaca.Markets;
 
+[SuppressMessage("ReSharper", "StringLiteralTypo")]
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IAccount))]
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-[SuppressMessage("ReSharper", "StringLiteralTypo")]
 internal sealed class JsonAccount : IAccount
 {
     [JsonProperty(PropertyName = "id", Required = Required.Always)]
@@ -94,4 +96,13 @@ internal sealed class JsonAccount : IAccount
             Currency = "USD";
         }
     }
+
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        $"{nameof(IAccount)} {{ ID = {AccountId:B}, Number = \"{AccountNumber}\", Status = {Status}, Currency = \"{Currency}\" }}";
 }

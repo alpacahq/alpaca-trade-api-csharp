@@ -1,13 +1,16 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics;
+using System.Globalization;
 using System.Runtime.Serialization;
 
 namespace Alpaca.Markets;
 
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IAccountActivity))]
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
 internal sealed class JsonAccountActivity : IAccountActivity
 {
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private static readonly Char[] _activityIdSeparator = { ':' };
 
     [JsonProperty(PropertyName = "activity_type", Required = Required.Always)]
@@ -92,4 +95,13 @@ internal sealed class JsonAccountActivity : IAccountActivity
         ActivityDateTime = ActivityDateTime?.Date.AsUtcDateTime();
         ActivityDate = ActivityDateTime.AsDateOnly();
     }
+
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        $"{nameof(IAccountActivity)} {{ ID = {ActivityGuid:B}, Type = \"{ActivityType}\", Timestamp = {ActivityDateTimeUtc:O} }}";
 }

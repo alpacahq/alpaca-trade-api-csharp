@@ -1,7 +1,9 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace Alpaca.Markets;
 
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(INewsArticle))]
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
@@ -76,4 +78,13 @@ internal sealed class JsonNewsArticle : INewsArticle
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private Uri? getImageUrlBySize(String size) =>
         Images.FirstOrDefault(_ => String.Equals(size, _.Size, StringComparison.Ordinal))?.Url;
+
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        $"{nameof(INewsArticle)} {{ ID = {Id:B}, Timestamp = {CreatedAtUtc:O}, Author = \"{Author}\", Headline = \"{Headline}\" }}";
 }

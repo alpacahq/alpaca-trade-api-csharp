@@ -1,10 +1,14 @@
-﻿namespace Alpaca.Markets;
+﻿using System.Diagnostics;
+
+namespace Alpaca.Markets;
 
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IPage<INewsArticle>) + "<" + nameof(INewsArticle) + ">")]
 internal sealed class JsonNewsPage : IPage<INewsArticle>
 {
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "news", Required = Required.Default)]
     public List<JsonNewsArticle> ItemsList { get; [ExcludeFromCodeCoverage] set; } = new ();
 
@@ -16,4 +20,11 @@ internal sealed class JsonNewsPage : IPage<INewsArticle>
 
     [JsonIgnore]
     public String Symbol => String.Empty;
+
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        this.ToDebuggerDisplayString();
 }

@@ -1,13 +1,13 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace Alpaca.Markets;
 
-[SuppressMessage(
-    "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
-    Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IPage<ITrade>) + "<" + nameof(IQuote) + ">")]
 internal sealed class JsonMultiQuotesPage<TQuote> : IMultiPageMutable<IQuote>
     where TQuote : IQuote, ISymbolMutable
 {
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "quotes", Required = Required.Default)]
     public Dictionary<String, List<TQuote>?> ItemsDictionary { get; [ExcludeFromCodeCoverage] set; } = new ();
 
@@ -23,4 +23,13 @@ internal sealed class JsonMultiQuotesPage<TQuote> : IMultiPageMutable<IQuote>
     internal void OnDeserializedMethod(
         StreamingContext _) =>
         Items = ItemsDictionary.SetSymbol<IQuote, TQuote>();
+
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        this.ToDebuggerDisplayString();
 }

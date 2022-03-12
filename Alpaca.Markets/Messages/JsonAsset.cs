@@ -1,5 +1,8 @@
-﻿namespace Alpaca.Markets;
+﻿using System.Diagnostics;
 
+namespace Alpaca.Markets;
+
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IAsset))]
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
@@ -37,4 +40,13 @@ internal sealed class JsonAsset : IAsset
 
     [JsonProperty(PropertyName = "fractionable", Required = Required.Default)]
     public Boolean Fractionable { get; set; }
+
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        $"{nameof(IAsset)} {{ ID = {AssetId:B}, Symbol = \"{Symbol}\", Class = {Class}, Status = {Status}, Exchange = {Exchange} }}";
 }

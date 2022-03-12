@@ -1,5 +1,8 @@
-﻿namespace Alpaca.Markets;
+﻿using System.Diagnostics;
 
+namespace Alpaca.Markets;
+
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IStatus))]
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
@@ -19,4 +22,13 @@ internal sealed class JsonTradingStatus : JsonRealTimeBase, IStatus
 
     [JsonProperty(PropertyName = "z", Required = Required.Default)]
     public String Tape { get; } = String.Empty;
+
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        $"{nameof(IStatus)} {{ Code = \"{StatusCode}\", Message = \"{StatusMessage}\", Tape= \"{Tape}\" }}";
 }

@@ -1,5 +1,8 @@
-﻿namespace Alpaca.Markets;
+﻿using System.Diagnostics;
 
+namespace Alpaca.Markets;
+
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IBar))]
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
@@ -25,4 +28,11 @@ internal sealed class JsonRealTimeBar : JsonRealTimeBase, IBar
 
     [JsonProperty(PropertyName = "n", Required = Required.Default)]
     public UInt64 TradeCount { get; set; }
+
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        this.ToDebuggerDisplayString();
 }

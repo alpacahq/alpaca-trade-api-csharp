@@ -1,13 +1,16 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace Alpaca.Markets;
 
+[SuppressMessage("ReSharper", "StringLiteralTypo")]
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IPortfolioHistory))]
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-[SuppressMessage("ReSharper", "StringLiteralTypo")]
 internal sealed class JsonPortfolioHistory : IPortfolioHistory
 {
+    [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IPortfolioHistoryItem))]
     private sealed class Item : IPortfolioHistoryItem
     {
         public Decimal? Equity { get; init; }
@@ -17,6 +20,11 @@ internal sealed class JsonPortfolioHistory : IPortfolioHistory
         public Decimal? ProfitLossPercentage { get; init; }
 
         public DateTime TimestampUtc { get; init; }
+
+        [ExcludeFromCodeCoverage]
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private String DebuggerDisplay =>
+            $"{nameof(IPortfolioHistoryItem)} {{ Time = {TimestampUtc:O}, Equity = {Equity}, ProfitLoss = {ProfitLoss} }}";
     }
 
     private readonly List<IPortfolioHistoryItem> _items = new();
@@ -68,4 +76,13 @@ internal sealed class JsonPortfolioHistory : IPortfolioHistory
             });
         }
     }
+
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
+
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        $"{nameof(IPortfolioHistory)} {{ BaseValue = {BaseValue}, TimeFrame = {TimeFrame}, Count = {Items.Count} }}";
 }
