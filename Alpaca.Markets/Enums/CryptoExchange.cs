@@ -1,38 +1,49 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Exchanges supported by Alpaca REST API.
+    /// Crypto exchanges supported by Alpaca REST API.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(CryptoExchangeEnumConverter))]
     [SuppressMessage("ReSharper", "IdentifierTypo")]
     [SuppressMessage("ReSharper", "StringLiteralTypo")]
     public enum CryptoExchange
     {
         /// <summary>
-        /// Unknown exchange (not supported by this version of SDK).
+        /// ErisX Exchange.
         /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "ERSX")]
+        [UsedImplicitly] [EnumMember(Value = "UNKNOWN")]
+        Unknown,
+
+        /// <summary>
+        /// ErisX Exchange.
+        /// </summary>
+        [UsedImplicitly] [EnumMember(Value = "ERSX")]
         Ersx,
 
         /// <summary>
-        /// NYSE American Stock Exchange.
+        /// FTX Exchange.
         /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "GNSS")]
-        Gnss,
+        [UsedImplicitly] [EnumMember(Value = "FTXU")]
+        Ftx,
 
         /// <summary>
-        /// NYSE Arca Stock Exchange.
+        /// Coinbase Exchange.
+        /// </summary>
+        [UsedImplicitly] [EnumMember(Value = "CBSE")]
+        Cbse,
+
+        /// <summary>
+        /// Not supported now.
         /// </summary>
         [UsedImplicitly]
-        [EnumMember(Value = "CBSE")]
-        Cbse
+        [Obsolete("This enum member is not obsolete and will be deleted in upcoming major release.", true)]
+        [EnumMember(Value = "GNSS")]
+        Gnss
     }
 }
