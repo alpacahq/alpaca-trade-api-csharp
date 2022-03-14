@@ -21,7 +21,7 @@ public sealed class AlpacaCryptoDataClientTest
     public AlpacaCryptoDataClientTest(
         MockClientsFactoryFixture mockClientsFactory) =>
         _mockClientsFactory = mockClientsFactory;
-    
+
     [Fact]
     public async Task GetAverageDailyTradeVolumeAsyncWithIntervalWorks()
     {
