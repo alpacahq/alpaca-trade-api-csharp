@@ -34,7 +34,7 @@ internal static class AlpacaDataSubscriptionExtensions
         public event Action<TItem>? Received;
     }
 
-    public static Mock<TClient> CreateMockClient<TClient, TItem>(
+    internal static Mock<TClient> CreateMockClient<TClient, TItem>(
         this Expression<Func<TClient, IAlpacaDataSubscription<TItem>>> subscriptionFactory)
         where TClient : class, IStreamingClient
         where TItem : class
@@ -48,7 +48,7 @@ internal static class AlpacaDataSubscriptionExtensions
         return client;
     }
 
-    public static void VerifySubscriptionsStreams<TItem>(
+    internal static void VerifySubscriptionsStreams<TItem>(
         this IReadOnlyList<String> streams,
         IAlpacaDataSubscription<TItem> lhs,
         IAlpacaDataSubscription<TItem> rhs)
@@ -58,7 +58,7 @@ internal static class AlpacaDataSubscriptionExtensions
         Assert.Equal(streams, rhs.Streams);
     }
 
-    public static void VerifySubscriptionEventsNumber<TItem>(
+    internal static void VerifySubscriptionEventsNumber<TItem>(
         this IAlpacaDataSubscription<TItem> subscription,
         Int32 expectedNumberOfEvents)
     {

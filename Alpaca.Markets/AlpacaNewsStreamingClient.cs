@@ -4,7 +4,7 @@ internal sealed class AlpacaNewsStreamingClient :
     DataStreamingClientBase<AlpacaNewsStreamingClientConfiguration>, 
     IAlpacaNewsStreamingClient
 {
-    public AlpacaNewsStreamingClient(
+    internal AlpacaNewsStreamingClient(
         AlpacaNewsStreamingClientConfiguration configuration)
         : base(configuration.EnsureNotNull())
     {

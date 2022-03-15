@@ -4,7 +4,7 @@ internal sealed class AlpacaDataClient :
     DataHistoricalClientBase<HistoricalBarsRequest, HistoricalQuotesRequest, JsonHistoricalQuote, HistoricalTradesRequest>,
     IAlpacaDataClient
 {
-    public AlpacaDataClient(
+    internal AlpacaDataClient(
         AlpacaDataClientConfiguration configuration)
         : base(configuration.EnsureNotNull().GetConfiguredHttpClient())
     {

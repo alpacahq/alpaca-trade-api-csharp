@@ -3,24 +3,17 @@ namespace Alpaca.Markets.Extensions.Tests;
 [Collection("MockEnvironment")]
 public sealed partial class AlpacaDataClientTest
 {
+    private static readonly Interval<DateTime> _timeInterval = getTimeInterval();
+
     private readonly MockClientsFactoryFixture _mockClientsFactory;
 
     private static readonly String[] _symbols = { Stock, Other };
-
-    private static readonly Interval<DateTime> _timeInterval;
 
     private const String Stock = "AAPL";
 
     private const String Other = "MSFT";
 
     private const Int32 Pages = 5;
-
-    static AlpacaDataClientTest()
-    {
-        var today = DateTime.Today;
-        var yesterday = today.AddDays(-1);
-        _timeInterval = new Interval<DateTime>(yesterday, today);
-    }
 
     public AlpacaDataClientTest(
         MockClientsFactoryFixture mockClientsFactory) =>
@@ -54,4 +47,11 @@ public sealed partial class AlpacaDataClientTest
     private static async ValueTask<Int32> validateListOfDictionariesOfLists<TItem>(
         IAsyncEnumerable<IReadOnlyDictionary<String, IReadOnlyList<TItem>>> pages) =>
         await pages.SumAsync(_ => _.Values.Sum(__ => __.Count));
+
+    private static Interval<DateTime> getTimeInterval()
+    {
+        var today = DateTime.Today;
+        var yesterday = today.AddDays(-1);
+        return new Interval<DateTime>(yesterday, today);
+    }
 }

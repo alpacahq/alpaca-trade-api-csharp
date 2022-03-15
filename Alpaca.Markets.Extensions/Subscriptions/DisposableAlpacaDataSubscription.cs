@@ -15,7 +15,7 @@ internal sealed class DisposableAlpacaDataSubscription<TItem> :
         _client = client;
     }
 
-    public static async ValueTask<IDisposableAlpacaDataSubscription<TItem>> CreateAsync(
+    internal static async ValueTask<IDisposableAlpacaDataSubscription<TItem>> CreateAsync(
         IAlpacaDataSubscription<TItem> subscription,
         ISubscriptionHandler client)
     {

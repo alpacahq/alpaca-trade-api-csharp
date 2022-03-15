@@ -3,6 +3,8 @@
 [Collection("MockEnvironment")]
 public sealed partial class AlpacaCryptoDataClientTest
 {
+    private static readonly Interval<DateTime> _timeInterval = getTimeInterval();
+
     private readonly MockClientsFactoryFixture _mockClientsFactory;
 
     private static readonly String[] _symbols = { Crypto, Other };
@@ -10,24 +12,15 @@ public sealed partial class AlpacaCryptoDataClientTest
     private static readonly List<CryptoExchange> _exchangesList =
         new () { CryptoExchange.Ersx, CryptoExchange.Ftx };
 
-    private static readonly Interval<DateTime> _timeInterval;
-
     private const String PathPrefix = "/v1beta1/crypto";
 
-    private static readonly DateTime _yesterday;
+    private static DateTime Yesterday => _timeInterval.From!.Value;
 
-    private static readonly DateTime _today;
+    private static DateTime Today => _timeInterval.Into!.Value;
 
     private const String Crypto = "BTCUSD";
 
     private const String Other = "ETHUSD";
-
-    static AlpacaCryptoDataClientTest()
-    {
-        _today = DateTime.Today;
-        _yesterday = _today.AddDays(-1);
-        _timeInterval = new Interval<DateTime>(_yesterday, _today);
-    }
 
     public AlpacaCryptoDataClientTest(
         MockClientsFactoryFixture mockClientsFactory) =>
@@ -53,5 +46,12 @@ public sealed partial class AlpacaCryptoDataClientTest
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(
             () => _mockClientsFactory.GetAlpacaCryptoDataClientMock(nullThrottleParameters));
+    }
+
+    private static Interval<DateTime> getTimeInterval()
+    {
+        var today = DateTime.Today;
+        var yesterday = today.AddDays(-1);
+        return new Interval<DateTime>(yesterday, today);
     }
 }

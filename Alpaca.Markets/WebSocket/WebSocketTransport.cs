@@ -327,6 +327,10 @@ internal sealed class WebSocketsTransport : IDisposable
         {
             MessageReceived?.Invoke(Encoding.UTF8.GetString(readResult.Buffer.ToArray()));
         }
+        else
+        {
+            Trace.WriteLine($"This WS message type will be ignored: {receiveResult.MessageType}");
+        }
 
         transport.Input.AdvanceTo(readResult.Buffer.End);
         return true;

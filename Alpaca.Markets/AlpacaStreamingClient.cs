@@ -16,7 +16,7 @@ internal sealed class AlpacaStreamingClient :
 
     private readonly IDictionary<String, Action<JToken>> _handlers;
 
-    public AlpacaStreamingClient(
+    internal AlpacaStreamingClient(
         AlpacaStreamingClientConfiguration configuration)
         : base(configuration.EnsureNotNull())
     {

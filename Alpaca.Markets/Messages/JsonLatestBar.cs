@@ -45,4 +45,5 @@ internal sealed class JsonLatestBar : IBar
     [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private String DebuggerDisplay =>
-        this.ToDebuggerDisplayString();}
+        this.ToDebuggerDisplayString();
+}

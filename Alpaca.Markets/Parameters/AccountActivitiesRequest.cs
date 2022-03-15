@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 /// <summary>
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListAccountActivitiesAsync(AccountActivitiesRequest,CancellationToken)"/> call.

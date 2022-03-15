@@ -5,7 +5,7 @@ internal sealed class AlpacaDataSubscriptionContainer<TItem>
 {
     private readonly IReadOnlyList<IAlpacaDataSubscription<TItem>> _subscriptions;
 
-    public AlpacaDataSubscriptionContainer(
+    internal AlpacaDataSubscriptionContainer(
         IEnumerable<IAlpacaDataSubscription<TItem>> subscriptions) =>
         _subscriptions = subscriptions.ToList();
 

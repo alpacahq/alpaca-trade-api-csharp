@@ -4,7 +4,7 @@ internal sealed class AlpacaCryptoDataClient :
     DataHistoricalClientBase<HistoricalCryptoBarsRequest, HistoricalCryptoQuotesRequest, JsonHistoricalCryptoQuote, HistoricalCryptoTradesRequest>,
     IAlpacaCryptoDataClient
 {
-    public AlpacaCryptoDataClient(
+    internal AlpacaCryptoDataClient(
         AlpacaCryptoDataClientConfiguration configuration)
         : base(configuration.EnsureNotNull().GetConfiguredHttpClient())
     {

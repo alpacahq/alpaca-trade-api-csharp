@@ -4,7 +4,7 @@ internal sealed partial class AlpacaTradingClient : IAlpacaTradingClient
 {
     private readonly HttpClient _httpClient;
 
-    public AlpacaTradingClient(
+    internal AlpacaTradingClient(
         AlpacaTradingClientConfiguration configuration) =>
         _httpClient = configuration.EnsureNotNull().GetConfiguredHttpClient();
 

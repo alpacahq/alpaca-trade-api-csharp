@@ -2,6 +2,10 @@ namespace Alpaca.Markets.Tests;
 
 public sealed partial class AlpacaTradingClientTest
 {
+    private const String OrdersWildcardUrl = $"{OrdersUrlPrefix}/**";
+
+    private const String OrdersUrlPrefix = "/v2/orders";
+
     [Fact]
     public async Task ListOrdersAsyncWorks()
     {
@@ -9,7 +13,7 @@ public sealed partial class AlpacaTradingClientTest
 
         var date = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Unspecified);
 
-        mock.AddGet("/v2/orders", new JArray( createOrder()));
+        mock.AddGet(OrdersUrlPrefix, new JArray( createOrder()));
 
         var orders = await mock.Client
             .ListOrdersAsync(new ListOrdersRequest
@@ -30,7 +34,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddGet("/v2/orders:by_client_order_id", createOrder());
+        mock.AddGet($"{OrdersUrlPrefix}:by_client_order_id", createOrder());
 
         var order = await mock.Client.GetOrderAsync(Guid.NewGuid().ToString("D"));
 
@@ -42,7 +46,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddGet("/v2/orders/**", createOrder());
+        mock.AddGet(OrdersWildcardUrl, createOrder());
 
         var order = await mock.Client.GetOrderAsync(Guid.NewGuid());
 
@@ -54,7 +58,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddPost("/v2/orders", createOrder());
+        mock.AddPost(OrdersUrlPrefix, createOrder());
 
         var order = await mock.Client.PostOrderAsync(
             new NewOrderRequest(Stock, OrderQuantity.Notional(12.34M),
@@ -80,7 +84,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddPost("/v2/orders", createOrder());
+        mock.AddPost(OrdersUrlPrefix, createOrder());
 
         var order = await mock.Client.PostOrderAsync(
             MarketOrder.Buy(Stock, OrderQuantity.Fractional(0.55M))
@@ -96,7 +100,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddPost("/v2/orders", createOrder());
+        mock.AddPost(OrdersUrlPrefix, createOrder());
 
         var order = await mock.Client.PostOrderAsync(
             MarketOrder.Sell(Stock, OrderQuantity.Fractional(0.55M))
@@ -110,7 +114,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddPost("/v2/orders", createOrder());
+        mock.AddPost(OrdersUrlPrefix, createOrder());
 
         var order = await mock.Client.PostOrderAsync(OrderSide.Buy
             .Limit(Stock, 42L, 12.34M).TakeProfit(14.15M));
@@ -123,7 +127,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddPost("/v2/orders", createOrder());
+        mock.AddPost(OrdersUrlPrefix, createOrder());
 
         var order = await mock.Client.PostOrderAsync(OrderSide.Buy
             .Limit(Stock, 42L, 12.34M).StopLoss(10.11M));
@@ -145,7 +149,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddPatch("/v2/orders/**", createOrder());
+        mock.AddPatch(OrdersWildcardUrl, createOrder());
 
         var order = await mock.Client.PatchOrderAsync(
             new ChangeOrderRequest(Guid.NewGuid())
@@ -164,7 +168,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddDelete("/v2/orders/**", createOrder());
+        mock.AddDelete(OrdersWildcardUrl, createOrder());
 
         Assert.True(await mock.Client.DeleteOrderAsync(Guid.NewGuid()));
     }
@@ -174,7 +178,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddDelete("/v2/orders", new JArray(
+        mock.AddDelete(OrdersUrlPrefix, new JArray(
             new JObject(
                 new JProperty("status", (Int64)HttpStatusCode.OK),
                 new JProperty("id", Guid.NewGuid()))));

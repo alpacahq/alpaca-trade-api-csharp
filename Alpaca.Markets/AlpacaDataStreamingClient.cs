@@ -4,7 +4,7 @@ internal sealed class AlpacaDataStreamingClient :
     DataStreamingClientBase<AlpacaDataStreamingClientConfiguration>,
     IAlpacaDataStreamingClient
 {
-    public AlpacaDataStreamingClient(
+    internal AlpacaDataStreamingClient(
         AlpacaDataStreamingClientConfiguration configuration)
         : base(configuration.EnsureNotNull())
     {

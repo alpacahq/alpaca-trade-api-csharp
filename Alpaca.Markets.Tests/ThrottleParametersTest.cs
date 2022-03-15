@@ -5,6 +5,12 @@ public sealed class ThrottleParametersTest
 {
     private readonly MockClientsFactoryFixture _mockClientsFactory;
 
+    private const String OrdersUrl = "/v2/orders/**";
+
+    private const String ClockUrl = "/v2/clock";
+
+    private const String Message = "Fahrenheit";
+
     public ThrottleParametersTest(
         MockClientsFactoryFixture mockClientsFactory) =>
         _mockClientsFactory = mockClientsFactory;
@@ -15,20 +21,20 @@ public sealed class ThrottleParametersTest
         var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         var errorMessage = new JObject(
-            new JProperty("message", "Fahrenheit"),
+            new JProperty("message", Message),
             new JProperty("code", 451)).ToString();
 
-        mock.AddGet("/v2/clock", errorMessage, HttpStatusCode.TooManyRequests);
-        mock.AddGet("/v2/clock", errorMessage, HttpStatusCode.TooManyRequests);
-        mock.AddGet("/v2/clock", errorMessage, HttpStatusCode.TooManyRequests);
-        mock.AddGet("/v2/clock", errorMessage, HttpStatusCode.TooManyRequests);
-        mock.AddGet("/v2/clock", errorMessage, HttpStatusCode.TooManyRequests);
-        mock.AddGet("/v2/clock", errorMessage, HttpStatusCode.TooManyRequests);
+        mock.AddGet(ClockUrl, errorMessage, HttpStatusCode.TooManyRequests);
+        mock.AddGet(ClockUrl, errorMessage, HttpStatusCode.TooManyRequests);
+        mock.AddGet(ClockUrl, errorMessage, HttpStatusCode.TooManyRequests);
+        mock.AddGet(ClockUrl, errorMessage, HttpStatusCode.TooManyRequests);
+        mock.AddGet(ClockUrl, errorMessage, HttpStatusCode.TooManyRequests);
+        mock.AddGet(ClockUrl, errorMessage, HttpStatusCode.TooManyRequests);
 
         var exception = await Assert.ThrowsAsync<RestClientErrorException>(
             () => mock.Client.GetClockAsync());
 
-        Assert.Equal("Fahrenheit",exception.Message);
+        Assert.Equal(Message,exception.Message);
         Assert.Equal(451, exception.ErrorCode);
     }
 
@@ -39,7 +45,7 @@ public sealed class ThrottleParametersTest
 
         const String errorMessage = "<html><body>HTTP 500: Unknown server error.</body></html>";
 
-        mock.AddDelete("/v2/orders/**", errorMessage, HttpStatusCode.InternalServerError);
+        mock.AddDelete(OrdersUrl, errorMessage, HttpStatusCode.InternalServerError);
 
         var exception = await Assert.ThrowsAsync<RestClientErrorException>(
             () => mock.Client.DeleteOrderAsync(Guid.NewGuid()));
@@ -54,15 +60,15 @@ public sealed class ThrottleParametersTest
         var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         var errorMessage = new JObject(
-            new JProperty("msg", "Fahrenheit"),
+            new JProperty("msg", Message),
             new JProperty("id", 451)).ToString();
 
-        mock.AddDelete("/v2/orders/**", errorMessage, HttpStatusCode.InternalServerError);
+        mock.AddDelete(OrdersUrl, errorMessage, HttpStatusCode.InternalServerError);
 
         var exception = await Assert.ThrowsAsync<RestClientErrorException>(
             () => mock.Client.DeleteOrderAsync(Guid.NewGuid()));
 
-        Assert.NotEqual("Fahrenheit",exception.Message);
+        Assert.NotEqual(Message,exception.Message);
         Assert.Equal(500, exception.ErrorCode);
     }
 }

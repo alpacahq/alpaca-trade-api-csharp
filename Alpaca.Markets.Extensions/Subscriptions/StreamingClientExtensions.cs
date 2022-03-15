@@ -125,7 +125,7 @@ public static class StreamingClientExtensions
             symbols.EnsureNotNull());
 
     /// <summary>
-    /// Gets the daily aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
+    /// Gets the updated aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IStreamingDataClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
@@ -134,10 +134,10 @@ public static class StreamingClientExtensions
     /// </returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
-    public static IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(
+    public static IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
         this IStreamingDataClient client,
         IEnumerable<String> symbols) =>
-        getUpdatedBarSubscription(
+        getDailyBarSubscription(
             client.EnsureNotNull(),
             symbols.EnsureNotNull());
 
@@ -159,7 +159,7 @@ public static class StreamingClientExtensions
             symbols.EnsureNotNull());
 
     /// <summary>
-    /// Gets the updated aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
+    /// Gets the daily aggregate (bar) updates subscription for the all assets from the <paramref name="symbols"/> list.
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IStreamingDataClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
@@ -168,10 +168,10 @@ public static class StreamingClientExtensions
     /// </returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
-    public static IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
+    public static IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(
         this IStreamingDataClient client,
         IEnumerable<String> symbols) =>
-        getDailyBarSubscription(
+        getUpdatedBarSubscription(
             client.EnsureNotNull(),
             symbols.EnsureNotNull());
 

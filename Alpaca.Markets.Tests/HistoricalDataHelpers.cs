@@ -11,76 +11,82 @@ internal static class HistoricalDataHelpers
 
     private static readonly String _tape = Guid.NewGuid().ToString("D");
 
-    public static void AddSingleBarsPageExpectation(
+    private const String Trades = "trades";
+
+    private const String Quotes = "quotes";
+
+    private const String Bars = "bars";
+
+    internal static void AddSingleBarsPageExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
-        mock.addSinglePageExpectation(pathPrefix, symbol, "bars", createBar);
+        mock.addSinglePageExpectation(pathPrefix, symbol, Bars, createBar);
 
-    public static void AddMultiBarsPageExpectation(
+    internal static void AddMultiBarsPageExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addMultiPageExpectation(pathPrefix, symbols, "bars", createBar);
+        mock.addMultiPageExpectation(pathPrefix, symbols, Bars, createBar);
 
-    public static void AddLatestBarExpectation(
+    internal static void AddLatestBarExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
-        mock.addLatestExpectation(pathPrefix, symbol, "bars", createBar);
+        mock.addLatestExpectation(pathPrefix, symbol, Bars, createBar);
 
-    public static void AddLatestBarsExpectation(
+    internal static void AddLatestBarsExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addLatestExpectation(pathPrefix, symbols, "bars", createBar);
+        mock.addLatestExpectation(pathPrefix, symbols, Bars, createBar);
 
-    public static void AddSingleTradesPageExpectation(
+    internal static void AddSingleTradesPageExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
-        mock.addSinglePageExpectation(pathPrefix, symbol, "trades", createTrade);
+        mock.addSinglePageExpectation(pathPrefix, symbol, Trades, createTrade);
 
-    public static void AddMultiTradesPageExpectation(
+    internal static void AddMultiTradesPageExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addMultiPageExpectation(pathPrefix, symbols, "trades", createTrade);
+        mock.addMultiPageExpectation(pathPrefix, symbols, Trades, createTrade);
 
-    public static void AddLatestTradeExpectation(
+    internal static void AddLatestTradeExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
-        mock.addLatestExpectation(pathPrefix, symbol, "trades", createTrade);
+        mock.addLatestExpectation(pathPrefix, symbol, Trades, createTrade);
 
-    public static void AddLatestTradesExpectation(
+    internal static void AddLatestTradesExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addLatestExpectation(pathPrefix, symbols, "trades", createTrade);
+        mock.addLatestExpectation(pathPrefix, symbols, Trades, createTrade);
 
-    public static void AddSingleQuotesPageExpectation(
+    internal static void AddSingleQuotesPageExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
-        mock.addSinglePageExpectation(pathPrefix, symbol, "quotes", createQuote);
+        mock.addSinglePageExpectation(pathPrefix, symbol, Quotes, createQuote);
 
-    public static void AddMultiQuotesPageExpectation(
+    internal static void AddMultiQuotesPageExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addMultiPageExpectation(pathPrefix, symbols, "quotes", createQuote);
+        mock.addMultiPageExpectation(pathPrefix, symbols, Quotes, createQuote);
 
-    public static void AddLatestQuoteExpectation(
+    internal static void AddLatestQuoteExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
-        mock.addLatestExpectation(pathPrefix, symbol, "quotes", createQuote);
+        mock.addLatestExpectation(pathPrefix, symbol, Quotes, createQuote);
 
-    public static void AddLatestQuotesExpectation(
+    internal static void AddLatestQuotesExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addLatestExpectation(pathPrefix, symbols, "quotes", createQuote);
+        mock.addLatestExpectation(pathPrefix, symbols, Quotes, createQuote);
 
-    public static void AddSnapshotExpectation(
+    internal static void AddSnapshotExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
         mock.AddGet($"{pathPrefix}/{symbol}/snapshot", createSnapshot(symbol));
 
-    public static void AddSnapshotsExpectation(
+    internal static void AddSnapshotsExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
         mock.AddGet($"{pathPrefix}/snapshots", new JObject(
             symbols.Select(_ => new JProperty(_, createSnapshot()))) );
 
-    public static void AddCryptoSnapshotsExpectation(
+    internal static void AddCryptoSnapshotsExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
         mock.AddGet($"{pathPrefix}/snapshots", new JObject(
             new JProperty("snapshots", new JObject(
                 symbols.Select(_ => new JProperty(_, createSnapshot()))))));
 
-    public static void AddXbboExpectation(
+    internal static void AddXbboExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
         mock.AddGet($"{pathPrefix}/{symbol}/xbbo/latest", new JObject(
             new JProperty("xbbo", createQuote()),
-            new JProperty("symbol", symbol)));
+            new JProperty(nameof(symbol), symbol)));
 
-    public static void AddXbbosExpectation(
+    internal static void AddXbbosExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
         mock.addLatestExpectation(pathPrefix, symbols, "xbbos", createQuote);
 
@@ -89,7 +95,7 @@ internal static class HistoricalDataHelpers
         String items, Func<JObject> createItem) =>
         mock.AddGet($"{pathPrefix}/{symbol}/{items}", new JObject(
             new JProperty(items, createItemsList(createItem)),
-            new JProperty("symbol", symbol)));
+            new JProperty(nameof(symbol), symbol)));
 
     private static void addMultiPageExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols,
@@ -103,7 +109,7 @@ internal static class HistoricalDataHelpers
         String items, Func<JObject> createItem) =>
         mock.AddGet($"{pathPrefix}/{symbol}/{items}/latest", new JObject(
             new JProperty(items[..^1], createItem()), // Without last `s` character
-            new JProperty("symbol", symbol)));
+            new JProperty(nameof(symbol), symbol)));
 
     private static void addLatestExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols,

@@ -10,7 +10,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         mock.AddMultiBarsPageExpectation(PathPrefix, _symbols);
 
         var bars = await mock.Client.GetHistoricalBarsAsync(
-            new HistoricalCryptoBarsRequest(_symbols, _yesterday, _today, BarTimeFrame.Hour)
+            new HistoricalCryptoBarsRequest(_symbols, Yesterday, Today, BarTimeFrame.Hour)
                 .WithExchanges(CryptoExchange.Cbse));
 
         Assert.NotNull(bars);
@@ -44,7 +44,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         mock.AddSingleBarsPageExpectation(PathPrefix, Crypto);
 
         var bars = await mock.Client.ListHistoricalBarsAsync(
-            new HistoricalCryptoBarsRequest(Crypto, _yesterday, _today, BarTimeFrame.Hour)
+            new HistoricalCryptoBarsRequest(Crypto, Yesterday, Today, BarTimeFrame.Hour)
                 .WithExchanges(_exchangesList));
 
         Assert.NotNull(bars);

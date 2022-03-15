@@ -3,20 +3,13 @@ namespace Alpaca.Markets.Extensions.Tests;
 [Collection("MockEnvironment")]
 public sealed class AlpacaCryptoDataClientTest
 {
-    private readonly MockClientsFactoryFixture _mockClientsFactory;
+    private static readonly Interval<DateTime> _timeInterval = getTimeInterval();
 
-    private static readonly Interval<DateTime> _timeInterval;
+    private readonly MockClientsFactoryFixture _mockClientsFactory;
 
     private const String Crypto = "BTCUSD";
 
     private const Int32 Pages = 5;
-
-    static AlpacaCryptoDataClientTest()
-    {
-        var today = DateTime.Today;
-        var yesterday = today.AddDays(-1);
-        _timeInterval = new Interval<DateTime>(yesterday, today);
-    }
 
     public AlpacaCryptoDataClientTest(
         MockClientsFactoryFixture mockClientsFactory) =>
@@ -67,4 +60,11 @@ public sealed class AlpacaCryptoDataClientTest
         new JProperty("h", 400M),
         new JProperty("c", 300M),
         new JProperty("v", 1000M));
+
+    private static Interval<DateTime> getTimeInterval()
+    {
+        var today = DateTime.Today;
+        var yesterday = today.AddDays(-1);
+        return new Interval<DateTime>(yesterday, today);
+    }
 }

@@ -10,7 +10,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         mock.AddMultiQuotesPageExpectation(PathPrefix, _symbols);
 
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
-            new HistoricalCryptoQuotesRequest(_symbols, _yesterday, _today)
+            new HistoricalCryptoQuotesRequest(_symbols, Yesterday, Today)
                 .WithExchanges(CryptoExchange.Cbse));
 
         Assert.NotNull(quotes);
@@ -45,7 +45,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         mock.AddSingleQuotesPageExpectation(PathPrefix, Crypto);
 
         var quotes = await mock.Client.ListHistoricalQuotesAsync(
-            new HistoricalCryptoQuotesRequest(Crypto, _yesterday, _today)
+            new HistoricalCryptoQuotesRequest(Crypto, Yesterday, Today)
                 .WithExchanges(_exchangesList));
 
         Assert.NotNull(quotes);

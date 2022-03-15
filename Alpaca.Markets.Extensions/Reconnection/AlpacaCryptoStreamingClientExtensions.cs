@@ -18,10 +18,6 @@ public static class AlpacaCryptoStreamingClientExtensions
         }
 
         [ExcludeFromCodeCoverage]
-        public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() =>
-            Client.GetMinuteBarSubscription();
-
-        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<ITrade> GetTradeSubscription(String symbol) =>
             Client.GetTradeSubscription(symbol);
 
@@ -32,6 +28,10 @@ public static class AlpacaCryptoStreamingClientExtensions
         [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(String symbol) =>
             Client.GetMinuteBarSubscription(symbol);
+
+        [ExcludeFromCodeCoverage]
+        public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() =>
+            Client.GetMinuteBarSubscription();
 
         [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(String symbol) =>

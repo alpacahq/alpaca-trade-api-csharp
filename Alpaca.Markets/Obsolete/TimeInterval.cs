@@ -157,22 +157,6 @@ public static class TimeInterval
     /// Set exclusive time interval for <paramref name="request"/> object.
     /// </summary>
     /// <param name="request">Target request for setting filtering interval.</param>
-    /// <param name="from">Starting date/time point for filtering.</param>
-    /// <param name="into">Ending date/time point for filtering.</param>
-    /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
-    [UsedImplicitly]
-    [Obsolete("Use WithInterval method of the requests type directly instead of this extensions method.", false)]
-    public static TRequest SetExclusiveTimeInterval<TRequest>(
-        this TRequest request,
-        DateTime from,
-        DateTime into)
-        where TRequest : IRequestWithTimeInterval<IExclusiveTimeInterval> =>
-        request.SetTimeInterval(new Interval<DateTime>(from, into).wrap());
-
-    /// <summary>
-    /// Set exclusive time interval for <paramref name="request"/> object.
-    /// </summary>
-    /// <param name="request">Target request for setting filtering interval.</param>
     /// <param name="interval">Time interval (date/time pair) for filtering.</param>
     /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
     [UsedImplicitly]
@@ -190,22 +174,6 @@ public static class TimeInterval
     /// Set inclusive time interval for <paramref name="request"/> object.
     /// </summary>
     /// <param name="request">Target request for setting filtering interval.</param>
-    /// <param name="from">Starting date/time point for filtering.</param>
-    /// <param name="into">Ending date/time point for filtering.</param>
-    /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
-    [UsedImplicitly]
-    [Obsolete("Use WithInterval method of the requests type directly instead of this extensions method.", false)]
-    public static TRequest SetInclusiveTimeInterval<TRequest>(
-        this TRequest request,
-        DateTime from,
-        DateTime into)
-        where TRequest : IRequestWithTimeInterval<IInclusiveTimeInterval> =>
-        request.SetTimeInterval(new Interval<DateTime>(from, into).wrap());
-
-    /// <summary>
-    /// Set inclusive time interval for <paramref name="request"/> object.
-    /// </summary>
-    /// <param name="request">Target request for setting filtering interval.</param>
     /// <param name="interval">Time interval (date/time pair) for filtering.</param>
     /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
     [UsedImplicitly]
@@ -218,6 +186,38 @@ public static class TimeInterval
         request.SetInterval(interval.EnsureNotNull());
         return request;
     }
+
+    /// <summary>
+    /// Set exclusive time interval for <paramref name="request"/> object.
+    /// </summary>
+    /// <param name="request">Target request for setting filtering interval.</param>
+    /// <param name="from">Starting date/time point for filtering.</param>
+    /// <param name="into">Ending date/time point for filtering.</param>
+    /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
+    [UsedImplicitly]
+    [Obsolete("Use WithInterval method of the requests type directly instead of this extensions method.", false)]
+    public static TRequest SetExclusiveTimeInterval<TRequest>(
+        this TRequest request,
+        DateTime from,
+        DateTime into)
+        where TRequest : IRequestWithTimeInterval<IExclusiveTimeInterval> =>
+        request.SetTimeInterval(new Interval<DateTime>(from, into).wrap());
+
+    /// <summary>
+    /// Set inclusive time interval for <paramref name="request"/> object.
+    /// </summary>
+    /// <param name="request">Target request for setting filtering interval.</param>
+    /// <param name="from">Starting date/time point for filtering.</param>
+    /// <param name="into">Ending date/time point for filtering.</param>
+    /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
+    [UsedImplicitly]
+    [Obsolete("Use WithInterval method of the requests type directly instead of this extensions method.", false)]
+    public static TRequest SetInclusiveTimeInterval<TRequest>(
+        this TRequest request,
+        DateTime from,
+        DateTime into)
+        where TRequest : IRequestWithTimeInterval<IInclusiveTimeInterval> =>
+        request.SetTimeInterval(new Interval<DateTime>(from, into).wrap());
 
     /// <summary>
     /// Deconstructs the <see cref="IExclusiveTimeInterval"/> instance

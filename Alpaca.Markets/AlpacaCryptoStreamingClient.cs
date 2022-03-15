@@ -4,7 +4,7 @@ internal sealed class AlpacaCryptoStreamingClient :
     DataStreamingClientBase<AlpacaCryptoStreamingClientConfiguration>,
     IAlpacaCryptoStreamingClient
 {
-    public AlpacaCryptoStreamingClient(
+    internal AlpacaCryptoStreamingClient(
         AlpacaCryptoStreamingClientConfiguration configuration)
         : base(configuration.EnsureNotNull())
     {
