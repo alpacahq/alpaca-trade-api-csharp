@@ -21,9 +21,11 @@ internal sealed class JsonNewsPage : IPage<INewsArticle>
     [JsonIgnore]
     public String Symbol => String.Empty;
 
+    [ExcludeFromCodeCoverage]
     public override String ToString() =>
         JsonConvert.SerializeObject(this);
 
+    [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private String DebuggerDisplay =>
         this.ToDebuggerDisplayString();

@@ -4,6 +4,10 @@ public sealed class RequestValidationTest
 {
     private static readonly Interval<DateTime> _interval = new ();
 
+    private const Decimal DecimalQuery = 42M;
+
+    private const Int64 IntegerQuery = 42L;
+
     private const String Symbol = "AAPL";
 
     [Fact]
@@ -75,25 +79,25 @@ public sealed class RequestValidationTest
 
     [Fact]
     public void NewOrderRequestEmptySymbolValidationWorks() =>
-        validate(new NewOrderRequest(String.Empty, OrderQuantity.Fractional(12.34M),
+        validate(new NewOrderRequest(String.Empty, OrderQuantity.Fractional(DecimalQuery),
             OrderSide.Buy, OrderType.Market, TimeInForce.Gtc));
 
     [Fact]
     public void NewOrderRequestNegativeQuantityValidationWorks() =>
-        validate(new NewOrderRequest(Symbol, -42L,
+        validate(new NewOrderRequest(Symbol, -IntegerQuery,
             OrderSide.Buy, OrderType.Market, TimeInForce.Gtc));
 
     [Fact]
     public void ChangeOrderRequestNegativeQuantityValidationWorks() =>
-        validate(new ChangeOrderRequest(Guid.NewGuid()) { Quantity = -42L });
+        validate(new ChangeOrderRequest(Guid.NewGuid()) { Quantity = -IntegerQuery });
 
     [Fact]
     public void OrderBaseEmptySymbolValidationWorks() =>
-        validate(MarketOrder.Buy(String.Empty, OrderQuantity.Fractional(42M)));
+        validate(MarketOrder.Buy(String.Empty, OrderQuantity.Fractional(DecimalQuery)));
 
     [Fact]
     public void OrderBaseNegativeQuantityValidationWorks() =>
-        validate(MarketOrder.Buy(Symbol, OrderQuantity.Fractional(-42M)));
+        validate(MarketOrder.Buy(Symbol, OrderQuantity.Fractional(-DecimalQuery)));
 
     [Fact]
     public void ListOrdersRequestEmptySymbolValidationWorks() =>

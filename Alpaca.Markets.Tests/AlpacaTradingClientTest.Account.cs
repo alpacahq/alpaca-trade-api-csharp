@@ -12,7 +12,9 @@ public sealed partial class AlpacaTradingClientTest
     [SuppressMessage("ReSharper", "StringLiteralTypo")]
     public async Task GetAccountAsyncWorks()
     {
-        const decimal cash = 10_000M;
+        const Decimal cash = 10_000M;
+        const Int32 multiplier = 4;
+        const UInt64 count = 2UL;
 
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
@@ -32,13 +34,13 @@ public sealed partial class AlpacaTradingClientTest
             new JProperty("trading_blocked", false),
             new JProperty("account_blocked", false),
             new JProperty("shorting_enabled", true),
+            new JProperty("multiplier", multiplier),
             new JProperty("initial_margin", Price),
+            new JProperty("daytrade_count", count),
             new JProperty("buying_power", Price),
             new JProperty("last_equity", Price),
             new JProperty("id", Guid.NewGuid()),
-            new JProperty("daytrade_count", 2),
             new JProperty("equity", Price),
-            new JProperty("multiplier", 4),
             new JProperty("sma", Price),
             new JProperty("cash", cash)));
 
@@ -47,7 +49,7 @@ public sealed partial class AlpacaTradingClientTest
         Assert.Equal(Multiplier.Quadruple, account.Multiplier);
         Assert.NotEqual(Guid.NewGuid(), account.AccountId);
         Assert.False(String.IsNullOrEmpty(account.Currency));
-        Assert.Equal(2UL, account.DayTradeCount);
+        Assert.Equal(count, account.DayTradeCount);
 
         Assert.True(account.LastMaintenanceMargin != 0M);
         Assert.True(account.MaintenanceMargin != 0M);
