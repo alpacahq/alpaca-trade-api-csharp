@@ -5,10 +5,13 @@ public sealed partial class AlpacaTradingClientTest
     private const String OrdersWildcardUrl = $"{OrdersUrlPrefix}/**";
 
     private const String OrdersUrlPrefix = "/v2/orders";
+    private const Decimal FractionalQuantity = 0.55M;
 
     [Fact]
     public async Task ListOrdersAsyncWorks()
     {
+        const Int64 pageSize = 100;
+
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         var date = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Unspecified);
@@ -21,7 +24,7 @@ public sealed partial class AlpacaTradingClientTest
                     OrderListSorting = SortDirection.Descending,
                     OrderStatusFilter = OrderStatusFilter.Open,
                     RollUpNestedOrders = false,
-                    LimitOrderNumber = 100
+                    LimitOrderNumber = pageSize
                 }
                 .WithInterval(new Interval<DateTime>(date, date))
                 .WithSymbol(Stock));
@@ -56,24 +59,27 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task PostRawOrderAsyncWorks()
     {
+        const Decimal trailOffsetInDollars = 0.01M;
+        const Decimal trailOffsetInPercent = 10M;
+
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddPost(OrdersUrlPrefix, createOrder());
 
         var order = await mock.Client.PostOrderAsync(
-            new NewOrderRequest(Stock, OrderQuantity.Notional(12.34M),
+            new NewOrderRequest(Stock, OrderQuantity.Notional(Quantity),
                 OrderSide.Buy, OrderType.StopLimit, TimeInForce.Gtc)
             {
                 ClientOrderId = Guid.NewGuid().ToString("D"),
+                TrailOffsetInDollars = trailOffsetInDollars,
+                TrailOffsetInPercent = trailOffsetInPercent,
                 OrderClass = OrderClass.OneTriggersOther,
-                TrailOffsetInDollars = 0.01M,
-                TrailOffsetInPercent = 10M,
-                TakeProfitLimitPrice = 1M,
-                StopLossLimitPrice = 2M,
-                StopLossStopPrice = 3M,
+                TakeProfitLimitPrice = BigPrice,
+                StopLossLimitPrice = SmallPrice,
+                StopLossStopPrice = SmallPrice,
                 ExtendedHours = true,
-                LimitPrice = 34.56M,
-                StopPrice = 78.90M
+                LimitPrice = BigPrice,
+                StopPrice = SmallPrice
             });
 
         validateOrder(order);
@@ -87,7 +93,7 @@ public sealed partial class AlpacaTradingClientTest
         mock.AddPost(OrdersUrlPrefix, createOrder());
 
         var order = await mock.Client.PostOrderAsync(
-            MarketOrder.Buy(Stock, OrderQuantity.Fractional(0.55M))
+            MarketOrder.Buy(Stock, OrderQuantity.Fractional(FractionalQuantity))
                 .WithClientOrderId(Guid.NewGuid().ToString("D"))
                 .WithDuration(TimeInForce.Gtc)
                 .WithExtendedHours(true));
@@ -103,8 +109,8 @@ public sealed partial class AlpacaTradingClientTest
         mock.AddPost(OrdersUrlPrefix, createOrder());
 
         var order = await mock.Client.PostOrderAsync(
-            MarketOrder.Sell(Stock, OrderQuantity.Fractional(0.55M))
-                .Bracket(123.45M, 678.90M));
+            MarketOrder.Sell(Stock, OrderQuantity.Fractional(FractionalQuantity))
+                .Bracket(BigPrice, SmallPrice));
 
         validateOrder(order);
     }
@@ -117,7 +123,7 @@ public sealed partial class AlpacaTradingClientTest
         mock.AddPost(OrdersUrlPrefix, createOrder());
 
         var order = await mock.Client.PostOrderAsync(OrderSide.Buy
-            .Limit(Stock, 42L, 12.34M).TakeProfit(14.15M));
+            .Limit(Stock, IntegerQuantity, Quantity).TakeProfit(BigPrice));
 
         validateOrder(order);
     }
@@ -130,7 +136,7 @@ public sealed partial class AlpacaTradingClientTest
         mock.AddPost(OrdersUrlPrefix, createOrder());
 
         var order = await mock.Client.PostOrderAsync(OrderSide.Buy
-            .Limit(Stock, 42L, 12.34M).StopLoss(10.11M));
+            .Limit(Stock, IntegerQuantity, Quantity).StopLoss(SmallPrice));
 
         validateOrder(order);
     }
@@ -141,7 +147,7 @@ public sealed partial class AlpacaTradingClientTest
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         Assert.ThrowsAsync<AggregateException>(() => mock.Client.PostOrderAsync(
-            MarketOrder.Buy(String.Empty, OrderQuantity.Fractional(-42M))));
+            MarketOrder.Buy(String.Empty, OrderQuantity.Fractional(-FractionalQuantity))));
     }
 
     [Fact]
@@ -155,9 +161,9 @@ public sealed partial class AlpacaTradingClientTest
             new ChangeOrderRequest(Guid.NewGuid())
             {
                 Duration = TimeInForce.Day,
-                Quantity = 12345L,
-                LimitPrice = 12M,
-                StopPrice = 34M
+                Quantity = IntegerQuantity,
+                LimitPrice = BigPrice,
+                StopPrice = SmallPrice
             });
 
         validateOrder(order);
@@ -200,9 +206,9 @@ public sealed partial class AlpacaTradingClientTest
             new JProperty("asset_id", Guid.NewGuid()),
             new JProperty("type", OrderType.Market),
             new JProperty("side", OrderSide.Sell),
+            new JProperty("filled_qty", Quantity),
             new JProperty("id", Guid.NewGuid()),
-            new JProperty("filled_qty", 56.43M),
-            new JProperty("qty", 1234.56M),
+            new JProperty("qty", Quantity),
             new JProperty("symbol", Stock),
             new JProperty("legs"));
 
@@ -215,8 +221,8 @@ public sealed partial class AlpacaTradingClientTest
         Assert.NotEqual(Guid.Empty, order.OrderId);
         Assert.Equal(Stock, order.Symbol);
 
-        Assert.Equal(56L, order.IntegerFilledQuantity);
-        Assert.Equal(1235L, order.IntegerQuantity);
+        Assert.Equal(IntegerQuantity, order.IntegerFilledQuantity);
+        Assert.Equal(IntegerQuantity, order.IntegerQuantity);
         Assert.True(order.GetOrderQuantity().IsInShares);
 
         Assert.Null(order.TrailOffsetInPercent);

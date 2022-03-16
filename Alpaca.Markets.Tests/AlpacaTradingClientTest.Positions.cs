@@ -4,6 +4,18 @@ namespace Alpaca.Markets.Tests;
 
 public sealed partial class AlpacaTradingClientTest
 {
+    private const Decimal ProfitLossPercent = 0.42M;
+
+    private const Int64 IntegerQuantity = 123L;
+
+    private const Decimal SmallPrice = 123.45M;
+
+    private const Decimal BigPrice = 234.56M;
+
+    private const Decimal Quantity = 123.45M;
+
+    private const Decimal ProfitLoss = 42M;
+
     [Fact]
     public async Task ListPositionsAsyncWorks()
     {
@@ -84,29 +96,29 @@ public sealed partial class AlpacaTradingClientTest
     [SuppressMessage("ReSharper", "StringLiteralTypo")]
     private static JObject createPosition() =>
         new(
-            new JProperty("unrealized_pl", 42M),
-            new JProperty("unrealized_plpc", 0.42M),
-            new JProperty("unrealized_intraday_pl", 42M),
-            new JProperty("unrealized_intraday_plpc", 0.42M),
+            new JProperty("unrealized_intraday_plpc", ProfitLossPercent),
+            new JProperty("unrealized_plpc", ProfitLossPercent),
+            new JProperty("unrealized_intraday_pl", ProfitLoss),
             new JProperty("asset_class", AssetClass.UsEquity),
+            new JProperty("avg_entry_price", SmallPrice),
+            new JProperty("unrealized_pl", ProfitLoss),
             new JProperty("asset_id", Guid.NewGuid()),
-            new JProperty("avg_entry_price", 123.45M),
+            new JProperty("market_value", SmallPrice),
             new JProperty("side", PositionSide.Long),
+            new JProperty("current_price", BigPrice),
+            new JProperty("lastday_price", BigPrice),
+            new JProperty("change_today", BigPrice),
+            new JProperty("cost_basis", SmallPrice),
             new JProperty("exchange", Exchange.Iex),
-            new JProperty("current_price", 234.56M),
-            new JProperty("lastday_price", 234.56M),
-            new JProperty("change_today", 234.56M),
-            new JProperty("market_value", 123.45M),
-            new JProperty("cost_basis", 123.45M),
-            new JProperty("symbol", Stock),
-            new JProperty("qty", 123.45M));
+            new JProperty("qty", Quantity),
+            new JProperty("symbol", Stock));
 
     private static void validatePosition(
         IPosition position)
     {
         Assert.Equal(Stock, position.Symbol);
 
-        Assert.Equal(123, position.IntegerQuantity);
+        Assert.Equal(IntegerQuantity, position.IntegerQuantity);
         Assert.Equal(PositionSide.Long, position.Side);
 
         Assert.NotEqual(Guid.Empty, position.AssetId);

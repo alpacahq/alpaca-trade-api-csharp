@@ -11,6 +11,8 @@ public sealed class ThrottleParametersTest
 
     private const String Message = "Fahrenheit";
 
+    private const Int32 ErrorCode = 451;
+
     public ThrottleParametersTest(
         MockClientsFactoryFixture mockClientsFactory) =>
         _mockClientsFactory = mockClientsFactory;
@@ -22,7 +24,7 @@ public sealed class ThrottleParametersTest
 
         var errorMessage = new JObject(
             new JProperty("message", Message),
-            new JProperty("code", 451)).ToString();
+            new JProperty("code", ErrorCode)).ToString();
 
         mock.AddGet(ClockUrl, errorMessage, HttpStatusCode.TooManyRequests);
         mock.AddGet(ClockUrl, errorMessage, HttpStatusCode.TooManyRequests);
@@ -35,7 +37,7 @@ public sealed class ThrottleParametersTest
             () => mock.Client.GetClockAsync());
 
         Assert.Equal(Message,exception.Message);
-        Assert.Equal(451, exception.ErrorCode);
+        Assert.Equal(ErrorCode, exception.ErrorCode);
     }
 
     [Fact]
@@ -61,7 +63,7 @@ public sealed class ThrottleParametersTest
 
         var errorMessage = new JObject(
             new JProperty("msg", Message),
-            new JProperty("id", 451)).ToString();
+            new JProperty("id", ErrorCode)).ToString();
 
         mock.AddDelete(OrdersUrl, errorMessage, HttpStatusCode.InternalServerError);
 

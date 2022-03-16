@@ -70,6 +70,10 @@ public sealed class ThrottleParameters
             : _defaultHttpClientTimeout;
     }
 
+    private const Int32 DelayMinValueInMilliseconds = 200;
+
+    private const Int32 DelayStepInMilliseconds = 400;
+
     private const UInt32 DefaultMaxRetryAttempts = 5;
 
     private static readonly HttpStatusCode[] _defaultHttpStatuses =
@@ -214,6 +218,7 @@ public sealed class ThrottleParameters
     private TimeSpan getRandomDelay(
         Int32 retryCount) =>
 #pragma warning disable CA5394 // Do not use insecure randomness
-            TimeSpan.FromMilliseconds(_random.Next(200, 400 * retryCount));
+            TimeSpan.FromMilliseconds(_random.Next(
+                DelayMinValueInMilliseconds, DelayStepInMilliseconds * retryCount));
 #pragma warning restore CA5394 // Do not use insecure randomness
 }

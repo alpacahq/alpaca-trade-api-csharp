@@ -7,6 +7,10 @@ public sealed class AlpacaNewsStreamingClientTest
 {
     private static readonly List<String> _symbols = new () { Stock, Other };
 
+    private const Int32 ExpectedNumberOfEventsForAllSymbols = 4;
+
+    private const Int32 ExpectedNumberOfEventsForOneSymbol = 2;
+
     private const String Stock = "AAPL";
 
     private const String Other = "MSFT";
@@ -57,7 +61,7 @@ public sealed class AlpacaNewsStreamingClientTest
         var subscriptionTwo = client.Object.GetNewsSubscription(Stock, Other);
 
         _symbols.VerifySubscriptionsStreams(subscriptionOne, subscriptionTwo);
-        subscriptionOne.VerifySubscriptionEventsNumber(4);
+        subscriptionOne.VerifySubscriptionEventsNumber(ExpectedNumberOfEventsForAllSymbols);
 
         client.VerifyAll();
     }
@@ -74,7 +78,7 @@ public sealed class AlpacaNewsStreamingClientTest
         using var subscriptionTwo = await client.Object.SubscribeNewsAsync(Stock, Other);
 
         _symbols.VerifySubscriptionsStreams(subscriptionOne, subscriptionTwo);
-        subscription.VerifySubscriptionEventsNumber(2);
+        subscription.VerifySubscriptionEventsNumber(ExpectedNumberOfEventsForOneSymbol);
 
         await subscriptionOne.DisposeAsync();
         client.VerifyAll();
