@@ -10,7 +10,7 @@ public sealed partial class AlpacaDataClientTest
         mock.AddMultiQuotesPageExpectation(PathPrefix, _symbols);
 
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
-            new HistoricalQuotesRequest(_symbols, _yesterday, _today));
+            new HistoricalQuotesRequest(_symbols, Yesterday, Today));
 
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes.Items);
@@ -43,7 +43,7 @@ public sealed partial class AlpacaDataClientTest
         mock.AddSingleQuotesPageExpectation(PathPrefix, Stock);
 
         var quotes = await mock.Client.ListHistoricalQuotesAsync(
-            new HistoricalQuotesRequest(Stock, _yesterday, _today));
+            new HistoricalQuotesRequest(Stock, Yesterday, Today));
 
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes.Items);

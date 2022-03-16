@@ -12,7 +12,7 @@ public sealed partial class AlpacaDataStreamingClientTest
         var subscriptionTwo = client.Object.GetDailyBarSubscription(Stock, Other);
 
         verifySubscriptions(subscriptionOne, subscriptionTwo);
-        verifySubscriptionEvents(subscriptionOne, 4);
+        verifySubscriptionEvents(subscriptionOne, ExpectedNumberOfEventsForAllSymbols);
 
         client.VerifyAll();
     }
@@ -29,7 +29,7 @@ public sealed partial class AlpacaDataStreamingClientTest
         using var subscriptionTwo = await client.Object.SubscribeDailyBarAsync(Stock, Other);
 
         verifySubscriptions(subscriptionOne, subscriptionTwo);
-        verifySubscriptionEvents(subscription, 2);
+        verifySubscriptionEvents(subscription, ExpectedNumberOfEventsForOneSymbol);
 
         await subscriptionOne.DisposeAsync();
         client.VerifyAll();
@@ -45,7 +45,7 @@ public sealed partial class AlpacaDataStreamingClientTest
         var subscriptionTwo = client.Object.GetMinuteBarSubscription(Stock, Other);
 
         verifySubscriptions(subscriptionOne, subscriptionTwo);
-        verifySubscriptionEvents(subscriptionOne, 4);
+        verifySubscriptionEvents(subscriptionOne, ExpectedNumberOfEventsForAllSymbols);
 
         client.VerifyAll();
     }
@@ -62,7 +62,7 @@ public sealed partial class AlpacaDataStreamingClientTest
         using var subscriptionTwo = await client.Object.SubscribeMinuteBarAsync(Stock, Other);
 
         verifySubscriptions(subscriptionOne, subscriptionTwo);
-        verifySubscriptionEvents(subscription, 2);
+        verifySubscriptionEvents(subscription, ExpectedNumberOfEventsForOneSymbol);
 
         await subscriptionOne.DisposeAsync();
         client.VerifyAll();
@@ -78,7 +78,7 @@ public sealed partial class AlpacaDataStreamingClientTest
         var subscriptionTwo = client.Object.GetUpdatedBarSubscription(Stock, Other);
 
         verifySubscriptions(subscriptionOne, subscriptionTwo);
-        verifySubscriptionEvents(subscriptionOne, 4);
+        verifySubscriptionEvents(subscriptionOne, ExpectedNumberOfEventsForAllSymbols);
 
         client.VerifyAll();
     }
@@ -95,7 +95,7 @@ public sealed partial class AlpacaDataStreamingClientTest
         using var subscriptionTwo = await client.Object.SubscribeUpdatedBarAsync(Stock, Other);
 
         verifySubscriptions(subscriptionOne, subscriptionTwo);
-        verifySubscriptionEvents(subscription, 2);
+        verifySubscriptionEvents(subscription, ExpectedNumberOfEventsForOneSymbol);
 
         await subscriptionOne.DisposeAsync();
         client.VerifyAll();

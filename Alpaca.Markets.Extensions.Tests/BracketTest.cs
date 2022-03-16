@@ -2,31 +2,39 @@
 
 public sealed class BracketTest
 {
+    private const Decimal TakeProfitLimitPrice = 200M;
+
+    private const Decimal StopLossLimitPrice = 150M;
+
+    private const Decimal StopLossStopPrice = 100M;
+
     private const String Symbol = "AAPL";
+
+    private const Int32 Quantity = 10;
 
     [Fact]
     public void BracketOrderBuyStopLossStopWorks() =>
         assertOrdersAreEqual(
-            Bracket.Buy(Symbol, 10, 200M, 100M),
-            OrderSide.Buy.Bracket(Symbol, 10, 200M, 100M));
+            Bracket.Buy(Symbol, Quantity, TakeProfitLimitPrice, StopLossStopPrice),
+            OrderSide.Buy.Bracket(Symbol, Quantity, TakeProfitLimitPrice, StopLossStopPrice));
 
     [Fact]
     public void BracketOrderBuyStopLossStopLimitWorks() =>
         assertOrdersAreEqual(
-            Bracket.Buy(Symbol, 10, 200M, 100M, 150M),
-            OrderSide.Buy.Bracket(Symbol, 10, 200M, 100M, 150M));
+            Bracket.Buy(Symbol, Quantity, TakeProfitLimitPrice, StopLossStopPrice, StopLossLimitPrice),
+            OrderSide.Buy.Bracket(Symbol, Quantity, TakeProfitLimitPrice, StopLossStopPrice, StopLossLimitPrice));
 
     [Fact]
     public void BracketOrderSellStopLossStopWorks() =>
         assertOrdersAreEqual(
-            Bracket.Sell(Symbol, 10, 200M, 100M),
-            OrderSide.Sell.Bracket(Symbol, 10, 200M, 100M));
+            Bracket.Sell(Symbol, Quantity, TakeProfitLimitPrice, StopLossStopPrice),
+            OrderSide.Sell.Bracket(Symbol, Quantity, TakeProfitLimitPrice, StopLossStopPrice));
 
     [Fact]
     public void BracketOrderSellStopLossStopLimitWorks() =>
         assertOrdersAreEqual(
-            Bracket.Sell(Symbol, 10, 200M, 100M, 150M),
-            OrderSide.Sell.Bracket(Symbol, 10, 200M, 100M, 150M));
+            Bracket.Sell(Symbol, Quantity, TakeProfitLimitPrice, StopLossStopPrice, StopLossLimitPrice),
+            OrderSide.Sell.Bracket(Symbol, Quantity, TakeProfitLimitPrice, StopLossStopPrice, StopLossLimitPrice));
 
     private static void assertOrdersAreEqual(
         BracketOrder lhs,

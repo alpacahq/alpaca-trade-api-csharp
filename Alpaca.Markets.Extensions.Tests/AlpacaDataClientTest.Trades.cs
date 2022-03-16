@@ -80,6 +80,6 @@ public sealed partial class AlpacaDataClientTest
 
     private static JObject createTrade() => new (
         new JProperty("t", DateTime.UtcNow),
-        new JProperty("p", 100M),
-        new JProperty("s", 10M));
+        new JProperty("p", Price),
+        new JProperty("s", Size));
 }

@@ -10,7 +10,7 @@ public sealed partial class AlpacaDataClientTest
         mock.AddMultiBarsPageExpectation(PathPrefix, _symbols);
 
         var bars = await mock.Client.GetHistoricalBarsAsync(
-            new HistoricalBarsRequest(_symbols, _yesterday, _today, BarTimeFrame.Hour)
+            new HistoricalBarsRequest(_symbols, Yesterday, Today, BarTimeFrame.Hour)
             {
                 Adjustment = Adjustment.SplitsAndDividends
             });
@@ -49,7 +49,7 @@ public sealed partial class AlpacaDataClientTest
         mock.AddSingleBarsPageExpectation(PathPrefix, Stock);
 
         var bars = await mock.Client.ListHistoricalBarsAsync(
-            new HistoricalBarsRequest(Stock, _yesterday, _today, BarTimeFrame.Hour)
+            new HistoricalBarsRequest(Stock, Yesterday, Today, BarTimeFrame.Hour)
             {
                 Adjustment = Adjustment.SplitsOnly
             });

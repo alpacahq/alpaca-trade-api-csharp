@@ -12,7 +12,7 @@ public sealed partial class AlpacaDataStreamingClientTest
         var subscriptionTwo = client.Object.GetLimitUpLimitDownSubscription(Stock, Other);
 
         verifySubscriptions(subscriptionOne, subscriptionTwo);
-        verifySubscriptionEvents(subscriptionOne, 4);
+        verifySubscriptionEvents(subscriptionOne, ExpectedNumberOfEventsForAllSymbols);
 
         client.VerifyAll();
     }
@@ -29,7 +29,7 @@ public sealed partial class AlpacaDataStreamingClientTest
         using var subscriptionTwo = await client.Object.SubscribeLimitUpLimitDownAsync(Stock, Other);
 
         verifySubscriptions(subscriptionOne, subscriptionTwo);
-        verifySubscriptionEvents(subscription, 2);
+        verifySubscriptionEvents(subscription, ExpectedNumberOfEventsForOneSymbol);
 
         await subscriptionOne.DisposeAsync();
         client.VerifyAll();

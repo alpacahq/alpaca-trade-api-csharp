@@ -51,17 +51,13 @@ public static partial class AlpacaTradingClientExtensions
         {
             var activities = await client
                 .ListAccountActivitiesAsync(request, cancellationToken).ConfigureAwait(false);
-            if (activities.Count == 0)
-            {
-                break;
-            }
 
             foreach (var item in activities)
             {
                 yield return item;
             }
 
-            request.PageToken = activities[^1].ActivityId;
+            request.PageToken = activities.Count != 0 ? activities[^1].ActivityId : String.Empty;
         } while (!String.IsNullOrEmpty(request.PageToken));
     }
 }

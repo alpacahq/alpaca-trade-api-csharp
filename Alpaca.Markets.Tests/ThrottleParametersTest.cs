@@ -51,7 +51,7 @@ public sealed class ThrottleParametersTest
             () => mock.Client.DeleteOrderAsync(Guid.NewGuid()));
 
         Assert.NotEqual("HTTP 500: Unknown server error.",exception.Message);
-        Assert.Equal(500, exception.ErrorCode);
+        Assert.Equal((Int32)HttpStatusCode.InternalServerError, exception.ErrorCode);
     }
 
     [Fact]
@@ -69,6 +69,6 @@ public sealed class ThrottleParametersTest
             () => mock.Client.DeleteOrderAsync(Guid.NewGuid()));
 
         Assert.NotEqual(Message,exception.Message);
-        Assert.Equal(500, exception.ErrorCode);
+        Assert.Equal((Int32)HttpStatusCode.InternalServerError, exception.ErrorCode);
     }
 }

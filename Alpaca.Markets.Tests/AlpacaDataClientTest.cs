@@ -3,28 +3,21 @@
 [Collection("MockEnvironment")]
 public sealed partial class AlpacaDataClientTest
 {
+    private static readonly Interval<DateTime> _timeInterval = getTimeInterval();
+
     private readonly MockClientsFactoryFixture _mockClientsFactory;
+
+    private static DateTime Yesterday => _timeInterval.From!.Value;
 
     private static readonly String[] _symbols = { Stock, Other };
 
-    private static readonly Interval<DateTime> _timeInterval;
+    private static DateTime Today => _timeInterval.Into!.Value;
 
     private const String PathPrefix = "/v2/stocks";
-
-    private static readonly DateTime _yesterday;
-
-    private static readonly DateTime _today;
 
     private const String Stock = "AAPL";
 
     private const String Other = "MSFT";
-
-    static AlpacaDataClientTest()
-    {
-        _today = DateTime.Today;
-        _yesterday = _today.AddDays(-1);
-        _timeInterval = new Interval<DateTime>(_yesterday, _today);
-    }
 
     public AlpacaDataClientTest(
         MockClientsFactoryFixture mockClientsFactory) =>
@@ -70,10 +63,10 @@ public sealed partial class AlpacaDataClientTest
                     new JProperty("source", Guid.NewGuid().ToString("D")),
                     new JProperty("author", Guid.NewGuid().ToString("D")),
                     new JProperty("url", new Uri("https://www.google.com")),
+                    new JProperty("id", Random.Shared.NextInt64()),
                     new JProperty("created_at", DateTime.UtcNow),
                     new JProperty("updated_at", DateTime.UtcNow),
-                    new JProperty("symbols", new JArray(Stock)),
-                    new JProperty("id", 1234567890L)
+                    new JProperty("symbols", new JArray(Stock))
                     )))));
 
         var articles = await mock.Client.ListNewsArticlesAsync(
@@ -88,7 +81,7 @@ public sealed partial class AlpacaDataClientTest
         Assert.Null(articles.NextPageToken);
 
         var article = articles.Items.Single();
-        Assert.Equal(1234567890L, article.Id);
+        Assert.NotEqual(0L, article.Id);
 
         Assert.Equal(Stock, article.Symbols.Single());
 
@@ -102,5 +95,12 @@ public sealed partial class AlpacaDataClientTest
         Assert.NotNull(article.LargeImageUrl);
         Assert.Null(article.SmallImageUrl);
         Assert.Null(article.ThumbImageUrl);
+    }
+
+    private static Interval<DateTime> getTimeInterval()
+    {
+        var today = DateTime.Today;
+        var yesterday = today.AddDays(-1);
+        return new Interval<DateTime>(yesterday, today);
     }
 }

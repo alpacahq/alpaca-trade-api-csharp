@@ -63,7 +63,7 @@ public sealed class AlpacaNewsStreamingClientTest
     }
 
     [Fact]
-    public async Task SubscribeLimitUpLimitDownAsyncWorks()
+    public async Task SubscribeNewsAsyncWorks()
     {
         var client = createMockClient(
             _ => _.GetNewsSubscription(It.IsAny<String>()));

@@ -9,9 +9,15 @@ public sealed partial class AlpacaDataClientTest
 
     private static readonly String[] _symbols = { Stock, Other };
 
+    private const Decimal Volume = 1_000M;
+
     private const String Stock = "AAPL";
 
     private const String Other = "MSFT";
+
+    private const Decimal Price = 100M;
+
+    private const Decimal Size = 10M;
 
     private const Int32 Pages = 5;
 

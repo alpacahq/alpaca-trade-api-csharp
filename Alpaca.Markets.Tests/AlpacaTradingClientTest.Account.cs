@@ -4,37 +4,43 @@ namespace Alpaca.Markets.Tests;
 
 public sealed partial class AlpacaTradingClientTest
 {
+    private const Int64 IntegerPrice = 1235L;
+
+    private const Decimal Price = 1234.56M;
+
     [Fact]
     [SuppressMessage("ReSharper", "StringLiteralTypo")]
     public async Task GetAccountAsyncWorks()
     {
+        const decimal cash = 10_000M;
+
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet("/v2/account", new JObject(
             new JProperty("account_number", Guid.NewGuid().ToString("D")),
-            new JProperty("daytrading_buying_power", 1234.56M),
-            new JProperty("last_maintenance_margin", 1234.56M),
+            new JProperty("daytrading_buying_power", Price),
+            new JProperty("last_maintenance_margin", Price),
             new JProperty("trade_suspended_by_user", true),
-            new JProperty("short_market_value", 1234.56M),
             new JProperty("status", AccountStatus.Active),
-            new JProperty("maintenance_margin", 1234.56M),
             new JProperty("created_at", DateTime.UtcNow),
-            new JProperty("regt_buying_power", 1234.56M),
-            new JProperty("long_market_value", 1234.56M),
+            new JProperty("short_market_value", Price),
+            new JProperty("maintenance_margin", Price),
             new JProperty("pattern_day_trader", false),
+            new JProperty("regt_buying_power", Price),
+            new JProperty("long_market_value", Price),
             new JProperty("transfers_blocked", false),
-            new JProperty("initial_margin", 1234.56M),
             new JProperty("trading_blocked", false),
             new JProperty("account_blocked", false),
-            new JProperty("buying_power", 1234.56M),
-            new JProperty("last_equity", 1234.56M),
             new JProperty("shorting_enabled", true),
+            new JProperty("initial_margin", Price),
+            new JProperty("buying_power", Price),
+            new JProperty("last_equity", Price),
             new JProperty("id", Guid.NewGuid()),
             new JProperty("daytrade_count", 2),
-            new JProperty("equity", 1234.56M),
-            new JProperty("sma", 1234.56M),
+            new JProperty("equity", Price),
             new JProperty("multiplier", 4),
-            new JProperty("cash", 10000M)));
+            new JProperty("sma", Price),
+            new JProperty("cash", cash)));
 
         var account = await mock.Client.GetAccountAsync();
 
@@ -71,6 +77,14 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task ListAccountActivitiesAsyncWorks()
     {
+        const Int64 integerCumulativeQuantity = 1_234_568L;
+        const Decimal cumulativeQuantity = 1_234_567.89M;
+
+        const Int64 integerQuantity = 12L;
+        const Decimal quantity = 12.34M;
+
+        const Decimal amount = 42M;
+
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         var activityGuid = Guid.NewGuid();
@@ -81,16 +95,16 @@ public sealed partial class AlpacaTradingClientTest
                 new JProperty("id", $"{timestamp:yyyyMMddHHmmssfff}:{activityGuid:D}"),
                 new JProperty("activity_type", AccountActivityType.Fill),
                 new JProperty("transaction_time", DateTime.UtcNow),
-                new JProperty("per_share_amount", 42M),
+                new JProperty("cum_qty", cumulativeQuantity),
+                new JProperty("per_share_amount", amount),
                 new JProperty("type", TradeEvent.Fill),
                 new JProperty("side", OrderSide.Sell),
-                new JProperty("leaves_qty", 1234.56M),
-                new JProperty("cum_qty", 1234567.89M),
-                new JProperty("price", 12345.67M),
-                new JProperty("net_amount", 42M),
+                new JProperty("net_amount", amount),
+                new JProperty("leaves_qty", Price),
                 new JProperty("date", timestamp),
                 new JProperty("Symbol", Stock),
-                new JProperty("qty", 12.34M))));
+                new JProperty("qty", quantity),
+                new JProperty("price", Price))));
 
         var activities = await mock.Client.ListAccountActivitiesAsync(
             new AccountActivitiesRequest(AccountActivityType.Fill)
@@ -107,9 +121,9 @@ public sealed partial class AlpacaTradingClientTest
         Assert.Equal(timestamp.Date, activity.ActivityDateTimeUtc.Date);
         Assert.Equal(DateOnly.FromDateTime(timestamp.Date), activity.ActivityDate!.Value);
 
-        Assert.Equal(1234568L, activity.IntegerCumulativeQuantity);
-        Assert.Equal(1235L, activity.IntegerLeavesQuantity);
-        Assert.Equal(12L, activity.IntegerQuantity);
+        Assert.Equal(integerCumulativeQuantity, activity.IntegerCumulativeQuantity);
+        Assert.Equal(IntegerPrice, activity.IntegerLeavesQuantity);
+        Assert.Equal(integerQuantity, activity.IntegerQuantity);
         Assert.Equal(Stock, activity.Symbol);
 
         Assert.NotNull(activity.PerShareAmount);
@@ -120,6 +134,10 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task GetPortfolioHistoryAsyncWorks()
     {
+        const Decimal profitLossPercent = 0.01M;
+        const Decimal profitLoss = 10M;
+        const Decimal equity = 20M;
+
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         var today = DateTime.UtcNow.Date;
@@ -128,12 +146,12 @@ public sealed partial class AlpacaTradingClientTest
         mock.AddGet("/v2/account/portfolio/history", new JObject(
             new JProperty("timestamp", new JArray(
                 new DateTimeOffset(today).ToUnixTimeSeconds())),
-            new JProperty("profit_loss_pct", new JArray(0.01M)),
-            new JProperty("profit_loss", new JArray(10M)),
+            new JProperty("profit_loss_pct", new JArray(profitLossPercent)),
+            new JProperty("profit_loss", new JArray(profitLoss)),
+            new JProperty("equity", new JArray(equity)),
             // ReSharper disable once StringLiteralTypo
             new JProperty("timeframe", TimeFrame.Day),
-            new JProperty("equity", new JArray(20M)),
-            new JProperty("base_value", 1234.56M)));
+            new JProperty("base_value", Price)));
 
         var history = await mock.Client.GetPortfolioHistoryAsync(
             new PortfolioHistoryRequest
@@ -143,16 +161,16 @@ public sealed partial class AlpacaTradingClientTest
                 ExtendedHours = true
             }.WithInterval(new Interval<DateOnly>(todayDateOnly, todayDateOnly)));
 
-        Assert.Equal(1234.56M, history.BaseValue);
+        Assert.Equal(Price, history.BaseValue);
 
         Assert.NotNull(history.Items);
         Assert.NotEmpty(history.Items);
         var item = history.Items.Single();
 
-        Assert.Equal(0.01M, item.ProfitLossPercentage);
+        Assert.Equal(profitLossPercent, item.ProfitLossPercentage);
+        Assert.Equal(profitLoss, item.ProfitLoss);
         Assert.Equal(today, item.TimestampUtc);
-        Assert.Equal(10M, item.ProfitLoss);
-        Assert.Equal(20M, item.Equity);
+        Assert.Equal(equity, item.Equity);
 
         Assert.NotNull(JsonConvert.SerializeObject(history));
     }

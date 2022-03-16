@@ -10,7 +10,7 @@ public sealed partial class AlpacaDataClientTest
         mock.AddMultiTradesPageExpectation(PathPrefix, _symbols);
 
         var trades = await mock.Client.GetHistoricalTradesAsync(
-            new HistoricalTradesRequest(_symbols, _yesterday, _today));
+            new HistoricalTradesRequest(_symbols, Yesterday, Today));
 
         Assert.NotNull(trades);
         Assert.NotEmpty(trades.Items);
@@ -43,7 +43,7 @@ public sealed partial class AlpacaDataClientTest
         mock.AddSingleTradesPageExpectation(PathPrefix, Stock);
 
         var trades = await mock.Client.ListHistoricalTradesAsync(
-            new HistoricalTradesRequest(Stock, _yesterday, _today));
+            new HistoricalTradesRequest(Stock, Yesterday, Today));
 
         Assert.NotNull(trades);
         Assert.NotEmpty(trades.Items);

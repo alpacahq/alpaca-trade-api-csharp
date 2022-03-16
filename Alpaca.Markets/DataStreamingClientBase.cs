@@ -418,23 +418,29 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
     private async void handleErrorMessages(
         JToken token)
     {
+        const Int32 connectionLimitExceeded = 406;
+        const Int32 authenticationTimeout = 404;
+        const Int32 alreadyAuthenticated = 403;
+        const Int32 authenticationFailed = 402;
+        const Int32 notAuthenticated = 401;
+
         try
         {
             var error = token.ToObject<JsonStreamError>() ?? new JsonStreamError();
             switch (error.Code)
             {
-                case 401: // Not authenticated
+                case notAuthenticated:
                     await SendAsJsonStringAsync(Configuration.SecurityId.GetAuthentication())
                         .ConfigureAwait(false);
                     break;
 
-                case 402: // Authentication failed
-                case 404: // Authentication timeout
-                case 406: // Connection limit exceeded
+                case connectionLimitExceeded:
+                case authenticationTimeout:
+                case authenticationFailed:
                     OnConnected(AuthStatus.Unauthorized);
                     break;
 
-                case 403: // Already authenticated
+                case alreadyAuthenticated:
                     OnConnected(AuthStatus.Authorized);
                     break;
 

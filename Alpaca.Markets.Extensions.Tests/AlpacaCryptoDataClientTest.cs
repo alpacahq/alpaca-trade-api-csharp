@@ -9,6 +9,10 @@ public sealed class AlpacaCryptoDataClientTest
 
     private const String Crypto = "BTCUSD";
 
+    private const Decimal Volume = 1_000M;
+
+    private const Decimal Price = 100M;
+
     private const Int32 Pages = 5;
 
     public AlpacaCryptoDataClientTest(
@@ -25,7 +29,7 @@ public sealed class AlpacaCryptoDataClientTest
         var (adtv, count) = await mock.Client.GetAverageDailyTradeVolumeAsync(
             Crypto, _timeInterval.AsDateInterval());
 
-        Assert.Equal(1000M, adtv);
+        Assert.Equal(Volume, adtv);
         Assert.True(count != 0);
     }
 
@@ -55,11 +59,11 @@ public sealed class AlpacaCryptoDataClientTest
 
     private static JObject createBar() => new (
         new JProperty("t", DateTime.UtcNow),
-        new JProperty("o", 200M),
-        new JProperty("l", 100M),
-        new JProperty("h", 400M),
-        new JProperty("c", 300M),
-        new JProperty("v", 1000M));
+        new JProperty("v", Volume),
+        new JProperty("o", Price),
+        new JProperty("l", Price),
+        new JProperty("h", Price),
+        new JProperty("c", Price));
 
     private static Interval<DateTime> getTimeInterval()
     {

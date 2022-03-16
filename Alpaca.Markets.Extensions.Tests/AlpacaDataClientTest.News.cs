@@ -46,7 +46,7 @@ public sealed partial class AlpacaDataClientTest
         new JProperty("author", Guid.NewGuid().ToString("D")),
         new JProperty("source", Guid.NewGuid().ToString("D")),
         new JProperty("symbols", new JArray(Stock, Other)),
+        new JProperty("id", Random.Shared.NextInt64()),
         new JProperty("created_at", DateTime.UtcNow),
-        new JProperty("updated_at", DateTime.UtcNow),
-        new JProperty("id", 123456L));
+        new JProperty("updated_at", DateTime.UtcNow));
 }

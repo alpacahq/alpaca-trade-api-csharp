@@ -6,22 +6,21 @@ public  sealed class OrderTypeTest
 {
     private const String Stock = "AAPL";
 
-    private static readonly MethodInfo? _getJsonRequest;
+    private const Int64 Quantity = 10L;
 
-    static OrderTypeTest() =>
-        _getJsonRequest = typeof(OrderBase).GetMethod(
-            "GetJsonRequest", BindingFlags.Instance | BindingFlags.NonPublic);
+    private static readonly MethodInfo? _getJsonRequest = typeof(OrderBase).GetMethod(
+        "GetJsonRequest", BindingFlags.Instance | BindingFlags.NonPublic);
 
     [Fact]
     public void MarketOrderCreationWorks()
     {
         assertOrdersAreEqual(
-            MarketOrder.Buy(Stock, 10L),
-            OrderSide.Buy.Market(Stock, 10L));
+            MarketOrder.Buy(Stock, Quantity),
+            OrderSide.Buy.Market(Stock, Quantity));
 
         assertOrdersAreEqual(
-            MarketOrder.Sell(Stock, 10L),
-            OrderSide.Sell.Market(Stock, 10L));
+            MarketOrder.Sell(Stock, Quantity),
+            OrderSide.Sell.Market(Stock, Quantity));
     }
 
     [Fact]
@@ -31,12 +30,12 @@ public  sealed class OrderTypeTest
         var offsetInPercent = TrailOffset.InPercent(10M);
 
         assertOrdersAreEqual(
-            TrailingStopOrder.Buy(Stock, 10L, offsetInDollars),
-            OrderSide.Buy.TrailingStop(Stock, 10L, offsetInDollars));
+            TrailingStopOrder.Buy(Stock, Quantity, offsetInDollars),
+            OrderSide.Buy.TrailingStop(Stock, Quantity, offsetInDollars));
 
         assertOrdersAreEqual(
-            TrailingStopOrder.Sell(Stock, 10L, offsetInPercent),
-            OrderSide.Sell.TrailingStop(Stock, 10L, offsetInPercent));
+            TrailingStopOrder.Sell(Stock, Quantity, offsetInPercent),
+            OrderSide.Sell.TrailingStop(Stock, Quantity, offsetInPercent));
     }
 
     [Fact]
@@ -45,12 +44,12 @@ public  sealed class OrderTypeTest
         const Decimal limitPrice = 100M;
 
         assertOrdersAreEqual(
-            LimitOrder.Buy(Stock, 10L, limitPrice),
-            OrderSide.Buy.Limit(Stock, 10L, limitPrice));
+            LimitOrder.Buy(Stock, Quantity, limitPrice),
+            OrderSide.Buy.Limit(Stock, Quantity, limitPrice));
 
         assertOrdersAreEqual(
-            LimitOrder.Sell(Stock, 10L, limitPrice),
-            OrderSide.Sell.Limit(Stock, 10L, limitPrice));
+            LimitOrder.Sell(Stock, Quantity, limitPrice),
+            OrderSide.Sell.Limit(Stock, Quantity, limitPrice));
     }
 
     [Fact]
@@ -59,12 +58,12 @@ public  sealed class OrderTypeTest
         const Decimal stopPrice = 100M;
 
         assertOrdersAreEqual(
-            StopOrder.Buy(Stock, 10L, stopPrice),
-            OrderSide.Buy.Stop(Stock, 10L, stopPrice));
+            StopOrder.Buy(Stock, Quantity, stopPrice),
+            OrderSide.Buy.Stop(Stock, Quantity, stopPrice));
 
         assertOrdersAreEqual(
-            StopOrder.Sell(Stock, 10L, stopPrice),
-            OrderSide.Sell.Stop(Stock, 10L, stopPrice));
+            StopOrder.Sell(Stock, Quantity, stopPrice),
+            OrderSide.Sell.Stop(Stock, Quantity, stopPrice));
     }
 
     [Fact]
@@ -74,12 +73,12 @@ public  sealed class OrderTypeTest
         const Decimal limitPrice = 200M;
 
         assertOrdersAreEqual(
-            StopLimitOrder.Buy(Stock, 10L, stopPrice, limitPrice),
-            OrderSide.Buy.StopLimit(Stock, 10L, stopPrice, limitPrice));
+            StopLimitOrder.Buy(Stock, Quantity, stopPrice, limitPrice),
+            OrderSide.Buy.StopLimit(Stock, Quantity, stopPrice, limitPrice));
 
         assertOrdersAreEqual(
-            StopLimitOrder.Sell(Stock, 10L, stopPrice, limitPrice),
-            OrderSide.Sell.StopLimit(Stock, 10L, stopPrice, limitPrice));
+            StopLimitOrder.Sell(Stock, Quantity, stopPrice, limitPrice),
+            OrderSide.Sell.StopLimit(Stock, Quantity, stopPrice, limitPrice));
     }
 
     [Fact]
@@ -90,15 +89,15 @@ public  sealed class OrderTypeTest
         const Decimal stopLossLimitPrice = 120M;
 
         assertOrdersAreEqual(
-            LimitOrder.Buy(Stock, 100L, takeProfitPrice)
+            LimitOrder.Buy(Stock, Quantity, takeProfitPrice)
                 .OneCancelsOther(stopLossStopPrice, stopLossLimitPrice),
-            OrderSide.Buy.Limit(Stock, 100L, takeProfitPrice)
+            OrderSide.Buy.Limit(Stock, Quantity, takeProfitPrice)
                 .OneCancelsOther(stopLossStopPrice, stopLossLimitPrice));
 
         assertOrdersAreEqual(
-            LimitOrder.Sell(Stock, 100L, takeProfitPrice)
+            LimitOrder.Sell(Stock, Quantity, takeProfitPrice)
                 .OneCancelsOther(stopLossStopPrice),
-            OrderSide.Sell.Limit(Stock, 100L, takeProfitPrice)
+            OrderSide.Sell.Limit(Stock, Quantity, takeProfitPrice)
                 .OneCancelsOther(stopLossStopPrice));
     }
 
@@ -110,7 +109,7 @@ public  sealed class OrderTypeTest
         const Decimal stopLossStopPrice = 110M;
         const Decimal stopLossLimitPrice = 120M;
 
-        var marketOrder = MarketOrder.Buy(Stock, 100L);
+        var marketOrder = MarketOrder.Buy(Stock, Quantity);
 
         var stopLossOrder = marketOrder.StopLoss(stopLossPrice);
         var takeProfitOrder = marketOrder.TakeProfit(takeProfitPrice);

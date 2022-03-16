@@ -6,6 +6,10 @@ public sealed partial class AlpacaDataStreamingClientTest
 {
     private static readonly List<String> _symbols = new () { Stock, Other };
 
+    private const Int32 ExpectedNumberOfEventsForAllSymbols = 4;
+
+    private const Int32 ExpectedNumberOfEventsForOneSymbol = 2;
+
     private const String Stock = "AAPL";
 
     private const String Other = "MSFT";

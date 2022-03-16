@@ -11,11 +11,27 @@ internal static class HistoricalDataHelpers
 
     private static readonly String _tape = Guid.NewGuid().ToString("D");
 
+    private const Decimal MidPrice = (AskPrice + BidPrice) / 2;
+
+    private const UInt64 TradeId = 12_345UL;
+
     private const String Trades = "trades";
 
     private const String Quotes = "quotes";
 
+    private const Int32 TradesNumber = 100;
+
+    private const Decimal Wvap = 1_234.56M;
+
+    private const Decimal AskPrice = 100M;
+
+    private const Decimal BidPrice = 200M;
+
+    private const Decimal Volume = 1_000M;
+
     private const String Bars = "bars";
+
+    private const Decimal Size = 42M;
 
     internal static void AddSingleBarsPageExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
@@ -162,9 +178,9 @@ internal static class HistoricalDataHelpers
         Assert.Equal(_tape, trade.Tape);
 
         Assert.Equal(TakerSide.Unknown, trade.TakerSide);
-        Assert.Equal(12345UL, trade.TradeId);
-        Assert.Equal(100M, trade.Price);
-        Assert.Equal(42M, trade.Size);
+        Assert.Equal(TradeId, trade.TradeId);
+        Assert.Equal(MidPrice, trade.Price);
+        Assert.Equal(Size, trade.Size);
 
         return true;
     }
@@ -190,10 +206,10 @@ internal static class HistoricalDataHelpers
         Assert.Equal(_exchange, quote.AskExchange);
         Assert.Equal(_exchange, quote.BidExchange);
 
-        Assert.Equal(100M, quote.AskPrice);
-        Assert.Equal(200M, quote.BidPrice);
-        Assert.Equal(42M, quote.AskSize);
-        Assert.Equal(42M, quote.BidSize);
+        Assert.Equal(AskPrice, quote.AskPrice);
+        Assert.Equal(BidPrice, quote.BidPrice);
+        Assert.Equal(Size, quote.AskSize);
+        Assert.Equal(Size, quote.BidSize);
 
         return true;
     }
@@ -213,23 +229,23 @@ internal static class HistoricalDataHelpers
     private static JObject createBar() =>
         new (
             new JProperty("t", DateTime.UtcNow),
-            new JProperty("vw", 1234.56M),
-            new JProperty("n", 100),
-            new JProperty("v", 1000M),
-            new JProperty("o", 100M),
-            new JProperty("l", 90M),
-            new JProperty("h", 120M),
-            new JProperty("c", 110M));
+            new JProperty("n", TradesNumber),
+            new JProperty("o", MidPrice),
+            new JProperty("l", AskPrice),
+            new JProperty("h", BidPrice),
+            new JProperty("c", MidPrice),
+            new JProperty("v", Volume),
+            new JProperty("vw", Wvap));
 
     private static JObject createTrade() =>
         new (
             new JProperty("c", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
             new JProperty("x", _exchange),
-            new JProperty("i", 12345UL),
+            new JProperty("p", MidPrice),
+            new JProperty("i", TradeId),
             new JProperty("z", _tape),
-            new JProperty("p", 100M),
-            new JProperty("s", 42));
+            new JProperty("s", Size));
 
     private static JObject createQuote() =>
         new (
@@ -237,11 +253,11 @@ internal static class HistoricalDataHelpers
             new JProperty("t", DateTime.UtcNow),
             new JProperty("ax", _exchange),
             new JProperty("bx", _exchange),
-            new JProperty("ap", 100M),
-            new JProperty("bp", 200M),
-            new JProperty("as", 42M),
-            new JProperty("bs", 42M),
+            new JProperty("ap", AskPrice),
+            new JProperty("bp", BidPrice),
             new JProperty("x", _exchange),
+            new JProperty("as", Size),
+            new JProperty("bs", Size),
             new JProperty("z", _tape));
 
     private static JObject createSnapshot() =>
