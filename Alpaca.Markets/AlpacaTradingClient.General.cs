@@ -103,5 +103,21 @@ namespace Alpaca.Markets
             _httpClient.GetAsync<IReadOnlyList<ICalendar>, List<JsonCalendar>>(
                 request.EnsureNotNull(nameof(request)).GetUriBuilder(_httpClient),
                 cancellationToken, _alpacaRestApiThrottler);
+
+        /// <inheritdoc />
+        public Task<IAnnouncement> GetAnnouncementAsync(
+            Guid announcementId,
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<IAnnouncement, JsonAnnouncement>(
+                $"v2/corporate_actions/announcements/{announcementId:D}", cancellationToken);
+
+        /// <inheritdoc />
+        public Task<IReadOnlyList<IAnnouncement>> ListAnnouncementsAsync(
+            AnnouncementsRequest request,
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<IReadOnlyList<IAnnouncement>, List<JsonAnnouncement>>(
+                request.EnsureNotNull(nameof(request)).Validate()
+                    .GetUriBuilder(_httpClient),
+                cancellationToken);
     }
 }
