@@ -111,5 +111,19 @@ namespace Alpaca.Markets
                 await request.EnsureNotNull(nameof(request))
                     .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
                 cancellationToken).ConfigureAwait(false);
+
+        public Task<IAnnouncement> GetAnnouncementAsync(
+            Guid announcementId,
+            CancellationToken cancellationToken = default) =>
+            _httpClient.GetAsync<IAnnouncement, JsonAnnouncement>(
+                $"v2/corporate_actions/announcements/{announcementId:D}", cancellationToken);
+
+        public async Task<IReadOnlyList<IAnnouncement>> ListAnnouncementsAsync(
+            AnnouncementsRequest request,
+            CancellationToken cancellationToken = default) =>
+            await _httpClient.GetAsync<IReadOnlyList<IAnnouncement>, List<JsonAnnouncement>>(
+                await request.EnsureNotNull(nameof(request)).Validate()
+                    .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
     }
 }
