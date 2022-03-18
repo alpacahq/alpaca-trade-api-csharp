@@ -268,6 +268,12 @@ public static class TimeInterval
         this ITimeInterval interval) =>
         // ReSharper disable once ConstantConditionalAccessQualifier
         new (interval?.From.AsDateOnly(), interval?.Into.AsDateOnly());
+    
+    [Obsolete("Used only for reducing code duplication.", false)]
+    internal static IInclusiveTimeInterval AsInclusiveTimeInterval(
+        this Interval<DateOnly> interval) =>
+        // ReSharper disable once ConstantConditionalAccessQualifier
+        new Interval(interval.AsTimeInterval());
 
     private static Interval wrap(this Interval<DateTime> interval) => new (interval);
 }

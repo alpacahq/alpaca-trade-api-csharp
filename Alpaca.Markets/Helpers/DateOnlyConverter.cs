@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 
 namespace Alpaca.Markets;
 
@@ -32,5 +32,5 @@ internal sealed class DateOnlyConverter : JsonConverter
 
     [ExcludeFromCodeCoverage]
     public override Boolean CanConvert(Type objectType) =>
-        objectType == typeof(DateOnly);
+        objectType == typeof(DateOnly) || objectType == typeof(DateOnly?);
 }

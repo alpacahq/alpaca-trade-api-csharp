@@ -97,6 +97,21 @@ Alpaca.Markets.AlpacaStreamingClientConfiguration
 Alpaca.Markets.AlpacaStreamingClientConfiguration.AlpacaStreamingClientConfiguration() -> void
 Alpaca.Markets.AlpacaTradingClientConfiguration
 Alpaca.Markets.AlpacaTradingClientConfiguration.AlpacaTradingClientConfiguration() -> void
+Alpaca.Markets.AnnouncementsRequest
+Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest(Alpaca.Markets.CorporateActionType corporateActionType, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
+Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest(Alpaca.Markets.CorporateActionType corporateActionType, Alpaca.Markets.Interval<System.DateOnly> dateInterval) -> void
+Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest(System.Collections.Generic.IEnumerable<Alpaca.Markets.CorporateActionType>! corporateActionTypes, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
+Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest(System.Collections.Generic.IEnumerable<Alpaca.Markets.CorporateActionType>! corporateActionTypes, Alpaca.Markets.Interval<System.DateOnly> dateInterval) -> void
+Alpaca.Markets.AnnouncementsRequest.DateInterval.get -> Alpaca.Markets.Interval<System.DateOnly>
+Alpaca.Markets.AnnouncementsRequest.CorporateActionTypes.get -> System.Collections.Generic.IReadOnlyCollection<Alpaca.Markets.CorporateActionType>!
+Alpaca.Markets.AnnouncementsRequest.Cusip.get -> string?
+Alpaca.Markets.AnnouncementsRequest.Cusip.set -> void
+Alpaca.Markets.AnnouncementsRequest.DateType.get -> Alpaca.Markets.CorporateActionDateType?
+Alpaca.Markets.AnnouncementsRequest.DateType.set -> void
+Alpaca.Markets.AnnouncementsRequest.Symbol.get -> string?
+Alpaca.Markets.AnnouncementsRequest.Symbol.set -> void
+Alpaca.Markets.AnnouncementsRequest.TimeInterval.get -> Alpaca.Markets.IInclusiveTimeInterval!
+Alpaca.Markets.AnnouncementsRequest.WithInterval(Alpaca.Markets.Interval<System.DateOnly> value) -> Alpaca.Markets.AnnouncementsRequest!
 Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetClass.Crypto = 1 -> Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetClass.UsEquity = 0 -> Alpaca.Markets.AssetClass
@@ -152,6 +167,26 @@ Alpaca.Markets.ChangeWatchListRequest<TKey>
 Alpaca.Markets.ChangeWatchListRequest<TKey>.Asset.get -> string!
 Alpaca.Markets.ChangeWatchListRequest<TKey>.ChangeWatchListRequest(TKey key, string! asset) -> void
 Alpaca.Markets.ChangeWatchListRequest<TKey>.Key.get -> TKey
+Alpaca.Markets.CorporateActionDateType
+Alpaca.Markets.CorporateActionDateType.DeclarationDate = 0 -> Alpaca.Markets.CorporateActionDateType
+Alpaca.Markets.CorporateActionDateType.ExecutionDate = 1 -> Alpaca.Markets.CorporateActionDateType
+Alpaca.Markets.CorporateActionDateType.PayableDate = 3 -> Alpaca.Markets.CorporateActionDateType
+Alpaca.Markets.CorporateActionDateType.RecordDate = 2 -> Alpaca.Markets.CorporateActionDateType
+Alpaca.Markets.CorporateActionSubType
+Alpaca.Markets.CorporateActionSubType.DividendCash = 0 -> Alpaca.Markets.CorporateActionSubType
+Alpaca.Markets.CorporateActionSubType.DividendStock = 1 -> Alpaca.Markets.CorporateActionSubType
+Alpaca.Markets.CorporateActionSubType.MergerCompletion = 3 -> Alpaca.Markets.CorporateActionSubType
+Alpaca.Markets.CorporateActionSubType.MergerUpdate = 2 -> Alpaca.Markets.CorporateActionSubType
+Alpaca.Markets.CorporateActionSubType.Recapitalizaiton = 8 -> Alpaca.Markets.CorporateActionSubType
+Alpaca.Markets.CorporateActionSubType.ReverseSplit = 7 -> Alpaca.Markets.CorporateActionSubType
+Alpaca.Markets.CorporateActionSubType.SpinOff = 4 -> Alpaca.Markets.CorporateActionSubType
+Alpaca.Markets.CorporateActionSubType.StockSplit = 5 -> Alpaca.Markets.CorporateActionSubType
+Alpaca.Markets.CorporateActionSubType.UnitSplit = 6 -> Alpaca.Markets.CorporateActionSubType
+Alpaca.Markets.CorporateActionType
+Alpaca.Markets.CorporateActionType.Dividend = 0 -> Alpaca.Markets.CorporateActionType
+Alpaca.Markets.CorporateActionType.Merger = 1 -> Alpaca.Markets.CorporateActionType
+Alpaca.Markets.CorporateActionType.SpinOff = 2 -> Alpaca.Markets.CorporateActionType
+Alpaca.Markets.CorporateActionType.Split = 3 -> Alpaca.Markets.CorporateActionType
 Alpaca.Markets.CryptoExchange
 Alpaca.Markets.CryptoExchange.Cbse = 3 -> Alpaca.Markets.CryptoExchange
 Alpaca.Markets.CryptoExchange.Ersx = 1 -> Alpaca.Markets.CryptoExchange
@@ -376,6 +411,7 @@ Alpaca.Markets.IAlpacaTradingClient.DeleteWatchListByIdAsync(System.Guid watchLi
 Alpaca.Markets.IAlpacaTradingClient.DeleteWatchListByNameAsync(string! name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
 Alpaca.Markets.IAlpacaTradingClient.GetAccountAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IAccount!>!
 Alpaca.Markets.IAlpacaTradingClient.GetAccountConfigurationAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IAccountConfiguration!>!
+Alpaca.Markets.IAlpacaTradingClient.GetAnnouncementAsync(System.Guid announcementId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IAnnouncement!>!
 Alpaca.Markets.IAlpacaTradingClient.GetAssetAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IAsset!>!
 Alpaca.Markets.IAlpacaTradingClient.GetClockAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IClock!>!
 Alpaca.Markets.IAlpacaTradingClient.GetOrderAsync(string! clientOrderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOrder!>!
@@ -385,6 +421,7 @@ Alpaca.Markets.IAlpacaTradingClient.GetPositionAsync(string! symbol, System.Thre
 Alpaca.Markets.IAlpacaTradingClient.GetWatchListByIdAsync(System.Guid watchListId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
 Alpaca.Markets.IAlpacaTradingClient.GetWatchListByNameAsync(string! name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
 Alpaca.Markets.IAlpacaTradingClient.ListAccountActivitiesAsync(Alpaca.Markets.AccountActivitiesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IAccountActivity!>!>!
+Alpaca.Markets.IAlpacaTradingClient.ListAnnouncementsAsync(Alpaca.Markets.AnnouncementsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IAnnouncement!>!>!
 Alpaca.Markets.IAlpacaTradingClient.ListAssetsAsync(Alpaca.Markets.AssetsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IAsset!>!>!
 Alpaca.Markets.IAlpacaTradingClient.ListCalendarAsync(Alpaca.Markets.CalendarRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.ICalendar!>!>!
 Alpaca.Markets.IAlpacaTradingClient.ListIntervalCalendarAsync(Alpaca.Markets.CalendarRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IIntervalCalendar!>!>!
@@ -396,6 +433,19 @@ Alpaca.Markets.IAlpacaTradingClient.PatchOrderAsync(Alpaca.Markets.ChangeOrderRe
 Alpaca.Markets.IAlpacaTradingClient.PostOrderAsync(Alpaca.Markets.NewOrderRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOrder!>!
 Alpaca.Markets.IAlpacaTradingClient.PostOrderAsync(Alpaca.Markets.OrderBase! orderBase, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOrder!>!
 Alpaca.Markets.IAlpacaTradingClient.UpdateWatchListByIdAsync(Alpaca.Markets.UpdateWatchListRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
+Alpaca.Markets.IAnnouncement
+Alpaca.Markets.IAnnouncement.Cash.get -> decimal
+Alpaca.Markets.IAnnouncement.CorporateActionId.get -> string!
+Alpaca.Markets.IAnnouncement.GetDate(Alpaca.Markets.CorporateActionDateType dateType) -> System.DateOnly?
+Alpaca.Markets.IAnnouncement.Id.get -> System.Guid
+Alpaca.Markets.IAnnouncement.InitiatingCusip.get -> string!
+Alpaca.Markets.IAnnouncement.InitiatingSymbol.get -> string!
+Alpaca.Markets.IAnnouncement.NewRate.get -> decimal
+Alpaca.Markets.IAnnouncement.OldRate.get -> decimal
+Alpaca.Markets.IAnnouncement.SubType.get -> Alpaca.Markets.CorporateActionSubType
+Alpaca.Markets.IAnnouncement.TargetCusip.get -> string!
+Alpaca.Markets.IAnnouncement.TargetSymbol.get -> string!
+Alpaca.Markets.IAnnouncement.Type.get -> Alpaca.Markets.CorporateActionType
 Alpaca.Markets.IAsset
 Alpaca.Markets.IAsset.AssetId.get -> System.Guid
 Alpaca.Markets.IAsset.Class.get -> Alpaca.Markets.AssetClass

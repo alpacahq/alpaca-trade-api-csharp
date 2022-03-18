@@ -18,6 +18,12 @@ internal static class Validation
     private const String OrderQuantityShouldBePositiveMessage =
         "Order quantity should be positive value.";
 
+    private const String CollectionShouldNotBeEmptyMessage =
+        "Collection should contains at least one item.";
+
+    private const String IntervalShouldNotBeOpenMessage =
+        "You should specify both start and end of the interval.";
+
     private const String SymbolShouldNotBeEmptyMessage =
         "Symbol shouldn't be empty.";
 
@@ -108,6 +114,21 @@ internal static class Validation
         [CallerArgumentExpression("watchListName")] String propertyName = "") =>
         watchListName is String stringKey && isWatchListNameInvalid(stringKey)
             ? new RequestValidationException(WatchListNameShouldBe64CharactersLengthMessage, propertyName)
+            : null;
+
+    public static RequestValidationException? TryValidateCollection<TItem>(
+        this IReadOnlyCollection<TItem> collection,
+        [CallerArgumentExpression("collection")] String propertyName = "") =>
+        collection.Count == 0
+            ? new RequestValidationException(CollectionShouldNotBeEmptyMessage, propertyName)
+            : null;
+
+    public static RequestValidationException? TryValidateInterval<TItem>(
+        this Interval<TItem> interval,
+        [CallerArgumentExpression("interval")] String propertyName = "")
+        where TItem : struct, IComparable<TItem> =>
+        interval.IsOpen()
+            ? new RequestValidationException(IntervalShouldNotBeOpenMessage, propertyName)
             : null;
 
     public static String? ValidateWatchListName(

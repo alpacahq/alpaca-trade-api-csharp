@@ -352,7 +352,9 @@ public interface IAlpacaTradingClient : IDisposable
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only list of trading date information object.</returns>
     [UsedImplicitly]
-    [Obsolete("This method will be removed in the next major release. Use the ListIntervalCalendarAsync method instead.", false)]
+    [Obsolete(
+        "This method will be removed in the next major release. Use the ListIntervalCalendarAsync method instead.",
+        false)]
     Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
         CalendarRequest request,
         CancellationToken cancellationToken = default);
@@ -366,5 +368,27 @@ public interface IAlpacaTradingClient : IDisposable
     [UsedImplicitly]
     Task<IReadOnlyList<IIntervalCalendar>> ListIntervalCalendarAsync(
         CalendarRequest request,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets single corporate action information from Alpaca REST API endpoint.
+    /// </summary>
+    /// <param name="announcementId">Corporate action identifier.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Read-only corporate action information object.</returns>
+    [UsedImplicitly]
+    Task<IAnnouncement> GetAnnouncementAsync(
+        Guid announcementId,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets list of different corporate actions from Alpaca REST API endpoint.
+    /// </summary>
+    /// <param name="request">Corporate actions request parameters.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Read-only list of corporate action information objects.</returns>
+    [UsedImplicitly]
+    Task<IReadOnlyList<IAnnouncement>> ListAnnouncementsAsync(
+        AnnouncementsRequest request,
         CancellationToken cancellationToken = default);
 }
