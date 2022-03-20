@@ -8,8 +8,7 @@ namespace Alpaca.Markets
     /// <summary>
     /// Encapsulates request parameters for <see cref="AlpacaTradingClient.ListAssetsAsync(AssetsRequest,System.Threading.CancellationToken)"/> call.
     /// </summary>
-    public sealed class AnnouncementsRequest : Validation.IRequest,
-        IRequestWithTimeInterval<IInclusiveTimeInterval>
+    public sealed class AnnouncementsRequest : Validation.IRequest
     {
         private readonly HashSet<CorporateActionType> _corporateActionTypes = new ();
 
@@ -97,9 +96,5 @@ namespace Alpaca.Markets
                     "You should specify both start and end of the interval.", nameof(TimeInterval));
             }
         }
-
-        void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
-            IInclusiveTimeInterval value) =>
-            TimeInterval = value;
     }
 }

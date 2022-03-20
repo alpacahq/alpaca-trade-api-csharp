@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -68,10 +69,11 @@ namespace Alpaca.Markets
         Decimal NewRate { get; }
 
         /// <summary>
-        /// 
+        /// Gets the corporate action date by date type or <c>null</c> if date not specified.
         /// </summary>
-        /// <param name="dateType"></param>
-        /// <returns></returns>
+        /// <param name="dateType">Corporate action date type.</param>
+        /// <returns>Specific date for this corporate action if it's applicable and specified.</returns>
+        [UsedImplicitly]
         public DateTime? GetDate(
             CorporateActionDateType dateType);
     }
