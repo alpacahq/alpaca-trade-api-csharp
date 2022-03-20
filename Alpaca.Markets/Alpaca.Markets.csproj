@@ -12,14 +12,15 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.3</AssemblyVersion>
-    <FileVersion>6.0.3.3</FileVersion>
-    <Version>6.0.3-beta1</Version>
+    <AssemblyVersion>6.0.3.4</AssemblyVersion>
+    <FileVersion>6.0.3.4</FileVersion>
+    <Version>6.0.3-beta2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Added support for the new historical bar time frames - `Week` and `Month` values of `BarTimeFrameUnit` enumeration.
-- Added multi-symbols requests support for the latest bars, quotes, and trades (for stocks and crypto clients).</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added support for the corporate actions retrieval APIs into the `IAlpacaTradingClient` interface.
+- Debugging support added to all JSON messages received from APIs so they can be easily printed/viewed.
+- The FTX was added to the list of supported crypto exchanges.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
