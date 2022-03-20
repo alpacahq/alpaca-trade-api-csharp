@@ -3,10 +3,7 @@
 /// <summary>
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListAssetsAsync(AssetsRequest,CancellationToken)"/> call.
 /// </summary>
-public sealed class AnnouncementsRequest : Validation.IRequest,
-#pragma warning disable CS0618
-    IRequestWithTimeInterval<IInclusiveTimeInterval>
-#pragma warning restore CS0618
+public sealed class AnnouncementsRequest : Validation.IRequest
 {
     private readonly HashSet<CorporateActionType> _corporateActionTypes = new ();
 
@@ -41,6 +38,7 @@ public sealed class AnnouncementsRequest : Validation.IRequest,
     /// </summary>
     /// <param name="corporateActionType">Single corporate action type for filtering.</param>
     /// <param name="timeInterval">Date range when searching corporate action announcements.</param>
+    [ExcludeFromCodeCoverage]
     [Obsolete("This constructor will be removed in the next major release. Use overload that takes Interval<DateOnly> argument.", false)]
     public AnnouncementsRequest(
         CorporateActionType corporateActionType,
@@ -54,6 +52,7 @@ public sealed class AnnouncementsRequest : Validation.IRequest,
     /// </summary>
     /// <param name="corporateActionTypes">List of the corporate action types for filtering.</param>
     /// <param name="timeInterval">Date range when searching corporate action announcements.</param>
+    [ExcludeFromCodeCoverage]
     [Obsolete("This constructor will be removed in the next major release. Use overload that takes Interval<DateOnly> argument.", false)]
     public AnnouncementsRequest(
         IEnumerable<CorporateActionType> corporateActionTypes,
@@ -65,12 +64,14 @@ public sealed class AnnouncementsRequest : Validation.IRequest,
     /// <summary>
     /// Gets the list of the corporate action types for filtering.
     /// </summary>
+    [UsedImplicitly]
     public IReadOnlyCollection<CorporateActionType> CorporateActionTypes => _corporateActionTypes;
 
     /// <summary>
     /// Gets the date range when searching corporate action announcements.
     /// </summary>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [Obsolete("This property will be removed in the next major release. Use the DateInterval property instead.", false)]
     public IInclusiveTimeInterval TimeInterval => DateInterval.AsInclusiveTimeInterval();
 
@@ -78,7 +79,7 @@ public sealed class AnnouncementsRequest : Validation.IRequest,
     /// Gets the date range when searching corporate action announcements.
     /// </summary>
     [UsedImplicitly]
-    public Interval<DateOnly> DateInterval { get; private set; }
+    public Interval<DateOnly> DateInterval { get; }
 
     /// <summary>
     /// Gets or sets the type of date for filtering by <see cref="DateInterval"/> parameter.
@@ -120,23 +121,4 @@ public sealed class AnnouncementsRequest : Validation.IRequest,
         yield return Symbol?.TryValidateSymbolName();
         yield return Cusip?.TryValidateSymbolName();
     }
-    
-    /// <summary>
-    /// Sets time interval for filtering data returned by this request.
-    /// /// </summary>
-    /// <param name="value">New filtering interval.</param>
-    /// <returns>Request with applied filtering.</returns>
-    [UsedImplicitly]
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public AnnouncementsRequest WithInterval(
-        Interval<DateOnly> value)
-    {
-        DateInterval = value;
-        return this;
-    }
-
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use WithInterval method instead of this one.", false)]
-    void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
-        IInclusiveTimeInterval value) => WithInterval(value.AsDateOnlyInterval());
 }

@@ -97,6 +97,7 @@ Alpaca.Markets.AlpacaStreamingClientConfiguration
 Alpaca.Markets.AlpacaStreamingClientConfiguration.AlpacaStreamingClientConfiguration() -> void
 Alpaca.Markets.AlpacaTradingClientConfiguration
 Alpaca.Markets.AlpacaTradingClientConfiguration.AlpacaTradingClientConfiguration() -> void
+Alpaca.Markets.AnnouncementExtensions
 Alpaca.Markets.AnnouncementsRequest
 Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest(Alpaca.Markets.CorporateActionType corporateActionType, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest(Alpaca.Markets.CorporateActionType corporateActionType, Alpaca.Markets.Interval<System.DateOnly> dateInterval) -> void
@@ -111,7 +112,6 @@ Alpaca.Markets.AnnouncementsRequest.DateType.set -> void
 Alpaca.Markets.AnnouncementsRequest.Symbol.get -> string?
 Alpaca.Markets.AnnouncementsRequest.Symbol.set -> void
 Alpaca.Markets.AnnouncementsRequest.TimeInterval.get -> Alpaca.Markets.IInclusiveTimeInterval!
-Alpaca.Markets.AnnouncementsRequest.WithInterval(Alpaca.Markets.Interval<System.DateOnly> value) -> Alpaca.Markets.AnnouncementsRequest!
 Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetClass.Crypto = 1 -> Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetClass.UsEquity = 0 -> Alpaca.Markets.AssetClass
@@ -1004,6 +1004,10 @@ Alpaca.Markets.UpdateWatchListRequest.UpdateWatchListRequest(System.Guid watchLi
 Alpaca.Markets.UpdateWatchListRequest.WatchListId.get -> System.Guid
 override Alpaca.Markets.BarTimeFrame.ToString() -> string!
 override Alpaca.Markets.HistoryPeriod.ToString() -> string!
+static Alpaca.Markets.AnnouncementExtensions.GetDeclarationDate(this Alpaca.Markets.IAnnouncement! announcement) -> System.DateOnly?
+static Alpaca.Markets.AnnouncementExtensions.GetExecutionDate(this Alpaca.Markets.IAnnouncement! announcement) -> System.DateOnly?
+static Alpaca.Markets.AnnouncementExtensions.GetPayableDate(this Alpaca.Markets.IAnnouncement! announcement) -> System.DateOnly?
+static Alpaca.Markets.AnnouncementExtensions.GetRecordDate(this Alpaca.Markets.IAnnouncement! announcement) -> System.DateOnly?
 static Alpaca.Markets.BarTimeFrame.Day.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.BarTimeFrame.HalfYear.get -> Alpaca.Markets.BarTimeFrame
 static Alpaca.Markets.BarTimeFrame.Hour.get -> Alpaca.Markets.BarTimeFrame

@@ -65,10 +65,10 @@ public interface IAnnouncement
     Decimal NewRate { get; }
 
     /// <summary>
-    /// 
+    /// Gets the corporate action date by date type or <c>null</c> if date not specified.
     /// </summary>
-    /// <param name="dateType"></param>
-    /// <returns></returns>
+    /// <param name="dateType">Corporate action date type.</param>
+    /// <returns>Specific date for this corporate action if it's applicable and specified.</returns>
     public DateOnly? GetDate(
         CorporateActionDateType dateType);
 }

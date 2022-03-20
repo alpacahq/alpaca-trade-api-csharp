@@ -24,18 +24,18 @@ internal sealed class JsonAnnouncement : IAnnouncement
     public String InitiatingCusip { get; set; } = String.Empty;
 
     [JsonProperty(PropertyName = "target_symbol", Required = Required.Default)]
-    public String TargetSymbol { get; set; } = String.Empty;
+    public String TargetSymbol { get; [ExcludeFromCodeCoverage] set; } = String.Empty;
 
     [JsonProperty(PropertyName = "target_original_cusip", Required = Required.Default)]
-    public String TargetCusip { get; set; } = String.Empty;
+    public String TargetCusip { get; [ExcludeFromCodeCoverage] set; } = String.Empty;
 
     [JsonConverter(typeof(DateOnlyConverter))]
     [JsonProperty(PropertyName = "declaration_date", Required = Required.Default)]
-    public DateOnly? DeclarationDate { get; set; }
+    public DateOnly? DeclarationDate { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonConverter(typeof(DateOnlyConverter))]
     [JsonProperty(PropertyName = "ex_date", Required = Required.Default)]
-    public DateOnly? ExecutionDate { get; set; }
+    public DateOnly? ExecutionDate { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonConverter(typeof(DateOnlyConverter))]
     [JsonProperty(PropertyName = "record_date", Required = Required.Always)]
@@ -43,16 +43,16 @@ internal sealed class JsonAnnouncement : IAnnouncement
 
     [JsonConverter(typeof(DateOnlyConverter))]
     [JsonProperty(PropertyName = "payable_date", Required = Required.Default)]
-    public DateOnly? PayableDate { get; set; }
+    public DateOnly? PayableDate { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "cash", Required = Required.Always)]
     public Decimal Cash { get; set; }
 
     [JsonProperty(PropertyName = "old_rate", Required = Required.Default)]
-    public Decimal OldRate { get; set; }
+    public Decimal OldRate { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonProperty(PropertyName = "new_rate", Required = Required.Default)]
-    public Decimal NewRate { get; set; }
+    public Decimal NewRate { get; [ExcludeFromCodeCoverage] set; }
 
     public DateOnly? GetDate(
         CorporateActionDateType dateType) =>
