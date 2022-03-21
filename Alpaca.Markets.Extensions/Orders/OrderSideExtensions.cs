@@ -21,7 +21,7 @@ public static class OrderSideExtensions
     public static BracketOrder Bracket(
         this OrderSide orderSide,
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal takeProfitLimitPrice,
         Decimal stopLossStopPrice) =>
         orderSide.Market(symbol, quantity)
@@ -44,7 +44,7 @@ public static class OrderSideExtensions
     public static BracketOrder Bracket(
         this OrderSide orderSide,
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal takeProfitLimitPrice,
         Decimal stopLossStopPrice,
         Decimal stopLossLimitPrice) =>
