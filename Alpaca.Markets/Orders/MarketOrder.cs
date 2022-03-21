@@ -46,6 +46,9 @@ public sealed class MarketOrder : SimpleOrderBase
         new(
             symbol, quantity, OrderSide.Sell);
 
+    internal override RequestValidationException? TryValidateQuantity() =>
+        Quantity.TryValidateQuantity();
+
     internal override JsonNewOrder GetJsonRequest() =>
         base.GetJsonRequest().WithQuantity(Quantity);
 }

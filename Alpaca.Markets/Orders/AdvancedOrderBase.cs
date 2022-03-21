@@ -24,6 +24,9 @@ public abstract class AdvancedOrderBase : OrderBase
     /// </summary>
     [UsedImplicitly]
     public OrderClass OrderClass { get; }
+    
+    internal override RequestValidationException? TryValidateQuantity() =>
+        BaseOrder.TryValidateQuantity();
 
     internal override JsonNewOrder GetJsonRequest()
     {

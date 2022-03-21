@@ -84,8 +84,12 @@ public abstract class OrderBase : Validation.IRequest
     {
         ClientOrderId = ClientOrderId?.TrimClientOrderId();
         yield return Symbol.TryValidateSymbolName();
-        yield return Quantity.TryValidateQuantity();
+        yield return TryValidateQuantity();
     }
+
+    // ReSharper disable once MemberCanBeProtected.Global
+    internal virtual RequestValidationException? TryValidateQuantity() =>
+        Quantity.TryValidateQuantity();
 
     internal virtual JsonNewOrder GetJsonRequest() =>
         new()

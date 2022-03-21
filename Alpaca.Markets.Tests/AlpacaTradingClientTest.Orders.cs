@@ -5,7 +5,8 @@ public sealed partial class AlpacaTradingClientTest
     private const String OrdersWildcardUrl = $"{OrdersUrlPrefix}/**";
 
     private const String OrdersUrlPrefix = "/v2/orders";
-    private const Decimal FractionalQuantity = 0.55M;
+
+    private const Decimal FractionalQuantity = 0.35M;
 
     [Fact]
     public async Task ListOrdersAsyncWorks()

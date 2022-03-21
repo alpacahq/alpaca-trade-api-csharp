@@ -1066,7 +1066,7 @@ static Alpaca.Markets.OrderBaseExtensions.WithDuration<TOrder>(this TOrder! orde
 static Alpaca.Markets.OrderBaseExtensions.WithExtendedHours<TOrder>(this TOrder! order, bool extendedHours) -> TOrder!
 static Alpaca.Markets.OrderExtensions.GetOrderQuantity(this Alpaca.Markets.IOrder! order) -> Alpaca.Markets.OrderQuantity
 static Alpaca.Markets.OrderSideExtensions.Limit(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
-static Alpaca.Markets.OrderSideExtensions.Market(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity) -> Alpaca.Markets.MarketOrder!
+static Alpaca.Markets.OrderSideExtensions.Market(this Alpaca.Markets.OrderSide orderSide, string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
 static Alpaca.Markets.OrderSideExtensions.Stop(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
 static Alpaca.Markets.OrderSideExtensions.StopLimit(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity, decimal stopPrice, decimal limitPrice) -> Alpaca.Markets.StopLimitOrder!
 static Alpaca.Markets.OrderSideExtensions.TrailingStop(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity, Alpaca.Markets.TrailOffset trailOffset) -> Alpaca.Markets.TrailingStopOrder!
