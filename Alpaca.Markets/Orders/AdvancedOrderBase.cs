@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -26,6 +27,9 @@ namespace Alpaca.Markets
         /// </summary>
         [UsedImplicitly]
         public OrderClass OrderClass { get; }
+    
+        internal override Boolean IsQuantityValid() =>
+            BaseOrder.IsQuantityValid();
 
         internal override JsonNewOrder GetJsonRequest()
         {
