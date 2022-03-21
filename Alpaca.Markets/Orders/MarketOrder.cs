@@ -47,8 +47,8 @@ namespace Alpaca.Markets
             OrderQuantity quantity) =>
             new (symbol, quantity, OrderSide.Sell);
 
-        internal override Boolean IsQuantityValid() =>
-            Quantity.Value > 0M;
+        internal override Boolean IsQuantityInvalid() =>
+            Quantity.Value <= 0M;
 
         internal override JsonNewOrder GetJsonRequest() =>
             base.GetJsonRequest().WithQuantity(Quantity);
