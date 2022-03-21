@@ -18,7 +18,7 @@ namespace Alpaca.Markets
         public static MarketOrder Market(
             this OrderSide orderSide,
             String symbol,
-            Int64 quantity) =>
+            OrderQuantity quantity) =>
             new (symbol, quantity, orderSide);
 
         /// <summary>

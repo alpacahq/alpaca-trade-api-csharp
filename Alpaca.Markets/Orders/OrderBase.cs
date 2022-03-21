@@ -89,6 +89,9 @@ namespace Alpaca.Markets
             }
         }
 
+        // ReSharper disable once MemberCanBeProtected.Global
+        internal virtual Boolean IsQuantityValid() => Quantity > 0;
+
         internal virtual JsonNewOrder GetJsonRequest() =>
             new ()
             {
