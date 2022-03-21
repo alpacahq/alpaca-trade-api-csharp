@@ -93,7 +93,7 @@ namespace Alpaca.Markets
                     "Symbols shouldn't be empty.", nameof(Symbol));
             }
 
-            if (Quantity <= 0)
+            if (IsQuantityInvalid())
             {
                 yield return new RequestValidationException(
                     "Order quantity should be positive value.", nameof(Quantity));
@@ -101,7 +101,8 @@ namespace Alpaca.Markets
         }
 
         // ReSharper disable once MemberCanBeProtected.Global
-        internal virtual Boolean IsQuantityValid() => Quantity > 0;
+        internal virtual Boolean IsQuantityInvalid() =>
+            Quantity <= 0;
 
         internal virtual JsonNewOrder GetJsonRequest() =>
             new ()

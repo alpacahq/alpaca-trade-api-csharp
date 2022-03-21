@@ -28,8 +28,8 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public OrderClass OrderClass { get; }
     
-        internal override Boolean IsQuantityValid() =>
-            BaseOrder.IsQuantityValid();
+        internal override Boolean IsQuantityInvalid() =>
+            BaseOrder.IsQuantityInvalid();
 
         internal override JsonNewOrder GetJsonRequest()
         {
