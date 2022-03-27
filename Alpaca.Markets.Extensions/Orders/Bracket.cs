@@ -19,7 +19,7 @@ public static class Bracket
     [UsedImplicitly]
     public static BracketOrder Buy(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal takeProfitLimitPrice,
         Decimal stopLossStopPrice) =>
         MarketOrder.Buy(symbol, quantity)
@@ -40,7 +40,7 @@ public static class Bracket
     [UsedImplicitly]
     public static BracketOrder Buy(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal takeProfitLimitPrice,
         Decimal stopLossStopPrice,
         Decimal stopLossLimitPrice) =>
@@ -61,7 +61,7 @@ public static class Bracket
     [UsedImplicitly]
     public static BracketOrder Sell(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal takeProfitLimitPrice,
         Decimal stopLossStopPrice) =>
         MarketOrder.Sell(symbol, quantity)
@@ -82,7 +82,7 @@ public static class Bracket
     [UsedImplicitly]
     public static BracketOrder Sell(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal takeProfitLimitPrice,
         Decimal stopLossStopPrice,
         Decimal stopLossLimitPrice) =>

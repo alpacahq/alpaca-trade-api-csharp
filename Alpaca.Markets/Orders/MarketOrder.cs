@@ -10,7 +10,7 @@ public sealed class MarketOrder : SimpleOrderBase
         OrderQuantity quantity,
         OrderSide side)
         : base(
-            symbol, quantity.Value.AsInteger(), side,
+            symbol, quantity, side,
             OrderType.Market)
     {
     }
