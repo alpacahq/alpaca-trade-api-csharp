@@ -22,7 +22,7 @@ namespace Alpaca.Markets.Extensions
         [UsedImplicitly]
         public static BracketOrder Buy(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             Decimal takeProfitLimitPrice,
             Decimal stopLossStopPrice) =>
             MarketOrder.Buy(symbol, quantity)
@@ -43,7 +43,7 @@ namespace Alpaca.Markets.Extensions
         [UsedImplicitly]
         public static BracketOrder Buy(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             Decimal takeProfitLimitPrice,
             Decimal stopLossStopPrice,
             Decimal stopLossLimitPrice) =>
@@ -64,7 +64,7 @@ namespace Alpaca.Markets.Extensions
         [UsedImplicitly]
         public static BracketOrder Sell(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             Decimal takeProfitLimitPrice,
             Decimal stopLossStopPrice) =>
             MarketOrder.Sell(symbol, quantity)
@@ -85,7 +85,7 @@ namespace Alpaca.Markets.Extensions
         [UsedImplicitly]
         public static BracketOrder Sell(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             Decimal takeProfitLimitPrice,
             Decimal stopLossStopPrice,
             Decimal stopLossLimitPrice) =>

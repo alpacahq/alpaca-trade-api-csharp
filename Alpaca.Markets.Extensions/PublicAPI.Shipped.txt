@@ -191,10 +191,10 @@ static Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(t
 static Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaStreamingClient! client, Alpaca.Markets.Extensions.ReconnectionParameters! parameters) -> Alpaca.Markets.IAlpacaStreamingClient!
 static Alpaca.Markets.Extensions.AlpacaValueTask.operator !=(Alpaca.Markets.Extensions.AlpacaValueTask lhs, Alpaca.Markets.Extensions.AlpacaValueTask rhs) -> bool
 static Alpaca.Markets.Extensions.AlpacaValueTask.operator ==(Alpaca.Markets.Extensions.AlpacaValueTask lhs, Alpaca.Markets.Extensions.AlpacaValueTask rhs) -> bool
-static Alpaca.Markets.Extensions.Bracket.Buy(string! symbol, long quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice) -> Alpaca.Markets.BracketOrder!
-static Alpaca.Markets.Extensions.Bracket.Buy(string! symbol, long quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice, decimal stopLossLimitPrice) -> Alpaca.Markets.BracketOrder!
-static Alpaca.Markets.Extensions.Bracket.Sell(string! symbol, long quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice) -> Alpaca.Markets.BracketOrder!
-static Alpaca.Markets.Extensions.Bracket.Sell(string! symbol, long quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice, decimal stopLossLimitPrice) -> Alpaca.Markets.BracketOrder!
+static Alpaca.Markets.Extensions.Bracket.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice) -> Alpaca.Markets.BracketOrder!
+static Alpaca.Markets.Extensions.Bracket.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice, decimal stopLossLimitPrice) -> Alpaca.Markets.BracketOrder!
+static Alpaca.Markets.Extensions.Bracket.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice) -> Alpaca.Markets.BracketOrder!
+static Alpaca.Markets.Extensions.Bracket.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice, decimal stopLossLimitPrice) -> Alpaca.Markets.BracketOrder!
 static Alpaca.Markets.Extensions.CalendarExtensions.AsExclusiveTimeIntervalUtc(this Alpaca.Markets.ICalendar! calendar) -> Alpaca.Markets.IExclusiveTimeInterval!
 static Alpaca.Markets.Extensions.CalendarExtensions.AsInclusiveTimeIntervalUtc(this Alpaca.Markets.ICalendar! calendar) -> Alpaca.Markets.IInclusiveTimeInterval!
 static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaCryptoDataClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaCryptoDataClient!
