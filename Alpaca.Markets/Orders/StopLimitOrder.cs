@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     {
         internal StopLimitOrder(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             OrderSide side,
             Decimal stopPrice,
             Decimal limitPrice)
@@ -45,7 +45,7 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public static StopLimitOrder Buy(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             Decimal stopPrice,
             Decimal limitPrice) =>
             new (
@@ -62,7 +62,7 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public static StopLimitOrder Sell(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             Decimal stopPrice,
             Decimal limitPrice) =>
             new (

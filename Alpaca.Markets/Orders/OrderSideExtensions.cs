@@ -34,7 +34,7 @@ namespace Alpaca.Markets
         public static StopOrder Stop(
             this OrderSide orderSide,
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             Decimal stopPrice) =>
             new (symbol, quantity, orderSide, stopPrice);
 
@@ -50,7 +50,7 @@ namespace Alpaca.Markets
         public static LimitOrder Limit(
             this OrderSide orderSide,
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             Decimal limitPrice) =>
             new (symbol, quantity, orderSide, limitPrice);
 
@@ -67,7 +67,7 @@ namespace Alpaca.Markets
         public static StopLimitOrder StopLimit(
             this OrderSide orderSide,
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             Decimal stopPrice,
             Decimal limitPrice) =>
             new (symbol, quantity, orderSide, stopPrice, limitPrice);
@@ -84,7 +84,7 @@ namespace Alpaca.Markets
         public static TrailingStopOrder TrailingStop(
             this OrderSide orderSide,
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             TrailOffset trailOffset) =>
             new (symbol, quantity, orderSide, trailOffset);
     }

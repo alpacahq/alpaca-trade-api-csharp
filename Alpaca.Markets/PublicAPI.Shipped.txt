@@ -717,7 +717,6 @@ Alpaca.Markets.ListOrdersRequest.TimeInterval.get -> Alpaca.Markets.IExclusiveTi
 Alpaca.Markets.ListOrdersRequest.WithSymbol(string! symbol) -> Alpaca.Markets.ListOrdersRequest!
 Alpaca.Markets.ListOrdersRequest.WithSymbols(System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.ListOrdersRequest!
 Alpaca.Markets.MarketOrder
-Alpaca.Markets.MarketOrder.Quantity.get -> Alpaca.Markets.OrderQuantity
 Alpaca.Markets.Multiplier
 Alpaca.Markets.Multiplier.Double = 2 -> Alpaca.Markets.Multiplier
 Alpaca.Markets.Multiplier.None = 0 -> Alpaca.Markets.Multiplier
@@ -782,8 +781,8 @@ Alpaca.Markets.OrderBase.Duration.set -> void
 Alpaca.Markets.OrderBase.ExtendedHours.get -> bool?
 Alpaca.Markets.OrderBase.ExtendedHours.set -> void
 Alpaca.Markets.OrderBase.OrderBase(Alpaca.Markets.OrderBase! baseOrder) -> void
-Alpaca.Markets.OrderBase.OrderBase(string! symbol, long quantity, Alpaca.Markets.OrderSide side, Alpaca.Markets.OrderType type) -> void
-Alpaca.Markets.OrderBase.Quantity.get -> long
+Alpaca.Markets.OrderBase.OrderBase(string! symbol, Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.OrderSide side, Alpaca.Markets.OrderType type) -> void
+Alpaca.Markets.OrderBase.Quantity.get -> Alpaca.Markets.OrderQuantity
 Alpaca.Markets.OrderBase.Side.get -> Alpaca.Markets.OrderSide
 Alpaca.Markets.OrderBase.Symbol.get -> string!
 Alpaca.Markets.OrderBase.Type.get -> Alpaca.Markets.OrderType
@@ -876,7 +875,7 @@ Alpaca.Markets.SecurityKey.SecurityKey(string! value) -> void
 Alpaca.Markets.SimpleOrderBase
 Alpaca.Markets.SimpleOrderBase.Bracket(decimal takeProfitLimitPrice, decimal stopLossStopPrice) -> Alpaca.Markets.BracketOrder!
 Alpaca.Markets.SimpleOrderBase.Bracket(decimal takeProfitLimitPrice, decimal stopLossStopPrice, decimal stopLossLimitPrice) -> Alpaca.Markets.BracketOrder!
-Alpaca.Markets.SimpleOrderBase.SimpleOrderBase(string! symbol, long quantity, Alpaca.Markets.OrderSide side, Alpaca.Markets.OrderType type) -> void
+Alpaca.Markets.SimpleOrderBase.SimpleOrderBase(string! symbol, Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.OrderSide side, Alpaca.Markets.OrderType type) -> void
 Alpaca.Markets.SimpleOrderBase.StopLoss(decimal stopLossStopPrice) -> Alpaca.Markets.StopLossOrder!
 Alpaca.Markets.SimpleOrderBase.StopLoss(decimal stopLossStopPrice, decimal stopLossLimitPrice) -> Alpaca.Markets.StopLossOrder!
 Alpaca.Markets.SimpleOrderBase.TakeProfit(decimal takeProfitLimitPrice) -> Alpaca.Markets.TakeProfitOrder!
@@ -1014,8 +1013,8 @@ static Alpaca.Markets.HistoricalRequestBaseExtensions.WithPageSize<TRequest>(thi
 static Alpaca.Markets.HistoricalRequestBaseExtensions.WithPageToken<TRequest>(this TRequest! request, string! pageToken) -> TRequest!
 static Alpaca.Markets.HistoryPeriod.operator !=(Alpaca.Markets.HistoryPeriod lhs, Alpaca.Markets.HistoryPeriod rhs) -> bool
 static Alpaca.Markets.HistoryPeriod.operator ==(Alpaca.Markets.HistoryPeriod lhs, Alpaca.Markets.HistoryPeriod rhs) -> bool
-static Alpaca.Markets.LimitOrder.Buy(string! symbol, long quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
-static Alpaca.Markets.LimitOrder.Sell(string! symbol, long quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
+static Alpaca.Markets.LimitOrder.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
+static Alpaca.Markets.LimitOrder.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
 static Alpaca.Markets.MarketOrder.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
 static Alpaca.Markets.MarketOrder.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
 static Alpaca.Markets.NewsArticlesRequestExtensions.WithPageSize(this Alpaca.Markets.NewsArticlesRequest! request, uint pageSize) -> Alpaca.Markets.NewsArticlesRequest!
@@ -1024,11 +1023,11 @@ static Alpaca.Markets.OrderBaseExtensions.WithClientOrderId<TOrder>(this TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithDuration<TOrder>(this TOrder! order, Alpaca.Markets.TimeInForce duration) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithExtendedHours<TOrder>(this TOrder! order, bool extendedHours) -> TOrder!
 static Alpaca.Markets.OrderExtensions.GetOrderQuantity(this Alpaca.Markets.IOrder! order) -> Alpaca.Markets.OrderQuantity
-static Alpaca.Markets.OrderSideExtensions.Limit(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
+static Alpaca.Markets.OrderSideExtensions.Limit(this Alpaca.Markets.OrderSide orderSide, string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
 static Alpaca.Markets.OrderSideExtensions.Market(this Alpaca.Markets.OrderSide orderSide, string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
-static Alpaca.Markets.OrderSideExtensions.Stop(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
-static Alpaca.Markets.OrderSideExtensions.StopLimit(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity, decimal stopPrice, decimal limitPrice) -> Alpaca.Markets.StopLimitOrder!
-static Alpaca.Markets.OrderSideExtensions.TrailingStop(this Alpaca.Markets.OrderSide orderSide, string! symbol, long quantity, Alpaca.Markets.TrailOffset trailOffset) -> Alpaca.Markets.TrailingStopOrder!
+static Alpaca.Markets.OrderSideExtensions.Stop(this Alpaca.Markets.OrderSide orderSide, string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
+static Alpaca.Markets.OrderSideExtensions.StopLimit(this Alpaca.Markets.OrderSide orderSide, string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal stopPrice, decimal limitPrice) -> Alpaca.Markets.StopLimitOrder!
+static Alpaca.Markets.OrderSideExtensions.TrailingStop(this Alpaca.Markets.OrderSide orderSide, string! symbol, Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.TrailOffset trailOffset) -> Alpaca.Markets.TrailingStopOrder!
 static Alpaca.Markets.OrderQuantity.Fractional(decimal value) -> Alpaca.Markets.OrderQuantity
 static Alpaca.Markets.OrderQuantity.FromInt64(long value) -> Alpaca.Markets.OrderQuantity
 static Alpaca.Markets.OrderQuantity.implicit operator Alpaca.Markets.OrderQuantity(long value) -> Alpaca.Markets.OrderQuantity
@@ -1040,10 +1039,10 @@ static Alpaca.Markets.PositionQuantity.InPercents(decimal value) -> Alpaca.Marke
 static Alpaca.Markets.PositionQuantity.InShares(decimal value) -> Alpaca.Markets.PositionQuantity
 static Alpaca.Markets.PositionQuantity.operator !=(Alpaca.Markets.PositionQuantity lhs, Alpaca.Markets.PositionQuantity rhs) -> bool
 static Alpaca.Markets.PositionQuantity.operator ==(Alpaca.Markets.PositionQuantity lhs, Alpaca.Markets.PositionQuantity rhs) -> bool
-static Alpaca.Markets.StopLimitOrder.Buy(string! symbol, long quantity, decimal stopPrice, decimal limitPrice) -> Alpaca.Markets.StopLimitOrder!
-static Alpaca.Markets.StopLimitOrder.Sell(string! symbol, long quantity, decimal stopPrice, decimal limitPrice) -> Alpaca.Markets.StopLimitOrder!
-static Alpaca.Markets.StopOrder.Buy(string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
-static Alpaca.Markets.StopOrder.Sell(string! symbol, long quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
+static Alpaca.Markets.StopLimitOrder.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal stopPrice, decimal limitPrice) -> Alpaca.Markets.StopLimitOrder!
+static Alpaca.Markets.StopLimitOrder.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal stopPrice, decimal limitPrice) -> Alpaca.Markets.StopLimitOrder!
+static Alpaca.Markets.StopOrder.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
+static Alpaca.Markets.StopOrder.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!
 static Alpaca.Markets.ThrottleParameters.Default.get -> Alpaca.Markets.ThrottleParameters!
 static Alpaca.Markets.TimeInterval.Deconstruct(this Alpaca.Markets.IExclusiveTimeInterval! timeInterval, out System.DateTime? from, out System.DateTime? into) -> void
 static Alpaca.Markets.TimeInterval.Deconstruct(this Alpaca.Markets.IInclusiveTimeInterval! timeInterval, out System.DateTime? from, out System.DateTime? into) -> void
@@ -1061,8 +1060,8 @@ static Alpaca.Markets.TimeInterval.WithFrom(this Alpaca.Markets.IExclusiveTimeIn
 static Alpaca.Markets.TimeInterval.WithFrom(this Alpaca.Markets.IInclusiveTimeInterval! timeInterval, System.DateTime from) -> Alpaca.Markets.IInclusiveTimeInterval!
 static Alpaca.Markets.TimeInterval.WithInto(this Alpaca.Markets.IExclusiveTimeInterval! timeInterval, System.DateTime into) -> Alpaca.Markets.IExclusiveTimeInterval!
 static Alpaca.Markets.TimeInterval.WithInto(this Alpaca.Markets.IInclusiveTimeInterval! timeInterval, System.DateTime into) -> Alpaca.Markets.IInclusiveTimeInterval!
-static Alpaca.Markets.TrailingStopOrder.Buy(string! symbol, long quantity, Alpaca.Markets.TrailOffset trailOffset) -> Alpaca.Markets.TrailingStopOrder!
-static Alpaca.Markets.TrailingStopOrder.Sell(string! symbol, long quantity, Alpaca.Markets.TrailOffset trailOffset) -> Alpaca.Markets.TrailingStopOrder!
+static Alpaca.Markets.TrailingStopOrder.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.TrailOffset trailOffset) -> Alpaca.Markets.TrailingStopOrder!
+static Alpaca.Markets.TrailingStopOrder.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.TrailOffset trailOffset) -> Alpaca.Markets.TrailingStopOrder!
 static Alpaca.Markets.TrailOffset.InDollars(decimal value) -> Alpaca.Markets.TrailOffset
 static Alpaca.Markets.TrailOffset.InPercent(decimal value) -> Alpaca.Markets.TrailOffset
 static Alpaca.Markets.TrailOffset.operator !=(Alpaca.Markets.TrailOffset lhs, Alpaca.Markets.TrailOffset rhs) -> bool

@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     {
         internal LimitOrder(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             OrderSide side,
             Decimal limitPrice)
             : base(
@@ -33,7 +33,7 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public static LimitOrder Buy(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             Decimal limitPrice) =>
             new (
                 symbol, quantity, OrderSide.Buy, limitPrice);
@@ -48,7 +48,7 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public static LimitOrder Sell(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             Decimal limitPrice) =>
             new (
                 symbol, quantity, OrderSide.Sell, limitPrice);

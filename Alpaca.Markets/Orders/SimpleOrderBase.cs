@@ -17,7 +17,7 @@ namespace Alpaca.Markets
         /// <param name="type">Order type (market, limit, stop, stop-limit).</param>
         protected internal SimpleOrderBase(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             OrderSide side,
             OrderType type)
             : base(

@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     {
         internal StopOrder(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             OrderSide side,
             Decimal stopPrice
         )
@@ -35,7 +35,7 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public static StopOrder Buy(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             Decimal stopPrice) =>
             new (
                 symbol, quantity, OrderSide.Buy, stopPrice);
@@ -50,7 +50,7 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public static StopOrder Sell(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             Decimal stopPrice) =>
             new (
                 symbol, quantity, OrderSide.Sell, stopPrice);

@@ -18,7 +18,7 @@ namespace Alpaca.Markets
         /// <param name="type">Order type (market, limit, stop, stop-limit).</param>
         protected internal OrderBase(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             OrderSide side,
             OrderType type)
         {
@@ -54,7 +54,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets the new order quantity.
         /// </summary>
-        public Int64 Quantity { get; }
+        public OrderQuantity Quantity { get; }
 
         /// <summary>
         /// Gets the new order side (buy or sell).
@@ -99,21 +99,21 @@ namespace Alpaca.Markets
                     "Order quantity should be positive value.", nameof(Quantity));
             }
         }
-
-        // ReSharper disable once MemberCanBeProtected.Global
+            
         internal virtual Boolean IsQuantityInvalid() =>
-            Quantity <= 0;
+            Quantity.Value <= 0;
 
         internal virtual JsonNewOrder GetJsonRequest() =>
             new ()
             {
                 Symbol = Symbol,
-                Quantity = Quantity,
                 OrderSide = Side,
                 OrderType = Type,
                 TimeInForce = Duration,
                 ExtendedHours = ExtendedHours,
-                ClientOrderId = ClientOrderId
+                ClientOrderId = ClientOrderId,
+                Notional = Quantity.AsNotional(),
+                Quantity = Quantity.AsFractional()
             };
     }
 }

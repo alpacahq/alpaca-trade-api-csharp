@@ -13,15 +13,9 @@ namespace Alpaca.Markets
             OrderQuantity quantity,
             OrderSide side)
             : base(
-                symbol, quantity.Value.AsInteger(), side,
-                OrderType.Market) =>
-            Quantity = quantity;
-
-        /// <summary>
-        /// Gets the market orders quantity as fractional or notional value.
-        /// </summary>
-        [UsedImplicitly]
-        public new OrderQuantity Quantity { get; }
+                symbol, quantity, side,
+                OrderType.Market)
+        {}
 
         /// <summary>
         /// Creates new buy market order using specified symbol and quantity.
@@ -48,11 +42,5 @@ namespace Alpaca.Markets
             OrderQuantity quantity) =>
             new (
                 symbol, quantity, OrderSide.Sell);
-
-        internal override Boolean IsQuantityInvalid() =>
-            Quantity.Value <= 0M;
-
-        internal override JsonNewOrder GetJsonRequest() =>
-            base.GetJsonRequest().WithQuantity(Quantity);
     }
 }

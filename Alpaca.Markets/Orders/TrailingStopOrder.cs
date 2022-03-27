@@ -10,7 +10,7 @@ namespace Alpaca.Markets
     {
         internal TrailingStopOrder(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             OrderSide side,
             TrailOffset trailOffset)
             : base(
@@ -34,7 +34,7 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public static TrailingStopOrder Buy(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             TrailOffset trailOffset) =>
             new (
                 symbol, quantity, OrderSide.Buy, trailOffset);
@@ -49,7 +49,7 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public static TrailingStopOrder Sell(
             String symbol,
-            Int64 quantity,
+            OrderQuantity quantity,
             TrailOffset trailOffset) =>
             new(
                 symbol, quantity, OrderSide.Sell, trailOffset);
