@@ -7,7 +7,7 @@ public sealed class LimitOrder : SimpleOrderBase
 {
     internal LimitOrder(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         OrderSide side,
         Decimal limitPrice)
         : base(
@@ -30,7 +30,7 @@ public sealed class LimitOrder : SimpleOrderBase
     [UsedImplicitly]
     public static LimitOrder Buy(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal limitPrice) =>
         new(
             symbol, quantity, OrderSide.Buy, limitPrice);
@@ -45,7 +45,7 @@ public sealed class LimitOrder : SimpleOrderBase
     [UsedImplicitly]
     public static LimitOrder Sell(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal limitPrice) =>
         new(
             symbol, quantity, OrderSide.Sell, limitPrice);

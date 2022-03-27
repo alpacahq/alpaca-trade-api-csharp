@@ -14,7 +14,7 @@ public abstract class OrderBase : Validation.IRequest
     /// <param name="type">Order type (market, limit, stop, stop-limit).</param>
     protected internal OrderBase(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         OrderSide side,
         OrderType type)
     {
@@ -51,7 +51,7 @@ public abstract class OrderBase : Validation.IRequest
     /// Gets the new order quantity.
     /// </summary>
     [UsedImplicitly]
-    public Int64 Quantity { get; }
+    public OrderQuantity Quantity { get; }
 
     /// <summary>
     /// Gets the new order side (buy or sell).
@@ -95,11 +95,12 @@ public abstract class OrderBase : Validation.IRequest
         new()
         {
             Symbol = Symbol,
-            Quantity = Quantity,
             OrderSide = Side,
             OrderType = Type,
             TimeInForce = Duration,
             ExtendedHours = ExtendedHours,
-            ClientOrderId = ClientOrderId
+            ClientOrderId = ClientOrderId,
+            Notional = Quantity.AsNotional(),
+            Quantity = Quantity.AsFractional()
         };
 }

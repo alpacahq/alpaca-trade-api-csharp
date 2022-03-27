@@ -7,7 +7,7 @@ public sealed class StopOrder : SimpleOrderBase
 {
     internal StopOrder(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         OrderSide side,
         Decimal stopPrice
     )
@@ -32,7 +32,7 @@ public sealed class StopOrder : SimpleOrderBase
     [UsedImplicitly]
     public static StopOrder Buy(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal stopPrice) =>
         new(
             symbol, quantity, OrderSide.Buy, stopPrice);
@@ -47,7 +47,7 @@ public sealed class StopOrder : SimpleOrderBase
     [UsedImplicitly]
     public static StopOrder Sell(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal stopPrice) =>
         new(
             symbol, quantity, OrderSide.Sell, stopPrice);

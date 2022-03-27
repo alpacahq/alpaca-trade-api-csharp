@@ -11,14 +11,9 @@ public sealed class MarketOrder : SimpleOrderBase
         OrderSide side)
         : base(
             symbol, quantity.Value.AsInteger(), side,
-            OrderType.Market) =>
-        Quantity = quantity;
-
-    /// <summary>
-    /// Gets the market orders quantity as fractional or notional value.
-    /// </summary>
-    [UsedImplicitly]
-    public new OrderQuantity Quantity { get; }
+            OrderType.Market)
+    {
+    }
 
     /// <summary>
     /// Creates new buy market order using specified symbol and quantity.
@@ -45,10 +40,4 @@ public sealed class MarketOrder : SimpleOrderBase
         OrderQuantity quantity) =>
         new(
             symbol, quantity, OrderSide.Sell);
-
-    internal override RequestValidationException? TryValidateQuantity() =>
-        Quantity.TryValidateQuantity();
-
-    internal override JsonNewOrder GetJsonRequest() =>
-        base.GetJsonRequest().WithQuantity(Quantity);
 }

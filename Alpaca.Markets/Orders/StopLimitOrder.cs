@@ -7,7 +7,7 @@ public sealed class StopLimitOrder : SimpleOrderBase
 {
     internal StopLimitOrder(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         OrderSide side,
         Decimal stopPrice,
         Decimal limitPrice)
@@ -42,7 +42,7 @@ public sealed class StopLimitOrder : SimpleOrderBase
     [UsedImplicitly]
     public static StopLimitOrder Buy(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal stopPrice,
         Decimal limitPrice) =>
         new(
@@ -59,7 +59,7 @@ public sealed class StopLimitOrder : SimpleOrderBase
     [UsedImplicitly]
     public static StopLimitOrder Sell(
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal stopPrice,
         Decimal limitPrice) =>
         new(

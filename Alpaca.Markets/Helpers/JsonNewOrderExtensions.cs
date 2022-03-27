@@ -25,15 +25,6 @@ internal static class JsonNewOrderExtensions
         return order;
     }
 
-    public static JsonNewOrder WithQuantity(
-        this JsonNewOrder order,
-        OrderQuantity quantity)
-    {
-        order.Quantity = quantity.AsFractional();
-        order.Notional = quantity.AsNotional();
-        return order;
-    }
-
     public static JsonNewOrder WithTrailOffset(
         this JsonNewOrder order,
         TrailOffset trailOffset)

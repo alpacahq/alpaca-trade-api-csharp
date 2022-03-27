@@ -124,21 +124,22 @@ public sealed class NewOrderRequest : Validation.IRequest
         yield return Symbol.TryValidateSymbolName();
         yield return Quantity.TryValidateQuantity();
     }
-
     internal JsonNewOrder GetJsonRequest() =>
         new JsonNewOrder
         {
             Symbol = Symbol,
             OrderSide = Side,
             OrderType = Type,
+            StopPrice = StopPrice,
             TimeInForce = Duration,
             LimitPrice = LimitPrice,
-            StopPrice = StopPrice,
-            TrailOffsetInDollars = TrailOffsetInDollars,
-            TrailOffsetInPercent = TrailOffsetInPercent,
+            OrderClass = OrderClass,
             ClientOrderId = ClientOrderId,
             ExtendedHours = ExtendedHours,
-            OrderClass = OrderClass,
+            Notional = Quantity.AsNotional(),
+            Quantity = Quantity.AsFractional(),
+            TrailOffsetInDollars = TrailOffsetInDollars,
+            TrailOffsetInPercent = TrailOffsetInPercent,
             TakeProfit = TakeProfitLimitPrice is not null
                 ? new JsonNewOrderAdvancedAttributes
                 {
@@ -153,5 +154,5 @@ public sealed class NewOrderRequest : Validation.IRequest
                     LimitPrice = StopLossLimitPrice
                 }
                 : null
-        }.WithQuantity(Quantity);
+        };
 }

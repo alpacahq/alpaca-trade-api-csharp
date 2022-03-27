@@ -31,7 +31,7 @@ public static class OrderSideExtensions
     public static StopOrder Stop(
         this OrderSide orderSide,
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal stopPrice) =>
         new(symbol, quantity, orderSide, stopPrice);
 
@@ -47,7 +47,7 @@ public static class OrderSideExtensions
     public static LimitOrder Limit(
         this OrderSide orderSide,
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal limitPrice) =>
         new(symbol, quantity, orderSide, limitPrice);
 
@@ -64,7 +64,7 @@ public static class OrderSideExtensions
     public static StopLimitOrder StopLimit(
         this OrderSide orderSide,
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         Decimal stopPrice,
         Decimal limitPrice) =>
         new(symbol, quantity, orderSide, stopPrice, limitPrice);
@@ -81,7 +81,7 @@ public static class OrderSideExtensions
     public static TrailingStopOrder TrailingStop(
         this OrderSide orderSide,
         String symbol,
-        Int64 quantity,
+        OrderQuantity quantity,
         TrailOffset trailOffset) =>
         new(symbol, quantity, orderSide, trailOffset);
 }
