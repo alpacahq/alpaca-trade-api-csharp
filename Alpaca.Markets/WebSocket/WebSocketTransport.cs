@@ -271,16 +271,6 @@ internal sealed class WebSocketsTransport : IDisposable
         IDuplexPipe application,
         IDuplexPipe transport)
     {
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
-        // Do a 0 byte read so that idle connections don't allocate a buffer when waiting for a read
-        var result = await socket.ReceiveAsync(Memory<Byte>.Empty, CancellationToken.None)
-            .ConfigureAwait(false);
-
-        if (isReceiveResultClose(result.MessageType, socket.CloseStatus))
-        {
-            return false;
-        }
-#endif
         var memory = application.Output.GetMemory();
 #if NETSTANDARD2_1 || NET5_0_OR_GREATER
         // Because we checked the CloseStatus from the 0 byte read above, we don't need to check again after reading
