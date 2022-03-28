@@ -12,16 +12,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.4</AssemblyVersion>
-    <FileVersion>6.0.3.4</FileVersion>
-    <Version>6.0.3-beta2</Version>
+    <AssemblyVersion>6.0.3.5</AssemblyVersion>
+    <FileVersion>6.0.3.5</FileVersion>
+    <Version>6.0.3-beta3</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Added support for the corporate actions retrieval APIs into the `IAlpacaTradingClient` interface.
-- Debugging support added to all JSON messages received from APIs so they can be easily printed/viewed.
-- Fixed problem with fractional order quantity validation for market and bracket orders.
-- The FTX was added to the list of supported crypto exchanges.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Fixed the problem with data streaming connectivity on .NET Standard 2.0 and .NET 5+ targets.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>

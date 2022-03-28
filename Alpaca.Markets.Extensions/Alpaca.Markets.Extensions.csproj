@@ -12,13 +12,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.4</AssemblyVersion>
-    <FileVersion>6.0.3.4</FileVersion>
-    <Version>6.0.3-beta2</Version>
+    <AssemblyVersion>6.0.3.5</AssemblyVersion>
+    <FileVersion>6.0.3.5</FileVersion>
+    <Version>6.0.3-beta3</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-	<PackageReleaseNotes>- Fixed problem with fractional order quantity validation for market and bracket orders.</PackageReleaseNotes>
+	<PackageReleaseNotes>- Added helper methods for getting cached version of the `IClock` interface and `IClock.IsOpened` property value.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
