@@ -246,21 +246,6 @@ namespace Alpaca.Markets
             {
                 while (true)
                 {
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
-                    // Do a 0 byte read so that idle connections don't allocate a buffer when waiting for a read
-                    var result = await socket.ReceiveAsync(Memory<byte>.Empty, CancellationToken.None)
-                        .ConfigureAwait(false);
-
-                    if (result.MessageType == WebSocketMessageType.Close)
-                    {
-                        if (socket.CloseStatus != WebSocketCloseStatus.NormalClosure)
-                        {
-                            throw new InvalidOperationException($"Websocket closed with error: {socket.CloseStatus}.");
-                        }
-
-                        return;
-                    }
-#endif
                     var memory = application.Output.GetMemory();
 #if NETSTANDARD2_1 || NET5_0_OR_GREATER
                     // Because we checked the CloseStatus from the 0 byte read above, we don't need to check again after reading
