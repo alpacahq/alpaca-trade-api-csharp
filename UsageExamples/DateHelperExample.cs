@@ -1,8 +1,8 @@
-﻿using Alpaca.Markets;
+using Alpaca.Markets;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
+using Alpaca.Markets.Extensions;
 
-namespace UsageExamples;
+namespace NewDatesTest;
 
 public enum MarketStatus
 {
@@ -12,53 +12,68 @@ public enum MarketStatus
     PostMarket
 }
 
-internal sealed class DateHelperExample
+public class DateHelper
 {
-    public async Task Run()
-    {
-        // old way of finding market status which is time consuming and takes up an api call
-        // my tests took an average of 4000 milliseconds for this task
-        var task1watch = new Stopwatch();
-        task1watch.Start();
-        var oldStatus = await GetAlpacaMarketStatus(DateTime.UtcNow).ConfigureAwait(false);
-        task1watch.Stop();
-        Console.WriteLine($"Old method took {task1watch.ElapsedMilliseconds} milliseconds to run.");
+    private const string API_KEY = "REPLACEME";
+    private const string API_SECRET = "REPLACEME";
 
-        // new way of finding market status which takes far less time and no api call necessary
+    private static readonly TimeSpan earlyOpenTS = new(4, 0, 0);
+    private static readonly TimeSpan normalOpenTS = new(9, 30, 0);
+    private static readonly TimeSpan normalCloseTS = new(16, 0, 0);
+    private static readonly TimeSpan lateCloseTS = new(20, 0, 0);
+
+    public static async Task Run()
+    {
+        // api method of finding market status which is time consuming and takes up an api call
+        // my tests took an average of 4000 milliseconds for this task
+        var task1watch = Stopwatch.StartNew();
+        var apiStatus = await GetAlpacaMarketStatus(DateTime.UtcNow).ConfigureAwait(false);
+        task1watch.Stop();
+        Console.WriteLine($"Api method took {task1watch.ElapsedMilliseconds} milliseconds to run.");
+
+        // local method of finding market status which takes far less time and no api call necessary
         // my tests took an average of 2 milliseconds for this task
-        var task2watch = new Stopwatch();
-        task2watch.Start();
-        var newStatus = GetMarketStatus(DateTime.UtcNow);
+        var task2watch = Stopwatch.StartNew();
+        var localStatus = GetLocalMarketStatus(DateTime.UtcNow);
         task2watch.Stop();
-        Console.WriteLine($"New method took {task2watch.ElapsedMilliseconds} milliseconds to run.");
+        Console.WriteLine($"Local method took {task2watch.ElapsedMilliseconds} milliseconds to run.");
     }
 
     /// <summary>
-    /// Old version taking in a date in local UTC time and returning cuurrent market status
+    /// Api version taking in a date in local UTC time and returning current market status
     /// </summary>
     /// <param name="date"></param>
     /// <returns></returns>
     public static async Task<MarketStatus> GetAlpacaMarketStatus(DateTime date)
     {
-        var key = new SecretKey("...", "...");
-
+        // initialize secret key and alpaca clients
+        var key = new SecretKey(API_KEY, API_SECRET);
         using var tradingClient = Environments.Paper.GetAlpacaTradingClient(key);
+        using var cryptoStreamingClient = Environments.Paper.GetAlpacaCryptoStreamingClient(key).WithReconnect(new ReconnectionParameters() {
+            MaxReconnectionAttempts = 10000,
+            MinReconnectionDelay = TimeSpan.FromSeconds(1),
+            MaxReconnectionDelay = TimeSpan.FromSeconds(20)
+        });
 
-        var calendars = await tradingClient.ListIntervalCalendarAsync(
-            CalendarRequest.GetForSingleDay(new DateOnly(date.Year, date.Month, date.Day))).ConfigureAwait(false);
-
+        // get calendar for current day
+        var calendars = await tradingClient.ListIntervalCalendarAsync(CalendarRequest.GetForSingleDay(DateOnly.FromDateTime(date))).ConfigureAwait(false);
         var calendar = calendars.Single();
 
-        var easternTime = ConvertToEasternTime(date);
-
+        // get market hours in eastern time
         var earlyOpen = calendar.Session.OpenEst;
         var lateClose = calendar.Session.CloseEst;
         var normalOpen = calendar.Trading.OpenEst;
         var normalClose = calendar.Trading.CloseEst;
 
-        return IsTodayAWeekDay(date) ? date >= earlyOpen && date < normalOpen ? MarketStatus.PreMarket : date > normalClose && date <= lateClose ?
-            MarketStatus.PostMarket : MarketStatus.Open : MarketStatus.Closed;
+        return GetMarketStatus(new MarketHours(earlyOpen.DateTime, normalOpen.DateTime, normalClose.DateTime, lateClose.DateTime), date);
     }
+
+    /// <summary>
+    /// Local version taking in a date in local UTC time and returning current market status
+    /// </summary>
+    /// <param name="date"></param>
+    /// <returns></returns>
+    public static MarketStatus GetLocalMarketStatus(DateTime date) => GetMarketStatus(GetMarketHours(date), date);
 
     /// <summary>
     /// Takes a date in eastern time zone and returns the status of the current market hours
@@ -66,39 +81,39 @@ internal sealed class DateHelperExample
     /// <param name="date"></param>
     /// <param name="useExtendedHours"></param>
     /// <returns></returns>
-    public static MarketStatus GetMarketStatus(DateTime date)
+    public static MarketStatus GetMarketStatus(MarketHours marketHours, DateTime date)
     {
-        var (earlyOpen, normalOpen, normalClose, lateClose) = GetMarketHours(date);
-
-        return earlyOpen.Hour != 0 && lateClose.Hour != 0 ? date >= earlyOpen && date < normalOpen ? MarketStatus.PreMarket : date > normalClose && date <= lateClose ?
-            MarketStatus.PostMarket : MarketStatus.Open : MarketStatus.Closed;
-    }
-
-    /// <summary>
-    /// Converts local UTC time into Eastern time
-    /// </summary>
-    /// <returns></returns>
-    /// <exception cref="ArgumentException"></exception>
-    public static DateTime ConvertToEasternTime(DateTime utcDate)
-    {
-        TimeZoneInfo easternTimeZone;
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        if (IsTodayAWeekDay(date))
         {
-            easternTimeZone = TimeZoneInfo
-                .FindSystemTimeZoneById("Eastern Standard Time");
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)
-                    || RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-        {
-            easternTimeZone = TimeZoneInfo
-                .FindSystemTimeZoneById("America/New_York");
+            if (date >= marketHours.EarlyOpen && date < marketHours.NormalOpen)
+            {
+                return MarketStatus.PreMarket;
+            }
+            else if (date > marketHours.NormalClose && date <= marketHours.LateClose)
+            {
+                return MarketStatus.PostMarket;
+            }
+            else if (date > marketHours.LateClose || date < marketHours.EarlyOpen)
+            {
+                return MarketStatus.Closed;
+            }
+            else
+            {
+                return MarketStatus.Open;
+            }
         }
         else
         {
-            throw new ArgumentException("Not supported OS");
+            return MarketStatus.Closed;
         }
+    }
 
-        return TimeZoneInfo.ConvertTimeFromUtc(utcDate, easternTimeZone);
+    public readonly record struct MarketHours(DateTime EarlyOpenDate, DateTime NormalOpenDate, DateTime NormalCloseDate, DateTime LateCloseDate)
+    {
+        public DateTime EarlyOpen => EarlyOpenDate;
+        public DateTime NormalOpen => NormalOpenDate;
+        public DateTime NormalClose => NormalCloseDate;
+        public DateTime LateClose => LateCloseDate;
     }
 
     /// <summary>
@@ -106,71 +121,112 @@ internal sealed class DateHelperExample
     /// </summary>
     /// <param name="date"></param>
     /// <returns></returns>
-    public static (DateTime earlyOpen, DateTime normalOpen, DateTime normalClose, DateTime lateClose) GetMarketHours(DateTime date)
+    public static MarketHours GetMarketHours(DateTime date)
     {
-        var defaultDate = new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
+        var defaultDate = date.Date;
 
         if (IsTodayAWeekDay(date))
         {
             var holidays = GetHolidays(date.Year);
-            var dateSearch = holidays.Where(x => x.Date.Year == date.Year && x.Date.Month == date.Month && x.Date.Day == date.Day).ToList();
-            var result = dateSearch.FirstOrDefault();
+            var result = holidays.Where(x => x.Date.Year == date.Year && x.Date.Month == date.Month && x.Date.Day == date.Day).FirstOrDefault();
 
             // changed early and late hours to match new alpaca times
-            var earlyOpen = new DateTime(date.Year, date.Month, date.Day, 4, 0, 0);
-            var normalOpen = new DateTime(date.Year, date.Month, date.Day, 9, 30, 0);
-            var normalClose = new DateTime(date.Year, date.Month, date.Day, 16, 0, 0);
-            var lateClose = new DateTime(date.Year, date.Month, date.Day, 20, 0, 0);
+            var earlyOpen = date.Add(earlyOpenTS);
+            var normalOpen = date.Add(normalOpenTS);
+            var normalClose = date.Add(normalCloseTS);
+            var lateClose = date.Add(lateCloseTS);
 
-            if (dateSearch.Count == 0)
+            if (result == default)
             {
-                return (earlyOpen, normalOpen, normalClose, lateClose);
+                return new MarketHours(earlyOpen, normalOpen, normalClose, lateClose);
             }
             else
             {
                 // only checking for early hours for christmas eve and black friday and sometimes independence day
                 if (result.Hour != 0 && date.Hour < result.Hour)
                 {
-                    var holidayClose = new DateTime(result.Year, result.Month, result.Day, result.Hour, result.Minute, result.Second);
-                    return (earlyOpen, normalOpen, holidayClose, holidayClose);
+                    return new MarketHours(earlyOpen, normalOpen, result, result);
                 }
             }
         }
 
-        return (defaultDate, defaultDate, defaultDate, defaultDate);
+        return new MarketHours(defaultDate, defaultDate, defaultDate, defaultDate);
     }
 
-    /// <summary>
-    /// Finds out if today is a week day
-    /// </summary>
-    /// <param name="date"></param>
-    /// <returns></returns>
-    private static bool IsTodayAWeekDay(DateTime date = default)
-    {
-        return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
-    }
+    private static bool IsTodayAWeekDay(DateTime date = default) => date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
 
-    /// <summary>
-    /// Calculates the Easter Sunday date for the selected year
-    /// </summary>
-    /// <param name="year"></param>
-    /// <returns></returns>
-    private static DateTime EasterSunday(int year)
+    private static DateTime GoodFriday(int year)
     {
         int g = year % 19;
         int c = year / 100;
         int h = (c - c / 4 - ((8 * c + 13) / 25) + 19 * g + 15) % 30;
         int i = h - h / 28 * (1 - h / 28 * (29 / (h + 1)) * ((21 - g) / 11));
-
         int day = i - (year + year / 4 + i + 2 - c + c / 4) % 7 + 28;
         int month = 3;
+
         if (day > 31)
         {
             month++;
             day -= 31;
         }
 
-        return new DateTime(year, month, day, 0, 0, 0);
+        return new DateTime(year, month, day, 0, 0, 0).AddDays(-2);
+    }
+
+    private static DateTime MartinLutherKingDay(int year)
+    {
+        var mlk = (from day in Enumerable.Range(1, 31)
+                   where new DateTime(year, 1, day).DayOfWeek == DayOfWeek.Monday
+                   select day).ElementAt(2);
+
+        return new(year, 1, mlk, 0, 0, 0);
+    }
+
+    private static DateTime WashingtonDay(int year)
+    {
+        var leapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0 && year % 100 == 0);
+        var washington = (from day in Enumerable.Range(1, leapYear ? 29 : 28)
+                          where new DateTime(year, 2, day).DayOfWeek == DayOfWeek.Monday
+                          select day).ElementAt(2);
+
+        return new(year, 2, washington, 0, 0, 0);
+    }
+
+    private static DateTime MemorialDay(int year)
+    {
+        var memorialDay = new DateTime(year, 5, 31, 0, 0, 0);
+        var dayOfWeek = memorialDay.DayOfWeek;
+
+        while (dayOfWeek != DayOfWeek.Monday)
+        {
+            memorialDay = memorialDay.AddDays(-1);
+            dayOfWeek = memorialDay.DayOfWeek;
+        }
+
+        return memorialDay;
+    }
+
+    private static DateTime LaborDay(int year)
+    {
+        var laborDay = new DateTime(year, 9, 1, 0, 0, 0);
+        var dayOfWeek = laborDay.DayOfWeek;
+        
+        while (dayOfWeek != DayOfWeek.Monday)
+        {
+            laborDay = laborDay.AddDays(1);
+            dayOfWeek = laborDay.DayOfWeek;
+        }
+
+        return laborDay;
+    }
+
+    private static DateTime ThanksgivingDay(int year)
+    {
+        var thanksgiving = (from day in Enumerable.Range(1, 30)
+                            where new DateTime(year, 11, day).DayOfWeek == DayOfWeek.Thursday
+                            select day).ElementAt(3);
+
+        return new(year, 11, thanksgiving, 0, 0, 0);
     }
 
     /// <summary>
@@ -178,113 +234,59 @@ internal sealed class DateHelperExample
     /// </summary>
     /// <param name="year"></param>
     /// <returns></returns>
-    private static HashSet<DateTime> GetHolidays(int year)
+    private static IEnumerable<DateTime> GetHolidays(int year)
     {
-        HashSet<DateTime> holidays = new();
+        // new years
+        yield return AdjustForWeekendHoliday(new DateTime(year, 1, 1, 0, 0, 0));
 
-        // New Years
-        DateTime newYearsDate = AdjustForWeekendHoliday(new DateTime(year, 1, 1, 0, 0, 0));
-        holidays.Add(newYearsDate);
+        yield return MartinLutherKingDay(year);
 
-        // Martin Luther King Jr Day
-        var mlk = (from day in Enumerable.Range(1, 31)
-                   where new DateTime(year, 1, day).DayOfWeek == DayOfWeek.Monday
-                   select day).ElementAt(2);
-        DateTime mlkDay = new(year, 1, mlk, 0, 0, 0);
-        holidays.Add(mlkDay);
+        yield return WashingtonDay(year);
 
-        // Washington's Birthday
-        var leapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0 && year % 100 == 0);
-        var washington = (from day in Enumerable.Range(1, leapYear ? 29 : 28)
-                          where new DateTime(year, 2, day).DayOfWeek == DayOfWeek.Monday
-                          select day).ElementAt(2);
-        DateTime washingtonDay = new(year, 2, washington, 0, 0, 0);
-        holidays.Add(washingtonDay);
+        yield return GoodFriday(year);
 
-        // Good Friday
-        var goodFriday = EasterSunday(year).AddDays(-2);
-        holidays.Add(goodFriday);
+        yield return MemorialDay(year);
 
-        // Memorial Day -- last monday in May 
-        DateTime memorialDay = new(year, 5, 31, 0, 0, 0);
-        DayOfWeek dayOfWeek = memorialDay.DayOfWeek;
-        while (dayOfWeek != DayOfWeek.Monday)
-        {
-            memorialDay = memorialDay.AddDays(-1);
-            dayOfWeek = memorialDay.DayOfWeek;
-        }
-        holidays.Add(memorialDay);
-
-        // Independence Day
-        DateTime independenceDay = AdjustForWeekendHoliday(new DateTime(year, 7, 4, 0, 0, 0));
-        holidays.Add(independenceDay);
+        var independenceDay = AdjustForWeekendHoliday(new DateTime(year, 7, 4, 0, 0, 0));
+        yield return independenceDay;
 
         if (independenceDay.Day == 4 && independenceDay.DayOfWeek != DayOfWeek.Monday)
         {
             // if independence day falls on a weekday (and not monday) then we close early at 1pm for the day before
-            var xtraIndependenceDay = new DateTime(year, 7, 3, 13, 0, 0);
-            holidays.Add(xtraIndependenceDay);
+            yield return new DateTime(year, 7, 3, 13, 0, 0);
         }
 
-        // Labor Day -- 1st Monday in September 
-        DateTime laborDay = new(year, 9, 1, 0, 0, 0);
-        dayOfWeek = laborDay.DayOfWeek;
-        while (dayOfWeek != DayOfWeek.Monday)
-        {
-            laborDay = laborDay.AddDays(1);
-            dayOfWeek = laborDay.DayOfWeek;
-        }
-        holidays.Add(laborDay);
+        yield return LaborDay(year);
 
-        // Thanksgiving Day -- 4th Thursday in November 
-        var thanksgiving = (from day in Enumerable.Range(1, 30)
-                            where new DateTime(year, 11, day).DayOfWeek == DayOfWeek.Thursday
-                            select day).ElementAt(3);
-        DateTime thanksgivingDay = new(year, 11, thanksgiving, 0, 0, 0);
+        var thanksgiving = ThanksgivingDay(year);
+        yield return thanksgiving;
+
         // we close early at 1pm on black friday
-        var blackFriday = new DateTime(year, 11, thanksgiving + 1, 13, 0, 0);
-        holidays.Add(thanksgivingDay);
+        yield return new DateTime(year, 11, thanksgiving.Day + 1, 13, 0, 0);
 
-        // Christmas Day 
-        DateTime christmasDay = AdjustForWeekendHoliday(new DateTime(year, 12, 25, 0, 0, 0));
-        holidays.Add(christmasDay);
+        var christmasDay = AdjustForWeekendHoliday(new DateTime(year, 12, 25, 0, 0, 0));
+        yield return christmasDay;
 
-        // christmas eve
         if (christmasDay.Day == 25 && christmasDay.DayOfWeek != DayOfWeek.Monday)
         {
             // if christmas falls on a week day (and not on monday) then we close early at 1pm on the day before
-            var christmasEve = new DateTime(year, 12, 24, 13, 0, 0);
-            holidays.Add(christmasEve);
+            yield return new DateTime(year, 12, 24, 13, 0, 0);
         }
 
-        // Next year's new years check
-        DateTime nextYearNewYearsDate = AdjustForWeekendHoliday(new DateTime(year + 1, 1, 1, 0, 0, 0));
+        var nextYearNewYearsDate = AdjustForWeekendHoliday(new DateTime(year + 1, 1, 1, 0, 0, 0));
         if (nextYearNewYearsDate.Year == year)
         {
-            holidays.Add(nextYearNewYearsDate);
+            yield return nextYearNewYearsDate;
         }
-
-        return holidays;
     }
 
-    /// <summary>
-    /// Adjusts date when market is closed because holiday falls on the weekend
-    /// </summary>
-    /// <param name="holiday"></param>
-    /// <returns></returns>
     private static DateTime AdjustForWeekendHoliday(DateTime holiday)
     {
-        if (holiday.DayOfWeek == DayOfWeek.Saturday)
+        return holiday.DayOfWeek switch
         {
-            return holiday.AddDays(-1);
-        }
-        else if (holiday.DayOfWeek == DayOfWeek.Sunday)
-        {
-            return holiday.AddDays(1);
-        }
-        else
-        {
-            return holiday;
-        }
+            DayOfWeek.Saturday => holiday.AddDays(-1),
+            DayOfWeek.Sunday => holiday.AddDays(1),
+            _ => holiday,
+        };
     }
 }
