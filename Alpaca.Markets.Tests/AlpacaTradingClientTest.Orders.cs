@@ -199,53 +199,9 @@ public sealed partial class AlpacaTradingClientTest
     }
 
     private static JToken createOrder() =>
-        new JObject(
-            new JProperty("status", OrderStatus.PartiallyFilled),
-            new JProperty("asset_class", AssetClass.UsEquity),
-            new JProperty("time_in_force", TimeInForce.Day),
-            new JProperty("order_class", OrderClass.Simple),
-            new JProperty("asset_id", Guid.NewGuid()),
-            new JProperty("type", OrderType.Market),
-            new JProperty("side", OrderSide.Sell),
-            new JProperty("filled_qty", Quantity),
-            new JProperty("id", Guid.NewGuid()),
-            new JProperty("qty", Quantity),
-            new JProperty("symbol", Stock),
-            new JProperty("legs"));
+        Stock.CreateMarketOrder();
 
     private static void validateOrder(
-        IOrder order)
-    {
-        Assert.NotNull(order);
-
-        Assert.NotEqual(Guid.Empty, order.AssetId);
-        Assert.NotEqual(Guid.Empty, order.OrderId);
-        Assert.Equal(Stock, order.Symbol);
-
-        Assert.Equal(IntegerQuantity, order.IntegerFilledQuantity);
-        Assert.Equal(IntegerQuantity, order.IntegerQuantity);
-        Assert.True(order.GetOrderQuantity().IsInShares);
-
-        Assert.Null(order.TrailOffsetInPercent);
-        Assert.Null(order.TrailOffsetInDollars);
-        Assert.Null(order.ReplacedByOrderId);
-        Assert.Null(order.AverageFillPrice);
-        Assert.Null(order.ReplacesOrderId);
-        Assert.Null(order.ClientOrderId);
-        Assert.Null(order.HighWaterMark);
-        Assert.Null(order.LimitPrice);
-        Assert.Null(order.StopPrice);
-        Assert.Null(order.Notional);
-
-        Assert.Null(order.SubmittedAtUtc);
-        Assert.Null(order.CancelledAtUtc);
-        Assert.Null(order.ReplacedAtUtc);
-        Assert.Null(order.CreatedAtUtc);
-        Assert.Null(order.UpdatedAtUtc);
-        Assert.Null(order.ExpiredAtUtc);
-        Assert.Null(order.FilledAtUtc);
-        Assert.Null(order.FailedAtUtc);
-
-        Assert.Empty(order.Legs);
-    }
+        IOrder order) =>
+        order.Validate(Stock);
 }

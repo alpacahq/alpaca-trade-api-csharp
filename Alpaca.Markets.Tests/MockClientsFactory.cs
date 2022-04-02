@@ -11,15 +11,19 @@ public sealed class MockClientsFactoryFixture
 
     private readonly SecurityKey _oauthKey = new OAuthKey(Guid.NewGuid().ToString("N"));
 
-    public MockClient<AlpacaDataClientConfiguration, IAlpacaDataClient> GetAlpacaDataClientMock(
+    public MockWsClient<AlpacaStreamingClientConfiguration, IAlpacaStreamingClient> GetAlpacaStreamingClientMock(
+        AlpacaStreamingClientConfiguration? configuration = null) =>
+        new (configuration ?? Environments.Live.GetAlpacaStreamingClientConfiguration(_secretKey), _ => _.GetClient());
+
+    public MockHttpClient<AlpacaDataClientConfiguration, IAlpacaDataClient> GetAlpacaDataClientMock(
         AlpacaDataClientConfiguration? configuration = null) =>
         new (configuration ?? Environments.Live.GetAlpacaDataClientConfiguration(_secretKey), _ => _.GetClient());
 
-    public MockClient<AlpacaTradingClientConfiguration, IAlpacaTradingClient> GetAlpacaTradingClientMock(
+    public MockHttpClient<AlpacaTradingClientConfiguration, IAlpacaTradingClient> GetAlpacaTradingClientMock(
         AlpacaTradingClientConfiguration? configuration = null) =>
         new (configuration ?? Environments.Live.GetAlpacaTradingClientConfiguration(_oauthKey), _ => _.GetClient());
 
-    public MockClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> GetAlpacaCryptoDataClientMock(
+    public MockHttpClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> GetAlpacaCryptoDataClientMock(
         AlpacaCryptoDataClientConfiguration? configuration = null) =>
         new (configuration ?? Environments.Live.GetAlpacaCryptoDataClientConfiguration(_secretKey),_ => _.GetClient());
 }

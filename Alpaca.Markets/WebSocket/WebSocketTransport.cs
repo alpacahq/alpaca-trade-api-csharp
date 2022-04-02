@@ -47,9 +47,9 @@ internal sealed class WebSocketsTransport : IDisposable
 
     private Task _running = Task.CompletedTask;
 
-    private SpinLock _sendLock = new(false);
+    private SpinLock _sendLock = new (false);
 
-    private ClientWebSocket? _webSocket;
+    private readonly Func<IWebSocket> _webSocketFactory;
 
     private readonly Uri _resolvedUrl;
 
@@ -59,9 +59,15 @@ internal sealed class WebSocketsTransport : IDisposable
 
     private IDuplexPipe? _transport;
 
+    private IWebSocket? _webSocket;
+
     public WebSocketsTransport(
-        Uri url) =>
-        _resolvedUrl = url.EnsureNotNull();
+        Func<IWebSocket> webSocketFactory,
+        Uri url)
+    {
+        _webSocketFactory = webSocketFactory;
+        _resolvedUrl = url;
+    }
 
     public event Action? Opened;
 
@@ -78,9 +84,7 @@ internal sealed class WebSocketsTransport : IDisposable
     {
         try
         {
-#pragma warning disable PC001 // API not supported on all platforms
-            _webSocket = new ClientWebSocket();
-#pragma warning restore PC001 // API not supported on all platforms
+            _webSocket = _webSocketFactory();
 
             var options = new PipeOptions(
                 writerScheduler: PipeScheduler.Inline,
@@ -170,7 +174,7 @@ internal sealed class WebSocketsTransport : IDisposable
     public void Dispose() => _webSocket?.Dispose();
 
     private async Task processSocketAsync(
-        WebSocket socket,
+        IWebSocket socket,
         IDuplexPipe application,
         IDuplexPipe transport)
     {
@@ -234,7 +238,7 @@ internal sealed class WebSocketsTransport : IDisposable
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
     private async Task startReceiving(
-        WebSocket socket,
+        IWebSocket socket,
         IDuplexPipe application,
         IDuplexPipe transport)
     {
@@ -267,30 +271,20 @@ internal sealed class WebSocketsTransport : IDisposable
     }
 
     private async Task<Boolean> startReceivingImpl(
-        WebSocket socket,
+        IWebSocket socket,
         IDuplexPipe application,
         IDuplexPipe transport)
     {
         var memory = application.Output.GetMemory();
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
-        // Because we checked the CloseStatus from the 0 byte read above, we don't need to check again after reading
-        var receiveResult = await socket.ReceiveAsync(memory, CancellationToken.None)
-            .ConfigureAwait(false);
-#elif NETSTANDARD2_0 || NETFRAMEWORK
-        var _ = System.Runtime.InteropServices.MemoryMarshal.TryGetArray<Byte>(memory, out var arraySegment);
+        var (webSocketMessageType, endOfMessage, count) =
+            await socket.ReceiveAsync(memory).ConfigureAwait(false);
 
-        // Exceptions are handled above where the send and receive tasks are being run.
-        var receiveResult = await socket.ReceiveAsync(arraySegment, CancellationToken.None).ConfigureAwait(false);
-#else
-#error TFMs need to be updated
-#endif
-        // Need to check again for netstandard2.1 because a close can happen between a 0-byte read and the actual read
-        if (isReceiveResultClose(receiveResult.MessageType, socket.CloseStatus))
+        if (isReceiveResultClose(webSocketMessageType, socket.CloseStatus))
         {
             return false;
         }
 
-        application.Output.Advance(receiveResult.Count);
+        application.Output.Advance(count);
 
         var flushResult = await application.Output.FlushAsync().ConfigureAwait(false);
 
@@ -301,7 +295,7 @@ internal sealed class WebSocketsTransport : IDisposable
             return false;
         }
 
-        if (!receiveResult.EndOfMessage)
+        if (!endOfMessage)
         {
             return true;
         }
@@ -309,17 +303,17 @@ internal sealed class WebSocketsTransport : IDisposable
         var readResult = await transport.Input.ReadAsync().ConfigureAwait(false);
 
         // ReSharper disable once ConvertIfStatementToSwitchStatement
-        if (receiveResult.MessageType == WebSocketMessageType.Binary)
+        if (webSocketMessageType == WebSocketMessageType.Binary)
         {
             DataReceived?.Invoke(readResult.Buffer.ToArray());
         }
-        else if (receiveResult.MessageType == WebSocketMessageType.Text)
+        else if (webSocketMessageType == WebSocketMessageType.Text)
         {
             MessageReceived?.Invoke(Encoding.UTF8.GetString(readResult.Buffer.ToArray()));
         }
         else
         {
-            Trace.WriteLine($"This WS message type will be ignored: {receiveResult.MessageType}");
+            Trace.WriteLine($"This WS message type will be ignored: {webSocketMessageType}");
         }
 
         transport.Input.AdvanceTo(readResult.Buffer.End);
@@ -347,7 +341,7 @@ internal sealed class WebSocketsTransport : IDisposable
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
     private async Task startSending(
-        WebSocket socket,
+        IWebSocket socket,
         IDuplexPipe application)
     {
         Exception? error = null;
@@ -371,7 +365,7 @@ internal sealed class WebSocketsTransport : IDisposable
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
     private async Task<Boolean> startSendingImpl(
-        WebSocket socket,
+        IWebSocket socket,
         IDuplexPipe application)
     {
         var result = await application.Input.ReadAsync().ConfigureAwait(false);
@@ -394,8 +388,7 @@ internal sealed class WebSocketsTransport : IDisposable
             {
                 if (webSocketCanSend(socket))
                 {
-                    await socket.SendAsync(buffer, WebSocketMessageType.Binary)
-                        .ConfigureAwait(false);
+                    await socket.SendAsync(buffer).ConfigureAwait(false);
                 }
                 else
                 {
@@ -423,7 +416,7 @@ internal sealed class WebSocketsTransport : IDisposable
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
     private static async Task closeWebSocketAsync(
-        WebSocket socket,
+        IWebSocket socket,
         IDuplexPipe application,
         Exception? error)
     {
@@ -434,8 +427,7 @@ internal sealed class WebSocketsTransport : IDisposable
                 // We're done sending, send the close frame to the client if the websocket is still open
                 await socket.CloseOutputAsync(error is not null
                             ? WebSocketCloseStatus.InternalServerError
-                            : WebSocketCloseStatus.NormalClosure,
-                        "", CancellationToken.None)
+                            : WebSocketCloseStatus.NormalClosure)
                     .ConfigureAwait(false);
             }
             catch (Exception exception)
@@ -448,7 +440,7 @@ internal sealed class WebSocketsTransport : IDisposable
     }
 
     private static Boolean webSocketCanSend(
-        WebSocket ws) =>
+        IWebSocket ws) =>
         ws.State is not (
             WebSocketState.Aborted or
             WebSocketState.Closed or

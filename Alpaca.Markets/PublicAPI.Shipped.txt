@@ -703,6 +703,14 @@ Alpaca.Markets.IWatchList.CreatedUtc.get -> System.DateTime
 Alpaca.Markets.IWatchList.Name.get -> string!
 Alpaca.Markets.IWatchList.UpdatedUtc.get -> System.DateTime?
 Alpaca.Markets.IWatchList.WatchListId.get -> System.Guid
+Alpaca.Markets.IWebSocket
+Alpaca.Markets.IWebSocket.Abort() -> void
+Alpaca.Markets.IWebSocket.CloseOutputAsync(System.Net.WebSockets.WebSocketCloseStatus closeStatus) -> System.Threading.Tasks.Task!
+Alpaca.Markets.IWebSocket.CloseStatus.get -> System.Net.WebSockets.WebSocketCloseStatus?
+Alpaca.Markets.IWebSocket.ConnectAsync(System.Uri! uri, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
+Alpaca.Markets.IWebSocket.ReceiveAsync(System.Memory<byte> buffer) -> System.Threading.Tasks.ValueTask<Alpaca.Markets.ReceiveResult>
+Alpaca.Markets.IWebSocket.SendAsync(System.Buffers.ReadOnlySequence<byte> buffer) -> System.Threading.Tasks.ValueTask
+Alpaca.Markets.IWebSocket.State.get -> System.Net.WebSockets.WebSocketState
 Alpaca.Markets.LatestBestBidOfferListRequest
 Alpaca.Markets.LatestBestBidOfferListRequest.Exchanges.get -> System.Collections.Generic.IReadOnlyCollection<Alpaca.Markets.CryptoExchange>!
 Alpaca.Markets.LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
@@ -888,6 +896,15 @@ Alpaca.Markets.PositionQuantity.IsInPercents.get -> bool
 Alpaca.Markets.PositionQuantity.IsInShares.get -> bool
 Alpaca.Markets.PositionQuantity.PositionQuantity() -> void
 Alpaca.Markets.PositionQuantity.Value.get -> decimal
+Alpaca.Markets.ReceiveResult
+Alpaca.Markets.ReceiveResult.Count.get -> int
+Alpaca.Markets.ReceiveResult.Count.init -> void
+Alpaca.Markets.ReceiveResult.EndOfMessage.get -> bool
+Alpaca.Markets.ReceiveResult.EndOfMessage.init -> void
+Alpaca.Markets.ReceiveResult.MessageType.get -> System.Net.WebSockets.WebSocketMessageType
+Alpaca.Markets.ReceiveResult.MessageType.init -> void
+Alpaca.Markets.ReceiveResult.ReceiveResult() -> void
+Alpaca.Markets.ReceiveResult.ReceiveResult(System.Net.WebSockets.WebSocketMessageType MessageType, bool EndOfMessage, int Count) -> void
 Alpaca.Markets.RequestValidationException
 Alpaca.Markets.RequestValidationException.PropertyName.get -> string!
 Alpaca.Markets.RequestValidationException.RequestValidationException() -> void
@@ -937,6 +954,8 @@ Alpaca.Markets.StreamingClientConfiguration.ApiEndpoint.set -> void
 Alpaca.Markets.StreamingClientConfiguration.SecurityId.get -> Alpaca.Markets.SecurityKey!
 Alpaca.Markets.StreamingClientConfiguration.SecurityId.set -> void
 Alpaca.Markets.StreamingClientConfiguration.StreamingClientConfiguration(System.Uri! apiEndpoint) -> void
+Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory.get -> System.Func<Alpaca.Markets.IWebSocket!>?
+Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory.set -> void
 Alpaca.Markets.TakeProfitOrder
 Alpaca.Markets.TakeProfitOrder.LimitPrice.get -> decimal
 Alpaca.Markets.TakeProfitOrder.StopLoss(decimal stopLossStopPrice) -> Alpaca.Markets.BracketOrder!

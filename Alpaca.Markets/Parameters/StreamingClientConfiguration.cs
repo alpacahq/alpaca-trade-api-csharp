@@ -25,6 +25,11 @@ public abstract class StreamingClientConfiguration
     /// </summary>
     public SecurityKey SecurityId { get; set; }
 
+    /// <summary>
+    /// Gets or sets factory for obtaining web socket client.
+    /// </summary>
+    public Func<IWebSocket>? WebSocketFactory { get; [UsedImplicitly] set; }
+
     internal virtual Uri GetApiEndpoint() => ApiEndpoint;
 
     internal void EnsureIsValid()

@@ -1,12 +1,12 @@
 namespace Alpaca.Markets.Tests;
 
-public sealed class MockClient<TConfiguration, TClient> : IMock, IDisposable
+public sealed class MockHttpClient<TConfiguration, TClient> : IMock, IDisposable
     where TConfiguration : AlpacaClientConfigurationBase
     where TClient : class, IDisposable
 {
     private readonly MockHttpMessageHandler _handler = new ();
 
-    public MockClient(
+    public MockHttpClient(
         TConfiguration configuration,
         Func<TConfiguration, TClient> factory)
     {

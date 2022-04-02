@@ -30,6 +30,7 @@ internal sealed class JsonTradeUpdate : ITradeUpdate
     [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
     public DateTime? TimestampUtc { get; set; }
 
+    [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "order", Required = Required.Always)]
     public JsonOrder JsonOrder { get; set; } = new ();

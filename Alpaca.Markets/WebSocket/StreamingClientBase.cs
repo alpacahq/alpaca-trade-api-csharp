@@ -7,6 +7,10 @@ namespace Alpaca.Markets;
 internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
     where TConfiguration : StreamingClientConfiguration
 {
+    // ReSharper disable once StaticMemberInGenericType
+    private static readonly Func<IWebSocket> _webSocketFactory =
+        () => new ClientWebSocketWrapper();
+
     private readonly SynchronizationQueue _queue = new();
 
     internal readonly TConfiguration Configuration;
@@ -19,7 +23,9 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
         Configuration = configuration.EnsureNotNull();
         Configuration.EnsureIsValid();
 
-        _webSocket = new WebSocketsTransport(Configuration.GetApiEndpoint());
+        _webSocket = new WebSocketsTransport(
+            Configuration.WebSocketFactory ?? _webSocketFactory,
+            Configuration.GetApiEndpoint());
 
         _webSocket.Opened += OnOpened;
         _webSocket.Closed += OnClosed;

@@ -80,13 +80,6 @@ internal static class Validation
             ? new RequestValidationException(OrderQuantityShouldBePositiveMessage, propertyName)
             : null;
 
-    public static RequestValidationException? TryValidateQuantity(
-        this Int64 quantity,
-        [CallerArgumentExpression("quantity")] String propertyName = "") =>
-        quantity <= 0M
-            ? new RequestValidationException(OrderQuantityShouldBePositiveMessage, propertyName)
-            : null;
-
     public static RequestValidationException? TryValidatePageSize(
         this Pagination pagination,
         UInt32 maxPageSize,

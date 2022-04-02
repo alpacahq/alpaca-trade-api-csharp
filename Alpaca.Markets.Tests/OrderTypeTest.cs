@@ -126,8 +126,8 @@ public  sealed class OrderTypeTest
     }
 
     private static void assertOrdersAreEqual(
-        MarketOrder lhs,
-        MarketOrder rhs)
+        OrderBase lhs,
+        OrderBase rhs)
     {
         assertOrderBasePropertiesAreEqual(lhs, rhs);
 
