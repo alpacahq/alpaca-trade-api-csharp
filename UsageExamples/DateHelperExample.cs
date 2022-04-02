@@ -1,6 +1,5 @@
 using Alpaca.Markets;
 using System.Diagnostics;
-using Alpaca.Markets.Extensions;
 
 namespace NewDatesTest;
 
@@ -49,11 +48,6 @@ public class DateHelper
         // initialize secret key and alpaca clients
         var key = new SecretKey(API_KEY, API_SECRET);
         using var tradingClient = Environments.Paper.GetAlpacaTradingClient(key);
-        using var cryptoStreamingClient = Environments.Paper.GetAlpacaCryptoStreamingClient(key).WithReconnect(new ReconnectionParameters() {
-            MaxReconnectionAttempts = 10000,
-            MinReconnectionDelay = TimeSpan.FromSeconds(1),
-            MaxReconnectionDelay = TimeSpan.FromSeconds(20)
-        });
 
         // get calendar for current day
         var calendars = await tradingClient.ListIntervalCalendarAsync(CalendarRequest.GetForSingleDay(DateOnly.FromDateTime(date))).ConfigureAwait(false);
