@@ -1,7 +1,7 @@
 using Alpaca.Markets;
 using System.Diagnostics;
 
-namespace NewDatesTest;
+namespace UsageExamples;
 
 public enum MarketStatus
 {
@@ -11,7 +11,7 @@ public enum MarketStatus
     PostMarket
 }
 
-public class DateHelper
+internal sealed class DateHelper
 {
     private const string API_KEY = "REPLACEME";
     private const string API_SECRET = "REPLACEME";
