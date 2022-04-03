@@ -397,7 +397,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         try
         {
             var channel = token["T"]?.ToString() ?? String.Empty;
-            var symbols = token["S"]?.Values<String>() ?? Enumerable.Empty<String>();
+            var symbols = token["symbols"]?.Values<String>() ?? Enumerable.Empty<String>();
 
             foreach (var symbol in symbols.Where(_ => !String.IsNullOrEmpty(_)))
             {
@@ -486,6 +486,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
             ? SendAsJsonStringAsync(new JsonSubscriptionUpdate
             {
                 Action = action,
+                News = getSymbols(streamsByChannels, NewsChannel),
                 Trades = getSymbols(streamsByChannels, TradesChannel),
                 Quotes = getSymbols(streamsByChannels, QuotesChannel),
                 Statuses = getSymbols(streamsByChannels, StatusesChannel),
