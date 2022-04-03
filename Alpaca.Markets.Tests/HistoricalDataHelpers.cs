@@ -35,19 +35,19 @@ internal static class HistoricalDataHelpers
 
     internal static void AddSingleBarsPageExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
-        mock.addSinglePageExpectation(pathPrefix, symbol, Bars, createBar);
+        mock.addSinglePageExpectation(pathPrefix, symbol, Bars, CreateBar);
 
     internal static void AddMultiBarsPageExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addMultiPageExpectation(pathPrefix, symbols, Bars, createBar);
+        mock.addMultiPageExpectation(pathPrefix, symbols, Bars, CreateBar);
 
     internal static void AddLatestBarExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
-        mock.addLatestExpectation(pathPrefix, symbol, Bars, createBar);
+        mock.addLatestExpectation(pathPrefix, symbol, Bars, CreateBar);
 
     internal static void AddLatestBarsExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addLatestExpectation(pathPrefix, symbols, Bars, createBar);
+        mock.addLatestExpectation(pathPrefix, symbols, Bars, CreateBar);
 
     internal static void AddSingleTradesPageExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
@@ -226,7 +226,7 @@ internal static class HistoricalDataHelpers
     private static JArray createItemsList(
         Func<JObject> createItem) => new (createItem(), createItem());
 
-    private static JObject createBar() =>
+    public static JObject CreateBar() =>
         new (
             new JProperty("t", DateTime.UtcNow),
             new JProperty("n", TradesNumber),
@@ -268,8 +268,8 @@ internal static class HistoricalDataHelpers
         new (
             new JProperty("latestQuote", createQuote()),
             new JProperty("latestTrade", createTrade()),
-            new JProperty("prevDailyBar", createBar()),
-            new JProperty("minuteBar", createBar()),
-            new JProperty("dailyBar", createBar()),
+            new JProperty("prevDailyBar", CreateBar()),
+            new JProperty("minuteBar", CreateBar()),
+            new JProperty("dailyBar", CreateBar()),
             new JProperty("symbol", symbol));
 }

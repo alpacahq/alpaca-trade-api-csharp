@@ -51,23 +51,7 @@ public sealed partial class AlpacaDataClientTest
         using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddGet("/v1beta1/news", new JObject(
-            new JProperty("news", new JArray(
-                new JObject(
-                    new JProperty("images", new JArray(
-                        new JObject(
-                            new JProperty("url", new Uri("https://www.google.com")),
-                            new JProperty("size", "large")))),
-                    new JProperty("headline", Guid.NewGuid().ToString("D")),
-                    new JProperty("content", Guid.NewGuid().ToString("D")),
-                    new JProperty("summary", Guid.NewGuid().ToString("D")),
-                    new JProperty("source", Guid.NewGuid().ToString("D")),
-                    new JProperty("author", Guid.NewGuid().ToString("D")),
-                    new JProperty("url", new Uri("https://www.google.com")),
-                    new JProperty("id", Random.Shared.NextInt64()),
-                    new JProperty("created_at", DateTime.UtcNow),
-                    new JProperty("updated_at", DateTime.UtcNow),
-                    new JProperty("symbols", new JArray(Stock))
-                    )))));
+            new JProperty("news", new JArray(Stock.CreateNewsArticle()))));
 
         var articles = await mock.Client.ListNewsArticlesAsync(
             new NewsArticlesRequest
@@ -81,20 +65,7 @@ public sealed partial class AlpacaDataClientTest
         Assert.Null(articles.NextPageToken);
 
         var article = articles.Items.Single();
-        Assert.NotEqual(0L, article.Id);
-
-        Assert.Equal(Stock, article.Symbols.Single());
-
-        Assert.NotNull(article.ArticleUrl);
-        Assert.NotNull(article.Headline);
-        Assert.NotNull(article.Content);
-        Assert.NotNull(article.Summary);
-        Assert.NotNull(article.Author);
-        Assert.NotNull(article.Source);
-
-        Assert.NotNull(article.LargeImageUrl);
-        Assert.Null(article.SmallImageUrl);
-        Assert.Null(article.ThumbImageUrl);
+        article.Validate(Stock);
     }
 
     private static Interval<DateTime> getTimeInterval()

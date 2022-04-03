@@ -3,7 +3,7 @@
 namespace Alpaca.Markets.Tests;
 
 [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Global")]
-internal static class OrderDataHelpers
+internal static class MessageDataHelpers
 {
     private const Int64 IntegerQuantity = 123L;
 
@@ -24,7 +24,42 @@ internal static class OrderDataHelpers
             new JProperty("symbol", symbol),
             new JProperty("qty", Quantity),
             new JProperty("legs"));
-    
+
+    public static JObject CreateNewsArticle(
+        this String symbol) =>
+        new (
+            new JProperty("images", new JArray(
+                new JObject(
+                    new JProperty("url", new Uri("https://www.google.com")),
+                    new JProperty("size", "large")))),
+            new JProperty("headline", Guid.NewGuid().ToString("D")),
+            new JProperty("content", Guid.NewGuid().ToString("D")),
+            new JProperty("summary", Guid.NewGuid().ToString("D")),
+            new JProperty("source", Guid.NewGuid().ToString("D")),
+            new JProperty("author", Guid.NewGuid().ToString("D")),
+            new JProperty("url", new Uri("https://www.google.com")),
+            new JProperty("id", Random.Shared.NextInt64()),
+            new JProperty("created_at", DateTime.UtcNow),
+            new JProperty("updated_at", DateTime.UtcNow),
+            new JProperty("symbols", new JArray(symbol)));
+
+    public static JObject CreateStreamingNewsArticle(
+        this String symbol)
+    {
+        var article = CreateNewsArticle(symbol);
+        article.Add("T", "n");
+        return article;
+    }
+
+    public static JObject CreateStreamingBar(
+        this String symbol)
+    {
+        var article = HistoricalDataHelpers.CreateBar();
+        article.Add("T", "b");
+        article.Add("S", symbol);
+        return article;
+    }
+
     public static void Validate(
         this IOrder order,
         String symbol)
@@ -60,5 +95,26 @@ internal static class OrderDataHelpers
         Assert.Null(order.FailedAtUtc);
 
         Assert.Empty(order.Legs);
+    }
+
+    public static void Validate(
+        this INewsArticle article,
+        String symbol)
+    {
+        Assert.NotNull(article);
+        Assert.NotEqual(0L, article.Id);
+
+        Assert.Equal(symbol, article.Symbols.Single());
+
+        Assert.NotNull(article.ArticleUrl);
+        Assert.NotNull(article.Headline);
+        Assert.NotNull(article.Content);
+        Assert.NotNull(article.Summary);
+        Assert.NotNull(article.Author);
+        Assert.NotNull(article.Source);
+
+        Assert.NotNull(article.LargeImageUrl);
+        Assert.Null(article.SmallImageUrl);
+        Assert.Null(article.ThumbImageUrl);
     }
 }

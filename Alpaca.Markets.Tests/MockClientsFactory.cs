@@ -11,10 +11,6 @@ public sealed class MockClientsFactoryFixture
 
     private readonly SecurityKey _oauthKey = new OAuthKey(Guid.NewGuid().ToString("N"));
 
-    public MockWsClient<AlpacaStreamingClientConfiguration, IAlpacaStreamingClient> GetAlpacaStreamingClientMock(
-        AlpacaStreamingClientConfiguration? configuration = null) =>
-        new (configuration ?? Environments.Live.GetAlpacaStreamingClientConfiguration(_secretKey), _ => _.GetClient());
-
     public MockHttpClient<AlpacaDataClientConfiguration, IAlpacaDataClient> GetAlpacaDataClientMock(
         AlpacaDataClientConfiguration? configuration = null) =>
         new (configuration ?? Environments.Live.GetAlpacaDataClientConfiguration(_secretKey), _ => _.GetClient());
@@ -26,6 +22,18 @@ public sealed class MockClientsFactoryFixture
     public MockHttpClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> GetAlpacaCryptoDataClientMock(
         AlpacaCryptoDataClientConfiguration? configuration = null) =>
         new (configuration ?? Environments.Live.GetAlpacaCryptoDataClientConfiguration(_secretKey),_ => _.GetClient());
+
+    public MockWsClient<AlpacaStreamingClientConfiguration, IAlpacaStreamingClient> GetAlpacaStreamingClientMock(
+        AlpacaStreamingClientConfiguration? configuration = null) =>
+        new (configuration ?? Environments.Live.GetAlpacaStreamingClientConfiguration(_oauthKey), _ => _.GetClient());
+
+    public MockWsClient<AlpacaNewsStreamingClientConfiguration, IAlpacaNewsStreamingClient> GetAlpacaNewsStreamingClientMock(
+        AlpacaNewsStreamingClientConfiguration? configuration = null) =>
+        new (configuration ?? Environments.Live.GetAlpacaNewsStreamingClientConfiguration(_secretKey), _ => _.GetClient());
+
+    public MockWsClient<AlpacaCryptoStreamingClientConfiguration, IAlpacaCryptoStreamingClient> GetAlpacaCryptoStreamingClientMock(
+        AlpacaCryptoStreamingClientConfiguration? configuration = null) =>
+        new (configuration ?? Environments.Live.GetAlpacaCryptoStreamingClientConfiguration(_secretKey), _ => _.GetClient());
 }
 
 [CollectionDefinition("MockEnvironment")]

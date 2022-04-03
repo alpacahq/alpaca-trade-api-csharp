@@ -1,6 +1,6 @@
 ﻿namespace Alpaca.Markets.Extensions;
 
-public partial class AlpacaTradingClientExtensions
+public static partial class AlpacaTradingClientExtensions
 {
     private static SpinLock _lock = new (false);
 

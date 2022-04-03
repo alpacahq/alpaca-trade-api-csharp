@@ -35,7 +35,7 @@ public sealed class MockWsClient<TConfiguration, TClient> : IDisposable
     public TClient Client { get; }
 
     public void AddResponse(
-        JObject response)
+        JToken response)
     {
         var request = Guid.NewGuid();
         _requests.Enqueue(request);
@@ -47,8 +47,14 @@ public sealed class MockWsClient<TConfiguration, TClient> : IDisposable
     }
 
     public ValueTask AddMessageAsync(
-        JObject message) =>
+        JToken message) =>
         _responses.Writer.WriteAsync(message.ToString());
+
+    public async ValueTask AddAuthentication()
+    {
+        await AddMessageAsync(getConnectionMessage("connected"));
+        AddResponse(getConnectionMessage("authenticated"));
+    }
 
     public void Dispose()
     {
@@ -66,4 +72,10 @@ public sealed class MockWsClient<TConfiguration, TClient> : IDisposable
 
         return new ReceiveResult(WebSocketMessageType.Binary, true, encoded.Length);
     }
+
+    private static JArray getConnectionMessage(
+        String message) =>
+        new(new JObject(
+            new JProperty("T", "success"),
+            new JProperty("msg", message)));
 }

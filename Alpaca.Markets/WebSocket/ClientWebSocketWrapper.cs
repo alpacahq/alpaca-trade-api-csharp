@@ -27,6 +27,7 @@ internal sealed class ClientWebSocketWrapper : IWebSocket
         return _client.ReceiveAsync(arraySegment, CancellationToken.None).AsResult();
 #else
 #error TFMs need to be updated
+        throw new NotSupportedException();
 #endif
     }
 

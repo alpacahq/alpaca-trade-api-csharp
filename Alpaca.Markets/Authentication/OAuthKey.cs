@@ -28,6 +28,7 @@ public sealed class OAuthKey : SecurityKey
             OAuthToken = Value
         };
 
+    [ExcludeFromCodeCoverage]
     internal override JsonAuthentication GetAuthentication() =>
         throw new InvalidOperationException();
 }
