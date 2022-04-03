@@ -24,6 +24,7 @@ internal sealed class JsonCorrection : JsonRealTimeBase, ICorrection, ITrade
     [JsonProperty(PropertyName = "os", Required = Required.Always)]
     public Decimal Size { get; set; }
 
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "oc", Required = Required.Default)]
     public List<String> ConditionsList { get; } = new();
 
@@ -60,6 +61,7 @@ internal sealed class JsonCorrection : JsonRealTimeBase, ICorrection, ITrade
         CorrectedTrade = new JsonRealTimeTrade
         {
             Tape = Tape,
+            Symbol = Symbol,
             Channel = Channel,
             Exchange = Exchange,
             TimestampUtc = TimestampUtc,

@@ -9,19 +9,19 @@ namespace Alpaca.Markets;
 internal sealed class JsonTradingStatus : JsonRealTimeBase, IStatus
 {
     [JsonProperty(PropertyName = "sc", Required = Required.Default)]
-    public String StatusCode { get; } = String.Empty;
+    public String StatusCode { get; set; } = String.Empty;
 
     [JsonProperty(PropertyName = "sm", Required = Required.Default)]
-    public String StatusMessage { get; } = String.Empty;
+    public String StatusMessage { get; set; } = String.Empty;
 
     [JsonProperty(PropertyName = "rc", Required = Required.Default)]
-    public String ReasonCode { get; } = String.Empty;
+    public String ReasonCode { get; set; } = String.Empty;
 
     [JsonProperty(PropertyName = "rm", Required = Required.Default)]
-    public String ReasonMessage { get; } = String.Empty;
+    public String ReasonMessage { get; set; } = String.Empty;
 
     [JsonProperty(PropertyName = "z", Required = Required.Default)]
-    public String Tape { get; } = String.Empty;
+    public String Tape { get; set; } = String.Empty;
 
     [ExcludeFromCodeCoverage]
     public override String ToString() =>
