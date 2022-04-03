@@ -19,16 +19,16 @@ namespace Alpaca.Markets
         public DateTime TimestampUtc { get; set; }
 
         [JsonProperty(PropertyName = "u", Required = Required.Default)]
-        public Decimal LimitUpPrice { get; }
+        public Decimal LimitUpPrice { get; set; }
 
         [JsonProperty(PropertyName = "d", Required = Required.Default)]
-        public Decimal LimitDownPrice { get; }
+        public Decimal LimitDownPrice { get; set; }
 
         [JsonProperty(PropertyName = "i", Required = Required.Default)]
-        public String Indicator { get; } = String.Empty;
+        public String Indicator { get; set; } = String.Empty;
 
         [JsonProperty(PropertyName = "z", Required = Required.Default)]
-        public String Tape { get; } = String.Empty;
+        public String Tape { get; set; } = String.Empty;
 
         [JsonIgnore] 
         public DateTime TimeUtc => TimestampUtc;
