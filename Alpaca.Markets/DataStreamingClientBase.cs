@@ -368,7 +368,7 @@ namespace Alpaca.Markets
             try
             {
                 var channel = token["T"]?.ToString() ?? String.Empty;
-                var symbols = token["S"]?.Values<String>() ?? Enumerable.Empty<String>();
+                var symbols = token["symbols"]?.Values<String>() ?? Enumerable.Empty<String>();
 
                 foreach (var symbol in symbols.Where(_ => !String.IsNullOrEmpty(_)))
                 {

@@ -37,7 +37,7 @@ namespace Alpaca.Markets
         public Decimal Size { get; set; }
 
         [JsonProperty(PropertyName = "oc", Required = Required.Default)]
-        public List<String> ConditionsList { get; } = new();
+        public List<String> ConditionsList { get; set; } = new();
 
         [JsonProperty(PropertyName = "ci", Required = Required.Default)]
         public UInt64 CorrectedTradeId { get; set; }
@@ -49,7 +49,7 @@ namespace Alpaca.Markets
         public Decimal CorrectedSize { get; set; }
 
         [JsonProperty(PropertyName = "cc", Required = Required.Default)]
-        public List<String> CorrectedConditionsList { get; } = new();
+        public List<String> CorrectedConditionsList { get; set; } = new();
 
         [JsonProperty(PropertyName = "tks", Required = Required.Default)]
         public TakerSide TakerSide { get; set; } = TakerSide.Unknown;
@@ -68,6 +68,7 @@ namespace Alpaca.Markets
             CorrectedTrade = new JsonRealTimeTrade
             {
                 Tape = Tape,
+                Symbol = Symbol,
                 Channel = Channel,
                 Exchange = Exchange,
                 TimestampUtc = TimestampUtc,
