@@ -11,6 +11,12 @@ public sealed class AlpacaStreamingClientTest
 
     private const String Listening = "listening";
 
+    private const Int64 IntegerQuantity = 12L;
+
+    private const Decimal Quantity = 12.34M;
+
+    private const Decimal Price = 123.45M;
+
     private const String Stock = "AAPL";
 
     public AlpacaStreamingClientTest(
@@ -35,7 +41,11 @@ public sealed class AlpacaStreamingClientTest
 
         await client.AddMessageAsync(getMessage(TradeUpdates, new JObject(
             new JProperty("order", Stock.CreateMarketOrder()),
-            new JProperty("event", TradeEvent.PendingNew))));
+            new JProperty("event", TradeEvent.PendingNew),
+            new JProperty("timestamp", DateTime.UtcNow),
+            new JProperty("position_qty", Quantity),
+            new JProperty("qty", Quantity),
+            new JProperty("price", Price))));
 
         Assert.True(tradeUpdates.WaitOne(TimeSpan.FromSeconds(1)));
 
@@ -48,6 +58,16 @@ public sealed class AlpacaStreamingClientTest
         {
             Assert.NotNull(tradeUpdate);
             Assert.NotNull(tradeUpdate.Order);
+
+            Assert.NotNull(tradeUpdate.TimestampUtc);
+            Assert.True(tradeUpdate.TimestampUtc < DateTime.UtcNow);
+
+            Assert.Equal(Quantity, tradeUpdate.PositionQuantity);
+            Assert.Equal(Quantity, tradeUpdate.TradeQuantity);
+            Assert.Equal(Price, tradeUpdate.Price);
+
+            Assert.Equal(IntegerQuantity, tradeUpdate.PositionIntegerQuantity);
+            Assert.Equal(IntegerQuantity, tradeUpdate.TradeIntegerQuantity);
 
             Assert.Equal(TradeEvent.PendingNew, tradeUpdate.Event);
             tradeUpdate.Order.Validate(Stock);

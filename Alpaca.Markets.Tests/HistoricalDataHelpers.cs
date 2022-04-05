@@ -51,35 +51,35 @@ internal static class HistoricalDataHelpers
 
     internal static void AddSingleTradesPageExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
-        mock.addSinglePageExpectation(pathPrefix, symbol, Trades, createTrade);
+        mock.addSinglePageExpectation(pathPrefix, symbol, Trades, CreateTrade);
 
     internal static void AddMultiTradesPageExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addMultiPageExpectation(pathPrefix, symbols, Trades, createTrade);
+        mock.addMultiPageExpectation(pathPrefix, symbols, Trades, CreateTrade);
 
     internal static void AddLatestTradeExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
-        mock.addLatestExpectation(pathPrefix, symbol, Trades, createTrade);
+        mock.addLatestExpectation(pathPrefix, symbol, Trades, CreateTrade);
 
     internal static void AddLatestTradesExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addLatestExpectation(pathPrefix, symbols, Trades, createTrade);
+        mock.addLatestExpectation(pathPrefix, symbols, Trades, CreateTrade);
 
     internal static void AddSingleQuotesPageExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
-        mock.addSinglePageExpectation(pathPrefix, symbol, Quotes, createQuote);
+        mock.addSinglePageExpectation(pathPrefix, symbol, Quotes, CreateQuote);
 
     internal static void AddMultiQuotesPageExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addMultiPageExpectation(pathPrefix, symbols, Quotes, createQuote);
+        mock.addMultiPageExpectation(pathPrefix, symbols, Quotes, CreateQuote);
 
     internal static void AddLatestQuoteExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
-        mock.addLatestExpectation(pathPrefix, symbol, Quotes, createQuote);
+        mock.addLatestExpectation(pathPrefix, symbol, Quotes, CreateQuote);
 
     internal static void AddLatestQuotesExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addLatestExpectation(pathPrefix, symbols, Quotes, createQuote);
+        mock.addLatestExpectation(pathPrefix, symbols, Quotes, CreateQuote);
 
     internal static void AddSnapshotExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
@@ -99,12 +99,12 @@ internal static class HistoricalDataHelpers
     internal static void AddXbboExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
         mock.AddGet($"{pathPrefix}/{symbol}/xbbo/latest", new JObject(
-            new JProperty("xbbo", createQuote()),
+            new JProperty("xbbo", CreateQuote()),
             new JProperty(nameof(symbol), symbol)));
 
     internal static void AddXbbosExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addLatestExpectation(pathPrefix, symbols, "xbbos", createQuote);
+        mock.addLatestExpectation(pathPrefix, symbols, "xbbos", CreateQuote);
 
     private static void addSinglePageExpectation(
         this IMock mock, String pathPrefix, String symbol,
@@ -236,8 +236,8 @@ internal static class HistoricalDataHelpers
             new JProperty("c", MidPrice),
             new JProperty("v", Volume),
             new JProperty("vw", Wvap));
-
-    private static JObject createTrade() =>
+    
+    public static JObject CreateTrade() =>
         new (
             new JProperty("c", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
@@ -245,9 +245,10 @@ internal static class HistoricalDataHelpers
             new JProperty("p", MidPrice),
             new JProperty("i", TradeId),
             new JProperty("z", _tape),
+            new JProperty("tks", "-"),
             new JProperty("s", Size));
 
-    private static JObject createQuote() =>
+    public static JObject CreateQuote() =>
         new (
             new JProperty("c", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
@@ -260,14 +261,32 @@ internal static class HistoricalDataHelpers
             new JProperty("bs", Size),
             new JProperty("z", _tape));
 
+    public static JObject CreateCorrection(
+        this String symbol) =>
+        new (
+            new JProperty("oc", new JArray(_condition)),
+            new JProperty("cc", new JArray(_condition)),
+            new JProperty("t", DateTime.UtcNow),
+            new JProperty("x", _exchange),
+            new JProperty("op", MidPrice),
+            new JProperty("cp", MidPrice),
+            new JProperty("oi", TradeId),
+            new JProperty("ci", TradeId),
+            new JProperty("S", symbol),
+            new JProperty("tks", "-"),
+            new JProperty("z", _tape),
+            new JProperty("cs", Size),
+            new JProperty("os", Size),
+            new JProperty("T", "c"));
+
     private static JObject createSnapshot() =>
         createSnapshot(String.Empty);
 
     private static JObject createSnapshot(
         String symbol) =>
         new (
-            new JProperty("latestQuote", createQuote()),
-            new JProperty("latestTrade", createTrade()),
+            new JProperty("latestQuote", CreateQuote()),
+            new JProperty("latestTrade", CreateTrade()),
             new JProperty("prevDailyBar", CreateBar()),
             new JProperty("minuteBar", CreateBar()),
             new JProperty("dailyBar", CreateBar()),

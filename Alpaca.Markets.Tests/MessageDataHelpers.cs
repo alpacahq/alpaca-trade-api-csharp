@@ -44,21 +44,26 @@ internal static class MessageDataHelpers
             new JProperty("symbols", new JArray(symbol)));
 
     public static JObject CreateStreamingNewsArticle(
-        this String symbol)
-    {
-        var article = CreateNewsArticle(symbol);
-        article.Add("T", "n");
-        return article;
-    }
+        this String symbol) =>
+        CreateNewsArticle(symbol)
+            .addStreamingProperties("n");
 
     public static JObject CreateStreamingBar(
-        this String symbol)
-    {
-        var article = HistoricalDataHelpers.CreateBar();
-        article.Add("T", "b");
-        article.Add("S", symbol);
-        return article;
-    }
+        this String symbol,
+        String channel) =>
+        HistoricalDataHelpers.CreateBar()
+            .addStreamingProperties(channel, symbol);
+
+    public static JObject CreateStreamingTrade(
+        this String symbol,
+        String channel) =>
+        HistoricalDataHelpers.CreateTrade()
+            .addStreamingProperties(channel, symbol);
+
+    public static JObject CreateStreamingQuote(
+        this String symbol) =>
+        HistoricalDataHelpers.CreateQuote()
+            .addStreamingProperties("q", symbol);
 
     public static void Validate(
         this IOrder order,
@@ -116,5 +121,18 @@ internal static class MessageDataHelpers
         Assert.NotNull(article.LargeImageUrl);
         Assert.Null(article.SmallImageUrl);
         Assert.Null(article.ThumbImageUrl);
+    }
+
+    private static JObject addStreamingProperties(
+        this JObject message,
+        String channel,
+        String? symbol = null)
+    {
+        message.Add("T", channel);
+        if (symbol is not null)
+        {
+            message.Add("S", symbol);
+        }
+        return message;
     }
 }

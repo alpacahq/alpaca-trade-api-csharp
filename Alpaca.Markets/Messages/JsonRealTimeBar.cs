@@ -29,9 +29,11 @@ internal sealed class JsonRealTimeBar : JsonRealTimeBase, IBar
     [JsonProperty(PropertyName = "n", Required = Required.Default)]
     public UInt64 TradeCount { get; set; }
 
+    [ExcludeFromCodeCoverage]
     public override String ToString() =>
         JsonConvert.SerializeObject(this);
 
+    [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private String DebuggerDisplay =>
         this.ToDebuggerDisplayString();
