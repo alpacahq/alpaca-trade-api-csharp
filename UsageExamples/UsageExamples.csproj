@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="OoplesFinance.StockIndicators" Version="1.0.42" />
+    <PackageReference Include="OoplesFinance.StockIndicators" Version="1.0.43" />
   </ItemGroup>
   
   <ItemGroup>
