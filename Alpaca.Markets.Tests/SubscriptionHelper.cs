@@ -1,6 +1,4 @@
-﻿using JetBrains.Annotations;
-
-namespace Alpaca.Markets.Tests;
+﻿namespace Alpaca.Markets.Tests;
 
 internal sealed class SubscriptionHelper<TItem> : IAsyncDisposable
 {
@@ -40,9 +38,6 @@ internal sealed class SubscriptionHelper<TItem> : IAsyncDisposable
             TimeSpan.FromSeconds(1));
 
     public ValueTask DisposeAsync() => unsubscribeAll();
-
-    [UsedImplicitly]
-    public async void Dispose() => await DisposeAsync();
 
     public static async ValueTask<SubscriptionHelper<TItem>> Create<TClient>(
         TClient client, Action<TItem> validator,

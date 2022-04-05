@@ -4,16 +4,12 @@
 public sealed class AlpacaDataStreamingClientTest
 {
     private readonly MockClientsFactoryFixture _mockClientsFactory;
-    
-    private const UInt64 TradeId = 12_345UL;
 
     private const Decimal DownPrice = 100M;
 
     private const Decimal UpPrice = 200M;
 
     private const String Stock = "AAPL";
-
-    private const Decimal Size = 42M;
 
     public AlpacaDataStreamingClientTest(
         MockClientsFactoryFixture mockClientsFactory) =>
@@ -181,13 +177,5 @@ public sealed class AlpacaDataStreamingClientTest
 
         correction.CorrectedTrade.Validate(Stock);
         correction.OriginalTrade.Validate(Stock);
-        //Assert.NotNull(correction.CorrectedTrade);
-        //Assert.NotNull(correction.OriginalTrade);
-
-        //Assert.NotNull(correction.CorrectedTrade.Conditions);
-        //Assert.NotNull(correction.OriginalTrade.Conditions);
-
-        //Assert.NotEmpty(correction.CorrectedTrade.Conditions);
-        //Assert.NotEmpty(correction.OriginalTrade.Conditions);
     }
 }
