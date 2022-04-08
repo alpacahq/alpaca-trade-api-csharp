@@ -55,15 +55,19 @@ internal sealed class SubscriptionHelper<TItem> : IAsyncDisposable
         return handler;
     }
 
-    private async ValueTask subscribeAll()
+    private ValueTask subscribeAll()
     {
         _handlers.ForEach(_ => _.Subscribe());
-        await _client.SubscribeAsync(_handlers.Select(_ => _.Subscription));
+        return _handlers.Count == 1
+            ? _client.SubscribeAsync(_handlers.Single().Subscription)
+            : _client.SubscribeAsync(_handlers.Select(_ => _.Subscription));
     }
 
-    private async ValueTask unsubscribeAll()
+    private ValueTask unsubscribeAll()
     {
         _handlers.ForEach(_ => _.Unsubscribe());
-        await _client.UnsubscribeAsync(_handlers.Select(_ => _.Subscription));
+        return _handlers.Count == 1
+            ? _client.UnsubscribeAsync(_handlers.Single().Subscription)
+            : _client.UnsubscribeAsync(_handlers.Select(_ => _.Subscription));
     }
 }

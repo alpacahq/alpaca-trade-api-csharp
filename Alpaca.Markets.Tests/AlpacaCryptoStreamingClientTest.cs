@@ -102,4 +102,26 @@ public sealed class AlpacaCryptoStreamingClientTest
 
         await client.Client.DisconnectAsync();
     }
+
+    [Fact]
+    public async Task ConnectAndSubscribeOrderBookWorks()
+    {
+        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock();
+
+        await client.AddAuthentication();
+
+        Assert.Equal(AuthStatus.Authorized,
+            await client.Client.ConnectAndAuthenticateAsync());
+
+        await using (var helper = await SubscriptionHelper<IOrderBook>.Create(
+                         client.Client, _ => _.Validate(Crypto),
+                         _ => _.GetOrderBookSubscription(Crypto)))
+        {
+            await client.AddMessageAsync(
+                new JArray(Crypto.CreateOrderBook()));
+            Assert.True(helper.WaitAll());
+        }
+
+        await client.Client.DisconnectAsync();
+    }
 }

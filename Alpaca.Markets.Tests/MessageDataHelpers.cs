@@ -5,9 +5,15 @@ namespace Alpaca.Markets.Tests;
 [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Global")]
 internal static class MessageDataHelpers
 {
+    private static readonly String _exchange = CryptoExchange.Cbse.ToString();
+
     private const Int64 IntegerQuantity = 123L;
 
     private const Decimal Quantity = 123.45M;
+
+    private const Decimal Price = 100M;
+
+    private const Decimal Size = 10M;
 
     public static JToken CreateMarketOrder(
         this String symbol) =>
@@ -42,6 +48,16 @@ internal static class MessageDataHelpers
             new JProperty("created_at", DateTime.UtcNow),
             new JProperty("updated_at", DateTime.UtcNow),
             new JProperty("symbols", new JArray(symbol)));
+
+    public static JObject CreateOrderBook(
+        this String symbol) =>
+        new(
+            new JProperty("a", new JArray(createOrderBookEntry())),
+            new JProperty("b", new JArray(createOrderBookEntry())),
+            new JProperty("t", DateTime.UtcNow),
+            new JProperty("x", _exchange),
+            new JProperty("S", symbol),
+            new JProperty("T", "o"));
 
     public static JObject CreateStreamingNewsArticle(
         this String symbol) =>
@@ -122,6 +138,31 @@ internal static class MessageDataHelpers
         Assert.Null(article.SmallImageUrl);
         Assert.Null(article.ThumbImageUrl);
     }
+
+    public static void Validate(
+        this IOrderBook orderBook,
+        String symbol)
+    {
+        Assert.NotNull(orderBook);
+        Assert.Equal(symbol, orderBook.Symbol);
+        Assert.Equal(_exchange, orderBook.Exchange);
+
+        Assert.NotNull(orderBook.Asks);
+        Assert.NotNull(orderBook.Bids);
+
+        var ask = orderBook.Asks.Single();
+        var bid = orderBook.Asks.Single();
+        Assert.Equal(ask.Price, bid.Price);
+        Assert.Equal(ask.Size, bid.Size);
+
+        Assert.Equal(Price, bid.Price);
+        Assert.Equal(Size, ask.Size);
+    }
+
+    private static JObject createOrderBookEntry() =>
+        new(
+            new JProperty("p", Price),
+            new JProperty("s", Size));
 
     private static JObject addStreamingProperties(
         this JObject message,
