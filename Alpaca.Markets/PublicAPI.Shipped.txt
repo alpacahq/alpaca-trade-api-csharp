@@ -364,6 +364,7 @@ Alpaca.Markets.IAlpacaCryptoStreamingClient
 Alpaca.Markets.IAlpacaCryptoStreamingClient.GetDailyBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IAlpacaCryptoStreamingClient.GetMinuteBarSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IAlpacaCryptoStreamingClient.GetMinuteBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
+Alpaca.Markets.IAlpacaCryptoStreamingClient.GetOrderBookSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IOrderBook!>!
 Alpaca.Markets.IAlpacaCryptoStreamingClient.GetQuoteSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IQuote!>!
 Alpaca.Markets.IAlpacaCryptoStreamingClient.GetTradeSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ITrade!>!
 Alpaca.Markets.IAlpacaCryptoStreamingClient.GetUpdatedBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
@@ -565,6 +566,15 @@ Alpaca.Markets.IOrder.UpdatedAtUtc.get -> System.DateTime?
 Alpaca.Markets.IOrderActionStatus
 Alpaca.Markets.IOrderActionStatus.IsSuccess.get -> bool
 Alpaca.Markets.IOrderActionStatus.OrderId.get -> System.Guid
+Alpaca.Markets.IOrderBook
+Alpaca.Markets.IOrderBook.Asks.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOrderBookEntry!>!
+Alpaca.Markets.IOrderBook.Bids.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOrderBookEntry!>!
+Alpaca.Markets.IOrderBook.Exchange.get -> string!
+Alpaca.Markets.IOrderBook.Symbol.get -> string!
+Alpaca.Markets.IOrderBook.TimestampUtc.get -> System.DateTime
+Alpaca.Markets.IOrderBookEntry
+Alpaca.Markets.IOrderBookEntry.Price.get -> decimal
+Alpaca.Markets.IOrderBookEntry.Size.get -> decimal
 Alpaca.Markets.IPage<TItems>
 Alpaca.Markets.IPage<TItems>.Items.get -> System.Collections.Generic.IReadOnlyList<TItems>!
 Alpaca.Markets.IPage<TItems>.NextPageToken.get -> string?

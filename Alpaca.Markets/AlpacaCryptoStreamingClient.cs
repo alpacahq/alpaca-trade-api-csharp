@@ -34,5 +34,9 @@ namespace Alpaca.Markets
         public IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(
             String symbol) =>
             GetSubscription<IBar, JsonRealTimeBar>(UpdatedBarsChannel, symbol);
+
+        public IAlpacaDataSubscription<IOrderBook> GetOrderBookSubscription(
+            String symbol) => 
+            GetSubscription<IOrderBook, JsonOrderBook>(OrderBooksChannel, symbol);
     }
 }
