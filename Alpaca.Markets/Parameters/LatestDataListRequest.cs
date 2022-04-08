@@ -9,7 +9,7 @@ public sealed class LatestDataListRequest : Validation.IRequest
     /// <summary>
     /// Creates new instance of <see cref="LatestDataListRequest"/> object.
     /// </summary>
-    /// <param name="symbols">Asset name for data retrieval.</param>
+    /// <param name="symbols">Asset symbol for data retrieval.</param>
     /// <param name="exchange">Crypto exchange for data retrieval.</param>
     public LatestDataListRequest(
         IEnumerable<String> symbols,
@@ -20,7 +20,7 @@ public sealed class LatestDataListRequest : Validation.IRequest
     }
 
     /// <summary>
-    /// Gets asset name for data retrieval.
+    /// Gets asset symbols for data retrieval.
     /// </summary>
     [UsedImplicitly]
     public IReadOnlyCollection<String> Symbols => _symbols;

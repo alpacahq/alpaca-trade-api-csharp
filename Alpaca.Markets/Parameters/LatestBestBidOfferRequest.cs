@@ -10,7 +10,7 @@ public sealed class LatestBestBidOfferRequest : Validation.IRequest
     /// <summary>
     /// Creates new instance of <see cref="LatestBestBidOfferRequest"/> object.
     /// </summary>
-    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="exchanges">Crypto exchanges list for data retrieval.</param>
     public LatestBestBidOfferRequest(
         String symbol,
@@ -21,7 +21,7 @@ public sealed class LatestBestBidOfferRequest : Validation.IRequest
     /// <summary>
     /// Creates new instance of <see cref="LatestBestBidOfferRequest"/> object.
     /// </summary>
-    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="exchange">Crypto exchange for data retrieval.</param>
     public LatestBestBidOfferRequest(
         String symbol,
@@ -32,13 +32,13 @@ public sealed class LatestBestBidOfferRequest : Validation.IRequest
     /// <summary>
     /// Creates new instance of <see cref="LatestBestBidOfferRequest"/> object.
     /// </summary>
-    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     public LatestBestBidOfferRequest(
         String symbol) =>
         Symbol = symbol.EnsureNotNull();
 
     /// <summary>
-    /// Gets asset name for data retrieval.
+    /// Gets asset symbol for data retrieval.
     /// </summary>
     [UsedImplicitly]
     public String Symbol { get; }

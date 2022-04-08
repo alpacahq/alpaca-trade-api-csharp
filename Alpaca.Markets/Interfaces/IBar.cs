@@ -7,13 +7,13 @@
 public interface IBar
 {
     /// <summary>
-    /// Gets asset name.
+    /// Gets asset symbol.
     /// </summary>
     [UsedImplicitly]
     String Symbol { get; }
 
     /// <summary>
-    /// Gets the beginning time of this bar in the UTC.
+    /// Gets the beginning time of this bar in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime TimeUtc { get; }

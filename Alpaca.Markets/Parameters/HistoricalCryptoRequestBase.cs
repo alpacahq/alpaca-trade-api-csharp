@@ -10,7 +10,7 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoRequestBase"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="from">Filter data equal to or after this time.</param>
     /// <param name="into">Filter data equal to or before this time.</param>
     protected internal HistoricalCryptoRequestBase(
@@ -24,7 +24,7 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoRequestBase"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     protected internal HistoricalCryptoRequestBase(
         IEnumerable<String> symbols,
@@ -36,7 +36,7 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoRequestBase"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     /// <param name="exchanges">Crypto exchanges list for data retrieval.</param>
     protected internal HistoricalCryptoRequestBase(
@@ -49,7 +49,7 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     /// <summary>
     /// Creates new instance of <see cref="HistoricalRequestBase"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     [ExcludeFromCodeCoverage]
     [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
@@ -63,7 +63,7 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoRequestBase"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     /// <param name="exchanges">Crypto exchanges list for data retrieval.</param>
     [ExcludeFromCodeCoverage]

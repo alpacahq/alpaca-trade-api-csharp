@@ -4,7 +4,7 @@ namespace Alpaca.Markets.Extensions;
 
 /// <summary>
 /// Set of extensions methods for registering the strongly-typed Alpaca REST API clients
-/// in the default Microsoft dependency injection container used by the most .NET hosts.
+/// in the default Microsoft dependency injection container used by most .NET hosts.
 /// </summary>
 public static class AlpacaServiceCollectionExtensions
 {

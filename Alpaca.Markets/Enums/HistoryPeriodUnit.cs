@@ -17,7 +17,7 @@ public enum HistoryPeriodUnit
     Day,
 
     /// <summary>
-    /// Month
+    /// Week
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "W")]
@@ -31,7 +31,7 @@ public enum HistoryPeriodUnit
     Month,
 
     /// <summary>
-    /// 3 month
+    /// Year
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "A")]

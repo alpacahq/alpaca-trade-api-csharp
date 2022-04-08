@@ -35,7 +35,7 @@ public enum BarTimeFrameUnit
     Week,
 
     /// <summary>
-    /// Monthly bars
+    /// Monthly bars.
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "Month")]

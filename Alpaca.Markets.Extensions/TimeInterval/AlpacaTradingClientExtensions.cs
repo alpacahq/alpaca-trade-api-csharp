@@ -6,7 +6,7 @@
 public static partial class AlpacaTradingClientExtensions
 {
     /// <summary>
-    /// Get single trading date information from the Alpaca REST API.
+    /// Get single trading day information from the Alpaca REST API.
     /// </summary>
     /// <param name="client">The <see cref="IAlpacaDataClient"/> object instance.</param>
     /// <param name="date">The trading date (time part will not be used).</param>
@@ -28,7 +28,7 @@ public static partial class AlpacaTradingClientExtensions
     }
 
     /// <summary>
-    /// Get single trading date information from the Alpaca REST API.
+    /// Get single trading day information from the Alpaca REST API.
     /// </summary>
     /// <param name="client">The <see cref="IAlpacaDataClient"/> object instance.</param>
     /// <param name="date">The trading date (time part will not be used).</param>

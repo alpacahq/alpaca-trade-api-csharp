@@ -43,12 +43,12 @@ public readonly record struct Interval<TItem>
     }
 
     /// <summary>
-    /// Gets the starting /time point of interval.
+    /// Gets the starting point of interval.
     /// /// </summary>
     public TItem? From { get; }
 
     /// <summary>
-    /// Gets the ending /time point of interval.
+    /// Gets the ending point of interval.
     /// </summary>
     public TItem? Into { get; }
 
@@ -68,16 +68,16 @@ public readonly record struct Interval<TItem>
     }
 
     /// <summary>
-    /// Gets boolean flag signals that time interval is empty (both start and end date equal to <c>null</c>).
+    /// Gets boolean flag that signals the time interval is empty (both start and end date equal to <c>null</c>).
     /// </summary>
     /// <returns>
-    /// Returns <c>true</c> if both <see cref="From"/> and <see cref="Into"/> equal to <c>null</c>.
+    /// Returns <c>true</c> if both <see cref="From"/> and <see cref="Into"/> are equal to <c>null</c>.
     /// </returns>
     [UsedImplicitly]
     public Boolean IsEmpty() => Into is null && From is null;
 
     /// <summary>
-    /// Gets boolean flag signals that time interval is open (start or end date equal to <c>null</c>).
+    /// Gets boolean flag that signals the time interval is open (start or end date equal to <c>null</c>).
     /// </summary>
     /// <returns>
     /// Returns <c>true</c> if both <see cref="From"/> or <see cref="Into"/> equal to <c>null</c>.

@@ -6,31 +6,31 @@
 public interface IStreamingClient : IDisposable
 {
     /// <summary>
-    /// Occurred when stream successfully connected.
+    /// Invoked when stream is successfully connected.
     /// </summary>
     [UsedImplicitly]
     event Action<AuthStatus>? Connected;
 
     /// <summary>
-    /// Occurred when underlying web socket successfully opened.
+    /// Invoked when underlying web socket is successfully opened.
     /// </summary>
     [UsedImplicitly]
     event Action? SocketOpened;
 
     /// <summary>
-    /// Occurred when underlying web socket successfully closed.
+    /// Invoked when underlying web socket is successfully closed.
     /// </summary>
     [UsedImplicitly]
     event Action? SocketClosed;
 
     /// <summary>
-    /// Occurred when any error happened in stream.
+    /// Invoked when any error occurs in stream.
     /// </summary>
     [UsedImplicitly]
     event Action<Exception>? OnError;
 
     /// <summary>
-    /// Occurred in case of non-critical events.
+    /// Invoked in case of non-critical events.
     /// </summary>
     [UsedImplicitly]
     event Action<String>? OnWarning;

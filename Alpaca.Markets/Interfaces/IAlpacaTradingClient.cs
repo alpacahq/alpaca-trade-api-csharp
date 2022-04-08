@@ -275,9 +275,9 @@ public interface IAlpacaTradingClient : IDisposable
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Get single asset information by asset name from Alpaca REST API endpoint.
+    /// Get single asset information by asset symbol from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbol">Asset name for searching.</param>
+    /// <param name="symbol">Asset symbol for searching.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only asset information.</returns>
     [UsedImplicitly]
@@ -295,9 +295,9 @@ public interface IAlpacaTradingClient : IDisposable
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets position information by asset name from Alpaca REST API endpoint.
+    /// Gets position information by asset symbol from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbol">Position asset name.</param>
+    /// <param name="symbol">Position asset symbol.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only position information object.</returns>
     [UsedImplicitly]

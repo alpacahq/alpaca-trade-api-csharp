@@ -8,13 +8,13 @@ public interface IMultiPage<TItems>
 {
     /// <summary>
     /// Gets the next page token for continuation. If value of this property
-    /// equals to <c>null</c> this page is the last one and no more data available.
+    /// equals to <c>null</c> this page is the last one and no more data is available.
     /// </summary>
     [UsedImplicitly]
     public String? NextPageToken { get; }
 
     /// <summary>
-    /// Gets list of items for this response grouped by symbols.
+    /// Gets list of items for this response grouped by asset symbols.
     /// </summary>
     public IReadOnlyDictionary<String, IReadOnlyList<TItems>> Items { get; }
 }

@@ -43,19 +43,19 @@ public interface IAccount
     String? AccountNumber { get; }
 
     /// <summary>
-    /// Gets returns <c>true</c> if account is linked to day pattern trader.
+    /// Returns <c>true</c> if account is linked to pattern day trader.
     /// </summary>
     [UsedImplicitly]
     Boolean IsDayPatternTrader { get; }
 
     /// <summary>
-    /// Gets returns <c>true</c> if account trading functions are blocked.
+    /// Returns <c>true</c> if account trading functions are blocked.
     /// </summary>
     [UsedImplicitly]
     Boolean IsTradingBlocked { get; }
 
     /// <summary>
-    /// Gets returns <c>true</c> if account transfer functions are blocked.
+    ///  Returns <c>true</c> if account transfer functions are blocked.
     /// </summary>
     [UsedImplicitly]
     Boolean IsTransfersBlocked { get; }
@@ -145,13 +145,13 @@ public interface IAccount
     UInt64 DayTradeCount { get; }
 
     /// <summary>
-    /// value of special memorandum account.
+    /// Value of special memorandum account.
     /// </summary>
     [UsedImplicitly]
     Decimal Sma { get; }
 
     /// <summary>
-    /// Gets returns <c>true</c> if account is completely blocked.
+    /// Returns <c>true</c> if account is completely blocked.
     /// </summary>
     [UsedImplicitly]
     Boolean IsAccountBlocked { get; }

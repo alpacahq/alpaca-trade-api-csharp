@@ -18,7 +18,7 @@ public interface IAlpacaNewsStreamingClient : IStreamingClient, ISubscriptionHan
     /// <summary>
     /// Gets the news articles' updates subscription for the <paramref name="symbol"/> asset.
     /// </summary>
-    /// <param name="symbol">Alpaca asset name.</param>
+    /// <param name="symbol">Alpaca asset symbol.</param>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>

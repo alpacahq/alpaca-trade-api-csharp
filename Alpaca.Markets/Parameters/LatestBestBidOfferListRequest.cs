@@ -12,7 +12,7 @@ public sealed class LatestBestBidOfferListRequest : Validation.IRequest
     /// <summary>
     /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names list for data retrieval.</param>
+    /// <param name="symbols">Asset symbols list for data retrieval.</param>
     /// <param name="exchanges">Crypto exchanges list for data retrieval.</param>
     public LatestBestBidOfferListRequest(
         IEnumerable<String> symbols,
@@ -23,7 +23,7 @@ public sealed class LatestBestBidOfferListRequest : Validation.IRequest
     /// <summary>
     /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names list for data retrieval.</param>
+    /// <param name="symbols">Asset symbols list for data retrieval.</param>
     /// <param name="exchange">Crypto exchange for data retrieval.</param>
     public LatestBestBidOfferListRequest(
         IEnumerable<String> symbols,
@@ -34,13 +34,13 @@ public sealed class LatestBestBidOfferListRequest : Validation.IRequest
     /// <summary>
     /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names list for data retrieval.</param>
+    /// <param name="symbols">Asset symbols list for data retrieval.</param>
     public LatestBestBidOfferListRequest(
         IEnumerable<String> symbols) =>
         _symbols.UnionWith(symbols.EnsureNotNull());
 
     /// <summary>
-    /// Gets asset name for data retrieval.
+    /// Gets asset symbols for data retrieval.
     /// </summary>
     [UsedImplicitly]
     public IReadOnlyCollection<String> Symbols => _symbols;

@@ -12,12 +12,13 @@ public interface IAlpacaDataSubscription
 
     /// <summary>
     /// Gets boolean flag indicating the current subscription status of this item.
+    /// An unsubscribed subscription does not receive streaming data.
     /// </summary>
     [UsedImplicitly]
     Boolean Subscribed { get; }
 
     /// <summary>
-    /// Occurred when a <see cref="Subscribed"/> property value changed.
+    /// Invoked when a <see cref="Subscribed"/> property value has changed.
     /// </summary>
     [UsedImplicitly]
     event Action? OnSubscribedChanged;
@@ -30,7 +31,7 @@ public interface IAlpacaDataSubscription
 public interface IAlpacaDataSubscription<out TApi> : IAlpacaDataSubscription
 {
     /// <summary>
-    /// Occurred when a new <typeparamref name="TApi"/> item received from the stream.
+    /// Invoked when a new <typeparamref name="TApi"/> item is received from the stream.
     /// </summary>
     [UsedImplicitly]
     event Action<TApi> Received;

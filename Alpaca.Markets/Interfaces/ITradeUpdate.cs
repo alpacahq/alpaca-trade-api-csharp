@@ -46,7 +46,7 @@ public interface ITradeUpdate
     Int64? TradeIntegerQuantity { get; }
 
     /// <summary>
-    /// Gets update timestamp in UTC time zone.
+    /// Gets update timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime? TimestampUtc { get; }

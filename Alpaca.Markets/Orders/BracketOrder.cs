@@ -1,7 +1,9 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// Encapsulates data required for placing bracket order on the Alpaca REST API.
+/// A bracket order is a chain of three orders that can be used to manage your position entry and exit.
+/// It is a common use case of an OTOCO (One Triggers OCO {One Cancels Other}) order.
+/// <para>See https://alpaca.markets/docs/trading/orders/#bracket-orders</para>
 /// </summary>
 public sealed class BracketOrder : AdvancedOrderBase
 {

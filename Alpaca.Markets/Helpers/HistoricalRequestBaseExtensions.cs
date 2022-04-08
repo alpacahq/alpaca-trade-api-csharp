@@ -25,10 +25,10 @@ public static class HistoricalRequestBaseExtensions
     }
 
     /// <summary>
-    /// Sets the request page size using the fluent interface approach.
+    /// Sets the request page token using the fluent interface approach.
     /// </summary>
     /// <param name="request">Request parameters object.</param>
-    /// <param name="pageToken">The request page size.</param>
+    /// <param name="pageToken">The request page token.</param>
     /// <returns>The original request parameters object.</returns>
     [UsedImplicitly]
     public static TRequest WithPageToken<TRequest>(

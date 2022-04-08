@@ -1,7 +1,11 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// Encapsulates data required for placing OCO order on the Alpaca REST API.
+/// OCO (One-Cancels-Other) is another type of advanced order type.
+/// This is a set of two orders with the same side (buy/buy or sell/sell) and currently only exit order is supported.
+/// In other words, this is the second part of the bracket orders where the entry order is already filled,
+/// and you can submit the take-profit and stop-loss in one order submission.
+/// <para>See https://alpaca.markets/docs/trading/orders/#oco-orders</para>
 /// </summary>
 public sealed class OneCancelsOtherOrder : AdvancedOrderBase
 {

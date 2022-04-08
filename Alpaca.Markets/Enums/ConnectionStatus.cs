@@ -4,7 +4,7 @@ using Newtonsoft.Json.Converters;
 namespace Alpaca.Markets;
 
 /// <summary>
-/// Authorization status for Alpaca streaming API.
+/// Connection and authentication status for Alpaca streaming API.
 /// </summary>
 [JsonConverter(typeof(StringEnumConverter))]
 internal enum ConnectionStatus

@@ -10,7 +10,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     /// <summary>
     /// Creates new instance of <see cref="HistoricalRequestBase"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="from">Filter data equal to or after this time.</param>
     /// <param name="into">Filter data equal to or before this time.</param>
     protected internal HistoricalRequestBase(
@@ -24,7 +24,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     /// <summary>
     /// Creates new instance of <see cref="HistoricalRequestBase"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     protected internal HistoricalRequestBase(
         IEnumerable<String> symbols,
@@ -37,7 +37,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     /// <summary>
     /// Creates new instance of <see cref="HistoricalRequestBase"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     [ExcludeFromCodeCoverage]
     [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
@@ -49,7 +49,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     }
 
     /// <summary>
-    /// Gets asset name for data retrieval.
+    /// Gets asset symbol for data retrieval.
     /// </summary>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
@@ -57,7 +57,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     public String Symbol => _symbols.FirstOrDefault() ?? String.Empty;
 
     /// <summary>
-    /// Gets assets names list for data retrieval.
+    /// Gets asset symbols list for data retrieval.
     /// </summary>
     public IReadOnlyCollection<String> Symbols => _symbols;
 

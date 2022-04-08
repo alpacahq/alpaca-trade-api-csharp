@@ -17,7 +17,7 @@ public sealed class NewsArticlesRequest : Validation.IRequest, IHistoricalReques
     /// <summary>
     /// Creates new instance of <see cref="NewsArticlesRequest"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     public NewsArticlesRequest(
         IEnumerable<String> symbols) =>
         _symbols.UnionWith(symbols.EnsureNotNull());

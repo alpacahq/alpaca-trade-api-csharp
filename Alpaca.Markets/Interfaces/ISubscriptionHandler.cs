@@ -6,7 +6,7 @@
 public interface ISubscriptionHandler
 {
     /// <summary>
-    /// Subscribes the single <paramref name="subscription"/> object for receiving data from the server.
+    /// Subscribes a single <paramref name="subscription"/> object for receiving data from the server.
     /// </summary>
     /// <param name="subscription">Subscription target - asset and update type holder.</param>
     [UsedImplicitly]
@@ -14,7 +14,7 @@ public interface ISubscriptionHandler
         IAlpacaDataSubscription subscription);
 
     /// <summary>
-    /// Subscribes the single <paramref name="subscription"/> object for receiving data from the server.
+    /// Subscribes a single <paramref name="subscription"/> object for receiving data from the server.
     /// </summary>
     /// <param name="subscription">Subscription target - asset and update type holder.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>

@@ -12,7 +12,7 @@ public sealed class UpdateWatchListRequest : Validation.IRequest
     /// </summary>
     /// <param name="watchListId">Unique watch list identifier.</param>
     /// <param name="name">User defined watch list name.</param>
-    /// <param name="assets">List of asset names for new watch list.</param>
+    /// <param name="assets">List of asset symbols for new watch list.</param>
     public UpdateWatchListRequest(
         Guid watchListId,
         String name,
@@ -39,7 +39,7 @@ public sealed class UpdateWatchListRequest : Validation.IRequest
     public String Name { get; }
 
     /// <summary>
-    /// Gets list of asset names for new watch list.
+    /// Gets list of asset symbols for new watch list.
     /// </summary>
     [JsonProperty(PropertyName = "symbols", Required = Required.Always)]
     public IReadOnlyList<String> Assets => _assets;

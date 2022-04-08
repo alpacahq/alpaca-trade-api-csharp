@@ -11,7 +11,7 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// <summary>
     /// Creates new instance of <see cref="HistoricalQuotesRequest"/> object.
     /// </summary>
-    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="from">Filter data equal to or after this time.</param>
     /// <param name="into">Filter data equal to or before this time.</param>
     public HistoricalQuotesRequest(
@@ -25,7 +25,7 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// <summary>
     /// Creates new instance of <see cref="HistoricalQuotesRequest"/> object.
     /// </summary>
-    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     public HistoricalQuotesRequest(
         String symbol,
@@ -37,7 +37,7 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// <summary>
     /// Creates new instance of <see cref="HistoricalQuotesRequest"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="from">Filter data equal to or after this time.</param>
     /// <param name="into">Filter data equal to or before this time.</param>
     public HistoricalQuotesRequest(
@@ -51,7 +51,7 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// <summary>
     /// Creates new instance of <see cref="HistoricalQuotesRequest"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     public HistoricalQuotesRequest(
         IEnumerable<String> symbols,
@@ -63,7 +63,7 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// <summary>
     /// Creates new instance of <see cref="HistoricalQuotesRequest"/> object.
     /// </summary>
-    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     [ExcludeFromCodeCoverage]
     [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
@@ -77,7 +77,7 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// <summary>
     /// Creates new instance of <see cref="HistoricalQuotesRequest"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     [ExcludeFromCodeCoverage]
     [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]

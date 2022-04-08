@@ -7,13 +7,13 @@
 public interface ITrade
 {
     /// <summary>
-    /// Gets asset name.
+    /// Gets asset symbol.
     /// </summary>
     [UsedImplicitly]
     String Symbol { get; }
 
     /// <summary>
-    /// Gets trade timestamp in UTC time zone.
+    /// Gets trade timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime TimestampUtc { get; }

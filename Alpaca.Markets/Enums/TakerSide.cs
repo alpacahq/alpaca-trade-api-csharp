@@ -4,7 +4,7 @@ using Newtonsoft.Json.Converters;
 namespace Alpaca.Markets;
 
 /// <summary>
-/// Possible crypto taker side types for Alpaca Data API.
+/// Possible crypto taker side types for Alpaca Crypto Data API.
 /// </summary>
 [JsonConverter(typeof(StringEnumConverter))]
 public enum TakerSide
@@ -24,7 +24,7 @@ public enum TakerSide
     Buy,
 
     /// <summary>
-    /// Bell crypto trade take side.
+    /// Sell crypto trade take side.
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "S")]

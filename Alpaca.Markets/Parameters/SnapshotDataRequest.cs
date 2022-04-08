@@ -8,7 +8,7 @@ public sealed class SnapshotDataRequest : Validation.IRequest
     /// <summary>
     /// Creates new instance of <see cref="SnapshotDataRequest"/> object.
     /// </summary>
-    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="exchange">Crypto exchange for data retrieval.</param>
     public SnapshotDataRequest(
         String symbol,
@@ -19,7 +19,7 @@ public sealed class SnapshotDataRequest : Validation.IRequest
     }
 
     /// <summary>
-    /// Gets asset name for data retrieval.
+    /// Gets asset symbol for data retrieval.
     /// </summary>
     [UsedImplicitly]
     public String Symbol { get; }

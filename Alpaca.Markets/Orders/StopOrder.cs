@@ -1,7 +1,9 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// Encapsulates data required for placing the stop order on the Alpaca REST API.
+/// A stop (market) order is an order to buy or sell a security when its price moves past a particular point,
+/// ensuring a higher probability of achieving a predetermined entry or exit price.
+/// <para>See https://alpaca.markets/docs/trading/orders/#stop-order</para>
 /// </summary>
 public sealed class StopOrder : SimpleOrderBase
 {
@@ -25,7 +27,7 @@ public sealed class StopOrder : SimpleOrderBase
     /// <summary>
     /// Creates new buy stop order using specified symbol and quantity.
     /// </summary>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="stopPrice">Order stop price.</param>
     /// <returns>The new <see cref="StopOrder"/> object instance.</returns>
@@ -40,7 +42,7 @@ public sealed class StopOrder : SimpleOrderBase
     /// <summary>
     /// Creates new sell buy order using specified symbol and quantity.
     /// </summary>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="stopPrice">Order stop price.</param>
     /// <returns>The new <see cref="StopOrder"/> object instance.</returns>

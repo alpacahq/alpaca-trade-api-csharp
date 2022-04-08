@@ -1,7 +1,7 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// Encapsulates the trade correction information from Alpaca APIs.
+/// Encapsulates trade correction information from Alpaca APIs.
 /// </summary>
 [CLSCompliant(false)]
 public interface ICorrection

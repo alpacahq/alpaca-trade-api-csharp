@@ -1,7 +1,10 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// Encapsulates data required for placing the stop limit order on the Alpaca REST API.
+/// A stop-limit order is a conditional trade over a set time frame that combines the features of a stop order with
+/// those of a limit order and is used to mitigate risk.
+/// The stop-limit order will be executed at a specified limit price, or better, after a given stop price has been reached.
+/// <para>See https://alpaca.markets/docs/trading/orders/#stop-limit-order</para>
 /// </summary>
 public sealed class StopLimitOrder : SimpleOrderBase
 {
@@ -34,7 +37,7 @@ public sealed class StopLimitOrder : SimpleOrderBase
     /// <summary>
     /// Creates new buy stop limit order using specified symbol and quantity.
     /// </summary>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="stopPrice">Order stop price.</param>
     /// <param name="limitPrice">Order limit price.</param>
@@ -51,7 +54,7 @@ public sealed class StopLimitOrder : SimpleOrderBase
     /// <summary>
     /// Creates new sell stop limit order using specified symbol and quantity.
     /// </summary>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="stopPrice">Order stop price.</param>
     /// <param name="limitPrice">Order limit price.</param>

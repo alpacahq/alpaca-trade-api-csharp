@@ -42,7 +42,7 @@ public abstract class OrderBase : Validation.IRequest
     }
 
     /// <summary>
-    /// Gets the new order asset name.
+    /// Gets the new order asset symbol.
     /// </summary>
     [UsedImplicitly]
     public String Symbol { get; }
@@ -71,7 +71,7 @@ public abstract class OrderBase : Validation.IRequest
     public TimeInForce Duration { get; set; } = TimeInForce.Day;
 
     /// <summary>
-    /// Gets or sets the client order ID.
+    /// Gets or sets the client order ID. This is a user-specified ID that must be unique if provided.
     /// </summary>
     public String? ClientOrderId { get; set; }
 

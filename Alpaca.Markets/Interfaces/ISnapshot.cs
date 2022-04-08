@@ -7,19 +7,19 @@
 public interface ISnapshot
 {
     /// <summary>
-    /// Gets the snapshot's asset name.
+    /// Gets the snapshot's asset symbol.
     /// </summary>
     [UsedImplicitly]
     String Symbol { get; }
 
     /// <summary>
-    /// Gets the latest trade information.
+    /// Gets the latest quote information.
     /// </summary>
     [UsedImplicitly]
     IQuote? Quote { get; }
 
     /// <summary>
-    /// Gets the latest quote information.
+    /// Gets the latest trade information.
     /// </summary>
     [UsedImplicitly]
     ITrade? Trade { get; }
@@ -37,7 +37,7 @@ public interface ISnapshot
     IBar? CurrentDailyBar { get; }
 
     /// <summary>
-    /// Gets the previous minute bar information.
+    /// Gets the previous daily bar information.
     /// </summary>
     [UsedImplicitly]
     IBar? PreviousDailyBar { get; }

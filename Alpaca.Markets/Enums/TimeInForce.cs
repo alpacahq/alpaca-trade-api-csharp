@@ -4,13 +4,14 @@ using Newtonsoft.Json.Converters;
 namespace Alpaca.Markets;
 
 /// <summary>
-/// Supported order durations in Alpaca REST API.
+/// Supported order durations in Alpaca REST API. See https://alpaca.markets/docs/trading/orders/#time-in-force for
+/// more information.
 /// </summary>
 [JsonConverter(typeof(StringEnumConverter))]
 public enum TimeInForce
 {
     /// <summary>
-    /// The order is good for the day, and it will be canceled automatically at the end of market hours.
+    /// The order is good for the day and it will be canceled automatically at the end of market hours.
     /// </summary>
     [EnumMember(Value = "day")]
     Day,
@@ -23,7 +24,7 @@ public enum TimeInForce
     Gtc,
 
     /// <summary>
-    /// The order is placed at the time the market opens.
+    /// The order is placed at the time the market opens. Not supported for crypto trading.
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "opg")]
@@ -45,6 +46,7 @@ public enum TimeInForce
 
     /// <summary>
     /// The order will become a limit order if a limit price is specified or a market order otherwise at market close.
+    /// Not supported for crypto trading.
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "cls")]

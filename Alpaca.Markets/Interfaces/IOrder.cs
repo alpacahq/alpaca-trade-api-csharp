@@ -13,55 +13,55 @@ public interface IOrder
     Guid OrderId { get; }
 
     /// <summary>
-    /// Gets client-side order identifier.
+    /// Gets client-side (user specified) order identifier. Client Order IDs must be unique.
     /// </summary>
     [UsedImplicitly]
     String? ClientOrderId { get; }
 
     /// <summary>
-    /// Gets order creation timestamp in UTC time zone.
+    /// Gets order creation timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime? CreatedAtUtc { get; }
 
     /// <summary>
-    /// Gets last order update timestamp in UTC time zone.
+    /// Gets last order update timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime? UpdatedAtUtc { get; }
 
     /// <summary>
-    /// Gets order submission timestamp in UTC time zone.
+    /// Gets order submission timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime? SubmittedAtUtc { get; }
 
     /// <summary>
-    /// Gets order fill timestamp in UTC time zone.
+    /// Gets order fill timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime? FilledAtUtc { get; }
 
     /// <summary>
-    /// Gets order expiration timestamp in UTC time zone.
+    /// Gets order expiration timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime? ExpiredAtUtc { get; }
 
     /// <summary>
-    /// Gets order cancellation timestamp in UTC time zone.
+    /// Gets order cancellation timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime? CancelledAtUtc { get; }
 
     /// <summary>
-    /// Gets order rejection timestamp in UTC time zone.
+    /// Gets order rejection timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime? FailedAtUtc { get; }
 
     /// <summary>
-    /// Gets order replacement timestamp in UTC time zone.
+    /// Gets order replacement timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime? ReplacedAtUtc { get; }
@@ -73,7 +73,7 @@ public interface IOrder
     Guid AssetId { get; }
 
     /// <summary>
-    /// Gets asset name.
+    /// Gets asset symbol.
     /// </summary>
     [UsedImplicitly]
     String Symbol { get; }
