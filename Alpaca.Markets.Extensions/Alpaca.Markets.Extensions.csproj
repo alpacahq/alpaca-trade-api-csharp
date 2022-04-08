@@ -7,21 +7,21 @@
     <WarningLevel>5</WarningLevel>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.2.7</Version>
+    <Version>5.2.8</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.2.7.0</AssemblyVersion>
-    <FileVersion>5.2.7.0</FileVersion>
+    <AssemblyVersion>5.2.8.0</AssemblyVersion>
+    <FileVersion>5.2.8.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Fixed problem with fractional order quantity validation for market and bracket orders.</PackageReleaseNotes>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+	<PackageReleaseNotes>- Added crypto order book streaming support into the `IAlpacaCryptoStreamingClient` interface.</PackageReleaseNotes>
+	<PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IncludeSymbols>true</IncludeSymbols>
