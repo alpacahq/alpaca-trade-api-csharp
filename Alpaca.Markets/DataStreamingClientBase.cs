@@ -166,6 +166,8 @@ namespace Alpaca.Markets
 
         protected const String MinuteBarsChannel = "b";
 
+        protected const String OrderBooksChannel = "o";
+
         protected const String UpdatedBarsChannel = "u";
 
         protected const String LimitUpDownChannel = "l";
@@ -202,6 +204,7 @@ namespace Alpaca.Markets
                 { LimitUpDownChannel, handleRealtimeDataUpdate },
                 { UpdatedBarsChannel, handleRealtimeDataUpdate },
                 { MinuteBarsChannel, handleRealtimeDataUpdate },
+                { OrderBooksChannel, handleRealtimeDataUpdate },
                 { DailyBarsChannel, handleRealtimeDataUpdate },
                 { ConnectionSuccess, handleConnectionSuccess },
                 { StatusesChannel, handleRealtimeDataUpdate },
@@ -323,6 +326,7 @@ namespace Alpaca.Markets
                         .Concat(getStreams(subscriptionUpdate.Statuses.EmptyIfNull(), StatusesChannel))
                         .Concat(getStreams(subscriptionUpdate.Lulds.EmptyIfNull(), LimitUpDownChannel))
                         .Concat(getStreams(subscriptionUpdate.DailyBars.EmptyIfNull(), DailyBarsChannel))
+                        .Concat(getStreams(subscriptionUpdate.OrderBooks.EmptyIfNull(), OrderBooksChannel))
                         .Concat(getStreams(subscriptionUpdate.MinuteBars.EmptyIfNull(), MinuteBarsChannel))
                         .Concat(getStreams(subscriptionUpdate.UpdatedBars.EmptyIfNull(), UpdatedBarsChannel)),
                     StringComparer.Ordinal);
@@ -458,6 +462,7 @@ namespace Alpaca.Markets
                     Lulds = getSymbols(streamsByChannels, LimitUpDownChannel),
                     DailyBars = getSymbols(streamsByChannels, DailyBarsChannel),
                     MinuteBars = getSymbols(streamsByChannels, MinuteBarsChannel),
+                    OrderBooks = getSymbols(streamsByChannels, OrderBooksChannel),
                     UpdatedBars = getSymbols(streamsByChannels, UpdatedBarsChannel)
                 }, cancellationToken)
                 : new ValueTask();

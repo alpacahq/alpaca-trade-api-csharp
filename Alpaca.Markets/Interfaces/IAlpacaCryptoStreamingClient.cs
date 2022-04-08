@@ -72,5 +72,16 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(
             String symbol);
+
+        /// <summary>
+        /// Gets the order book updates subscription for the <paramref name="symbol"/> asset.
+        /// </summary>
+        /// <param name="symbol">Alpaca asset name.</param>
+        /// <returns>
+        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+        /// </returns>
+        [UsedImplicitly]
+        public IAlpacaDataSubscription<IOrderBook> GetOrderBookSubscription(
+            String symbol);
     }
 }
