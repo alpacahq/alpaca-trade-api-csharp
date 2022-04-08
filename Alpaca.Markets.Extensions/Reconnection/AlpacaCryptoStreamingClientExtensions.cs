@@ -37,6 +37,9 @@ namespace Alpaca.Markets.Extensions
 
             public IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(String symbol) =>
                 Client.GetUpdatedBarSubscription(symbol);
+
+            public IAlpacaDataSubscription<IOrderBook> GetOrderBookSubscription(String symbol) =>
+                Client.GetOrderBookSubscription(symbol);
         }
 
         /// <summary>
