@@ -14,7 +14,7 @@ public sealed class AlpacaCryptoStreamingClientTest
     [Fact]
     public async Task ConnectAndSubscribeMinuteBarsWorks()
     {
-        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock();
+        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock(Environments.Paper);
 
         await client.AddAuthentication();
 

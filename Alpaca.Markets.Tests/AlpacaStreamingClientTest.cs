@@ -23,10 +23,11 @@ public sealed class AlpacaStreamingClientTest
         MockClientsFactoryFixture mockClientsFactory) =>
         _mockClientsFactory = mockClientsFactory;
 
-    [Fact]
-    public async Task ConnectAndSubscribeWorks()
+    [Theory]
+    [ClassData(typeof(EnvironmentTestData))]
+    public async Task ConnectAndSubscribeWorks(IEnvironment environment)
     {
-        using var client = _mockClientsFactory.GetAlpacaStreamingClientMock();
+        using var client = _mockClientsFactory.GetAlpacaStreamingClientMock(environment);
 
         client.AddResponse(getMessage(Authorization, new JObject(
             new JProperty("status", AuthStatus.Authorized.ToString()))));

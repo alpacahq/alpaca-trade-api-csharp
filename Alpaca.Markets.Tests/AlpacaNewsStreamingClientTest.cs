@@ -11,10 +11,11 @@ public sealed class AlpacaNewsStreamingClientTest
         MockClientsFactoryFixture mockClientsFactory) =>
         _mockClientsFactory = mockClientsFactory;
 
-    [Fact]
-    public async Task ConnectAndSubscribeWorks()
+    [Theory]
+    [ClassData(typeof(EnvironmentTestData))]
+    public async Task ConnectAndSubscribeWorks(IEnvironment environment)
     {
-        using var client = _mockClientsFactory.GetAlpacaNewsStreamingClientMock();
+        using var client = _mockClientsFactory.GetAlpacaNewsStreamingClientMock(environment);
 
         await client.AddAuthentication();
 

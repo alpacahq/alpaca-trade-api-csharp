@@ -41,6 +41,8 @@ public static partial class AlpacaCryptoStreamingClientExtensions
         public IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(String symbol) =>
             Client.GetUpdatedBarSubscription(symbol);
 
+
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<IOrderBook> GetOrderBookSubscription(String symbol) =>
             Client.GetOrderBookSubscription(symbol);
     }

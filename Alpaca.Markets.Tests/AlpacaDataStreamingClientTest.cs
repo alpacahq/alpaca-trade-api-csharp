@@ -18,7 +18,7 @@ public sealed class AlpacaDataStreamingClientTest
     [Fact]
     public async Task ConnectAndSubscribeQuotesWorks()
     {
-        using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock();
+        using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock(Environments.Paper);
 
         await client.AddAuthentication();
 

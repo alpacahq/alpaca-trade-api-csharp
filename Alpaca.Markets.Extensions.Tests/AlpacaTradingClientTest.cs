@@ -46,6 +46,23 @@ public sealed class AlpacaTradingClientTest
         Assert.NotEqual(0, counter);
     }
 
+    [Fact]
+    public async Task IsMarketOpenAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        mock.AddGet("/v2/clock", new JObject(
+            new JProperty("next_close", DateTime.Today.AddDays(2)),
+            new JProperty("next_open", DateTime.Today.AddDays(1)),
+            new JProperty("timestamp", DateTime.UtcNow),
+            new JProperty("is_open", true)));
+
+        Assert.True(await mock.Client.IsMarketOpenAsync());
+        Assert.True(await mock.Client.IsMarketOpenAsync());
+
+        Assert.NotNull(await mock.Client.GetClockCachedAsync());
+    }
+
     private static void addSinglePageExpectation(
         MockClient<AlpacaTradingClientConfiguration, IAlpacaTradingClient> mock,
         Int32 count = 0) =>
