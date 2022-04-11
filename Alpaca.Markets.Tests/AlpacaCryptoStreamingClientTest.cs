@@ -37,7 +37,9 @@ public sealed class AlpacaCryptoStreamingClientTest
     [Fact]
     public async Task ConnectAndSubscribeDailyBarsWorks()
     {
-        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock();
+        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock(
+            configuration: new AlpacaCryptoStreamingClientConfiguration()
+                .WithExchanges(CryptoExchange.Cbse));
 
         await client.AddAuthentication();
 
@@ -62,7 +64,10 @@ public sealed class AlpacaCryptoStreamingClientTest
     [Fact]
     public async Task ConnectAndSubscribeQuotesWorks()
     {
-        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock();
+        var configuration = new AlpacaCryptoStreamingClientConfiguration()
+            .WithExchanges(Enum.GetValues<CryptoExchange>().AsEnumerable());
+
+        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock(configuration: configuration);
 
         await client.AddAuthentication();
 
@@ -79,6 +84,8 @@ public sealed class AlpacaCryptoStreamingClientTest
         }
 
         await client.Client.DisconnectAsync();
+
+        Assert.Equal(Enum.GetValues<CryptoExchange>(), configuration.Exchanges);
     }
 
     [Fact]

@@ -51,12 +51,12 @@ public sealed class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddGet("/v2/clock", new JObject(
-            new JProperty("next_close", DateTime.Today.AddDays(2)),
-            new JProperty("next_open", DateTime.Today.AddDays(1)),
-            new JProperty("timestamp", DateTime.UtcNow),
-            new JProperty("is_open", true)));
+        addClock(mock, DateTime.UtcNow, DateTime.Today.AddDays(1));
+        addClock(mock, DateTime.Today.AddDays(1), DateTime.UtcNow);
+        addClock(mock, DateTime.Today.AddDays(1), DateTime.Today.AddDays(2));
 
+        Assert.True(await mock.Client.IsMarketOpenAsync());
+        Assert.False(await mock.Client.IsMarketOpenAsync());
         Assert.True(await mock.Client.IsMarketOpenAsync());
         Assert.True(await mock.Client.IsMarketOpenAsync());
 
@@ -76,4 +76,14 @@ public sealed class AlpacaTradingClientTest
     private static async ValueTask<Int32> validateList<TItem>(
         IAsyncEnumerable<TItem> trades) =>
         await trades.CountAsync();
+
+    private static void addClock(
+        MockClient<AlpacaTradingClientConfiguration, IAlpacaTradingClient> mock,
+        DateTime nextClose,
+        DateTime nextOpen) =>
+        mock.AddGet("/v2/clock", new JObject(
+            new JProperty("is_open", nextClose < nextOpen),
+            new JProperty("timestamp", DateTime.UtcNow),
+            new JProperty("next_close", nextClose),
+            new JProperty("next_open", nextOpen)));
 }

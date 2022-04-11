@@ -30,4 +30,16 @@ public sealed class ConvertersTest
         Assert.NotEqual(original.Item, converted.Item);
         Assert.Equal(Exchange.Unknown, converted.Item);
     }
+
+    [Fact]
+    public void CryptoExchangeEnumConverterWorks()
+    {
+        var original = new EnumWrapper<CryptoExchange> { Item = (CryptoExchange)42 };
+        var json = JsonConvert.SerializeObject(original)
+            .Replace("42", "\"MarsExchange\"");
+        var converted = JsonConvert.DeserializeObject<EnumWrapper<CryptoExchange>>(json);
+
+        Assert.NotEqual(original.Item, converted.Item);
+        Assert.Equal(CryptoExchange.Unknown, converted.Item);
+    }
 }

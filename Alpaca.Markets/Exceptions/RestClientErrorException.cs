@@ -29,7 +29,6 @@ public sealed class RestClientErrorException : Exception
     /// </summary>
     /// <param name="message">The message that describes the error.</param>
     /// <param name="inner">The  exception that is the cause of this exception.</param>
-    [ExcludeFromCodeCoverage]
     public RestClientErrorException(
         String message,
         Exception inner)
