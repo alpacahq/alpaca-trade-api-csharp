@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.5</AssemblyVersion>
-    <FileVersion>6.0.3.5</FileVersion>
-    <Version>6.0.3-beta3</Version>
+    <AssemblyVersion>6.0.3.6</AssemblyVersion>
+    <FileVersion>6.0.3.6</FileVersion>
+    <Version>6.0.3-beta4</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-	<PackageReleaseNotes>- Added helper methods for getting cached version of the `IClock` interface and `IClock.IsOpened` property value.</PackageReleaseNotes>
-    <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
+	<PackageReleaseNotes>- Added crypto order book streaming support into the `IAlpacaCryptoStreamingClient` interface.</PackageReleaseNotes>
+	<Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
