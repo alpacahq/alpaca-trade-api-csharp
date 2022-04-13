@@ -85,7 +85,7 @@ public sealed class AlpacaNewsStreamingClientTest
             helper.Unsubscribe(HandleArticle);
         }
 
-        await tracker.WaitAllEvents();
+        tracker.WaitAllEvents();
 
         await client.Client.DisconnectAsync();
 

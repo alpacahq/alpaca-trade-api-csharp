@@ -6,11 +6,11 @@ internal sealed class ErrorsAndWarningsTracker : IDisposable
 
     private readonly IStreamingClient _client;
 
-    private readonly SemaphoreSlim _semaphore;
-
     private readonly Int32 _expectedWarnings;
 
     private readonly Int32 _expectedErrors;
+
+    private readonly Barrier _barrier;
 
     private Int32 _warnings;
 
@@ -25,15 +25,14 @@ internal sealed class ErrorsAndWarningsTracker : IDisposable
         _expectedErrors = expectedErrors;
         _client = client;
 
-        _semaphore = new SemaphoreSlim(
-            0, expectedErrors + expectedWarnings);
+        _barrier = new Barrier(expectedErrors + expectedWarnings + 1);
 
         _client.OnWarning += handleWarning;
         _client.OnError += handleError;
     }
 
-    public async Task WaitAllEvents() =>
-        Assert.True(await _semaphore.WaitAsync(_timeout));
+    public void WaitAllEvents() =>
+        Assert.True(_barrier.SignalAndWait(_timeout));
 
     public void Dispose()
     {
@@ -46,13 +45,13 @@ internal sealed class ErrorsAndWarningsTracker : IDisposable
 
     private void handleError(Exception exception)
     {
-        _semaphore.Release();
+        _barrier.RemoveParticipant();
         ++_errors;
     }
 
     private void handleWarning(String message)
     {
-        _semaphore.Release();
+        _barrier.RemoveParticipant();
         ++_warnings;
     }
 }

@@ -171,7 +171,7 @@ public sealed class AlpacaDataStreamingClientTest
             subscriptionHelper.Unsubscribe(HandleCorrection);
         }
 
-        await tracker.WaitAllEvents();
+        tracker.WaitAllEvents();
 
         client.Client.Connected -= HandleConnected;
 

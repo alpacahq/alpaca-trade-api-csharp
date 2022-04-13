@@ -100,11 +100,11 @@ public sealed class AlpacaStreamingClientTest
         await client.AddMessageAsync(new JObject());
 
         // Errors
-        await client.AddMessageAsync(getMessage(Authorization, 
+        await client.AddMessageAsync(getMessage(Authorization,
             new JObject(new JProperty("success", "authenticated"))));
         await client.AddMessageAsync("<html><body>451</body></html>");
 
-        await tracker.WaitAllEvents();
+        tracker.WaitAllEvents();
 
         await client.Client.DisconnectAsync();
         client.Client.Dispose(); // Double dispose should be safe
