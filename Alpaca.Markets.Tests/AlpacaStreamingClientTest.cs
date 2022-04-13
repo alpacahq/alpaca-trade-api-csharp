@@ -77,9 +77,42 @@ public sealed class AlpacaStreamingClientTest
         }
     }
 
+    [Fact]
+    public async Task ErrorsAndWarningWorks()
+    {
+        const Int32 expectedWarnings = 3;
+        const Int32 expectedErrors = 2;
+
+        using var client = _mockClientsFactory.GetAlpacaStreamingClientMock();
+        using var tracker = new ErrorsAndWarningsTracker(
+            client.Client, expectedWarnings, expectedErrors);
+
+        client.AddResponse(getMessage(Authorization, new JObject(
+            new JProperty("status", AuthStatus.Unauthorized.ToString()),
+            new JProperty("message", Guid.NewGuid().ToString("N")))));
+
+        Assert.Equal(AuthStatus.Unauthorized,
+            await client.Client.ConnectAndAuthenticateAsync());
+
+        // Warnings
+        await client.AddMessageAsync(getMessage(Authorization, null));
+        await client.AddMessageAsync(getMessage(String.Empty, null));
+        await client.AddMessageAsync(new JObject());
+
+        // Errors
+        await client.AddMessageAsync(getMessage(Authorization, 
+            new JObject(new JProperty("success", "authenticated"))));
+        await client.AddMessageAsync("<html><body>451</body></html>");
+
+        await tracker.WaitAllEvents();
+
+        await client.Client.DisconnectAsync();
+        client.Client.Dispose(); // Double dispose should be safe
+    }
+
     private static JObject getMessage(
         String stream,
-        JObject data) =>
+        JObject? data) =>
         new (
             new JProperty("stream", stream),
             new JProperty("data", data));

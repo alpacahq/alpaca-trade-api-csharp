@@ -20,7 +20,7 @@ public sealed class AlpacaDataStreamingClientTest
     {
         using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock(Environments.Paper);
 
-        await client.AddAuthentication();
+        await client.AddAuthenticationAsync();
 
         Assert.Equal(AuthStatus.Authorized,
             await client.Client.ConnectAndAuthenticateAsync());
@@ -42,7 +42,7 @@ public sealed class AlpacaDataStreamingClientTest
     {
         using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock();
 
-        await client.AddAuthentication();
+        await client.AddAuthenticationAsync();
 
         Assert.Equal(AuthStatus.Authorized,
             await client.Client.ConnectAndAuthenticateAsync());
@@ -67,7 +67,7 @@ public sealed class AlpacaDataStreamingClientTest
     {
         using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock();
 
-        await client.AddAuthentication();
+        await client.AddAuthenticationAsync();
 
         Assert.Equal(AuthStatus.Authorized,
             await client.Client.ConnectAndAuthenticateAsync());
@@ -88,7 +88,7 @@ public sealed class AlpacaDataStreamingClientTest
     {
         using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock();
 
-        await client.AddAuthentication();
+        await client.AddAuthenticationAsync();
 
         Assert.Equal(AuthStatus.Authorized,
             await client.Client.ConnectAndAuthenticateAsync());
@@ -107,44 +107,108 @@ public sealed class AlpacaDataStreamingClientTest
     [Fact]
     public async Task ConnectAndSubscribeCorrectionsWorks()
     {
+        const String channel = "trades";
+
         using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock();
 
-        await client.AddAuthentication();
+        await client.AddAuthenticationAsync();
 
         Assert.Equal(AuthStatus.Authorized,
             await client.Client.ConnectAndAuthenticateAsync());
 
-        await using (var helper = await SubscriptionHelper<ICorrection>.Create(
-                         client.Client, validate,
-                         _ => _.GetCorrectionSubscription(Stock)))
+        client.AddSubscription(channel, new JArray(Stock));
+
+        await using (await SubscriptionHelper<ITrade>.Create(
+                   client.Client, _ => _.Validate(Stock),
+                   _ => _.GetTradeSubscription(Stock)))
         {
+            await using var corrections =
+                await SubscriptionHelper<ICorrection>.Create(client.Client, validate,
+                    _ => _.GetCorrectionSubscription(Stock));
+
             await client.AddMessageAsync(new JArray(Stock.CreateCorrection()));
-            Assert.True(helper.WaitAll());
+            Assert.True(corrections.WaitAll());
+
+            client.AddSubscription(channel, new JArray());
         }
 
         await client.Client.DisconnectAsync();
     }
+    
+    [Fact]
+    public async Task ErrorsAndWarningsWorks()
+    {
+        const String channel = "corrections";
+        const Int32 expectedWarnings = 0;
+        const Int32 expectedErrors = 4;
+
+        using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock();
+        using var tracker = new ErrorsAndWarningsTracker(
+            client.Client, expectedWarnings, expectedErrors);
+
+        // Errors (2 in row)
+        await client.AddAuthenticationAsync(null); 
+
+        // No errors or warnings
+        await client.AddErrorMessageAsync(406);
+        Assert.Equal(AuthStatus.Unauthorized,
+            await client.Client.ConnectAndAuthenticateAsync());
+
+        client.Client.Connected += HandleConnected;
+        await client.AddErrorMessageAsync(403);
+
+        // Error (only one)
+        await client.AddMessageAsync(new JObject(new JProperty("T", channel)));
+
+        await using (var subscriptionHelper = await SubscriptionHelper<ICorrection>.Create(
+                         client.Client, validate, _ => _.GetCorrectionSubscription(Stock)))
+        {
+            subscriptionHelper.Subscribe(HandleCorrection);
+
+            await client.AddMessageAsync(new JArray(Stock.CreateCorrection()));
+            Assert.True(subscriptionHelper.WaitAll());
+
+            subscriptionHelper.Unsubscribe(HandleCorrection);
+        }
+
+        await tracker.WaitAllEvents();
+
+        client.Client.Connected -= HandleConnected;
+
+        await client.Client.DisconnectAsync();
+
+        void HandleConnected(AuthStatus status)
+        {
+            if (status == AuthStatus.Authorized)
+            {
+                throw new InvalidOperationException(); // Should be reported via OnError event
+            }
+        } 
+
+        void HandleCorrection(ICorrection correction) =>
+            throw new InvalidOperationException(); // Should be reported via OnError event
+    }
 
     private static JObject createStatus() =>
         new(
+            new JProperty(MessageDataHelpers.StreamingMessageTypeTag, "s"),
             new JProperty("sc", Guid.NewGuid().ToString("D")),
             new JProperty("sm", Guid.NewGuid().ToString("D")),
             new JProperty("rc", Guid.NewGuid().ToString("D")),
             new JProperty("rm", Guid.NewGuid().ToString("D")),
             new JProperty("z", Guid.NewGuid().ToString("D")),
             new JProperty("t", DateTime.UtcNow),
-            new JProperty("S", Stock),
-            new JProperty("T", "s"));
+            new JProperty("S", Stock));
 
     private static JObject createLimitUpLimitDown() =>
         new(
+            new JProperty(MessageDataHelpers.StreamingMessageTypeTag, "l"),
             new JProperty("i", Guid.NewGuid().ToString("D")),
             new JProperty("z", Guid.NewGuid().ToString("D")),
             new JProperty("t", DateTime.UtcNow),
             new JProperty("d", DownPrice),
             new JProperty("u", UpPrice),
-            new JProperty("S", Stock),
-            new JProperty("T", "l"));
+            new JProperty("S", Stock));
 
     private static void validate(
         IStatus status)

@@ -264,6 +264,7 @@ internal static class HistoricalDataHelpers
     public static JObject CreateCorrection(
         this String symbol) =>
         new (
+            new JProperty(MessageDataHelpers.StreamingMessageTypeTag, "c"),
             new JProperty("oc", new JArray(_condition)),
             new JProperty("cc", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
@@ -276,8 +277,7 @@ internal static class HistoricalDataHelpers
             new JProperty("tks", "-"),
             new JProperty("z", _tape),
             new JProperty("cs", Size),
-            new JProperty("os", Size),
-            new JProperty("T", "c"));
+            new JProperty("os", Size));
 
     private static JObject createSnapshot() =>
         createSnapshot(String.Empty);

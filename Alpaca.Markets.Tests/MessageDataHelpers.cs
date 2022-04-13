@@ -7,6 +7,8 @@ internal static class MessageDataHelpers
 {
     private static readonly String _exchange = CryptoExchange.Cbse.ToString();
 
+    public const String StreamingMessageTypeTag = "T";
+
     private const Int64 IntegerQuantity = 123L;
 
     private const Decimal Quantity = 123.45M;
@@ -54,10 +56,10 @@ internal static class MessageDataHelpers
         new(
             new JProperty("a", new JArray(createOrderBookEntry())),
             new JProperty("b", new JArray(createOrderBookEntry())),
+            new JProperty(StreamingMessageTypeTag, "o"),
             new JProperty("t", DateTime.UtcNow),
             new JProperty("x", _exchange),
-            new JProperty("S", symbol),
-            new JProperty("T", "o"));
+            new JProperty("S", symbol));
 
     public static JObject CreateStreamingNewsArticle(
         this String symbol) =>
@@ -169,7 +171,7 @@ internal static class MessageDataHelpers
         String channel,
         String? symbol = null)
     {
-        message.Add("T", channel);
+        message.Add(StreamingMessageTypeTag, channel);
         if (symbol is not null)
         {
             message.Add("S", symbol);

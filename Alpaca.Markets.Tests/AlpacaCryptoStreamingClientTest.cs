@@ -16,7 +16,7 @@ public sealed class AlpacaCryptoStreamingClientTest
     {
         using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock(Environments.Paper);
 
-        await client.AddAuthentication();
+        await client.AddAuthenticationAsync();
 
         Assert.Equal(AuthStatus.Authorized,
             await client.Client.ConnectAndAuthenticateAsync());
@@ -41,7 +41,7 @@ public sealed class AlpacaCryptoStreamingClientTest
             configuration: new AlpacaCryptoStreamingClientConfiguration()
                 .WithExchanges(CryptoExchange.Cbse));
 
-        await client.AddAuthentication();
+        await client.AddAuthenticationAsync();
 
         Assert.Equal(AuthStatus.Authorized,
             await client.Client.ConnectAndAuthenticateAsync());
@@ -69,7 +69,7 @@ public sealed class AlpacaCryptoStreamingClientTest
 
         using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock(configuration: configuration);
 
-        await client.AddAuthentication();
+        await client.AddAuthenticationAsync();
 
         Assert.Equal(AuthStatus.Authorized,
             await client.Client.ConnectAndAuthenticateAsync());
@@ -93,7 +93,7 @@ public sealed class AlpacaCryptoStreamingClientTest
     {
         using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock();
 
-        await client.AddAuthentication();
+        await client.AddAuthenticationAsync();
 
         Assert.Equal(AuthStatus.Authorized,
             await client.Client.ConnectAndAuthenticateAsync());
@@ -115,7 +115,7 @@ public sealed class AlpacaCryptoStreamingClientTest
     {
         using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock();
 
-        await client.AddAuthentication();
+        await client.AddAuthenticationAsync();
 
         Assert.Equal(AuthStatus.Authorized,
             await client.Client.ConnectAndAuthenticateAsync());

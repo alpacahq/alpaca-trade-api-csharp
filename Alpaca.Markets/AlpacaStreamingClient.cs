@@ -80,7 +80,6 @@ internal sealed class AlpacaStreamingClient :
         try
         {
             var response = token.ToObject<JsonAuthResponse>();
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             if (response is null)
             {
                 HandleWarning("Invalid (empty) authentication response.");
