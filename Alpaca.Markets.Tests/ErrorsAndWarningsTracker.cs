@@ -36,8 +36,10 @@ internal sealed class ErrorsAndWarningsTracker : IDisposable
 
     public void Dispose()
     {
-        _client.OnWarning -= handleWarning;
+        _barrier.Dispose();
+
         _client.OnError -= handleError;
+        _client.OnWarning -= handleWarning;
 
         Assert.Equal(_expectedWarnings, _warnings);
         Assert.Equal(_expectedErrors, _errors);
