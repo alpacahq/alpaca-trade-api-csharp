@@ -9,6 +9,8 @@ public sealed class WithReconnectTest
     [Fact]
     public async Task AlpacaStreamingClientWithReconnectWorks()
     {
+        const Int32 expectedEventsCount = 4;
+
         var count = 0;
         var client = new Mock<IAlpacaStreamingClient>();
 
@@ -39,7 +41,7 @@ public sealed class WithReconnectTest
             wrapped.OnTradeUpdate -= HandleTradeUpdate;
         }
 
-        Assert.Equal(4, count);
+        Assert.Equal(expectedEventsCount, count);
         client.Verify();
 
         void HandleTradeUpdate(ITradeUpdate _) => ++count;
@@ -86,7 +88,6 @@ public sealed class WithReconnectTest
             await wrapped.UnsubscribeAsync(subscriptions.Skip(1));
         }
 
-        //Assert.Equal(4, count);
         client.Verify();
 
         IAlpacaDataSubscription<INewsArticle> GetSubscription(String symbol)

@@ -167,19 +167,14 @@ public sealed class ThrottleParameters
     /// Gets the custom message handler that supports reconnection logic configured with the current settings.
     /// </summary>
     [UsedImplicitly]
-    public HttpMessageHandler GetMessageHandler() => new CustomHttpHandler(getAsyncPolicy());
+    public HttpMessageHandler GetMessageHandler() => new CustomHttpHandler(GetAsyncPolicy());
 
-    internal HttpClient GetHttpClient() =>
-#pragma warning disable CA2000 // Dispose objects before losing scope
-#pragma warning disable CA5399 // HttpClient is created without enabling CheckCertificateRevocationList
-            new(GetMessageHandler(), true)
-#pragma warning restore CA5399 //  HttpClient is created without enabling CheckCertificateRevocationList
-#pragma warning restore CA2000 // Dispose objects before losing scope
-            {
-                Timeout = Timeout.InfiniteTimeSpan
-            };
-
-    private IAsyncPolicy<HttpResponseMessage> getAsyncPolicy()
+    /// <summary>
+    /// Gets the custom Polly asynchronous execution policy (can be used by unit tests and DI containers).
+    /// </summary>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    public IAsyncPolicy<HttpResponseMessage> GetAsyncPolicy()
     {
         var socketErrorsPolicy = Policy
             .HandleInner<SocketException>(
@@ -198,6 +193,16 @@ public sealed class ThrottleParameters
 
         return socketErrorsPolicy.WrapAsync(httpResponsesPolicy);
     }
+
+    internal HttpClient GetHttpClient() =>
+#pragma warning disable CA2000 // Dispose objects before losing scope
+#pragma warning disable CA5399 // HttpClient is created without enabling CheckCertificateRevocationList
+        new(GetMessageHandler(), true)
+#pragma warning restore CA5399 //  HttpClient is created without enabling CheckCertificateRevocationList
+#pragma warning restore CA2000 // Dispose objects before losing scope
+        {
+            Timeout = Timeout.InfiniteTimeSpan
+        };
 
     private TimeSpan getDelayFromHeader(
         Int32 retryCount,

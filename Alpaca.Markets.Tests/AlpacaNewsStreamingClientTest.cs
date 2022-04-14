@@ -58,17 +58,17 @@ public sealed class AlpacaNewsStreamingClientTest
             new JProperty(MessageDataHelpers.StreamingMessageTypeTag, "mocks"))));
 
         // No errors or warnings
-        await client.AddErrorMessageAsync(402);
+        await client.AddErrorMessageAsync(HttpStatusCode.PaymentRequired);
         Assert.Equal(AuthStatus.Unauthorized,
             await client.Client.ConnectAndAuthenticateAsync());
-        await client.AddErrorMessageAsync(401);
-        await client.AddErrorMessageAsync(403);
+        await client.AddErrorMessageAsync(HttpStatusCode.Unauthorized);
+        await client.AddErrorMessageAsync(HttpStatusCode.Forbidden);
 
         // Errors
         client.AddSubscription(NewsChannelName, Guid.NewGuid());
         await client.AddMessageAsync(new JObject(
             new JProperty(MessageDataHelpers.StreamingMessageTypeTag, NewsChannelName)));
-        await client.AddErrorMessageAsync(500);
+        await client.AddErrorMessageAsync(HttpStatusCode.InternalServerError);
 
         await using (var helper = await SubscriptionHelper<INewsArticle>.Create(
                          client.Client, _ => _.Validate(Stock),
@@ -89,7 +89,7 @@ public sealed class AlpacaNewsStreamingClientTest
 
         await client.Client.DisconnectAsync();
 
-        void HandleArticle(INewsArticle article) =>
+        void HandleArticle(INewsArticle _) =>
             throw new InvalidOperationException(); // Should be reported via OnError event
     }
 }

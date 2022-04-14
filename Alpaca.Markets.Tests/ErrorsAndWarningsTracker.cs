@@ -45,13 +45,13 @@ internal sealed class ErrorsAndWarningsTracker : IDisposable
         Assert.Equal(_expectedErrors, _errors);
     }
 
-    private void handleError(Exception exception)
+    private void handleError(Exception _)
     {
         _barrier.RemoveParticipant();
         ++_errors;
     }
 
-    private void handleWarning(String message)
+    private void handleWarning(String _)
     {
         _barrier.RemoveParticipant();
         ++_warnings;

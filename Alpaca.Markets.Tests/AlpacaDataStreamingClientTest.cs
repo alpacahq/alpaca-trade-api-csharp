@@ -150,12 +150,12 @@ public sealed class AlpacaDataStreamingClientTest
         await client.AddAuthenticationAsync(null); 
 
         // No errors or warnings
-        await client.AddErrorMessageAsync(406);
+        await client.AddErrorMessageAsync(HttpStatusCode.NotAcceptable);
         Assert.Equal(AuthStatus.Unauthorized,
             await client.Client.ConnectAndAuthenticateAsync());
 
         client.Client.Connected += HandleConnected;
-        await client.AddErrorMessageAsync(403);
+        await client.AddErrorMessageAsync(HttpStatusCode.Forbidden);
 
         // Error (only one)
         await client.AddMessageAsync(new JObject(new JProperty("T", channel)));
@@ -185,7 +185,7 @@ public sealed class AlpacaDataStreamingClientTest
             }
         } 
 
-        void HandleCorrection(ICorrection correction) =>
+        void HandleCorrection(ICorrection _) =>
             throw new InvalidOperationException(); // Should be reported via OnError event
     }
 

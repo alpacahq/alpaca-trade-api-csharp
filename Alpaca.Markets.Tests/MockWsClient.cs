@@ -70,9 +70,9 @@ public sealed class MockWsClient<TConfiguration, TClient> : IDisposable
     }
 
     public ValueTask AddErrorMessageAsync(
-        Int32 errorCode) =>
+        HttpStatusCode errorCode) =>
         AddMessageAsync(packResponse("error", new JObject(
-            new JProperty("code", errorCode), new JProperty("msg", errorCode.ToString()))));
+            new JProperty("code", (Int32)errorCode), new JProperty("msg", errorCode.ToString()))));
 
     public void AddSubscription(
         String channel,
