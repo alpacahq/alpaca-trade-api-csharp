@@ -23,7 +23,7 @@ public sealed class ThrottleParametersTest
     [Fact]
     public async Task ThrottlingWithErrorMessageWorks()
     {
-        var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         var errorMessage = new JObject(
             new JProperty("message", Message),
@@ -54,13 +54,13 @@ public sealed class ThrottleParametersTest
     [Fact]
     public async Task ThrottlingWithSocketErrorsWorks()
     {
-        var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet(ClockUrl, AsException(SocketError.TryAgain));
         mock.AddGet(ClockUrl, AsException(SocketError.TimedOut));
-        mock.AddGet(ClockUrl, AsException(SocketError.NotConnected));
         mock.AddGet(ClockUrl, AsException(SocketError.HostNotFound));
-        mock.AddGet(ClockUrl, AsException(SocketError.TryAgain));
+        mock.AddGet(ClockUrl, AsException(SocketError.NotConnected));
+        mock.AddGet(ClockUrl, AsException(SocketError.NotConnected));
         mock.AddGet(ClockUrl, AsException(SocketError.NotConnected));
 
         var exception = await Assert.ThrowsAsync<SocketException>(
@@ -75,7 +75,7 @@ public sealed class ThrottleParametersTest
     [Fact]
     public async Task ThrottlingWithoutErrorMessageWorks()
     {
-        var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         const String errorMessage = "<html><body>HTTP 500: Unknown server error.</body></html>";
 
@@ -91,7 +91,7 @@ public sealed class ThrottleParametersTest
     [Fact]
     public async Task ThrottlingWithInvalidErrorMessageWorks()
     {
-        var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         var errorMessage = new JObject(
             new JProperty("msg", Message),
