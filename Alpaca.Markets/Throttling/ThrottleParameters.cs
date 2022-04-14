@@ -179,7 +179,7 @@ public sealed class ThrottleParameters
         var socketErrorsPolicy = Policy
             .HandleInner<SocketException>(
                 exception =>
-                    RetrySocketErrorCodes.Contains((SocketError)exception.ErrorCode))
+                    RetrySocketErrorCodes.Contains(exception.SocketErrorCode))
             .WaitAndRetryAsync(
                 (Int32)MaxRetryAttempts, getRandomDelay);
 
