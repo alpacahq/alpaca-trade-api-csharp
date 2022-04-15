@@ -51,9 +51,12 @@ public sealed class AlpacaTradingClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        addClock(mock, DateTime.UtcNow, DateTime.Today.AddDays(1));
-        addClock(mock, DateTime.Today.AddDays(1), DateTime.UtcNow);
-        addClock(mock, DateTime.Today.AddDays(1), DateTime.Today.AddDays(2));
+        var tomorrow = DateTime.Today.AddDays(1);
+        var dayAfterTomorrow = tomorrow.AddDays(1);
+
+        addClock(mock, DateTime.UtcNow, tomorrow);
+        addClock(mock, tomorrow, DateTime.UtcNow);
+        addClock(mock, tomorrow, dayAfterTomorrow);
 
         Assert.True(await mock.Client.IsMarketOpenAsync());
         Assert.False(await mock.Client.IsMarketOpenAsync());

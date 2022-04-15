@@ -25,7 +25,7 @@ public sealed class AlpacaNewsStreamingClientTest
         var client = createMockClient(
             _ => _.GetNewsSubscription(It.IsAny<String>()));
 
-        var parameters = new ReconnectionParameters()
+        var parameters = new ReconnectionParameters
         {
             MaxReconnectionDelay = TimeSpan.FromMilliseconds(100),
             MinReconnectionDelay = TimeSpan.FromMilliseconds(10),
@@ -89,10 +89,11 @@ public sealed class AlpacaNewsStreamingClientTest
 
         Assert.Equal(expectedErrorsCount, errors);
 
-        void HandleWarning(Exception exception)
+        void HandleWarning(
+            Exception _)
         {
             ++errors;
-            client.Raise(_ => _.OnError += null, new TaskCanceledException());
+            client.Raise(__ => __.OnError += null, new TaskCanceledException());
         }
     }
 

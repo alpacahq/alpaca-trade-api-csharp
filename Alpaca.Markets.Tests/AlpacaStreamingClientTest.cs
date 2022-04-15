@@ -1,4 +1,6 @@
-﻿namespace Alpaca.Markets.Tests;
+﻿using System.Net.Sockets;
+
+namespace Alpaca.Markets.Tests;
 
 [Collection("MockEnvironment")]
 public sealed class AlpacaStreamingClientTest
@@ -27,7 +29,9 @@ public sealed class AlpacaStreamingClientTest
     [ClassData(typeof(EnvironmentTestData))]
     public async Task ConnectAndSubscribeWorks(IEnvironment environment)
     {
-        using var client = _mockClientsFactory.GetAlpacaStreamingClientMock(environment);
+        using var client = _mockClientsFactory.GetAlpacaStreamingClientMock(environment,
+            environment.GetAlpacaStreamingClientConfiguration(new SecretKey(
+                Guid.NewGuid().ToString("N"), Guid.NewGuid().ToString("N"))));
 
         client.AddResponse(getMessage(Authorization, new JObject(
             new JProperty("status", AuthStatus.Authorized.ToString()))));
@@ -40,13 +44,7 @@ public sealed class AlpacaStreamingClientTest
         var tradeUpdates = new AutoResetEvent(false);
         client.Client.OnTradeUpdate += HandleTradeUpdate;
 
-        await client.AddMessageAsync(getMessage(TradeUpdates, new JObject(
-            new JProperty("order", Stock.CreateMarketOrder()),
-            new JProperty("event", TradeEvent.PendingNew),
-            new JProperty("timestamp", DateTime.UtcNow),
-            new JProperty("position_qty", Quantity),
-            new JProperty("qty", Quantity),
-            new JProperty("price", Price))));
+        await client.AddMessageAsync(getTradeUpdate());
 
         Assert.True(tradeUpdates.WaitOne(TimeSpan.FromSeconds(1)));
 
@@ -109,6 +107,57 @@ public sealed class AlpacaStreamingClientTest
         await client.Client.DisconnectAsync();
         client.Client.Dispose(); // Double dispose should be safe
     }
+
+    [Fact]
+    public async Task RecursiveErrorsWorks()
+    {
+        const Int32 expectedWarnings = 1;
+        const Int32 expectedErrors = 1;
+
+        using var client = _mockClientsFactory.GetAlpacaStreamingClientMock();
+        using var tracker = new ErrorsAndWarningsTracker(
+            client.Client, expectedWarnings, expectedErrors);
+
+        client.AddResponse(getMessage(Authorization, new JObject(
+            new JProperty("status", AuthStatus.Unauthorized.ToString()),
+            new JProperty("message", Guid.NewGuid().ToString("N")))));
+
+        Assert.Equal(AuthStatus.Unauthorized,
+            await client.Client.ConnectAndAuthenticateAsync());
+
+        client.Client.OnTradeUpdate += HandleTradeUpdate;
+        client.Client.OnWarning += HandleWarning;
+
+        await client.AddMessageAsync(
+            getMessage(TradeUpdates, new JObject()));
+        await client.AddMessageAsync(getTradeUpdate());
+        await client.AddMessageAsync(
+            getMessage("mock", new JObject()));
+
+        tracker.WaitAllEvents();
+
+        client.Client.OnWarning -= HandleWarning;
+        client.Client.OnTradeUpdate -= HandleTradeUpdate;
+
+        await client.Client.DisconnectAsync();
+
+        void HandleTradeUpdate(
+            ITradeUpdate _) =>
+            throw new SocketException((Int32)SocketError.IsConnected);
+
+        void HandleWarning(
+            String _) =>
+            throw new SocketException((Int32)SocketError.IsConnected);
+    }
+
+    private static JObject getTradeUpdate() =>
+        getMessage(TradeUpdates, new JObject(
+            new JProperty("order", Stock.CreateMarketOrder()),
+            new JProperty("event", TradeEvent.PendingNew),
+            new JProperty("timestamp", DateTime.UtcNow),
+            new JProperty("position_qty", Quantity),
+            new JProperty("qty", Quantity),
+            new JProperty("price", Price)));
 
     private static JObject getMessage(
         String stream,
