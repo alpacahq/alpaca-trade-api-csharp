@@ -28,6 +28,7 @@ internal sealed class AlpacaStreamingClient :
             };
     }
 
+    /// <inheritdoc cref="IAlpacaStreamingClient.OnTradeUpdate"/>
     public event Action<ITradeUpdate>? OnTradeUpdate;
 
     protected override async void OnOpened()

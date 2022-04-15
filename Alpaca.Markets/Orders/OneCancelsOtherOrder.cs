@@ -5,8 +5,8 @@
 /// This is a set of two orders with the same side (buy/buy or sell/sell) and currently only exit order is supported.
 /// In other words, this is the second part of the bracket orders where the entry order is already filled,
 /// and you can submit the take-profit and stop-loss in one order submission.
-/// <para>See https://alpaca.markets/docs/trading/orders/#oco-orders</para>
 /// </summary>
+/// <remarks>See <a href="https://alpaca.markets/docs/trading/orders/#oco-orders">Alpaca Order Documentation</a> for more information.</remarks>
 public sealed class OneCancelsOtherOrder : AdvancedOrderBase
 {
     internal OneCancelsOtherOrder(

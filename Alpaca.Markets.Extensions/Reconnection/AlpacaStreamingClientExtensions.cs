@@ -17,6 +17,7 @@ public static class AlpacaStreamingClientExtensions
         {
         }
 
+        /// <inheritdoc cref="IAlpacaStreamingClient.OnTradeUpdate"/>
         public event Action<ITradeUpdate>? OnTradeUpdate
         {
             add => Client.OnTradeUpdate += value;

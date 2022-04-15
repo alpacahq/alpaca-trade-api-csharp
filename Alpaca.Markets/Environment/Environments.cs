@@ -12,7 +12,7 @@ public static class Environments
 
     /// <summary>
     /// Gets paper trading environment. Paper trading is a simulation environment that does not use real money.
-    /// See https://alpaca.markets/docs/trading/paper-trading/
+    /// See <a href="https://alpaca.markets/docs/trading/paper-trading/">Alpaca Paper Trading Documentation</a> for more information.
     /// </summary>
     [UsedImplicitly]
     public static IEnvironment Paper { get; } = new PaperEnvironment();

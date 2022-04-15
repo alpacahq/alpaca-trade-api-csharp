@@ -2,8 +2,8 @@
 
 /// <summary>
 /// A market order is a request to buy or sell a security at the currently available market price.
-/// <para>See https://alpaca.markets/docs/trading/orders/#market-order</para>
 /// </summary>
+/// <remarks>See <a href="https://alpaca.markets/docs/trading/orders/#market-order">Alpaca Order Documentation</a> for more information.</remarks>
 public sealed class MarketOrder : SimpleOrderBase
 {
     internal MarketOrder(

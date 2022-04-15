@@ -2,8 +2,8 @@
 
 /// <summary>
 /// A limit order is an order to buy or sell at a specified price or better.
-/// <para>See https://alpaca.markets/docs/trading/orders/#limit-order</para>
 /// </summary>
+/// <remarks>See <a href="https://alpaca.markets/docs/trading/orders/#limit-order">Alpaca Order Documentation</a> for more information.</remarks>
 public sealed class LimitOrder : SimpleOrderBase
 {
     internal LimitOrder(
