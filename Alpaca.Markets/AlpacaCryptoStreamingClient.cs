@@ -13,4 +13,8 @@ internal sealed class AlpacaCryptoStreamingClient :
     public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
         String symbol) =>
         GetSubscription<IQuote, JsonRealTimeCryptoQuote>(QuotesChannel, symbol);
+
+    public IAlpacaDataSubscription<IOrderBook> GetOrderBookSubscription(
+        String symbol) => 
+        GetSubscription<IOrderBook, JsonOrderBook>(OrderBooksChannel, symbol);
 }

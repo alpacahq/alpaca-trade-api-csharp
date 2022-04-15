@@ -14,6 +14,7 @@ public static class EnvironmentExtensions
     /// <returns>The new instance of <see cref="IAlpacaTradingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     public static IAlpacaTradingClient GetAlpacaTradingClient(
         this IEnvironment environment,
         SecurityKey securityKey) =>
@@ -45,6 +46,7 @@ public static class EnvironmentExtensions
     /// <returns>The new instance of <see cref="IAlpacaDataClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     public static IAlpacaDataClient GetAlpacaDataClient(
         this IEnvironment environment,
         SecurityKey securityKey) =>
@@ -76,6 +78,7 @@ public static class EnvironmentExtensions
     /// <returns>The new instance of <see cref="IAlpacaCryptoDataClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     public static IAlpacaCryptoDataClient GetAlpacaCryptoDataClient(
         this IEnvironment environment,
         SecurityKey securityKey) =>
@@ -107,6 +110,7 @@ public static class EnvironmentExtensions
     /// <returns>The new instance of <see cref="IAlpacaStreamingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     public static IAlpacaStreamingClient GetAlpacaStreamingClient(
         this IEnvironment environment,
         SecurityKey securityKey) =>
@@ -138,6 +142,7 @@ public static class EnvironmentExtensions
     /// <returns>The new instance of <see cref="IAlpacaDataStreamingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     public static IAlpacaDataStreamingClient GetAlpacaDataStreamingClient(
         this IEnvironment environment,
         SecurityKey securityKey) =>
@@ -169,6 +174,7 @@ public static class EnvironmentExtensions
     /// <returns>The new instance of <see cref="IAlpacaCryptoStreamingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     public static IAlpacaCryptoStreamingClient GetAlpacaCryptoStreamingClient(
         this IEnvironment environment,
         SecurityKey securityKey) =>
@@ -200,6 +206,7 @@ public static class EnvironmentExtensions
     /// <returns>The new instance of <see cref="IAlpacaNewsStreamingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     public static IAlpacaNewsStreamingClient GetAlpacaNewsStreamingClient(
         this IEnvironment environment,
         SecurityKey securityKey) =>

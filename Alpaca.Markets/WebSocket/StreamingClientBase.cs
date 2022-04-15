@@ -93,6 +93,7 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
     [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
     protected virtual void OnClosed() => SocketClosed?.Invoke();
 
+    [ExcludeFromCodeCoverage]
     protected virtual void OnMessageReceived(
         String message)
     {

@@ -33,19 +33,19 @@ public sealed partial class AlpacaCryptoDataClientTest
         var nullSecurityId = new AlpacaCryptoDataClientConfiguration { SecurityId = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(
-            () => _mockClientsFactory.GetAlpacaCryptoDataClientMock(nullSecurityId));
+            () => _mockClientsFactory.GetAlpacaCryptoDataClientMock(Environments.Paper, nullSecurityId));
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         var nullApiEndpoint = new AlpacaCryptoDataClientConfiguration { ApiEndpoint = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(
-            () => _mockClientsFactory.GetAlpacaCryptoDataClientMock(nullApiEndpoint));
+            () => _mockClientsFactory.GetAlpacaCryptoDataClientMock(Environments.Paper, nullApiEndpoint));
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         var nullThrottleParameters = new AlpacaCryptoDataClientConfiguration { ThrottleParameters = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(
-            () => _mockClientsFactory.GetAlpacaCryptoDataClientMock(nullThrottleParameters));
+            () => _mockClientsFactory.GetAlpacaCryptoDataClientMock(Environments.Paper, nullThrottleParameters));
     }
 
     private static Interval<DateTime> getTimeInterval()

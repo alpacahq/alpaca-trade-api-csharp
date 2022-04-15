@@ -4,7 +4,7 @@
 /// Helper extension method for creating special version of the <see cref="IAlpacaCryptoStreamingClient"/>
 /// implementation with automatic reconnection (with configurable delay and number of attempts) support.
 /// </summary>
-public static class AlpacaCryptoStreamingClientExtensions
+public static partial class AlpacaCryptoStreamingClientExtensions
 {
     private sealed class ClientWithReconnection :
         ClientWithSubscriptionReconnectBase<IAlpacaCryptoStreamingClient>,
@@ -40,6 +40,11 @@ public static class AlpacaCryptoStreamingClientExtensions
         [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(String symbol) =>
             Client.GetUpdatedBarSubscription(symbol);
+
+
+        [ExcludeFromCodeCoverage]
+        public IAlpacaDataSubscription<IOrderBook> GetOrderBookSubscription(String symbol) =>
+            Client.GetOrderBookSubscription(symbol);
     }
 
     /// <summary>

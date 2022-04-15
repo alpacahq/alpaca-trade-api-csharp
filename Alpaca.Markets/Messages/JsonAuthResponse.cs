@@ -9,5 +9,5 @@ internal sealed class JsonAuthResponse
     public AuthStatus Status { get; set; }
 
     [JsonProperty(PropertyName = "message", Required = Required.Default)]
-    public String Message { get; set; } = String.Empty;
+    public String Message { [ExcludeFromCodeCoverage] get; set; } = String.Empty;
 }

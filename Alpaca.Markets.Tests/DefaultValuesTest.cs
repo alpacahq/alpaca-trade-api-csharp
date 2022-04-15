@@ -78,4 +78,24 @@ public sealed class DefaultValuesTest
         Assert.Equal(0, defaultValue.Value);
         Assert.Equal(HistoryPeriodUnit.Day, defaultValue.Unit);
     }
+
+    [Fact]
+    public void RestClientErrorExceptionWorks()
+    {
+        var defaultValue = new RestClientErrorException();
+
+        Assert.NotNull(defaultValue.Message);
+        Assert.Null(defaultValue.InnerException);
+
+        var message = Guid.NewGuid().ToString("N");
+        var withMessage = new RestClientErrorException(message);
+
+        Assert.Equal(message, withMessage.Message);
+        Assert.Null(withMessage.InnerException);
+
+        var withInnerException = new RestClientErrorException(message, defaultValue);
+
+        Assert.Equal(message, withInnerException.Message);
+        Assert.Equal(defaultValue, withInnerException.InnerException);
+    }
 }

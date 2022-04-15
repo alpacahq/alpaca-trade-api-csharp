@@ -7,11 +7,25 @@ internal sealed class SubscriptionHelper<TItem> : IAsyncDisposable
         Action<TItem> Validator,
         AutoResetEvent Event)
     {
-        public void Subscribe() =>
-            Subscription.Received += handleReceived;
+        private Boolean _subscribed;
 
-        public void Unsubscribe() =>
+        public void Subscribe()
+        {
+            Subscription.OnSubscribedChanged += handleSubscribedChanged;
+            Subscription.Received += handleReceived;
+        }
+
+        public void Unsubscribe()
+        {
+            Subscription.OnSubscribedChanged -= handleSubscribedChanged;
             Subscription.Received -= handleReceived;
+        }
+
+        private void handleSubscribedChanged()
+        {
+            Assert.NotEqual(_subscribed, Subscription.Subscribed);
+            _subscribed = Subscription.Subscribed;
+        }
 
         private void handleReceived(TItem item)
         {
@@ -37,6 +51,14 @@ internal sealed class SubscriptionHelper<TItem> : IAsyncDisposable
             _handlers.Select(_ => _.Event).Cast<WaitHandle>().ToArray(),
             TimeSpan.FromSeconds(1));
 
+    public void Subscribe(
+        Action<TItem> handler) =>
+        _handlers.ForEach(_ => _.Subscription.Received += handler);
+
+    public void Unsubscribe(
+        Action<TItem> handler) =>
+        _handlers.ForEach(_ => _.Subscription.Received -= handler);
+
     public ValueTask DisposeAsync() => unsubscribeAll();
 
     public static async ValueTask<SubscriptionHelper<TItem>> Create<TClient>(
@@ -55,15 +77,19 @@ internal sealed class SubscriptionHelper<TItem> : IAsyncDisposable
         return handler;
     }
 
-    private async ValueTask subscribeAll()
+    private ValueTask subscribeAll()
     {
         _handlers.ForEach(_ => _.Subscribe());
-        await _client.SubscribeAsync(_handlers.Select(_ => _.Subscription));
+        return _handlers.Count == 1
+            ? _client.SubscribeAsync(_handlers.Single().Subscription)
+            : _client.SubscribeAsync(_handlers.Select(_ => _.Subscription));
     }
 
-    private async ValueTask unsubscribeAll()
+    private ValueTask unsubscribeAll()
     {
         _handlers.ForEach(_ => _.Unsubscribe());
-        await _client.UnsubscribeAsync(_handlers.Select(_ => _.Subscription));
+        return _handlers.Count == 1
+            ? _client.UnsubscribeAsync(_handlers.Single().Subscription)
+            : _client.UnsubscribeAsync(_handlers.Select(_ => _.Subscription));
     }
 }

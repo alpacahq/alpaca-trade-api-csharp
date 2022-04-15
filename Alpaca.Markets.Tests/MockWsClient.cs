@@ -48,13 +48,36 @@ public sealed class MockWsClient<TConfiguration, TClient> : IDisposable
 
     public ValueTask AddMessageAsync(
         JToken message) =>
-        _responses.Writer.WriteAsync(message.ToString());
+        AddMessageAsync(message.ToString());
 
-    public async ValueTask AddAuthentication()
+    public ValueTask AddMessageAsync(
+        String message) =>
+        _responses.Writer.WriteAsync(message);
+
+    public async ValueTask AddAuthenticationAsync(
+        String? message = "authenticated")
     {
-        await AddMessageAsync(getConnectionMessage("connected"));
-        AddResponse(getConnectionMessage("authenticated"));
+        if (message is null)
+        {
+            await AddMessageAsync(packResponse("success", new JObject()));
+            AddResponse(new JObject());
+        }
+        else
+        {
+            await AddMessageAsync(getConnectionMessage("connected"));
+            AddResponse(getConnectionMessage(message));
+        }
     }
+
+    public ValueTask AddErrorMessageAsync(
+        HttpStatusCode errorCode) =>
+        AddMessageAsync(packResponse("error", new JObject(
+            new JProperty("code", (Int32)errorCode), new JProperty("msg", errorCode.ToString()))));
+
+    public void AddSubscription(
+        String channel,
+        JToken symbols) =>
+        AddResponse(getSubscriptionMessage(channel, symbols));
 
     public void Dispose()
     {
@@ -75,7 +98,25 @@ public sealed class MockWsClient<TConfiguration, TClient> : IDisposable
 
     private static JArray getConnectionMessage(
         String message) =>
-        new(new JObject(
-            new JProperty("T", "success"),
+        packResponse("success", message);
+
+    private static JArray getSubscriptionMessage(
+        String channel,
+        JToken symbols) =>
+        packResponse("subscription", new JObject(
+            new JProperty(channel, symbols)));
+
+    private static JArray packResponse(
+        String messageType,
+        JToken message) =>
+        packResponse(messageType, new JObject(
             new JProperty("msg", message)));
+
+    private static JArray packResponse(
+        String messageType,
+        JObject message)
+    {
+        message.Add(MessageDataHelpers.StreamingMessageTypeTag, messageType);
+        return new JArray(message);
+    }
 }

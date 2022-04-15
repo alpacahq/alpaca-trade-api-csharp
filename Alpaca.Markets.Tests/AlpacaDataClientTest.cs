@@ -30,25 +30,25 @@ public sealed partial class AlpacaDataClientTest
         var nullSecurityId = new AlpacaDataClientConfiguration { SecurityId = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(() =>
-            _mockClientsFactory.GetAlpacaDataClientMock(nullSecurityId));
+            _mockClientsFactory.GetAlpacaDataClientMock(Environments.Paper, nullSecurityId));
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         var nullApiEndpoint = new AlpacaDataClientConfiguration { ApiEndpoint = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(() =>
-            _mockClientsFactory.GetAlpacaDataClientMock(nullApiEndpoint));
+            _mockClientsFactory.GetAlpacaDataClientMock(Environments.Paper, nullApiEndpoint));
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         var nullThrottleParameters = new AlpacaDataClientConfiguration { ThrottleParameters = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(() =>
-            _mockClientsFactory.GetAlpacaDataClientMock(nullThrottleParameters));
+            _mockClientsFactory.GetAlpacaDataClientMock(Environments.Paper, nullThrottleParameters));
     }
 
     [Fact]
     public async Task ListNewsArticlesAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = _mockClientsFactory.GetAlpacaDataClientMock(Environments.Paper);
 
         mock.AddGet("/v1beta1/news", new JObject(
             new JProperty("news", new JArray(Stock.CreateNewsArticle()))));
