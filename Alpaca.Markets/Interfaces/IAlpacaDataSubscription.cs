@@ -18,7 +18,7 @@ public interface IAlpacaDataSubscription
     Boolean Subscribed { get; }
 
     /// <summary>
-    /// Invoked when a <see cref="Subscribed"/> property value has changed.
+    /// Occurs when a <see cref="Subscribed"/> property value has changed.
     /// </summary>
     [UsedImplicitly]
     event Action? OnSubscribedChanged;
@@ -31,7 +31,7 @@ public interface IAlpacaDataSubscription
 public interface IAlpacaDataSubscription<out TApi> : IAlpacaDataSubscription
 {
     /// <summary>
-    /// Invoked when a new <typeparamref name="TApi"/> item is received from the stream.
+    /// Occurs when a new <typeparamref name="TApi"/> item is received from the stream.
     /// </summary>
     [UsedImplicitly]
     event Action<TApi> Received;

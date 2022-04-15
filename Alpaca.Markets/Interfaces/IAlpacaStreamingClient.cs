@@ -7,7 +7,7 @@
 public interface IAlpacaStreamingClient : IStreamingClient
 {
     /// <summary>
-    /// Invoked when a new trade update is received from the stream.
+    /// Occurs when a new trade update is received from the stream.
     /// </summary>
     [UsedImplicitly]
     event Action<ITradeUpdate>? OnTradeUpdate;
