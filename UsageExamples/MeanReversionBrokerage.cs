@@ -8,7 +8,9 @@ namespace UsageExamples;
 // is configured to use the paper trading API, but you can change it to use the live
 // trading API by setting the API_URL.
 [SuppressMessage("ReSharper", "UnusedVariable")]
+[SuppressMessage("ReSharper", "UnusedType.Global")]
 [SuppressMessage("ReSharper", "InconsistentNaming")]
+[SuppressMessage("ReSharper", "UnusedMember.Global")]
 [SuppressMessage("ReSharper", "RedundantDefaultMemberInitializer")]
 internal sealed class MeanReversionBrokerage : IDisposable
 {

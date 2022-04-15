@@ -76,9 +76,9 @@
       },
       "System.Net.Http.WinHttpHandler": {
         "type": "Direct",
-        "requested": "[6.0.0, )",
-        "resolved": "6.0.0",
-        "contentHash": "jubNN9jH4NzVrvEf4fGwESLBsfH8whWNbHMhgM6IwA8UCt6+/M19bbOHc21JhigvC2HQKCl8HKGZMcBtIpzqIg==",
+        "requested": "[6.0.1, )",
+        "resolved": "6.0.1",
+        "contentHash": "zdSpn2+EPBEXmsopvUjkpvbXNN53dqL7BifCKBJ5M+A/P3JEiCL/guuPwuiazu+RzCuEX/NJLnoXhllaf3vBxg==",
         "dependencies": {
           "System.Buffers": "4.5.1",
           "System.Memory": "4.5.4"

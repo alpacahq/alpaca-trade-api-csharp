@@ -19,7 +19,4 @@ internal sealed class JsonAuthRequest
 
     [JsonProperty(PropertyName = "data", Required = Required.Default)]
     public JsonData? Data { get; set; }
-
-    [JsonProperty(PropertyName = "params", Required = Required.Default)]
-    public String? Params { get; set; }
 }

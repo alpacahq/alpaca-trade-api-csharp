@@ -46,6 +46,26 @@ public sealed class AlpacaTradingClientTest
         Assert.NotEqual(0, counter);
     }
 
+    [Fact]
+    public async Task IsMarketOpenAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        var tomorrow = DateTime.Today.AddDays(1);
+        var dayAfterTomorrow = tomorrow.AddDays(1);
+
+        addClock(mock, DateTime.UtcNow, tomorrow);
+        addClock(mock, tomorrow, DateTime.UtcNow);
+        addClock(mock, tomorrow, dayAfterTomorrow);
+
+        Assert.True(await mock.Client.IsMarketOpenAsync());
+        Assert.False(await mock.Client.IsMarketOpenAsync());
+        Assert.True(await mock.Client.IsMarketOpenAsync());
+        Assert.True(await mock.Client.IsMarketOpenAsync());
+
+        Assert.NotNull(await mock.Client.GetClockCachedAsync());
+    }
+
     private static void addSinglePageExpectation(
         MockClient<AlpacaTradingClientConfiguration, IAlpacaTradingClient> mock,
         Int32 count = 0) =>
@@ -59,4 +79,14 @@ public sealed class AlpacaTradingClientTest
     private static async ValueTask<Int32> validateList<TItem>(
         IAsyncEnumerable<TItem> trades) =>
         await trades.CountAsync();
+
+    private static void addClock(
+        MockClient<AlpacaTradingClientConfiguration, IAlpacaTradingClient> mock,
+        DateTime nextClose,
+        DateTime nextOpen) =>
+        mock.AddGet("/v2/clock", new JObject(
+            new JProperty("is_open", nextClose < nextOpen),
+            new JProperty("timestamp", DateTime.UtcNow),
+            new JProperty("next_close", nextClose),
+            new JProperty("next_open", nextOpen)));
 }

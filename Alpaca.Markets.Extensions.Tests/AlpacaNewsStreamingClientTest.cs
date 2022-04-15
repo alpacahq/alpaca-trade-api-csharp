@@ -25,15 +25,31 @@ public sealed class AlpacaNewsStreamingClientTest
         var client = createMockClient(
             _ => _.GetNewsSubscription(It.IsAny<String>()));
 
-        using var wrapped = client.Object.WithReconnect();
+        var parameters = new ReconnectionParameters
+        {
+            MaxReconnectionDelay = TimeSpan.FromMilliseconds(100),
+            MinReconnectionDelay = TimeSpan.FromMilliseconds(10),
+            MaxReconnectionAttempts = 2
+        };
+        using var wrapped = client.Object.WithReconnect(parameters);
 
         wrapped.Connected += HandleConnected;
         wrapped.SocketOpened += HandleOpened;
         wrapped.OnWarning += HandleWarning;
 
         var result = await wrapped.ConnectAndAuthenticateAsync();
+
+        client.Setup(_ => _.ConnectAndAuthenticateAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(AuthStatus.Unauthorized);
         client.Raise(_ => _.SocketClosed += null);
+        client.Raise(_ => _.SocketClosed += null);
+        await Task.Delay(ReconnectionParameters.Default.MaxReconnectionDelay);
+        client.Raise(_ => _.SocketClosed += null);
+
         client.Raise(_ => _.OnError += null, new SocketException());
+        client.Raise(_ => _.OnError += null, new TaskCanceledException());
+        client.Raise(_ => _.OnError += null, new RestClientErrorException());
+        client.Raise(_ => _.OnError += null, new InvalidOperationException());
 
         wrapped.OnWarning -= HandleWarning;
         wrapped.SocketOpened -= HandleOpened;
@@ -49,6 +65,36 @@ public sealed class AlpacaNewsStreamingClientTest
         void HandleConnected(AuthStatus status) => ++connected;
         void HandleWarning(String message) => ++warnings;
         void HandleOpened() => ++opened;
+    }
+    
+    [Fact]
+    public async Task ErrorsHandlingWithReconnectWorks()
+    {
+        const Int32 expectedErrorsCount = 1;
+
+        var errors = 0;
+
+        var client = createMockClient(
+            _ => _.GetNewsSubscription(It.IsAny<String>()));
+
+        using var wrapped = client.Object.WithReconnect();
+
+        wrapped.OnError += HandleWarning;
+
+        client.Raise(_ => _.OnError += null, new RestClientErrorException());
+
+        wrapped.OnError -= HandleWarning;
+
+        await wrapped.DisconnectAsync();
+
+        Assert.Equal(expectedErrorsCount, errors);
+
+        void HandleWarning(
+            Exception _)
+        {
+            ++errors;
+            client.Raise(__ => __.OnError += null, new TaskCanceledException());
+        }
     }
 
     [Fact]

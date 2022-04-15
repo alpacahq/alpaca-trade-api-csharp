@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Http;
+
 namespace Alpaca.Markets.Tests;
 
 public sealed class MockHttpClient<TConfiguration, TClient> : IMock, IDisposable
@@ -10,7 +12,7 @@ public sealed class MockHttpClient<TConfiguration, TClient> : IMock, IDisposable
         TConfiguration configuration,
         Func<TConfiguration, TClient> factory)
     {
-        configuration.HttpClient = _handler.ToHttpClient();
+        configuration.HttpClient = getHttpClient(configuration.ThrottleParameters);
         Client = factory(configuration);
     }
 
@@ -24,8 +26,14 @@ public sealed class MockHttpClient<TConfiguration, TClient> : IMock, IDisposable
     public void AddGet(
         String request,
         String response,
-        HttpStatusCode code) =>
-        _handler.Expect(HttpMethod.Get, request).Respond(code, new StringContent(response));
+        HttpStatusCode code,
+        params KeyValuePair<String, String>[] headers) =>
+        _handler.Expect(HttpMethod.Get, request).Respond(code, headers, new StringContent(response));
+
+    public void AddGet(
+        String request,
+        Exception exception) =>
+        _handler.Expect(HttpMethod.Get, request).Throw(exception);
 
     public void AddPut(
         String request,
@@ -60,6 +68,16 @@ public sealed class MockHttpClient<TConfiguration, TClient> : IMock, IDisposable
 
         Client.Dispose();
     }
+
+    private HttpClient getHttpClient(
+        ThrottleParameters? throttleParameters) =>
+        throttleParameters is not null
+            ? new HttpClient(new PolicyHttpMessageHandler(
+                throttleParameters.GetAsyncPolicy())
+            {
+                InnerHandler = _handler
+            })
+            : _handler.ToHttpClient();
 
     private void addExpectRespond(
         HttpMethod method,

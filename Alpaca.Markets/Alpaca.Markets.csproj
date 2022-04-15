@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.5</AssemblyVersion>
-    <FileVersion>6.0.3.5</FileVersion>
-    <Version>6.0.3-beta3</Version>
+    <AssemblyVersion>6.0.3.6</AssemblyVersion>
+    <FileVersion>6.0.3.6</FileVersion>
+    <Version>6.0.3-beta4</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Fixed the problem with data streaming connectivity on .NET Standard 2.0 and .NET 5+ targets.</PackageReleaseNotes>
-    <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
+	<PackageReleaseNotes>- Added crypto order book streaming support into the `IAlpacaCryptoStreamingClient` interface.</PackageReleaseNotes>
+	<Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -105,7 +105,7 @@
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="6.0.0" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="6.0.1" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 

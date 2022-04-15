@@ -154,13 +154,15 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
 
     protected const String QuotesChannel = "q";
 
-    protected const String StatusesChannel = "s";
-
     private const String DailyBarsChannel = "d";
+
+    protected const String StatusesChannel = "s";
 
     private const String MinuteBarsChannel = "b";
 
     private const String UpdatedBarsChannel = "u";
+
+    protected const String OrderBooksChannel = "o";
 
     protected const String LimitUpDownChannel = "l";
 
@@ -196,6 +198,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                 { LimitUpDownChannel, handleRealtimeDataUpdate },
                 { UpdatedBarsChannel, handleRealtimeDataUpdate },
                 { MinuteBarsChannel, handleRealtimeDataUpdate },
+                { OrderBooksChannel, handleRealtimeDataUpdate },
                 { DailyBarsChannel, handleRealtimeDataUpdate },
                 { ConnectionSuccess, handleConnectionSuccess },
                 { StatusesChannel, handleRealtimeDataUpdate },
@@ -352,6 +355,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                     .Concat(getStreams(subscriptionUpdate.Statuses.EmptyIfNull(), StatusesChannel))
                     .Concat(getStreams(subscriptionUpdate.Lulds.EmptyIfNull(), LimitUpDownChannel))
                     .Concat(getStreams(subscriptionUpdate.DailyBars.EmptyIfNull(), DailyBarsChannel))
+                    .Concat(getStreams(subscriptionUpdate.OrderBooks.EmptyIfNull(), OrderBooksChannel))
                     .Concat(getStreams(subscriptionUpdate.MinuteBars.EmptyIfNull(), MinuteBarsChannel))
                     .Concat(getStreams(subscriptionUpdate.UpdatedBars.EmptyIfNull(), UpdatedBarsChannel)),
                 StringComparer.Ordinal);
@@ -493,6 +497,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                 Lulds = getSymbols(streamsByChannels, LimitUpDownChannel),
                 DailyBars = getSymbols(streamsByChannels, DailyBarsChannel),
                 MinuteBars = getSymbols(streamsByChannels, MinuteBarsChannel),
+                OrderBooks = getSymbols(streamsByChannels, OrderBooksChannel),
                 UpdatedBars = getSymbols(streamsByChannels, UpdatedBarsChannel)
             }, cancellationToken)
             : new ValueTask();

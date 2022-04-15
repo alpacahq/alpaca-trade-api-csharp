@@ -56,12 +56,21 @@ internal sealed class SynchronizationQueue : IDisposable
         }
     }
 
+    [SuppressMessage("Design", "CA1031:Do not catch general exception types",
+        Justification = "Double disposing should be safe - just ignore any exception.")]
     public void Dispose()
     {
-        _cancellationTokenSource.Cancel(false);
-        _processingThread.Join(TimeSpan.FromSeconds(5));
+        try
+        {
+            _cancellationTokenSource.Cancel(false);
+            _processingThread.Join(TimeSpan.FromSeconds(5));
 
-        _cancellationTokenSource.Dispose();
-        _actions.Dispose();
+            _cancellationTokenSource.Dispose();
+            _actions.Dispose();
+        }
+        catch (Exception exception)
+        {
+            Trace.TraceInformation(exception.Message);
+        }
     }
 }
