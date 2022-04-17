@@ -11,53 +11,53 @@ public interface IAlpacaCryptoDataClient :
     IDisposable
 {
     /// <summary>
-    /// Gets last bar for singe asset from Alpaca REST API endpoint.
+    /// Gets most recent bar for a single asset from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset name and exchange pair for data retrieval.</param>
+    /// <param name="request">Asset symbol and exchange pair for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Read-only last bar information.</returns>
+    /// <returns>Read-only latest bar information.</returns>
     [UsedImplicitly]
     Task<IBar> GetLatestBarAsync(
         LatestDataRequest request,
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets last bar for several assets from Alpaca REST API endpoint.
+    /// Gets most recent bar for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset names list and exchange pair for data retrieval.</param>
+    /// <param name="request">Asset symbols list and exchange pair for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Read-only dictionary with the last bars information.</returns>
+    /// <returns>Read-only dictionary with the latest bars information.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String,IBar>> ListLatestBarsAsync(
         LatestDataListRequest request,
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets last trade for singe asset from Alpaca REST API endpoint.
+    /// Gets most recent trade for a single asset from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset name and exchange pair for data retrieval.</param>
+    /// <param name="request">Asset symbol and exchange pair for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Read-only last trade information.</returns>
+    /// <returns>Read-only latest trade information.</returns>
     [UsedImplicitly]
     Task<ITrade> GetLatestTradeAsync(
         LatestDataRequest request,
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets last trade for several assets from Alpaca REST API endpoint.
+    /// Gets most recent trade for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset names list and exchange pair for data retrieval.</param>
+    /// <param name="request">Asset symbols list and exchange pair for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Read-only dictionary with the last trades information.</returns>
+    /// <returns>Read-only dictionary with the latest trades information.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String,ITrade>> ListLatestTradesAsync(
         LatestDataListRequest request,
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets current quote for singe asset from Alpaca REST API endpoint.
+    /// Gets current quote for single asset from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset name and exchange pair for data retrieval.</param>
+    /// <param name="request">Asset symbol and exchange pair for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only current quote information.</returns>
     [UsedImplicitly]
@@ -66,20 +66,20 @@ public interface IAlpacaCryptoDataClient :
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets last quote for several assets from Alpaca REST API endpoint.
+    /// Gets most recent quote for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset names list and exchange pair for data retrieval.</param>
+    /// <param name="request">Asset symbols list and exchange pair for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Read-only dictionary with the last quotes information.</returns>
+    /// <returns>Read-only dictionary with the latest quotes information.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String,IQuote>> ListLatestQuotesAsync(
         LatestDataListRequest request,
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets current cross-exchange best bid/offer (XBBO) for singe asset from Alpaca REST API endpoint.
+    /// Gets current cross-exchange best bid/offer (XBBO) for single asset from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset name and exchanges list pair for data retrieval.</param>
+    /// <param name="request">Asset symbol and exchanges list pair for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only current XBBO information.</returns>
     [UsedImplicitly]
@@ -90,7 +90,7 @@ public interface IAlpacaCryptoDataClient :
     /// <summary>
     /// Gets current cross-exchange best bid/offer (XBBO) for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset name and exchanges list pair for data retrieval.</param>
+    /// <param name="request">Asset symbol and exchanges list pair for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only dictionary with the current XBBO information.</returns>
     [UsedImplicitly]
@@ -99,9 +99,9 @@ public interface IAlpacaCryptoDataClient :
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets current snapshot data for singe asset from Alpaca REST API endpoint.
+    /// Gets current snapshot data for single asset from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset name and exchange pair for data retrieval.</param>
+    /// <param name="request">Asset symbol and exchange pair for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only current snapshot information.</returns>
     [UsedImplicitly]
@@ -112,7 +112,7 @@ public interface IAlpacaCryptoDataClient :
     /// <summary>
     /// Gets current snapshot data for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset name and exchange pair for data retrieval.</param>
+    /// <param name="request">Asset symbol and exchange pair for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only dictionary with the current snapshot information.</returns>
     [UsedImplicitly]

@@ -10,7 +10,7 @@ namespace Alpaca.Markets;
 public enum Exchange
 {
     /// <summary>
-    /// Unknown exchange (not supported by this version of SDK).
+    /// Unknown exchange (i.e. one not supported by this version of SDK).
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "UNKNOWN")]

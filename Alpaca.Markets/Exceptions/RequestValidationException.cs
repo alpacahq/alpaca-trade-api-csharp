@@ -30,7 +30,7 @@ public sealed class RequestValidationException : Exception
     /// specified error message and reference to the inner exception that is the cause of this exception.
     /// </summary>
     /// <param name="message">The message that describes the error.</param>
-    /// <param name="inner">The  exception that is the cause of this exception.</param>
+    /// <param name="inner">The exception that is the cause of this exception.</param>
     [ExcludeFromCodeCoverage]
     public RequestValidationException(
         String message,
@@ -61,7 +61,7 @@ public sealed class RequestValidationException : Exception
     }
 
     /// <summary>
-    /// GEts the invalid property name that causes this validation exception.
+    /// Gets the invalid property name that causes this validation exception.
     /// </summary>
     public String PropertyName { get; } = String.Empty;
 }

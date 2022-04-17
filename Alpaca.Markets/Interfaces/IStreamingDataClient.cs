@@ -9,7 +9,7 @@ public interface IStreamingDataClient : IStreamingClient, ISubscriptionHandler
     /// <summary>
     /// Gets the trade updates subscription for the <paramref name="symbol"/> asset.
     /// </summary>
-    /// <param name="symbol">Alpaca asset name.</param>
+    /// <param name="symbol">Alpaca asset symbol.</param>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -20,7 +20,7 @@ public interface IStreamingDataClient : IStreamingClient, ISubscriptionHandler
     /// <summary>
     /// Gets the quote updates subscription for the <paramref name="symbol"/> asset.
     /// </summary>
-    /// <param name="symbol">Alpaca asset name.</param>
+    /// <param name="symbol">Alpaca asset symbol.</param>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -29,7 +29,7 @@ public interface IStreamingDataClient : IStreamingClient, ISubscriptionHandler
         String symbol);
 
     /// <summary>
-    /// Gets the minute aggregate (bar) subscription for the all assets.
+    /// Gets the minute aggregate (bar) subscription for all assets.
     /// </summary>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
@@ -40,7 +40,7 @@ public interface IStreamingDataClient : IStreamingClient, ISubscriptionHandler
     /// <summary>
     /// Gets the minute aggregate (bar) subscription for the <paramref name="symbol"/> asset.
     /// </summary>
-    /// <param name="symbol">Alpaca asset name.</param>
+    /// <param name="symbol">Alpaca asset symbol.</param>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -51,7 +51,7 @@ public interface IStreamingDataClient : IStreamingClient, ISubscriptionHandler
     /// <summary>
     /// Gets the daily aggregate (bar) subscription for the <paramref name="symbol"/> asset.
     /// </summary>
-    /// <param name="symbol">Alpaca asset name.</param>
+    /// <param name="symbol">Alpaca asset symbol.</param>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -62,7 +62,7 @@ public interface IStreamingDataClient : IStreamingClient, ISubscriptionHandler
     /// <summary>
     /// Gets the updated aggregate (bar) subscription for the <paramref name="symbol"/> asset.
     /// </summary>
-    /// <param name="symbol">Alpaca asset name.</param>
+    /// <param name="symbol">Alpaca asset symbol.</param>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>

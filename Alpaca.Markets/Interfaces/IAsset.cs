@@ -6,7 +6,7 @@
 public interface IAsset
 {
     /// <summary>
-    /// Gets unique asset identifier.
+    /// Gets unique asset identifier used by Alpaca.
     /// </summary>
     [UsedImplicitly]
     Guid AssetId { get; }

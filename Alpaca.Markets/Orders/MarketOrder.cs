@@ -1,8 +1,9 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// Encapsulates data required for placing the market order on the Alpaca REST API.
+/// A market order is a request to buy or sell a security at the currently available market price.
 /// </summary>
+/// <remarks>See <a href="https://alpaca.markets/docs/trading/orders/#market-order">Alpaca Order Documentation</a> for more information.</remarks>
 public sealed class MarketOrder : SimpleOrderBase
 {
     internal MarketOrder(
@@ -18,7 +19,7 @@ public sealed class MarketOrder : SimpleOrderBase
     /// <summary>
     /// Creates new buy market order using specified symbol and quantity.
     /// </summary>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
     [UsedImplicitly]
@@ -31,7 +32,7 @@ public sealed class MarketOrder : SimpleOrderBase
     /// <summary>
     /// Creates new sell market order using specified symbol and quantity.
     /// </summary>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
     [UsedImplicitly]

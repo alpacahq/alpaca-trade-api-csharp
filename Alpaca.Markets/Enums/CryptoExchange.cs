@@ -3,7 +3,7 @@
 namespace Alpaca.Markets;
 
 /// <summary>
-/// Exchanges supported by Alpaca REST API.
+/// Cryptocurrency exchanges supported by Alpaca REST API.
 /// </summary>
 [JsonConverter(typeof(CryptoExchangeEnumConverter))]
 [SuppressMessage("ReSharper", "IdentifierTypo")]
@@ -11,7 +11,7 @@ namespace Alpaca.Markets;
 public enum CryptoExchange
 {
     /// <summary>
-    /// ErisX Exchange.
+    /// Unknown exchange (i.e. one not supported by this version of SDK).
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "UNKNOWN")]
@@ -25,7 +25,7 @@ public enum CryptoExchange
     Ersx,
 
     /// <summary>
-    /// FTX Exchange.
+    /// FTX US Exchange.
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "FTXU")]

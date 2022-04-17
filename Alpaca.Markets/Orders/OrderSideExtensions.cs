@@ -9,7 +9,7 @@ public static class OrderSideExtensions
     /// Creates new market order using specified side, symbol, and quantity.
     /// </summary>
     /// <param name="orderSide">Order side (buy or sell).</param>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
     [UsedImplicitly]
@@ -23,7 +23,7 @@ public static class OrderSideExtensions
     /// Creates new stop order using specified side, symbol, quantity, and stop price.
     /// </summary>
     /// <param name="orderSide">Order side (buy or sell).</param>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="stopPrice">Order stop price.</param>
     /// <returns>The new <see cref="StopOrder"/> object instance.</returns>
@@ -39,7 +39,7 @@ public static class OrderSideExtensions
     /// Creates new limit order using specified side, symbol, quantity, and limit price.
     /// </summary>
     /// <param name="orderSide">Order side (buy or sell).</param>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="limitPrice">Order limit price.</param>
     /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>
@@ -55,7 +55,7 @@ public static class OrderSideExtensions
     /// Creates new limit order using specified side, symbol, quantity, stop, and limit prices.
     /// </summary>
     /// <param name="orderSide">Order side (buy or sell).</param>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="stopPrice">Order stop price.</param>
     /// <param name="limitPrice">Order limit price.</param>
@@ -73,7 +73,7 @@ public static class OrderSideExtensions
     /// Creates new trailing stop order using specified side, symbol, quantity, and trail offset.
     /// </summary>
     /// <param name="orderSide">Order side (buy or sell).</param>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="trailOffset">Order trail offset.</param>
     /// <returns>The new <see cref="TrailingStopOrder"/> object instance.</returns>

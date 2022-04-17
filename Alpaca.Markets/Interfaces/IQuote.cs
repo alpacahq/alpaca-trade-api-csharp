@@ -6,13 +6,13 @@
 public interface IQuote
 {
     /// <summary>
-    /// Gets asset name.
+    /// Gets asset symbol.
     /// </summary>
     [UsedImplicitly]
     String Symbol { get; }
 
     /// <summary>
-    /// Gets quote timestamp in UTC time zone.
+    /// Gets quote timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime TimestampUtc { get; }
@@ -30,13 +30,13 @@ public interface IQuote
     String AskExchange { get; }
 
     /// <summary>
-    /// Gets bid price level.
+    /// Gets bid price level (highest buy offer).
     /// </summary>
     [UsedImplicitly]
     Decimal BidPrice { get; }
 
     /// <summary>
-    /// Gets ask price level.
+    /// Gets ask price level (lowest sell offer).
     /// </summary>
     [UsedImplicitly]
     Decimal AskPrice { get; }

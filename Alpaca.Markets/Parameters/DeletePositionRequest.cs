@@ -15,7 +15,7 @@ public sealed class DeletePositionRequest : Validation.IRequest
         Symbol = symbol.EnsureNotNull();
 
     /// <summary>
-    /// Gets or sets the custom position liquidation size (if missed the position will be liquidated completely).
+    /// Gets or sets the custom position liquidation size (if <c>null</c> the position will be liquidated completely).
     /// </summary>
     [UsedImplicitly]
     public PositionQuantity? PositionQuantity { get; set; }

@@ -15,7 +15,7 @@ public sealed class ChangeWatchListRequest<TKey> : Validation.IRequest
     /// Creates new instance of <see cref="ChangeWatchListRequest{TKey}"/> object.
     /// </summary>
     /// <param name="key">Unique watch list identifier or name.</param>
-    /// <param name="asset">Asset name for adding into watch list.</param>
+    /// <param name="asset">Asset symbol for adding into watch list.</param>
     public ChangeWatchListRequest(
         TKey key,
         String asset)
@@ -31,7 +31,7 @@ public sealed class ChangeWatchListRequest<TKey> : Validation.IRequest
     public TKey Key { get; }
 
     /// <summary>
-    /// Gets asset name for adding/deleting into watch list.
+    /// Gets asset symbol for adding/deleting into watch list.
     /// </summary>
     [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
     public String Asset { get; }

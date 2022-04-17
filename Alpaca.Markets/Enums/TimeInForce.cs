@@ -5,12 +5,13 @@ namespace Alpaca.Markets;
 
 /// <summary>
 /// Supported order durations in Alpaca REST API.
+/// See <a href="https://alpaca.markets/docs/trading/orders/#time-in-force">Alpaca Trading Documentation</a> for more information.
 /// </summary>
 [JsonConverter(typeof(StringEnumConverter))]
 public enum TimeInForce
 {
     /// <summary>
-    /// The order is good for the day, and it will be canceled automatically at the end of market hours.
+    /// The order is good for the day and it will be canceled automatically at the end of market hours.
     /// </summary>
     [EnumMember(Value = "day")]
     Day,
@@ -25,6 +26,9 @@ public enum TimeInForce
     /// <summary>
     /// The order is placed at the time the market opens.
     /// </summary>
+    /// <remarks>
+    /// Not supported for crypto trading.
+    /// </remarks>
     [UsedImplicitly]
     [EnumMember(Value = "opg")]
     Opg,
@@ -46,6 +50,9 @@ public enum TimeInForce
     /// <summary>
     /// The order will become a limit order if a limit price is specified or a market order otherwise at market close.
     /// </summary>
+    /// <remarks>
+    /// Not supported for crypto trading.
+    /// </remarks>
     [UsedImplicitly]
     [EnumMember(Value = "cls")]
     Cls

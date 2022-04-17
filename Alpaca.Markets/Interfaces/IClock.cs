@@ -6,7 +6,7 @@
 public interface IClock
 {
     /// <summary>
-    /// Gets current timestamp in UTC time zone.
+    /// Gets current timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime TimestampUtc { get; }
@@ -18,13 +18,13 @@ public interface IClock
     Boolean IsOpen { get; }
 
     /// <summary>
-    /// Gets nearest trading day open time in UTC time zone.
+    /// Gets nearest trading day open time in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime NextOpenUtc { get; }
 
     /// <summary>
-    /// Gets nearest trading day close time in UTC time zone.
+    /// Gets nearest trading day close time in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime NextCloseUtc { get; }

@@ -1,8 +1,9 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// Encapsulates data required for placing the limit order on the Alpaca REST API.
+/// A limit order is an order to buy or sell at a specified price or better.
 /// </summary>
+/// <remarks>See <a href="https://alpaca.markets/docs/trading/orders/#limit-order">Alpaca Order Documentation</a> for more information.</remarks>
 public sealed class LimitOrder : SimpleOrderBase
 {
     internal LimitOrder(
@@ -23,7 +24,7 @@ public sealed class LimitOrder : SimpleOrderBase
     /// <summary>
     /// Creates new buy market order using specified symbol and quantity.
     /// </summary>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="limitPrice">Order limit price.</param>
     /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>
@@ -38,7 +39,7 @@ public sealed class LimitOrder : SimpleOrderBase
     /// <summary>
     /// Creates new sell market order using specified symbol and quantity.
     /// </summary>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="limitPrice">Order limit price.</param>
     /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>

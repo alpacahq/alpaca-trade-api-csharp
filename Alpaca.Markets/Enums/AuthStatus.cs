@@ -17,7 +17,7 @@ public enum AuthStatus
     Authorized,
 
     /// <summary>
-    /// Client does not authorized.
+    /// Client is not authorized.
     /// </summary>
     [EnumMember(Value = "unauthorized")]
     Unauthorized

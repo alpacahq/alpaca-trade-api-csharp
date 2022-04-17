@@ -12,13 +12,13 @@ public interface IWatchList
     Guid WatchListId { get; }
 
     /// <summary>
-    /// Gets watch list creation time in UTC time zone.
+    /// Gets watch list creation time in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime CreatedUtc { get; }
 
     /// <summary>
-    /// Gets watch list last update time in UTC time zone.
+    /// Gets watch list last update time in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime? UpdatedUtc { get; }
@@ -30,7 +30,7 @@ public interface IWatchList
     String Name { get; }
 
     /// <summary>
-    /// Gets <see cref="IAccount.AccountId"/> fro this watch list.
+    /// Gets <see cref="IAccount.AccountId"/> for this watch list.
     /// </summary>
     [UsedImplicitly]
     Guid AccountId { get; }

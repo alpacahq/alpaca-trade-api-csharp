@@ -80,7 +80,7 @@ public enum OrderStatus
     Stopped,
 
     /// <summary>
-    /// Order rejected by server side.
+    /// Order rejected by server.
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "rejected")]

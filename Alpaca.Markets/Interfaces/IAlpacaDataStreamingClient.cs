@@ -9,7 +9,7 @@ public interface IAlpacaDataStreamingClient : IStreamingDataClient
     /// <summary>
     /// Gets the trading statuses subscription for the <paramref name="symbol"/> asset.
     /// </summary>
-    /// <param name="symbol">Alpaca asset name.</param>
+    /// <param name="symbol">Alpaca asset symbol.</param>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -20,7 +20,7 @@ public interface IAlpacaDataStreamingClient : IStreamingDataClient
     /// <summary>
     /// Gets the trade cancellations subscription for the <paramref name="symbol"/> asset.
     /// </summary>
-    /// <param name="symbol">Alpaca asset name.</param>
+    /// <param name="symbol">Alpaca asset symbol.</param>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -31,7 +31,7 @@ public interface IAlpacaDataStreamingClient : IStreamingDataClient
     /// <summary>
     /// Gets the trade corrections subscription for the <paramref name="symbol"/> asset.
     /// </summary>
-    /// <param name="symbol">Alpaca asset name.</param>
+    /// <param name="symbol">Alpaca asset symbol.</param>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -42,7 +42,7 @@ public interface IAlpacaDataStreamingClient : IStreamingDataClient
     /// <summary>
     /// Gets the LULD (limit up / limit down) subscription for the <paramref name="symbol"/> asset.
     /// </summary>
-    /// <param name="symbol">Alpaca asset name.</param>
+    /// <param name="symbol">Alpaca asset symbol.</param>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>

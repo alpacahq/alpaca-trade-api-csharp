@@ -6,20 +6,20 @@
 public interface IStatus
 {
     /// <summary>
-    /// Gets asset name.
+    /// Gets asset symbol.
     /// </summary>
     [UsedImplicitly]
     String Symbol { get; }
 
     /// <summary>
-    /// Gets status timestamp in UTC time zone.
+    /// Gets status timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     [Obsolete("This property will be removed in the next major version of SDK. Use the TimestampUtc property instead.", true)]
     DateTime TimeUtc { get; }
 
     /// <summary>
-    /// Gets status timestamp in UTC time zone.
+    /// Gets status timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     DateTime TimestampUtc { get; }

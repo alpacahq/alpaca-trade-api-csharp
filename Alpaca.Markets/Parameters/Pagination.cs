@@ -8,13 +8,13 @@ public sealed class Pagination
     internal const UInt32 MinPageSize = 1;
 
     /// <summary>
-    /// Gets ths maximal valid page size for the request supported by Alpaca Data API v2.
+    /// Gets the maximum valid page size for requests supported by Alpaca Data API v2.
     /// </summary>
     [CLSCompliant(false)]
     public static UInt32 MaxPageSize => 10_000;
 
     /// <summary>
-    /// Gets ths maximal valid page size for the news request supported by Alpaca Data API v2.
+    /// Gets the maximum valid page size for news requests supported by Alpaca Data API v2.
     /// </summary>
     internal static UInt32 MaxNewsPageSize => 100;
 

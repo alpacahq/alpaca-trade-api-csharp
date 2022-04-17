@@ -10,7 +10,7 @@ public sealed class SnapshotDataListRequest : Validation.IRequest
     /// <summary>
     /// Creates new instance of <see cref="SnapshotDataListRequest"/> object.
     /// </summary>
-    /// <param name="symbols">Asset names for data retrieval.</param>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="exchange">Crypto exchange for data retrieval.</param>
     public SnapshotDataListRequest(
         IEnumerable<String> symbols,
@@ -21,7 +21,7 @@ public sealed class SnapshotDataListRequest : Validation.IRequest
     }
 
     /// <summary>
-    /// Gets asset names list for data retrieval.
+    /// Gets asset symbols list for data retrieval.
     /// </summary>
     [UsedImplicitly]
     public IReadOnlyCollection<String> Symbols => _symbols;

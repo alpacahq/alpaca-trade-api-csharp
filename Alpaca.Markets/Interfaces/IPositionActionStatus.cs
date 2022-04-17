@@ -6,7 +6,7 @@
 public interface IPositionActionStatus
 {
     /// <summary>
-    /// Gets processed position asset name.
+    /// Gets processed position asset symbol.
     /// </summary>
     [UsedImplicitly]
     String Symbol { get; }

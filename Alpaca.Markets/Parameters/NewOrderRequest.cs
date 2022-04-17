@@ -9,7 +9,7 @@ public sealed class NewOrderRequest : Validation.IRequest
     /// <summary>
     /// Creates new instance of <see cref="NewOrderRequest"/> object.
     /// </summary>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="side">Order side (buy or sell).</param>
     /// <param name="type">Order type.</param>
@@ -29,7 +29,7 @@ public sealed class NewOrderRequest : Validation.IRequest
     }
 
     /// <summary>
-    /// Gets the new order asset name.
+    /// Gets the new order asset symbol.
     /// </summary>
     [UsedImplicitly]
     public String Symbol { get; }
@@ -83,7 +83,7 @@ public sealed class NewOrderRequest : Validation.IRequest
     public Decimal? TrailOffsetInPercent { get; set; }
 
     /// <summary>
-    /// Gets or sets the client order ID.
+    /// Gets or sets the client order ID. This user-specified ID must be unique if set.
     /// </summary>
     [UsedImplicitly]
     public String? ClientOrderId { get; set; }

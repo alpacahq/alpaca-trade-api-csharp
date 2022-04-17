@@ -18,13 +18,13 @@ public interface INewsArticle
     public String Headline { get; }
 
     /// <summary>
-    /// Gets news article creation timestamp.
+    /// Gets news article creation timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     public DateTime CreatedAtUtc { get; }
 
     /// <summary>
-    /// Gets news article updating timestamp.
+    /// Gets news article updating timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
     public DateTime UpdatedAtUtc { get; }

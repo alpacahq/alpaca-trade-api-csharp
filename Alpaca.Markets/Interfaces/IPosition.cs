@@ -12,7 +12,7 @@ public interface IPosition
     Guid AssetId { get; }
 
     /// <summary>
-    /// Gets asset name.
+    /// Gets asset symbol.
     /// </summary>
     [UsedImplicitly]
     String Symbol { get; }

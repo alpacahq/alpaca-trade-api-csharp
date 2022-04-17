@@ -17,7 +17,7 @@ public sealed class NewWatchListRequest : Validation.IRequest
     /// Creates new instance of <see cref="NewWatchListRequest"/> object.
     /// </summary>
     /// <param name="name">User defined watch list name.</param>
-    /// <param name="assets">List of asset names for new watch list.</param>
+    /// <param name="assets">List of asset symbols for new watch list.</param>
     public NewWatchListRequest(
         String name,
         IEnumerable<String> assets)
@@ -34,7 +34,7 @@ public sealed class NewWatchListRequest : Validation.IRequest
     public String Name { get; }
 
     /// <summary>
-    /// Gets list of asset names for new watch list.
+    /// Gets list of asset symbols for new watch list.
     /// </summary>
     [JsonProperty(PropertyName = "symbols", Required = Required.Always)]
     public IReadOnlyList<String> Assets => _assets;

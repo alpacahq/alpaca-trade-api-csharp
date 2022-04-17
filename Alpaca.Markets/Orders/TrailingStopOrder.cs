@@ -1,7 +1,8 @@
 namespace Alpaca.Markets;
 
 /// <summary>
-/// Encapsulates data required for placing the market order on the Alpaca REST API.
+/// Trailing stop orders allow you to continuously and automatically keep updating the stop price threshold based on the stock price movement.
+/// <para>See https://alpaca.markets/docs/trading/orders/#trailing-stop-orders</para>
 /// </summary>
 public sealed class TrailingStopOrder : SimpleOrderBase
 {
@@ -16,7 +17,7 @@ public sealed class TrailingStopOrder : SimpleOrderBase
         TrailOffset = trailOffset;
 
     /// <summary>
-    /// Gets order trail offset value (in dollars or percents).
+    /// Gets order trail offset value (in dollars or percent).
     /// </summary>
     [UsedImplicitly]
     public TrailOffset TrailOffset { get; }
@@ -24,10 +25,10 @@ public sealed class TrailingStopOrder : SimpleOrderBase
     /// <summary>
     /// Creates new buy market order using specified symbol and quantity.
     /// </summary>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="trailOffset">Trailing stop order offset.</param>
-    /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
+    /// <returns>The new <see cref="TrailingStopOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static TrailingStopOrder Buy(
         String symbol,
@@ -39,10 +40,10 @@ public sealed class TrailingStopOrder : SimpleOrderBase
     /// <summary>
     /// Creates new sell market order using specified symbol and quantity.
     /// </summary>
-    /// <param name="symbol">Order asset name.</param>
+    /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="trailOffset">Trailing stop order offset.</param>
-    /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
+    /// <returns>The new <see cref="TrailingStopOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static TrailingStopOrder Sell(
         String symbol,

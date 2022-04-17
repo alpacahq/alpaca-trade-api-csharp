@@ -6,7 +6,7 @@
 public sealed class SecretKey : SecurityKey
 {
     /// <summary>
-    /// Creates new instance of <see cref="SecretKey"/> object.
+    /// Creates a new instance of <see cref="SecretKey"/> object.
     /// </summary>
     /// <param name="keyId">Secret API key identifier.</param>
     /// <param name="value">Secret API key value.</param>

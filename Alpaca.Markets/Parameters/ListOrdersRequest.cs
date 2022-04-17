@@ -29,7 +29,7 @@ public sealed class ListOrdersRequest : Validation.IRequest,
     public Interval<DateTime> TimeInterval { get; private set; }
 
     /// <summary>
-    /// Gets or sets maximal number of orders in response.
+    /// Gets or sets maximum number of orders in response.
     /// </summary>
     [UsedImplicitly]
     public Int64? LimitOrderNumber { get; set; }

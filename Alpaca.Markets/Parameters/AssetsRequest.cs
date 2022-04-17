@@ -12,7 +12,7 @@ public sealed class AssetsRequest
     public AssetStatus? AssetStatus { get; set; }
 
     /// <summary>
-    /// Gets or sets asset class for filtering. The <c>null</c> value equal to <see cref="Markets.AssetClass.UsEquity"/> value.
+    /// Gets or sets asset class for filtering. The <c>null</c> value is equal to <see cref="Markets.AssetClass.UsEquity"/> value.
     /// </summary>
     [UsedImplicitly]
     public AssetClass? AssetClass { get; set; }

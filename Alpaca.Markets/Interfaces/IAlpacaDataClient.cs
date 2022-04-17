@@ -11,20 +11,20 @@ public interface IAlpacaDataClient :
     IDisposable
 {
     /// <summary>
-    /// Gets last bar for singe asset from Alpaca REST API endpoint.
+    /// Gets most recent bar for single asset from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Read-only last bar information.</returns>
+    /// <returns>Read-only latest bar information.</returns>
     [UsedImplicitly]
     Task<IBar> GetLatestBarAsync(
         String symbol,
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets last bars for several assets from Alpaca REST API endpoint.
+    /// Gets most recent bars for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbols">List of asset names for data retrieval.</param>
+    /// <param name="symbols">List of asset symbols for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only dictionary with the latest bars information.</returns>
     [UsedImplicitly]
@@ -33,20 +33,20 @@ public interface IAlpacaDataClient :
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets last trade for singe asset from Alpaca REST API endpoint.
+    /// Gets most recent trade for single asset from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Read-only last trade information.</returns>
+    /// <returns>Read-only latest trade information.</returns>
     [UsedImplicitly]
     Task<ITrade> GetLatestTradeAsync(
         String symbol,
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets last trades for several assets from Alpaca REST API endpoint.
+    /// Gets most recent trades for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbols">List of asset names for data retrieval.</param>
+    /// <param name="symbols">List of asset symbols for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only dictionary with the latest trades information.</returns>
     [UsedImplicitly]
@@ -55,9 +55,9 @@ public interface IAlpacaDataClient :
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets current quote for singe asset from Alpaca REST API endpoint.
+    /// Gets current quote for single asset from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only current quote information.</returns>
     [UsedImplicitly]
@@ -66,9 +66,9 @@ public interface IAlpacaDataClient :
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets last quotes for several assets from Alpaca REST API endpoint.
+    /// Gets most recent quotes for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbols">List of asset names for data retrieval.</param>
+    /// <param name="symbols">List of asset symbols for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only dictionary with the latest quotes information.</returns>
     [UsedImplicitly]
@@ -77,9 +77,9 @@ public interface IAlpacaDataClient :
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets current snapshot (latest trade/quote and minute/days bars) for singe asset from Alpaca REST API endpoint.
+    /// Gets current snapshot (latest trade/quote and minute/days bars) for single asset from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only current snapshot information.</returns>
     [UsedImplicitly]
@@ -90,7 +90,7 @@ public interface IAlpacaDataClient :
     /// <summary>
     /// Gets current snapshot (latest trade/quote and minute/days bars) for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbols">List of asset names for data retrieval.</param>
+    /// <param name="symbols">List of asset symbols for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only dictionary with the current snapshot information.</returns>
     [UsedImplicitly]
@@ -101,7 +101,7 @@ public interface IAlpacaDataClient :
     /// <summary>
     /// Gets current snapshot (latest trade/quote and minute/days bars) for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbols">List of asset names for data retrieval.</param>
+    /// <param name="symbols">List of asset symbols for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only dictionary with the current snapshot information.</returns>
     [UsedImplicitly]
@@ -114,7 +114,7 @@ public interface IAlpacaDataClient :
     /// Gets dictionary with exchange code to the exchange name mappings.
     /// </summary>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns></returns>
+    /// <returns>Read-only dictionary where the key is the exchange code and the value is the code's corresponding exchange name.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, String>> ListExchangesAsync(
         CancellationToken cancellationToken = default);
@@ -124,7 +124,7 @@ public interface IAlpacaDataClient :
     /// </summary>
     /// <param name="tape">SIP tape identifier for retrieving trade conditions.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns></returns>
+    /// <returns>Read-only dictionary where the key is the trade conditions code and the value is the corresponding condition description.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, String>> ListTradeConditionsAsync(
         Tape tape,
@@ -135,14 +135,14 @@ public interface IAlpacaDataClient :
     /// </summary>
     /// <param name="tape">SIP tape identifier for retrieving quote conditions.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns></returns>
+    /// <returns>Read-only dictionary where the key is the quote conditions code and the value is the corresponding condition description.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, String>> ListQuoteConditionsAsync(
         Tape tape,
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets historical new articles list from Alpaca REST API endpoint.
+    /// Gets historical news articles list from Alpaca REST API endpoint.
     /// </summary>
     /// <param name="request">Historical news articles request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>

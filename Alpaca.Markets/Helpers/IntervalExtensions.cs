@@ -6,7 +6,7 @@
 public static class IntervalExtensions
 {
     /// <summary>
-    /// Gets the <see cref="Interval{DateOnly}"/> instance from to the <see cref="Interval{DateTime}"/> instance dates.
+    /// Converts a <see cref="Interval{DateTime}"/> Interval into a <see cref="Interval{DateOnly}"/> Interval.
     /// </summary>
     /// <param name="interval">Input inclusive time interval for converting.</param>
     /// <returns>Date interval initialized with data from the original inclusive time interval.</returns>
@@ -15,7 +15,7 @@ public static class IntervalExtensions
         new (interval.From.AsDateOnly(), interval.Into.AsDateOnly());
 
     /// <summary>
-    /// Gets the <see cref="Interval{DateTime}"/> instance from to the <see cref="Interval{DateOnly}"/> instance dates.
+    /// Converts a <see cref="Interval{DateOnly}"/> Interval into a <see cref="Interval{DateTime}"/> Interval.
     /// </summary>
     /// <param name="interval">Input date interval for converting.</param>
     /// <returns>Inclusive time interval initialized with data from the original date interval.</returns>
