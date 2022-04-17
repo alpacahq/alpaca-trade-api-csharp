@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class OneCancelsOtherOrder
    ">
-    <meta name="generator" content="docfx 2.59.0.0">
+    <meta name="generator" content="docfx 2.59.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,10 @@
   
   <h1 id="Alpaca_Markets_OneCancelsOtherOrder" data-uid="Alpaca.Markets.OneCancelsOtherOrder" class="text-break">Class OneCancelsOtherOrder
   </h1>
-  <div class="markdown level0 summary"><p>Encapsulates data required for placing OCO order on the Alpaca REST API.</p>
+  <div class="markdown level0 summary"><p>OCO (One-Cancels-Other) is another type of advanced order type.
+This is a set of two orders with the same side (buy/buy or sell/sell) and currently only exit order is supported.
+In other words, this is the second part of the bracket orders where the entry order is already filled,
+and you can submit the take-profit and stop-loss in one order submission.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -137,6 +140,9 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class OneCancelsOtherOrder : AdvancedOrderBase</code></pre>
   </div>
+  <h5 id="Alpaca_Markets_OneCancelsOtherOrder_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>See <a href="https://alpaca.markets/docs/trading/orders/#oco-orders">Alpaca Order Documentation</a> for more information.</p>
+</div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
@@ -144,7 +150,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OneCancelsOtherOrder_StopLoss.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OneCancelsOtherOrder.StopLoss%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OneCancelsOtherOrder.cs/#L31">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OneCancelsOtherOrder.cs/#L35">View Source</a>
   </span>
   <a id="Alpaca_Markets_OneCancelsOtherOrder_StopLoss_" data-uid="Alpaca.Markets.OneCancelsOtherOrder.StopLoss*"></a>
   <h4 id="Alpaca_Markets_OneCancelsOtherOrder_StopLoss" data-uid="Alpaca.Markets.OneCancelsOtherOrder.StopLoss">StopLoss</h4>
@@ -175,7 +181,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OneCancelsOtherOrder_TakeProfit.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OneCancelsOtherOrder.TakeProfit%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OneCancelsOtherOrder.cs/#L25">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OneCancelsOtherOrder.cs/#L29">View Source</a>
   </span>
   <a id="Alpaca_Markets_OneCancelsOtherOrder_TakeProfit_" data-uid="Alpaca.Markets.OneCancelsOtherOrder.TakeProfit*"></a>
   <h4 id="Alpaca_Markets_OneCancelsOtherOrder_TakeProfit" data-uid="Alpaca.Markets.OneCancelsOtherOrder.TakeProfit">TakeProfit</h4>
@@ -222,7 +228,7 @@
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_OneCancelsOtherOrder.md&amp;value=---%0Auid%3A%20Alpaca.Markets.OneCancelsOtherOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OneCancelsOtherOrder.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Orders/OneCancelsOtherOrder.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

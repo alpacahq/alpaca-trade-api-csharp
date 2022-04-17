@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IOrder
    ">
-    <meta name="generator" content="docfx 2.59.0.0">
+    <meta name="generator" content="docfx 2.59.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -186,7 +186,7 @@
   </span>
   <a id="Alpaca_Markets_IOrder_CancelledAtUtc_" data-uid="Alpaca.Markets.IOrder.CancelledAtUtc*"></a>
   <h4 id="Alpaca_Markets_IOrder_CancelledAtUtc" data-uid="Alpaca.Markets.IOrder.CancelledAtUtc">CancelledAtUtc</h4>
-  <div class="markdown level1 summary"><p>Gets order cancellation timestamp in UTC time zone.</p>
+  <div class="markdown level1 summary"><p>Gets order cancellation timestamp in UTC.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -217,7 +217,7 @@
   </span>
   <a id="Alpaca_Markets_IOrder_ClientOrderId_" data-uid="Alpaca.Markets.IOrder.ClientOrderId*"></a>
   <h4 id="Alpaca_Markets_IOrder_ClientOrderId" data-uid="Alpaca.Markets.IOrder.ClientOrderId">ClientOrderId</h4>
-  <div class="markdown level1 summary"><p>Gets client-side order identifier.</p>
+  <div class="markdown level1 summary"><p>Gets client-side (user specified) order identifier. Client Order IDs must be unique.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -248,7 +248,7 @@
   </span>
   <a id="Alpaca_Markets_IOrder_CreatedAtUtc_" data-uid="Alpaca.Markets.IOrder.CreatedAtUtc*"></a>
   <h4 id="Alpaca_Markets_IOrder_CreatedAtUtc" data-uid="Alpaca.Markets.IOrder.CreatedAtUtc">CreatedAtUtc</h4>
-  <div class="markdown level1 summary"><p>Gets order creation timestamp in UTC time zone.</p>
+  <div class="markdown level1 summary"><p>Gets order creation timestamp in UTC.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -279,7 +279,7 @@
   </span>
   <a id="Alpaca_Markets_IOrder_ExpiredAtUtc_" data-uid="Alpaca.Markets.IOrder.ExpiredAtUtc*"></a>
   <h4 id="Alpaca_Markets_IOrder_ExpiredAtUtc" data-uid="Alpaca.Markets.IOrder.ExpiredAtUtc">ExpiredAtUtc</h4>
-  <div class="markdown level1 summary"><p>Gets order expiration timestamp in UTC time zone.</p>
+  <div class="markdown level1 summary"><p>Gets order expiration timestamp in UTC.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -310,7 +310,7 @@
   </span>
   <a id="Alpaca_Markets_IOrder_FailedAtUtc_" data-uid="Alpaca.Markets.IOrder.FailedAtUtc*"></a>
   <h4 id="Alpaca_Markets_IOrder_FailedAtUtc" data-uid="Alpaca.Markets.IOrder.FailedAtUtc">FailedAtUtc</h4>
-  <div class="markdown level1 summary"><p>Gets order rejection timestamp in UTC time zone.</p>
+  <div class="markdown level1 summary"><p>Gets order rejection timestamp in UTC.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -341,7 +341,7 @@
   </span>
   <a id="Alpaca_Markets_IOrder_FilledAtUtc_" data-uid="Alpaca.Markets.IOrder.FilledAtUtc*"></a>
   <h4 id="Alpaca_Markets_IOrder_FilledAtUtc" data-uid="Alpaca.Markets.IOrder.FilledAtUtc">FilledAtUtc</h4>
-  <div class="markdown level1 summary"><p>Gets order fill timestamp in UTC time zone.</p>
+  <div class="markdown level1 summary"><p>Gets order fill timestamp in UTC.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -501,7 +501,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;IOrder&gt;? Legs { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;IOrder&gt; Legs { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -513,7 +513,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IOrder.html">IOrder</a>&gt;&gt;</td>
+        <td><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IOrder.html">IOrder</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -775,7 +775,7 @@
   </span>
   <a id="Alpaca_Markets_IOrder_ReplacedAtUtc_" data-uid="Alpaca.Markets.IOrder.ReplacedAtUtc*"></a>
   <h4 id="Alpaca_Markets_IOrder_ReplacedAtUtc" data-uid="Alpaca.Markets.IOrder.ReplacedAtUtc">ReplacedAtUtc</h4>
-  <div class="markdown level1 summary"><p>Gets order replacement timestamp in UTC time zone.</p>
+  <div class="markdown level1 summary"><p>Gets order replacement timestamp in UTC.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -899,7 +899,7 @@
   </span>
   <a id="Alpaca_Markets_IOrder_SubmittedAtUtc_" data-uid="Alpaca.Markets.IOrder.SubmittedAtUtc*"></a>
   <h4 id="Alpaca_Markets_IOrder_SubmittedAtUtc" data-uid="Alpaca.Markets.IOrder.SubmittedAtUtc">SubmittedAtUtc</h4>
-  <div class="markdown level1 summary"><p>Gets order submission timestamp in UTC time zone.</p>
+  <div class="markdown level1 summary"><p>Gets order submission timestamp in UTC.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -930,7 +930,7 @@
   </span>
   <a id="Alpaca_Markets_IOrder_Symbol_" data-uid="Alpaca.Markets.IOrder.Symbol*"></a>
   <h4 id="Alpaca_Markets_IOrder_Symbol" data-uid="Alpaca.Markets.IOrder.Symbol">Symbol</h4>
-  <div class="markdown level1 summary"><p>Gets asset name.</p>
+  <div class="markdown level1 summary"><p>Gets asset symbol.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1054,7 +1054,7 @@
   </span>
   <a id="Alpaca_Markets_IOrder_UpdatedAtUtc_" data-uid="Alpaca.Markets.IOrder.UpdatedAtUtc*"></a>
   <h4 id="Alpaca_Markets_IOrder_UpdatedAtUtc" data-uid="Alpaca.Markets.IOrder.UpdatedAtUtc">UpdatedAtUtc</h4>
-  <div class="markdown level1 summary"><p>Gets last order update timestamp in UTC time zone.</p>
+  <div class="markdown level1 summary"><p>Gets last order update timestamp in UTC.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>

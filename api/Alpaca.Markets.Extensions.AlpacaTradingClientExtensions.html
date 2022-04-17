@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AlpacaTradingClientExtensions
    ">
-    <meta name="generator" content="docfx 2.59.0.0">
+    <meta name="generator" content="docfx 2.59.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -118,11 +118,11 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_Alpaca_Markets_IAlpacaTradingClient_DateOnly_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(Alpaca.Markets.IAlpacaTradingClient%2CDateOnly%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/TimeInterval/AlpacaTradingClientExtensions.cs/#L36">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/TimeInterval/AlpacaTradingClientExtensions.cs/#L37">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_Alpaca_Markets_IAlpacaTradingClient_DateOnly_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(Alpaca.Markets.IAlpacaTradingClient,DateOnly,CancellationToken)">GetCalendarForSingleDayAsync(IAlpacaTradingClient, DateOnly, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get single trading date information from the Alpaca REST API.</p>
+  <div class="markdown level1 summary"><p>Get single trading day information from the Alpaca REST API.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -184,7 +184,7 @@
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetCalendarForSingleDayAsync_Alpaca_Markets_IAlpacaTradingClient_DateTime_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(Alpaca.Markets.IAlpacaTradingClient,DateTime,CancellationToken)">GetCalendarForSingleDayAsync(IAlpacaTradingClient, DateTime, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Get single trading date information from the Alpaca REST API.</p>
+  <div class="markdown level1 summary"><p>Get single trading day information from the Alpaca REST API.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -233,6 +233,218 @@
       <tr>
         <td><span class="xref">Task</span>&lt;<a class="xref" href="Alpaca.Markets.ICalendar.html">ICalendar</a>&gt;</td>
         <td><p>Read-only trading date information object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetClockCachedAsync_Alpaca_Markets_IAlpacaTradingClient_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync(Alpaca.Markets.IAlpacaTradingClient)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Cache/AlpacaTradingClientExtensions.cs/#L38">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetClockCachedAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetClockCachedAsync_Alpaca_Markets_IAlpacaTradingClient_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync(Alpaca.Markets.IAlpacaTradingClient)">GetClockCachedAsync(IAlpacaTradingClient)</h4>
+  <div class="markdown level1 summary"><p>Gets the cached <a class="xref" href="Alpaca.Markets.IClock.html">IClock</a> instance with the current session state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ValueTask&lt;IClock&gt; GetClockCachedAsync(this IAlpacaTradingClient client)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>The <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> object instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;<a class="xref" href="Alpaca.Markets.IClock.html">IClock</a>&gt;</td>
+        <td><p>Cached or value of <a class="xref" href="Alpaca.Markets.IClock.html">IClock</a> instance or result of REST API call.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetClockCachedAsync_Alpaca_Markets_IAlpacaTradingClient_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync(Alpaca.Markets.IAlpacaTradingClient%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Cache/AlpacaTradingClientExtensions.cs/#L50">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetClockCachedAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetClockCachedAsync_Alpaca_Markets_IAlpacaTradingClient_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync(Alpaca.Markets.IAlpacaTradingClient,CancellationToken)">GetClockCachedAsync(IAlpacaTradingClient, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the cached <a class="xref" href="Alpaca.Markets.IClock.html">IClock</a> instance with the current session state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async ValueTask&lt;IClock&gt; GetClockCachedAsync(this IAlpacaTradingClient client, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>The <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> object instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;<a class="xref" href="Alpaca.Markets.IClock.html">IClock</a>&gt;</td>
+        <td><p>Cached or value of <a class="xref" href="Alpaca.Markets.IClock.html">IClock</a> instance or result of REST API call.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_IsMarketOpenAsync_Alpaca_Markets_IAlpacaTradingClient_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync(Alpaca.Markets.IAlpacaTradingClient)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Cache/AlpacaTradingClientExtensions.cs/#L14">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_IsMarketOpenAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_IsMarketOpenAsync_Alpaca_Markets_IAlpacaTradingClient_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync(Alpaca.Markets.IAlpacaTradingClient)">IsMarketOpenAsync(IAlpacaTradingClient)</h4>
+  <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Alpaca.Markets.IClock.html#Alpaca_Markets_IClock_IsOpen">IsOpen</a> state from cached API result call.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ValueTask&lt;Boolean&gt; IsMarketOpenAsync(this IAlpacaTradingClient client)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>The <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> object instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;<span class="xref">Boolean</span>&gt;</td>
+        <td><p>If trading day is open now returns <code>true</code> value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_IsMarketOpenAsync_Alpaca_Markets_IAlpacaTradingClient_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync(Alpaca.Markets.IAlpacaTradingClient%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Cache/AlpacaTradingClientExtensions.cs/#L26">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_IsMarketOpenAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_IsMarketOpenAsync_Alpaca_Markets_IAlpacaTradingClient_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync(Alpaca.Markets.IAlpacaTradingClient,CancellationToken)">IsMarketOpenAsync(IAlpacaTradingClient, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Alpaca.Markets.IClock.html#Alpaca_Markets_IClock_IsOpen">IsOpen</a> state from cached API result call.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static async ValueTask&lt;Boolean&gt; IsMarketOpenAsync(this IAlpacaTradingClient client, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html">IAlpacaTradingClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>The <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> object instance.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;<span class="xref">Boolean</span>&gt;</td>
+        <td><p>If trading day is open now returns <code>true</code> value.</p>
 </td>
       </tr>
     </tbody>

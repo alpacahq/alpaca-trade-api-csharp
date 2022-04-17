@@ -1,0 +1,412 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IWebSocket
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IWebSocket
+   ">
+    <meta name="generator" content="docfx 2.59.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.IWebSocket">
+  
+  
+  <h1 id="Alpaca_Markets_IWebSocket" data-uid="Alpaca.Markets.IWebSocket" class="text-break">Interface IWebSocket
+  </h1>
+  <div class="markdown level0 summary"><p>Encapsulates asynchronous interface of web socket client.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
+  <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
+  <h5 id="Alpaca_Markets_IWebSocket_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IWebSocket</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IWebSocket_CloseStatus.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IWebSocket.CloseStatus%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/WebSocket/IWebSocket.cs/#L55">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_IWebSocket_CloseStatus_" data-uid="Alpaca.Markets.IWebSocket.CloseStatus*"></a>
+  <h4 id="Alpaca_Markets_IWebSocket_CloseStatus" data-uid="Alpaca.Markets.IWebSocket.CloseStatus">CloseStatus</h4>
+  <div class="markdown level1 summary"><p>Gets current web socket channel close status (if any).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">WebSocketCloseStatus? CloseStatus { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Net.WebSockets.WebSocketCloseStatus</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IWebSocket_State.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IWebSocket.State%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/WebSocket/IWebSocket.cs/#L50">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_IWebSocket_State_" data-uid="Alpaca.Markets.IWebSocket.State*"></a>
+  <h4 id="Alpaca_Markets_IWebSocket_State" data-uid="Alpaca.Markets.IWebSocket.State">State</h4>
+  <div class="markdown level1 summary"><p>Gets current web socket channel state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">WebSocketState State { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Net.WebSockets.WebSocketState</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IWebSocket_Abort.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IWebSocket.Abort%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/WebSocket/IWebSocket.cs/#L45">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_IWebSocket_Abort_" data-uid="Alpaca.Markets.IWebSocket.Abort*"></a>
+  <h4 id="Alpaca_Markets_IWebSocket_Abort" data-uid="Alpaca.Markets.IWebSocket.Abort">Abort()</h4>
+  <div class="markdown level1 summary"><p>Immediately aborts connection at socket level.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Abort()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IWebSocket_CloseOutputAsync_System_Net_WebSockets_WebSocketCloseStatus_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IWebSocket.CloseOutputAsync(System.Net.WebSockets.WebSocketCloseStatus)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/WebSocket/IWebSocket.cs/#L39">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_IWebSocket_CloseOutputAsync_" data-uid="Alpaca.Markets.IWebSocket.CloseOutputAsync*"></a>
+  <h4 id="Alpaca_Markets_IWebSocket_CloseOutputAsync_System_Net_WebSockets_WebSocketCloseStatus_" data-uid="Alpaca.Markets.IWebSocket.CloseOutputAsync(System.Net.WebSockets.WebSocketCloseStatus)">CloseOutputAsync(WebSocketCloseStatus)</h4>
+  <div class="markdown level1 summary"><p>Disconnects web socket channel from endpoint.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task CloseOutputAsync(WebSocketCloseStatus closeStatus)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Net.WebSockets.WebSocketCloseStatus</span></td>
+        <td><span class="parametername">closeStatus</span></td>
+        <td><p>Disconnection code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IWebSocket_ConnectAsync_Uri_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IWebSocket.ConnectAsync(Uri%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/WebSocket/IWebSocket.cs/#L16">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_IWebSocket_ConnectAsync_" data-uid="Alpaca.Markets.IWebSocket.ConnectAsync*"></a>
+  <h4 id="Alpaca_Markets_IWebSocket_ConnectAsync_Uri_CancellationToken_" data-uid="Alpaca.Markets.IWebSocket.ConnectAsync(Uri,CancellationToken)">ConnectAsync(Uri, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Connects specified endpoint using web socket protocol.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task ConnectAsync(Uri uri, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Uri</span></td>
+        <td><span class="parametername">uri</span></td>
+        <td><p>The web socket endpoint URL for connection.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IWebSocket_ReceiveAsync_Memory_Byte__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IWebSocket.ReceiveAsync(Memory%7BByte%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/WebSocket/IWebSocket.cs/#L32">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_IWebSocket_ReceiveAsync_" data-uid="Alpaca.Markets.IWebSocket.ReceiveAsync*"></a>
+  <h4 id="Alpaca_Markets_IWebSocket_ReceiveAsync_Memory_Byte__" data-uid="Alpaca.Markets.IWebSocket.ReceiveAsync(Memory{Byte})">ReceiveAsync(Memory&lt;Byte&gt;)</h4>
+  <div class="markdown level1 summary"><p>Reads message frame from the web socket into memory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;ReceiveResult&gt; ReceiveAsync(Memory&lt;Byte&gt; buffer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Memory</span>&lt;<span class="xref">Byte</span>&gt;</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>Memory buffer for receiving data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;<span class="xref">Alpaca.Markets.ReceiveResult</span>&gt;</td>
+        <td><p>Read action status (frame parameters).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IWebSocket_SendAsync_System_Buffers_ReadOnlySequence_Byte__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IWebSocket.SendAsync(System.Buffers.ReadOnlySequence%7BByte%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/WebSocket/IWebSocket.cs/#L24">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_IWebSocket_SendAsync_" data-uid="Alpaca.Markets.IWebSocket.SendAsync*"></a>
+  <h4 id="Alpaca_Markets_IWebSocket_SendAsync_System_Buffers_ReadOnlySequence_Byte__" data-uid="Alpaca.Markets.IWebSocket.SendAsync(System.Buffers.ReadOnlySequence{Byte})">SendAsync(ReadOnlySequence&lt;Byte&gt;)</h4>
+  <div class="markdown level1 summary"><p>Sends message into the web socket from memory buffer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask SendAsync(ReadOnlySequence&lt;Byte&gt; buffer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Buffers.ReadOnlySequence</span>&lt;<span class="xref">Byte</span>&gt;</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>Memory buffer with binary message.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_IWebSocket.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IWebSocket%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/WebSocket/IWebSocket.cs/#L9" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ListOrdersRequest
    ">
-    <meta name="generator" content="docfx 2.59.0.0">
+    <meta name="generator" content="docfx 2.59.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -126,7 +126,7 @@
   </span>
   <a id="Alpaca_Markets_ListOrdersRequest_LimitOrderNumber_" data-uid="Alpaca.Markets.ListOrdersRequest.LimitOrderNumber*"></a>
   <h4 id="Alpaca_Markets_ListOrdersRequest_LimitOrderNumber" data-uid="Alpaca.Markets.ListOrdersRequest.LimitOrderNumber">LimitOrderNumber</h4>
-  <div class="markdown level1 summary"><p>Gets or sets maximal number of orders in response.</p>
+  <div class="markdown level1 summary"><p>Gets or sets maximum number of orders in response.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -255,7 +255,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;String&gt; Symbols { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;String&gt; Symbols { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -267,7 +267,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
+        <td><span class="xref">IReadOnlyCollection</span>&lt;<span class="xref">String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -310,7 +310,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ListOrdersRequest_WithInterval_Alpaca_Markets_Interval_DateTime__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ListOrdersRequest.WithInterval(Alpaca.Markets.Interval%7BDateTime%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ListOrdersRequest.cs/#L97">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ListOrdersRequest.cs/#L78">View Source</a>
   </span>
   <a id="Alpaca_Markets_ListOrdersRequest_WithInterval_" data-uid="Alpaca.Markets.ListOrdersRequest.WithInterval*"></a>
   <h4 id="Alpaca_Markets_ListOrdersRequest_WithInterval_Alpaca_Markets_Interval_DateTime__" data-uid="Alpaca.Markets.ListOrdersRequest.WithInterval(Alpaca.Markets.Interval{DateTime})">WithInterval(Interval&lt;DateTime&gt;)</h4>
@@ -463,7 +463,7 @@
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_ListOrdersRequest_Alpaca_Markets_IRequestWithTimeInterval_Alpaca_Markets_IExclusiveTimeInterval__SetInterval_Alpaca_Markets_IExclusiveTimeInterval_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.ListOrdersRequest.Alpaca%23Markets%23IRequestWithTimeInterval%7BAlpaca%23Markets%23IExclusiveTimeInterval%7D%23SetInterval(Alpaca.Markets.IExclusiveTimeInterval)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ListOrdersRequest.cs/#L105">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets/Parameters/ListOrdersRequest.cs/#L107">View Source</a>
   </span>
   <a id="Alpaca_Markets_ListOrdersRequest_Alpaca_Markets_IRequestWithTimeInterval_Alpaca_Markets_IExclusiveTimeInterval__SetInterval_" data-uid="Alpaca.Markets.ListOrdersRequest.Alpaca#Markets#IRequestWithTimeInterval{Alpaca#Markets#IExclusiveTimeInterval}#SetInterval*"></a>
   <h4 id="Alpaca_Markets_ListOrdersRequest_Alpaca_Markets_IRequestWithTimeInterval_Alpaca_Markets_IExclusiveTimeInterval__SetInterval_Alpaca_Markets_IExclusiveTimeInterval_" data-uid="Alpaca.Markets.ListOrdersRequest.Alpaca#Markets#IRequestWithTimeInterval{Alpaca#Markets#IExclusiveTimeInterval}#SetInterval(Alpaca.Markets.IExclusiveTimeInterval)">IRequestWithTimeInterval&lt;IExclusiveTimeInterval&gt;.SetInterval(IExclusiveTimeInterval)</h4>
@@ -496,10 +496,10 @@
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="Alpaca.Markets.TimeInterval.html#Alpaca_Markets_TimeInterval_SetExclusiveTimeInterval__1___0_DateTime_DateTime_">TimeInterval.SetExclusiveTimeInterval&lt;TRequest&gt;(TRequest, DateTime, DateTime)</a>
+      <a class="xref" href="Alpaca.Markets.TimeInterval.html#Alpaca_Markets_TimeInterval_SetTimeInterval__1___0_Alpaca_Markets_IExclusiveTimeInterval_">TimeInterval.SetTimeInterval&lt;TRequest&gt;(TRequest, IExclusiveTimeInterval)</a>
   </div>
   <div>
-      <a class="xref" href="Alpaca.Markets.TimeInterval.html#Alpaca_Markets_TimeInterval_SetTimeInterval__1___0_Alpaca_Markets_IExclusiveTimeInterval_">TimeInterval.SetTimeInterval&lt;TRequest&gt;(TRequest, IExclusiveTimeInterval)</a>
+      <a class="xref" href="Alpaca.Markets.TimeInterval.html#Alpaca_Markets_TimeInterval_SetExclusiveTimeInterval__1___0_DateTime_DateTime_">TimeInterval.SetExclusiveTimeInterval&lt;TRequest&gt;(TRequest, DateTime, DateTime)</a>
   </div>
 </article>
           </div>

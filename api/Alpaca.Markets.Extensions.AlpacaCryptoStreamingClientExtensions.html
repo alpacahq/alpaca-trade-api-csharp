@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AlpacaCryptoStreamingClientExtensions
    ">
-    <meta name="generator" content="docfx 2.59.0.0">
+    <meta name="generator" content="docfx 2.59.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -116,10 +116,296 @@ implementation with automatic reconnection (with configurable delay and number o
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_GetOrderBookSubscription_Alpaca_Markets_IAlpacaCryptoStreamingClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(Alpaca.Markets.IAlpacaCryptoStreamingClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaCryptoStreamingClientExtensions.cs/#L33">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_GetOrderBookSubscription_" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_GetOrderBookSubscription_Alpaca_Markets_IAlpacaCryptoStreamingClient_IEnumerable_String__" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(Alpaca.Markets.IAlpacaCryptoStreamingClient,IEnumerable{String})">GetOrderBookSubscription(IAlpacaCryptoStreamingClient, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Gets the order book updates subscription for the all assets from the <code data-dev-comment-type="paramref" class="paramref">symbols</code> list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IOrderBook&gt; GetOrderBookSubscription(this IAlpacaCryptoStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaCryptoStreamingClient.html">IAlpacaCryptoStreamingClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaCryptoStreamingClient.html">IAlpacaCryptoStreamingClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
+        <td><span class="parametername">symbols</span></td>
+        <td><p>Alpaca asset names list (non-empty) for order book updates subscribing.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.IOrderBook.html">IOrderBook</a>&gt;</td>
+        <td><p>Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_GetOrderBookSubscription_Alpaca_Markets_IAlpacaCryptoStreamingClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(Alpaca.Markets.IAlpacaCryptoStreamingClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaCryptoStreamingClientExtensions.cs/#L16">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_GetOrderBookSubscription_" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_GetOrderBookSubscription_Alpaca_Markets_IAlpacaCryptoStreamingClient_String___" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(Alpaca.Markets.IAlpacaCryptoStreamingClient,String[])">GetOrderBookSubscription(IAlpacaCryptoStreamingClient, String[])</h4>
+  <div class="markdown level1 summary"><p>Gets the order book updates subscription for the all assets from the <code data-dev-comment-type="paramref" class="paramref">symbols</code> list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAlpacaDataSubscription&lt;IOrderBook&gt; GetOrderBookSubscription(this IAlpacaCryptoStreamingClient client, params String[] symbols)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaCryptoStreamingClient.html">IAlpacaCryptoStreamingClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaCryptoStreamingClient.html">IAlpacaCryptoStreamingClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">String</span>[]</td>
+        <td><span class="parametername">symbols</span></td>
+        <td><p>Alpaca asset names list (non-empty) for order book updates subscribing.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.IOrderBook.html">IOrderBook</a>&gt;</td>
+        <td><p>Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_SubscribeOrderBookAsync_Alpaca_Markets_IAlpacaCryptoStreamingClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaCryptoStreamingClientExtensions.cs/#L90">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_SubscribeOrderBookAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_SubscribeOrderBookAsync_Alpaca_Markets_IAlpacaCryptoStreamingClient_IEnumerable_String__" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient,IEnumerable{String})">SubscribeOrderBookAsync(IAlpacaCryptoStreamingClient, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Gets the order book updates subscription for all assets from the <code data-dev-comment-type="paramref" class="paramref">symbols</code> list.
+This subscription is returned with pending subscription state and will be unsubscribed on disposing
+so you can use it inside the <code>using</code> or <code>await using</code> statements for more clear resource management.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ValueTask&lt;IDisposableAlpacaDataSubscription&lt;IOrderBook&gt;&gt; SubscribeOrderBookAsync(this IAlpacaCryptoStreamingClient client, IEnumerable&lt;String&gt; symbols)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaCryptoStreamingClient.html">IAlpacaCryptoStreamingClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaCryptoStreamingClient.html">IAlpacaCryptoStreamingClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
+        <td><span class="parametername">symbols</span></td>
+        <td><p>Alpaca asset names list (non-empty) for order book updates subscribing.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;<a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.IOrderBook.html">IOrderBook</a>&gt;&gt;</td>
+        <td><p>Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_SubscribeOrderBookAsync_Alpaca_Markets_IAlpacaCryptoStreamingClient_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient%2CString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaCryptoStreamingClientExtensions.cs/#L52">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_SubscribeOrderBookAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_SubscribeOrderBookAsync_Alpaca_Markets_IAlpacaCryptoStreamingClient_String_" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient,String)">SubscribeOrderBookAsync(IAlpacaCryptoStreamingClient, String)</h4>
+  <div class="markdown level1 summary"><p>Gets the order book updates subscription for the <code data-dev-comment-type="paramref" class="paramref">symbol</code> asset. This subscription is
+returned with pending subscription state and will be unsubscribed on disposing so you can use it
+inside the <code>using</code> or <code>await using</code> statements for more clear resource management.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ValueTask&lt;IDisposableAlpacaDataSubscription&lt;IOrderBook&gt;&gt; SubscribeOrderBookAsync(this IAlpacaCryptoStreamingClient client, String symbol)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaCryptoStreamingClient.html">IAlpacaCryptoStreamingClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaCryptoStreamingClient.html">IAlpacaCryptoStreamingClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Alpaca asset name for order book updates subscribing.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;<a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.IOrderBook.html">IOrderBook</a>&gt;&gt;</td>
+        <td><p>Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_SubscribeOrderBookAsync_Alpaca_Markets_IAlpacaCryptoStreamingClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaCryptoStreamingClientExtensions.cs/#L71">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_SubscribeOrderBookAsync_" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_SubscribeOrderBookAsync_Alpaca_Markets_IAlpacaCryptoStreamingClient_String___" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient,String[])">SubscribeOrderBookAsync(IAlpacaCryptoStreamingClient, String[])</h4>
+  <div class="markdown level1 summary"><p>Gets the order book updates subscription for all assets from the <code data-dev-comment-type="paramref" class="paramref">symbols</code> list.
+This subscription is returned with pending subscription state and will be unsubscribed on disposing
+so you can use it inside the <code>using</code> or <code>await using</code> statements for more clear resource management.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ValueTask&lt;IDisposableAlpacaDataSubscription&lt;IOrderBook&gt;&gt; SubscribeOrderBookAsync(this IAlpacaCryptoStreamingClient client, params String[] symbols)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaCryptoStreamingClient.html">IAlpacaCryptoStreamingClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaCryptoStreamingClient.html">IAlpacaCryptoStreamingClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">String</span>[]</td>
+        <td><span class="parametername">symbols</span></td>
+        <td><p>Alpaca asset names list (non-empty) for order book updates subscribing.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;<a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.IOrderBook.html">IOrderBook</a>&gt;&gt;</td>
+        <td><p>Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_WithReconnect_Alpaca_Markets_IAlpacaCryptoStreamingClient_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.WithReconnect(Alpaca.Markets.IAlpacaCryptoStreamingClient)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Reconnection/AlpacaCryptoStreamingClientExtensions.cs/#L42">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Reconnection/AlpacaCryptoStreamingClientExtensions.cs/#L56">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_WithReconnect_" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.WithReconnect*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_WithReconnect_Alpaca_Markets_IAlpacaCryptoStreamingClient_" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.WithReconnect(Alpaca.Markets.IAlpacaCryptoStreamingClient)">WithReconnect(IAlpacaCryptoStreamingClient)</h4>
@@ -170,7 +456,7 @@ with automatic reconnection support and provide optional reconnection parameters
     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_WithReconnect_Alpaca_Markets_IAlpacaCryptoStreamingClient_Alpaca_Markets_Extensions_ReconnectionParameters_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.WithReconnect(Alpaca.Markets.IAlpacaCryptoStreamingClient%2CAlpaca.Markets.Extensions.ReconnectionParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Reconnection/AlpacaCryptoStreamingClientExtensions.cs/#L55">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Reconnection/AlpacaCryptoStreamingClientExtensions.cs/#L69">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_WithReconnect_" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.WithReconnect*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_WithReconnect_Alpaca_Markets_IAlpacaCryptoStreamingClient_Alpaca_Markets_Extensions_ReconnectionParameters_" data-uid="Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.WithReconnect(Alpaca.Markets.IAlpacaCryptoStreamingClient,Alpaca.Markets.Extensions.ReconnectionParameters)">WithReconnect(IAlpacaCryptoStreamingClient, ReconnectionParameters)</h4>
@@ -233,7 +519,7 @@ with automatic reconnection support with the default reconnection parameters.</p
                     <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Reconnection/AlpacaCryptoStreamingClientExtensions.cs/#L7" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/AlpacaCryptoStreamingClientExtensions.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -756,6 +756,188 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.AlpacaTradingClientConfiguration.AlpacaTradingClientConfiguration
   nameWithType: AlpacaTradingClientConfiguration.AlpacaTradingClientConfiguration
+- uid: Alpaca.Markets.AnnouncementExtensions
+  name: AnnouncementExtensions
+  href: api/Alpaca.Markets.AnnouncementExtensions.html
+  commentId: T:Alpaca.Markets.AnnouncementExtensions
+  fullName: Alpaca.Markets.AnnouncementExtensions
+  nameWithType: AnnouncementExtensions
+- uid: Alpaca.Markets.AnnouncementExtensions.GetDeclarationDate(Alpaca.Markets.IAnnouncement)
+  name: GetDeclarationDate(IAnnouncement)
+  href: api/Alpaca.Markets.AnnouncementExtensions.html#Alpaca_Markets_AnnouncementExtensions_GetDeclarationDate_Alpaca_Markets_IAnnouncement_
+  commentId: M:Alpaca.Markets.AnnouncementExtensions.GetDeclarationDate(Alpaca.Markets.IAnnouncement)
+  fullName: Alpaca.Markets.AnnouncementExtensions.GetDeclarationDate(Alpaca.Markets.IAnnouncement)
+  nameWithType: AnnouncementExtensions.GetDeclarationDate(IAnnouncement)
+- uid: Alpaca.Markets.AnnouncementExtensions.GetDeclarationDate*
+  name: GetDeclarationDate
+  href: api/Alpaca.Markets.AnnouncementExtensions.html#Alpaca_Markets_AnnouncementExtensions_GetDeclarationDate_
+  commentId: Overload:Alpaca.Markets.AnnouncementExtensions.GetDeclarationDate
+  isSpec: "True"
+  fullName: Alpaca.Markets.AnnouncementExtensions.GetDeclarationDate
+  nameWithType: AnnouncementExtensions.GetDeclarationDate
+- uid: Alpaca.Markets.AnnouncementExtensions.GetExecutionDate(Alpaca.Markets.IAnnouncement)
+  name: GetExecutionDate(IAnnouncement)
+  href: api/Alpaca.Markets.AnnouncementExtensions.html#Alpaca_Markets_AnnouncementExtensions_GetExecutionDate_Alpaca_Markets_IAnnouncement_
+  commentId: M:Alpaca.Markets.AnnouncementExtensions.GetExecutionDate(Alpaca.Markets.IAnnouncement)
+  fullName: Alpaca.Markets.AnnouncementExtensions.GetExecutionDate(Alpaca.Markets.IAnnouncement)
+  nameWithType: AnnouncementExtensions.GetExecutionDate(IAnnouncement)
+- uid: Alpaca.Markets.AnnouncementExtensions.GetExecutionDate*
+  name: GetExecutionDate
+  href: api/Alpaca.Markets.AnnouncementExtensions.html#Alpaca_Markets_AnnouncementExtensions_GetExecutionDate_
+  commentId: Overload:Alpaca.Markets.AnnouncementExtensions.GetExecutionDate
+  isSpec: "True"
+  fullName: Alpaca.Markets.AnnouncementExtensions.GetExecutionDate
+  nameWithType: AnnouncementExtensions.GetExecutionDate
+- uid: Alpaca.Markets.AnnouncementExtensions.GetPayableDate(Alpaca.Markets.IAnnouncement)
+  name: GetPayableDate(IAnnouncement)
+  href: api/Alpaca.Markets.AnnouncementExtensions.html#Alpaca_Markets_AnnouncementExtensions_GetPayableDate_Alpaca_Markets_IAnnouncement_
+  commentId: M:Alpaca.Markets.AnnouncementExtensions.GetPayableDate(Alpaca.Markets.IAnnouncement)
+  fullName: Alpaca.Markets.AnnouncementExtensions.GetPayableDate(Alpaca.Markets.IAnnouncement)
+  nameWithType: AnnouncementExtensions.GetPayableDate(IAnnouncement)
+- uid: Alpaca.Markets.AnnouncementExtensions.GetPayableDate*
+  name: GetPayableDate
+  href: api/Alpaca.Markets.AnnouncementExtensions.html#Alpaca_Markets_AnnouncementExtensions_GetPayableDate_
+  commentId: Overload:Alpaca.Markets.AnnouncementExtensions.GetPayableDate
+  isSpec: "True"
+  fullName: Alpaca.Markets.AnnouncementExtensions.GetPayableDate
+  nameWithType: AnnouncementExtensions.GetPayableDate
+- uid: Alpaca.Markets.AnnouncementExtensions.GetRecordDate(Alpaca.Markets.IAnnouncement)
+  name: GetRecordDate(IAnnouncement)
+  href: api/Alpaca.Markets.AnnouncementExtensions.html#Alpaca_Markets_AnnouncementExtensions_GetRecordDate_Alpaca_Markets_IAnnouncement_
+  commentId: M:Alpaca.Markets.AnnouncementExtensions.GetRecordDate(Alpaca.Markets.IAnnouncement)
+  fullName: Alpaca.Markets.AnnouncementExtensions.GetRecordDate(Alpaca.Markets.IAnnouncement)
+  nameWithType: AnnouncementExtensions.GetRecordDate(IAnnouncement)
+- uid: Alpaca.Markets.AnnouncementExtensions.GetRecordDate*
+  name: GetRecordDate
+  href: api/Alpaca.Markets.AnnouncementExtensions.html#Alpaca_Markets_AnnouncementExtensions_GetRecordDate_
+  commentId: Overload:Alpaca.Markets.AnnouncementExtensions.GetRecordDate
+  isSpec: "True"
+  fullName: Alpaca.Markets.AnnouncementExtensions.GetRecordDate
+  nameWithType: AnnouncementExtensions.GetRecordDate
+- uid: Alpaca.Markets.AnnouncementsRequest
+  name: AnnouncementsRequest
+  href: api/Alpaca.Markets.AnnouncementsRequest.html
+  commentId: T:Alpaca.Markets.AnnouncementsRequest
+  fullName: Alpaca.Markets.AnnouncementsRequest
+  nameWithType: AnnouncementsRequest
+- uid: Alpaca.Markets.AnnouncementsRequest.#ctor(Alpaca.Markets.CorporateActionType,Alpaca.Markets.IInclusiveTimeInterval)
+  name: AnnouncementsRequest(CorporateActionType, IInclusiveTimeInterval)
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest__ctor_Alpaca_Markets_CorporateActionType_Alpaca_Markets_IInclusiveTimeInterval_
+  commentId: M:Alpaca.Markets.AnnouncementsRequest.#ctor(Alpaca.Markets.CorporateActionType,Alpaca.Markets.IInclusiveTimeInterval)
+  fullName: Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest(Alpaca.Markets.CorporateActionType, Alpaca.Markets.IInclusiveTimeInterval)
+  nameWithType: AnnouncementsRequest.AnnouncementsRequest(CorporateActionType, IInclusiveTimeInterval)
+- uid: Alpaca.Markets.AnnouncementsRequest.#ctor(Alpaca.Markets.CorporateActionType,Alpaca.Markets.Interval{DateOnly})
+  name: AnnouncementsRequest(CorporateActionType, Interval<DateOnly>)
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest__ctor_Alpaca_Markets_CorporateActionType_Alpaca_Markets_Interval_DateOnly__
+  commentId: M:Alpaca.Markets.AnnouncementsRequest.#ctor(Alpaca.Markets.CorporateActionType,Alpaca.Markets.Interval{DateOnly})
+  name.vb: AnnouncementsRequest(CorporateActionType, Interval(Of DateOnly))
+  fullName: Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest(Alpaca.Markets.CorporateActionType, Alpaca.Markets.Interval<DateOnly>)
+  fullName.vb: Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest(Alpaca.Markets.CorporateActionType, Alpaca.Markets.Interval(Of DateOnly))
+  nameWithType: AnnouncementsRequest.AnnouncementsRequest(CorporateActionType, Interval<DateOnly>)
+  nameWithType.vb: AnnouncementsRequest.AnnouncementsRequest(CorporateActionType, Interval(Of DateOnly))
+- uid: Alpaca.Markets.AnnouncementsRequest.#ctor(IEnumerable{Alpaca.Markets.CorporateActionType},Alpaca.Markets.IInclusiveTimeInterval)
+  name: AnnouncementsRequest(IEnumerable<CorporateActionType>, IInclusiveTimeInterval)
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest__ctor_IEnumerable_Alpaca_Markets_CorporateActionType__Alpaca_Markets_IInclusiveTimeInterval_
+  commentId: M:Alpaca.Markets.AnnouncementsRequest.#ctor(IEnumerable{Alpaca.Markets.CorporateActionType},Alpaca.Markets.IInclusiveTimeInterval)
+  name.vb: AnnouncementsRequest(IEnumerable(Of CorporateActionType), IInclusiveTimeInterval)
+  fullName: Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest(IEnumerable<Alpaca.Markets.CorporateActionType>, Alpaca.Markets.IInclusiveTimeInterval)
+  fullName.vb: Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest(IEnumerable(Of Alpaca.Markets.CorporateActionType), Alpaca.Markets.IInclusiveTimeInterval)
+  nameWithType: AnnouncementsRequest.AnnouncementsRequest(IEnumerable<CorporateActionType>, IInclusiveTimeInterval)
+  nameWithType.vb: AnnouncementsRequest.AnnouncementsRequest(IEnumerable(Of CorporateActionType), IInclusiveTimeInterval)
+- uid: Alpaca.Markets.AnnouncementsRequest.#ctor(IEnumerable{Alpaca.Markets.CorporateActionType},Alpaca.Markets.Interval{DateOnly})
+  name: AnnouncementsRequest(IEnumerable<CorporateActionType>, Interval<DateOnly>)
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest__ctor_IEnumerable_Alpaca_Markets_CorporateActionType__Alpaca_Markets_Interval_DateOnly__
+  commentId: M:Alpaca.Markets.AnnouncementsRequest.#ctor(IEnumerable{Alpaca.Markets.CorporateActionType},Alpaca.Markets.Interval{DateOnly})
+  name.vb: AnnouncementsRequest(IEnumerable(Of CorporateActionType), Interval(Of DateOnly))
+  fullName: Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest(IEnumerable<Alpaca.Markets.CorporateActionType>, Alpaca.Markets.Interval<DateOnly>)
+  fullName.vb: Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest(IEnumerable(Of Alpaca.Markets.CorporateActionType), Alpaca.Markets.Interval(Of DateOnly))
+  nameWithType: AnnouncementsRequest.AnnouncementsRequest(IEnumerable<CorporateActionType>, Interval<DateOnly>)
+  nameWithType.vb: AnnouncementsRequest.AnnouncementsRequest(IEnumerable(Of CorporateActionType), Interval(Of DateOnly))
+- uid: Alpaca.Markets.AnnouncementsRequest.#ctor*
+  name: AnnouncementsRequest
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest__ctor_
+  commentId: Overload:Alpaca.Markets.AnnouncementsRequest.#ctor
+  isSpec: "True"
+  fullName: Alpaca.Markets.AnnouncementsRequest.AnnouncementsRequest
+  nameWithType: AnnouncementsRequest.AnnouncementsRequest
+- uid: Alpaca.Markets.AnnouncementsRequest.CorporateActionTypes
+  name: CorporateActionTypes
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest_CorporateActionTypes
+  commentId: P:Alpaca.Markets.AnnouncementsRequest.CorporateActionTypes
+  fullName: Alpaca.Markets.AnnouncementsRequest.CorporateActionTypes
+  nameWithType: AnnouncementsRequest.CorporateActionTypes
+- uid: Alpaca.Markets.AnnouncementsRequest.CorporateActionTypes*
+  name: CorporateActionTypes
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest_CorporateActionTypes_
+  commentId: Overload:Alpaca.Markets.AnnouncementsRequest.CorporateActionTypes
+  isSpec: "True"
+  fullName: Alpaca.Markets.AnnouncementsRequest.CorporateActionTypes
+  nameWithType: AnnouncementsRequest.CorporateActionTypes
+- uid: Alpaca.Markets.AnnouncementsRequest.Cusip
+  name: Cusip
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest_Cusip
+  commentId: P:Alpaca.Markets.AnnouncementsRequest.Cusip
+  fullName: Alpaca.Markets.AnnouncementsRequest.Cusip
+  nameWithType: AnnouncementsRequest.Cusip
+- uid: Alpaca.Markets.AnnouncementsRequest.Cusip*
+  name: Cusip
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest_Cusip_
+  commentId: Overload:Alpaca.Markets.AnnouncementsRequest.Cusip
+  isSpec: "True"
+  fullName: Alpaca.Markets.AnnouncementsRequest.Cusip
+  nameWithType: AnnouncementsRequest.Cusip
+- uid: Alpaca.Markets.AnnouncementsRequest.DateInterval
+  name: DateInterval
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest_DateInterval
+  commentId: P:Alpaca.Markets.AnnouncementsRequest.DateInterval
+  fullName: Alpaca.Markets.AnnouncementsRequest.DateInterval
+  nameWithType: AnnouncementsRequest.DateInterval
+- uid: Alpaca.Markets.AnnouncementsRequest.DateInterval*
+  name: DateInterval
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest_DateInterval_
+  commentId: Overload:Alpaca.Markets.AnnouncementsRequest.DateInterval
+  isSpec: "True"
+  fullName: Alpaca.Markets.AnnouncementsRequest.DateInterval
+  nameWithType: AnnouncementsRequest.DateInterval
+- uid: Alpaca.Markets.AnnouncementsRequest.DateType
+  name: DateType
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest_DateType
+  commentId: P:Alpaca.Markets.AnnouncementsRequest.DateType
+  fullName: Alpaca.Markets.AnnouncementsRequest.DateType
+  nameWithType: AnnouncementsRequest.DateType
+- uid: Alpaca.Markets.AnnouncementsRequest.DateType*
+  name: DateType
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest_DateType_
+  commentId: Overload:Alpaca.Markets.AnnouncementsRequest.DateType
+  isSpec: "True"
+  fullName: Alpaca.Markets.AnnouncementsRequest.DateType
+  nameWithType: AnnouncementsRequest.DateType
+- uid: Alpaca.Markets.AnnouncementsRequest.Symbol
+  name: Symbol
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest_Symbol
+  commentId: P:Alpaca.Markets.AnnouncementsRequest.Symbol
+  fullName: Alpaca.Markets.AnnouncementsRequest.Symbol
+  nameWithType: AnnouncementsRequest.Symbol
+- uid: Alpaca.Markets.AnnouncementsRequest.Symbol*
+  name: Symbol
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest_Symbol_
+  commentId: Overload:Alpaca.Markets.AnnouncementsRequest.Symbol
+  isSpec: "True"
+  fullName: Alpaca.Markets.AnnouncementsRequest.Symbol
+  nameWithType: AnnouncementsRequest.Symbol
+- uid: Alpaca.Markets.AnnouncementsRequest.TimeInterval
+  name: TimeInterval
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest_TimeInterval
+  commentId: P:Alpaca.Markets.AnnouncementsRequest.TimeInterval
+  fullName: Alpaca.Markets.AnnouncementsRequest.TimeInterval
+  nameWithType: AnnouncementsRequest.TimeInterval
+- uid: Alpaca.Markets.AnnouncementsRequest.TimeInterval*
+  name: TimeInterval
+  href: api/Alpaca.Markets.AnnouncementsRequest.html#Alpaca_Markets_AnnouncementsRequest_TimeInterval_
+  commentId: Overload:Alpaca.Markets.AnnouncementsRequest.TimeInterval
+  isSpec: "True"
+  fullName: Alpaca.Markets.AnnouncementsRequest.TimeInterval
+  nameWithType: AnnouncementsRequest.TimeInterval
 - uid: Alpaca.Markets.AssetClass
   name: AssetClass
   href: api/Alpaca.Markets.AssetClass.html
@@ -848,164 +1030,6 @@ references:
   commentId: F:Alpaca.Markets.AuthStatus.Unauthorized
   fullName: Alpaca.Markets.AuthStatus.Unauthorized
   nameWithType: AuthStatus.Unauthorized
-- uid: Alpaca.Markets.BarTimeFrame
-  name: BarTimeFrame
-  href: api/Alpaca.Markets.BarTimeFrame.html
-  commentId: T:Alpaca.Markets.BarTimeFrame
-  fullName: Alpaca.Markets.BarTimeFrame
-  nameWithType: BarTimeFrame
-- uid: Alpaca.Markets.BarTimeFrame.#ctor(Int32,Alpaca.Markets.BarTimeFrameUnit)
-  name: BarTimeFrame(Int32, BarTimeFrameUnit)
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame__ctor_Int32_Alpaca_Markets_BarTimeFrameUnit_
-  commentId: M:Alpaca.Markets.BarTimeFrame.#ctor(Int32,Alpaca.Markets.BarTimeFrameUnit)
-  fullName: Alpaca.Markets.BarTimeFrame.BarTimeFrame(Int32, Alpaca.Markets.BarTimeFrameUnit)
-  nameWithType: BarTimeFrame.BarTimeFrame(Int32, BarTimeFrameUnit)
-- uid: Alpaca.Markets.BarTimeFrame.#ctor*
-  name: BarTimeFrame
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame__ctor_
-  commentId: Overload:Alpaca.Markets.BarTimeFrame.#ctor
-  isSpec: "True"
-  fullName: Alpaca.Markets.BarTimeFrame.BarTimeFrame
-  nameWithType: BarTimeFrame.BarTimeFrame
-- uid: Alpaca.Markets.BarTimeFrame.Day
-  name: Day
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_Day
-  commentId: P:Alpaca.Markets.BarTimeFrame.Day
-  fullName: Alpaca.Markets.BarTimeFrame.Day
-  nameWithType: BarTimeFrame.Day
-- uid: Alpaca.Markets.BarTimeFrame.Day*
-  name: Day
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_Day_
-  commentId: Overload:Alpaca.Markets.BarTimeFrame.Day
-  isSpec: "True"
-  fullName: Alpaca.Markets.BarTimeFrame.Day
-  nameWithType: BarTimeFrame.Day
-- uid: Alpaca.Markets.BarTimeFrame.Equals(Alpaca.Markets.BarTimeFrame)
-  name: Equals(BarTimeFrame)
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_Equals_Alpaca_Markets_BarTimeFrame_
-  commentId: M:Alpaca.Markets.BarTimeFrame.Equals(Alpaca.Markets.BarTimeFrame)
-  fullName: Alpaca.Markets.BarTimeFrame.Equals(Alpaca.Markets.BarTimeFrame)
-  nameWithType: BarTimeFrame.Equals(BarTimeFrame)
-- uid: Alpaca.Markets.BarTimeFrame.Equals(System.Nullable{Object})
-  name: Equals(Nullable<Object>)
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_Equals_System_Nullable_Object__
-  commentId: M:Alpaca.Markets.BarTimeFrame.Equals(System.Nullable{Object})
-  name.vb: Equals(Nullable(Of Object))
-  fullName: Alpaca.Markets.BarTimeFrame.Equals(System.Nullable<Object>)
-  fullName.vb: Alpaca.Markets.BarTimeFrame.Equals(System.Nullable(Of Object))
-  nameWithType: BarTimeFrame.Equals(Nullable<Object>)
-  nameWithType.vb: BarTimeFrame.Equals(Nullable(Of Object))
-- uid: Alpaca.Markets.BarTimeFrame.Equals*
-  name: Equals
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_Equals_
-  commentId: Overload:Alpaca.Markets.BarTimeFrame.Equals
-  isSpec: "True"
-  fullName: Alpaca.Markets.BarTimeFrame.Equals
-  nameWithType: BarTimeFrame.Equals
-- uid: Alpaca.Markets.BarTimeFrame.GetHashCode
-  name: GetHashCode()
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_GetHashCode
-  commentId: M:Alpaca.Markets.BarTimeFrame.GetHashCode
-  fullName: Alpaca.Markets.BarTimeFrame.GetHashCode()
-  nameWithType: BarTimeFrame.GetHashCode()
-- uid: Alpaca.Markets.BarTimeFrame.GetHashCode*
-  name: GetHashCode
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_GetHashCode_
-  commentId: Overload:Alpaca.Markets.BarTimeFrame.GetHashCode
-  isSpec: "True"
-  fullName: Alpaca.Markets.BarTimeFrame.GetHashCode
-  nameWithType: BarTimeFrame.GetHashCode
-- uid: Alpaca.Markets.BarTimeFrame.Hour
-  name: Hour
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_Hour
-  commentId: P:Alpaca.Markets.BarTimeFrame.Hour
-  fullName: Alpaca.Markets.BarTimeFrame.Hour
-  nameWithType: BarTimeFrame.Hour
-- uid: Alpaca.Markets.BarTimeFrame.Hour*
-  name: Hour
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_Hour_
-  commentId: Overload:Alpaca.Markets.BarTimeFrame.Hour
-  isSpec: "True"
-  fullName: Alpaca.Markets.BarTimeFrame.Hour
-  nameWithType: BarTimeFrame.Hour
-- uid: Alpaca.Markets.BarTimeFrame.Minute
-  name: Minute
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_Minute
-  commentId: P:Alpaca.Markets.BarTimeFrame.Minute
-  fullName: Alpaca.Markets.BarTimeFrame.Minute
-  nameWithType: BarTimeFrame.Minute
-- uid: Alpaca.Markets.BarTimeFrame.Minute*
-  name: Minute
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_Minute_
-  commentId: Overload:Alpaca.Markets.BarTimeFrame.Minute
-  isSpec: "True"
-  fullName: Alpaca.Markets.BarTimeFrame.Minute
-  nameWithType: BarTimeFrame.Minute
-- uid: Alpaca.Markets.BarTimeFrame.op_Equality(Alpaca.Markets.BarTimeFrame,Alpaca.Markets.BarTimeFrame)
-  name: Equality(BarTimeFrame, BarTimeFrame)
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_op_Equality_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_BarTimeFrame_
-  commentId: M:Alpaca.Markets.BarTimeFrame.op_Equality(Alpaca.Markets.BarTimeFrame,Alpaca.Markets.BarTimeFrame)
-  fullName: Alpaca.Markets.BarTimeFrame.Equality(Alpaca.Markets.BarTimeFrame, Alpaca.Markets.BarTimeFrame)
-  nameWithType: BarTimeFrame.Equality(BarTimeFrame, BarTimeFrame)
-- uid: Alpaca.Markets.BarTimeFrame.op_Equality*
-  name: Equality
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_op_Equality_
-  commentId: Overload:Alpaca.Markets.BarTimeFrame.op_Equality
-  isSpec: "True"
-  fullName: Alpaca.Markets.BarTimeFrame.Equality
-  nameWithType: BarTimeFrame.Equality
-- uid: Alpaca.Markets.BarTimeFrame.op_Inequality(Alpaca.Markets.BarTimeFrame,Alpaca.Markets.BarTimeFrame)
-  name: Inequality(BarTimeFrame, BarTimeFrame)
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_op_Inequality_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_BarTimeFrame_
-  commentId: M:Alpaca.Markets.BarTimeFrame.op_Inequality(Alpaca.Markets.BarTimeFrame,Alpaca.Markets.BarTimeFrame)
-  fullName: Alpaca.Markets.BarTimeFrame.Inequality(Alpaca.Markets.BarTimeFrame, Alpaca.Markets.BarTimeFrame)
-  nameWithType: BarTimeFrame.Inequality(BarTimeFrame, BarTimeFrame)
-- uid: Alpaca.Markets.BarTimeFrame.op_Inequality*
-  name: Inequality
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_op_Inequality_
-  commentId: Overload:Alpaca.Markets.BarTimeFrame.op_Inequality
-  isSpec: "True"
-  fullName: Alpaca.Markets.BarTimeFrame.Inequality
-  nameWithType: BarTimeFrame.Inequality
-- uid: Alpaca.Markets.BarTimeFrame.ToString
-  name: ToString()
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_ToString
-  commentId: M:Alpaca.Markets.BarTimeFrame.ToString
-  fullName: Alpaca.Markets.BarTimeFrame.ToString()
-  nameWithType: BarTimeFrame.ToString()
-- uid: Alpaca.Markets.BarTimeFrame.ToString*
-  name: ToString
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_ToString_
-  commentId: Overload:Alpaca.Markets.BarTimeFrame.ToString
-  isSpec: "True"
-  fullName: Alpaca.Markets.BarTimeFrame.ToString
-  nameWithType: BarTimeFrame.ToString
-- uid: Alpaca.Markets.BarTimeFrame.Unit
-  name: Unit
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_Unit
-  commentId: P:Alpaca.Markets.BarTimeFrame.Unit
-  fullName: Alpaca.Markets.BarTimeFrame.Unit
-  nameWithType: BarTimeFrame.Unit
-- uid: Alpaca.Markets.BarTimeFrame.Unit*
-  name: Unit
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_Unit_
-  commentId: Overload:Alpaca.Markets.BarTimeFrame.Unit
-  isSpec: "True"
-  fullName: Alpaca.Markets.BarTimeFrame.Unit
-  nameWithType: BarTimeFrame.Unit
-- uid: Alpaca.Markets.BarTimeFrame.Value
-  name: Value
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_Value
-  commentId: P:Alpaca.Markets.BarTimeFrame.Value
-  fullName: Alpaca.Markets.BarTimeFrame.Value
-  nameWithType: BarTimeFrame.Value
-- uid: Alpaca.Markets.BarTimeFrame.Value*
-  name: Value
-  href: api/Alpaca.Markets.BarTimeFrame.html#Alpaca_Markets_BarTimeFrame_Value_
-  commentId: Overload:Alpaca.Markets.BarTimeFrame.Value
-  isSpec: "True"
-  fullName: Alpaca.Markets.BarTimeFrame.Value
-  nameWithType: BarTimeFrame.Value
 - uid: Alpaca.Markets.BarTimeFrameUnit
   name: BarTimeFrameUnit
   href: api/Alpaca.Markets.BarTimeFrameUnit.html
@@ -1030,6 +1054,18 @@ references:
   commentId: F:Alpaca.Markets.BarTimeFrameUnit.Minute
   fullName: Alpaca.Markets.BarTimeFrameUnit.Minute
   nameWithType: BarTimeFrameUnit.Minute
+- uid: Alpaca.Markets.BarTimeFrameUnit.Month
+  name: Month
+  href: api/Alpaca.Markets.BarTimeFrameUnit.html#Alpaca_Markets_BarTimeFrameUnit_Month
+  commentId: F:Alpaca.Markets.BarTimeFrameUnit.Month
+  fullName: Alpaca.Markets.BarTimeFrameUnit.Month
+  nameWithType: BarTimeFrameUnit.Month
+- uid: Alpaca.Markets.BarTimeFrameUnit.Week
+  name: Week
+  href: api/Alpaca.Markets.BarTimeFrameUnit.html#Alpaca_Markets_BarTimeFrameUnit_Week
+  commentId: F:Alpaca.Markets.BarTimeFrameUnit.Week
+  fullName: Alpaca.Markets.BarTimeFrameUnit.Week
+  nameWithType: BarTimeFrameUnit.Week
 - uid: Alpaca.Markets.BracketOrder
   name: BracketOrder
   href: api/Alpaca.Markets.BracketOrder.html
@@ -1068,6 +1104,37 @@ references:
   commentId: T:Alpaca.Markets.CalendarRequest
   fullName: Alpaca.Markets.CalendarRequest
   nameWithType: CalendarRequest
+- uid: Alpaca.Markets.CalendarRequest.#ctor
+  name: CalendarRequest()
+  href: api/Alpaca.Markets.CalendarRequest.html#Alpaca_Markets_CalendarRequest__ctor
+  commentId: M:Alpaca.Markets.CalendarRequest.#ctor
+  fullName: Alpaca.Markets.CalendarRequest.CalendarRequest()
+  nameWithType: CalendarRequest.CalendarRequest()
+- uid: Alpaca.Markets.CalendarRequest.#ctor(Alpaca.Markets.Interval{DateOnly})
+  name: CalendarRequest(Interval<DateOnly>)
+  href: api/Alpaca.Markets.CalendarRequest.html#Alpaca_Markets_CalendarRequest__ctor_Alpaca_Markets_Interval_DateOnly__
+  commentId: M:Alpaca.Markets.CalendarRequest.#ctor(Alpaca.Markets.Interval{DateOnly})
+  name.vb: CalendarRequest(Interval(Of DateOnly))
+  fullName: Alpaca.Markets.CalendarRequest.CalendarRequest(Alpaca.Markets.Interval<DateOnly>)
+  fullName.vb: Alpaca.Markets.CalendarRequest.CalendarRequest(Alpaca.Markets.Interval(Of DateOnly))
+  nameWithType: CalendarRequest.CalendarRequest(Interval<DateOnly>)
+  nameWithType.vb: CalendarRequest.CalendarRequest(Interval(Of DateOnly))
+- uid: Alpaca.Markets.CalendarRequest.#ctor(System.Nullable{DateOnly},System.Nullable{DateOnly})
+  name: CalendarRequest(Nullable<DateOnly>, Nullable<DateOnly>)
+  href: api/Alpaca.Markets.CalendarRequest.html#Alpaca_Markets_CalendarRequest__ctor_System_Nullable_DateOnly__System_Nullable_DateOnly__
+  commentId: M:Alpaca.Markets.CalendarRequest.#ctor(System.Nullable{DateOnly},System.Nullable{DateOnly})
+  name.vb: CalendarRequest(Nullable(Of DateOnly), Nullable(Of DateOnly))
+  fullName: Alpaca.Markets.CalendarRequest.CalendarRequest(System.Nullable<DateOnly>, System.Nullable<DateOnly>)
+  fullName.vb: Alpaca.Markets.CalendarRequest.CalendarRequest(System.Nullable(Of DateOnly), System.Nullable(Of DateOnly))
+  nameWithType: CalendarRequest.CalendarRequest(Nullable<DateOnly>, Nullable<DateOnly>)
+  nameWithType.vb: CalendarRequest.CalendarRequest(Nullable(Of DateOnly), Nullable(Of DateOnly))
+- uid: Alpaca.Markets.CalendarRequest.#ctor*
+  name: CalendarRequest
+  href: api/Alpaca.Markets.CalendarRequest.html#Alpaca_Markets_CalendarRequest__ctor_
+  commentId: Overload:Alpaca.Markets.CalendarRequest.#ctor
+  isSpec: "True"
+  fullName: Alpaca.Markets.CalendarRequest.CalendarRequest
+  nameWithType: CalendarRequest.CalendarRequest
 - uid: Alpaca.Markets.CalendarRequest.Alpaca#Markets#IRequestWithTimeInterval{Alpaca#Markets#IInclusiveTimeInterval}#SetInterval(Alpaca.Markets.IInclusiveTimeInterval)
   name: IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(IInclusiveTimeInterval)
   href: api/Alpaca.Markets.CalendarRequest.html#Alpaca_Markets_CalendarRequest_Alpaca_Markets_IRequestWithTimeInterval_Alpaca_Markets_IInclusiveTimeInterval__SetInterval_Alpaca_Markets_IInclusiveTimeInterval_
@@ -1312,6 +1379,126 @@ references:
   fullName.vb: Alpaca.Markets.ChangeWatchListRequest(Of TKey).Key
   nameWithType: ChangeWatchListRequest<TKey>.Key
   nameWithType.vb: ChangeWatchListRequest(Of TKey).Key
+- uid: Alpaca.Markets.CorporateActionDateType
+  name: CorporateActionDateType
+  href: api/Alpaca.Markets.CorporateActionDateType.html
+  commentId: T:Alpaca.Markets.CorporateActionDateType
+  fullName: Alpaca.Markets.CorporateActionDateType
+  nameWithType: CorporateActionDateType
+- uid: Alpaca.Markets.CorporateActionDateType.DeclarationDate
+  name: DeclarationDate
+  href: api/Alpaca.Markets.CorporateActionDateType.html#Alpaca_Markets_CorporateActionDateType_DeclarationDate
+  commentId: F:Alpaca.Markets.CorporateActionDateType.DeclarationDate
+  fullName: Alpaca.Markets.CorporateActionDateType.DeclarationDate
+  nameWithType: CorporateActionDateType.DeclarationDate
+- uid: Alpaca.Markets.CorporateActionDateType.ExecutionDate
+  name: ExecutionDate
+  href: api/Alpaca.Markets.CorporateActionDateType.html#Alpaca_Markets_CorporateActionDateType_ExecutionDate
+  commentId: F:Alpaca.Markets.CorporateActionDateType.ExecutionDate
+  fullName: Alpaca.Markets.CorporateActionDateType.ExecutionDate
+  nameWithType: CorporateActionDateType.ExecutionDate
+- uid: Alpaca.Markets.CorporateActionDateType.PayableDate
+  name: PayableDate
+  href: api/Alpaca.Markets.CorporateActionDateType.html#Alpaca_Markets_CorporateActionDateType_PayableDate
+  commentId: F:Alpaca.Markets.CorporateActionDateType.PayableDate
+  fullName: Alpaca.Markets.CorporateActionDateType.PayableDate
+  nameWithType: CorporateActionDateType.PayableDate
+- uid: Alpaca.Markets.CorporateActionDateType.RecordDate
+  name: RecordDate
+  href: api/Alpaca.Markets.CorporateActionDateType.html#Alpaca_Markets_CorporateActionDateType_RecordDate
+  commentId: F:Alpaca.Markets.CorporateActionDateType.RecordDate
+  fullName: Alpaca.Markets.CorporateActionDateType.RecordDate
+  nameWithType: CorporateActionDateType.RecordDate
+- uid: Alpaca.Markets.CorporateActionSubType
+  name: CorporateActionSubType
+  href: api/Alpaca.Markets.CorporateActionSubType.html
+  commentId: T:Alpaca.Markets.CorporateActionSubType
+  fullName: Alpaca.Markets.CorporateActionSubType
+  nameWithType: CorporateActionSubType
+- uid: Alpaca.Markets.CorporateActionSubType.DividendCash
+  name: DividendCash
+  href: api/Alpaca.Markets.CorporateActionSubType.html#Alpaca_Markets_CorporateActionSubType_DividendCash
+  commentId: F:Alpaca.Markets.CorporateActionSubType.DividendCash
+  fullName: Alpaca.Markets.CorporateActionSubType.DividendCash
+  nameWithType: CorporateActionSubType.DividendCash
+- uid: Alpaca.Markets.CorporateActionSubType.DividendStock
+  name: DividendStock
+  href: api/Alpaca.Markets.CorporateActionSubType.html#Alpaca_Markets_CorporateActionSubType_DividendStock
+  commentId: F:Alpaca.Markets.CorporateActionSubType.DividendStock
+  fullName: Alpaca.Markets.CorporateActionSubType.DividendStock
+  nameWithType: CorporateActionSubType.DividendStock
+- uid: Alpaca.Markets.CorporateActionSubType.MergerCompletion
+  name: MergerCompletion
+  href: api/Alpaca.Markets.CorporateActionSubType.html#Alpaca_Markets_CorporateActionSubType_MergerCompletion
+  commentId: F:Alpaca.Markets.CorporateActionSubType.MergerCompletion
+  fullName: Alpaca.Markets.CorporateActionSubType.MergerCompletion
+  nameWithType: CorporateActionSubType.MergerCompletion
+- uid: Alpaca.Markets.CorporateActionSubType.MergerUpdate
+  name: MergerUpdate
+  href: api/Alpaca.Markets.CorporateActionSubType.html#Alpaca_Markets_CorporateActionSubType_MergerUpdate
+  commentId: F:Alpaca.Markets.CorporateActionSubType.MergerUpdate
+  fullName: Alpaca.Markets.CorporateActionSubType.MergerUpdate
+  nameWithType: CorporateActionSubType.MergerUpdate
+- uid: Alpaca.Markets.CorporateActionSubType.Recapitalizaiton
+  name: Recapitalizaiton
+  href: api/Alpaca.Markets.CorporateActionSubType.html#Alpaca_Markets_CorporateActionSubType_Recapitalizaiton
+  commentId: F:Alpaca.Markets.CorporateActionSubType.Recapitalizaiton
+  fullName: Alpaca.Markets.CorporateActionSubType.Recapitalizaiton
+  nameWithType: CorporateActionSubType.Recapitalizaiton
+- uid: Alpaca.Markets.CorporateActionSubType.ReverseSplit
+  name: ReverseSplit
+  href: api/Alpaca.Markets.CorporateActionSubType.html#Alpaca_Markets_CorporateActionSubType_ReverseSplit
+  commentId: F:Alpaca.Markets.CorporateActionSubType.ReverseSplit
+  fullName: Alpaca.Markets.CorporateActionSubType.ReverseSplit
+  nameWithType: CorporateActionSubType.ReverseSplit
+- uid: Alpaca.Markets.CorporateActionSubType.SpinOff
+  name: SpinOff
+  href: api/Alpaca.Markets.CorporateActionSubType.html#Alpaca_Markets_CorporateActionSubType_SpinOff
+  commentId: F:Alpaca.Markets.CorporateActionSubType.SpinOff
+  fullName: Alpaca.Markets.CorporateActionSubType.SpinOff
+  nameWithType: CorporateActionSubType.SpinOff
+- uid: Alpaca.Markets.CorporateActionSubType.StockSplit
+  name: StockSplit
+  href: api/Alpaca.Markets.CorporateActionSubType.html#Alpaca_Markets_CorporateActionSubType_StockSplit
+  commentId: F:Alpaca.Markets.CorporateActionSubType.StockSplit
+  fullName: Alpaca.Markets.CorporateActionSubType.StockSplit
+  nameWithType: CorporateActionSubType.StockSplit
+- uid: Alpaca.Markets.CorporateActionSubType.UnitSplit
+  name: UnitSplit
+  href: api/Alpaca.Markets.CorporateActionSubType.html#Alpaca_Markets_CorporateActionSubType_UnitSplit
+  commentId: F:Alpaca.Markets.CorporateActionSubType.UnitSplit
+  fullName: Alpaca.Markets.CorporateActionSubType.UnitSplit
+  nameWithType: CorporateActionSubType.UnitSplit
+- uid: Alpaca.Markets.CorporateActionType
+  name: CorporateActionType
+  href: api/Alpaca.Markets.CorporateActionType.html
+  commentId: T:Alpaca.Markets.CorporateActionType
+  fullName: Alpaca.Markets.CorporateActionType
+  nameWithType: CorporateActionType
+- uid: Alpaca.Markets.CorporateActionType.Dividend
+  name: Dividend
+  href: api/Alpaca.Markets.CorporateActionType.html#Alpaca_Markets_CorporateActionType_Dividend
+  commentId: F:Alpaca.Markets.CorporateActionType.Dividend
+  fullName: Alpaca.Markets.CorporateActionType.Dividend
+  nameWithType: CorporateActionType.Dividend
+- uid: Alpaca.Markets.CorporateActionType.Merger
+  name: Merger
+  href: api/Alpaca.Markets.CorporateActionType.html#Alpaca_Markets_CorporateActionType_Merger
+  commentId: F:Alpaca.Markets.CorporateActionType.Merger
+  fullName: Alpaca.Markets.CorporateActionType.Merger
+  nameWithType: CorporateActionType.Merger
+- uid: Alpaca.Markets.CorporateActionType.SpinOff
+  name: SpinOff
+  href: api/Alpaca.Markets.CorporateActionType.html#Alpaca_Markets_CorporateActionType_SpinOff
+  commentId: F:Alpaca.Markets.CorporateActionType.SpinOff
+  fullName: Alpaca.Markets.CorporateActionType.SpinOff
+  nameWithType: CorporateActionType.SpinOff
+- uid: Alpaca.Markets.CorporateActionType.Split
+  name: Split
+  href: api/Alpaca.Markets.CorporateActionType.html#Alpaca_Markets_CorporateActionType_Split
+  commentId: F:Alpaca.Markets.CorporateActionType.Split
+  fullName: Alpaca.Markets.CorporateActionType.Split
+  nameWithType: CorporateActionType.Split
 - uid: Alpaca.Markets.CryptoExchange
   name: CryptoExchange
   href: api/Alpaca.Markets.CryptoExchange.html
@@ -1330,12 +1517,24 @@ references:
   commentId: F:Alpaca.Markets.CryptoExchange.Ersx
   fullName: Alpaca.Markets.CryptoExchange.Ersx
   nameWithType: CryptoExchange.Ersx
+- uid: Alpaca.Markets.CryptoExchange.Ftx
+  name: Ftx
+  href: api/Alpaca.Markets.CryptoExchange.html#Alpaca_Markets_CryptoExchange_Ftx
+  commentId: F:Alpaca.Markets.CryptoExchange.Ftx
+  fullName: Alpaca.Markets.CryptoExchange.Ftx
+  nameWithType: CryptoExchange.Ftx
 - uid: Alpaca.Markets.CryptoExchange.Gnss
   name: Gnss
   href: api/Alpaca.Markets.CryptoExchange.html#Alpaca_Markets_CryptoExchange_Gnss
   commentId: F:Alpaca.Markets.CryptoExchange.Gnss
   fullName: Alpaca.Markets.CryptoExchange.Gnss
   nameWithType: CryptoExchange.Gnss
+- uid: Alpaca.Markets.CryptoExchange.Unknown
+  name: Unknown
+  href: api/Alpaca.Markets.CryptoExchange.html#Alpaca_Markets_CryptoExchange_Unknown
+  commentId: F:Alpaca.Markets.CryptoExchange.Unknown
+  fullName: Alpaca.Markets.CryptoExchange.Unknown
+  nameWithType: CryptoExchange.Unknown
 - uid: Alpaca.Markets.DayTradeMarginCallProtection
   name: DayTradeMarginCallProtection
   href: api/Alpaca.Markets.DayTradeMarginCallProtection.html
@@ -1729,12 +1928,73 @@ references:
   commentId: N:Alpaca.Markets.Extensions
   fullName: Alpaca.Markets.Extensions
   nameWithType: Alpaca.Markets.Extensions
+- uid: Alpaca.Markets.Extensions.
+  name: ''
+  href: api/Alpaca.Markets.Extensions..html
+  commentId: T:Alpaca.Markets.Extensions.
+  fullName: Alpaca.Markets.Extensions.
 - uid: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions
   name: AlpacaCryptoStreamingClientExtensions
   href: api/Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.html
   commentId: T:Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions
   fullName: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions
   nameWithType: AlpacaCryptoStreamingClientExtensions
+- uid: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(Alpaca.Markets.IAlpacaCryptoStreamingClient,IEnumerable{String})
+  name: GetOrderBookSubscription(IAlpacaCryptoStreamingClient, IEnumerable<String>)
+  href: api/Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_GetOrderBookSubscription_Alpaca_Markets_IAlpacaCryptoStreamingClient_IEnumerable_String__
+  commentId: M:Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(Alpaca.Markets.IAlpacaCryptoStreamingClient,IEnumerable{String})
+  name.vb: GetOrderBookSubscription(IAlpacaCryptoStreamingClient, IEnumerable(Of String))
+  fullName: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(Alpaca.Markets.IAlpacaCryptoStreamingClient, IEnumerable<String>)
+  fullName.vb: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(Alpaca.Markets.IAlpacaCryptoStreamingClient, IEnumerable(Of String))
+  nameWithType: AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(IAlpacaCryptoStreamingClient, IEnumerable<String>)
+  nameWithType.vb: AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(IAlpacaCryptoStreamingClient, IEnumerable(Of String))
+- uid: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(Alpaca.Markets.IAlpacaCryptoStreamingClient,String[])
+  name: GetOrderBookSubscription(IAlpacaCryptoStreamingClient, String[])
+  href: api/Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_GetOrderBookSubscription_Alpaca_Markets_IAlpacaCryptoStreamingClient_String___
+  commentId: M:Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(Alpaca.Markets.IAlpacaCryptoStreamingClient,String[])
+  name.vb: GetOrderBookSubscription(IAlpacaCryptoStreamingClient, String())
+  fullName: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(Alpaca.Markets.IAlpacaCryptoStreamingClient, String[])
+  fullName.vb: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(Alpaca.Markets.IAlpacaCryptoStreamingClient, String())
+  nameWithType: AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(IAlpacaCryptoStreamingClient, String[])
+  nameWithType.vb: AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(IAlpacaCryptoStreamingClient, String())
+- uid: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription*
+  name: GetOrderBookSubscription
+  href: api/Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_GetOrderBookSubscription_
+  commentId: Overload:Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription
+  nameWithType: AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription
+- uid: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient,IEnumerable{String})
+  name: SubscribeOrderBookAsync(IAlpacaCryptoStreamingClient, IEnumerable<String>)
+  href: api/Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_SubscribeOrderBookAsync_Alpaca_Markets_IAlpacaCryptoStreamingClient_IEnumerable_String__
+  commentId: M:Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient,IEnumerable{String})
+  name.vb: SubscribeOrderBookAsync(IAlpacaCryptoStreamingClient, IEnumerable(Of String))
+  fullName: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient, IEnumerable<String>)
+  fullName.vb: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient, IEnumerable(Of String))
+  nameWithType: AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(IAlpacaCryptoStreamingClient, IEnumerable<String>)
+  nameWithType.vb: AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(IAlpacaCryptoStreamingClient, IEnumerable(Of String))
+- uid: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient,String)
+  name: SubscribeOrderBookAsync(IAlpacaCryptoStreamingClient, String)
+  href: api/Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_SubscribeOrderBookAsync_Alpaca_Markets_IAlpacaCryptoStreamingClient_String_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient,String)
+  fullName: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient, String)
+  nameWithType: AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(IAlpacaCryptoStreamingClient, String)
+- uid: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient,String[])
+  name: SubscribeOrderBookAsync(IAlpacaCryptoStreamingClient, String[])
+  href: api/Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_SubscribeOrderBookAsync_Alpaca_Markets_IAlpacaCryptoStreamingClient_String___
+  commentId: M:Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient,String[])
+  name.vb: SubscribeOrderBookAsync(IAlpacaCryptoStreamingClient, String())
+  fullName: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient, String[])
+  fullName.vb: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(Alpaca.Markets.IAlpacaCryptoStreamingClient, String())
+  nameWithType: AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(IAlpacaCryptoStreamingClient, String[])
+  nameWithType.vb: AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(IAlpacaCryptoStreamingClient, String())
+- uid: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync*
+  name: SubscribeOrderBookAsync
+  href: api/Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_SubscribeOrderBookAsync_
+  commentId: Overload:Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync
+  nameWithType: AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync
 - uid: Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.WithReconnect(Alpaca.Markets.IAlpacaCryptoStreamingClient)
   name: WithReconnect(IAlpacaCryptoStreamingClient)
   href: api/Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaCryptoStreamingClientExtensions_WithReconnect_Alpaca_Markets_IAlpacaCryptoStreamingClient_
@@ -1804,6 +2064,56 @@ references:
   commentId: T:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions
   fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions
   nameWithType: AlpacaDataStreamingClientExtensions
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCancellationSubscription(Alpaca.Markets.IAlpacaDataStreamingClient,IEnumerable{String})
+  name: GetCancellationSubscription(IAlpacaDataStreamingClient, IEnumerable<String>)
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_GetCancellationSubscription_Alpaca_Markets_IAlpacaDataStreamingClient_IEnumerable_String__
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCancellationSubscription(Alpaca.Markets.IAlpacaDataStreamingClient,IEnumerable{String})
+  name.vb: GetCancellationSubscription(IAlpacaDataStreamingClient, IEnumerable(Of String))
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCancellationSubscription(Alpaca.Markets.IAlpacaDataStreamingClient, IEnumerable<String>)
+  fullName.vb: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCancellationSubscription(Alpaca.Markets.IAlpacaDataStreamingClient, IEnumerable(Of String))
+  nameWithType: AlpacaDataStreamingClientExtensions.GetCancellationSubscription(IAlpacaDataStreamingClient, IEnumerable<String>)
+  nameWithType.vb: AlpacaDataStreamingClientExtensions.GetCancellationSubscription(IAlpacaDataStreamingClient, IEnumerable(Of String))
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCancellationSubscription(Alpaca.Markets.IAlpacaDataStreamingClient,String[])
+  name: GetCancellationSubscription(IAlpacaDataStreamingClient, String[])
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_GetCancellationSubscription_Alpaca_Markets_IAlpacaDataStreamingClient_String___
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCancellationSubscription(Alpaca.Markets.IAlpacaDataStreamingClient,String[])
+  name.vb: GetCancellationSubscription(IAlpacaDataStreamingClient, String())
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCancellationSubscription(Alpaca.Markets.IAlpacaDataStreamingClient, String[])
+  fullName.vb: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCancellationSubscription(Alpaca.Markets.IAlpacaDataStreamingClient, String())
+  nameWithType: AlpacaDataStreamingClientExtensions.GetCancellationSubscription(IAlpacaDataStreamingClient, String[])
+  nameWithType.vb: AlpacaDataStreamingClientExtensions.GetCancellationSubscription(IAlpacaDataStreamingClient, String())
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCancellationSubscription*
+  name: GetCancellationSubscription
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_GetCancellationSubscription_
+  commentId: Overload:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCancellationSubscription
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCancellationSubscription
+  nameWithType: AlpacaDataStreamingClientExtensions.GetCancellationSubscription
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCorrectionSubscription(Alpaca.Markets.IAlpacaDataStreamingClient,IEnumerable{String})
+  name: GetCorrectionSubscription(IAlpacaDataStreamingClient, IEnumerable<String>)
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_GetCorrectionSubscription_Alpaca_Markets_IAlpacaDataStreamingClient_IEnumerable_String__
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCorrectionSubscription(Alpaca.Markets.IAlpacaDataStreamingClient,IEnumerable{String})
+  name.vb: GetCorrectionSubscription(IAlpacaDataStreamingClient, IEnumerable(Of String))
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCorrectionSubscription(Alpaca.Markets.IAlpacaDataStreamingClient, IEnumerable<String>)
+  fullName.vb: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCorrectionSubscription(Alpaca.Markets.IAlpacaDataStreamingClient, IEnumerable(Of String))
+  nameWithType: AlpacaDataStreamingClientExtensions.GetCorrectionSubscription(IAlpacaDataStreamingClient, IEnumerable<String>)
+  nameWithType.vb: AlpacaDataStreamingClientExtensions.GetCorrectionSubscription(IAlpacaDataStreamingClient, IEnumerable(Of String))
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCorrectionSubscription(Alpaca.Markets.IAlpacaDataStreamingClient,String[])
+  name: GetCorrectionSubscription(IAlpacaDataStreamingClient, String[])
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_GetCorrectionSubscription_Alpaca_Markets_IAlpacaDataStreamingClient_String___
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCorrectionSubscription(Alpaca.Markets.IAlpacaDataStreamingClient,String[])
+  name.vb: GetCorrectionSubscription(IAlpacaDataStreamingClient, String())
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCorrectionSubscription(Alpaca.Markets.IAlpacaDataStreamingClient, String[])
+  fullName.vb: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCorrectionSubscription(Alpaca.Markets.IAlpacaDataStreamingClient, String())
+  nameWithType: AlpacaDataStreamingClientExtensions.GetCorrectionSubscription(IAlpacaDataStreamingClient, String[])
+  nameWithType.vb: AlpacaDataStreamingClientExtensions.GetCorrectionSubscription(IAlpacaDataStreamingClient, String())
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCorrectionSubscription*
+  name: GetCorrectionSubscription
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_GetCorrectionSubscription_
+  commentId: Overload:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCorrectionSubscription
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetCorrectionSubscription
+  nameWithType: AlpacaDataStreamingClientExtensions.GetCorrectionSubscription
 - uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetLimitUpLimitDownSubscription(Alpaca.Markets.IAlpacaDataStreamingClient,IEnumerable{String})
   name: GetLimitUpLimitDownSubscription(IAlpacaDataStreamingClient, IEnumerable<String>)
   href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_GetLimitUpLimitDownSubscription_Alpaca_Markets_IAlpacaDataStreamingClient_IEnumerable_String__
@@ -1854,6 +2164,68 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.GetStatusSubscription
   nameWithType: AlpacaDataStreamingClientExtensions.GetStatusSubscription
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(Alpaca.Markets.IAlpacaDataStreamingClient,IEnumerable{String})
+  name: SubscribeCancellationAsync(IAlpacaDataStreamingClient, IEnumerable<String>)
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_SubscribeCancellationAsync_Alpaca_Markets_IAlpacaDataStreamingClient_IEnumerable_String__
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(Alpaca.Markets.IAlpacaDataStreamingClient,IEnumerable{String})
+  name.vb: SubscribeCancellationAsync(IAlpacaDataStreamingClient, IEnumerable(Of String))
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(Alpaca.Markets.IAlpacaDataStreamingClient, IEnumerable<String>)
+  fullName.vb: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(Alpaca.Markets.IAlpacaDataStreamingClient, IEnumerable(Of String))
+  nameWithType: AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(IAlpacaDataStreamingClient, IEnumerable<String>)
+  nameWithType.vb: AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(IAlpacaDataStreamingClient, IEnumerable(Of String))
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(Alpaca.Markets.IAlpacaDataStreamingClient,String)
+  name: SubscribeCancellationAsync(IAlpacaDataStreamingClient, String)
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_SubscribeCancellationAsync_Alpaca_Markets_IAlpacaDataStreamingClient_String_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(Alpaca.Markets.IAlpacaDataStreamingClient,String)
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(Alpaca.Markets.IAlpacaDataStreamingClient, String)
+  nameWithType: AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(IAlpacaDataStreamingClient, String)
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(Alpaca.Markets.IAlpacaDataStreamingClient,String[])
+  name: SubscribeCancellationAsync(IAlpacaDataStreamingClient, String[])
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_SubscribeCancellationAsync_Alpaca_Markets_IAlpacaDataStreamingClient_String___
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(Alpaca.Markets.IAlpacaDataStreamingClient,String[])
+  name.vb: SubscribeCancellationAsync(IAlpacaDataStreamingClient, String())
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(Alpaca.Markets.IAlpacaDataStreamingClient, String[])
+  fullName.vb: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(Alpaca.Markets.IAlpacaDataStreamingClient, String())
+  nameWithType: AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(IAlpacaDataStreamingClient, String[])
+  nameWithType.vb: AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync(IAlpacaDataStreamingClient, String())
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync*
+  name: SubscribeCancellationAsync
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_SubscribeCancellationAsync_
+  commentId: Overload:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync
+  nameWithType: AlpacaDataStreamingClientExtensions.SubscribeCancellationAsync
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(Alpaca.Markets.IAlpacaDataStreamingClient,IEnumerable{String})
+  name: SubscribeCorrectionAsync(IAlpacaDataStreamingClient, IEnumerable<String>)
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_SubscribeCorrectionAsync_Alpaca_Markets_IAlpacaDataStreamingClient_IEnumerable_String__
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(Alpaca.Markets.IAlpacaDataStreamingClient,IEnumerable{String})
+  name.vb: SubscribeCorrectionAsync(IAlpacaDataStreamingClient, IEnumerable(Of String))
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(Alpaca.Markets.IAlpacaDataStreamingClient, IEnumerable<String>)
+  fullName.vb: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(Alpaca.Markets.IAlpacaDataStreamingClient, IEnumerable(Of String))
+  nameWithType: AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(IAlpacaDataStreamingClient, IEnumerable<String>)
+  nameWithType.vb: AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(IAlpacaDataStreamingClient, IEnumerable(Of String))
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(Alpaca.Markets.IAlpacaDataStreamingClient,String)
+  name: SubscribeCorrectionAsync(IAlpacaDataStreamingClient, String)
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_SubscribeCorrectionAsync_Alpaca_Markets_IAlpacaDataStreamingClient_String_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(Alpaca.Markets.IAlpacaDataStreamingClient,String)
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(Alpaca.Markets.IAlpacaDataStreamingClient, String)
+  nameWithType: AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(IAlpacaDataStreamingClient, String)
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(Alpaca.Markets.IAlpacaDataStreamingClient,String[])
+  name: SubscribeCorrectionAsync(IAlpacaDataStreamingClient, String[])
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_SubscribeCorrectionAsync_Alpaca_Markets_IAlpacaDataStreamingClient_String___
+  commentId: M:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(Alpaca.Markets.IAlpacaDataStreamingClient,String[])
+  name.vb: SubscribeCorrectionAsync(IAlpacaDataStreamingClient, String())
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(Alpaca.Markets.IAlpacaDataStreamingClient, String[])
+  fullName.vb: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(Alpaca.Markets.IAlpacaDataStreamingClient, String())
+  nameWithType: AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(IAlpacaDataStreamingClient, String[])
+  nameWithType.vb: AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync(IAlpacaDataStreamingClient, String())
+- uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync*
+  name: SubscribeCorrectionAsync
+  href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_SubscribeCorrectionAsync_
+  commentId: Overload:Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync
+  nameWithType: AlpacaDataStreamingClientExtensions.SubscribeCorrectionAsync
 - uid: Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.SubscribeLimitUpLimitDownAsync(Alpaca.Markets.IAlpacaDataStreamingClient,IEnumerable{String})
   name: SubscribeLimitUpLimitDownAsync(IAlpacaDataStreamingClient, IEnumerable<String>)
   href: api/Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaDataStreamingClientExtensions_SubscribeLimitUpLimitDownAsync_Alpaca_Markets_IAlpacaDataStreamingClient_IEnumerable_String__
@@ -2160,6 +2532,44 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync
   nameWithType: AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync
+- uid: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync(Alpaca.Markets.IAlpacaTradingClient)
+  name: GetClockCachedAsync(IAlpacaTradingClient)
+  href: api/Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetClockCachedAsync_Alpaca_Markets_IAlpacaTradingClient_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync(Alpaca.Markets.IAlpacaTradingClient)
+  fullName: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync(Alpaca.Markets.IAlpacaTradingClient)
+  nameWithType: AlpacaTradingClientExtensions.GetClockCachedAsync(IAlpacaTradingClient)
+- uid: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync(Alpaca.Markets.IAlpacaTradingClient,CancellationToken)
+  name: GetClockCachedAsync(IAlpacaTradingClient, CancellationToken)
+  href: api/Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetClockCachedAsync_Alpaca_Markets_IAlpacaTradingClient_CancellationToken_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync(Alpaca.Markets.IAlpacaTradingClient,CancellationToken)
+  fullName: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync(Alpaca.Markets.IAlpacaTradingClient, CancellationToken)
+  nameWithType: AlpacaTradingClientExtensions.GetClockCachedAsync(IAlpacaTradingClient, CancellationToken)
+- uid: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync*
+  name: GetClockCachedAsync
+  href: api/Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_GetClockCachedAsync_
+  commentId: Overload:Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync
+  nameWithType: AlpacaTradingClientExtensions.GetClockCachedAsync
+- uid: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync(Alpaca.Markets.IAlpacaTradingClient)
+  name: IsMarketOpenAsync(IAlpacaTradingClient)
+  href: api/Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_IsMarketOpenAsync_Alpaca_Markets_IAlpacaTradingClient_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync(Alpaca.Markets.IAlpacaTradingClient)
+  fullName: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync(Alpaca.Markets.IAlpacaTradingClient)
+  nameWithType: AlpacaTradingClientExtensions.IsMarketOpenAsync(IAlpacaTradingClient)
+- uid: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync(Alpaca.Markets.IAlpacaTradingClient,CancellationToken)
+  name: IsMarketOpenAsync(IAlpacaTradingClient, CancellationToken)
+  href: api/Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_IsMarketOpenAsync_Alpaca_Markets_IAlpacaTradingClient_CancellationToken_
+  commentId: M:Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync(Alpaca.Markets.IAlpacaTradingClient,CancellationToken)
+  fullName: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync(Alpaca.Markets.IAlpacaTradingClient, CancellationToken)
+  nameWithType: AlpacaTradingClientExtensions.IsMarketOpenAsync(IAlpacaTradingClient, CancellationToken)
+- uid: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync*
+  name: IsMarketOpenAsync
+  href: api/Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_IsMarketOpenAsync_
+  commentId: Overload:Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.IsMarketOpenAsync
+  nameWithType: AlpacaTradingClientExtensions.IsMarketOpenAsync
 - uid: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.ListAccountActivitiesAsAsyncEnumerable(Alpaca.Markets.IAlpacaTradingClient,Alpaca.Markets.AccountActivitiesRequest)
   name: ListAccountActivitiesAsAsyncEnumerable(IAlpacaTradingClient, AccountActivitiesRequest)
   href: api/Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.html#Alpaca_Markets_Extensions_AlpacaTradingClientExtensions_ListAccountActivitiesAsAsyncEnumerable_Alpaca_Markets_IAlpacaTradingClient_Alpaca_Markets_AccountActivitiesRequest_
@@ -2179,130 +2589,24 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.ListAccountActivitiesAsAsyncEnumerable
   nameWithType: AlpacaTradingClientExtensions.ListAccountActivitiesAsAsyncEnumerable
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask
-  name: AlpacaValueTask
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html
-  commentId: T:Alpaca.Markets.Extensions.AlpacaValueTask
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask
-  nameWithType: AlpacaValueTask
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.#ctor
-  name: AlpacaValueTask()
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask__ctor
-  commentId: M:Alpaca.Markets.Extensions.AlpacaValueTask.#ctor
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.AlpacaValueTask()
-  nameWithType: AlpacaValueTask.AlpacaValueTask()
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.#ctor*
-  name: AlpacaValueTask
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask__ctor_
-  commentId: Overload:Alpaca.Markets.Extensions.AlpacaValueTask.#ctor
-  isSpec: "True"
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.AlpacaValueTask
-  nameWithType: AlpacaValueTask.AlpacaValueTask
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.Equals(Alpaca.Markets.Extensions.AlpacaValueTask)
-  name: Equals(AlpacaValueTask)
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask_Equals_Alpaca_Markets_Extensions_AlpacaValueTask_
-  commentId: M:Alpaca.Markets.Extensions.AlpacaValueTask.Equals(Alpaca.Markets.Extensions.AlpacaValueTask)
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.Equals(Alpaca.Markets.Extensions.AlpacaValueTask)
-  nameWithType: AlpacaValueTask.Equals(AlpacaValueTask)
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.Equals(System.Nullable{Object})
-  name: Equals(Nullable<Object>)
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask_Equals_System_Nullable_Object__
-  commentId: M:Alpaca.Markets.Extensions.AlpacaValueTask.Equals(System.Nullable{Object})
-  name.vb: Equals(Nullable(Of Object))
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.Equals(System.Nullable<Object>)
-  fullName.vb: Alpaca.Markets.Extensions.AlpacaValueTask.Equals(System.Nullable(Of Object))
-  nameWithType: AlpacaValueTask.Equals(Nullable<Object>)
-  nameWithType.vb: AlpacaValueTask.Equals(Nullable(Of Object))
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.Equals*
-  name: Equals
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask_Equals_
-  commentId: Overload:Alpaca.Markets.Extensions.AlpacaValueTask.Equals
-  isSpec: "True"
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.Equals
-  nameWithType: AlpacaValueTask.Equals
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.GetAwaiter
-  name: GetAwaiter()
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask_GetAwaiter
-  commentId: M:Alpaca.Markets.Extensions.AlpacaValueTask.GetAwaiter
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.GetAwaiter()
-  nameWithType: AlpacaValueTask.GetAwaiter()
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.GetAwaiter*
-  name: GetAwaiter
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask_GetAwaiter_
-  commentId: Overload:Alpaca.Markets.Extensions.AlpacaValueTask.GetAwaiter
-  isSpec: "True"
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.GetAwaiter
-  nameWithType: AlpacaValueTask.GetAwaiter
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.GetHashCode
-  name: GetHashCode()
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask_GetHashCode
-  commentId: M:Alpaca.Markets.Extensions.AlpacaValueTask.GetHashCode
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.GetHashCode()
-  nameWithType: AlpacaValueTask.GetHashCode()
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.GetHashCode*
-  name: GetHashCode
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask_GetHashCode_
-  commentId: Overload:Alpaca.Markets.Extensions.AlpacaValueTask.GetHashCode
-  isSpec: "True"
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.GetHashCode
-  nameWithType: AlpacaValueTask.GetHashCode
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.op_Equality(Alpaca.Markets.Extensions.AlpacaValueTask,Alpaca.Markets.Extensions.AlpacaValueTask)
-  name: Equality(AlpacaValueTask, AlpacaValueTask)
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask_op_Equality_Alpaca_Markets_Extensions_AlpacaValueTask_Alpaca_Markets_Extensions_AlpacaValueTask_
-  commentId: M:Alpaca.Markets.Extensions.AlpacaValueTask.op_Equality(Alpaca.Markets.Extensions.AlpacaValueTask,Alpaca.Markets.Extensions.AlpacaValueTask)
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.Equality(Alpaca.Markets.Extensions.AlpacaValueTask, Alpaca.Markets.Extensions.AlpacaValueTask)
-  nameWithType: AlpacaValueTask.Equality(AlpacaValueTask, AlpacaValueTask)
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.op_Equality*
-  name: Equality
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask_op_Equality_
-  commentId: Overload:Alpaca.Markets.Extensions.AlpacaValueTask.op_Equality
-  isSpec: "True"
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.Equality
-  nameWithType: AlpacaValueTask.Equality
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.op_Inequality(Alpaca.Markets.Extensions.AlpacaValueTask,Alpaca.Markets.Extensions.AlpacaValueTask)
-  name: Inequality(AlpacaValueTask, AlpacaValueTask)
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask_op_Inequality_Alpaca_Markets_Extensions_AlpacaValueTask_Alpaca_Markets_Extensions_AlpacaValueTask_
-  commentId: M:Alpaca.Markets.Extensions.AlpacaValueTask.op_Inequality(Alpaca.Markets.Extensions.AlpacaValueTask,Alpaca.Markets.Extensions.AlpacaValueTask)
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.Inequality(Alpaca.Markets.Extensions.AlpacaValueTask, Alpaca.Markets.Extensions.AlpacaValueTask)
-  nameWithType: AlpacaValueTask.Inequality(AlpacaValueTask, AlpacaValueTask)
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.op_Inequality*
-  name: Inequality
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask_op_Inequality_
-  commentId: Overload:Alpaca.Markets.Extensions.AlpacaValueTask.op_Inequality
-  isSpec: "True"
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.Inequality
-  nameWithType: AlpacaValueTask.Inequality
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.WithCancellation(CancellationToken)
-  name: WithCancellation(CancellationToken)
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask_WithCancellation_CancellationToken_
-  commentId: M:Alpaca.Markets.Extensions.AlpacaValueTask.WithCancellation(CancellationToken)
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.WithCancellation(CancellationToken)
-  nameWithType: AlpacaValueTask.WithCancellation(CancellationToken)
-- uid: Alpaca.Markets.Extensions.AlpacaValueTask.WithCancellation*
-  name: WithCancellation
-  href: api/Alpaca.Markets.Extensions.AlpacaValueTask.html#Alpaca_Markets_Extensions_AlpacaValueTask_WithCancellation_
-  commentId: Overload:Alpaca.Markets.Extensions.AlpacaValueTask.WithCancellation
-  isSpec: "True"
-  fullName: Alpaca.Markets.Extensions.AlpacaValueTask.WithCancellation
-  nameWithType: AlpacaValueTask.WithCancellation
 - uid: Alpaca.Markets.Extensions.Bracket
   name: Bracket
   href: api/Alpaca.Markets.Extensions.Bracket.html
   commentId: T:Alpaca.Markets.Extensions.Bracket
   fullName: Alpaca.Markets.Extensions.Bracket
   nameWithType: Bracket
-- uid: Alpaca.Markets.Extensions.Bracket.Buy(String,Int64,Decimal,Decimal)
-  name: Buy(String, Int64, Decimal, Decimal)
-  href: api/Alpaca.Markets.Extensions.Bracket.html#Alpaca_Markets_Extensions_Bracket_Buy_String_Int64_Decimal_Decimal_
-  commentId: M:Alpaca.Markets.Extensions.Bracket.Buy(String,Int64,Decimal,Decimal)
-  fullName: Alpaca.Markets.Extensions.Bracket.Buy(String, Int64, Decimal, Decimal)
-  nameWithType: Bracket.Buy(String, Int64, Decimal, Decimal)
-- uid: Alpaca.Markets.Extensions.Bracket.Buy(String,Int64,Decimal,Decimal,Decimal)
-  name: Buy(String, Int64, Decimal, Decimal, Decimal)
-  href: api/Alpaca.Markets.Extensions.Bracket.html#Alpaca_Markets_Extensions_Bracket_Buy_String_Int64_Decimal_Decimal_Decimal_
-  commentId: M:Alpaca.Markets.Extensions.Bracket.Buy(String,Int64,Decimal,Decimal,Decimal)
-  fullName: Alpaca.Markets.Extensions.Bracket.Buy(String, Int64, Decimal, Decimal, Decimal)
-  nameWithType: Bracket.Buy(String, Int64, Decimal, Decimal, Decimal)
+- uid: Alpaca.Markets.Extensions.Bracket.Buy(String,Alpaca.Markets.OrderQuantity,Decimal,Decimal)
+  name: Buy(String, OrderQuantity, Decimal, Decimal)
+  href: api/Alpaca.Markets.Extensions.Bracket.html#Alpaca_Markets_Extensions_Bracket_Buy_String_Alpaca_Markets_OrderQuantity_Decimal_Decimal_
+  commentId: M:Alpaca.Markets.Extensions.Bracket.Buy(String,Alpaca.Markets.OrderQuantity,Decimal,Decimal)
+  fullName: Alpaca.Markets.Extensions.Bracket.Buy(String, Alpaca.Markets.OrderQuantity, Decimal, Decimal)
+  nameWithType: Bracket.Buy(String, OrderQuantity, Decimal, Decimal)
+- uid: Alpaca.Markets.Extensions.Bracket.Buy(String,Alpaca.Markets.OrderQuantity,Decimal,Decimal,Decimal)
+  name: Buy(String, OrderQuantity, Decimal, Decimal, Decimal)
+  href: api/Alpaca.Markets.Extensions.Bracket.html#Alpaca_Markets_Extensions_Bracket_Buy_String_Alpaca_Markets_OrderQuantity_Decimal_Decimal_Decimal_
+  commentId: M:Alpaca.Markets.Extensions.Bracket.Buy(String,Alpaca.Markets.OrderQuantity,Decimal,Decimal,Decimal)
+  fullName: Alpaca.Markets.Extensions.Bracket.Buy(String, Alpaca.Markets.OrderQuantity, Decimal, Decimal, Decimal)
+  nameWithType: Bracket.Buy(String, OrderQuantity, Decimal, Decimal, Decimal)
 - uid: Alpaca.Markets.Extensions.Bracket.Buy*
   name: Buy
   href: api/Alpaca.Markets.Extensions.Bracket.html#Alpaca_Markets_Extensions_Bracket_Buy_
@@ -2310,18 +2614,18 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.Extensions.Bracket.Buy
   nameWithType: Bracket.Buy
-- uid: Alpaca.Markets.Extensions.Bracket.Sell(String,Int64,Decimal,Decimal)
-  name: Sell(String, Int64, Decimal, Decimal)
-  href: api/Alpaca.Markets.Extensions.Bracket.html#Alpaca_Markets_Extensions_Bracket_Sell_String_Int64_Decimal_Decimal_
-  commentId: M:Alpaca.Markets.Extensions.Bracket.Sell(String,Int64,Decimal,Decimal)
-  fullName: Alpaca.Markets.Extensions.Bracket.Sell(String, Int64, Decimal, Decimal)
-  nameWithType: Bracket.Sell(String, Int64, Decimal, Decimal)
-- uid: Alpaca.Markets.Extensions.Bracket.Sell(String,Int64,Decimal,Decimal,Decimal)
-  name: Sell(String, Int64, Decimal, Decimal, Decimal)
-  href: api/Alpaca.Markets.Extensions.Bracket.html#Alpaca_Markets_Extensions_Bracket_Sell_String_Int64_Decimal_Decimal_Decimal_
-  commentId: M:Alpaca.Markets.Extensions.Bracket.Sell(String,Int64,Decimal,Decimal,Decimal)
-  fullName: Alpaca.Markets.Extensions.Bracket.Sell(String, Int64, Decimal, Decimal, Decimal)
-  nameWithType: Bracket.Sell(String, Int64, Decimal, Decimal, Decimal)
+- uid: Alpaca.Markets.Extensions.Bracket.Sell(String,Alpaca.Markets.OrderQuantity,Decimal,Decimal)
+  name: Sell(String, OrderQuantity, Decimal, Decimal)
+  href: api/Alpaca.Markets.Extensions.Bracket.html#Alpaca_Markets_Extensions_Bracket_Sell_String_Alpaca_Markets_OrderQuantity_Decimal_Decimal_
+  commentId: M:Alpaca.Markets.Extensions.Bracket.Sell(String,Alpaca.Markets.OrderQuantity,Decimal,Decimal)
+  fullName: Alpaca.Markets.Extensions.Bracket.Sell(String, Alpaca.Markets.OrderQuantity, Decimal, Decimal)
+  nameWithType: Bracket.Sell(String, OrderQuantity, Decimal, Decimal)
+- uid: Alpaca.Markets.Extensions.Bracket.Sell(String,Alpaca.Markets.OrderQuantity,Decimal,Decimal,Decimal)
+  name: Sell(String, OrderQuantity, Decimal, Decimal, Decimal)
+  href: api/Alpaca.Markets.Extensions.Bracket.html#Alpaca_Markets_Extensions_Bracket_Sell_String_Alpaca_Markets_OrderQuantity_Decimal_Decimal_Decimal_
+  commentId: M:Alpaca.Markets.Extensions.Bracket.Sell(String,Alpaca.Markets.OrderQuantity,Decimal,Decimal,Decimal)
+  fullName: Alpaca.Markets.Extensions.Bracket.Sell(String, Alpaca.Markets.OrderQuantity, Decimal, Decimal, Decimal)
+  nameWithType: Bracket.Sell(String, OrderQuantity, Decimal, Decimal, Decimal)
 - uid: Alpaca.Markets.Extensions.Bracket.Sell*
   name: Sell
   href: api/Alpaca.Markets.Extensions.Bracket.html#Alpaca_Markets_Extensions_Bracket_Sell_
@@ -2979,18 +3283,18 @@ references:
   commentId: T:Alpaca.Markets.Extensions.OrderSideExtensions
   fullName: Alpaca.Markets.Extensions.OrderSideExtensions
   nameWithType: OrderSideExtensions
-- uid: Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,String,Int64,Decimal,Decimal)
-  name: Bracket(OrderSide, String, Int64, Decimal, Decimal)
-  href: api/Alpaca.Markets.Extensions.OrderSideExtensions.html#Alpaca_Markets_Extensions_OrderSideExtensions_Bracket_Alpaca_Markets_OrderSide_String_Int64_Decimal_Decimal_
-  commentId: M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,String,Int64,Decimal,Decimal)
-  fullName: Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide, String, Int64, Decimal, Decimal)
-  nameWithType: OrderSideExtensions.Bracket(OrderSide, String, Int64, Decimal, Decimal)
-- uid: Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,String,Int64,Decimal,Decimal,Decimal)
-  name: Bracket(OrderSide, String, Int64, Decimal, Decimal, Decimal)
-  href: api/Alpaca.Markets.Extensions.OrderSideExtensions.html#Alpaca_Markets_Extensions_OrderSideExtensions_Bracket_Alpaca_Markets_OrderSide_String_Int64_Decimal_Decimal_Decimal_
-  commentId: M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,String,Int64,Decimal,Decimal,Decimal)
-  fullName: Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide, String, Int64, Decimal, Decimal, Decimal)
-  nameWithType: OrderSideExtensions.Bracket(OrderSide, String, Int64, Decimal, Decimal, Decimal)
+- uid: Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity,Decimal,Decimal)
+  name: Bracket(OrderSide, String, OrderQuantity, Decimal, Decimal)
+  href: api/Alpaca.Markets.Extensions.OrderSideExtensions.html#Alpaca_Markets_Extensions_OrderSideExtensions_Bracket_Alpaca_Markets_OrderSide_String_Alpaca_Markets_OrderQuantity_Decimal_Decimal_
+  commentId: M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity,Decimal,Decimal)
+  fullName: Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide, String, Alpaca.Markets.OrderQuantity, Decimal, Decimal)
+  nameWithType: OrderSideExtensions.Bracket(OrderSide, String, OrderQuantity, Decimal, Decimal)
+- uid: Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity,Decimal,Decimal,Decimal)
+  name: Bracket(OrderSide, String, OrderQuantity, Decimal, Decimal, Decimal)
+  href: api/Alpaca.Markets.Extensions.OrderSideExtensions.html#Alpaca_Markets_Extensions_OrderSideExtensions_Bracket_Alpaca_Markets_OrderSide_String_Alpaca_Markets_OrderQuantity_Decimal_Decimal_Decimal_
+  commentId: M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity,Decimal,Decimal,Decimal)
+  fullName: Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide, String, Alpaca.Markets.OrderQuantity, Decimal, Decimal, Decimal)
+  nameWithType: OrderSideExtensions.Bracket(OrderSide, String, OrderQuantity, Decimal, Decimal, Decimal)
 - uid: Alpaca.Markets.Extensions.OrderSideExtensions.Bracket*
   name: Bracket
   href: api/Alpaca.Markets.Extensions.OrderSideExtensions.html#Alpaca_Markets_Extensions_OrderSideExtensions_Bracket_
@@ -3162,6 +3466,31 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.Extensions.StreamingClientExtensions.GetTradeSubscription
   nameWithType: StreamingClientExtensions.GetTradeSubscription
+- uid: Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})
+  name: GetUpdatedBarSubscription(IStreamingDataClient, IEnumerable<String>)
+  href: api/Alpaca.Markets.Extensions.StreamingClientExtensions.html#Alpaca_Markets_Extensions_StreamingClientExtensions_GetUpdatedBarSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__
+  commentId: M:Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})
+  name.vb: GetUpdatedBarSubscription(IStreamingDataClient, IEnumerable(Of String))
+  fullName: Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient, IEnumerable<String>)
+  fullName.vb: Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient, IEnumerable(Of String))
+  nameWithType: StreamingClientExtensions.GetUpdatedBarSubscription(IStreamingDataClient, IEnumerable<String>)
+  nameWithType.vb: StreamingClientExtensions.GetUpdatedBarSubscription(IStreamingDataClient, IEnumerable(Of String))
+- uid: Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient,String[])
+  name: GetUpdatedBarSubscription(IStreamingDataClient, String[])
+  href: api/Alpaca.Markets.Extensions.StreamingClientExtensions.html#Alpaca_Markets_Extensions_StreamingClientExtensions_GetUpdatedBarSubscription_Alpaca_Markets_IStreamingDataClient_String___
+  commentId: M:Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient,String[])
+  name.vb: GetUpdatedBarSubscription(IStreamingDataClient, String())
+  fullName: Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient, String[])
+  fullName.vb: Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient, String())
+  nameWithType: StreamingClientExtensions.GetUpdatedBarSubscription(IStreamingDataClient, String[])
+  nameWithType.vb: StreamingClientExtensions.GetUpdatedBarSubscription(IStreamingDataClient, String())
+- uid: Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription*
+  name: GetUpdatedBarSubscription
+  href: api/Alpaca.Markets.Extensions.StreamingClientExtensions.html#Alpaca_Markets_Extensions_StreamingClientExtensions_GetUpdatedBarSubscription_
+  commentId: Overload:Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription
+  nameWithType: StreamingClientExtensions.GetUpdatedBarSubscription
 - uid: Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeDailyBarAsync(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})
   name: SubscribeDailyBarAsync(IStreamingDataClient, IEnumerable<String>)
   href: api/Alpaca.Markets.Extensions.StreamingClientExtensions.html#Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeDailyBarAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__
@@ -3286,6 +3615,37 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeTradeAsync
   nameWithType: StreamingClientExtensions.SubscribeTradeAsync
+- uid: Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})
+  name: SubscribeUpdatedBarAsync(IStreamingDataClient, IEnumerable<String>)
+  href: api/Alpaca.Markets.Extensions.StreamingClientExtensions.html#Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__
+  commentId: M:Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})
+  name.vb: SubscribeUpdatedBarAsync(IStreamingDataClient, IEnumerable(Of String))
+  fullName: Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient, IEnumerable<String>)
+  fullName.vb: Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient, IEnumerable(Of String))
+  nameWithType: StreamingClientExtensions.SubscribeUpdatedBarAsync(IStreamingDataClient, IEnumerable<String>)
+  nameWithType.vb: StreamingClientExtensions.SubscribeUpdatedBarAsync(IStreamingDataClient, IEnumerable(Of String))
+- uid: Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient,String)
+  name: SubscribeUpdatedBarAsync(IStreamingDataClient, String)
+  href: api/Alpaca.Markets.Extensions.StreamingClientExtensions.html#Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_Alpaca_Markets_IStreamingDataClient_String_
+  commentId: M:Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient,String)
+  fullName: Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient, String)
+  nameWithType: StreamingClientExtensions.SubscribeUpdatedBarAsync(IStreamingDataClient, String)
+- uid: Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient,String[])
+  name: SubscribeUpdatedBarAsync(IStreamingDataClient, String[])
+  href: api/Alpaca.Markets.Extensions.StreamingClientExtensions.html#Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_Alpaca_Markets_IStreamingDataClient_String___
+  commentId: M:Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient,String[])
+  name.vb: SubscribeUpdatedBarAsync(IStreamingDataClient, String())
+  fullName: Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient, String[])
+  fullName.vb: Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient, String())
+  nameWithType: StreamingClientExtensions.SubscribeUpdatedBarAsync(IStreamingDataClient, String[])
+  nameWithType.vb: StreamingClientExtensions.SubscribeUpdatedBarAsync(IStreamingDataClient, String())
+- uid: Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync*
+  name: SubscribeUpdatedBarAsync
+  href: api/Alpaca.Markets.Extensions.StreamingClientExtensions.html#Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_
+  commentId: Overload:Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync
+  nameWithType: StreamingClientExtensions.SubscribeUpdatedBarAsync
 - uid: Alpaca.Markets.Extensions.StreamingDataClientExtensions
   name: StreamingDataClientExtensions
   href: api/Alpaca.Markets.Extensions.StreamingDataClientExtensions.html
@@ -4210,131 +4570,6 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.HistoricalTradesRequest.LastPathSegment
   nameWithType: HistoricalTradesRequest.LastPathSegment
-- uid: Alpaca.Markets.HistoryPeriod
-  name: HistoryPeriod
-  href: api/Alpaca.Markets.HistoryPeriod.html
-  commentId: T:Alpaca.Markets.HistoryPeriod
-  fullName: Alpaca.Markets.HistoryPeriod
-  nameWithType: HistoryPeriod
-- uid: Alpaca.Markets.HistoryPeriod.#ctor
-  name: HistoryPeriod()
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod__ctor
-  commentId: M:Alpaca.Markets.HistoryPeriod.#ctor
-  fullName: Alpaca.Markets.HistoryPeriod.HistoryPeriod()
-  nameWithType: HistoryPeriod.HistoryPeriod()
-- uid: Alpaca.Markets.HistoryPeriod.#ctor(Int32,Alpaca.Markets.HistoryPeriodUnit)
-  name: HistoryPeriod(Int32, HistoryPeriodUnit)
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod__ctor_Int32_Alpaca_Markets_HistoryPeriodUnit_
-  commentId: M:Alpaca.Markets.HistoryPeriod.#ctor(Int32,Alpaca.Markets.HistoryPeriodUnit)
-  fullName: Alpaca.Markets.HistoryPeriod.HistoryPeriod(Int32, Alpaca.Markets.HistoryPeriodUnit)
-  nameWithType: HistoryPeriod.HistoryPeriod(Int32, HistoryPeriodUnit)
-- uid: Alpaca.Markets.HistoryPeriod.#ctor*
-  name: HistoryPeriod
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod__ctor_
-  commentId: Overload:Alpaca.Markets.HistoryPeriod.#ctor
-  isSpec: "True"
-  fullName: Alpaca.Markets.HistoryPeriod.HistoryPeriod
-  nameWithType: HistoryPeriod.HistoryPeriod
-- uid: Alpaca.Markets.HistoryPeriod.Equals(Alpaca.Markets.HistoryPeriod)
-  name: Equals(HistoryPeriod)
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_Equals_Alpaca_Markets_HistoryPeriod_
-  commentId: M:Alpaca.Markets.HistoryPeriod.Equals(Alpaca.Markets.HistoryPeriod)
-  fullName: Alpaca.Markets.HistoryPeriod.Equals(Alpaca.Markets.HistoryPeriod)
-  nameWithType: HistoryPeriod.Equals(HistoryPeriod)
-- uid: Alpaca.Markets.HistoryPeriod.Equals(System.Nullable{Object})
-  name: Equals(Nullable<Object>)
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_Equals_System_Nullable_Object__
-  commentId: M:Alpaca.Markets.HistoryPeriod.Equals(System.Nullable{Object})
-  name.vb: Equals(Nullable(Of Object))
-  fullName: Alpaca.Markets.HistoryPeriod.Equals(System.Nullable<Object>)
-  fullName.vb: Alpaca.Markets.HistoryPeriod.Equals(System.Nullable(Of Object))
-  nameWithType: HistoryPeriod.Equals(Nullable<Object>)
-  nameWithType.vb: HistoryPeriod.Equals(Nullable(Of Object))
-- uid: Alpaca.Markets.HistoryPeriod.Equals*
-  name: Equals
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_Equals_
-  commentId: Overload:Alpaca.Markets.HistoryPeriod.Equals
-  isSpec: "True"
-  fullName: Alpaca.Markets.HistoryPeriod.Equals
-  nameWithType: HistoryPeriod.Equals
-- uid: Alpaca.Markets.HistoryPeriod.GetHashCode
-  name: GetHashCode()
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_GetHashCode
-  commentId: M:Alpaca.Markets.HistoryPeriod.GetHashCode
-  fullName: Alpaca.Markets.HistoryPeriod.GetHashCode()
-  nameWithType: HistoryPeriod.GetHashCode()
-- uid: Alpaca.Markets.HistoryPeriod.GetHashCode*
-  name: GetHashCode
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_GetHashCode_
-  commentId: Overload:Alpaca.Markets.HistoryPeriod.GetHashCode
-  isSpec: "True"
-  fullName: Alpaca.Markets.HistoryPeriod.GetHashCode
-  nameWithType: HistoryPeriod.GetHashCode
-- uid: Alpaca.Markets.HistoryPeriod.op_Equality(Alpaca.Markets.HistoryPeriod,Alpaca.Markets.HistoryPeriod)
-  name: Equality(HistoryPeriod, HistoryPeriod)
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_op_Equality_Alpaca_Markets_HistoryPeriod_Alpaca_Markets_HistoryPeriod_
-  commentId: M:Alpaca.Markets.HistoryPeriod.op_Equality(Alpaca.Markets.HistoryPeriod,Alpaca.Markets.HistoryPeriod)
-  fullName: Alpaca.Markets.HistoryPeriod.Equality(Alpaca.Markets.HistoryPeriod, Alpaca.Markets.HistoryPeriod)
-  nameWithType: HistoryPeriod.Equality(HistoryPeriod, HistoryPeriod)
-- uid: Alpaca.Markets.HistoryPeriod.op_Equality*
-  name: Equality
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_op_Equality_
-  commentId: Overload:Alpaca.Markets.HistoryPeriod.op_Equality
-  isSpec: "True"
-  fullName: Alpaca.Markets.HistoryPeriod.Equality
-  nameWithType: HistoryPeriod.Equality
-- uid: Alpaca.Markets.HistoryPeriod.op_Inequality(Alpaca.Markets.HistoryPeriod,Alpaca.Markets.HistoryPeriod)
-  name: Inequality(HistoryPeriod, HistoryPeriod)
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_op_Inequality_Alpaca_Markets_HistoryPeriod_Alpaca_Markets_HistoryPeriod_
-  commentId: M:Alpaca.Markets.HistoryPeriod.op_Inequality(Alpaca.Markets.HistoryPeriod,Alpaca.Markets.HistoryPeriod)
-  fullName: Alpaca.Markets.HistoryPeriod.Inequality(Alpaca.Markets.HistoryPeriod, Alpaca.Markets.HistoryPeriod)
-  nameWithType: HistoryPeriod.Inequality(HistoryPeriod, HistoryPeriod)
-- uid: Alpaca.Markets.HistoryPeriod.op_Inequality*
-  name: Inequality
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_op_Inequality_
-  commentId: Overload:Alpaca.Markets.HistoryPeriod.op_Inequality
-  isSpec: "True"
-  fullName: Alpaca.Markets.HistoryPeriod.Inequality
-  nameWithType: HistoryPeriod.Inequality
-- uid: Alpaca.Markets.HistoryPeriod.ToString
-  name: ToString()
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_ToString
-  commentId: M:Alpaca.Markets.HistoryPeriod.ToString
-  fullName: Alpaca.Markets.HistoryPeriod.ToString()
-  nameWithType: HistoryPeriod.ToString()
-- uid: Alpaca.Markets.HistoryPeriod.ToString*
-  name: ToString
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_ToString_
-  commentId: Overload:Alpaca.Markets.HistoryPeriod.ToString
-  isSpec: "True"
-  fullName: Alpaca.Markets.HistoryPeriod.ToString
-  nameWithType: HistoryPeriod.ToString
-- uid: Alpaca.Markets.HistoryPeriod.Unit
-  name: Unit
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_Unit
-  commentId: P:Alpaca.Markets.HistoryPeriod.Unit
-  fullName: Alpaca.Markets.HistoryPeriod.Unit
-  nameWithType: HistoryPeriod.Unit
-- uid: Alpaca.Markets.HistoryPeriod.Unit*
-  name: Unit
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_Unit_
-  commentId: Overload:Alpaca.Markets.HistoryPeriod.Unit
-  isSpec: "True"
-  fullName: Alpaca.Markets.HistoryPeriod.Unit
-  nameWithType: HistoryPeriod.Unit
-- uid: Alpaca.Markets.HistoryPeriod.Value
-  name: Value
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_Value
-  commentId: P:Alpaca.Markets.HistoryPeriod.Value
-  fullName: Alpaca.Markets.HistoryPeriod.Value
-  nameWithType: HistoryPeriod.Value
-- uid: Alpaca.Markets.HistoryPeriod.Value*
-  name: Value
-  href: api/Alpaca.Markets.HistoryPeriod.html#Alpaca_Markets_HistoryPeriod_Value_
-  commentId: Overload:Alpaca.Markets.HistoryPeriod.Value
-  isSpec: "True"
-  fullName: Alpaca.Markets.HistoryPeriod.Value
-  nameWithType: HistoryPeriod.Value
 - uid: Alpaca.Markets.HistoryPeriodUnit
   name: HistoryPeriodUnit
   href: api/Alpaca.Markets.HistoryPeriodUnit.html
@@ -5000,6 +5235,19 @@ references:
   commentId: T:Alpaca.Markets.IAlpacaCryptoDataClient
   fullName: Alpaca.Markets.IAlpacaCryptoDataClient
   nameWithType: IAlpacaCryptoDataClient
+- uid: Alpaca.Markets.IAlpacaCryptoDataClient.GetLatestBarAsync(Alpaca.Markets.LatestDataRequest,CancellationToken)
+  name: GetLatestBarAsync(LatestDataRequest, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_GetLatestBarAsync_Alpaca_Markets_LatestDataRequest_CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaCryptoDataClient.GetLatestBarAsync(Alpaca.Markets.LatestDataRequest,CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaCryptoDataClient.GetLatestBarAsync(Alpaca.Markets.LatestDataRequest, CancellationToken)
+  nameWithType: IAlpacaCryptoDataClient.GetLatestBarAsync(LatestDataRequest, CancellationToken)
+- uid: Alpaca.Markets.IAlpacaCryptoDataClient.GetLatestBarAsync*
+  name: GetLatestBarAsync
+  href: api/Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_GetLatestBarAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaCryptoDataClient.GetLatestBarAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaCryptoDataClient.GetLatestBarAsync
+  nameWithType: IAlpacaCryptoDataClient.GetLatestBarAsync
 - uid: Alpaca.Markets.IAlpacaCryptoDataClient.GetLatestBestBidOfferAsync(Alpaca.Markets.LatestBestBidOfferRequest,CancellationToken)
   name: GetLatestBestBidOfferAsync(LatestBestBidOfferRequest, CancellationToken)
   href: api/Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_GetLatestBestBidOfferAsync_Alpaca_Markets_LatestBestBidOfferRequest_CancellationToken_
@@ -5052,18 +5300,109 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.IAlpacaCryptoDataClient.GetSnapshotAsync
   nameWithType: IAlpacaCryptoDataClient.GetSnapshotAsync
+- uid: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestDataListRequest,CancellationToken)
+  name: ListLatestBarsAsync(LatestDataListRequest, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_ListLatestBarsAsync_Alpaca_Markets_LatestDataListRequest_CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestDataListRequest,CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestDataListRequest, CancellationToken)
+  nameWithType: IAlpacaCryptoDataClient.ListLatestBarsAsync(LatestDataListRequest, CancellationToken)
+- uid: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBarsAsync*
+  name: ListLatestBarsAsync
+  href: api/Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_ListLatestBarsAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBarsAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBarsAsync
+  nameWithType: IAlpacaCryptoDataClient.ListLatestBarsAsync
+- uid: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBestBidOffersAsync(Alpaca.Markets.LatestBestBidOfferListRequest,CancellationToken)
+  name: ListLatestBestBidOffersAsync(LatestBestBidOfferListRequest, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_ListLatestBestBidOffersAsync_Alpaca_Markets_LatestBestBidOfferListRequest_CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBestBidOffersAsync(Alpaca.Markets.LatestBestBidOfferListRequest,CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBestBidOffersAsync(Alpaca.Markets.LatestBestBidOfferListRequest, CancellationToken)
+  nameWithType: IAlpacaCryptoDataClient.ListLatestBestBidOffersAsync(LatestBestBidOfferListRequest, CancellationToken)
+- uid: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBestBidOffersAsync*
+  name: ListLatestBestBidOffersAsync
+  href: api/Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_ListLatestBestBidOffersAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBestBidOffersAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBestBidOffersAsync
+  nameWithType: IAlpacaCryptoDataClient.ListLatestBestBidOffersAsync
+- uid: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestDataListRequest,CancellationToken)
+  name: ListLatestQuotesAsync(LatestDataListRequest, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_ListLatestQuotesAsync_Alpaca_Markets_LatestDataListRequest_CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestDataListRequest,CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestDataListRequest, CancellationToken)
+  nameWithType: IAlpacaCryptoDataClient.ListLatestQuotesAsync(LatestDataListRequest, CancellationToken)
+- uid: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestQuotesAsync*
+  name: ListLatestQuotesAsync
+  href: api/Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_ListLatestQuotesAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestQuotesAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestQuotesAsync
+  nameWithType: IAlpacaCryptoDataClient.ListLatestQuotesAsync
+- uid: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestDataListRequest,CancellationToken)
+  name: ListLatestTradesAsync(LatestDataListRequest, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_ListLatestTradesAsync_Alpaca_Markets_LatestDataListRequest_CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestDataListRequest,CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestDataListRequest, CancellationToken)
+  nameWithType: IAlpacaCryptoDataClient.ListLatestTradesAsync(LatestDataListRequest, CancellationToken)
+- uid: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestTradesAsync*
+  name: ListLatestTradesAsync
+  href: api/Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_ListLatestTradesAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestTradesAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestTradesAsync
+  nameWithType: IAlpacaCryptoDataClient.ListLatestTradesAsync
+- uid: Alpaca.Markets.IAlpacaCryptoDataClient.ListSnapshotsAsync(Alpaca.Markets.SnapshotDataListRequest,CancellationToken)
+  name: ListSnapshotsAsync(SnapshotDataListRequest, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_ListSnapshotsAsync_Alpaca_Markets_SnapshotDataListRequest_CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaCryptoDataClient.ListSnapshotsAsync(Alpaca.Markets.SnapshotDataListRequest,CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaCryptoDataClient.ListSnapshotsAsync(Alpaca.Markets.SnapshotDataListRequest, CancellationToken)
+  nameWithType: IAlpacaCryptoDataClient.ListSnapshotsAsync(SnapshotDataListRequest, CancellationToken)
+- uid: Alpaca.Markets.IAlpacaCryptoDataClient.ListSnapshotsAsync*
+  name: ListSnapshotsAsync
+  href: api/Alpaca.Markets.IAlpacaCryptoDataClient.html#Alpaca_Markets_IAlpacaCryptoDataClient_ListSnapshotsAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaCryptoDataClient.ListSnapshotsAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaCryptoDataClient.ListSnapshotsAsync
+  nameWithType: IAlpacaCryptoDataClient.ListSnapshotsAsync
 - uid: Alpaca.Markets.IAlpacaCryptoStreamingClient
   name: IAlpacaCryptoStreamingClient
   href: api/Alpaca.Markets.IAlpacaCryptoStreamingClient.html
   commentId: T:Alpaca.Markets.IAlpacaCryptoStreamingClient
   fullName: Alpaca.Markets.IAlpacaCryptoStreamingClient
   nameWithType: IAlpacaCryptoStreamingClient
+- uid: Alpaca.Markets.IAlpacaCryptoStreamingClient.GetOrderBookSubscription(String)
+  name: GetOrderBookSubscription(String)
+  href: api/Alpaca.Markets.IAlpacaCryptoStreamingClient.html#Alpaca_Markets_IAlpacaCryptoStreamingClient_GetOrderBookSubscription_String_
+  commentId: M:Alpaca.Markets.IAlpacaCryptoStreamingClient.GetOrderBookSubscription(String)
+  fullName: Alpaca.Markets.IAlpacaCryptoStreamingClient.GetOrderBookSubscription(String)
+  nameWithType: IAlpacaCryptoStreamingClient.GetOrderBookSubscription(String)
+- uid: Alpaca.Markets.IAlpacaCryptoStreamingClient.GetOrderBookSubscription*
+  name: GetOrderBookSubscription
+  href: api/Alpaca.Markets.IAlpacaCryptoStreamingClient.html#Alpaca_Markets_IAlpacaCryptoStreamingClient_GetOrderBookSubscription_
+  commentId: Overload:Alpaca.Markets.IAlpacaCryptoStreamingClient.GetOrderBookSubscription
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaCryptoStreamingClient.GetOrderBookSubscription
+  nameWithType: IAlpacaCryptoStreamingClient.GetOrderBookSubscription
 - uid: Alpaca.Markets.IAlpacaDataClient
   name: IAlpacaDataClient
   href: api/Alpaca.Markets.IAlpacaDataClient.html
   commentId: T:Alpaca.Markets.IAlpacaDataClient
   fullName: Alpaca.Markets.IAlpacaDataClient
   nameWithType: IAlpacaDataClient
+- uid: Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(String,CancellationToken)
+  name: GetLatestBarAsync(String, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_GetLatestBarAsync_String_CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(String,CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(String, CancellationToken)
+  nameWithType: IAlpacaDataClient.GetLatestBarAsync(String, CancellationToken)
+- uid: Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync*
+  name: GetLatestBarAsync
+  href: api/Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_GetLatestBarAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync
+  nameWithType: IAlpacaDataClient.GetLatestBarAsync
 - uid: Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(String,CancellationToken)
   name: GetLatestQuoteAsync(String, CancellationToken)
   href: api/Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_GetLatestQuoteAsync_String_CancellationToken_
@@ -5132,6 +5471,54 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.IAlpacaDataClient.ListExchangesAsync
   nameWithType: IAlpacaDataClient.ListExchangesAsync
+- uid: Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(IEnumerable{String},CancellationToken)
+  name: ListLatestBarsAsync(IEnumerable<String>, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListLatestBarsAsync_IEnumerable_String__CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(IEnumerable{String},CancellationToken)
+  name.vb: ListLatestBarsAsync(IEnumerable(Of String), CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(IEnumerable<String>, CancellationToken)
+  fullName.vb: Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(IEnumerable(Of String), CancellationToken)
+  nameWithType: IAlpacaDataClient.ListLatestBarsAsync(IEnumerable<String>, CancellationToken)
+  nameWithType.vb: IAlpacaDataClient.ListLatestBarsAsync(IEnumerable(Of String), CancellationToken)
+- uid: Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync*
+  name: ListLatestBarsAsync
+  href: api/Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListLatestBarsAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync
+  nameWithType: IAlpacaDataClient.ListLatestBarsAsync
+- uid: Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(IEnumerable{String},CancellationToken)
+  name: ListLatestQuotesAsync(IEnumerable<String>, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListLatestQuotesAsync_IEnumerable_String__CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(IEnumerable{String},CancellationToken)
+  name.vb: ListLatestQuotesAsync(IEnumerable(Of String), CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(IEnumerable<String>, CancellationToken)
+  fullName.vb: Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(IEnumerable(Of String), CancellationToken)
+  nameWithType: IAlpacaDataClient.ListLatestQuotesAsync(IEnumerable<String>, CancellationToken)
+  nameWithType.vb: IAlpacaDataClient.ListLatestQuotesAsync(IEnumerable(Of String), CancellationToken)
+- uid: Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync*
+  name: ListLatestQuotesAsync
+  href: api/Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListLatestQuotesAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync
+  nameWithType: IAlpacaDataClient.ListLatestQuotesAsync
+- uid: Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(IEnumerable{String},CancellationToken)
+  name: ListLatestTradesAsync(IEnumerable<String>, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListLatestTradesAsync_IEnumerable_String__CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(IEnumerable{String},CancellationToken)
+  name.vb: ListLatestTradesAsync(IEnumerable(Of String), CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(IEnumerable<String>, CancellationToken)
+  fullName.vb: Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(IEnumerable(Of String), CancellationToken)
+  nameWithType: IAlpacaDataClient.ListLatestTradesAsync(IEnumerable<String>, CancellationToken)
+  nameWithType.vb: IAlpacaDataClient.ListLatestTradesAsync(IEnumerable(Of String), CancellationToken)
+- uid: Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync*
+  name: ListLatestTradesAsync
+  href: api/Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListLatestTradesAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync
+  nameWithType: IAlpacaDataClient.ListLatestTradesAsync
 - uid: Alpaca.Markets.IAlpacaDataClient.ListNewsArticlesAsync(Alpaca.Markets.NewsArticlesRequest,CancellationToken)
   name: ListNewsArticlesAsync(NewsArticlesRequest, CancellationToken)
   href: api/Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListNewsArticlesAsync_Alpaca_Markets_NewsArticlesRequest_CancellationToken_
@@ -5158,6 +5545,22 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.IAlpacaDataClient.ListQuoteConditionsAsync
   nameWithType: IAlpacaDataClient.ListQuoteConditionsAsync
+- uid: Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(IEnumerable{String},CancellationToken)
+  name: ListSnapshotsAsync(IEnumerable<String>, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListSnapshotsAsync_IEnumerable_String__CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(IEnumerable{String},CancellationToken)
+  name.vb: ListSnapshotsAsync(IEnumerable(Of String), CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(IEnumerable<String>, CancellationToken)
+  fullName.vb: Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(IEnumerable(Of String), CancellationToken)
+  nameWithType: IAlpacaDataClient.ListSnapshotsAsync(IEnumerable<String>, CancellationToken)
+  nameWithType.vb: IAlpacaDataClient.ListSnapshotsAsync(IEnumerable(Of String), CancellationToken)
+- uid: Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync*
+  name: ListSnapshotsAsync
+  href: api/Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListSnapshotsAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync
+  nameWithType: IAlpacaDataClient.ListSnapshotsAsync
 - uid: Alpaca.Markets.IAlpacaDataClient.ListTradeConditionsAsync(Alpaca.Markets.Tape,CancellationToken)
   name: ListTradeConditionsAsync(Tape, CancellationToken)
   href: api/Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListTradeConditionsAsync_Alpaca_Markets_Tape_CancellationToken_
@@ -5514,6 +5917,19 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.IAlpacaTradingClient.GetAccountConfigurationAsync
   nameWithType: IAlpacaTradingClient.GetAccountConfigurationAsync
+- uid: Alpaca.Markets.IAlpacaTradingClient.GetAnnouncementAsync(Guid,CancellationToken)
+  name: GetAnnouncementAsync(Guid, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_GetAnnouncementAsync_Guid_CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaTradingClient.GetAnnouncementAsync(Guid,CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaTradingClient.GetAnnouncementAsync(Guid, CancellationToken)
+  nameWithType: IAlpacaTradingClient.GetAnnouncementAsync(Guid, CancellationToken)
+- uid: Alpaca.Markets.IAlpacaTradingClient.GetAnnouncementAsync*
+  name: GetAnnouncementAsync
+  href: api/Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_GetAnnouncementAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaTradingClient.GetAnnouncementAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaTradingClient.GetAnnouncementAsync
+  nameWithType: IAlpacaTradingClient.GetAnnouncementAsync
 - uid: Alpaca.Markets.IAlpacaTradingClient.GetAssetAsync(String,CancellationToken)
   name: GetAssetAsync(String, CancellationToken)
   href: api/Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_GetAssetAsync_String_CancellationToken_
@@ -5624,6 +6040,19 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.IAlpacaTradingClient.ListAccountActivitiesAsync
   nameWithType: IAlpacaTradingClient.ListAccountActivitiesAsync
+- uid: Alpaca.Markets.IAlpacaTradingClient.ListAnnouncementsAsync(Alpaca.Markets.AnnouncementsRequest,CancellationToken)
+  name: ListAnnouncementsAsync(AnnouncementsRequest, CancellationToken)
+  href: api/Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_ListAnnouncementsAsync_Alpaca_Markets_AnnouncementsRequest_CancellationToken_
+  commentId: M:Alpaca.Markets.IAlpacaTradingClient.ListAnnouncementsAsync(Alpaca.Markets.AnnouncementsRequest,CancellationToken)
+  fullName: Alpaca.Markets.IAlpacaTradingClient.ListAnnouncementsAsync(Alpaca.Markets.AnnouncementsRequest, CancellationToken)
+  nameWithType: IAlpacaTradingClient.ListAnnouncementsAsync(AnnouncementsRequest, CancellationToken)
+- uid: Alpaca.Markets.IAlpacaTradingClient.ListAnnouncementsAsync*
+  name: ListAnnouncementsAsync
+  href: api/Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_ListAnnouncementsAsync_
+  commentId: Overload:Alpaca.Markets.IAlpacaTradingClient.ListAnnouncementsAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAlpacaTradingClient.ListAnnouncementsAsync
+  nameWithType: IAlpacaTradingClient.ListAnnouncementsAsync
 - uid: Alpaca.Markets.IAlpacaTradingClient.ListAssetsAsync(Alpaca.Markets.AssetsRequest,CancellationToken)
   name: ListAssetsAsync(AssetsRequest, CancellationToken)
   href: api/Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_ListAssetsAsync_Alpaca_Markets_AssetsRequest_CancellationToken_
@@ -5760,6 +6189,168 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.IAlpacaTradingClient.UpdateWatchListByIdAsync
   nameWithType: IAlpacaTradingClient.UpdateWatchListByIdAsync
+- uid: Alpaca.Markets.IAnnouncement
+  name: IAnnouncement
+  href: api/Alpaca.Markets.IAnnouncement.html
+  commentId: T:Alpaca.Markets.IAnnouncement
+  fullName: Alpaca.Markets.IAnnouncement
+  nameWithType: IAnnouncement
+- uid: Alpaca.Markets.IAnnouncement.Cash
+  name: Cash
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_Cash
+  commentId: P:Alpaca.Markets.IAnnouncement.Cash
+  fullName: Alpaca.Markets.IAnnouncement.Cash
+  nameWithType: IAnnouncement.Cash
+- uid: Alpaca.Markets.IAnnouncement.Cash*
+  name: Cash
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_Cash_
+  commentId: Overload:Alpaca.Markets.IAnnouncement.Cash
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAnnouncement.Cash
+  nameWithType: IAnnouncement.Cash
+- uid: Alpaca.Markets.IAnnouncement.CorporateActionId
+  name: CorporateActionId
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_CorporateActionId
+  commentId: P:Alpaca.Markets.IAnnouncement.CorporateActionId
+  fullName: Alpaca.Markets.IAnnouncement.CorporateActionId
+  nameWithType: IAnnouncement.CorporateActionId
+- uid: Alpaca.Markets.IAnnouncement.CorporateActionId*
+  name: CorporateActionId
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_CorporateActionId_
+  commentId: Overload:Alpaca.Markets.IAnnouncement.CorporateActionId
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAnnouncement.CorporateActionId
+  nameWithType: IAnnouncement.CorporateActionId
+- uid: Alpaca.Markets.IAnnouncement.GetDate(Alpaca.Markets.CorporateActionDateType)
+  name: GetDate(CorporateActionDateType)
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_GetDate_Alpaca_Markets_CorporateActionDateType_
+  commentId: M:Alpaca.Markets.IAnnouncement.GetDate(Alpaca.Markets.CorporateActionDateType)
+  fullName: Alpaca.Markets.IAnnouncement.GetDate(Alpaca.Markets.CorporateActionDateType)
+  nameWithType: IAnnouncement.GetDate(CorporateActionDateType)
+- uid: Alpaca.Markets.IAnnouncement.GetDate*
+  name: GetDate
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_GetDate_
+  commentId: Overload:Alpaca.Markets.IAnnouncement.GetDate
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAnnouncement.GetDate
+  nameWithType: IAnnouncement.GetDate
+- uid: Alpaca.Markets.IAnnouncement.Id
+  name: Id
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_Id
+  commentId: P:Alpaca.Markets.IAnnouncement.Id
+  fullName: Alpaca.Markets.IAnnouncement.Id
+  nameWithType: IAnnouncement.Id
+- uid: Alpaca.Markets.IAnnouncement.Id*
+  name: Id
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_Id_
+  commentId: Overload:Alpaca.Markets.IAnnouncement.Id
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAnnouncement.Id
+  nameWithType: IAnnouncement.Id
+- uid: Alpaca.Markets.IAnnouncement.InitiatingCusip
+  name: InitiatingCusip
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_InitiatingCusip
+  commentId: P:Alpaca.Markets.IAnnouncement.InitiatingCusip
+  fullName: Alpaca.Markets.IAnnouncement.InitiatingCusip
+  nameWithType: IAnnouncement.InitiatingCusip
+- uid: Alpaca.Markets.IAnnouncement.InitiatingCusip*
+  name: InitiatingCusip
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_InitiatingCusip_
+  commentId: Overload:Alpaca.Markets.IAnnouncement.InitiatingCusip
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAnnouncement.InitiatingCusip
+  nameWithType: IAnnouncement.InitiatingCusip
+- uid: Alpaca.Markets.IAnnouncement.InitiatingSymbol
+  name: InitiatingSymbol
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_InitiatingSymbol
+  commentId: P:Alpaca.Markets.IAnnouncement.InitiatingSymbol
+  fullName: Alpaca.Markets.IAnnouncement.InitiatingSymbol
+  nameWithType: IAnnouncement.InitiatingSymbol
+- uid: Alpaca.Markets.IAnnouncement.InitiatingSymbol*
+  name: InitiatingSymbol
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_InitiatingSymbol_
+  commentId: Overload:Alpaca.Markets.IAnnouncement.InitiatingSymbol
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAnnouncement.InitiatingSymbol
+  nameWithType: IAnnouncement.InitiatingSymbol
+- uid: Alpaca.Markets.IAnnouncement.NewRate
+  name: NewRate
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_NewRate
+  commentId: P:Alpaca.Markets.IAnnouncement.NewRate
+  fullName: Alpaca.Markets.IAnnouncement.NewRate
+  nameWithType: IAnnouncement.NewRate
+- uid: Alpaca.Markets.IAnnouncement.NewRate*
+  name: NewRate
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_NewRate_
+  commentId: Overload:Alpaca.Markets.IAnnouncement.NewRate
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAnnouncement.NewRate
+  nameWithType: IAnnouncement.NewRate
+- uid: Alpaca.Markets.IAnnouncement.OldRate
+  name: OldRate
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_OldRate
+  commentId: P:Alpaca.Markets.IAnnouncement.OldRate
+  fullName: Alpaca.Markets.IAnnouncement.OldRate
+  nameWithType: IAnnouncement.OldRate
+- uid: Alpaca.Markets.IAnnouncement.OldRate*
+  name: OldRate
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_OldRate_
+  commentId: Overload:Alpaca.Markets.IAnnouncement.OldRate
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAnnouncement.OldRate
+  nameWithType: IAnnouncement.OldRate
+- uid: Alpaca.Markets.IAnnouncement.SubType
+  name: SubType
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_SubType
+  commentId: P:Alpaca.Markets.IAnnouncement.SubType
+  fullName: Alpaca.Markets.IAnnouncement.SubType
+  nameWithType: IAnnouncement.SubType
+- uid: Alpaca.Markets.IAnnouncement.SubType*
+  name: SubType
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_SubType_
+  commentId: Overload:Alpaca.Markets.IAnnouncement.SubType
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAnnouncement.SubType
+  nameWithType: IAnnouncement.SubType
+- uid: Alpaca.Markets.IAnnouncement.TargetCusip
+  name: TargetCusip
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_TargetCusip
+  commentId: P:Alpaca.Markets.IAnnouncement.TargetCusip
+  fullName: Alpaca.Markets.IAnnouncement.TargetCusip
+  nameWithType: IAnnouncement.TargetCusip
+- uid: Alpaca.Markets.IAnnouncement.TargetCusip*
+  name: TargetCusip
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_TargetCusip_
+  commentId: Overload:Alpaca.Markets.IAnnouncement.TargetCusip
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAnnouncement.TargetCusip
+  nameWithType: IAnnouncement.TargetCusip
+- uid: Alpaca.Markets.IAnnouncement.TargetSymbol
+  name: TargetSymbol
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_TargetSymbol
+  commentId: P:Alpaca.Markets.IAnnouncement.TargetSymbol
+  fullName: Alpaca.Markets.IAnnouncement.TargetSymbol
+  nameWithType: IAnnouncement.TargetSymbol
+- uid: Alpaca.Markets.IAnnouncement.TargetSymbol*
+  name: TargetSymbol
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_TargetSymbol_
+  commentId: Overload:Alpaca.Markets.IAnnouncement.TargetSymbol
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAnnouncement.TargetSymbol
+  nameWithType: IAnnouncement.TargetSymbol
+- uid: Alpaca.Markets.IAnnouncement.Type
+  name: Type
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_Type
+  commentId: P:Alpaca.Markets.IAnnouncement.Type
+  fullName: Alpaca.Markets.IAnnouncement.Type
+  nameWithType: IAnnouncement.Type
+- uid: Alpaca.Markets.IAnnouncement.Type*
+  name: Type
+  href: api/Alpaca.Markets.IAnnouncement.html#Alpaca_Markets_IAnnouncement_Type_
+  commentId: Overload:Alpaca.Markets.IAnnouncement.Type
+  isSpec: "True"
+  fullName: Alpaca.Markets.IAnnouncement.Type
+  nameWithType: IAnnouncement.Type
 - uid: Alpaca.Markets.IAsset
   name: IAsset
   href: api/Alpaca.Markets.IAsset.html
@@ -7470,6 +8061,109 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.IOrderActionStatus.OrderId
   nameWithType: IOrderActionStatus.OrderId
+- uid: Alpaca.Markets.IOrderBook
+  name: IOrderBook
+  href: api/Alpaca.Markets.IOrderBook.html
+  commentId: T:Alpaca.Markets.IOrderBook
+  fullName: Alpaca.Markets.IOrderBook
+  nameWithType: IOrderBook
+- uid: Alpaca.Markets.IOrderBook.Asks
+  name: Asks
+  href: api/Alpaca.Markets.IOrderBook.html#Alpaca_Markets_IOrderBook_Asks
+  commentId: P:Alpaca.Markets.IOrderBook.Asks
+  fullName: Alpaca.Markets.IOrderBook.Asks
+  nameWithType: IOrderBook.Asks
+- uid: Alpaca.Markets.IOrderBook.Asks*
+  name: Asks
+  href: api/Alpaca.Markets.IOrderBook.html#Alpaca_Markets_IOrderBook_Asks_
+  commentId: Overload:Alpaca.Markets.IOrderBook.Asks
+  isSpec: "True"
+  fullName: Alpaca.Markets.IOrderBook.Asks
+  nameWithType: IOrderBook.Asks
+- uid: Alpaca.Markets.IOrderBook.Bids
+  name: Bids
+  href: api/Alpaca.Markets.IOrderBook.html#Alpaca_Markets_IOrderBook_Bids
+  commentId: P:Alpaca.Markets.IOrderBook.Bids
+  fullName: Alpaca.Markets.IOrderBook.Bids
+  nameWithType: IOrderBook.Bids
+- uid: Alpaca.Markets.IOrderBook.Bids*
+  name: Bids
+  href: api/Alpaca.Markets.IOrderBook.html#Alpaca_Markets_IOrderBook_Bids_
+  commentId: Overload:Alpaca.Markets.IOrderBook.Bids
+  isSpec: "True"
+  fullName: Alpaca.Markets.IOrderBook.Bids
+  nameWithType: IOrderBook.Bids
+- uid: Alpaca.Markets.IOrderBook.Exchange
+  name: Exchange
+  href: api/Alpaca.Markets.IOrderBook.html#Alpaca_Markets_IOrderBook_Exchange
+  commentId: P:Alpaca.Markets.IOrderBook.Exchange
+  fullName: Alpaca.Markets.IOrderBook.Exchange
+  nameWithType: IOrderBook.Exchange
+- uid: Alpaca.Markets.IOrderBook.Exchange*
+  name: Exchange
+  href: api/Alpaca.Markets.IOrderBook.html#Alpaca_Markets_IOrderBook_Exchange_
+  commentId: Overload:Alpaca.Markets.IOrderBook.Exchange
+  isSpec: "True"
+  fullName: Alpaca.Markets.IOrderBook.Exchange
+  nameWithType: IOrderBook.Exchange
+- uid: Alpaca.Markets.IOrderBook.Symbol
+  name: Symbol
+  href: api/Alpaca.Markets.IOrderBook.html#Alpaca_Markets_IOrderBook_Symbol
+  commentId: P:Alpaca.Markets.IOrderBook.Symbol
+  fullName: Alpaca.Markets.IOrderBook.Symbol
+  nameWithType: IOrderBook.Symbol
+- uid: Alpaca.Markets.IOrderBook.Symbol*
+  name: Symbol
+  href: api/Alpaca.Markets.IOrderBook.html#Alpaca_Markets_IOrderBook_Symbol_
+  commentId: Overload:Alpaca.Markets.IOrderBook.Symbol
+  isSpec: "True"
+  fullName: Alpaca.Markets.IOrderBook.Symbol
+  nameWithType: IOrderBook.Symbol
+- uid: Alpaca.Markets.IOrderBook.TimestampUtc
+  name: TimestampUtc
+  href: api/Alpaca.Markets.IOrderBook.html#Alpaca_Markets_IOrderBook_TimestampUtc
+  commentId: P:Alpaca.Markets.IOrderBook.TimestampUtc
+  fullName: Alpaca.Markets.IOrderBook.TimestampUtc
+  nameWithType: IOrderBook.TimestampUtc
+- uid: Alpaca.Markets.IOrderBook.TimestampUtc*
+  name: TimestampUtc
+  href: api/Alpaca.Markets.IOrderBook.html#Alpaca_Markets_IOrderBook_TimestampUtc_
+  commentId: Overload:Alpaca.Markets.IOrderBook.TimestampUtc
+  isSpec: "True"
+  fullName: Alpaca.Markets.IOrderBook.TimestampUtc
+  nameWithType: IOrderBook.TimestampUtc
+- uid: Alpaca.Markets.IOrderBookEntry
+  name: IOrderBookEntry
+  href: api/Alpaca.Markets.IOrderBookEntry.html
+  commentId: T:Alpaca.Markets.IOrderBookEntry
+  fullName: Alpaca.Markets.IOrderBookEntry
+  nameWithType: IOrderBookEntry
+- uid: Alpaca.Markets.IOrderBookEntry.Price
+  name: Price
+  href: api/Alpaca.Markets.IOrderBookEntry.html#Alpaca_Markets_IOrderBookEntry_Price
+  commentId: P:Alpaca.Markets.IOrderBookEntry.Price
+  fullName: Alpaca.Markets.IOrderBookEntry.Price
+  nameWithType: IOrderBookEntry.Price
+- uid: Alpaca.Markets.IOrderBookEntry.Price*
+  name: Price
+  href: api/Alpaca.Markets.IOrderBookEntry.html#Alpaca_Markets_IOrderBookEntry_Price_
+  commentId: Overload:Alpaca.Markets.IOrderBookEntry.Price
+  isSpec: "True"
+  fullName: Alpaca.Markets.IOrderBookEntry.Price
+  nameWithType: IOrderBookEntry.Price
+- uid: Alpaca.Markets.IOrderBookEntry.Size
+  name: Size
+  href: api/Alpaca.Markets.IOrderBookEntry.html#Alpaca_Markets_IOrderBookEntry_Size
+  commentId: P:Alpaca.Markets.IOrderBookEntry.Size
+  fullName: Alpaca.Markets.IOrderBookEntry.Size
+  nameWithType: IOrderBookEntry.Size
+- uid: Alpaca.Markets.IOrderBookEntry.Size*
+  name: Size
+  href: api/Alpaca.Markets.IOrderBookEntry.html#Alpaca_Markets_IOrderBookEntry_Size_
+  commentId: Overload:Alpaca.Markets.IOrderBookEntry.Size
+  isSpec: "True"
+  fullName: Alpaca.Markets.IOrderBookEntry.Size
+  nameWithType: IOrderBookEntry.Size
 - uid: Alpaca.Markets.IPage`1
   name: IPage<TItems>
   href: api/Alpaca.Markets.IPage-1.html
@@ -8419,6 +9113,19 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.IStreamingDataClient.GetTradeSubscription
   nameWithType: IStreamingDataClient.GetTradeSubscription
+- uid: Alpaca.Markets.IStreamingDataClient.GetUpdatedBarSubscription(String)
+  name: GetUpdatedBarSubscription(String)
+  href: api/Alpaca.Markets.IStreamingDataClient.html#Alpaca_Markets_IStreamingDataClient_GetUpdatedBarSubscription_String_
+  commentId: M:Alpaca.Markets.IStreamingDataClient.GetUpdatedBarSubscription(String)
+  fullName: Alpaca.Markets.IStreamingDataClient.GetUpdatedBarSubscription(String)
+  nameWithType: IStreamingDataClient.GetUpdatedBarSubscription(String)
+- uid: Alpaca.Markets.IStreamingDataClient.GetUpdatedBarSubscription*
+  name: GetUpdatedBarSubscription
+  href: api/Alpaca.Markets.IStreamingDataClient.html#Alpaca_Markets_IStreamingDataClient_GetUpdatedBarSubscription_
+  commentId: Overload:Alpaca.Markets.IStreamingDataClient.GetUpdatedBarSubscription
+  isSpec: "True"
+  fullName: Alpaca.Markets.IStreamingDataClient.GetUpdatedBarSubscription
+  nameWithType: IStreamingDataClient.GetUpdatedBarSubscription
 - uid: Alpaca.Markets.ISubscriptionHandler
   name: ISubscriptionHandler
   href: api/Alpaca.Markets.ISubscriptionHandler.html
@@ -8867,6 +9574,175 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.IWatchList.WatchListId
   nameWithType: IWatchList.WatchListId
+- uid: Alpaca.Markets.IWebSocket
+  name: IWebSocket
+  href: api/Alpaca.Markets.IWebSocket.html
+  commentId: T:Alpaca.Markets.IWebSocket
+  fullName: Alpaca.Markets.IWebSocket
+  nameWithType: IWebSocket
+- uid: Alpaca.Markets.IWebSocket.Abort
+  name: Abort()
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_Abort
+  commentId: M:Alpaca.Markets.IWebSocket.Abort
+  fullName: Alpaca.Markets.IWebSocket.Abort()
+  nameWithType: IWebSocket.Abort()
+- uid: Alpaca.Markets.IWebSocket.Abort*
+  name: Abort
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_Abort_
+  commentId: Overload:Alpaca.Markets.IWebSocket.Abort
+  isSpec: "True"
+  fullName: Alpaca.Markets.IWebSocket.Abort
+  nameWithType: IWebSocket.Abort
+- uid: Alpaca.Markets.IWebSocket.CloseOutputAsync(System.Net.WebSockets.WebSocketCloseStatus)
+  name: CloseOutputAsync(WebSocketCloseStatus)
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_CloseOutputAsync_System_Net_WebSockets_WebSocketCloseStatus_
+  commentId: M:Alpaca.Markets.IWebSocket.CloseOutputAsync(System.Net.WebSockets.WebSocketCloseStatus)
+  fullName: Alpaca.Markets.IWebSocket.CloseOutputAsync(System.Net.WebSockets.WebSocketCloseStatus)
+  nameWithType: IWebSocket.CloseOutputAsync(WebSocketCloseStatus)
+- uid: Alpaca.Markets.IWebSocket.CloseOutputAsync*
+  name: CloseOutputAsync
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_CloseOutputAsync_
+  commentId: Overload:Alpaca.Markets.IWebSocket.CloseOutputAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IWebSocket.CloseOutputAsync
+  nameWithType: IWebSocket.CloseOutputAsync
+- uid: Alpaca.Markets.IWebSocket.CloseStatus
+  name: CloseStatus
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_CloseStatus
+  commentId: P:Alpaca.Markets.IWebSocket.CloseStatus
+  fullName: Alpaca.Markets.IWebSocket.CloseStatus
+  nameWithType: IWebSocket.CloseStatus
+- uid: Alpaca.Markets.IWebSocket.CloseStatus*
+  name: CloseStatus
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_CloseStatus_
+  commentId: Overload:Alpaca.Markets.IWebSocket.CloseStatus
+  isSpec: "True"
+  fullName: Alpaca.Markets.IWebSocket.CloseStatus
+  nameWithType: IWebSocket.CloseStatus
+- uid: Alpaca.Markets.IWebSocket.ConnectAsync(Uri,CancellationToken)
+  name: ConnectAsync(Uri, CancellationToken)
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_ConnectAsync_Uri_CancellationToken_
+  commentId: M:Alpaca.Markets.IWebSocket.ConnectAsync(Uri,CancellationToken)
+  fullName: Alpaca.Markets.IWebSocket.ConnectAsync(Uri, CancellationToken)
+  nameWithType: IWebSocket.ConnectAsync(Uri, CancellationToken)
+- uid: Alpaca.Markets.IWebSocket.ConnectAsync*
+  name: ConnectAsync
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_ConnectAsync_
+  commentId: Overload:Alpaca.Markets.IWebSocket.ConnectAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IWebSocket.ConnectAsync
+  nameWithType: IWebSocket.ConnectAsync
+- uid: Alpaca.Markets.IWebSocket.ReceiveAsync(Memory{Byte})
+  name: ReceiveAsync(Memory<Byte>)
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_ReceiveAsync_Memory_Byte__
+  commentId: M:Alpaca.Markets.IWebSocket.ReceiveAsync(Memory{Byte})
+  name.vb: ReceiveAsync(Memory(Of Byte))
+  fullName: Alpaca.Markets.IWebSocket.ReceiveAsync(Memory<Byte>)
+  fullName.vb: Alpaca.Markets.IWebSocket.ReceiveAsync(Memory(Of Byte))
+  nameWithType: IWebSocket.ReceiveAsync(Memory<Byte>)
+  nameWithType.vb: IWebSocket.ReceiveAsync(Memory(Of Byte))
+- uid: Alpaca.Markets.IWebSocket.ReceiveAsync*
+  name: ReceiveAsync
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_ReceiveAsync_
+  commentId: Overload:Alpaca.Markets.IWebSocket.ReceiveAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IWebSocket.ReceiveAsync
+  nameWithType: IWebSocket.ReceiveAsync
+- uid: Alpaca.Markets.IWebSocket.SendAsync(System.Buffers.ReadOnlySequence{Byte})
+  name: SendAsync(ReadOnlySequence<Byte>)
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_SendAsync_System_Buffers_ReadOnlySequence_Byte__
+  commentId: M:Alpaca.Markets.IWebSocket.SendAsync(System.Buffers.ReadOnlySequence{Byte})
+  name.vb: SendAsync(ReadOnlySequence(Of Byte))
+  fullName: Alpaca.Markets.IWebSocket.SendAsync(System.Buffers.ReadOnlySequence<Byte>)
+  fullName.vb: Alpaca.Markets.IWebSocket.SendAsync(System.Buffers.ReadOnlySequence(Of Byte))
+  nameWithType: IWebSocket.SendAsync(ReadOnlySequence<Byte>)
+  nameWithType.vb: IWebSocket.SendAsync(ReadOnlySequence(Of Byte))
+- uid: Alpaca.Markets.IWebSocket.SendAsync*
+  name: SendAsync
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_SendAsync_
+  commentId: Overload:Alpaca.Markets.IWebSocket.SendAsync
+  isSpec: "True"
+  fullName: Alpaca.Markets.IWebSocket.SendAsync
+  nameWithType: IWebSocket.SendAsync
+- uid: Alpaca.Markets.IWebSocket.State
+  name: State
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_State
+  commentId: P:Alpaca.Markets.IWebSocket.State
+  fullName: Alpaca.Markets.IWebSocket.State
+  nameWithType: IWebSocket.State
+- uid: Alpaca.Markets.IWebSocket.State*
+  name: State
+  href: api/Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_State_
+  commentId: Overload:Alpaca.Markets.IWebSocket.State
+  isSpec: "True"
+  fullName: Alpaca.Markets.IWebSocket.State
+  nameWithType: IWebSocket.State
+- uid: Alpaca.Markets.LatestBestBidOfferListRequest
+  name: LatestBestBidOfferListRequest
+  href: api/Alpaca.Markets.LatestBestBidOfferListRequest.html
+  commentId: T:Alpaca.Markets.LatestBestBidOfferListRequest
+  fullName: Alpaca.Markets.LatestBestBidOfferListRequest
+  nameWithType: LatestBestBidOfferListRequest
+- uid: Alpaca.Markets.LatestBestBidOfferListRequest.#ctor(IEnumerable{String})
+  name: LatestBestBidOfferListRequest(IEnumerable<String>)
+  href: api/Alpaca.Markets.LatestBestBidOfferListRequest.html#Alpaca_Markets_LatestBestBidOfferListRequest__ctor_IEnumerable_String__
+  commentId: M:Alpaca.Markets.LatestBestBidOfferListRequest.#ctor(IEnumerable{String})
+  name.vb: LatestBestBidOfferListRequest(IEnumerable(Of String))
+  fullName: Alpaca.Markets.LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(IEnumerable<String>)
+  fullName.vb: Alpaca.Markets.LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(IEnumerable(Of String))
+  nameWithType: LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(IEnumerable<String>)
+  nameWithType.vb: LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(IEnumerable(Of String))
+- uid: Alpaca.Markets.LatestBestBidOfferListRequest.#ctor(IEnumerable{String},Alpaca.Markets.CryptoExchange)
+  name: LatestBestBidOfferListRequest(IEnumerable<String>, CryptoExchange)
+  href: api/Alpaca.Markets.LatestBestBidOfferListRequest.html#Alpaca_Markets_LatestBestBidOfferListRequest__ctor_IEnumerable_String__Alpaca_Markets_CryptoExchange_
+  commentId: M:Alpaca.Markets.LatestBestBidOfferListRequest.#ctor(IEnumerable{String},Alpaca.Markets.CryptoExchange)
+  name.vb: LatestBestBidOfferListRequest(IEnumerable(Of String), CryptoExchange)
+  fullName: Alpaca.Markets.LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(IEnumerable<String>, Alpaca.Markets.CryptoExchange)
+  fullName.vb: Alpaca.Markets.LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(IEnumerable(Of String), Alpaca.Markets.CryptoExchange)
+  nameWithType: LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(IEnumerable<String>, CryptoExchange)
+  nameWithType.vb: LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(IEnumerable(Of String), CryptoExchange)
+- uid: Alpaca.Markets.LatestBestBidOfferListRequest.#ctor(IEnumerable{String},IEnumerable{Alpaca.Markets.CryptoExchange})
+  name: LatestBestBidOfferListRequest(IEnumerable<String>, IEnumerable<CryptoExchange>)
+  href: api/Alpaca.Markets.LatestBestBidOfferListRequest.html#Alpaca_Markets_LatestBestBidOfferListRequest__ctor_IEnumerable_String__IEnumerable_Alpaca_Markets_CryptoExchange__
+  commentId: M:Alpaca.Markets.LatestBestBidOfferListRequest.#ctor(IEnumerable{String},IEnumerable{Alpaca.Markets.CryptoExchange})
+  name.vb: LatestBestBidOfferListRequest(IEnumerable(Of String), IEnumerable(Of CryptoExchange))
+  fullName: Alpaca.Markets.LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(IEnumerable<String>, IEnumerable<Alpaca.Markets.CryptoExchange>)
+  fullName.vb: Alpaca.Markets.LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(IEnumerable(Of String), IEnumerable(Of Alpaca.Markets.CryptoExchange))
+  nameWithType: LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(IEnumerable<String>, IEnumerable<CryptoExchange>)
+  nameWithType.vb: LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(IEnumerable(Of String), IEnumerable(Of CryptoExchange))
+- uid: Alpaca.Markets.LatestBestBidOfferListRequest.#ctor*
+  name: LatestBestBidOfferListRequest
+  href: api/Alpaca.Markets.LatestBestBidOfferListRequest.html#Alpaca_Markets_LatestBestBidOfferListRequest__ctor_
+  commentId: Overload:Alpaca.Markets.LatestBestBidOfferListRequest.#ctor
+  isSpec: "True"
+  fullName: Alpaca.Markets.LatestBestBidOfferListRequest.LatestBestBidOfferListRequest
+  nameWithType: LatestBestBidOfferListRequest.LatestBestBidOfferListRequest
+- uid: Alpaca.Markets.LatestBestBidOfferListRequest.Exchanges
+  name: Exchanges
+  href: api/Alpaca.Markets.LatestBestBidOfferListRequest.html#Alpaca_Markets_LatestBestBidOfferListRequest_Exchanges
+  commentId: P:Alpaca.Markets.LatestBestBidOfferListRequest.Exchanges
+  fullName: Alpaca.Markets.LatestBestBidOfferListRequest.Exchanges
+  nameWithType: LatestBestBidOfferListRequest.Exchanges
+- uid: Alpaca.Markets.LatestBestBidOfferListRequest.Exchanges*
+  name: Exchanges
+  href: api/Alpaca.Markets.LatestBestBidOfferListRequest.html#Alpaca_Markets_LatestBestBidOfferListRequest_Exchanges_
+  commentId: Overload:Alpaca.Markets.LatestBestBidOfferListRequest.Exchanges
+  isSpec: "True"
+  fullName: Alpaca.Markets.LatestBestBidOfferListRequest.Exchanges
+  nameWithType: LatestBestBidOfferListRequest.Exchanges
+- uid: Alpaca.Markets.LatestBestBidOfferListRequest.Symbols
+  name: Symbols
+  href: api/Alpaca.Markets.LatestBestBidOfferListRequest.html#Alpaca_Markets_LatestBestBidOfferListRequest_Symbols
+  commentId: P:Alpaca.Markets.LatestBestBidOfferListRequest.Symbols
+  fullName: Alpaca.Markets.LatestBestBidOfferListRequest.Symbols
+  nameWithType: LatestBestBidOfferListRequest.Symbols
+- uid: Alpaca.Markets.LatestBestBidOfferListRequest.Symbols*
+  name: Symbols
+  href: api/Alpaca.Markets.LatestBestBidOfferListRequest.html#Alpaca_Markets_LatestBestBidOfferListRequest_Symbols_
+  commentId: Overload:Alpaca.Markets.LatestBestBidOfferListRequest.Symbols
+  isSpec: "True"
+  fullName: Alpaca.Markets.LatestBestBidOfferListRequest.Symbols
+  nameWithType: LatestBestBidOfferListRequest.Symbols
 - uid: Alpaca.Markets.LatestBestBidOfferRequest
   name: LatestBestBidOfferRequest
   href: api/Alpaca.Markets.LatestBestBidOfferRequest.html
@@ -8927,6 +9803,54 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.LatestBestBidOfferRequest.Symbol
   nameWithType: LatestBestBidOfferRequest.Symbol
+- uid: Alpaca.Markets.LatestDataListRequest
+  name: LatestDataListRequest
+  href: api/Alpaca.Markets.LatestDataListRequest.html
+  commentId: T:Alpaca.Markets.LatestDataListRequest
+  fullName: Alpaca.Markets.LatestDataListRequest
+  nameWithType: LatestDataListRequest
+- uid: Alpaca.Markets.LatestDataListRequest.#ctor(IEnumerable{String},Alpaca.Markets.CryptoExchange)
+  name: LatestDataListRequest(IEnumerable<String>, CryptoExchange)
+  href: api/Alpaca.Markets.LatestDataListRequest.html#Alpaca_Markets_LatestDataListRequest__ctor_IEnumerable_String__Alpaca_Markets_CryptoExchange_
+  commentId: M:Alpaca.Markets.LatestDataListRequest.#ctor(IEnumerable{String},Alpaca.Markets.CryptoExchange)
+  name.vb: LatestDataListRequest(IEnumerable(Of String), CryptoExchange)
+  fullName: Alpaca.Markets.LatestDataListRequest.LatestDataListRequest(IEnumerable<String>, Alpaca.Markets.CryptoExchange)
+  fullName.vb: Alpaca.Markets.LatestDataListRequest.LatestDataListRequest(IEnumerable(Of String), Alpaca.Markets.CryptoExchange)
+  nameWithType: LatestDataListRequest.LatestDataListRequest(IEnumerable<String>, CryptoExchange)
+  nameWithType.vb: LatestDataListRequest.LatestDataListRequest(IEnumerable(Of String), CryptoExchange)
+- uid: Alpaca.Markets.LatestDataListRequest.#ctor*
+  name: LatestDataListRequest
+  href: api/Alpaca.Markets.LatestDataListRequest.html#Alpaca_Markets_LatestDataListRequest__ctor_
+  commentId: Overload:Alpaca.Markets.LatestDataListRequest.#ctor
+  isSpec: "True"
+  fullName: Alpaca.Markets.LatestDataListRequest.LatestDataListRequest
+  nameWithType: LatestDataListRequest.LatestDataListRequest
+- uid: Alpaca.Markets.LatestDataListRequest.Exchange
+  name: Exchange
+  href: api/Alpaca.Markets.LatestDataListRequest.html#Alpaca_Markets_LatestDataListRequest_Exchange
+  commentId: P:Alpaca.Markets.LatestDataListRequest.Exchange
+  fullName: Alpaca.Markets.LatestDataListRequest.Exchange
+  nameWithType: LatestDataListRequest.Exchange
+- uid: Alpaca.Markets.LatestDataListRequest.Exchange*
+  name: Exchange
+  href: api/Alpaca.Markets.LatestDataListRequest.html#Alpaca_Markets_LatestDataListRequest_Exchange_
+  commentId: Overload:Alpaca.Markets.LatestDataListRequest.Exchange
+  isSpec: "True"
+  fullName: Alpaca.Markets.LatestDataListRequest.Exchange
+  nameWithType: LatestDataListRequest.Exchange
+- uid: Alpaca.Markets.LatestDataListRequest.Symbols
+  name: Symbols
+  href: api/Alpaca.Markets.LatestDataListRequest.html#Alpaca_Markets_LatestDataListRequest_Symbols
+  commentId: P:Alpaca.Markets.LatestDataListRequest.Symbols
+  fullName: Alpaca.Markets.LatestDataListRequest.Symbols
+  nameWithType: LatestDataListRequest.Symbols
+- uid: Alpaca.Markets.LatestDataListRequest.Symbols*
+  name: Symbols
+  href: api/Alpaca.Markets.LatestDataListRequest.html#Alpaca_Markets_LatestDataListRequest_Symbols_
+  commentId: Overload:Alpaca.Markets.LatestDataListRequest.Symbols
+  isSpec: "True"
+  fullName: Alpaca.Markets.LatestDataListRequest.Symbols
+  nameWithType: LatestDataListRequest.Symbols
 - uid: Alpaca.Markets.LatestDataRequest
   name: LatestDataRequest
   href: api/Alpaca.Markets.LatestDataRequest.html
@@ -8978,12 +9902,12 @@ references:
   commentId: T:Alpaca.Markets.LimitOrder
   fullName: Alpaca.Markets.LimitOrder
   nameWithType: LimitOrder
-- uid: Alpaca.Markets.LimitOrder.Buy(String,Int64,Decimal)
-  name: Buy(String, Int64, Decimal)
-  href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_Buy_String_Int64_Decimal_
-  commentId: M:Alpaca.Markets.LimitOrder.Buy(String,Int64,Decimal)
-  fullName: Alpaca.Markets.LimitOrder.Buy(String, Int64, Decimal)
-  nameWithType: LimitOrder.Buy(String, Int64, Decimal)
+- uid: Alpaca.Markets.LimitOrder.Buy(String,Alpaca.Markets.OrderQuantity,Decimal)
+  name: Buy(String, OrderQuantity, Decimal)
+  href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_Buy_String_Alpaca_Markets_OrderQuantity_Decimal_
+  commentId: M:Alpaca.Markets.LimitOrder.Buy(String,Alpaca.Markets.OrderQuantity,Decimal)
+  fullName: Alpaca.Markets.LimitOrder.Buy(String, Alpaca.Markets.OrderQuantity, Decimal)
+  nameWithType: LimitOrder.Buy(String, OrderQuantity, Decimal)
 - uid: Alpaca.Markets.LimitOrder.Buy*
   name: Buy
   href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_Buy_
@@ -9023,12 +9947,12 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.LimitOrder.OneCancelsOther
   nameWithType: LimitOrder.OneCancelsOther
-- uid: Alpaca.Markets.LimitOrder.Sell(String,Int64,Decimal)
-  name: Sell(String, Int64, Decimal)
-  href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_Sell_String_Int64_Decimal_
-  commentId: M:Alpaca.Markets.LimitOrder.Sell(String,Int64,Decimal)
-  fullName: Alpaca.Markets.LimitOrder.Sell(String, Int64, Decimal)
-  nameWithType: LimitOrder.Sell(String, Int64, Decimal)
+- uid: Alpaca.Markets.LimitOrder.Sell(String,Alpaca.Markets.OrderQuantity,Decimal)
+  name: Sell(String, OrderQuantity, Decimal)
+  href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_Sell_String_Alpaca_Markets_OrderQuantity_Decimal_
+  commentId: M:Alpaca.Markets.LimitOrder.Sell(String,Alpaca.Markets.OrderQuantity,Decimal)
+  fullName: Alpaca.Markets.LimitOrder.Sell(String, Alpaca.Markets.OrderQuantity, Decimal)
+  nameWithType: LimitOrder.Sell(String, OrderQuantity, Decimal)
 - uid: Alpaca.Markets.LimitOrder.Sell*
   name: Sell
   href: api/Alpaca.Markets.LimitOrder.html#Alpaca_Markets_LimitOrder_Sell_
@@ -9201,19 +10125,6 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.MarketOrder.Buy
   nameWithType: MarketOrder.Buy
-- uid: Alpaca.Markets.MarketOrder.Quantity
-  name: Quantity
-  href: api/Alpaca.Markets.MarketOrder.html#Alpaca_Markets_MarketOrder_Quantity
-  commentId: P:Alpaca.Markets.MarketOrder.Quantity
-  fullName: Alpaca.Markets.MarketOrder.Quantity
-  nameWithType: MarketOrder.Quantity
-- uid: Alpaca.Markets.MarketOrder.Quantity*
-  name: Quantity
-  href: api/Alpaca.Markets.MarketOrder.html#Alpaca_Markets_MarketOrder_Quantity_
-  commentId: Overload:Alpaca.Markets.MarketOrder.Quantity
-  isSpec: "True"
-  fullName: Alpaca.Markets.MarketOrder.Quantity
-  nameWithType: MarketOrder.Quantity
 - uid: Alpaca.Markets.MarketOrder.Sell(String,Alpaca.Markets.OrderQuantity)
   name: Sell(String, OrderQuantity)
   href: api/Alpaca.Markets.MarketOrder.html#Alpaca_Markets_MarketOrder_Sell_String_Alpaca_Markets_OrderQuantity_
@@ -9713,12 +10624,12 @@ references:
   commentId: M:Alpaca.Markets.OrderBase.#ctor(Alpaca.Markets.OrderBase)
   fullName: Alpaca.Markets.OrderBase.OrderBase(Alpaca.Markets.OrderBase)
   nameWithType: OrderBase.OrderBase(OrderBase)
-- uid: Alpaca.Markets.OrderBase.#ctor(String,Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)
-  name: OrderBase(String, Int64, OrderSide, OrderType)
-  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase__ctor_String_Int64_Alpaca_Markets_OrderSide_Alpaca_Markets_OrderType_
-  commentId: M:Alpaca.Markets.OrderBase.#ctor(String,Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)
-  fullName: Alpaca.Markets.OrderBase.OrderBase(String, Int64, Alpaca.Markets.OrderSide, Alpaca.Markets.OrderType)
-  nameWithType: OrderBase.OrderBase(String, Int64, OrderSide, OrderType)
+- uid: Alpaca.Markets.OrderBase.#ctor(String,Alpaca.Markets.OrderQuantity,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)
+  name: OrderBase(String, OrderQuantity, OrderSide, OrderType)
+  href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase__ctor_String_Alpaca_Markets_OrderQuantity_Alpaca_Markets_OrderSide_Alpaca_Markets_OrderType_
+  commentId: M:Alpaca.Markets.OrderBase.#ctor(String,Alpaca.Markets.OrderQuantity,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)
+  fullName: Alpaca.Markets.OrderBase.OrderBase(String, Alpaca.Markets.OrderQuantity, Alpaca.Markets.OrderSide, Alpaca.Markets.OrderType)
+  nameWithType: OrderBase.OrderBase(String, OrderQuantity, OrderSide, OrderType)
 - uid: Alpaca.Markets.OrderBase.#ctor*
   name: OrderBase
   href: api/Alpaca.Markets.OrderBase.html#Alpaca_Markets_OrderBase__ctor_
@@ -9920,183 +10831,6 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.OrderExtensions.GetOrderQuantity
   nameWithType: OrderExtensions.GetOrderQuantity
-- uid: Alpaca.Markets.OrderQuantity
-  name: OrderQuantity
-  href: api/Alpaca.Markets.OrderQuantity.html
-  commentId: T:Alpaca.Markets.OrderQuantity
-  fullName: Alpaca.Markets.OrderQuantity
-  nameWithType: OrderQuantity
-- uid: Alpaca.Markets.OrderQuantity.#ctor
-  name: OrderQuantity()
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity__ctor
-  commentId: M:Alpaca.Markets.OrderQuantity.#ctor
-  fullName: Alpaca.Markets.OrderQuantity.OrderQuantity()
-  nameWithType: OrderQuantity.OrderQuantity()
-- uid: Alpaca.Markets.OrderQuantity.#ctor*
-  name: OrderQuantity
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity__ctor_
-  commentId: Overload:Alpaca.Markets.OrderQuantity.#ctor
-  isSpec: "True"
-  fullName: Alpaca.Markets.OrderQuantity.OrderQuantity
-  nameWithType: OrderQuantity.OrderQuantity
-- uid: Alpaca.Markets.OrderQuantity.Equals(Alpaca.Markets.OrderQuantity)
-  name: Equals(OrderQuantity)
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_Equals_Alpaca_Markets_OrderQuantity_
-  commentId: M:Alpaca.Markets.OrderQuantity.Equals(Alpaca.Markets.OrderQuantity)
-  fullName: Alpaca.Markets.OrderQuantity.Equals(Alpaca.Markets.OrderQuantity)
-  nameWithType: OrderQuantity.Equals(OrderQuantity)
-- uid: Alpaca.Markets.OrderQuantity.Equals(System.Nullable{Object})
-  name: Equals(Nullable<Object>)
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_Equals_System_Nullable_Object__
-  commentId: M:Alpaca.Markets.OrderQuantity.Equals(System.Nullable{Object})
-  name.vb: Equals(Nullable(Of Object))
-  fullName: Alpaca.Markets.OrderQuantity.Equals(System.Nullable<Object>)
-  fullName.vb: Alpaca.Markets.OrderQuantity.Equals(System.Nullable(Of Object))
-  nameWithType: OrderQuantity.Equals(Nullable<Object>)
-  nameWithType.vb: OrderQuantity.Equals(Nullable(Of Object))
-- uid: Alpaca.Markets.OrderQuantity.Equals*
-  name: Equals
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_Equals_
-  commentId: Overload:Alpaca.Markets.OrderQuantity.Equals
-  isSpec: "True"
-  fullName: Alpaca.Markets.OrderQuantity.Equals
-  nameWithType: OrderQuantity.Equals
-- uid: Alpaca.Markets.OrderQuantity.Fractional(Decimal)
-  name: Fractional(Decimal)
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_Fractional_Decimal_
-  commentId: M:Alpaca.Markets.OrderQuantity.Fractional(Decimal)
-  fullName: Alpaca.Markets.OrderQuantity.Fractional(Decimal)
-  nameWithType: OrderQuantity.Fractional(Decimal)
-- uid: Alpaca.Markets.OrderQuantity.Fractional*
-  name: Fractional
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_Fractional_
-  commentId: Overload:Alpaca.Markets.OrderQuantity.Fractional
-  isSpec: "True"
-  fullName: Alpaca.Markets.OrderQuantity.Fractional
-  nameWithType: OrderQuantity.Fractional
-- uid: Alpaca.Markets.OrderQuantity.FromInt64(Int64)
-  name: FromInt64(Int64)
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_FromInt64_Int64_
-  commentId: M:Alpaca.Markets.OrderQuantity.FromInt64(Int64)
-  fullName: Alpaca.Markets.OrderQuantity.FromInt64(Int64)
-  nameWithType: OrderQuantity.FromInt64(Int64)
-- uid: Alpaca.Markets.OrderQuantity.FromInt64*
-  name: FromInt64
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_FromInt64_
-  commentId: Overload:Alpaca.Markets.OrderQuantity.FromInt64
-  isSpec: "True"
-  fullName: Alpaca.Markets.OrderQuantity.FromInt64
-  nameWithType: OrderQuantity.FromInt64
-- uid: Alpaca.Markets.OrderQuantity.GetHashCode
-  name: GetHashCode()
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_GetHashCode
-  commentId: M:Alpaca.Markets.OrderQuantity.GetHashCode
-  fullName: Alpaca.Markets.OrderQuantity.GetHashCode()
-  nameWithType: OrderQuantity.GetHashCode()
-- uid: Alpaca.Markets.OrderQuantity.GetHashCode*
-  name: GetHashCode
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_GetHashCode_
-  commentId: Overload:Alpaca.Markets.OrderQuantity.GetHashCode
-  isSpec: "True"
-  fullName: Alpaca.Markets.OrderQuantity.GetHashCode
-  nameWithType: OrderQuantity.GetHashCode
-- uid: Alpaca.Markets.OrderQuantity.IsInDollars
-  name: IsInDollars
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_IsInDollars
-  commentId: P:Alpaca.Markets.OrderQuantity.IsInDollars
-  fullName: Alpaca.Markets.OrderQuantity.IsInDollars
-  nameWithType: OrderQuantity.IsInDollars
-- uid: Alpaca.Markets.OrderQuantity.IsInDollars*
-  name: IsInDollars
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_IsInDollars_
-  commentId: Overload:Alpaca.Markets.OrderQuantity.IsInDollars
-  isSpec: "True"
-  fullName: Alpaca.Markets.OrderQuantity.IsInDollars
-  nameWithType: OrderQuantity.IsInDollars
-- uid: Alpaca.Markets.OrderQuantity.IsInShares
-  name: IsInShares
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_IsInShares
-  commentId: P:Alpaca.Markets.OrderQuantity.IsInShares
-  fullName: Alpaca.Markets.OrderQuantity.IsInShares
-  nameWithType: OrderQuantity.IsInShares
-- uid: Alpaca.Markets.OrderQuantity.IsInShares*
-  name: IsInShares
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_IsInShares_
-  commentId: Overload:Alpaca.Markets.OrderQuantity.IsInShares
-  isSpec: "True"
-  fullName: Alpaca.Markets.OrderQuantity.IsInShares
-  nameWithType: OrderQuantity.IsInShares
-- uid: Alpaca.Markets.OrderQuantity.Notional(Decimal)
-  name: Notional(Decimal)
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_Notional_Decimal_
-  commentId: M:Alpaca.Markets.OrderQuantity.Notional(Decimal)
-  fullName: Alpaca.Markets.OrderQuantity.Notional(Decimal)
-  nameWithType: OrderQuantity.Notional(Decimal)
-- uid: Alpaca.Markets.OrderQuantity.Notional*
-  name: Notional
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_Notional_
-  commentId: Overload:Alpaca.Markets.OrderQuantity.Notional
-  isSpec: "True"
-  fullName: Alpaca.Markets.OrderQuantity.Notional
-  nameWithType: OrderQuantity.Notional
-- uid: Alpaca.Markets.OrderQuantity.op_Equality(Alpaca.Markets.OrderQuantity,Alpaca.Markets.OrderQuantity)
-  name: Equality(OrderQuantity, OrderQuantity)
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_op_Equality_Alpaca_Markets_OrderQuantity_Alpaca_Markets_OrderQuantity_
-  commentId: M:Alpaca.Markets.OrderQuantity.op_Equality(Alpaca.Markets.OrderQuantity,Alpaca.Markets.OrderQuantity)
-  fullName: Alpaca.Markets.OrderQuantity.Equality(Alpaca.Markets.OrderQuantity, Alpaca.Markets.OrderQuantity)
-  nameWithType: OrderQuantity.Equality(OrderQuantity, OrderQuantity)
-- uid: Alpaca.Markets.OrderQuantity.op_Equality*
-  name: Equality
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_op_Equality_
-  commentId: Overload:Alpaca.Markets.OrderQuantity.op_Equality
-  isSpec: "True"
-  fullName: Alpaca.Markets.OrderQuantity.Equality
-  nameWithType: OrderQuantity.Equality
-- uid: Alpaca.Markets.OrderQuantity.op_Implicit(Int64)~Alpaca.Markets.OrderQuantity
-  name: Implicit(Int64 to OrderQuantity)
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_op_Implicit_Int64__Alpaca_Markets_OrderQuantity
-  commentId: M:Alpaca.Markets.OrderQuantity.op_Implicit(Int64)~Alpaca.Markets.OrderQuantity
-  name.vb: Widening(Int64 to OrderQuantity)
-  fullName: Alpaca.Markets.OrderQuantity.Implicit(Int64 to Alpaca.Markets.OrderQuantity)
-  fullName.vb: Alpaca.Markets.OrderQuantity.Widening(Int64 to Alpaca.Markets.OrderQuantity)
-  nameWithType: OrderQuantity.Implicit(Int64 to OrderQuantity)
-  nameWithType.vb: OrderQuantity.Widening(Int64 to OrderQuantity)
-- uid: Alpaca.Markets.OrderQuantity.op_Implicit*
-  name: Implicit
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_op_Implicit_
-  commentId: Overload:Alpaca.Markets.OrderQuantity.op_Implicit
-  isSpec: "True"
-  name.vb: Widening
-  fullName: Alpaca.Markets.OrderQuantity.Implicit
-  fullName.vb: Alpaca.Markets.OrderQuantity.Widening
-  nameWithType: OrderQuantity.Implicit
-  nameWithType.vb: OrderQuantity.Widening
-- uid: Alpaca.Markets.OrderQuantity.op_Inequality(Alpaca.Markets.OrderQuantity,Alpaca.Markets.OrderQuantity)
-  name: Inequality(OrderQuantity, OrderQuantity)
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_op_Inequality_Alpaca_Markets_OrderQuantity_Alpaca_Markets_OrderQuantity_
-  commentId: M:Alpaca.Markets.OrderQuantity.op_Inequality(Alpaca.Markets.OrderQuantity,Alpaca.Markets.OrderQuantity)
-  fullName: Alpaca.Markets.OrderQuantity.Inequality(Alpaca.Markets.OrderQuantity, Alpaca.Markets.OrderQuantity)
-  nameWithType: OrderQuantity.Inequality(OrderQuantity, OrderQuantity)
-- uid: Alpaca.Markets.OrderQuantity.op_Inequality*
-  name: Inequality
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_op_Inequality_
-  commentId: Overload:Alpaca.Markets.OrderQuantity.op_Inequality
-  isSpec: "True"
-  fullName: Alpaca.Markets.OrderQuantity.Inequality
-  nameWithType: OrderQuantity.Inequality
-- uid: Alpaca.Markets.OrderQuantity.Value
-  name: Value
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_Value
-  commentId: P:Alpaca.Markets.OrderQuantity.Value
-  fullName: Alpaca.Markets.OrderQuantity.Value
-  nameWithType: OrderQuantity.Value
-- uid: Alpaca.Markets.OrderQuantity.Value*
-  name: Value
-  href: api/Alpaca.Markets.OrderQuantity.html#Alpaca_Markets_OrderQuantity_Value_
-  commentId: Overload:Alpaca.Markets.OrderQuantity.Value
-  isSpec: "True"
-  fullName: Alpaca.Markets.OrderQuantity.Value
-  nameWithType: OrderQuantity.Value
 - uid: Alpaca.Markets.OrderSide
   name: OrderSide
   href: api/Alpaca.Markets.OrderSide.html
@@ -10121,12 +10855,12 @@ references:
   commentId: T:Alpaca.Markets.OrderSideExtensions
   fullName: Alpaca.Markets.OrderSideExtensions
   nameWithType: OrderSideExtensions
-- uid: Alpaca.Markets.OrderSideExtensions.Limit(Alpaca.Markets.OrderSide,String,Int64,Decimal)
-  name: Limit(OrderSide, String, Int64, Decimal)
-  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Limit_Alpaca_Markets_OrderSide_String_Int64_Decimal_
-  commentId: M:Alpaca.Markets.OrderSideExtensions.Limit(Alpaca.Markets.OrderSide,String,Int64,Decimal)
-  fullName: Alpaca.Markets.OrderSideExtensions.Limit(Alpaca.Markets.OrderSide, String, Int64, Decimal)
-  nameWithType: OrderSideExtensions.Limit(OrderSide, String, Int64, Decimal)
+- uid: Alpaca.Markets.OrderSideExtensions.Limit(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity,Decimal)
+  name: Limit(OrderSide, String, OrderQuantity, Decimal)
+  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Limit_Alpaca_Markets_OrderSide_String_Alpaca_Markets_OrderQuantity_Decimal_
+  commentId: M:Alpaca.Markets.OrderSideExtensions.Limit(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity,Decimal)
+  fullName: Alpaca.Markets.OrderSideExtensions.Limit(Alpaca.Markets.OrderSide, String, Alpaca.Markets.OrderQuantity, Decimal)
+  nameWithType: OrderSideExtensions.Limit(OrderSide, String, OrderQuantity, Decimal)
 - uid: Alpaca.Markets.OrderSideExtensions.Limit*
   name: Limit
   href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Limit_
@@ -10134,12 +10868,12 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.OrderSideExtensions.Limit
   nameWithType: OrderSideExtensions.Limit
-- uid: Alpaca.Markets.OrderSideExtensions.Market(Alpaca.Markets.OrderSide,String,Int64)
-  name: Market(OrderSide, String, Int64)
-  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Market_Alpaca_Markets_OrderSide_String_Int64_
-  commentId: M:Alpaca.Markets.OrderSideExtensions.Market(Alpaca.Markets.OrderSide,String,Int64)
-  fullName: Alpaca.Markets.OrderSideExtensions.Market(Alpaca.Markets.OrderSide, String, Int64)
-  nameWithType: OrderSideExtensions.Market(OrderSide, String, Int64)
+- uid: Alpaca.Markets.OrderSideExtensions.Market(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity)
+  name: Market(OrderSide, String, OrderQuantity)
+  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Market_Alpaca_Markets_OrderSide_String_Alpaca_Markets_OrderQuantity_
+  commentId: M:Alpaca.Markets.OrderSideExtensions.Market(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity)
+  fullName: Alpaca.Markets.OrderSideExtensions.Market(Alpaca.Markets.OrderSide, String, Alpaca.Markets.OrderQuantity)
+  nameWithType: OrderSideExtensions.Market(OrderSide, String, OrderQuantity)
 - uid: Alpaca.Markets.OrderSideExtensions.Market*
   name: Market
   href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Market_
@@ -10147,12 +10881,12 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.OrderSideExtensions.Market
   nameWithType: OrderSideExtensions.Market
-- uid: Alpaca.Markets.OrderSideExtensions.Stop(Alpaca.Markets.OrderSide,String,Int64,Decimal)
-  name: Stop(OrderSide, String, Int64, Decimal)
-  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Stop_Alpaca_Markets_OrderSide_String_Int64_Decimal_
-  commentId: M:Alpaca.Markets.OrderSideExtensions.Stop(Alpaca.Markets.OrderSide,String,Int64,Decimal)
-  fullName: Alpaca.Markets.OrderSideExtensions.Stop(Alpaca.Markets.OrderSide, String, Int64, Decimal)
-  nameWithType: OrderSideExtensions.Stop(OrderSide, String, Int64, Decimal)
+- uid: Alpaca.Markets.OrderSideExtensions.Stop(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity,Decimal)
+  name: Stop(OrderSide, String, OrderQuantity, Decimal)
+  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Stop_Alpaca_Markets_OrderSide_String_Alpaca_Markets_OrderQuantity_Decimal_
+  commentId: M:Alpaca.Markets.OrderSideExtensions.Stop(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity,Decimal)
+  fullName: Alpaca.Markets.OrderSideExtensions.Stop(Alpaca.Markets.OrderSide, String, Alpaca.Markets.OrderQuantity, Decimal)
+  nameWithType: OrderSideExtensions.Stop(OrderSide, String, OrderQuantity, Decimal)
 - uid: Alpaca.Markets.OrderSideExtensions.Stop*
   name: Stop
   href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_Stop_
@@ -10160,12 +10894,12 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.OrderSideExtensions.Stop
   nameWithType: OrderSideExtensions.Stop
-- uid: Alpaca.Markets.OrderSideExtensions.StopLimit(Alpaca.Markets.OrderSide,String,Int64,Decimal,Decimal)
-  name: StopLimit(OrderSide, String, Int64, Decimal, Decimal)
-  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_StopLimit_Alpaca_Markets_OrderSide_String_Int64_Decimal_Decimal_
-  commentId: M:Alpaca.Markets.OrderSideExtensions.StopLimit(Alpaca.Markets.OrderSide,String,Int64,Decimal,Decimal)
-  fullName: Alpaca.Markets.OrderSideExtensions.StopLimit(Alpaca.Markets.OrderSide, String, Int64, Decimal, Decimal)
-  nameWithType: OrderSideExtensions.StopLimit(OrderSide, String, Int64, Decimal, Decimal)
+- uid: Alpaca.Markets.OrderSideExtensions.StopLimit(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity,Decimal,Decimal)
+  name: StopLimit(OrderSide, String, OrderQuantity, Decimal, Decimal)
+  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_StopLimit_Alpaca_Markets_OrderSide_String_Alpaca_Markets_OrderQuantity_Decimal_Decimal_
+  commentId: M:Alpaca.Markets.OrderSideExtensions.StopLimit(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity,Decimal,Decimal)
+  fullName: Alpaca.Markets.OrderSideExtensions.StopLimit(Alpaca.Markets.OrderSide, String, Alpaca.Markets.OrderQuantity, Decimal, Decimal)
+  nameWithType: OrderSideExtensions.StopLimit(OrderSide, String, OrderQuantity, Decimal, Decimal)
 - uid: Alpaca.Markets.OrderSideExtensions.StopLimit*
   name: StopLimit
   href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_StopLimit_
@@ -10173,12 +10907,12 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.OrderSideExtensions.StopLimit
   nameWithType: OrderSideExtensions.StopLimit
-- uid: Alpaca.Markets.OrderSideExtensions.TrailingStop(Alpaca.Markets.OrderSide,String,Int64,Alpaca.Markets.TrailOffset)
-  name: TrailingStop(OrderSide, String, Int64, TrailOffset)
-  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_TrailingStop_Alpaca_Markets_OrderSide_String_Int64_Alpaca_Markets_TrailOffset_
-  commentId: M:Alpaca.Markets.OrderSideExtensions.TrailingStop(Alpaca.Markets.OrderSide,String,Int64,Alpaca.Markets.TrailOffset)
-  fullName: Alpaca.Markets.OrderSideExtensions.TrailingStop(Alpaca.Markets.OrderSide, String, Int64, Alpaca.Markets.TrailOffset)
-  nameWithType: OrderSideExtensions.TrailingStop(OrderSide, String, Int64, TrailOffset)
+- uid: Alpaca.Markets.OrderSideExtensions.TrailingStop(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity,Alpaca.Markets.TrailOffset)
+  name: TrailingStop(OrderSide, String, OrderQuantity, TrailOffset)
+  href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_TrailingStop_Alpaca_Markets_OrderSide_String_Alpaca_Markets_OrderQuantity_Alpaca_Markets_TrailOffset_
+  commentId: M:Alpaca.Markets.OrderSideExtensions.TrailingStop(Alpaca.Markets.OrderSide,String,Alpaca.Markets.OrderQuantity,Alpaca.Markets.TrailOffset)
+  fullName: Alpaca.Markets.OrderSideExtensions.TrailingStop(Alpaca.Markets.OrderSide, String, Alpaca.Markets.OrderQuantity, Alpaca.Markets.TrailOffset)
+  nameWithType: OrderSideExtensions.TrailingStop(OrderSide, String, OrderQuantity, TrailOffset)
 - uid: Alpaca.Markets.OrderSideExtensions.TrailingStop*
   name: TrailingStop
   href: api/Alpaca.Markets.OrderSideExtensions.html#Alpaca_Markets_OrderSideExtensions_TrailingStop_
@@ -10524,151 +11258,6 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.PortfolioHistoryRequest.WithInterval
   nameWithType: PortfolioHistoryRequest.WithInterval
-- uid: Alpaca.Markets.PositionQuantity
-  name: PositionQuantity
-  href: api/Alpaca.Markets.PositionQuantity.html
-  commentId: T:Alpaca.Markets.PositionQuantity
-  fullName: Alpaca.Markets.PositionQuantity
-  nameWithType: PositionQuantity
-- uid: Alpaca.Markets.PositionQuantity.#ctor
-  name: PositionQuantity()
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity__ctor
-  commentId: M:Alpaca.Markets.PositionQuantity.#ctor
-  fullName: Alpaca.Markets.PositionQuantity.PositionQuantity()
-  nameWithType: PositionQuantity.PositionQuantity()
-- uid: Alpaca.Markets.PositionQuantity.#ctor*
-  name: PositionQuantity
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity__ctor_
-  commentId: Overload:Alpaca.Markets.PositionQuantity.#ctor
-  isSpec: "True"
-  fullName: Alpaca.Markets.PositionQuantity.PositionQuantity
-  nameWithType: PositionQuantity.PositionQuantity
-- uid: Alpaca.Markets.PositionQuantity.Equals(Alpaca.Markets.PositionQuantity)
-  name: Equals(PositionQuantity)
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_Equals_Alpaca_Markets_PositionQuantity_
-  commentId: M:Alpaca.Markets.PositionQuantity.Equals(Alpaca.Markets.PositionQuantity)
-  fullName: Alpaca.Markets.PositionQuantity.Equals(Alpaca.Markets.PositionQuantity)
-  nameWithType: PositionQuantity.Equals(PositionQuantity)
-- uid: Alpaca.Markets.PositionQuantity.Equals(System.Nullable{Object})
-  name: Equals(Nullable<Object>)
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_Equals_System_Nullable_Object__
-  commentId: M:Alpaca.Markets.PositionQuantity.Equals(System.Nullable{Object})
-  name.vb: Equals(Nullable(Of Object))
-  fullName: Alpaca.Markets.PositionQuantity.Equals(System.Nullable<Object>)
-  fullName.vb: Alpaca.Markets.PositionQuantity.Equals(System.Nullable(Of Object))
-  nameWithType: PositionQuantity.Equals(Nullable<Object>)
-  nameWithType.vb: PositionQuantity.Equals(Nullable(Of Object))
-- uid: Alpaca.Markets.PositionQuantity.Equals*
-  name: Equals
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_Equals_
-  commentId: Overload:Alpaca.Markets.PositionQuantity.Equals
-  isSpec: "True"
-  fullName: Alpaca.Markets.PositionQuantity.Equals
-  nameWithType: PositionQuantity.Equals
-- uid: Alpaca.Markets.PositionQuantity.GetHashCode
-  name: GetHashCode()
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_GetHashCode
-  commentId: M:Alpaca.Markets.PositionQuantity.GetHashCode
-  fullName: Alpaca.Markets.PositionQuantity.GetHashCode()
-  nameWithType: PositionQuantity.GetHashCode()
-- uid: Alpaca.Markets.PositionQuantity.GetHashCode*
-  name: GetHashCode
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_GetHashCode_
-  commentId: Overload:Alpaca.Markets.PositionQuantity.GetHashCode
-  isSpec: "True"
-  fullName: Alpaca.Markets.PositionQuantity.GetHashCode
-  nameWithType: PositionQuantity.GetHashCode
-- uid: Alpaca.Markets.PositionQuantity.InPercents(Decimal)
-  name: InPercents(Decimal)
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_InPercents_Decimal_
-  commentId: M:Alpaca.Markets.PositionQuantity.InPercents(Decimal)
-  fullName: Alpaca.Markets.PositionQuantity.InPercents(Decimal)
-  nameWithType: PositionQuantity.InPercents(Decimal)
-- uid: Alpaca.Markets.PositionQuantity.InPercents*
-  name: InPercents
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_InPercents_
-  commentId: Overload:Alpaca.Markets.PositionQuantity.InPercents
-  isSpec: "True"
-  fullName: Alpaca.Markets.PositionQuantity.InPercents
-  nameWithType: PositionQuantity.InPercents
-- uid: Alpaca.Markets.PositionQuantity.InShares(Decimal)
-  name: InShares(Decimal)
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_InShares_Decimal_
-  commentId: M:Alpaca.Markets.PositionQuantity.InShares(Decimal)
-  fullName: Alpaca.Markets.PositionQuantity.InShares(Decimal)
-  nameWithType: PositionQuantity.InShares(Decimal)
-- uid: Alpaca.Markets.PositionQuantity.InShares*
-  name: InShares
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_InShares_
-  commentId: Overload:Alpaca.Markets.PositionQuantity.InShares
-  isSpec: "True"
-  fullName: Alpaca.Markets.PositionQuantity.InShares
-  nameWithType: PositionQuantity.InShares
-- uid: Alpaca.Markets.PositionQuantity.IsInPercents
-  name: IsInPercents
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_IsInPercents
-  commentId: P:Alpaca.Markets.PositionQuantity.IsInPercents
-  fullName: Alpaca.Markets.PositionQuantity.IsInPercents
-  nameWithType: PositionQuantity.IsInPercents
-- uid: Alpaca.Markets.PositionQuantity.IsInPercents*
-  name: IsInPercents
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_IsInPercents_
-  commentId: Overload:Alpaca.Markets.PositionQuantity.IsInPercents
-  isSpec: "True"
-  fullName: Alpaca.Markets.PositionQuantity.IsInPercents
-  nameWithType: PositionQuantity.IsInPercents
-- uid: Alpaca.Markets.PositionQuantity.IsInShares
-  name: IsInShares
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_IsInShares
-  commentId: P:Alpaca.Markets.PositionQuantity.IsInShares
-  fullName: Alpaca.Markets.PositionQuantity.IsInShares
-  nameWithType: PositionQuantity.IsInShares
-- uid: Alpaca.Markets.PositionQuantity.IsInShares*
-  name: IsInShares
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_IsInShares_
-  commentId: Overload:Alpaca.Markets.PositionQuantity.IsInShares
-  isSpec: "True"
-  fullName: Alpaca.Markets.PositionQuantity.IsInShares
-  nameWithType: PositionQuantity.IsInShares
-- uid: Alpaca.Markets.PositionQuantity.op_Equality(Alpaca.Markets.PositionQuantity,Alpaca.Markets.PositionQuantity)
-  name: Equality(PositionQuantity, PositionQuantity)
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_op_Equality_Alpaca_Markets_PositionQuantity_Alpaca_Markets_PositionQuantity_
-  commentId: M:Alpaca.Markets.PositionQuantity.op_Equality(Alpaca.Markets.PositionQuantity,Alpaca.Markets.PositionQuantity)
-  fullName: Alpaca.Markets.PositionQuantity.Equality(Alpaca.Markets.PositionQuantity, Alpaca.Markets.PositionQuantity)
-  nameWithType: PositionQuantity.Equality(PositionQuantity, PositionQuantity)
-- uid: Alpaca.Markets.PositionQuantity.op_Equality*
-  name: Equality
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_op_Equality_
-  commentId: Overload:Alpaca.Markets.PositionQuantity.op_Equality
-  isSpec: "True"
-  fullName: Alpaca.Markets.PositionQuantity.Equality
-  nameWithType: PositionQuantity.Equality
-- uid: Alpaca.Markets.PositionQuantity.op_Inequality(Alpaca.Markets.PositionQuantity,Alpaca.Markets.PositionQuantity)
-  name: Inequality(PositionQuantity, PositionQuantity)
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_op_Inequality_Alpaca_Markets_PositionQuantity_Alpaca_Markets_PositionQuantity_
-  commentId: M:Alpaca.Markets.PositionQuantity.op_Inequality(Alpaca.Markets.PositionQuantity,Alpaca.Markets.PositionQuantity)
-  fullName: Alpaca.Markets.PositionQuantity.Inequality(Alpaca.Markets.PositionQuantity, Alpaca.Markets.PositionQuantity)
-  nameWithType: PositionQuantity.Inequality(PositionQuantity, PositionQuantity)
-- uid: Alpaca.Markets.PositionQuantity.op_Inequality*
-  name: Inequality
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_op_Inequality_
-  commentId: Overload:Alpaca.Markets.PositionQuantity.op_Inequality
-  isSpec: "True"
-  fullName: Alpaca.Markets.PositionQuantity.Inequality
-  nameWithType: PositionQuantity.Inequality
-- uid: Alpaca.Markets.PositionQuantity.Value
-  name: Value
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_Value
-  commentId: P:Alpaca.Markets.PositionQuantity.Value
-  fullName: Alpaca.Markets.PositionQuantity.Value
-  nameWithType: PositionQuantity.Value
-- uid: Alpaca.Markets.PositionQuantity.Value*
-  name: Value
-  href: api/Alpaca.Markets.PositionQuantity.html#Alpaca_Markets_PositionQuantity_Value_
-  commentId: Overload:Alpaca.Markets.PositionQuantity.Value
-  isSpec: "True"
-  fullName: Alpaca.Markets.PositionQuantity.Value
-  nameWithType: PositionQuantity.Value
 - uid: Alpaca.Markets.PositionSide
   name: PositionSide
   href: api/Alpaca.Markets.PositionSide.html
@@ -10825,12 +11414,12 @@ references:
   commentId: T:Alpaca.Markets.SimpleOrderBase
   fullName: Alpaca.Markets.SimpleOrderBase
   nameWithType: SimpleOrderBase
-- uid: Alpaca.Markets.SimpleOrderBase.#ctor(String,Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)
-  name: SimpleOrderBase(String, Int64, OrderSide, OrderType)
-  href: api/Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase__ctor_String_Int64_Alpaca_Markets_OrderSide_Alpaca_Markets_OrderType_
-  commentId: M:Alpaca.Markets.SimpleOrderBase.#ctor(String,Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)
-  fullName: Alpaca.Markets.SimpleOrderBase.SimpleOrderBase(String, Int64, Alpaca.Markets.OrderSide, Alpaca.Markets.OrderType)
-  nameWithType: SimpleOrderBase.SimpleOrderBase(String, Int64, OrderSide, OrderType)
+- uid: Alpaca.Markets.SimpleOrderBase.#ctor(String,Alpaca.Markets.OrderQuantity,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)
+  name: SimpleOrderBase(String, OrderQuantity, OrderSide, OrderType)
+  href: api/Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase__ctor_String_Alpaca_Markets_OrderQuantity_Alpaca_Markets_OrderSide_Alpaca_Markets_OrderType_
+  commentId: M:Alpaca.Markets.SimpleOrderBase.#ctor(String,Alpaca.Markets.OrderQuantity,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)
+  fullName: Alpaca.Markets.SimpleOrderBase.SimpleOrderBase(String, Alpaca.Markets.OrderQuantity, Alpaca.Markets.OrderSide, Alpaca.Markets.OrderType)
+  nameWithType: SimpleOrderBase.SimpleOrderBase(String, OrderQuantity, OrderSide, OrderType)
 - uid: Alpaca.Markets.SimpleOrderBase.#ctor*
   name: SimpleOrderBase
   href: api/Alpaca.Markets.SimpleOrderBase.html#Alpaca_Markets_SimpleOrderBase__ctor_
@@ -10889,6 +11478,54 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.SimpleOrderBase.TakeProfit
   nameWithType: SimpleOrderBase.TakeProfit
+- uid: Alpaca.Markets.SnapshotDataListRequest
+  name: SnapshotDataListRequest
+  href: api/Alpaca.Markets.SnapshotDataListRequest.html
+  commentId: T:Alpaca.Markets.SnapshotDataListRequest
+  fullName: Alpaca.Markets.SnapshotDataListRequest
+  nameWithType: SnapshotDataListRequest
+- uid: Alpaca.Markets.SnapshotDataListRequest.#ctor(IEnumerable{String},Alpaca.Markets.CryptoExchange)
+  name: SnapshotDataListRequest(IEnumerable<String>, CryptoExchange)
+  href: api/Alpaca.Markets.SnapshotDataListRequest.html#Alpaca_Markets_SnapshotDataListRequest__ctor_IEnumerable_String__Alpaca_Markets_CryptoExchange_
+  commentId: M:Alpaca.Markets.SnapshotDataListRequest.#ctor(IEnumerable{String},Alpaca.Markets.CryptoExchange)
+  name.vb: SnapshotDataListRequest(IEnumerable(Of String), CryptoExchange)
+  fullName: Alpaca.Markets.SnapshotDataListRequest.SnapshotDataListRequest(IEnumerable<String>, Alpaca.Markets.CryptoExchange)
+  fullName.vb: Alpaca.Markets.SnapshotDataListRequest.SnapshotDataListRequest(IEnumerable(Of String), Alpaca.Markets.CryptoExchange)
+  nameWithType: SnapshotDataListRequest.SnapshotDataListRequest(IEnumerable<String>, CryptoExchange)
+  nameWithType.vb: SnapshotDataListRequest.SnapshotDataListRequest(IEnumerable(Of String), CryptoExchange)
+- uid: Alpaca.Markets.SnapshotDataListRequest.#ctor*
+  name: SnapshotDataListRequest
+  href: api/Alpaca.Markets.SnapshotDataListRequest.html#Alpaca_Markets_SnapshotDataListRequest__ctor_
+  commentId: Overload:Alpaca.Markets.SnapshotDataListRequest.#ctor
+  isSpec: "True"
+  fullName: Alpaca.Markets.SnapshotDataListRequest.SnapshotDataListRequest
+  nameWithType: SnapshotDataListRequest.SnapshotDataListRequest
+- uid: Alpaca.Markets.SnapshotDataListRequest.Exchange
+  name: Exchange
+  href: api/Alpaca.Markets.SnapshotDataListRequest.html#Alpaca_Markets_SnapshotDataListRequest_Exchange
+  commentId: P:Alpaca.Markets.SnapshotDataListRequest.Exchange
+  fullName: Alpaca.Markets.SnapshotDataListRequest.Exchange
+  nameWithType: SnapshotDataListRequest.Exchange
+- uid: Alpaca.Markets.SnapshotDataListRequest.Exchange*
+  name: Exchange
+  href: api/Alpaca.Markets.SnapshotDataListRequest.html#Alpaca_Markets_SnapshotDataListRequest_Exchange_
+  commentId: Overload:Alpaca.Markets.SnapshotDataListRequest.Exchange
+  isSpec: "True"
+  fullName: Alpaca.Markets.SnapshotDataListRequest.Exchange
+  nameWithType: SnapshotDataListRequest.Exchange
+- uid: Alpaca.Markets.SnapshotDataListRequest.Symbols
+  name: Symbols
+  href: api/Alpaca.Markets.SnapshotDataListRequest.html#Alpaca_Markets_SnapshotDataListRequest_Symbols
+  commentId: P:Alpaca.Markets.SnapshotDataListRequest.Symbols
+  fullName: Alpaca.Markets.SnapshotDataListRequest.Symbols
+  nameWithType: SnapshotDataListRequest.Symbols
+- uid: Alpaca.Markets.SnapshotDataListRequest.Symbols*
+  name: Symbols
+  href: api/Alpaca.Markets.SnapshotDataListRequest.html#Alpaca_Markets_SnapshotDataListRequest_Symbols_
+  commentId: Overload:Alpaca.Markets.SnapshotDataListRequest.Symbols
+  isSpec: "True"
+  fullName: Alpaca.Markets.SnapshotDataListRequest.Symbols
+  nameWithType: SnapshotDataListRequest.Symbols
 - uid: Alpaca.Markets.SnapshotDataRequest
   name: SnapshotDataRequest
   href: api/Alpaca.Markets.SnapshotDataRequest.html
@@ -10958,12 +11595,12 @@ references:
   commentId: T:Alpaca.Markets.StopLimitOrder
   fullName: Alpaca.Markets.StopLimitOrder
   nameWithType: StopLimitOrder
-- uid: Alpaca.Markets.StopLimitOrder.Buy(String,Int64,Decimal,Decimal)
-  name: Buy(String, Int64, Decimal, Decimal)
-  href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_Buy_String_Int64_Decimal_Decimal_
-  commentId: M:Alpaca.Markets.StopLimitOrder.Buy(String,Int64,Decimal,Decimal)
-  fullName: Alpaca.Markets.StopLimitOrder.Buy(String, Int64, Decimal, Decimal)
-  nameWithType: StopLimitOrder.Buy(String, Int64, Decimal, Decimal)
+- uid: Alpaca.Markets.StopLimitOrder.Buy(String,Alpaca.Markets.OrderQuantity,Decimal,Decimal)
+  name: Buy(String, OrderQuantity, Decimal, Decimal)
+  href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_Buy_String_Alpaca_Markets_OrderQuantity_Decimal_Decimal_
+  commentId: M:Alpaca.Markets.StopLimitOrder.Buy(String,Alpaca.Markets.OrderQuantity,Decimal,Decimal)
+  fullName: Alpaca.Markets.StopLimitOrder.Buy(String, Alpaca.Markets.OrderQuantity, Decimal, Decimal)
+  nameWithType: StopLimitOrder.Buy(String, OrderQuantity, Decimal, Decimal)
 - uid: Alpaca.Markets.StopLimitOrder.Buy*
   name: Buy
   href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_Buy_
@@ -10984,12 +11621,12 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.StopLimitOrder.LimitPrice
   nameWithType: StopLimitOrder.LimitPrice
-- uid: Alpaca.Markets.StopLimitOrder.Sell(String,Int64,Decimal,Decimal)
-  name: Sell(String, Int64, Decimal, Decimal)
-  href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_Sell_String_Int64_Decimal_Decimal_
-  commentId: M:Alpaca.Markets.StopLimitOrder.Sell(String,Int64,Decimal,Decimal)
-  fullName: Alpaca.Markets.StopLimitOrder.Sell(String, Int64, Decimal, Decimal)
-  nameWithType: StopLimitOrder.Sell(String, Int64, Decimal, Decimal)
+- uid: Alpaca.Markets.StopLimitOrder.Sell(String,Alpaca.Markets.OrderQuantity,Decimal,Decimal)
+  name: Sell(String, OrderQuantity, Decimal, Decimal)
+  href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_Sell_String_Alpaca_Markets_OrderQuantity_Decimal_Decimal_
+  commentId: M:Alpaca.Markets.StopLimitOrder.Sell(String,Alpaca.Markets.OrderQuantity,Decimal,Decimal)
+  fullName: Alpaca.Markets.StopLimitOrder.Sell(String, Alpaca.Markets.OrderQuantity, Decimal, Decimal)
+  nameWithType: StopLimitOrder.Sell(String, OrderQuantity, Decimal, Decimal)
 - uid: Alpaca.Markets.StopLimitOrder.Sell*
   name: Sell
   href: api/Alpaca.Markets.StopLimitOrder.html#Alpaca_Markets_StopLimitOrder_Sell_
@@ -11061,12 +11698,12 @@ references:
   commentId: T:Alpaca.Markets.StopOrder
   fullName: Alpaca.Markets.StopOrder
   nameWithType: StopOrder
-- uid: Alpaca.Markets.StopOrder.Buy(String,Int64,Decimal)
-  name: Buy(String, Int64, Decimal)
-  href: api/Alpaca.Markets.StopOrder.html#Alpaca_Markets_StopOrder_Buy_String_Int64_Decimal_
-  commentId: M:Alpaca.Markets.StopOrder.Buy(String,Int64,Decimal)
-  fullName: Alpaca.Markets.StopOrder.Buy(String, Int64, Decimal)
-  nameWithType: StopOrder.Buy(String, Int64, Decimal)
+- uid: Alpaca.Markets.StopOrder.Buy(String,Alpaca.Markets.OrderQuantity,Decimal)
+  name: Buy(String, OrderQuantity, Decimal)
+  href: api/Alpaca.Markets.StopOrder.html#Alpaca_Markets_StopOrder_Buy_String_Alpaca_Markets_OrderQuantity_Decimal_
+  commentId: M:Alpaca.Markets.StopOrder.Buy(String,Alpaca.Markets.OrderQuantity,Decimal)
+  fullName: Alpaca.Markets.StopOrder.Buy(String, Alpaca.Markets.OrderQuantity, Decimal)
+  nameWithType: StopOrder.Buy(String, OrderQuantity, Decimal)
 - uid: Alpaca.Markets.StopOrder.Buy*
   name: Buy
   href: api/Alpaca.Markets.StopOrder.html#Alpaca_Markets_StopOrder_Buy_
@@ -11074,12 +11711,12 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.StopOrder.Buy
   nameWithType: StopOrder.Buy
-- uid: Alpaca.Markets.StopOrder.Sell(String,Int64,Decimal)
-  name: Sell(String, Int64, Decimal)
-  href: api/Alpaca.Markets.StopOrder.html#Alpaca_Markets_StopOrder_Sell_String_Int64_Decimal_
-  commentId: M:Alpaca.Markets.StopOrder.Sell(String,Int64,Decimal)
-  fullName: Alpaca.Markets.StopOrder.Sell(String, Int64, Decimal)
-  nameWithType: StopOrder.Sell(String, Int64, Decimal)
+- uid: Alpaca.Markets.StopOrder.Sell(String,Alpaca.Markets.OrderQuantity,Decimal)
+  name: Sell(String, OrderQuantity, Decimal)
+  href: api/Alpaca.Markets.StopOrder.html#Alpaca_Markets_StopOrder_Sell_String_Alpaca_Markets_OrderQuantity_Decimal_
+  commentId: M:Alpaca.Markets.StopOrder.Sell(String,Alpaca.Markets.OrderQuantity,Decimal)
+  fullName: Alpaca.Markets.StopOrder.Sell(String, Alpaca.Markets.OrderQuantity, Decimal)
+  nameWithType: StopOrder.Sell(String, OrderQuantity, Decimal)
 - uid: Alpaca.Markets.StopOrder.Sell*
   name: Sell
   href: api/Alpaca.Markets.StopOrder.html#Alpaca_Markets_StopOrder_Sell_
@@ -11145,6 +11782,19 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.StreamingClientConfiguration.SecurityId
   nameWithType: StreamingClientConfiguration.SecurityId
+- uid: Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory
+  name: WebSocketFactory
+  href: api/Alpaca.Markets.StreamingClientConfiguration.html#Alpaca_Markets_StreamingClientConfiguration_WebSocketFactory
+  commentId: P:Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory
+  fullName: Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory
+  nameWithType: StreamingClientConfiguration.WebSocketFactory
+- uid: Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory*
+  name: WebSocketFactory
+  href: api/Alpaca.Markets.StreamingClientConfiguration.html#Alpaca_Markets_StreamingClientConfiguration_WebSocketFactory_
+  commentId: Overload:Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory
+  isSpec: "True"
+  fullName: Alpaca.Markets.StreamingClientConfiguration.WebSocketFactory
+  nameWithType: StreamingClientConfiguration.WebSocketFactory
 - uid: Alpaca.Markets.TakeProfitOrder
   name: TakeProfitOrder
   href: api/Alpaca.Markets.TakeProfitOrder.html
@@ -11266,6 +11916,32 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.ThrottleParameters.Default
   nameWithType: ThrottleParameters.Default
+- uid: Alpaca.Markets.ThrottleParameters.GetAsyncPolicy
+  name: GetAsyncPolicy()
+  href: api/Alpaca.Markets.ThrottleParameters.html#Alpaca_Markets_ThrottleParameters_GetAsyncPolicy
+  commentId: M:Alpaca.Markets.ThrottleParameters.GetAsyncPolicy
+  fullName: Alpaca.Markets.ThrottleParameters.GetAsyncPolicy()
+  nameWithType: ThrottleParameters.GetAsyncPolicy()
+- uid: Alpaca.Markets.ThrottleParameters.GetAsyncPolicy*
+  name: GetAsyncPolicy
+  href: api/Alpaca.Markets.ThrottleParameters.html#Alpaca_Markets_ThrottleParameters_GetAsyncPolicy_
+  commentId: Overload:Alpaca.Markets.ThrottleParameters.GetAsyncPolicy
+  isSpec: "True"
+  fullName: Alpaca.Markets.ThrottleParameters.GetAsyncPolicy
+  nameWithType: ThrottleParameters.GetAsyncPolicy
+- uid: Alpaca.Markets.ThrottleParameters.GetMessageHandler
+  name: GetMessageHandler()
+  href: api/Alpaca.Markets.ThrottleParameters.html#Alpaca_Markets_ThrottleParameters_GetMessageHandler
+  commentId: M:Alpaca.Markets.ThrottleParameters.GetMessageHandler
+  fullName: Alpaca.Markets.ThrottleParameters.GetMessageHandler()
+  nameWithType: ThrottleParameters.GetMessageHandler()
+- uid: Alpaca.Markets.ThrottleParameters.GetMessageHandler*
+  name: GetMessageHandler
+  href: api/Alpaca.Markets.ThrottleParameters.html#Alpaca_Markets_ThrottleParameters_GetMessageHandler_
+  commentId: Overload:Alpaca.Markets.ThrottleParameters.GetMessageHandler
+  isSpec: "True"
+  fullName: Alpaca.Markets.ThrottleParameters.GetMessageHandler
+  nameWithType: ThrottleParameters.GetMessageHandler
 - uid: Alpaca.Markets.ThrottleParameters.MaxRetryAttempts
   name: MaxRetryAttempts
   href: api/Alpaca.Markets.ThrottleParameters.html#Alpaca_Markets_ThrottleParameters_MaxRetryAttempts
@@ -11707,12 +12383,12 @@ references:
   commentId: T:Alpaca.Markets.TrailingStopOrder
   fullName: Alpaca.Markets.TrailingStopOrder
   nameWithType: TrailingStopOrder
-- uid: Alpaca.Markets.TrailingStopOrder.Buy(String,Int64,Alpaca.Markets.TrailOffset)
-  name: Buy(String, Int64, TrailOffset)
-  href: api/Alpaca.Markets.TrailingStopOrder.html#Alpaca_Markets_TrailingStopOrder_Buy_String_Int64_Alpaca_Markets_TrailOffset_
-  commentId: M:Alpaca.Markets.TrailingStopOrder.Buy(String,Int64,Alpaca.Markets.TrailOffset)
-  fullName: Alpaca.Markets.TrailingStopOrder.Buy(String, Int64, Alpaca.Markets.TrailOffset)
-  nameWithType: TrailingStopOrder.Buy(String, Int64, TrailOffset)
+- uid: Alpaca.Markets.TrailingStopOrder.Buy(String,Alpaca.Markets.OrderQuantity,Alpaca.Markets.TrailOffset)
+  name: Buy(String, OrderQuantity, TrailOffset)
+  href: api/Alpaca.Markets.TrailingStopOrder.html#Alpaca_Markets_TrailingStopOrder_Buy_String_Alpaca_Markets_OrderQuantity_Alpaca_Markets_TrailOffset_
+  commentId: M:Alpaca.Markets.TrailingStopOrder.Buy(String,Alpaca.Markets.OrderQuantity,Alpaca.Markets.TrailOffset)
+  fullName: Alpaca.Markets.TrailingStopOrder.Buy(String, Alpaca.Markets.OrderQuantity, Alpaca.Markets.TrailOffset)
+  nameWithType: TrailingStopOrder.Buy(String, OrderQuantity, TrailOffset)
 - uid: Alpaca.Markets.TrailingStopOrder.Buy*
   name: Buy
   href: api/Alpaca.Markets.TrailingStopOrder.html#Alpaca_Markets_TrailingStopOrder_Buy_
@@ -11720,12 +12396,12 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.TrailingStopOrder.Buy
   nameWithType: TrailingStopOrder.Buy
-- uid: Alpaca.Markets.TrailingStopOrder.Sell(String,Int64,Alpaca.Markets.TrailOffset)
-  name: Sell(String, Int64, TrailOffset)
-  href: api/Alpaca.Markets.TrailingStopOrder.html#Alpaca_Markets_TrailingStopOrder_Sell_String_Int64_Alpaca_Markets_TrailOffset_
-  commentId: M:Alpaca.Markets.TrailingStopOrder.Sell(String,Int64,Alpaca.Markets.TrailOffset)
-  fullName: Alpaca.Markets.TrailingStopOrder.Sell(String, Int64, Alpaca.Markets.TrailOffset)
-  nameWithType: TrailingStopOrder.Sell(String, Int64, TrailOffset)
+- uid: Alpaca.Markets.TrailingStopOrder.Sell(String,Alpaca.Markets.OrderQuantity,Alpaca.Markets.TrailOffset)
+  name: Sell(String, OrderQuantity, TrailOffset)
+  href: api/Alpaca.Markets.TrailingStopOrder.html#Alpaca_Markets_TrailingStopOrder_Sell_String_Alpaca_Markets_OrderQuantity_Alpaca_Markets_TrailOffset_
+  commentId: M:Alpaca.Markets.TrailingStopOrder.Sell(String,Alpaca.Markets.OrderQuantity,Alpaca.Markets.TrailOffset)
+  fullName: Alpaca.Markets.TrailingStopOrder.Sell(String, Alpaca.Markets.OrderQuantity, Alpaca.Markets.TrailOffset)
+  nameWithType: TrailingStopOrder.Sell(String, OrderQuantity, TrailOffset)
 - uid: Alpaca.Markets.TrailingStopOrder.Sell*
   name: Sell
   href: api/Alpaca.Markets.TrailingStopOrder.html#Alpaca_Markets_TrailingStopOrder_Sell_
@@ -11746,151 +12422,6 @@ references:
   isSpec: "True"
   fullName: Alpaca.Markets.TrailingStopOrder.TrailOffset
   nameWithType: TrailingStopOrder.TrailOffset
-- uid: Alpaca.Markets.TrailOffset
-  name: TrailOffset
-  href: api/Alpaca.Markets.TrailOffset.html
-  commentId: T:Alpaca.Markets.TrailOffset
-  fullName: Alpaca.Markets.TrailOffset
-  nameWithType: TrailOffset
-- uid: Alpaca.Markets.TrailOffset.#ctor
-  name: TrailOffset()
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset__ctor
-  commentId: M:Alpaca.Markets.TrailOffset.#ctor
-  fullName: Alpaca.Markets.TrailOffset.TrailOffset()
-  nameWithType: TrailOffset.TrailOffset()
-- uid: Alpaca.Markets.TrailOffset.#ctor*
-  name: TrailOffset
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset__ctor_
-  commentId: Overload:Alpaca.Markets.TrailOffset.#ctor
-  isSpec: "True"
-  fullName: Alpaca.Markets.TrailOffset.TrailOffset
-  nameWithType: TrailOffset.TrailOffset
-- uid: Alpaca.Markets.TrailOffset.Equals(Alpaca.Markets.TrailOffset)
-  name: Equals(TrailOffset)
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_Equals_Alpaca_Markets_TrailOffset_
-  commentId: M:Alpaca.Markets.TrailOffset.Equals(Alpaca.Markets.TrailOffset)
-  fullName: Alpaca.Markets.TrailOffset.Equals(Alpaca.Markets.TrailOffset)
-  nameWithType: TrailOffset.Equals(TrailOffset)
-- uid: Alpaca.Markets.TrailOffset.Equals(System.Nullable{Object})
-  name: Equals(Nullable<Object>)
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_Equals_System_Nullable_Object__
-  commentId: M:Alpaca.Markets.TrailOffset.Equals(System.Nullable{Object})
-  name.vb: Equals(Nullable(Of Object))
-  fullName: Alpaca.Markets.TrailOffset.Equals(System.Nullable<Object>)
-  fullName.vb: Alpaca.Markets.TrailOffset.Equals(System.Nullable(Of Object))
-  nameWithType: TrailOffset.Equals(Nullable<Object>)
-  nameWithType.vb: TrailOffset.Equals(Nullable(Of Object))
-- uid: Alpaca.Markets.TrailOffset.Equals*
-  name: Equals
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_Equals_
-  commentId: Overload:Alpaca.Markets.TrailOffset.Equals
-  isSpec: "True"
-  fullName: Alpaca.Markets.TrailOffset.Equals
-  nameWithType: TrailOffset.Equals
-- uid: Alpaca.Markets.TrailOffset.GetHashCode
-  name: GetHashCode()
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_GetHashCode
-  commentId: M:Alpaca.Markets.TrailOffset.GetHashCode
-  fullName: Alpaca.Markets.TrailOffset.GetHashCode()
-  nameWithType: TrailOffset.GetHashCode()
-- uid: Alpaca.Markets.TrailOffset.GetHashCode*
-  name: GetHashCode
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_GetHashCode_
-  commentId: Overload:Alpaca.Markets.TrailOffset.GetHashCode
-  isSpec: "True"
-  fullName: Alpaca.Markets.TrailOffset.GetHashCode
-  nameWithType: TrailOffset.GetHashCode
-- uid: Alpaca.Markets.TrailOffset.InDollars(Decimal)
-  name: InDollars(Decimal)
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_InDollars_Decimal_
-  commentId: M:Alpaca.Markets.TrailOffset.InDollars(Decimal)
-  fullName: Alpaca.Markets.TrailOffset.InDollars(Decimal)
-  nameWithType: TrailOffset.InDollars(Decimal)
-- uid: Alpaca.Markets.TrailOffset.InDollars*
-  name: InDollars
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_InDollars_
-  commentId: Overload:Alpaca.Markets.TrailOffset.InDollars
-  isSpec: "True"
-  fullName: Alpaca.Markets.TrailOffset.InDollars
-  nameWithType: TrailOffset.InDollars
-- uid: Alpaca.Markets.TrailOffset.InPercent(Decimal)
-  name: InPercent(Decimal)
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_InPercent_Decimal_
-  commentId: M:Alpaca.Markets.TrailOffset.InPercent(Decimal)
-  fullName: Alpaca.Markets.TrailOffset.InPercent(Decimal)
-  nameWithType: TrailOffset.InPercent(Decimal)
-- uid: Alpaca.Markets.TrailOffset.InPercent*
-  name: InPercent
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_InPercent_
-  commentId: Overload:Alpaca.Markets.TrailOffset.InPercent
-  isSpec: "True"
-  fullName: Alpaca.Markets.TrailOffset.InPercent
-  nameWithType: TrailOffset.InPercent
-- uid: Alpaca.Markets.TrailOffset.IsInDollars
-  name: IsInDollars
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_IsInDollars
-  commentId: P:Alpaca.Markets.TrailOffset.IsInDollars
-  fullName: Alpaca.Markets.TrailOffset.IsInDollars
-  nameWithType: TrailOffset.IsInDollars
-- uid: Alpaca.Markets.TrailOffset.IsInDollars*
-  name: IsInDollars
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_IsInDollars_
-  commentId: Overload:Alpaca.Markets.TrailOffset.IsInDollars
-  isSpec: "True"
-  fullName: Alpaca.Markets.TrailOffset.IsInDollars
-  nameWithType: TrailOffset.IsInDollars
-- uid: Alpaca.Markets.TrailOffset.IsInPercent
-  name: IsInPercent
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_IsInPercent
-  commentId: P:Alpaca.Markets.TrailOffset.IsInPercent
-  fullName: Alpaca.Markets.TrailOffset.IsInPercent
-  nameWithType: TrailOffset.IsInPercent
-- uid: Alpaca.Markets.TrailOffset.IsInPercent*
-  name: IsInPercent
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_IsInPercent_
-  commentId: Overload:Alpaca.Markets.TrailOffset.IsInPercent
-  isSpec: "True"
-  fullName: Alpaca.Markets.TrailOffset.IsInPercent
-  nameWithType: TrailOffset.IsInPercent
-- uid: Alpaca.Markets.TrailOffset.op_Equality(Alpaca.Markets.TrailOffset,Alpaca.Markets.TrailOffset)
-  name: Equality(TrailOffset, TrailOffset)
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_op_Equality_Alpaca_Markets_TrailOffset_Alpaca_Markets_TrailOffset_
-  commentId: M:Alpaca.Markets.TrailOffset.op_Equality(Alpaca.Markets.TrailOffset,Alpaca.Markets.TrailOffset)
-  fullName: Alpaca.Markets.TrailOffset.Equality(Alpaca.Markets.TrailOffset, Alpaca.Markets.TrailOffset)
-  nameWithType: TrailOffset.Equality(TrailOffset, TrailOffset)
-- uid: Alpaca.Markets.TrailOffset.op_Equality*
-  name: Equality
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_op_Equality_
-  commentId: Overload:Alpaca.Markets.TrailOffset.op_Equality
-  isSpec: "True"
-  fullName: Alpaca.Markets.TrailOffset.Equality
-  nameWithType: TrailOffset.Equality
-- uid: Alpaca.Markets.TrailOffset.op_Inequality(Alpaca.Markets.TrailOffset,Alpaca.Markets.TrailOffset)
-  name: Inequality(TrailOffset, TrailOffset)
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_op_Inequality_Alpaca_Markets_TrailOffset_Alpaca_Markets_TrailOffset_
-  commentId: M:Alpaca.Markets.TrailOffset.op_Inequality(Alpaca.Markets.TrailOffset,Alpaca.Markets.TrailOffset)
-  fullName: Alpaca.Markets.TrailOffset.Inequality(Alpaca.Markets.TrailOffset, Alpaca.Markets.TrailOffset)
-  nameWithType: TrailOffset.Inequality(TrailOffset, TrailOffset)
-- uid: Alpaca.Markets.TrailOffset.op_Inequality*
-  name: Inequality
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_op_Inequality_
-  commentId: Overload:Alpaca.Markets.TrailOffset.op_Inequality
-  isSpec: "True"
-  fullName: Alpaca.Markets.TrailOffset.Inequality
-  nameWithType: TrailOffset.Inequality
-- uid: Alpaca.Markets.TrailOffset.Value
-  name: Value
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_Value
-  commentId: P:Alpaca.Markets.TrailOffset.Value
-  fullName: Alpaca.Markets.TrailOffset.Value
-  nameWithType: TrailOffset.Value
-- uid: Alpaca.Markets.TrailOffset.Value*
-  name: Value
-  href: api/Alpaca.Markets.TrailOffset.html#Alpaca_Markets_TrailOffset_Value_
-  commentId: Overload:Alpaca.Markets.TrailOffset.Value
-  isSpec: "True"
-  fullName: Alpaca.Markets.TrailOffset.Value
-  nameWithType: TrailOffset.Value
 - uid: Alpaca.Markets.UpdateWatchListRequest
   name: UpdateWatchListRequest
   href: api/Alpaca.Markets.UpdateWatchListRequest.html
