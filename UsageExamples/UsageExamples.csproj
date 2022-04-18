@@ -2,10 +2,12 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp3.1;net462;net48;net5</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net462;net48;net5.0;net6.0</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-	  <ImplicitUsings>enable</ImplicitUsings>
-	  <LangVersion>latest</LangVersion>
+	<TrimmerDefaultAction>link</TrimmerDefaultAction>
+	<ImplicitUsings>enable</ImplicitUsings>
+    <PublishTrimmed>true</PublishTrimmed>
+	<LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
@@ -29,6 +31,7 @@
       <Project>{F339D73B-347F-47D4-9BFB-EBEA010FC6F7}</Project>
       <Name>Alpaca.Markets</Name>
     </ProjectReference>
+    <TrimmerRootAssembly Include="Alpaca.Markets" />
   </ItemGroup>
 
 </Project>
