@@ -3,7 +3,7 @@
 namespace Alpaca.Markets;
 
 /// <summary>
-/// Cryptocurrency exchanges supported by Alpaca REST API.
+/// Crypto currency exchanges supported by Alpaca REST API.
 /// </summary>
 [JsonConverter(typeof(CryptoExchangeEnumConverter))]
 [SuppressMessage("ReSharper", "IdentifierTypo")]
@@ -42,7 +42,7 @@ public enum CryptoExchange
     /// Not supported now.
     /// </summary>
     [UsedImplicitly]
-    [Obsolete("This enum member is not obsolete and will be deleted in upcoming major release.", true)]
+    [Obsolete("This enum member is now obsolete and will be deleted in upcoming major release.", true)]
     [EnumMember(Value = "GNSS")]
     Gnss
 }

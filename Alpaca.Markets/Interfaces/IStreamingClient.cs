@@ -30,7 +30,7 @@ public interface IStreamingClient : IDisposable
     event Action<Exception>? OnError;
 
     /// <summary>
-    /// Invoked in case of non-critical events.
+    /// Occurs in case of non-critical events.
     /// </summary>
     [UsedImplicitly]
     event Action<String>? OnWarning;
