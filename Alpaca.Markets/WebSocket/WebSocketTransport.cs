@@ -79,6 +79,9 @@ internal sealed class WebSocketsTransport : IDisposable
 
     public event Action<Exception>? Error;
 
+    [SuppressMessage(
+        "Design", "CA1031:Do not catch general exception types",
+        Justification = "Expected behavior - we report exceptions via Error event.")]
     public async Task StartAsync(
         CancellationToken cancellationToken = default)
     {
@@ -98,10 +101,11 @@ internal sealed class WebSocketsTransport : IDisposable
             await _webSocket.ConnectAsync(_resolvedUrl, cancellationToken)
                 .ConfigureAwait(false);
         }
-        catch
+        catch (Exception ex)
         {
+            Error?.Invoke(ex);
             _webSocket?.Dispose();
-            throw;
+            return;
         }
 
         Opened?.Invoke();
@@ -110,7 +114,7 @@ internal sealed class WebSocketsTransport : IDisposable
 
     [SuppressMessage(
         "Design", "CA1031:Do not catch general exception types",
-        Justification = "Expected behavior - we report exceptions via OnError event.")]
+        Justification = "Expected behavior - we report exceptions via Error event.")]
     public async Task StopAsync(
         CancellationToken cancellationToken = default)
     {
@@ -236,7 +240,7 @@ internal sealed class WebSocketsTransport : IDisposable
 
     [SuppressMessage(
         "Design", "CA1031:Do not catch general exception types",
-        Justification = "Expected behavior - we report exceptions via OnError event.")]
+        Justification = "Expected behavior - we report exceptions via Error event.")]
     private async Task startReceiving(
         IWebSocket socket,
         IDuplexPipe application,
@@ -339,7 +343,7 @@ internal sealed class WebSocketsTransport : IDisposable
 
     [SuppressMessage(
         "Design", "CA1031:Do not catch general exception types",
-        Justification = "Expected behavior - we report exceptions via OnError event.")]
+        Justification = "Expected behavior - we report exceptions via Error event.")]
     private async Task startSending(
         IWebSocket socket,
         IDuplexPipe application)

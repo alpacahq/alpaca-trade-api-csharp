@@ -77,7 +77,7 @@ internal sealed class JsonNewsArticle : INewsArticle
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private Uri? getImageUrlBySize(String size) =>
-        Images.FirstOrDefault(_ => String.Equals(size, _.Size, StringComparison.Ordinal))?.Url;
+        Images?.FirstOrDefault(_ => String.Equals(size, _.Size, StringComparison.Ordinal))?.Url;
 
     [ExcludeFromCodeCoverage]
     public override String ToString() =>
