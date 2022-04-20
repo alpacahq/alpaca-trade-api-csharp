@@ -83,7 +83,7 @@ public sealed partial class AlpacaTradingClientTest
         Assert.NotNull(announcement.GetRecordDate());
 
         Assert.Null(announcement.GetDate(
-            Enum.GetValues<CorporateActionDateType>().OrderByDescending(_ => _).First() + 1));
+            Enum.GetValues<CorporateActionDateType>().Max() + 1));
         Assert.Null(announcement.GetDeclarationDate());
         Assert.Null(announcement.GetExecutionDate());
         Assert.Null(announcement.GetPayableDate());

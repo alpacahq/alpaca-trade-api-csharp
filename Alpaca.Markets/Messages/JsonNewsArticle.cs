@@ -77,6 +77,7 @@ internal sealed class JsonNewsArticle : INewsArticle
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private Uri? getImageUrlBySize(String size) =>
+        // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
         Images?.FirstOrDefault(_ => String.Equals(size, _.Size, StringComparison.Ordinal))?.Url;
 
     [ExcludeFromCodeCoverage]

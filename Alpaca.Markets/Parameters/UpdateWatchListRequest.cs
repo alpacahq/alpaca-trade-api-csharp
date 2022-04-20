@@ -21,7 +21,7 @@ public sealed class UpdateWatchListRequest : Validation.IRequest
         WatchListId = watchListId;
         Name = name;
         _assets.AddRange(
-            // ReSharper disable once ConstantNullCoalescingCondition
+            // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
             (assets ?? Enumerable.Empty<String>())
             .Distinct(StringComparer.Ordinal));
     }

@@ -48,7 +48,7 @@ public static class TimeInterval
     [Obsolete("Use the IsEmpty() method of Interval<DateTime> structure instead of this one.", false)]
     public static Boolean IsEmpty(this ITimeInterval interval) =>
         interval is Interval wrapper ? wrapper.IsEmpty()
-            // ReSharper disable once ConstantConditionalAccessQualifier
+            // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
             : new Interval<DateTime>(interval?.From, interval?.Into).IsEmpty();
 
     /// <summary>
@@ -62,7 +62,7 @@ public static class TimeInterval
     [Obsolete("Use the IsOpen() method of Interval<DateTime> structure instead of this one.", false)]
     public static Boolean IsOpen(this ITimeInterval interval) =>
         interval is Interval wrapper ? wrapper.IsOpen()
-            // ReSharper disable once ConstantConditionalAccessQualifier
+            // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
             : new Interval<DateTime>(interval?.From, interval?.Into).IsOpen();
 
     /// <summary>
@@ -233,7 +233,7 @@ public static class TimeInterval
         out DateTime? from,
         out DateTime? into)
     {
-        // ReSharper disable once ConstantConditionalAccessQualifier
+        // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
         from = interval?.From;
         into = interval?.Into;
     }
@@ -252,7 +252,7 @@ public static class TimeInterval
         out DateTime? from,
         out DateTime? into)
     {
-        // ReSharper disable once ConstantConditionalAccessQualifier
+        // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
         from = interval?.From;
         into = interval?.Into;
     }
@@ -260,13 +260,13 @@ public static class TimeInterval
     [Obsolete("Used only for reducing code duplication.", false)]
     internal static Interval<DateTime> AsDateTimeInterval(
         this ITimeInterval interval) =>
-        // ReSharper disable once ConstantConditionalAccessQualifier
+        // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
         new (interval?.From, interval?.Into);
 
     [Obsolete("Used only for reducing code duplication.", false)]
     internal static Interval<DateOnly> AsDateOnlyInterval(
         this ITimeInterval interval) =>
-        // ReSharper disable once ConstantConditionalAccessQualifier
+        // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
         new (interval?.From.AsDateOnly(), interval?.Into.AsDateOnly());
     
     [Obsolete("Used only for reducing code duplication.", false)]
