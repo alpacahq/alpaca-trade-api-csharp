@@ -12,13 +12,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.7</AssemblyVersion>
-    <FileVersion>6.0.3.7</FileVersion>
-    <Version>6.0.3-beta5</Version>
+    <AssemblyVersion>6.0.3.6</AssemblyVersion>
+    <FileVersion>6.0.3.6</FileVersion>
+    <Version>6.0.3-beta4</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-	<PackageReleaseNotes>- Initial streaming connection errors reported now via `OnError` event instead of direct exceptions throwing.</PackageReleaseNotes>
+	<PackageReleaseNotes>- Added crypto order book streaming support into the `IAlpacaCryptoStreamingClient` interface.</PackageReleaseNotes>
 	<Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
