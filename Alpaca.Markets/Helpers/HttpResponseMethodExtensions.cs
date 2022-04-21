@@ -65,7 +65,7 @@ internal static class HttpResponseMethodExtensions
             return jsonError.Code == 0 ||
                    String.IsNullOrEmpty(jsonError.Message)
                 ? new RestClientErrorException(response)
-                : new RestClientErrorException(jsonError);
+                : new RestClientErrorException(response, jsonError);
         }
         catch (Exception exception)
         {
