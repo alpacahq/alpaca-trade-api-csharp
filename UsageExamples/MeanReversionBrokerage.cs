@@ -55,11 +55,7 @@ internal sealed class MeanReversionBrokerage : IDisposable
         isAssetShortable = asset.Shortable;
 
         // First, cancel any existing orders so they don't impact our buying power.
-        var orders = await alpacaTradingClient.ListOrdersAsync(new ListOrdersRequest());
-        foreach (var order in orders)
-        {
-            await alpacaTradingClient.DeleteOrderAsync(order.OrderId);
-        }
+        await alpacaTradingClient.CancelAllOrdersAsync();
 
         // Figure out when the market will close so we can prepare to sell beforehand.
         var calendars = (await alpacaTradingClient
@@ -161,7 +157,7 @@ internal sealed class MeanReversionBrokerage : IDisposable
         {
             // We need to wait for the cancel to process in order to avoid
             // having long and short orders open at the same time.
-            var res = await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
+            var res = await alpacaTradingClient.CancelOrderAsync(lastTradeId);
         }
 
         // Make sure we know how much we should spend on our position.

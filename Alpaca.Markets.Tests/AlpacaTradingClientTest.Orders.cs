@@ -171,17 +171,17 @@ public sealed partial class AlpacaTradingClientTest
     }
 
     [Fact]
-    public async Task DeleteOrderAsyncWorks()
+    public async Task CancelOrderAsyncWorks()
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddDelete(OrdersWildcardUrl, createOrder());
 
-        Assert.True(await mock.Client.DeleteOrderAsync(Guid.NewGuid()));
+        Assert.True(await mock.Client.CancelOrderAsync(Guid.NewGuid()));
     }
 
     [Fact]
-    public async Task DeleteAllOrdersAsyncWorks()
+    public async Task CancelAllOrdersAsyncWorks()
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
@@ -190,7 +190,7 @@ public sealed partial class AlpacaTradingClientTest
                 new JProperty("status", (Int64)HttpStatusCode.OK),
                 new JProperty("id", Guid.NewGuid()))));
 
-        var statuses = await mock.Client.DeleteAllOrdersAsync();
+        var statuses = await mock.Client.CancelAllOrdersAsync();
 
         var status = statuses.Single();
 
