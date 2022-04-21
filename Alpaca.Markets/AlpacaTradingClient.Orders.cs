@@ -63,17 +63,24 @@ namespace Alpaca.Markets
             _httpClient.GetAsync<IOrder, JsonOrder>(
                 $"v2/orders/{orderId:D}", cancellationToken);
 
-        /// <inheritdoc />
         public Task<Boolean> DeleteOrderAsync(
+            Guid orderId,
+            CancellationToken cancellationToken = default) =>
+            CancelOrderAsync(orderId, cancellationToken);
+
+        public Task<Boolean> CancelOrderAsync(
             Guid orderId,
             CancellationToken cancellationToken = default) =>
             _httpClient.TryDeleteAsync(
                 $"v2/orders/{orderId:D}", cancellationToken);
 
-        /// <inheritdoc />
         public Task<IReadOnlyList<IOrderActionStatus>> DeleteAllOrdersAsync(
             CancellationToken cancellationToken = default) =>
+            CancelAllOrdersAsync(cancellationToken);
+
+        public Task<IReadOnlyList<IOrderActionStatus>> CancelAllOrdersAsync(
+            CancellationToken cancellationToken = default) =>
             _httpClient.DeleteAsync<IReadOnlyList<IOrderActionStatus>, List<JsonOrderActionStatus>>(
-                    "v2/orders", cancellationToken);
+                "v2/orders", cancellationToken);
     }
 }

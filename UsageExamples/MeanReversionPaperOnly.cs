@@ -35,11 +35,7 @@ namespace UsageExamples
             alpacaDataClient = Environments.Paper.GetAlpacaDataClient(new SecretKey(API_KEY, API_SECRET));
 
             // First, cancel any existing orders so they don't impact our buying power.
-            var orders = await alpacaTradingClient.ListOrdersAsync(new ListOrdersRequest());
-            foreach (var order in orders)
-            {
-                await alpacaTradingClient.DeleteOrderAsync(order.OrderId);
-            }
+            await alpacaTradingClient.CancelAllOrdersAsync();
 
             // Figure out when the market will close so we can prepare to sell beforehand.
             var calendars = (await alpacaTradingClient
@@ -59,7 +55,7 @@ namespace UsageExamples
             while (timeUntilClose.TotalMinutes > 15)
             {
                 // Cancel old order if it's not already been filled.
-                await alpacaTradingClient.DeleteOrderAsync(lastTradeId);
+                await alpacaTradingClient.CancelOrderAsync(lastTradeId);
 
                 // Get information about current account value.
                 var account = await alpacaTradingClient.GetAccountAsync();
