@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Net;
 using System.Net.Http;
 
 namespace Alpaca.Markets
@@ -47,9 +48,13 @@ namespace Alpaca.Markets
         }
 
         internal RestClientErrorException(
+            HttpResponseMessage message,
             JsonError error)
-            : base(error.Message) =>
+            : base(error.Message)
+        {
+            HttpStatusCode = message.StatusCode;
             ErrorCode = error.Code;
+        }
 
         internal RestClientErrorException(
             JsonStreamError error)
@@ -59,17 +64,22 @@ namespace Alpaca.Markets
         internal RestClientErrorException(
             HttpResponseMessage message)
             : base(message.ReasonPhrase ?? String.Empty) =>
-            ErrorCode = (Int32)message.StatusCode;
+            ErrorCode = (Int32)(HttpStatusCode = message.StatusCode);
 
         internal RestClientErrorException(
             HttpResponseMessage message,
             Exception exception)
             : base(message.ReasonPhrase ?? String.Empty, exception) =>
-            ErrorCode = (Int32)message.StatusCode;
+            ErrorCode = (Int32)(HttpStatusCode = message.StatusCode);
 
         /// <summary>
-        /// Original error code returned by REST API endpoint.
+        /// Gets original error code returned by REST API endpoint.
         /// </summary>
         public Int32 ErrorCode { get; }
+
+        /// <summary>
+        /// Gets original HTTP status code returned by REST API endpoint.
+        /// </summary>
+        public HttpStatusCode? HttpStatusCode { get; }
     }
 }
