@@ -127,10 +127,10 @@ namespace Alpaca.Markets
         {
             MaxRetryAttempts = maxRetryAttempts;
             _retrySocketErrorCodes = new HashSet<SocketError>(
-                // ReSharper disable once ConstantNullCoalescingCondition
+                // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
                 retrySocketErrorCodes ?? _defaultSocketErrorCodes);
             _retryHttpStatuses = new HashSet<HttpStatusCode>(
-                // ReSharper disable once ConstantNullCoalescingCondition
+                // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
                 retryHttpStatuses ?? _defaultHttpStatuses);
         }
 

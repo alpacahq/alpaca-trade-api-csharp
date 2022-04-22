@@ -7,20 +7,21 @@
     <WarningLevel>5</WarningLevel>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.3.0-beta1</Version>
+    <Version>5.3.0</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.3.0.2</AssemblyVersion>
-    <FileVersion>5.3.0.2</FileVersion>
+    <AssemblyVersion>5.3.0.3</AssemblyVersion>
+    <FileVersion>5.3.0.3</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-	<PackageReleaseNotes>- Added crypto order book streaming support into the `IAlpacaCryptoStreamingClient` interface.</PackageReleaseNotes>
+	<PackageReleaseNotes>- Added the new `HttpStatusCode` property into the `RestClientErrorException` class with value of the original HTTP return status code.
+- Order cancellation methods in the `IAlpacaTradingClient` interface were renamed (`Delete` -> `Cancel`).</PackageReleaseNotes>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
