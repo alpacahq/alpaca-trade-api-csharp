@@ -79,6 +79,14 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public Adjustment? Adjustment { get; set; }
 
+        /// <summary>
+        /// Gets or sets the feed to pull market data from. The <see cref="MarkedDataFeed.Sip"/> and
+        /// <see cref="MarkedDataFeed.Otc"/> are only available to those with a subscription. Default is
+        /// <see cref="MarkedDataFeed.Iex"/> for free plans and <see cref="MarkedDataFeed.Sip"/> for paid.
+        /// </summary>
+        [UsedImplicitly]
+        public MarkedDataFeed? Feed { get; set; }
+
         /// <inheritdoc />
         protected override String LastPathSegment => "bars";
 
@@ -87,6 +95,7 @@ namespace Alpaca.Markets
             queryBuilder
                 // ReSharper disable once StringLiteralTypo
                 .AddParameter("timeframe", TimeFrame.ToString())
-                .AddParameter("adjustment", Adjustment);
+                .AddParameter("adjustment", Adjustment)
+                .AddParameter("feed", Feed);
     }
 }

@@ -493,6 +493,9 @@ namespace Alpaca.Markets.Extensions
                     request.GetValidatedFrom(),
                     request.GetValidatedInto(),
                     request.TimeFrame)
+                {
+                    Adjustment = request.Adjustment,
+                }
                 .WithPageSize(request.GetPageSize());
 
         private static HistoricalQuotesRequest getValidatedRequestWithoutPageToken(
