@@ -108,6 +108,14 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
     [UsedImplicitly]
     public Adjustment? Adjustment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the feed to pull market data from. The <see cref="MarkedDataFeed.Sip"/> and
+    /// <see cref="MarkedDataFeed.Otc"/> are only available to those with a subscription. Default is
+    /// <see cref="MarkedDataFeed.Iex"/> for free plans and <see cref="MarkedDataFeed.Sip"/> for paid.
+    /// </summary>
+    [UsedImplicitly]
+    public MarkedDataFeed? Feed { get; set; }
+
     /// <inheritdoc />
     protected override String LastPathSegment => "bars";
 
@@ -116,9 +124,14 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
         queryBuilder
             // ReSharper disable once StringLiteralTypo
             .AddParameter("timeframe", TimeFrame.ToString())
-            .AddParameter("adjustment", Adjustment);
+            .AddParameter("adjustment", Adjustment)
+            .AddParameter("feed", Feed);
 
     HistoricalBarsRequest IHistoricalRequest<HistoricalBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
-        new HistoricalBarsRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto(), TimeFrame) { Adjustment = Adjustment }
+        new HistoricalBarsRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto(), TimeFrame)
+            {
+                Adjustment = Adjustment,
+                Feed = Feed
+            }
             .WithPageSize(this.GetPageSize());
 }
