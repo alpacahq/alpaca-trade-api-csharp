@@ -17,8 +17,20 @@ public interface IAlpacaDataClient :
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only latest bar information.</returns>
     [UsedImplicitly]
+    [Obsolete("This method will be removed in the next major release, use the overload with LatestMarketDataRequest type instead.", true)]
     Task<IBar> GetLatestBarAsync(
         String symbol,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets most recent bar for single asset from Alpaca REST API endpoint.
+    /// </summary>
+    /// <param name="request">Latest bar data request parameters.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Read-only latest bar information.</returns>
+    [UsedImplicitly]
+    Task<IBar> GetLatestBarAsync(
+        LatestMarketDataRequest request,
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -28,19 +40,43 @@ public interface IAlpacaDataClient :
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only dictionary with the latest bars information.</returns>
     [UsedImplicitly]
+    [Obsolete("This method will be removed in the next major release, use the overload with LatestMarketDataRequest type instead.", true)]
     Task<IReadOnlyDictionary<String, IBar>> ListLatestBarsAsync(
         IEnumerable<String> symbols,
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets most recent trade for single asset from Alpaca REST API endpoint.
+    /// Gets most recent bars for several assets from Alpaca REST API endpoint.
+    /// </summary>
+    /// <param name="request">Latest bar data request parameters.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Read-only dictionary with the latest bars information.</returns>
+    [UsedImplicitly]
+    Task<IReadOnlyDictionary<String, IBar>> ListLatestBarsAsync(
+        LatestMarketDataListRequest request,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets most recent trade for singe asset from Alpaca REST API endpoint.
     /// </summary>
     /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only latest trade information.</returns>
     [UsedImplicitly]
+    [Obsolete("This method will be removed in the next major release, use the overload with LatestMarketDataRequest type instead.", true)]
     Task<ITrade> GetLatestTradeAsync(
         String symbol,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets most recent trade for singe asset from Alpaca REST API endpoint.
+    /// </summary>
+    /// <param name="request">Latest trade data request parameters.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Read-only latest trade information.</returns>
+    [UsedImplicitly]
+    Task<ITrade> GetLatestTradeAsync(
+        LatestMarketDataRequest request,
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -50,19 +86,43 @@ public interface IAlpacaDataClient :
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only dictionary with the latest trades information.</returns>
     [UsedImplicitly]
+    [Obsolete("This method will be removed in the next major release, use the overload with LatestMarketDataRequest type instead.", true)]
     Task<IReadOnlyDictionary<String, ITrade>> ListLatestTradesAsync(
         IEnumerable<String> symbols,
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets current quote for single asset from Alpaca REST API endpoint.
+    /// Gets most recent trades for several assets from Alpaca REST API endpoint.
+    /// </summary>
+    /// <param name="request">Latest trade data request parameters.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Read-only dictionary with the latest trades information.</returns>
+    [UsedImplicitly]
+    Task<IReadOnlyDictionary<String, ITrade>> ListLatestTradesAsync(
+        LatestMarketDataListRequest request,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets most recent quote for singe asset from Alpaca REST API endpoint.
     /// </summary>
     /// <param name="symbol">Asset symbol for data retrieval.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Read-only latest quote information.</returns>
+    [UsedImplicitly]
+    [Obsolete("This method will be removed in the next major release, use the overload with LatestMarketDataRequest type instead.", true)]
+    Task<IQuote> GetLatestQuoteAsync(
+        String symbol,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets most recent quote for singe asset from Alpaca REST API endpoint.
+    /// </summary>
+    /// <param name="request">Latest quote data request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only current quote information.</returns>
     [UsedImplicitly]
     Task<IQuote> GetLatestQuoteAsync(
-        String symbol,
+        LatestMarketDataRequest request,
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -72,19 +132,43 @@ public interface IAlpacaDataClient :
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only dictionary with the latest quotes information.</returns>
     [UsedImplicitly]
+    [Obsolete("This method will be removed in the next major release, use the overload with LatestMarketDataRequest type instead.", true)]
     Task<IReadOnlyDictionary<String, IQuote>> ListLatestQuotesAsync(
         IEnumerable<String> symbols,
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Gets current snapshot (latest trade/quote and minute/days bars) for single asset from Alpaca REST API endpoint.
+    /// Gets most recent quotes for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbol">Asset symbol for data retrieval.</param>
+    /// <param name="request">Latest quote data request parameters.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Read-only dictionary with the latest quotes information.</returns>
+    [UsedImplicitly]
+    Task<IReadOnlyDictionary<String, IQuote>> ListLatestQuotesAsync(
+        LatestMarketDataListRequest request,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets current snapshot (latest trade/quote and minute/days bars) for singe asset from Alpaca REST API endpoint.
+    /// </summary>
+    /// <param name="symbol">Asset symbols for data retrieval.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Read-only current snapshot information.</returns>
+    [UsedImplicitly]
+    [Obsolete("This method will be removed in the next major release, use the overload with LatestMarketDataRequest type instead.", true)]
+    Task<ISnapshot> GetSnapshotAsync(
+        String symbol,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets current snapshot (latest trade/quote and minute/days bars) for singe asset from Alpaca REST API endpoint.
+    /// </summary>
+    /// <param name="request">Latest snapshot data request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only current snapshot information.</returns>
     [UsedImplicitly]
     Task<ISnapshot> GetSnapshotAsync(
-        String symbol,
+        LatestMarketDataRequest request,
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -94,6 +178,7 @@ public interface IAlpacaDataClient :
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only dictionary with the current snapshot information.</returns>
     [UsedImplicitly]
+    [Obsolete("This method will be removed in the next major release, use the overload with LatestMarketDataRequest type instead.", true)]
     Task<IReadOnlyDictionary<String, ISnapshot>> ListSnapshotsAsync(
         IEnumerable<String> symbols,
         CancellationToken cancellationToken = default);
@@ -101,7 +186,18 @@ public interface IAlpacaDataClient :
     /// <summary>
     /// Gets current snapshot (latest trade/quote and minute/days bars) for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbols">List of asset symbols for data retrieval.</param>
+    /// <param name="request">Latest snapshot data request parameters.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Read-only dictionary with the current snapshot information.</returns>
+    [UsedImplicitly]
+    Task<IReadOnlyDictionary<String, ISnapshot>> ListSnapshotsAsync(
+        LatestMarketDataListRequest request,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets current snapshot (latest trade/quote and minute/days bars) for several assets from Alpaca REST API endpoint.
+    /// </summary>
+    /// <param name="symbols">List of asset names for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only dictionary with the current snapshot information.</returns>
     [UsedImplicitly]

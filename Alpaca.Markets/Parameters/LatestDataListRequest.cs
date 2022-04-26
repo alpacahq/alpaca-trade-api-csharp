@@ -37,7 +37,7 @@ public sealed class LatestDataListRequest : Validation.IRequest
         new UriBuilder(httpClient.BaseAddress!)
         {
             Query = await new QueryBuilder()
-                .AddParameter("symbols", String.Join(",", _symbols))
+                .AddParameter("symbols", Symbols)
                 .AddParameter("exchange", Exchange.ToEnumString())
                 .AsStringAsync().ConfigureAwait(false)
         }.AppendPath($"{lastPathSegment}/latest");

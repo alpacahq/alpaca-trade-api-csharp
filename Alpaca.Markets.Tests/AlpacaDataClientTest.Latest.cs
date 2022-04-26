@@ -9,7 +9,7 @@ public sealed partial class AlpacaDataClientTest
 
         mock.AddLatestBarExpectation(PathPrefix, Stock);
 
-        var bar = await mock.Client.GetLatestBarAsync(Stock);
+        var bar = await mock.Client.GetLatestBarAsync(new LatestMarketDataRequest(Stock));
 
         Assert.True(bar.Validate(Stock));
     }
@@ -21,7 +21,8 @@ public sealed partial class AlpacaDataClientTest
 
         mock.AddLatestBarsExpectation(PathPrefix, _symbols);
 
-        var bars = await mock.Client.ListLatestBarsAsync(_symbols);
+        var bars = await mock.Client.ListLatestBarsAsync(
+            new LatestMarketDataListRequest(_symbols));
 
         Assert.NotNull(bars);
         Assert.NotEmpty(bars);
@@ -37,7 +38,7 @@ public sealed partial class AlpacaDataClientTest
 
         mock.AddLatestQuoteExpectation(PathPrefix, Stock);
 
-        var quote = await mock.Client.GetLatestQuoteAsync(Stock);
+        var quote = await mock.Client.GetLatestQuoteAsync(new LatestMarketDataRequest(Stock));
 
         Assert.True(quote.Validate(Stock));
     }
@@ -49,7 +50,8 @@ public sealed partial class AlpacaDataClientTest
 
         mock.AddLatestQuotesExpectation(PathPrefix, _symbols);
 
-        var quotes = await mock.Client.ListLatestQuotesAsync(_symbols);
+        var quotes = await mock.Client.ListLatestQuotesAsync(
+            new LatestMarketDataListRequest(_symbols));
 
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes);
@@ -65,7 +67,7 @@ public sealed partial class AlpacaDataClientTest
 
         mock.AddLatestTradeExpectation(PathPrefix, Stock);
 
-        var trade = await mock.Client.GetLatestTradeAsync(Stock);
+        var trade = await mock.Client.GetLatestTradeAsync(new LatestMarketDataRequest(Stock));
 
         Assert.True(trade.Validate(Stock));
     }
@@ -77,7 +79,8 @@ public sealed partial class AlpacaDataClientTest
 
         mock.AddLatestTradesExpectation(PathPrefix, _symbols);
 
-        var quotes = await mock.Client.ListLatestTradesAsync(_symbols);
+        var quotes = await mock.Client.ListLatestTradesAsync(
+            new LatestMarketDataListRequest(_symbols));
 
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes);
