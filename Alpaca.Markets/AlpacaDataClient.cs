@@ -75,41 +75,94 @@ namespace Alpaca.Markets
         public Task<IBar> GetLatestBarAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IBar, JsonLatestBar>(
-                $"{symbol.EnsureNotNull(nameof(symbol))}/bars/latest",
-                cancellationToken);
+            GetLatestBarAsync(new LatestMarketDataRequest(symbol), cancellationToken);
+
+        public async Task<IBar> GetLatestBarAsync(
+            LatestMarketDataRequest request,
+            CancellationToken cancellationToken = default) =>
+            await _httpClient.GetAsync<IBar, JsonLatestBar>(
+                await request.GetUriBuilderAsync(_httpClient, "bars/latest").ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
 
         public Task<IReadOnlyDictionary<String, IBar>> ListLatestBarsAsync(
             IEnumerable<String> symbols,
             CancellationToken cancellationToken = default) =>
+            ListLatestBarsAsync(new LatestMarketDataListRequest(symbols), cancellationToken);
+
+        public Task<IReadOnlyDictionary<String, IBar>> ListLatestBarsAsync(
+            LatestMarketDataListRequest request,
+            CancellationToken cancellationToken = default) =>
             getLatestAsync<IBar, JsonHistoricalBar>(
-                symbols, "bars", _ => _.Bars, cancellationToken);
+                request, "bars/latest", _ => _.Bars, cancellationToken);
 
         public Task<ITrade> GetLatestTradeAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<ITrade, JsonLatestTrade>(
-                $"{symbol.EnsureNotNull(nameof(symbol))}/trades/latest",
-                cancellationToken);
+            GetLatestTradeAsync(new LatestMarketDataRequest(symbol), cancellationToken);
+
+        public async Task<ITrade> GetLatestTradeAsync(
+            LatestMarketDataRequest request,
+            CancellationToken cancellationToken = default) =>
+            await _httpClient.GetAsync<ITrade, JsonLatestTrade>(
+                await request.GetUriBuilderAsync(_httpClient, "trades/latest").ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
+
+        public Task<IReadOnlyDictionary<String, ITrade>> ListLatestTradesAsync(
+            IEnumerable<String> symbols,
+            CancellationToken cancellationToken = default) =>
+            ListLatestTradesAsync(new LatestMarketDataListRequest(symbols), cancellationToken);
+
+        public Task<IReadOnlyDictionary<String, ITrade>> ListLatestTradesAsync(
+            LatestMarketDataListRequest request,
+            CancellationToken cancellationToken = default) =>
+            getLatestAsync<ITrade, JsonHistoricalTrade>(
+                request, "trades/latest", _ => _.Trades, cancellationToken);
 
         public Task<IQuote> GetLatestQuoteAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<IQuote, JsonLatestQuote<JsonHistoricalQuote>>(
-                $"{symbol.EnsureNotNull(nameof(symbol))}/quotes/latest",
-                cancellationToken);
+            GetLatestQuoteAsync(new LatestMarketDataRequest(symbol), cancellationToken);
+
+        public async Task<IQuote> GetLatestQuoteAsync(
+            LatestMarketDataRequest request,
+            CancellationToken cancellationToken = default) =>
+            await _httpClient.GetAsync<IQuote, JsonLatestQuote<JsonHistoricalQuote>>(
+                await request.GetUriBuilderAsync(_httpClient, "quotes/latest").ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
+
+        public Task<IReadOnlyDictionary<String, IQuote>> ListLatestQuotesAsync(
+            IEnumerable<String> symbols,
+            CancellationToken cancellationToken = default) =>
+            ListLatestQuotesAsync(new LatestMarketDataListRequest(symbols), cancellationToken);
+
+        public Task<IReadOnlyDictionary<String, IQuote>> ListLatestQuotesAsync(
+            LatestMarketDataListRequest request,
+            CancellationToken cancellationToken = default) =>
+            getLatestAsync<IQuote, JsonHistoricalQuote>(
+                request, "quotes/latest", _ => _.Quotes, cancellationToken);
 
         public Task<ISnapshot> GetSnapshotAsync(
             String symbol,
             CancellationToken cancellationToken = default) =>
-            _httpClient.GetAsync<ISnapshot, JsonSnapshot>(
-                $"{symbol.EnsureNotNull(nameof(symbol))}/snapshot", cancellationToken);
+            GetSnapshotAsync(new LatestMarketDataRequest(symbol), cancellationToken);
 
-        public async Task<IReadOnlyDictionary<String, ISnapshot>> ListSnapshotsAsync(
+        public async Task<ISnapshot> GetSnapshotAsync(
+            LatestMarketDataRequest request,
+            CancellationToken cancellationToken = default) =>
+            await _httpClient.GetAsync<ISnapshot, JsonSnapshot>(
+                await request.GetUriBuilderAsync(_httpClient, "/snapshot").ConfigureAwait(false),
+                cancellationToken).ConfigureAwait(false);
+
+        public Task<IReadOnlyDictionary<String, ISnapshot>> ListSnapshotsAsync(
             IEnumerable<String> symbols,
             CancellationToken cancellationToken = default) =>
+            ListSnapshotsAsync(new LatestMarketDataListRequest(symbols), cancellationToken);
+
+        public async Task<IReadOnlyDictionary<String, ISnapshot>> ListSnapshotsAsync(
+            LatestMarketDataListRequest request,
+            CancellationToken cancellationToken = default) =>
             await _httpClient.GetAsync<String, ISnapshot, String, JsonSnapshot>(
-                await getUriBuilder(symbols, "snapshots").ConfigureAwait(false),
+                await request.GetUriBuilderAsync(_httpClient, "snapshots").ConfigureAwait(false),
                 StringComparer.Ordinal, withSymbol<ISnapshot, JsonSnapshot>,
                 cancellationToken).ConfigureAwait(false);
 
@@ -203,40 +256,16 @@ namespace Alpaca.Markets
                     .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
                 cancellationToken).ConfigureAwait(false);
 
-
-        public Task<IReadOnlyDictionary<String, ITrade>> ListLatestTradesAsync(
-            IEnumerable<String> symbols,
-            CancellationToken cancellationToken = default) =>
-            getLatestAsync<ITrade, JsonHistoricalTrade>(
-                symbols, "trades", _ => _.Trades, cancellationToken);
-
-
-        public Task<IReadOnlyDictionary<String, IQuote>> ListLatestQuotesAsync(
-            IEnumerable<String> symbols,
-            CancellationToken cancellationToken = default) =>
-            getLatestAsync<IQuote, JsonHistoricalQuote>(
-                symbols, "quotes", _ => _.Quotes, cancellationToken);
-
         private async Task<IReadOnlyDictionary<String, TApi>> getLatestAsync<TApi, TJson>(
-            IEnumerable<String> symbols,
-            String items,
+            LatestMarketDataListRequest request,
+            String lastPathSegment,
             Func<JsonLatestData<JsonHistoricalQuote>, Dictionary<String, TJson>> itemsSelector,
             CancellationToken cancellationToken)
             where TJson : TApi, ISymbolMutable =>
             await _httpClient.GetAsync(
-                await getUriBuilder(symbols, $"{items}/latest").ConfigureAwait(false),
+                await request.GetUriBuilderAsync(_httpClient, lastPathSegment).ConfigureAwait(false),
                 itemsSelector, withSymbol<TApi, TJson>,
                 cancellationToken).ConfigureAwait(false);
-
-        private async ValueTask<UriBuilder> getUriBuilder(
-            IEnumerable<String> symbols,
-            String path) =>
-            new UriBuilder(_httpClient.BaseAddress!)
-            {
-                Query = await new QueryBuilder()
-                    .AddParameter("symbols", String.Join(",", symbols))
-                    .AsStringAsync().ConfigureAwait(false)
-            }.AppendPath(path);
 
         private static TApi withSymbol<TApi, TJson>(
             KeyValuePair<String, TJson> kvp)

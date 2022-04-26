@@ -494,7 +494,7 @@ namespace Alpaca.Markets.Extensions
                     request.GetValidatedInto(),
                     request.TimeFrame)
                 {
-                    Adjustment = request.Adjustment,
+                    Adjustment = request.Adjustment
                 }
                 .WithPageSize(request.GetPageSize());
 

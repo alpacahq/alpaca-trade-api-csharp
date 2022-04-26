@@ -8,24 +8,19 @@ using JetBrains.Annotations;
 namespace Alpaca.Markets
 {
     /// <summary>
-    /// Encapsulates data for latest crypto data requests on Alpaca Data API v2.
+    /// Encapsulates data for latest stock data requests on Alpaca Data API v2.
     /// </summary>
-    public sealed class LatestDataListRequest : Validation.IRequest
+    public sealed class LatestMarketDataListRequest : Validation.IRequest
     {
         private readonly HashSet<String> _symbols = new(StringComparer.Ordinal);
 
         /// <summary>
-        /// Creates new instance of <see cref="LatestDataListRequest"/> object.
+        /// Creates new instance of <see cref="LatestMarketDataListRequest"/> object.
         /// </summary>
         /// <param name="symbols">Asset name for data retrieval.</param>
-        /// <param name="exchange">Crypto exchange for data retrieval.</param>
-        public LatestDataListRequest(
-            IEnumerable<String> symbols,
-            CryptoExchange exchange)
-        {
+        public LatestMarketDataListRequest(
+            IEnumerable<String> symbols) =>
             _symbols.UnionWith(symbols.EnsureNotNull(nameof(symbols)));
-            Exchange = exchange;
-        }
 
         /// <summary>
         /// Gets asset name for data retrieval.
@@ -34,10 +29,12 @@ namespace Alpaca.Markets
         public IReadOnlyCollection<String> Symbols => _symbols;
 
         /// <summary>
-        /// Gets crypto exchange for data retrieval.
+        /// Gets or sets the feed to pull market data from. The <see cref="MarkedDataFeed.Sip"/> and
+        /// <see cref="MarkedDataFeed.Otc"/> are only available to those with a subscription. Default is
+        /// <see cref="MarkedDataFeed.Iex"/> for free plans and <see cref="MarkedDataFeed.Sip"/> for paid.
         /// </summary>
         [UsedImplicitly]
-        public CryptoExchange Exchange { get; }
+        public MarkedDataFeed? Feed { get; set; }
 
         internal async ValueTask<UriBuilder> GetUriBuilderAsync(
             HttpClient httpClient,
@@ -46,9 +43,9 @@ namespace Alpaca.Markets
             {
                 Query = await new QueryBuilder()
                     .AddParameter("symbols", Symbols)
-                    .AddParameter("exchange", Exchange.ToEnumString())
+                    .AddParameter("feed", Feed)
                     .AsStringAsync().ConfigureAwait(false)
-            }.AppendPath($"{lastPathSegment}/latest");
+            }.AppendPath(lastPathSegment);
 
         IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
         {
