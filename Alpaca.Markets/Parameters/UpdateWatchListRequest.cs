@@ -26,7 +26,7 @@ namespace Alpaca.Markets
             WatchListId = watchListId;
             Name = name;
             _assets.AddRange(
-                // ReSharper disable once ConstantNullCoalescingCondition
+                // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
                 (assets ?? Enumerable.Empty<String>())
                 .Distinct(StringComparer.Ordinal));
         }

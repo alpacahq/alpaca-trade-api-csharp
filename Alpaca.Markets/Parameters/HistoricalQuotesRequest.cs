@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace Alpaca.Markets
 {
@@ -23,7 +24,19 @@ namespace Alpaca.Markets
         {
         }
 
+        /// <summary>
+        /// Gets or sets the feed to pull market data from. The <see cref="MarkedDataFeed.Sip"/> and
+        /// <see cref="MarkedDataFeed.Otc"/> are only available to those with a subscription. Default is
+        /// <see cref="MarkedDataFeed.Iex"/> for free plans and <see cref="MarkedDataFeed.Sip"/> for paid.
+        /// </summary>
+        [UsedImplicitly]
+        public MarkedDataFeed? Feed { get; set; }
+
         /// <inheritdoc />
         protected override String LastPathSegment => "quotes";
+
+        internal override QueryBuilder AddParameters(
+            QueryBuilder queryBuilder) => 
+            queryBuilder.AddParameter("feed", Feed);
     }
 }
