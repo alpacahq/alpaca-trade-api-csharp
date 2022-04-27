@@ -19,8 +19,8 @@ public static partial class AlpacaCryptoStreamingClientExtensions
         this IAlpacaCryptoStreamingClient client,
         params String[] symbols) =>
         getOrderBookSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the order book updates subscription for the all assets from the <paramref name="symbols"/> list.
@@ -36,8 +36,8 @@ public static partial class AlpacaCryptoStreamingClientExtensions
         this IAlpacaCryptoStreamingClient client,
         IEnumerable<String> symbols) =>
         getOrderBookSubscription(
-            client.EnsureNotNull(nameof(client)),
-            symbols.EnsureNotNull(nameof(symbols)));
+            client.EnsureNotNull(),
+            symbols.EnsureNotNull());
 
     /// <summary>
     /// Gets the order book updates subscription for the <paramref name="symbol"/> asset. This subscription is
@@ -55,7 +55,7 @@ public static partial class AlpacaCryptoStreamingClientExtensions
         this IAlpacaCryptoStreamingClient client,
         String symbol) =>
         DisposableAlpacaDataSubscription<IOrderBook>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetOrderBookSubscription(symbol),
+            client.EnsureNotNull().GetOrderBookSubscription(symbol),
             client);
 
     /// <summary>
@@ -74,7 +74,7 @@ public static partial class AlpacaCryptoStreamingClientExtensions
         this IAlpacaCryptoStreamingClient client,
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<IOrderBook>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetOrderBookSubscription(symbols),
+            client.EnsureNotNull().GetOrderBookSubscription(symbols),
             client);
 
     /// <summary>
@@ -93,7 +93,7 @@ public static partial class AlpacaCryptoStreamingClientExtensions
         this IAlpacaCryptoStreamingClient client,
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<IOrderBook>.CreateAsync(
-            client.EnsureNotNull(nameof(client)).GetOrderBookSubscription(symbols),
+            client.EnsureNotNull().GetOrderBookSubscription(symbols),
             client);
 
     private static IAlpacaDataSubscription<IOrderBook> getOrderBookSubscription(
