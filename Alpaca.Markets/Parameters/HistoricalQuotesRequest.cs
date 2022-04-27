@@ -103,6 +103,6 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
         queryBuilder.AddParameter("feed", Feed);
 
     HistoricalQuotesRequest IHistoricalRequest<HistoricalQuotesRequest, IQuote>.GetValidatedRequestWithoutPageToken() =>
-        new HistoricalQuotesRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto())
+        new HistoricalQuotesRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto()) { Feed = Feed }
             .WithPageSize(this.GetPageSize());
 }

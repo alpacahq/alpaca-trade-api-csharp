@@ -103,6 +103,6 @@ public sealed class HistoricalTradesRequest : HistoricalRequestBase, IHistorical
         queryBuilder.AddParameter("feed", Feed);
 
     HistoricalTradesRequest IHistoricalRequest<HistoricalTradesRequest, ITrade>.GetValidatedRequestWithoutPageToken() =>
-        new HistoricalTradesRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto())
+        new HistoricalTradesRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto()) { Feed = Feed }
             .WithPageSize(this.GetPageSize());
 }
