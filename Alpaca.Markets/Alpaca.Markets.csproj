@@ -7,22 +7,23 @@
 	<WarningLevel>5</WarningLevel>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>4.1.21</Version>
+    <Version>4.1.22</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>4.1.21.0</AssemblyVersion>
-    <FileVersion>4.1.21.0</FileVersion>
+    <AssemblyVersion>4.1.22.0</AssemblyVersion>
+    <FileVersion>4.1.22.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn></NoWarn>
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-	<PackageReleaseNotes>- Fixed problem with fractional order quantity validation for market and bracket orders.</PackageReleaseNotes>
+	<PackageReleaseNotes>- Added the new `HttpStatusCode` property into the `RestClientErrorException` class with value of the original HTTP return status code.
+- The optional (nullable) `Feed` property added into all historical data (bars, trades, and quotes) requests.</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
