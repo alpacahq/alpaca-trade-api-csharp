@@ -81,7 +81,7 @@ namespace Alpaca.Markets
             LatestMarketDataRequest request,
             CancellationToken cancellationToken = default) =>
             await _httpClient.GetAsync<IBar, JsonLatestBar>(
-                await request.GetUriBuilderAsync(_httpClient, "bars/latest").ConfigureAwait(false),
+                await request.Validate().GetUriBuilderAsync(_httpClient, "bars/latest").ConfigureAwait(false),
                 cancellationToken).ConfigureAwait(false);
 
         public Task<IReadOnlyDictionary<String, IBar>> ListLatestBarsAsync(
@@ -104,7 +104,7 @@ namespace Alpaca.Markets
             LatestMarketDataRequest request,
             CancellationToken cancellationToken = default) =>
             await _httpClient.GetAsync<ITrade, JsonLatestTrade>(
-                await request.GetUriBuilderAsync(_httpClient, "trades/latest").ConfigureAwait(false),
+                await request.Validate().GetUriBuilderAsync(_httpClient, "trades/latest").ConfigureAwait(false),
                 cancellationToken).ConfigureAwait(false);
 
         public Task<IReadOnlyDictionary<String, ITrade>> ListLatestTradesAsync(
@@ -127,7 +127,7 @@ namespace Alpaca.Markets
             LatestMarketDataRequest request,
             CancellationToken cancellationToken = default) =>
             await _httpClient.GetAsync<IQuote, JsonLatestQuote<JsonHistoricalQuote>>(
-                await request.GetUriBuilderAsync(_httpClient, "quotes/latest").ConfigureAwait(false),
+                await request.Validate().GetUriBuilderAsync(_httpClient, "quotes/latest").ConfigureAwait(false),
                 cancellationToken).ConfigureAwait(false);
 
         public Task<IReadOnlyDictionary<String, IQuote>> ListLatestQuotesAsync(
@@ -150,7 +150,7 @@ namespace Alpaca.Markets
             LatestMarketDataRequest request,
             CancellationToken cancellationToken = default) =>
             await _httpClient.GetAsync<ISnapshot, JsonSnapshot>(
-                await request.GetUriBuilderAsync(_httpClient, "/snapshot").ConfigureAwait(false),
+                await request.GetUriBuilderAsync(_httpClient, "snapshot").ConfigureAwait(false),
                 cancellationToken).ConfigureAwait(false);
 
         public Task<IReadOnlyDictionary<String, ISnapshot>> ListSnapshotsAsync(
@@ -162,7 +162,7 @@ namespace Alpaca.Markets
             LatestMarketDataListRequest request,
             CancellationToken cancellationToken = default) =>
             await _httpClient.GetAsync<String, ISnapshot, String, JsonSnapshot>(
-                await request.GetUriBuilderAsync(_httpClient, "snapshots").ConfigureAwait(false),
+                await request.Validate().GetUriBuilderAsync(_httpClient, "snapshots").ConfigureAwait(false),
                 StringComparer.Ordinal, withSymbol<ISnapshot, JsonSnapshot>,
                 cancellationToken).ConfigureAwait(false);
 
@@ -263,7 +263,7 @@ namespace Alpaca.Markets
             CancellationToken cancellationToken)
             where TJson : TApi, ISymbolMutable =>
             await _httpClient.GetAsync(
-                await request.GetUriBuilderAsync(_httpClient, lastPathSegment).ConfigureAwait(false),
+                await request.Validate().GetUriBuilderAsync(_httpClient, lastPathSegment).ConfigureAwait(false),
                 itemsSelector, withSymbol<TApi, TJson>,
                 cancellationToken).ConfigureAwait(false);
 
