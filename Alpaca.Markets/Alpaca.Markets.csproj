@@ -2,26 +2,26 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5.0</TargetFrameworks>
-    <PackageValidationBaselineVersion>5.2.0</PackageValidationBaselineVersion>
+    <PackageValidationBaselineVersion>5.3.0</PackageValidationBaselineVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningLevel>5</WarningLevel>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.3.0</Version>
+    <Version>5.3.1</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.3.0.3</AssemblyVersion>
-    <FileVersion>5.3.0.3</FileVersion>
+    <AssemblyVersion>5.3.1.0</AssemblyVersion>
+    <FileVersion>5.3.1.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-	<PackageReleaseNotes>- Added the new `HttpStatusCode` property into the `RestClientErrorException` class with value of the original HTTP return status code.
-- Order cancellation methods in the `IAlpacaTradingClient` interface were renamed (`Delete` -> `Cancel`).</PackageReleaseNotes>
+    <PackageReleaseNotes>- All the latest stock data request methods in the `IAlpacaDataClient` interface now have related request types for specifying the optional market data feed parameter.
+- The optional (nullable) `Feed` property added into all historical data (bars, trades, and quotes) requests.</PackageReleaseNotes>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
