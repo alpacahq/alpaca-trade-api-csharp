@@ -120,7 +120,8 @@ namespace Alpaca.Markets.Extensions
                     getValidatedInto(request),
                     request.TimeFrame)
                 {
-                    Adjustment = request.Adjustment
+                    Adjustment = request.Adjustment,
+                    Feed = request.Feed
                 }
                 .WithPageSize(request.Pagination.Size ?? MaxPageSize);
 
@@ -131,6 +132,9 @@ namespace Alpaca.Markets.Extensions
                     request.Symbol,
                     getValidatedFrom(request),
                     getValidatedInto(request))
+                {
+                    Feed = request.Feed
+                }
                 .WithPageSize(request.Pagination.Size ?? MaxPageSize);
 
         private static HistoricalTradesRequest getValidatedRequestWithoutPageToken(
@@ -140,6 +144,9 @@ namespace Alpaca.Markets.Extensions
                     request.Symbol,
                     getValidatedFrom(request),
                     getValidatedInto(request))
+                {
+                    Feed = request.Feed
+                }
                 .WithPageSize(request.Pagination.Size ?? MaxPageSize);
 
         private static DateTime getValidatedFrom(
