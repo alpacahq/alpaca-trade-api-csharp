@@ -38,6 +38,12 @@ namespace Alpaca.Markets
         public Int64? LimitOrderNumber { get; set; }
 
         /// <summary>
+        /// Gets or sets side of orders in response (all orders if <c>null</c>).
+        /// </summary>
+        [UsedImplicitly]
+        public OrderSide? OrderSide { get; set; }
+
+        /// <summary>
         /// Gets or sets flag for rolling up multi-leg orders under the <see cref="IOrder.Legs"/> property of primary order.
         /// </summary>
         [UsedImplicitly] 
@@ -86,9 +92,10 @@ namespace Alpaca.Markets
                     .AddParameter("direction", OrderListSorting)
                     .AddParameter("until", TimeInterval.Into, "O")
                     .AddParameter("after", TimeInterval.From, "O")
-                    .AddParameter("limit", LimitOrderNumber)
                     .AddParameter("nested", RollUpNestedOrders)
+                    .AddParameter("limit", LimitOrderNumber)
                     .AddParameter("symbols", _symbols)
+                    .AddParameter("side", OrderSide)
                     .AsStringAsync().ConfigureAwait(false)
             };
 
