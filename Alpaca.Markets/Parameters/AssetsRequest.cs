@@ -17,12 +17,19 @@ public sealed class AssetsRequest
     [UsedImplicitly]
     public AssetClass? AssetClass { get; set; }
 
+    /// <summary>
+    /// Gets or sets asset exchange for filtering. The <c>null</c> value means "no filtering by exchanges".
+    /// </summary>
+    [UsedImplicitly]
+    public Exchange? Exchange { get; set; }
+
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
         HttpClient httpClient) =>
         new(httpClient.BaseAddress!)
         {
             Path = "v2/assets",
             Query = await new QueryBuilder()
+                .AddParameter("exchange", Exchange)
                 .AddParameter("status", AssetStatus)
                 .AddParameter("asset_class", AssetClass)
                 .AsStringAsync().ConfigureAwait(false)

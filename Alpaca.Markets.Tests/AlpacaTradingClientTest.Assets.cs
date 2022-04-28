@@ -28,7 +28,8 @@ public sealed partial class AlpacaTradingClientTest
         var assets = await mock.Client.ListAssetsAsync(new AssetsRequest
         {
             AssetStatus = AssetStatus.Active,
-            AssetClass = AssetClass.Crypto
+            AssetClass = AssetClass.UsEquity,
+            Exchange = Exchange.Arca
         });
 
         validateAsset(assets.Single(), assetId, Crypto);
