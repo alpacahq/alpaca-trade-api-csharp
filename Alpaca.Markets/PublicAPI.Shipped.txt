@@ -129,6 +129,8 @@ Alpaca.Markets.AssetsRequest.AssetClass.set -> void
 Alpaca.Markets.AssetsRequest.AssetsRequest() -> void
 Alpaca.Markets.AssetsRequest.AssetStatus.get -> Alpaca.Markets.AssetStatus?
 Alpaca.Markets.AssetsRequest.AssetStatus.set -> void
+Alpaca.Markets.AssetsRequest.Exchange.get -> Alpaca.Markets.Exchange?
+Alpaca.Markets.AssetsRequest.Exchange.set -> void
 Alpaca.Markets.AssetStatus
 Alpaca.Markets.AssetStatus.Active = 0 -> Alpaca.Markets.AssetStatus
 Alpaca.Markets.AssetStatus.Delisted = 2 -> Alpaca.Markets.AssetStatus
@@ -744,6 +746,8 @@ Alpaca.Markets.ListOrdersRequest.LimitOrderNumber.set -> void
 Alpaca.Markets.ListOrdersRequest.ListOrdersRequest() -> void
 Alpaca.Markets.ListOrdersRequest.OrderListSorting.get -> Alpaca.Markets.SortDirection?
 Alpaca.Markets.ListOrdersRequest.OrderListSorting.set -> void
+Alpaca.Markets.ListOrdersRequest.OrderSide.get -> Alpaca.Markets.OrderSide?
+Alpaca.Markets.ListOrdersRequest.OrderSide.set -> void
 Alpaca.Markets.ListOrdersRequest.OrderStatusFilter.get -> Alpaca.Markets.OrderStatusFilter?
 Alpaca.Markets.ListOrdersRequest.OrderStatusFilter.set -> void
 Alpaca.Markets.ListOrdersRequest.RollUpNestedOrders.get -> bool?
