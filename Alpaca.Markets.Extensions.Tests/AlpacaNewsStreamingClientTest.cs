@@ -98,6 +98,14 @@ public sealed class AlpacaNewsStreamingClientTest
     }
 
     [Fact]
+    public Task OnNormalErrorWithReconnectWorks() => 
+        onErrorWithReconnectWorks<InvalidOperationException>();
+
+    [Fact]
+    public Task OnTimeoutErrorWithReconnectWorks() => 
+        onErrorWithReconnectWorks<TaskCanceledException>();
+
+    [Fact]
     public void GetNewsSubscriptionWorks()
     {
         var client = createMockClient(
@@ -128,6 +136,43 @@ public sealed class AlpacaNewsStreamingClientTest
 
         await subscriptionOne.DisposeAsync();
         client.VerifyAll();
+    }
+
+    private async Task onErrorWithReconnectWorks<TException>()
+        where TException : Exception, new()
+    {
+        var client = createMockClient(
+            _ => _.GetNewsSubscription(It.IsAny<String>()));
+
+        var parameters = new ReconnectionParameters
+        {
+            MaxReconnectionDelay = TimeSpan.FromMilliseconds(100),
+            MinReconnectionDelay = TimeSpan.FromMilliseconds(10),
+            MaxReconnectionAttempts = 0
+        };
+        using var wrapped = client.Object.WithReconnect(parameters);
+
+        wrapped.SocketClosed += HandleClosed;
+        wrapped.OnError += HandleError;
+
+        var result = await wrapped.ConnectAndAuthenticateAsync();
+
+        client.Setup(_ => _.ConnectAndAuthenticateAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(AuthStatus.Authorized);
+        client.Raise(_ => _.SocketClosed += null);
+        client.Raise(_ => _.SocketClosed += null);
+        await Task.Delay(ReconnectionParameters.Default.MaxReconnectionDelay);
+        client.Raise(_ => _.OnError += null, new TException());
+
+        wrapped.OnError -= HandleError;
+        wrapped.SocketClosed -= HandleClosed;
+
+        await wrapped.DisconnectAsync();
+
+        Assert.Equal(AuthStatus.Authorized, result);
+
+        void HandleError(Exception exception) => throw new TException();
+        void HandleClosed() => throw new TException();
     }
 
     private static Mock<IAlpacaNewsStreamingClient> createMockClient<TItem>(

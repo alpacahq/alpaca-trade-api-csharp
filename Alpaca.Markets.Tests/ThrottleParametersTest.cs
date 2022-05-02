@@ -127,4 +127,12 @@ public sealed class ThrottleParametersTest
         var policy = throttleParameters.GetAsyncPolicy();
         Assert.NotNull(policy);
     }
+
+    [Fact]
+    public void DefaultThrottleParametersWorks()
+    {
+        using var client = Environments.Paper.GetAlpacaTradingClient(
+            new SecretKey(Guid.NewGuid().ToString("N"), Guid.NewGuid().ToString("N")));
+        Assert.ThrowsAsync<RestClientErrorException>(() => client.GetClockAsync());
+    }
 }
