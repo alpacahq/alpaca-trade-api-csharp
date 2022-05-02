@@ -1,7 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Newtonsoft.Json.Converters;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 /// <summary>
 /// Day trade margin call protection mode for account. See more information here:

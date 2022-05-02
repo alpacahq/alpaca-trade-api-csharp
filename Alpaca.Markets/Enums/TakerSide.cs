@@ -1,7 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Newtonsoft.Json.Converters;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 /// <summary>
 /// Possible crypto taker side types for Alpaca Crypto Data API.

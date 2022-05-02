@@ -41,8 +41,8 @@ public sealed class RestClientErrorException : Exception
 
     [ExcludeFromCodeCoverage]
     private RestClientErrorException(
-        System.Runtime.Serialization.SerializationInfo info,
-        System.Runtime.Serialization.StreamingContext context)
+        SerializationInfo info,
+        StreamingContext context)
         : base(info, context)
     {
     }

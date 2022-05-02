@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.Runtime.Serialization;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IPage<IBar>) + "<" + nameof(IBar) + ">")]
 internal sealed class JsonBarsPage : IPageMutable<IBar>

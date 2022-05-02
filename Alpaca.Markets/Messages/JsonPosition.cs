@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 [SuppressMessage("ReSharper", "StringLiteralTypo")]
 [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IPosition))]

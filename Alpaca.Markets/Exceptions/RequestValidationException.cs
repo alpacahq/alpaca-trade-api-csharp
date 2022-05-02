@@ -54,8 +54,8 @@ public sealed class RequestValidationException : Exception
 
     [ExcludeFromCodeCoverage]
     private RequestValidationException(
-        System.Runtime.Serialization.SerializationInfo info,
-        System.Runtime.Serialization.StreamingContext context)
+        SerializationInfo info,
+        StreamingContext context)
         : base(info, context)
     {
     }

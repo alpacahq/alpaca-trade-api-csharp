@@ -1,7 +1,4 @@
-﻿using System.Runtime.Serialization;
-using Newtonsoft.Json.Converters;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 /// <summary>
 /// Order statuses filter for <see cref="IAlpacaTradingClient.ListOrdersAsync"/> call from Alpaca REST API.

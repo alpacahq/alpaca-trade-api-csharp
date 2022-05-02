@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json.Converters;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 /// <summary>
 /// Supported tape types for Alpaca Data API.

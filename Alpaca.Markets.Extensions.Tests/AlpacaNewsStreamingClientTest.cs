@@ -138,7 +138,7 @@ public sealed class AlpacaNewsStreamingClientTest
         client.VerifyAll();
     }
 
-    private async Task onErrorWithReconnectWorks<TException>()
+    private static async Task onErrorWithReconnectWorks<TException>()
         where TException : Exception, new()
     {
         var client = createMockClient(
@@ -171,7 +171,7 @@ public sealed class AlpacaNewsStreamingClientTest
 
         Assert.Equal(AuthStatus.Authorized, result);
 
-        void HandleError(Exception exception) => throw new TException();
+        void HandleError(Exception _) => throw new TException();
         void HandleClosed() => throw new TException();
     }
 

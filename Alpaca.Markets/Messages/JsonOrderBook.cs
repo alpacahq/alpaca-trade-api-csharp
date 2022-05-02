@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.Runtime.Serialization;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IOrderBook))]
 [SuppressMessage(

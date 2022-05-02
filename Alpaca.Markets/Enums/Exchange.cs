@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 /// <summary>
 /// Exchanges supported by Alpaca REST API.

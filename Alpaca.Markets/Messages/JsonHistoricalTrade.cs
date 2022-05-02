@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(ITrade))]
 internal sealed class JsonHistoricalTrade : ITrade, ISymbolMutable
