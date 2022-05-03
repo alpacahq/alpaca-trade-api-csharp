@@ -12,13 +12,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.6</AssemblyVersion>
-    <FileVersion>6.0.3.6</FileVersion>
-    <Version>6.0.3-beta4</Version>
+    <AssemblyVersion>6.0.3.7</AssemblyVersion>
+    <FileVersion>6.0.3.7</FileVersion>
+    <Version>6.0.3-rc1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-	<PackageReleaseNotes>- Added crypto order book streaming support into the `IAlpacaCryptoStreamingClient` interface.</PackageReleaseNotes>
+	<PackageReleaseNotes>- Fixed problem with subscription attempt on failed web socket connection (on reconnection).</PackageReleaseNotes>
 	<Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
@@ -75,7 +75,7 @@
   </ItemGroup>
 
   <ItemGroup>
-      <PackageReference Include="Alpaca.Markets" Version="6.0.3-beta4" />
+      <PackageReference Include="Alpaca.Markets" Version="6.0.3-rc1" />
       <PackageReference Include="IsExternalInit" Version="1.0.2">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
