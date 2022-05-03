@@ -123,6 +123,7 @@ namespace Alpaca.Markets.Extensions
 
         private async Task handleSocketClosedImpl()
         {
+            var isConnectedAndAuthorized = false;
             while (!_cancellationTokenSource.IsCancellationRequested &&
                    Interlocked.Increment(ref _reconnectionAttempts) <=
                    _reconnectionParameters.MaxReconnectionAttempts)
@@ -140,6 +141,7 @@ namespace Alpaca.Markets.Extensions
 
                 if (authStatus == AuthStatus.Authorized)
                 {
+                    isConnectedAndAuthorized = true;
                     break;
                 }
 
@@ -147,7 +149,8 @@ namespace Alpaca.Markets.Extensions
                     .ConfigureAwait(false);
             }
 
-            if (Interlocked.Exchange(ref _reconnectionAttempts, 0) <=
+            if (isConnectedAndAuthorized &&
+                Interlocked.Exchange(ref _reconnectionAttempts, 0) <=
                 _reconnectionParameters.MaxReconnectionAttempts)
             {
                 await OnReconnection(_cancellationTokenSource.Token)
