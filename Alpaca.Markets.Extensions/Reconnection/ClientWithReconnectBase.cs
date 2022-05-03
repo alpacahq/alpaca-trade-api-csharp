@@ -121,6 +121,7 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
 
     private async Task handleSocketClosedImpl()
     {
+        var isConnectedAndAuthorized = false;
         while (!_cancellationTokenSource.IsCancellationRequested &&
                Interlocked.Increment(ref _reconnectionAttempts) <=
                _reconnectionParameters.MaxReconnectionAttempts)
@@ -128,7 +129,7 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
 #pragma warning disable CA5394 // Do not use insecure randomness
             await Task.Delay(_random.Next(
 #pragma warning restore CA5394 // Do not use insecure randomness
-                            (Int32)_reconnectionParameters.MinReconnectionDelay.TotalMilliseconds,
+                        (Int32)_reconnectionParameters.MinReconnectionDelay.TotalMilliseconds,
                         (Int32)_reconnectionParameters.MaxReconnectionDelay.TotalMilliseconds),
                     _cancellationTokenSource.Token)
                 .ConfigureAwait(false);
@@ -138,6 +139,7 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
 
             if (authStatus == AuthStatus.Authorized)
             {
+                isConnectedAndAuthorized = true;
                 break;
             }
 
@@ -145,7 +147,8 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
                 .ConfigureAwait(false);
         }
 
-        if (Interlocked.Exchange(ref _reconnectionAttempts, 0) <=
+        if (isConnectedAndAuthorized &&
+            Interlocked.Exchange(ref _reconnectionAttempts, 0) <=
             _reconnectionParameters.MaxReconnectionAttempts)
         {
             await OnReconnection(_cancellationTokenSource.Token)
