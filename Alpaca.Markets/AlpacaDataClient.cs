@@ -175,7 +175,7 @@ namespace Alpaca.Markets
         public Task<IReadOnlyDictionary<String, String>> ListExchangesAsync(
             CancellationToken cancellationToken = default) =>
             _httpClient.GetAsync<IReadOnlyDictionary<String, String>, Dictionary<String, String>>(
-                "v2/stocks/meta/exchanges", cancellationToken);
+                "meta/exchanges", cancellationToken);
 
         public Task<IReadOnlyDictionary<String, String>> ListTradeConditionsAsync(
             Tape tape,
@@ -205,7 +205,7 @@ namespace Alpaca.Markets
                     Query = await new QueryBuilder()
                         .AddParameter("tape", tape.ToEnumString())
                         .AsStringAsync().ConfigureAwait(false)
-                }.AppendPath($"v2/stocks/meta/conditions/{tickType}"),
+                }.AppendPath($"meta/conditions/{tickType}"),
                 cancellationToken).ConfigureAwait(false);
 
         private async Task<IPage<IBar>> listHistoricalBarsAsync(
