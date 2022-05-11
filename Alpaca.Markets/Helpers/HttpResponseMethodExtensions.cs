@@ -8,9 +8,9 @@ internal static class HttpResponseMethodExtensions
         this HttpResponseMessage response)
         where TJson : TApi
     {
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
-            var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-            await using var _ = stream.ConfigureAwait(false);
+#if NETSTANDARD2_1 || NET6_0_OR_GREATER
+        var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        await using var _ = stream.ConfigureAwait(false);
 #else
         using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 #endif
@@ -39,9 +39,9 @@ internal static class HttpResponseMethodExtensions
             return true;
         }
 
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
-            var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-            await using var _ = stream.ConfigureAwait(false);
+#if NETSTANDARD2_1 || NET6_0_OR_GREATER
+        var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        await using var _ = stream.ConfigureAwait(false);
 #else
         using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 #endif

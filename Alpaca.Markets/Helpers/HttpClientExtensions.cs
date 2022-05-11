@@ -8,7 +8,7 @@ internal static partial class HttpClientExtensions
         typeof(HttpClientExtensions).Assembly.GetName().Version!.ToString();
 
     private static readonly Version _httpVersion =
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
+#if NETSTANDARD2_1 || NET6_0_OR_GREATER
         System.Net.HttpVersion.Version20;
 #elif NETFRAMEWORK
         new (2, 0);

@@ -1,7 +1,7 @@
 ﻿using System.Buffers;
 using System.Net.WebSockets;
 
-#if !(NETSTANDARD2_1 || NET5_0_OR_GREATER)
+#if !(NETSTANDARD2_1 || NET6_0_OR_GREATER)
 using System.Runtime.InteropServices;
 #endif
 
@@ -20,7 +20,7 @@ internal sealed class ClientWebSocketWrapper : IWebSocket
     public ValueTask SendAsync(
         ReadOnlySequence<Byte> buffer)
     {
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
+#if NETSTANDARD2_1 || NET6_0_OR_GREATER
         return buffer.IsSingleSegment
             ? _client.SendAsync(
                 buffer.First, WebSocketMessageType.Binary, true, CancellationToken.None)
@@ -42,7 +42,7 @@ internal sealed class ClientWebSocketWrapper : IWebSocket
     public ValueTask<ReceiveResult> ReceiveAsync(
         Memory<Byte> buffer)
     {
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
+#if NETSTANDARD2_1 || NET6_0_OR_GREATER
         return asResult(_client.ReceiveAsync(buffer, CancellationToken.None));
 #elif NETSTANDARD2_0 || NETFRAMEWORK
         _ = MemoryMarshal.TryGetArray<Byte>(buffer, out var arraySegment);
@@ -71,7 +71,7 @@ internal sealed class ClientWebSocketWrapper : IWebSocket
 
         while (buffer.TryGet(ref position, out var segment))
         {
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
+#if NETSTANDARD2_1 || NET6_0_OR_GREATER
             await _client.SendAsync(
                 prevSegment, WebSocketMessageType.Binary, false, CancellationToken.None).ConfigureAwait(false);
 #else
@@ -82,7 +82,7 @@ internal sealed class ClientWebSocketWrapper : IWebSocket
             prevSegment = segment;
         }
 
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
+#if NETSTANDARD2_1 || NET6_0_OR_GREATER
         await _client.SendAsync(
             prevSegment, WebSocketMessageType.Binary, true, CancellationToken.None).ConfigureAwait(false);
 #else
@@ -92,7 +92,7 @@ internal sealed class ClientWebSocketWrapper : IWebSocket
 #endif
     }
 
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
+#if NETSTANDARD2_1 || NET6_0_OR_GREATER
     private static async ValueTask<ReceiveResult> asResult(
         ValueTask<ValueWebSocketReceiveResult> result) =>
         asResult(await result.ConfigureAwait(false));

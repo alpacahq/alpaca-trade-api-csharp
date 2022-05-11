@@ -3,7 +3,7 @@
 internal static partial class HttpClientExtensions
 {
     private static readonly HttpMethod _httpMethodPatch =
-#if NETSTANDARD2_1 || NET5_0_OR_GREATER
+#if NETSTANDARD2_1 || NET6_0_OR_GREATER
             HttpMethod.Patch;
 #else
             new("PATCH");

@@ -58,16 +58,16 @@ public sealed class ThrottleParameters
 
         private static TimeSpan getTimeout(
             HttpRequestMessage request) =>
-#if NET5_0_OR_GREATER
+#if NET6_0_OR_GREATER
             request.Options.TryGetValue(RequestTimeoutOptionKey,
                 out var requestSpecificTimeoutValue)
 #else
             request.Properties.TryGetValue(
-            RequestTimeoutOptionKey, out var value) &&
-        value is TimeSpan requestSpecificTimeoutValue
+                RequestTimeoutOptionKey, out var value) &&
+            value is TimeSpan requestSpecificTimeoutValue
 #endif
                 ? requestSpecificTimeoutValue
-            : _defaultHttpClientTimeout;
+                : _defaultHttpClientTimeout;
     }
 
     private const Int32 DelayMinValueInMilliseconds = 200;
@@ -137,7 +137,7 @@ public sealed class ThrottleParameters
     /// </summary>
     public static ThrottleParameters Default { get; } = new();
 
-#if NET5_0_OR_GREATER
+#if NET6_0_OR_GREATER
     internal static readonly HttpRequestOptionsKey<TimeSpan> RequestTimeoutOptionKey =
         new (nameof(RequestTimeoutOptionKey));
 #else
