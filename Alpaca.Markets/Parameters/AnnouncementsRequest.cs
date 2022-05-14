@@ -72,8 +72,9 @@ public sealed class AnnouncementsRequest : Validation.IRequest
     /// </summary>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("This property will be removed in the next major release. Use the DateInterval property instead.", false)]
-    public IInclusiveTimeInterval TimeInterval => DateInterval.AsInclusiveTimeInterval();
+    [Obsolete("This property will be removed in the next major release. Use the DateInterval property instead.", true)]
+    public IInclusiveTimeInterval TimeInterval =>
+        throw new InvalidOperationException("Use the DateInterval property instead.");
 
     /// <summary>
     /// Gets the date range when searching corporate action announcements.

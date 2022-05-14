@@ -6,24 +6,6 @@
 [ExcludeFromCodeCoverage]
 public static class TimeInterval
 {
-    private readonly record struct Interval
-    {
-        private readonly Interval<DateTime> _interval;
-
-        // ReSharper disable once ConvertToPrimaryConstructor
-        public Interval(Interval<DateTime> interval) => _interval = interval;
-
-        public DateTime? From => _interval.From;
-
-        public DateTime? Into => _interval.Into;
-
-        public Boolean IsEmpty() => _interval.IsEmpty();
-
-        public Boolean IsOpen() => _interval.IsOpen();
-
-        private Boolean equals(DateTime? from, DateTime? into) => From == from && Into == into;
-    }
-
     /// <summary>
     /// Gets boolean flag signals that time interval is empty (both start and end date equal to <c>null</c>).
     /// </summary>
@@ -34,7 +16,7 @@ public static class TimeInterval
     [UsedImplicitly]
     [Obsolete("Use the IsEmpty() method of Interval<DateTime> structure instead of this one.", true)]
     public static Boolean IsEmpty(this ITimeInterval interval) =>
-        new Interval<DateTime>(interval?.From, interval?.Into).IsEmpty();
+        new Interval<DateTime>(interval.EnsureNotNull().From, interval.EnsureNotNull().Into).IsEmpty();
 
     /// <summary>
     /// Gets boolean flag signals that time interval is open (both start or end date equal to <c>null</c>).
@@ -46,7 +28,7 @@ public static class TimeInterval
     [UsedImplicitly]
     [Obsolete("Use the IsOpen() method of Interval<DateTime> structure instead of this one.", true)]
     public static Boolean IsOpen(this ITimeInterval interval) =>
-        new Interval<DateTime>(interval?.From, interval?.Into).IsOpen();
+        new Interval<DateTime>(interval.EnsureNotNull().From, interval.EnsureNotNull().Into).IsOpen();
 
     /// <summary>
     /// Gets exclusive open time interval ending at the <paramref name="value"/> date/time point.
@@ -259,11 +241,4 @@ public static class TimeInterval
         this ITimeInterval interval) =>
         // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
         new (interval?.From.AsDateOnly(), interval?.Into.AsDateOnly());
-    
-    [Obsolete("Used only for reducing code duplication.", true)]
-    internal static IInclusiveTimeInterval AsInclusiveTimeInterval(
-        this Interval<DateOnly> interval) =>
-        throw new InvalidOperationException("Use WithInterval method of the requests type directly.");
-
-    private static Interval wrap(this Interval<DateTime> interval) => new (interval);
 }

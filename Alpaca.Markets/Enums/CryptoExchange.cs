@@ -34,5 +34,5 @@ public enum CryptoExchange
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "CBSE")]
-    Cbse,
+    Cbse
 }
