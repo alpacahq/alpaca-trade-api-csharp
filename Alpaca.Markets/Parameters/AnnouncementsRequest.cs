@@ -39,7 +39,7 @@ public sealed class AnnouncementsRequest : Validation.IRequest
     /// <param name="corporateActionType">Single corporate action type for filtering.</param>
     /// <param name="timeInterval">Date range when searching corporate action announcements.</param>
     [ExcludeFromCodeCoverage]
-    [Obsolete("This constructor will be removed in the next major release. Use overload that takes Interval<DateOnly> argument.", false)]
+    [Obsolete("This constructor will be removed in the next major release. Use overload that takes Interval<DateOnly> argument.", true)]
     public AnnouncementsRequest(
         CorporateActionType corporateActionType,
         IInclusiveTimeInterval timeInterval)
@@ -53,7 +53,7 @@ public sealed class AnnouncementsRequest : Validation.IRequest
     /// <param name="corporateActionTypes">List of the corporate action types for filtering.</param>
     /// <param name="timeInterval">Date range when searching corporate action announcements.</param>
     [ExcludeFromCodeCoverage]
-    [Obsolete("This constructor will be removed in the next major release. Use overload that takes Interval<DateOnly> argument.", false)]
+    [Obsolete("This constructor will be removed in the next major release. Use overload that takes Interval<DateOnly> argument.", true)]
     public AnnouncementsRequest(
         IEnumerable<CorporateActionType> corporateActionTypes,
         IInclusiveTimeInterval timeInterval)

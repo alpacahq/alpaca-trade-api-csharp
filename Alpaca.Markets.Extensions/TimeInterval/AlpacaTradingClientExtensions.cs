@@ -15,7 +15,7 @@ public static partial class AlpacaTradingClientExtensions
     [UsedImplicitly]
     [CLSCompliant(false)]
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use another method overload that takes the DateOnly argument.", false)]
+    [Obsolete("Use another method overload that takes the DateOnly argument.", true)]
     public static async Task<ICalendar?> GetCalendarForSingleDayAsync(
         this IAlpacaTradingClient client,
         DateTime date,

@@ -43,7 +43,7 @@ public sealed class CalendarRequest :
     /// <returns></returns>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use another method overload that takes the DateOnly argument.", false)]
+    [Obsolete("Use another method overload that takes the DateOnly argument.", true)]
     public static CalendarRequest GetForSingleDay(DateTime date) =>
         GetForSingleDay(DateOnly.FromDateTime(date));
 
@@ -62,7 +62,7 @@ public sealed class CalendarRequest :
     /// </summary>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use the DateInterval property instead of this one.", false)]
+    [Obsolete("Use the DateInterval property instead of this one.", true)]
     public Interval<DateTime> TimeInterval => DateInterval.AsTimeInterval();
 
     /// <summary>
@@ -109,7 +109,7 @@ public sealed class CalendarRequest :
     }
 
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use WithInterval method instead of this one.", false)]
+    [Obsolete("Use WithInterval method instead of this one.", true)]
     void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
         IInclusiveTimeInterval value) => WithInterval(value.AsDateOnlyInterval());
 }

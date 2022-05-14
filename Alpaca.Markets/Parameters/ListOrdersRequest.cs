@@ -112,7 +112,7 @@ public sealed class ListOrdersRequest : Validation.IRequest,
     }
 
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use WithInterval method instead of this one.", false)]
+    [Obsolete("Use WithInterval method instead of this one.", true)]
     void IRequestWithTimeInterval<IExclusiveTimeInterval>.SetInterval(
         IExclusiveTimeInterval value) => WithInterval(value.AsDateTimeInterval());
 }

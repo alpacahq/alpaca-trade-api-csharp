@@ -66,7 +66,7 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
     public HistoricalCryptoQuotesRequest(
         String symbol,
         IInclusiveTimeInterval timeInterval)
@@ -80,7 +80,7 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
     public HistoricalCryptoQuotesRequest(
         IEnumerable<String> symbols,
         IInclusiveTimeInterval timeInterval)

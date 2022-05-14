@@ -66,7 +66,7 @@ public sealed class PortfolioHistoryRequest :
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [Obsolete("Use the override that gets Interval<DateOnly> instead of this one.", false)]
+    [Obsolete("Use the override that gets Interval<DateOnly> instead of this one.", true)]
     public PortfolioHistoryRequest WithInterval(
         Interval<DateTime> value)
     {
@@ -89,7 +89,7 @@ public sealed class PortfolioHistoryRequest :
     }
 
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use WithInterval method instead of this one.", false)]
+    [Obsolete("Use WithInterval method instead of this one.", true)]
     void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
         IInclusiveTimeInterval value) => WithInterval(value.AsDateOnlyInterval());
 }
