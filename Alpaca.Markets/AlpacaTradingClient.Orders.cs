@@ -52,22 +52,11 @@ internal sealed partial class AlpacaTradingClient
         _httpClient.GetAsync<IOrder, JsonOrder>(
             $"v2/orders/{orderId:D}", cancellationToken);
 
-    [ExcludeFromCodeCoverage]
-    public Task<Boolean> DeleteOrderAsync(
-        Guid orderId,
-        CancellationToken cancellationToken = default) =>
-        CancelOrderAsync(orderId, cancellationToken);
-
     public Task<Boolean> CancelOrderAsync(
         Guid orderId,
         CancellationToken cancellationToken = default) =>
         _httpClient.TryDeleteAsync(
             $"v2/orders/{orderId:D}", cancellationToken);
-
-    [ExcludeFromCodeCoverage]
-    public Task<IReadOnlyList<IOrderActionStatus>> DeleteAllOrdersAsync(
-        CancellationToken cancellationToken = default) =>
-        CancelAllOrdersAsync(cancellationToken);
 
     public Task<IReadOnlyList<IOrderActionStatus>> CancelAllOrdersAsync(
         CancellationToken cancellationToken = default) =>

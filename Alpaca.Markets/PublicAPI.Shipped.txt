@@ -410,12 +410,10 @@ Alpaca.Markets.IAlpacaTradingClient.AddAssetIntoWatchListByNameAsync(Alpaca.Mark
 Alpaca.Markets.IAlpacaTradingClient.CancelAllOrdersAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOrderActionStatus!>!>!
 Alpaca.Markets.IAlpacaTradingClient.CancelOrderAsync(System.Guid orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
 Alpaca.Markets.IAlpacaTradingClient.CreateWatchListAsync(Alpaca.Markets.NewWatchListRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
-Alpaca.Markets.IAlpacaTradingClient.DeleteAllOrdersAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOrderActionStatus!>!>!
 Alpaca.Markets.IAlpacaTradingClient.DeleteAllPositionsAsync(Alpaca.Markets.DeleteAllPositionsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IPositionActionStatus!>!>!
 Alpaca.Markets.IAlpacaTradingClient.DeleteAllPositionsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IPositionActionStatus!>!>!
 Alpaca.Markets.IAlpacaTradingClient.DeleteAssetFromWatchListByIdAsync(Alpaca.Markets.ChangeWatchListRequest<System.Guid>! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
 Alpaca.Markets.IAlpacaTradingClient.DeleteAssetFromWatchListByNameAsync(Alpaca.Markets.ChangeWatchListRequest<string!>! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IWatchList!>!
-Alpaca.Markets.IAlpacaTradingClient.DeleteOrderAsync(System.Guid orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
 Alpaca.Markets.IAlpacaTradingClient.DeletePositionAsync(Alpaca.Markets.DeletePositionRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOrder!>!
 Alpaca.Markets.IAlpacaTradingClient.DeleteWatchListByIdAsync(System.Guid watchListId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
 Alpaca.Markets.IAlpacaTradingClient.DeleteWatchListByNameAsync(string! name, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
@@ -525,7 +523,6 @@ Alpaca.Markets.ILimitUpLimitDown.LimitUpPrice.get -> decimal
 Alpaca.Markets.ILimitUpLimitDown.Symbol.get -> string!
 Alpaca.Markets.ILimitUpLimitDown.Tape.get -> string!
 Alpaca.Markets.ILimitUpLimitDown.TimestampUtc.get -> System.DateTime
-Alpaca.Markets.ILimitUpLimitDown.TimeUtc.get -> System.DateTime
 Alpaca.Markets.IMultiPage<TItems>
 Alpaca.Markets.IMultiPage<TItems>.Items.get -> System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IReadOnlyList<TItems>!>!
 Alpaca.Markets.IMultiPage<TItems>.NextPageToken.get -> string?
@@ -665,7 +662,6 @@ Alpaca.Markets.IStatus.StatusMessage.get -> string!
 Alpaca.Markets.IStatus.Symbol.get -> string!
 Alpaca.Markets.IStatus.Tape.get -> string!
 Alpaca.Markets.IStatus.TimestampUtc.get -> System.DateTime
-Alpaca.Markets.IStatus.TimeUtc.get -> System.DateTime
 Alpaca.Markets.IStopLoss
 Alpaca.Markets.IStopLoss.LimitPrice.get -> decimal?
 Alpaca.Markets.IStopLoss.StopPrice.get -> decimal

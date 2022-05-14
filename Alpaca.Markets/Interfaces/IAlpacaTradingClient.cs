@@ -199,30 +199,8 @@ public interface IAlpacaTradingClient : IDisposable
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns><c>True</c> if order cancellation was accepted.</returns>
     [UsedImplicitly]
-    [Obsolete("This method is now obsolete and will be removed soon, use CancelOrderAsync method instead.", true)]
-    Task<Boolean> DeleteOrderAsync(
-        Guid orderId,
-        CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Cancels order on server by server order ID using Alpaca REST API endpoint.
-    /// </summary>
-    /// <param name="orderId">Server order ID for cancelling.</param>
-    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns><c>True</c> if order cancellation was accepted.</returns>
-    [UsedImplicitly]
     Task<Boolean> CancelOrderAsync(
         Guid orderId,
-        CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Cancels all open orders using Alpaca REST API endpoint.
-    /// </summary>
-    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>List of order cancellation status objects.</returns>
-    [UsedImplicitly]
-    [Obsolete("This method is now obsolete and will be removed soon, use CancelAllOrdersAsync method instead.", true)]
-    Task<IReadOnlyList<IOrderActionStatus>> DeleteAllOrdersAsync(
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -374,9 +352,7 @@ public interface IAlpacaTradingClient : IDisposable
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Read-only list of trading date information object.</returns>
     [UsedImplicitly]
-    [Obsolete(
-        "This method will be removed in the next major release. Use the ListIntervalCalendarAsync method instead.",
-        false)]
+    [Obsolete("This method will be removed in the next major release. Use the ListIntervalCalendarAsync method instead.", false)]
     Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
         CalendarRequest request,
         CancellationToken cancellationToken = default);
