@@ -35,12 +35,4 @@ public enum CryptoExchange
     [UsedImplicitly]
     [EnumMember(Value = "CBSE")]
     Cbse,
-
-    /// <summary>
-    /// Not supported now.
-    /// </summary>
-    [UsedImplicitly]
-    [Obsolete("This enum member is now obsolete and will be deleted in upcoming major release.", true)]
-    [EnumMember(Value = "GNSS")]
-    Gnss
 }
