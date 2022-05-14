@@ -3,10 +3,7 @@
 /// <summary>
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListOrdersAsync(ListOrdersRequest,CancellationToken)"/> call.
 /// </summary>
-public sealed class ListOrdersRequest : Validation.IRequest,
-#pragma warning disable CS0618 // Type or member is obsolete
-    IRequestWithTimeInterval<IExclusiveTimeInterval>
-#pragma warning restore CS0618 // Type or member is obsolete
+public sealed class ListOrdersRequest : Validation.IRequest
 {
     private readonly HashSet<String> _symbols = new(StringComparer.Ordinal);
 
@@ -110,9 +107,4 @@ public sealed class ListOrdersRequest : Validation.IRequest,
     {
         yield return Symbols.TryValidateSymbolName();
     }
-
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use WithInterval method instead of this one.", true)]
-    void IRequestWithTimeInterval<IExclusiveTimeInterval>.SetInterval(
-        IExclusiveTimeInterval value) => WithInterval(value.AsDateTimeInterval());
 }

@@ -4,17 +4,14 @@
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.GetPortfolioHistoryAsync(PortfolioHistoryRequest,CancellationToken)"/> call.
 /// </summary>
 [UsedImplicitly]
-public sealed class PortfolioHistoryRequest :
-#pragma warning disable CS0618 // Type or member is obsolete
-    IRequestWithTimeInterval<IInclusiveTimeInterval>
-#pragma warning restore CS0618 // Type or member is obsolete
+public sealed class PortfolioHistoryRequest
 {
     /// <summary>
     /// Gets inclusive date interval for filtering items in response.
     /// </summary>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use the DateInterval property instead of this one.", false)]
+    [Obsolete("Use the DateInterval property instead of this one.", true)]
     public Interval<DateTime> TimeInterval => DateInterval.AsTimeInterval();
 
     /// <summary>
@@ -87,9 +84,4 @@ public sealed class PortfolioHistoryRequest :
         DateInterval = value;
         return this;
     }
-
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use WithInterval method instead of this one.", true)]
-    void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
-        IInclusiveTimeInterval value) => WithInterval(value.AsDateOnlyInterval());
 }

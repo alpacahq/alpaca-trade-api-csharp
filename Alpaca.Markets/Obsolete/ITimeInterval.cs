@@ -3,7 +3,7 @@
 /// <summary>
 /// Encapsulates time interval (from and till date/time points) for filtering requires.
 /// </summary>
-[Obsolete("Use the Interval<T> structure instead of this interface.", false)]
+[Obsolete("Use the Interval<T> structure instead of this interface.", true)]
 public interface ITimeInterval
 {
     /// <summary>
@@ -20,11 +20,11 @@ public interface ITimeInterval
 /// <summary>
 /// Represents the inclusive version of the <see cref="ITimeInterval"/> interface.
 /// </summary>
-[Obsolete("Use the Interval<T> structure instead of this interface.", false)]
+[Obsolete("Use the Interval<T> structure instead of this interface.", true)]
 public interface IInclusiveTimeInterval : ITimeInterval, IEquatable<IInclusiveTimeInterval> { }
 
 /// <summary>
 /// Represents the exclusive version of the <see cref="ITimeInterval"/> interface.
 /// </summary>
-[Obsolete("Use the Interval<T> structure instead of this interface.", false)]
+[Obsolete("Use the Interval<T> structure instead of this interface.", true)]
 public interface IExclusiveTimeInterval : ITimeInterval, IEquatable<IExclusiveTimeInterval> { }

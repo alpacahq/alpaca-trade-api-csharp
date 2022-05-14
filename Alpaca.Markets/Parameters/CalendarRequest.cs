@@ -3,10 +3,7 @@
 /// <summary>
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListCalendarAsync(CalendarRequest,CancellationToken)"/> call.
 /// </summary>
-public sealed class CalendarRequest :
-#pragma warning disable CS0618 // Type or member is obsolete
-    IRequestWithTimeInterval<IInclusiveTimeInterval>
-#pragma warning restore CS0618 // Type or member is obsolete
+public sealed class CalendarRequest
  {
      /// <summary>
      /// Creates new instance of <see cref="CalendarRequest"/> object.
@@ -107,9 +104,4 @@ public sealed class CalendarRequest :
         DateInterval = value;
         return this;
     }
-
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use WithInterval method instead of this one.", true)]
-    void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
-        IInclusiveTimeInterval value) => WithInterval(value.AsDateOnlyInterval());
 }

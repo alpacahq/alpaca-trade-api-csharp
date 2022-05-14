@@ -6,10 +6,7 @@
 [ExcludeFromCodeCoverage]
 public static class TimeInterval
 {
-    private readonly record struct Interval :
-#pragma warning disable CS0618 // Type or member is obsolete
-        IInclusiveTimeInterval, IExclusiveTimeInterval
-#pragma warning restore CS0618 // Type or member is obsolete
+    private readonly record struct Interval
     {
         private readonly Interval<DateTime> _interval;
 
@@ -19,16 +16,6 @@ public static class TimeInterval
         public DateTime? From => _interval.From;
 
         public DateTime? Into => _interval.Into;
-
-#pragma warning disable CS0618 // Type or member is obsolete
-        public Boolean Equals(IInclusiveTimeInterval? other) =>
-#pragma warning restore CS0618 // Type or member is obsolete
-            other is Interval interval ? interval.Equals(this) : equals(other?.From, other?.Into);
-
-#pragma warning disable CS0618 // Type or member is obsolete
-        public Boolean Equals(IExclusiveTimeInterval? other) =>
-#pragma warning restore CS0618 // Type or member is obsolete
-            other is Interval interval ? interval.Equals(this) : equals(other?.From, other?.Into);
 
         public Boolean IsEmpty() => _interval.IsEmpty();
 
@@ -45,11 +32,9 @@ public static class TimeInterval
     /// Returns <c>true</c> if both <see cref="ITimeInterval.From"/> and <see cref="ITimeInterval.Into"/> equal to <c>null</c>.
     /// </returns>
     [UsedImplicitly]
-    [Obsolete("Use the IsEmpty() method of Interval<DateTime> structure instead of this one.", false)]
+    [Obsolete("Use the IsEmpty() method of Interval<DateTime> structure instead of this one.", true)]
     public static Boolean IsEmpty(this ITimeInterval interval) =>
-        interval is Interval wrapper ? wrapper.IsEmpty()
-            // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
-            : new Interval<DateTime>(interval?.From, interval?.Into).IsEmpty();
+        new Interval<DateTime>(interval?.From, interval?.Into).IsEmpty();
 
     /// <summary>
     /// Gets boolean flag signals that time interval is open (both start or end date equal to <c>null</c>).
@@ -59,11 +44,9 @@ public static class TimeInterval
     /// Returns <c>true</c> if both <see cref="ITimeInterval.From"/> or <see cref="ITimeInterval.Into"/> equal to <c>null</c>.
     /// </returns>
     [UsedImplicitly]
-    [Obsolete("Use the IsOpen() method of Interval<DateTime> structure instead of this one.", false)]
+    [Obsolete("Use the IsOpen() method of Interval<DateTime> structure instead of this one.", true)]
     public static Boolean IsOpen(this ITimeInterval interval) =>
-        interval is Interval wrapper ? wrapper.IsOpen()
-            // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
-            : new Interval<DateTime>(interval?.From, interval?.Into).IsOpen();
+        new Interval<DateTime>(interval?.From, interval?.Into).IsOpen();
 
     /// <summary>
     /// Gets exclusive open time interval ending at the <paramref name="value"/> date/time point.
@@ -71,8 +54,9 @@ public static class TimeInterval
     /// <param name="value">Ending date/time point for filtering.</param>
     /// <returns>Inclusive open time interval.</returns>
     [UsedImplicitly]
-    [Obsolete("Use the GetIntervalTillThat() extension method instead of this one.", false)]
-    public static IExclusiveTimeInterval GetExclusiveIntervalTillThat(DateTime value) => value.GetIntervalTillThat().wrap();
+    [Obsolete("Use the GetIntervalTillThat() extension method instead of this one.", true)]
+    public static IExclusiveTimeInterval GetExclusiveIntervalTillThat(DateTime value) =>
+        throw new InvalidOperationException("Use the GetIntervalTillThat() extension method.");
 
     /// <summary>
     /// Gets inclusive open time interval ending at the <paramref name="value"/> date/time point.
@@ -80,8 +64,9 @@ public static class TimeInterval
     /// <param name="value">Ending date/time point for filtering.</param>
     /// <returns>Inclusive open time interval.</returns>
     [UsedImplicitly]
-    [Obsolete("Use the GetIntervalTillThat() extension method instead of this one.", false)]
-    public static IInclusiveTimeInterval GetInclusiveIntervalTillThat(DateTime value) => value.GetIntervalTillThat().wrap();
+    [Obsolete("Use the GetIntervalTillThat() extension method instead of this one.", true)]
+    public static IInclusiveTimeInterval GetInclusiveIntervalTillThat(DateTime value) =>
+        throw new InvalidOperationException("Use the GetIntervalTillThat() extension method.");
 
     /// <summary>
     /// Gets exclusive open time interval starting from the <paramref name="value"/> date/time point.
@@ -89,8 +74,9 @@ public static class TimeInterval
     /// <param name="value">Starting date/time point for filtering.</param>
     /// <returns>Inclusive open time interval.</returns>
     [UsedImplicitly]
-    [Obsolete("Use the GetIntervalFromThat() extension method instead of this one.", false)]
-    public static IExclusiveTimeInterval GetExclusiveIntervalFromThat(DateTime value) => value.GetIntervalFromThat().wrap();
+    [Obsolete("Use the GetIntervalFromThat() extension method instead of this one.", true)]
+    public static IExclusiveTimeInterval GetExclusiveIntervalFromThat(DateTime value) =>
+        throw new InvalidOperationException("Use the GetIntervalFromThat() extension method.");
 
     /// <summary>
     /// Gets inclusive open time interval starting from the <paramref name="value"/> date/time point.
@@ -98,8 +84,9 @@ public static class TimeInterval
     /// <param name="value">Starting date/time point for filtering.</param>
     /// <returns>Inclusive open time interval.</returns>
     [UsedImplicitly]
-    [Obsolete("Use the GetIntervalFromThat() extension method instead of this one.", false)]
-    public static IInclusiveTimeInterval GetInclusiveIntervalFromThat(DateTime value) => value.GetIntervalFromThat().wrap();
+    [Obsolete("Use the GetIntervalFromThat() extension method instead of this one.", true)]
+    public static IInclusiveTimeInterval GetInclusiveIntervalFromThat(DateTime value) =>
+        throw new InvalidOperationException("Use the GetIntervalFromThat() extension method.");
 
     /// <summary>
     /// Creates new instance of <see cref="IExclusiveTimeInterval"/> object
@@ -109,10 +96,11 @@ public static class TimeInterval
     /// <param name="into">New ending date/time point for interval.</param>
     /// <returns>The new instance of <see cref="IExclusiveTimeInterval"/> object.</returns>
     [UsedImplicitly]
-    [Obsolete("Use the WithInto extension method of Interval<DateTime> structure instead of this one.", false)]
+    [Obsolete("Use the WithInto extension method of Interval<DateTime> structure instead of this one.", true)]
     public static IExclusiveTimeInterval WithInto(
         this IExclusiveTimeInterval interval,
-        DateTime into) => new Interval<DateTime>(interval.EnsureNotNull().From, into).wrap();
+        DateTime into) =>
+        throw new InvalidOperationException("Use the WithInto extension method of Interval<DateTime> structure.");
 
     /// <summary>
     /// Creates new instance of <see cref="IInclusiveTimeInterval"/> object
@@ -122,10 +110,11 @@ public static class TimeInterval
     /// <param name="into">New ending date/time point for interval.</param>
     /// <returns>The new instance of <see cref="IInclusiveTimeInterval"/> object.</returns>
     [UsedImplicitly]
-    [Obsolete("Use the WithInto extension method of Interval<DateTime> structure instead of this one.", false)]
+    [Obsolete("Use the WithInto extension method of Interval<DateTime> structure instead of this one.", true)]
     public static IInclusiveTimeInterval WithInto(
         this IInclusiveTimeInterval interval,
-        DateTime into) => new Interval<DateTime>(interval.EnsureNotNull().From, into).wrap();
+        DateTime into) =>
+        throw new InvalidOperationException("Use the WithInto extension method of Interval<DateTime> structure.");
 
     /// <summary>
     /// Creates new instance of <see cref="IExclusiveTimeInterval"/> object
@@ -135,10 +124,11 @@ public static class TimeInterval
     /// <param name="from">New starting date/time point for interval.</param>
     /// <returns>The new instance of <see cref="IExclusiveTimeInterval"/> object.</returns>
     [UsedImplicitly]
-    [Obsolete("Use the WithFrom extension method of Interval<DateTime> structure instead of this one.", false)]
+    [Obsolete("Use the WithFrom extension method of Interval<DateTime> structure instead of this one.", true)]
     public static IExclusiveTimeInterval WithFrom(
         this IExclusiveTimeInterval interval,
-        DateTime from) => new Interval<DateTime>(from, interval.EnsureNotNull().Into).wrap();
+        DateTime from) =>
+        throw new InvalidOperationException("Use the WithFrom extension method of Interval<DateTime> structure.");
 
     /// <summary>
     /// Creates new instance of <see cref="IInclusiveTimeInterval"/> object
@@ -148,10 +138,11 @@ public static class TimeInterval
     /// <param name="from">New starting date/time point for interval.</param>
     /// <returns>The new instance of <see cref="IInclusiveTimeInterval"/> object.</returns>
     [UsedImplicitly]
-    [Obsolete("Use the WithFrom extension method of Interval<DateTime> structure instead of this one.", false)]
+    [Obsolete("Use the WithFrom extension method of Interval<DateTime> structure instead of this one.", true)]
     public static IInclusiveTimeInterval WithFrom(
         this IInclusiveTimeInterval interval,
-        DateTime from) => new Interval<DateTime>(from, interval.EnsureNotNull().Into).wrap();
+        DateTime from) =>
+        throw new InvalidOperationException("Use the WithFrom extension method of Interval<DateTime> structure.");
 
     /// <summary>
     /// Set exclusive time interval for <paramref name="request"/> object.
@@ -160,7 +151,7 @@ public static class TimeInterval
     /// <param name="interval">Time interval (date/time pair) for filtering.</param>
     /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
     [UsedImplicitly]
-    [Obsolete("Use WithInterval method of the requests type directly instead of this extensions method.", false)]
+    [Obsolete("Use WithInterval method of the requests type directly instead of this extensions method.", true)]
     public static TRequest SetTimeInterval<TRequest>(
         this TRequest request,
         IExclusiveTimeInterval interval)
@@ -177,7 +168,7 @@ public static class TimeInterval
     /// <param name="interval">Time interval (date/time pair) for filtering.</param>
     /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
     [UsedImplicitly]
-    [Obsolete("Use WithInterval method of the requests type directly instead of this extensions method.", false)]
+    [Obsolete("Use WithInterval method of the requests type directly instead of this extensions method.", true)]
     public static TRequest SetTimeInterval<TRequest>(
         this TRequest request,
         IInclusiveTimeInterval interval)
@@ -195,13 +186,13 @@ public static class TimeInterval
     /// <param name="into">Ending date/time point for filtering.</param>
     /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
     [UsedImplicitly]
-    [Obsolete("Use WithInterval method of the requests type directly instead of this extensions method.", false)]
+    [Obsolete("Use WithInterval method of the requests type directly instead of this extensions method.", true)]
     public static TRequest SetExclusiveTimeInterval<TRequest>(
         this TRequest request,
         DateTime from,
         DateTime into)
         where TRequest : IRequestWithTimeInterval<IExclusiveTimeInterval> =>
-        request.SetTimeInterval(new Interval<DateTime>(from, into).wrap());
+        throw new InvalidOperationException("Use WithInterval method of the requests type directly.");
 
     /// <summary>
     /// Set inclusive time interval for <paramref name="request"/> object.
@@ -211,13 +202,13 @@ public static class TimeInterval
     /// <param name="into">Ending date/time point for filtering.</param>
     /// <returns>Fluent interface - returns <paramref name="request"/> object.</returns>
     [UsedImplicitly]
-    [Obsolete("Use WithInterval method of the requests type directly instead of this extensions method.", false)]
+    [Obsolete("Use WithInterval method of the requests type directly instead of this extensions method.", true)]
     public static TRequest SetInclusiveTimeInterval<TRequest>(
         this TRequest request,
         DateTime from,
         DateTime into)
         where TRequest : IRequestWithTimeInterval<IInclusiveTimeInterval> =>
-        request.SetTimeInterval(new Interval<DateTime>(from, into).wrap());
+        throw new InvalidOperationException("Use WithInterval method of the requests type directly.");
 
     /// <summary>
     /// Deconstructs the <see cref="IExclusiveTimeInterval"/> instance
@@ -227,7 +218,7 @@ public static class TimeInterval
     /// <param name="from">Time interval starting point.</param>
     /// <param name="into">Time interval ending point.</param>
     [UsedImplicitly]
-    [Obsolete("Use the tuple deconstructor of Interval<DateTime> structure instead of this one.", false)]
+    [Obsolete("Use the tuple deconstructor of Interval<DateTime> structure instead of this one.", true)]
     public static void Deconstruct(
         IExclusiveTimeInterval interval,
         out DateTime? from,
@@ -246,7 +237,7 @@ public static class TimeInterval
     /// <param name="from">Time interval starting point.</param>
     /// <param name="into">Time interval ending point.</param>
     [UsedImplicitly]
-    [Obsolete("Use the tuple deconstructor of Interval<DateTime> structure instead of this one.", false)]
+    [Obsolete("Use the tuple deconstructor of Interval<DateTime> structure instead of this one.", true)]
     public static void Deconstruct(
         IInclusiveTimeInterval interval,
         out DateTime? from,
@@ -257,23 +248,22 @@ public static class TimeInterval
         into = interval?.Into;
     }
 
-    [Obsolete("Used only for reducing code duplication.", false)]
+    [Obsolete("Used only for reducing code duplication.", true)]
     internal static Interval<DateTime> AsDateTimeInterval(
         this ITimeInterval interval) =>
         // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
         new (interval?.From, interval?.Into);
 
-    [Obsolete("Used only for reducing code duplication.", false)]
+    [Obsolete("Used only for reducing code duplication.", true)]
     internal static Interval<DateOnly> AsDateOnlyInterval(
         this ITimeInterval interval) =>
         // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
         new (interval?.From.AsDateOnly(), interval?.Into.AsDateOnly());
     
-    [Obsolete("Used only for reducing code duplication.", false)]
+    [Obsolete("Used only for reducing code duplication.", true)]
     internal static IInclusiveTimeInterval AsInclusiveTimeInterval(
         this Interval<DateOnly> interval) =>
-        // ReSharper disable once ConstantConditionalAccessQualifier
-        new Interval(interval.AsTimeInterval());
+        throw new InvalidOperationException("Use WithInterval method of the requests type directly.");
 
     private static Interval wrap(this Interval<DateTime> interval) => new (interval);
 }
