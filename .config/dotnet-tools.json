@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "jetbrains.dotcover.globaltool": {
+      "version": "2021.3.2",
+      "commands": [
+        "dotnet-dotcover"
+      ]
+    }
+  }
+}

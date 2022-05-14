@@ -1,35 +1,29 @@
-﻿using System.Runtime.Serialization;
-using JetBrains.Annotations;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// Single asset status in Alpaca REST API.
+/// </summary>
+[JsonConverter(typeof(StringEnumConverter))]
+public enum AssetStatus
 {
     /// <summary>
-    /// Single asset status in Alpaca REST API.
+    /// Active asset.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum AssetStatus
-    {
-        /// <summary>
-        /// Active asset.
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "active")]
-        Active,
+    [UsedImplicitly]
+    [EnumMember(Value = "active")]
+    Active,
 
-        /// <summary>
-        /// Inactive asset.
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "inactive")]
-        Inactive,
+    /// <summary>
+    /// Inactive asset.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "inactive")]
+    Inactive,
 
-        /// <summary>
-        /// Delisted asset.
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "delisted")]
-        Delisted
-    }
+    /// <summary>
+    /// Delisted asset.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "delisted")]
+    Delisted
 }

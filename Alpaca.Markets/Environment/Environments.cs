@@ -1,21 +1,19 @@
-﻿using JetBrains.Annotations;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// Provides single entry point for obtaining information about different environments.
+/// </summary>
+public static class Environments
 {
     /// <summary>
-    /// Provides single entry point for obtaining information about different environments.
+    /// Gets live trading environment. 
     /// </summary>
-    public static class Environments
-    {
-        /// <summary>
-        /// Gets environment used by all Alpaca users who has fully registered accounts.
-        /// </summary>
-        public static IEnvironment Live { get; } = new LiveEnvironment();
+    public static IEnvironment Live { get; } = new LiveEnvironment();
 
-        /// <summary>
-        /// Gets environment used by all Alpaca users who have no registered accounts.
-        /// </summary>
-        [UsedImplicitly]
-        public static IEnvironment Paper { get; } = new PaperEnvironment();
-    }
+    /// <summary>
+    /// Gets paper trading environment. Paper trading is a simulation environment that does not use real money.
+    /// See <a href="https://alpaca.markets/docs/trading/paper-trading/">Alpaca Paper Trading Documentation</a> for more information.
+    /// </summary>
+    [UsedImplicitly]
+    public static IEnvironment Paper { get; } = new PaperEnvironment();
 }

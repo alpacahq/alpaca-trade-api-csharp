@@ -1,0 +1,49 @@
+name: CodeQL Analyis
+
+on:
+  pull_request:
+    branches: [ develop ]
+  schedule:
+    - cron: '0 8 * * 1'
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'csharp' ]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup .NET 6.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+
+    - name: Cache NuGet Packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+
+    - name: Dotnet Build
+      run: dotnet build -c Release
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1

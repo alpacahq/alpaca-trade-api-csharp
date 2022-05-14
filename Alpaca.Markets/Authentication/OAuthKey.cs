@@ -1,38 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using JetBrains.Annotations;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// OAuth key for Alpaca API authentication.
+/// </summary>
+[UsedImplicitly]
+public sealed class OAuthKey : SecurityKey
 {
     /// <summary>
-    /// OAuth key for Alpaca API authentication.
+    /// Creates new instance of <see cref="OAuthKey"/> object.
     /// </summary>
-    [UsedImplicitly]
-    public sealed class OAuthKey : SecurityKey
+    /// <param name="value">OAuth key.</param>
+    public OAuthKey(
+        String value)
+        : base(value)
     {
-        /// <summary>
-        /// Creates new instance of <see cref="OAuthKey"/> object.
-        /// </summary>
-        /// <param name="value">OAuth key.</param>
-        public OAuthKey(
-            String value)
-            : base(value)
-        {
-        }
-
-        internal override IEnumerable<KeyValuePair<String, String>> GetAuthenticationHeaders()
-        {
-            yield return new KeyValuePair<String, String>(
-                "Authorization", "Bearer " + Value);
-        }
-
-        internal override JsonAuthRequest.JsonData GetAuthenticationData() =>
-            new ()
-            {
-                OAuthToken = Value
-            };
-
-        internal override JsonAuthentication GetAuthentication() => 
-            throw new InvalidOperationException();
     }
+
+    internal override IEnumerable<KeyValuePair<String, String>> GetAuthenticationHeaders()
+    {
+        yield return new KeyValuePair<String, String>(
+            "Authorization", "Bearer " + Value);
+    }
+
+    internal override JsonAuthRequest.JsonData GetAuthenticationData() =>
+        new()
+        {
+            OAuthToken = Value
+        };
+
+    [ExcludeFromCodeCoverage]
+    internal override JsonAuthentication GetAuthentication() =>
+        throw new InvalidOperationException();
 }

@@ -1,33 +1,12 @@
-﻿using System.Net.Http;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+internal sealed partial class AlpacaTradingClient : IAlpacaTradingClient
 {
-    /// <summary>
-    /// Provides unified type-safe access for Alpaca Trading API via HTTP/REST.
-    /// </summary>
-    internal sealed partial class AlpacaTradingClient : IAlpacaTradingClient
-    {
-        private readonly HttpClient _httpClient;
+    private readonly HttpClient _httpClient;
 
-        /// <summary>
-        /// Creates new instance of <see cref="AlpacaTradingClient"/> object.
-        /// </summary>
-        /// <param name="configuration">Configuration parameters object.</param>
-        public AlpacaTradingClient(
-            AlpacaTradingClientConfiguration configuration)
-        {
-            configuration
-                .EnsureNotNull(nameof(configuration))
-                .EnsureIsValid();
+    internal AlpacaTradingClient(
+        AlpacaTradingClientConfiguration configuration) =>
+        _httpClient = configuration.EnsureNotNull().GetConfiguredHttpClient();
 
-            _httpClient = configuration.HttpClient ??
-                configuration.ThrottleParameters.GetHttpClient();
-
-            _httpClient.AddAuthenticationHeaders(configuration.SecurityId);
-            _httpClient.Configure(configuration.ApiEndpoint);
-        }
-
-        /// <inheritdoc />
-        public void Dispose() => _httpClient.Dispose();
-    }
+    public void Dispose() => _httpClient.Dispose();
 }

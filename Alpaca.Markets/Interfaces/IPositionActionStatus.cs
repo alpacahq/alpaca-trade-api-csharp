@@ -1,23 +1,19 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// Encapsulates position action status information from Alpaca REST API.
+/// </summary>
+public interface IPositionActionStatus
 {
     /// <summary>
-    /// Encapsulates position action status information from Alpaca REST API.
+    /// Gets processed position asset symbol.
     /// </summary>
-    public interface IPositionActionStatus
-    {
-        /// <summary>
-        /// Gets processed position asset name.
-        /// </summary>
-        [UsedImplicitly]
-        String Symbol { get; }
+    [UsedImplicitly]
+    String Symbol { get; }
 
-        /// <summary>
-        /// Returns <c>true</c> if requested action completed successfully.
-        /// </summary>
-        [UsedImplicitly]
-        Boolean IsSuccess { get; }
-    }
+    /// <summary>
+    /// Returns <c>true</c> if requested action completed successfully.
+    /// </summary>
+    [UsedImplicitly]
+    Boolean IsSuccess { get; }
 }

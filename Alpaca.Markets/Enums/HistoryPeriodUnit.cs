@@ -1,42 +1,36 @@
-﻿using System.Runtime.Serialization;
-using JetBrains.Annotations;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// Period units for portfolio history in the Alpaca REST API.
+/// </summary>
+[JsonConverter(typeof(StringEnumConverter))]
+public enum HistoryPeriodUnit
 {
     /// <summary>
-    /// Period units for portfolio history in the Alpaca REST API.
+    /// Day
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum HistoryPeriodUnit
-    {
-        /// <summary>
-        /// Day
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "D")]
-        Day,
+    [UsedImplicitly]
+    [EnumMember(Value = "D")]
+    Day,
 
-        /// <summary>
-        /// Month
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "W")]
-        Week,
+    /// <summary>
+    /// Week
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "W")]
+    Week,
 
-        /// <summary>
-        /// Month
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "M")]
-        Month,
+    /// <summary>
+    /// Month
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "M")]
+    Month,
 
-        /// <summary>
-        /// 3 month
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "A")]
-        Year
-    }
+    /// <summary>
+    /// Year
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "A")]
+    Year
 }

@@ -1,125 +1,108 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Suppressions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Suppression>
-    <DiagnosticId>CP1003</DiagnosticId>
-    <Target>lib/net5.0/Alpaca.Markets.Extensions.dll</Target>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.Extensions.ConfigurationExtensions</Target>
+    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.Extensions.AlpacaValueTask.#ctor</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net5.0/Alpaca.Markets.Extensions.dll</Right>
+    <Target>M:Alpaca.Markets.Extensions.Bracket.Buy(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
+    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.Bracket.Buy(System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
+    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.Bracket.Sell(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
+    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.Bracket.Sell(System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
+    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/net461/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net461/Alpaca.Markets.Extensions.dll</Right>
+    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
-    <Left>lib/net461/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net461/Alpaca.Markets.Extensions.dll</Right>
+    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal)</Target>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.Extensions.ConfigurationExtensions</Target>
     <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net5.0/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net5.0/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.Extensions.Bracket.Buy(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/net461/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net461/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.Extensions.Bracket.Buy(System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
-    <Left>lib/net461/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net461/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.Extensions.Bracket.Sell(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/net461/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net461/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.Extensions.Bracket.Sell(System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
-    <Left>lib/net461/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net461/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.Extensions.Bracket.Buy(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
     <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net5.0/Alpaca.Markets.Extensions.dll</Right>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.Extensions.Bracket.Buy(System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
     <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net5.0/Alpaca.Markets.Extensions.dll</Right>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.Extensions.Bracket.Sell(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
     <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net5.0/Alpaca.Markets.Extensions.dll</Right>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.Extensions.Bracket.Sell(System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
     <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net5.0/Alpaca.Markets.Extensions.dll</Right>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal)</Target>
+    <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
+    <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.Extensions.ConfigurationExtensions</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
@@ -152,6 +135,27 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal)</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.Extensions.ConfigurationExtensions</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.Extensions.Bracket.Buy(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
@@ -174,6 +178,20 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.Extensions.Bracket.Sell(System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal)</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.OrderSideExtensions.Bracket(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal,System.Decimal)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>

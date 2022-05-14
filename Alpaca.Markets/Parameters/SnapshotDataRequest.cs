@@ -1,58 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using JetBrains.Annotations;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// Encapsulates data for snapshot crypto data requests on Alpaca Data API v2.
+/// </summary>
+public sealed class SnapshotDataRequest : Validation.IRequest
 {
+    /// <summary>
+    /// Creates new instance of <see cref="SnapshotDataRequest"/> object.
+    /// </summary>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
+    /// <param name="exchange">Crypto exchange for data retrieval.</param>
+    public SnapshotDataRequest(
+        String symbol,
+        CryptoExchange exchange)
+    {
+        Symbol = symbol.EnsureNotNull();
+        Exchange = exchange;
+    }
 
     /// <summary>
-    /// Encapsulates data for snapshot crypto data requests on Alpaca Data API v2.
+    /// Gets asset symbol for data retrieval.
     /// </summary>
-    public sealed class SnapshotDataRequest : Validation.IRequest
+    [UsedImplicitly]
+    public String Symbol { get; }
+
+    /// <summary>
+    /// Gets crypto exchange for data retrieval.
+    /// </summary>
+    [UsedImplicitly]
+    public CryptoExchange Exchange { get; }
+
+    internal async ValueTask<UriBuilder> GetUriBuilderAsync(
+        HttpClient httpClient) =>
+        new UriBuilder(httpClient.BaseAddress!)
+        {
+            Query = await new QueryBuilder()
+                .AddParameter("exchange", Exchange.ToEnumString())
+                .AsStringAsync().ConfigureAwait(false)
+        }.AppendPath($"{Symbol}/snapshot");
+
+    IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
-        /// <summary>
-        /// Creates new instance of <see cref="SnapshotDataRequest"/> object.
-        /// </summary>
-        /// <param name="symbol">Asset name for data retrieval.</param>
-        /// <param name="exchange">Crypto exchange for data retrieval.</param>
-        public SnapshotDataRequest(
-            String symbol,
-            CryptoExchange exchange)
-        {
-            Symbol = symbol.EnsureNotNull(nameof(symbol));
-            Exchange = exchange;
-        }
-
-        /// <summary>
-        /// Gets asset name for data retrieval.
-        /// </summary>
-        [UsedImplicitly]
-        public String Symbol { get; }
-
-        /// <summary>
-        /// Gets crypto exchange for data retrieval.
-        /// </summary>
-        [UsedImplicitly]
-        public CryptoExchange Exchange { get; }
-
-        internal async ValueTask<UriBuilder> GetUriBuilderAsync(
-            HttpClient httpClient) =>
-            new UriBuilder(httpClient.BaseAddress!)
-            {
-                Query = await new QueryBuilder()
-                    .AddParameter("exchange", Exchange.ToEnumString())
-                    .AsStringAsync().ConfigureAwait(false)
-            }.AppendPath($"{Symbol}/snapshot");
-
-        IEnumerable<RequestValidationException> Validation.IRequest.GetExceptions()
-        {
-            if (String.IsNullOrEmpty(Symbol))
-            {
-                yield return new RequestValidationException(
-                    "Symbol shouldn't be empty.", nameof(Symbol));
-            }
-        }
+        yield return Symbol.TryValidateSymbolName();
     }
 }

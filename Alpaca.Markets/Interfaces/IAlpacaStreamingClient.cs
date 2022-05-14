@@ -1,18 +1,14 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// Provides unified type-safe access for Alpaca streaming API.
+/// </summary>
+[CLSCompliant(false)]
+public interface IAlpacaStreamingClient : IStreamingClient
 {
     /// <summary>
-    /// Provides unified type-safe access for Alpaca streaming API.
+    /// Occurs when a new trade update is received from the stream.
     /// </summary>
-    [CLSCompliant(false)]
-    public interface IAlpacaStreamingClient : IStreamingClient
-    {
-        /// <summary>
-        /// Occurred when new trade update received from stream.
-        /// </summary>
-        [UsedImplicitly]
-        event Action<ITradeUpdate>? OnTradeUpdate;
-    }
+    [UsedImplicitly]
+    event Action<ITradeUpdate>? OnTradeUpdate;
 }

@@ -24,7 +24,14 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-nuget-
 
-    - name: Dotnet Build
+    - name: Restore .NET Tools
+      run: dotnet tool restore
+      working-directory: ./Alpaca.Markets.Tests
+
+    - name: Dotnet Test (Debug)
+      run: dotnet dotcover test --dcXML=Configuration.xml
+
+    - name: Dotnet Build (Release)
       run: dotnet build -c Release
       
     - name: Save SDK Packages
@@ -42,6 +49,12 @@ jobs:
         path: |
           Alpaca.Markets.Extensions/bin/Release/*.nupkg
           Alpaca.Markets.Extensions/bin/Release/*.snupkg
+
+    - name: Send Coverage to Codacy
+      if: "${{env.CODACY_PROJECT_TOKEN != ''}}"
+      env:
+        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r Alpaca.Markets.Coverage.xml
 
   publish-sdk:
     name: Publish SDK Binaries

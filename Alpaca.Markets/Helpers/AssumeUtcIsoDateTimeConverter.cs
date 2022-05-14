@@ -1,40 +1,31 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using System.Globalization;
 
-namespace Alpaca.Markets
+namespace Alpaca.Markets;
+
+[SuppressMessage(
+    "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+internal sealed class AssumeUtcIsoDateTimeConverter : DateTimeConverterBase
 {
-    [SuppressMessage(
-        "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class AssumeUtcIsoDateTimeConverter : DateTimeConverterBase
+    public override void WriteJson(
+        JsonWriter writer,
+        Object? value,
+        JsonSerializer serializer)
     {
-        public override void WriteJson(
-            JsonWriter writer, 
-            Object? value, 
-            JsonSerializer serializer)
+        if (value is DateTime dateTimeValue)
         {
-            // ReSharper disable once ConvertIfStatementToSwitchStatement
-            if (value is DateTime dateTimeValue)
-            {
-                writer.WriteValue(dateTimeValue.ToString("O"));
-            }
-            else if (value is null)
-            {
-                writer.WriteNull();
-            }
+            writer.WriteValue(dateTimeValue.ToString("O"));
         }
-        public override Object? ReadJson(
-            JsonReader reader,
-            Type objectType,
-            Object? existingValue,
-            JsonSerializer serializer) =>
-            DateTimeOffset.TryParse(reader.Value?.ToString(),
-                CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, 
-                out var dateTimeOffset)
-                ? dateTimeOffset.UtcDateTime
-                : null;
     }
+
+    public override Object? ReadJson(
+        JsonReader reader,
+        Type objectType,
+        Object? existingValue,
+        JsonSerializer serializer) =>
+        DateTimeOffset.TryParse(reader.Value?.ToString(),
+            CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal,
+            out var dateTimeOffset)
+            ? dateTimeOffset.UtcDateTime
+            : null;
 }

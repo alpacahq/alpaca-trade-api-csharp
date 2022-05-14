@@ -1,39 +1,32 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using Newtonsoft.Json;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IStatus))]
+[SuppressMessage(
+    "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+internal sealed class JsonTradingStatus : JsonRealTimeBase, IStatus
 {
-    [SuppressMessage(
-        "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonTradingStatus : IStatus
-    {
-        [JsonProperty(PropertyName = "T", Required = Required.Always)]
-        public String Channel { get; set; } = String.Empty;
+    [JsonProperty(PropertyName = "sc", Required = Required.Default)]
+    public String StatusCode { get; set; } = String.Empty;
 
-        [JsonProperty(PropertyName = "S", Required = Required.Always)]
-        public String Symbol { get; set; } = String.Empty;
+    [JsonProperty(PropertyName = "sm", Required = Required.Default)]
+    public String StatusMessage { get; set; } = String.Empty;
 
-        [JsonProperty(PropertyName = "t", Required = Required.Always)]
-        public DateTime TimestampUtc { get; set; }
+    [JsonProperty(PropertyName = "rc", Required = Required.Default)]
+    public String ReasonCode { get; set; } = String.Empty;
 
-        [JsonProperty(PropertyName = "sc", Required = Required.Default)]
-        public String StatusCode { get; set; } = String.Empty;
+    [JsonProperty(PropertyName = "rm", Required = Required.Default)]
+    public String ReasonMessage { get; set; } = String.Empty;
 
-        [JsonProperty(PropertyName = "sm", Required = Required.Default)]
-        public String StatusMessage { get; set; } = String.Empty;
+    [JsonProperty(PropertyName = "z", Required = Required.Default)]
+    public String Tape { get; set; } = String.Empty;
 
-        [JsonProperty(PropertyName = "rc", Required = Required.Default)]
-        public String ReasonCode { get; set; } = String.Empty;
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
 
-        [JsonProperty(PropertyName = "rm", Required = Required.Default)]
-        public String ReasonMessage { get; set; } = String.Empty;
-
-        [JsonProperty(PropertyName = "z", Required = Required.Default)]
-        public String Tape { get; set; } = String.Empty;
-
-        [JsonIgnore] 
-        public DateTime TimeUtc => TimestampUtc;
-    }
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        $"{nameof(IStatus)} {{ Code = \"{StatusCode}\", Message = \"{StatusMessage}\", Tape= \"{Tape}\" }}";
 }

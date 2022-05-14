@@ -54,13 +54,18 @@ See the [UsageExamples](../../tree/develop/UsageExamples) project for near-to-re
 
 Alpaca provides 3 different subscription plans for the Data API v2 real-time streaming data: Free, Unlimited, and Business. The first one provides only IEX data and has some subscription limits. Other plans provide full SIP data without data subscription limits. The `IAlpacaDataStreamingClient` interface and its implementation from SDK provide unified access for both streams.
 
-Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method for creating client connected to the Free IEX data stream. For the Unlimied and Business SIP data stream use the `Environments.Live.GetAlpacaDataStreamingClient(...)` code. So _Paper_ environment for free data tier and _Live_ for paid subscriptions.
+Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method for creating client connected to the Free IEX data stream. For the Unlimited and Business SIP data stream use the `Environments.Live.GetAlpacaDataStreamingClient(...)` code. So _Paper_ environment for free data tier and _Live_ for paid subscriptions.
 
 ## Mapping between branches and SDK versions
 
 | Branch                                       | Version | Description                                  | Milestone                |
 | -------------------------------------------- | ------- | -------------------------------------------- |--------------------------|
-| [develop](../../tree/develop)                | 6.0.*   | Unstable - experimental, can contain bugs    | [SDK 6.0.x Experimental](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/16) |
-| [master](../../tree/master)                  | 5.1.*   | LTS - good choice for the new development    | [SDK 5.1.x LTS](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/14) |
-| [support/v5.0.x](../../tree/support/v5.0.x)  | 5.0.*   | Stable - upgrade to 5.1.x for longer support | [SDK 5.0.x Stable](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/12) |
-| [support/v4.1.x](../../tree/support/v4.1.x)  | 4.1.*   | LTS - no breaking changes, all hotfixes      | [SDK 4.1.x LTS](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/13) |
+| [develop](../../tree/develop)                | 6.0.x   | Unstable - experimental, can contain bugs    | [SDK 6.0.x Experimental](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/16) |
+| [master](../../tree/master)                  | 5.x.x   | LTS - good choice for the new development    | [SDK 5.x LTS](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/14) |
+| [support/v4.1.x](../../tree/support/v4.1.x)  | 4.x.x   | LTS - no new featues, security fixes only    | [SDK 4.x LTS](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/13) |
+
+### Build instructions
+
+1.  Install the latest version of the [.NET 6.0 SDK](https://dotnet.microsoft.com/download) for your OS.
+2.  Clone the local version of this repository or your own fork (if you want to make changes).
+3.  Build the packages using the `dotnet build` command running in the root directory of the cloned repo.

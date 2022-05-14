@@ -1,32 +1,25 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
-using JetBrains.Annotations;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// Position side in Alpaca REST API.
+/// </summary>
+[JsonConverter(typeof(StringEnumConverter))]
+[SuppressMessage(
+    "Naming", "CA1720:Identifier contains type name",
+    Justification = "Both names are trading terms not CLR type names.")]
+public enum PositionSide
 {
     /// <summary>
-    /// Position side in Alpaca REST API.
+    /// Long position.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    [SuppressMessage(
-        "Naming", "CA1720:Identifier contains type name",
-        Justification = "Both names are trading terms not CLR type names.")]
-    public enum PositionSide
-    {
-        /// <summary>
-        /// Long position.
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "long")]
-        Long,
+    [UsedImplicitly]
+    [EnumMember(Value = "long")]
+    Long,
 
-        /// <summary>
-        /// Short position.
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "short")]
-        Short
-    }
+    /// <summary>
+    /// Short position.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "short")]
+    Short
 }

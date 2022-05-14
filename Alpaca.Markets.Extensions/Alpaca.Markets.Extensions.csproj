@@ -1,45 +1,59 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net5.0</TargetFrameworks>
-    <PackageValidationBaselineVersion>5.3.0</PackageValidationBaselineVersion>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net6.0</TargetFrameworks>
+    <AssemblyOriginatorKeyFile>..\Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <SignAssembly>true</SignAssembly>
     <WarningLevel>5</WarningLevel>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.3.1</Version>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyVersion>6.0.3.7</AssemblyVersion>
+    <FileVersion>6.0.3.7</FileVersion>
+    <Version>6.0.3-rc1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+	<PackageReleaseNotes>- Fixed problem with subscription attempt on failed web socket connection (on reconnection).</PackageReleaseNotes>
+	<Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
-    <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
+    <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
-    <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.3.1.0</AssemblyVersion>
-    <FileVersion>5.3.1.0</FileVersion>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageIcon>icon.png</PackageIcon>
-    <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-	<PackageReleaseNotes>- Used the new `Feed` property of historical requests in pagination extensions properly.</PackageReleaseNotes>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IncludeSymbols>true</IncludeSymbols>
-    <Nullable>enable</Nullable>
-    <AssemblyOriginatorKeyFile>..\Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <LangVersion>9.0</LangVersion>
-    <PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <RestoreLockedMode>true</RestoreLockedMode>
-    <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
-    <!--<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>-->
+  </PropertyGroup>
+    
+  <PropertyGroup>
     <EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
+    <!--<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>-->
+    <PackageValidationBaselineVersion>6.0.1-alpha3</PackageValidationBaselineVersion>
     <EnableStrictModeForCompatibleTfms>true</EnableStrictModeForCompatibleTfms>
     <EnablePackageValidation>true</EnablePackageValidation>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <IsTrimmable>true</IsTrimmable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -57,34 +71,44 @@
   <ItemGroup>
     <None Include="..\Icon.png" Pack="true" PackagePath="icon.png" />
     <None Remove="Alpaca.Markets.Extensions.csproj.DotSettings" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
+      <PackageReference Include="Alpaca.Markets" Version="6.0.3-rc1" />
+      <PackageReference Include="IsExternalInit" Version="1.0.2">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Alpaca.Markets" Version="5.3.1" />
     <PackageReference Include="JetBrains.Annotations" Version="2022.1.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>compile; analyzers</IncludeAssets>
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>compile; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="6.0.5" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="6.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     <PackageReference Include="System.Threading.Channels" Version="6.0.0" />
+    <PackageReference Include="System.Linq.Async" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="\" />
-  </ItemGroup>
+  <ItemGroup Condition="!($(TargetFramework.StartsWith('net6')))">
+   <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.1" />
+ </ItemGroup>
+
+  <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />
 
 </Project>

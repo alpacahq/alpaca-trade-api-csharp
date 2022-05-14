@@ -1,14 +1,29 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp3.1;net461;net48;net5.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net462;net48;net6.0</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <LangVersion>latest</LangVersion>
+	<TrimmerDefaultAction>link</TrimmerDefaultAction>
+	<ImplicitUsings>enable</ImplicitUsings>
+    <PublishTrimmed>true</PublishTrimmed>
+	<LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IsExternalInit" Version="1.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net462" Version="1.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="OoplesFinance.StockIndicators" Version="1.0.44" />
   </ItemGroup>
   
   <ItemGroup>
@@ -16,6 +31,7 @@
       <Project>{F339D73B-347F-47D4-9BFB-EBEA010FC6F7}</Project>
       <Name>Alpaca.Markets</Name>
     </ProjectReference>
+    <TrimmerRootAssembly Include="Alpaca.Markets" />
   </ItemGroup>
 
 </Project>

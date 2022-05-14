@@ -1,36 +1,29 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using Newtonsoft.Json;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(ILimitUpLimitDown))]
+[SuppressMessage(
+    "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+internal sealed class JsonLimitUpLimitDown : JsonRealTimeBase, ILimitUpLimitDown
 {
-    [SuppressMessage(
-        "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonLimitUpLimitDown : ILimitUpLimitDown
-    {
-        [JsonProperty(PropertyName = "T", Required = Required.Always)]
-        public String Channel { get; set; } = String.Empty;
+    [JsonProperty(PropertyName = "u", Required = Required.Default)]
+    public Decimal LimitUpPrice { get; set; }
 
-        [JsonProperty(PropertyName = "S", Required = Required.Always)]
-        public String Symbol { get; set; } = String.Empty;
+    [JsonProperty(PropertyName = "d", Required = Required.Default)]
+    public Decimal LimitDownPrice { get; set; }
 
-        [JsonProperty(PropertyName = "t", Required = Required.Always)]
-        public DateTime TimestampUtc { get; set; }
+    [JsonProperty(PropertyName = "i", Required = Required.Default)]
+    public String Indicator { get; set; } = String.Empty;
 
-        [JsonProperty(PropertyName = "u", Required = Required.Default)]
-        public Decimal LimitUpPrice { get; set; }
+    [JsonProperty(PropertyName = "z", Required = Required.Default)]
+    public String Tape { get; set; } = String.Empty;
 
-        [JsonProperty(PropertyName = "d", Required = Required.Default)]
-        public Decimal LimitDownPrice { get; set; }
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
 
-        [JsonProperty(PropertyName = "i", Required = Required.Default)]
-        public String Indicator { get; set; } = String.Empty;
-
-        [JsonProperty(PropertyName = "z", Required = Required.Default)]
-        public String Tape { get; set; } = String.Empty;
-
-        [JsonIgnore] 
-        public DateTime TimeUtc => TimestampUtc;
-    }
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        $"{nameof(IAccountActivity)} {{ LimitUpPrice = {LimitUpPrice}, LimitDownPrice = {LimitDownPrice}, Tape = \"{Tape}\" }}";
 }

@@ -1,0 +1,25 @@
+name: Update NuGet Lock Files
+on:
+  workflow_dispatch:
+
+jobs:
+  lockfiles:
+    name: Update and Commit
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET 6.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Restore Dependencies
+      run: dotnet restore --force-evaluate
+
+    - name: Auto-commit changed files
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Update NuGet lock files after Dependabot dependency update.

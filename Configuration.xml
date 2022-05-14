@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageParams>
+  <Filters>
+    <IncludeFilters>
+      <FilterEntry>
+        <ModuleMask>Alpaca.Markets.Extensions</ModuleMask>
+      </FilterEntry>
+      <FilterEntry>
+        <ModuleMask>Alpaca.Markets</ModuleMask>
+      </FilterEntry>
+    </IncludeFilters>
+  </Filters>
+  <Output>Alpaca.Markets.Coverage.xml</Output>
+  <ReportType>DetailedXml</ReportType>
+</CoverageParams>

@@ -1,81 +1,79 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(ICorrection))]
+[SuppressMessage(
+    "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+internal sealed class JsonCorrection : JsonRealTimeBase, ICorrection, ITrade
 {
+    [JsonProperty(PropertyName = "x", Required = Required.Always)]
+    public String Exchange { get; set; } = String.Empty;
 
-    [SuppressMessage(
-        "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-    internal sealed class JsonCorrection : ICorrection, ITrade
-    {
-        [JsonProperty(PropertyName = "T", Required = Required.Always)]
-        public String Channel { get; set; } = String.Empty;
+    [JsonProperty(PropertyName = "z", Required = Required.Default)]
+    public String Tape { get; set; } = String.Empty;
 
-        [JsonProperty(PropertyName = "S", Required = Required.Always)]
-        public String Symbol { get; set; } = String.Empty;
+    [JsonProperty(PropertyName = "oi", Required = Required.Default)]
+    public UInt64 TradeId { get; set; }
 
-        [JsonProperty(PropertyName = "x", Required = Required.Always)]
-        public String Exchange { get; set; } = String.Empty;
+    [JsonProperty(PropertyName = "op", Required = Required.Always)]
+    public Decimal Price { get; set; }
 
-        [JsonProperty(PropertyName = "z", Required = Required.Default)]
-        public String Tape { get; set; } = String.Empty;
+    [JsonProperty(PropertyName = "os", Required = Required.Always)]
+    public Decimal Size { get; set; }
 
-        [JsonProperty(PropertyName = "t", Required = Required.Always)]
-        public DateTime TimestampUtc { get; set; }
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    [JsonProperty(PropertyName = "oc", Required = Required.Default)]
+    public List<String> ConditionsList { get; } = new();
 
-        [JsonProperty(PropertyName = "oi", Required = Required.Default)]
-        public UInt64 TradeId { get; set; }
+    [JsonProperty(PropertyName = "ci", Required = Required.Default)]
+    public UInt64 CorrectedTradeId { get; set; }
 
-        [JsonProperty(PropertyName = "op", Required = Required.Always)]
-        public Decimal Price { get; set; }
+    [JsonProperty(PropertyName = "cp", Required = Required.Always)]
+    public Decimal CorrectedPrice { get; set; }
 
-        [JsonProperty(PropertyName = "os", Required = Required.Always)]
-        public Decimal Size { get; set; }
+    [JsonProperty(PropertyName = "cs", Required = Required.Always)]
+    public Decimal CorrectedSize { get; set; }
 
-        [JsonProperty(PropertyName = "oc", Required = Required.Default)]
-        public List<String> ConditionsList { get; set; } = new();
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    [JsonProperty(PropertyName = "cc", Required = Required.Default)]
+    public List<String> CorrectedConditionsList { get; } = new();
 
-        [JsonProperty(PropertyName = "ci", Required = Required.Default)]
-        public UInt64 CorrectedTradeId { get; set; }
+    [JsonProperty(PropertyName = "tks", Required = Required.Default)]
+    public TakerSide TakerSide { get; set; } = TakerSide.Unknown;
 
-        [JsonProperty(PropertyName = "cp", Required = Required.Always)]
-        public Decimal CorrectedPrice { get; set; }
+    [JsonIgnore]
+    public IReadOnlyList<String> Conditions =>
+        ConditionsList.EmptyIfNull();
 
-        [JsonProperty(PropertyName = "cs", Required = Required.Always)]
-        public Decimal CorrectedSize { get; set; }
+    [JsonIgnore]
+    public ITrade OriginalTrade => this;
 
-        [JsonProperty(PropertyName = "cc", Required = Required.Default)]
-        public List<String> CorrectedConditionsList { get; set; } = new();
+    [JsonIgnore]
+    public ITrade CorrectedTrade { get; private set; } = new JsonRealTimeTrade();
 
-        [JsonProperty(PropertyName = "tks", Required = Required.Default)]
-        public TakerSide TakerSide { get; set; } = TakerSide.Unknown;
+    [OnDeserialized]
+    [UsedImplicitly]
+    internal void OnDeserializedMethod(
+        StreamingContext _) =>
+        CorrectedTrade = new JsonRealTimeTrade
+        {
+            Tape = Tape,
+            Symbol = Symbol,
+            Channel = Channel,
+            Exchange = Exchange,
+            TimestampUtc = TimestampUtc,
+            Size = CorrectedSize,
+            Price = CorrectedPrice,
+            TradeId = CorrectedTradeId,
+            ConditionsList = CorrectedConditionsList
+        };
 
-        [JsonIgnore]
-        public IReadOnlyList<String> Conditions =>
-            ConditionsList.EmptyIfNull();
+    [ExcludeFromCodeCoverage]
+    public override String ToString() =>
+        JsonConvert.SerializeObject(this);
 
-        [JsonIgnore] public ITrade OriginalTrade => this;
-
-        [JsonIgnore] public ITrade CorrectedTrade { get; private set; } = new JsonRealTimeTrade();
-
-        [OnDeserialized]
-        internal void OnDeserializedMethod(
-            StreamingContext context) =>
-            CorrectedTrade = new JsonRealTimeTrade
-            {
-                Tape = Tape,
-                Symbol = Symbol,
-                Channel = Channel,
-                Exchange = Exchange,
-                TimestampUtc = TimestampUtc,
-                Size = CorrectedSize,
-                Price = CorrectedPrice,
-                TradeId = CorrectedTradeId,
-                ConditionsList = CorrectedConditionsList
-            };
-    }
+    [ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private String DebuggerDisplay =>
+        $"{nameof(ICorrection)} {{ {OriginalTrade.ToDebuggerDisplayString()} => {CorrectedTrade.ToDebuggerDisplayString()} }}";
 }

@@ -1,0 +1,59 @@
+name: 🐞 Bug report
+description: Create a bug report to help us improve .NET SDK for Alpaca Markets API
+title: "[BUG]: "
+labels: [Bug] 
+body:
+- type: markdown
+  attributes:
+    value: |
+      Thanks for taking the time to fill out this bug report! Please fill the form in English!
+- type: checkboxes
+  attributes:
+    label: Is there an existing issue for this?
+    description: Please search to see if an issue already exists for the bug you encountered.
+    options:
+    - label: I have searched the existing issues
+      required: true
+- type: textarea
+  attributes:
+    label: Current Behavior
+    description: A concise description of exception/error you encountered.
+    placeholder: |
+      When I do <X>, <Y> happens and I see the error message attached below:
+      ```...```
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Expected Behavior
+    description: A concise description of what you expected to happen.
+    placeholder: When I do <X>, <Z> should happen instead.
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Steps To Reproduce
+    description: Add steps to reproduce this behaviour, include console / network logs & screenshots
+    render: markdown
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Environment
+    description: |
+      Enter the Environment Details:
+    value: |
+      - SDK Version: 
+      - OS (version, bitness): 
+      - .NET SDK (version):
+      - target process .NET version/bitness:
+    render: markdown
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Anything else?
+    description: |
+      Links? References? Anything that will give us more context about the issue you are encountering!
+  validations:
+    required: false

@@ -1,61 +1,58 @@
-using System;
-using JetBrains.Annotations;
+namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// Trailing stop orders allow you to continuously and automatically keep updating the stop price threshold based on the stock price movement.
+/// <para>See https://alpaca.markets/docs/trading/orders/#trailing-stop-orders</para>
+/// </summary>
+public sealed class TrailingStopOrder : SimpleOrderBase
 {
+    internal TrailingStopOrder(
+        String symbol,
+        OrderQuantity quantity,
+        OrderSide side,
+        TrailOffset trailOffset)
+        : base(
+            symbol, quantity, side,
+            OrderType.TrailingStop) =>
+        TrailOffset = trailOffset;
+
     /// <summary>
-    /// Encapsulates data required for placing the market order on the Alpaca REST API.
+    /// Gets order trail offset value (in dollars or percent).
     /// </summary>
-    public sealed class TrailingStopOrder : SimpleOrderBase
-    {
-        internal TrailingStopOrder(
-            String symbol,
-            OrderQuantity quantity,
-            OrderSide side,
-            TrailOffset trailOffset)
-            : base(
-                symbol, quantity, side,
-                OrderType.TrailingStop) =>
-            TrailOffset = trailOffset;
+    [UsedImplicitly]
+    public TrailOffset TrailOffset { get; }
 
-        /// <summary>
-        /// Gets order trail offset value (in dollars or percents).
-        /// </summary>
-        [UsedImplicitly]
-        public TrailOffset TrailOffset { get; }
+    /// <summary>
+    /// Creates new buy market order using specified symbol and quantity.
+    /// </summary>
+    /// <param name="symbol">Order asset symbol.</param>
+    /// <param name="quantity">Order quantity.</param>
+    /// <param name="trailOffset">Trailing stop order offset.</param>
+    /// <returns>The new <see cref="TrailingStopOrder"/> object instance.</returns>
+    [UsedImplicitly]
+    public static TrailingStopOrder Buy(
+        String symbol,
+        OrderQuantity quantity,
+        TrailOffset trailOffset) =>
+        new(
+            symbol, quantity, OrderSide.Buy, trailOffset);
 
-        /// <summary>
-        /// Creates new buy market order using specified symbol and quantity.
-        /// </summary>
-        /// <param name="symbol">Order asset name.</param>
-        /// <param name="quantity">Order quantity.</param>
-        /// <param name="trailOffset">Trailing stop order offset.</param>
-        /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
-        [UsedImplicitly]
-        public static TrailingStopOrder Buy(
-            String symbol,
-            OrderQuantity quantity,
-            TrailOffset trailOffset) =>
-            new (
-                symbol, quantity, OrderSide.Buy, trailOffset);
+    /// <summary>
+    /// Creates new sell market order using specified symbol and quantity.
+    /// </summary>
+    /// <param name="symbol">Order asset symbol.</param>
+    /// <param name="quantity">Order quantity.</param>
+    /// <param name="trailOffset">Trailing stop order offset.</param>
+    /// <returns>The new <see cref="TrailingStopOrder"/> object instance.</returns>
+    [UsedImplicitly]
+    public static TrailingStopOrder Sell(
+        String symbol,
+        OrderQuantity quantity,
+        TrailOffset trailOffset) =>
+        new(
+            symbol, quantity, OrderSide.Sell, trailOffset);
 
-        /// <summary>
-        /// Creates new sell market order using specified symbol and quantity.
-        /// </summary>
-        /// <param name="symbol">Order asset name.</param>
-        /// <param name="quantity">Order quantity.</param>
-        /// <param name="trailOffset">Trailing stop order offset.</param>
-        /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
-        [UsedImplicitly]
-        public static TrailingStopOrder Sell(
-            String symbol,
-            OrderQuantity quantity,
-            TrailOffset trailOffset) =>
-            new(
-                symbol, quantity, OrderSide.Sell, trailOffset);
-
-        internal override JsonNewOrder GetJsonRequest() =>
-            base.GetJsonRequest()
-                .WithTrailOffset(TrailOffset);
-    }
+    internal override JsonNewOrder GetJsonRequest() =>
+        base.GetJsonRequest()
+            .WithTrailOffset(TrailOffset);
 }

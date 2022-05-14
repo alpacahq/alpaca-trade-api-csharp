@@ -1,87 +1,19 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// Provides unified type-safe access for Alpaca crypto data streaming API via websockets.
+/// </summary>
+[CLSCompliant(false)]
+public interface IAlpacaCryptoStreamingClient : IStreamingDataClient
 {
     /// <summary>
-    /// Provides unified type-safe access for Alpaca data streaming API via websockets.
+    /// Gets the order book updates subscription for the <paramref name="symbol"/> asset.
     /// </summary>
-    [CLSCompliant(false)]
-    public interface IAlpacaCryptoStreamingClient : IStreamingDataClient
-    {
-        /// <summary>
-        /// Gets the trade updates subscription for the <paramref name="symbol"/> asset.
-        /// </summary>
-        /// <param name="symbol">Alpaca asset name.</param>
-        /// <returns>
-        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
-        /// </returns>
-        [UsedImplicitly]
-        IAlpacaDataSubscription<ITrade> GetTradeSubscription(
-            String symbol);
-
-        /// <summary>
-        /// Gets the quote updates subscription for the <paramref name="symbol"/> asset.
-        /// </summary>
-        /// <param name="symbol">Alpaca asset name.</param>
-        /// <returns>
-        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
-        /// </returns>
-        [UsedImplicitly]
-        IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
-            String symbol);
-
-        /// <summary>
-        /// Gets the minute aggregate (bar) subscription for the all assets.
-        /// </summary>
-        /// <returns>
-        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
-        /// </returns>
-        [UsedImplicitly]
-        IAlpacaDataSubscription<IBar> GetMinuteBarSubscription();
-
-        /// <summary>
-        /// Gets the minute aggregate (bar) subscription for the <paramref name="symbol"/> asset.
-        /// </summary>
-        /// <param name="symbol">Alpaca asset name.</param>
-        /// <returns>
-        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
-        /// </returns>
-        [UsedImplicitly]
-        IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
-            String symbol);
-
-        /// <summary>
-        /// Gets the daily aggregate (bar) subscription for the <paramref name="symbol"/> asset.
-        /// </summary>
-        /// <param name="symbol">Alpaca asset name.</param>
-        /// <returns>
-        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
-        /// </returns>
-        [UsedImplicitly]
-        IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
-            String symbol);
-
-        /// <summary>
-        /// Gets the updated aggregate (bar) subscription for the <paramref name="symbol"/> asset.
-        /// </summary>
-        /// <param name="symbol">Alpaca asset name.</param>
-        /// <returns>
-        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
-        /// </returns>
-        [UsedImplicitly]
-        IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(
-            String symbol);
-
-        /// <summary>
-        /// Gets the order book updates subscription for the <paramref name="symbol"/> asset.
-        /// </summary>
-        /// <param name="symbol">Alpaca asset name.</param>
-        /// <returns>
-        /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
-        /// </returns>
-        [UsedImplicitly]
-        public IAlpacaDataSubscription<IOrderBook> GetOrderBookSubscription(
-            String symbol);
-    }
+    /// <param name="symbol">Alpaca asset name.</param>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    public IAlpacaDataSubscription<IOrderBook> GetOrderBookSubscription(
+        String symbol);
 }

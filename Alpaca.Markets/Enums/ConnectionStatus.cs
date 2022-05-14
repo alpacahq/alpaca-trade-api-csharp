@@ -1,75 +1,69 @@
-﻿using System.Runtime.Serialization;
-using JetBrains.Annotations;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿namespace Alpaca.Markets;
 
-namespace Alpaca.Markets
+/// <summary>
+/// Connection and authentication status for Alpaca streaming API.
+/// </summary>
+[JsonConverter(typeof(StringEnumConverter))]
+internal enum ConnectionStatus
 {
     /// <summary>
-    /// Authorization status for Alpaca streaming API.
+    /// Client successfully connected.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    internal enum ConnectionStatus
-    {
-        /// <summary>
-        /// Client successfully connected.
-        /// </summary>
-        [EnumMember(Value = "connected")]
-        Connected,
-        
-        /// <summary>
-        /// Client successfully authorized.
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "auth_success")]
-        AuthenticationSuccess,
+    [EnumMember(Value = "connected")]
+    Connected,
 
-        /// <summary>
-        /// Client authentication required.
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "auth_required")]
-        AuthenticationRequired,
+    /// <summary>
+    /// Client successfully authorized.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "auth_success")]
+    AuthenticationSuccess,
 
-        /// <summary>
-        /// Client authentication failed.
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "auth_failed")]
-        AuthenticationFailed,
+    /// <summary>
+    /// Client authentication required.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "auth_required")]
+    AuthenticationRequired,
 
-        /// <summary>
-        /// Requested operation successfully completed.
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "success")]
-        Success,
+    /// <summary>
+    /// Client authentication failed.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "auth_failed")]
+    AuthenticationFailed,
 
-        /// <summary>
-        /// Requested operation failed.
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "failed")]
-        Failed,
+    /// <summary>
+    /// Requested operation successfully completed.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "success")]
+    Success,
 
-        /// <summary>
-        /// Client successfully authorized.
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "authorized")]
-        AlpacaDataStreamingAuthorized,
+    /// <summary>
+    /// Requested operation failed.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "failed")]
+    Failed,
 
-        /// <summary>
-        /// Client authentication failed.
-        /// </summary>
-        [UsedImplicitly]
-        [EnumMember(Value = "unauthorized")]
-        AlpacaDataStreamingUnauthorized,
+    /// <summary>
+    /// Client successfully authorized.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "authorized")]
+    AlpacaDataStreamingAuthorized,
 
-        /// <summary>
-        /// Client authentication completed.
-        /// </summary>
-        [EnumMember(Value = "authenticated")]
-        Authenticated
-    }
+    /// <summary>
+    /// Client authentication failed.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "unauthorized")]
+    AlpacaDataStreamingUnauthorized,
+
+    /// <summary>
+    /// Client authentication completed.
+    /// </summary>
+    [EnumMember(Value = "authenticated")]
+    Authenticated
 }
