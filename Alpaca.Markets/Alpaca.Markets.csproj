@@ -7,22 +7,22 @@
     <WarningLevel>5</WarningLevel>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.2.17</Version>
+    <Version>5.2.18</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.2.17.0</AssemblyVersion>
-    <FileVersion>5.2.17.0</FileVersion>
+    <AssemblyVersion>5.2.18.0</AssemblyVersion>
+    <FileVersion>5.2.18.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- All the latest stock data request methods in the `IAlpacaDataClient` interface now have related request types for specifying the optional market data feed parameter.
-- Added the new `HttpStatusCode` property into the `RestClientErrorException` class with value of the original HTTP return status code.
-- The optional (nullable) `Feed` property added into all historical data (bars, trades, and quotes) requests.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Fixed problem with the `ListExchangesAsync`, `ListTradeConditionsAsync`, and `ListQuoteConditionsAsync` methods.
+- Added the new `Exchange` property into the `AssetsRequest` class for filtering assets by exchanges.
+- Added the new `OrderSide` property into the `ListOrderRequest` class for filtering orders by side.</PackageReleaseNotes>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
