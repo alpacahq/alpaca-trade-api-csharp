@@ -12,16 +12,15 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.8</AssemblyVersion>
-    <FileVersion>6.0.3.8</FileVersion>
-    <Version>6.0.3-rc1</Version>
+    <AssemblyVersion>6.0.3.9</AssemblyVersion>
+    <FileVersion>6.0.3.9</FileVersion>
+    <Version>6.0.3-rc2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-	<PackageReleaseNotes>- All the latest stock data request methods in the `IAlpacaDataClient` interface now have related request types for specifying the optional market data feed parameter.
-- Added the new `HttpStatusCode` property into the `RestClientErrorException` class with value of the original HTTP return status code.
-- Added the optional (nullable) `Feed` property into all historical data (bars, trades, and quotes) requests.
-- Order cancellation methods in the `IAlpacaTradingClient` interface were renamed (`Delete` -> `Cancel`).</PackageReleaseNotes>
+	<PackageReleaseNotes>- Fixed problem with the `ListExchangesAsync`, `ListTradeConditionsAsync`, and `ListQuoteConditionsAsync` methods.
+- Added the new `Exchange` property into the `AssetsRequest` class for filtering assets by exchanges.
+- Added the new `OrderSide` property into the `ListOrderRequest` class for filtering orders by side.</PackageReleaseNotes>
 	<Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
