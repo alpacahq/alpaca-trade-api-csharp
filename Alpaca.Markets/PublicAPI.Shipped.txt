@@ -1004,6 +1004,8 @@ Alpaca.Markets.ThrottleParameters.MaxRetryAttempts.set -> void
 Alpaca.Markets.ThrottleParameters.RetryHttpStatuses.get -> System.Collections.Generic.ISet<System.Net.HttpStatusCode>!
 Alpaca.Markets.ThrottleParameters.RetrySocketErrorCodes.get -> System.Collections.Generic.ISet<System.Net.Sockets.SocketError>!
 Alpaca.Markets.ThrottleParameters.ThrottleParameters(uint maxRetryAttempts, System.Collections.Generic.IEnumerable<System.Net.Sockets.SocketError>! retrySocketErrorCodes, System.Collections.Generic.IEnumerable<System.Net.HttpStatusCode>! retryHttpStatuses) -> void
+Alpaca.Markets.ThrottleParameters.Timeout.get -> System.TimeSpan?
+Alpaca.Markets.ThrottleParameters.Timeout.set -> void
 Alpaca.Markets.Tape
 Alpaca.Markets.Tape.A = 0 -> Alpaca.Markets.Tape
 Alpaca.Markets.Tape.B = 1 -> Alpaca.Markets.Tape
