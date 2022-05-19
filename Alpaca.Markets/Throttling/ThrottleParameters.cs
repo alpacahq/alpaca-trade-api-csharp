@@ -23,15 +23,17 @@ namespace Alpaca.Markets
             : HttpClientHandler
 #endif
         {
-            private static readonly TimeSpan _defaultHttpClientTimeout = new HttpClient().Timeout;
-
             private readonly IAsyncPolicy<HttpResponseMessage> _asyncPolicy;
 
+            private readonly TimeSpan _timeout;
+
             public CustomHttpHandler(
-                IAsyncPolicy<HttpResponseMessage> asyncPolicy)
+                IAsyncPolicy<HttpResponseMessage> asyncPolicy,
+                TimeSpan timeout)
             {
                 AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
                 _asyncPolicy = asyncPolicy;
+                _timeout = timeout;
             }
 
             /// <inheritdoc />
@@ -62,7 +64,7 @@ namespace Alpaca.Markets
                 }
             }
 
-            private static TimeSpan getTimeout(
+            private TimeSpan getTimeout(
                 HttpRequestMessage request) =>
 #if NET5_0_OR_GREATER
                 request.Options.TryGetValue(RequestTimeoutOptionKey,
@@ -73,10 +75,12 @@ namespace Alpaca.Markets
                 value is TimeSpan requestSpecificTimeoutValue
 #endif
                     ? requestSpecificTimeoutValue
-                    : _defaultHttpClientTimeout;
+                    : _timeout;
         }
 
         private const UInt32 DefaultMaxRetryAttempts = 5;
+
+        private static readonly TimeSpan _defaultHttpClientTimeout = new HttpClient().Timeout;
 
         private static readonly HttpStatusCode[] _defaultHttpStatuses =
         {
@@ -139,6 +143,13 @@ namespace Alpaca.Markets
         /// </summary>
         public static ThrottleParameters Default { get; } = new ();
 
+        /// <summary>
+        /// Gets or sets the HTTP request timeout. Default <see cref="HttpClient"/> timeout value (100 sec)
+        /// will be used if this property is equal to <c>null</c> or never set.
+        /// </summary>
+        [UsedImplicitly]
+        public TimeSpan? Timeout { get; set; }
+
 #if NET5_0_OR_GREATER
         internal static HttpRequestOptionsKey<TimeSpan> RequestTimeoutOptionKey =
             new (nameof(RequestTimeoutOptionKey));
@@ -166,7 +177,8 @@ namespace Alpaca.Markets
         public ISet<SocketError> RetrySocketErrorCodes => _retrySocketErrorCodes;
 
         [UsedImplicitly]
-        internal HttpMessageHandler GetMessageHandler() => new CustomHttpHandler(getAsyncPolicy());
+        internal HttpMessageHandler GetMessageHandler() => new CustomHttpHandler(getAsyncPolicy(),
+            Timeout ?? _defaultHttpClientTimeout);
 
         internal HttpClient GetHttpClient() => 
 #pragma warning disable CA2000 // Dispose objects before losing scope
@@ -175,7 +187,7 @@ namespace Alpaca.Markets
 #pragma warning restore CA5399 //  HttpClient is created without enabling CheckCertificateRevocationList
 #pragma warning restore CA2000 // Dispose objects before losing scope
             {
-                Timeout = Timeout.InfiniteTimeSpan
+                Timeout = System.Threading.Timeout.InfiniteTimeSpan
             };
 
         private IAsyncPolicy<HttpResponseMessage> getAsyncPolicy()
