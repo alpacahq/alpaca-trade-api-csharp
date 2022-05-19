@@ -17,15 +17,17 @@ public sealed class ThrottleParameters
         : HttpClientHandler
 #endif
     {
-        private static readonly TimeSpan _defaultHttpClientTimeout = new HttpClient().Timeout;
-
         private readonly IAsyncPolicy<HttpResponseMessage> _asyncPolicy;
 
+        private readonly TimeSpan _timeout;
+
         public CustomHttpHandler(
-            IAsyncPolicy<HttpResponseMessage> asyncPolicy)
+            IAsyncPolicy<HttpResponseMessage> asyncPolicy,
+            TimeSpan timeout)
         {
             AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
             _asyncPolicy = asyncPolicy;
+            _timeout = timeout;
         }
 
         /// <inheritdoc />
@@ -56,7 +58,7 @@ public sealed class ThrottleParameters
             }
         }
 
-        private static TimeSpan getTimeout(
+        private TimeSpan getTimeout(
             HttpRequestMessage request) =>
 #if NET6_0_OR_GREATER
             request.Options.TryGetValue(RequestTimeoutOptionKey,
@@ -67,8 +69,10 @@ public sealed class ThrottleParameters
             value is TimeSpan requestSpecificTimeoutValue
 #endif
                 ? requestSpecificTimeoutValue
-                : _defaultHttpClientTimeout;
+                : _timeout;
     }
+
+    private static readonly TimeSpan _defaultHttpClientTimeout = new HttpClient().Timeout;
 
     private const Int32 DelayMinValueInMilliseconds = 200;
 
@@ -164,10 +168,18 @@ public sealed class ThrottleParameters
     public ISet<SocketError> RetrySocketErrorCodes => _retrySocketErrorCodes;
 
     /// <summary>
+    /// Gets or sets the HTTP request timeout. Default <see cref="HttpClient"/> timeout value (100 sec)
+    /// will be used if this property is equal to <c>null</c> or never set.
+    /// </summary>
+    [UsedImplicitly]
+    public TimeSpan? Timeout { get; set; }
+
+    /// <summary>
     /// Gets the custom message handler that supports reconnection logic configured with the current settings.
     /// </summary>
     [UsedImplicitly]
-    public HttpMessageHandler GetMessageHandler() => new CustomHttpHandler(GetAsyncPolicy());
+    public HttpMessageHandler GetMessageHandler() => new CustomHttpHandler(
+        GetAsyncPolicy(), Timeout ?? _defaultHttpClientTimeout);
 
     /// <summary>
     /// Gets the custom Polly asynchronous execution policy (can be used by unit tests and DI containers).
@@ -201,7 +213,7 @@ public sealed class ThrottleParameters
 #pragma warning restore CA5399 //  HttpClient is created without enabling CheckCertificateRevocationList
 #pragma warning restore CA2000 // Dispose objects before losing scope
         {
-            Timeout = Timeout.InfiniteTimeSpan
+            Timeout = System.Threading.Timeout.InfiniteTimeSpan
         };
 
     private TimeSpan getDelayFromHeader(
