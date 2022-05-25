@@ -73,7 +73,7 @@ internal sealed class MeanReversionPaperOnly : IDisposable
                 positionQuantity = currentPosition.IntegerQuantity;
                 positionValue = currentPosition.MarketValue ?? 0M;
             }
-            catch (Exception)
+            catch (Exception) //-V3163 //-V5606
             {
                 // No position exists. This exception can be safely ignored.
             }
@@ -197,7 +197,7 @@ internal sealed class MeanReversionPaperOnly : IDisposable
             await alpacaTradingClient.PostOrderAsync(
                 OrderSide.Sell.Market(symbol, positionQuantity));
         }
-        catch (Exception)
+        catch (Exception) //-V3163 //-V5606
         {
             // No position to exit.
         }

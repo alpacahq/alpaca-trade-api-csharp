@@ -105,7 +105,7 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
         {
             await handleSocketClosedImpl().ConfigureAwait(false);
         }
-        catch (TaskCanceledException)
+        catch (TaskCanceledException) //-V3163 //-V5606
         {
             // Expected one - don't report
         }
@@ -178,7 +178,7 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
         {
             await handleErrorImpl(exception).ConfigureAwait(false);
         }
-        catch (TaskCanceledException)
+        catch (TaskCanceledException) //-V3163 //-V5606
         {
             // Expected one - don't report
         }
