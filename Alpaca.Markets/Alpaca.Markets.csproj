@@ -12,15 +12,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.9</AssemblyVersion>
-    <FileVersion>6.0.3.9</FileVersion>
-    <Version>6.0.3-rc2</Version>
+    <AssemblyVersion>6.0.3.10</AssemblyVersion>
+    <FileVersion>6.0.3.10</FileVersion>
+    <Version>6.0.3</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-	<PackageReleaseNotes>- Fixed problem with the `ListExchangesAsync`, `ListTradeConditionsAsync`, and `ListQuoteConditionsAsync` methods.
-- Added the new `Exchange` property into the `AssetsRequest` class for filtering assets by exchanges.
-- Added the new `OrderSide` property into the `ListOrderRequest` class for filtering orders by side.</PackageReleaseNotes>
+	<PackageReleaseNotes>- Added the `Timeout` property into the `ThrottleParameters` class for configuring client-level HTTP timeout.</PackageReleaseNotes>
 	<Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
