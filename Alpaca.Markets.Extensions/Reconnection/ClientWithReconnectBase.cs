@@ -107,7 +107,7 @@ namespace Alpaca.Markets.Extensions
             {
                 await handleSocketClosedImpl().ConfigureAwait(false);
             }
-            catch (TaskCanceledException)
+            catch (TaskCanceledException) //-V3163 //-V5606
             {
                 // Expected one - don't report
             }
@@ -180,7 +180,7 @@ namespace Alpaca.Markets.Extensions
             {
                 await handleErrorImpl(exception).ConfigureAwait(false);
             }
-            catch (TaskCanceledException)
+            catch (TaskCanceledException) //-V3163 //-V5606
             {
                 // Expected one - don't report
             }
