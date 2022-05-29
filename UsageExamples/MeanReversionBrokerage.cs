@@ -176,7 +176,7 @@ internal sealed class MeanReversionBrokerage : IDisposable
             positionQuantity = currentPosition.IntegerQuantity;
             positionValue = currentPosition.MarketValue ?? 0M;
         }
-        catch (Exception)
+        catch (Exception) //-V3163 //-V5606
         {
             // No position exists. This exception can be safely ignored.
         }
@@ -337,7 +337,7 @@ internal sealed class MeanReversionBrokerage : IDisposable
         }
         catch (Exception e)
         {
-            Console.WriteLine("Warning: " + e.Message);
+            Console.WriteLine("Warning: " + e.Message); //-V5621
         }
     }
 
@@ -358,7 +358,7 @@ internal sealed class MeanReversionBrokerage : IDisposable
                     OrderSide.Buy.Market(symbol, Math.Abs(positionQuantity)));
             }
         }
-        catch (Exception)
+        catch (Exception) //-V3163 //-V5606
         {
             // No position to exit.
         }
