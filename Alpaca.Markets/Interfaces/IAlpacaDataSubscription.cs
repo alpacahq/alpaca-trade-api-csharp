@@ -34,5 +34,5 @@ public interface IAlpacaDataSubscription<out TApi> : IAlpacaDataSubscription
     /// Occurs when a new <typeparamref name="TApi"/> item is received from the stream.
     /// </summary>
     [UsedImplicitly]
-    event Action<TApi> Received;
+    event Action<TApi>? Received;
 }

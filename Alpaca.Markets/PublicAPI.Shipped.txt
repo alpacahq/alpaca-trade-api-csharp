@@ -407,7 +407,7 @@ Alpaca.Markets.IAlpacaDataSubscription.OnSubscribedChanged -> System.Action?
 Alpaca.Markets.IAlpacaDataSubscription.Streams.get -> System.Collections.Generic.IEnumerable<string!>!
 Alpaca.Markets.IAlpacaDataSubscription.Subscribed.get -> bool
 Alpaca.Markets.IAlpacaDataSubscription<TApi>
-Alpaca.Markets.IAlpacaDataSubscription<TApi>.Received -> System.Action<TApi>!
+Alpaca.Markets.IAlpacaDataSubscription<TApi>.Received -> System.Action<TApi>?
 Alpaca.Markets.IAlpacaNewsStreamingClient
 Alpaca.Markets.IAlpacaNewsStreamingClient.GetNewsSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.INewsArticle!>!
 Alpaca.Markets.IAlpacaNewsStreamingClient.GetNewsSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.INewsArticle!>!
