@@ -12,13 +12,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.10</AssemblyVersion>
-    <FileVersion>6.0.3.10</FileVersion>
-    <Version>6.0.3</Version>
+    <AssemblyVersion>6.0.4.0</AssemblyVersion>
+    <FileVersion>6.0.4.0</FileVersion>
+    <Version>6.0.4-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-	<PackageReleaseNotes>- Added the `Timeout` property into the `ThrottleParameters` class for configuring client-level HTTP timeout.</PackageReleaseNotes>
+	<PackageReleaseNotes>- Changed approach for EST time zone handling in .NET 6.0 and later.</PackageReleaseNotes>
 	<Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
@@ -47,7 +47,7 @@
   <PropertyGroup>
     <EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
     <!--<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>-->
-    <PackageValidationBaselineVersion>6.0.1-alpha4</PackageValidationBaselineVersion>
+    <PackageValidationBaselineVersion>6.0.3</PackageValidationBaselineVersion>
     <EnableStrictModeForCompatibleTfms>true</EnableStrictModeForCompatibleTfms>
     <EnablePackageValidation>true</EnablePackageValidation>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
