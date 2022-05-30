@@ -1,21 +1,14 @@
-﻿#if !(NETFRAMEWORK || NET6_0_OR_GREATER)
-using System.Runtime.InteropServices;
-#endif
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 internal static class CustomTimeZone
 {
-#if NETFRAMEWORK || NET6_0_OR_GREATER
-    private static TimeZoneInfo Est { get; } =
-        TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-#else
+    private const String WindowsTimeZoneId = "Eastern Standard Time";
+
+    private const String IanaTimeZoneId = "America/New_York";
+
     private static TimeZoneInfo Est { get; } =
         TimeZoneInfo.FindSystemTimeZoneById(
-            RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
-                ? "Eastern Standard Time"
-                : "America/New_York");
-#endif
+            shouldUseWindowsTimeZoneId() ? WindowsTimeZoneId : IanaTimeZoneId);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static DateTime ConvertFromEstToUtc(
@@ -31,4 +24,14 @@ internal static class CustomTimeZone
     private static DateTimeOffset asDateTimeOffset(
         this DateTime estDateTime) =>
         new (estDateTime, Est.GetUtcOffset(estDateTime));
+
+    private static Boolean shouldUseWindowsTimeZoneId() =>
+#if NETFRAMEWORK
+        true;  // The .NET Framework 4.x exists only on Windows platform
+#elif NET6_0_OR_GREATER
+        false; // The .NET 6 can use both IANA and Windows time zone names
+#else
+        System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(
+            System.Runtime.InteropServices.OSPlatform.Windows);
+#endif
 }
