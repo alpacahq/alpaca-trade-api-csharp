@@ -47,11 +47,15 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
 
     public Task ConnectAsync(
         CancellationToken cancellationToken = default) =>
-        Client.ConnectAsync(cancellationToken);
+        runWithReconnection(async () =>
+        {
+            await Client.ConnectAsync(cancellationToken).ConfigureAwait(false);
+            return AuthStatus.Unauthorized;
+        });
 
     public Task<AuthStatus> ConnectAndAuthenticateAsync(
         CancellationToken cancellationToken = default) =>
-        Client.ConnectAndAuthenticateAsync(cancellationToken);
+        runWithReconnection(() => Client.ConnectAndAuthenticateAsync(cancellationToken));
 
     public Task DisconnectAsync(
         CancellationToken cancellationToken = default)
@@ -88,22 +92,25 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
         CancellationToken cancellationToken) =>
         new(); // DO nothing by default for auto-resubscribed clients.
 
+    private async void handleSocketClosed() => 
+        await handleSocketClosedAsync().ConfigureAwait(false);
+
     [SuppressMessage(
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
-    private async void handleSocketClosed()
+    private async Task<AuthStatus> handleSocketClosedAsync()
     {
         var lockTaken = false;
         _closeLock.TryEnter(ref lockTaken);
 
         if (!lockTaken)
         {
-            return;
+            return AuthStatus.Unauthorized;
         }
 
         try
         {
-            await handleSocketClosedImpl().ConfigureAwait(false);
+            return await handleSocketClosedImplAsync().ConfigureAwait(false);
         }
         catch (TaskCanceledException) //-V3163 //-V5606
         {
@@ -117,11 +124,14 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
         {
             _closeLock.Exit(false);
         }
+
+        return AuthStatus.Unauthorized;
     }
 
-    private async Task handleSocketClosedImpl()
+    private async Task<AuthStatus> handleSocketClosedImplAsync()
     {
-        var isConnectedAndAuthorized = false;
+        var authStatus = AuthStatus.Unauthorized;
+
         while (!_cancellationTokenSource.IsCancellationRequested &&
                Interlocked.Increment(ref _reconnectionAttempts) <=
                _reconnectionParameters.MaxReconnectionAttempts)
@@ -134,20 +144,19 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
                     _cancellationTokenSource.Token)
                 .ConfigureAwait(false);
 
-            var authStatus = await ConnectAndAuthenticateAsync(_cancellationTokenSource.Token)
+            authStatus = await Client.ConnectAndAuthenticateAsync(_cancellationTokenSource.Token)
                 .ConfigureAwait(false);
 
             if (authStatus == AuthStatus.Authorized)
             {
-                isConnectedAndAuthorized = true;
                 break;
             }
 
-            await DisconnectAsync(_cancellationTokenSource.Token)
+            await Client.DisconnectAsync(_cancellationTokenSource.Token)
                 .ConfigureAwait(false);
         }
 
-        if (isConnectedAndAuthorized &&
+        if (authStatus == AuthStatus.Authorized &&
             Interlocked.Exchange(ref _reconnectionAttempts, 0) <=
             _reconnectionParameters.MaxReconnectionAttempts)
         {
@@ -158,6 +167,8 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
         {
             SocketClosed?.Invoke(); // Finally report to clients
         }
+
+        return authStatus;
     }
 
     [SuppressMessage(
@@ -202,7 +213,7 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
                 {
                     OnError?.Invoke(exception);
                 }
-                await DisconnectAsync(_cancellationTokenSource.Token).ConfigureAwait(false);
+                await Client.DisconnectAsync(_cancellationTokenSource.Token).ConfigureAwait(false);
                 break;
 
             case RestClientErrorException:
@@ -214,8 +225,28 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
 
             default:
                 OnError?.Invoke(exception);
-                await DisconnectAsync(_cancellationTokenSource.Token).ConfigureAwait(false);
+                await Client.DisconnectAsync(_cancellationTokenSource.Token).ConfigureAwait(false);
                 break;
         }
+    }
+
+    private async Task<AuthStatus> runWithReconnection(
+        Func<Task<AuthStatus>> action)
+    {
+        var errorOccurred = false;
+
+        Client.OnError += HandleOnError;
+        var authStatus = await action().ConfigureAwait(false);
+        Client.OnError -= HandleOnError;
+
+        if (errorOccurred &&
+            authStatus == AuthStatus.Unauthorized)
+        {
+            return await handleSocketClosedAsync().ConfigureAwait(false);
+        }
+
+        return authStatus;
+
+        void HandleOnError(Exception _) => errorOccurred = true;
     }
 }
