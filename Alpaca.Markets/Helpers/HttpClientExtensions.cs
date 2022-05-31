@@ -51,7 +51,7 @@ namespace Alpaca.Markets
         }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
-            HttpMessageInvoker httpClient,
+            HttpClient httpClient,
             HttpMethod method,
             Uri endpointUri,
             TimeSpan timeout,
@@ -73,7 +73,7 @@ namespace Alpaca.Markets
         }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
-            HttpMessageInvoker httpClient,
+            HttpClient httpClient,
             HttpMethod method,
             Uri endpointUri,
             CancellationToken cancellationToken)
@@ -86,7 +86,7 @@ namespace Alpaca.Markets
         }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson, TContent>(
-            HttpMessageInvoker httpClient,
+            HttpClient httpClient,
             HttpMethod method,
             Uri endpointUri,
             TContent content,
@@ -100,13 +100,14 @@ namespace Alpaca.Markets
         }
 
         private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
-            HttpMessageInvoker httpClient,
+            HttpClient httpClient,
             HttpRequestMessage request,
             CancellationToken cancellationToken)
             where TJson : TApi
         {
             request.Version = _httpVersion;
-            using var response = await httpClient.SendAsync(request, cancellationToken)
+            using var response = await httpClient.SendAsync(request,
+                    HttpCompletionOption.ResponseHeadersRead, cancellationToken)
                 .ConfigureAwait(false);
 
             return await response.DeserializeAsync<TApi, TJson>()
@@ -114,14 +115,15 @@ namespace Alpaca.Markets
         }
 
         private static async Task<Boolean> callAndReturnSuccessCodeAsync(
-            HttpMessageInvoker httpClient,
+            HttpClient httpClient,
             HttpMethod method,
             Uri endpointUri,
             CancellationToken cancellationToken)
         {
             using var request = new HttpRequestMessage(method, endpointUri);
 
-            using var response = await httpClient.SendAsync(request, cancellationToken)
+            using var response = await httpClient.SendAsync(request,
+                    HttpCompletionOption.ResponseHeadersRead, cancellationToken)
                 .ConfigureAwait(false);
 
             return await response.IsSuccessStatusCodeAsync()
