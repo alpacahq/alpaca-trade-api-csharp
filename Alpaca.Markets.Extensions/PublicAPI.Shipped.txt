@@ -28,6 +28,7 @@ Alpaca.Markets.Extensions.ReconnectionParameters.MaxReconnectionDelay.set -> voi
 Alpaca.Markets.Extensions.ReconnectionParameters.MinReconnectionDelay.get -> System.TimeSpan
 Alpaca.Markets.Extensions.ReconnectionParameters.MinReconnectionDelay.set -> void
 Alpaca.Markets.Extensions.ReconnectionParameters.ReconnectionParameters() -> void
+Alpaca.Markets.Extensions.ReconnectionParameters.RetryWebSocketErrorCodes.get -> System.Collections.Generic.ISet<System.Net.WebSockets.WebSocketError>!
 Alpaca.Markets.Extensions.StreamingClientExtensions
 Alpaca.Markets.Extensions.StreamingDataClientExtensions
 static Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(this Alpaca.Markets.IAlpacaCryptoStreamingClient! client, params string![]! symbols) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IOrderBook!>!

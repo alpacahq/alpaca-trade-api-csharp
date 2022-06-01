@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Net.Sockets;
+using System.Net.WebSockets;
 
 namespace Alpaca.Markets.Extensions;
 
@@ -203,18 +204,18 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
         }
     }
 
-    private async Task handleErrorImpl(
+    private Task handleErrorImpl(
         Exception exception)
     {
         switch (exception)
         {
             case SocketException socketException:
-                if (!_retrySocketErrorCodes.Contains(socketException.SocketErrorCode))
-                {
-                    OnError?.Invoke(exception);
-                }
-                await Client.DisconnectAsync(_cancellationTokenSource.Token).ConfigureAwait(false);
-                break;
+                return handleSocketException(
+                    _retrySocketErrorCodes, socketException.SocketErrorCode, socketException);
+
+            case WebSocketException webSocketException:
+                return handleSocketException(_reconnectionParameters.RetryWebSocketErrorCodes,
+                    webSocketException.WebSocketErrorCode, webSocketException);
 
             case RestClientErrorException:
                 OnError?.Invoke(exception);
@@ -225,9 +226,10 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
 
             default:
                 OnError?.Invoke(exception);
-                await Client.DisconnectAsync(_cancellationTokenSource.Token).ConfigureAwait(false);
-                break;
+                return Client.DisconnectAsync(_cancellationTokenSource.Token);
         }
+
+        return Task.CompletedTask;
     }
 
     private async Task<AuthStatus> runWithReconnection(
@@ -239,7 +241,7 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
         var authStatus = await action().ConfigureAwait(false);
         Client.OnError -= HandleOnError;
 
-        if (errorOccurred &&
+        if (errorOccurred && //-V3022
             authStatus == AuthStatus.Unauthorized)
         {
             return await handleSocketClosedAsync().ConfigureAwait(false);
@@ -248,5 +250,17 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
         return authStatus;
 
         void HandleOnError(Exception _) => errorOccurred = true;
+    }
+
+    private Task handleSocketException<TErrorCode>(
+        ICollection<TErrorCode> retryErrorCodes,
+        TErrorCode errorCode,
+        Exception exception)
+    {
+        if (!retryErrorCodes.Contains(errorCode))
+        {
+            OnError?.Invoke(exception);
+        }
+        return Client.DisconnectAsync(_cancellationTokenSource.Token);
     }
 }
