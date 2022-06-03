@@ -38,6 +38,7 @@ public sealed partial class AlpacaDataStreamingClientTest
             MinReconnectionDelay = ReconnectionParameters.Default.MinReconnectionDelay
         };
 
+        Assert.NotEmpty(parameters.RetryWebSocketErrorCodes);
         Assert.NotEqual(parameters, ReconnectionParameters.Default);
     }
 
