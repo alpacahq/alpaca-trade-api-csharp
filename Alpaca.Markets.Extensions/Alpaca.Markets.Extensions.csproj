@@ -12,13 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.4.1</AssemblyVersion>
-    <FileVersion>6.0.4.1</FileVersion>
-    <Version>6.0.4-beta2</Version>
+    <AssemblyVersion>6.0.4.2</AssemblyVersion>
+    <FileVersion>6.0.4.2</FileVersion>
+    <Version>6.0.4</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-	<PackageReleaseNotes>- Changed the `ClientWithReconnectBase` approach for initial connect.</PackageReleaseNotes>
+	<PackageReleaseNotes>- Added a list of web socket errors that will not be reported during the reconnection.
+- Changed the `ClientWithReconnectBase` approach for initial connect.</PackageReleaseNotes>
 	<Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
