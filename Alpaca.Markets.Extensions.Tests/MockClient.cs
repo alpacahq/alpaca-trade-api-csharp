@@ -12,6 +12,11 @@ public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
         TClientConfiguration configuration,
         Func<TClientConfiguration, TClient> factory)
     {
+        if (configuration is null)
+        {
+            throw new ArgumentNullException(nameof(configuration));
+        }
+
         configuration.HttpClient = _handler.ToHttpClient();
         Client = factory(configuration);
     }

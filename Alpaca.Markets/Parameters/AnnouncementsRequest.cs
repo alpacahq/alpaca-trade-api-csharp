@@ -43,7 +43,7 @@ public sealed class AnnouncementsRequest : Validation.IRequest
     public AnnouncementsRequest(
         CorporateActionType corporateActionType,
         IInclusiveTimeInterval timeInterval)
-        : this (corporateActionType, timeInterval.AsDateOnlyInterval())
+        : this (corporateActionType, timeInterval.EnsureNotNull().AsDateOnlyInterval())
     {
     }
 
@@ -57,7 +57,7 @@ public sealed class AnnouncementsRequest : Validation.IRequest
     public AnnouncementsRequest(
         IEnumerable<CorporateActionType> corporateActionTypes,
         IInclusiveTimeInterval timeInterval)
-        : this (corporateActionTypes, timeInterval.AsDateOnlyInterval())
+        : this (corporateActionTypes, timeInterval.EnsureNotNull().AsDateOnlyInterval())
     {
     }
 

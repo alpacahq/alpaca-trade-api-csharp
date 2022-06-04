@@ -95,7 +95,7 @@ public static class EnumerableExtensions
         var accumulator = 0M;
         var count = 0U;
 
-        await foreach (var bar in bars.WithCancellation(cancellationToken)
+        await foreach (var bar in bars.EnsureNotNull().WithCancellation(cancellationToken)
             .ConfigureAwait(false))
         {
             accumulator += bar.Volume;
@@ -163,7 +163,7 @@ public static class EnumerableExtensions
         var buffer = new Queue<IBar>(window);
         var accumulator = new Bar();
 
-        await foreach (var bar in bars
+        await foreach (var bar in bars.EnsureNotNull()
             .WithCancellation(cancellationToken)
             .ConfigureAwait(false))
         {

@@ -44,7 +44,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     protected internal HistoricalRequestBase(
         IEnumerable<String> symbols,
         IInclusiveTimeInterval timeInterval)
-        : this (symbols, timeInterval.AsDateTimeInterval())
+        : this (symbols, timeInterval.EnsureNotNull().AsDateTimeInterval())
     {
     }
 

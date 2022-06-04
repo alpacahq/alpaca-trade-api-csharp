@@ -206,7 +206,7 @@ public static partial class HistoricalBarsClientExtensions
         Interval<DateOnly> timeInterval,
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
-        client.GetHistoricalBarsAsAsyncEnumerable(
+        client.EnsureNotNull().GetHistoricalBarsAsAsyncEnumerable(
                 RequestFactory<TRequest>.Instance.Create(symbol, timeInterval), cancellationToken)
             .GetAverageDailyTradeVolumeAsync(cancellationToken);
 
@@ -245,7 +245,7 @@ public static partial class HistoricalBarsClientExtensions
         Int32 window,
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
-        client.GetHistoricalBarsAsAsyncEnumerable(request, cancellationToken)
+        client.EnsureNotNull().GetHistoricalBarsAsAsyncEnumerable(request, cancellationToken)
             .GetSimpleMovingAverageAsync(window, cancellationToken);
 
     [ExcludeFromCodeCoverage]

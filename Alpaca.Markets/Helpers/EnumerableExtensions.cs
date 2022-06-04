@@ -7,7 +7,7 @@ internal static class EnumerableExtensions
         this IEnumerable<TSource> source,
         Int32 size)
     {
-        using var e = source.GetEnumerator();
+        using var e = source.EnsureNotNull().GetEnumerator();
         while (e.MoveNext())
         {
             var chunk = new TSource[size];

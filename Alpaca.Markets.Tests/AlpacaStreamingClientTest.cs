@@ -29,6 +29,8 @@ public sealed class AlpacaStreamingClientTest
     [ClassData(typeof(EnvironmentTestData))]
     public async Task ConnectAndSubscribeWorks(IEnvironment environment)
     {
+        Assert.NotNull(environment);
+
         using var client = _mockClientsFactory.GetAlpacaStreamingClientMock(environment,
             environment.GetAlpacaStreamingClientConfiguration(new SecretKey(
                 Guid.NewGuid().ToString("N"), Guid.NewGuid().ToString("N"))));

@@ -56,7 +56,7 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     protected internal HistoricalCryptoRequestBase(
         IEnumerable<String> symbols,
         IInclusiveTimeInterval timeInterval)
-        : this(symbols, timeInterval.AsDateTimeInterval())
+        : this(symbols, timeInterval.EnsureNotNull().AsDateTimeInterval())
     {
     }
 
@@ -72,7 +72,7 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
         IEnumerable<String> symbols,
         IInclusiveTimeInterval timeInterval,
         IEnumerable<CryptoExchange> exchanges)
-        : this(symbols, timeInterval.AsDateTimeInterval(), exchanges)
+        : this(symbols, timeInterval.EnsureNotNull().AsDateTimeInterval(), exchanges)
     {
     }
 
