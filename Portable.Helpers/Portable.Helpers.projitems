@@ -15,5 +15,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)KeyValuePairExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NullableHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Range.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ValidatedNotNullAttribute.cs" />
   </ItemGroup>
 </Project>

@@ -6,7 +6,7 @@ using System.Threading.Channels;
 
 namespace Alpaca.Markets.Tests;
 
-public sealed class MockWsClient<TConfiguration, TClient> : IDisposable
+internal sealed class MockWsClient<TConfiguration, TClient> : IDisposable
     where TConfiguration : StreamingClientConfiguration
     where TClient : class, IDisposable
 {

@@ -21,7 +21,7 @@ public static class AlpacaServiceCollectionExtensions
         this IServiceCollection services,
         IEnvironment environment,
         SecurityKey securityKey) =>
-        services.AddAlpacaCryptoDataClient(environment
+        services.EnsureNotNull().AddAlpacaCryptoDataClient(environment
             .GetAlpacaCryptoDataClientConfiguration(securityKey));
 
     /// <summary>
@@ -35,7 +35,7 @@ public static class AlpacaServiceCollectionExtensions
     public static IServiceCollection AddAlpacaCryptoDataClient(
         this IServiceCollection services,
         AlpacaCryptoDataClientConfiguration configuration) =>
-        services
+        services.EnsureNotNull()
             .AddHttpClient<IAlpacaCryptoDataClient>()
             .AddTypedClient(httpClient => configuration.withFactoryCreatedHttpClient(httpClient).GetClient())
             .withConfiguredPrimaryHttpMessageHandler(configuration);
@@ -53,7 +53,7 @@ public static class AlpacaServiceCollectionExtensions
         this IServiceCollection services,
         IEnvironment environment,
         SecurityKey securityKey) =>
-        services.AddAlpacaDataClient(environment
+        services.EnsureNotNull().AddAlpacaDataClient(environment
             .GetAlpacaDataClientConfiguration(securityKey));
 
     /// <summary>
@@ -67,7 +67,7 @@ public static class AlpacaServiceCollectionExtensions
     public static IServiceCollection AddAlpacaDataClient(
         this IServiceCollection services,
         AlpacaDataClientConfiguration configuration) =>
-        services
+        services.EnsureNotNull()
             .AddHttpClient<IAlpacaDataClient>()
             .AddTypedClient(httpClient => configuration.withFactoryCreatedHttpClient(httpClient).GetClient())
             .withConfiguredPrimaryHttpMessageHandler(configuration);
@@ -85,7 +85,7 @@ public static class AlpacaServiceCollectionExtensions
         this IServiceCollection services,
         IEnvironment environment,
         SecurityKey securityKey) =>
-        services.AddAlpacaTradingClient(environment
+        services.EnsureNotNull().AddAlpacaTradingClient(environment
             .GetAlpacaTradingClientConfiguration(securityKey));
 
     /// <summary>
@@ -99,7 +99,7 @@ public static class AlpacaServiceCollectionExtensions
     public static IServiceCollection AddAlpacaTradingClient(
         this IServiceCollection services,
         AlpacaTradingClientConfiguration configuration) =>
-        services
+        services.EnsureNotNull()
             .AddHttpClient<IAlpacaTradingClient>()
             .AddTypedClient(httpClient => configuration.withFactoryCreatedHttpClient(httpClient).GetClient())
             .withConfiguredPrimaryHttpMessageHandler(configuration);
