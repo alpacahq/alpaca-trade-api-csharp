@@ -251,7 +251,7 @@ internal sealed class DateHelper
         getPrev(DayOfWeek.Monday, new DateTime(year, 5, 31));
     
     private static DateTime juneteenthDay(int year) =>
-        GetNext(DayOfWeek.Monday, new DateTime(year, 6, 19));
+        getNext(DayOfWeek.Monday, new DateTime(year, 6, 19));
 
     private static DateTime laborDay(int year) => 
         getNext(DayOfWeek.Monday, new DateTime(year, 9, 1));
