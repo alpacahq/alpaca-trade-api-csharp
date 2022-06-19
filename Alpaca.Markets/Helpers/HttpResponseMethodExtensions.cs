@@ -19,10 +19,10 @@ internal static class HttpResponseMethodExtensions
         if (response.IsSuccessStatusCode)
         {
             return new JsonSerializer
-            {
-                DateParseHandling = DateParseHandling.None,
-                Culture = CultureInfo.InvariantCulture
-            }
+                       {
+                           DateParseHandling = DateParseHandling.None,
+                           Culture = CultureInfo.InvariantCulture
+                       }
                        .Deserialize<TJson>(reader) ??
                    throw new RestClientErrorException(
                        "Unable to deserialize JSON response message.");
