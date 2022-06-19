@@ -12,23 +12,23 @@ internal sealed class AlpacaDataStreamingClient :
 
     public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
         String symbol) =>
-        GetSubscription<IQuote, JsonRealTimeQuote>(QuotesChannel, symbol);
+        GetSubscription<IQuote, JsonRealTimeQuote>(QuotesChannel, symbol.EnsureNotNull());
 
     public IAlpacaDataSubscription<IStatus> GetStatusSubscription(
         String symbol) =>
-        GetSubscription<IStatus, JsonTradingStatus>(StatusesChannel, symbol);
+        GetSubscription<IStatus, JsonTradingStatus>(StatusesChannel, symbol.EnsureNotNull());
 
     public IAlpacaDataSubscription<ITrade> GetCancellationSubscription(
         String symbol) =>
-        GetSubscription<ITrade, JsonRealTimeTrade>(CancellationsChannel, symbol,
-            GetTradeSubscription(symbol));
+        GetSubscription<ITrade, JsonRealTimeTrade>(CancellationsChannel, symbol.EnsureNotNull(),
+            GetTradeSubscription(symbol.EnsureNotNull()));
 
     public IAlpacaDataSubscription<ICorrection> GetCorrectionSubscription(
         String symbol) =>
-        GetSubscription<ICorrection, JsonCorrection>(CorrectionsChannel, symbol,
-            GetTradeSubscription(symbol));
+        GetSubscription<ICorrection, JsonCorrection>(CorrectionsChannel, symbol.EnsureNotNull(),
+            GetTradeSubscription(symbol.EnsureNotNull()));
         
     public IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(
         String symbol) =>
-        GetSubscription<ILimitUpLimitDown, JsonLimitUpLimitDown>(LimitUpDownChannel, symbol);
+        GetSubscription<ILimitUpLimitDown, JsonLimitUpLimitDown>(LimitUpDownChannel, symbol.EnsureNotNull());
 }

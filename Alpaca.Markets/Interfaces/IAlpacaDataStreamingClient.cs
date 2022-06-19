@@ -10,6 +10,12 @@ public interface IAlpacaDataStreamingClient : IStreamingDataClient
     /// Gets the trading statuses subscription for the <paramref name="symbol"/> asset.
     /// </summary>
     /// <param name="symbol">Alpaca asset symbol.</param>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -21,6 +27,12 @@ public interface IAlpacaDataStreamingClient : IStreamingDataClient
     /// Gets the trade cancellations subscription for the <paramref name="symbol"/> asset.
     /// </summary>
     /// <param name="symbol">Alpaca asset symbol.</param>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>

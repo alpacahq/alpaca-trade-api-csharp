@@ -12,9 +12,9 @@ internal sealed class AlpacaCryptoStreamingClient :
 
     public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(
         String symbol) =>
-        GetSubscription<IQuote, JsonRealTimeCryptoQuote>(QuotesChannel, symbol);
+        GetSubscription<IQuote, JsonRealTimeCryptoQuote>(QuotesChannel, symbol.EnsureNotNull());
 
     public IAlpacaDataSubscription<IOrderBook> GetOrderBookSubscription(
         String symbol) => 
-        GetSubscription<IOrderBook, JsonOrderBook>(OrderBooksChannel, symbol);
+        GetSubscription<IOrderBook, JsonOrderBook>(OrderBooksChannel, symbol.EnsureNotNull());
 }
