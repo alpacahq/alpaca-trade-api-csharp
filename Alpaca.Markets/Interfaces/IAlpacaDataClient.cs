@@ -1,4 +1,6 @@
-﻿namespace Alpaca.Markets;
+﻿using System.Net.Sockets;
+
+namespace Alpaca.Markets;
 
 /// <summary>
 /// Provides unified type-safe access for Alpaca Data API via HTTP/REST.
@@ -15,6 +17,24 @@ public interface IAlpacaDataClient :
     /// </summary>
     /// <param name="request">Latest bar data request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="request"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Read-only latest bar information.</returns>
     [UsedImplicitly]
     Task<IBar> GetLatestBarAsync(
@@ -26,6 +46,24 @@ public interface IAlpacaDataClient :
     /// </summary>
     /// <param name="request">Latest bar data request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="request"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Read-only dictionary with the latest bars information.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, IBar>> ListLatestBarsAsync(
@@ -37,6 +75,24 @@ public interface IAlpacaDataClient :
     /// </summary>
     /// <param name="request">Latest trade data request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="request"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Read-only latest trade information.</returns>
     [UsedImplicitly]
     Task<ITrade> GetLatestTradeAsync(
@@ -48,6 +104,24 @@ public interface IAlpacaDataClient :
     /// </summary>
     /// <param name="request">Latest trade data request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="request"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Read-only dictionary with the latest trades information.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, ITrade>> ListLatestTradesAsync(
@@ -59,6 +133,24 @@ public interface IAlpacaDataClient :
     /// </summary>
     /// <param name="request">Latest quote data request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="request"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Read-only current quote information.</returns>
     [UsedImplicitly]
     Task<IQuote> GetLatestQuoteAsync(
@@ -70,6 +162,24 @@ public interface IAlpacaDataClient :
     /// </summary>
     /// <param name="request">Latest quote data request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="request"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Read-only dictionary with the latest quotes information.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, IQuote>> ListLatestQuotesAsync(
@@ -81,6 +191,24 @@ public interface IAlpacaDataClient :
     /// </summary>
     /// <param name="request">Latest snapshot data request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="request"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Read-only current snapshot information.</returns>
     [UsedImplicitly]
     Task<ISnapshot> GetSnapshotAsync(
@@ -92,6 +220,24 @@ public interface IAlpacaDataClient :
     /// </summary>
     /// <param name="request">Latest snapshot data request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="request"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Read-only dictionary with the current snapshot information.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, ISnapshot>> ListSnapshotsAsync(
@@ -102,6 +248,18 @@ public interface IAlpacaDataClient :
     /// Gets dictionary with exchange code to the exchange name mappings.
     /// </summary>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
     /// <returns>Read-only dictionary where the key is the exchange code and the value is the code's corresponding exchange name.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, String>> ListExchangesAsync(
@@ -112,6 +270,18 @@ public interface IAlpacaDataClient :
     /// </summary>
     /// <param name="tape">SIP tape identifier for retrieving trade conditions.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
     /// <returns>Read-only dictionary where the key is the trade conditions code and the value is the corresponding condition description.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, String>> ListTradeConditionsAsync(
@@ -123,6 +293,18 @@ public interface IAlpacaDataClient :
     /// </summary>
     /// <param name="tape">SIP tape identifier for retrieving quote conditions.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
     /// <returns>Read-only dictionary where the key is the quote conditions code and the value is the corresponding condition description.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, String>> ListQuoteConditionsAsync(
@@ -134,6 +316,24 @@ public interface IAlpacaDataClient :
     /// </summary>
     /// <param name="request">Historical news articles request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="request"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Read-only list of historical news articles for specified parameters (with pagination data).</returns>
     [UsedImplicitly]
     Task<IPage<INewsArticle>> ListNewsArticlesAsync(
