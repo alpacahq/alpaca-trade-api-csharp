@@ -16,7 +16,7 @@ internal sealed partial class AlpacaTradingClient
         IAccountConfiguration accountConfiguration,
         CancellationToken cancellationToken = default) =>
         _httpClient.PatchAsync<IAccountConfiguration, JsonAccountConfiguration, IAccountConfiguration>(
-            "v2/account/configurations", accountConfiguration, cancellationToken);
+            "v2/account/configurations", accountConfiguration.EnsureNotNull(), cancellationToken);
 
     public async Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
         AccountActivitiesRequest request,
