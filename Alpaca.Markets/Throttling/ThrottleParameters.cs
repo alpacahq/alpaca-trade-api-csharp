@@ -96,6 +96,7 @@ public sealed class ThrottleParameters
     {
         SocketError.TryAgain,
         SocketError.TimedOut,
+        SocketError.WouldBlock,
         SocketError.NotConnected,
         SocketError.HostNotFound
     };
