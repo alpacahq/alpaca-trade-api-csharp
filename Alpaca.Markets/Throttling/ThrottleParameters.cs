@@ -98,6 +98,7 @@ namespace Alpaca.Markets
         {
             SocketError.TryAgain,
             SocketError.TimedOut,
+            SocketError.WouldBlock,
             SocketError.NotConnected,
             SocketError.HostNotFound 
         };
