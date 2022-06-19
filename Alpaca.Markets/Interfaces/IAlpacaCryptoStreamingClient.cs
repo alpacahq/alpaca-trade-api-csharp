@@ -10,6 +10,12 @@ public interface IAlpacaCryptoStreamingClient : IStreamingDataClient
     /// Gets the order book updates subscription for the <paramref name="symbol"/> asset.
     /// </summary>
     /// <param name="symbol">Alpaca asset name.</param>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>

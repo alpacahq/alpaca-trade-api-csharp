@@ -9,6 +9,9 @@ public interface ISubscriptionHandler
     /// Subscribes a single <paramref name="subscription"/> object for receiving data from the server.
     /// </summary>
     /// <param name="subscription">Subscription target - asset and update type holder.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="subscription"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     ValueTask SubscribeAsync(
         IAlpacaDataSubscription subscription);
@@ -18,6 +21,9 @@ public interface ISubscriptionHandler
     /// </summary>
     /// <param name="subscription">Subscription target - asset and update type holder.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="subscription"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     ValueTask SubscribeAsync(
         IAlpacaDataSubscription subscription,
@@ -27,6 +33,9 @@ public interface ISubscriptionHandler
     /// Subscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
     /// </summary>
     /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="subscriptions"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     ValueTask SubscribeAsync(
         IEnumerable<IAlpacaDataSubscription> subscriptions);
@@ -36,6 +45,9 @@ public interface ISubscriptionHandler
     /// </summary>
     /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="subscriptions"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     ValueTask SubscribeAsync(
         IEnumerable<IAlpacaDataSubscription> subscriptions,
@@ -45,6 +57,9 @@ public interface ISubscriptionHandler
     /// Unsubscribes the single <paramref name="subscription"/> object for receiving data from the server.
     /// </summary>
     /// <param name="subscription">Subscription target - asset and update type holder.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="subscription"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     ValueTask UnsubscribeAsync(
         IAlpacaDataSubscription subscription);
@@ -54,6 +69,9 @@ public interface ISubscriptionHandler
     /// </summary>
     /// <param name="subscription">Subscription target - asset and update type holder.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="subscription"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     ValueTask UnsubscribeAsync(
         IAlpacaDataSubscription subscription,
@@ -63,6 +81,9 @@ public interface ISubscriptionHandler
     /// Unsubscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
     /// </summary>
     /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="subscriptions"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     ValueTask UnsubscribeAsync(
         IEnumerable<IAlpacaDataSubscription> subscriptions);
@@ -72,6 +93,9 @@ public interface ISubscriptionHandler
     /// </summary>
     /// <param name="subscriptions">List of subscription targets - assets and update type holders.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="subscriptions"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     ValueTask UnsubscribeAsync(
         IEnumerable<IAlpacaDataSubscription> subscriptions,

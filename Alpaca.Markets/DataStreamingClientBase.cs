@@ -210,22 +210,22 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
 
     public IAlpacaDataSubscription<ITrade> GetTradeSubscription(
         String symbol) =>
-        GetSubscription<ITrade, JsonRealTimeTrade>(TradesChannel, symbol);
+        GetSubscription<ITrade, JsonRealTimeTrade>(TradesChannel, symbol.EnsureNotNull());
 
     public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription() =>
         GetSubscription<IBar, JsonRealTimeBar>(MinuteBarsChannel, WildcardSymbolString);
 
     public IAlpacaDataSubscription<IBar> GetMinuteBarSubscription(
         String symbol) =>
-        GetSubscription<IBar, JsonRealTimeBar>(MinuteBarsChannel, symbol);
+        GetSubscription<IBar, JsonRealTimeBar>(MinuteBarsChannel, symbol.EnsureNotNull());
 
     public IAlpacaDataSubscription<IBar> GetDailyBarSubscription(
         String symbol) =>
-        GetSubscription<IBar, JsonRealTimeBar>(DailyBarsChannel, symbol);
+        GetSubscription<IBar, JsonRealTimeBar>(DailyBarsChannel, symbol.EnsureNotNull());
 
     public IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(
         String symbol) =>
-        GetSubscription<IBar, JsonRealTimeBar>(UpdatedBarsChannel, symbol);
+        GetSubscription<IBar, JsonRealTimeBar>(UpdatedBarsChannel, symbol.EnsureNotNull());
 
     public ValueTask SubscribeAsync(
         IAlpacaDataSubscription subscription) =>

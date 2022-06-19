@@ -1,4 +1,7 @@
-﻿namespace Alpaca.Markets;
+﻿using System.Net.Sockets;
+using System.Net.WebSockets;
+
+namespace Alpaca.Markets;
 
 /// <summary>
 /// Provides unified type-safe access for websocket streaming APIs.
@@ -39,6 +42,12 @@ public interface IStreamingClient : IDisposable
     /// Opens connection to a streaming API.
     /// </summary>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="SocketException">
+    /// The underlying TPC socket connection failed due to an low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="WebSocketException">
+    /// The WebSocket connection failed due to an high-level protocol or connection issue.
+    /// </exception>
     /// <returns>Awaitable task object for handling action completion in asynchronous mode.</returns>
     [UsedImplicitly]
     Task ConnectAsync(
@@ -48,6 +57,12 @@ public interface IStreamingClient : IDisposable
     /// Opens connection to a streaming API and awaits for authentication response.
     /// </summary>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="SocketException">
+    /// The underlying TPC socket connection failed due to an low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="WebSocketException">
+    /// The WebSocket connection failed due to an high-level protocol or connection issue.
+    /// </exception>
     /// <returns>Awaitable task object for handling client authentication event in asynchronous mode.</returns>
     [UsedImplicitly]
     Task<AuthStatus> ConnectAndAuthenticateAsync(
@@ -57,6 +72,12 @@ public interface IStreamingClient : IDisposable
     /// Closes connection to a streaming API.
     /// </summary>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="SocketException">
+    /// The underlying TPC socket connection failed due to an low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="WebSocketException">
+    /// The WebSocket connection failed due to an high-level protocol or connection issue.
+    /// </exception>
     /// <returns>Awaitable task object for handling action completion in asynchronous mode.</returns>
     [UsedImplicitly]
     Task DisconnectAsync(

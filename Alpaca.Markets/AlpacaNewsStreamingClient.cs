@@ -15,5 +15,5 @@ internal sealed class AlpacaNewsStreamingClient :
 
     public IAlpacaDataSubscription<INewsArticle> GetNewsSubscription(
         String symbol) => 
-        GetSubscription<INewsArticle, JsonNewsArticle>(NewsChannel, symbol);
+        GetSubscription<INewsArticle, JsonNewsArticle>(NewsChannel, symbol.EnsureNotNull());
 }
