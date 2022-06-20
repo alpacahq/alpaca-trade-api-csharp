@@ -25,11 +25,14 @@ public sealed class AnnouncementsRequest : Validation.IRequest
     /// </summary>
     /// <param name="corporateActionTypes">List of the corporate action types for filtering.</param>
     /// <param name="dateInterval">Date range when searching corporate action announcements.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="corporateActionTypes"/> argument is <c>null</c>.
+    /// </exception>
     public AnnouncementsRequest(
         IEnumerable<CorporateActionType> corporateActionTypes,
         Interval<DateOnly> dateInterval)
     {
-        _corporateActionTypes.UnionWith(corporateActionTypes);
+        _corporateActionTypes.UnionWith(corporateActionTypes.EnsureNotNull());
         DateInterval = dateInterval;
     }
 

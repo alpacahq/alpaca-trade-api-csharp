@@ -10,6 +10,9 @@ public sealed class DeletePositionRequest : Validation.IRequest
     /// Creates new instance of <see cref="DeletePositionRequest"/> object.
     /// </summary>
     /// <param name="symbol">Symbol for liquidation.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     public DeletePositionRequest(
         String symbol) =>
         Symbol = symbol.EnsureNotNull();

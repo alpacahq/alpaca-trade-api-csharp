@@ -11,6 +11,9 @@ public sealed class LatestMarketDataListRequest : Validation.IRequest
     /// Creates new instance of <see cref="LatestMarketDataListRequest"/> object.
     /// </summary>
     /// <param name="symbols">Asset name for data retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
     public LatestMarketDataListRequest(
         IEnumerable<String> symbols) =>
         _symbols.UnionWith(symbols.EnsureNotNull());

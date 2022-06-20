@@ -9,6 +9,9 @@ public sealed class LatestMarketDataRequest : Validation.IRequest
     /// Creates new instance of <see cref="LatestMarketDataRequest"/> object.
     /// </summary>
     /// <param name="symbol">Asset name for data retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     public LatestMarketDataRequest(
         String symbol) =>
         Symbol = symbol.EnsureNotNull();

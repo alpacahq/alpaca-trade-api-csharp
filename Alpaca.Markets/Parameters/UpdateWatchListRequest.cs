@@ -13,17 +13,17 @@ public sealed class UpdateWatchListRequest : Validation.IRequest
     /// <param name="watchListId">Unique watch list identifier.</param>
     /// <param name="name">User defined watch list name.</param>
     /// <param name="assets">List of asset symbols for new watch list.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="name"/> or <paramref name="assets"/> argument is <c>null</c>.
+    /// </exception>
     public UpdateWatchListRequest(
         Guid watchListId,
         String name,
         IEnumerable<String> assets)
     {
         WatchListId = watchListId;
-        Name = name;
-        _assets.AddRange(
-            // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
-            (assets ?? Enumerable.Empty<String>())
-            .Distinct(StringComparer.Ordinal));
+        Name = name.EnsureNotNull();
+        _assets.AddRange(assets.EnsureNotNull().Distinct(StringComparer.Ordinal));
     }
 
     /// <summary>

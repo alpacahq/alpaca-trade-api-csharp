@@ -14,11 +14,14 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="from">Filter data equal to or after this time.</param>
     /// <param name="into">Filter data equal to or before this time.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     public HistoricalQuotesRequest(
         String symbol,
         DateTime from,
         DateTime into)
-        : this(new[] { symbol }, from, into)
+        : this(new[] { symbol.EnsureNotNull() }, from, into)
     {
     }
 
@@ -27,10 +30,13 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// </summary>
     /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     public HistoricalQuotesRequest(
         String symbol,
         Interval<DateTime> timeInterval)
-        : this(new[] { symbol }, timeInterval)
+        : this(new[] { symbol.EnsureNotNull() }, timeInterval)
     {
     }
 
@@ -40,11 +46,14 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="from">Filter data equal to or after this time.</param>
     /// <param name="into">Filter data equal to or before this time.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
     public HistoricalQuotesRequest(
         IEnumerable<String> symbols,
         DateTime from,
         DateTime into)
-        : base(symbols, from, into)
+        : base(symbols.EnsureNotNull(), from, into)
     {
     }
 
@@ -53,10 +62,13 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// </summary>
     /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
     public HistoricalQuotesRequest(
         IEnumerable<String> symbols,
         Interval<DateTime> timeInterval)
-        : base(symbols, timeInterval)
+        : base(symbols.EnsureNotNull(), timeInterval)
     {
     }
 
@@ -65,12 +77,15 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// </summary>
     /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     [ExcludeFromCodeCoverage]
     [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
     public HistoricalQuotesRequest(
         String symbol,
         IInclusiveTimeInterval timeInterval)
-        : this(new[] { symbol }, timeInterval)
+        : this(new[] { symbol.EnsureNotNull() }, timeInterval)
     {
     }
 
@@ -79,12 +94,15 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// </summary>
     /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
     [ExcludeFromCodeCoverage]
     [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
     public HistoricalQuotesRequest(
         IEnumerable<String> symbols,
         IInclusiveTimeInterval timeInterval)
-        : base(symbols, timeInterval)
+        : base(symbols.EnsureNotNull(), timeInterval)
     {
     }
     /// <summary>

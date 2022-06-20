@@ -11,21 +11,24 @@ public sealed class NewWatchListRequest : Validation.IRequest
     /// Creates new instance of <see cref="NewWatchListRequest"/> object.
     /// </summary>
     /// <param name="name">User defined watch list name.</param>
-    public NewWatchListRequest(String name) => Name = name;
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="name"/> argument is <c>null</c>.
+    /// </exception>
+    public NewWatchListRequest(String name) => Name = name.EnsureNotNull();
 
     /// <summary>
     /// Creates new instance of <see cref="NewWatchListRequest"/> object.
     /// </summary>
     /// <param name="name">User defined watch list name.</param>
     /// <param name="assets">List of asset symbols for new watch list.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="name"/> or <paramref name="assets"/> argument is <c>null</c>.
+    /// </exception>
     public NewWatchListRequest(
         String name,
         IEnumerable<String> assets)
-        : this(name) =>
-        _assets.AddRange(
-            // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
-            (assets ?? Enumerable.Empty<String>())
-            .Distinct(StringComparer.Ordinal));
+        : this(name.EnsureNotNull()) =>
+        _assets.AddRange(assets.EnsureNotNull().Distinct(StringComparer.Ordinal));
 
     /// <summary>
     /// Gets user defined watch list name.

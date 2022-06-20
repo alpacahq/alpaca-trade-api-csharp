@@ -14,6 +14,9 @@ public sealed class NewOrderRequest : Validation.IRequest
     /// <param name="side">Order side (buy or sell).</param>
     /// <param name="type">Order type.</param>
     /// <param name="duration">Order duration.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     public NewOrderRequest(
         String symbol,
         OrderQuantity quantity,
