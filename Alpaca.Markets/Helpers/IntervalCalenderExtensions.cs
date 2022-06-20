@@ -9,6 +9,9 @@ public static class IntervalCalenderExtensions
     /// Gets trading date (midnight or 00:00 time point).
     /// </summary>
     /// <param name="calendar">Alpaca calendar data.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="calendar"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     public static DateOnly GetTradingDate(
         this IIntervalCalendar calendar) =>
@@ -18,6 +21,9 @@ public static class IntervalCalenderExtensions
     /// Gets trading open time in EST time zone.
     /// </summary>
     /// <param name="calendar">Alpaca calendar data.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="calendar"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     public static DateTime GetTradingOpenTimeEst(
         this IIntervalCalendar calendar) =>
@@ -27,6 +33,9 @@ public static class IntervalCalenderExtensions
     /// Gets trading close time in EST time zone.
     /// </summary>
     /// <param name="calendar">Alpaca calendar data.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="calendar"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     public static DateTime GetTradingCloseTimeEst(
         this IIntervalCalendar calendar) =>
@@ -36,6 +45,9 @@ public static class IntervalCalenderExtensions
     /// Gets trading open time in UTC time zone.
     /// </summary>
     /// <param name="calendar">Alpaca calendar data.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="calendar"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     public static DateTime GetTradingOpenTimeUtc(
         this IIntervalCalendar calendar) =>
@@ -45,6 +57,9 @@ public static class IntervalCalenderExtensions
     /// Gets trading close time in UTC time zone.
     /// </summary>
     /// <param name="calendar">Alpaca calendar data.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="calendar"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     public static DateTime GetTradingCloseTimeUtc(
         this IIntervalCalendar calendar) =>
@@ -54,6 +69,9 @@ public static class IntervalCalenderExtensions
     /// Gets session open time in EST time zone.
     /// </summary>
     /// <param name="calendar">Alpaca calendar data.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="calendar"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     public static DateTime GetSessionOpenTimeEst(
         this IIntervalCalendar calendar) =>
@@ -63,6 +81,9 @@ public static class IntervalCalenderExtensions
     /// Gets session close time in EST time zone.
     /// </summary>
     /// <param name="calendar">Alpaca calendar data.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="calendar"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     public static DateTime GetSessionCloseTimeEst(
         this IIntervalCalendar calendar) =>
@@ -72,6 +93,9 @@ public static class IntervalCalenderExtensions
     /// Gets session open time in UTC time zone.
     /// </summary>
     /// <param name="calendar">Alpaca calendar data.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="calendar"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     public static DateTime GetSessionOpenTimeUtc(
         this IIntervalCalendar calendar) =>
@@ -81,6 +105,9 @@ public static class IntervalCalenderExtensions
     /// Gets session close time in UTC time zone.
     /// </summary>
     /// <param name="calendar">Alpaca calendar data.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="calendar"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     public static DateTime GetSessionCloseTimeUtc(
         this IIntervalCalendar calendar) =>

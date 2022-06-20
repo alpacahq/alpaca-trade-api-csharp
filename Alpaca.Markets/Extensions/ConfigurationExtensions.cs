@@ -13,82 +13,103 @@ public static class ConfigurationExtensions
     /// implementation using the <paramref name="configuration"/> argument.
     /// </summary>
     /// <param name="configuration">Client configuration parameters.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="configuration"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>A new instance of <see cref="IAlpacaCryptoDataClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
     public static IAlpacaCryptoDataClient GetClient(
         this AlpacaCryptoDataClientConfiguration configuration) =>
-        new AlpacaCryptoDataClient(configuration);
+        new AlpacaCryptoDataClient(configuration.EnsureNotNull());
 
     /// <summary>
     /// Creates a new instance of <see cref="IAlpacaCryptoStreamingClient"/> interface
     /// implementation using the <paramref name="configuration"/> argument.
     /// </summary>
     /// <param name="configuration">Client configuration parameters.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="configuration"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>A new instance of <see cref="IAlpacaCryptoStreamingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
     public static IAlpacaCryptoStreamingClient GetClient(
         this AlpacaCryptoStreamingClientConfiguration configuration) =>
-        new AlpacaCryptoStreamingClient(configuration);
+        new AlpacaCryptoStreamingClient(configuration.EnsureNotNull());
 
     /// <summary>
     /// Creates a new instance of <see cref="IAlpacaNewsStreamingClient"/> interface
     /// implementation using the <paramref name="configuration"/> argument.
     /// </summary>
     /// <param name="configuration">Client configuration parameters.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="configuration"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>A new instance of <see cref="IAlpacaNewsStreamingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
     public static IAlpacaNewsStreamingClient GetClient(
         this AlpacaNewsStreamingClientConfiguration configuration) =>
-        new AlpacaNewsStreamingClient(configuration);
+        new AlpacaNewsStreamingClient(configuration.EnsureNotNull());
 
     /// <summary>
     /// Creates a new instance of <see cref="IAlpacaDataClient"/> interface
     /// implementation using the <paramref name="configuration"/> argument.
     /// </summary>
     /// <param name="configuration">Client configuration parameters.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="configuration"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>A new instance of <see cref="IAlpacaDataClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
     public static IAlpacaDataClient GetClient(
         this AlpacaDataClientConfiguration configuration) =>
-        new AlpacaDataClient(configuration);
+        new AlpacaDataClient(configuration.EnsureNotNull());
 
     /// <summary>
     /// Creates a new instance of <see cref="IAlpacaDataStreamingClient"/> interface
     /// implementation using the <paramref name="configuration"/> argument.
     /// </summary>
     /// <param name="configuration">Client configuration parameters.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="configuration"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>A new instance of <see cref="IAlpacaDataStreamingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
     public static IAlpacaDataStreamingClient GetClient(
         this AlpacaDataStreamingClientConfiguration configuration) =>
-        new AlpacaDataStreamingClient(configuration);
+        new AlpacaDataStreamingClient(configuration.EnsureNotNull());
 
     /// <summary>
     /// Creates a new instance of <see cref="IAlpacaStreamingClient"/> interface
     /// implementation using the <paramref name="configuration"/> argument.
     /// </summary>
     /// <param name="configuration">Client configuration parameters.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="configuration"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>A new instance of <see cref="IAlpacaStreamingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
     public static IAlpacaStreamingClient GetClient(
         this AlpacaStreamingClientConfiguration configuration) =>
-        new AlpacaStreamingClient(configuration);
+        new AlpacaStreamingClient(configuration.EnsureNotNull());
 
     /// <summary>
     /// Creates a new instance of <see cref="IAlpacaTradingClient"/> interface
     /// implementation using the <paramref name="configuration"/> argument.
     /// </summary>
     /// <param name="configuration">Client configuration parameters.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="configuration"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>A new instance of <see cref="IAlpacaTradingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
     public static IAlpacaTradingClient GetClient(
         this AlpacaTradingClientConfiguration configuration) =>
-        new AlpacaTradingClient(configuration);
+        new AlpacaTradingClient(configuration.EnsureNotNull());
 }

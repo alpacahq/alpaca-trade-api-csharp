@@ -9,6 +9,9 @@ public static class OrderExtensions
     /// Gets order quantity as instance of the <see cref="OrderQuantity"/> structure.
     /// </summary>
     /// <param name="order">Order for reading quantity value.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="order"/> argument is <c>null</c>.
+    /// </exception>
     /// <exception cref="InvalidOperationException">
     /// Both fractional and notional order quantity values are null.
     /// </exception>

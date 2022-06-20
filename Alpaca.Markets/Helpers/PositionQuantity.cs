@@ -62,6 +62,9 @@ public readonly record struct PositionQuantity
     /// initialized with <paramref name="value"/> as percentage value.
     /// </summary>
     /// <param name="value">Number of shares (integer or fractional).</param>
+    /// <exception cref="ArgumentException">
+    /// The <paramref name="value"/> argument is less than 0 or greater than 100.
+    /// </exception>
     /// <returns>Initialized <see cref="PositionQuantity"/> object.</returns>
     [UsedImplicitly]
     public static PositionQuantity InPercents(

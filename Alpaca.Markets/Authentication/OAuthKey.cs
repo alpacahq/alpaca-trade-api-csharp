@@ -10,6 +10,9 @@ public sealed class OAuthKey : SecurityKey
     /// Creates new instance of <see cref="OAuthKey"/> object.
     /// </summary>
     /// <param name="value">OAuth key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="value"/> argument is <c>null</c>.
+    /// </exception>
     public OAuthKey(
         String value)
         : base(value)

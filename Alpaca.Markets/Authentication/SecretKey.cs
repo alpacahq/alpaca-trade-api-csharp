@@ -10,11 +10,14 @@ public sealed class SecretKey : SecurityKey
     /// </summary>
     /// <param name="keyId">Secret API key identifier.</param>
     /// <param name="value">Secret API key value.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="keyId"/> or <paramref name="value"/> argument is <c>null</c>.
+    /// </exception>
     public SecretKey(
         String keyId,
         String value)
         : base(value) =>
-        KeyId = keyId;
+        KeyId = keyId.EnsureNotNull();
 
     private String KeyId { get; }
 
