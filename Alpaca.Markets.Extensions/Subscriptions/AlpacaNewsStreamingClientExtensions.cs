@@ -10,6 +10,12 @@ public static partial class AlpacaNewsStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaNewsStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for news articles updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{INewsArticle}.Received"/> event.
     /// </returns>
@@ -27,6 +33,12 @@ public static partial class AlpacaNewsStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaNewsStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for news articles updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{INewsArticle}.Received"/> event.
     /// </returns>
@@ -46,6 +58,12 @@ public static partial class AlpacaNewsStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaNewsStreamingClient"/> interface.</param>
     /// <param name="symbol">Alpaca asset name for news articles updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{INewsArticle}.Received"/> event.
     /// </returns>
@@ -55,7 +73,7 @@ public static partial class AlpacaNewsStreamingClientExtensions
         this IAlpacaNewsStreamingClient client,
         String symbol) =>
         DisposableAlpacaDataSubscription<INewsArticle>.CreateAsync(
-            client.EnsureNotNull().GetNewsSubscription(symbol),
+            client.EnsureNotNull().GetNewsSubscription(symbol.EnsureNotNull()),
             client.EnsureNotNull());
 
     /// <summary>
@@ -65,6 +83,12 @@ public static partial class AlpacaNewsStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaNewsStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for news articles updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{INewsArticle}.Received"/> event.
     /// </returns>
@@ -74,7 +98,7 @@ public static partial class AlpacaNewsStreamingClientExtensions
         this IAlpacaNewsStreamingClient client,
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<INewsArticle>.CreateAsync(
-            client.EnsureNotNull().GetNewsSubscription(symbols),
+            client.EnsureNotNull().GetNewsSubscription(symbols.EnsureNotNull()),
             client.EnsureNotNull());
 
     /// <summary>
@@ -84,6 +108,12 @@ public static partial class AlpacaNewsStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaNewsStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for news articles updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{INewsArticle}.Received"/> event.
     /// </returns>
@@ -93,7 +123,7 @@ public static partial class AlpacaNewsStreamingClientExtensions
         this IAlpacaNewsStreamingClient client,
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<INewsArticle>.CreateAsync(
-            client.EnsureNotNull().GetNewsSubscription(symbols),
+            client.EnsureNotNull().GetNewsSubscription(symbols.EnsureNotNull()),
             client.EnsureNotNull());
 
     private static IAlpacaDataSubscription<INewsArticle> getNewsSubscription(

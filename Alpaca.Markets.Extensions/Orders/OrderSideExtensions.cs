@@ -14,6 +14,9 @@ public static class OrderSideExtensions
     /// <param name="quantity">Order quantity.</param>
     /// <param name="takeProfitLimitPrice">Take profit order limit price.</param>
     /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>
     /// New advanced order representing an original order plus pair of take profit and stop loss orders.
     /// </returns>
@@ -24,7 +27,7 @@ public static class OrderSideExtensions
         OrderQuantity quantity,
         Decimal takeProfitLimitPrice,
         Decimal stopLossStopPrice) =>
-        orderSide.Market(symbol, quantity)
+        orderSide.Market(symbol.EnsureNotNull(), quantity)
             .Bracket(takeProfitLimitPrice, stopLossStopPrice);
 
     /// <summary>
@@ -37,6 +40,9 @@ public static class OrderSideExtensions
     /// <param name="takeProfitLimitPrice">Take profit order limit price.</param>
     /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
     /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>
     /// New advanced order representing an original order plus pair of take profit and stop loss orders.
     /// </returns>
@@ -48,6 +54,6 @@ public static class OrderSideExtensions
         Decimal takeProfitLimitPrice,
         Decimal stopLossStopPrice,
         Decimal stopLossLimitPrice) =>
-        orderSide.Market(symbol, quantity)
+        orderSide.Market(symbol.EnsureNotNull(), quantity)
             .Bracket(takeProfitLimitPrice, stopLossStopPrice, stopLossLimitPrice);
 }

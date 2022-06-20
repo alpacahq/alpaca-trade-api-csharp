@@ -10,6 +10,9 @@ public static class CalendarExtensions
     /// <see cref="Interval{DateTime}"/> instance for using in requests.
     /// </summary>
     /// <param name="calendar">The source open/close times information.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="calendar"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The inclusive time interval constructed from the <paramref name="calendar"/> data.</returns>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
@@ -24,6 +27,9 @@ public static class CalendarExtensions
     /// <see cref="IInclusiveTimeInterval"/> instance for using in requests.
     /// </summary>
     /// <param name="calendar">The source open/close times information.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="calendar"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The inclusive time interval constructed from the <paramref name="calendar"/> data.</returns>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
@@ -38,6 +44,9 @@ public static class CalendarExtensions
     /// <see cref="IExclusiveTimeInterval"/> instance for using in requests.
     /// </summary>
     /// <param name="calendar">The source open/close times information.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="calendar"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The exclusive time interval constructed from the <paramref name="calendar"/> data.</returns>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]

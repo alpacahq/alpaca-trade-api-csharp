@@ -31,12 +31,15 @@ public static partial class AlpacaNewsStreamingClientExtensions
     /// with automatic reconnection support and provide optional reconnection parameters.
     /// </summary>
     /// <param name="client">Original streaming client for wrapping.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
     public static IAlpacaNewsStreamingClient WithReconnect(
         this IAlpacaNewsStreamingClient client) =>
-        WithReconnect(client, ReconnectionParameters.Default);
+        WithReconnect(client.EnsureNotNull(), ReconnectionParameters.Default);
 
     /// <summary>
     /// Wraps instance of <see cref="IAlpacaDataStreamingClient"/> into the helper class
@@ -44,11 +47,14 @@ public static partial class AlpacaNewsStreamingClientExtensions
     /// </summary>
     /// <param name="client">Original streaming client for wrapping.</param>
     /// <param name="parameters">Reconnection parameters.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="parameters"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
     public static IAlpacaNewsStreamingClient WithReconnect(
         this IAlpacaNewsStreamingClient client,
         ReconnectionParameters parameters) =>
-        new ClientWithReconnection(client, parameters);
+        new ClientWithReconnection(client.EnsureNotNull(), parameters.EnsureNotNull());
 }

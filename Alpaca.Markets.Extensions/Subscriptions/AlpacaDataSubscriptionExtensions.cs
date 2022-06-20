@@ -13,6 +13,9 @@ public static class AlpacaDataSubscriptionExtensions
     /// </summary>
     /// <param name="subscription">Original subscription object for wrapping.</param>
     /// <typeparam name="TItem">Type of streaming item provided via <paramref name="subscription"/> object.</typeparam>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="subscription"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Stream of items received from server in form of async enumerable.</returns>
     [UsedImplicitly]
     public static IAsyncEnumerable<TItem> AsAsyncEnumerable<TItem>(
@@ -26,6 +29,9 @@ public static class AlpacaDataSubscriptionExtensions
     /// <param name="subscription">Original subscription object for wrapping.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <typeparam name="TItem">Type of streaming item provided via <paramref name="subscription"/> object.</typeparam>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="subscription"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Stream of items received from server in form of async enumerable.</returns>
     [UsedImplicitly]
     [SuppressMessage("Design", "CA1062:Validate arguments of public methods",
