@@ -12,6 +12,9 @@ public abstract class SimpleOrderBase : OrderBase
     /// <param name="quantity">Order quantity (absolute value).</param>
     /// <param name="side">Order side (buy or sell).</param>
     /// <param name="type">Order type (market, limit, stop, stop-limit).</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     protected internal SimpleOrderBase(
         String symbol,
         OrderQuantity quantity,

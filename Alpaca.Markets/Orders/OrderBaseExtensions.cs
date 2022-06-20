@@ -12,6 +12,9 @@ public static class OrderBaseExtensions
     /// <param name="order">Target order for changing <see cref="OrderBase.Duration"/> property.</param>
     /// <param name="duration">The new <see cref="OrderBase.Duration"/> property value.</param>
     /// <typeparam name="TOrder">Type of target order for altering.</typeparam>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="order"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Fluent interface - returns the <paramref name="order"/> object.</returns>
     [UsedImplicitly]
     public static TOrder WithDuration<TOrder>(
@@ -29,6 +32,9 @@ public static class OrderBaseExtensions
     /// <param name="order">Target order for changing <see cref="OrderBase.ClientOrderId"/> property.</param>
     /// <param name="clientOrderId">The new <see cref="OrderBase.ClientOrderId"/> property value.</param>
     /// <typeparam name="TOrder">Type of target order for altering.</typeparam>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="order"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Fluent interface - returns the <paramref name="order"/> object.</returns>
     [UsedImplicitly]
     public static TOrder WithClientOrderId<TOrder>(
@@ -46,6 +52,9 @@ public static class OrderBaseExtensions
     /// <param name="order">Target order for changing <see cref="OrderBase.ExtendedHours"/> property.</param>
     /// <param name="extendedHours">The new <see cref="OrderBase.ExtendedHours"/> property value.</param>
     /// <typeparam name="TOrder">Type of target order for altering.</typeparam>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="order"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Fluent interface - returns the <paramref name="order"/> object.</returns>
     [UsedImplicitly]
     public static TOrder WithExtendedHours<TOrder>(

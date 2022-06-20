@@ -27,14 +27,16 @@ public sealed class LimitOrder : SimpleOrderBase
     /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="limitPrice">Order limit price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static LimitOrder Buy(
         String symbol,
         OrderQuantity quantity,
         Decimal limitPrice) =>
-        new(
-            symbol, quantity, OrderSide.Buy, limitPrice);
+        new(symbol.EnsureNotNull(), quantity, OrderSide.Buy, limitPrice);
 
     /// <summary>
     /// Creates new sell market order using specified symbol and quantity.
@@ -42,14 +44,16 @@ public sealed class LimitOrder : SimpleOrderBase
     /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="limitPrice">Order limit price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static LimitOrder Sell(
         String symbol,
         OrderQuantity quantity,
         Decimal limitPrice) =>
-        new(
-            symbol, quantity, OrderSide.Sell, limitPrice);
+        new(symbol.EnsureNotNull(), quantity, OrderSide.Sell, limitPrice);
 
     /// <summary>
     /// Creates a new instance of the <see cref="OneCancelsOtherOrder"/> order from the current order.
@@ -59,10 +63,7 @@ public sealed class LimitOrder : SimpleOrderBase
     [UsedImplicitly]
     public OneCancelsOtherOrder OneCancelsOther(
         Decimal stopLossStopPrice) =>
-        new(
-            this,
-            stopLossStopPrice,
-            null);
+        new(this, stopLossStopPrice, null);
 
     /// <summary>
     /// Creates a new instance of the <see cref="OneCancelsOtherOrder"/> order from the current order.
@@ -74,10 +75,7 @@ public sealed class LimitOrder : SimpleOrderBase
     public OneCancelsOtherOrder OneCancelsOther(
         Decimal stopLossStopPrice,
         Decimal stopLossLimitPrice) =>
-        new(
-            this,
-            stopLossStopPrice,
-            stopLossLimitPrice);
+        new(this, stopLossStopPrice, stopLossLimitPrice);
 
     internal override JsonNewOrder GetJsonRequest() =>
         base.GetJsonRequest()

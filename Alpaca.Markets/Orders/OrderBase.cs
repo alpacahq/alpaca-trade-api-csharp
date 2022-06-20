@@ -12,6 +12,9 @@ public abstract class OrderBase : Validation.IRequest
     /// <param name="quantity">Order quantity (absolute value).</param>
     /// <param name="side">Order side (buy or sell).</param>
     /// <param name="type">Order type (market, limit, stop, stop-limit).</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     protected internal OrderBase(
         String symbol,
         OrderQuantity quantity,
@@ -28,6 +31,9 @@ public abstract class OrderBase : Validation.IRequest
     /// Creates new instance of the <see cref="OrderBase"/> class.
     /// </summary>
     /// <param name="baseOrder">Base order for getting parameters.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="baseOrder"/> argument is <c>null</c>.
+    /// </exception>
     protected internal OrderBase(
         OrderBase baseOrder)
         : this(

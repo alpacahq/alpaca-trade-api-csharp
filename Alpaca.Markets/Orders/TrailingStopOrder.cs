@@ -28,14 +28,16 @@ public sealed class TrailingStopOrder : SimpleOrderBase
     /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="trailOffset">Trailing stop order offset.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="TrailingStopOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static TrailingStopOrder Buy(
         String symbol,
         OrderQuantity quantity,
         TrailOffset trailOffset) =>
-        new(
-            symbol, quantity, OrderSide.Buy, trailOffset);
+        new(symbol.EnsureNotNull(), quantity, OrderSide.Buy, trailOffset);
 
     /// <summary>
     /// Creates new sell market order using specified symbol and quantity.
@@ -43,14 +45,16 @@ public sealed class TrailingStopOrder : SimpleOrderBase
     /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="trailOffset">Trailing stop order offset.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="TrailingStopOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static TrailingStopOrder Sell(
         String symbol,
         OrderQuantity quantity,
         TrailOffset trailOffset) =>
-        new(
-            symbol, quantity, OrderSide.Sell, trailOffset);
+        new(symbol.EnsureNotNull(), quantity, OrderSide.Sell, trailOffset);
 
     internal override JsonNewOrder GetJsonRequest() =>
         base.GetJsonRequest()
