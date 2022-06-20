@@ -11,6 +11,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new instance of <see cref="IAlpacaTradingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
@@ -26,6 +29,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>New instance of <see cref="AlpacaTradingClientConfiguration"/> object.</returns>
     [UsedImplicitly]
     public static AlpacaTradingClientConfiguration GetAlpacaTradingClientConfiguration(
@@ -43,6 +49,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new instance of <see cref="IAlpacaDataClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
@@ -58,6 +67,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>New instance of <see cref="AlpacaDataClientConfiguration"/> object.</returns>
     [UsedImplicitly]
     public static AlpacaDataClientConfiguration GetAlpacaDataClientConfiguration(
@@ -75,6 +87,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new instance of <see cref="IAlpacaCryptoDataClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
@@ -90,6 +105,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>New instance of <see cref="AlpacaCryptoDataClientConfiguration"/> object.</returns>
     [UsedImplicitly]
     public static AlpacaCryptoDataClientConfiguration GetAlpacaCryptoDataClientConfiguration(
@@ -107,6 +125,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new instance of <see cref="IAlpacaStreamingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
@@ -122,6 +143,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>New instance of <see cref="AlpacaStreamingClientConfiguration"/> object.</returns>
     [UsedImplicitly]
     public static AlpacaStreamingClientConfiguration GetAlpacaStreamingClientConfiguration(
@@ -139,6 +163,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new instance of <see cref="IAlpacaDataStreamingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
@@ -154,6 +181,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>New instance of <see cref="AlpacaDataStreamingClientConfiguration"/> object.</returns>
     [UsedImplicitly]
     public static AlpacaDataStreamingClientConfiguration GetAlpacaDataStreamingClientConfiguration(
@@ -171,6 +201,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new instance of <see cref="IAlpacaCryptoStreamingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
@@ -186,6 +219,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>New instance of <see cref="AlpacaCryptoStreamingClientConfiguration"/> object.</returns>
     [UsedImplicitly]
     public static AlpacaCryptoStreamingClientConfiguration GetAlpacaCryptoStreamingClientConfiguration(
@@ -203,6 +239,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new instance of <see cref="IAlpacaNewsStreamingClient"/> interface implementation.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
@@ -218,6 +257,9 @@ public static class EnvironmentExtensions
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>New instance of <see cref="AlpacaNewsStreamingClientConfiguration"/> object.</returns>
     [UsedImplicitly]
     public static AlpacaNewsStreamingClientConfiguration GetAlpacaNewsStreamingClientConfiguration(

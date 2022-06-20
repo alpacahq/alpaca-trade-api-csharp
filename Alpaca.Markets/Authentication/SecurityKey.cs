@@ -9,6 +9,9 @@ public abstract class SecurityKey
     /// Creates new instance of <see cref="SecurityKey"/> object.
     /// </summary>
     /// <param name="value">Security key value.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="value"/> argument is <c>null</c>.
+    /// </exception>
     protected SecurityKey(String value) => Value = value.EnsureNotNull();
 
     internal String Value { get; }

@@ -10,6 +10,9 @@ public static class AnnouncementExtensions
     /// or <c>null</c> if date not specified or not applicable for this corporate action type.
     /// </summary>
     /// <param name="announcement">Corporate action announcement record.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="announcement"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     [CLSCompliant(false)]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -22,6 +25,9 @@ public static class AnnouncementExtensions
     /// or <c>null</c> if date not specified or not applicable for this corporate action type.
     /// </summary>
     /// <param name="announcement">Corporate action announcement record.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="announcement"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     [CLSCompliant(false)]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -34,6 +40,9 @@ public static class AnnouncementExtensions
     /// or <c>null</c> if date not specified or not applicable for this corporate action type.
     /// </summary>
     /// <param name="announcement">Corporate action announcement record.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="announcement"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     [CLSCompliant(false)]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -46,6 +55,9 @@ public static class AnnouncementExtensions
     /// or <c>null</c> if date not specified or not applicable for this corporate action type.
     /// </summary>
     /// <param name="announcement">Corporate action announcement record.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="announcement"/> argument is <c>null</c>.
+    /// </exception>
     [UsedImplicitly]
     [CLSCompliant(false)]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
