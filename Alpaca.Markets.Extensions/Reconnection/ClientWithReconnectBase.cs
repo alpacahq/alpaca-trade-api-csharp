@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Net.Sockets;
 using System.Net.WebSockets;
 
 namespace Alpaca.Markets.Extensions;

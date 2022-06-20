@@ -1,6 +1,4 @@
-﻿using System.Net.Sockets;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 /// <summary>
 /// Provides unified type-safe access for Alpaca Trading API via HTTP/REST.

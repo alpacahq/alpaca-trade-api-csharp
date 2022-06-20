@@ -1,6 +1,4 @@
-﻿using System.Net.Sockets;
-
-namespace Alpaca.Markets.Extensions;
+﻿namespace Alpaca.Markets.Extensions;
 
 public static partial class AlpacaTradingClientExtensions
 {
