@@ -1,5 +1,4 @@
-﻿using System.Net.Sockets;
-using System.Net.WebSockets;
+﻿using System.Net.WebSockets;
 
 namespace Alpaca.Markets;
 

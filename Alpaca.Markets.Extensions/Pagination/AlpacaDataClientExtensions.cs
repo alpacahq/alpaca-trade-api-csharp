@@ -1,6 +1,4 @@
-﻿using System.Net.Sockets;
-
-namespace Alpaca.Markets.Extensions;
+﻿namespace Alpaca.Markets.Extensions;
 
 /// <summary>
 /// Set of extension methods for the <see cref="IAlpacaDataClient"/> interface.
