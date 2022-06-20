@@ -186,6 +186,8 @@ internal sealed class DateHelper
         yield return goodFriday(year);
 
         yield return memorialDay(year);
+        
+        yield return juneteenthDay(year);
 
         var independenceDay = adjustForWeekendHoliday(new DateTime(year, 7, 4));
         yield return independenceDay;
@@ -247,6 +249,9 @@ internal sealed class DateHelper
 
     private static DateTime memorialDay(int year) =>
         getPrev(DayOfWeek.Monday, new DateTime(year, 5, 31));
+    
+    private static DateTime juneteenthDay(int year) =>
+        getNext(DayOfWeek.Monday, new DateTime(year, 6, 19));
 
     private static DateTime laborDay(int year) => 
         getNext(DayOfWeek.Monday, new DateTime(year, 9, 1));
