@@ -13,6 +13,9 @@ public static class Bracket
     /// <param name="quantity">Order quantity.</param>
     /// <param name="takeProfitLimitPrice">Take profit order limit price.</param>
     /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>
     /// New advanced order representing an original order plus pair of take profit and stop loss orders.
     /// </returns>
@@ -22,7 +25,7 @@ public static class Bracket
         OrderQuantity quantity,
         Decimal takeProfitLimitPrice,
         Decimal stopLossStopPrice) =>
-        MarketOrder.Buy(symbol, quantity)
+        MarketOrder.Buy(symbol.EnsureNotNull(), quantity)
             .Bracket(takeProfitLimitPrice, stopLossStopPrice);
 
     /// <summary>
@@ -34,6 +37,9 @@ public static class Bracket
     /// <param name="takeProfitLimitPrice">Take profit order limit price.</param>
     /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
     /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>
     /// New advanced order representing an original order plus pair of take profit and stop loss orders.
     /// </returns>
@@ -44,7 +50,7 @@ public static class Bracket
         Decimal takeProfitLimitPrice,
         Decimal stopLossStopPrice,
         Decimal stopLossLimitPrice) =>
-        MarketOrder.Buy(symbol, quantity)
+        MarketOrder.Buy(symbol.EnsureNotNull(), quantity)
             .Bracket(takeProfitLimitPrice, stopLossStopPrice, stopLossLimitPrice);
 
     /// <summary>
@@ -55,6 +61,9 @@ public static class Bracket
     /// <param name="quantity">Order quantity.</param>
     /// <param name="takeProfitLimitPrice">Take profit order limit price.</param>
     /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>
     /// New advanced order representing an original order plus pair of take profit and stop loss orders.
     /// </returns>
@@ -64,7 +73,7 @@ public static class Bracket
         OrderQuantity quantity,
         Decimal takeProfitLimitPrice,
         Decimal stopLossStopPrice) =>
-        MarketOrder.Sell(symbol, quantity)
+        MarketOrder.Sell(symbol.EnsureNotNull(), quantity)
             .Bracket(takeProfitLimitPrice, stopLossStopPrice);
 
     /// <summary>
@@ -76,6 +85,9 @@ public static class Bracket
     /// <param name="takeProfitLimitPrice">Take profit order limit price.</param>
     /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
     /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>
     /// New advanced order representing an original order plus pair of take profit and stop loss orders.
     /// </returns>
@@ -86,6 +98,6 @@ public static class Bracket
         Decimal takeProfitLimitPrice,
         Decimal stopLossStopPrice,
         Decimal stopLossLimitPrice) =>
-        MarketOrder.Sell(symbol, quantity)
+        MarketOrder.Sell(symbol.EnsureNotNull(), quantity)
             .Bracket(takeProfitLimitPrice, stopLossStopPrice, stopLossLimitPrice);
 }

@@ -10,6 +10,12 @@ public static partial class AlpacaCryptoStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaCryptoStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for order book updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IOrderBook}.Received"/> event.
     /// </returns>
@@ -27,6 +33,12 @@ public static partial class AlpacaCryptoStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaCryptoStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for order book updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IOrderBook}.Received"/> event.
     /// </returns>
@@ -46,6 +58,12 @@ public static partial class AlpacaCryptoStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaCryptoStreamingClient"/> interface.</param>
     /// <param name="symbol">Alpaca asset name for order book updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IOrderBook}.Received"/> event.
     /// </returns>
@@ -55,7 +73,7 @@ public static partial class AlpacaCryptoStreamingClientExtensions
         this IAlpacaCryptoStreamingClient client,
         String symbol) =>
         DisposableAlpacaDataSubscription<IOrderBook>.CreateAsync(
-            client.EnsureNotNull().GetOrderBookSubscription(symbol),
+            client.EnsureNotNull().GetOrderBookSubscription(symbol.EnsureNotNull()),
             client);
 
     /// <summary>
@@ -65,6 +83,12 @@ public static partial class AlpacaCryptoStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaCryptoStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for order book updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IOrderBook}.Received"/> event.
     /// </returns>
@@ -74,7 +98,7 @@ public static partial class AlpacaCryptoStreamingClientExtensions
         this IAlpacaCryptoStreamingClient client,
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<IOrderBook>.CreateAsync(
-            client.EnsureNotNull().GetOrderBookSubscription(symbols),
+            client.EnsureNotNull().GetOrderBookSubscription(symbols.EnsureNotNull()),
             client);
 
     /// <summary>
@@ -84,6 +108,12 @@ public static partial class AlpacaCryptoStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaCryptoStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for order book updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IOrderBook}.Received"/> event.
     /// </returns>
@@ -93,7 +123,7 @@ public static partial class AlpacaCryptoStreamingClientExtensions
         this IAlpacaCryptoStreamingClient client,
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<IOrderBook>.CreateAsync(
-            client.EnsureNotNull().GetOrderBookSubscription(symbols),
+            client.EnsureNotNull().GetOrderBookSubscription(symbols.EnsureNotNull()),
             client);
 
     private static IAlpacaDataSubscription<IOrderBook> getOrderBookSubscription(

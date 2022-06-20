@@ -10,6 +10,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -27,6 +33,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -44,6 +56,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -61,6 +79,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -78,6 +102,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -95,6 +125,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -112,6 +148,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -129,6 +171,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute aggregate (bar) updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
     /// </returns>
@@ -148,6 +196,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbol">Alpaca asset name for minute bar updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
     /// </returns>
@@ -157,7 +211,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         this IAlpacaDataStreamingClient client,
         String symbol) =>
         DisposableAlpacaDataSubscription<IStatus>.CreateAsync(
-            client.EnsureNotNull().GetStatusSubscription(symbol),
+            client.EnsureNotNull().GetStatusSubscription(symbol.EnsureNotNull()),
             client.EnsureNotNull());
 
     /// <summary>
@@ -167,6 +221,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
     /// </returns>
@@ -176,7 +236,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         this IAlpacaDataStreamingClient client,
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<IStatus>.CreateAsync(
-            client.EnsureNotNull().GetStatusSubscription(symbols),
+            client.EnsureNotNull().GetStatusSubscription(symbols.EnsureNotNull()),
             client.EnsureNotNull());
 
     /// <summary>
@@ -186,6 +246,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
     /// </returns>
@@ -195,7 +261,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         this IAlpacaDataStreamingClient client,
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<IStatus>.CreateAsync(
-            client.EnsureNotNull().GetStatusSubscription(symbols),
+            client.EnsureNotNull().GetStatusSubscription(symbols.EnsureNotNull()),
             client.EnsureNotNull());
 
     /// <summary>
@@ -205,6 +271,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
     /// </returns>
@@ -214,7 +286,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         this IAlpacaDataStreamingClient client,
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<ICorrection>.CreateAsync(
-            client.EnsureNotNull().GetCorrectionSubscription(symbols),
+            client.EnsureNotNull().GetCorrectionSubscription(symbols.EnsureNotNull()),
             client.EnsureNotNull());
 
     /// <summary>
@@ -224,6 +296,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbol">Alpaca asset name for minute bar updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
     /// </returns>
@@ -233,7 +311,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         this IAlpacaDataStreamingClient client,
         String symbol) =>
         DisposableAlpacaDataSubscription<ICorrection>.CreateAsync(
-            client.EnsureNotNull().GetCorrectionSubscription(symbol),
+            client.EnsureNotNull().GetCorrectionSubscription(symbol.EnsureNotNull()),
             client.EnsureNotNull());
 
     /// <summary>
@@ -243,6 +321,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
     /// </returns>
@@ -252,7 +336,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         this IAlpacaDataStreamingClient client,
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<ICorrection>.CreateAsync(
-            client.EnsureNotNull().GetCorrectionSubscription(symbols),
+            client.EnsureNotNull().GetCorrectionSubscription(symbols.EnsureNotNull()),
             client.EnsureNotNull());
 
     /// <summary>
@@ -262,6 +346,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
     /// </returns>
@@ -271,7 +361,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         this IAlpacaDataStreamingClient client,
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<ITrade>.CreateAsync(
-            client.EnsureNotNull().GetCancellationSubscription(symbols),
+            client.EnsureNotNull().GetCancellationSubscription(symbols.EnsureNotNull()),
             client.EnsureNotNull());
 
     /// <summary>
@@ -281,6 +371,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbol">Alpaca asset name for minute bar updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
     /// </returns>
@@ -290,7 +386,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         this IAlpacaDataStreamingClient client,
         String symbol) =>
         DisposableAlpacaDataSubscription<ITrade>.CreateAsync(
-            client.EnsureNotNull().GetCancellationSubscription(symbol),
+            client.EnsureNotNull().GetCancellationSubscription(symbol.EnsureNotNull()),
             client.EnsureNotNull());
 
     /// <summary>
@@ -300,6 +396,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
     /// </returns>
@@ -309,7 +411,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         this IAlpacaDataStreamingClient client,
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<ITrade>.CreateAsync(
-            client.EnsureNotNull().GetCancellationSubscription(symbols),
+            client.EnsureNotNull().GetCancellationSubscription(symbols.EnsureNotNull()),
             client.EnsureNotNull());
 
     /// <summary>
@@ -319,6 +421,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbol">Alpaca asset name for minute bar updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamAgg}.Received"/> event.
     /// </returns>
@@ -328,7 +436,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         this IAlpacaDataStreamingClient client,
         String symbol) =>
         DisposableAlpacaDataSubscription<ILimitUpLimitDown>.CreateAsync(
-            client.EnsureNotNull().GetLimitUpLimitDownSubscription(symbol),
+            client.EnsureNotNull().GetLimitUpLimitDownSubscription(symbol.EnsureNotNull()),
             client.EnsureNotNull());
 
     /// <summary>
@@ -338,6 +446,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
     /// </returns>
@@ -347,7 +461,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         this IAlpacaDataStreamingClient client,
         params String[] symbols) =>
         DisposableAlpacaDataSubscription<ILimitUpLimitDown>.CreateAsync(
-            client.EnsureNotNull().GetLimitUpLimitDownSubscription(symbols),
+            client.EnsureNotNull().GetLimitUpLimitDownSubscription(symbols.EnsureNotNull()),
             client.EnsureNotNull());
 
     /// <summary>
@@ -357,6 +471,12 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// </summary>
     /// <param name="client">Target instance of the <see cref="IAlpacaDataStreamingClient"/> interface.</param>
     /// <param name="symbols">Alpaca asset names list (non-empty) for minute bar updates subscribing.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
     /// <returns>
     /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{IStreamTrade}.Received"/> event.
     /// </returns>
@@ -366,7 +486,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         this IAlpacaDataStreamingClient client,
         IEnumerable<String> symbols) =>
         DisposableAlpacaDataSubscription<ILimitUpLimitDown>.CreateAsync(
-            client.EnsureNotNull().GetLimitUpLimitDownSubscription(symbols),
+            client.EnsureNotNull().GetLimitUpLimitDownSubscription(symbols.EnsureNotNull()),
             client.EnsureNotNull());
 
     private static IAlpacaDataSubscription<IStatus> getStatusSubscription(

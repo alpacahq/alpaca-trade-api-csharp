@@ -15,14 +15,17 @@ public static class AlpacaServiceCollectionExtensions
     /// <param name="services">Registered services collection.</param>
     /// <param name="environment">Alpaca environment data.</param>
     /// <param name="securityKey">Alpaca security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="services"/>, <paramref name="environment"/>, or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
     [UsedImplicitly]
     public static IServiceCollection AddAlpacaCryptoDataClient(
         this IServiceCollection services,
         IEnvironment environment,
         SecurityKey securityKey) =>
-        services.EnsureNotNull().AddAlpacaCryptoDataClient(environment
-            .GetAlpacaCryptoDataClientConfiguration(securityKey));
+        services.EnsureNotNull().AddAlpacaCryptoDataClient(environment.EnsureNotNull()
+            .GetAlpacaCryptoDataClientConfiguration(securityKey.EnsureNotNull()));
 
     /// <summary>
     /// Registers the concrete implementation of the <see cref="IAlpacaCryptoDataClient"/>
@@ -30,6 +33,9 @@ public static class AlpacaServiceCollectionExtensions
     /// </summary>
     /// <param name="services">Registered services collection.</param>
     /// <param name="configuration">Alpaca data client configuration.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="services"/> or <paramref name="configuration"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
     [UsedImplicitly]
     public static IServiceCollection AddAlpacaCryptoDataClient(
@@ -37,8 +43,9 @@ public static class AlpacaServiceCollectionExtensions
         AlpacaCryptoDataClientConfiguration configuration) =>
         services.EnsureNotNull()
             .AddHttpClient<IAlpacaCryptoDataClient>()
-            .AddTypedClient(httpClient => configuration.withFactoryCreatedHttpClient(httpClient).GetClient())
-            .withConfiguredPrimaryHttpMessageHandler(configuration);
+            .AddTypedClient(httpClient => configuration.EnsureNotNull()
+                .withFactoryCreatedHttpClient(httpClient).GetClient())
+            .withConfiguredPrimaryHttpMessageHandler(configuration.EnsureNotNull());
 
     /// <summary>
     /// Registers the concrete implementation of the <see cref="IAlpacaDataClient"/>
@@ -47,14 +54,17 @@ public static class AlpacaServiceCollectionExtensions
     /// <param name="services">Registered services collection.</param>
     /// <param name="environment">Alpaca environment data.</param>
     /// <param name="securityKey">Alpaca security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="services"/>, <paramref name="environment"/>, or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
     [UsedImplicitly]
     public static IServiceCollection AddAlpacaDataClient(
         this IServiceCollection services,
         IEnvironment environment,
         SecurityKey securityKey) =>
-        services.EnsureNotNull().AddAlpacaDataClient(environment
-            .GetAlpacaDataClientConfiguration(securityKey));
+        services.EnsureNotNull().AddAlpacaDataClient(environment.EnsureNotNull()
+            .GetAlpacaDataClientConfiguration(securityKey.EnsureNotNull()));
 
     /// <summary>
     /// Registers the concrete implementation of the <see cref="IAlpacaDataClient"/>
@@ -62,6 +72,9 @@ public static class AlpacaServiceCollectionExtensions
     /// </summary>
     /// <param name="services">Registered services collection.</param>
     /// <param name="configuration">Alpaca data client configuration.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="services"/> or <paramref name="configuration"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
     [UsedImplicitly]
     public static IServiceCollection AddAlpacaDataClient(
@@ -69,8 +82,9 @@ public static class AlpacaServiceCollectionExtensions
         AlpacaDataClientConfiguration configuration) =>
         services.EnsureNotNull()
             .AddHttpClient<IAlpacaDataClient>()
-            .AddTypedClient(httpClient => configuration.withFactoryCreatedHttpClient(httpClient).GetClient())
-            .withConfiguredPrimaryHttpMessageHandler(configuration);
+            .AddTypedClient(httpClient => configuration.EnsureNotNull()
+                .withFactoryCreatedHttpClient(httpClient).GetClient())
+            .withConfiguredPrimaryHttpMessageHandler(configuration.EnsureNotNull());
 
     /// <summary>
     /// Registers the concrete implementation of the <see cref="IAlpacaTradingClient"/>
@@ -79,14 +93,17 @@ public static class AlpacaServiceCollectionExtensions
     /// <param name="services">Registered services collection.</param>
     /// <param name="environment">Alpaca environment data.</param>
     /// <param name="securityKey">Alpaca security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="services"/>, <paramref name="environment"/>, or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
     [UsedImplicitly]
     public static IServiceCollection AddAlpacaTradingClient(
         this IServiceCollection services,
         IEnvironment environment,
         SecurityKey securityKey) =>
-        services.EnsureNotNull().AddAlpacaTradingClient(environment
-            .GetAlpacaTradingClientConfiguration(securityKey));
+        services.EnsureNotNull().AddAlpacaTradingClient(environment.EnsureNotNull()
+            .GetAlpacaTradingClientConfiguration(securityKey.EnsureNotNull()));
 
     /// <summary>
     /// Registers the concrete implementation of the <see cref="IAlpacaTradingClient"/>
@@ -94,6 +111,9 @@ public static class AlpacaServiceCollectionExtensions
     /// </summary>
     /// <param name="services">Registered services collection.</param>
     /// <param name="configuration">Alpaca trading client configuration.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="services"/> or <paramref name="configuration"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
     [UsedImplicitly]
     public static IServiceCollection AddAlpacaTradingClient(
@@ -101,8 +121,9 @@ public static class AlpacaServiceCollectionExtensions
         AlpacaTradingClientConfiguration configuration) =>
         services.EnsureNotNull()
             .AddHttpClient<IAlpacaTradingClient>()
-            .AddTypedClient(httpClient => configuration.withFactoryCreatedHttpClient(httpClient).GetClient())
-            .withConfiguredPrimaryHttpMessageHandler(configuration);
+            .AddTypedClient(httpClient => configuration.EnsureNotNull()
+                .withFactoryCreatedHttpClient(httpClient).GetClient())
+            .withConfiguredPrimaryHttpMessageHandler(configuration.EnsureNotNull());
 
     private static TConfiguration withFactoryCreatedHttpClient<TConfiguration>(
         this TConfiguration configuration,

@@ -72,12 +72,15 @@ public static class EnumerableExtensions
     /// Gets the average trade volume for the given list of <see cref="IBar"/> objects.
     /// </summary>
     /// <param name="bars">Target list of the <see cref="IBar"/> instances.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="bars"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The pair of ADTV value and number of processed day bars.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
     public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync(
         this IAsyncEnumerable<IBar> bars) =>
-        GetAverageDailyTradeVolumeAsync(bars, CancellationToken.None);
+        GetAverageDailyTradeVolumeAsync(bars.EnsureNotNull(), CancellationToken.None);
 
     /// <summary>
     /// Gets the average trade volume for the given list of <see cref="IBar"/> objects.
@@ -86,6 +89,9 @@ public static class EnumerableExtensions
     /// <param name="cancellationToken">
     /// A cancellation token that can be used by other objects or threads to receive notice of cancellation.
     /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="bars"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The pair of ADTV value and number of processed day bars.</returns>
     [CLSCompliant(false)]
     public static async Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync(
@@ -109,6 +115,9 @@ public static class EnumerableExtensions
     /// Gets the average trade volume for the given list of <see cref="IBar"/> objects.
     /// </summary>
     /// <param name="bars">Target list of the <see cref="IBar"/> instances.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="bars"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The pair of ADTV value and number of processed day bars.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
@@ -132,13 +141,16 @@ public static class EnumerableExtensions
     /// </summary>
     /// <param name="bars">Target list of the <see cref="IBar"/> instances.</param>
     /// <param name="window">Size of the moving average window.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="bars"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The list of bars with SMA values for all <see cref="IBar"/> properties.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
     public static IAsyncEnumerable<IBar> GetSimpleMovingAverageAsync(
         this IAsyncEnumerable<IBar> bars,
         Int32 window) =>
-        GetSimpleMovingAverageAsync(bars, window, CancellationToken.None);
+        GetSimpleMovingAverageAsync(bars.EnsureNotNull(), window, CancellationToken.None);
 
     /// <summary>
     /// Gets the simple moving average values for the given list of <see cref="IBar"/> objects.
@@ -148,6 +160,9 @@ public static class EnumerableExtensions
     /// <param name="cancellationToken">
     /// A cancellation token that can be used by other objects or threads to receive notice of cancellation.
     /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="bars"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The list of bars with SMA values for all <see cref="IBar"/> properties.</returns>
     [CLSCompliant(false)]
     public static async IAsyncEnumerable<IBar> GetSimpleMovingAverageAsync(
@@ -190,11 +205,14 @@ public static class EnumerableExtensions
     /// </summary>
     /// <param name="bars">Target list of the <see cref="IBar"/> instances.</param>
     /// <param name="window">Size of the moving average window.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="bars"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The list of bars with SMA values for all <see cref="IBar"/> properties.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
     public static IEnumerable<IBar> GetSimpleMovingAverage(
         this IEnumerable<IBar> bars,
         Int32 window) =>
-        GetSimpleMovingAverageAsync(bars.ToAsyncEnumerable(), window).ToEnumerable();
+        GetSimpleMovingAverageAsync(bars.EnsureNotNull().ToAsyncEnumerable(), window).ToEnumerable();
 }
