@@ -10,6 +10,9 @@ public sealed class SnapshotDataRequest : Validation.IRequest
     /// </summary>
     /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="exchange">Crypto exchange for data retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     public SnapshotDataRequest(
         String symbol,
         CryptoExchange exchange)

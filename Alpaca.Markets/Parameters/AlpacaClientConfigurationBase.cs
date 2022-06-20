@@ -9,12 +9,15 @@ public abstract class AlpacaClientConfigurationBase
     /// <summary>
     /// Creates new instance of <see cref="AlpacaClientConfigurationBase"/> class.
     /// </summary>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="apiEndpoint"/> argument is <c>null</c>.
+    /// </exception>
     protected AlpacaClientConfigurationBase(
         Uri apiEndpoint)
     {
         SecurityId = new SecretKey(String.Empty, String.Empty);
         ThrottleParameters = ThrottleParameters.Default;
-        ApiEndpoint = apiEndpoint;
+        ApiEndpoint = apiEndpoint.EnsureNotNull();
     }
 
     /// <summary>

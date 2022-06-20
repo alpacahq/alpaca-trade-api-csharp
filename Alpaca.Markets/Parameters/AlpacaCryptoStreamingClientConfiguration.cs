@@ -35,22 +35,28 @@ public sealed class AlpacaCryptoStreamingClientConfiguration : StreamingClientCo
     /// with the updated <see cref="AlpacaCryptoStreamingClientConfiguration.Exchanges"/> list.
     /// </summary>
     /// <param name="exchanges">Crypto exchanges to add into the list.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="exchanges"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new instance of the <see cref="AlpacaCryptoStreamingClientConfiguration"/> object.</returns>
     [UsedImplicitly]
     public AlpacaCryptoStreamingClientConfiguration WithExchanges(
         IEnumerable<CryptoExchange> exchanges) =>
-        new (this, exchanges);
+        new (this, exchanges.EnsureNotNull());
 
     /// <summary>
     /// Creates new instance of <see cref="AlpacaCryptoStreamingClientConfiguration"/> object
     /// with the updated <see cref="Exchanges"/> list.
     /// </summary>
     /// <param name="exchanges">Crypto exchanges to add into the list.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="exchanges"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new instance of the <see cref="AlpacaCryptoStreamingClientConfiguration"/> object.</returns>
     [UsedImplicitly]
     public AlpacaCryptoStreamingClientConfiguration WithExchanges(
         params CryptoExchange[] exchanges) =>
-        new(this, exchanges);
+        new(this, exchanges.EnsureNotNull());
 
     internal override Uri GetApiEndpoint() =>
         new UriBuilder(base.GetApiEndpoint())

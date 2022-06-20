@@ -16,6 +16,9 @@ public sealed class ChangeWatchListRequest<TKey> : Validation.IRequest
     /// </summary>
     /// <param name="key">Unique watch list identifier or name.</param>
     /// <param name="asset">Asset symbol for adding into watch list.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="key"/> or <paramref name="asset"/> argument is <c>null</c>.
+    /// </exception>
     public ChangeWatchListRequest(
         TKey key,
         String asset)

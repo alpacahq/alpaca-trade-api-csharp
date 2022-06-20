@@ -11,6 +11,9 @@ public sealed class LatestDataListRequest : Validation.IRequest
     /// </summary>
     /// <param name="symbols">Asset symbol for data retrieval.</param>
     /// <param name="exchange">Crypto exchange for data retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
     public LatestDataListRequest(
         IEnumerable<String> symbols,
         CryptoExchange exchange)

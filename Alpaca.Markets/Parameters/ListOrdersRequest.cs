@@ -53,6 +53,9 @@ public sealed class ListOrdersRequest : Validation.IRequest
     /// Adds a single <paramref name="symbol"/> item into the <see cref="Symbols"/> list.
     /// </summary>
     /// <param name="symbol">Single symbol name for filtering.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Fluent interface, returns the original <see cref="ListOrdersRequest"/> instance.</returns>
     [UsedImplicitly]
     public ListOrdersRequest WithSymbol(String symbol)
@@ -65,6 +68,9 @@ public sealed class ListOrdersRequest : Validation.IRequest
     /// Adds all items from the <paramref name="symbols"/> list into the <see cref="Symbols"/> list.
     /// </summary>
     /// <param name="symbols">List of symbol names for filtering.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>Fluent interface, returns the original <see cref="ListOrdersRequest"/> instance.</returns>
     [UsedImplicitly]
     public ListOrdersRequest WithSymbols(IEnumerable<String> symbols)

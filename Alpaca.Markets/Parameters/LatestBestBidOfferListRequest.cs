@@ -14,27 +14,36 @@ public sealed class LatestBestBidOfferListRequest : Validation.IRequest
     /// </summary>
     /// <param name="symbols">Asset symbols list for data retrieval.</param>
     /// <param name="exchanges">Crypto exchanges list for data retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> or <paramref name="exchanges"/> argument is <c>null</c>.
+    /// </exception>
     public LatestBestBidOfferListRequest(
         IEnumerable<String> symbols,
         IEnumerable<CryptoExchange> exchanges)
-        : this(symbols) =>
-        _exchanges.UnionWith(exchanges);
+        : this(symbols.EnsureNotNull()) =>
+        _exchanges.UnionWith(exchanges.EnsureNotNull());
 
     /// <summary>
     /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
     /// </summary>
     /// <param name="symbols">Asset symbols list for data retrieval.</param>
     /// <param name="exchange">Crypto exchange for data retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
     public LatestBestBidOfferListRequest(
         IEnumerable<String> symbols,
         CryptoExchange exchange)
-        : this(symbols) =>
+        : this(symbols.EnsureNotNull()) =>
         _exchanges.Add(exchange);
 
     /// <summary>
     /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
     /// </summary>
     /// <param name="symbols">Asset symbols list for data retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
     public LatestBestBidOfferListRequest(
         IEnumerable<String> symbols) =>
         _symbols.UnionWith(symbols.EnsureNotNull());

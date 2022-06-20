@@ -18,6 +18,9 @@ public sealed class NewsArticlesRequest : Validation.IRequest, IHistoricalReques
     /// Creates new instance of <see cref="NewsArticlesRequest"/> object.
     /// </summary>
     /// <param name="symbols">Asset symbols for data retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
     public NewsArticlesRequest(
         IEnumerable<String> symbols) =>
         _symbols.UnionWith(symbols.EnsureNotNull());
