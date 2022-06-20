@@ -41,6 +41,9 @@ public sealed class StopLimitOrder : SimpleOrderBase
     /// <param name="quantity">Order quantity.</param>
     /// <param name="stopPrice">Order stop price.</param>
     /// <param name="limitPrice">Order limit price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="StopLimitOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static StopLimitOrder Buy(
@@ -48,8 +51,7 @@ public sealed class StopLimitOrder : SimpleOrderBase
         OrderQuantity quantity,
         Decimal stopPrice,
         Decimal limitPrice) =>
-        new(
-            symbol, quantity, OrderSide.Buy, stopPrice, limitPrice);
+        new(symbol.EnsureNotNull(), quantity, OrderSide.Buy, stopPrice, limitPrice);
 
     /// <summary>
     /// Creates new sell stop limit order using specified symbol and quantity.
@@ -58,6 +60,9 @@ public sealed class StopLimitOrder : SimpleOrderBase
     /// <param name="quantity">Order quantity.</param>
     /// <param name="stopPrice">Order stop price.</param>
     /// <param name="limitPrice">Order limit price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="StopLimitOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static StopLimitOrder Sell(
@@ -65,8 +70,7 @@ public sealed class StopLimitOrder : SimpleOrderBase
         OrderQuantity quantity,
         Decimal stopPrice,
         Decimal limitPrice) =>
-        new(
-            symbol, quantity, OrderSide.Sell, stopPrice, limitPrice);
+        new(symbol.EnsureNotNull(), quantity, OrderSide.Sell, stopPrice, limitPrice);
 
     internal override JsonNewOrder GetJsonRequest() =>
         base.GetJsonRequest()

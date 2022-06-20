@@ -11,6 +11,9 @@ public static class OrderSideExtensions
     /// <param name="orderSide">Order side (buy or sell).</param>
     /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static MarketOrder Market(
@@ -26,6 +29,9 @@ public static class OrderSideExtensions
     /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="stopPrice">Order stop price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="StopOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static StopOrder Stop(
@@ -42,6 +48,9 @@ public static class OrderSideExtensions
     /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="limitPrice">Order limit price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="LimitOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static LimitOrder Limit(
@@ -59,6 +68,9 @@ public static class OrderSideExtensions
     /// <param name="quantity">Order quantity.</param>
     /// <param name="stopPrice">Order stop price.</param>
     /// <param name="limitPrice">Order limit price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="StopLimitOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static StopLimitOrder StopLimit(
@@ -76,6 +88,9 @@ public static class OrderSideExtensions
     /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="trailOffset">Order trail offset.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="TrailingStopOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static TrailingStopOrder TrailingStop(

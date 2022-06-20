@@ -21,24 +21,28 @@ public sealed class MarketOrder : SimpleOrderBase
     /// </summary>
     /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static MarketOrder Buy(
         String symbol,
         OrderQuantity quantity) =>
-        new(
-            symbol, quantity, OrderSide.Buy);
+        new(symbol.EnsureNotNull(), quantity, OrderSide.Buy);
 
     /// <summary>
     /// Creates new sell market order using specified symbol and quantity.
     /// </summary>
     /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="MarketOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static MarketOrder Sell(
         String symbol,
         OrderQuantity quantity) =>
-        new(
-            symbol, quantity, OrderSide.Sell);
+        new(symbol.EnsureNotNull(), quantity, OrderSide.Sell);
 }

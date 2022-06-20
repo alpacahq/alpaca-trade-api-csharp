@@ -30,14 +30,16 @@ public sealed class StopOrder : SimpleOrderBase
     /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="stopPrice">Order stop price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="StopOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static StopOrder Buy(
         String symbol,
         OrderQuantity quantity,
         Decimal stopPrice) =>
-        new(
-            symbol, quantity, OrderSide.Buy, stopPrice);
+        new(symbol.EnsureNotNull(), quantity, OrderSide.Buy, stopPrice);
 
     /// <summary>
     /// Creates new sell buy order using specified symbol and quantity.
@@ -45,14 +47,16 @@ public sealed class StopOrder : SimpleOrderBase
     /// <param name="symbol">Order asset symbol.</param>
     /// <param name="quantity">Order quantity.</param>
     /// <param name="stopPrice">Order stop price.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
     /// <returns>The new <see cref="StopOrder"/> object instance.</returns>
     [UsedImplicitly]
     public static StopOrder Sell(
         String symbol,
         OrderQuantity quantity,
         Decimal stopPrice) =>
-        new(
-            symbol, quantity, OrderSide.Sell, stopPrice);
+        new(symbol.EnsureNotNull(), quantity, OrderSide.Sell, stopPrice);
 
     internal override JsonNewOrder GetJsonRequest() =>
         base.GetJsonRequest()

@@ -10,6 +10,9 @@ public abstract class AdvancedOrderBase : OrderBase
     /// </summary>
     /// <param name="baseOrder">Base order object for creating advanced one.</param>
     /// <param name="orderClass">Advanced order class for new smart order.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="baseOrder"/> argument is <c>null</c>.
+    /// </exception>
     protected internal AdvancedOrderBase(
         SimpleOrderBase baseOrder,
         OrderClass orderClass)

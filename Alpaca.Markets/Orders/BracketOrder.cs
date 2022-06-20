@@ -15,8 +15,7 @@ public sealed class BracketOrder : AdvancedOrderBase
         Decimal stopLossStopPrice,
         Decimal? stopLossLimitPrice)
         : base(
-            baseOrder,
-            OrderClass.Bracket)
+            baseOrder, OrderClass.Bracket)
     {
         TakeProfit = baseOrder.TakeProfit(takeProfitLimitPrice);
         StopLoss = stopLossLimitPrice.HasValue
