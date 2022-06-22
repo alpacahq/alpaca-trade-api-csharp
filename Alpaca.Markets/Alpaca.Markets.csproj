@@ -20,7 +20,9 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Changed approach for handling HTTP responses (attempt to prevent strange exceptions).</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added the new property `UseSymbolAsOfTheDate` for specifying symbol-to-contract mapping by the date.
+- The `SocketError.WouldBlock` error code added into list of default "recoverable" error codes.
+- Changed approach for handling HTTP responses (attempt to prevent strange exceptions).</PackageReleaseNotes>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
