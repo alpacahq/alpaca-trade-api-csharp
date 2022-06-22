@@ -494,6 +494,7 @@ namespace Alpaca.Markets.Extensions
                     request.GetValidatedInto(),
                     request.TimeFrame)
                 {
+                    UseSymbolAsOfTheDate = request.UseSymbolAsOfTheDate,
                     Adjustment = request.Adjustment,
                     Feed = request.Feed
                 }
@@ -507,6 +508,7 @@ namespace Alpaca.Markets.Extensions
                     request.GetValidatedFrom(),
                     request.GetValidatedInto())
                 {
+                    UseSymbolAsOfTheDate = request.UseSymbolAsOfTheDate,
                     Feed = request.Feed
                 }
                 .WithPageSize(request.GetPageSize());
@@ -519,6 +521,7 @@ namespace Alpaca.Markets.Extensions
                     request.GetValidatedFrom(),
                     request.GetValidatedInto())
                 {
+                    UseSymbolAsOfTheDate = request.UseSymbolAsOfTheDate,
                     Feed = request.Feed
                 }
                 .WithPageSize(request.GetPageSize());
