@@ -236,6 +236,8 @@ Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(System.Collections.Ge
 Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.Interval<System.DateTime> timeInterval, Alpaca.Markets.BarTimeFrame timeFrame) -> void
 Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into, Alpaca.Markets.BarTimeFrame timeFrame) -> void
 Alpaca.Markets.HistoricalBarsRequest.TimeFrame.get -> Alpaca.Markets.BarTimeFrame
+Alpaca.Markets.HistoricalBarsRequest.UseSymbolAsOfTheDate.get -> System.DateOnly?
+Alpaca.Markets.HistoricalBarsRequest.UseSymbolAsOfTheDate.set -> void
 Alpaca.Markets.HistoricalCryptoBarsRequest
 Alpaca.Markets.HistoricalCryptoBarsRequest.HistoricalCryptoBarsRequest(string! symbol, Alpaca.Markets.BarTimeFrame timeFrame, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalCryptoBarsRequest.HistoricalCryptoBarsRequest(string! symbol, Alpaca.Markets.BarTimeFrame timeFrame, Alpaca.Markets.Interval<System.DateTime> timeInterval) -> void
@@ -280,6 +282,8 @@ Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(string! symbol, S
 Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.Interval<System.DateTime> timeInterval) -> void
+Alpaca.Markets.HistoricalQuotesRequest.UseSymbolAsOfTheDate.get -> System.DateOnly?
+Alpaca.Markets.HistoricalQuotesRequest.UseSymbolAsOfTheDate.set -> void
 Alpaca.Markets.HistoricalRequestBase
 Alpaca.Markets.HistoricalRequestBase.HistoricalRequestBase(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalRequestBase.HistoricalRequestBase(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.Interval<System.DateTime> timeInterval) -> void
@@ -298,6 +302,8 @@ Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(string! symbol, S
 Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
 Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.Interval<System.DateTime> timeInterval) -> void
+Alpaca.Markets.HistoricalTradesRequest.UseSymbolAsOfTheDate.get -> System.DateOnly?
+Alpaca.Markets.HistoricalTradesRequest.UseSymbolAsOfTheDate.set -> void
 Alpaca.Markets.HistoryPeriod
 Alpaca.Markets.HistoryPeriod.HistoryPeriod() -> void
 Alpaca.Markets.HistoryPeriod.HistoryPeriod(int value, Alpaca.Markets.HistoryPeriodUnit unit) -> void
