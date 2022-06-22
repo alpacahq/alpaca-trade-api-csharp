@@ -33,7 +33,7 @@ internal sealed class DisposableAlpacaDataSubscription<TItem> :
         remove => _subscription.OnSubscribedChanged -= value;
     }
 
-    public event Action<TItem> Received
+    public event Action<TItem>? Received
     {
         add => _subscription.Received += value;
         remove => _subscription.Received -= value;

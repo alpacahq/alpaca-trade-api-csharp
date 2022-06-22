@@ -4,9 +4,9 @@
     ".NETFramework,Version=v4.6.2": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[6.0.3, )",
-        "resolved": "6.0.3",
-        "contentHash": "CS28fwGXqF9Id2yNXlEr9V48Rihg50oouIOsdysnJlhBMLd1WBHD5AIH7cNUR6eP7pPa8LtczEh6Am0AYh94lQ==",
+        "requested": "[6.0.4, )",
+        "resolved": "6.0.4",
+        "contentHash": "zLTRgcqvC0CF1D1KJCc/V4XNDFLXdPKldFHReJaxMw9Os47w8qBQue8nkOTOs612xR+XoIDDQd21Vw39Qgx9Fw==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.3",
@@ -277,9 +277,9 @@
     ".NETStandard,Version=v2.0": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[6.0.3, )",
-        "resolved": "6.0.3",
-        "contentHash": "CS28fwGXqF9Id2yNXlEr9V48Rihg50oouIOsdysnJlhBMLd1WBHD5AIH7cNUR6eP7pPa8LtczEh6Am0AYh94lQ==",
+        "requested": "[6.0.4, )",
+        "resolved": "6.0.4",
+        "contentHash": "zLTRgcqvC0CF1D1KJCc/V4XNDFLXdPKldFHReJaxMw9Os47w8qBQue8nkOTOs612xR+XoIDDQd21Vw39Qgx9Fw==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.3",
@@ -537,9 +537,9 @@
     ".NETStandard,Version=v2.1": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[6.0.3, )",
-        "resolved": "6.0.3",
-        "contentHash": "CS28fwGXqF9Id2yNXlEr9V48Rihg50oouIOsdysnJlhBMLd1WBHD5AIH7cNUR6eP7pPa8LtczEh6Am0AYh94lQ==",
+        "requested": "[6.0.4, )",
+        "resolved": "6.0.4",
+        "contentHash": "zLTRgcqvC0CF1D1KJCc/V4XNDFLXdPKldFHReJaxMw9Os47w8qBQue8nkOTOs612xR+XoIDDQd21Vw39Qgx9Fw==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.3",
@@ -753,9 +753,9 @@
     "net6.0": {
       "Alpaca.Markets": {
         "type": "Direct",
-        "requested": "[6.0.3, )",
-        "resolved": "6.0.3",
-        "contentHash": "CS28fwGXqF9Id2yNXlEr9V48Rihg50oouIOsdysnJlhBMLd1WBHD5AIH7cNUR6eP7pPa8LtczEh6Am0AYh94lQ==",
+        "requested": "[6.0.4, )",
+        "resolved": "6.0.4",
+        "contentHash": "zLTRgcqvC0CF1D1KJCc/V4XNDFLXdPKldFHReJaxMw9Os47w8qBQue8nkOTOs612xR+XoIDDQd21Vw39Qgx9Fw==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Polly": "7.2.3",
