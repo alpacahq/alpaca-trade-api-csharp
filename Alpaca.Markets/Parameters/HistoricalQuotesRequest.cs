@@ -105,6 +105,7 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
         : base(symbols.EnsureNotNull(), timeInterval)
     {
     }
+
     /// <summary>
     /// Gets or sets the feed to pull market data from. The <see cref="MarkedDataFeed.Sip"/> and
     /// <see cref="MarkedDataFeed.Otc"/> are only available to those with a subscription. Default is
@@ -113,14 +114,23 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     [UsedImplicitly]
     public MarkedDataFeed? Feed { get; set; }
 
+    /// <summary>
+    /// Gets or sets the optional parameter for mapping symbol to contract by a specific date.
+    /// </summary>
+    [UsedImplicitly]
+    public DateOnly? UseSymbolAsOfTheDate { get; set; }
+
     /// <inheritdoc />
     protected override String LastPathSegment => "quotes";
 
     internal override QueryBuilder AddParameters(
         QueryBuilder queryBuilder) => 
-        queryBuilder.AddParameter("feed", Feed);
+        queryBuilder
+            .AddParameter("asof", UseSymbolAsOfTheDate)
+            .AddParameter("feed", Feed);
 
     HistoricalQuotesRequest IHistoricalRequest<HistoricalQuotesRequest, IQuote>.GetValidatedRequestWithoutPageToken() =>
-        new HistoricalQuotesRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto()) { Feed = Feed }
+        new HistoricalQuotesRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto())
+                { Feed = Feed, UseSymbolAsOfTheDate = UseSymbolAsOfTheDate }
             .WithPageSize(this.GetPageSize());
 }

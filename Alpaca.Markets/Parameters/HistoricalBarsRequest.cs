@@ -134,12 +134,19 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
     [UsedImplicitly]
     public MarkedDataFeed? Feed { get; set; }
 
+    /// <summary>
+    /// Gets or sets the optional parameter for mapping symbol to contract by a specific date.
+    /// </summary>
+    [UsedImplicitly]
+    public DateOnly? UseSymbolAsOfTheDate { get; set; }
+
     /// <inheritdoc />
     protected override String LastPathSegment => "bars";
 
     internal override QueryBuilder AddParameters(
         QueryBuilder queryBuilder) =>
         queryBuilder
+            .AddParameter("asof", UseSymbolAsOfTheDate)
             // ReSharper disable once StringLiteralTypo
             .AddParameter("timeframe", TimeFrame.ToString())
             .AddParameter("adjustment", Adjustment)
@@ -147,6 +154,6 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
 
     HistoricalBarsRequest IHistoricalRequest<HistoricalBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalBarsRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto(), TimeFrame)
-            { Adjustment = Adjustment, Feed = Feed }
+                { Adjustment = Adjustment, Feed = Feed, UseSymbolAsOfTheDate = UseSymbolAsOfTheDate }
             .WithPageSize(this.GetPageSize());
 }
