@@ -7,22 +7,22 @@
 	<WarningLevel>5</WarningLevel>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>4.1.9</Version>
+    <Version>4.1.10</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
-    <Copyright>© 2018-2021 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>4.1.9.0</AssemblyVersion>
-    <FileVersion>4.1.9.0</FileVersion>
+    <AssemblyVersion>4.1.10.0</AssemblyVersion>
+    <FileVersion>4.1.10.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn></NoWarn>
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Used the new `Feed` property of historical requests in pagination extensions properly.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Used the new `UseSymbolAsOfTheDate` property of historical requests in pagination extensions properly.</PackageReleaseNotes>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -67,7 +67,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Alpaca.Markets" Version="4.1.22" />
+    <PackageReference Include="Alpaca.Markets" Version="4.1.24" />
     <PackageReference Include="JetBrains.Annotations" Version="2022.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>compile; analyzers</IncludeAssets>
