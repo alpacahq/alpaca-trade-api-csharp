@@ -43,6 +43,12 @@ namespace Alpaca.Markets
         public Pagination Pagination { get; } = new ();
 
         /// <summary>
+        /// Gets or sets the optional parameter for mapping symbol to contract by a specific date.
+        /// </summary>
+        [UsedImplicitly]
+        public DateTime? UseSymbolAsOfTheDate { get; set; }
+
+        /// <summary>
         /// Gets the last part of the full REST endpoint URL path.
         /// </summary>
         protected abstract String LastPathSegment { get; }
@@ -55,6 +61,7 @@ namespace Alpaca.Markets
                 Query = AddParameters(Pagination.QueryBuilder
                     .AddParameter("start", TimeInterval.From, "O")
                     .AddParameter("end", TimeInterval.Into, "O"))
+                    .AddParameter("asof", UseSymbolAsOfTheDate, DateTimeHelper.DateFormat)
             };
 
         internal virtual QueryBuilder AddParameters(
