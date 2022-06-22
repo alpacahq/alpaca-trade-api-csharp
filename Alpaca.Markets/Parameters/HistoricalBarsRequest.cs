@@ -87,12 +87,19 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public MarkedDataFeed? Feed { get; set; }
 
+        /// <summary>
+        /// Gets or sets the optional parameter for mapping symbol to contract by a specific date.
+        /// </summary>
+        [UsedImplicitly]
+        public DateTime? UseSymbolAsOfTheDate { get; set; }
+
         /// <inheritdoc />
         protected override String LastPathSegment => "bars";
 
         internal override QueryBuilder AddParameters(
             QueryBuilder queryBuilder) => 
             queryBuilder
+                .AddParameter("asof", UseSymbolAsOfTheDate, DateTimeHelper.DateFormat)
                 // ReSharper disable once StringLiteralTypo
                 .AddParameter("timeframe", TimeFrame.ToString())
                 .AddParameter("adjustment", Adjustment)

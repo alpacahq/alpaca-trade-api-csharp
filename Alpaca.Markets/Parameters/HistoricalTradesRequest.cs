@@ -70,11 +70,19 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public MarkedDataFeed? Feed { get; set; }
 
+        /// <summary>
+        /// Gets or sets the optional parameter for mapping symbol to contract by a specific date.
+        /// </summary>
+        [UsedImplicitly]
+        public DateTime? UseSymbolAsOfTheDate { get; set; }
+
         /// <inheritdoc />
         protected override String LastPathSegment => "trades";
 
         internal override QueryBuilder AddParameters(
             QueryBuilder queryBuilder) => 
-            queryBuilder.AddParameter("feed", Feed);
+            queryBuilder
+                .AddParameter("asof", UseSymbolAsOfTheDate, DateTimeHelper.DateFormat)
+                .AddParameter("feed", Feed);
     }
 }
