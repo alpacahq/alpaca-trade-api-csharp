@@ -38,6 +38,9 @@ internal sealed class JsonOrderBook : JsonRealTimeBase, IOrderBook
     [JsonProperty(PropertyName = "a", Required = Required.Always)]
     internal List<Entry> AsksList { get; set; } = new ();
 
+    [JsonProperty(PropertyName = "r", Required = Required.Default)]
+    public Boolean IsReset { get; set; }
+
     [JsonIgnore]
     public IReadOnlyList<IOrderBookEntry> Bids { get; private set; } = new List<IOrderBookEntry>();
 
