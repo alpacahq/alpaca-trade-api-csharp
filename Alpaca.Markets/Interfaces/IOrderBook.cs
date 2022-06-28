@@ -39,5 +39,11 @@ namespace Alpaca.Markets
         /// </summary>
         [UsedImplicitly]
         IReadOnlyList<IOrderBookEntry> Asks { get; }
+
+        /// <summary>
+        /// Gets the order book reset flag.
+        /// </summary>
+        [UsedImplicitly]
+        Boolean IsReset { get; }
     }
 }
