@@ -59,7 +59,8 @@ internal static class MessageDataHelpers
             new JProperty(StreamingMessageTypeTag, "o"),
             new JProperty("t", DateTime.UtcNow),
             new JProperty("x", _exchange),
-            new JProperty("S", symbol));
+            new JProperty("S", symbol),
+            new JProperty("r", true));
 
     public static JObject CreateStreamingNewsArticle(
         this String symbol) =>
@@ -146,6 +147,7 @@ internal static class MessageDataHelpers
         String symbol)
     {
         Assert.NotNull(orderBook);
+        Assert.True(orderBook.IsReset);
         Assert.Equal(symbol, orderBook.Symbol);
         Assert.Equal(_exchange, orderBook.Exchange);
 

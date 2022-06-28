@@ -610,6 +610,7 @@ Alpaca.Markets.IOrderBook
 Alpaca.Markets.IOrderBook.Asks.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOrderBookEntry!>!
 Alpaca.Markets.IOrderBook.Bids.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOrderBookEntry!>!
 Alpaca.Markets.IOrderBook.Exchange.get -> string!
+Alpaca.Markets.IOrderBook.IsReset.get -> bool
 Alpaca.Markets.IOrderBook.Symbol.get -> string!
 Alpaca.Markets.IOrderBook.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.IOrderBookEntry
