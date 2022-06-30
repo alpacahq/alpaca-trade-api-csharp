@@ -12,16 +12,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.3.8</AssemblyVersion>
-    <FileVersion>6.0.3.8</FileVersion>
-    <Version>6.0.3-rc1</Version>
+    <AssemblyVersion>7.0.0.0</AssemblyVersion>
+    <FileVersion>7.0.0.0</FileVersion>
+    <Version>7.0.0-alpha1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-	<PackageReleaseNotes>- All the latest stock data request methods in the `IAlpacaDataClient` interface now have related request types for specifying the optional market data feed parameter.
-- Added the new `HttpStatusCode` property into the `RestClientErrorException` class with value of the original HTTP return status code.
-- Added the optional (nullable) `Feed` property into all historical data (bars, trades, and quotes) requests.
-- Order cancellation methods in the `IAlpacaTradingClient` interface were renamed (`Delete` -> `Cancel`).</PackageReleaseNotes>
+	<PackageReleaseNotes>- Obsolete members cleanup/update before big internal refactoring.</PackageReleaseNotes>
 	<Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
@@ -115,7 +112,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="!$(TargetFramework.StartsWith('net6'))">
-    <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.1" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.2-beta1" />
   </ItemGroup>
 
   <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />
