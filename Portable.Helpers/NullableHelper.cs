@@ -1,5 +1,6 @@
 ﻿namespace System;
 
+[ExcludeFromCodeCoverage]
 internal static class NullableHelper
 {
     [UsedImplicitly]

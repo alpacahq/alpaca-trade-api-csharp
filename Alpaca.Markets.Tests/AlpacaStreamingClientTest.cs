@@ -1,10 +1,26 @@
-﻿using System.Net.Sockets;
+﻿using System.ComponentModel;
+using System.Net.Sockets;
 
 namespace Alpaca.Markets.Tests;
 
 [Collection("MockEnvironment")]
 public sealed class AlpacaStreamingClientTest
 {
+    private readonly struct FakeEnvironment : IEnvironment
+    {
+        public Uri AlpacaTradingApi => Environments.Paper.AlpacaTradingApi;
+
+        public Uri AlpacaDataApi => Environments.Paper.AlpacaTradingApi;
+
+        public Uri AlpacaStreamingApi => new Uri("https://www.alpaca.com");
+
+        public Uri AlpacaDataStreamingApi => Environments.Paper.AlpacaTradingApi;
+
+        public Uri AlpacaCryptoStreamingApi => Environments.Paper.AlpacaTradingApi;
+
+        public Uri AlpacaNewsStreamingApi => Environments.Paper.AlpacaTradingApi;
+    }
+
     private readonly MockClientsFactoryFixture _mockClientsFactory;
 
     private const String TradeUpdates = "trade_updates";
@@ -150,6 +166,32 @@ public sealed class AlpacaStreamingClientTest
         void HandleWarning(
             String _) =>
             throw new SocketException((Int32)SocketError.IsConnected);
+    }
+
+    [Fact]
+    public async Task TopLevelExceptionsWorks()
+    {
+        const Int32 expectedWarnings = 0;
+        const Int32 expectedErrors = 1;
+
+        using var client = _mockClientsFactory.GetAlpacaStreamingClientMock(new FakeEnvironment());
+        using var tracker = new ErrorsAndWarningsTracker(
+            client.Client, expectedWarnings, expectedErrors);
+
+        // Errors
+        client.AddException(
+            _ => _.ConnectAsync(It.IsAny<Uri>(), It.IsAny<CancellationToken>()),
+            new InvalidAsynchronousStateException());
+
+        Assert.Equal(AuthStatus.Unauthorized,
+            await client.Client.ConnectAndAuthenticateAsync());
+
+        await client.Client.DisconnectAsync(new CancellationToken(true));
+
+        tracker.WaitAllEvents();
+
+        await client.Client.DisconnectAsync();
+        client.Client.Dispose(); // Double dispose should be safe
     }
 
     private static JObject getTradeUpdate() =>
