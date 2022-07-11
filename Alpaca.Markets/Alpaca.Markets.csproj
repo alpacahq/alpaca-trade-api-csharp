@@ -7,22 +7,21 @@
     <WarningLevel>5</WarningLevel>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.3.4</Version>
+    <Version>5.3.5</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.3.4.0</AssemblyVersion>
-    <FileVersion>5.3.4.0</FileVersion>
+    <AssemblyVersion>5.3.5.0</AssemblyVersion>
+    <FileVersion>5.3.5.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Added the new property `UseSymbolAsOfTheDate` for specifying symbol-to-contract mapping by the date.
-- The `SocketError.WouldBlock` error code added into list of default "recoverable" error codes.
-- Changed approach for handling HTTP responses (attempt to prevent strange exceptions).</PackageReleaseNotes>
+    <PackageReleaseNotes>- The new item `TooManyConnections` added into the `AuthStatus` enumeration for better handling connection problems.
+- Added support for the reset field in the crypto order book message (the `IOrderBook.IsReset` boolean property).</PackageReleaseNotes>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
