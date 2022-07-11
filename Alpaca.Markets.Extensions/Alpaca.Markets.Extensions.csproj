@@ -76,7 +76,7 @@
 
   <ItemGroup>
       <PackageReference Include="Alpaca.Markets" Version="6.0.5" />
-      <PackageReference Include="IsExternalInit" Version="1.0.2">
+      <PackageReference Include="IsExternalInit" Version="1.0.3">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
