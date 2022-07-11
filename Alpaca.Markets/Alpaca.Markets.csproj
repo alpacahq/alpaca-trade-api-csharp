@@ -12,15 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.0.5.0</AssemblyVersion>
-    <FileVersion>6.0.5.0</FileVersion>
-    <Version>6.0.5</Version>
+    <AssemblyVersion>6.0.6.0</AssemblyVersion>
+    <FileVersion>6.0.6.0</FileVersion>
+    <Version>6.0.6</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Added the new property `UseSymbolAsOfTheDate` for specifying symbol-to-contract mapping by the date.
-- The `SocketError.WouldBlock` error code added into list of default "recoverable" error codes.
-- Added exceptions information into the XML documentation for most public methods.</PackageReleaseNotes>
+    <PackageReleaseNotes>- The new item `TooManyConnections` added into the `AuthStatus` enumeration for better handling connection problems.
+- Added support for the reset field in the crypto order book message (the `IOrderBook.IsReset` boolean property).</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
