@@ -403,9 +403,12 @@ namespace Alpaca.Markets
                             .ConfigureAwait(false);
                         break;
 
+                    case 406: // Connection limit exceeded
+                        OnConnected(AuthStatus.TooManyConnections);
+                        break;
+
                     case 402: // Authentication failed
                     case 404: // Authentication timeout
-                    case 406: // Connection limit exceeded
                         OnConnected(AuthStatus.Unauthorized);
                         break;
 

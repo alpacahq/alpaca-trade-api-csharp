@@ -22,6 +22,12 @@ namespace Alpaca.Markets
         /// Client does not authorized.
         /// </summary>
         [EnumMember(Value = "unauthorized")]
-        Unauthorized
+        Unauthorized,
+
+        /// <summary>
+        /// Connection limit exceeded.
+        /// </summary>
+        [EnumMember(Value = "exceeded")]
+        TooManyConnections
     }
 }
