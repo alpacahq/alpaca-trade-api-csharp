@@ -129,6 +129,7 @@ Alpaca.Markets.AssetStatus.Delisted = 2 -> Alpaca.Markets.AssetStatus
 Alpaca.Markets.AssetStatus.Inactive = 1 -> Alpaca.Markets.AssetStatus
 Alpaca.Markets.AuthStatus
 Alpaca.Markets.AuthStatus.Authorized = 0 -> Alpaca.Markets.AuthStatus
+Alpaca.Markets.AuthStatus.TooManyConnections = 2 -> Alpaca.Markets.AuthStatus
 Alpaca.Markets.AuthStatus.Unauthorized = 1 -> Alpaca.Markets.AuthStatus
 Alpaca.Markets.BarTimeFrame
 Alpaca.Markets.BarTimeFrame.BarTimeFrame() -> void

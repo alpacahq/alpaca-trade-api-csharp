@@ -438,6 +438,9 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                     break;
 
                 case connectionLimitExceeded:
+                    OnConnected(AuthStatus.TooManyConnections);
+                    break;
+
                 case authenticationTimeout:
                 case authenticationFailed:
                     OnConnected(AuthStatus.Unauthorized);

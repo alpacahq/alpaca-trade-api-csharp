@@ -17,5 +17,11 @@ public enum AuthStatus
     /// Client is not authorized.
     /// </summary>
     [EnumMember(Value = "unauthorized")]
-    Unauthorized
+    Unauthorized,
+
+    /// <summary>
+    /// Connection limit exceeded.
+    /// </summary>
+    [EnumMember(Value = "exceeded")]
+    TooManyConnections
 }
