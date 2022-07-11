@@ -6,13 +6,13 @@ namespace Alpaca.Markets.Tests;
 [Collection("MockEnvironment")]
 public sealed class AlpacaStreamingClientTest
 {
-    private readonly struct FakeEnvironment : IEnvironment
+    private readonly record struct FakeEnvironment : IEnvironment
     {
         public Uri AlpacaTradingApi => Environments.Paper.AlpacaTradingApi;
 
         public Uri AlpacaDataApi => Environments.Paper.AlpacaTradingApi;
 
-        public Uri AlpacaStreamingApi => new Uri("https://www.alpaca.com");
+        public Uri AlpacaStreamingApi => new ("https://www.alpaca.com");
 
         public Uri AlpacaDataStreamingApi => Environments.Paper.AlpacaTradingApi;
 

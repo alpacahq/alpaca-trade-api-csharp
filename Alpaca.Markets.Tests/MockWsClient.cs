@@ -25,6 +25,7 @@ internal sealed class MockWsClient<TConfiguration, TClient> : IDisposable
         configuration.WebSocketFactory = () => _webSocket.Object;
         Client = factory(configuration);
 
+        // ReSharper disable once InvertIf
         if (String.Equals(configuration.ApiEndpoint.Scheme, Uri.UriSchemeWss, StringComparison.Ordinal))
         {
             _webSocket
