@@ -23,7 +23,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="OoplesFinance.StockIndicators" Version="1.0.44" />
+    <PackageReference Include="OoplesFinance.StockIndicators" Version="1.0.45" />
   </ItemGroup>
   
   <ItemGroup>
