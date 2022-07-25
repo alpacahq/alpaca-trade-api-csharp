@@ -6,7 +6,7 @@ internal sealed class JsonQuotesPage<TQuote> : IPageMutable<IQuote>
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "quotes", Required = Required.Default)]
-    public List<TQuote> ItemsList { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public List<TQuote> ItemsList { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
     public String Symbol { get; set; } = String.Empty;

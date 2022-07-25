@@ -45,7 +45,7 @@ public readonly record struct OpenClose
     /// <returns></returns>
     [UsedImplicitly]
     public Interval<DateTime> ToInterval() =>
-        new (OpenEst.UtcDateTime, CloseEst.UtcDateTime);
+        new(OpenEst.UtcDateTime, CloseEst.UtcDateTime);
 
     /// <summary>
     /// Gets session open and close time as <see cref="Interval{DateTime}"/> instance with UTC times.

@@ -10,7 +10,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     private static readonly String[] _symbols = { Crypto, Other };
 
     private static readonly List<CryptoExchange> _exchangesList =
-        new () { CryptoExchange.Ersx, CryptoExchange.Ftx };
+        new() { CryptoExchange.Ersx, CryptoExchange.Ftx };
 
     private const String PathPrefix = "/v1beta1/crypto";
 

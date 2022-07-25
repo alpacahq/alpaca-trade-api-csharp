@@ -42,7 +42,7 @@ public sealed class AlpacaCryptoStreamingClientConfiguration : StreamingClientCo
     [UsedImplicitly]
     public AlpacaCryptoStreamingClientConfiguration WithExchanges(
         IEnumerable<CryptoExchange> exchanges) =>
-        new (this, exchanges.EnsureNotNull());
+        new(this, exchanges.EnsureNotNull());
 
     /// <summary>
     /// Creates new instance of <see cref="AlpacaCryptoStreamingClientConfiguration"/> object

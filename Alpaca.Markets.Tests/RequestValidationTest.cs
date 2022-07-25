@@ -2,7 +2,7 @@
 
 public sealed class RequestValidationTest
 {
-    private static readonly Interval<DateTime> _interval = new ();
+    private static readonly Interval<DateTime> _interval = new();
 
     private const Decimal DecimalQuery = 42M;
 

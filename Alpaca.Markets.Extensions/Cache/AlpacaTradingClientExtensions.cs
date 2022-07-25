@@ -2,7 +2,7 @@
 
 public static partial class AlpacaTradingClientExtensions
 {
-    private static SpinLock _lock = new (false);
+    private static SpinLock _lock = new(false);
 
     private static IClock? _clock;
 

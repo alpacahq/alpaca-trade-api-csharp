@@ -224,10 +224,10 @@ internal static class HistoricalDataHelpers
         snapshot.Trade!.Validate(symbol);
 
     private static JArray createItemsList(
-        Func<JObject> createItem) => new (createItem(), createItem());
+        Func<JObject> createItem) => new(createItem(), createItem());
 
     public static JObject CreateBar() =>
-        new (
+        new(
             new JProperty("t", DateTime.UtcNow),
             new JProperty("n", TradesNumber),
             new JProperty("o", MidPrice),
@@ -238,7 +238,7 @@ internal static class HistoricalDataHelpers
             new JProperty("vw", Wvap));
     
     public static JObject CreateTrade() =>
-        new (
+        new(
             new JProperty("c", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
             new JProperty("x", _exchange),
@@ -249,7 +249,7 @@ internal static class HistoricalDataHelpers
             new JProperty("s", Size));
 
     public static JObject CreateQuote() =>
-        new (
+        new(
             new JProperty("c", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
             new JProperty("ax", _exchange),
@@ -263,7 +263,7 @@ internal static class HistoricalDataHelpers
 
     public static JObject CreateCorrection(
         this String symbol) =>
-        new (
+        new(
             new JProperty(MessageDataHelpers.StreamingMessageTypeTag, "c"),
             new JProperty("oc", new JArray(_condition)),
             new JProperty("cc", new JArray(_condition)),
@@ -284,7 +284,7 @@ internal static class HistoricalDataHelpers
 
     private static JObject createSnapshot(
         String symbol) =>
-        new (
+        new(
             new JProperty("latestQuote", CreateQuote()),
             new JProperty("latestTrade", CreateTrade()),
             new JProperty("prevDailyBar", CreateBar()),

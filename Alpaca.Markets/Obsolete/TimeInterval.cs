@@ -234,11 +234,11 @@ public static class TimeInterval
     internal static Interval<DateTime> AsDateTimeInterval(
         this ITimeInterval interval) =>
         // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
-        new (interval?.From, interval?.Into);
+        new(interval?.From, interval?.Into);
 
     [Obsolete("Used only for reducing code duplication.", true)]
     internal static Interval<DateOnly> AsDateOnlyInterval(
         this ITimeInterval interval) =>
         // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
-        new (interval?.From.AsDateOnly(), interval?.Into.AsDateOnly());
+        new(interval?.From.AsDateOnly(), interval?.Into.AsDateOnly());
 }

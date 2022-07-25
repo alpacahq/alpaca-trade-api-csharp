@@ -9,7 +9,7 @@ namespace Alpaca.Markets;
 
 internal sealed class ClientWebSocketWrapper : IWebSocket
 {
-    private readonly ClientWebSocket _client = new ();
+    private readonly ClientWebSocket _client = new();
 
     public void Dispose() => _client.Dispose();
 
@@ -99,7 +99,7 @@ internal sealed class ClientWebSocketWrapper : IWebSocket
 
     private static ReceiveResult asResult(
         ValueWebSocketReceiveResult result) =>
-        new (result.MessageType, result.EndOfMessage, result.Count);
+        new(result.MessageType, result.EndOfMessage, result.Count);
 #elif NETSTANDARD2_0 || NETFRAMEWORK
     private static async ValueTask<ReceiveResult> asResult(
         Task<WebSocketReceiveResult> result) =>
@@ -107,6 +107,6 @@ internal sealed class ClientWebSocketWrapper : IWebSocket
 
     private static ReceiveResult asResult(
         WebSocketReceiveResult result) =>
-        new (result.MessageType, result.EndOfMessage, result.Count);
+        new(result.MessageType, result.EndOfMessage, result.Count);
 #endif
 }

@@ -35,7 +35,7 @@ public sealed partial class AlpacaDataClientTest
     }
 
     private static JObject createDictionary() =>
-        new (Enumerable.Range(1, 10)
+        new(Enumerable.Range(1, 10)
             .Select(_ => new JProperty(
                 _.ToString("D", CultureInfo.InvariantCulture),
                 Guid.NewGuid().ToString("D"))));

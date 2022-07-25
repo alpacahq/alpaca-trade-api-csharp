@@ -27,15 +27,11 @@ internal static partial class HttpClientExtensions
             CancellationToken cancellationToken)
         where TKeyApi : notnull
         where TKeyJson : TKeyApi
-        where TValueJson : TValueApi
-    {
-        var response = await httpClient
+        where TValueJson : TValueApi =>
+        getReadOnlyDictionary(await httpClient
             .GetAsync<Dictionary<TKeyJson, TValueJson>, Dictionary<TKeyJson, TValueJson>>(
                 uriBuilder, cancellationToken)
-            .ConfigureAwait(false);
-
-        return getReadOnlyDictionary(response, elementSelector, comparer);
-    }
+            .ConfigureAwait(false), elementSelector, comparer);
 
     public static async Task<IReadOnlyDictionary<String, TValueApi>> GetAsync
         <TValueApi, TValueJson, TStorage>(
@@ -44,15 +40,11 @@ internal static partial class HttpClientExtensions
             Func<TStorage, Dictionary<String, TValueJson>> itemsSelector,
             Func<KeyValuePair<String, TValueJson>, TValueApi> elementSelector,
             CancellationToken cancellationToken)
-        where TValueJson : TValueApi, ISymbolMutable
-    {
-        var response = await httpClient.GetAsync<TStorage, TStorage>(
-                uriBuilder, cancellationToken)
-            .ConfigureAwait(false);
-
-        return getReadOnlyDictionary<String, TValueApi, String, TValueJson>(
-            itemsSelector(response), elementSelector, StringComparer.Ordinal);
-    }
+        where TValueJson : TValueApi, ISymbolMutable =>
+        getReadOnlyDictionary<String, TValueApi, String, TValueJson>(
+            itemsSelector(await httpClient.GetAsync<TStorage, TStorage>(
+                    uriBuilder, cancellationToken)
+                .ConfigureAwait(false)), elementSelector, StringComparer.Ordinal);
 
     private static IReadOnlyDictionary<TKeyApi, TValueApi> getReadOnlyDictionary<TKeyApi, TValueApi, TKeyJson, TValueJson>(
         Dictionary<TKeyJson, TValueJson> response, 

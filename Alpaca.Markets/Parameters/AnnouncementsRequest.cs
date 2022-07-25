@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class AnnouncementsRequest : Validation.IRequest
 {
-    private readonly HashSet<CorporateActionType> _corporateActionTypes = new ();
+    private readonly HashSet<CorporateActionType> _corporateActionTypes = new();
 
     /// <summary>
     /// Creates new instance of <see cref="AnnouncementsRequest"/> object.
@@ -105,7 +105,7 @@ public sealed class AnnouncementsRequest : Validation.IRequest
 
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
         HttpClient httpClient) =>
-        new (httpClient.BaseAddress!)
+        new(httpClient.BaseAddress!)
         {
             Path = "v2/corporate_actions/announcements",
             Query = await new QueryBuilder()

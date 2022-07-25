@@ -6,7 +6,7 @@ public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
     where TClientConfiguration : AlpacaClientConfigurationBase
     where TClient : class, IDisposable
 {
-    private readonly MockHttpMessageHandler _handler = new ();
+    private readonly MockHttpMessageHandler _handler = new();
 
     public MockClient(
         TClientConfiguration configuration,

@@ -49,7 +49,7 @@ public sealed class ThrottleParametersTest
 
         KeyValuePair<String, String> AsHeader(
             RetryConditionHeaderValue value) =>
-            new ("Retry-After", value.ToString());
+            new("Retry-After", value.ToString());
     }
 
     [Fact]
@@ -70,7 +70,7 @@ public sealed class ThrottleParametersTest
 
         SocketException AsException(
             SocketError socketError) =>
-            new ((Int32)socketError);
+            new((Int32)socketError);
     }
 
     [Fact]

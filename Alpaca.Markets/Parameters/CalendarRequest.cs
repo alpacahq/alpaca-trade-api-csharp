@@ -52,7 +52,7 @@ public sealed class CalendarRequest
     /// <returns></returns>
     [UsedImplicitly]
     public static CalendarRequest GetForSingleDay(DateOnly date) =>
-        new (new Interval<DateOnly>(date));
+        new(new Interval<DateOnly>(date));
 
     /// <summary>
     /// Gets inclusive date interval for filtering items in response.

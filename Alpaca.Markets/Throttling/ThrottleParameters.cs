@@ -143,7 +143,7 @@ public sealed class ThrottleParameters
 
 #if NET6_0_OR_GREATER
     internal static readonly HttpRequestOptionsKey<TimeSpan> RequestTimeoutOptionKey =
-        new (nameof(RequestTimeoutOptionKey));
+        new(nameof(RequestTimeoutOptionKey));
 #else
     internal const String RequestTimeoutOptionKey = nameof(RequestTimeoutOptionKey);
 #endif

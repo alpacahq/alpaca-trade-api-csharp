@@ -6,7 +6,7 @@ internal sealed class MockHttpClient<TConfiguration, TClient> : IMock, IDisposab
     where TConfiguration : AlpacaClientConfigurationBase
     where TClient : class, IDisposable
 {
-    private readonly MockHttpMessageHandler _handler = new ();
+    private readonly MockHttpMessageHandler _handler = new();
 
     public MockHttpClient(
         TConfiguration configuration,

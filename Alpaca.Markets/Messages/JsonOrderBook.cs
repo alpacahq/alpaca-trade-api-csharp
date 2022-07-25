@@ -31,12 +31,12 @@ internal sealed class JsonOrderBook : JsonRealTimeBase, IOrderBook
     [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "b", Required = Required.Always)]
-    internal List<Entry> BidsList { get; set; } = new ();
+    internal List<Entry> BidsList { get; set; } = new();
 
     [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "a", Required = Required.Always)]
-    internal List<Entry> AsksList { get; set; } = new ();
+    internal List<Entry> AsksList { get; set; } = new();
 
     [JsonProperty(PropertyName = "r", Required = Required.Default)]
     public Boolean IsReset { get; set; }

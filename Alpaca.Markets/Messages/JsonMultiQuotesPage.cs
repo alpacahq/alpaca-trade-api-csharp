@@ -6,7 +6,7 @@ internal sealed class JsonMultiQuotesPage<TQuote> : IMultiPageMutable<IQuote>
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "quotes", Required = Required.Default)]
-    public Dictionary<String, List<TQuote>?> ItemsDictionary { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public Dictionary<String, List<TQuote>?> ItemsDictionary { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "next_page_token", Required = Required.Default)]
     public String? NextPageToken { get; set; }

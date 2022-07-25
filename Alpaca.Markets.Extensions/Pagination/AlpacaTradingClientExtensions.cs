@@ -73,7 +73,7 @@ public static partial class AlpacaTradingClientExtensions
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private static AccountActivitiesRequest getRequestWithoutPageToken(
         AccountActivitiesRequest request) =>
-        new (request.ActivityTypes)
+        new(request.ActivityTypes)
         {
             Direction = request.Direction
         };

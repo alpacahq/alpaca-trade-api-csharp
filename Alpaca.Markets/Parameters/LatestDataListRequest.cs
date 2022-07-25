@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class LatestDataListRequest : Validation.IRequest
 {
-    private readonly HashSet<String> _symbols = new (StringComparer.Ordinal);
+    private readonly HashSet<String> _symbols = new(StringComparer.Ordinal);
     /// <summary>
     /// Creates new instance of <see cref="LatestDataListRequest"/> object.
     /// </summary>

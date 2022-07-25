@@ -11,7 +11,7 @@ internal static partial class HttpClientExtensions
 #if NETSTANDARD2_1 || NET6_0_OR_GREATER
         System.Net.HttpVersion.Version20;
 #elif NETFRAMEWORK
-        new (2, 0);
+        new(2, 0);
 #else
         System.Net.HttpVersion.Version11;
 #endif

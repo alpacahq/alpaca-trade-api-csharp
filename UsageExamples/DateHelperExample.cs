@@ -40,14 +40,14 @@ internal sealed class DateHelper
         }
 
         public static MarketHours CreateNormal(DateTime date) =>
-            new (
+            new(
                 date.Add(_earlyOpenTime),
                 date.Add(_normalOpenTime),
                 date.Add(_normalCloseTime),
                 date.Add(_lateCloseTime));
 
         public static MarketHours CreateLate(DateTime holiday) =>
-            new (
+            new(
                 holiday.Date.Add(_earlyOpenTime),
                 holiday.Date.Add(_normalOpenTime),
                 holiday,

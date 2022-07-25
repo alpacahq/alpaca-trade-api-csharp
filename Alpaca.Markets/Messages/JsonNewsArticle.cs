@@ -45,10 +45,10 @@ internal sealed class JsonNewsArticle : INewsArticle
     public String Source { get; set; } = String.Empty;
 
     [JsonProperty(PropertyName = "symbols", Required = Required.Always)]
-    public List<String> SymbolsList { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public List<String> SymbolsList { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "images", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-    public List<Image> Images { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public List<Image> Images { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonIgnore]
     public IReadOnlyList<String> Symbols => SymbolsList.EmptyIfNull();

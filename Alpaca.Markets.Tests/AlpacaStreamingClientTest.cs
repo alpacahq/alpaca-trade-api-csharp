@@ -12,7 +12,7 @@ public sealed class AlpacaStreamingClientTest
 
         public Uri AlpacaDataApi => Environments.Paper.AlpacaTradingApi;
 
-        public Uri AlpacaStreamingApi => new ("https://www.alpaca.com");
+        public Uri AlpacaStreamingApi => new("https://www.alpaca.com");
 
         public Uri AlpacaDataStreamingApi => Environments.Paper.AlpacaTradingApi;
 
@@ -206,7 +206,7 @@ public sealed class AlpacaStreamingClientTest
     private static JObject getMessage(
         String stream,
         JObject? data) =>
-        new (
+        new(
             new JProperty("stream", stream),
             new JProperty("data", data));
 }

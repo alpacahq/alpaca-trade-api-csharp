@@ -11,9 +11,9 @@ internal sealed class MockWsClient<TConfiguration, TClient> : IDisposable
     where TConfiguration : StreamingClientConfiguration
     where TClient : class, IDisposable
 {
-    private readonly ConcurrentQueue<Guid> _requests = new ();
+    private readonly ConcurrentQueue<Guid> _requests = new();
 
-    private readonly Mock<IWebSocket> _webSocket = new ();
+    private readonly Mock<IWebSocket> _webSocket = new();
 
     private readonly Channel<String> _responses =
         Channel.CreateUnbounded<String>();

@@ -76,9 +76,9 @@ public sealed partial class AlpacaDataClientTest
             new JProperty("symbol", Stock)));
 
     private static JArray createQuotesList() =>
-        new (createQuote(), createQuote(), createQuote());
+        new(createQuote(), createQuote(), createQuote());
 
-    private static JObject createQuote() => new (
+    private static JObject createQuote() => new(
         new JProperty("t", DateTime.UtcNow),
         new JProperty("ax", "A"),
         new JProperty("bx", "B"));

@@ -38,7 +38,7 @@ public sealed partial class AlpacaTradingClientTest
     private static JObject createAsset(
         Guid assetId,
         String symbol) =>
-        new (
+        new(
             new JProperty("status", AssetStatus.Active),
             new JProperty("class", AssetClass.UsEquity),
             new JProperty("exchange", Exchange.Amex),

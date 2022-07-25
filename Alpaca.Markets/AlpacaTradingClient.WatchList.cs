@@ -79,7 +79,7 @@ internal sealed partial class AlpacaTradingClient
     private async ValueTask<UriBuilder> getEndpointUriBuilderAsync(
         String name,
         String? asset = null) =>
-        new (_httpClient.BaseAddress!)
+        new(_httpClient.BaseAddress!)
         {
             Path = String.IsNullOrEmpty(asset)
                 ? "v2/watchlists:by_name"
