@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class AlpacaStreamingClient
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class AlpacaStreamingClient
+   ">
+    <meta name="generator" content="docfx 2.56.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.AlpacaStreamingClient">
+  
+  
+  <h1 id="Alpaca_Markets_AlpacaStreamingClient" data-uid="Alpaca.Markets.AlpacaStreamingClient" class="text-break">Class AlpacaStreamingClient
+  </h1>
+  <div class="markdown level0 summary"><p>Provides unified type-safe access for Alpaca streaming API.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html">StreamingClientBase</a>&lt;<a class="xref" href="Alpaca.Markets.AlpacaStreamingClientConfiguration.html">AlpacaStreamingClientConfiguration</a>&gt;</div>
+    <div class="level2"><span class="xref">AlpacaStreamingClient</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a></div>
+    <div><a class="xref" href="Alpaca.Markets.IStreamingClientBase.html">IStreamingClientBase</a></div>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_Connected">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.Connected</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_SocketOpened">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.SocketOpened</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_SocketClosed">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.SocketClosed</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_OnError">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.OnError</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_ConnectAsync_System_Threading_CancellationToken_">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.ConnectAsync(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_ConnectAndAuthenticateAsync_System_Threading_CancellationToken_">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.ConnectAndAuthenticateAsync(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_DisconnectAsync_System_Threading_CancellationToken_">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.DisconnectAsync(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_Dispose">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_OnClosed">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.OnClosed()</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_Dispose_System_Boolean_">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.Dispose(Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_HandleMessage__1_System_Collections_Generic_IDictionary___0_System_Action_Newtonsoft_Json_Linq_JToken_____0_Newtonsoft_Json_Linq_JToken_">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.HandleMessage&lt;TKey&gt;(IDictionary&lt;TKey, Action&lt;JToken&gt;&gt;, TKey, JToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_OnConnected_Alpaca_Markets_AuthStatus_">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.OnConnected(AuthStatus)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_HandleError_System_Exception_">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.HandleError(Exception)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.StreamingClientBase-1.html#Alpaca_Markets_StreamingClientBase_1_SendAsJsonString_System_Object_">StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;.SendAsJsonString(Object)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
+  <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
+  <h5 id="Alpaca_Markets_AlpacaStreamingClient_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class AlpacaStreamingClient : StreamingClientBase&lt;AlpacaStreamingClientConfiguration&gt;, IAlpacaStreamingClient, IStreamingClientBase, IDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaStreamingClient__ctor_Alpaca_Markets_AlpacaStreamingClientConfiguration_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaStreamingClient.%23ctor(Alpaca.Markets.AlpacaStreamingClientConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaStreamingClient.cs/#L31">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_AlpacaStreamingClient__ctor_" data-uid="Alpaca.Markets.AlpacaStreamingClient.#ctor*"></a>
+  <h4 id="Alpaca_Markets_AlpacaStreamingClient__ctor_Alpaca_Markets_AlpacaStreamingClientConfiguration_" data-uid="Alpaca.Markets.AlpacaStreamingClient.#ctor(Alpaca.Markets.AlpacaStreamingClientConfiguration)">AlpacaStreamingClient(AlpacaStreamingClientConfiguration)</h4>
+  <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.AlpacaStreamingClient.html">AlpacaStreamingClient</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AlpacaStreamingClient(AlpacaStreamingClientConfiguration configuration)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.AlpacaStreamingClientConfiguration.html">AlpacaStreamingClientConfiguration</a></td>
+        <td><span class="parametername">configuration</span></td>
+        <td><p>Configuration parameters object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaStreamingClient_OnMessageReceived_System_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaStreamingClient.OnMessageReceived(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaStreamingClient.cs/#L64">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_AlpacaStreamingClient_OnMessageReceived_" data-uid="Alpaca.Markets.AlpacaStreamingClient.OnMessageReceived*"></a>
+  <h4 id="Alpaca_Markets_AlpacaStreamingClient_OnMessageReceived_System_String_" data-uid="Alpaca.Markets.AlpacaStreamingClient.OnMessageReceived(System.String)">OnMessageReceived(String)</h4>
+  <div class="markdown level1 summary"><p>Handles <a class="xref" href="Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_MessageReceived">MessageReceived</a> event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnMessageReceived(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>Incoming string message for processing.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Alpaca.Markets.StreamingClientBase&lt;Alpaca.Markets.AlpacaStreamingClientConfiguration&gt;.OnMessageReceived(System.String)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaStreamingClient_OnOpened.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaStreamingClient.OnOpened%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaStreamingClient.cs/#L51">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_AlpacaStreamingClient_OnOpened_" data-uid="Alpaca.Markets.AlpacaStreamingClient.OnOpened*"></a>
+  <h4 id="Alpaca_Markets_AlpacaStreamingClient_OnOpened" data-uid="Alpaca.Markets.AlpacaStreamingClient.OnOpened">OnOpened()</h4>
+  <div class="markdown level1 summary"><p>Handles <a class="xref" href="Alpaca.Markets.IWebSocket.html#Alpaca_Markets_IWebSocket_Opened">Opened</a> event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnOpened()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Alpaca.Markets.StreamingClientBase&lt;Alpaca.Markets.AlpacaStreamingClientConfiguration&gt;.OnOpened()</span></div>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaStreamingClient_OnAccountUpdate.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaStreamingClient.OnAccountUpdate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaStreamingClient.cs/#L45">View Source</a>
+  </span>
+  <h4 id="Alpaca_Markets_AlpacaStreamingClient_OnAccountUpdate" data-uid="Alpaca.Markets.AlpacaStreamingClient.OnAccountUpdate">OnAccountUpdate</h4>
+  <div class="markdown level1 summary"><p>Occurred when new account update received from stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;IAccountUpdate&gt; OnAccountUpdate</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="Alpaca.Markets.IAccountUpdate.html">IAccountUpdate</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaStreamingClient_OnTradeUpdate.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaStreamingClient.OnTradeUpdate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaStreamingClient.cs/#L48">View Source</a>
+  </span>
+  <h4 id="Alpaca_Markets_AlpacaStreamingClient_OnTradeUpdate" data-uid="Alpaca.Markets.AlpacaStreamingClient.OnTradeUpdate">OnTradeUpdate</h4>
+  <div class="markdown level1 summary"><p>Occurred when new trade update received from stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;ITradeUpdate&gt; OnTradeUpdate</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="Alpaca.Markets.ITradeUpdate.html">ITradeUpdate</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a>
+  </div>
+  <div>
+      <a class="xref" href="Alpaca.Markets.IStreamingClientBase.html">IStreamingClientBase</a>
+  </div>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_AlpacaStreamingClient.md&amp;value=---%0Auid%3A%20Alpaca.Markets.AlpacaStreamingClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets/AlpacaStreamingClient.cs/#L11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

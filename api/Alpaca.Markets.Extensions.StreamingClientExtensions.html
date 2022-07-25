@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class StreamingClientExtensions
    ">
-    <meta name="generator" content="docfx 2.59.2.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -115,10 +115,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetDailyBarSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetDailyBarSubscription(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetDailyBarSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetDailyBarSubscription(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L135">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L183">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetDailyBarSubscription_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetDailyBarSubscription*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetDailyBarSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetDailyBarSubscription(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})">GetDailyBarSubscription(IStreamingDataClient, IEnumerable&lt;String&gt;)</h4>
@@ -171,10 +171,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetDailyBarSubscription_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetDailyBarSubscription(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetDailyBarSubscription_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetDailyBarSubscription(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L118">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L160">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetDailyBarSubscription_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetDailyBarSubscription*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetDailyBarSubscription_Alpaca_Markets_IStreamingDataClient_String___" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetDailyBarSubscription(Alpaca.Markets.IStreamingDataClient,String[])">GetDailyBarSubscription(IStreamingDataClient, String[])</h4>
@@ -220,17 +220,23 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
-        <td><p>Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.</p>
+        <td><exception cref="!:ArgumentNullException">
+The <code data-dev-comment-type="paramref" class="paramref">client</code> or <code data-dev-comment-type="paramref" class="paramref">symbols</code> argument is <code>null</code>.
+</exception>
+<exception cref="!:OverflowException">
+The underlying subscriptions dictionary contains too many elements.
+</exception>
+Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetMinuteBarSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetMinuteBarSubscription(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetMinuteBarSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetMinuteBarSubscription(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L101">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L137">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetMinuteBarSubscription_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetMinuteBarSubscription*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetMinuteBarSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetMinuteBarSubscription(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})">GetMinuteBarSubscription(IStreamingDataClient, IEnumerable&lt;String&gt;)</h4>
@@ -283,10 +289,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetMinuteBarSubscription_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetMinuteBarSubscription(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetMinuteBarSubscription_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetMinuteBarSubscription(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L84">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L114">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetMinuteBarSubscription_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetMinuteBarSubscription*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetMinuteBarSubscription_Alpaca_Markets_IStreamingDataClient_String___" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetMinuteBarSubscription(Alpaca.Markets.IStreamingDataClient,String[])">GetMinuteBarSubscription(IStreamingDataClient, String[])</h4>
@@ -339,10 +345,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetQuoteSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetQuoteSubscription(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetQuoteSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetQuoteSubscription(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L67">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L91">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetQuoteSubscription_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetQuoteSubscription*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetQuoteSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetQuoteSubscription(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})">GetQuoteSubscription(IStreamingDataClient, IEnumerable&lt;String&gt;)</h4>
@@ -395,10 +401,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetQuoteSubscription_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetQuoteSubscription(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetQuoteSubscription_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetQuoteSubscription(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L50">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L68">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetQuoteSubscription_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetQuoteSubscription*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetQuoteSubscription_Alpaca_Markets_IStreamingDataClient_String___" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetQuoteSubscription(Alpaca.Markets.IStreamingDataClient,String[])">GetQuoteSubscription(IStreamingDataClient, String[])</h4>
@@ -451,10 +457,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetTradeSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetTradeSubscription(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetTradeSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetTradeSubscription(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L33">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L45">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetTradeSubscription_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetTradeSubscription*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetTradeSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetTradeSubscription(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})">GetTradeSubscription(IStreamingDataClient, IEnumerable&lt;String&gt;)</h4>
@@ -507,10 +513,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetTradeSubscription_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetTradeSubscription(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetTradeSubscription_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetTradeSubscription(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L16">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L22">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetTradeSubscription_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetTradeSubscription*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetTradeSubscription_Alpaca_Markets_IStreamingDataClient_String___" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetTradeSubscription(Alpaca.Markets.IStreamingDataClient,String[])">GetTradeSubscription(IStreamingDataClient, String[])</h4>
@@ -563,10 +569,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetUpdatedBarSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetUpdatedBarSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L169">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L229">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetUpdatedBarSubscription_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetUpdatedBarSubscription_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})">GetUpdatedBarSubscription(IStreamingDataClient, IEnumerable&lt;String&gt;)</h4>
@@ -619,10 +625,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetUpdatedBarSubscription_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_GetUpdatedBarSubscription_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L152">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L206">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetUpdatedBarSubscription_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_GetUpdatedBarSubscription_Alpaca_Markets_IStreamingDataClient_String___" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.GetUpdatedBarSubscription(Alpaca.Markets.IStreamingDataClient,String[])">GetUpdatedBarSubscription(IStreamingDataClient, String[])</h4>
@@ -675,10 +681,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeDailyBarAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeDailyBarAsync(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeDailyBarAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeDailyBarAsync(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L397">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L529">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeDailyBarAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeDailyBarAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeDailyBarAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeDailyBarAsync(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})">SubscribeDailyBarAsync(IStreamingDataClient, IEnumerable&lt;String&gt;)</h4>
@@ -733,10 +739,10 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeDailyBarAsync_Alpaca_Markets_IStreamingDataClient_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeDailyBarAsync(Alpaca.Markets.IStreamingDataClient%2CString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeDailyBarAsync_Alpaca_Markets_IStreamingDataClient_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeDailyBarAsync(Alpaca.Markets.IStreamingDataClient%2CString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L359">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L479">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeDailyBarAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeDailyBarAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeDailyBarAsync_Alpaca_Markets_IStreamingDataClient_String_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeDailyBarAsync(Alpaca.Markets.IStreamingDataClient,String)">SubscribeDailyBarAsync(IStreamingDataClient, String)</h4>
@@ -791,10 +797,10 @@ inside the <code>using</code> or <code>await using</code> statements for more cl
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeDailyBarAsync_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeDailyBarAsync(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeDailyBarAsync_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeDailyBarAsync(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L378">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L504">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeDailyBarAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeDailyBarAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeDailyBarAsync_Alpaca_Markets_IStreamingDataClient_String___" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeDailyBarAsync(Alpaca.Markets.IStreamingDataClient,String[])">SubscribeDailyBarAsync(IStreamingDataClient, String[])</h4>
@@ -849,10 +855,10 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeMinuteBarAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeMinuteBarAsync(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeMinuteBarAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeMinuteBarAsync(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L340">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L454">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeMinuteBarAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeMinuteBarAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeMinuteBarAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeMinuteBarAsync(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})">SubscribeMinuteBarAsync(IStreamingDataClient, IEnumerable&lt;String&gt;)</h4>
@@ -907,10 +913,10 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeMinuteBarAsync_Alpaca_Markets_IStreamingDataClient_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeMinuteBarAsync(Alpaca.Markets.IStreamingDataClient%2CString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeMinuteBarAsync_Alpaca_Markets_IStreamingDataClient_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeMinuteBarAsync(Alpaca.Markets.IStreamingDataClient%2CString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L302">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L404">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeMinuteBarAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeMinuteBarAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeMinuteBarAsync_Alpaca_Markets_IStreamingDataClient_String_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeMinuteBarAsync(Alpaca.Markets.IStreamingDataClient,String)">SubscribeMinuteBarAsync(IStreamingDataClient, String)</h4>
@@ -965,10 +971,10 @@ inside the <code>using</code> or <code>await using</code> statements for more cl
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeMinuteBarAsync_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeMinuteBarAsync(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeMinuteBarAsync_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeMinuteBarAsync(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L321">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L429">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeMinuteBarAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeMinuteBarAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeMinuteBarAsync_Alpaca_Markets_IStreamingDataClient_String___" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeMinuteBarAsync(Alpaca.Markets.IStreamingDataClient,String[])">SubscribeMinuteBarAsync(IStreamingDataClient, String[])</h4>
@@ -1023,10 +1029,10 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeQuoteAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeQuoteAsync(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeQuoteAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeQuoteAsync(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L283">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L379">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeQuoteAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeQuoteAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeQuoteAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeQuoteAsync(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})">SubscribeQuoteAsync(IStreamingDataClient, IEnumerable&lt;String&gt;)</h4>
@@ -1081,10 +1087,10 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeQuoteAsync_Alpaca_Markets_IStreamingDataClient_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeQuoteAsync(Alpaca.Markets.IStreamingDataClient%2CString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeQuoteAsync_Alpaca_Markets_IStreamingDataClient_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeQuoteAsync(Alpaca.Markets.IStreamingDataClient%2CString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L245">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L329">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeQuoteAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeQuoteAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeQuoteAsync_Alpaca_Markets_IStreamingDataClient_String_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeQuoteAsync(Alpaca.Markets.IStreamingDataClient,String)">SubscribeQuoteAsync(IStreamingDataClient, String)</h4>
@@ -1139,10 +1145,10 @@ inside the <code>using</code> or <code>await using</code> statements for more cl
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeQuoteAsync_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeQuoteAsync(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeQuoteAsync_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeQuoteAsync(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L264">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L354">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeQuoteAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeQuoteAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeQuoteAsync_Alpaca_Markets_IStreamingDataClient_String___" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeQuoteAsync(Alpaca.Markets.IStreamingDataClient,String[])">SubscribeQuoteAsync(IStreamingDataClient, String[])</h4>
@@ -1197,10 +1203,10 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeTradeAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeTradeAsync(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeTradeAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeTradeAsync(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L226">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L304">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeTradeAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeTradeAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeTradeAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeTradeAsync(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})">SubscribeTradeAsync(IStreamingDataClient, IEnumerable&lt;String&gt;)</h4>
@@ -1255,10 +1261,10 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeTradeAsync_Alpaca_Markets_IStreamingDataClient_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeTradeAsync(Alpaca.Markets.IStreamingDataClient%2CString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeTradeAsync_Alpaca_Markets_IStreamingDataClient_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeTradeAsync(Alpaca.Markets.IStreamingDataClient%2CString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L188">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L254">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeTradeAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeTradeAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeTradeAsync_Alpaca_Markets_IStreamingDataClient_String_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeTradeAsync(Alpaca.Markets.IStreamingDataClient,String)">SubscribeTradeAsync(IStreamingDataClient, String)</h4>
@@ -1313,10 +1319,10 @@ inside the <code>using</code> or <code>await using</code> statements for more cl
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeTradeAsync_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeTradeAsync(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeTradeAsync_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeTradeAsync(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L207">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L279">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeTradeAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeTradeAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeTradeAsync_Alpaca_Markets_IStreamingDataClient_String___" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeTradeAsync(Alpaca.Markets.IStreamingDataClient,String[])">SubscribeTradeAsync(IStreamingDataClient, String[])</h4>
@@ -1371,10 +1377,10 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L454">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L604">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_Alpaca_Markets_IStreamingDataClient_IEnumerable_String__" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient,IEnumerable{String})">SubscribeUpdatedBarAsync(IStreamingDataClient, IEnumerable&lt;String&gt;)</h4>
@@ -1429,10 +1435,10 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_Alpaca_Markets_IStreamingDataClient_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient%2CString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_Alpaca_Markets_IStreamingDataClient_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient%2CString)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L416">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L554">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_Alpaca_Markets_IStreamingDataClient_String_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient,String)">SubscribeUpdatedBarAsync(IStreamingDataClient, String)</h4>
@@ -1487,10 +1493,10 @@ inside the <code>using</code> or <code>await using</code> statements for more cl
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_Alpaca_Markets_IStreamingDataClient_String___.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient%2CString%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L435">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L579">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync*"></a>
   <h4 id="Alpaca_Markets_Extensions_StreamingClientExtensions_SubscribeUpdatedBarAsync_Alpaca_Markets_IStreamingDataClient_String___" data-uid="Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(Alpaca.Markets.IStreamingDataClient,String[])">SubscribeUpdatedBarAsync(IStreamingDataClient, String[])</h4>
@@ -1551,10 +1557,10 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_StreamingClientExtensions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.StreamingClientExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Subscriptions/StreamingClientExtensions.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

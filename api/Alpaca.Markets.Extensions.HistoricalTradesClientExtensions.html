@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class HistoricalTradesClientExtensions
    ">
-    <meta name="generator" content="docfx 2.59.2.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -115,10 +115,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesAsAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesAsAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L16">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L33">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesAsAsyncEnumerable``1(Alpaca.Markets.IHistoricalTradesClient{``0},``0)">GetHistoricalTradesAsAsyncEnumerable&lt;TRequest&gt;(IHistoricalTradesClient&lt;TRequest&gt;, TRequest)</h4>
@@ -186,12 +186,33 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesAsAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesAsAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L35">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L69">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_CancellationToken_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesAsAsyncEnumerable``1(Alpaca.Markets.IHistoricalTradesClient{``0},``0,CancellationToken)">GetHistoricalTradesAsAsyncEnumerable&lt;TRequest&gt;(IHistoricalTradesClient&lt;TRequest&gt;, TRequest, CancellationToken)</h4>
@@ -265,12 +286,33 @@ so they can be consumed by the <code>await foreach</code> statement on the calle
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesDictionaryOfAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesDictionaryOfAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesDictionaryOfAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesDictionaryOfAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L53">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L104">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesDictionaryOfAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesDictionaryOfAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesDictionaryOfAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesDictionaryOfAsyncEnumerable``1(Alpaca.Markets.IHistoricalTradesClient{``0},``0)">GetHistoricalTradesDictionaryOfAsyncEnumerable&lt;TRequest&gt;(IHistoricalTradesClient&lt;TRequest&gt;, TRequest)</h4>
@@ -338,12 +380,33 @@ interface instances) so they  can be consumed by the <code>await foreach</code> 
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesDictionaryOfAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesDictionaryOfAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesDictionaryOfAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesDictionaryOfAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L72">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L140">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesDictionaryOfAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesDictionaryOfAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesDictionaryOfAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_CancellationToken_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesDictionaryOfAsyncEnumerable``1(Alpaca.Markets.IHistoricalTradesClient{``0},``0,CancellationToken)">GetHistoricalTradesDictionaryOfAsyncEnumerable&lt;TRequest&gt;(IHistoricalTradesClient&lt;TRequest&gt;, TRequest, CancellationToken)</h4>
@@ -417,12 +480,33 @@ interface instances) so they  can be consumed by the <code>await foreach</code> 
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesMultiPagesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesMultiPagesAsAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesMultiPagesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesMultiPagesAsAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L124">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L246">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesMultiPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesMultiPagesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesMultiPagesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesMultiPagesAsAsyncEnumerable``1(Alpaca.Markets.IHistoricalTradesClient{``0},``0)">GetHistoricalTradesMultiPagesAsAsyncEnumerable&lt;TRequest&gt;(IHistoricalTradesClient&lt;TRequest&gt;, TRequest)</h4>
@@ -490,12 +574,33 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesMultiPagesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesMultiPagesAsAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesMultiPagesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesMultiPagesAsAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L143">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L283">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesMultiPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesMultiPagesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesMultiPagesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_CancellationToken_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesMultiPagesAsAsyncEnumerable``1(Alpaca.Markets.IHistoricalTradesClient{``0},``0,CancellationToken)">GetHistoricalTradesMultiPagesAsAsyncEnumerable&lt;TRequest&gt;(IHistoricalTradesClient&lt;TRequest&gt;, TRequest, CancellationToken)</h4>
@@ -569,12 +674,33 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L89">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L175">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable``1(Alpaca.Markets.IHistoricalTradesClient{``0},``0)">GetHistoricalTradesPagesAsAsyncEnumerable&lt;TRequest&gt;(IHistoricalTradesClient&lt;TRequest&gt;, TRequest)</h4>
@@ -642,12 +768,33 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable%60%601(Alpaca.Markets.IHistoricalTradesClient%7B%60%600%7D%2C%60%600%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L107">View Source</a>
+    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L211">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_HistoricalTradesClientExtensions_GetHistoricalTradesPagesAsAsyncEnumerable__1_Alpaca_Markets_IHistoricalTradesClient___0____0_CancellationToken_" data-uid="Alpaca.Markets.Extensions.HistoricalTradesClientExtensions.GetHistoricalTradesPagesAsAsyncEnumerable``1(Alpaca.Markets.IHistoricalTradesClient{``0},``0,CancellationToken)">GetHistoricalTradesPagesAsAsyncEnumerable&lt;TRequest&gt;(IHistoricalTradesClient&lt;TRequest&gt;, TRequest, CancellationToken)</h4>
@@ -721,6 +868,27 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -729,10 +897,10 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/develop/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_HistoricalTradesClientExtensions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.HistoricalTradesClientExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/HistoricalTradesClientExtensions.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
