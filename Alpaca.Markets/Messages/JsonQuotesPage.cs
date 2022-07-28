@@ -1,7 +1,7 @@
 ﻿namespace Alpaca.Markets;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IPage<IQuote>) + "<" + nameof(IQuote) + ">")]
-internal sealed class JsonQuotesPage<TQuote> : IPageMutable<IQuote>
+internal sealed class JsonQuotesPage<TQuote> : IPageMutable<IQuote>, ISymbolMutable
     where TQuote : IQuote, ISymbolMutable
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -16,6 +16,8 @@ internal sealed class JsonQuotesPage<TQuote> : IPageMutable<IQuote>
 
     [JsonIgnore]
     public IReadOnlyList<IQuote> Items { get; set; } = new List<IQuote>();
+
+    public void SetSymbol(String symbol) => Symbol = symbol;
 
     [OnDeserialized]
     [UsedImplicitly]

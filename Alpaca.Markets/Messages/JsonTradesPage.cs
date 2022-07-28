@@ -1,7 +1,7 @@
 ﻿namespace Alpaca.Markets;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IPage<ITrade>) + "<" + nameof(ITrade) + ">")]
-internal sealed class JsonTradesPage : IPageMutable<ITrade>
+internal sealed class JsonTradesPage : IPageMutable<ITrade>, ISymbolMutable
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "trades", Required = Required.Default)]
@@ -15,6 +15,8 @@ internal sealed class JsonTradesPage : IPageMutable<ITrade>
 
     [JsonIgnore]
     public IReadOnlyList<ITrade> Items { get; set; } = new List<ITrade>();
+
+    public void SetSymbol(String symbol) => Symbol = symbol;
 
     [OnDeserialized]
     [UsedImplicitly]

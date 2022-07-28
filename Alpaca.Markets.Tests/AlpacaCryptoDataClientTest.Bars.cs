@@ -25,7 +25,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddSingleBarsPageExpectation(PathPrefix, Crypto);
+        mock.AddMultiBarsPageExpectation(PathPrefix, _symbol);
 
         var bars = await mock.Client.GetHistoricalBarsAsync(
             new HistoricalCryptoBarsRequest(Crypto, BarTimeFrame.Hour, _timeInterval));
@@ -41,7 +41,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddSingleBarsPageExpectation(PathPrefix, Crypto);
+        mock.AddMultiBarsPageExpectation(PathPrefix, _symbol);
 
         var bars = await mock.Client.ListHistoricalBarsAsync(
             new HistoricalCryptoBarsRequest(Crypto, Yesterday, Today, BarTimeFrame.Hour)

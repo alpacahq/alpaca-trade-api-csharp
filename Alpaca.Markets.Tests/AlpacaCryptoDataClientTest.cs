@@ -12,11 +12,13 @@ public sealed partial class AlpacaCryptoDataClientTest
     private static readonly List<CryptoExchange> _exchangesList =
         new () { CryptoExchange.Ersx, CryptoExchange.Ftx };
 
-    private const String PathPrefix = "/v1beta1/crypto";
+    private const String PathPrefix = "/v1beta2/crypto";
 
     private static DateTime Yesterday => _timeInterval.From!.Value;
 
     private static DateTime Today => _timeInterval.Into!.Value;
+
+    private static readonly String[] _symbol = { Crypto };
 
     private const String Crypto = "BTCUSD";
 
