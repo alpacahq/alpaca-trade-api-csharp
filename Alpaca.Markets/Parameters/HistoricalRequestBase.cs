@@ -94,7 +94,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     internal virtual QueryBuilder AddParameters(
         QueryBuilder queryBuilder) => queryBuilder;
 
-    internal Boolean HasSingleSymbol => Symbols.Count == 1;
+    internal virtual Boolean HasSingleSymbol => Symbols.Count == 1;
 
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {

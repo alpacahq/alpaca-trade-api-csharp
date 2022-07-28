@@ -88,6 +88,8 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     [UsedImplicitly]
     public IReadOnlyCollection<CryptoExchange> Exchanges => _exchanges;
 
+    internal override Boolean HasSingleSymbol => false;
+
     internal override QueryBuilder AddParameters(
         QueryBuilder queryBuilder) =>
         base.AddParameters(queryBuilder)

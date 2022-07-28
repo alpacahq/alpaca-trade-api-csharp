@@ -47,14 +47,14 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
     public Task<IPage<ITrade>> ListHistoricalTradesAsync(
         THistoricalTradesRequest request,
         CancellationToken cancellationToken = default) =>
-        request.Symbols.Count == 1
+        request.HasSingleSymbol
             ? listHistoricalTradesAsync(request, cancellationToken)
             : getHistoricalTradesAsync(request, cancellationToken).AsPageAsync<ITrade, JsonTradesPage>();
 
     public Task<IMultiPage<ITrade>> GetHistoricalTradesAsync(
         THistoricalTradesRequest request,
         CancellationToken cancellationToken = default) =>
-        request.Symbols.Count == 1
+        request.HasSingleSymbol
             ? listHistoricalTradesAsync(request, cancellationToken).AsMultiPageAsync<ITrade, JsonMultiTradesPage>()
             : getHistoricalTradesAsync(request, cancellationToken);
 
