@@ -3,6 +3,7 @@
 /// <summary>
 /// Encapsulates data for latest crypto XBBO request on Alpaca Data API v2.
 /// </summary>
+[Obsolete("This class will be removed in the next major release of SDK.", false)]
 public sealed class LatestBestBidOfferListRequest : Validation.IRequest
 {
     private readonly HashSet<String> _symbols = new(StringComparer.Ordinal);
@@ -68,7 +69,7 @@ public sealed class LatestBestBidOfferListRequest : Validation.IRequest
                 .AddParameter("exchanges", Exchanges)
                 .AddParameter("symbols", Symbols)
                 .AsStringAsync().ConfigureAwait(false)
-        }.AppendPath("xbbos/latest");
+        }.AppendPath("../../v1beta1/crypto/xbbos/latest");
 
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {

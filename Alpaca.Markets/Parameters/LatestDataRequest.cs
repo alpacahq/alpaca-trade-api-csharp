@@ -3,6 +3,7 @@
 /// <summary>
 /// Encapsulates data for latest crypto data requests on Alpaca Data API v2.
 /// </summary>
+[Obsolete("This class will be removed in the next major release of SDK.", false)]
 public sealed class LatestDataRequest : Validation.IRequest
 {
     /// <summary>
@@ -41,7 +42,7 @@ public sealed class LatestDataRequest : Validation.IRequest
             Query = await new QueryBuilder()
                 .AddParameter("exchange", Exchange.ToEnumString())
                 .AsStringAsync().ConfigureAwait(false)
-        }.AppendPath($"{Symbol}/{lastPathSegment}/latest");
+        }.AppendPath($"../../v1beta1/crypto/{Symbol}/{lastPathSegment}/latest");
 
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {

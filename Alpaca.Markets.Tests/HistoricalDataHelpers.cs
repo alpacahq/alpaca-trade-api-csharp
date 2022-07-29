@@ -49,6 +49,10 @@ internal static class HistoricalDataHelpers
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
         mock.addLatestExpectation(pathPrefix, symbols, Bars, CreateBar);
 
+    internal static void AddLatestCryptoBarsExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
+        mock.addLatestCryptoExpectation(pathPrefix, symbols, Bars, CreateBar);
+
     internal static void AddSingleTradesPageExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
         mock.addSinglePageExpectation(pathPrefix, symbol, Trades, CreateTrade);
@@ -65,6 +69,10 @@ internal static class HistoricalDataHelpers
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
         mock.addLatestExpectation(pathPrefix, symbols, Trades, CreateTrade);
 
+    internal static void AddLatestCryptoTradesExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
+        mock.addLatestCryptoExpectation(pathPrefix, symbols, Trades, CreateTrade);
+
     internal static void AddSingleQuotesPageExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
         mock.addSinglePageExpectation(pathPrefix, symbol, Quotes, CreateQuote);
@@ -80,6 +88,10 @@ internal static class HistoricalDataHelpers
     internal static void AddLatestQuotesExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
         mock.addLatestExpectation(pathPrefix, symbols, Quotes, CreateQuote);
+
+    internal static void AddLatestCryptoQuotesExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
+        mock.addLatestCryptoExpectation(pathPrefix, symbols, Quotes, CreateQuote);
 
     internal static void AddSnapshotExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
@@ -131,6 +143,13 @@ internal static class HistoricalDataHelpers
         this IMock mock, String pathPrefix, IEnumerable<String> symbols,
         String items, Func<JObject> createItem) =>
         mock.AddGet($"{pathPrefix}/{items}/latest", new JObject(
+            new JProperty(items, new JObject(
+                symbols.Select(_ => new JProperty(_, createItem()))))));
+
+    private static void addLatestCryptoExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols,
+        String items, Func<JObject> createItem) =>
+        mock.AddGet($"{pathPrefix}/latest/{items}", new JObject(
             new JProperty(items, new JObject(
                 symbols.Select(_ => new JProperty(_, createItem()))))));
 

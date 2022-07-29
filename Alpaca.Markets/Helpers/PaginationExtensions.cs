@@ -19,7 +19,7 @@ internal static class PaginationExtensions
         {
             Items = new List<TItem>(response.Items.SelectMany(_ => _.Value)),
             NextPageToken = response.NextPageToken
-        }.withSymbol<TItem, TPage>(response.Items);
+        }.withSymbol(response.Items);
 
     private static IMultiPage<TItem> asMultiPage<TItem, TPage>(
         this IPage<TItem> response)

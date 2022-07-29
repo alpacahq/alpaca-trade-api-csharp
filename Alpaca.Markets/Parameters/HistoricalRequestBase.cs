@@ -59,6 +59,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     /// <summary>
     /// Gets asset symbols list for data retrieval.
     /// </summary>
+    [UsedImplicitly]
     public IReadOnlyCollection<String> Symbols => _symbols;
 
     /// <summary>

@@ -38,15 +38,21 @@ public sealed class RequestValidationTest
 
     [Fact]
     public void SnapshotDataRequestEmptySymbolValidationWorks() =>
+#pragma warning disable CS0618
         validate(new SnapshotDataRequest(String.Empty, CryptoExchange.Ersx));
+#pragma warning restore CS0618
 
     [Fact]
     public void LatestDataRequestEmptySymbolValidationWorks() =>
+#pragma warning disable CS0618
         validate(new LatestDataRequest(String.Empty, CryptoExchange.Cbse));
+#pragma warning restore CS0618
 
     [Fact]
     public void LatestBestBidOfferRequestEmptySymbolValidationWorks() =>
+#pragma warning disable CS0618
         validate(new LatestBestBidOfferRequest(String.Empty, CryptoExchange.Ftx));
+#pragma warning restore CS0618
 
     [Fact]
     public void DeletePositionRequestEmptySymbolValidationWorks() =>

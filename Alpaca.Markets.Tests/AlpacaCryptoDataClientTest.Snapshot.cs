@@ -7,10 +7,12 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddSnapshotExpectation(PathPrefix, Crypto);
+        mock.AddSnapshotExpectation(OldPathPrefix, Crypto);
 
+#pragma warning disable CS0618
         var snapshot = await mock.Client.GetSnapshotAsync(
             new SnapshotDataRequest(Crypto, CryptoExchange.Cbse));
+#pragma warning restore CS0618
 
         Assert.True(snapshot.Validate(Crypto));
     }
@@ -37,10 +39,12 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddXbboExpectation(PathPrefix, Crypto);
+        mock.AddXbboExpectation(OldPathPrefix, Crypto);
 
+#pragma warning disable CS0618
         var bbo = await mock.Client.GetLatestBestBidOfferAsync(
             new LatestBestBidOfferRequest(Crypto, _exchangesList));
+#pragma warning restore CS0618
 
         Assert.True(bbo.Validate(Crypto));
     }
@@ -50,10 +54,12 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddXbbosExpectation(PathPrefix, _symbols);
+        mock.AddXbbosExpectation(OldPathPrefix, _symbols);
 
+#pragma warning disable CS0618
         var xbbos = await mock.Client.ListLatestBestBidOffersAsync(
             new LatestBestBidOfferListRequest(_symbols, _exchangesList));
+#pragma warning restore CS0618
 
         Assert.NotNull(xbbos);
         Assert.NotEmpty(xbbos);
@@ -67,10 +73,12 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddXbbosExpectation(PathPrefix, _symbols);
+        mock.AddXbbosExpectation(OldPathPrefix, _symbols);
 
+#pragma warning disable CS0618
         var xbbos = await mock.Client.ListLatestBestBidOffersAsync(
             new LatestBestBidOfferListRequest(_symbols, CryptoExchange.Ersx));
+#pragma warning restore CS0618
 
         Assert.NotNull(xbbos);
         Assert.NotEmpty(xbbos);
