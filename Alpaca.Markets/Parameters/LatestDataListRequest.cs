@@ -43,7 +43,7 @@ public sealed class LatestDataListRequest : Validation.IRequest
                 .AddParameter("symbols", Symbols)
                 .AddParameter("exchange", Exchange.ToEnumString())
                 .AsStringAsync().ConfigureAwait(false)
-        }.AppendPath($"{lastPathSegment}/latest");
+        }.AppendPath($"latest/{lastPathSegment}");
 
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {

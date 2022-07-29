@@ -1,5 +1,6 @@
 ﻿namespace Alpaca.Markets;
 
+[ExcludeFromCodeCoverage]
 [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IQuote))]
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",

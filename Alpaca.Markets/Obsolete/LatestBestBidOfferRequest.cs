@@ -3,56 +3,56 @@
 /// <summary>
 /// Encapsulates data for latest crypto XBBO request on Alpaca Data API v2.
 /// </summary>
-public sealed class LatestBestBidOfferListRequest : Validation.IRequest
+[ExcludeFromCodeCoverage]
+[Obsolete("This class will be removed in the next major release of SDK.", true)]
+public sealed class LatestBestBidOfferRequest : Validation.IRequest
 {
-    private readonly HashSet<String> _symbols = new(StringComparer.Ordinal);
-
     private readonly HashSet<CryptoExchange> _exchanges = new();
 
     /// <summary>
-    /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
+    /// Creates new instance of <see cref="LatestBestBidOfferRequest"/> object.
     /// </summary>
-    /// <param name="symbols">Asset symbols list for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="exchanges">Crypto exchanges list for data retrieval.</param>
     /// <exception cref="ArgumentNullException">
-    /// The <paramref name="symbols"/> or <paramref name="exchanges"/> argument is <c>null</c>.
+    /// The <paramref name="symbol"/> or <paramref name="exchanges"/> argument is <c>null</c>.
     /// </exception>
-    public LatestBestBidOfferListRequest(
-        IEnumerable<String> symbols,
+    public LatestBestBidOfferRequest(
+        String symbol,
         IEnumerable<CryptoExchange> exchanges)
-        : this(symbols.EnsureNotNull()) =>
+        : this(symbol.EnsureNotNull()) =>
         _exchanges.UnionWith(exchanges.EnsureNotNull());
 
     /// <summary>
-    /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
+    /// Creates new instance of <see cref="LatestBestBidOfferRequest"/> object.
     /// </summary>
-    /// <param name="symbols">Asset symbols list for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <param name="exchange">Crypto exchange for data retrieval.</param>
     /// <exception cref="ArgumentNullException">
-    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
     /// </exception>
-    public LatestBestBidOfferListRequest(
-        IEnumerable<String> symbols,
+    public LatestBestBidOfferRequest(
+        String symbol,
         CryptoExchange exchange)
-        : this(symbols.EnsureNotNull()) =>
+        : this(symbol.EnsureNotNull()) =>
         _exchanges.Add(exchange);
 
     /// <summary>
-    /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
+    /// Creates new instance of <see cref="LatestBestBidOfferRequest"/> object.
     /// </summary>
-    /// <param name="symbols">Asset symbols list for data retrieval.</param>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
     /// <exception cref="ArgumentNullException">
-    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
     /// </exception>
-    public LatestBestBidOfferListRequest(
-        IEnumerable<String> symbols) =>
-        _symbols.UnionWith(symbols.EnsureNotNull());
+    public LatestBestBidOfferRequest(
+        String symbol) =>
+        Symbol = symbol.EnsureNotNull();
 
     /// <summary>
-    /// Gets asset symbols for data retrieval.
+    /// Gets asset symbol for data retrieval.
     /// </summary>
     [UsedImplicitly]
-    public IReadOnlyCollection<String> Symbols => _symbols;
+    public String Symbol { get; }
 
     /// <summary>
     /// Gets crypto exchanges list for data retrieval (empty list means 'all exchanges').
@@ -66,12 +66,11 @@ public sealed class LatestBestBidOfferListRequest : Validation.IRequest
         {
             Query = await new QueryBuilder()
                 .AddParameter("exchanges", Exchanges)
-                .AddParameter("symbols", Symbols)
                 .AsStringAsync().ConfigureAwait(false)
-        }.AppendPath("xbbos/latest");
+        }.AppendPath($"../../v1beta1/crypto/{Symbol}/xbbo/latest");
 
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
-        yield return Symbols.TryValidateSymbolName();
+        yield return Symbol.TryValidateSymbolName();
     }
 }

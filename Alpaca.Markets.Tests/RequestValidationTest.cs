@@ -37,18 +37,6 @@ public sealed class RequestValidationTest
             .WithPageSize(UInt32.MaxValue));
 
     [Fact]
-    public void SnapshotDataRequestEmptySymbolValidationWorks() =>
-        validate(new SnapshotDataRequest(String.Empty, CryptoExchange.Ersx));
-
-    [Fact]
-    public void LatestDataRequestEmptySymbolValidationWorks() =>
-        validate(new LatestDataRequest(String.Empty, CryptoExchange.Cbse));
-
-    [Fact]
-    public void LatestBestBidOfferRequestEmptySymbolValidationWorks() =>
-        validate(new LatestBestBidOfferRequest(String.Empty, CryptoExchange.Ftx));
-
-    [Fact]
     public void DeletePositionRequestEmptySymbolValidationWorks() =>
         validate(new DeletePositionRequest(String.Empty));
 
