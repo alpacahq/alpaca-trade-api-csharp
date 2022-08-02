@@ -25,7 +25,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         mock.AddLatestCryptoBarsExpectation(PathPrefix, _symbols);
 
         var bars = await mock.Client.ListLatestBarsAsync(
-            new LatestDataListRequest(_symbols, CryptoExchange.Cbse));
+            new LatestDataListRequest(_symbols));
 
         Assert.NotNull(bars);
         Assert.NotEmpty(bars);
@@ -57,7 +57,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         mock.AddLatestCryptoQuotesExpectation(PathPrefix, _symbols);
 
         var quotes = await mock.Client.ListLatestQuotesAsync(
-            new LatestDataListRequest(_symbols, CryptoExchange.Cbse));
+            new LatestDataListRequest(_symbols));
 
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes);
@@ -89,7 +89,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         mock.AddLatestCryptoTradesExpectation(PathPrefix, _symbols);
 
         var trades = await mock.Client.ListLatestTradesAsync(
-            new LatestDataListRequest(_symbols, CryptoExchange.Cbse));
+            new LatestDataListRequest(_symbols));
 
         Assert.NotNull(trades);
         Assert.NotEmpty(trades);

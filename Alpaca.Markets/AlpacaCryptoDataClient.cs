@@ -90,6 +90,14 @@ internal sealed class AlpacaCryptoDataClient :
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             _ => _.Snapshots, cancellationToken).ConfigureAwait(false);
 
+    public async Task<IReadOnlyDictionary<String, IOrderBook>> ListLatestOrderBooksAsync(
+        LatestOrderBooksRequest request,
+        CancellationToken cancellationToken = default) =>
+        await getLatestAsync<IOrderBook, JsonHistoricalOrderBook>(
+            await request.EnsureNotNull().Validate()
+                .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
+            _ => _.OrderBooks, cancellationToken).ConfigureAwait(false);
+
     private async Task<IReadOnlyDictionary<String, TApi>> getLatestAsync<TApi, TJson>(
         LatestDataListRequest request,
         String items,

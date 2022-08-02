@@ -4,48 +4,37 @@
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-internal sealed class JsonOrderBook : JsonRealTimeBase, IOrderBook
+internal sealed class JsonHistoricalOrderBook : IOrderBook, ISymbolMutable 
 {
-    [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IOrderBookEntry))]
-    internal sealed class Entry : IOrderBookEntry
-    {
-        [JsonProperty(PropertyName = "p", Required = Required.Always)]
-        public Decimal Price { get; set; }
-
-        [JsonProperty(PropertyName = "s", Required = Required.Always)]
-        public Decimal Size { get; set; }
-
-        [ExcludeFromCodeCoverage]
-        public override String ToString() =>
-            JsonConvert.SerializeObject(this);
-
-        [ExcludeFromCodeCoverage]
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private String DebuggerDisplay =>
-            $"{{ Price = {Price}, Size = {Size} }}";
-    }
-
-    [JsonProperty(PropertyName = "x", Required = Required.Always)]
-    public String Exchange { get; set; } = String.Empty;
+    [JsonProperty(PropertyName = "t", Required = Required.Always)]
+    public DateTime TimestampUtc { get; set; }
 
     [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "b", Required = Required.Always)]
-    internal List<Entry> BidsList { get; set; } = new ();
+    internal List<JsonOrderBookEntry> BidsList { get; set; } = new ();
 
     [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "a", Required = Required.Always)]
-    internal List<Entry> AsksList { get; set; } = new ();
+    internal List<JsonOrderBookEntry> AsksList { get; set; } = new ();
 
-    [JsonProperty(PropertyName = "r", Required = Required.Default)]
-    public Boolean IsReset { get; set; }
+    [JsonIgnore]
+    public String Symbol { get; private set; } = String.Empty;
+
+    [JsonIgnore]
+    public String Exchange => String.Empty;
+
+    [JsonIgnore]
+    public Boolean IsReset => false;
 
     [JsonIgnore]
     public IReadOnlyList<IOrderBookEntry> Bids { get; private set; } = new List<IOrderBookEntry>();
 
     [JsonIgnore]
     public IReadOnlyList<IOrderBookEntry> Asks { get; private set; } = new List<IOrderBookEntry>();
+
+    public void SetSymbol(String symbol) => Symbol = symbol;
 
     [OnDeserialized]
     [UsedImplicitly]

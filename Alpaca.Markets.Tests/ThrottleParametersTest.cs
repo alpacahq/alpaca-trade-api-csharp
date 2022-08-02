@@ -45,6 +45,7 @@ public sealed class ThrottleParametersTest
 
         Assert.Equal(Message,exception.Message);
         Assert.Equal(ErrorCode, exception.ErrorCode);
+        Assert.Equal((HttpStatusCode)ErrorCode, exception.HttpStatusCode);
 
         KeyValuePair<String, String> AsHeader(
             RetryConditionHeaderValue value) =>

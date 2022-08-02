@@ -6,6 +6,18 @@
 public sealed class LatestDataListRequest : Validation.IRequest
 {
     private readonly HashSet<String> _symbols = new (StringComparer.Ordinal);
+
+    /// <summary>
+    /// Creates new instance of <see cref="LatestDataListRequest"/> object.
+    /// </summary>
+    /// <param name="symbols">Asset symbol for data retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    public LatestDataListRequest(
+        IEnumerable<String> symbols) =>
+        _symbols.UnionWith(symbols.EnsureNotNull());
+
     /// <summary>
     /// Creates new instance of <see cref="LatestDataListRequest"/> object.
     /// </summary>
@@ -14,13 +26,13 @@ public sealed class LatestDataListRequest : Validation.IRequest
     /// <exception cref="ArgumentNullException">
     /// The <paramref name="symbols"/> argument is <c>null</c>.
     /// </exception>
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This constructor will be removed in the next major release of SDK.", false)]
     public LatestDataListRequest(
         IEnumerable<String> symbols,
         CryptoExchange exchange)
-    {
-        _symbols.UnionWith(symbols.EnsureNotNull());
+        : this(symbols) =>
         Exchange = exchange;
-    }
 
     /// <summary>
     /// Gets asset symbols for data retrieval.
@@ -32,6 +44,8 @@ public sealed class LatestDataListRequest : Validation.IRequest
     /// Gets crypto exchange for data retrieval.
     /// </summary>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This query parameter doesn't support anymore, the property will be removed in the next major release of SDK.", false)]
     public CryptoExchange Exchange { get; }
 
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
@@ -41,7 +55,6 @@ public sealed class LatestDataListRequest : Validation.IRequest
         {
             Query = await new QueryBuilder()
                 .AddParameter("symbols", Symbols)
-                .AddParameter("exchange", Exchange.ToEnumString())
                 .AsStringAsync().ConfigureAwait(false)
         }.AppendPath($"latest/{lastPathSegment}");
 

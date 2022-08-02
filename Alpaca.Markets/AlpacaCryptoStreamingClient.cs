@@ -16,5 +16,5 @@ internal sealed class AlpacaCryptoStreamingClient :
 
     public IAlpacaDataSubscription<IOrderBook> GetOrderBookSubscription(
         String symbol) => 
-        GetSubscription<IOrderBook, JsonOrderBook>(OrderBooksChannel, symbol.EnsureNotNull());
+        GetSubscription<IOrderBook, JsonRealTimeOrderBook>(OrderBooksChannel, symbol.EnsureNotNull());
 }

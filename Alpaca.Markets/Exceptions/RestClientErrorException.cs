@@ -66,6 +66,7 @@ public sealed class RestClientErrorException : Exception
         : base(message.ReasonPhrase ?? String.Empty) =>
         ErrorCode = (Int32)(HttpStatusCode = message.StatusCode);
 
+    [ExcludeFromCodeCoverage]
     internal RestClientErrorException(
         HttpResponseMessage message,
         Exception exception)
