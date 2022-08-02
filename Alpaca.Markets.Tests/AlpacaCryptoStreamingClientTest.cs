@@ -121,7 +121,7 @@ public sealed class AlpacaCryptoStreamingClientTest
             await client.Client.ConnectAndAuthenticateAsync());
 
         await using (var helper = await SubscriptionHelper<IOrderBook>.Create(
-                         client.Client, _ => _.Validate(Crypto),
+                         client.Client, _ => MessageDataHelpers.Validate(_, Crypto),
                          _ => _.GetOrderBookSubscription(Crypto)))
         {
             await client.AddMessageAsync(

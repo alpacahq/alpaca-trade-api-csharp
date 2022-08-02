@@ -108,6 +108,10 @@ internal static class HistoricalDataHelpers
             new JProperty("snapshots", new JObject(
                 symbols.Select(_ => new JProperty(_, createSnapshot()))))));
 
+    internal static void AddOrderBooksExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
+        mock.addLatestCryptoExpectation(pathPrefix, symbols, "orderbooks", createOrderBook);
+
     private static void addSinglePageExpectation(
         this IMock mock, String pathPrefix, String symbol,
         String items, Func<JObject> createItem) =>
@@ -222,6 +226,28 @@ internal static class HistoricalDataHelpers
 
         return true;
     }
+    
+    public static Boolean Validate(
+        this IOrderBook orderBook,
+        String symbol)
+    {
+        Assert.NotNull(orderBook);
+        Assert.True(orderBook.TimestampUtc <= DateTime.UtcNow);
+        Assert.Equal(symbol, orderBook.Symbol);
+
+        Assert.NotNull(orderBook.Asks);
+        Assert.NotNull(orderBook.Bids);
+
+        var ask = orderBook.Asks.Single();
+        var bid = orderBook.Asks.Single();
+        Assert.Equal(ask.Price, bid.Price);
+        Assert.Equal(ask.Size, bid.Size);
+
+        Assert.Equal(MidPrice, bid.Price);
+        Assert.Equal(Size, ask.Size);
+
+        return true;
+    }
 
     public static Boolean Validate(
         this ISnapshot snapshot,
@@ -287,6 +313,18 @@ internal static class HistoricalDataHelpers
             new JProperty("z", _tape),
             new JProperty("cs", Size),
             new JProperty("os", Size));
+
+    private static JObject createOrderBook() =>
+        new(
+            new JProperty("a", new JArray(createOrderBookEntry())),
+            new JProperty("b", new JArray(createOrderBookEntry())),
+            new JProperty("t", DateTime.UtcNow),
+            new JProperty("x", _exchange));
+    
+    private static JObject createOrderBookEntry() =>
+        new(
+            new JProperty("p", MidPrice),
+            new JProperty("s", Size));
 
     private static JObject createSnapshot() =>
         createSnapshot(String.Empty);

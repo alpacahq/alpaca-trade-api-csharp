@@ -18,4 +18,23 @@ public sealed partial class AlpacaCryptoDataClientTest
         Assert.True(snapshots[Crypto].Validate(Crypto));
         Assert.True(snapshots[Other].Validate(Other));
     }
+
+    [Fact]
+    public async Task ListLatestOrderBooksAsyncWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+
+        mock.AddOrderBooksExpectation(PathPrefix, _symbols);
+
+#pragma warning disable CS0618
+        var orderBooks = await mock.Client.ListLatestOrderBooksAsync(
+            new LatestOrderBooksRequest(_symbols, _exchangesList));
+#pragma warning restore CS0618
+
+        Assert.NotNull(orderBooks);
+        Assert.NotEmpty(orderBooks);
+
+        Assert.True(HistoricalDataHelpers.Validate(orderBooks[Crypto], Crypto));
+        Assert.True(HistoricalDataHelpers.Validate(orderBooks[Other], Other));
+    }
 }

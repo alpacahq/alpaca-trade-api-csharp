@@ -43,7 +43,7 @@ public interface IAlpacaCryptoDataClient :
     /// <summary>
     /// Gets most recent bar for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset symbols list and exchange pair for data retrieval.</param>
+    /// <param name="request">Asset symbols list for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <exception cref="RequestValidationException">
     /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
@@ -102,7 +102,7 @@ public interface IAlpacaCryptoDataClient :
     /// <summary>
     /// Gets most recent trade for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset symbols list and exchange pair for data retrieval.</param>
+    /// <param name="request">Asset symbols list for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <exception cref="RequestValidationException">
     /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
@@ -161,7 +161,7 @@ public interface IAlpacaCryptoDataClient :
     /// <summary>
     /// Gets most recent quote for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset symbols list and exchange pair for data retrieval.</param>
+    /// <param name="request">Asset symbols list for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <exception cref="RequestValidationException">
     /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
@@ -212,7 +212,7 @@ public interface IAlpacaCryptoDataClient :
     /// </exception>
     /// <returns>Read-only current XBBO information.</returns>
     [UsedImplicitly]
-    [Obsolete("This method will be removed in the next major release of SDK.", true)]
+    [Obsolete("This method will be removed in the next major release of SDK. Use ListLatestOrderBooksAsync method instead.", true)]
     Task<IQuote> GetLatestBestBidOfferAsync(
         LatestBestBidOfferRequest request,
         CancellationToken cancellationToken = default);
@@ -242,7 +242,7 @@ public interface IAlpacaCryptoDataClient :
     /// </exception>
     /// <returns>Read-only dictionary with the current XBBO information.</returns>
     [UsedImplicitly]
-    [Obsolete("This method will be removed in the next major release of SDK.", true)]
+    [Obsolete("This method will be removed in the next major release of SDK. Use ListLatestOrderBooksAsync method instead.", true)]
     Task<IReadOnlyDictionary<String, IQuote>> ListLatestBestBidOffersAsync(
         LatestBestBidOfferListRequest request,
         CancellationToken cancellationToken = default);
@@ -280,7 +280,7 @@ public interface IAlpacaCryptoDataClient :
     /// <summary>
     /// Gets current snapshot data for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Asset symbol and exchange pair for data retrieval.</param>
+    /// <param name="request">Asset symbol for data retrieval.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <exception cref="RequestValidationException">
     /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
@@ -304,5 +304,34 @@ public interface IAlpacaCryptoDataClient :
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String,ISnapshot>> ListSnapshotsAsync(
         SnapshotDataListRequest request,
+        CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Gets current order books for several assets from Alpaca REST API endpoint.
+    /// </summary>
+    /// <param name="request">Asset symbols list for data retrieval.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="request"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>Read-only dictionary with the current order book information.</returns>
+    [UsedImplicitly]
+    Task<IReadOnlyDictionary<String, IOrderBook>> ListLatestOrderBooksAsync(
+        LatestOrderBooksRequest request,
         CancellationToken cancellationToken = default);
 }

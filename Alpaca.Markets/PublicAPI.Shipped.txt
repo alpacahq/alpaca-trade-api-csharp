@@ -376,6 +376,7 @@ Alpaca.Markets.IAlpacaCryptoDataClient.GetLatestTradeAsync(Alpaca.Markets.Latest
 Alpaca.Markets.IAlpacaCryptoDataClient.GetSnapshotAsync(Alpaca.Markets.SnapshotDataRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ISnapshot!>!
 Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestDataListRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.IBar!>!>!
 Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBestBidOffersAsync(Alpaca.Markets.LatestBestBidOfferListRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.IQuote!>!>!
+Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestOrderBooksAsync(Alpaca.Markets.LatestOrderBooksRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.IOrderBook!>!>!
 Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestDataListRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.IQuote!>!>!
 Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestDataListRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.ITrade!>!>!
 Alpaca.Markets.IAlpacaCryptoDataClient.ListSnapshotsAsync(Alpaca.Markets.SnapshotDataListRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.ISnapshot!>!>!
@@ -747,6 +748,7 @@ Alpaca.Markets.LatestBestBidOfferRequest.LatestBestBidOfferRequest(string! symbo
 Alpaca.Markets.LatestBestBidOfferRequest.Symbol.get -> string!
 Alpaca.Markets.LatestDataListRequest
 Alpaca.Markets.LatestDataListRequest.Exchange.get -> Alpaca.Markets.CryptoExchange
+Alpaca.Markets.LatestDataListRequest.LatestDataListRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
 Alpaca.Markets.LatestDataListRequest.LatestDataListRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.CryptoExchange exchange) -> void
 Alpaca.Markets.LatestDataListRequest.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
 Alpaca.Markets.LatestDataRequest
@@ -763,6 +765,12 @@ Alpaca.Markets.LatestMarketDataRequest.Feed.get -> Alpaca.Markets.MarkedDataFeed
 Alpaca.Markets.LatestMarketDataRequest.Feed.set -> void
 Alpaca.Markets.LatestMarketDataRequest.LatestMarketDataRequest(string! symbol) -> void
 Alpaca.Markets.LatestMarketDataRequest.Symbol.get -> string!
+Alpaca.Markets.LatestOrderBooksRequest
+Alpaca.Markets.LatestOrderBooksRequest.Exchanges.get -> System.Collections.Generic.IReadOnlyCollection<Alpaca.Markets.CryptoExchange>!
+Alpaca.Markets.LatestOrderBooksRequest.LatestOrderBooksRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
+Alpaca.Markets.LatestOrderBooksRequest.LatestOrderBooksRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.CryptoExchange exchange) -> void
+Alpaca.Markets.LatestOrderBooksRequest.LatestOrderBooksRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.Collections.Generic.IEnumerable<Alpaca.Markets.CryptoExchange>! exchanges) -> void
+Alpaca.Markets.LatestOrderBooksRequest.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
 Alpaca.Markets.LimitOrder
 Alpaca.Markets.LimitOrder.LimitPrice.get -> decimal
 Alpaca.Markets.LimitOrder.OneCancelsOther(decimal stopLossStopPrice) -> Alpaca.Markets.OneCancelsOtherOrder!
