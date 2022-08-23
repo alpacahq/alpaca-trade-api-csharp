@@ -49,6 +49,9 @@ internal sealed class JsonAccount : IAccount
     [JsonProperty(PropertyName = "daytrading_buying_power", Required = Required.Default)]
     public Decimal? DayTradingBuyingPower { get; set; }
 
+    [JsonProperty(PropertyName = "non_maginable_buying_power", Required = Required.Default)]
+    public Decimal? NonMarginableBuyingPower { get; set; }
+
     [JsonProperty(PropertyName = "regt_buying_power", Required = Required.Default)]
     public Decimal? RegulationBuyingPower { get; set; }
 

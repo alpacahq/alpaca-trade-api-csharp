@@ -20,6 +20,7 @@ public sealed partial class AlpacaTradingClientTest
 
         mock.AddGet("/v2/account", new JObject(
             new JProperty("account_number", Guid.NewGuid().ToString("D")),
+            new JProperty("non_maginable_buying_power", Price),
             new JProperty("daytrading_buying_power", Price),
             new JProperty("last_maintenance_margin", Price),
             new JProperty("trade_suspended_by_user", true),
@@ -59,6 +60,7 @@ public sealed partial class AlpacaTradingClientTest
 
         Assert.NotNull(account.AccountNumber);
 
+        Assert.NotNull(account.NonMarginableBuyingPower);
         Assert.NotNull(account.DayTradingBuyingPower);
         Assert.NotNull(account.RegulationBuyingPower);
         Assert.NotNull(account.ShortMarketValue);
