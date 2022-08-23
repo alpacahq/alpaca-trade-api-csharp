@@ -100,6 +100,12 @@ namespace Alpaca.Markets
         Decimal? RegulationBuyingPower { get; }
 
         /// <summary>
+        /// Your non-marginable buying power for day trades (useful for crypto-trading).
+        /// </summary>
+        [UsedImplicitly]
+        Decimal? NonMarginableBuyingPower { get; }
+
+        /// <summary>
         /// Real-time MtM value of all long positions held in the account.
         /// </summary>
         [UsedImplicitly]

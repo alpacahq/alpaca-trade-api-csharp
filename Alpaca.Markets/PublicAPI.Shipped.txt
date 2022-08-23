@@ -322,6 +322,7 @@ Alpaca.Markets.IAccount.LastEquity.get -> decimal
 Alpaca.Markets.IAccount.LastMaintenanceMargin.get -> decimal
 Alpaca.Markets.IAccount.LongMarketValue.get -> decimal?
 Alpaca.Markets.IAccount.MaintenanceMargin.get -> decimal
+Alpaca.Markets.IAccount.NonMarginableBuyingPower.get -> decimal?
 Alpaca.Markets.IAccount.Multiplier.get -> Alpaca.Markets.Multiplier
 Alpaca.Markets.IAccount.RegulationBuyingPower.get -> decimal?
 Alpaca.Markets.IAccount.ShortingEnabled.get -> bool
