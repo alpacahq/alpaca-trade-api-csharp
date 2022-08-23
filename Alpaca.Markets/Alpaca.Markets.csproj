@@ -12,16 +12,17 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.1.0.0</AssemblyVersion>
-    <FileVersion>6.1.0.0</FileVersion>
-    <Version>6.1.0-beta1</Version>
+    <AssemblyVersion>6.1.0.1</AssemblyVersion>
+    <FileVersion>6.1.0.1</FileVersion>
+    <Version>6.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>- Added support for requesting the latest crypto order book and marked exchange property of latest crypto request as obsolete.
 - Marked some methods of `IAlpacaCryptoDataClient` as obsolete because they exist only in 1st beta version of the API.
 - Change approach for creating the `RestClientErrorException` object in case of non-JSON errors.
-- Changed base URL for the `AlpacaCrytpDataClient` and approach for requesting historical data.</PackageReleaseNotes>
+- Changed base URL for the `AlpacaCrytpDataClient` and approach for requesting historical data.
+- The `NonMarginableBuyingPower` property was added to the `IAccount` interface.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
