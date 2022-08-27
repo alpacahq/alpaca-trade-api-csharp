@@ -38,8 +38,16 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "easy_to_borrow", Required = Required.Default)]
         public Boolean EasyToBorrow { get; set; }
-
         [JsonProperty(PropertyName = "fractionable", Required = Required.Default)]
         public Boolean Fractionable { get; set; }
+
+        [JsonProperty(PropertyName = "min_order_size", Required = Required.Default)]
+        public Decimal? MinOrderSize { get; set; }
+
+        [JsonProperty(PropertyName = "min_trade_increment", Required = Required.Default)]
+        public Decimal? MinTradeIncrement { get; set; }
+
+        [JsonProperty(PropertyName = "price_increment", Required = Required.Default)]
+        public Decimal? PriceIncrement { get; set; }
     }
 }
