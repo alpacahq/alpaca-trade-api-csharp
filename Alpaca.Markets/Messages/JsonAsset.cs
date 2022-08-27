@@ -39,6 +39,15 @@ internal sealed class JsonAsset : IAsset
     [JsonProperty(PropertyName = "fractionable", Required = Required.Default)]
     public Boolean Fractionable { get; set; }
 
+    [JsonProperty(PropertyName = "min_order_size", Required = Required.Default)]
+    public Decimal? MinOrderSize { get; set; }
+
+    [JsonProperty(PropertyName = "min_trade_increment", Required = Required.Default)]
+    public Decimal? MinTradeIncrement { get; set; }
+
+    [JsonProperty(PropertyName = "price_increment", Required = Required.Default)]
+    public Decimal? PriceIncrement { get; set; }
+
     [ExcludeFromCodeCoverage]
     public override String ToString() =>
         JsonConvert.SerializeObject(this);
