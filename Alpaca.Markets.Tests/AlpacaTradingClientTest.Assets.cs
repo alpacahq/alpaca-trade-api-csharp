@@ -42,6 +42,9 @@ public sealed partial class AlpacaTradingClientTest
             new JProperty("status", AssetStatus.Active),
             new JProperty("class", AssetClass.UsEquity),
             new JProperty("exchange", Exchange.Amex),
+            new JProperty("price_increment", 0.0001),
+            new JProperty("min_trade_increment", 1),
+            new JProperty("min_order_size", 0.0001),
             new JProperty("easy_to_borrow", true),
             new JProperty("fractionable", false),
             new JProperty("marginable", false),
@@ -67,5 +70,9 @@ public sealed partial class AlpacaTradingClientTest
         Assert.Equal(assetId, asset.AssetId);
 
         Assert.Equal(AssetClass.UsEquity, asset.Class);
+
+        Assert.NotNull(asset.MinOrderSize);
+        Assert.NotNull(asset.PriceIncrement);
+        Assert.NotNull(asset.MinTradeIncrement);
     }
 }

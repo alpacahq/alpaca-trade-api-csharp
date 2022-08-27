@@ -470,10 +470,13 @@ Alpaca.Markets.IAsset.Exchange.get -> Alpaca.Markets.Exchange
 Alpaca.Markets.IAsset.Fractionable.get -> bool
 Alpaca.Markets.IAsset.IsTradable.get -> bool
 Alpaca.Markets.IAsset.Marginable.get -> bool
+Alpaca.Markets.IAsset.MinOrderSize.get -> decimal?
+Alpaca.Markets.IAsset.MinTradeIncrement.get -> decimal?
+Alpaca.Markets.IAsset.Name.get -> string!
+Alpaca.Markets.IAsset.PriceIncrement.get -> decimal?
 Alpaca.Markets.IAsset.Shortable.get -> bool
 Alpaca.Markets.IAsset.Status.get -> Alpaca.Markets.AssetStatus
 Alpaca.Markets.IAsset.Symbol.get -> string!
-Alpaca.Markets.IAsset.Name.get -> string!
 Alpaca.Markets.IBar
 Alpaca.Markets.IBar.Close.get -> decimal
 Alpaca.Markets.IBar.High.get -> decimal

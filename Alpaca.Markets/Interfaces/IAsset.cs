@@ -51,26 +51,44 @@ public interface IAsset
     Boolean IsTradable { get; }
 
     /// <summary>
-    /// Asset is marginable or not
+    /// Returns <c>true</c> if asset is marginable.
     /// </summary>
     [UsedImplicitly]
     Boolean Marginable { get; }
 
     /// <summary>
-    /// Asset is shortable or not
+    /// Returns <c>true</c> if asset is shortable.
     /// </summary>
     [UsedImplicitly]
     Boolean Shortable { get; }
 
     /// <summary>
-    /// Asset is easy-to-borrow or not
+    /// Returns <c>true</c> if asset is easy-to-borrow.
     /// </summary>
     [UsedImplicitly]
     Boolean EasyToBorrow { get; }
 
     /// <summary>
-    /// Asset is fractionable or not
+    /// Returns <c>true</c> if asset is fractionable.
     /// </summary>
     [UsedImplicitly]
     Boolean Fractionable { get; }
+
+    /// <summary>
+    /// Gets minimum order size. This property is valid only for crypto assets.
+    /// </summary>
+    [UsedImplicitly]
+    Decimal? MinOrderSize { get; }
+
+    /// <summary>
+    /// Gets amount a trade quantity can be incremented by. This property is valid only for crypto assets.
+    /// </summary>
+    [UsedImplicitly]
+    Decimal? MinTradeIncrement { get; }
+
+    /// <summary>
+    /// Gets amount the price can be incremented by. This property is valid only for crypto assets.
+    /// </summary>
+    [UsedImplicitly]
+    Decimal? PriceIncrement { get; }
 }
