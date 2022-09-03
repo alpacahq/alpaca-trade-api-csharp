@@ -55,7 +55,7 @@ internal sealed class AlpacaCryptoDataClient :
         getLatestAsync<IQuote, JsonHistoricalCryptoQuote>(
             request, "quotes", _ => _.Quotes, cancellationToken);
 
-    [Obsolete("This method will be removed in the next major release of SDK.", false)]
+    [Obsolete("This method will be removed in the next major release of SDK.", true)]
     public async Task<IQuote> GetLatestBestBidOfferAsync(
         LatestBestBidOfferRequest request,
         CancellationToken cancellationToken = default) =>
@@ -64,7 +64,7 @@ internal sealed class AlpacaCryptoDataClient :
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
-    [Obsolete("This method will be removed in the next major release of SDK.", false)]
+    [Obsolete("This method will be removed in the next major release of SDK.", true)]
     public async Task<IReadOnlyDictionary<String, IQuote>> ListLatestBestBidOffersAsync(
         LatestBestBidOfferListRequest request,
         CancellationToken cancellationToken = default) =>
@@ -73,7 +73,7 @@ internal sealed class AlpacaCryptoDataClient :
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             _ => _.LatestBestBidOffers, cancellationToken).ConfigureAwait(false);
 
-    [Obsolete("This method will be removed in the next major release of SDK. Use the ListSnapshotsAsync method instead.", false)]
+    [Obsolete("This method will be removed in the next major release of SDK. Use the ListSnapshotsAsync method instead.", true)]
     public async Task<ISnapshot> GetSnapshotAsync(
         SnapshotDataRequest request,
         CancellationToken cancellationToken = default) =>

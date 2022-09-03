@@ -232,8 +232,10 @@ internal static class HistoricalDataHelpers
         String symbol)
     {
         Assert.NotNull(orderBook);
+        Assert.Equal(String.Empty, orderBook.Exchange);
         Assert.True(orderBook.TimestampUtc <= DateTime.UtcNow);
         Assert.Equal(symbol, orderBook.Symbol);
+        Assert.False(orderBook.IsReset);
 
         Assert.NotNull(orderBook.Asks);
         Assert.NotNull(orderBook.Bids);

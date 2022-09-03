@@ -21,6 +21,7 @@ internal sealed class JsonLatestData<TQuote>
     public Dictionary<String, JsonHistoricalOrderBook> OrderBooks { get; [ExcludeFromCodeCoverage] set; } = new ();
 
     [Obsolete]
+    [ExcludeFromCodeCoverage]
     [JsonProperty(PropertyName = "xbbos", Required = Required.Default)]
     public Dictionary<String, JsonHistoricalCryptoQuote> LatestBestBidOffers { get; [ExcludeFromCodeCoverage] set; } = new();
 }
