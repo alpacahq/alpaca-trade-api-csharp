@@ -11,16 +11,13 @@ public sealed class SnapshotDataListRequest : Validation.IRequest
     /// Creates new instance of <see cref="SnapshotDataListRequest"/> object.
     /// </summary>
     /// <param name="symbols">Asset symbols for data retrieval.</param>
-    /// <param name="exchange">Crypto exchange for data retrieval.</param>
     /// <exception cref="ArgumentNullException">
     /// The <paramref name="symbols"/> argument is <c>null</c>.
     /// </exception>
     public SnapshotDataListRequest(
-        IEnumerable<String> symbols,
-        CryptoExchange exchange)
+        IEnumerable<String> symbols)
     {
         _symbols.UnionWith(symbols.EnsureNotNull());
-        Exchange = exchange;
     }
 
     /// <summary>
@@ -29,18 +26,11 @@ public sealed class SnapshotDataListRequest : Validation.IRequest
     [UsedImplicitly]
     public IReadOnlyCollection<String> Symbols => _symbols;
 
-    /// <summary>
-    /// Gets crypto exchange for data retrieval.
-    /// </summary>
-    [UsedImplicitly]
-    public CryptoExchange Exchange { get; }
-
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
         HttpClient httpClient) =>
         new UriBuilder(httpClient.BaseAddress!)
         {
             Query = await new QueryBuilder()
-                .AddParameter("exchange", Exchange.ToEnumString())
                 .AddParameter("symbols", Symbols)
                 .AsStringAsync().ConfigureAwait(false)
         }.AppendPath("snapshots");
