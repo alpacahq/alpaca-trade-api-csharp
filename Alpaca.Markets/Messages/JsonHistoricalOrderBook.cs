@@ -34,6 +34,7 @@ internal sealed class JsonHistoricalOrderBook : IOrderBook, ISymbolMutable
     [JsonIgnore]
     public IReadOnlyList<IOrderBookEntry> Asks { get; private set; } = new List<IOrderBookEntry>();
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void SetSymbol(String symbol) => Symbol = symbol;
 
     [OnDeserialized]

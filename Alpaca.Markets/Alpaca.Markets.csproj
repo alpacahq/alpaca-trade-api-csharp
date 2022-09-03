@@ -12,13 +12,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.1.1.0</AssemblyVersion>
-    <FileVersion>6.1.1.0</FileVersion>
-    <Version>6.1.1</Version>
+    <AssemblyVersion>6.1.2.0</AssemblyVersion>
+    <FileVersion>6.1.2.0</FileVersion>
+    <Version>6.1.2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- The `IAsset` interface extended with new crypto-specific `MinOrderSize`, `MinTradeIncrement`, and `PriceIncrement` properties.</PackageReleaseNotes>
+    <PackageReleaseNotes>- The `SnapshotDataListRequest.Exchange` property and related constructor are marked as obsolete because this query parameter didn't support by the underlying API anymore.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
