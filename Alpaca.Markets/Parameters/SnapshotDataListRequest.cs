@@ -18,7 +18,18 @@ namespace Alpaca.Markets
         /// Creates new instance of <see cref="SnapshotDataListRequest"/> object.
         /// </summary>
         /// <param name="symbols">Asset names for data retrieval.</param>
+        public SnapshotDataListRequest(
+            IEnumerable<String> symbols)
+        {
+            _symbols.UnionWith(symbols.EnsureNotNull(nameof(symbols)));
+        }
+
+        /// <summary>
+        /// Creates new instance of <see cref="SnapshotDataListRequest"/> object.
+        /// </summary>
+        /// <param name="symbols">Asset names for data retrieval.</param>
         /// <param name="exchange">Crypto exchange for data retrieval.</param>
+        [Obsolete("This constructor will be removed in the next major release. Use constructor with a single argument instead.", false)]
         public SnapshotDataListRequest(
             IEnumerable<String> symbols,
             CryptoExchange exchange)
@@ -37,6 +48,7 @@ namespace Alpaca.Markets
         /// Gets crypto exchange for data retrieval.
         /// </summary>
         [UsedImplicitly]
+        [Obsolete("This property is not supported by API anymore and will be removed in the next major release.", false)]
         public CryptoExchange Exchange { get; }
 
         internal async ValueTask<UriBuilder> GetUriBuilderAsync(
@@ -44,7 +56,6 @@ namespace Alpaca.Markets
             new UriBuilder(httpClient.BaseAddress!)
             {
                 Query = await new QueryBuilder()
-                    .AddParameter("exchange", Exchange.ToEnumString())
                     .AddParameter("symbols", Symbols)
                     .AsStringAsync().ConfigureAwait(false)
             }.AppendPath("snapshots");
