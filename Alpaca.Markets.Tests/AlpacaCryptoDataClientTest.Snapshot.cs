@@ -25,7 +25,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         mock.AddCryptoSnapshotsExpectation(PathPrefix, _symbols);
 
         var snapshots = await mock.Client.ListSnapshotsAsync(
-            new SnapshotDataListRequest(_symbols, CryptoExchange.Cbse));
+            new SnapshotDataListRequest(_symbols));
 
         Assert.NotNull(snapshots);
         Assert.NotEmpty(snapshots);

@@ -994,6 +994,7 @@ Alpaca.Markets.SimpleOrderBase.StopLoss(decimal stopLossStopPrice, decimal stopL
 Alpaca.Markets.SimpleOrderBase.TakeProfit(decimal takeProfitLimitPrice) -> Alpaca.Markets.TakeProfitOrder!
 Alpaca.Markets.SnapshotDataListRequest
 Alpaca.Markets.SnapshotDataListRequest.Exchange.get -> Alpaca.Markets.CryptoExchange
+Alpaca.Markets.SnapshotDataListRequest.SnapshotDataListRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
 Alpaca.Markets.SnapshotDataListRequest.SnapshotDataListRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.CryptoExchange exchange) -> void
 Alpaca.Markets.SnapshotDataListRequest.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
 Alpaca.Markets.SnapshotDataRequest

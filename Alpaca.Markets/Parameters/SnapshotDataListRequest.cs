@@ -11,10 +11,24 @@ public sealed class SnapshotDataListRequest : Validation.IRequest
     /// Creates new instance of <see cref="SnapshotDataListRequest"/> object.
     /// </summary>
     /// <param name="symbols">Asset symbols for data retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    public SnapshotDataListRequest(
+        IEnumerable<String> symbols)
+    {
+        _symbols.UnionWith(symbols.EnsureNotNull());
+    }
+
+    /// <summary>
+    /// Creates new instance of <see cref="SnapshotDataListRequest"/> object.
+    /// </summary>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="exchange">Crypto exchange for data retrieval.</param>
     /// <exception cref="ArgumentNullException">
     /// The <paramref name="symbols"/> argument is <c>null</c>.
     /// </exception>
+    [Obsolete("This constructor will be removed in the next major release. Use constructor with a single argument instead.", true)]
     public SnapshotDataListRequest(
         IEnumerable<String> symbols,
         CryptoExchange exchange)
@@ -33,6 +47,7 @@ public sealed class SnapshotDataListRequest : Validation.IRequest
     /// Gets crypto exchange for data retrieval.
     /// </summary>
     [UsedImplicitly]
+    [Obsolete("This property is not supported by API anymore and will be removed in the next major release.", true)]
     public CryptoExchange Exchange { get; }
 
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
@@ -40,7 +55,6 @@ public sealed class SnapshotDataListRequest : Validation.IRequest
         new UriBuilder(httpClient.BaseAddress!)
         {
             Query = await new QueryBuilder()
-                .AddParameter("exchange", Exchange.ToEnumString())
                 .AddParameter("symbols", Symbols)
                 .AsStringAsync().ConfigureAwait(false)
         }.AppendPath("snapshots");
