@@ -76,6 +76,8 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     {
     }
 
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This method should be removed in the next major release.", false)]
     internal void CopyPagination(Pagination pagination)
     {
         Pagination.Token = pagination.Token;
@@ -86,12 +88,8 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     /// Gets crypto exchanges list for data retrieval (empty list means 'all exchanges').
     /// </summary>
     [UsedImplicitly]
+    [Obsolete("This property is not supported by API anymore and will be removed in the next major release.", false)]
     public IReadOnlyCollection<CryptoExchange> Exchanges => _exchanges;
 
     internal override Boolean HasSingleSymbol => false;
-
-    internal override QueryBuilder AddParameters(
-        QueryBuilder queryBuilder) =>
-        base.AddParameters(queryBuilder)
-            .AddParameter("exchanges", Exchanges);
 }

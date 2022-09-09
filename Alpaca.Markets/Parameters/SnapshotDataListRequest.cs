@@ -28,6 +28,7 @@ public sealed class SnapshotDataListRequest : Validation.IRequest
     /// <exception cref="ArgumentNullException">
     /// The <paramref name="symbols"/> argument is <c>null</c>.
     /// </exception>
+    [ExcludeFromCodeCoverage]
     [Obsolete("This constructor will be removed in the next major release. Use constructor with a single argument instead.", true)]
     public SnapshotDataListRequest(
         IEnumerable<String> symbols,
@@ -47,6 +48,7 @@ public sealed class SnapshotDataListRequest : Validation.IRequest
     /// Gets crypto exchange for data retrieval.
     /// </summary>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [Obsolete("This property is not supported by API anymore and will be removed in the next major release.", true)]
     public CryptoExchange Exchange { get; }
 

@@ -143,6 +143,7 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
         : base(symbols.EnsureNotNull(), timeInterval) =>
         TimeFrame = timeFrame;
 
+    [Obsolete("This constructor should be removed in the next major release.", false)]
     private HistoricalCryptoBarsRequest(
         HistoricalCryptoBarsRequest request,
         IEnumerable<CryptoExchange> exchanges)
@@ -169,6 +170,8 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
     /// </exception>
     /// <returns>The new instance of the <see cref="HistoricalCryptoBarsRequest"/> object.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This method will be removed in the next major release.", false)]
     public HistoricalCryptoBarsRequest WithExchanges(
         IEnumerable<CryptoExchange> exchanges) =>
         new(this, exchanges.EnsureNotNull());
@@ -183,6 +186,8 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
     /// </exception>
     /// <returns>The new instance of the <see cref="HistoricalCryptoBarsRequest"/> object.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This method will be removed in the next major release.", false)]
     public HistoricalCryptoBarsRequest WithExchanges(
         params CryptoExchange[] exchanges) =>
         new(this, exchanges.EnsureNotNull());
@@ -198,5 +203,5 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
 
     HistoricalCryptoBarsRequest IHistoricalRequest<HistoricalCryptoBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalCryptoBarsRequest(Symbols, TimeInterval, TimeFrame)
-            .WithPageSize(this.GetPageSize()).WithExchanges(Exchanges);
+            .WithPageSize(this.GetPageSize());
 }

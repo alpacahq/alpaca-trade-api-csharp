@@ -132,6 +132,8 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     {
     }
 
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This constructor should be removed in the next major release.", false)]
     private HistoricalCryptoQuotesRequest(
         HistoricalCryptoQuotesRequest request,
         IEnumerable<CryptoExchange> exchanges)
@@ -149,6 +151,8 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     /// </exception>
     /// <returns>The new instance of the <see cref="HistoricalCryptoQuotesRequest"/> object.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This method will be removed in the next major release.", false)]
     public HistoricalCryptoQuotesRequest WithExchanges(
         IEnumerable<CryptoExchange> exchanges) =>
         new(this, exchanges.EnsureNotNull());
@@ -163,6 +167,8 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     /// </exception>
     /// <returns>The new instance of the <see cref="HistoricalCryptoQuotesRequest"/> object.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This method will be removed in the next major release.", false)]
     public HistoricalCryptoQuotesRequest WithExchanges(
         params CryptoExchange[] exchanges) =>
         new(this, exchanges.EnsureNotNull());
@@ -172,5 +178,5 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
 
     HistoricalCryptoQuotesRequest IHistoricalRequest<HistoricalCryptoQuotesRequest, IQuote>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalCryptoQuotesRequest(Symbols, TimeInterval)
-            .WithPageSize(this.GetPageSize()).WithExchanges(Exchanges);
+            .WithPageSize(this.GetPageSize());
 }

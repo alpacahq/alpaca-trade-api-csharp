@@ -132,6 +132,8 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
     {
     }
 
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This constructor should be removed in the next major release.", false)]
     private HistoricalCryptoTradesRequest(
         HistoricalCryptoTradesRequest request,
         IEnumerable<CryptoExchange> exchanges)
@@ -149,6 +151,8 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
     /// The <paramref name="exchanges"/> argument is <c>null</c>.
     /// </exception>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This method will be removed in the next major release.", false)]
     public HistoricalCryptoTradesRequest WithExchanges(
         IEnumerable<CryptoExchange> exchanges) =>
         new(this, exchanges.EnsureNotNull());
@@ -163,6 +167,8 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
     /// The <paramref name="exchanges"/> argument is <c>null</c>.
     /// </exception>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This method will be removed in the next major release.", false)]
     public HistoricalCryptoTradesRequest WithExchanges(
         params CryptoExchange[] exchanges) =>
         new(this, exchanges.EnsureNotNull());
@@ -172,5 +178,5 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
 
     HistoricalCryptoTradesRequest IHistoricalRequest<HistoricalCryptoTradesRequest, ITrade>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalCryptoTradesRequest(Symbols, TimeInterval)
-            .WithPageSize(this.GetPageSize()).WithExchanges(Exchanges);
+            .WithPageSize(this.GetPageSize());
 }
