@@ -46,6 +46,21 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoBarsRequest"/> object.
     /// </summary>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
+    /// <param name="timeFrame">Type of time bars for retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    public HistoricalCryptoBarsRequest(
+        String symbol,
+        BarTimeFrame timeFrame)
+        : this(new[] { symbol.EnsureNotNull() }, timeFrame)
+    {
+    }
+
+    /// <summary>
+    /// Creates new instance of <see cref="HistoricalCryptoBarsRequest"/> object.
+    /// </summary>
     /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeFrame">Type of time bars for retrieval.</param>
     /// <param name="from">Filter data equal to or after this time.</param>
@@ -75,6 +90,20 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
         Interval<DateTime> timeInterval,
         BarTimeFrame timeFrame)
         : base(symbols.EnsureNotNull(), timeInterval) =>
+        TimeFrame = timeFrame;
+
+    /// <summary>
+    /// Creates new instance of <see cref="HistoricalCryptoBarsRequest"/> object.
+    /// </summary>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
+    /// <param name="timeFrame">Type of time bars for retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    public HistoricalCryptoBarsRequest(
+        IEnumerable<String> symbols,
+        BarTimeFrame timeFrame)
+        : base(symbols.EnsureNotNull(), new Interval<DateTime>()) =>
         TimeFrame = timeFrame;
 
     /// <summary>
@@ -168,6 +197,6 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
             .AddParameter("timeframe", TimeFrame.ToString());
 
     HistoricalCryptoBarsRequest IHistoricalRequest<HistoricalCryptoBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
-        new HistoricalCryptoBarsRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto(), TimeFrame)
+        new HistoricalCryptoBarsRequest(Symbols, TimeInterval, TimeFrame)
             .WithPageSize(this.GetPageSize()).WithExchanges(Exchanges);
 }
