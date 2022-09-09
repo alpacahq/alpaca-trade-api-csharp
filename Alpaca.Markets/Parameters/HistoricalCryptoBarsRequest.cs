@@ -143,16 +143,6 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
         : base(symbols.EnsureNotNull(), timeInterval) =>
         TimeFrame = timeFrame;
 
-    private HistoricalCryptoBarsRequest(
-        HistoricalCryptoBarsRequest request,
-        IEnumerable<CryptoExchange> exchanges)
-        : base(request.Symbols, request.TimeInterval,
-            request.Exchanges.Concat(exchanges))
-    {
-        CopyPagination(request.Pagination);
-        TimeFrame = request.TimeFrame;
-    }
-
     /// <summary>
     /// Gets type of time bars for retrieval.
     /// </summary>
@@ -169,9 +159,10 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
     /// </exception>
     /// <returns>The new instance of the <see cref="HistoricalCryptoBarsRequest"/> object.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This method will be removed in the next major release.", true)]
     public HistoricalCryptoBarsRequest WithExchanges(
-        IEnumerable<CryptoExchange> exchanges) =>
-        new(this, exchanges.EnsureNotNull());
+        IEnumerable<CryptoExchange> exchanges) => this;
 
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoBarsRequest"/> object
@@ -183,9 +174,10 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
     /// </exception>
     /// <returns>The new instance of the <see cref="HistoricalCryptoBarsRequest"/> object.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This method will be removed in the next major release.", true)]
     public HistoricalCryptoBarsRequest WithExchanges(
-        params CryptoExchange[] exchanges) =>
-        new(this, exchanges.EnsureNotNull());
+        params CryptoExchange[] exchanges) => this;
 
     /// <inheritdoc />
     protected override String LastPathSegment => "bars";
@@ -198,5 +190,5 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
 
     HistoricalCryptoBarsRequest IHistoricalRequest<HistoricalCryptoBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalCryptoBarsRequest(Symbols, TimeInterval, TimeFrame)
-            .WithPageSize(this.GetPageSize()).WithExchanges(Exchanges);
+            .WithPageSize(this.GetPageSize());
 }

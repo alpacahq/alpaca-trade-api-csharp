@@ -132,12 +132,20 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     {
     }
 
-    private HistoricalCryptoQuotesRequest(
-        HistoricalCryptoQuotesRequest request,
-        IEnumerable<CryptoExchange> exchanges)
-        : base(request.Symbols, request.TimeInterval,
-            request.Exchanges.Concat(exchanges)) =>
-        CopyPagination(request.Pagination);
+    /// <summary>
+    /// Creates new instance of <see cref="HistoricalCryptoQuotesRequest"/> object
+    /// with the updated <see cref="HistoricalCryptoRequestBase.Exchanges"/> list.
+    /// </summary>
+    /// <param name="exchanges">Crypto exchanges to add into the list.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="exchanges"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>The new instance of the <see cref="HistoricalCryptoQuotesRequest"/> object.</returns>
+    [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This method will be removed in the next major release.", true)]
+    public HistoricalCryptoQuotesRequest WithExchanges(
+        IEnumerable<CryptoExchange> exchanges) => this;
 
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoQuotesRequest"/> object
@@ -149,28 +157,15 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     /// </exception>
     /// <returns>The new instance of the <see cref="HistoricalCryptoQuotesRequest"/> object.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This method will be removed in the next major release.", true)]
     public HistoricalCryptoQuotesRequest WithExchanges(
-        IEnumerable<CryptoExchange> exchanges) =>
-        new(this, exchanges.EnsureNotNull());
-
-    /// <summary>
-    /// Creates new instance of <see cref="HistoricalCryptoQuotesRequest"/> object
-    /// with the updated <see cref="HistoricalCryptoRequestBase.Exchanges"/> list.
-    /// </summary>
-    /// <param name="exchanges">Crypto exchanges to add into the list.</param>
-    /// <exception cref="ArgumentNullException">
-    /// The <paramref name="exchanges"/> argument is <c>null</c>.
-    /// </exception>
-    /// <returns>The new instance of the <see cref="HistoricalCryptoQuotesRequest"/> object.</returns>
-    [UsedImplicitly]
-    public HistoricalCryptoQuotesRequest WithExchanges(
-        params CryptoExchange[] exchanges) =>
-        new(this, exchanges.EnsureNotNull());
+        params CryptoExchange[] exchanges) => this;
 
     /// <inheritdoc />
     protected override String LastPathSegment => "quotes";
 
     HistoricalCryptoQuotesRequest IHistoricalRequest<HistoricalCryptoQuotesRequest, IQuote>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalCryptoQuotesRequest(Symbols, TimeInterval)
-            .WithPageSize(this.GetPageSize()).WithExchanges(Exchanges);
+            .WithPageSize(this.GetPageSize());
 }

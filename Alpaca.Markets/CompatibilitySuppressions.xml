@@ -1923,4 +1923,32 @@
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.HistoricalCryptoRequestBase.#ctor(System.Collections.Generic.IEnumerable{System.String},Alpaca.Markets.IInclusiveTimeInterval,System.Collections.Generic.IEnumerable{Alpaca.Markets.CryptoExchange})</Target>
+    <Left>lib/net462/Alpaca.Markets.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.HistoricalCryptoRequestBase.#ctor(System.Collections.Generic.IEnumerable{System.String},Alpaca.Markets.IInclusiveTimeInterval,System.Collections.Generic.IEnumerable{Alpaca.Markets.CryptoExchange})</Target>
+    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.HistoricalCryptoRequestBase.#ctor(System.Collections.Generic.IEnumerable{System.String},Alpaca.Markets.IInclusiveTimeInterval,System.Collections.Generic.IEnumerable{Alpaca.Markets.CryptoExchange})</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.HistoricalCryptoRequestBase.#ctor(System.Collections.Generic.IEnumerable{System.String},Alpaca.Markets.IInclusiveTimeInterval,System.Collections.Generic.IEnumerable{Alpaca.Markets.CryptoExchange})</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
 </Suppressions>

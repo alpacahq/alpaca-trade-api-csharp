@@ -10,8 +10,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         mock.AddMultiTradesPageExpectation(PathPrefix, _symbols);
 
         var trades = await mock.Client.GetHistoricalTradesAsync(
-            new HistoricalCryptoTradesRequest(_symbols, Yesterday, Today)
-                .WithExchanges(CryptoExchange.Cbse));
+            new HistoricalCryptoTradesRequest(_symbols, Yesterday, Today));
 
         Assert.NotNull(trades);
         Assert.NotEmpty(trades.Items);
@@ -28,8 +27,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         mock.AddMultiTradesPageExpectation(PathPrefix, _symbol);
 
         var trades = await mock.Client.GetHistoricalTradesAsync(
-            new HistoricalCryptoTradesRequest(Crypto, _timeInterval)
-                .WithExchanges(CryptoExchange.Cbse));
+            new HistoricalCryptoTradesRequest(Crypto, _timeInterval));
 
         Assert.NotNull(trades);
         Assert.NotEmpty(trades.Items);
@@ -45,8 +43,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         mock.AddMultiTradesPageExpectation(PathPrefix, _symbol);
 
         var trades = await mock.Client.ListHistoricalTradesAsync(
-            new HistoricalCryptoTradesRequest(Crypto, Yesterday, Today)
-                .WithExchanges(_exchangesList));
+            new HistoricalCryptoTradesRequest(Crypto, Yesterday, Today));
 
         Assert.NotNull(trades);
         Assert.NotEmpty(trades.Items);
@@ -63,8 +60,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         mock.AddMultiTradesPageExpectation(PathPrefix, _symbols);
 
         var trades = await mock.Client.ListHistoricalTradesAsync(
-            new HistoricalCryptoTradesRequest(_symbols, _timeInterval)
-                .WithExchanges(_exchangesList));
+            new HistoricalCryptoTradesRequest(_symbols, _timeInterval));
 
         Assert.NotNull(trades);
         Assert.NotEmpty(trades.Items);

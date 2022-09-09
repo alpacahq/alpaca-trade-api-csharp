@@ -5,8 +5,6 @@
 /// </summary>
 public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
 {
-    private readonly HashSet<CryptoExchange> _exchanges = new();
-
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoRequestBase"/> object.
     /// </summary>
@@ -34,19 +32,6 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     }
 
     /// <summary>
-    /// Creates new instance of <see cref="HistoricalCryptoRequestBase"/> object.
-    /// </summary>
-    /// <param name="symbols">Asset symbols for data retrieval.</param>
-    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
-    /// <param name="exchanges">Crypto exchanges list for data retrieval.</param>
-    protected internal HistoricalCryptoRequestBase(
-        IEnumerable<String> symbols,
-        Interval<DateTime> timeInterval,
-        IEnumerable<CryptoExchange> exchanges)
-        : base(symbols, timeInterval) =>
-        _exchanges.UnionWith(exchanges);
-
-    /// <summary>
     /// Creates new instance of <see cref="HistoricalRequestBase"/> object.
     /// </summary>
     /// <param name="symbols">Asset symbols for data retrieval.</param>
@@ -61,37 +46,11 @@ public abstract class HistoricalCryptoRequestBase : HistoricalRequestBase
     }
 
     /// <summary>
-    /// Creates new instance of <see cref="HistoricalCryptoRequestBase"/> object.
-    /// </summary>
-    /// <param name="symbols">Asset symbols for data retrieval.</param>
-    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
-    /// <param name="exchanges">Crypto exchanges list for data retrieval.</param>
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
-    protected internal HistoricalCryptoRequestBase(
-        IEnumerable<String> symbols,
-        IInclusiveTimeInterval timeInterval,
-        IEnumerable<CryptoExchange> exchanges)
-        : this(symbols, timeInterval.EnsureNotNull().AsDateTimeInterval(), exchanges)
-    {
-    }
-
-    internal void CopyPagination(Pagination pagination)
-    {
-        Pagination.Token = pagination.Token;
-        Pagination.Size = pagination.Size;
-    }
-
-    /// <summary>
     /// Gets crypto exchanges list for data retrieval (empty list means 'all exchanges').
     /// </summary>
     [UsedImplicitly]
-    public IReadOnlyCollection<CryptoExchange> Exchanges => _exchanges;
+    [Obsolete("This property is not supported by API anymore and will be removed in the next major release.", true)]
+    public IReadOnlyCollection<CryptoExchange> Exchanges => Array.Empty<CryptoExchange>();
 
     internal override Boolean HasSingleSymbol => false;
-
-    internal override QueryBuilder AddParameters(
-        QueryBuilder queryBuilder) =>
-        base.AddParameters(queryBuilder)
-            .AddParameter("exchanges", Exchanges);
 }

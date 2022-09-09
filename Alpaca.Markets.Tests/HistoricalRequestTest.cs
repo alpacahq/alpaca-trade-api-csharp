@@ -50,8 +50,7 @@ public sealed class HistoricalRequestTest
     public void HistoricalCryptoBarsRequestWorks()
     {
         var original = addPagination(
-            new HistoricalCryptoBarsRequest(_crypto, _timeInterval, BarTimeFrame.Hour)
-                .WithExchanges(_cryptoExchanges));
+            new HistoricalCryptoBarsRequest(_crypto, _timeInterval, BarTimeFrame.Hour));
         var validated = getValidatedRequest(original);
 
         Assert.Equal(original.TimeFrame, validated.TimeFrame);
@@ -62,8 +61,7 @@ public sealed class HistoricalRequestTest
     public void HistoricalCryptoTradesRequestWorks()
     {
         var original = addPagination(
-            new HistoricalCryptoTradesRequest(_stocks, _timeInterval)
-                .WithExchanges(_cryptoExchanges));
+            new HistoricalCryptoTradesRequest(_stocks, _timeInterval));
         validateCopiedProperties(original, getValidatedRequest(original));
     }
 
@@ -71,8 +69,7 @@ public sealed class HistoricalRequestTest
     public void HistoricalCryptoQuotesRequestWorks()
     {
         var original = addPagination(
-            new HistoricalCryptoQuotesRequest(_stocks, _timeInterval)
-                .WithExchanges(_cryptoExchanges));
+            new HistoricalCryptoQuotesRequest(_stocks, _timeInterval));
         validateCopiedProperties(original, getValidatedRequest(original));
     }
 
@@ -124,13 +121,5 @@ public sealed class HistoricalRequestTest
 
         Assert.NotEqual(original.Pagination.Token, validated.Pagination.Token);
         Assert.Null(validated.Pagination.Token);
-    }
-
-    private static void validateCopiedProperties(
-        HistoricalCryptoRequestBase original,
-        HistoricalCryptoRequestBase validated)
-    {
-        Assert.Equal(original.Exchanges, validated.Exchanges);
-        validateCopiedProperties((HistoricalRequestBase)original, validated);
     }
 }
