@@ -46,6 +46,21 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
     /// <summary>
     /// Creates new instance of <see cref="HistoricalBarsRequest"/> object.
     /// </summary>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
+    /// <param name="timeFrame">Type of time bars for retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    public HistoricalBarsRequest(
+        String symbol,
+        BarTimeFrame timeFrame)
+        : this(new[] { symbol.EnsureNotNull() }, timeFrame)
+    {
+    }
+
+    /// <summary>
+    /// Creates new instance of <see cref="HistoricalBarsRequest"/> object.
+    /// </summary>
     /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeFrame">Type of time bars for retrieval.</param>
     /// <param name="from">Filter data equal to or after this time.</param>
@@ -75,6 +90,20 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
         Interval<DateTime> timeInterval,
         BarTimeFrame timeFrame)
         : base(symbols.EnsureNotNull(), timeInterval) =>
+        TimeFrame = timeFrame;
+
+    /// <summary>
+    /// Creates new instance of <see cref="HistoricalBarsRequest"/> object.
+    /// </summary>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
+    /// <param name="timeFrame">Type of time bars for retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    public HistoricalBarsRequest(
+        IEnumerable<String> symbols,
+        BarTimeFrame timeFrame)
+        : base(symbols.EnsureNotNull(), new Interval<DateTime>()) =>
         TimeFrame = timeFrame;
 
     /// <summary>
@@ -153,7 +182,7 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
             .AddParameter("feed", Feed);
 
     HistoricalBarsRequest IHistoricalRequest<HistoricalBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
-        new HistoricalBarsRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto(), TimeFrame)
+        new HistoricalBarsRequest(Symbols, TimeInterval, TimeFrame)
                 { Adjustment = Adjustment, Feed = Feed, UseSymbolAsOfTheDate = UseSymbolAsOfTheDate }
             .WithPageSize(this.GetPageSize());
 }

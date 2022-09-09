@@ -46,21 +46,7 @@ public static class HistoricalRequestBaseExtensions
         return request;
     }
 
-    internal static DateTime GetValidatedFrom(
-        this HistoricalRequestBase request) =>
-        getValidatedDate(request.TimeInterval.From);
-
-    internal static DateTime GetValidatedInto(
-        this HistoricalRequestBase request) =>
-        getValidatedDate(request.TimeInterval.Into);
-
     internal static UInt32 GetPageSize(
         this IHistoricalRequest request) =>
         request.Pagination.Size ?? MaxPageSize;
-
-    private static DateTime getValidatedDate(
-        DateTime? date,
-        [CallerArgumentExpression("date")] String paramName = "") =>
-        date ?? throw new ArgumentException(
-            "Invalid request time interval - empty date", paramName);
 }

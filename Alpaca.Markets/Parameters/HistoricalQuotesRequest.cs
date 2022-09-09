@@ -43,6 +43,19 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     /// <summary>
     /// Creates new instance of <see cref="HistoricalQuotesRequest"/> object.
     /// </summary>
+    /// <param name="symbol">Asset symbol for data retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    public HistoricalQuotesRequest(
+        String symbol)
+        : this(new[] { symbol.EnsureNotNull() })
+    {
+    }
+
+    /// <summary>
+    /// Creates new instance of <see cref="HistoricalQuotesRequest"/> object.
+    /// </summary>
     /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="from">Filter data equal to or after this time.</param>
     /// <param name="into">Filter data equal to or before this time.</param>
@@ -69,6 +82,19 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
         IEnumerable<String> symbols,
         Interval<DateTime> timeInterval)
         : base(symbols.EnsureNotNull(), timeInterval)
+    {
+    }
+
+    /// <summary>
+    /// Creates new instance of <see cref="HistoricalQuotesRequest"/> object.
+    /// </summary>
+    /// <param name="symbols">Asset symbols for data retrieval.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// </exception>
+    public HistoricalQuotesRequest(
+        IEnumerable<String> symbols)
+        : base(symbols.EnsureNotNull(), new Interval<DateTime>())
     {
     }
 
@@ -130,7 +156,7 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
             .AddParameter("feed", Feed);
 
     HistoricalQuotesRequest IHistoricalRequest<HistoricalQuotesRequest, IQuote>.GetValidatedRequestWithoutPageToken() =>
-        new HistoricalQuotesRequest(Symbols, this.GetValidatedFrom(), this.GetValidatedInto())
+        new HistoricalQuotesRequest(Symbols, TimeInterval)
                 { Feed = Feed, UseSymbolAsOfTheDate = UseSymbolAsOfTheDate }
             .WithPageSize(this.GetPageSize());
 }
