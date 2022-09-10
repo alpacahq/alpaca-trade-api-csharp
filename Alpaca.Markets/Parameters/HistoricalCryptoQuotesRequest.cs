@@ -6,7 +6,7 @@
 /// <see cref="IHistoricalQuotesClient{TRequest}.GetHistoricalQuotesAsync(TRequest,CancellationToken)"/> calls.
 /// </summary>
 [UsedImplicitly]
-public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase, IHistoricalRequest<HistoricalCryptoQuotesRequest, IQuote>
+public sealed class HistoricalCryptoQuotesRequest : HistoricalRequestBase, IHistoricalRequest<HistoricalCryptoQuotesRequest, IQuote>
 {
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoQuotesRequest"/> object.
@@ -134,7 +134,7 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
 
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoQuotesRequest"/> object
-    /// with the updated <see cref="HistoricalCryptoRequestBase.Exchanges"/> list.
+    /// with the updated <see cref="Exchanges"/> list.
     /// </summary>
     /// <param name="exchanges">Crypto exchanges to add into the list.</param>
     /// <exception cref="ArgumentNullException">
@@ -149,7 +149,7 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
 
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoQuotesRequest"/> object
-    /// with the updated <see cref="HistoricalCryptoRequestBase.Exchanges"/> list.
+    /// with the updated <see cref="Exchanges"/> list.
     /// </summary>
     /// <param name="exchanges">Crypto exchanges to add into the list.</param>
     /// <exception cref="ArgumentNullException">
@@ -161,6 +161,15 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     [Obsolete("This method will be removed in the next major release.", true)]
     public HistoricalCryptoQuotesRequest WithExchanges(
         params CryptoExchange[] exchanges) => this;
+
+    /// <summary>
+    /// Gets crypto exchanges list for data retrieval (empty list means 'all exchanges').
+    /// </summary>
+    [UsedImplicitly]
+    [Obsolete("This property is not supported by API anymore and will be removed in the next major release.", true)]
+    public IReadOnlyCollection<CryptoExchange> Exchanges => Array.Empty<CryptoExchange>();
+
+    internal override Boolean HasSingleSymbol => false;
 
     /// <inheritdoc />
     protected override String LastPathSegment => "quotes";
