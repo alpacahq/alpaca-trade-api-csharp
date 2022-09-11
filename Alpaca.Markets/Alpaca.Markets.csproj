@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- The `Exchanges` property of crytp historical data requests marked as obsolete (with warning).
+    <PackageReleaseNotes>- The `Exchanges` property of crypto historical data requests is marked as obsolete (with a warning).
 - Removed restriction for start and end dates presence in historical data requests.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
