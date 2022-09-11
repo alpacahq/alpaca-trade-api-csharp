@@ -265,11 +265,6 @@ Alpaca.Markets.HistoricalCryptoQuotesRequest.HistoricalCryptoQuotesRequest(Syste
 Alpaca.Markets.HistoricalCryptoQuotesRequest.Exchanges.get -> System.Collections.Generic.IReadOnlyCollection<Alpaca.Markets.CryptoExchange>!
 Alpaca.Markets.HistoricalCryptoQuotesRequest.WithExchanges(params Alpaca.Markets.CryptoExchange[]! exchanges) -> Alpaca.Markets.HistoricalCryptoQuotesRequest!
 Alpaca.Markets.HistoricalCryptoQuotesRequest.WithExchanges(System.Collections.Generic.IEnumerable<Alpaca.Markets.CryptoExchange>! exchanges) -> Alpaca.Markets.HistoricalCryptoQuotesRequest!
-Alpaca.Markets.HistoricalCryptoRequestBase
-Alpaca.Markets.HistoricalCryptoRequestBase.Exchanges.get -> System.Collections.Generic.IReadOnlyCollection<Alpaca.Markets.CryptoExchange>!
-Alpaca.Markets.HistoricalCryptoRequestBase.HistoricalCryptoRequestBase(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
-Alpaca.Markets.HistoricalCryptoRequestBase.HistoricalCryptoRequestBase(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.Interval<System.DateTime> timeInterval) -> void
-Alpaca.Markets.HistoricalCryptoRequestBase.HistoricalCryptoRequestBase(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoricalCryptoTradesRequest
 Alpaca.Markets.HistoricalCryptoTradesRequest.HistoricalCryptoTradesRequest(string! symbol) -> void
 Alpaca.Markets.HistoricalCryptoTradesRequest.HistoricalCryptoTradesRequest(string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void

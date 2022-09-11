@@ -2035,4 +2035,32 @@
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoRequestBase</Target>
+    <Left>lib/net462/Alpaca.Markets.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoRequestBase</Target>
+    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoRequestBase</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoRequestBase</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
 </Suppressions>
