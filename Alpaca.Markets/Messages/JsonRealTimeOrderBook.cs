@@ -6,7 +6,7 @@
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
 internal sealed class JsonRealTimeOrderBook : JsonRealTimeBase, IOrderBook
 {
-    [JsonProperty(PropertyName = "x", Required = Required.Always)]
+    [JsonProperty(PropertyName = "x", Required = Required.Default)]
     public String Exchange { get; set; } = String.Empty;
 
     [ExcludeFromCodeCoverage]
