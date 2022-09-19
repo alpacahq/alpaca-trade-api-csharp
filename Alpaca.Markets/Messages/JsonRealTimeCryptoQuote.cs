@@ -6,7 +6,7 @@
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
 internal sealed class JsonRealTimeCryptoQuote : JsonRealTimeBase, IQuote
 {
-    [JsonProperty(PropertyName = "x", Required = Required.Always)]
+    [JsonProperty(PropertyName = "x", Required = Required.Default)]
     public String BidExchange { get; set; } = String.Empty;
 
     [JsonProperty(PropertyName = "bp", Required = Required.Always)]

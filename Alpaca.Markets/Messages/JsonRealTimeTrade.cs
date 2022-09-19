@@ -9,7 +9,7 @@ internal sealed class JsonRealTimeTrade : JsonRealTimeBase, ITrade
     [JsonProperty(PropertyName = "i", Required = Required.Default)]
     public UInt64 TradeId { get; set; }
 
-    [JsonProperty(PropertyName = "x", Required = Required.Always)]
+    [JsonProperty(PropertyName = "x", Required = Required.Default)]
     public String Exchange { get; set; } = String.Empty;
 
     [JsonProperty(PropertyName = "z", Required = Required.Default)]
