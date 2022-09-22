@@ -126,7 +126,7 @@ public sealed class AlpacaStreamingClientTest
         client.Client.Dispose(); // Double dispose should be safe
     }
 
-    [Fact]
+    [Fact(Skip = "Not stable on GitHub Action environment.")]
     public async Task RecursiveErrorsWorks()
     {
         const Int32 expectedWarnings = 1;
