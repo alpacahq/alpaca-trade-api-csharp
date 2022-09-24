@@ -166,6 +166,7 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalRequestBase, IHist
     /// Gets crypto exchanges list for data retrieval (empty list means 'all exchanges').
     /// </summary>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [Obsolete("This property is not supported by API anymore and will be removed in the next major release.", true)]
     public IReadOnlyCollection<CryptoExchange> Exchanges => Array.Empty<CryptoExchange>();
 
