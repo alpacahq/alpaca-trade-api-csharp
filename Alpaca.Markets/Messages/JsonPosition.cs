@@ -31,6 +31,12 @@ namespace Alpaca.Markets
         [JsonIgnore]
         public Int64 IntegerQuantity => Quantity.AsInteger();
 
+        [JsonProperty(PropertyName = "qty_available", Required = Required.Default)]
+        public Decimal AvailableQuantity { get; set; }
+
+        [JsonIgnore]
+        public Int64 IntegerAvailableQuantity => AvailableQuantity.AsInteger();
+
         [JsonProperty(PropertyName = "side", Required = Required.Default)]
         public PositionSide Side { get; set; }
 
