@@ -107,6 +107,7 @@ public sealed partial class AlpacaTradingClientTest
             new JProperty("side", PositionSide.Long),
             new JProperty("current_price", BigPrice),
             new JProperty("lastday_price", BigPrice),
+            new JProperty("qty_available", Quantity),
             new JProperty("change_today", BigPrice),
             new JProperty("cost_basis", SmallPrice),
             new JProperty("exchange", Exchange.Iex),
@@ -118,6 +119,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         Assert.Equal(Stock, position.Symbol);
 
+        Assert.Equal(IntegerQuantity, position.IntegerAvailableQuantity);
         Assert.Equal(IntegerQuantity, position.IntegerQuantity);
         Assert.Equal(PositionSide.Long, position.Side);
 
