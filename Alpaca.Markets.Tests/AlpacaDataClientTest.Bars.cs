@@ -81,4 +81,24 @@ public sealed partial class AlpacaDataClientTest
         bars.Items.Where(_ => _.Symbol == Stock).Validate(Stock);
         bars.Items.Where(_ => _.Symbol != Stock).Validate(Other);
     }
+
+    [Fact]
+    public async Task ListHistoricalBarsAsyncWithoutIntervalWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+
+        mock.AddSingleBarsPageExpectation(PathPrefix, Stock);
+
+        var bars = await mock.Client.ListHistoricalBarsAsync(
+            new HistoricalBarsRequest(Stock, BarTimeFrame.Hour)
+            {
+                Adjustment = Adjustment.SplitsOnly
+            });
+
+        Assert.NotNull(bars);
+        Assert.NotEmpty(bars.Items);
+        Assert.Equal(Stock, bars.Symbol);
+
+        bars.Items.Validate(Stock);
+    }
 }
