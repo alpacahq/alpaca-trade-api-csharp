@@ -48,6 +48,18 @@ public interface IPosition
     Int64 IntegerQuantity { get; }
 
     /// <summary>
+    /// Get total number of shares available minus open orders (with the fractional part).
+    /// </summary>
+    [UsedImplicitly]
+    Decimal AvailableQuantity { get; }
+
+    /// <summary>
+    /// Get total number of shares available minus open orders (rounded to the nearest integer).
+    /// </summary>
+    [UsedImplicitly]
+    Int64 IntegerAvailableQuantity { get; }
+
+    /// <summary>
     /// Get position side (short or long).
     /// </summary>
     [UsedImplicitly]

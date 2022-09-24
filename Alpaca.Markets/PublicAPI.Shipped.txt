@@ -653,9 +653,11 @@ Alpaca.Markets.IPosition.AssetClass.get -> Alpaca.Markets.AssetClass
 Alpaca.Markets.IPosition.AssetCurrentPrice.get -> decimal?
 Alpaca.Markets.IPosition.AssetId.get -> System.Guid
 Alpaca.Markets.IPosition.AssetLastPrice.get -> decimal?
+Alpaca.Markets.IPosition.AvailableQuantity.get -> decimal
 Alpaca.Markets.IPosition.AverageEntryPrice.get -> decimal
 Alpaca.Markets.IPosition.CostBasis.get -> decimal
 Alpaca.Markets.IPosition.Exchange.get -> Alpaca.Markets.Exchange
+Alpaca.Markets.IPosition.IntegerAvailableQuantity.get -> long
 Alpaca.Markets.IPosition.IntegerQuantity.get -> long
 Alpaca.Markets.IPosition.IntradayUnrealizedProfitLoss.get -> decimal?
 Alpaca.Markets.IPosition.IntradayUnrealizedProfitLossPercent.get -> decimal?
