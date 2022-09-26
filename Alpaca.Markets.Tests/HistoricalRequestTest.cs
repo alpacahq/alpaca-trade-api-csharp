@@ -9,9 +9,6 @@ public sealed class HistoricalRequestTest
 
     private static readonly String[] _stocks = { "AAPL", "MSFT" };
 
-    private static readonly CryptoExchange[] _cryptoExchanges =
-        Enum.GetValues<CryptoExchange>();
-
     private static readonly Interval<DateTime> _timeInterval =
         new(DateTime.Today.AddDays(-1), DateTime.Today);
 

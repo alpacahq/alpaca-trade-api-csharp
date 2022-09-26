@@ -12,13 +12,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.1.4.0</AssemblyVersion>
-    <FileVersion>6.1.4.0</FileVersion>
-    <Version>6.1.4</Version>
+    <AssemblyVersion>6.1.5.0</AssemblyVersion>
+    <FileVersion>6.1.5.0</FileVersion>
+    <Version>6.1.5</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- The crypto steaming URL changed from `v1beta1` into `v1beta2` and serialization logic was fixed according to the new scheme.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added the `AvailableQuantity` property (and related `IntegerAvailableQuantity` property) into the `IPosition` interface.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
