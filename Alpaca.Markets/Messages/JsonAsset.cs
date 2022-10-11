@@ -48,6 +48,9 @@ internal sealed class JsonAsset : IAsset
     [JsonProperty(PropertyName = "price_increment", Required = Required.Default)]
     public Decimal? PriceIncrement { get; set; }
 
+    [JsonProperty(PropertyName = "maintenance_margin_requirement", Required = Required.Default)]
+    public Decimal? MaintenanceMarginRequirement { get; }
+
     [ExcludeFromCodeCoverage]
     public override String ToString() =>
         JsonConvert.SerializeObject(this);
