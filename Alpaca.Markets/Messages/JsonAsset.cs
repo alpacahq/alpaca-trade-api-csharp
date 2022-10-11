@@ -49,5 +49,8 @@ namespace Alpaca.Markets
 
         [JsonProperty(PropertyName = "price_increment", Required = Required.Default)]
         public Decimal? PriceIncrement { get; set; }
+
+        [JsonProperty(PropertyName = "maintenance_margin_requirement", Required = Required.Default)]
+        public Decimal? MaintenanceMarginRequirement { get; }
     }
 }
