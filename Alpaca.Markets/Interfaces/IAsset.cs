@@ -91,4 +91,10 @@ public interface IAsset
     /// </summary>
     [UsedImplicitly]
     Decimal? PriceIncrement { get; }
+
+    /// <summary>
+    /// Gets the % margin requirement for the asset. This property is valid only for equity assets.
+    /// </summary>
+    [UsedImplicitly]
+    Decimal? MaintenanceMarginRequirement { get; }
 }
