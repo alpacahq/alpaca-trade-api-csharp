@@ -4,14 +4,14 @@
     <OutputType>Exe</OutputType>
     <TargetFrameworks>netcoreapp3.1;net462;net48;net6.0</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-	<TrimmerDefaultAction>link</TrimmerDefaultAction>
-	<ImplicitUsings>enable</ImplicitUsings>
+    <TrimmerDefaultAction>link</TrimmerDefaultAction>
+    <ImplicitUsings>enable</ImplicitUsings>
     <PublishTrimmed>true</PublishTrimmed>
-	<LangVersion>latest</LangVersion>
+	  <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4')) AND '$(MSBuildRuntimeType)' == 'Core' AND '$(OS)' != 'Windows_NT'">
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +24,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="OoplesFinance.StockIndicators" Version="1.0.47" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.2" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
   </ItemGroup>
   
   <ItemGroup>
