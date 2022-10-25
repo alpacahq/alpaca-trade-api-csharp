@@ -41,6 +41,7 @@ internal static partial class HttpClientExtensions
             Func<KeyValuePair<String, TValueJson>, TValueApi> elementSelector,
             CancellationToken cancellationToken)
         where TValueJson : TValueApi, ISymbolMutable =>
+        // ReSharper disable once RedundantTypeArgumentsOfMethod
         getReadOnlyDictionary<String, TValueApi, String, TValueJson>(
             itemsSelector(await httpClient.GetAsync<TStorage, TStorage>(
                     uriBuilder, cancellationToken)

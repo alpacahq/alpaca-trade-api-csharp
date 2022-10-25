@@ -41,6 +41,7 @@ internal static class Validation
         where TRequest : class, IRequest
     {
         var exception = new AggregateException(
+            // ReSharper disable once RedundantEnumerableCastCall
             request.GetExceptions().OfType<RequestValidationException>());
         if (exception.InnerExceptions.Count != 0)
         {
