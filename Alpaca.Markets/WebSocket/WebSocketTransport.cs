@@ -87,6 +87,12 @@ internal sealed class WebSocketsTransport : IDisposable
         try
         {
             _webSocket = _webSocketFactory();
+            if (_webSocket is null)
+            {
+                Error?.Invoke(new InvalidOperationException(
+                    "Unable to create web socket using custom web socket factory."));
+                return;
+            }
 
             var options = new PipeOptions(
                 writerScheduler: PipeScheduler.Inline,
