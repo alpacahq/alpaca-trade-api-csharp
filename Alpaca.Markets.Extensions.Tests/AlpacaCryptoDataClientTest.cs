@@ -7,7 +7,7 @@ public sealed class AlpacaCryptoDataClientTest
 
     private readonly MockClientsFactoryFixture _mockClientsFactory;
 
-    private const String Crypto = "BTCUSD";
+    private const String Crypto = "BTC/USD";
 
     private const Decimal Volume = 1_000M;
 
@@ -24,7 +24,7 @@ public sealed class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        addPaginatedResponses(mock, addSingleBarsPageExpectation);
+        addPaginatedResponses(mock, addMultiBarsPageExpectation);
 
         var (adtv, count) = await mock.Client.GetAverageDailyTradeVolumeAsync(
             Crypto, _timeInterval.AsDateInterval());
@@ -46,13 +46,13 @@ public sealed class AlpacaCryptoDataClientTest
         }
     }
 
-    private static void addSingleBarsPageExpectation(
+    private static void addMultiBarsPageExpectation(
         MockClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> mock,
         String? token = null) =>
-        mock.AddGet("/v1beta1/crypto/**/bars", new JObject(
-            new JProperty("bars", createBarsList()),
-            new JProperty("next_page_token", token),
-            new JProperty("symbol", Crypto)));
+        mock.AddGet("/v1beta2/crypto/bars", new JObject(
+            new JProperty("bars", new JObject(
+                new JProperty(Crypto, createBarsList()))),
+            new JProperty("next_page_token", token)));
 
     private static JArray createBarsList() =>
         new(createBar(), createBar(), createBar());
