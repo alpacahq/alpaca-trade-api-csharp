@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-52-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-53-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -78,6 +78,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
       <td align="center"><a href="https://github.com/zhorakiev"><img src="https://avatars.githubusercontent.com/u/65150239?v=4?s=100" width="100px;" alt="zhorakiev"/><br /><sub><b>zhorakiev</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Azhorakiev" title="Bug reports">🐛</a> <a href="#ideas-zhorakiev" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center"><a href="https://github.com/liftee"><img src="https://avatars.githubusercontent.com/u/23428054?v=4?s=100" width="100px;" alt="liftee"/><br /><sub><b>liftee</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Aliftee" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://github.com/TonyC1Ward"><img src="https://avatars.githubusercontent.com/u/36459458?v=4?s=100" width="100px;" alt="Tony C Ward"/><br /><sub><b>Tony C Ward</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3ATonyC1Ward" title="Bug reports">🐛</a></td>
+      <td align="center"><a href="https://github.com/jeffwlandry"><img src="https://avatars.githubusercontent.com/u/50668541?v=4?s=100" width="100px;" alt="jeffwlandry"/><br /><sub><b>jeffwlandry</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Ajeffwlandry" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
