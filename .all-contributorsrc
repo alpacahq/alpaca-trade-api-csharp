@@ -486,6 +486,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "TonyC1Ward",
+      "name": "Tony C Ward",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36459458?v=4",
+      "profile": "https://github.com/TonyC1Ward",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
