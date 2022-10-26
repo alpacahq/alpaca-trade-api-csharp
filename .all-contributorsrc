@@ -632,6 +632,15 @@
         "ideas",
         "question"
       ]
+    },
+    {
+      "login": "tstraus13",
+      "name": "Tom Strausbaugh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5975216?v=4",
+      "profile": "https://straustech.net",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
