@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -34,6 +34,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
       <td align="center"><a href="http://app.xtrades.net"><img src="https://avatars.githubusercontent.com/u/9411281?v=4?s=100" width="100px;" alt="Dan Beaulieu"/><br /><sub><b>Dan Beaulieu</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=codebeaulieu" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/Xallen79"><img src="https://avatars.githubusercontent.com/u/7258467?v=4?s=100" width="100px;" alt="Tim"/><br /><sub><b>Tim</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=Xallen79" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/jcjurevis"><img src="https://avatars.githubusercontent.com/u/34969570?v=4?s=100" width="100px;" alt="jcjurevis"/><br /><sub><b>jcjurevis</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=jcjurevis" title="Code">💻</a></td>
+      <td align="center"><a href="http://bitministry.com"><img src="https://avatars.githubusercontent.com/u/1719076?v=4?s=100" width="100px;" alt="Andrew Rebane"/><br /><sub><b>Andrew Rebane</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=koolinoor" title="Code">💻</a> <a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Akoolinoor" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>

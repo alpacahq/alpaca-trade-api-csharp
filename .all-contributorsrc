@@ -175,6 +175,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "koolinoor",
+      "name": "Andrew Rebane",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1719076?v=4",
+      "profile": "http://bitministry.com",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
