@@ -549,6 +549,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "bizjaya",
+      "name": "Vejay",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10965434?v=4",
+      "profile": "https://github.com/bizjaya",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
