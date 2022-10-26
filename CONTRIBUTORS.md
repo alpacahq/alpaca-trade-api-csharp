@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -28,6 +28,9 @@ Thanks goes to these wonderful people who helps to make this SDK better:
       <td align="center"><a href="https://github.com/shlomikushchi"><img src="https://avatars.githubusercontent.com/u/7924802?v=4?s=100" width="100px;" alt="Shlomi Kushchi"/><br /><sub><b>Shlomi Kushchi</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=shlomikushchi" title="Documentation">📖</a></td>
       <td align="center"><a href="https://github.com/PrometheusUno"><img src="https://avatars.githubusercontent.com/u/3609585?v=4?s=100" width="100px;" alt="PrometheusUno"/><br /><sub><b>PrometheusUno</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=PrometheusUno" title="Documentation">📖</a></td>
       <td align="center"><a href="http://stackoverflow.com/users/332960/chris-schmich"><img src="https://avatars.githubusercontent.com/u/1562839?v=4?s=100" width="100px;" alt="Christopher Paul Schmich"/><br /><sub><b>Christopher Paul Schmich</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=schmich" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center"><a href="http://www.ronniebarnard.com"><img src="https://avatars.githubusercontent.com/u/6628234?v=4?s=100" width="100px;" alt="Ronnie Barnard"/><br /><sub><b>Ronnie Barnard</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=Ronmenator" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
