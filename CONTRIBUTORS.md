@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -18,6 +18,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
       <td align="center"><a href="https://github.com/ElektroMech"><img src="https://avatars.githubusercontent.com/u/10456459?v=4?s=100" width="100px;" alt="Mikhail Prokaziuk"/><br /><sub><b>Mikhail Prokaziuk</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=ElektroMech" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/biyimaks"><img src="https://avatars.githubusercontent.com/u/382250?v=4?s=100" width="100px;" alt="Biyi Makinde"/><br /><sub><b>Biyi Makinde</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=biyimaks" title="Code">💻</a></td>
       <td align="center"><a href="https://www.gjtorikian.com/"><img src="https://avatars.githubusercontent.com/u/64050?v=4?s=100" width="100px;" alt="Garen Torikian"/><br /><sub><b>Garen Torikian</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=gjtorikian" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/ajit-kolathur"><img src="https://avatars.githubusercontent.com/u/1821869?v=4?s=100" width="100px;" alt="Vishwajit Kolathur"/><br /><sub><b>Vishwajit Kolathur</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=ajit-kolathur" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
