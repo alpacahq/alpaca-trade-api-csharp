@@ -782,6 +782,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "markns",
+      "name": "Mark Nuttall-Smith",
+      "avatar_url": "https://avatars.githubusercontent.com/u/368384?v=4",
+      "profile": "https://markns.dev/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
