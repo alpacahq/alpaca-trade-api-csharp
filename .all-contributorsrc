@@ -365,6 +365,15 @@
         "bug",
         "ideas"
       ]
+    },
+    {
+      "login": "kwcoffee1",
+      "name": "kwcoffee1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13096086?v=4",
+      "profile": "https://github.com/kwcoffee1",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
