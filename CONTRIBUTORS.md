@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-81-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-82-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -115,6 +115,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
       <td align="center"><a href="https://github.com/tdhatcher"><img src="https://avatars.githubusercontent.com/u/360359?v=4?s=100" width="100px;" alt="Todd Hatcher"/><br /><sub><b>Todd Hatcher</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Atdhatcher" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://github.com/TheHumanWithAPlan"><img src="https://avatars.githubusercontent.com/u/77593243?v=4?s=100" width="100px;" alt="Jurique V"/><br /><sub><b>Jurique V</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3ATheHumanWithAPlan" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://github.com/tcj2001"><img src="https://avatars.githubusercontent.com/u/53880772?v=4?s=100" width="100px;" alt="tcj2001"/><br /><sub><b>tcj2001</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Atcj2001" title="Bug reports">🐛</a></td>
+      <td align="center"><a href="https://github.com/JasonAr936"><img src="https://avatars.githubusercontent.com/u/101609122?v=4?s=100" width="100px;" alt="JasonAr936"/><br /><sub><b>JasonAr936</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3AJasonAr936" title="Bug reports">🐛</a> <a href="#ideas-JasonAr936" title="Ideas, Planning, & Feedback">🤔</a></td>
     </tr>
   </tbody>
 </table>
