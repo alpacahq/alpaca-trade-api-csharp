@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -23,6 +23,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
     <tr>
       <td align="center"><a href="http://nhitze.com"><img src="https://avatars.githubusercontent.com/u/3506334?v=4?s=100" width="100px;" alt="Nate Hitze"/><br /><sub><b>Nate Hitze</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=natehitze" title="Code">💻</a></td>
       <td align="center"><a href="https://hard-coder05.github.io/"><img src="https://avatars.githubusercontent.com/u/54059881?v=4?s=100" width="100px;" alt="Siddharth Mishra"/><br /><sub><b>Siddharth Mishra</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=Hard-Coder05" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/amwsis"><img src="https://avatars.githubusercontent.com/u/56340509?v=4?s=100" width="100px;" alt="amwsis"/><br /><sub><b>amwsis</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=amwsis" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
