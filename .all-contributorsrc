@@ -112,6 +112,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "shlomikushchi",
+      "name": "Shlomi Kushchi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7924802?v=4",
+      "profile": "https://github.com/shlomikushchi",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
