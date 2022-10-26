@@ -216,6 +216,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "thedudebond",
+      "name": "thedudebond",
+      "avatar_url": "https://avatars.githubusercontent.com/u/49367928?v=4",
+      "profile": "https://github.com/thedudebond",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
