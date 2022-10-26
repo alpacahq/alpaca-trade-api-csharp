@@ -69,3 +69,7 @@ Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method fo
 1.  Install the latest version of the [.NET 6.0 SDK](https://dotnet.microsoft.com/download) for your OS.
 2.  Clone the local version of this repository or your own fork (if you want to make changes).
 3.  Build the packages using the `dotnet build` command running in the root directory of the cloned repo.
+
+## Contributors
+
+Thanks a lot for all contributors. See the full list of project supporters in the [CONTRIBUTORS](https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/CONTRIBUTORS.md) file.
