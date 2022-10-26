@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-40-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-41-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -62,6 +62,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
       <td align="center"><a href="https://softwaresalt.github.io/.salt/"><img src="https://avatars.githubusercontent.com/u/42183845?v=4?s=100" width="100px;" alt="software.salt"/><br /><sub><b>software.salt</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Asoftwaresalt" title="Bug reports">🐛</a> <a href="#ideas-softwaresalt" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center"><a href="https://github.com/kwcoffee1"><img src="https://avatars.githubusercontent.com/u/13096086?v=4?s=100" width="100px;" alt="kwcoffee1"/><br /><sub><b>kwcoffee1</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Akwcoffee1" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://github.com/gsalaz98"><img src="https://avatars.githubusercontent.com/u/25196864?v=4?s=100" width="100px;" alt="Gerardo Salazar"/><br /><sub><b>Gerardo Salazar</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Agsalaz98" title="Bug reports">🐛</a></td>
+      <td align="center"><a href="https://github.com/thi517"><img src="https://avatars.githubusercontent.com/u/24034?v=4?s=100" width="100px;" alt="thi517"/><br /><sub><b>thi517</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Athi517" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
