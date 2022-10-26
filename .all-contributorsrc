@@ -40,6 +40,15 @@
         "example",
         "bug"
       ]
+    },
+    {
+      "login": "ElektroMech",
+      "name": "Mikhail Prokaziuk",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10456459?v=4",
+      "profile": "https://github.com/ElektroMech",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
