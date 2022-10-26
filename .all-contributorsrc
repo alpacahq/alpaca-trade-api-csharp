@@ -103,6 +103,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Dav-id",
+      "name": "Dav-id",
+      "avatar_url": "https://avatars.githubusercontent.com/u/172320?v=4",
+      "profile": "https://github.com/Dav-id",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
