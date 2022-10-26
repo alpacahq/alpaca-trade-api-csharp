@@ -76,6 +76,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "natehitze",
+      "name": "Nate Hitze",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3506334?v=4",
+      "profile": "http://nhitze.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
