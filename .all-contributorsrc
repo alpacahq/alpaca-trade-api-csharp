@@ -641,6 +641,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "matt953",
+      "name": "Matthew M",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9834543?v=4",
+      "profile": "https://github.com/matt953",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,

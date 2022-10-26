@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-68-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-69-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -98,6 +98,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
       <td align="center"><a href="http://www.linkedin.com/in/rahul-deshmukh-6269062"><img src="https://avatars.githubusercontent.com/u/16350446?v=4?s=100" width="100px;" alt="Rahul Deshmukh"/><br /><sub><b>Rahul Deshmukh</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3AAdsophicSolutions" title="Bug reports">🐛</a> <a href="#ideas-AdsophicSolutions" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center"><a href="http://www.waymanapps.com/"><img src="https://avatars.githubusercontent.com/u/16636647?v=4?s=100" width="100px;" alt="Wayman Harris"/><br /><sub><b>Wayman Harris</b></sub></a><br /><a href="#ideas-waymanapps" title="Ideas, Planning, & Feedback">🤔</a> <a href="#question-waymanapps" title="Answering Questions">💬</a></td>
       <td align="center"><a href="https://straustech.net"><img src="https://avatars.githubusercontent.com/u/5975216?v=4?s=100" width="100px;" alt="Tom Strausbaugh"/><br /><sub><b>Tom Strausbaugh</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Atstraus13" title="Bug reports">🐛</a></td>
+      <td align="center"><a href="https://github.com/matt953"><img src="https://avatars.githubusercontent.com/u/9834543?v=4?s=100" width="100px;" alt="Matthew M"/><br /><sub><b>Matthew M</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Amatt953" title="Bug reports">🐛</a> <a href="#ideas-matt953" title="Ideas, Planning, & Feedback">🤔</a></td>
     </tr>
   </tbody>
 </table>
