@@ -690,6 +690,15 @@
         "bug",
         "ideas"
       ]
+    },
+    {
+      "login": "JCloarec",
+      "name": "JCloarec",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47390561?v=4",
+      "profile": "https://github.com/JCloarec",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
