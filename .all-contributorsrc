@@ -745,6 +745,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "TheHumanWithAPlan",
+      "name": "Jurique V",
+      "avatar_url": "https://avatars.githubusercontent.com/u/77593243?v=4",
+      "profile": "https://github.com/TheHumanWithAPlan",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
