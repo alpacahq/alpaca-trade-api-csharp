@@ -661,6 +661,16 @@
         "bug",
         "ideas"
       ]
+    },
+    {
+      "login": "polymorphicshade",
+      "name": "poly",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32504507?v=4",
+      "profile": "https://github.com/polymorphicshade",
+      "contributions": [
+        "bug",
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 7,
