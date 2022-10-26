@@ -773,6 +773,15 @@
         "bug",
         "ideas"
       ]
+    },
+    {
+      "login": "Stalib",
+      "name": "Stalib",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2444140?v=4",
+      "profile": "https://github.com/Stalib",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
