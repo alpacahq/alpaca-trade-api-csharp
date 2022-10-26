@@ -374,6 +374,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "gsalaz98",
+      "name": "Gerardo Salazar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25196864?v=4",
+      "profile": "https://github.com/gsalaz98",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
