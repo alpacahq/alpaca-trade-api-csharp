@@ -130,6 +130,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "schmich",
+      "name": "Christopher Paul Schmich",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1562839?v=4",
+      "profile": "http://stackoverflow.com/users/332960/chris-schmich",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
