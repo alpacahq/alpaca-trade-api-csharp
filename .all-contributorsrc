@@ -33,6 +33,17 @@
         "example",
         "tutorial"
       ]
+    },
+    {
+      "login": "ooples",
+      "name": "Franklin Moormann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3075685?v=4",
+      "profile": "https://github.com/ooples/OoplesFinance.StockIndicators",
+      "contributions": [
+        "code",
+        "example",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
