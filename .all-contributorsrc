@@ -612,6 +612,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "AdsophicSolutions",
+      "name": "Rahul Deshmukh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16350446?v=4",
+      "profile": "http://www.linkedin.com/in/rahul-deshmukh-6269062",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
