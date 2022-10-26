@@ -310,6 +310,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "SavageShade",
+      "name": "SavageShade",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19216280?v=4",
+      "profile": "https://github.com/SavageShade",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
