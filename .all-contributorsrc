@@ -708,6 +708,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "IsaackRasmussen",
+      "name": "Isaack Rasmussen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5748784?v=4",
+      "profile": "https://github.com/IsaackRasmussen",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
