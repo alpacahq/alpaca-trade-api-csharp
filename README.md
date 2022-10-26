@@ -69,3 +69,18 @@ Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method fo
 1.  Install the latest version of the [.NET 6.0 SDK](https://dotnet.microsoft.com/download) for your OS.
 2.  Clone the local version of this repository or your own fork (if you want to make changes).
 3.  Build the packages using the `dotnet build` command running in the root directory of the cloned repo.
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
