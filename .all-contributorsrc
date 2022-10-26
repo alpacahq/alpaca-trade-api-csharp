@@ -576,6 +576,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "ktrauberman",
+      "name": "Kyle Trauberman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/412126?v=4",
+      "profile": "https://github.com/ktrauberman",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
