@@ -448,6 +448,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "lgreenlee",
+      "name": "Logan Greenlee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1766941?v=4",
+      "profile": "https://www.42n.co/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
