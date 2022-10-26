@@ -292,6 +292,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "pratttrader",
+      "name": "pratttrader",
+      "avatar_url": "https://avatars.githubusercontent.com/u/57643797?v=4",
+      "profile": "https://github.com/pratttrader",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
