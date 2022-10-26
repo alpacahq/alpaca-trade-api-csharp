@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-77-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-78-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -109,6 +109,9 @@ Thanks goes to these wonderful people who helps to make this SDK better:
       <td align="center"><a href="https://github.com/jeonnagroup2"><img src="https://avatars.githubusercontent.com/u/91985268?v=4?s=100" width="100px;" alt="jeonnagroup2"/><br /><sub><b>jeonnagroup2</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Ajeonnagroup2" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://github.com/IsaackRasmussen"><img src="https://avatars.githubusercontent.com/u/5748784?v=4?s=100" width="100px;" alt="Isaack Rasmussen"/><br /><sub><b>Isaack Rasmussen</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3AIsaackRasmussen" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://github.com/matsydoodles"><img src="https://avatars.githubusercontent.com/u/19693277?v=4?s=100" width="100px;" alt="matsydoodles"/><br /><sub><b>matsydoodles</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Amatsydoodles" title="Bug reports">🐛</a></td>
+    </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/logmd"><img src="https://avatars.githubusercontent.com/u/5808777?v=4?s=100" width="100px;" alt="logmd"/><br /><sub><b>logmd</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=logmd" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
