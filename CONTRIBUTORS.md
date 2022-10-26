@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-50-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-51-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -76,6 +76,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/zhorakiev"><img src="https://avatars.githubusercontent.com/u/65150239?v=4?s=100" width="100px;" alt="zhorakiev"/><br /><sub><b>zhorakiev</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Azhorakiev" title="Bug reports">🐛</a> <a href="#ideas-zhorakiev" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center"><a href="https://github.com/liftee"><img src="https://avatars.githubusercontent.com/u/23428054?v=4?s=100" width="100px;" alt="liftee"/><br /><sub><b>liftee</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Aliftee" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>

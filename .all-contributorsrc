@@ -477,6 +477,15 @@
         "bug",
         "ideas"
       ]
+    },
+    {
+      "login": "liftee",
+      "name": "liftee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23428054?v=4",
+      "profile": "https://github.com/liftee",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
