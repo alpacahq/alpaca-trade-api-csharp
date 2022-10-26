@@ -20,6 +20,18 @@
       ]
     },
     {
+      "login": "umitanuki",
+      "name": "Hitoshi Harada",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33334?v=4",
+      "profile": "https://github.com/umitanuki",
+      "contributions": [
+        "bug",
+        "ideas",
+        "business",
+        "financial"
+      ]
+    },
+    {
       "login": "ttt733",
       "name": "Trevor Thackston",
       "avatar_url": "https://avatars.githubusercontent.com/u/6812582?v=4",
@@ -68,7 +80,6 @@
       "profile": "https://www.gjtorikian.com/",
       "contributions": [
         "code"
-      ]
     },
     {
       "login": "ajit-kolathur",
@@ -192,18 +203,6 @@
       "contributions": [
         "code",
         "bug"
-      ]
-    },
-    {
-      "login": "umitanuki",
-      "name": "Hitoshi Harada",
-      "avatar_url": "https://avatars.githubusercontent.com/u/33334?v=4",
-      "profile": "https://github.com/umitanuki",
-      "contributions": [
-        "bug",
-        "ideas",
-        "business",
-        "financial"
       ]
     },
     {
