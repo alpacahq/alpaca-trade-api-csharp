@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-27-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-28-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -45,6 +45,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
       <td align="center"><a href="https://github.com/sghitch"><img src="https://avatars.githubusercontent.com/u/10263742?v=4?s=100" width="100px;" alt="sghitch"/><br /><sub><b>sghitch</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Asghitch" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://github.com/Wingspear"><img src="https://avatars.githubusercontent.com/u/27274272?v=4?s=100" width="100px;" alt="Ethan Soo"/><br /><sub><b>Ethan Soo</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3AWingspear" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://github.com/jameswhollister"><img src="https://avatars.githubusercontent.com/u/3201623?v=4?s=100" width="100px;" alt="James Hollister"/><br /><sub><b>James Hollister</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Ajameswhollister" title="Bug reports">🐛</a></td>
+      <td align="center"><a href="https://github.com/DragonMastery"><img src="https://avatars.githubusercontent.com/u/29132830?v=4?s=100" width="100px;" alt="Dragon Mastery"/><br /><sub><b>Dragon Mastery</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3ADragonMastery" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
