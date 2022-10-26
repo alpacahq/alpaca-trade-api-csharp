@@ -121,6 +121,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "PrometheusUno",
+      "name": "PrometheusUno",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3609585?v=4",
+      "profile": "https://github.com/PrometheusUno",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
