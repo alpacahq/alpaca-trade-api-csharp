@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-29-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-30-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -49,6 +49,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/apfitzge"><img src="https://avatars.githubusercontent.com/u/13732359?v=4?s=100" width="100px;" alt="apfitzge"/><br /><sub><b>apfitzge</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Aapfitzge" title="Bug reports">🐛</a> <a href="#ideas-apfitzge" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center"><a href="https://github.com/apasumarthi1999"><img src="https://avatars.githubusercontent.com/u/37272319?v=4?s=100" width="100px;" alt="apasumarthi1999"/><br /><sub><b>apasumarthi1999</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Aapasumarthi1999" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
