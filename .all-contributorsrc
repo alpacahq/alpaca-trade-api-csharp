@@ -273,6 +273,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "apfitzge",
+      "name": "apfitzge",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13732359?v=4",
+      "profile": "https://github.com/apfitzge",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
