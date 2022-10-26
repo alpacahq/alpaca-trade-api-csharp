@@ -736,6 +736,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "tdhatcher",
+      "name": "Todd Hatcher",
+      "avatar_url": "https://avatars.githubusercontent.com/u/360359?v=4",
+      "profile": "https://github.com/tdhatcher",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
