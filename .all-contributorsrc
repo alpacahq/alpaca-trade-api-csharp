@@ -22,6 +22,17 @@
         "review",
         "test"
       ]
+    },
+    {
+      "login": "ttt733",
+      "name": "Trevor Thackston",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6812582?v=4",
+      "profile": "https://github.com/ttt733",
+      "contributions": [
+        "code",
+        "example",
+        "tutorial"
+      ]
     }
   ],
   "contributorsPerLine": 7,
