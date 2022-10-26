@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-71-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-72-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -103,6 +103,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/polymorphicshade"><img src="https://avatars.githubusercontent.com/u/32504507?v=4?s=100" width="100px;" alt="poly"/><br /><sub><b>poly</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Apolymorphicshade" title="Bug reports">🐛</a> <a href="#question-polymorphicshade" title="Answering Questions">💬</a></td>
+      <td align="center"><a href="https://github.com/nathan-datusarator"><img src="https://avatars.githubusercontent.com/u/42075784?v=4?s=100" width="100px;" alt="nathan-datusarator"/><br /><sub><b>nathan-datusarator</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Anathan-datusarator" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>

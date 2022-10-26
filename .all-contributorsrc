@@ -671,6 +671,15 @@
         "bug",
         "question"
       ]
+    },
+    {
+      "login": "nathan-datusarator",
+      "name": "nathan-datusarator",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42075784?v=4",
+      "profile": "https://github.com/nathan-datusarator",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
