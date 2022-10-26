@@ -558,6 +558,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "raduistrate",
+      "name": "Radu Istrate",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17738582?v=4",
+      "profile": "https://github.com/raduistrate",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
