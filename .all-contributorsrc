@@ -466,6 +466,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "zhorakiev",
+      "name": "zhorakiev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/65150239?v=4",
+      "profile": "https://github.com/zhorakiev",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
