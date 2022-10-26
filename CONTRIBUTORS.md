@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -36,6 +36,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
       <td align="center"><a href="https://github.com/jcjurevis"><img src="https://avatars.githubusercontent.com/u/34969570?v=4?s=100" width="100px;" alt="jcjurevis"/><br /><sub><b>jcjurevis</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=jcjurevis" title="Code">💻</a></td>
       <td align="center"><a href="http://bitministry.com"><img src="https://avatars.githubusercontent.com/u/1719076?v=4?s=100" width="100px;" alt="Andrew Rebane"/><br /><sub><b>Andrew Rebane</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=koolinoor" title="Code">💻</a> <a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Akoolinoor" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://github.com/umitanuki"><img src="https://avatars.githubusercontent.com/u/33334?v=4?s=100" width="100px;" alt="Hitoshi Harada"/><br /><sub><b>Hitoshi Harada</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Aumitanuki" title="Bug reports">🐛</a> <a href="#ideas-umitanuki" title="Ideas, Planning, & Feedback">🤔</a> <a href="#business-umitanuki" title="Business development">💼</a> <a href="#financial-umitanuki" title="Financial">💵</a></td>
+      <td align="center"><a href="https://github.com/smartchris84"><img src="https://avatars.githubusercontent.com/u/34967174?v=4?s=100" width="100px;" alt="smartchris84"/><br /><sub><b>smartchris84</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Asmartchris84" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>

@@ -197,6 +197,15 @@
         "business",
         "financial"
       ]
+    },
+    {
+      "login": "smartchris84",
+      "name": "smartchris84",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34967174?v=4",
+      "profile": "https://github.com/smartchris84",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
