@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-64-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-65-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -94,6 +94,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/mattrobinson3"><img src="https://avatars.githubusercontent.com/u/68032330?v=4?s=100" width="100px;" alt="mattrobinson3"/><br /><sub><b>mattrobinson3</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Amattrobinson3" title="Bug reports">🐛</a></td>
+      <td align="center"><a href="https://github.com/Tifoid"><img src="https://avatars.githubusercontent.com/u/518561?v=4?s=100" width="100px;" alt="Tifoid"/><br /><sub><b>Tifoid</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3ATifoid" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
