@@ -207,6 +207,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "mercalli",
+      "name": "mercalli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30153135?v=4",
+      "profile": "https://github.com/mercalli",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
