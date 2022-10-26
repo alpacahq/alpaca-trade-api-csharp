@@ -457,6 +457,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "r-ulak",
+      "name": "rulak",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17515846?v=4",
+      "profile": "https://github.com/r-ulak",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
