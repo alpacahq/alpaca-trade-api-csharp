@@ -680,6 +680,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "ManfredLange",
+      "name": "Manfred Lange",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1130812?v=4",
+      "profile": "https://macroactive.com/",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
