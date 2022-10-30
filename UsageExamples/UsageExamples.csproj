@@ -27,13 +27,10 @@
     <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.2" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <ProjectReference Include="..\Alpaca.Markets\Alpaca.Markets.csproj">
-      <Project>{F339D73B-347F-47D4-9BFB-EBEA010FC6F7}</Project>
-      <Name>Alpaca.Markets</Name>
-    </ProjectReference>
-    <TrimmerRootAssembly Include="Alpaca.Markets" />
+    <ProjectReference Include="..\Alpaca.Markets.Extensions\Alpaca.Markets.Extensions.csproj" />
+    <ProjectReference Include="..\Alpaca.Markets\Alpaca.Markets.csproj" />
   </ItemGroup>
 
 </Project>
