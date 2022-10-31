@@ -39,6 +39,7 @@ public sealed partial class AlpacaTradingClientTest
         Guid assetId,
         String symbol) =>
         new (
+            new JProperty("maintenance_margin_requirement", 100),
             new JProperty("status", AssetStatus.Active),
             new JProperty("class", AssetClass.UsEquity),
             new JProperty("exchange", Exchange.Amex),
@@ -74,5 +75,6 @@ public sealed partial class AlpacaTradingClientTest
         Assert.NotNull(asset.MinOrderSize);
         Assert.NotNull(asset.PriceIncrement);
         Assert.NotNull(asset.MinTradeIncrement);
+        Assert.NotNull(asset.MaintenanceMarginRequirement);
     }
 }
