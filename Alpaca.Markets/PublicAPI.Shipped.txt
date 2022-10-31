@@ -227,6 +227,8 @@ Alpaca.Markets.Extensions.ConfigurationExtensions
 Alpaca.Markets.HistoricalBarsRequest
 Alpaca.Markets.HistoricalBarsRequest.Adjustment.get -> Alpaca.Markets.Adjustment?
 Alpaca.Markets.HistoricalBarsRequest.Adjustment.set -> void
+Alpaca.Markets.HistoricalBarsRequest.Currency.get -> string?
+Alpaca.Markets.HistoricalBarsRequest.Currency.set -> void
 Alpaca.Markets.HistoricalBarsRequest.Feed.get -> Alpaca.Markets.MarkedDataFeed?
 Alpaca.Markets.HistoricalBarsRequest.Feed.set -> void
 Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(string! symbol, Alpaca.Markets.BarTimeFrame timeFrame) -> void
@@ -278,6 +280,8 @@ Alpaca.Markets.HistoricalCryptoTradesRequest.HistoricalCryptoTradesRequest(Syste
 Alpaca.Markets.HistoricalCryptoTradesRequest.WithExchanges(params Alpaca.Markets.CryptoExchange[]! exchanges) -> Alpaca.Markets.HistoricalCryptoTradesRequest!
 Alpaca.Markets.HistoricalCryptoTradesRequest.WithExchanges(System.Collections.Generic.IEnumerable<Alpaca.Markets.CryptoExchange>! exchanges) -> Alpaca.Markets.HistoricalCryptoTradesRequest!
 Alpaca.Markets.HistoricalQuotesRequest
+Alpaca.Markets.HistoricalQuotesRequest.Currency.get -> string?
+Alpaca.Markets.HistoricalQuotesRequest.Currency.set -> void
 Alpaca.Markets.HistoricalQuotesRequest.Feed.get -> Alpaca.Markets.MarkedDataFeed?
 Alpaca.Markets.HistoricalQuotesRequest.Feed.set -> void
 Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(string! symbol) -> void
@@ -300,6 +304,8 @@ Alpaca.Markets.HistoricalRequestBase.Symbols.get -> System.Collections.Generic.I
 Alpaca.Markets.HistoricalRequestBase.TimeInterval.get -> Alpaca.Markets.Interval<System.DateTime>
 Alpaca.Markets.HistoricalRequestBaseExtensions
 Alpaca.Markets.HistoricalTradesRequest
+Alpaca.Markets.HistoricalTradesRequest.Currency.get -> string?
+Alpaca.Markets.HistoricalTradesRequest.Currency.set -> void
 Alpaca.Markets.HistoricalTradesRequest.Feed.get -> Alpaca.Markets.MarkedDataFeed?
 Alpaca.Markets.HistoricalTradesRequest.Feed.set -> void
 Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(string! symbol) -> void
@@ -771,11 +777,15 @@ Alpaca.Markets.LatestDataRequest.Exchange.get -> Alpaca.Markets.CryptoExchange
 Alpaca.Markets.LatestDataRequest.LatestDataRequest(string! symbol, Alpaca.Markets.CryptoExchange exchange) -> void
 Alpaca.Markets.LatestDataRequest.Symbol.get -> string!
 Alpaca.Markets.LatestMarketDataListRequest
+Alpaca.Markets.LatestMarketDataListRequest.Currency.get -> string?
+Alpaca.Markets.LatestMarketDataListRequest.Currency.set -> void
 Alpaca.Markets.LatestMarketDataListRequest.Feed.get -> Alpaca.Markets.MarkedDataFeed?
 Alpaca.Markets.LatestMarketDataListRequest.Feed.set -> void
 Alpaca.Markets.LatestMarketDataListRequest.LatestMarketDataListRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
 Alpaca.Markets.LatestMarketDataListRequest.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
 Alpaca.Markets.LatestMarketDataRequest
+Alpaca.Markets.LatestMarketDataRequest.Currency.get -> string?
+Alpaca.Markets.LatestMarketDataRequest.Currency.set -> void
 Alpaca.Markets.LatestMarketDataRequest.Feed.get -> Alpaca.Markets.MarkedDataFeed?
 Alpaca.Markets.LatestMarketDataRequest.Feed.set -> void
 Alpaca.Markets.LatestMarketDataRequest.LatestMarketDataRequest(string! symbol) -> void

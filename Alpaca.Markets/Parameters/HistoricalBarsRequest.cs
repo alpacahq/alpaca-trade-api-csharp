@@ -169,6 +169,13 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
     [UsedImplicitly]
     public DateOnly? UseSymbolAsOfTheDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the optional parameter for the returned prices in ISO 4217 standard.
+    /// For example: USD, EUR, JPY, etc. In case of <c>null</c> the default USD will be used.
+    /// </summary>
+    [UsedImplicitly]
+    public String? Currency { get; set; }
+
     /// <inheritdoc />
     protected override String LastPathSegment => "bars";
 
@@ -179,10 +186,11 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
             // ReSharper disable once StringLiteralTypo
             .AddParameter("timeframe", TimeFrame.ToString())
             .AddParameter("adjustment", Adjustment)
+            .AddParameter("currency", Currency)
             .AddParameter("feed", Feed);
 
     HistoricalBarsRequest IHistoricalRequest<HistoricalBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalBarsRequest(Symbols, TimeInterval, TimeFrame)
-                { Adjustment = Adjustment, Feed = Feed, UseSymbolAsOfTheDate = UseSymbolAsOfTheDate }
+                { Adjustment = Adjustment, Feed = Feed, UseSymbolAsOfTheDate = UseSymbolAsOfTheDate, Currency = Currency}
             .WithPageSize(this.GetPageSize());
 }
