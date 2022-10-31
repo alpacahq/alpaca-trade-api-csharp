@@ -146,6 +146,13 @@ public sealed class HistoricalTradesRequest : HistoricalRequestBase, IHistorical
     [UsedImplicitly]
     public DateOnly? UseSymbolAsOfTheDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the optional parameter for the returned prices in ISO 4217 standard.
+    /// For example: USD, EUR, JPY, etc. In case of <c>null</c> the default USD will be used.
+    /// </summary>
+    [UsedImplicitly]
+    public String? Currency { get; set; }
+
     /// <inheritdoc />
     protected override String LastPathSegment => "trades";
 
@@ -153,10 +160,11 @@ public sealed class HistoricalTradesRequest : HistoricalRequestBase, IHistorical
         QueryBuilder queryBuilder) => 
         queryBuilder
             .AddParameter("asof", UseSymbolAsOfTheDate)
+            .AddParameter("currency", Currency)
             .AddParameter("feed", Feed);
 
     HistoricalTradesRequest IHistoricalRequest<HistoricalTradesRequest, ITrade>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalTradesRequest(Symbols, TimeInterval)
-                { Feed = Feed, UseSymbolAsOfTheDate = UseSymbolAsOfTheDate}
+                { Feed = Feed, UseSymbolAsOfTheDate = UseSymbolAsOfTheDate, Currency = Currency }
             .WithPageSize(this.GetPageSize());
 }

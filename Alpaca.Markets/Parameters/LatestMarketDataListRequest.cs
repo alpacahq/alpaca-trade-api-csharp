@@ -32,12 +32,20 @@ public sealed class LatestMarketDataListRequest : Validation.IRequest
     [UsedImplicitly]
     public MarkedDataFeed? Feed { get; set; }
 
+    /// <summary>
+    /// Gets or sets the optional parameter for the returned prices in ISO 4217 standard.
+    /// For example: USD, EUR, JPY, etc. In case of <c>null</c> the default USD will be used.
+    /// </summary>
+    [UsedImplicitly]
+    public String? Currency { get; set; }
+
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
         HttpClient httpClient,
         String lastPathSegment) =>
         new UriBuilder(httpClient.BaseAddress!)
         {
             Query = await new QueryBuilder()
+                .AddParameter("currency", Currency)
                 .AddParameter("symbols", Symbols)
                 .AddParameter("feed", Feed)
                 .AsStringAsync().ConfigureAwait(false)
