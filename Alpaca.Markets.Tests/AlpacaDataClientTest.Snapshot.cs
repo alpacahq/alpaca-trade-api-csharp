@@ -11,7 +11,8 @@ public sealed partial class AlpacaDataClientTest
 
         var snapshot = await mock.Client.GetSnapshotAsync(new LatestMarketDataRequest(Stock)
         {
-            Feed = MarkedDataFeed.Otc
+            Feed = MarketDataFeed.Otc,
+            Currency = Currency
         });
 
         Assert.True(snapshot.Validate(Stock));
@@ -27,7 +28,8 @@ public sealed partial class AlpacaDataClientTest
         var snapshots = await mock.Client
             .ListSnapshotsAsync(new LatestMarketDataListRequest(_symbols)
             {
-                Feed = MarkedDataFeed.Otc
+                Feed = MarketDataFeed.Otc,
+                Currency = Currency
             });
 
         Assert.NotNull(snapshots);

@@ -229,7 +229,7 @@ Alpaca.Markets.HistoricalBarsRequest.Adjustment.get -> Alpaca.Markets.Adjustment
 Alpaca.Markets.HistoricalBarsRequest.Adjustment.set -> void
 Alpaca.Markets.HistoricalBarsRequest.Currency.get -> string?
 Alpaca.Markets.HistoricalBarsRequest.Currency.set -> void
-Alpaca.Markets.HistoricalBarsRequest.Feed.get -> Alpaca.Markets.MarkedDataFeed?
+Alpaca.Markets.HistoricalBarsRequest.Feed.get -> Alpaca.Markets.MarketDataFeed?
 Alpaca.Markets.HistoricalBarsRequest.Feed.set -> void
 Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(string! symbol, Alpaca.Markets.BarTimeFrame timeFrame) -> void
 Alpaca.Markets.HistoricalBarsRequest.HistoricalBarsRequest(string! symbol, Alpaca.Markets.BarTimeFrame timeFrame, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
@@ -282,7 +282,7 @@ Alpaca.Markets.HistoricalCryptoTradesRequest.WithExchanges(System.Collections.Ge
 Alpaca.Markets.HistoricalQuotesRequest
 Alpaca.Markets.HistoricalQuotesRequest.Currency.get -> string?
 Alpaca.Markets.HistoricalQuotesRequest.Currency.set -> void
-Alpaca.Markets.HistoricalQuotesRequest.Feed.get -> Alpaca.Markets.MarkedDataFeed?
+Alpaca.Markets.HistoricalQuotesRequest.Feed.get -> Alpaca.Markets.MarketDataFeed?
 Alpaca.Markets.HistoricalQuotesRequest.Feed.set -> void
 Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(string! symbol) -> void
 Alpaca.Markets.HistoricalQuotesRequest.HistoricalQuotesRequest(string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
@@ -306,7 +306,7 @@ Alpaca.Markets.HistoricalRequestBaseExtensions
 Alpaca.Markets.HistoricalTradesRequest
 Alpaca.Markets.HistoricalTradesRequest.Currency.get -> string?
 Alpaca.Markets.HistoricalTradesRequest.Currency.set -> void
-Alpaca.Markets.HistoricalTradesRequest.Feed.get -> Alpaca.Markets.MarkedDataFeed?
+Alpaca.Markets.HistoricalTradesRequest.Feed.get -> Alpaca.Markets.MarketDataFeed?
 Alpaca.Markets.HistoricalTradesRequest.Feed.set -> void
 Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(string! symbol) -> void
 Alpaca.Markets.HistoricalTradesRequest.HistoricalTradesRequest(string! symbol, Alpaca.Markets.IInclusiveTimeInterval! timeInterval) -> void
@@ -779,14 +779,14 @@ Alpaca.Markets.LatestDataRequest.Symbol.get -> string!
 Alpaca.Markets.LatestMarketDataListRequest
 Alpaca.Markets.LatestMarketDataListRequest.Currency.get -> string?
 Alpaca.Markets.LatestMarketDataListRequest.Currency.set -> void
-Alpaca.Markets.LatestMarketDataListRequest.Feed.get -> Alpaca.Markets.MarkedDataFeed?
+Alpaca.Markets.LatestMarketDataListRequest.Feed.get -> Alpaca.Markets.MarketDataFeed?
 Alpaca.Markets.LatestMarketDataListRequest.Feed.set -> void
 Alpaca.Markets.LatestMarketDataListRequest.LatestMarketDataListRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
 Alpaca.Markets.LatestMarketDataListRequest.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
 Alpaca.Markets.LatestMarketDataRequest
 Alpaca.Markets.LatestMarketDataRequest.Currency.get -> string?
 Alpaca.Markets.LatestMarketDataRequest.Currency.set -> void
-Alpaca.Markets.LatestMarketDataRequest.Feed.get -> Alpaca.Markets.MarkedDataFeed?
+Alpaca.Markets.LatestMarketDataRequest.Feed.get -> Alpaca.Markets.MarketDataFeed?
 Alpaca.Markets.LatestMarketDataRequest.Feed.set -> void
 Alpaca.Markets.LatestMarketDataRequest.LatestMarketDataRequest(string! symbol) -> void
 Alpaca.Markets.LatestMarketDataRequest.Symbol.get -> string!
@@ -817,10 +817,10 @@ Alpaca.Markets.ListOrdersRequest.TimeInterval.get -> Alpaca.Markets.Interval<Sys
 Alpaca.Markets.ListOrdersRequest.WithInterval(Alpaca.Markets.Interval<System.DateTime> value) -> Alpaca.Markets.ListOrdersRequest!
 Alpaca.Markets.ListOrdersRequest.WithSymbol(string! symbol) -> Alpaca.Markets.ListOrdersRequest!
 Alpaca.Markets.ListOrdersRequest.WithSymbols(System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.ListOrdersRequest!
-Alpaca.Markets.MarkedDataFeed
-Alpaca.Markets.MarkedDataFeed.Iex = 0 -> Alpaca.Markets.MarkedDataFeed
-Alpaca.Markets.MarkedDataFeed.Otc = 2 -> Alpaca.Markets.MarkedDataFeed
-Alpaca.Markets.MarkedDataFeed.Sip = 1 -> Alpaca.Markets.MarkedDataFeed
+Alpaca.Markets.MarketDataFeed
+Alpaca.Markets.MarketDataFeed.Iex = 0 -> Alpaca.Markets.MarketDataFeed
+Alpaca.Markets.MarketDataFeed.Otc = 2 -> Alpaca.Markets.MarketDataFeed
+Alpaca.Markets.MarketDataFeed.Sip = 1 -> Alpaca.Markets.MarketDataFeed
 Alpaca.Markets.MarketOrder
 Alpaca.Markets.Multiplier
 Alpaca.Markets.Multiplier.Double = 2 -> Alpaca.Markets.Multiplier

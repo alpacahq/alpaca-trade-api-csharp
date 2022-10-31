@@ -4,7 +4,7 @@
 /// Supported market feed data types for Alpaca Data API.
 /// </summary>
 [JsonConverter(typeof(StringEnumConverter))]
-public enum MarkedDataFeed
+public enum MarketDataFeed
 {
     /// <summary>
     /// IEX feed - the only option available for the free data (no subscription).
