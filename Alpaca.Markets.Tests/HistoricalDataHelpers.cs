@@ -13,6 +13,8 @@ internal static class HistoricalDataHelpers
 
     private const Decimal MidPrice = (AskPrice + BidPrice) / 2;
 
+    private const String Auctions = "auctions";
+
     private const UInt64 TradeId = 12_345UL;
 
     private const String Trades = "trades";
@@ -122,6 +124,14 @@ internal static class HistoricalDataHelpers
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
         mock.addLatestExpectation(pathPrefix, symbols, "xbbos", CreateQuote);
 
+    internal static void AddSingleAuctionsPageExpectation(
+        this IMock mock, String pathPrefix, String symbol) =>
+        mock.addSinglePageExpectation(pathPrefix, symbol, Auctions, createAuction);
+
+    internal static void AddMultiAuctionsPageExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
+        mock.addMultiPageExpectation(pathPrefix, symbols, Auctions, createAuction);
+
     private static void addSinglePageExpectation(
         this IMock mock, String pathPrefix, String symbol,
         String items, Func<JObject> createItem) =>
@@ -165,6 +175,7 @@ internal static class HistoricalDataHelpers
             IBar bar => bar.Validate(symbol),
             ITrade trade => trade.Validate(symbol),
             IQuote quote => quote.Validate(symbol),
+            IAuction auction => auction.validate(symbol),
             _ => throw new NotSupportedException(
                 $"The {typeof(TItem)} not supported yet!")
         }));
@@ -249,7 +260,7 @@ internal static class HistoricalDataHelpers
         Assert.NotNull(orderBook.Bids);
 
         var ask = orderBook.Asks.Single();
-        var bid = orderBook.Asks.Single();
+        var bid = orderBook.Bids.Single();
         Assert.Equal(ask.Price, bid.Price);
         Assert.Equal(ask.Size, bid.Size);
 
@@ -267,9 +278,6 @@ internal static class HistoricalDataHelpers
         snapshot.MinuteBar!.Validate(symbol) &
         snapshot.Quote!.Validate(symbol) &
         snapshot.Trade!.Validate(symbol);
-
-    private static JArray createItemsList(
-        Func<JObject> createItem) => new (createItem(), createItem());
 
     public static JObject CreateBar() =>
         new (
@@ -324,6 +332,35 @@ internal static class HistoricalDataHelpers
             new JProperty("cs", Size),
             new JProperty("os", Size));
 
+    private static Boolean validate(
+        this IAuction auction,
+        String symbol)
+    {
+        Assert.NotNull(auction);
+        Assert.True(auction.Date <= DateOnly.FromDateTime(DateTime.Today));
+        Assert.Equal(symbol, auction.Symbol);
+
+        Assert.NotNull(auction.Openings);
+        Assert.NotNull(auction.Closings);
+
+        var opening = auction.Openings.Single();
+        var closing = auction.Closings.Single();
+        Assert.Equal(opening.Price, closing.Price);
+        Assert.Equal(opening.Size, closing.Size);
+
+        Assert.Equal(MidPrice, closing.Price);
+        Assert.Equal(Size, opening.Size);
+
+        Assert.Equal(_exchange, opening.Exchange);
+        Assert.Equal(_condition, closing.Condition);
+
+        Assert.True(opening.TimestampUtc <= DateTime.UtcNow);
+        return true;
+    }
+
+    private static JArray createItemsList(
+        Func<JObject> createItem) => new(createItem(), createItem());
+
     private static JObject createOrderBook() =>
         new(
             new JProperty("a", new JArray(createOrderBookEntry())),
@@ -333,6 +370,20 @@ internal static class HistoricalDataHelpers
     
     private static JObject createOrderBookEntry() =>
         new(
+            new JProperty("p", MidPrice),
+            new JProperty("s", Size));
+
+    private static JObject createAuction() =>
+        new(
+            new JProperty("o", new JArray(createAuctionEntry())),
+            new JProperty("c", new JArray(createAuctionEntry())),
+            new JProperty("d", DateTime.UtcNow));
+    
+    private static JObject createAuctionEntry() =>
+        new(
+            new JProperty("t", DateTime.UtcNow),
+            new JProperty("c", _condition),
+            new JProperty("x", _exchange),
             new JProperty("p", MidPrice),
             new JProperty("s", Size));
 

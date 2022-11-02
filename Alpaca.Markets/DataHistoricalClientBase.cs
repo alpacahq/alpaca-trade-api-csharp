@@ -58,6 +58,20 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
             ? listHistoricalTradesAsync(request, cancellationToken).AsMultiPageAsync<ITrade, JsonMultiTradesPage>()
             : getHistoricalTradesAsync(request, cancellationToken);
 
+    public Task<IPage<IAuction>> ListHistoricalAuctionsAsync(
+        HistoricalAuctionsRequest request,
+        CancellationToken cancellationToken = default) =>
+        request.HasSingleSymbol
+            ? listHistoricalAuctionsAsync(request, cancellationToken)
+            : getHistoricalAuctionsAsync(request, cancellationToken).AsPageAsync<IAuction, JsonAuctionsPage>();
+
+    public Task<IMultiPage<IAuction>> GetHistoricalAuctionsAsync(
+        HistoricalAuctionsRequest request,
+        CancellationToken cancellationToken = default) =>
+        request.HasSingleSymbol
+            ? listHistoricalAuctionsAsync(request, cancellationToken).AsMultiPageAsync<IAuction, JsonMultiAuctionsPage>()
+            : getHistoricalAuctionsAsync(request, cancellationToken);
+
     private async Task<IPage<IBar>> listHistoricalBarsAsync(
         THistoricalBarsRequest request,
         CancellationToken cancellationToken = default) =>
@@ -102,6 +116,22 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
         THistoricalTradesRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IMultiPage<ITrade>, JsonMultiTradesPage>(
+            await request.EnsureNotNull().Validate()
+                .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
+            cancellationToken).ConfigureAwait(false);
+
+    private async Task<IPage<IAuction>> listHistoricalAuctionsAsync(
+        HistoricalAuctionsRequest request,
+        CancellationToken cancellationToken = default) =>
+        await HttpClient.GetAsync<IPage<IAuction>, JsonAuctionsPage>(
+            await request.EnsureNotNull().Validate()
+                .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
+            cancellationToken).ConfigureAwait(false);
+
+    private async Task<IMultiPage<IAuction>> getHistoricalAuctionsAsync(
+        HistoricalAuctionsRequest request,
+        CancellationToken cancellationToken = default) =>
+        await HttpClient.GetAsync<IMultiPage<IAuction>, JsonMultiAuctionsPage>(
             await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
