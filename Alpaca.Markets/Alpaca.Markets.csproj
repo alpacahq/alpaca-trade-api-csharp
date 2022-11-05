@@ -18,8 +18,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-	<PackageReleaseNotes>- Obsolete members cleanup/update before big internal refactoring.</PackageReleaseNotes>
-	<Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
+    <PackageReleaseNotes>- Obsolete members cleanup/update before big internal refactoring.</PackageReleaseNotes>
+    <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
