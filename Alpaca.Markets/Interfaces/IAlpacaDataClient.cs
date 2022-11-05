@@ -1,6 +1,4 @@
-﻿using static Alpaca.Markets.Validation;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 /// <summary>
 /// Provides unified type-safe access for Alpaca Data API via HTTP/REST.
@@ -343,7 +341,7 @@ public interface IAlpacaDataClient :
     /// <summary>
     /// Gets historical auctions list for single asset from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Historical quotes request parameters.</param>
+    /// <param name="request">Historical auctions request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <exception cref="RequestValidationException">
     /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
@@ -372,7 +370,7 @@ public interface IAlpacaDataClient :
     /// <summary>
     /// Gets historical auctions dictionary for several assets from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="request">Historical quotes request parameters.</param>
+    /// <param name="request">Historical auctions request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <exception cref="RequestValidationException">
     /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
