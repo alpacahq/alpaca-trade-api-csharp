@@ -91,7 +91,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="JetBrains.Annotations" Version="2022.1.0">
+    <PackageReference Include="JetBrains.Annotations" Version="2022.3.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>compile; analyzers</IncludeAssets>
     </PackageReference>
@@ -103,14 +103,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.IO.Pipelines" Version="6.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.IO.Pipelines" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Polly" Version="7.2.3" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="6.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
