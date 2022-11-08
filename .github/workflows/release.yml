@@ -9,15 +9,15 @@ jobs:
     
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup .NET 6.0.x
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '6.0.x'
 
     - name: Cache NuGet Packages
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
@@ -28,7 +28,7 @@ jobs:
       run: dotnet build -c Release
       
     - name: Save SDK Packages
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: sdk-packages
         path: |
@@ -36,7 +36,7 @@ jobs:
           Alpaca.Markets/bin/Release/*.snupkg
           
     - name: Save Extensions Packages
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: ext-packages
         path: |
@@ -51,7 +51,7 @@ jobs:
 
     steps:
     - name: Load SDK Packages
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: sdk-packages
 
@@ -72,7 +72,7 @@ jobs:
 
     steps:
     - name: Load Extensions Packages
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: ext-packages
 
