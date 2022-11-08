@@ -107,7 +107,7 @@
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="6.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
