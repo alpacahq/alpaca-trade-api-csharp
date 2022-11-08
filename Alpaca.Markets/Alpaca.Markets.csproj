@@ -100,7 +100,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.IO.Pipelines" Version="6.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.IO.Pipelines" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Polly" Version="7.2.3" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
