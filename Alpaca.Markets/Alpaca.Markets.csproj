@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.1.7.0</AssemblyVersion>
-    <FileVersion>6.1.7.0</FileVersion>
-    <Version>6.1.7-alpha1</Version>
+    <AssemblyVersion>6.1.7.1</AssemblyVersion>
+    <FileVersion>6.1.7.1</FileVersion>
+    <Version>6.1.7-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -112,7 +112,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="!$(TargetFramework.StartsWith('net6'))">
-    <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.2" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.3-beta2" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />
