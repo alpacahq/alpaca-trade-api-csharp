@@ -23,6 +23,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="System.Threading.Channels" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>

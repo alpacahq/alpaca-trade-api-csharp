@@ -84,6 +84,15 @@
           "System.Memory": "4.5.5"
         }
       },
+      "System.Threading.Channels": {
+        "type": "Direct",
+        "requested": "[7.0.0, )",
+        "resolved": "7.0.0",
+        "contentHash": "qmeeYNROMsONF6ndEZcIQ+VxR4Q/TX/7uIVLJqtwIWL7dDWeh0l1UIqgo4wYyjG//5lUNhwkLDSFl+pAWO6oiA==",
+        "dependencies": {
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        }
+      },
       "Microsoft.Build.Tasks.Git": {
         "type": "Transitive",
         "resolved": "1.1.1",
@@ -208,6 +217,15 @@
           "System.Threading.Tasks.Extensions": "4.5.4"
         }
       },
+      "System.Threading.Channels": {
+        "type": "Direct",
+        "requested": "[7.0.0, )",
+        "resolved": "7.0.0",
+        "contentHash": "qmeeYNROMsONF6ndEZcIQ+VxR4Q/TX/7uIVLJqtwIWL7dDWeh0l1UIqgo4wYyjG//5lUNhwkLDSFl+pAWO6oiA==",
+        "dependencies": {
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        }
+      },
       "Microsoft.Build.Tasks.Git": {
         "type": "Transitive",
         "resolved": "1.1.1",
@@ -315,6 +333,12 @@
           "System.Threading.Tasks.Extensions": "4.5.4"
         }
       },
+      "System.Threading.Channels": {
+        "type": "Direct",
+        "requested": "[7.0.0, )",
+        "resolved": "7.0.0",
+        "contentHash": "qmeeYNROMsONF6ndEZcIQ+VxR4Q/TX/7uIVLJqtwIWL7dDWeh0l1UIqgo4wYyjG//5lUNhwkLDSFl+pAWO6oiA=="
+      },
       "Microsoft.Build.Tasks.Git": {
         "type": "Transitive",
         "resolved": "1.1.1",
@@ -405,6 +429,12 @@
         "requested": "[7.0.0, )",
         "resolved": "7.0.0",
         "contentHash": "jRn6JYnNPW6xgQazROBLSfpdoczRw694vO5kKvMcNnpXuolEixUyw6IBuBs2Y2mlSX/LdLvyyWmfXhaI3ND1Yg=="
+      },
+      "System.Threading.Channels": {
+        "type": "Direct",
+        "requested": "[7.0.0, )",
+        "resolved": "7.0.0",
+        "contentHash": "qmeeYNROMsONF6ndEZcIQ+VxR4Q/TX/7uIVLJqtwIWL7dDWeh0l1UIqgo4wYyjG//5lUNhwkLDSFl+pAWO6oiA=="
       },
       "Microsoft.Build.Tasks.Git": {
         "type": "Transitive",
