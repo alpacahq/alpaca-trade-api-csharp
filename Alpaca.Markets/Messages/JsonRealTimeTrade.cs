@@ -27,6 +27,9 @@ internal sealed class JsonRealTimeTrade : JsonRealTimeBase, ITrade
     [JsonProperty(PropertyName = "tks", Required = Required.Default)]
     public TakerSide TakerSide { get; set; } = TakerSide.Unknown;
 
+    [JsonProperty(PropertyName = "u", Required = Required.Default)]
+    public String Update { get; set; } = String.Empty;
+
     [JsonIgnore]
     public IReadOnlyList<String> Conditions =>
         ConditionsList.EmptyIfNull();

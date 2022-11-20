@@ -22,6 +22,9 @@ internal sealed class JsonLatestTrade : ITrade
     public String Tape => Nested.Tape;
 
     [JsonIgnore]
+    public String Update => Nested.Update;
+
+    [JsonIgnore]
     public String Exchange => Nested.Exchange;
 
     [JsonIgnore]

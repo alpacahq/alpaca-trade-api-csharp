@@ -755,6 +755,7 @@ Alpaca.Markets.ITrade.TakerSide.get -> Alpaca.Markets.TakerSide
 Alpaca.Markets.ITrade.Tape.get -> string!
 Alpaca.Markets.ITrade.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.ITrade.TradeId.get -> ulong
+Alpaca.Markets.ITrade.Update.get -> string!
 Alpaca.Markets.ITradeUpdate
 Alpaca.Markets.ITradeUpdate.Event.get -> Alpaca.Markets.TradeEvent
 Alpaca.Markets.ITradeUpdate.ExecutionId.get -> System.Guid?
