@@ -21,6 +21,9 @@ internal sealed class JsonHistoricalTrade : ITrade, ISymbolMutable
     [JsonProperty(PropertyName = "z", Required = Required.Default)]
     public String Tape { get; set; } = String.Empty;
 
+    [JsonProperty(PropertyName = "u", Required = Required.Default)]
+    public String Update { get; set; } = String.Empty;
+
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "c", Required = Required.Default)]
     public List<String> ConditionsList { get; } = new();

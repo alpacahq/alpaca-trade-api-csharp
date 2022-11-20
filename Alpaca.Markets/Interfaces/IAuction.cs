@@ -16,7 +16,7 @@ public interface IAuction
     /// </summary>
     [UsedImplicitly]
     [SuppressMessage("Naming", "CA1716:Identifiers should not match keywords",
-        Justification = "This can cause problem only in VB.NET soruce code.")]
+        Justification = "This can cause problem only in VB.NET source code.")]
     DateOnly Date { get; }
 
     /// <summary>

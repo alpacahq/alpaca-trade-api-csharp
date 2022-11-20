@@ -49,6 +49,12 @@ public interface ITrade
     String Tape { get; }
 
     /// <summary>
+    /// Gets trade update reason if any.
+    /// </summary>
+    [UsedImplicitly]
+    String Update { get; }
+
+    /// <summary>
     /// Gets trade conditions list.
     /// </summary>
     [UsedImplicitly]

@@ -12,6 +12,9 @@ internal sealed class JsonCorrection : JsonRealTimeBase, ICorrection, ITrade
     [JsonProperty(PropertyName = "z", Required = Required.Default)]
     public String Tape { get; set; } = String.Empty;
 
+    [JsonProperty(PropertyName = "u", Required = Required.Default)]
+    public String Update { get; set; } = String.Empty;
+
     [JsonProperty(PropertyName = "oi", Required = Required.Default)]
     public UInt64 TradeId { get; set; }
 
@@ -59,6 +62,7 @@ internal sealed class JsonCorrection : JsonRealTimeBase, ICorrection, ITrade
         {
             Tape = Tape,
             Symbol = Symbol,
+            Update = Update,
             Channel = Channel,
             Exchange = Exchange,
             TimestampUtc = TimestampUtc,
