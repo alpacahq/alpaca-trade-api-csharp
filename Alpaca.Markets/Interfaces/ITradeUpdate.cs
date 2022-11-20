@@ -16,6 +16,12 @@ public interface ITradeUpdate
     TradeEvent Event { get; }
 
     /// <summary>
+    /// Gets optional order execution identifier.
+    /// </summary>
+    [UsedImplicitly]
+    Guid? ExecutionId { get; }
+
+    /// <summary>
     /// Gets updated trade price level.
     /// </summary>
     [UsedImplicitly]

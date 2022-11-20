@@ -9,6 +9,9 @@ internal sealed class JsonTradeUpdate : ITradeUpdate
     [JsonProperty(PropertyName = "event", Required = Required.Always)]
     public TradeEvent Event { get; set; }
 
+    [JsonProperty(PropertyName = "execution_id", Required = Required.Default)]
+    public Guid? ExecutionId { get; set; }
+
     [JsonProperty(PropertyName = "price", Required = Required.Default)]
     public Decimal? Price { get; set; }
 
