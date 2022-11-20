@@ -775,6 +775,7 @@ Alpaca.Markets.ITrade.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.ITrade.TradeId.get -> ulong
 Alpaca.Markets.ITradeUpdate
 Alpaca.Markets.ITradeUpdate.Event.get -> Alpaca.Markets.TradeEvent
+Alpaca.Markets.ITradeUpdate.ExecutionId.get -> System.Guid?
 Alpaca.Markets.ITradeUpdate.Order.get -> Alpaca.Markets.IOrder!
 Alpaca.Markets.ITradeUpdate.Price.get -> decimal?
 Alpaca.Markets.ITradeUpdate.PositionIntegerQuantity.get -> long?
