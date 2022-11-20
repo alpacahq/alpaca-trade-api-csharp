@@ -198,6 +198,7 @@ internal static class HistoricalDataHelpers
         Assert.NotEmpty(trade.Conditions);
         Assert.Equal(_condition, trade.Conditions.Single());
 
+        Assert.Equal(String.Empty, trade.Update);
         Assert.Equal(_exchange, trade.Exchange);
         Assert.Equal(_tape, trade.Tape);
 
@@ -286,6 +287,7 @@ internal static class HistoricalDataHelpers
         new(
             new JProperty("c", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
+            new JProperty("u", String.Empty),
             new JProperty("x", _exchange),
             new JProperty("p", MidPrice),
             new JProperty("i", TradeId),
@@ -313,6 +315,7 @@ internal static class HistoricalDataHelpers
             new JProperty("oc", new JArray(_condition)),
             new JProperty("cc", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
+            new JProperty("u", String.Empty),
             new JProperty("x", _exchange),
             new JProperty("op", MidPrice),
             new JProperty("cp", MidPrice),

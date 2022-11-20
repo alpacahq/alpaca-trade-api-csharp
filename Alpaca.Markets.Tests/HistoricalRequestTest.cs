@@ -44,6 +44,14 @@ public sealed class HistoricalRequestTest
     }
 
     [Fact]
+    public void HistoricalAuctionsRequestWorks()
+    {
+        var original = addPagination(
+            new HistoricalAuctionsRequest(_stocks, _timeInterval));
+        validateCopiedProperties(original, getValidatedRequest(original));
+    }
+
+    [Fact]
     public void HistoricalCryptoBarsRequestWorks()
     {
         var original = addPagination(

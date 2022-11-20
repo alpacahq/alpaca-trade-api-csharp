@@ -76,6 +76,7 @@ public sealed class AlpacaStreamingClientTest
             Assert.NotNull(tradeUpdate);
             Assert.NotNull(tradeUpdate.Order);
 
+            Assert.NotNull(tradeUpdate.ExecutionId);
             Assert.NotNull(tradeUpdate.TimestampUtc);
             Assert.True(tradeUpdate.TimestampUtc < DateTime.UtcNow);
 
@@ -197,6 +198,7 @@ public sealed class AlpacaStreamingClientTest
     private static JObject getTradeUpdate() =>
         getMessage(TradeUpdates, new JObject(
             new JProperty("order", Stock.CreateMarketOrder()),
+            new JProperty("execution_id", Guid.NewGuid()),
             new JProperty("event", TradeEvent.PendingNew),
             new JProperty("timestamp", DateTime.UtcNow),
             new JProperty("position_qty", Quantity),
