@@ -53,7 +53,7 @@ internal static partial class HttpClientExtensions
         using var request = new HttpRequestMessage(method, endpointUri);
         if (timeout != Timeout.InfiniteTimeSpan)
         {
-#if NET5_0_OR_GREATER
+#if NET6_0_OR_GREATER
             request.Options.Set(ThrottleParameters.RequestTimeoutOptionKey, timeout);
 #else
             request.Properties[ThrottleParameters.RequestTimeoutOptionKey] = timeout;
