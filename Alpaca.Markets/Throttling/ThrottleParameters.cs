@@ -66,7 +66,7 @@ namespace Alpaca.Markets
 
             private TimeSpan getTimeout(
                 HttpRequestMessage request) =>
-#if NET5_0_OR_GREATER
+#if NET6_0_OR_GREATER
                 request.Options.TryGetValue(RequestTimeoutOptionKey,
                     out var requestSpecificTimeoutValue)
 #else
@@ -151,7 +151,7 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         public TimeSpan? Timeout { get; set; }
 
-#if NET5_0_OR_GREATER
+#if NET6_0_OR_GREATER
         internal static HttpRequestOptionsKey<TimeSpan> RequestTimeoutOptionKey =
             new (nameof(RequestTimeoutOptionKey));
 #else
