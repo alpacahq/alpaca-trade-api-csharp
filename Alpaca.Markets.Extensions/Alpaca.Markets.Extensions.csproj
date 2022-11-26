@@ -103,7 +103,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="!($(TargetFramework.StartsWith('net6')))">
-    <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.2" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="6.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />

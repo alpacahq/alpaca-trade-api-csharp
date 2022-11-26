@@ -77,9 +77,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[6.0.2, )",
-        "resolved": "6.0.2",
-        "contentHash": "ER1F8j5ffASUpNtj5T8FoXf7K4T9+eetayrk+WJSpMWzn4dPJJKJj1cyvf4At2s8sHY3xCqDuE/d0ISpc+h3kg==",
+        "requested": "[6.0.3, )",
+        "resolved": "6.0.3",
+        "contentHash": "GcUhSDVI6SZGjAsPdX4U7jIyZIcD/6rljDJieREQBKs2NOOK9Z15juZeeuHnic0G2/uVZZISOHtCdisIbBD1pQ==",
         "dependencies": {
           "System.Memory": "4.5.4"
         }
@@ -348,9 +348,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[6.0.2, )",
-        "resolved": "6.0.2",
-        "contentHash": "ER1F8j5ffASUpNtj5T8FoXf7K4T9+eetayrk+WJSpMWzn4dPJJKJj1cyvf4At2s8sHY3xCqDuE/d0ISpc+h3kg==",
+        "requested": "[6.0.3, )",
+        "resolved": "6.0.3",
+        "contentHash": "GcUhSDVI6SZGjAsPdX4U7jIyZIcD/6rljDJieREQBKs2NOOK9Z15juZeeuHnic0G2/uVZZISOHtCdisIbBD1pQ==",
         "dependencies": {
           "System.Memory": "4.5.4"
         }
@@ -598,9 +598,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[6.0.2, )",
-        "resolved": "6.0.2",
-        "contentHash": "ER1F8j5ffASUpNtj5T8FoXf7K4T9+eetayrk+WJSpMWzn4dPJJKJj1cyvf4At2s8sHY3xCqDuE/d0ISpc+h3kg=="
+        "requested": "[6.0.3, )",
+        "resolved": "6.0.3",
+        "contentHash": "GcUhSDVI6SZGjAsPdX4U7jIyZIcD/6rljDJieREQBKs2NOOK9Z15juZeeuHnic0G2/uVZZISOHtCdisIbBD1pQ=="
       },
       "System.Linq.Async": {
         "type": "Direct",
