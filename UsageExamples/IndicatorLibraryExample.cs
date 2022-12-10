@@ -32,9 +32,9 @@ internal sealed class IndicatorLibraryExample : IDisposable
         var bars = page.Items;
 
         var stockData = new StockData(
-            bars.Select(x => x.Open), bars.Select(x => x.High),
-            bars.Select(x => x.Low), bars.Select(x => x.Close),
-            bars.Select(x => x.Volume), bars.Select(x => x.TimeUtc));
+            bars.Select(x => (Double)x.Open), bars.Select(x => (Double)x.High),
+            bars.Select(x => (Double)x.Low), bars.Select(x => (Double)x.Close),
+            bars.Select(x => (Double)x.Volume), bars.Select(x => x.TimeUtc));
 
         // can do typical indicators such as using typical bollinger band settings
         UseDefaultBollingerBands(stockData);

@@ -44,8 +44,8 @@ public sealed class AlpacaNewsStreamingClientTest
     [Fact]
     public async Task ErrorsAndWarningsWorks()
     {
-        const Int32 expectedWarnings = 3;
-        const Int32 expectedErrors = 4;
+        var expectedWarnings = (3, 3);
+        var expectedErrors = (3, 4);
 
         using var client = _mockClientsFactory.GetAlpacaNewsStreamingClientMock();
         using var tracker = new ErrorsAndWarningsTracker(

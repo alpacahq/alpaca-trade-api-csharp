@@ -138,9 +138,9 @@ public sealed class AlpacaDataStreamingClientTest
     [Fact]
     public async Task ErrorsAndWarningsWorks()
     {
-        const String channel = "corrections";
-        const Int32 expectedWarnings = 0;
-        const Int32 expectedErrors = 4;
+        const String channel = "corrections"; 
+        var expectedWarnings = (0, 0);
+        var expectedErrors = (3, 4);
 
         using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock();
         using var tracker = new ErrorsAndWarningsTracker(
