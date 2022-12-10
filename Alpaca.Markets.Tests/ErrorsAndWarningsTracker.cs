@@ -6,9 +6,9 @@ internal sealed class ErrorsAndWarningsTracker : IDisposable
 
     private readonly IStreamingClient _client;
 
-    private readonly Int32 _expectedWarnings;
+    private readonly (Int32, Int32) _expectedWarnings;
 
-    private readonly Int32 _expectedErrors;
+    private readonly (Int32, Int32) _expectedErrors;
 
     private readonly Barrier _barrier;
 
@@ -20,12 +20,23 @@ internal sealed class ErrorsAndWarningsTracker : IDisposable
         IStreamingClient client,
         Int32 expectedWarnings,
         Int32 expectedErrors)
+        : this(client, 
+            (expectedWarnings, expectedWarnings),
+            (expectedErrors, expectedErrors))
+    {
+    }
+
+    public ErrorsAndWarningsTracker(
+        IStreamingClient client,
+        (Int32, Int32) expectedWarnings,
+        (Int32, Int32) expectedErrors)
     {
         _expectedWarnings = expectedWarnings;
         _expectedErrors = expectedErrors;
         _client = client;
 
-        _barrier = new Barrier(expectedErrors + expectedWarnings + 1);
+        _barrier = new Barrier(
+            expectedErrors.Item2 + expectedWarnings.Item2 + 1);
 
         _client.OnWarning += handleWarning;
         _client.OnError += handleError;
@@ -41,8 +52,8 @@ internal sealed class ErrorsAndWarningsTracker : IDisposable
         _client.OnError -= handleError;
         _client.OnWarning -= handleWarning;
 
-        Assert.Equal(_expectedWarnings, _warnings);
-        Assert.Equal(_expectedErrors, _errors);
+        Assert.InRange(_warnings, _expectedWarnings.Item1, _expectedWarnings.Item2);
+        Assert.InRange(_errors, _expectedErrors.Item1, _expectedErrors.Item2);
     }
 
     private void handleError(Exception _)
