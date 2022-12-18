@@ -12,13 +12,17 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.1.7.1</AssemblyVersion>
-    <FileVersion>6.1.7.1</FileVersion>
-    <Version>6.1.7-beta1</Version>
+    <AssemblyVersion>6.1.7.2</AssemblyVersion>
+    <FileVersion>6.1.7.2</FileVersion>
+    <Version>6.1.7</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Added support for the stock auctions' data requests.</PackageReleaseNotes>
+    <PackageReleaseNotes>
+- Added the new optional property `ITrade.Update` for all real-time and historical trade-related objects.
+- Added the new optional property `ITradeUpdate.ExecutionId` for trading streaming API.
+- Added support for the stock auctions' data requests.
+    </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
