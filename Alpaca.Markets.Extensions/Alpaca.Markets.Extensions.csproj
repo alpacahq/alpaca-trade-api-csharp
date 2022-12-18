@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.1.0.0</AssemblyVersion>
-    <FileVersion>6.1.0.0</FileVersion>
-    <Version>6.1.0-alpha1</Version>
+    <AssemblyVersion>6.1.0.1</AssemblyVersion>
+    <FileVersion>6.1.0.1</FileVersion>
+    <Version>6.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
