@@ -18,8 +18,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Used the new `UseSymbolAsOfTheDate` property of historical requests in pagination extensions properly.
-- Added exceptions information into the XML documentation for most public methods.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Extensions methods added for the new acution-requesting methods.</PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
@@ -96,7 +95,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Threading.Channels" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Linq.Async" Version="6.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="Alpaca.Markets" Version="6.1.7-alpha1" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Alpaca.Markets" Version="6.1.7" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
