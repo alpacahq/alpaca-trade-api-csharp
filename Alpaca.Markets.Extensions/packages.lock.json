@@ -77,9 +77,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[7.0.0-alpha1, )",
-        "resolved": "7.0.0-alpha1",
-        "contentHash": "8082DTWRkv7yXEdfHtkOU97clSzviw6S0eU43OLdLxGsyCqA7q/ptmZ0Aa1+d2PTl95be1U5sQD3IZJ+C9KHJw==",
+        "requested": "[7.0.0, )",
+        "resolved": "7.0.0",
+        "contentHash": "YcUeGtgUdtLF4YPTi54u7KT2bp3GEj1o1vBMaRSBTjVJxq9AzN7CJogovRLv0hqUvbCAgVd1T+43O1kSyCEMug==",
         "dependencies": {
           "System.Memory": "4.5.4"
         }
@@ -348,9 +348,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[7.0.0-alpha1, )",
-        "resolved": "7.0.0-alpha1",
-        "contentHash": "8082DTWRkv7yXEdfHtkOU97clSzviw6S0eU43OLdLxGsyCqA7q/ptmZ0Aa1+d2PTl95be1U5sQD3IZJ+C9KHJw==",
+        "requested": "[7.0.0, )",
+        "resolved": "7.0.0",
+        "contentHash": "YcUeGtgUdtLF4YPTi54u7KT2bp3GEj1o1vBMaRSBTjVJxq9AzN7CJogovRLv0hqUvbCAgVd1T+43O1kSyCEMug==",
         "dependencies": {
           "System.Memory": "4.5.4"
         }
@@ -598,9 +598,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[7.0.0-alpha1, )",
-        "resolved": "7.0.0-alpha1",
-        "contentHash": "8082DTWRkv7yXEdfHtkOU97clSzviw6S0eU43OLdLxGsyCqA7q/ptmZ0Aa1+d2PTl95be1U5sQD3IZJ+C9KHJw=="
+        "requested": "[7.0.0, )",
+        "resolved": "7.0.0",
+        "contentHash": "YcUeGtgUdtLF4YPTi54u7KT2bp3GEj1o1vBMaRSBTjVJxq9AzN7CJogovRLv0hqUvbCAgVd1T+43O1kSyCEMug=="
       },
       "System.Linq.Async": {
         "type": "Direct",
