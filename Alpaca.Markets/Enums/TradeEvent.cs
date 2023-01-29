@@ -19,7 +19,7 @@ namespace Alpaca.Markets
         New,
 
         /// <summary>
-        /// Order partially filled.
+        /// Partial fill (event) on order.
         /// </summary>
         [UsedImplicitly]
         [EnumMember(Value = "partial_fill")]
@@ -108,19 +108,47 @@ namespace Alpaca.Markets
         [UsedImplicitly]
         [EnumMember(Value = "replaced")]
         Replaced,
-        
+
         /// <summary>
         /// The order is awaiting replacement.
         /// </summary>
         [UsedImplicitly]
         [EnumMember(Value = "pending_replace")]
         PendingReplace,
-        
+
         /// <summary>
         /// The order replace has been rejected.
         /// </summary>
         [UsedImplicitly]
         [EnumMember(Value = "order_replace_rejected")]
-        ReplaceRejected
+        ReplaceRejected,
+
+        /// <summary>
+        /// Order partially filled (status).
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "partially_filled")]
+        PartiallyFilled,
+
+        /// <summary>
+        /// Order accepted by server.
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "accepted")]
+        Accepted,
+
+        /// <summary>
+        /// Order held pending trigger event.
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "held")]
+        Held,
+
+        /// <summary>
+        /// Order review pending (order cost basis is large).
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "pending_review")]
+        PendingReview
     }
 }
