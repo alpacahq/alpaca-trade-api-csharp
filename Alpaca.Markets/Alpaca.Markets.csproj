@@ -8,20 +8,20 @@
     <WarningLevel>5</WarningLevel>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.4.0</Version>
+    <Version>5.4.1</Version>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <PackageProjectUrl>https://alpaca.markets/</PackageProjectUrl>
-    <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <Copyright>© 2018-2023 Alpaca Securities LLC. All rights reserved.</Copyright>
     <Company>Alpaca Securities LLC</Company>
     <Authors>Alpaca Securities LLC</Authors>
     <Product>.NET SDK for Alpaca Trade API</Product>
-    <AssemblyVersion>5.4.0.0</AssemblyVersion>
-    <FileVersion>5.4.0.0</FileVersion>
+    <AssemblyVersion>5.4.1.0</AssemblyVersion>
+    <FileVersion>5.4.1.0</FileVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
-    <PackageReleaseNotes>- Massive dependencies upgrade and changed TFMs according to their EOL policies.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added support for the new values into the `TradeEvent` enumeration.</PackageReleaseNotes>
 	  <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
