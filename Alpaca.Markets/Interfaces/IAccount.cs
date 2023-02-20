@@ -16,10 +16,16 @@ namespace Alpaca.Markets
         Guid AccountId { get; }
 
         /// <summary>
-        /// Gets updated account status.
+        /// Gets updated stock account status.
         /// </summary>
         [UsedImplicitly]
         AccountStatus Status { get; }
+
+        /// <summary>
+        /// Gets updated crypto account status.
+        /// </summary>
+        [UsedImplicitly]
+        AccountStatus CryptoStatus { get; }
 
         /// <summary>
         /// Gets main account currency.
@@ -164,5 +170,23 @@ namespace Alpaca.Markets
         /// </summary>
         [UsedImplicitly]
         Boolean IsAccountBlocked { get; }
+
+        /// <summary>
+        /// Gets fees collected value (if any).
+        /// </summary>
+        [UsedImplicitly]
+        Decimal? AccruedFees { get; }
+
+        /// <summary>
+        /// Gets cash pending transfer in.
+        /// </summary>
+        [UsedImplicitly]
+        Decimal? PendingTransferIn { get; }
+
+        /// <summary>
+        /// Gets cash pending transfer out.
+        /// </summary>
+        [UsedImplicitly]
+        Decimal? PendingTransferOut { get; }
     }
 }

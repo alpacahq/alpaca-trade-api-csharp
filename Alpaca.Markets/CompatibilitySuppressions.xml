@@ -170,7 +170,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.AccruedFees</Target>
+    <Left>lib/net461/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.CryptoStatus</Target>
+    <Left>lib/net461/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
     <Target>P:Alpaca.Markets.IAccount.NonMarginableBuyingPower</Target>
+    <Left>lib/net461/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.PendingTransferIn</Target>
+    <Left>lib/net461/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.PendingTransferOut</Target>
     <Left>lib/net461/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -394,7 +422,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.AccruedFees</Target>
+    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.CryptoStatus</Target>
+    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
     <Target>P:Alpaca.Markets.IAccount.NonMarginableBuyingPower</Target>
+    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.PendingTransferIn</Target>
+    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.PendingTransferOut</Target>
     <Left>lib/net5.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -506,7 +562,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.AccruedFees</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.CryptoStatus</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
     <Target>P:Alpaca.Markets.IAccount.NonMarginableBuyingPower</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.PendingTransferIn</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.PendingTransferOut</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -618,7 +702,35 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.AccruedFees</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.CryptoStatus</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
     <Target>P:Alpaca.Markets.IAccount.NonMarginableBuyingPower</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.PendingTransferIn</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccount.PendingTransferOut</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
