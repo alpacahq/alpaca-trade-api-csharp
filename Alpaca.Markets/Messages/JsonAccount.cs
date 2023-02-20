@@ -16,6 +16,9 @@ internal sealed class JsonAccount : IAccount
     [JsonProperty(PropertyName = "status", Required = Required.Always)]
     public AccountStatus Status { get; set; }
 
+    [JsonProperty(PropertyName = "crypto_status", Required = Required.Default)]
+    public AccountStatus CryptoStatus { get; set; }
+
     [JsonProperty(PropertyName = "currency", Required = Required.Default)]
     public String? Currency { get; set; }
 
@@ -85,6 +88,15 @@ internal sealed class JsonAccount : IAccount
     [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
     [JsonProperty(PropertyName = "created_at", Required = Required.Always)]
     public DateTime CreatedAtUtc { get; set; }
+
+    [JsonProperty(PropertyName = "accrued_fees", Required = Required.Default)]
+    public Decimal? AccruedFees { get; set; }
+
+    [JsonProperty(PropertyName = "pending_transfer_in", Required = Required.Default)]
+    public Decimal? PendingTransferIn { get; set; }
+
+    [JsonProperty(PropertyName = "pending_transfer_out", Required = Required.Default)]
+    public Decimal? PendingTransferOut { get; set; }
 
     [OnDeserialized]
     [UsedImplicitly]

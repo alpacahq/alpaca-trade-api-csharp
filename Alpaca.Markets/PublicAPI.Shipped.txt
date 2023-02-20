@@ -342,8 +342,10 @@ Alpaca.Markets.HistoryPeriodUnit.Year = 3 -> Alpaca.Markets.HistoryPeriodUnit
 Alpaca.Markets.IAccount
 Alpaca.Markets.IAccount.AccountId.get -> System.Guid
 Alpaca.Markets.IAccount.AccountNumber.get -> string?
+Alpaca.Markets.IAccount.AccruedFees.get -> decimal?
 Alpaca.Markets.IAccount.BuyingPower.get -> decimal?
 Alpaca.Markets.IAccount.CreatedAtUtc.get -> System.DateTime
+Alpaca.Markets.IAccount.CryptoStatus.get -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.IAccount.Currency.get -> string?
 Alpaca.Markets.IAccount.DayTradeCount.get -> ulong
 Alpaca.Markets.IAccount.DayTradingBuyingPower.get -> decimal?
@@ -357,8 +359,10 @@ Alpaca.Markets.IAccount.LastEquity.get -> decimal
 Alpaca.Markets.IAccount.LastMaintenanceMargin.get -> decimal
 Alpaca.Markets.IAccount.LongMarketValue.get -> decimal?
 Alpaca.Markets.IAccount.MaintenanceMargin.get -> decimal
-Alpaca.Markets.IAccount.NonMarginableBuyingPower.get -> decimal?
 Alpaca.Markets.IAccount.Multiplier.get -> Alpaca.Markets.Multiplier
+Alpaca.Markets.IAccount.NonMarginableBuyingPower.get -> decimal?
+Alpaca.Markets.IAccount.PendingTransferIn.get -> decimal?
+Alpaca.Markets.IAccount.PendingTransferOut.get -> decimal?
 Alpaca.Markets.IAccount.RegulationBuyingPower.get -> decimal?
 Alpaca.Markets.IAccount.ShortingEnabled.get -> bool
 Alpaca.Markets.IAccount.ShortMarketValue.get -> decimal?
