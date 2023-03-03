@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.1.8.0</AssemblyVersion>
-    <FileVersion>6.1.8.0</FileVersion>
-    <Version>6.1.8</Version>
+    <AssemblyVersion>6.1.9.0</AssemblyVersion>
+    <FileVersion>6.1.9.0</FileVersion>
+    <Version>6.1.9</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Added support for the new values into the `TradeEvent` enumeration.
+- The crypto historical and real-time (streaming) clients now use the `v1beta3` endpoints.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
