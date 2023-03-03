@@ -170,10 +170,11 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalRequestBase, IHist
     [Obsolete("This property is not supported by API anymore and will be removed in the next major release.", true)]
     public IReadOnlyCollection<CryptoExchange> Exchanges => Array.Empty<CryptoExchange>();
 
+    /// <inheritdoc />
     internal override Boolean HasSingleSymbol => false;
 
     /// <inheritdoc />
-    protected override String LastPathSegment => "quotes";
+    protected override String LastPathSegment => "../../../v1beta2/crypto/quotes";
 
     HistoricalCryptoQuotesRequest IHistoricalRequest<HistoricalCryptoQuotesRequest, IQuote>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalCryptoQuotesRequest(Symbols, TimeInterval)
