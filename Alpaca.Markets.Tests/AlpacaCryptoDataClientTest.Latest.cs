@@ -7,7 +7,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddLatestBarExpectation(OldPathPrefix, Crypto);
+        mock.AddLatestBarExpectation(PathPrefixV1, Crypto);
 
 #pragma warning disable CS0618
         var bar = await mock.Client.GetLatestBarAsync(
@@ -39,7 +39,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddLatestQuoteExpectation(OldPathPrefix, Crypto);
+        mock.AddLatestQuoteExpectation(PathPrefixV1, Crypto);
 
 #pragma warning disable CS0618
         var quote = await mock.Client.GetLatestQuoteAsync(
@@ -71,7 +71,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddLatestTradeExpectation(OldPathPrefix, Crypto);
+        mock.AddLatestTradeExpectation(PathPrefixV1, Crypto);
 
 #pragma warning disable CS0618
         var trade = await mock.Client.GetLatestTradeAsync(

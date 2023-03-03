@@ -7,7 +7,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddMultiQuotesPageExpectation(PathPrefix, _symbols);
+        mock.AddMultiQuotesPageExpectation(PathPrefixV2, _symbols);
 
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
             new HistoricalCryptoQuotesRequest(_symbols, Yesterday, Today));
@@ -24,7 +24,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddMultiQuotesPageExpectation(PathPrefix, _symbol);
+        mock.AddMultiQuotesPageExpectation(PathPrefixV2, _symbol);
 
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
             new HistoricalCryptoQuotesRequest(Crypto, _timeInterval));
@@ -40,7 +40,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddMultiQuotesPageExpectation(PathPrefix, _symbol);
+        mock.AddMultiQuotesPageExpectation(PathPrefixV2, _symbol);
 
         var quotes = await mock.Client.ListHistoricalQuotesAsync(
             new HistoricalCryptoQuotesRequest(Crypto, Yesterday, Today));
@@ -57,7 +57,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddMultiQuotesPageExpectation(PathPrefix, _symbols);
+        mock.AddMultiQuotesPageExpectation(PathPrefixV2, _symbols);
 
         var quotes = await mock.Client.ListHistoricalQuotesAsync(
             new HistoricalCryptoQuotesRequest(_symbols, _timeInterval));

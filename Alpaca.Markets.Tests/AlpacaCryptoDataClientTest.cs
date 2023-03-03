@@ -12,9 +12,11 @@ public sealed partial class AlpacaCryptoDataClientTest
     private static readonly List<CryptoExchange> _exchangesList =
         new () { CryptoExchange.Ersx, CryptoExchange.Ftx };
 
-    private const String OldPathPrefix = "/v1beta1/crypto";
-
     private const String PathPrefix = "/v1beta3/crypto/us";
+
+    private const String PathPrefixV1 = "/v1beta1/crypto";
+
+    private const String PathPrefixV2 = "/v1beta2/crypto";
 
     private static DateTime Yesterday => _timeInterval.From!.Value;
 

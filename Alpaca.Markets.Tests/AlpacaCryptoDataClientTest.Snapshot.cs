@@ -7,7 +7,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddSnapshotExpectation(OldPathPrefix, Crypto);
+        mock.AddSnapshotExpectation(PathPrefixV1, Crypto);
 
 #pragma warning disable CS0618
         var snapshot = await mock.Client.GetSnapshotAsync(
@@ -58,7 +58,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddXbboExpectation(OldPathPrefix, Crypto);
+        mock.AddXbboExpectation(PathPrefixV1, Crypto);
 
 #pragma warning disable CS0618
         var bbo = await mock.Client.GetLatestBestBidOfferAsync(
@@ -73,7 +73,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddXbbosExpectation(OldPathPrefix, _symbols);
+        mock.AddXbbosExpectation(PathPrefixV1, _symbols);
 
 #pragma warning disable CS0618
         var xbbos = await mock.Client.ListLatestBestBidOffersAsync(
@@ -92,7 +92,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddXbbosExpectation(OldPathPrefix, _symbols);
+        mock.AddXbbosExpectation(PathPrefixV1, _symbols);
 
 #pragma warning disable CS0618
         var xbbos = await mock.Client.ListLatestBestBidOffersAsync(
