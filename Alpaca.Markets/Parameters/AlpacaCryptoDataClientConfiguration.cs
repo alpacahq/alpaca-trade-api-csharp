@@ -14,5 +14,6 @@ public sealed class AlpacaCryptoDataClientConfiguration : AlpacaClientConfigurat
     }
 
     internal override Uri GetApiEndpoint() =>
-        new UriBuilder(ApiEndpoint) { Path = "v1beta2/crypto/" }.Uri;
+        
+        new UriBuilder(ApiEndpoint) { Path = "v1beta3/crypto/us/" }.Uri;
 }
