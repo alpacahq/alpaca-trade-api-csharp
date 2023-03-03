@@ -49,7 +49,7 @@ public sealed class AlpacaCryptoDataClientTest
     private static void addMultiBarsPageExpectation(
         MockClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> mock,
         String? token = null) =>
-        mock.AddGet("/v1beta2/crypto/bars", new JObject(
+        mock.AddGet("/v1beta3/crypto/us/bars", new JObject(
             new JProperty("bars", new JObject(
                 new JProperty(Crypto, createBarsList()))),
             new JProperty("next_page_token", token)));

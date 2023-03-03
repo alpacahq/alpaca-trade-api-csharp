@@ -42,7 +42,7 @@ public sealed class LatestDataRequest : Validation.IRequest
             Query = await new QueryBuilder()
                 .AddParameter("exchange", Exchange.ToEnumString())
                 .AsStringAsync().ConfigureAwait(false)
-        }.AppendPath($"../../v1beta1/crypto/{Symbol}/{lastPathSegment}/latest");
+        }.AppendPath($"../../../v1beta1/crypto/{Symbol}/{lastPathSegment}/latest");
 
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {

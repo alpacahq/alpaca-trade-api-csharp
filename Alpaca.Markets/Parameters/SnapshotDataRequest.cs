@@ -41,7 +41,7 @@ public sealed class SnapshotDataRequest : Validation.IRequest
             Query = await new QueryBuilder()
                 .AddParameter("exchange", Exchange.ToEnumString())
                 .AsStringAsync().ConfigureAwait(false)
-        }.AppendPath($"../../v1beta1/crypto/{Symbol}/snapshot");
+        }.AppendPath($"../../../v1beta1/crypto/{Symbol}/snapshot");
 
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
