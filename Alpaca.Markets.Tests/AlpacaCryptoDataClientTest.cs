@@ -12,7 +12,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     private static readonly List<CryptoExchange> _exchangesList =
         new() { CryptoExchange.Ersx, CryptoExchange.Ftx };
 
-    private const String PathPrefix = "/v1beta2/crypto";
+    private const String PathPrefix = "/v1beta3/crypto/us";
 
     private static DateTime Yesterday => _timeInterval.From!.Value;
 
@@ -20,9 +20,9 @@ public sealed partial class AlpacaCryptoDataClientTest
 
     private static readonly String[] _symbol = { Crypto };
 
-    private const String Crypto = "BTCUSD";
+    private const String Crypto = "BTC/USD";
 
-    private const String Other = "ETHUSD";
+    private const String Other = "ETH/USD";
 
     public AlpacaCryptoDataClientTest(
         MockClientsFactoryFixture mockClientsFactory) =>

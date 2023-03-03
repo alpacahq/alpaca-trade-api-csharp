@@ -67,7 +67,7 @@ public sealed class LatestBestBidOfferRequest : Validation.IRequest
             Query = await new QueryBuilder()
                 .AddParameter("exchanges", Exchanges)
                 .AsStringAsync().ConfigureAwait(false)
-        }.AppendPath($"../../v1beta1/crypto/{Symbol}/xbbo/latest");
+        }.AppendPath($"../../../v1beta1/crypto/{Symbol}/xbbo/latest");
 
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
