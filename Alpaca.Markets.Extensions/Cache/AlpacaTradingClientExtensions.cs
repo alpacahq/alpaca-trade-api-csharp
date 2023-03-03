@@ -139,7 +139,7 @@ public static partial class AlpacaTradingClientExtensions
         IClock? clock) =>
         clock?.IsOpen switch
         {
-            true when clock.NextCloseUtc <= DateTime.UtcNow => true,
+            true when clock.NextCloseUtc <= DateTime.UtcNow => true, //-V3125
             false when clock.NextOpenUtc <= DateTime.UtcNow => true,
             null => true,
             _ => false
