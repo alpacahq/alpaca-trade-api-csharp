@@ -17,7 +17,7 @@
     </PackageReference>
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     <PackageReference Include="OoplesFinance.StockIndicators" Version="1.0.50" />
-    <PackageReference Include="Portable.System.DateTimeOnly" Version="7.0.0" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="7.0.1" />
     <PackageReference Include="System.Threading.Channels" Version="7.0.0" />
   </ItemGroup>
 
