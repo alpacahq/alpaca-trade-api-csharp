@@ -88,7 +88,7 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
-    private async Task<IPage<IQuote>> listHistoricalQuotesAsync(
+    internal async Task<IPage<IQuote>> listHistoricalQuotesAsync(
         THistoricalQuotesRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IPage<IQuote>, JsonQuotesPage<THistoricalQuote>>(
@@ -96,7 +96,7 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             cancellationToken).ConfigureAwait(false);
 
-    private async Task<IMultiPage<IQuote>> getHistoricalQuotesAsync(
+    internal async Task<IMultiPage<IQuote>> getHistoricalQuotesAsync(
         THistoricalQuotesRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IMultiPage<IQuote>, JsonMultiQuotesPage<THistoricalQuote>>(

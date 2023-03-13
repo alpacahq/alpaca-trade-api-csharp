@@ -9,7 +9,9 @@ public sealed partial class AlpacaCryptoDataClientTest
 
         mock.AddMultiQuotesPageExpectation(PathPrefixV2, _symbols);
 
+#pragma warning disable CS0618
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
+#pragma warning restore CS0618
             new HistoricalCryptoQuotesRequest(_symbols, Yesterday, Today));
 
         Assert.NotNull(quotes);
@@ -26,7 +28,9 @@ public sealed partial class AlpacaCryptoDataClientTest
 
         mock.AddMultiQuotesPageExpectation(PathPrefixV2, _symbol);
 
+#pragma warning disable CS0618
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
+#pragma warning restore CS0618
             new HistoricalCryptoQuotesRequest(Crypto, _timeInterval));
 
         Assert.NotNull(quotes);
@@ -42,7 +46,9 @@ public sealed partial class AlpacaCryptoDataClientTest
 
         mock.AddMultiQuotesPageExpectation(PathPrefixV2, _symbol);
 
+#pragma warning disable CS0618
         var quotes = await mock.Client.ListHistoricalQuotesAsync(
+#pragma warning restore CS0618
             new HistoricalCryptoQuotesRequest(Crypto, Yesterday, Today));
 
         Assert.NotNull(quotes);
@@ -59,7 +65,9 @@ public sealed partial class AlpacaCryptoDataClientTest
 
         mock.AddMultiQuotesPageExpectation(PathPrefixV2, _symbols);
 
+#pragma warning disable CS0618
         var quotes = await mock.Client.ListHistoricalQuotesAsync(
+#pragma warning restore CS0618
             new HistoricalCryptoQuotesRequest(_symbols, _timeInterval));
 
         Assert.NotNull(quotes);
