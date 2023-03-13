@@ -14,8 +14,6 @@ public sealed partial class AlpacaCryptoDataClientTest
 
     private const String PathPrefix = "/v1beta3/crypto/us";
 
-    private const String PathPrefixV2 = "/v1beta2/crypto";
-
     private static DateTime Yesterday => _timeInterval.From!.Value;
 
     private static DateTime Today => _timeInterval.Into!.Value;
