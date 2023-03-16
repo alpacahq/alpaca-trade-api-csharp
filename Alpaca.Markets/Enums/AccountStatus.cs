@@ -79,6 +79,13 @@ namespace Alpaca.Markets
         /// </summary>
         [UsedImplicitly]
         [EnumMember(Value = "APPROVED")]
-        Approved
+        Approved,
+
+        /// <summary>
+        /// Account approved but not active.
+        /// </summary>
+        [UsedImplicitly]
+        [EnumMember(Value = "INACTIVE")]
+        Inactive
     }
 }
