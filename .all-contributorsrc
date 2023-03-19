@@ -801,6 +801,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "fastflair",
+      "name": "Larry Bowden",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7144795?v=4",
+      "profile": "https://www.linkedin.com/in/larry-bowden-jr-pe/",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
