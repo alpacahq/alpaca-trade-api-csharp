@@ -121,6 +121,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Ilya171"><img src="https://avatars.githubusercontent.com/u/91055042?v=4?s=100" width="100px;" alt="Ilya171"/><br /><sub><b>Ilya171</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3AIlya171" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Kinzowa"><img src="https://avatars.githubusercontent.com/u/16160143?v=4?s=100" width="100px;" alt="Kinzowa"/><br /><sub><b>Kinzowa</b></sub></a><br /><a href="#question-Kinzowa" title="Answering Questions">💬</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/larry-bowden-jr-pe/"><img src="https://avatars.githubusercontent.com/u/7144795?v=4?s=100" width="100px;" alt="Larry Bowden"/><br /><sub><b>Larry Bowden</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=fastflair" title="Code">💻</a> <a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Afastflair" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
