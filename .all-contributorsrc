@@ -801,6 +801,25 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "Kinzowa",
+      "name": "Kinzowa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16160143?v=4",
+      "profile": "https://github.com/Kinzowa",
+      "contributions": [
+        "question"
+      ]
+    },
+    {
+      "login": "fastflair",
+      "name": "Larry Bowden",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7144795?v=4",
+      "profile": "https://www.linkedin.com/in/larry-bowden-jr-pe/",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
