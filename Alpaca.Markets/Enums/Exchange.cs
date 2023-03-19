@@ -75,5 +75,12 @@ public enum Exchange
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "OTC")]
-    Otc
+    Otc,
+
+    /// <summary>
+    /// Alpaca crypto Exchange.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "FTXU")]
+    Crypto
 }
