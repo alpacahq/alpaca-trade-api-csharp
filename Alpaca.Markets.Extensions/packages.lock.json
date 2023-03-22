@@ -47,9 +47,9 @@
       },
       "Microsoft.Extensions.Http.Polly": {
         "type": "Direct",
-        "requested": "[7.0.3, )",
-        "resolved": "7.0.3",
-        "contentHash": "tTC4zEqxotk+x/TMTkIR/DzfIYkdGykNOa3QWy1PrvCC6NPP0Nw1FEHEI1D2kmC77d62NbJkO6nCLfoU0XZOgg==",
+        "requested": "[7.0.4, )",
+        "resolved": "7.0.4",
+        "contentHash": "k2q2y7o7uqR7Xjx1gphaTwo4jwXj2+cCK3ZmjpnwlDVELAtLrwQpl3Ops7I6VKctJs7NZPYk6CcucpdRTG/Xrw==",
         "dependencies": {
           "Microsoft.Extensions.Http": "7.0.0",
           "Polly": "7.2.3",
@@ -77,11 +77,11 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[7.0.0, )",
-        "resolved": "7.0.0",
-        "contentHash": "YcUeGtgUdtLF4YPTi54u7KT2bp3GEj1o1vBMaRSBTjVJxq9AzN7CJogovRLv0hqUvbCAgVd1T+43O1kSyCEMug==",
+        "requested": "[7.0.1, )",
+        "resolved": "7.0.1",
+        "contentHash": "2X7BoEcSLwRJwfrmsNzL+5mhEyENa8YeL2goDdVhjG9lGaRgOGlRRNbfloIpS6FpvMtgYyADouLeFQNRKFNDiQ==",
         "dependencies": {
-          "System.Memory": "4.5.4"
+          "System.Memory": "4.5.5"
         }
       },
       "System.Linq.Async": {
@@ -318,9 +318,9 @@
       },
       "Microsoft.Extensions.Http.Polly": {
         "type": "Direct",
-        "requested": "[7.0.3, )",
-        "resolved": "7.0.3",
-        "contentHash": "tTC4zEqxotk+x/TMTkIR/DzfIYkdGykNOa3QWy1PrvCC6NPP0Nw1FEHEI1D2kmC77d62NbJkO6nCLfoU0XZOgg==",
+        "requested": "[7.0.4, )",
+        "resolved": "7.0.4",
+        "contentHash": "k2q2y7o7uqR7Xjx1gphaTwo4jwXj2+cCK3ZmjpnwlDVELAtLrwQpl3Ops7I6VKctJs7NZPYk6CcucpdRTG/Xrw==",
         "dependencies": {
           "Microsoft.Extensions.Http": "7.0.0",
           "Polly": "7.2.3",
@@ -348,11 +348,11 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[7.0.0, )",
-        "resolved": "7.0.0",
-        "contentHash": "YcUeGtgUdtLF4YPTi54u7KT2bp3GEj1o1vBMaRSBTjVJxq9AzN7CJogovRLv0hqUvbCAgVd1T+43O1kSyCEMug==",
+        "requested": "[7.0.1, )",
+        "resolved": "7.0.1",
+        "contentHash": "2X7BoEcSLwRJwfrmsNzL+5mhEyENa8YeL2goDdVhjG9lGaRgOGlRRNbfloIpS6FpvMtgYyADouLeFQNRKFNDiQ==",
         "dependencies": {
-          "System.Memory": "4.5.4"
+          "System.Memory": "4.5.5"
         }
       },
       "System.Linq.Async": {
@@ -577,9 +577,9 @@
       },
       "Microsoft.Extensions.Http.Polly": {
         "type": "Direct",
-        "requested": "[7.0.3, )",
-        "resolved": "7.0.3",
-        "contentHash": "tTC4zEqxotk+x/TMTkIR/DzfIYkdGykNOa3QWy1PrvCC6NPP0Nw1FEHEI1D2kmC77d62NbJkO6nCLfoU0XZOgg==",
+        "requested": "[7.0.4, )",
+        "resolved": "7.0.4",
+        "contentHash": "k2q2y7o7uqR7Xjx1gphaTwo4jwXj2+cCK3ZmjpnwlDVELAtLrwQpl3Ops7I6VKctJs7NZPYk6CcucpdRTG/Xrw==",
         "dependencies": {
           "Microsoft.Extensions.Http": "7.0.0",
           "Polly": "7.2.3",
@@ -598,9 +598,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[7.0.0, )",
-        "resolved": "7.0.0",
-        "contentHash": "YcUeGtgUdtLF4YPTi54u7KT2bp3GEj1o1vBMaRSBTjVJxq9AzN7CJogovRLv0hqUvbCAgVd1T+43O1kSyCEMug=="
+        "requested": "[7.0.1, )",
+        "resolved": "7.0.1",
+        "contentHash": "2X7BoEcSLwRJwfrmsNzL+5mhEyENa8YeL2goDdVhjG9lGaRgOGlRRNbfloIpS6FpvMtgYyADouLeFQNRKFNDiQ=="
       },
       "System.Linq.Async": {
         "type": "Direct",
@@ -791,9 +791,9 @@
       },
       "Microsoft.Extensions.Http.Polly": {
         "type": "Direct",
-        "requested": "[7.0.3, )",
-        "resolved": "7.0.3",
-        "contentHash": "tTC4zEqxotk+x/TMTkIR/DzfIYkdGykNOa3QWy1PrvCC6NPP0Nw1FEHEI1D2kmC77d62NbJkO6nCLfoU0XZOgg==",
+        "requested": "[7.0.4, )",
+        "resolved": "7.0.4",
+        "contentHash": "k2q2y7o7uqR7Xjx1gphaTwo4jwXj2+cCK3ZmjpnwlDVELAtLrwQpl3Ops7I6VKctJs7NZPYk6CcucpdRTG/Xrw==",
         "dependencies": {
           "Microsoft.Extensions.Http": "7.0.0",
           "Polly": "7.2.3",
@@ -809,6 +809,12 @@
           "Microsoft.Build.Tasks.Git": "1.1.1",
           "Microsoft.SourceLink.Common": "1.1.1"
         }
+      },
+      "Portable.System.DateTimeOnly": {
+        "type": "Direct",
+        "requested": "[7.0.1, )",
+        "resolved": "7.0.1",
+        "contentHash": "2X7BoEcSLwRJwfrmsNzL+5mhEyENa8YeL2goDdVhjG9lGaRgOGlRRNbfloIpS6FpvMtgYyADouLeFQNRKFNDiQ=="
       },
       "System.Linq.Async": {
         "type": "Direct",
