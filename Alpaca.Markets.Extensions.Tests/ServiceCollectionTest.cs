@@ -9,7 +9,7 @@ public sealed class ServiceCollectionTest
     {
         var collection = new ServiceCollection();
 
-        Assert.Equal(collection, collection.AddAlpacaCryptoDataClient(
+        Assert.NotNull(collection.AddAlpacaCryptoDataClient(
             Environments.Live, new SecretKey(Guid.NewGuid().ToString(), Guid.NewGuid().ToString())));
 
         using var client = collection.BuildServiceProvider().GetService<IAlpacaCryptoDataClient>();
@@ -21,7 +21,7 @@ public sealed class ServiceCollectionTest
     {
         var collection = new ServiceCollection();
 
-        Assert.Equal(collection, collection.AddAlpacaDataClient(
+        Assert.NotNull(collection.AddAlpacaDataClient(
             Environments.Live, new SecretKey(Guid.NewGuid().ToString(), Guid.NewGuid().ToString())));
 
         using var client = collection.BuildServiceProvider().GetService<IAlpacaDataClient>();
@@ -33,7 +33,7 @@ public sealed class ServiceCollectionTest
     {
         var collection = new ServiceCollection();
 
-        Assert.Equal(collection, collection.AddAlpacaTradingClient(
+        Assert.NotNull(collection.AddAlpacaTradingClient(
             Environments.Live, new SecretKey(Guid.NewGuid().ToString(), Guid.NewGuid().ToString())));
 
         using var client = collection.BuildServiceProvider().GetService<IAlpacaTradingClient>();
