@@ -18,7 +18,7 @@ namespace Alpaca.Markets
         /// <summary>
         /// Gets ths maximal valid page size for the news request supported by Alpaca Data API v2.
         /// </summary>
-        internal static UInt32 MaxNewsPageSize => 100;
+        internal static UInt32 MaxNewsPageSize => 50;
 
         /// <summary>
         /// Gets and sets the request page size. If equals to <c>null</c> default size will be used.
