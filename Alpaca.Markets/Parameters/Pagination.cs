@@ -16,7 +16,7 @@ public sealed class Pagination
     /// <summary>
     /// Gets the maximum valid page size for news requests supported by Alpaca Data API v2.
     /// </summary>
-    internal static UInt32 MaxNewsPageSize => 100;
+    internal static UInt32 MaxNewsPageSize => 50;
 
     /// <summary>
     /// Gets and sets the request page size. If equals to <c>null</c> default size will be used.
