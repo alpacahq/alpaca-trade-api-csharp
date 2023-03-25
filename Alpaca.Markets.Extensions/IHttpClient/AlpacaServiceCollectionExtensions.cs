@@ -18,9 +18,9 @@ public static class AlpacaServiceCollectionExtensions
     /// <exception cref="ArgumentNullException">
     /// The <paramref name="services"/>, <paramref name="environment"/>, or <paramref name="securityKey"/> argument is <c>null</c>.
     /// </exception>
-    /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+    /// <returns>The <see cref="IHttpClientBuilder"/> interface for further HTTP client customization.</returns>
     [UsedImplicitly]
-    public static IServiceCollection AddAlpacaCryptoDataClient(
+    public static IHttpClientBuilder AddAlpacaCryptoDataClient(
         this IServiceCollection services,
         IEnvironment environment,
         SecurityKey securityKey) =>
@@ -36,9 +36,9 @@ public static class AlpacaServiceCollectionExtensions
     /// <exception cref="ArgumentNullException">
     /// The <paramref name="services"/> or <paramref name="configuration"/> argument is <c>null</c>.
     /// </exception>
-    /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+    /// <returns>The <see cref="IHttpClientBuilder"/> interface for further HTTP client customization.</returns>
     [UsedImplicitly]
-    public static IServiceCollection AddAlpacaCryptoDataClient(
+    public static IHttpClientBuilder AddAlpacaCryptoDataClient(
         this IServiceCollection services,
         AlpacaCryptoDataClientConfiguration configuration) =>
         services
@@ -57,9 +57,9 @@ public static class AlpacaServiceCollectionExtensions
     /// <exception cref="ArgumentNullException">
     /// The <paramref name="services"/>, <paramref name="environment"/>, or <paramref name="securityKey"/> argument is <c>null</c>.
     /// </exception>
-    /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+    /// <returns>The <see cref="IHttpClientBuilder"/> interface for further HTTP client customization.</returns>
     [UsedImplicitly]
-    public static IServiceCollection AddAlpacaDataClient(
+    public static IHttpClientBuilder AddAlpacaDataClient(
         this IServiceCollection services,
         IEnvironment environment,
         SecurityKey securityKey) =>
@@ -75,9 +75,9 @@ public static class AlpacaServiceCollectionExtensions
     /// <exception cref="ArgumentNullException">
     /// The <paramref name="services"/> or <paramref name="configuration"/> argument is <c>null</c>.
     /// </exception>
-    /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+    /// <returns>The <see cref="IHttpClientBuilder"/> interface for further HTTP client customization.</returns>
     [UsedImplicitly]
-    public static IServiceCollection AddAlpacaDataClient(
+    public static IHttpClientBuilder AddAlpacaDataClient(
         this IServiceCollection services,
         AlpacaDataClientConfiguration configuration) =>
         services
@@ -96,9 +96,9 @@ public static class AlpacaServiceCollectionExtensions
     /// <exception cref="ArgumentNullException">
     /// The <paramref name="services"/>, <paramref name="environment"/>, or <paramref name="securityKey"/> argument is <c>null</c>.
     /// </exception>
-    /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+    /// <returns>The <see cref="IHttpClientBuilder"/> interface for further HTTP client customization.</returns>
     [UsedImplicitly]
-    public static IServiceCollection AddAlpacaTradingClient(
+    public static IHttpClientBuilder AddAlpacaTradingClient(
         this IServiceCollection services,
         IEnvironment environment,
         SecurityKey securityKey) =>
@@ -114,9 +114,9 @@ public static class AlpacaServiceCollectionExtensions
     /// <exception cref="ArgumentNullException">
     /// The <paramref name="services"/> or <paramref name="configuration"/> argument is <c>null</c>.
     /// </exception>
-    /// <returns>The <paramref name="services"/> object (fluent interface).</returns>
+    /// <returns>The <see cref="IHttpClientBuilder"/> interface for further HTTP client customization.</returns>
     [UsedImplicitly]
-    public static IServiceCollection AddAlpacaTradingClient(
+    public static IHttpClientBuilder AddAlpacaTradingClient(
         this IServiceCollection services,
         AlpacaTradingClientConfiguration configuration) =>
         services
@@ -134,11 +134,10 @@ public static class AlpacaServiceCollectionExtensions
         return configuration;
     }
 
-    private static IServiceCollection withConfiguredPrimaryHttpMessageHandler<TConfiguration>(
+    private static IHttpClientBuilder withConfiguredPrimaryHttpMessageHandler<TConfiguration>(
         this IHttpClientBuilder builder,
         TConfiguration configuration)
         where TConfiguration : AlpacaClientConfigurationBase =>
-        builder
-            .ConfigurePrimaryHttpMessageHandler(() => configuration.ThrottleParameters.GetMessageHandler())
-            .Services;
+        builder.ConfigurePrimaryHttpMessageHandler(
+            () => configuration.ThrottleParameters.GetMessageHandler());
 }
