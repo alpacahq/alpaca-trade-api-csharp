@@ -929,4 +929,10 @@ public interface IAlpacaTradingClient : IDisposable
     Task<IReadOnlyList<IAnnouncement>> ListAnnouncementsAsync(
         AnnouncementsRequest request,
         CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public IRateLimitValues GetRateLimitValues();
 }

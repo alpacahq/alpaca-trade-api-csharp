@@ -1,1 +1,6 @@
 ﻿#nullable enable
+Alpaca.Markets.IAlpacaTradingClient.GetRateLimitValues() -> Alpaca.Markets.IRateLimitValues!
+Alpaca.Markets.IRateLimitValues
+Alpaca.Markets.IRateLimitValues.Limit.get -> int
+Alpaca.Markets.IRateLimitValues.Remaining.get -> int
+Alpaca.Markets.IRateLimitValues.ResetTimeUtc.get -> System.DateTime

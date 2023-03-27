@@ -5,54 +5,54 @@ internal sealed partial class AlpacaTradingClient
     public Task<IReadOnlyList<IWatchList>> ListWatchListsAsync(
         CancellationToken cancellationToken = default) =>
         _httpClient.GetAsync<IReadOnlyList<IWatchList>, List<JsonWatchList>>(
-            "v2/watchlists", cancellationToken);
+            "v2/watchlists", _rateLimitHandler, cancellationToken);
 
     public Task<IWatchList> CreateWatchListAsync(
         NewWatchListRequest request,
         CancellationToken cancellationToken = default) =>
         _httpClient.PostAsync<IWatchList, JsonWatchList, NewWatchListRequest>(
-            "v2/watchlists", request,  cancellationToken);
+            "v2/watchlists", request,  _rateLimitHandler, cancellationToken);
 
     public Task<IWatchList> GetWatchListByIdAsync(
         Guid watchListId,
         CancellationToken cancellationToken = default) =>
         _httpClient.GetAsync<IWatchList, JsonWatchList>(
-            getEndpointUri(watchListId), cancellationToken);
+            getEndpointUri(watchListId), _rateLimitHandler, cancellationToken);
 
     public async Task<IWatchList> GetWatchListByNameAsync(
         String name,
         CancellationToken cancellationToken = default) =>
         await _httpClient.GetAsync<IWatchList, JsonWatchList>(
             await getEndpointUriBuilderAsync(name).ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IWatchList> UpdateWatchListByIdAsync(
         UpdateWatchListRequest request,
         CancellationToken cancellationToken = default) =>
         _httpClient.PutAsync<IWatchList, JsonWatchList, UpdateWatchListRequest>(
             getEndpointUri(request.EnsureNotNull().Validate().WatchListId), request,
-            cancellationToken);
+            _rateLimitHandler, cancellationToken);
 
     public Task<IWatchList> AddAssetIntoWatchListByIdAsync(
         ChangeWatchListRequest<Guid> request,
         CancellationToken cancellationToken = default) =>
         _httpClient.PostAsync<IWatchList, JsonWatchList, ChangeWatchListRequest<Guid>>(
             getEndpointUri(request.EnsureNotNull().Validate().Key), request,
-            cancellationToken);
+            _rateLimitHandler, cancellationToken);
 
     public async Task<IWatchList> AddAssetIntoWatchListByNameAsync(
         ChangeWatchListRequest<String> request,
         CancellationToken cancellationToken = default) =>
         await _httpClient.PostAsync<IWatchList, JsonWatchList, ChangeWatchListRequest<String>>(
             await getEndpointUriBuilderAsync(request.EnsureNotNull().Validate().Key).ConfigureAwait(false), request,
-            cancellationToken).ConfigureAwait(false);
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IWatchList> DeleteAssetFromWatchListByIdAsync(
         ChangeWatchListRequest<Guid> request,
         CancellationToken cancellationToken = default) =>
         _httpClient.DeleteAsync<IWatchList, JsonWatchList>(
             getEndpointUri(request.EnsureNotNull().Validate().Key, request.Asset),
-            cancellationToken);
+            _rateLimitHandler, cancellationToken);
 
     public async Task<IWatchList> DeleteAssetFromWatchListByNameAsync(
         ChangeWatchListRequest<String> request,
@@ -61,20 +61,20 @@ internal sealed partial class AlpacaTradingClient
             await getEndpointUriBuilderAsync(
                     request.EnsureNotNull().Validate().Key, request.Asset)
                 .ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<Boolean> DeleteWatchListByIdAsync(
         Guid watchListId,
         CancellationToken cancellationToken = default) =>
         _httpClient.TryDeleteAsync(
-            getEndpointUri(watchListId), cancellationToken);
+            getEndpointUri(watchListId), _rateLimitHandler, cancellationToken);
 
     public async Task<Boolean> DeleteWatchListByNameAsync(
         String name,
         CancellationToken cancellationToken = default) =>
         await _httpClient.TryDeleteAsync(
             await getEndpointUriBuilderAsync(name).ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     private async ValueTask<UriBuilder> getEndpointUriBuilderAsync(
         String name,

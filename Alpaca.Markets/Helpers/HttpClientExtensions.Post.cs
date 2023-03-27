@@ -6,27 +6,30 @@ internal static partial class HttpClientExtensions
         this HttpClient httpClient,
         String endpointUri,
         TRequest request,
+        RateLimitHandler rateLimitHandler,
         CancellationToken cancellationToken)
         where TJson : TApi =>
         callAndDeserializeAsync<TApi, TJson, TRequest>(
-            httpClient, HttpMethod.Post, asUri(endpointUri), request, cancellationToken);
+            httpClient, HttpMethod.Post, asUri(endpointUri), request, rateLimitHandler, cancellationToken);
 
     public static Task<TApi> PostAsync<TApi, TJson, TRequest>(
         this HttpClient httpClient,
         UriBuilder uriBuilder,
         TRequest request,
+        RateLimitHandler rateLimitHandler,
         CancellationToken cancellationToken)
         where TJson : TApi =>
         callAndDeserializeAsync<TApi, TJson, TRequest>(
-            httpClient, HttpMethod.Post, uriBuilder.Uri, request, cancellationToken);
+            httpClient, HttpMethod.Post, uriBuilder.Uri, request, rateLimitHandler, cancellationToken);
 
     public static Task<TApi> PutAsync<TApi, TJson, TRequest>(
         this HttpClient httpClient,
         String endpointUri,
         TRequest request,
+        RateLimitHandler rateLimitHandler,
         CancellationToken cancellationToken)
         where TJson : TApi =>
         callAndDeserializeAsync<TApi, TJson, TRequest>(
-            httpClient, HttpMethod.Put, asUri(endpointUri), request, cancellationToken);
+            httpClient, HttpMethod.Put, asUri(endpointUri), request, rateLimitHandler, cancellationToken);
 
 }
