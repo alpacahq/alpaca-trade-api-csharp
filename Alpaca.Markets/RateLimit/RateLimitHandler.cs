@@ -20,7 +20,6 @@ internal sealed class RateLimitHandler : IDisposable
         _lock.EnterWriteLock();
         try
         {
-            Console.WriteLine(updated.Remaining);
             var compareResult = updated.ResetTimeUtc.CompareTo(_current.ResetTimeUtc);
             if ((compareResult == 0 && updated.Remaining < _current.Remaining) ||
                 compareResult > 0)
@@ -52,7 +51,7 @@ internal sealed class RateLimitHandler : IDisposable
     private static String? getHeaderValue(
         HttpHeaders headers,
         String headerName) =>
-        headers.TryGetValues(headerName, out var values) ? values?.FirstOrDefault() : null;
+        headers.TryGetValues(headerName, out var values) ? values.FirstOrDefault() : null;
 
     private static Int32 tryParseInt32(
         String? headerValue) =>
