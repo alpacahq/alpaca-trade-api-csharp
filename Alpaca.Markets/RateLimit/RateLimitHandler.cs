@@ -17,27 +17,20 @@ internal sealed class RateLimitHandler : IDisposable
             tryParseInt32(getHeaderValue(headers, "X-Ratelimit-Remaining")),
             tryParseInt64(getHeaderValue(headers, "X-Ratelimit-Reset")).FromUnixTimeSeconds());
 
-        _lock.EnterUpgradeableReadLock();
+        _lock.EnterWriteLock();
         try
         {
-            if (_current.ResetTimeUtc > updated.ResetTimeUtc)
-            {
-                return;
-            }
-
-            _lock.EnterWriteLock();
-            try
+            Console.WriteLine(updated.Remaining);
+            var compareResult = updated.ResetTimeUtc.CompareTo(_current.ResetTimeUtc);
+            if ((compareResult == 0 && updated.Remaining < _current.Remaining) ||
+                compareResult > 0)
             {
                 _current = updated;
-            }
-            finally
-            {
-                _lock.ExitWriteLock();
             }
         }
         finally
         {
-            _lock.ExitUpgradeableReadLock();
+            _lock.ExitWriteLock();
         }
     }
 

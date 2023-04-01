@@ -4,7 +4,7 @@
 /// Provides unified type-safe access for Alpaca Trading API via HTTP/REST.
 /// </summary>
 [CLSCompliant(false)]
-public interface IAlpacaTradingClient : IDisposable
+public interface IAlpacaTradingClient : IRateLimitProvider, IDisposable
 {
     /// <summary>
     /// Gets list of watch list objects from Alpaca REST API endpoint.
@@ -929,10 +929,4 @@ public interface IAlpacaTradingClient : IDisposable
     Task<IReadOnlyList<IAnnouncement>> ListAnnouncementsAsync(
         AnnouncementsRequest request,
         CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns></returns>
-    public IRateLimitValues GetRateLimitValues();
 }
