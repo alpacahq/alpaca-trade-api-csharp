@@ -8,6 +8,7 @@ public interface IAlpacaCryptoDataClient :
     IHistoricalQuotesClient<HistoricalCryptoQuotesRequest>,
     IHistoricalTradesClient<HistoricalCryptoTradesRequest>,
     IHistoricalBarsClient<HistoricalCryptoBarsRequest>,
+    IRateLimitProvider,
     IDisposable
 {
     /// <summary>

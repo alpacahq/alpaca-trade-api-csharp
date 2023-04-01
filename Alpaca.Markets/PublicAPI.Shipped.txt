@@ -692,6 +692,12 @@ Alpaca.Markets.IPosition.UnrealizedProfitLossPercent.get -> decimal?
 Alpaca.Markets.IPositionActionStatus
 Alpaca.Markets.IPositionActionStatus.IsSuccess.get -> bool
 Alpaca.Markets.IPositionActionStatus.Symbol.get -> string!
+Alpaca.Markets.IRateLimitProvider
+Alpaca.Markets.IRateLimitProvider.GetRateLimitValues() -> Alpaca.Markets.IRateLimitValues!
+Alpaca.Markets.IRateLimitValues
+Alpaca.Markets.IRateLimitValues.Limit.get -> int
+Alpaca.Markets.IRateLimitValues.Remaining.get -> int
+Alpaca.Markets.IRateLimitValues.ResetTimeUtc.get -> System.DateTime
 Alpaca.Markets.IRequestWithTimeInterval<TInterval>
 Alpaca.Markets.IRequestWithTimeInterval<TInterval>.SetInterval(TInterval value) -> void
 Alpaca.Markets.ITimeInterval

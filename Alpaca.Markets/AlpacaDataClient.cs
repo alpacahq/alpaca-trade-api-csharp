@@ -15,7 +15,7 @@ internal sealed class AlpacaDataClient :
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IBar, JsonLatestBar>(
             await request.Validate().GetUriBuilderAsync(HttpClient, "bars/latest").ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IReadOnlyDictionary<String, IBar>> ListLatestBarsAsync(
         LatestMarketDataListRequest request,
@@ -28,7 +28,7 @@ internal sealed class AlpacaDataClient :
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<ITrade, JsonLatestTrade>(
             await request.Validate().GetUriBuilderAsync(HttpClient, "trades/latest").ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IReadOnlyDictionary<String, ITrade>> ListLatestTradesAsync(
         LatestMarketDataListRequest request,
@@ -41,7 +41,7 @@ internal sealed class AlpacaDataClient :
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IQuote, JsonLatestQuote<JsonHistoricalQuote>>(
             await request.Validate().GetUriBuilderAsync(HttpClient, "quotes/latest").ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IReadOnlyDictionary<String, IQuote>> ListLatestQuotesAsync(
         LatestMarketDataListRequest request,
@@ -54,7 +54,7 @@ internal sealed class AlpacaDataClient :
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<ISnapshot, JsonSnapshot>(
             await request.Validate().GetUriBuilderAsync(HttpClient, "snapshot").ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public async Task<IReadOnlyDictionary<String, ISnapshot>> ListSnapshotsAsync(
         LatestMarketDataListRequest request,
@@ -62,12 +62,12 @@ internal sealed class AlpacaDataClient :
         await HttpClient.GetAsync<String, ISnapshot, String, JsonSnapshot>(
             await request.Validate().GetUriBuilderAsync(HttpClient, "snapshots").ConfigureAwait(false),
             StringComparer.Ordinal, withSymbol<ISnapshot, JsonSnapshot>,
-            cancellationToken).ConfigureAwait(false);
+            RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IReadOnlyDictionary<String, String>> ListExchangesAsync(
         CancellationToken cancellationToken = default) =>
         HttpClient.GetAsync<IReadOnlyDictionary<String, String>, Dictionary<String, String>>(
-            "meta/exchanges", cancellationToken);
+            "meta/exchanges", RateLimitHandler, cancellationToken);
 
     public Task<IReadOnlyDictionary<String, String>> ListTradeConditionsAsync(
         Tape tape,
@@ -85,7 +85,7 @@ internal sealed class AlpacaDataClient :
         await HttpClient.GetAsync<IPage<INewsArticle>, JsonNewsPage>(
             await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     private async Task<IReadOnlyDictionary<String, String>> listConditionsAsync(
         Tape tape,
@@ -98,7 +98,7 @@ internal sealed class AlpacaDataClient :
                     .AddParameter("tape", tape.ToEnumString())
                     .AsStringAsync().ConfigureAwait(false)
             }.AppendPath($"meta/conditions/{tickType}"),
-            cancellationToken).ConfigureAwait(false);
+            RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     private async Task<IReadOnlyDictionary<String, TApi>> getLatestAsync<TApi, TJson>(
         LatestMarketDataListRequest request,
@@ -109,7 +109,7 @@ internal sealed class AlpacaDataClient :
         await HttpClient.GetAsync(
             await request.Validate().GetUriBuilderAsync(HttpClient, lastPathSegment).ConfigureAwait(false),
             itemsSelector, withSymbol<TApi, TJson>,
-            cancellationToken).ConfigureAwait(false);
+            RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     private static TApi withSymbol<TApi, TJson>(
         KeyValuePair<String, TJson> kvp)
