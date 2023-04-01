@@ -12,13 +12,16 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.0.0.2</AssemblyVersion>
-    <FileVersion>7.0.0.2</FileVersion>
-    <Version>7.0.0-alpha2</Version>
+    <AssemblyVersion>7.0.0.3</AssemblyVersion>
+    <FileVersion>7.0.0.3</FileVersion>
+    <Version>7.0.0-alpha3</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Backported all the latest changes from the 6.1.x version for compatibility.</PackageReleaseNotes>
+    <PackageReleaseNotes>
+- Added the `IRateLimitProvider` interface implementation for all HTTP-based clients in SDK.
+- Backported all the latest changes from the 6.x version for compatibility.
+    </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2023 Alpaca Securities LLC. All rights reserved.</Copyright>
