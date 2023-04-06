@@ -6,7 +6,7 @@
 internal sealed class JsonError
 {
     [JsonProperty(PropertyName = "code", Required = Required.Default)]
-    public Int32 Code { get; set; }
+    public Int32? Code { get; set; }
 
     [JsonProperty(PropertyName = "message", Required = Required.Default)]
     public String Message { get; set; } = String.Empty;
