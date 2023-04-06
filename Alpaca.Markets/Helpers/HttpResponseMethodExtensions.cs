@@ -63,9 +63,9 @@ internal static class HttpResponseMethodExtensions
         {
             var jsonError = new JsonSerializer()
                 .Deserialize<JsonError>(reader) ?? new JsonError();
+            jsonError.Code ??= (Int32)response.StatusCode;
 
-            return jsonError.Code == 0 ||
-                   String.IsNullOrEmpty(jsonError.Message)
+            return String.IsNullOrEmpty(jsonError.Message)
                 ? new RestClientErrorException(response)
                 : new RestClientErrorException(response, jsonError);
         }
