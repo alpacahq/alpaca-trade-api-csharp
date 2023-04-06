@@ -226,7 +226,7 @@ public enum AccountActivityType
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "REGTAFFEE")]
-    [Obsolete("This member will be removed in the upcoming release, use the FeeInUsd member instead.", true)]
+    [Obsolete("This member will be removed in the upcoming release, use the FeeInUsd member instead.", false)]
     RefTafFee,
 
     /// <summary>

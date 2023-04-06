@@ -72,11 +72,18 @@ public static partial class AlpacaTradingClientExtensions
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private static AccountActivitiesRequest getRequestWithoutPageToken(
-        AccountActivitiesRequest request) =>
-        new (request.ActivityTypes)
+        AccountActivitiesRequest request)
+    {
+        var updatedRequest = new AccountActivitiesRequest(request.ActivityTypes)
         {
-            Direction = request.Direction
-        };
+            Direction = request.Direction,
+            PageSize = request.PageSize
+        }.WithInterval(request.TimeInterval);
+
+        return request.Date.HasValue
+            ? updatedRequest.SetSingleDate(request.Date.Value)
+            : updatedRequest;
+    }
 
     private static async IAsyncEnumerable<IAccountActivity> getAllAccountActivitiesPages(
         IAlpacaTradingClient client,
