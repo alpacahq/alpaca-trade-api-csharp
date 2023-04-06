@@ -53,7 +53,7 @@ public sealed class RestClientErrorException : Exception
         : base(error.Message)
     {
         HttpStatusCode = message.StatusCode;
-        ErrorCode = error.Code;
+        ErrorCode = error.Code ?? (Int32)HttpStatusCode;
     }
 
     internal RestClientErrorException(
