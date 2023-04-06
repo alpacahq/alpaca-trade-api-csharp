@@ -225,7 +225,8 @@ public enum AccountActivityType
     /// REG/TAF fees
     /// </summary>
     [UsedImplicitly]
-    [EnumMember(Value = "FEE")]
+    [EnumMember(Value = "REGTAFFEE")]
+    [Obsolete("This member will be removed in the upcoming release, use the FeeInUsd member instead.", true)]
     RefTafFee,
 
     /// <summary>
@@ -247,5 +248,19 @@ public enum AccountActivityType
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "OPXRC")]
-    OptionExercise
+    OptionExercise,
+
+    /// <summary>
+    /// Fee denominated in USD
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "FEE")]
+    FeeInUsd,
+
+    /// <summary>
+    /// Crypto Fee
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "CFEE")]
+    CryptoFee
 }
