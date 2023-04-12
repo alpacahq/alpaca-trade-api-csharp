@@ -12,18 +12,18 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.1.1.0</AssemblyVersion>
-    <FileVersion>6.1.1.0</FileVersion>
-    <Version>6.1.1</Version>
+    <AssemblyVersion>6.1.2.0</AssemblyVersion>
+    <FileVersion>6.1.2.0</FileVersion>
+    <Version>6.1.2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Planned regular dependencies (`Microsoft.Extensions.Http.Polly` and `Newtonsoft.Json`) upgrade.
+- The `ListAccountActivitiesAsAsyncEnumerable` method now keeps all original request fields.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
-    <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <Copyright>© 2018-2023 Alpaca Securities LLC. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
     <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
