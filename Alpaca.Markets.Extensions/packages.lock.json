@@ -47,9 +47,9 @@
       },
       "Microsoft.Extensions.Http.Polly": {
         "type": "Direct",
-        "requested": "[7.0.4, )",
-        "resolved": "7.0.4",
-        "contentHash": "k2q2y7o7uqR7Xjx1gphaTwo4jwXj2+cCK3ZmjpnwlDVELAtLrwQpl3Ops7I6VKctJs7NZPYk6CcucpdRTG/Xrw==",
+        "requested": "[7.0.5, )",
+        "resolved": "7.0.5",
+        "contentHash": "DHAiFtv8NJkbvymekJftZnuvwUlzbjZXQRD4O2snUhmABST2ODBw3KkRZqQdTSe4i62QHFq2nrI0z7b0RZY39Q==",
         "dependencies": {
           "Microsoft.Extensions.Http": "7.0.0",
           "Polly": "7.2.3",
@@ -318,9 +318,9 @@
       },
       "Microsoft.Extensions.Http.Polly": {
         "type": "Direct",
-        "requested": "[7.0.4, )",
-        "resolved": "7.0.4",
-        "contentHash": "k2q2y7o7uqR7Xjx1gphaTwo4jwXj2+cCK3ZmjpnwlDVELAtLrwQpl3Ops7I6VKctJs7NZPYk6CcucpdRTG/Xrw==",
+        "requested": "[7.0.5, )",
+        "resolved": "7.0.5",
+        "contentHash": "DHAiFtv8NJkbvymekJftZnuvwUlzbjZXQRD4O2snUhmABST2ODBw3KkRZqQdTSe4i62QHFq2nrI0z7b0RZY39Q==",
         "dependencies": {
           "Microsoft.Extensions.Http": "7.0.0",
           "Polly": "7.2.3",
@@ -577,9 +577,9 @@
       },
       "Microsoft.Extensions.Http.Polly": {
         "type": "Direct",
-        "requested": "[7.0.4, )",
-        "resolved": "7.0.4",
-        "contentHash": "k2q2y7o7uqR7Xjx1gphaTwo4jwXj2+cCK3ZmjpnwlDVELAtLrwQpl3Ops7I6VKctJs7NZPYk6CcucpdRTG/Xrw==",
+        "requested": "[7.0.5, )",
+        "resolved": "7.0.5",
+        "contentHash": "DHAiFtv8NJkbvymekJftZnuvwUlzbjZXQRD4O2snUhmABST2ODBw3KkRZqQdTSe4i62QHFq2nrI0z7b0RZY39Q==",
         "dependencies": {
           "Microsoft.Extensions.Http": "7.0.0",
           "Polly": "7.2.3",
@@ -791,9 +791,9 @@
       },
       "Microsoft.Extensions.Http.Polly": {
         "type": "Direct",
-        "requested": "[7.0.4, )",
-        "resolved": "7.0.4",
-        "contentHash": "k2q2y7o7uqR7Xjx1gphaTwo4jwXj2+cCK3ZmjpnwlDVELAtLrwQpl3Ops7I6VKctJs7NZPYk6CcucpdRTG/Xrw==",
+        "requested": "[7.0.5, )",
+        "resolved": "7.0.5",
+        "contentHash": "DHAiFtv8NJkbvymekJftZnuvwUlzbjZXQRD4O2snUhmABST2ODBw3KkRZqQdTSe4i62QHFq2nrI0z7b0RZY39Q==",
         "dependencies": {
           "Microsoft.Extensions.Http": "7.0.0",
           "Polly": "7.2.3",
