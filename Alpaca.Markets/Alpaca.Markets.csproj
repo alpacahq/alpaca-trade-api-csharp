@@ -12,16 +12,16 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.2.0.0</AssemblyVersion>
-    <FileVersion>6.2.0.0</FileVersion>
-    <Version>6.2.0-alpha1</Version>
+    <AssemblyVersion>6.2.0.1</AssemblyVersion>
+    <FileVersion>6.2.0.1</FileVersion>
+    <Version>6.2.0-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- The `FTXU` string in the `exchange` field of the asset response object is mapped into the new `Exchange.Crypto` enum member.
-- The crypto quotes requests methods marked as obsolete with a warning message.
-- The new member `Inactive` was added to the `AccountStatus` enumeration.
+- The `AccountActivityType` enum was extended with new members and one member was marked as obsolete.
+- The `AccountStatus` enum members list is updated according to documentation and user feedback.
+- The `code` field in the JSON error response is marked as fully optional.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>

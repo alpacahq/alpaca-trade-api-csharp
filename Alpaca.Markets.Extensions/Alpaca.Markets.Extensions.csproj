@@ -12,16 +12,18 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.2.0.0</AssemblyVersion>
-    <FileVersion>6.2.0.0</FileVersion>
-    <Version>6.2.0-alpha1</Version>
+    <AssemblyVersion>6.2.0.1</AssemblyVersion>
+    <FileVersion>6.2.0.1</FileVersion>
+    <Version>6.2.0-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Extensions methods added for the new acution-requesting methods.</PackageReleaseNotes>
+    <PackageReleaseNotes>
+- The `ListAccountActivitiesAsAsyncEnumerable` method now keeps all original request fields.
+    </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
-    <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <Copyright>© 2018-2023 Alpaca Securities LLC. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
     <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
