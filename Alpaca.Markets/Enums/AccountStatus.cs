@@ -81,5 +81,33 @@ public enum AccountStatus
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "INACTIVE")]
-    Inactive
+    Inactive,
+
+    /// <summary>
+    /// Application was edited (e.g. to match info from uploaded docs).
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "EDITED")]
+    Edited,
+
+    /// <summary>
+    /// Application requires manual action.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "ACTION_REQUIRED")]
+    ActionRequired,
+
+    /// <summary>
+    /// Account is closed.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "ACCOUNT_CLOSED")]
+    AccountClosed,
+
+    /// <summary>
+    /// Account approved only for paper trading.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "PAPER_ONLY")]
+    PaperOnly
 }
