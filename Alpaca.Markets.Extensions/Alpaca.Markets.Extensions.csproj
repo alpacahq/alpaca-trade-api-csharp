@@ -66,6 +66,7 @@
     <DocumentationFile>bin\Release\Alpaca.Markets.Extensions.xml</DocumentationFile>
   </PropertyGroup>
 
+  <!-- ReSharper disable once UnknownProperty -->
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>

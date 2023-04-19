@@ -4,7 +4,7 @@ using System.Net.WebSockets;
 namespace Alpaca.Markets.Extensions;
 
 internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
-    where TClient : IStreamingClient
+    where TClient : class, IStreamingClient
 {
     private readonly ISet<SocketError> _retrySocketErrorCodes =
         ThrottleParameters.Default.RetrySocketErrorCodes;

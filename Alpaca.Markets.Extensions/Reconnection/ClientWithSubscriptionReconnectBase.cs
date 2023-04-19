@@ -4,7 +4,7 @@ namespace Alpaca.Markets.Extensions;
 
 internal abstract class ClientWithSubscriptionReconnectBase<TClient> :
     ClientWithReconnectBase<TClient>
-    where TClient : IStreamingClient, ISubscriptionHandler
+    where TClient : class, IStreamingClient, ISubscriptionHandler
 {
     private readonly ConcurrentDictionary<String, IAlpacaDataSubscription> _subscriptions =
         new(StringComparer.Ordinal);
