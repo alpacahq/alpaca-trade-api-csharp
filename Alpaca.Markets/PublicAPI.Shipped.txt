@@ -1197,6 +1197,7 @@ static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.M
 static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaNewsStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaNewsStreamingClient!
 static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaStreamingClient!
 static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaTradingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaTradingClient!
+static Alpaca.Markets.Extensions.ConfigurationExtensions.WithHttpMessageHandlerFactory<TClientConfiguration>(this TClientConfiguration! configuration, System.Func<System.Net.Http.HttpMessageHandler!, System.Net.Http.HttpMessageHandler!>! httpMessageHandlerFactory) -> TClientConfiguration!
 static Alpaca.Markets.HistoricalRequestBaseExtensions.WithPageSize<TRequest>(this TRequest! request, uint pageSize) -> TRequest!
 static Alpaca.Markets.HistoricalRequestBaseExtensions.WithPageToken<TRequest>(this TRequest! request, string! pageToken) -> TRequest!
 static Alpaca.Markets.IntervalCalenderExtensions.GetSessionCloseTimeEst(this Alpaca.Markets.IIntervalCalendar! calendar) -> System.DateTime

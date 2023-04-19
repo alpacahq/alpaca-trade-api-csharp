@@ -112,4 +112,24 @@ public static class ConfigurationExtensions
     public static IAlpacaTradingClient GetClient(
         this AlpacaTradingClientConfiguration configuration) =>
         new AlpacaTradingClient(configuration.EnsureNotNull());
+
+    /// <summary>
+    /// Creates a new instance of <typeparamref name="TClientConfiguration"/> object with
+    /// configured custom <see cref="HttpMessageHandler"/> factory method.
+    /// </summary>
+    /// <typeparam name="TClientConfiguration">Type of configuration parameters.</typeparam>
+    /// <param name="configuration">Client configuration parameters.</param>
+    /// <param name="httpMessageHandlerFactory">
+    /// Factory method for creating custom (delegating) instance of <see cref="HttpMessageHandler"/> inheritor.
+    /// </param>
+    /// <returns>An original <paramref name="configuration"/> object with configured factory method.</returns>
+    [UsedImplicitly]
+    public static TClientConfiguration WithHttpMessageHandlerFactory<TClientConfiguration>(
+        this TClientConfiguration configuration,
+        Func<HttpMessageHandler, HttpMessageHandler> httpMessageHandlerFactory)
+        where TClientConfiguration : AlpacaClientConfigurationBase
+    {
+        configuration.EnsureNotNull().HttpMessageHandlerFactory = httpMessageHandlerFactory.EnsureNotNull();
+        return configuration;
+    }
 }

@@ -6,6 +6,8 @@
 [SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
 public abstract class AlpacaClientConfigurationBase
 {
+    private static readonly Func<HttpMessageHandler, HttpMessageHandler> _defaultHttpMessageHandlerFactory = _ => _;
+
     /// <summary>
     /// Creates new instance of <see cref="AlpacaClientConfigurationBase"/> class.
     /// </summary>
@@ -42,6 +44,9 @@ public abstract class AlpacaClientConfigurationBase
     [UsedImplicitly]
     public HttpClient? HttpClient { get; set; }
 
+    [UsedImplicitly]
+    internal Func<HttpMessageHandler, HttpMessageHandler>? HttpMessageHandlerFactory { get; set; }
+
     // ReSharper disable once MemberCanBeProtected.Global
     internal abstract Uri GetApiEndpoint();
 
@@ -54,6 +59,7 @@ public abstract class AlpacaClientConfigurationBase
         ApiEndpoint.EnsurePropertyNotNull();
         SecurityId.EnsurePropertyNotNull();
 
-        return HttpClient ?? ThrottleParameters.GetHttpClient();
+        return HttpClient ?? ThrottleParameters.GetHttpClient(
+            HttpMessageHandlerFactory ?? _defaultHttpMessageHandlerFactory);
     }
 }

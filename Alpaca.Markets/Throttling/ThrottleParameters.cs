@@ -178,8 +178,8 @@ public sealed class ThrottleParameters
     /// Gets the custom message handler that supports reconnection logic configured with the current settings.
     /// </summary>
     [UsedImplicitly]
-    public HttpMessageHandler GetMessageHandler() => new CustomHttpHandler(
-        GetAsyncPolicy(), Timeout ?? _defaultHttpClientTimeout);
+    public HttpMessageHandler GetMessageHandler() =>
+        new CustomHttpHandler(GetAsyncPolicy(), Timeout ?? _defaultHttpClientTimeout);
 
     /// <summary>
     /// Gets the custom Polly asynchronous execution policy (can be used by unit tests and DI containers).
@@ -206,10 +206,11 @@ public sealed class ThrottleParameters
         return socketErrorsPolicy.WrapAsync(httpResponsesPolicy);
     }
 
-    internal HttpClient GetHttpClient() =>
+    internal HttpClient GetHttpClient(
+        Func<HttpMessageHandler, HttpMessageHandler> httpMessageHandlerFactory) =>
 #pragma warning disable CA2000 // Dispose objects before losing scope
 #pragma warning disable CA5399 // HttpClient is created without enabling CheckCertificateRevocationList
-        new(GetMessageHandler(), true)
+        new(httpMessageHandlerFactory(GetMessageHandler()), true)
 #pragma warning restore CA5399 //  HttpClient is created without enabling CheckCertificateRevocationList
 #pragma warning restore CA2000 // Dispose objects before losing scope
         {
