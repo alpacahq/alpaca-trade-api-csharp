@@ -68,6 +68,9 @@ namespace Alpaca.Markets
         [JsonIgnore]
         public Guid ActivityGuid { get; private set; }
 
+        [JsonProperty(PropertyName = "order_id", Required = Required.Default)]
+        public Guid? OrderId { get; set; }
+
         [OnDeserialized]
         internal void OnDeserializedMethod(
             StreamingContext context)
