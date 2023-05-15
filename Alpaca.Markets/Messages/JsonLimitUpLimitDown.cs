@@ -25,5 +25,5 @@ internal sealed class JsonLimitUpLimitDown : JsonRealTimeBase, ILimitUpLimitDown
     [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private String DebuggerDisplay =>
-        $"{nameof(IAccountActivity)} {{ LimitUpPrice = {LimitUpPrice}, LimitDownPrice = {LimitDownPrice}, Tape = \"{Tape}\" }}";
+        $"{nameof(ILimitUpLimitDown)} {{ LimitUpPrice = {LimitUpPrice}, LimitDownPrice = {LimitDownPrice}, Tape = \"{Tape}\" }}";
 }

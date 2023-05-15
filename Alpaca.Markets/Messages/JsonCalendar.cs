@@ -48,5 +48,5 @@ internal sealed class JsonCalendar : IIntervalCalendar
     [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private String DebuggerDisplay =>
-        $"{nameof(IAccountActivity)} {{ Date = {TradingDate}, Trading (EST) {{ {TradingOpen} - {TradingClose} }}, Session (EST) {{ {SessionOpen} - {SessionClose} }} }}";
+        $"{nameof(IIntervalCalendar)} {{ Date = {TradingDate}, Trading (EST) {{ {TradingOpen} - {TradingClose} }}, Session (EST) {{ {SessionOpen} - {SessionClose} }} }}";
 }

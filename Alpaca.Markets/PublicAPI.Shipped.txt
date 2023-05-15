@@ -390,6 +390,7 @@ Alpaca.Markets.IAccountActivity.IntegerLeavesQuantity.get -> long?
 Alpaca.Markets.IAccountActivity.IntegerQuantity.get -> long?
 Alpaca.Markets.IAccountActivity.LeavesQuantity.get -> decimal?
 Alpaca.Markets.IAccountActivity.NetAmount.get -> decimal?
+Alpaca.Markets.IAccountActivity.OrderId.get -> System.Guid?
 Alpaca.Markets.IAccountActivity.PerShareAmount.get -> decimal?
 Alpaca.Markets.IAccountActivity.Price.get -> decimal?
 Alpaca.Markets.IAccountActivity.Quantity.get -> decimal?
