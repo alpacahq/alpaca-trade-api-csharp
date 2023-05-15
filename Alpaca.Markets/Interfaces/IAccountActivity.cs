@@ -112,4 +112,10 @@ public interface IAccountActivity
     /// </summary>
     [UsedImplicitly]
     TradeEvent? Type { get; }
+
+    /// <summary>
+    /// Gets the id for the order that filled (for the trade activity).
+    /// </summary>
+    [UsedImplicitly]
+    public Guid? OrderId { get; }
 }

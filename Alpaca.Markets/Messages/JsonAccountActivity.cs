@@ -69,6 +69,9 @@ internal sealed class JsonAccountActivity : IAccountActivity
     [JsonIgnore]
     public Guid ActivityGuid { get; private set; }
 
+    [JsonProperty(PropertyName = "order_id", Required = Required.Default)]
+    public Guid? OrderId { get; set; }
+
     [OnDeserialized]
     [UsedImplicitly]
     internal void OnDeserializedMethod(

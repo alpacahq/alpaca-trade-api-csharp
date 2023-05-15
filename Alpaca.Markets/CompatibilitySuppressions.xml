@@ -717,6 +717,13 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccountActivity.OrderId</Target>
+    <Left>lib/net462/Alpaca.Markets.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
     <Target>P:Alpaca.Markets.IAsset.MaintenanceMarginRequirement</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
@@ -1130,6 +1137,13 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccountActivity.OrderId</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
     <Target>P:Alpaca.Markets.IAsset.MaintenanceMarginRequirement</Target>
     <Left>lib/net6.0/Alpaca.Markets.dll</Left>
     <Right>lib/net6.0/Alpaca.Markets.dll</Right>
@@ -1481,6 +1495,13 @@
   <Suppression>
     <DiagnosticId>CP0006</DiagnosticId>
     <Target>P:Alpaca.Markets.IAccount.PendingTransferOut</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccountActivity.OrderId</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -1859,6 +1880,13 @@
   <Suppression>
     <DiagnosticId>CP0006</DiagnosticId>
     <Target>P:Alpaca.Markets.IAccount.PendingTransferOut</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAccountActivity.OrderId</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
