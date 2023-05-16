@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.2.0.2</AssemblyVersion>
-    <FileVersion>6.2.0.2</FileVersion>
-    <Version>6.2.0-beta2</Version>
+    <AssemblyVersion>6.2.0.3</AssemblyVersion>
+    <FileVersion>6.2.0.3</FileVersion>
+    <Version>6.2.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Added ability for configuring custom `HttpMessageHandler` factory method in REST clients configuration objects.
+- Added missing optional `OrderId` property into the `IAccountActivity` interface.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
