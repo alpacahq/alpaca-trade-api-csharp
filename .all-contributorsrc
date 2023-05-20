@@ -839,6 +839,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "Slacquer",
+      "name": "Slacquer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20741093?v=4",
+      "profile": "https://github.com/Slacquer",
+      "contributions": [
+        "bug",
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 7,
