@@ -830,6 +830,15 @@
         "question",
         "ideas"
       ]
+    },
+    {
+      "login": "Shidzy2",
+      "name": "Shidzy2",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45227075?v=4",
+      "profile": "https://github.com/Shidzy2",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
