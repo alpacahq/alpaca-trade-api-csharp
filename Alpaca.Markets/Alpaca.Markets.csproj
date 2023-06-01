@@ -12,15 +12,16 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.0.0.3</AssemblyVersion>
-    <FileVersion>7.0.0.3</FileVersion>
-    <Version>7.0.0-alpha3</Version>
+    <AssemblyVersion>7.0.0.4</AssemblyVersion>
+    <FileVersion>7.0.0.4</FileVersion>
+    <Version>7.0.0-alpha4</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Added the `IRateLimitProvider` interface implementation for all HTTP-based clients in SDK.
+- Added support for requesting trades/quotes fro all symbols at once in streaming data clients.
 - Backported all the latest changes from the 6.x version for compatibility.
+- Removed the type forwarding attributes from the Extensions package.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
