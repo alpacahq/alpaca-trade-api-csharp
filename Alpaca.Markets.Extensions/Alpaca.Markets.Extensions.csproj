@@ -12,13 +12,16 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.0.0.0</AssemblyVersion>
-    <FileVersion>7.0.0.0</FileVersion>
-    <Version>7.0.0-alpha1</Version>
+    <AssemblyVersion>7.0.0.1</AssemblyVersion>
+    <FileVersion>7.0.0.1</FileVersion>
+    <Version>7.0.0-alpha2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageReleaseNotes>- Obsolete members cleanup/update before big internal refactoring.</PackageReleaseNotes>
+    <PackageReleaseNotes>
+- Backported all the latest changes from the 6.x version for compatibility.
+- Removed the type forwarding attributes from the Extensions package.
+    </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
     <Copyright>© 2018-2022 Alpaca Securities LLC. All rights reserved.</Copyright>
@@ -96,7 +99,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Threading.Channels" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Linq.Async" Version="6.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="Alpaca.Markets" Version="7.0.0-alpha1" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Alpaca.Markets" Version="7.0.0-alpha4" PrivateAssets="compile;contentfiles;build;analyzers;" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">

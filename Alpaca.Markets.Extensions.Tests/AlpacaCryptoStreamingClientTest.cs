@@ -14,7 +14,7 @@ public sealed class AlpacaCryptoStreamingClientTest
 
     private const String Other = "ETHUSD";
 
-    [Fact(Skip = "Temporary until Extensions package upgrade")]
+    [Fact]
     public async Task WithReconnectWorks()
     {
         var client = createMockClient(

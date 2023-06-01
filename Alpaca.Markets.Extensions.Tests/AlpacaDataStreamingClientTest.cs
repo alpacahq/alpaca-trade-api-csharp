@@ -14,7 +14,7 @@ public sealed partial class AlpacaDataStreamingClientTest
 
     private const String Other = "MSFT";
 
-    [Fact(Skip = "Temporary until Extensions package upgrade")]
+    [Fact]
     public async Task WithReconnectWorks()
     {
         var client = createMockClient(
