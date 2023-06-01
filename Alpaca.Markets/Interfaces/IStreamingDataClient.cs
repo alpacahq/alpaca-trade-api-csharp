@@ -7,6 +7,18 @@
 public interface IStreamingDataClient : IStreamingClient, ISubscriptionHandler
 {
     /// <summary>
+    /// Gets the trade updates subscription for all assets.
+    /// </summary>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    IAlpacaDataSubscription<ITrade> GetTradeSubscription();
+    
+    /// <summary>
     /// Gets the trade updates subscription for the <paramref name="symbol"/> asset.
     /// </summary>
     /// <param name="symbol">Alpaca asset symbol.</param>
@@ -22,6 +34,18 @@ public interface IStreamingDataClient : IStreamingClient, ISubscriptionHandler
     [UsedImplicitly]
     IAlpacaDataSubscription<ITrade> GetTradeSubscription(
         String symbol);
+
+    /// <summary>
+    /// Gets the quote updates subscription for all assets.
+    /// </summary>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    IAlpacaDataSubscription<IQuote> GetQuoteSubscription();
 
     /// <summary>
     /// Gets the quote updates subscription for the <paramref name="symbol"/> asset.

@@ -208,6 +208,9 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                 { ErrorInfo, handleErrorMessages }
         };
 
+    public IAlpacaDataSubscription<ITrade> GetTradeSubscription() =>
+        GetSubscription<ITrade, JsonRealTimeTrade>(TradesChannel, WildcardSymbolString);
+
     public IAlpacaDataSubscription<ITrade> GetTradeSubscription(
         String symbol) =>
         GetSubscription<ITrade, JsonRealTimeTrade>(TradesChannel, symbol.EnsureNotNull());
@@ -379,11 +382,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
             var symbol = token["S"]?.ToString() ?? String.Empty;
 
             _subscriptions.OnReceived(getStreamName(channel, symbol), token);
-
-            if (String.Equals(channel, MinuteBarsChannel, StringComparison.Ordinal))
-            {
-                _subscriptions.OnReceived(getStreamName(channel, WildcardSymbolString), token);
-            }
+            _subscriptions.OnReceived(getStreamName(channel, WildcardSymbolString), token);
         }
         catch (Exception exception)
         {
