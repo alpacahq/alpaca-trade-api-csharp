@@ -753,7 +753,9 @@ Alpaca.Markets.IStreamingDataClient.GetDailyBarSubscription(string! symbol) -> A
 Alpaca.Markets.IStreamingDataClient.GetMinuteBarSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IStreamingDataClient.GetMinuteBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.IStreamingDataClient.GetQuoteSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IQuote!>!
+Alpaca.Markets.IStreamingDataClient.GetQuoteSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IQuote!>!
 Alpaca.Markets.IStreamingDataClient.GetTradeSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ITrade!>!
+Alpaca.Markets.IStreamingDataClient.GetTradeSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.ITrade!>!
 Alpaca.Markets.IStreamingDataClient.GetUpdatedBarSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IBar!>!
 Alpaca.Markets.ISubscriptionHandler
 Alpaca.Markets.ISubscriptionHandler.SubscribeAsync(Alpaca.Markets.IAlpacaDataSubscription! subscription) -> System.Threading.Tasks.ValueTask
