@@ -19,6 +19,9 @@ internal sealed class JsonAccountConfiguration : IAccountConfiguration
     [JsonProperty(PropertyName = "no_shorting", Required = Required.Always)]
     public Boolean IsNoShorting { get; set; }
 
+    [JsonProperty(PropertyName = "ptp_no_exception_entry", Required = Required.Default)]
+    public Boolean IsPtpNoExceptionEntry { get; set; }
+
     [ExcludeFromCodeCoverage]
     public override String ToString() =>
         JsonConvert.SerializeObject(this);

@@ -97,4 +97,10 @@ public interface IAsset
     /// </summary>
     [UsedImplicitly]
     Decimal? MaintenanceMarginRequirement { get; }
+
+    /// <summary>
+    /// Gets the list of asset attributes (unique asset characteristics like PTP order acceptance mode).
+    /// </summary>
+    [UsedImplicitly]
+    IReadOnlyList<AssetAttributes> Attributes { get; }
 }

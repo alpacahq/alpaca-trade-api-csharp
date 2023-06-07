@@ -5,6 +5,8 @@
 /// </summary>
 public sealed class AssetsRequest
 {
+    private readonly HashSet<AssetAttributes> _attributes = new ();
+
     /// <summary>
     /// Gets or sets asset status for filtering.
     /// </summary>
@@ -23,6 +25,12 @@ public sealed class AssetsRequest
     [UsedImplicitly]
     public Exchange? Exchange { get; set; }
 
+    /// <summary>
+    /// Gets set of asset attributes for filtering. Empty default value means - any attribute allowed (no filtering).
+    /// </summary>
+    [UsedImplicitly]
+    public ISet<AssetAttributes> Attributes => _attributes;
+
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
         HttpClient httpClient) =>
         new(httpClient.BaseAddress!)
@@ -32,6 +40,7 @@ public sealed class AssetsRequest
                 .AddParameter("exchange", Exchange)
                 .AddParameter("status", AssetStatus)
                 .AddParameter("asset_class", AssetClass)
+                .AddParameter("attributes", _attributes)
                 .AsStringAsync().ConfigureAwait(false)
         };
 }

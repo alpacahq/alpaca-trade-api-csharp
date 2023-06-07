@@ -119,10 +119,14 @@ Alpaca.Markets.AnnouncementsRequest.DateType.set -> void
 Alpaca.Markets.AnnouncementsRequest.Symbol.get -> string?
 Alpaca.Markets.AnnouncementsRequest.Symbol.set -> void
 Alpaca.Markets.AnnouncementsRequest.TimeInterval.get -> Alpaca.Markets.IInclusiveTimeInterval!
+Alpaca.Markets.AssetAttributes
+Alpaca.Markets.AssetAttributes.PtpNoException = 0 -> Alpaca.Markets.AssetAttributes
+Alpaca.Markets.AssetAttributes.PtpWithException = 1 -> Alpaca.Markets.AssetAttributes
 Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetClass.Crypto = 1 -> Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetClass.UsEquity = 0 -> Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetsRequest
+Alpaca.Markets.AssetsRequest.Attributes.get -> System.Collections.Generic.ISet<Alpaca.Markets.AssetAttributes>!
 Alpaca.Markets.AssetsRequest.AssetClass.get -> Alpaca.Markets.AssetClass?
 Alpaca.Markets.AssetsRequest.AssetClass.set -> void
 Alpaca.Markets.AssetsRequest.AssetsRequest() -> void
@@ -408,6 +412,8 @@ Alpaca.Markets.IAccountConfiguration.DayTradeMarginCallProtection.get -> Alpaca.
 Alpaca.Markets.IAccountConfiguration.DayTradeMarginCallProtection.set -> void
 Alpaca.Markets.IAccountConfiguration.IsNoShorting.get -> bool
 Alpaca.Markets.IAccountConfiguration.IsNoShorting.set -> void
+Alpaca.Markets.IAccountConfiguration.IsPtpNoExceptionEntry.get -> bool
+Alpaca.Markets.IAccountConfiguration.IsPtpNoExceptionEntry.set -> void
 Alpaca.Markets.IAccountConfiguration.IsSuspendTrade.get -> bool
 Alpaca.Markets.IAccountConfiguration.IsSuspendTrade.set -> void
 Alpaca.Markets.IAccountConfiguration.TradeConfirmEmail.get -> Alpaca.Markets.TradeConfirmEmail
@@ -522,6 +528,7 @@ Alpaca.Markets.IAnnouncement.TargetSymbol.get -> string!
 Alpaca.Markets.IAnnouncement.Type.get -> Alpaca.Markets.CorporateActionType
 Alpaca.Markets.IAsset
 Alpaca.Markets.IAsset.AssetId.get -> System.Guid
+Alpaca.Markets.IAsset.Attributes.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.AssetAttributes>!
 Alpaca.Markets.IAsset.Class.get -> Alpaca.Markets.AssetClass
 Alpaca.Markets.IAsset.EasyToBorrow.get -> bool
 Alpaca.Markets.IAsset.Exchange.get -> Alpaca.Markets.Exchange

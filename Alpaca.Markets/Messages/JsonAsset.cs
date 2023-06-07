@@ -51,6 +51,12 @@ internal sealed class JsonAsset : IAsset
     [JsonProperty(PropertyName = "maintenance_margin_requirement", Required = Required.Default)]
     public Decimal? MaintenanceMarginRequirement { get; set;  }
 
+    [JsonIgnore]
+    public IReadOnlyList<AssetAttributes> Attributes => AttributesList;
+
+    [JsonProperty(PropertyName = "attributes", Required = Required.Default)]
+    internal List<AssetAttributes> AttributesList { get; set; } = new();
+
     [ExcludeFromCodeCoverage]
     public override String ToString() =>
         JsonConvert.SerializeObject(this);

@@ -28,4 +28,10 @@ public interface IAccountConfiguration
     /// </summary>
     [UsedImplicitly]
     Boolean IsNoShorting { get; set; }
+
+    /// <summary>
+    /// Gets or sets control flag for enabling orders acceptance for PTP symbols with no exception.
+    /// </summary>
+    [UsedImplicitly]
+    public Boolean IsPtpNoExceptionEntry { get; set; }
 }
