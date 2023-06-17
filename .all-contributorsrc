@@ -717,7 +717,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/5748784?v=4",
       "profile": "https://github.com/IsaackRasmussen",
       "contributions": [
-        "bug"
+        "bug",
+        "test"
       ]
     },
     {
@@ -856,5 +857,6 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "projectName": "Alpaca.Markets",
-  "projectOwner": "OlegRa"
+  "projectOwner": "OlegRa",
+  "commitType": "docs"
 }
