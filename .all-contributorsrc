@@ -859,6 +859,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "ARStudios",
+      "name": "ARStudios",
+      "avatar_url": "https://avatars.githubusercontent.com/u/51058305?v=4",
+      "profile": "https://github.com/ARStudios",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
