@@ -868,6 +868,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "ObaidaAlhaasan",
+      "name": "Obaida Alhassan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35659426?v=4",
+      "profile": "https://twitter.com/Obaida616",
+      "contributions": [
+        "bug",
+        "userTesting"
+      ]
     }
   ],
   "contributorsPerLine": 7,
