@@ -1,6 +1,8 @@
 name: Update NuGet Lock Files
 on:
   workflow_dispatch:
+permissions:
+  contents: write
 
 jobs:
   lockfiles:
