@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.2.0.2</AssemblyVersion>
-    <FileVersion>6.2.0.2</FileVersion>
-    <Version>6.2.0</Version>
+    <AssemblyVersion>6.2.1.0</AssemblyVersion>
+    <FileVersion>6.2.1.0</FileVersion>
+    <Version>6.2.1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Updated dependencies and fixed the type forwarding issue. No functional changes - just a `public` release.
+- Updated dependencies and fixed the package compatibility (compilation and runtime) issue.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
