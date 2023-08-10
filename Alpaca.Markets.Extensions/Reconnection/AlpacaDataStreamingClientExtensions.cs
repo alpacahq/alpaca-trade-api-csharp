@@ -18,8 +18,16 @@ public static partial class AlpacaDataStreamingClientExtensions
         }
 
         [ExcludeFromCodeCoverage]
+        public IAlpacaDataSubscription<ITrade> GetTradeSubscription() =>
+            Client.GetTradeSubscription();
+
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<ITrade> GetTradeSubscription(String symbol) =>
             Client.GetTradeSubscription(symbol);
+
+        [ExcludeFromCodeCoverage]
+        public IAlpacaDataSubscription<IQuote> GetQuoteSubscription() =>
+            Client.GetQuoteSubscription();
 
         [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<IQuote> GetQuoteSubscription(String symbol) =>
