@@ -1,6 +1,7 @@
 name: CodeQL Analyis
 
 on:
+  push:
   pull_request:
     branches: [ develop ]
   schedule:
