@@ -38,7 +38,7 @@ internal sealed class JsonAnnouncement : IAnnouncement
     public DateOnly? ExecutionDate { get; [ExcludeFromCodeCoverage] set; }
 
     [JsonConverter(typeof(DateOnlyConverter))]
-    [JsonProperty(PropertyName = "record_date", Required = Required.Always)]
+    [JsonProperty(PropertyName = "record_date", Required = Required.AllowNull)]
     public DateOnly? RecordDate { get; set; }
 
     [JsonConverter(typeof(DateOnlyConverter))]
