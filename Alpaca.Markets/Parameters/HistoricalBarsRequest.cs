@@ -191,6 +191,12 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
 
     HistoricalBarsRequest IHistoricalRequest<HistoricalBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalBarsRequest(Symbols, TimeInterval, TimeFrame)
-                { Adjustment = Adjustment, Feed = Feed, UseSymbolAsOfTheDate = UseSymbolAsOfTheDate, Currency = Currency}
+            {
+                Feed = Feed,
+                Currency = Currency,
+                Adjustment = Adjustment,
+                SortDirection = SortDirection,
+                UseSymbolAsOfTheDate = UseSymbolAsOfTheDate
+            }
             .WithPageSize(this.GetPageSize());
 }

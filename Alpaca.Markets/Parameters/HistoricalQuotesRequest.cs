@@ -165,6 +165,11 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
 
     HistoricalQuotesRequest IHistoricalRequest<HistoricalQuotesRequest, IQuote>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalQuotesRequest(Symbols, TimeInterval)
-                { Feed = Feed, UseSymbolAsOfTheDate = UseSymbolAsOfTheDate, Currency = Currency }
+            {
+                Feed = Feed,
+                Currency = Currency,
+                SortDirection = SortDirection,
+                UseSymbolAsOfTheDate = UseSymbolAsOfTheDate
+            }
             .WithPageSize(this.GetPageSize());
 }

@@ -74,6 +74,12 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     public Pagination Pagination { get; } = new();
 
     /// <summary>
+    /// Gets or sets the result sorting direction (sort fields is timestamp).
+    /// </summary>
+    [UsedImplicitly]
+    public SortDirection? SortDirection { get; set; }
+
+    /// <summary>
     /// Gets the last part of the full REST endpoint URL path.
     /// </summary>
     protected abstract String LastPathSegment { get; }
@@ -87,6 +93,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
                         HasSingleSymbol ? Array.Empty<String>() : Symbols)
                     .AddParameter("start", TimeInterval.From, "O")
                     .AddParameter("end", TimeInterval.Into, "O"))
+                    .AddParameter("sort", SortDirection)
                 .AsStringAsync().ConfigureAwait(false)
         }.AppendPath(HasSingleSymbol
             ? $"{Symbols.First()}/{LastPathSegment}"
