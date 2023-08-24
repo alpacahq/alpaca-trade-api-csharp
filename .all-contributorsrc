@@ -878,6 +878,16 @@
         "bug",
         "userTesting"
       ]
+    },
+    {
+      "login": "KevinDeBeer",
+      "name": "Kevin de Beer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61558522?v=4",
+      "profile": "https://github.com/KevinDeBeer",
+      "contributions": [
+        "bug",
+        "userTesting"
+      ]
     }
   ],
   "contributorsPerLine": 7,
