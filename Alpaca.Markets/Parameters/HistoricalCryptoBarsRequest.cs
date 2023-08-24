@@ -200,5 +200,8 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalRequestBase, IHistor
 
     HistoricalCryptoBarsRequest IHistoricalRequest<HistoricalCryptoBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalCryptoBarsRequest(Symbols, TimeInterval, TimeFrame)
+            {
+                SortDirection = SortDirection
+            }
             .WithPageSize(this.GetPageSize());
 }

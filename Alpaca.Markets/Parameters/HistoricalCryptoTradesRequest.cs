@@ -177,5 +177,8 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalRequestBase, IHist
 
     HistoricalCryptoTradesRequest IHistoricalRequest<HistoricalCryptoTradesRequest, ITrade>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalCryptoTradesRequest(Symbols, TimeInterval)
+            {
+                SortDirection = SortDirection
+            }
             .WithPageSize(this.GetPageSize());
 }

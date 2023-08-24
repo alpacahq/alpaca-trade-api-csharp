@@ -165,6 +165,11 @@ public sealed class HistoricalTradesRequest : HistoricalRequestBase, IHistorical
 
     HistoricalTradesRequest IHistoricalRequest<HistoricalTradesRequest, ITrade>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalTradesRequest(Symbols, TimeInterval)
-                { Feed = Feed, UseSymbolAsOfTheDate = UseSymbolAsOfTheDate, Currency = Currency }
+            {
+                Feed = Feed,
+                Currency = Currency,
+                SortDirection = SortDirection,
+                UseSymbolAsOfTheDate = UseSymbolAsOfTheDate
+            }
             .WithPageSize(this.GetPageSize());
 }

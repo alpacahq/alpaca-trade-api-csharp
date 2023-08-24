@@ -318,6 +318,8 @@ Alpaca.Markets.HistoricalRequestBase.HistoricalRequestBase(System.Collections.Ge
 Alpaca.Markets.HistoricalRequestBase.HistoricalRequestBase(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.Interval<System.DateTime> timeInterval) -> void
 Alpaca.Markets.HistoricalRequestBase.HistoricalRequestBase(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoricalRequestBase.Pagination.get -> Alpaca.Markets.Pagination!
+Alpaca.Markets.HistoricalRequestBase.SortDirection.get -> Alpaca.Markets.SortDirection?
+Alpaca.Markets.HistoricalRequestBase.SortDirection.set -> void
 Alpaca.Markets.HistoricalRequestBase.Symbol.get -> string!
 Alpaca.Markets.HistoricalRequestBase.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
 Alpaca.Markets.HistoricalRequestBase.TimeInterval.get -> Alpaca.Markets.Interval<System.DateTime>

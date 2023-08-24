@@ -178,5 +178,8 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalRequestBase, IHist
 
     HistoricalCryptoQuotesRequest IHistoricalRequest<HistoricalCryptoQuotesRequest, IQuote>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalCryptoQuotesRequest(Symbols, TimeInterval)
+            {
+                SortDirection = SortDirection
+            }
             .WithPageSize(this.GetPageSize());
 }
