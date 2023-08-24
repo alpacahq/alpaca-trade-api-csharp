@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AlpacaDataClientExtensions
    ">
-    <meta name="generator" content="docfx 2.59.3.0">
+    <meta name="generator" content="docfx 2.59.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -115,10 +115,658 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_NewsArticlesRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.NewsArticlesRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalAuctionsRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L33">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L171">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalAuctionsRequest)">GetHistoricalAuctionsAsAsyncEnumerable(IAlpacaDataClient, HistoricalAuctionsRequest)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <span class="xref">Alpaca.Markets.IAlpacaDataClient.ListHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</span> in pagination
+mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IAuction>"></see> interface) so they
+can be consumed by the <code>await foreach</code> statement on the caller side.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IAuction&gt; GetHistoricalAuctionsAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalAuctionsRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalAuctionsRequest.html">HistoricalAuctionsRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Original historical auctions request (with empty next page token).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IAuction.html">IAuction</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalAuctionsRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L206">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalAuctionsRequest,CancellationToken)">GetHistoricalAuctionsAsAsyncEnumerable(IAlpacaDataClient, HistoricalAuctionsRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <span class="xref">Alpaca.Markets.IAlpacaDataClient.ListHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</span> in pagination
+mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;IAuction>"></see> interface) so they
+can be consumed by the <code>await foreach</code> statement on the caller side.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IAuction&gt; GetHistoricalAuctionsAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalAuctionsRequest request, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalAuctionsRequest.html">HistoricalAuctionsRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Original historical auctions request (with empty next page token).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IAuction.html">IAuction</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsDictionaryOfAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsDictionaryOfAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalAuctionsRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L240">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsDictionaryOfAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsDictionaryOfAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsDictionaryOfAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsDictionaryOfAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalAuctionsRequest)">GetHistoricalAuctionsDictionaryOfAsyncEnumerable(IAlpacaDataClient, HistoricalAuctionsRequest)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <span class="xref">Alpaca.Markets.IAlpacaDataClient.GetHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</span> in pagination
+mode as single stream of items (in form of dictionary of the <see cref="!:IAsyncEnumerable&lt;IAuction>"></see>
+interface instances) so they  can be consumed by the <code>await foreach</code> statement on the caller side.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IReadOnlyDictionary&lt;String, IAsyncEnumerable&lt;IAuction&gt;&gt; GetHistoricalAuctionsDictionaryOfAsyncEnumerable(this IAlpacaDataClient client, HistoricalAuctionsRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalAuctionsRequest.html">HistoricalAuctionsRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Original historical auctions request (with empty next page token).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IReadOnlyDictionary</span>&lt;<span class="xref">String</span>, <span class="xref">IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IAuction.html">IAuction</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsDictionaryOfAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsDictionaryOfAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalAuctionsRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L276">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsDictionaryOfAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsDictionaryOfAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsDictionaryOfAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsDictionaryOfAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalAuctionsRequest,CancellationToken)">GetHistoricalAuctionsDictionaryOfAsyncEnumerable(IAlpacaDataClient, HistoricalAuctionsRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <span class="xref">Alpaca.Markets.IAlpacaDataClient.GetHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</span> in pagination
+mode as single stream of items (in form of dictionary of the <see cref="!:IAsyncEnumerable&lt;IAuction>"></see>
+interface instances) so they  can be consumed by the <code>await foreach</code> statement on the caller side.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IReadOnlyDictionary&lt;String, IAsyncEnumerable&lt;IAuction&gt;&gt; GetHistoricalAuctionsDictionaryOfAsyncEnumerable(this IAlpacaDataClient client, HistoricalAuctionsRequest request, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalAuctionsRequest.html">HistoricalAuctionsRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Original historical auctions request (with empty next page token).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IReadOnlyDictionary</span>&lt;<span class="xref">String</span>, <span class="xref">IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.IAuction.html">IAuction</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsMultiPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsMultiPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalAuctionsRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L380">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsMultiPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsMultiPagesAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsMultiPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsMultiPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalAuctionsRequest)">GetHistoricalAuctionsMultiPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalAuctionsRequest)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <span class="xref">Alpaca.Markets.IAlpacaDataClient.GetHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</span> in pagination
+mode as single stream of response pages with items so they can be consumed by the <code>await foreach</code>
+statement on the caller side as sequence of 'batches' instead of sequence of items itself.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IReadOnlyDictionary&lt;String, IReadOnlyList&lt;IAuction&gt;&gt;&gt; GetHistoricalAuctionsMultiPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalAuctionsRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalAuctionsRequest.html">HistoricalAuctionsRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Original historical auctions request (with empty next page token).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IReadOnlyDictionary</span>&lt;<span class="xref">String</span>, <span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IAuction.html">IAuction</a>&gt;&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsMultiPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsMultiPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalAuctionsRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L416">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsMultiPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsMultiPagesAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsMultiPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsMultiPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalAuctionsRequest,CancellationToken)">GetHistoricalAuctionsMultiPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalAuctionsRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <span class="xref">Alpaca.Markets.IAlpacaDataClient.GetHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</span> in pagination
+mode as single stream of response pages with items so they can be consumed by the <code>await foreach</code>
+statement on the caller side as sequence of 'batches' instead of sequence of items itself.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IReadOnlyDictionary&lt;String, IReadOnlyList&lt;IAuction&gt;&gt;&gt; GetHistoricalAuctionsMultiPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalAuctionsRequest request, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalAuctionsRequest.html">HistoricalAuctionsRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Original historical auctions request (with empty next page token).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IReadOnlyDictionary</span>&lt;<span class="xref">String</span>, <span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IAuction.html">IAuction</a>&gt;&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalAuctionsRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L311">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsPagesAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalAuctionsRequest)">GetHistoricalAuctionsPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalAuctionsRequest)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <span class="xref">Alpaca.Markets.IAlpacaDataClient.ListHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</span> in pagination
+mode as single stream of response pages with items so they can be consumed by the <code>await foreach</code>
+statement on the caller side as sequence of 'batches' instead of sequence of items itself.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IReadOnlyList&lt;IAuction&gt;&gt; GetHistoricalAuctionsPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalAuctionsRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalAuctionsRequest.html">HistoricalAuctionsRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Original historical auctions request (with empty next page token).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IAuction.html">IAuction</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.HistoricalAuctionsRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L346">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsPagesAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetHistoricalAuctionsPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_HistoricalAuctionsRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetHistoricalAuctionsPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.HistoricalAuctionsRequest,CancellationToken)">GetHistoricalAuctionsPagesAsAsyncEnumerable(IAlpacaDataClient, HistoricalAuctionsRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <span class="xref">Alpaca.Markets.IAlpacaDataClient.ListHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</span> in pagination
+mode as single stream of response pages with items so they can be consumed by the <code>await foreach</code>
+statement on the caller side as sequence of 'batches' instead of sequence of items itself.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;IReadOnlyList&lt;IAuction&gt;&gt; GetHistoricalAuctionsPagesAsAsyncEnumerable(this IAlpacaDataClient client, HistoricalAuctionsRequest request, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalAuctionsRequest.html">HistoricalAuctionsRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Original historical auctions request (with empty next page token).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IAuction.html">IAuction</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_NewsArticlesRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.NewsArticlesRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L33">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_NewsArticlesRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.NewsArticlesRequest)">GetNewsArticlesAsAsyncEnumerable(IAlpacaDataClient, NewsArticlesRequest)</h4>
@@ -193,10 +841,10 @@ can be consumed by the <code>await foreach</code> statement on the caller side.<
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_NewsArticlesRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.NewsArticlesRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_NewsArticlesRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.NewsArticlesRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L68">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L68">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_NewsArticlesRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.NewsArticlesRequest,CancellationToken)">GetNewsArticlesAsAsyncEnumerable(IAlpacaDataClient, NewsArticlesRequest, CancellationToken)</h4>
@@ -271,10 +919,10 @@ The initial TPC socket connection failed due to an underlying low-level network 
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_NewsArticlesRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.NewsArticlesRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_NewsArticlesRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.NewsArticlesRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L102">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L102">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesPagesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_NewsArticlesRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.NewsArticlesRequest)">GetNewsArticlesPagesAsAsyncEnumerable(IAlpacaDataClient, NewsArticlesRequest)</h4>
@@ -349,10 +997,10 @@ statement on the caller side as sequence of 'batches' instead of sequence of ite
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_NewsArticlesRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.NewsArticlesRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_NewsArticlesRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.NewsArticlesRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L137">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L137">View Source</a>
   </span>
   <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesPagesAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesPagesAsAsyncEnumerable*"></a>
   <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_GetNewsArticlesPagesAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_NewsArticlesRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.GetNewsArticlesPagesAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.NewsArticlesRequest,CancellationToken)">GetNewsArticlesPagesAsAsyncEnumerable(IAlpacaDataClient, NewsArticlesRequest, CancellationToken)</h4>
@@ -433,10 +1081,10 @@ The initial TPC socket connection failed due to an underlying low-level network 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/alpacahq/alpaca-trade-api-csharp/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

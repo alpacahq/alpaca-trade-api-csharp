@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Pagination
+    <title>Interface IAuction
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Pagination
+    <meta name="title" content="Interface IAuction
    ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -68,66 +68,37 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.Pagination">
+            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.IAuction">
   
   
-  <h1 id="Alpaca_Markets_Pagination" data-uid="Alpaca.Markets.Pagination" class="text-break">Class Pagination
+  <h1 id="Alpaca_Markets_IAuction" data-uid="Alpaca.Markets.IAuction" class="text-break">Interface IAuction
   </h1>
-  <div class="markdown level0 summary"><p>Encapsulates all data required for the pagination support in Alpaca Data API v2</p>
+  <div class="markdown level0 summary"><p>Encapsulates the basic auction information from Alpaca APIs.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Pagination</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
-  <h5 id="Alpaca_Markets_Pagination_syntax">Syntax</h5>
+  <h5 id="Alpaca_Markets_IAuction_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class Pagination</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IAuction</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Pagination_MaxPageSize.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Pagination.MaxPageSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAuction_Closings.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAuction.Closings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/Pagination.cs/#L13">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAuction.cs/#L31">View Source</a>
   </span>
-  <a id="Alpaca_Markets_Pagination_MaxPageSize_" data-uid="Alpaca.Markets.Pagination.MaxPageSize*"></a>
-  <h4 id="Alpaca_Markets_Pagination_MaxPageSize" data-uid="Alpaca.Markets.Pagination.MaxPageSize">MaxPageSize</h4>
-  <div class="markdown level1 summary"><p>Gets the maximum valid page size for requests supported by Alpaca Data API v2.</p>
+  <a id="Alpaca_Markets_IAuction_Closings_" data-uid="Alpaca.Markets.IAuction.Closings*"></a>
+  <h4 id="Alpaca_Markets_IAuction_Closings" data-uid="Alpaca.Markets.IAuction.Closings">Closings</h4>
+  <div class="markdown level1 summary"><p>Gets daily auction closings.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static UInt32 MaxPageSize { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;IAuctionEntry&gt; Closings { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -139,26 +110,26 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UInt32</span></td>
+        <td><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IAuctionEntry.html">IAuctionEntry</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Pagination_Size.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Pagination.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAuction_Date.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAuction.Date%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/Pagination.cs/#L24">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAuction.cs/#L17">View Source</a>
   </span>
-  <a id="Alpaca_Markets_Pagination_Size_" data-uid="Alpaca.Markets.Pagination.Size*"></a>
-  <h4 id="Alpaca_Markets_Pagination_Size" data-uid="Alpaca.Markets.Pagination.Size">Size</h4>
-  <div class="markdown level1 summary"><p>Gets and sets the request page size. If equals to <code>null</code> default size will be used.</p>
+  <a id="Alpaca_Markets_IAuction_Date_" data-uid="Alpaca.Markets.IAuction.Date*"></a>
+  <h4 id="Alpaca_Markets_IAuction_Date" data-uid="Alpaca.Markets.IAuction.Date">Date</h4>
+  <div class="markdown level1 summary"><p>Gets auction date in UTC.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UInt32? Size { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">DateOnly Date { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -170,26 +141,26 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">UInt32</span>&gt;</td>
+        <td><span class="xref">DateOnly</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Pagination_Token.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Pagination.Token%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAuction_Openings.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAuction.Openings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/Pagination.cs/#L30">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAuction.cs/#L25">View Source</a>
   </span>
-  <a id="Alpaca_Markets_Pagination_Token_" data-uid="Alpaca.Markets.Pagination.Token*"></a>
-  <h4 id="Alpaca_Markets_Pagination_Token" data-uid="Alpaca.Markets.Pagination.Token">Token</h4>
-  <div class="markdown level1 summary"><p>Gets and sets the page token for the request. Should be <code>null</code> for the first request.</p>
+  <a id="Alpaca_Markets_IAuction_Openings_" data-uid="Alpaca.Markets.IAuction.Openings*"></a>
+  <h4 id="Alpaca_Markets_IAuction_Openings" data-uid="Alpaca.Markets.IAuction.Openings">Openings</h4>
+  <div class="markdown level1 summary"><p>Gets daily auction openings.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public String? Token { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;IAuctionEntry&gt; Openings { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -201,7 +172,38 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">String</span>&gt;</td>
+        <td><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IAuctionEntry.html">IAuctionEntry</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAuction_Symbol.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAuction.Symbol%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAuction.cs/#L11">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_IAuction_Symbol_" data-uid="Alpaca.Markets.IAuction.Symbol*"></a>
+  <h4 id="Alpaca_Markets_IAuction_Symbol" data-uid="Alpaca.Markets.IAuction.Symbol">Symbol</h4>
+  <div class="markdown level1 summary"><p>Gets asset symbol.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">String Symbol { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">String</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -214,10 +216,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Pagination.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Pagination%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAuction.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAuction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/Pagination.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAuction.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

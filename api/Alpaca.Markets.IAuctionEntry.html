@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IOrderBook
+    <title>Interface IAuctionEntry
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IOrderBook
+    <meta name="title" content="Interface IAuctionEntry
    ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -68,37 +68,37 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.IOrderBook">
+            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.IAuctionEntry">
   
   
-  <h1 id="Alpaca_Markets_IOrderBook" data-uid="Alpaca.Markets.IOrderBook" class="text-break">Interface IOrderBook
+  <h1 id="Alpaca_Markets_IAuctionEntry" data-uid="Alpaca.Markets.IAuctionEntry" class="text-break">Interface IAuctionEntry
   </h1>
-  <div class="markdown level0 summary"><p>Encapsulates the basic order book information from Alpaca APIs.</p>
+  <div class="markdown level0 summary"><p>Encapsulates the auction entry information from Alpaca APIs.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
-  <h5 id="Alpaca_Markets_IOrderBook_syntax">Syntax</h5>
+  <h5 id="Alpaca_Markets_IAuctionEntry_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IOrderBook</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IAuctionEntry</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IOrderBook_Asks.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IOrderBook.Asks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAuctionEntry_Condition.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAuctionEntry.Condition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IOrderBook.cs/#L35">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAuctionEntry.cs/#L35">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IOrderBook_Asks_" data-uid="Alpaca.Markets.IOrderBook.Asks*"></a>
-  <h4 id="Alpaca_Markets_IOrderBook_Asks" data-uid="Alpaca.Markets.IOrderBook.Asks">Asks</h4>
-  <div class="markdown level1 summary"><p>Gets asks price/quantity pairs list.</p>
+  <a id="Alpaca_Markets_IAuctionEntry_Condition_" data-uid="Alpaca.Markets.IAuctionEntry.Condition*"></a>
+  <h4 id="Alpaca_Markets_IAuctionEntry_Condition" data-uid="Alpaca.Markets.IAuctionEntry.Condition">Condition</h4>
+  <div class="markdown level1 summary"><p>Gets auction condition.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;IOrderBookEntry&gt; Asks { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">String Condition { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -110,52 +110,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IOrderBookEntry.html">IOrderBookEntry</a>&gt;</td>
+        <td><span class="xref">String</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IOrderBook_Bids.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IOrderBook.Bids%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAuctionEntry_Exchange.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAuctionEntry.Exchange%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IOrderBook.cs/#L29">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAuctionEntry.cs/#L17">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IOrderBook_Bids_" data-uid="Alpaca.Markets.IOrderBook.Bids*"></a>
-  <h4 id="Alpaca_Markets_IOrderBook_Bids" data-uid="Alpaca.Markets.IOrderBook.Bids">Bids</h4>
-  <div class="markdown level1 summary"><p>Gets bids price/quantity pairs list.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;IOrderBookEntry&gt; Bids { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IOrderBookEntry.html">IOrderBookEntry</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IOrderBook_Exchange.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IOrderBook.Exchange%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IOrderBook.cs/#L23">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_IOrderBook_Exchange_" data-uid="Alpaca.Markets.IOrderBook.Exchange*"></a>
-  <h4 id="Alpaca_Markets_IOrderBook_Exchange" data-uid="Alpaca.Markets.IOrderBook.Exchange">Exchange</h4>
-  <div class="markdown level1 summary"><p>Gets identifier of source exchange.</p>
+  <a id="Alpaca_Markets_IAuctionEntry_Exchange_" data-uid="Alpaca.Markets.IAuctionEntry.Exchange*"></a>
+  <h4 id="Alpaca_Markets_IAuctionEntry_Exchange" data-uid="Alpaca.Markets.IAuctionEntry.Exchange">Exchange</h4>
+  <div class="markdown level1 summary"><p>Gets identifier of auction source exchange.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -179,19 +148,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IOrderBook_IsReset.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IOrderBook.IsReset%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAuctionEntry_Price.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAuctionEntry.Price%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IOrderBook.cs/#L41">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAuctionEntry.cs/#L23">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IOrderBook_IsReset_" data-uid="Alpaca.Markets.IOrderBook.IsReset*"></a>
-  <h4 id="Alpaca_Markets_IOrderBook_IsReset" data-uid="Alpaca.Markets.IOrderBook.IsReset">IsReset</h4>
-  <div class="markdown level1 summary"><p>Gets the order book reset flag.</p>
+  <a id="Alpaca_Markets_IAuctionEntry_Price_" data-uid="Alpaca.Markets.IAuctionEntry.Price*"></a>
+  <h4 id="Alpaca_Markets_IAuctionEntry_Price" data-uid="Alpaca.Markets.IAuctionEntry.Price">Price</h4>
+  <div class="markdown level1 summary"><p>Gets auction price level.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Boolean IsReset { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">Decimal Price { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -203,26 +172,26 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Boolean</span></td>
+        <td><span class="xref">Decimal</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IOrderBook_Symbol.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IOrderBook.Symbol%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAuctionEntry_Size.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAuctionEntry.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IOrderBook.cs/#L11">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAuctionEntry.cs/#L29">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IOrderBook_Symbol_" data-uid="Alpaca.Markets.IOrderBook.Symbol*"></a>
-  <h4 id="Alpaca_Markets_IOrderBook_Symbol" data-uid="Alpaca.Markets.IOrderBook.Symbol">Symbol</h4>
-  <div class="markdown level1 summary"><p>Gets asset name.</p>
+  <a id="Alpaca_Markets_IAuctionEntry_Size_" data-uid="Alpaca.Markets.IAuctionEntry.Size*"></a>
+  <h4 id="Alpaca_Markets_IAuctionEntry_Size" data-uid="Alpaca.Markets.IAuctionEntry.Size">Size</h4>
+  <div class="markdown level1 summary"><p>Gets auction quantity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">String Symbol { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">Decimal Size { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -234,21 +203,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span></td>
+        <td><span class="xref">Decimal</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IOrderBook_TimestampUtc.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IOrderBook.TimestampUtc%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAuctionEntry_TimestampUtc.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAuctionEntry.TimestampUtc%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IOrderBook.cs/#L17">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAuctionEntry.cs/#L11">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IOrderBook_TimestampUtc_" data-uid="Alpaca.Markets.IOrderBook.TimestampUtc*"></a>
-  <h4 id="Alpaca_Markets_IOrderBook_TimestampUtc" data-uid="Alpaca.Markets.IOrderBook.TimestampUtc">TimestampUtc</h4>
-  <div class="markdown level1 summary"><p>Gets quote timestamp in UTC time zone.</p>
+  <a id="Alpaca_Markets_IAuctionEntry_TimestampUtc_" data-uid="Alpaca.Markets.IAuctionEntry.TimestampUtc*"></a>
+  <h4 id="Alpaca_Markets_IAuctionEntry_TimestampUtc" data-uid="Alpaca.Markets.IAuctionEntry.TimestampUtc">TimestampUtc</h4>
+  <div class="markdown level1 summary"><p>Gets auction timestamp in UTC.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -278,10 +247,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IOrderBook.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IOrderBook%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAuctionEntry.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAuctionEntry%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IOrderBook.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAuctionEntry.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
