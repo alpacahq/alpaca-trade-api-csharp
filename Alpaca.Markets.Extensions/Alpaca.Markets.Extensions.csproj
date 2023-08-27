@@ -12,14 +12,15 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.2.1.0</AssemblyVersion>
-    <FileVersion>6.2.1.0</FileVersion>
-    <Version>6.2.1</Version>
+    <AssemblyVersion>6.2.2.0</AssemblyVersion>
+    <FileVersion>6.2.2.0</FileVersion>
+    <Version>6.2.2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Updated dependencies and fixed the package compatibility (compilation and runtime) issue.
+- Added sorting support into all (quotes, trades, bars, etc.) stock/crypto historical data requests.
+- The obsolete attribute was removed from historical crypto quotes requesting methods.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
