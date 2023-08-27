@@ -12,16 +12,16 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.0.0.4</AssemblyVersion>
-    <FileVersion>7.0.0.4</FileVersion>
-    <Version>7.0.0-alpha4</Version>
+    <AssemblyVersion>7.0.0.5</AssemblyVersion>
+    <FileVersion>7.0.0.5</FileVersion>
+    <Version>7.0.0-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Added support for requesting trades/quotes fro all symbols at once in streaming data clients.
-- Backported all the latest changes from the 6.x version for compatibility.
-- Removed the type forwarding attributes from the Extensions package.
+- Fixed problem with announcement object deserialization. Thanks a lot @KevinDeBeer for the fix.
+- Added sorting support into all (quotes, trades, bars, etc.) stock/crypto historical data requests.
+- The obsolete attribute was removed from historical crypto quotes requesting methods.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
