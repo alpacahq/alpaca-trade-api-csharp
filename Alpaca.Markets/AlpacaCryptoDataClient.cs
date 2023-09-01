@@ -104,6 +104,12 @@ internal sealed class AlpacaCryptoDataClient :
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             _ => _.OrderBooks, cancellationToken).ConfigureAwait(false);
 
+    public Task<IMarketMovers> GetTopMarketMoversAsync(
+        Int32? numberOfLosersAndGainersInResponse = default,
+        CancellationToken cancellationToken = default) =>
+        HttpClient.GetTopMarketMoversAsync(RateLimitHandler,
+            "crypto", numberOfLosersAndGainersInResponse, cancellationToken);
+
     private async Task<IReadOnlyDictionary<String, TApi>> getLatestAsync<TApi, TJson>(
         LatestDataListRequest request,
         String items,

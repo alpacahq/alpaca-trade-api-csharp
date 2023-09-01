@@ -87,6 +87,12 @@ internal sealed class AlpacaDataClient :
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
+    public Task<IMarketMovers> GetTopMarketMoversAsync(
+        Int32? numberOfLosersAndGainersInResponse = default,
+        CancellationToken cancellationToken = default) =>
+        HttpClient.GetTopMarketMoversAsync(RateLimitHandler,
+            "stocks", numberOfLosersAndGainersInResponse, cancellationToken);
+
     private async Task<IReadOnlyDictionary<String, String>> listConditionsAsync(
         Tape tape,
         String tickType,
