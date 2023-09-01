@@ -147,6 +147,18 @@ internal sealed class AlpacaDataClient :
         HttpClient.GetTopMarketMoversAsync(
             "stocks", numberOfLosersAndGainersInResponse, cancellationToken);
 
+    public Task<IReadOnlyList<IActiveStock>> ListMostActiveStocksByVolumeAsync(
+        Int32? numberOfTopMostActiveStocks = default,
+        CancellationToken cancellationToken = default) =>
+        HttpClient.ListMostActiveStocksAsync(
+            "volume", numberOfTopMostActiveStocks, cancellationToken);
+
+    public Task<IReadOnlyList<IActiveStock>> ListMostActiveStocksByTradeCountAsync(
+        Int32? numberOfTopMostActiveStocks = default,
+        CancellationToken cancellationToken = default) =>
+        HttpClient.ListMostActiveStocksAsync(
+            "trades", numberOfTopMostActiveStocks, cancellationToken);
+
     private async Task<IReadOnlyDictionary<String, String>> listConditionsAsync(
         Tape tape,
         String tickType,
