@@ -9,4 +9,11 @@ internal static class UriBuilderExtensions
         uriBuilder.Path += pathSegment;
         return uriBuilder;
     }
+    public static UriBuilder WithPath(
+        this UriBuilder uriBuilder,
+        String path)
+    {
+        uriBuilder.Path = path;
+        return uriBuilder;
+    }
 }

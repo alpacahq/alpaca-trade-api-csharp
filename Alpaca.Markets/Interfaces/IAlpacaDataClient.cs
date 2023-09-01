@@ -8,6 +8,7 @@ public interface IAlpacaDataClient :
     IHistoricalQuotesClient<HistoricalQuotesRequest>,
     IHistoricalTradesClient<HistoricalTradesRequest>,
     IHistoricalBarsClient<HistoricalBarsRequest>,
+    IAlpacaScreenerClient,
     IDisposable
 {
     /// <summary>

@@ -472,6 +472,8 @@ Alpaca.Markets.IAlpacaDataSubscription<TApi>.Received -> System.Action<TApi>?
 Alpaca.Markets.IAlpacaNewsStreamingClient
 Alpaca.Markets.IAlpacaNewsStreamingClient.GetNewsSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.INewsArticle!>!
 Alpaca.Markets.IAlpacaNewsStreamingClient.GetNewsSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.INewsArticle!>!
+Alpaca.Markets.IAlpacaScreenerClient
+Alpaca.Markets.IAlpacaScreenerClient.GetTopMarketMoversAsync(int? numberOfLosersAndGainersInResponse = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IMarketMovers!>!
 Alpaca.Markets.IAlpacaStreamingClient
 Alpaca.Markets.IAlpacaStreamingClient.OnTradeUpdate -> System.Action<Alpaca.Markets.ITradeUpdate!>?
 Alpaca.Markets.IAlpacaTradingClient
@@ -612,6 +614,14 @@ Alpaca.Markets.ILimitUpLimitDown.Symbol.get -> string!
 Alpaca.Markets.ILimitUpLimitDown.Tape.get -> string!
 Alpaca.Markets.ILimitUpLimitDown.TimestampUtc.get -> System.DateTime
 Alpaca.Markets.ILimitUpLimitDown.TimeUtc.get -> System.DateTime
+Alpaca.Markets.IMarketMover
+Alpaca.Markets.IMarketMover.Change.get -> decimal
+Alpaca.Markets.IMarketMover.PercentChange.get -> decimal
+Alpaca.Markets.IMarketMover.Price.get -> decimal
+Alpaca.Markets.IMarketMover.Symbol.get -> string!
+Alpaca.Markets.IMarketMovers
+Alpaca.Markets.IMarketMovers.Gainers.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IMarketMover!>!
+Alpaca.Markets.IMarketMovers.Losers.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IMarketMover!>!
 Alpaca.Markets.IMultiPage<TItems>
 Alpaca.Markets.IMultiPage<TItems>.Items.get -> System.Collections.Generic.IReadOnlyDictionary<string!, System.Collections.Generic.IReadOnlyList<TItems>!>!
 Alpaca.Markets.IMultiPage<TItems>.NextPageToken.get -> string?
