@@ -397,4 +397,52 @@ public interface IAlpacaDataClient :
     Task<IMultiPage<IAuction>> GetHistoricalAuctionsAsync(
         HistoricalAuctionsRequest request,
         CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Returns the most active stocks by volume for the current trading session.
+    /// </summary>
+    /// <param name="numberOfTopMostActiveStocks">
+    /// Number of top most active stocks to fetch per day.
+    /// </param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <returns>Read-only list of most active stocks ranked by volume.</returns>
+    Task<IReadOnlyList<IActiveStock>> ListMostActiveStocksByVolumeAsync(
+        Int32? numberOfTopMostActiveStocks = default,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Returns the most active stocks by trade count for the current trading session.
+    /// </summary>
+    /// <param name="numberOfTopMostActiveStocks">
+    /// Number of top most active stocks to fetch per day.
+    /// </param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <returns>Read-only list of most active stocks ranked by trade count.</returns>
+    Task<IReadOnlyList<IActiveStock>> ListMostActiveStocksByTradeCountAsync(
+        Int32? numberOfTopMostActiveStocks = default,
+        CancellationToken cancellationToken = default);
 }
