@@ -34,7 +34,7 @@ internal sealed class JsonTradeUpdate : ITradeUpdate
     [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "order", Required = Required.Always)]
-    public JsonOrder JsonOrder { get; set; } = new ();
+    public JsonOrder JsonOrder { get; set; } = new();
 
     [JsonIgnore]
     public IOrder Order => JsonOrder;

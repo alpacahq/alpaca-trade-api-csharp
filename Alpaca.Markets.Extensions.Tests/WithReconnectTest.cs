@@ -1,4 +1,6 @@
-﻿namespace Alpaca.Markets.Extensions.Tests;
+﻿using System.Net.WebSockets;
+
+namespace Alpaca.Markets.Extensions.Tests;
 
 public sealed class WithReconnectTest
 {
@@ -54,7 +56,14 @@ public sealed class WithReconnectTest
 
         client
             .Setup(_ => _.ConnectAndAuthenticateAsync(It.IsAny<CancellationToken>()))
-            .ReturnsAsync(AuthStatus.Authorized);
+            .ReturnsAsync(() =>
+            {
+                client.Raise(_ => _.OnError += null, new WebSocketException());
+                client
+                    .Setup(_ => _.ConnectAndAuthenticateAsync(It.IsAny<CancellationToken>()))
+                    .ReturnsAsync(AuthStatus.Authorized);
+                return AuthStatus.Unauthorized;
+            });
 
         client
             .Setup(_ => _.GetNewsSubscription(It.IsAny<String>()))

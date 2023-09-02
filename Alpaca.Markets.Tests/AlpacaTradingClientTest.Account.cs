@@ -206,7 +206,7 @@ public sealed partial class AlpacaTradingClientTest
     }
 
     private static JObject createConfiguration() =>
-        new (
+        new(
             // ReSharper disable once StringLiteralTypo
             new JProperty("dtbp_check", DayTradeMarginCallProtection.Both),
             new JProperty("trade_confirm_email", TradeConfirmEmail.All),

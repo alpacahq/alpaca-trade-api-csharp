@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -19,18 +19,19 @@
     <PackageReference Include="OoplesFinance.StockIndicators" Version="1.0.53" />
     <PackageReference Include="Portable.System.DateTimeOnly" Version="7.0.1" />
     <PackageReference Include="System.Threading.Channels" Version="7.0.0" />
+    <PackageReference Include="System.IO.Pipelines" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Polly" Version="7.2.4" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="7.0.0" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <ProjectReference Include="..\Alpaca.Markets\Alpaca.Markets.csproj">
-      <Project>{F339D73B-347F-47D4-9BFB-EBEA010FC6F7}</Project>
-      <Name>Alpaca.Markets</Name>
-    </ProjectReference>
-    <TrimmerRootAssembly Include="Alpaca.Markets" />
+    <ProjectReference Include="..\Alpaca.Markets.Extensions\Alpaca.Markets.Extensions.csproj" />
+    <ProjectReference Include="..\Alpaca.Markets\Alpaca.Markets.csproj" />
   </ItemGroup>
 
 </Project>

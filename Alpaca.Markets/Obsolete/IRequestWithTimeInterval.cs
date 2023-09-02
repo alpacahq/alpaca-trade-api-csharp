@@ -4,7 +4,7 @@
 /// Encapsulates access point for setting time interval filtering on request instance.
 /// </summary>
 /// <typeparam name="TInterval">The sort of time interval (inclusive or exclusive).</typeparam>
-[Obsolete("Use WithInterval methods of the requests parameters directly.", false)]
+[Obsolete("Use WithInterval methods of the requests parameters directly.", true)]
 public interface IRequestWithTimeInterval<in TInterval>
     where TInterval : ITimeInterval
 {

@@ -4,12 +4,13 @@ internal static class AlpacaScreenerClientExtensions
 {
     public static async Task<IMarketMovers> GetTopMarketMoversAsync(
         this HttpClient httpClient,
+        RateLimitHandler rateLimitHandler,
         String marketType,
         Int32? numberOfLosersAndGainersInResponse = default,
         CancellationToken cancellationToken = default) =>
         await httpClient.GetAsync<IMarketMovers, JsonMarketMovers>(
             await getUriBuilderAsync(httpClient, marketType, numberOfLosersAndGainersInResponse).ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     private static async ValueTask<UriBuilder> getUriBuilderAsync(
         HttpClient httpClient,

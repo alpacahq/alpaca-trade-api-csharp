@@ -15,13 +15,6 @@ public interface ILimitUpLimitDown
     /// Gets the LULD update timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
-    [Obsolete("This property will be removed in the next major version of SDK. Use the TimestampUtc property instead.", true)]
-    DateTime TimeUtc { get; }
-
-    /// <summary>
-    /// Gets the LULD update timestamp in UTC.
-    /// </summary>
-    [UsedImplicitly]
     DateTime TimestampUtc { get; }
 
     /// <summary>

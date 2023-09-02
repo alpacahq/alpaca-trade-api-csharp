@@ -41,7 +41,7 @@ public static class AlpacaServiceCollectionExtensions
     public static IHttpClientBuilder AddAlpacaCryptoDataClient(
         this IServiceCollection services,
         AlpacaCryptoDataClientConfiguration configuration) =>
-        services
+        services.EnsureNotNull()
             .AddHttpClient<IAlpacaCryptoDataClient>()
             .AddTypedClient(httpClient => configuration.EnsureNotNull()
                 .withFactoryCreatedHttpClient(httpClient).GetClient())
@@ -80,7 +80,7 @@ public static class AlpacaServiceCollectionExtensions
     public static IHttpClientBuilder AddAlpacaDataClient(
         this IServiceCollection services,
         AlpacaDataClientConfiguration configuration) =>
-        services
+        services.EnsureNotNull()
             .AddHttpClient<IAlpacaDataClient>()
             .AddTypedClient(httpClient => configuration.EnsureNotNull()
                 .withFactoryCreatedHttpClient(httpClient).GetClient())
@@ -119,7 +119,7 @@ public static class AlpacaServiceCollectionExtensions
     public static IHttpClientBuilder AddAlpacaTradingClient(
         this IServiceCollection services,
         AlpacaTradingClientConfiguration configuration) =>
-        services
+        services.EnsureNotNull()
             .AddHttpClient<IAlpacaTradingClient>()
             .AddTypedClient(httpClient => configuration.EnsureNotNull()
                 .withFactoryCreatedHttpClient(httpClient).GetClient())

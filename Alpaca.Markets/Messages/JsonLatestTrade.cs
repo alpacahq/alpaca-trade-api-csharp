@@ -7,7 +7,7 @@
 internal sealed class JsonLatestTrade : ITrade
 {
     [JsonProperty(PropertyName = "trade", Required = Required.Always)]
-    public JsonHistoricalTrade Nested { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public JsonHistoricalTrade Nested { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
     public String Symbol { get; set; } = String.Empty;

@@ -92,7 +92,7 @@ public readonly record struct Interval<TItem>
     /// <param name="into">New ending point for interval.</param>
     /// <returns>The new instance of <see cref="Interval{TItem}"/> object.</returns>
     [UsedImplicitly]
-    public Interval<TItem> WithInto(TItem into) => new (From, into);
+    public Interval<TItem> WithInto(TItem into) => new(From, into);
 
     /// <summary>
     /// Creates new instance of <see cref="Interval{TItem}"/> object
@@ -101,5 +101,5 @@ public readonly record struct Interval<TItem>
     /// <param name="from">New starting point for interval.</param>
     /// <returns>The new instance of <see cref="Interval{TItem}"/> object.</returns>
     [UsedImplicitly]
-    public Interval<TItem> WithFrom(TItem from) => new (from, Into);
+    public Interval<TItem> WithFrom(TItem from) => new(from, Into);
 }

@@ -177,7 +177,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
     private static readonly Char[] _channelSeparator = { '.' };
 
     // ReSharper disable once StaticMemberInGenericType
-    private static readonly SortedSet<String> _implicitChannels = new (StringComparer.Ordinal)
+    private static readonly SortedSet<String> _implicitChannels = new(StringComparer.Ordinal)
     {
         CancellationsChannel,
         CorrectionsChannel

@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class NewsArticlesRequest : Validation.IRequest, IHistoricalRequest<NewsArticlesRequest, INewsArticle>
 {
-    private readonly HashSet<String> _symbols = new (StringComparer.Ordinal);
+    private readonly HashSet<String> _symbols = new(StringComparer.Ordinal);
 
     /// <summary>
     /// Creates new instance of <see cref="NewsArticlesRequest"/> object.
@@ -60,7 +60,7 @@ public sealed class NewsArticlesRequest : Validation.IRequest, IHistoricalReques
     /// Gets the pagination parameters for the request (page size and token).
     /// </summary>
     [UsedImplicitly]
-    public Pagination Pagination { get; } = new ();
+    public Pagination Pagination { get; } = new();
 
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
         HttpClient httpClient) =>

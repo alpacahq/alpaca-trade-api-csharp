@@ -4,12 +4,13 @@ internal static class ActiveStocksExtensions
 {
     public static async Task<IReadOnlyList<IActiveStock>> ListMostActiveStocksAsync(
         this HttpClient httpClient,
+        RateLimitHandler rateLimitHandler,
         String orderByFieldForRankingMostActive,
         Int32? numberOfTopMostActiveStocks = default,
         CancellationToken cancellationToken = default) =>
         (await httpClient.GetAsync<JsonActiveStocks, JsonActiveStocks>(
             await getUriBuilderAsync(httpClient, orderByFieldForRankingMostActive, numberOfTopMostActiveStocks).ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false))
+            rateLimitHandler, cancellationToken).ConfigureAwait(false))
         .MostActives.EmptyIfNull<IActiveStock>();
 
     private static async ValueTask<UriBuilder> getUriBuilderAsync(

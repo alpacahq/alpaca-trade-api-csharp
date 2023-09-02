@@ -3,10 +3,7 @@
 /// <summary>
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListCalendarAsync(CalendarRequest,CancellationToken)"/> call.
 /// </summary>
-public sealed class CalendarRequest :
-#pragma warning disable CS0618 // Type or member is obsolete
-    IRequestWithTimeInterval<IInclusiveTimeInterval>
-#pragma warning restore CS0618 // Type or member is obsolete
+public sealed class CalendarRequest
  {
      /// <summary>
      /// Creates new instance of <see cref="CalendarRequest"/> object.
@@ -43,7 +40,7 @@ public sealed class CalendarRequest :
     /// <returns></returns>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use another method overload that takes the DateOnly argument.", false)]
+    [Obsolete("Use another method overload that takes the DateOnly argument.", true)]
     public static CalendarRequest GetForSingleDay(DateTime date) =>
         GetForSingleDay(DateOnly.FromDateTime(date));
 
@@ -55,14 +52,14 @@ public sealed class CalendarRequest :
     /// <returns></returns>
     [UsedImplicitly]
     public static CalendarRequest GetForSingleDay(DateOnly date) =>
-        new (new Interval<DateOnly>(date));
+        new(new Interval<DateOnly>(date));
 
     /// <summary>
     /// Gets inclusive date interval for filtering items in response.
     /// </summary>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use the DateInterval property instead of this one.", false)]
+    [Obsolete("Use the DateInterval property instead of this one.", true)]
     public Interval<DateTime> TimeInterval => DateInterval.AsTimeInterval();
 
     /// <summary>
@@ -107,9 +104,4 @@ public sealed class CalendarRequest :
         DateInterval = value;
         return this;
     }
-
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use WithInterval method instead of this one.", false)]
-    void IRequestWithTimeInterval<IInclusiveTimeInterval>.SetInterval(
-        IInclusiveTimeInterval value) => WithInterval(value.AsDateOnlyInterval());
 }

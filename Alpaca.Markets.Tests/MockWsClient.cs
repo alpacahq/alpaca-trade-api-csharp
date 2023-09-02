@@ -1,18 +1,19 @@
 using System.Buffers;
 using System.Collections.Concurrent;
+using System.Linq.Expressions;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Channels;
 
 namespace Alpaca.Markets.Tests;
 
-public sealed class MockWsClient<TConfiguration, TClient> : IDisposable
+internal sealed class MockWsClient<TConfiguration, TClient> : IDisposable
     where TConfiguration : StreamingClientConfiguration
     where TClient : class, IDisposable
 {
-    private readonly ConcurrentQueue<Guid> _requests = new ();
+    private readonly ConcurrentQueue<Guid> _requests = new();
 
-    private readonly Mock<IWebSocket> _webSocket = new ();
+    private readonly Mock<IWebSocket> _webSocket = new();
 
     private readonly Channel<String> _responses =
         Channel.CreateUnbounded<String>();
@@ -24,12 +25,16 @@ public sealed class MockWsClient<TConfiguration, TClient> : IDisposable
         configuration.WebSocketFactory = () => _webSocket.Object;
         Client = factory(configuration);
 
-        _webSocket
-            .Setup(_ => _.ConnectAsync(It.IsAny<Uri>(), It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
-        _webSocket
-            .Setup(_ => _.ReceiveAsync(It.IsAny<Memory<Byte>>()))
-            .Returns<Memory<Byte>>(readResponseAsync);
+        // ReSharper disable once InvertIf
+        if (String.Equals(configuration.ApiEndpoint.Scheme, Uri.UriSchemeWss, StringComparison.Ordinal))
+        {
+            _webSocket
+                .Setup(_ => _.ConnectAsync(It.IsAny<Uri>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.CompletedTask);
+            _webSocket
+                .Setup(_ => _.ReceiveAsync(It.IsAny<Memory<Byte>>()))
+                .Returns<Memory<Byte>>(readResponseAsync);
+        }
     }
 
     public TClient Client { get; }
@@ -78,6 +83,11 @@ public sealed class MockWsClient<TConfiguration, TClient> : IDisposable
         String channel,
         JToken symbols) =>
         AddResponse(getSubscriptionMessage(channel, symbols));
+
+    public void AddException(
+        Expression<Func<IWebSocket, Task>> expression,
+        Exception exception) =>
+        _webSocket.Setup(expression).ThrowsAsync(exception);
 
     public void Dispose()
     {

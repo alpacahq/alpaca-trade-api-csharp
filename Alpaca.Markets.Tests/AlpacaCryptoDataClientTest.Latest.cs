@@ -3,21 +3,6 @@
 public sealed partial class AlpacaCryptoDataClientTest
 {
     [Fact]
-    public async Task GetLatestBarAsyncWorks()
-    {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
-
-        mock.AddLatestBarExpectation(PathPrefixV1, Crypto);
-
-#pragma warning disable CS0618
-        var bar = await mock.Client.GetLatestBarAsync(
-            new LatestDataRequest(Crypto, CryptoExchange.Cbse));
-#pragma warning restore CS0618
-
-        Assert.True(bar.Validate(Crypto));
-    }
-
-    [Fact]
     public async Task ListLatestBarsAsyncWorks()
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
@@ -35,21 +20,6 @@ public sealed partial class AlpacaCryptoDataClientTest
     }
 
     [Fact]
-    public async Task GetLatestQuoteAsyncWorks()
-    {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
-
-        mock.AddLatestQuoteExpectation(PathPrefixV1, Crypto);
-
-#pragma warning disable CS0618
-        var quote = await mock.Client.GetLatestQuoteAsync(
-            new LatestDataRequest(Crypto, CryptoExchange.Cbse));
-#pragma warning restore CS0618
-
-        Assert.True(quote.Validate(Crypto));
-    }
-
-    [Fact]
     public async Task ListLatestQuotesAsyncWorks()
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
@@ -64,21 +34,6 @@ public sealed partial class AlpacaCryptoDataClientTest
 
         Assert.True(quotes[Crypto].Validate(Crypto));
         Assert.True(quotes[Other].Validate(Other));
-    }
-
-    [Fact]
-    public async Task GetLatestTradeAsyncWorks()
-    {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
-
-        mock.AddLatestTradeExpectation(PathPrefixV1, Crypto);
-
-#pragma warning disable CS0618
-        var trade = await mock.Client.GetLatestTradeAsync(
-            new LatestDataRequest(Crypto, CryptoExchange.Ersx));
-#pragma warning restore CS0618
-
-        Assert.True(trade.Validate(Crypto));
     }
 
     [Fact]

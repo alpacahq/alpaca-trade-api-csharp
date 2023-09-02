@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.2.2.0</AssemblyVersion>
-    <FileVersion>6.2.2.0</FileVersion>
-    <Version>6.2.2</Version>
+    <AssemblyVersion>7.0.0.2</AssemblyVersion>
+    <FileVersion>7.0.0.2</FileVersion>
+    <Version>7.0.0-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -50,7 +50,7 @@
   <PropertyGroup>
     <EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
     <!--<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>-->
-    <PackageValidationBaselineVersion>6.0.1-alpha3</PackageValidationBaselineVersion>
+    <PackageValidationBaselineVersion>6.2.2</PackageValidationBaselineVersion>
     <EnableStrictModeForCompatibleTfms>true</EnableStrictModeForCompatibleTfms>
     <EnablePackageValidation>true</EnablePackageValidation>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
@@ -99,7 +99,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Threading.Channels" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Linq.Async" Version="6.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="Alpaca.Markets" Version="6.2.1" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Alpaca.Markets" Version="7.0.0-alpha4" PrivateAssets="compile;contentfiles;build;analyzers;" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">

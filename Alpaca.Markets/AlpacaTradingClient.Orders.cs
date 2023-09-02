@@ -8,7 +8,7 @@ internal sealed partial class AlpacaTradingClient
         await _httpClient.GetAsync<IReadOnlyList<IOrder>, List<JsonOrder>>(
             await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IOrder> PostOrderAsync(
         NewOrderRequest request,
@@ -24,14 +24,14 @@ internal sealed partial class AlpacaTradingClient
         JsonNewOrder jsonNewOrder,
         CancellationToken cancellationToken = default) =>
         _httpClient.PostAsync<IOrder, JsonOrder, JsonNewOrder>(
-            "v2/orders", jsonNewOrder, cancellationToken);
+            "v2/orders", jsonNewOrder, _rateLimitHandler, cancellationToken);
 
     public Task<IOrder> PatchOrderAsync(
         ChangeOrderRequest request,
         CancellationToken cancellationToken = default) =>
         _httpClient.PatchAsync<IOrder, JsonOrder, ChangeOrderRequest>(
             request.EnsureNotNull().Validate().GetEndpointUri(),
-            request, cancellationToken);
+            request, _rateLimitHandler, cancellationToken);
 
     public async Task<IOrder> GetOrderAsync(
         String clientOrderId,
@@ -44,33 +44,22 @@ internal sealed partial class AlpacaTradingClient
                     .AddParameter("client_order_id", clientOrderId)
                     .AsStringAsync().ConfigureAwait(false)
             },
-            cancellationToken).ConfigureAwait(false);
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IOrder> GetOrderAsync(
         Guid orderId,
         CancellationToken cancellationToken = default) =>
         _httpClient.GetAsync<IOrder, JsonOrder>(
-            $"v2/orders/{orderId:D}", cancellationToken);
-
-    [ExcludeFromCodeCoverage]
-    public Task<Boolean> DeleteOrderAsync(
-        Guid orderId,
-        CancellationToken cancellationToken = default) =>
-        CancelOrderAsync(orderId, cancellationToken);
+            $"v2/orders/{orderId:D}", _rateLimitHandler, cancellationToken);
 
     public Task<Boolean> CancelOrderAsync(
         Guid orderId,
         CancellationToken cancellationToken = default) =>
         _httpClient.TryDeleteAsync(
-            $"v2/orders/{orderId:D}", cancellationToken);
-
-    [ExcludeFromCodeCoverage]
-    public Task<IReadOnlyList<IOrderActionStatus>> DeleteAllOrdersAsync(
-        CancellationToken cancellationToken = default) =>
-        CancelAllOrdersAsync(cancellationToken);
+            $"v2/orders/{orderId:D}", _rateLimitHandler, cancellationToken);
 
     public Task<IReadOnlyList<IOrderActionStatus>> CancelAllOrdersAsync(
         CancellationToken cancellationToken = default) =>
         _httpClient.DeleteAsync<IReadOnlyList<IOrderActionStatus>, List<JsonOrderActionStatus>>(
-            "v2/orders", cancellationToken);
+            "v2/orders", _rateLimitHandler, cancellationToken);
 }

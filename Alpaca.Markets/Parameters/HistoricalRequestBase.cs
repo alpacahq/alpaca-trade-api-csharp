@@ -40,11 +40,11 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     /// <param name="symbols">Asset symbols for data retrieval.</param>
     /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
     protected internal HistoricalRequestBase(
         IEnumerable<String> symbols,
         IInclusiveTimeInterval timeInterval)
-        : this (symbols, timeInterval.AsDateTimeInterval())
+        : this (symbols, timeInterval.EnsureNotNull().AsDateTimeInterval())
     {
     }
 
@@ -53,7 +53,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
     /// </summary>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("This property is obsolete and will be removed in the next major version of SDK. Use the `Symbols` property instead of this one.", false)]
+    [Obsolete("This property is obsolete and will be removed in the next major version of SDK. Use the `Symbols` property instead of this one.", true)]
     public String Symbol => _symbols.FirstOrDefault() ?? String.Empty;
 
     /// <summary>

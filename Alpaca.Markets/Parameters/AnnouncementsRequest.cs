@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class AnnouncementsRequest : Validation.IRequest
 {
-    private readonly HashSet<CorporateActionType> _corporateActionTypes = new ();
+    private readonly HashSet<CorporateActionType> _corporateActionTypes = new();
 
     /// <summary>
     /// Creates new instance of <see cref="AnnouncementsRequest"/> object.
@@ -42,11 +42,11 @@ public sealed class AnnouncementsRequest : Validation.IRequest
     /// <param name="corporateActionType">Single corporate action type for filtering.</param>
     /// <param name="timeInterval">Date range when searching corporate action announcements.</param>
     [ExcludeFromCodeCoverage]
-    [Obsolete("This constructor will be removed in the next major release. Use overload that takes Interval<DateOnly> argument.", false)]
+    [Obsolete("This constructor will be removed in the next major release. Use overload that takes Interval<DateOnly> argument.", true)]
     public AnnouncementsRequest(
         CorporateActionType corporateActionType,
         IInclusiveTimeInterval timeInterval)
-        : this (corporateActionType, timeInterval.AsDateOnlyInterval())
+        : this (corporateActionType, timeInterval.EnsureNotNull().AsDateOnlyInterval())
     {
     }
 
@@ -56,11 +56,11 @@ public sealed class AnnouncementsRequest : Validation.IRequest
     /// <param name="corporateActionTypes">List of the corporate action types for filtering.</param>
     /// <param name="timeInterval">Date range when searching corporate action announcements.</param>
     [ExcludeFromCodeCoverage]
-    [Obsolete("This constructor will be removed in the next major release. Use overload that takes Interval<DateOnly> argument.", false)]
+    [Obsolete("This constructor will be removed in the next major release. Use overload that takes Interval<DateOnly> argument.", true)]
     public AnnouncementsRequest(
         IEnumerable<CorporateActionType> corporateActionTypes,
         IInclusiveTimeInterval timeInterval)
-        : this (corporateActionTypes, timeInterval.AsDateOnlyInterval())
+        : this (corporateActionTypes, timeInterval.EnsureNotNull().AsDateOnlyInterval())
     {
     }
 
@@ -75,8 +75,9 @@ public sealed class AnnouncementsRequest : Validation.IRequest
     /// </summary>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("This property will be removed in the next major release. Use the DateInterval property instead.", false)]
-    public IInclusiveTimeInterval TimeInterval => DateInterval.AsInclusiveTimeInterval();
+    [Obsolete("This property will be removed in the next major release. Use the DateInterval property instead.", true)]
+    public IInclusiveTimeInterval TimeInterval =>
+        throw new InvalidOperationException("Use the DateInterval property instead.");
 
     /// <summary>
     /// Gets the date range when searching corporate action announcements.
@@ -104,7 +105,7 @@ public sealed class AnnouncementsRequest : Validation.IRequest
 
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
         HttpClient httpClient) =>
-        new (httpClient.BaseAddress!)
+        new(httpClient.BaseAddress!)
         {
             Path = "v2/corporate_actions/announcements",
             Query = await new QueryBuilder()

@@ -2,11 +2,11 @@ using Microsoft.Extensions.Http;
 
 namespace Alpaca.Markets.Tests;
 
-public sealed class MockHttpClient<TConfiguration, TClient> : IMock, IDisposable
+internal sealed class MockHttpClient<TConfiguration, TClient> : IMock, IDisposable
     where TConfiguration : AlpacaClientConfigurationBase
     where TClient : class, IDisposable
 {
-    private readonly MockHttpMessageHandler _handler = new ();
+    private readonly MockHttpMessageHandler _handler = new();
 
     public MockHttpClient(
         TConfiguration configuration,

@@ -5,18 +5,19 @@ internal sealed partial class AlpacaTradingClient
     public Task<IAccount> GetAccountAsync(
         CancellationToken cancellationToken = default) =>
         _httpClient.GetAsync<IAccount, JsonAccount>(
-            "v2/account", cancellationToken);
+            "v2/account", _rateLimitHandler, cancellationToken);
 
     public Task<IAccountConfiguration> GetAccountConfigurationAsync(
         CancellationToken cancellationToken = default) =>
         _httpClient.GetAsync<IAccountConfiguration, JsonAccountConfiguration>(
-            "v2/account/configurations", cancellationToken);
+            "v2/account/configurations", _rateLimitHandler, cancellationToken);
 
     public Task<IAccountConfiguration> PatchAccountConfigurationAsync(
         IAccountConfiguration accountConfiguration,
         CancellationToken cancellationToken = default) =>
         _httpClient.PatchAsync<IAccountConfiguration, JsonAccountConfiguration, IAccountConfiguration>(
-            "v2/account/configurations", accountConfiguration.EnsureNotNull(), cancellationToken);
+            "v2/account/configurations", accountConfiguration.EnsureNotNull(),
+            _rateLimitHandler, cancellationToken);
 
     public async Task<IReadOnlyList<IAccountActivity>> ListAccountActivitiesAsync(
         AccountActivitiesRequest request,
@@ -24,7 +25,7 @@ internal sealed partial class AlpacaTradingClient
         await _httpClient.GetAsync<IReadOnlyList<IAccountActivity>, List<JsonAccountActivity>>(
             await request.EnsureNotNull()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public async Task<IPortfolioHistory> GetPortfolioHistoryAsync(
         PortfolioHistoryRequest request,
@@ -32,7 +33,7 @@ internal sealed partial class AlpacaTradingClient
         await _httpClient.GetAsync<IPortfolioHistory, JsonPortfolioHistory>(
             await request.EnsureNotNull()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public async Task<IReadOnlyList<IAsset>> ListAssetsAsync(
         AssetsRequest request,
@@ -40,24 +41,24 @@ internal sealed partial class AlpacaTradingClient
         await _httpClient.GetAsync<IReadOnlyList<IAsset>, List<JsonAsset>>(
             await request.EnsureNotNull()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IAsset> GetAssetAsync(
         String symbol,
         CancellationToken cancellationToken = default) =>
         _httpClient.GetAsync<IAsset, JsonAsset>(
-            $"v2/assets/{symbol}", cancellationToken);
+            $"v2/assets/{symbol}", _rateLimitHandler, cancellationToken);
 
     public Task<IReadOnlyList<IPosition>> ListPositionsAsync(
         CancellationToken cancellationToken = default) =>
         _httpClient.GetAsync<IReadOnlyList<IPosition>, List<JsonPosition>>(
-            "v2/positions", cancellationToken);
+            "v2/positions", _rateLimitHandler, cancellationToken);
 
     public Task<IPosition> GetPositionAsync(
         String symbol,
         CancellationToken cancellationToken = default) =>
         _httpClient.GetAsync<IPosition, JsonPosition>(
-            $"v2/positions/{symbol}", cancellationToken);
+            $"v2/positions/{symbol}", _rateLimitHandler, cancellationToken);
 
     public Task<IReadOnlyList<IPositionActionStatus>> DeleteAllPositionsAsync(
         CancellationToken cancellationToken = default) =>
@@ -70,7 +71,7 @@ internal sealed partial class AlpacaTradingClient
             await request.EnsureNotNull()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             request.Timeout ?? Timeout.InfiniteTimeSpan,
-            cancellationToken).ConfigureAwait(false);
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public async Task<IOrder> DeletePositionAsync(
         DeletePositionRequest request,
@@ -78,22 +79,19 @@ internal sealed partial class AlpacaTradingClient
         await _httpClient.DeleteAsync<IOrder, JsonOrder>(
             await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IClock> GetClockAsync(
         CancellationToken cancellationToken = default) =>
         _httpClient.GetAsync<IClock, JsonClock>(
-            "v2/clock", cancellationToken);
+            "v2/clock", _rateLimitHandler, cancellationToken);
 
-    [Obsolete("This method is now obsolete, use ListIntervalCalendarAsync method instead.", false)]
+    [Obsolete("This method is now obsolete, use ListIntervalCalendarAsync method instead.", true)]
     [ExcludeFromCodeCoverage]
-    public async Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
+    public Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
         CalendarRequest request,
         CancellationToken cancellationToken = default) =>
-        await _httpClient.GetAsync<IReadOnlyList<ICalendar>, List<JsonCalendar>>(
-            await request.EnsureNotNull()
-                .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+        throw new InvalidOperationException("Use ListIntervalCalendarAsync method instead.");
 
     public async Task<IReadOnlyList<IIntervalCalendar>> ListIntervalCalendarAsync(
         CalendarRequest request,
@@ -101,13 +99,13 @@ internal sealed partial class AlpacaTradingClient
         await _httpClient.GetAsync<IReadOnlyList<IIntervalCalendar>, List<JsonCalendar>>(
             await request.EnsureNotNull()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IAnnouncement> GetAnnouncementAsync(
         Guid announcementId,
         CancellationToken cancellationToken = default) =>
         _httpClient.GetAsync<IAnnouncement, JsonAnnouncement>(
-            $"v2/corporate_actions/announcements/{announcementId:D}", cancellationToken);
+            $"v2/corporate_actions/announcements/{announcementId:D}", _rateLimitHandler, cancellationToken);
 
     public async Task<IReadOnlyList<IAnnouncement>> ListAnnouncementsAsync(
         AnnouncementsRequest request,
@@ -115,5 +113,5 @@ internal sealed partial class AlpacaTradingClient
         await _httpClient.GetAsync<IReadOnlyList<IAnnouncement>, List<JsonAnnouncement>>(
             await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
-            cancellationToken).ConfigureAwait(false);
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 }

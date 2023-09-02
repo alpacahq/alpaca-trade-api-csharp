@@ -5,7 +5,7 @@ internal sealed class JsonTradesPage : IPageMutable<ITrade>, ISymbolMutable
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "trades", Required = Required.Default)]
-    public List<JsonHistoricalTrade> ItemsList { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public List<JsonHistoricalTrade> ItemsList { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
     public String Symbol { get; set; } = String.Empty;

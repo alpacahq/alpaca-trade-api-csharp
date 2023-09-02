@@ -35,7 +35,7 @@ internal static class MessageDataHelpers
 
     public static JObject CreateNewsArticle(
         this String symbol) =>
-        new (
+        new(
             new JProperty("images", new JArray(
                 new JObject(
                     new JProperty("url", new Uri("https://www.google.com")),

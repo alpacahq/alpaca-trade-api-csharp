@@ -25,12 +25,12 @@ public sealed class LatestMarketDataListRequest : Validation.IRequest
     public IReadOnlyCollection<String> Symbols => _symbols;
 
     /// <summary>
-    /// Gets or sets the feed to pull market data from. The <see cref="MarkedDataFeed.Sip"/> and
-    /// <see cref="MarkedDataFeed.Otc"/> are only available to those with a subscription. Default is
-    /// <see cref="MarkedDataFeed.Iex"/> for free plans and <see cref="MarkedDataFeed.Sip"/> for paid.
+    /// Gets or sets the feed to pull market data from. The <see cref="MarketDataFeed.Sip"/> and
+    /// <see cref="MarketDataFeed.Otc"/> are only available to those with a subscription. Default is
+    /// <see cref="MarketDataFeed.Iex"/> for free plans and <see cref="MarketDataFeed.Sip"/> for paid.
     /// </summary>
     [UsedImplicitly]
-    public MarkedDataFeed? Feed { get; set; }
+    public MarketDataFeed? Feed { get; set; }
 
     /// <summary>
     /// Gets or sets the optional parameter for the returned prices in ISO 4217 standard.

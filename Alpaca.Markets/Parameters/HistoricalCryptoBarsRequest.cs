@@ -5,7 +5,7 @@
 /// <see cref="IHistoricalBarsClient{TRequest}.ListHistoricalBarsAsync(TRequest,CancellationToken)"/> and
 /// <see cref="IHistoricalBarsClient{TRequest}.GetHistoricalBarsAsync(TRequest,CancellationToken)"/> calls.
 /// </summary>
-public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, IHistoricalRequest<HistoricalCryptoBarsRequest, IBar>
+public sealed class HistoricalCryptoBarsRequest : HistoricalRequestBase, IHistoricalRequest<HistoricalCryptoBarsRequest, IBar>
 {
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoBarsRequest"/> object.
@@ -116,7 +116,7 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
     /// The <paramref name="symbol"/> argument is <c>null</c>.
     /// </exception>
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
     public HistoricalCryptoBarsRequest(
         String symbol,
         BarTimeFrame timeFrame,
@@ -135,24 +135,13 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
     /// The <paramref name="symbols"/> argument is <c>null</c>.
     /// </exception>
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
     public HistoricalCryptoBarsRequest(
         IEnumerable<String> symbols,
         IInclusiveTimeInterval timeInterval,
         BarTimeFrame timeFrame)
         : base(symbols.EnsureNotNull(), timeInterval) =>
         TimeFrame = timeFrame;
-
-    [Obsolete("This constructor should be removed in the next major release.", false)]
-    private HistoricalCryptoBarsRequest(
-        HistoricalCryptoBarsRequest request,
-        IEnumerable<CryptoExchange> exchanges)
-        : base(request.Symbols, request.TimeInterval,
-            request.Exchanges.Concat(exchanges))
-    {
-        CopyPagination(request.Pagination);
-        TimeFrame = request.TimeFrame;
-    }
 
     /// <summary>
     /// Gets type of time bars for retrieval.
@@ -162,7 +151,7 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
 
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoBarsRequest"/> object
-    /// with the updated <see cref="HistoricalCryptoRequestBase.Exchanges"/> list.
+    /// with the updated <see cref="Exchanges"/> list.
     /// </summary>
     /// <param name="exchanges">Crypto exchanges to add into the list.</param>
     /// <exception cref="ArgumentNullException">
@@ -171,14 +160,13 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
     /// <returns>The new instance of the <see cref="HistoricalCryptoBarsRequest"/> object.</returns>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release.", false)]
+    [Obsolete("This method will be removed in the next major release.", true)]
     public HistoricalCryptoBarsRequest WithExchanges(
-        IEnumerable<CryptoExchange> exchanges) =>
-        new(this, exchanges.EnsureNotNull());
+        IEnumerable<CryptoExchange> exchanges) => this;
 
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoBarsRequest"/> object
-    /// with the updated <see cref="HistoricalCryptoRequestBase.Exchanges"/> list.
+    /// with the updated <see cref="Exchanges"/> list.
     /// </summary>
     /// <param name="exchanges">Crypto exchanges to add into the list.</param>
     /// <exception cref="ArgumentNullException">
@@ -187,10 +175,19 @@ public sealed class HistoricalCryptoBarsRequest : HistoricalCryptoRequestBase, I
     /// <returns>The new instance of the <see cref="HistoricalCryptoBarsRequest"/> object.</returns>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release.", false)]
+    [Obsolete("This method will be removed in the next major release.", true)]
     public HistoricalCryptoBarsRequest WithExchanges(
-        params CryptoExchange[] exchanges) =>
-        new(this, exchanges.EnsureNotNull());
+        params CryptoExchange[] exchanges) => this;
+
+    /// <summary>
+    /// Gets crypto exchanges list for data retrieval (empty list means 'all exchanges').
+    /// </summary>
+    [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This property is not supported by API anymore and will be removed in the next major release.", true)]
+    public IReadOnlyCollection<CryptoExchange> Exchanges => Array.Empty<CryptoExchange>();
+
+    internal override Boolean HasSingleSymbol => false;
 
     /// <inheritdoc />
     protected override String LastPathSegment => "bars";

@@ -143,7 +143,7 @@ public sealed class ThrottleParameters
 
 #if NET6_0_OR_GREATER
     internal static readonly HttpRequestOptionsKey<TimeSpan> RequestTimeoutOptionKey =
-        new (nameof(RequestTimeoutOptionKey));
+        new(nameof(RequestTimeoutOptionKey));
 #else
     internal const String RequestTimeoutOptionKey = nameof(RequestTimeoutOptionKey);
 #endif
@@ -178,8 +178,8 @@ public sealed class ThrottleParameters
     /// Gets the custom message handler that supports reconnection logic configured with the current settings.
     /// </summary>
     [UsedImplicitly]
-    public HttpMessageHandler GetMessageHandler() =>
-        new CustomHttpHandler(GetAsyncPolicy(), Timeout ?? _defaultHttpClientTimeout);
+    public HttpMessageHandler GetMessageHandler() => new CustomHttpHandler(
+        GetAsyncPolicy(), Timeout ?? _defaultHttpClientTimeout);
 
     /// <summary>
     /// Gets the custom Polly asynchronous execution policy (can be used by unit tests and DI containers).

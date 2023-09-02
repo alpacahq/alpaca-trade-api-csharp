@@ -76,9 +76,9 @@ public sealed partial class AlpacaDataClientTest
             new JProperty("symbol", Stock)));
 
     private static JArray createTradesList() =>
-        new (createTrade(), createTrade(), createTrade());
+        new(createTrade(), createTrade(), createTrade());
 
-    private static JObject createTrade() => new (
+    private static JObject createTrade() => new(
         new JProperty("t", DateTime.UtcNow),
         new JProperty("p", Price),
         new JProperty("s", Size));

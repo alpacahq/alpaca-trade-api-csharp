@@ -1,6 +1,8 @@
 name: Update NuGet Lock Files
 on:
   workflow_dispatch:
+permissions:
+  contents: write
 
 jobs:
   lockfiles:
@@ -11,10 +13,10 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    - name: Setup .NET 6.0.x
+    - name: Setup .NET 7.0.x
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '6.0.x'
+        dotnet-version: '7.0.x'
 
     - name: Restore Dependencies
       run: dotnet restore --force-evaluate

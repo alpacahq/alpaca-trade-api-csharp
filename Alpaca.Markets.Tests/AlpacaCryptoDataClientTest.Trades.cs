@@ -69,4 +69,21 @@ public sealed partial class AlpacaCryptoDataClientTest
         trades.Items.Where(_ => _.Symbol == Crypto).Validate(Crypto);
         trades.Items.Where(_ => _.Symbol != Crypto).Validate(Other);
     }
+
+    [Fact]
+    public async Task ListHistoricalTradesAsyncWithoutIntervalWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+
+        mock.AddMultiTradesPageExpectation(PathPrefix, _symbol);
+
+        var trades = await mock.Client.ListHistoricalTradesAsync(
+            new HistoricalCryptoTradesRequest(Crypto));
+
+        Assert.NotNull(trades);
+        Assert.NotEmpty(trades.Items);
+        Assert.Equal(Crypto, trades.Symbol);
+
+        trades.Items.Validate(Crypto);
+    }
 }

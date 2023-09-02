@@ -6,21 +6,22 @@
 internal sealed class JsonLatestData<TQuote>
 {
     [JsonProperty(PropertyName = "quotes", Required = Required.Default)]
-    public Dictionary<String, TQuote> Quotes { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public Dictionary<String, TQuote> Quotes { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "bars", Required = Required.Default)]
-    public Dictionary<String, JsonHistoricalBar> Bars { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public Dictionary<String, JsonHistoricalBar> Bars { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "trades", Required = Required.Default)]
-    public Dictionary<String, JsonHistoricalTrade> Trades { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public Dictionary<String, JsonHistoricalTrade> Trades { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "snapshots", Required = Required.Default)]
-    public Dictionary<String, JsonCryptoSnapshot> Snapshots { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public Dictionary<String, JsonCryptoSnapshot> Snapshots { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "orderbooks", Required = Required.Default)]
     public Dictionary<String, JsonHistoricalOrderBook> OrderBooks { get; [ExcludeFromCodeCoverage] set; } = new ();
 
     [Obsolete]
+    [ExcludeFromCodeCoverage]
     [JsonProperty(PropertyName = "xbbos", Required = Required.Default)]
-    public Dictionary<String, JsonHistoricalCryptoQuote> LatestBestBidOffers { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public Dictionary<String, JsonHistoricalCryptoQuote> LatestBestBidOffers { get; [ExcludeFromCodeCoverage] set; } = new();
 }

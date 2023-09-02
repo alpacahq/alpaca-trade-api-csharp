@@ -5,18 +5,20 @@ internal static partial class HttpClientExtensions
     public static Task<TApi> GetAsync<TApi, TJson>(
         this HttpClient httpClient,
         UriBuilder uriBuilder,
+        RateLimitHandler rateLimitHandler,
         CancellationToken cancellationToken)
         where TJson : TApi =>
         callAndDeserializeAsync<TApi, TJson>(
-            httpClient, HttpMethod.Get, uriBuilder.Uri, cancellationToken);
+            httpClient, HttpMethod.Get, uriBuilder.Uri, rateLimitHandler, cancellationToken);
 
     public static Task<TApi> GetAsync<TApi, TJson>(
         this HttpClient httpClient,
         String endpointUri,
+        RateLimitHandler rateLimitHandler,
         CancellationToken cancellationToken)
         where TJson : TApi =>
         callAndDeserializeAsync<TApi, TJson>(
-            httpClient, HttpMethod.Get, asUri(endpointUri), cancellationToken);
+            httpClient, HttpMethod.Get, asUri(endpointUri), rateLimitHandler, cancellationToken);
 
     public static async Task<IReadOnlyDictionary<TKeyApi, TValueApi>> GetAsync
         <TKeyApi, TValueApi, TKeyJson, TValueJson>(
@@ -24,18 +26,15 @@ internal static partial class HttpClientExtensions
             UriBuilder uriBuilder,
             IEqualityComparer<TKeyApi> comparer,
             Func<KeyValuePair<TKeyJson, TValueJson>, TValueApi> elementSelector,
+            RateLimitHandler rateLimitHandler,
             CancellationToken cancellationToken)
         where TKeyApi : notnull
         where TKeyJson : TKeyApi
-        where TValueJson : TValueApi
-    {
-        var response = await httpClient
+        where TValueJson : TValueApi =>
+        getReadOnlyDictionary(await httpClient
             .GetAsync<Dictionary<TKeyJson, TValueJson>, Dictionary<TKeyJson, TValueJson>>(
-                uriBuilder, cancellationToken)
-            .ConfigureAwait(false);
-
-        return getReadOnlyDictionary(response, elementSelector, comparer);
-    }
+                uriBuilder, rateLimitHandler, cancellationToken)
+            .ConfigureAwait(false), elementSelector, comparer);
 
     public static async Task<IReadOnlyDictionary<String, TValueApi>> GetAsync
         <TValueApi, TValueJson, TStorage>(
@@ -43,16 +42,14 @@ internal static partial class HttpClientExtensions
             UriBuilder uriBuilder,
             Func<TStorage, Dictionary<String, TValueJson>> itemsSelector,
             Func<KeyValuePair<String, TValueJson>, TValueApi> elementSelector,
+            RateLimitHandler rateLimitHandler,
             CancellationToken cancellationToken)
-        where TValueJson : TValueApi, ISymbolMutable
-    {
-        var response = await httpClient.GetAsync<TStorage, TStorage>(
-                uriBuilder, cancellationToken)
-            .ConfigureAwait(false);
-
-        return getReadOnlyDictionary<String, TValueApi, String, TValueJson>(
-            itemsSelector(response), elementSelector, StringComparer.Ordinal);
-    }
+        where TValueJson : TValueApi, ISymbolMutable =>
+        // ReSharper disable once RedundantTypeArgumentsOfMethod
+        getReadOnlyDictionary<String, TValueApi, String, TValueJson>(
+            itemsSelector(await httpClient.GetAsync<TStorage, TStorage>(
+                    uriBuilder, rateLimitHandler, cancellationToken)
+                .ConfigureAwait(false)), elementSelector, StringComparer.Ordinal);
 
     private static IReadOnlyDictionary<TKeyApi, TValueApi> getReadOnlyDictionary<TKeyApi, TValueApi, TKeyJson, TValueJson>(
         Dictionary<TKeyJson, TValueJson> response, 

@@ -2,2145 +2,633 @@
 <!-- https://learn.microsoft.com/en-us/dotnet/fundamentals/package-validation/diagnostic-ids -->
 <Suppressions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.LimitOrder.Buy(System.String,System.Int64,System.Decimal)</Target>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoRequestBase</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.LimitOrder.Sell(System.String,System.Int64,System.Decimal)</Target>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.MarkedDataFeed</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderBase.#ctor(System.String,System.Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoRequestBase</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.Limit(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.MarkedDataFeed</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.Market(Alpaca.Markets.OrderSide,System.String,System.Int64)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.Stop(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.StopLimit(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.TrailingStop(Alpaca.Markets.OrderSide,System.String,System.Int64,Alpaca.Markets.TrailOffset)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.SimpleOrderBase.#ctor(System.String,System.Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopLimitOrder.Buy(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopLimitOrder.Sell(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopOrder.Buy(System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopOrder.Sell(System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.TrailingStopOrder.Buy(System.String,System.Int64,Alpaca.Markets.TrailOffset)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.TrailingStopOrder.Sell(System.String,System.Int64,Alpaca.Markets.TrailOffset)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.LimitOrder.Buy(System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.LimitOrder.Sell(System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderBase.#ctor(System.String,System.Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.Limit(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.Market(Alpaca.Markets.OrderSide,System.String,System.Int64)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.Stop(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.StopLimit(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.TrailingStop(Alpaca.Markets.OrderSide,System.String,System.Int64,Alpaca.Markets.TrailOffset)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.SimpleOrderBase.#ctor(System.String,System.Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopLimitOrder.Buy(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopLimitOrder.Sell(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopOrder.Buy(System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopOrder.Sell(System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.TrailingStopOrder.Buy(System.String,System.Int64,Alpaca.Markets.TrailOffset)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.TrailingStopOrder.Sell(System.String,System.Int64,Alpaca.Markets.TrailOffset)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.LimitOrder.Buy(System.String,System.Int64,System.Decimal)</Target>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoRequestBase</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.LimitOrder.Sell(System.String,System.Int64,System.Decimal)</Target>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.MarkedDataFeed</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderBase.#ctor(System.String,System.Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoRequestBase</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.Limit(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.Market(Alpaca.Markets.OrderSide,System.String,System.Int64)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.Stop(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.StopLimit(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.TrailingStop(Alpaca.Markets.OrderSide,System.String,System.Int64,Alpaca.Markets.TrailOffset)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.SimpleOrderBase.#ctor(System.String,System.Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopLimitOrder.Buy(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopLimitOrder.Sell(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopOrder.Buy(System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopOrder.Sell(System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.TrailingStopOrder.Buy(System.String,System.Int64,Alpaca.Markets.TrailOffset)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.TrailingStopOrder.Sell(System.String,System.Int64,Alpaca.Markets.TrailOffset)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.LimitOrder.Buy(System.String,System.Int64,System.Decimal)</Target>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:Alpaca.Markets.MarkedDataFeed</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.LimitOrder.Sell(System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <Target>F:Alpaca.Markets.CryptoExchange.Gnss</Target>
+    <Left>lib/net462/Alpaca.Markets.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderBase.#ctor(System.String,System.Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.Limit(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.Market(Alpaca.Markets.OrderSide,System.String,System.Int64)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.Stop(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.StopLimit(Alpaca.Markets.OrderSide,System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.OrderSideExtensions.TrailingStop(Alpaca.Markets.OrderSide,System.String,System.Int64,Alpaca.Markets.TrailOffset)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.SimpleOrderBase.#ctor(System.String,System.Int64,Alpaca.Markets.OrderSide,Alpaca.Markets.OrderType)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopLimitOrder.Buy(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopLimitOrder.Sell(System.String,System.Int64,System.Decimal,System.Decimal)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopOrder.Buy(System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.StopOrder.Sell(System.String,System.Int64,System.Decimal)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.TrailingStopOrder.Buy(System.String,System.Int64,Alpaca.Markets.TrailOffset)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.TrailingStopOrder.Sell(System.String,System.Int64,Alpaca.Markets.TrailOffset)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>E:Alpaca.Markets.IAlpacaDataSubscription.OnSubscribedChanged</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>E:Alpaca.Markets.IStreamingClient.OnWarning</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.GetHistoricalQuotesAsync(Alpaca.Markets.HistoricalCryptoQuotesRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.GetLatestBarAsync(Alpaca.Markets.LatestDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.GetSnapshotAsync(Alpaca.Markets.SnapshotDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListHistoricalQuotesAsync(Alpaca.Markets.HistoricalCryptoQuotesRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBestBidOffersAsync(Alpaca.Markets.LatestBestBidOfferListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestOrderBooksAsync(Alpaca.Markets.LatestOrderBooksRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListSnapshotsAsync(Alpaca.Markets.SnapshotDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoStreamingClient.GetOrderBookSubscription(System.String)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(System.String,System.Threading.CancellationToken)</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(System.String,System.Threading.CancellationToken)</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(System.String,System.Threading.CancellationToken)</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(System.String,System.Threading.CancellationToken)</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetSnapshotsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByTradeCountAsync(System.Nullable{System.Int32},System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByVolumeAsync(System.Nullable{System.Int32},System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListNewsArticlesAsync(Alpaca.Markets.NewsArticlesRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataStreamingClient.GetCancellationSubscription(System.String)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaTradingClient.DeleteAllOrdersAsync(System.Threading.CancellationToken)</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataStreamingClient.GetCorrectionSubscription(System.String)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaTradingClient.DeleteOrderAsync(System.Guid,System.Threading.CancellationToken)</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.CancelAllOrdersAsync(System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.ILimitUpLimitDown.get_TimeUtc</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.CancelOrderAsync(System.Guid,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IStatus.get_TimeUtc</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.GetAnnouncementAsync(System.Guid,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.SnapshotDataListRequest.#ctor(System.Collections.Generic.IEnumerable{System.String},Alpaca.Markets.CryptoExchange)</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.ListAnnouncementsAsync(Alpaca.Markets.AnnouncementsRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.SnapshotDataListRequest.get_Exchange</Target>
     <Left>lib/net462/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.ListIntervalCalendarAsync(Alpaca.Markets.CalendarRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>F:Alpaca.Markets.CryptoExchange.Gnss</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IStreamingDataClient.GetQuoteSubscription</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IStreamingDataClient.GetTradeSubscription</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IStreamingDataClient.GetUpdatedBarSubscription(System.String)</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.AccruedFees</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.CryptoStatus</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.NonMarginableBuyingPower</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.PendingTransferIn</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.PendingTransferOut</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccountActivity.OrderId</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccountConfiguration.IsPtpNoExceptionEntry</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.Attributes</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.MaintenanceMarginRequirement</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.MinOrderSize</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.MinTradeIncrement</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.PriceIncrement</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IEnvironment.AlpacaNewsStreamingApi</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.ILimitUpLimitDown.TimestampUtc</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IOrderBook.IsReset</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IPosition.AvailableQuantity</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IPosition.IntegerAvailableQuantity</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IStatus.TimestampUtc</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.ITrade.Update</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.ITradeUpdate.ExecutionId</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>E:Alpaca.Markets.IAlpacaDataSubscription.OnSubscribedChanged</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>E:Alpaca.Markets.IStreamingClient.OnWarning</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.GetLatestBarAsync(Alpaca.Markets.LatestDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.GetSnapshotAsync(Alpaca.Markets.SnapshotDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBestBidOffersAsync(Alpaca.Markets.LatestBestBidOfferListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListSnapshotsAsync(Alpaca.Markets.SnapshotDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoStreamingClient.GetOrderBookSubscription(System.String)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(System.String,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(System.String,System.Threading.CancellationToken)</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(System.String,System.Threading.CancellationToken)</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(System.String,System.Threading.CancellationToken)</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetSnapshotsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListNewsArticlesAsync(Alpaca.Markets.NewsArticlesRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataStreamingClient.GetCancellationSubscription(System.String)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataStreamingClient.GetCorrectionSubscription(System.String)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.CancelAllOrdersAsync(System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.CancelOrderAsync(System.Guid,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.GetAnnouncementAsync(System.Guid,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.ListAnnouncementsAsync(Alpaca.Markets.AnnouncementsRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.ListIntervalCalendarAsync(Alpaca.Markets.CalendarRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IStreamingDataClient.GetUpdatedBarSubscription(System.String)</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IEnvironment.AlpacaNewsStreamingApi</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.ILimitUpLimitDown.TimestampUtc</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IStatus.TimestampUtc</Target>
-    <Left>lib/net5.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.GetHistoricalQuotesAsync(Alpaca.Markets.HistoricalCryptoQuotesRequest,System.Threading.CancellationToken)</Target>
     <Left>lib/net6.0/Alpaca.Markets.dll</Left>
     <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListHistoricalQuotesAsync(Alpaca.Markets.HistoricalCryptoQuotesRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaTradingClient.DeleteAllOrdersAsync(System.Threading.CancellationToken)</Target>
     <Left>lib/net6.0/Alpaca.Markets.dll</Left>
     <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestOrderBooksAsync(Alpaca.Markets.LatestOrderBooksRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaTradingClient.DeleteOrderAsync(System.Guid,System.Threading.CancellationToken)</Target>
     <Left>lib/net6.0/Alpaca.Markets.dll</Left>
     <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.ILimitUpLimitDown.get_TimeUtc</Target>
     <Left>lib/net6.0/Alpaca.Markets.dll</Left>
     <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IStatus.get_TimeUtc</Target>
     <Left>lib/net6.0/Alpaca.Markets.dll</Left>
     <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByTradeCountAsync(System.Nullable{System.Int32},System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.SnapshotDataListRequest.#ctor(System.Collections.Generic.IEnumerable{System.String},Alpaca.Markets.CryptoExchange)</Target>
     <Left>lib/net6.0/Alpaca.Markets.dll</Left>
     <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByVolumeAsync(System.Nullable{System.Int32},System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.SnapshotDataListRequest.get_Exchange</Target>
     <Left>lib/net6.0/Alpaca.Markets.dll</Left>
     <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IStreamingDataClient.GetQuoteSubscription</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IStreamingDataClient.GetTradeSubscription</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.AccruedFees</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.CryptoStatus</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.NonMarginableBuyingPower</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.PendingTransferIn</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.PendingTransferOut</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccountActivity.OrderId</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccountConfiguration.IsPtpNoExceptionEntry</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.Attributes</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.MaintenanceMarginRequirement</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.MinOrderSize</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.MinTradeIncrement</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.PriceIncrement</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IOrderBook.IsReset</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IPosition.AvailableQuantity</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IPosition.IntegerAvailableQuantity</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.ITrade.Update</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.ITradeUpdate.ExecutionId</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>E:Alpaca.Markets.IAlpacaDataSubscription.OnSubscribedChanged</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>F:Alpaca.Markets.CryptoExchange.Gnss</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>E:Alpaca.Markets.IStreamingClient.OnWarning</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.GetHistoricalQuotesAsync(Alpaca.Markets.HistoricalCryptoQuotesRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.GetLatestBarAsync(Alpaca.Markets.LatestDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.GetSnapshotAsync(Alpaca.Markets.SnapshotDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListHistoricalQuotesAsync(Alpaca.Markets.HistoricalCryptoQuotesRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBestBidOffersAsync(Alpaca.Markets.LatestBestBidOfferListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestOrderBooksAsync(Alpaca.Markets.LatestOrderBooksRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListSnapshotsAsync(Alpaca.Markets.SnapshotDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoStreamingClient.GetOrderBookSubscription(System.String)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(System.String,System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(System.String,System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(System.String,System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(System.String,System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetSnapshotsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByTradeCountAsync(System.Nullable{System.Int32},System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByVolumeAsync(System.Nullable{System.Int32},System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListNewsArticlesAsync(Alpaca.Markets.NewsArticlesRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataStreamingClient.GetCancellationSubscription(System.String)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaTradingClient.DeleteAllOrdersAsync(System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataStreamingClient.GetCorrectionSubscription(System.String)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaTradingClient.DeleteOrderAsync(System.Guid,System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.CancelAllOrdersAsync(System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.ILimitUpLimitDown.get_TimeUtc</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.CancelOrderAsync(System.Guid,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IStatus.get_TimeUtc</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.GetAnnouncementAsync(System.Guid,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.SnapshotDataListRequest.#ctor(System.Collections.Generic.IEnumerable{System.String},Alpaca.Markets.CryptoExchange)</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.ListAnnouncementsAsync(Alpaca.Markets.AnnouncementsRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.SnapshotDataListRequest.get_Exchange</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.ListIntervalCalendarAsync(Alpaca.Markets.CalendarRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IStreamingDataClient.GetQuoteSubscription</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IStreamingDataClient.GetTradeSubscription</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IStreamingDataClient.GetUpdatedBarSubscription(System.String)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.AccruedFees</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.CryptoStatus</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.NonMarginableBuyingPower</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.PendingTransferIn</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.PendingTransferOut</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccountActivity.OrderId</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccountConfiguration.IsPtpNoExceptionEntry</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.Attributes</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.MaintenanceMarginRequirement</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.MinOrderSize</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.MinTradeIncrement</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.PriceIncrement</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IEnvironment.AlpacaNewsStreamingApi</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.ILimitUpLimitDown.TimestampUtc</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IOrderBook.IsReset</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IPosition.AvailableQuantity</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IPosition.IntegerAvailableQuantity</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IStatus.TimestampUtc</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.ITrade.Update</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.ITradeUpdate.ExecutionId</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>E:Alpaca.Markets.IAlpacaDataSubscription.OnSubscribedChanged</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>F:Alpaca.Markets.CryptoExchange.Gnss</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>E:Alpaca.Markets.IStreamingClient.OnWarning</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.GetHistoricalQuotesAsync(Alpaca.Markets.HistoricalCryptoQuotesRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.GetLatestBarAsync(Alpaca.Markets.LatestDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.GetSnapshotAsync(Alpaca.Markets.SnapshotDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListHistoricalQuotesAsync(Alpaca.Markets.HistoricalCryptoQuotesRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestBestBidOffersAsync(Alpaca.Markets.LatestBestBidOfferListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestOrderBooksAsync(Alpaca.Markets.LatestOrderBooksRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoDataClient.ListSnapshotsAsync(Alpaca.Markets.SnapshotDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaCryptoStreamingClient.GetOrderBookSubscription(System.String)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(System.String,System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(System.String,System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(System.String,System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(Alpaca.Markets.LatestMarketDataRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(System.String,System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaDataClient.GetSnapshotsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByTradeCountAsync(System.Nullable{System.Int32},System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByVolumeAsync(System.Nullable{System.Int32},System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListNewsArticlesAsync(Alpaca.Markets.NewsArticlesRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(Alpaca.Markets.LatestMarketDataListRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataStreamingClient.GetCancellationSubscription(System.String)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaTradingClient.DeleteAllOrdersAsync(System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataStreamingClient.GetCorrectionSubscription(System.String)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IAlpacaTradingClient.DeleteOrderAsync(System.Guid,System.Threading.CancellationToken)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.CancelAllOrdersAsync(System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.ILimitUpLimitDown.get_TimeUtc</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.CancelOrderAsync(System.Guid,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.IStatus.get_TimeUtc</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.GetAnnouncementAsync(System.Guid,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.SnapshotDataListRequest.#ctor(System.Collections.Generic.IEnumerable{System.String},Alpaca.Markets.CryptoExchange)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.ListAnnouncementsAsync(Alpaca.Markets.AnnouncementsRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.SnapshotDataListRequest.get_Exchange</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaTradingClient.ListIntervalCalendarAsync(Alpaca.Markets.CalendarRequest,System.Threading.CancellationToken)</Target>
+    <DiagnosticId>CP0007</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoBarsRequest</Target>
+    <Left>lib/net462/Alpaca.Markets.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0007</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoQuotesRequest</Target>
+    <Left>lib/net462/Alpaca.Markets.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0007</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoTradesRequest</Target>
+    <Left>lib/net462/Alpaca.Markets.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0007</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoBarsRequest</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0007</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoQuotesRequest</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0007</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoTradesRequest</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0007</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoBarsRequest</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0007</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoQuotesRequest</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0007</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoTradesRequest</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0007</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoBarsRequest</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IStreamingDataClient.GetQuoteSubscription</Target>
+    <DiagnosticId>CP0007</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoQuotesRequest</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IStreamingDataClient.GetTradeSubscription</Target>
+    <DiagnosticId>CP0007</DiagnosticId>
+    <Target>T:Alpaca.Markets.HistoricalCryptoTradesRequest</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IStreamingDataClient.GetUpdatedBarSubscription(System.String)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Alpaca.Markets.AccountActivitiesRequest</Target>
+    <Left>lib/net462/Alpaca.Markets.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.AccruedFees</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Alpaca.Markets.CalendarRequest</Target>
+    <Left>lib/net462/Alpaca.Markets.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.CryptoStatus</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Alpaca.Markets.PortfolioHistoryRequest</Target>
+    <Left>lib/net462/Alpaca.Markets.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.NonMarginableBuyingPower</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Alpaca.Markets.AccountActivitiesRequest</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.PendingTransferIn</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Alpaca.Markets.CalendarRequest</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccount.PendingTransferOut</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccountActivity.OrderId</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAccountConfiguration.IsPtpNoExceptionEntry</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.Attributes</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.MaintenanceMarginRequirement</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.MinOrderSize</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.MinTradeIncrement</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IAsset.PriceIncrement</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IEnvironment.AlpacaNewsStreamingApi</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.ILimitUpLimitDown.TimestampUtc</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IOrderBook.IsReset</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IPosition.AvailableQuantity</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IPosition.IntegerAvailableQuantity</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.IStatus.TimestampUtc</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.ITrade.Update</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>P:Alpaca.Markets.ITradeUpdate.ExecutionId</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Alpaca.Markets.PortfolioHistoryRequest</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
@@ -2154,5 +642,47 @@
     <Target>T:Alpaca.Markets.RestClientErrorException</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/net462/Alpaca.Markets.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Alpaca.Markets.AccountActivitiesRequest</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Alpaca.Markets.CalendarRequest</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Alpaca.Markets.PortfolioHistoryRequest</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Alpaca.Markets.AccountActivitiesRequest</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Alpaca.Markets.CalendarRequest</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Alpaca.Markets.PortfolioHistoryRequest</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
 </Suppressions>

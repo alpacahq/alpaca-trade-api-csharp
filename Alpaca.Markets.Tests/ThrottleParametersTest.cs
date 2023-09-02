@@ -49,7 +49,7 @@ public sealed class ThrottleParametersTest
 
         KeyValuePair<String, String> AsHeader(
             RetryConditionHeaderValue value) =>
-            new ("Retry-After", value.ToString());
+            new("Retry-After", value.ToString());
     }
 
     [Fact]
@@ -70,7 +70,7 @@ public sealed class ThrottleParametersTest
 
         SocketException AsException(
             SocketError socketError) =>
-            new ((Int32)socketError);
+            new((Int32)socketError);
     }
 
     [Fact]
@@ -87,6 +87,7 @@ public sealed class ThrottleParametersTest
 
         Assert.NotEqual("HTTP 500: Unknown server error.",exception.Message);
         Assert.Equal((Int32)HttpStatusCode.InternalServerError, exception.ErrorCode);
+        Assert.Equal(HttpStatusCode.InternalServerError, exception.HttpStatusCode);
     }
 
     [Fact]
@@ -108,25 +109,34 @@ public sealed class ThrottleParametersTest
     }
 
     [Fact]
-    public void CustomThrottleParametersWorks()
+    public async Task CustomThrottleParametersWorks()
     {
         const UInt32 maxRetryParameters = 1;
+        var timeout = TimeSpan.FromSeconds(1);
 
         var retrySocketErrorCodes = new[] { SocketError.AlreadyInProgress };
         var retryHttpStatuses = new[] { HttpStatusCode.FailedDependency };
 
         var throttleParameters = new ThrottleParameters(
-            maxRetryParameters, retrySocketErrorCodes, retryHttpStatuses);
+            maxRetryParameters, retrySocketErrorCodes, retryHttpStatuses)
+        {
+            Timeout = timeout
+        };
 
-        Assert.Equal(maxRetryParameters, throttleParameters.MaxRetryAttempts);
         Assert.Equal(retrySocketErrorCodes, throttleParameters.RetrySocketErrorCodes);
         Assert.Equal(retryHttpStatuses, throttleParameters.RetryHttpStatuses);
+        Assert.Equal(maxRetryParameters, throttleParameters.MaxRetryAttempts);
+        Assert.Equal(timeout, throttleParameters.Timeout);
 
         using var handler = throttleParameters.GetMessageHandler();
         Assert.NotNull(handler);
 
         var policy = throttleParameters.GetAsyncPolicy();
         Assert.NotNull(policy);
+
+        using var client = new HttpClient(handler);
+        await Assert.ThrowsAsync<TimeoutException>(
+            () => client.GetAsync("https://httpbin.org/delay/10"));
     }
 
     [Fact]

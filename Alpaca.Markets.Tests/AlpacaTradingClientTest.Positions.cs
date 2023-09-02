@@ -139,7 +139,7 @@ public sealed partial class AlpacaTradingClientTest
     }
 
     private static JArray getDeletePositionsResponse() =>
-        new (
+        new(
             new JObject(
                 new JProperty("status", (Int64)HttpStatusCode.OK),
                 new JProperty("symbol", Stock)),

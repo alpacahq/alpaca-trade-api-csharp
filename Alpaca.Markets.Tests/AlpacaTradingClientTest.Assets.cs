@@ -38,7 +38,7 @@ public sealed partial class AlpacaTradingClientTest
     private static JObject createAsset(
         Guid assetId,
         String symbol) =>
-        new (
+        new(
             new JProperty("maintenance_margin_requirement", 100),
             new JProperty("status", AssetStatus.Active),
             new JProperty("class", AssetClass.UsEquity),

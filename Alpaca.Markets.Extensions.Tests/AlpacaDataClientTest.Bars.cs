@@ -131,9 +131,9 @@ public sealed partial class AlpacaDataClientTest
             new JProperty("symbol", Stock)));
 
     private static JArray createBarsList() =>
-        new (createBar(), createBar(), createBar());
+        new(createBar(), createBar(), createBar());
 
-    private static JObject createBar() => new (
+    private static JObject createBar() => new(
         new JProperty("t", DateTime.UtcNow),
         new JProperty("o", Price),
         new JProperty("l", Price),

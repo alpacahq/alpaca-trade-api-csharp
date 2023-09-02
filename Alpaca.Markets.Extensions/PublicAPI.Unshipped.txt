@@ -1,10 +1,1 @@
 ﻿#nullable enable
-Alpaca.Markets.Extensions.ConfigurationExtensions (forwarded, contained in Alpaca.Markets)
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaCryptoDataClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaCryptoDataClient! (forwarded, contained in Alpaca.Markets)
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaCryptoStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaCryptoStreamingClient! (forwarded, contained in Alpaca.Markets)
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaDataClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaDataClient! (forwarded, contained in Alpaca.Markets)
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaDataStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaDataStreamingClient! (forwarded, contained in Alpaca.Markets)
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaNewsStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaNewsStreamingClient! (forwarded, contained in Alpaca.Markets)
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaStreamingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaStreamingClient! (forwarded, contained in Alpaca.Markets)
-static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaTradingClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaTradingClient! (forwarded, contained in Alpaca.Markets)
-static Alpaca.Markets.Extensions.ConfigurationExtensions.WithHttpMessageHandlerFactory<TClientConfiguration>(this TClientConfiguration! configuration, System.Func<System.Net.Http.HttpMessageHandler!, System.Net.Http.HttpMessageHandler!>! httpMessageHandlerFactory) -> TClientConfiguration! (forwarded, contained in Alpaca.Markets)

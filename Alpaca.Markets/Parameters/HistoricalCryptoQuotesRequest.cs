@@ -6,7 +6,7 @@
 /// <see cref="IHistoricalQuotesClient{TRequest}.GetHistoricalQuotesAsync(TRequest,CancellationToken)"/> calls.
 /// </summary>
 [UsedImplicitly]
-public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase, IHistoricalRequest<HistoricalCryptoQuotesRequest, IQuote>
+public sealed class HistoricalCryptoQuotesRequest : HistoricalRequestBase, IHistoricalRequest<HistoricalCryptoQuotesRequest, IQuote>
 {
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoQuotesRequest"/> object.
@@ -107,7 +107,7 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     /// The <paramref name="symbol"/> argument is <c>null</c>.
     /// </exception>
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
     public HistoricalCryptoQuotesRequest(
         String symbol,
         IInclusiveTimeInterval timeInterval)
@@ -124,7 +124,7 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     /// The <paramref name="symbols"/> argument is <c>null</c>.
     /// </exception>
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
     public HistoricalCryptoQuotesRequest(
         IEnumerable<String> symbols,
         IInclusiveTimeInterval timeInterval)
@@ -132,18 +132,9 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     {
     }
 
-    [ExcludeFromCodeCoverage]
-    [Obsolete("This constructor should be removed in the next major release.", false)]
-    private HistoricalCryptoQuotesRequest(
-        HistoricalCryptoQuotesRequest request,
-        IEnumerable<CryptoExchange> exchanges)
-        : base(request.Symbols, request.TimeInterval,
-            request.Exchanges.Concat(exchanges)) =>
-        CopyPagination(request.Pagination);
-
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoQuotesRequest"/> object
-    /// with the updated <see cref="HistoricalCryptoRequestBase.Exchanges"/> list.
+    /// with the updated <see cref="Exchanges"/> list.
     /// </summary>
     /// <param name="exchanges">Crypto exchanges to add into the list.</param>
     /// <exception cref="ArgumentNullException">
@@ -152,14 +143,13 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     /// <returns>The new instance of the <see cref="HistoricalCryptoQuotesRequest"/> object.</returns>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release.", false)]
+    [Obsolete("This method will be removed in the next major release.", true)]
     public HistoricalCryptoQuotesRequest WithExchanges(
-        IEnumerable<CryptoExchange> exchanges) =>
-        new(this, exchanges.EnsureNotNull());
+        IEnumerable<CryptoExchange> exchanges) => this;
 
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoQuotesRequest"/> object
-    /// with the updated <see cref="HistoricalCryptoRequestBase.Exchanges"/> list.
+    /// with the updated <see cref="Exchanges"/> list.
     /// </summary>
     /// <param name="exchanges">Crypto exchanges to add into the list.</param>
     /// <exception cref="ArgumentNullException">
@@ -168,10 +158,17 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     /// <returns>The new instance of the <see cref="HistoricalCryptoQuotesRequest"/> object.</returns>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release.", false)]
+    [Obsolete("This method will be removed in the next major release.", true)]
     public HistoricalCryptoQuotesRequest WithExchanges(
-        params CryptoExchange[] exchanges) =>
-        new(this, exchanges.EnsureNotNull());
+        params CryptoExchange[] exchanges) => this;
+
+    /// <summary>
+    /// Gets crypto exchanges list for data retrieval (empty list means 'all exchanges').
+    /// </summary>
+    [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This property is not supported by API anymore and will be removed in the next major release.", true)]
+    public IReadOnlyCollection<CryptoExchange> Exchanges => Array.Empty<CryptoExchange>();
 
     /// <inheritdoc />
     internal override Boolean HasSingleSymbol => false;

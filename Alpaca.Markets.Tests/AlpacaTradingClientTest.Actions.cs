@@ -59,7 +59,7 @@ public sealed partial class AlpacaTradingClientTest
 
     private static JObject createAnnouncement(
         DateOnly recordDate) =>
-        new (
+        new(
             new JProperty("corporate_action_id", Guid.NewGuid().ToString("B")[..8]),
             new JProperty("ca_sub_type", CorporateActionSubType.DividendCash),
             new JProperty("id", Guid.NewGuid().ToString("D")),

@@ -1,11 +1,12 @@
 ﻿using System.Linq.Expressions;
 using System.Net.Sockets;
+using System.Net.WebSockets;
 
 namespace Alpaca.Markets.Extensions.Tests;
 
 public sealed class AlpacaNewsStreamingClientTest
 {
-    private static readonly List<String> _symbols = new () { Stock, Other };
+    private static readonly List<String> _symbols = new() { Stock, Other };
 
     private const Int32 ExpectedNumberOfEventsForAllSymbols = 4;
 
@@ -47,6 +48,7 @@ public sealed class AlpacaNewsStreamingClientTest
         client.Raise(_ => _.SocketClosed += null);
 
         client.Raise(_ => _.OnError += null, new SocketException());
+        client.Raise(_ => _.OnError += null, new WebSocketException());
         client.Raise(_ => _.OnError += null, new TaskCanceledException());
         client.Raise(_ => _.OnError += null, new RestClientErrorException());
         client.Raise(_ => _.OnError += null, new InvalidOperationException());

@@ -7,7 +7,7 @@
 internal sealed class JsonLatestBar : IBar
 {
     [JsonProperty(PropertyName = "bar", Required = Required.Always)]
-    public JsonHistoricalBar Nested { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public JsonHistoricalBar Nested { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
     public String Symbol { get; set; } = String.Empty;

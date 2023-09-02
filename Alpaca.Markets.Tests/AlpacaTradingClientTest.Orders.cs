@@ -24,8 +24,9 @@ public sealed partial class AlpacaTradingClientTest
                 {
                     OrderListSorting = SortDirection.Descending,
                     OrderStatusFilter = OrderStatusFilter.Open,
+                    LimitOrderNumber = pageSize,
                     RollUpNestedOrders = false,
-                    LimitOrderNumber = pageSize
+                    OrderSide = OrderSide.Buy
                 }
                 .WithInterval(new Interval<DateTime>(date, date))
                 .WithSymbol(Stock));

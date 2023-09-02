@@ -23,7 +23,7 @@ internal static class CustomTimeZone
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private static DateTimeOffset asDateTimeOffset(
         this DateTime estDateTime) =>
-        new (estDateTime, Est.GetUtcOffset(estDateTime));
+        new(estDateTime, Est.GetUtcOffset(estDateTime));
 
     private static Boolean shouldUseWindowsTimeZoneId() =>
 #if NETFRAMEWORK

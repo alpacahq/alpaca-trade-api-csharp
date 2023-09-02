@@ -46,7 +46,7 @@ internal sealed class WebSocketsTransport : IDisposable
 
     private Task _running = Task.CompletedTask;
 
-    private SpinLock _sendLock = new (false);
+    private SpinLock _sendLock = new(false);
 
     private readonly Func<IWebSocket> _webSocketFactory;
 

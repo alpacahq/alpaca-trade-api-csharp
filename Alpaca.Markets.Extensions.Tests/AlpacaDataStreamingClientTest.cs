@@ -4,7 +4,7 @@ namespace Alpaca.Markets.Extensions.Tests;
 
 public sealed partial class AlpacaDataStreamingClientTest
 {
-    private static readonly List<String> _symbols = new () { Stock, Other };
+    private static readonly List<String> _symbols = new() { Stock, Other };
 
     private const Int32 ExpectedNumberOfEventsForAllSymbols = 4;
 
@@ -38,6 +38,7 @@ public sealed partial class AlpacaDataStreamingClientTest
             MinReconnectionDelay = ReconnectionParameters.Default.MinReconnectionDelay
         };
 
+        Assert.NotEmpty(parameters.RetryWebSocketErrorCodes);
         Assert.NotEqual(parameters, ReconnectionParameters.Default);
     }
 

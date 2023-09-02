@@ -128,7 +128,7 @@ public sealed class NewOrderRequest : Validation.IRequest
         yield return Quantity.TryValidateQuantity();
     }
     internal JsonNewOrder GetJsonRequest() =>
-        new ()
+        new()
         {
             Symbol = Symbol,
             OrderSide = Side,

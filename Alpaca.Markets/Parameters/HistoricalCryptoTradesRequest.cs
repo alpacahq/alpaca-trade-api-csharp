@@ -6,7 +6,7 @@
 /// <see cref="IHistoricalTradesClient{TRequest}.GetHistoricalTradesAsync(TRequest,CancellationToken)"/> calls.
 /// </summary>
 [UsedImplicitly]
-public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase, IHistoricalRequest<HistoricalCryptoTradesRequest, ITrade>
+public sealed class HistoricalCryptoTradesRequest : HistoricalRequestBase, IHistoricalRequest<HistoricalCryptoTradesRequest, ITrade>
 {
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoTradesRequest"/> object.
@@ -107,7 +107,7 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
     /// The <paramref name="symbol"/> argument is <c>null</c>.
     /// </exception>
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
     public HistoricalCryptoTradesRequest(
         String symbol,
         IInclusiveTimeInterval timeInterval)
@@ -124,7 +124,7 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
     /// The <paramref name="symbols"/> argument is <c>null</c>.
     /// </exception>
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", false)]
+    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
     public HistoricalCryptoTradesRequest(
         IEnumerable<String> symbols,
         IInclusiveTimeInterval timeInterval)
@@ -132,18 +132,9 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
     {
     }
 
-    [ExcludeFromCodeCoverage]
-    [Obsolete("This constructor should be removed in the next major release.", false)]
-    private HistoricalCryptoTradesRequest(
-        HistoricalCryptoTradesRequest request,
-        IEnumerable<CryptoExchange> exchanges)
-        : base(request.Symbols, request.TimeInterval,
-            request.Exchanges.Concat(exchanges)) =>
-        CopyPagination(request.Pagination);
-
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoTradesRequest"/> object
-    /// with the updated <see cref="HistoricalCryptoRequestBase.Exchanges"/> list.
+    /// with the updated <see cref="Exchanges"/> list.
     /// </summary>
     /// <param name="exchanges">Crypto exchanges to add into the list.</param>
     /// <returns>The new instance of the <see cref="HistoricalCryptoTradesRequest"/> object.</returns>
@@ -152,14 +143,13 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
     /// </exception>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release.", false)]
+    [Obsolete("This method will be removed in the next major release.", true)]
     public HistoricalCryptoTradesRequest WithExchanges(
-        IEnumerable<CryptoExchange> exchanges) =>
-        new(this, exchanges.EnsureNotNull());
+        IEnumerable<CryptoExchange> exchanges) => this;
 
     /// <summary>
     /// Creates new instance of <see cref="HistoricalCryptoTradesRequest"/> object
-    /// with the updated <see cref="HistoricalCryptoRequestBase.Exchanges"/> list.
+    /// with the updated <see cref="Exchanges"/> list.
     /// </summary>
     /// <param name="exchanges">Crypto exchanges to add into the list.</param>
     /// <returns>The new instance of the <see cref="HistoricalCryptoTradesRequest"/> object.</returns>
@@ -168,10 +158,19 @@ public sealed class HistoricalCryptoTradesRequest : HistoricalCryptoRequestBase,
     /// </exception>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release.", false)]
+    [Obsolete("This method will be removed in the next major release.", true)]
     public HistoricalCryptoTradesRequest WithExchanges(
-        params CryptoExchange[] exchanges) =>
-        new(this, exchanges.EnsureNotNull());
+        params CryptoExchange[] exchanges) => this;
+    
+    /// <summary>
+    /// Gets crypto exchanges list for data retrieval (empty list means 'all exchanges').
+    /// </summary>
+    [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
+    [Obsolete("This property is not supported by API anymore and will be removed in the next major release.", true)]
+    public IReadOnlyCollection<CryptoExchange> Exchanges => Array.Empty<CryptoExchange>();
+
+    internal override Boolean HasSingleSymbol => false;
 
     /// <inheritdoc />
     protected override String LastPathSegment => "trades";

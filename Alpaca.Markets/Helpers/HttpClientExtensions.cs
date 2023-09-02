@@ -11,7 +11,7 @@ internal static partial class HttpClientExtensions
 #if NETSTANDARD2_1 || NET6_0_OR_GREATER
         System.Net.HttpVersion.Version20;
 #elif NETFRAMEWORK
-        new (2, 0);
+        new(2, 0);
 #else
         System.Net.HttpVersion.Version11;
 #endif
@@ -47,6 +47,7 @@ internal static partial class HttpClientExtensions
         HttpMethod method,
         Uri endpointUri,
         TimeSpan timeout,
+        RateLimitHandler rateLimitHandler,
         CancellationToken cancellationToken)
         where TJson : TApi
     {
@@ -60,7 +61,7 @@ internal static partial class HttpClientExtensions
 #endif
         }
         return await callAndDeserializeAsync<TApi, TJson>(
-                httpClient, request, cancellationToken)
+                httpClient, request, rateLimitHandler, cancellationToken)
             .ConfigureAwait(false);
     }
 
@@ -68,12 +69,13 @@ internal static partial class HttpClientExtensions
         HttpClient httpClient,
         HttpMethod method,
         Uri endpointUri,
+        RateLimitHandler rateLimitHandler,
         CancellationToken cancellationToken)
         where TJson : TApi
     {
         using var request = new HttpRequestMessage(method, endpointUri);
         return await callAndDeserializeAsync<TApi, TJson>(
-            httpClient, request, cancellationToken)
+            httpClient, request, rateLimitHandler, cancellationToken)
             .ConfigureAwait(false);
     }
 
@@ -82,18 +84,20 @@ internal static partial class HttpClientExtensions
         HttpMethod method,
         Uri endpointUri,
         TContent content,
+        RateLimitHandler rateLimitHandler,
         CancellationToken cancellationToken)
         where TJson : TApi
     {
         using var request = new HttpRequestMessage(method, endpointUri) { Content = toStringContent(content) };
         return await callAndDeserializeAsync<TApi, TJson>(
-            httpClient, request, cancellationToken)
+            httpClient, request, rateLimitHandler, cancellationToken)
             .ConfigureAwait(false);
     }
 
     private static async Task<TApi> callAndDeserializeAsync<TApi, TJson>(
         HttpClient httpClient,
         HttpRequestMessage request,
+        RateLimitHandler rateLimitHandler,
         CancellationToken cancellationToken)
         where TJson : TApi
     {
@@ -102,6 +106,7 @@ internal static partial class HttpClientExtensions
                 HttpCompletionOption.ResponseHeadersRead, cancellationToken)
             .ConfigureAwait(false);
 
+        rateLimitHandler.TryUpdate(response.Headers);
         return await response.DeserializeAsync<TApi, TJson>()
             .ConfigureAwait(false);
     }
@@ -110,6 +115,7 @@ internal static partial class HttpClientExtensions
         HttpClient httpClient,
         HttpMethod method,
         Uri endpointUri,
+        RateLimitHandler rateLimitHandler,
         CancellationToken cancellationToken)
     {
         using var request = new HttpRequestMessage(method, endpointUri);
@@ -118,6 +124,7 @@ internal static partial class HttpClientExtensions
                 HttpCompletionOption.ResponseHeadersRead, cancellationToken)
             .ConfigureAwait(false);
 
+        rateLimitHandler.TryUpdate(response.Headers);
         return await response.IsSuccessStatusCodeAsync()
             .ConfigureAwait(false);
     }

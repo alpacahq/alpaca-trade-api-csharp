@@ -69,4 +69,21 @@ public sealed partial class AlpacaDataClientTest
         quotes.Items.Where(_ => _.Symbol == Stock).Validate(Stock);
         quotes.Items.Where(_ => _.Symbol != Stock).Validate(Other);
     }
+
+    [Fact]
+    public async Task ListHistoricalQuotesAsyncWithoutIntervalWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+
+        mock.AddSingleQuotesPageExpectation(PathPrefix, Stock);
+
+        var quotes = await mock.Client.ListHistoricalQuotesAsync(
+            new HistoricalQuotesRequest(Stock));
+
+        Assert.NotNull(quotes);
+        Assert.NotEmpty(quotes.Items);
+        Assert.Equal(Stock, quotes.Symbol);
+
+        quotes.Items.Validate(Stock);
+    }
 }

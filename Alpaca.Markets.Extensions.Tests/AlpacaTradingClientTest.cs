@@ -72,7 +72,7 @@ public sealed class AlpacaTradingClientTest
         mock.AddGet("/v2/account/activities", new JArray(
             Enumerable.Repeat(createAccountActivity(), count)));
 
-    private static JObject createAccountActivity() => new (
+    private static JObject createAccountActivity() => new(
         new JProperty("activity_type", AccountActivityType.Fill),
         new JProperty("id", Guid.NewGuid().ToString("D")));
 

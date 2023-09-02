@@ -14,6 +14,7 @@ internal static class HttpResponseMethodExtensions
 #else
         using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 #endif
+        // ReSharper disable once UseAwaitUsing
         using var reader = new JsonTextReader(new StreamReader(stream));
 
         if (response.IsSuccessStatusCode)
@@ -45,6 +46,7 @@ internal static class HttpResponseMethodExtensions
 #else
         using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 #endif
+        // ReSharper disable once UseAwaitUsing
         using var reader = new JsonTextReader(new StreamReader(stream));
 
         throw getException(response, reader);

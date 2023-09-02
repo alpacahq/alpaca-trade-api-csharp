@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class LatestDataListRequest : Validation.IRequest
 {
-    private readonly HashSet<String> _symbols = new (StringComparer.Ordinal);
+    private readonly HashSet<String> _symbols = new(StringComparer.Ordinal);
 
     /// <summary>
     /// Creates new instance of <see cref="LatestDataListRequest"/> object.
@@ -27,7 +27,7 @@ public sealed class LatestDataListRequest : Validation.IRequest
     /// The <paramref name="symbols"/> argument is <c>null</c>.
     /// </exception>
     [ExcludeFromCodeCoverage]
-    [Obsolete("This constructor will be removed in the next major release of SDK.", false)]
+    [Obsolete("This constructor will be removed in the next major release of SDK.", true)]
     public LatestDataListRequest(
         IEnumerable<String> symbols,
         CryptoExchange exchange)

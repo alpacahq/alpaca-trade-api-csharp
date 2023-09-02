@@ -8,6 +8,6 @@ internal static class ActionExtensions
         this Action<TApi>? eventHandler,
         JToken eventArg)
         where TJson : class, TApi =>
-        eventHandler?.Invoke(eventArg.ToObject<TJson>() ??
-                             throw new RestClientErrorException("Unable to deserialize JSON response message."));
+        eventHandler?.Invoke(eventArg.ToObject<TJson>() ?? throw new RestClientErrorException(
+            "Unable to deserialize JSON response message."));
 }

@@ -15,13 +15,6 @@ public interface IStatus
     /// Gets status timestamp in UTC.
     /// </summary>
     [UsedImplicitly]
-    [Obsolete("This property will be removed in the next major version of SDK. Use the TimestampUtc property instead.", true)]
-    DateTime TimeUtc { get; }
-
-    /// <summary>
-    /// Gets status timestamp in UTC.
-    /// </summary>
-    [UsedImplicitly]
     DateTime TimestampUtc { get; }
 
     /// <summary>

@@ -39,9 +39,9 @@ public sealed partial class AlpacaDataClientTest
             new JProperty("symbol", Stock)));
 
     private static JArray createNewsList() =>
-        new (createNewsArticle(), createNewsArticle(), createNewsArticle());
+        new(createNewsArticle(), createNewsArticle(), createNewsArticle());
 
-    private static JObject createNewsArticle() => new (
+    private static JObject createNewsArticle() => new(
         new JProperty("headline", Guid.NewGuid().ToString("D")),
         new JProperty("author", Guid.NewGuid().ToString("D")),
         new JProperty("source", Guid.NewGuid().ToString("D")),

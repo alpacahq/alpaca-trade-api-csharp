@@ -1,7 +1,9 @@
+[![Contributors](https://img.shields.io/github/all-contributors/alpacahq/alpaca-trade-api-csharp?logo=github)](https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/CONTRIBUTORS.md)
 [![Build](https://github.com/alpacahq/alpaca-trade-api-csharp/workflows/Build%20and%20Release/badge.svg?branch=master)](https://github.com/alpacahq/alpaca-trade-api-csharp/actions)
 [![Codacy](https://img.shields.io/codacy/grade/7659cd4379964ef190a1088aa879350a?logo=codacy)](https://www.codacy.com/gh/OlegRa/Alpaca.Markets/dashboard?utm_source=github.com)
 [![Coverage](https://app.codacy.com/project/badge/Coverage/7659cd4379964ef190a1088aa879350a)](https://www.codacy.com/gh/OlegRa/Alpaca.Markets/dashboard?utm_source=github.com)
 [![Nuget](https://img.shields.io/nuget/dt/Alpaca.Markets?logo=NuGet)](https://www.nuget.org/stats/packages/Alpaca.Markets?groupby=Version)
+[![PVS-Studio](https://img.shields.io/badge/PVS--Studio-0-blue?logo=opensourceinitiative&logoColor=white&logoWidth=16)](https://pvs-studio.com/pvs-studio/?utm_source=website&utm_medium=github&utm_campaign=open_source)
 
 # .NET SDK for Alpaca Markets API
 
@@ -60,12 +62,15 @@ Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method fo
 
 | Branch                                       | Version | Description                                  | Milestone                |
 | -------------------------------------------- | ------- | -------------------------------------------- |--------------------------|
-| [develop](../../tree/develop)                | 6.0.x   | Unstable - experimental, can contain bugs    | [SDK 6.0.x Experimental](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/16) |
-| [master](../../tree/master)                  | 5.x.x   | LTS - good choice for the new development    | [SDK 5.x LTS](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/14) |
-| [support/v4.1.x](../../tree/support/v4.1.x)  | 4.x.x   | LTS - no new featues, security fixes only    | [SDK 4.x LTS](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/13) |
+| [develop](../../tree/develop)                | 7.0.x   | Unstable - experimental, can contain bugs    | [SDK 7.0.x Experimental](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/17) |
+| [master](../../tree/master)                  | 6.x     | Stable - good choice for the new development | [SDK 6.x Stable](https://github.com/alpacahq/alpaca-trade-api-csharp/milestone/16) |
 
 ### Build instructions
 
-1.  Install the latest version of the [.NET 6.0 SDK](https://dotnet.microsoft.com/download) for your OS.
+1.  Install the latest version of the [.NET 7.0 SDK](https://dotnet.microsoft.com/download) for your OS.
 2.  Clone the local version of this repository or your own fork (if you want to make changes).
 3.  Build the packages using the `dotnet build` command running in the root directory of the cloned repo.
+
+## Contributors
+
+Thanks a lot for all contributors. See the full list of project supporters in the [CONTRIBUTORS](https://github.com/alpacahq/alpaca-trade-api-csharp/blob/develop/CONTRIBUTORS.md) file.

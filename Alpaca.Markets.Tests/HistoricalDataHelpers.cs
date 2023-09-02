@@ -110,19 +110,9 @@ internal static class HistoricalDataHelpers
             new JProperty("snapshots", new JObject(
                 symbols.Select(_ => new JProperty(_, createSnapshot()))))));
 
-    internal static void AddXbboExpectation(
-        this IMock mock, String pathPrefix, String symbol) =>
-        mock.AddGet($"{pathPrefix}/{symbol}/xbbo/latest", new JObject(
-            new JProperty("xbbo", CreateQuote()),
-            new JProperty(nameof(symbol), symbol)));
-
     internal static void AddOrderBooksExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
         mock.addLatestCryptoExpectation(pathPrefix, symbols, "orderbooks", createOrderBook);
-
-    internal static void AddXbbosExpectation(
-        this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
-        mock.addLatestExpectation(pathPrefix, symbols, "xbbos", CreateQuote);
 
     internal static void AddSingleAuctionsPageExpectation(
         this IMock mock, String pathPrefix, String symbol) =>
@@ -208,6 +198,7 @@ internal static class HistoricalDataHelpers
         Assert.NotEmpty(trade.Conditions);
         Assert.Equal(_condition, trade.Conditions.Single());
 
+        Assert.Equal(String.Empty, trade.Update);
         Assert.Equal(_exchange, trade.Exchange);
         Assert.Equal(_tape, trade.Tape);
 
@@ -253,8 +244,10 @@ internal static class HistoricalDataHelpers
         String symbol)
     {
         Assert.NotNull(orderBook);
+        Assert.Equal(String.Empty, orderBook.Exchange);
         Assert.True(orderBook.TimestampUtc <= DateTime.UtcNow);
         Assert.Equal(symbol, orderBook.Symbol);
+        Assert.False(orderBook.IsReset);
 
         Assert.NotNull(orderBook.Asks);
         Assert.NotNull(orderBook.Bids);
@@ -280,7 +273,7 @@ internal static class HistoricalDataHelpers
         snapshot.Trade!.Validate(symbol);
 
     public static JObject CreateBar() =>
-        new (
+        new(
             new JProperty("t", DateTime.UtcNow),
             new JProperty("n", TradesNumber),
             new JProperty("o", MidPrice),
@@ -291,9 +284,10 @@ internal static class HistoricalDataHelpers
             new JProperty("vw", Wvap));
     
     public static JObject CreateTrade() =>
-        new (
+        new(
             new JProperty("c", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
+            new JProperty("u", String.Empty),
             new JProperty("x", _exchange),
             new JProperty("p", MidPrice),
             new JProperty("i", TradeId),
@@ -302,7 +296,7 @@ internal static class HistoricalDataHelpers
             new JProperty("s", Size));
 
     public static JObject CreateQuote() =>
-        new (
+        new(
             new JProperty("c", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
             new JProperty("ax", _exchange),
@@ -316,11 +310,12 @@ internal static class HistoricalDataHelpers
 
     public static JObject CreateCorrection(
         this String symbol) =>
-        new (
+        new(
             new JProperty(MessageDataHelpers.StreamingMessageTypeTag, "c"),
             new JProperty("oc", new JArray(_condition)),
             new JProperty("cc", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
+            new JProperty("u", String.Empty),
             new JProperty("x", _exchange),
             new JProperty("op", MidPrice),
             new JProperty("cp", MidPrice),
@@ -392,7 +387,7 @@ internal static class HistoricalDataHelpers
 
     private static JObject createSnapshot(
         String symbol) =>
-        new (
+        new(
             new JProperty("latestQuote", CreateQuote()),
             new JProperty("latestTrade", CreateTrade()),
             new JProperty("prevDailyBar", CreateBar()),

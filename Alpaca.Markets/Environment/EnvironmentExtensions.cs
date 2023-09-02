@@ -265,7 +265,7 @@ public static class EnvironmentExtensions
     public static AlpacaNewsStreamingClientConfiguration GetAlpacaNewsStreamingClientConfiguration(
         this IEnvironment environment,
         SecurityKey securityKey) =>
-        new ()
+        new()
         {
             ApiEndpoint = environment.EnsureNotNull().AlpacaNewsStreamingApi,
             SecurityId = securityKey.EnsureNotNull()

@@ -57,7 +57,7 @@ public static partial class HistoricalBarsClientExtensions
     [UsedImplicitly]
     [CLSCompliant(false)]
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use another method overload that takes the DateOnly arguments.", false)]
+    [Obsolete("Use another method overload that takes the DateOnly arguments.", true)]
     public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync<TRequest>(
         this IHistoricalBarsClient<TRequest> client,
         String symbol,
@@ -134,7 +134,7 @@ public static partial class HistoricalBarsClientExtensions
     [UsedImplicitly]
     [CLSCompliant(false)]
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use another method overload that takes the DateOnly arguments.", false)]
+    [Obsolete("Use another method overload that takes the DateOnly arguments.", true)]
     public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync<TRequest>(
         this IHistoricalBarsClient<TRequest> client,
         String symbol,
@@ -211,7 +211,7 @@ public static partial class HistoricalBarsClientExtensions
     [UsedImplicitly]
     [CLSCompliant(false)]
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use another method overload that takes the Interval<DateOnly> argument.", false)]
+    [Obsolete("Use another method overload that takes the Interval<DateOnly> argument.", true)]
     public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync<TRequest>(
         this IHistoricalBarsClient<TRequest> client,
         String symbol,
@@ -280,7 +280,7 @@ public static partial class HistoricalBarsClientExtensions
     [UsedImplicitly]
     [CLSCompliant(false)]
     [ExcludeFromCodeCoverage]
-    [Obsolete("Use another method overload that takes the Interval<DateOnly> argument.", false)]
+    [Obsolete("Use another method overload that takes the Interval<DateOnly> argument.", true)]
     public static Task<(Decimal, UInt32)> GetAverageDailyTradeVolumeAsync<TRequest>(
         this IHistoricalBarsClient<TRequest> client,
         String symbol,
@@ -326,7 +326,7 @@ public static partial class HistoricalBarsClientExtensions
         Interval<DateOnly> timeInterval,
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
-        client.GetHistoricalBarsAsAsyncEnumerable(
+        client.EnsureNotNull().GetHistoricalBarsAsAsyncEnumerable(
                 RequestFactory<TRequest>.Instance.Create(symbol, timeInterval), cancellationToken)
             .GetAverageDailyTradeVolumeAsync(cancellationToken);
 
@@ -383,7 +383,7 @@ public static partial class HistoricalBarsClientExtensions
         Int32 window,
         CancellationToken cancellationToken)
         where TRequest : HistoricalRequestBase, IHistoricalRequest<TRequest, IBar> =>
-        client.GetHistoricalBarsAsAsyncEnumerable(request, cancellationToken)
+        client.EnsureNotNull().GetHistoricalBarsAsAsyncEnumerable(request, cancellationToken)
             .GetSimpleMovingAverageAsync(window, cancellationToken);
 
     [ExcludeFromCodeCoverage]

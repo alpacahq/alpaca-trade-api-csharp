@@ -5,7 +5,7 @@ internal sealed class JsonMultiBarsPage : IMultiPageMutable<IBar>
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "bars", Required = Required.Default)]
-    public Dictionary<String, List<JsonHistoricalBar>?> ItemsDictionary { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public Dictionary<String, List<JsonHistoricalBar>?> ItemsDictionary { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "next_page_token", Required = Required.Default)]
     public String? NextPageToken { get; set; }

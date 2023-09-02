@@ -12,7 +12,7 @@ public static class IntervalExtensions
     /// <returns>Date interval initialized with data from the original inclusive time interval.</returns>
     public static Interval<DateOnly> AsDateInterval(
         this Interval<DateTime> interval) =>
-        new (interval.From.AsDateOnly(), interval.Into.AsDateOnly());
+        new(interval.From.AsDateOnly(), interval.Into.AsDateOnly());
 
     /// <summary>
     /// Converts a <see cref="Interval{DateOnly}"/> Interval into a <see cref="Interval{DateTime}"/> Interval.
@@ -21,7 +21,7 @@ public static class IntervalExtensions
     /// <returns>Inclusive time interval initialized with data from the original date interval.</returns>
     public static Interval<DateTime> AsTimeInterval(
         this Interval<DateOnly> interval) =>
-        new (interval.From.AsDateTime(), interval.Into.AsDateTime());
+        new(interval.From.AsDateTime(), interval.Into.AsDateTime());
 
     /// <summary>
     /// Gets exclusive open time interval starting from the <paramref name="from"/> date/time point.
@@ -32,7 +32,7 @@ public static class IntervalExtensions
     public static Interval<TItem> GetIntervalFromThat<TItem>(
         this TItem from)
         where TItem : struct, IComparable<TItem> =>
-        new (from, null);
+        new(from, null);
 
     /// <summary>
     /// Gets exclusive open time interval ending at the <paramref name="into"/> date/time point.
@@ -43,5 +43,5 @@ public static class IntervalExtensions
     public static Interval<TItem> GetIntervalTillThat<TItem>(
         this TItem into)
         where TItem : struct, IComparable<TItem> =>
-        new (null, into);
+        new(null, into);
 }

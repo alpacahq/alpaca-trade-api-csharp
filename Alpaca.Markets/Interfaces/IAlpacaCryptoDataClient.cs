@@ -9,6 +9,7 @@ public interface IAlpacaCryptoDataClient :
     IHistoricalTradesClient<HistoricalCryptoTradesRequest>,
     IHistoricalBarsClient<HistoricalCryptoBarsRequest>,
     IAlpacaScreenerClient,
+    IRateLimitProvider,
     IDisposable
 {
     /// <summary>
@@ -36,7 +37,7 @@ public interface IAlpacaCryptoDataClient :
     /// </exception>
     /// <returns>Read-only latest bar information.</returns>
     [UsedImplicitly]
-    [Obsolete("This method will be removed in the next major release of SDK. Use the ListLatestBarsAsync method instead.", false)]
+    [Obsolete("This method will be removed in the next major release of SDK. Use the ListLatestBarsAsync method instead.", true)]
     Task<IBar> GetLatestBarAsync(
         LatestDataRequest request,
         CancellationToken cancellationToken = default);
@@ -95,7 +96,7 @@ public interface IAlpacaCryptoDataClient :
     /// </exception>
     /// <returns>Read-only latest trade information.</returns>
     [UsedImplicitly]
-    [Obsolete("This method will be removed in the next major release of SDK. Use the ListLatestTradesAsync method instead.", false)]
+    [Obsolete("This method will be removed in the next major release of SDK. Use the ListLatestTradesAsync method instead.", true)]
     Task<ITrade> GetLatestTradeAsync(
         LatestDataRequest request,
         CancellationToken cancellationToken = default);
@@ -154,7 +155,7 @@ public interface IAlpacaCryptoDataClient :
     /// </exception>
     /// <returns>Read-only current quote information.</returns>
     [UsedImplicitly]
-    [Obsolete("This method will be removed in the next major release of SDK. Use the ListLatestQuotesAsync method instead.", false)]
+    [Obsolete("This method will be removed in the next major release of SDK. Use the ListLatestQuotesAsync method instead.", true)]
     Task<IQuote> GetLatestQuoteAsync(
         LatestDataRequest request,
         CancellationToken cancellationToken = default);
@@ -213,7 +214,7 @@ public interface IAlpacaCryptoDataClient :
     /// </exception>
     /// <returns>Read-only current XBBO information.</returns>
     [UsedImplicitly]
-    [Obsolete("This method will be removed in the next major release of SDK. Use ListLatestOrderBooksAsync method instead.", false)]
+    [Obsolete("This method will be removed in the next major release of SDK. Use ListLatestOrderBooksAsync method instead.", true)]
     Task<IQuote> GetLatestBestBidOfferAsync(
         LatestBestBidOfferRequest request,
         CancellationToken cancellationToken = default);
@@ -243,7 +244,7 @@ public interface IAlpacaCryptoDataClient :
     /// </exception>
     /// <returns>Read-only dictionary with the current XBBO information.</returns>
     [UsedImplicitly]
-    [Obsolete("This method will be removed in the next major release of SDK. Use ListLatestOrderBooksAsync method instead.", false)]
+    [Obsolete("This method will be removed in the next major release of SDK. Use ListLatestOrderBooksAsync method instead.", true)]
     Task<IReadOnlyDictionary<String, IQuote>> ListLatestBestBidOffersAsync(
         LatestBestBidOfferListRequest request,
         CancellationToken cancellationToken = default);
@@ -273,7 +274,7 @@ public interface IAlpacaCryptoDataClient :
     /// </exception>
     /// <returns>Read-only current snapshot information.</returns>
     [UsedImplicitly]
-    [Obsolete("This method will be removed in the next major release of SDK. Use the ListSnapshotsAsync method instead.", false)]
+    [Obsolete("This method will be removed in the next major release of SDK. Use the ListSnapshotsAsync method instead.", true)]
     Task<ISnapshot> GetSnapshotAsync(
         SnapshotDataRequest request,
         CancellationToken cancellationToken = default);

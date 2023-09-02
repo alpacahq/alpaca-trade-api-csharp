@@ -5,7 +5,7 @@ internal sealed class JsonMultiTradesPage : IMultiPageMutable<ITrade>
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "trades", Required = Required.Default)]
-    public Dictionary<String, List<JsonHistoricalTrade>?> ItemsDictionary { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public Dictionary<String, List<JsonHistoricalTrade>?> ItemsDictionary { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "next_page_token", Required = Required.Default)]
     public String? NextPageToken { get; set; }

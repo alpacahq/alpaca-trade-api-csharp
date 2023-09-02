@@ -13,8 +13,9 @@ internal static partial class HttpClientExtensions
         this HttpClient httpClient,
         String endpointUri,
         TRequest request,
+        RateLimitHandler rateLimitHandler,
         CancellationToken cancellationToken)
         where TJson : TApi =>
         callAndDeserializeAsync<TApi, TJson, TRequest>(
-            httpClient, _httpMethodPatch, asUri(endpointUri), request, cancellationToken);
+            httpClient, _httpMethodPatch, asUri(endpointUri), request, rateLimitHandler, cancellationToken);
 }

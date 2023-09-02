@@ -40,14 +40,14 @@ internal sealed class DateHelper
         }
 
         public static MarketHours CreateNormal(DateTime date) =>
-            new (
+            new(
                 date.Add(_earlyOpenTime),
                 date.Add(_normalOpenTime),
                 date.Add(_normalCloseTime),
                 date.Add(_lateCloseTime));
 
         public static MarketHours CreateLate(DateTime holiday) =>
-            new (
+            new(
                 holiday.Date.Add(_earlyOpenTime),
                 holiday.Date.Add(_normalOpenTime),
                 holiday,
@@ -186,6 +186,8 @@ internal sealed class DateHelper
         yield return goodFriday(year);
 
         yield return memorialDay(year);
+        
+        yield return juneteenthDay(year);
 
         var independenceDay = adjustForWeekendHoliday(new DateTime(year, 7, 4));
         yield return independenceDay;
@@ -247,6 +249,9 @@ internal sealed class DateHelper
 
     private static DateTime memorialDay(int year) =>
         getPrev(DayOfWeek.Monday, new DateTime(year, 5, 31));
+    
+    private static DateTime juneteenthDay(int year) =>
+        getNext(DayOfWeek.Monday, new DateTime(year, 6, 19));
 
     private static DateTime laborDay(int year) => 
         getNext(DayOfWeek.Monday, new DateTime(year, 9, 1));

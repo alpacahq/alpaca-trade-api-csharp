@@ -2,7 +2,7 @@
 
 public sealed class RequestValidationTest
 {
-    private static readonly Interval<DateTime> _interval = new ();
+    private static readonly Interval<DateTime> _interval = new();
 
     private const Decimal DecimalQuery = 42M;
 
@@ -35,24 +35,6 @@ public sealed class RequestValidationTest
     public void HistoricalRequestBaseHugePageValidationWorks() =>
         validate(new HistoricalCryptoBarsRequest(Symbol, BarTimeFrame.Minute, _interval)
             .WithPageSize(UInt32.MaxValue));
-
-    [Fact]
-    public void SnapshotDataRequestEmptySymbolValidationWorks() =>
-#pragma warning disable CS0618
-        validate(new SnapshotDataRequest(String.Empty, CryptoExchange.Ersx));
-#pragma warning restore CS0618
-
-    [Fact]
-    public void LatestDataRequestEmptySymbolValidationWorks() =>
-#pragma warning disable CS0618
-        validate(new LatestDataRequest(String.Empty, CryptoExchange.Cbse));
-#pragma warning restore CS0618
-
-    [Fact]
-    public void LatestBestBidOfferRequestEmptySymbolValidationWorks() =>
-#pragma warning disable CS0618
-        validate(new LatestBestBidOfferRequest(String.Empty, CryptoExchange.Ftx));
-#pragma warning restore CS0618
 
     [Fact]
     public void DeletePositionRequestEmptySymbolValidationWorks() =>

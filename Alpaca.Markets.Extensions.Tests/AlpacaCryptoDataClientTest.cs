@@ -55,9 +55,9 @@ public sealed class AlpacaCryptoDataClientTest
             new JProperty("next_page_token", token)));
 
     private static JArray createBarsList() =>
-        new (createBar(), createBar(), createBar());
+        new(createBar(), createBar(), createBar());
 
-    private static JObject createBar() => new (
+    private static JObject createBar() => new(
         new JProperty("t", DateTime.UtcNow),
         new JProperty("v", Volume),
         new JProperty("o", Price),

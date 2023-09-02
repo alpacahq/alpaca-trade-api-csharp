@@ -6,12 +6,17 @@ public sealed class MockClient<TClientConfiguration, TClient> : IDisposable
     where TClientConfiguration : AlpacaClientConfigurationBase
     where TClient : class, IDisposable
 {
-    private readonly MockHttpMessageHandler _handler = new ();
+    private readonly MockHttpMessageHandler _handler = new();
 
     public MockClient(
         TClientConfiguration configuration,
         Func<TClientConfiguration, TClient> factory)
     {
+        if (configuration is null)
+        {
+            throw new ArgumentNullException(nameof(configuration));
+        }
+
         configuration.HttpClient = _handler.ToHttpClient();
         Client = factory(configuration);
     }

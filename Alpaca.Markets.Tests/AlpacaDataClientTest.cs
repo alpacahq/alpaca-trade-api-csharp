@@ -15,6 +15,8 @@ public sealed partial class AlpacaDataClientTest
 
     private const String PathPrefix = "/v2/stocks";
 
+    private const String Currency = "EUR";
+
     private const String Stock = "AAPL";
 
     private const String Other = "MSFT";
