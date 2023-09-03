@@ -16,8 +16,8 @@ public sealed class WithReconnectTest
         var count = 0;
         var client = new Mock<IAlpacaStreamingClient>();
 
-        client.SetupAdd(_ => _.OnTradeUpdate += It.IsAny<Action<ITradeUpdate>>()).Callback(() => ++count);
-        client.SetupRemove(_ => _.OnTradeUpdate -= It.IsAny<Action<ITradeUpdate>>()).Callback(() => ++count);
+        client.SetupAdd(c => c.OnTradeUpdate += It.IsAny<Action<ITradeUpdate>>()).Callback(() => ++count);
+        client.SetupRemove(c => c.OnTradeUpdate -= It.IsAny<Action<ITradeUpdate>>()).Callback(() => ++count);
 
         var reconnectionParameters = new ReconnectionParameters
         {
@@ -32,19 +32,22 @@ public sealed class WithReconnectTest
 
             wrapped.OnTradeUpdate += HandleTradeUpdate;
 
-            client.Raise(_ => _.OnTradeUpdate += null, new Mock<ITradeUpdate>().Object);
+            // ReSharper disable MethodHasAsyncOverload
+            client.Raise(c => c.OnTradeUpdate += null, new Mock<ITradeUpdate>().Object);
 
-            client.Raise(_ => _.SocketClosed += null);
+            client.Raise(c => c.SocketClosed += null);
             await Task.Delay(reconnectionParameters.MaxReconnectionDelay);
-            client.Raise(_ => _.SocketOpened += null);
+            client.Raise(c => c.SocketOpened += null);
 
-            client.Raise(_ => _.OnTradeUpdate += null, new Mock<ITradeUpdate>().Object);
+            client.Raise(c => c.OnTradeUpdate += null, new Mock<ITradeUpdate>().Object);
+            // ReSharper restore MethodHasAsyncOverload
 
             wrapped.OnTradeUpdate -= HandleTradeUpdate;
         }
 
         Assert.Equal(expectedEventsCount, count);
         client.Verify();
+        return;
 
         void HandleTradeUpdate(ITradeUpdate _) => ++count;
     }
@@ -55,18 +58,18 @@ public sealed class WithReconnectTest
         var client = new Mock<IAlpacaNewsStreamingClient>();
 
         client
-            .Setup(_ => _.ConnectAndAuthenticateAsync(It.IsAny<CancellationToken>()))
+            .Setup(c => c.ConnectAndAuthenticateAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(() =>
             {
-                client.Raise(_ => _.OnError += null, new WebSocketException());
+                client.Raise(c => c.OnError += null, new WebSocketException());
                 client
-                    .Setup(_ => _.ConnectAndAuthenticateAsync(It.IsAny<CancellationToken>()))
+                    .Setup(c => c.ConnectAndAuthenticateAsync(It.IsAny<CancellationToken>()))
                     .ReturnsAsync(AuthStatus.Authorized);
                 return AuthStatus.Unauthorized;
             });
 
         client
-            .Setup(_ => _.GetNewsSubscription(It.IsAny<String>()))
+            .Setup(c => c.GetNewsSubscription(It.IsAny<String>()))
             .Returns<String>(GetSubscription);
 
         var reconnectionParameters = new ReconnectionParameters
@@ -89,20 +92,23 @@ public sealed class WithReconnectTest
             await wrapped.SubscribeAsync(subscriptions.Skip(1));
             await wrapped.SubscribeAsync(subscriptions[0]);
 
-            client.Raise(_ => _.SocketClosed += null);
+            // ReSharper disable MethodHasAsyncOverload
+            client.Raise(c => c.SocketClosed += null);
             await Task.Delay(reconnectionParameters.MaxReconnectionDelay);
-            client.Raise(_ => _.SocketOpened += null);
+            client.Raise(c => c.SocketOpened += null);
+            // ReSharper restore MethodHasAsyncOverload
 
             await wrapped.UnsubscribeAsync(subscriptions[0]);
             await wrapped.UnsubscribeAsync(subscriptions.Skip(1));
         }
 
         client.Verify();
+        return;
 
         IAlpacaDataSubscription<INewsArticle> GetSubscription(String symbol)
         {
             var mock = new Mock<IAlpacaDataSubscription<INewsArticle>>();
-            mock.Setup(_ => _.Streams).Returns(Enumerable.Repeat(symbol, 1));
+            mock.Setup(s => s.Streams).Returns(Enumerable.Repeat(symbol, 1));
             return mock.Object;
         }
     }
@@ -122,13 +128,15 @@ public sealed class WithReconnectTest
 
             wrapped.OnWarning += HandleWarning;
             
-            client.Raise(_ => _.OnWarning += null, warning);
+            // ReSharper disable once MethodHasAsyncOverload
+            client.Raise(c => c.OnWarning += null, warning);
 
             wrapped.OnWarning -= HandleWarning;
         }
 
         Assert.Equal(1, count);
         client.Verify();
+        return;
 
         void HandleWarning(String message)
         {

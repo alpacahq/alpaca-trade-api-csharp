@@ -59,6 +59,6 @@ internal static partial class HttpClientExtensions
         where TKeyJson : TKeyApi
         where TValueJson : TValueApi =>
         response
-            .Where(_ => _.Value is not null)
-            .ToDictionary(_ => _.Key, elementSelector, comparer);
+            .Where(pair => pair.Value is not null)
+            .ToDictionary(pair => pair.Key, elementSelector, comparer);
 }

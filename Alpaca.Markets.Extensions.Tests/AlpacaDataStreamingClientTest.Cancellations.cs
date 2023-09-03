@@ -6,7 +6,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public void GetCancellationSubscriptionWorks()
     {
         var client = createMockClient(
-            _ => _.GetCancellationSubscription(It.IsAny<String>()));
+            client => client.GetCancellationSubscription(It.IsAny<String>()));
 
         var subscriptionOne = client.Object.GetCancellationSubscription(_symbols);
         var subscriptionTwo = client.Object.GetCancellationSubscription(Stock, Other);
@@ -21,7 +21,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public async Task SubscribeCancellationAsyncWorks()
     {
         var client = createMockClient(
-            _ => _.GetCancellationSubscription(It.IsAny<String>()));
+            client => client.GetCancellationSubscription(It.IsAny<String>()));
 
         await using var subscription = await client.Object.SubscribeCancellationAsync(Stock);
         await using var subscriptionOne = await client.Object.SubscribeCancellationAsync(_symbols);

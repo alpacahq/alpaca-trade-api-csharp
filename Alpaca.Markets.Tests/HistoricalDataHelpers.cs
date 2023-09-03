@@ -102,13 +102,13 @@ internal static class HistoricalDataHelpers
     internal static void AddSnapshotsExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
         mock.AddGet($"{pathPrefix}/snapshots", new JObject(
-            symbols.Select(_ => new JProperty(_, createSnapshot()))) );
+            symbols.Select(name => new JProperty(name, createSnapshot()))) );
 
     internal static void AddCryptoSnapshotsExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
         mock.AddGet($"{pathPrefix}/snapshots", new JObject(
             new JProperty("snapshots", new JObject(
-                symbols.Select(_ => new JProperty(_, createSnapshot()))))));
+                symbols.Select(name => new JProperty(name, createSnapshot()))))));
 
     internal static void AddOrderBooksExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
@@ -134,7 +134,7 @@ internal static class HistoricalDataHelpers
         String items, Func<JObject> createItem) =>
         mock.AddGet($"{pathPrefix}/{items}", new JObject(
             new JProperty(items, new JObject(
-                symbols.Select(_ => new JProperty(_, createItemsList(createItem)))))));
+                symbols.Select(name => new JProperty(name, createItemsList(createItem)))))));
 
     private static void addLatestExpectation(
         this IMock mock, String pathPrefix, String symbol,
@@ -148,19 +148,19 @@ internal static class HistoricalDataHelpers
         String items, Func<JObject> createItem) =>
         mock.AddGet($"{pathPrefix}/{items}/latest", new JObject(
             new JProperty(items, new JObject(
-                symbols.Select(_ => new JProperty(_, createItem()))))));
+                symbols.Select(name => new JProperty(name, createItem()))))));
 
     private static void addLatestCryptoExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols,
         String items, Func<JObject> createItem) =>
         mock.AddGet($"{pathPrefix}/latest/{items}", new JObject(
             new JProperty(items, new JObject(
-                symbols.Select(_ => new JProperty(_, createItem()))))));
+                symbols.Select(name => new JProperty(name, createItem()))))));
 
     public static void Validate<TItem>(
         this IEnumerable<TItem> items,
         String symbol) =>
-        Assert.True(items.All(_ => _ switch
+        Assert.True(items.All(item => item switch
         {
             IBar bar => bar.Validate(symbol),
             ITrade trade => trade.Validate(symbol),

@@ -48,16 +48,16 @@ internal sealed class SubscriptionHelper<TItem> : IAsyncDisposable
 
     public Boolean WaitAll() =>
         WaitHandle.WaitAll(
-            _handlers.Select(_ => _.Event).Cast<WaitHandle>().ToArray(),
+            _handlers.Select(handler => handler.Event).Cast<WaitHandle>().ToArray(),
             TimeSpan.FromSeconds(1));
 
     public void Subscribe(
-        Action<TItem> handler) =>
-        _handlers.ForEach(_ => _.Subscription.Received += handler);
+        Action<TItem> eventHandler) =>
+        _handlers.ForEach(handler => handler.Subscription.Received += eventHandler);
 
     public void Unsubscribe(
-        Action<TItem> handler) =>
-        _handlers.ForEach(_ => _.Subscription.Received -= handler);
+        Action<TItem> eventHandler) =>
+        _handlers.ForEach(handler => handler.Subscription.Received -= eventHandler);
 
     public ValueTask DisposeAsync() => unsubscribeAll();
 
@@ -79,17 +79,17 @@ internal sealed class SubscriptionHelper<TItem> : IAsyncDisposable
 
     private ValueTask subscribeAll()
     {
-        _handlers.ForEach(_ => _.Subscribe());
+        _handlers.ForEach(handler => handler.Subscribe());
         return _handlers.Count == 1
             ? _client.SubscribeAsync(_handlers.Single().Subscription)
-            : _client.SubscribeAsync(_handlers.Select(_ => _.Subscription));
+            : _client.SubscribeAsync(_handlers.Select(handler => handler.Subscription));
     }
 
     private ValueTask unsubscribeAll()
     {
-        _handlers.ForEach(_ => _.Unsubscribe());
+        _handlers.ForEach(handler => handler.Unsubscribe());
         return _handlers.Count == 1
             ? _client.UnsubscribeAsync(_handlers.Single().Subscription)
-            : _client.UnsubscribeAsync(_handlers.Select(_ => _.Subscription));
+            : _client.UnsubscribeAsync(_handlers.Select(handler => handler.Subscription));
     }
 }

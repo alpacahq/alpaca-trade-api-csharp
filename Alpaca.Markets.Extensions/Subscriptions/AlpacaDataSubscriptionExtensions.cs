@@ -62,6 +62,8 @@ public static class AlpacaDataSubscriptionExtensions
             buffer.Writer.TryComplete();
         }
 
+        yield break;
+
         void HandleReceived(TItem item) => buffer.Writer.TryWrite(item);
     }
 }

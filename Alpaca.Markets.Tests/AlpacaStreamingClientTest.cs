@@ -69,6 +69,7 @@ public sealed class AlpacaStreamingClientTest
         client.Client.OnTradeUpdate -= HandleTradeUpdate;
 
         await client.Client.DisconnectAsync();
+        return;
 
         void HandleTradeUpdate(
             ITradeUpdate tradeUpdate)
@@ -159,6 +160,7 @@ public sealed class AlpacaStreamingClientTest
         client.Client.OnTradeUpdate -= HandleTradeUpdate;
 
         await client.Client.DisconnectAsync();
+        return;
 
         void HandleTradeUpdate(
             ITradeUpdate _) =>
@@ -181,7 +183,7 @@ public sealed class AlpacaStreamingClientTest
 
         // Errors
         client.AddException(
-            _ => _.ConnectAsync(It.IsAny<Uri>(), It.IsAny<CancellationToken>()),
+            socket => socket.ConnectAsync(It.IsAny<Uri>(), It.IsAny<CancellationToken>()),
             new InvalidAsynchronousStateException());
 
         Assert.Equal(AuthStatus.Unauthorized,

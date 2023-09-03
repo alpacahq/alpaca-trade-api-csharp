@@ -6,7 +6,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public void GetDailyBarSubscriptionWorks()
     {
         var client = createMockClient(
-            _ => _.GetDailyBarSubscription(It.IsAny<String>()));
+            client => client.GetDailyBarSubscription(It.IsAny<String>()));
 
         var subscriptionOne = client.Object.GetDailyBarSubscription(_symbols);
         var subscriptionTwo = client.Object.GetDailyBarSubscription(Stock, Other);
@@ -21,7 +21,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public async Task SubscribeDailyBarAsyncWorks()
     {
         var client = createMockClient(
-            _ => _.GetDailyBarSubscription(It.IsAny<String>()));
+            client => client.GetDailyBarSubscription(It.IsAny<String>()));
 
         await using var subscription = await client.Object.SubscribeDailyBarAsync(Stock);
         await using var subscriptionOne = await client.Object.SubscribeDailyBarAsync(_symbols);
@@ -39,7 +39,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public void GetMinuteBarSubscriptionWorks()
     {
         var client = createMockClient(
-            _ => _.GetMinuteBarSubscription(It.IsAny<String>()));
+            client => client.GetMinuteBarSubscription(It.IsAny<String>()));
 
         var subscriptionOne = client.Object.GetMinuteBarSubscription(_symbols);
         var subscriptionTwo = client.Object.GetMinuteBarSubscription(Stock, Other);
@@ -54,7 +54,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public async Task SubscribeMinuteBarAsyncWorks()
     {
         var client = createMockClient(
-            _ => _.GetMinuteBarSubscription(It.IsAny<String>()));
+            client => client.GetMinuteBarSubscription(It.IsAny<String>()));
 
         await using var subscription = await client.Object.SubscribeMinuteBarAsync(Stock);
         await using var subscriptionOne = await client.Object.SubscribeMinuteBarAsync(_symbols);
@@ -72,7 +72,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public void GetUpdatedBarSubscriptionWorks()
     {
         var client = createMockClient(
-            _ => _.GetUpdatedBarSubscription(It.IsAny<String>()));
+            client => client.GetUpdatedBarSubscription(It.IsAny<String>()));
 
         var subscriptionOne = client.Object.GetUpdatedBarSubscription(_symbols);
         var subscriptionTwo = client.Object.GetUpdatedBarSubscription(Stock, Other);
@@ -87,7 +87,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public async Task SubscribeUpdatedBarAsyncWorks()
     {
         var client = createMockClient(
-            _ => _.GetUpdatedBarSubscription(It.IsAny<String>()));
+            client => client.GetUpdatedBarSubscription(It.IsAny<String>()));
 
         await using var subscription = await client.Object.SubscribeUpdatedBarAsync(Stock);
         await using var subscriptionOne = await client.Object.SubscribeUpdatedBarAsync(_symbols);

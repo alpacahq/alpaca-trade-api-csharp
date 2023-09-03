@@ -44,15 +44,15 @@ public sealed partial class AlpacaDataClientTest
 
     private static async ValueTask<Int32> validateListOfLists<TItem>(
         IAsyncEnumerable<IReadOnlyList<TItem>> pages) =>
-        await pages.SumAsync(_ => _.Count);
+        await pages.SumAsync(items => items.Count);
 
     private static async Task<Int32> validateDictionaryOfLists<TItem>(
         IReadOnlyDictionary<String, IAsyncEnumerable<TItem>> dictionary) =>
-        (await Task.WhenAll(dictionary.Values.Select(_ => validateList(_).AsTask()))).Sum();
+        (await Task.WhenAll(dictionary.Values.Select(trades => validateList(trades).AsTask()))).Sum();
 
     private static async ValueTask<Int32> validateListOfDictionariesOfLists<TItem>(
         IAsyncEnumerable<IReadOnlyDictionary<String, IReadOnlyList<TItem>>> pages) =>
-        await pages.SumAsync(_ => _.Values.Sum(__ => __.Count));
+        await pages.SumAsync(dictionary => dictionary.Values.Sum(items => items.Count));
 
     private static Interval<DateTime> getTimeInterval()
     {

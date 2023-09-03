@@ -6,7 +6,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public void GetLimitUpLimitDownSubscriptionWorks()
     {
         var client = createMockClient(
-            _ => _.GetLimitUpLimitDownSubscription(It.IsAny<String>()));
+            client => client.GetLimitUpLimitDownSubscription(It.IsAny<String>()));
 
         var subscriptionOne = client.Object.GetLimitUpLimitDownSubscription(_symbols);
         var subscriptionTwo = client.Object.GetLimitUpLimitDownSubscription(Stock, Other);
@@ -21,7 +21,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public async Task SubscribeLimitUpLimitDownAsyncWorks()
     {
         var client = createMockClient(
-            _ => _.GetLimitUpLimitDownSubscription(It.IsAny<String>()));
+            client => client.GetLimitUpLimitDownSubscription(It.IsAny<String>()));
 
         await using var subscription = await client.Object.SubscribeLimitUpLimitDownAsync(Stock);
         await using var subscriptionOne = await client.Object.SubscribeLimitUpLimitDownAsync(_symbols);

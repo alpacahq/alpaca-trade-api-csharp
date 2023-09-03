@@ -6,7 +6,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public void GetStatusSubscriptionWorks()
     {
         var client = createMockClient(
-            _ => _.GetStatusSubscription(It.IsAny<String>()));
+            client => client.GetStatusSubscription(It.IsAny<String>()));
 
         var subscriptionOne = client.Object.GetStatusSubscription(_symbols);
         var subscriptionTwo = client.Object.GetStatusSubscription(Stock, Other);
@@ -21,7 +21,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public async Task SubscribeStatusAsyncWorks()
     {
         var client = createMockClient(
-            _ => _.GetStatusSubscription(It.IsAny<String>()));
+            client => client.GetStatusSubscription(It.IsAny<String>()));
 
         await using var subscription = await client.Object.SubscribeStatusAsync(Stock);
         await using var subscriptionOne = await client.Object.SubscribeStatusAsync(_symbols);

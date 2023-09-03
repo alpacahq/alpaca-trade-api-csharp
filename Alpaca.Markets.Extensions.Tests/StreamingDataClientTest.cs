@@ -8,9 +8,9 @@ public sealed class StreamingDataClientTest
         var cts = new CancellationTokenSource();
         var client = new Mock<IStreamingDataClient>();
 
-        client.Setup(_ => _.SubscribeAsync(
+        client.Setup(dataClient => dataClient.SubscribeAsync(
                 It.IsAny<IEnumerable<IAlpacaDataSubscription>>(),
-                It.Is<CancellationToken>(__ => __.Equals(cts.Token))))
+                It.Is<CancellationToken>(token => token.Equals(cts.Token))))
             .Returns(ValueTask.CompletedTask);
 
         await client.Object.SubscribeAsync(createSubscription(), createSubscription())
@@ -25,9 +25,9 @@ public sealed class StreamingDataClientTest
         var cts = new CancellationTokenSource();
         var client = new Mock<IStreamingDataClient>();
 
-        client.Setup(_ => _.UnsubscribeAsync(
+        client.Setup(dataClient => dataClient.UnsubscribeAsync(
                 It.IsAny<IEnumerable<IAlpacaDataSubscription>>(),
-                It.Is<CancellationToken>(__ => __.Equals(cts.Token))))
+                It.Is<CancellationToken>(token => token.Equals(cts.Token))))
             .Returns(ValueTask.CompletedTask);
 
         await client.Object.UnsubscribeAsync(createSubscription(), createSubscription())

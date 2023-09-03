@@ -81,7 +81,7 @@ internal sealed class IndicatorLibraryExample : IDisposable
         Console.WriteLine();
 
         Console.WriteLine("Date\t\t" + String.Join("\t",
-            stockData.OutputValues.Keys.Select(_ => _.PadRight(8))));
+            stockData.OutputValues.Keys.Select(key => key.PadRight(8))));
 
         for (var row = 0; row < rowsCount; row++)
         {
@@ -89,7 +89,7 @@ internal sealed class IndicatorLibraryExample : IDisposable
             var values = String.Join("\t\t", 
                 stockData.OutputValues.Values
                     // ReSharper disable once AccessToModifiedClosure
-                    .Select(_ => _[row].ToString("F2")));
+                    .Select(value => value[row].ToString("F2")));
 
             Console.WriteLine($"{date}\t{values}");
         }

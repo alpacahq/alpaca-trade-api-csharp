@@ -15,37 +15,37 @@ public sealed class MockClientsFactoryFixture
     internal MockHttpClient<AlpacaDataClientConfiguration, IAlpacaDataClient> GetAlpacaDataClientMock(
         IEnvironment? environment = null,
         AlpacaDataClientConfiguration? configuration = null) =>
-        new(configuration ?? getEnvironment(environment).GetAlpacaDataClientConfiguration(_secretKey), _ => _.GetClient());
+        new(configuration ?? getEnvironment(environment).GetAlpacaDataClientConfiguration(_secretKey), clientConfiguration => clientConfiguration.GetClient());
 
     internal MockHttpClient<AlpacaTradingClientConfiguration, IAlpacaTradingClient> GetAlpacaTradingClientMock(
         IEnvironment? environment = null,
         AlpacaTradingClientConfiguration? configuration = null) =>
-        new(configuration ?? getEnvironment(environment).GetAlpacaTradingClientConfiguration(_oauthKey), _ => _.GetClient());
+        new(configuration ?? getEnvironment(environment).GetAlpacaTradingClientConfiguration(_oauthKey), clientConfiguration => clientConfiguration.GetClient());
 
     internal MockHttpClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> GetAlpacaCryptoDataClientMock(
         IEnvironment? environment = null,
         AlpacaCryptoDataClientConfiguration? configuration = null) =>
-        new(configuration ?? getEnvironment(environment).GetAlpacaCryptoDataClientConfiguration(_secretKey),_ => _.GetClient());
+        new(configuration ?? getEnvironment(environment).GetAlpacaCryptoDataClientConfiguration(_secretKey),clientConfiguration => clientConfiguration.GetClient());
 
     internal MockWsClient<AlpacaStreamingClientConfiguration, IAlpacaStreamingClient> GetAlpacaStreamingClientMock(
         IEnvironment? environment = null,
         AlpacaStreamingClientConfiguration? configuration = null) =>
-        new(configuration ?? getEnvironment(environment).GetAlpacaStreamingClientConfiguration(_oauthKey), _ => _.GetClient());
+        new(configuration ?? getEnvironment(environment).GetAlpacaStreamingClientConfiguration(_oauthKey), clientConfiguration => clientConfiguration.GetClient());
 
     internal MockWsClient<AlpacaNewsStreamingClientConfiguration, IAlpacaNewsStreamingClient> GetAlpacaNewsStreamingClientMock(
         IEnvironment? environment = null,
         AlpacaNewsStreamingClientConfiguration? configuration = null) =>
-        new(configuration ?? getEnvironment(environment).GetAlpacaNewsStreamingClientConfiguration(_secretKey), _ => _.GetClient());
+        new(configuration ?? getEnvironment(environment).GetAlpacaNewsStreamingClientConfiguration(_secretKey), clientConfiguration => clientConfiguration.GetClient());
 
     internal MockWsClient<AlpacaDataStreamingClientConfiguration, IAlpacaDataStreamingClient> GetAlpacaDataStreamingClientMock(
         IEnvironment? environment = null,
         AlpacaDataStreamingClientConfiguration? configuration = null) =>
-        new(configuration ?? getEnvironment(environment).GetAlpacaDataStreamingClientConfiguration(_secretKey), _ => _.GetClient());
+        new(configuration ?? getEnvironment(environment).GetAlpacaDataStreamingClientConfiguration(_secretKey), clientConfiguration => clientConfiguration.GetClient());
 
     internal MockWsClient<AlpacaCryptoStreamingClientConfiguration, IAlpacaCryptoStreamingClient> GetAlpacaCryptoStreamingClientMock(
         IEnvironment? environment = null,
         AlpacaCryptoStreamingClientConfiguration? configuration = null) =>
-        new(configuration ?? getEnvironment(environment).GetAlpacaCryptoStreamingClientConfiguration(_secretKey), _ => _.GetClient());
+        new(configuration ?? getEnvironment(environment).GetAlpacaCryptoStreamingClientConfiguration(_secretKey), clientConfiguration => clientConfiguration.GetClient());
 
     private static IEnvironment getEnvironment(
         IEnvironment? environment) =>

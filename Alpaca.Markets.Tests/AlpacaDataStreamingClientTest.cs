@@ -26,8 +26,8 @@ public sealed class AlpacaDataStreamingClientTest
             await client.Client.ConnectAndAuthenticateAsync());
 
         await using (var helper = await SubscriptionHelper<IQuote>.Create(
-                         client.Client, _ => _.Validate(Stock),
-                         _ => _.GetQuoteSubscription(Stock)))
+                         client.Client, quote => quote.Validate(Stock),
+                         streamingClient => streamingClient.GetQuoteSubscription(Stock)))
         {
             await client.AddMessageAsync(
                 new JArray(Stock.CreateStreamingQuote()));
@@ -48,9 +48,9 @@ public sealed class AlpacaDataStreamingClientTest
             await client.Client.ConnectAndAuthenticateAsync());
 
         await using (var helper = await SubscriptionHelper<ITrade>.Create(
-                         client.Client, _ => _.Validate(Stock),
-                         _ => _.GetCancellationSubscription(Stock),
-                         _ => _.GetTradeSubscription(Stock)))
+                         client.Client, trade => trade.Validate(Stock),
+                         streamingClient => streamingClient.GetCancellationSubscription(Stock),
+                         streamingClient => streamingClient.GetTradeSubscription(Stock)))
         {
             await client.AddMessageAsync(
                 new JArray(Stock.CreateStreamingTrade("t")));
@@ -74,7 +74,7 @@ public sealed class AlpacaDataStreamingClientTest
 
         await using (var helper = await SubscriptionHelper<IStatus>.Create(
                          client.Client, validate,
-                         _ => _.GetStatusSubscription(Stock)))
+                         streamingClient => streamingClient.GetStatusSubscription(Stock)))
         {
             await client.AddMessageAsync(new JArray(createStatus()));
             Assert.True(helper.WaitAll());
@@ -95,7 +95,7 @@ public sealed class AlpacaDataStreamingClientTest
 
         await using (var helper = await SubscriptionHelper<ILimitUpLimitDown>.Create(
                          client.Client, validate,
-                         _ => _.GetLimitUpLimitDownSubscription(Stock)))
+                         streamingClient => streamingClient.GetLimitUpLimitDownSubscription(Stock)))
         {
             await client.AddMessageAsync(new JArray(createLimitUpLimitDown()));
             Assert.True(helper.WaitAll());
@@ -119,12 +119,12 @@ public sealed class AlpacaDataStreamingClientTest
         client.AddSubscription(channel, new JArray(Stock));
 
         await using (await SubscriptionHelper<ITrade>.Create(
-                   client.Client, _ => _.Validate(Stock),
-                   _ => _.GetTradeSubscription(Stock)))
+                   client.Client, streamingClient => streamingClient.Validate(Stock),
+                   streamingClient => streamingClient.GetTradeSubscription(Stock)))
         {
             await using var corrections =
                 await SubscriptionHelper<ICorrection>.Create(client.Client, validate,
-                    _ => _.GetCorrectionSubscription(Stock));
+                    streamingClient => streamingClient.GetCorrectionSubscription(Stock));
 
             await client.AddMessageAsync(new JArray(Stock.CreateCorrection()));
             Assert.True(corrections.WaitAll());
@@ -161,7 +161,7 @@ public sealed class AlpacaDataStreamingClientTest
         await client.AddMessageAsync(new JObject(new JProperty("T", channel)));
 
         await using (var subscriptionHelper = await SubscriptionHelper<ICorrection>.Create(
-                         client.Client, validate, _ => _.GetCorrectionSubscription(Stock)))
+                         client.Client, validate, streamingClient => streamingClient.GetCorrectionSubscription(Stock)))
         {
             subscriptionHelper.Subscribe(HandleCorrection);
 
@@ -176,6 +176,7 @@ public sealed class AlpacaDataStreamingClientTest
         client.Client.Connected -= HandleConnected;
 
         await client.Client.DisconnectAsync();
+        return;
 
         void HandleConnected(AuthStatus status)
         {

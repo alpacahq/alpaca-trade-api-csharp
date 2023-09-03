@@ -9,9 +9,11 @@ internal sealed class AlpacaDataSubscriptionContainer<TItem>
         IEnumerable<IAlpacaDataSubscription<TItem>> subscriptions) =>
         _subscriptions = subscriptions.ToList();
 
-    public IEnumerable<String> Streams => _subscriptions.SelectMany(_ => _.Streams);
+    public IEnumerable<String> Streams =>
+        _subscriptions.SelectMany(subscription => subscription.Streams);
 
-    public Boolean Subscribed => _subscriptions.All(_ => _.Subscribed);
+    public Boolean Subscribed =>
+        _subscriptions.All(subscription => subscription.Subscribed);
 
     public event Action? OnSubscribedChanged
     {

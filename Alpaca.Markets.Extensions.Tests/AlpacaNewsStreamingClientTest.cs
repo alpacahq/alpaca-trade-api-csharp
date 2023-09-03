@@ -24,7 +24,7 @@ public sealed class AlpacaNewsStreamingClientTest
         var opened = 0;
 
         var client = createMockClient(
-            _ => _.GetNewsSubscription(It.IsAny<String>()));
+            client => client.GetNewsSubscription(It.IsAny<String>()));
 
         var parameters = new ReconnectionParameters
         {
@@ -40,18 +40,21 @@ public sealed class AlpacaNewsStreamingClientTest
 
         var result = await wrapped.ConnectAndAuthenticateAsync();
 
-        client.Setup(_ => _.ConnectAndAuthenticateAsync(It.IsAny<CancellationToken>()))
+        client.Setup(streamingClient => streamingClient.ConnectAndAuthenticateAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(AuthStatus.Unauthorized);
-        client.Raise(_ => _.SocketClosed += null);
-        client.Raise(_ => _.SocketClosed += null);
-        await Task.Delay(ReconnectionParameters.Default.MaxReconnectionDelay);
-        client.Raise(_ => _.SocketClosed += null);
 
-        client.Raise(_ => _.OnError += null, new SocketException());
-        client.Raise(_ => _.OnError += null, new WebSocketException());
-        client.Raise(_ => _.OnError += null, new TaskCanceledException());
-        client.Raise(_ => _.OnError += null, new RestClientErrorException());
-        client.Raise(_ => _.OnError += null, new InvalidOperationException());
+        // ReSharper disable MethodHasAsyncOverload
+        client.Raise(streamingClient => streamingClient.SocketClosed += null);
+        client.Raise(streamingClient => streamingClient.SocketClosed += null);
+        await Task.Delay(ReconnectionParameters.Default.MaxReconnectionDelay);
+        client.Raise(streamingClient => streamingClient.SocketClosed += null);
+
+        client.Raise(streamingClient => streamingClient.OnError += null, new SocketException());
+        client.Raise(streamingClient => streamingClient.OnError += null, new WebSocketException());
+        client.Raise(streamingClient => streamingClient.OnError += null, new TaskCanceledException());
+        client.Raise(streamingClient => streamingClient.OnError += null, new RestClientErrorException());
+        client.Raise(streamingClient => streamingClient.OnError += null, new InvalidOperationException());
+        // ReSharper restore MethodHasAsyncOverload
 
         wrapped.OnWarning -= HandleWarning;
         wrapped.SocketOpened -= HandleOpened;
@@ -63,6 +66,7 @@ public sealed class AlpacaNewsStreamingClientTest
         Assert.Equal(0, connected);
         Assert.Equal(0, warnings);
         Assert.Equal(0, opened);
+        return;
 
         void HandleConnected(AuthStatus status) => ++connected;
         void HandleWarning(String message) => ++warnings;
@@ -77,25 +81,27 @@ public sealed class AlpacaNewsStreamingClientTest
         var errors = 0;
 
         var client = createMockClient(
-            _ => _.GetNewsSubscription(It.IsAny<String>()));
+            client => client.GetNewsSubscription(It.IsAny<String>()));
 
         using var wrapped = client.Object.WithReconnect();
 
         wrapped.OnError += HandleWarning;
 
-        client.Raise(_ => _.OnError += null, new RestClientErrorException());
+        // ReSharper disable once MethodHasAsyncOverload
+        client.Raise(streamingClient => streamingClient.OnError += null, new RestClientErrorException());
 
         wrapped.OnError -= HandleWarning;
 
         await wrapped.DisconnectAsync();
 
         Assert.Equal(expectedErrorsCount, errors);
+        return;
 
         void HandleWarning(
             Exception _)
         {
             ++errors;
-            client.Raise(__ => __.OnError += null, new TaskCanceledException());
+            client.Raise(streamingClient => streamingClient.OnError += null, new TaskCanceledException());
         }
     }
 
@@ -111,7 +117,7 @@ public sealed class AlpacaNewsStreamingClientTest
     public void GetNewsSubscriptionWorks()
     {
         var client = createMockClient(
-            _ => _.GetNewsSubscription(It.IsAny<String>()));
+            client => client.GetNewsSubscription(It.IsAny<String>()));
 
         var subscriptionOne = client.Object.GetNewsSubscription(_symbols);
         var subscriptionTwo = client.Object.GetNewsSubscription(Stock, Other);
@@ -126,7 +132,7 @@ public sealed class AlpacaNewsStreamingClientTest
     public async Task SubscribeNewsAsyncWorks()
     {
         var client = createMockClient(
-            _ => _.GetNewsSubscription(It.IsAny<String>()));
+            client => client.GetNewsSubscription(It.IsAny<String>()));
 
         await using var subscription = await client.Object.SubscribeNewsAsync(Stock);
         await using var subscriptionOne = await client.Object.SubscribeNewsAsync(_symbols);
@@ -144,7 +150,7 @@ public sealed class AlpacaNewsStreamingClientTest
         where TException : Exception, new()
     {
         var client = createMockClient(
-            _ => _.GetNewsSubscription(It.IsAny<String>()));
+            client => client.GetNewsSubscription(It.IsAny<String>()));
 
         var parameters = new ReconnectionParameters
         {
@@ -159,12 +165,15 @@ public sealed class AlpacaNewsStreamingClientTest
 
         var result = await wrapped.ConnectAndAuthenticateAsync();
 
-        client.Setup(_ => _.ConnectAndAuthenticateAsync(It.IsAny<CancellationToken>()))
+        client.Setup(c => c.ConnectAndAuthenticateAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(AuthStatus.Authorized);
-        client.Raise(_ => _.SocketClosed += null);
-        client.Raise(_ => _.SocketClosed += null);
+
+        // ReSharper disable MethodHasAsyncOverload
+        client.Raise(streamingClient => streamingClient.SocketClosed += null);
+        client.Raise(streamingClient => streamingClient.SocketClosed += null);
         await Task.Delay(ReconnectionParameters.Default.MaxReconnectionDelay);
-        client.Raise(_ => _.OnError += null, new TException());
+        client.Raise(streamingClient => streamingClient.OnError += null, new TException());
+        // ReSharper restore MethodHasAsyncOverload
 
         wrapped.OnError -= HandleError;
         wrapped.SocketClosed -= HandleClosed;
@@ -172,6 +181,7 @@ public sealed class AlpacaNewsStreamingClientTest
         await wrapped.DisconnectAsync();
 
         Assert.Equal(AuthStatus.Authorized, result);
+        return;
 
         void HandleError(Exception _) => throw new TException();
         void HandleClosed() => throw new TException();

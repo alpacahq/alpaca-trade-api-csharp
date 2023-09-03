@@ -21,7 +21,7 @@ internal sealed class AlpacaDataClient :
         LatestMarketDataListRequest request,
         CancellationToken cancellationToken = default) =>
         getLatestAsync<IBar, JsonHistoricalBar>(
-            request, "bars/latest", _ => _.Bars, cancellationToken);
+            request, "bars/latest", data => data.Bars, cancellationToken);
 
     public async Task<ITrade> GetLatestTradeAsync(
         LatestMarketDataRequest request,
@@ -34,7 +34,7 @@ internal sealed class AlpacaDataClient :
         LatestMarketDataListRequest request,
         CancellationToken cancellationToken = default) =>
         getLatestAsync<ITrade, JsonHistoricalTrade>(
-            request, "trades/latest", _ => _.Trades, cancellationToken);
+            request, "trades/latest", data => data.Trades, cancellationToken);
 
     public async Task<IQuote> GetLatestQuoteAsync(
         LatestMarketDataRequest request,
@@ -47,7 +47,7 @@ internal sealed class AlpacaDataClient :
         LatestMarketDataListRequest request,
         CancellationToken cancellationToken = default) =>
         getLatestAsync<IQuote, JsonHistoricalQuote>(
-            request, "quotes/latest", _ => _.Quotes, cancellationToken);
+            request, "quotes/latest", data => data.Quotes, cancellationToken);
 
     public async Task<ISnapshot> GetSnapshotAsync(
         LatestMarketDataRequest request,

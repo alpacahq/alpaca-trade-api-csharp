@@ -6,7 +6,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public void GetCorrectionSubscriptionWorks()
     {
         var client = createMockClient(
-            _ => _.GetCorrectionSubscription(It.IsAny<String>()));
+            client => client.GetCorrectionSubscription(It.IsAny<String>()));
 
         var subscriptionOne = client.Object.GetCorrectionSubscription(_symbols);
         var subscriptionTwo = client.Object.GetCorrectionSubscription(Stock, Other);
@@ -21,7 +21,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public async Task SubscribeCorrectionAsyncWorks()
     {
         var client = createMockClient(
-            _ => _.GetCorrectionSubscription(It.IsAny<String>()));
+            client => client.GetCorrectionSubscription(It.IsAny<String>()));
 
         await using var subscription = await client.Object.SubscribeCorrectionAsync(Stock);
         await using var subscriptionOne = await client.Object.SubscribeCorrectionAsync(_symbols);
