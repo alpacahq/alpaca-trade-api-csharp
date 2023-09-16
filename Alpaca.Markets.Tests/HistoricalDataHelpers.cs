@@ -166,6 +166,7 @@ internal static class HistoricalDataHelpers
             ITrade trade => trade.Validate(symbol),
             IQuote quote => quote.Validate(symbol),
             IAuction auction => auction.validate(symbol),
+            IMarketMover mover => mover.validate(symbol),
             _ => throw new NotSupportedException(
                 $"The {typeof(TItem)} not supported yet!")
         }));
@@ -326,6 +327,14 @@ internal static class HistoricalDataHelpers
             new JProperty("z", _tape),
             new JProperty("cs", Size),
             new JProperty("os", Size));
+    
+    public static JObject CreateStockMover(
+        this String symbol) =>
+        new(
+            new JProperty("percent_change", MidPrice),
+            new JProperty("change", AskPrice),
+            new JProperty("price", BidPrice),
+            new JProperty("symbol", symbol));
 
     private static Boolean validate(
         this IAuction auction,
@@ -350,6 +359,18 @@ internal static class HistoricalDataHelpers
         Assert.Equal(_condition, closing.Condition);
 
         Assert.True(opening.TimestampUtc <= DateTime.UtcNow);
+        return true;
+    }
+
+    private static Boolean validate(
+        this IMarketMover mover,
+        String symbol)
+    {
+        Assert.Equal(MidPrice, mover.PercentChange);
+        Assert.Equal(AskPrice, mover.Change);
+        Assert.Equal(BidPrice, mover.Price);
+        Assert.Equal(symbol, mover.Symbol);
+
         return true;
     }
 
