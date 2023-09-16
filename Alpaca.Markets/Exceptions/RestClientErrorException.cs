@@ -52,6 +52,7 @@ public sealed class RestClientErrorException : Exception
         JsonError error)
         : base(error.Message)
     {
+        ErrorInformation = error;
         HttpStatusCode = message.StatusCode;
         ErrorCode = error.Code ?? (Int32)HttpStatusCode;
     }
@@ -82,4 +83,9 @@ public sealed class RestClientErrorException : Exception
     /// Gets original HTTP status code returned by REST API endpoint.
     /// </summary>
     public HttpStatusCode? HttpStatusCode { get; }
+
+    /// <summary>
+    /// Gets extended error information if it provided by server.
+    /// </summary>
+    public IErrorInformation? ErrorInformation { get; }
 }

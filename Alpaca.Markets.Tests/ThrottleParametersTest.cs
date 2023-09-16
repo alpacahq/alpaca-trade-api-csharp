@@ -23,10 +23,19 @@ public sealed class ThrottleParametersTest
     [Fact]
     public async Task ThrottlingWithErrorMessageWorks()
     {
+        const String symbol = "AAPL";
+        const Decimal money = 1_000M;
+        const Int32 orders = 10;
+
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
         var errorMessage = new JObject(
+            new JProperty("day_trading_buying_power", money),
+            new JProperty("max_dtbp_used_so_far", money),
+            new JProperty("open_orders", orders),
+            new JProperty("max_dtbp_used", money),
             new JProperty("message", Message),
+            new JProperty("symbol", symbol),
             new JProperty("code", ErrorCode)).ToString();
 
         var delay = TimeSpan.FromMilliseconds(100);
@@ -46,6 +55,15 @@ public sealed class ThrottleParametersTest
         Assert.Equal(Message,exception.Message);
         Assert.Equal(ErrorCode, exception.ErrorCode);
         Assert.Equal(HttpStatusCode.ServiceUnavailable, exception.HttpStatusCode);
+
+        var info = exception.ErrorInformation;
+
+        Assert.NotNull(info);
+        Assert.Equal(symbol, info.Symbol);
+        Assert.Equal(orders, info.OpenOrdersCount);
+        Assert.Equal(money, info.DayTradingBuyingPower);
+        Assert.Equal(money, info.MaxDayTradingBuyingPowerUsed);
+        Assert.Equal(money, info.MaxDayTradingBuyingPowerUsedSoFar);
         return;
 
         KeyValuePair<String, String> AsHeader(
@@ -87,6 +105,7 @@ public sealed class ThrottleParametersTest
         var exception = await Assert.ThrowsAsync<RestClientErrorException>(
             () => mock.Client.CancelOrderAsync(Guid.NewGuid()));
 
+        Assert.Null(exception.ErrorInformation);
         Assert.NotEqual("HTTP 500: Unknown server error.",exception.Message);
         Assert.Equal((Int32)HttpStatusCode.InternalServerError, exception.ErrorCode);
         Assert.Equal(HttpStatusCode.InternalServerError, exception.HttpStatusCode);

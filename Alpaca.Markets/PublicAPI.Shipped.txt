@@ -578,6 +578,12 @@ Alpaca.Markets.IEnvironment.AlpacaDataStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaNewsStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaTradingApi.get -> System.Uri!
+Alpaca.Markets.IErrorInformation
+Alpaca.Markets.IErrorInformation.DayTradingBuyingPower.get -> decimal?
+Alpaca.Markets.IErrorInformation.MaxDayTradingBuyingPowerUsed.get -> decimal?
+Alpaca.Markets.IErrorInformation.MaxDayTradingBuyingPowerUsedSoFar.get -> decimal?
+Alpaca.Markets.IErrorInformation.OpenOrdersCount.get -> int?
+Alpaca.Markets.IErrorInformation.Symbol.get -> string!
 Alpaca.Markets.IExclusiveTimeInterval
 Alpaca.Markets.IInclusiveTimeInterval
 Alpaca.Markets.IIntervalCalendar
@@ -1056,6 +1062,7 @@ Alpaca.Markets.RequestValidationException.RequestValidationException(string! mes
 Alpaca.Markets.RequestValidationException.RequestValidationException(string! message, System.Exception! inner) -> void
 Alpaca.Markets.RestClientErrorException
 Alpaca.Markets.RestClientErrorException.ErrorCode.get -> int
+Alpaca.Markets.RestClientErrorException.ErrorInformation.get -> Alpaca.Markets.IErrorInformation?
 Alpaca.Markets.RestClientErrorException.HttpStatusCode.get -> System.Net.HttpStatusCode?
 Alpaca.Markets.RestClientErrorException.RestClientErrorException() -> void
 Alpaca.Markets.RestClientErrorException.RestClientErrorException(string! message) -> void
