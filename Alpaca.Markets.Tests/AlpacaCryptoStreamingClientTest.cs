@@ -89,6 +89,33 @@ public sealed class AlpacaCryptoStreamingClientTest
     }
 
     [Fact]
+    public async Task ConnectAndSubscribeAllQuotesWorks()
+    {
+        var configuration = new AlpacaCryptoStreamingClientConfiguration()
+            .WithExchanges(Enum.GetValues<CryptoExchange>().AsEnumerable());
+
+        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock(configuration: configuration);
+
+        await client.AddAuthenticationAsync();
+
+        Assert.Equal(AuthStatus.Authorized,
+            await client.Client.ConnectAndAuthenticateAsync());
+
+        await using (var helper = await SubscriptionHelper<IQuote>.Create(
+                         client.Client, quote => quote.Validate(Crypto),
+                         streamingClient => streamingClient.GetQuoteSubscription()))
+        {
+            await client.AddMessageAsync(
+                new JArray(Crypto.CreateStreamingQuote()));
+            Assert.True(helper.WaitAll());
+        }
+
+        await client.Client.DisconnectAsync();
+
+        Assert.Equal(Enum.GetValues<CryptoExchange>(), configuration.Exchanges);
+    }
+
+    [Fact]
     public async Task ConnectAndSubscribeTradesWorks()
     {
         using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock();

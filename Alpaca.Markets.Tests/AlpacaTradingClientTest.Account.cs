@@ -13,6 +13,7 @@ public sealed partial class AlpacaTradingClientTest
     public async Task GetAccountAsyncWorks()
     {
         const Decimal cash = 10_000M;
+        const Decimal transfer = 0M;
         const Int32 multiplier = 4;
         const UInt64 count = 2UL;
 
@@ -20,9 +21,12 @@ public sealed partial class AlpacaTradingClientTest
 
         mock.AddGet("/v2/account", new JObject(
             new JProperty("account_number", Guid.NewGuid().ToString("D")),
+            new JProperty("crypto_status", AccountStatus.Active),
             new JProperty("non_maginable_buying_power", Price),
             new JProperty("daytrading_buying_power", Price),
             new JProperty("last_maintenance_margin", Price),
+            new JProperty("pending_transfer_out", transfer),
+            new JProperty("pending_transfer_in", transfer),
             new JProperty("trade_suspended_by_user", true),
             new JProperty("status", AccountStatus.Active),
             new JProperty("created_at", DateTime.UtcNow),
@@ -32,6 +36,7 @@ public sealed partial class AlpacaTradingClientTest
             new JProperty("regt_buying_power", Price),
             new JProperty("long_market_value", Price),
             new JProperty("transfers_blocked", false),
+            new JProperty("accrued_fees", transfer),
             new JProperty("trading_blocked", false),
             new JProperty("account_blocked", false),
             new JProperty("shorting_enabled", true),
@@ -51,6 +56,12 @@ public sealed partial class AlpacaTradingClientTest
         Assert.NotEqual(Guid.NewGuid(), account.AccountId);
         Assert.False(String.IsNullOrEmpty(account.Currency));
         Assert.Equal(count, account.DayTradeCount);
+
+        Assert.Equal(AccountStatus.Active, account.CryptoStatus);
+        Assert.Equal(AccountStatus.Active, account.Status);
+        Assert.Equal(transfer, account.PendingTransferOut);
+        Assert.Equal(transfer, account.PendingTransferIn);
+        Assert.Equal(transfer, account.AccruedFees);
 
         Assert.True(account.LastMaintenanceMargin != 0M);
         Assert.True(account.MaintenanceMargin != 0M);
@@ -91,6 +102,7 @@ public sealed partial class AlpacaTradingClientTest
 
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
+        var orderId = Guid.NewGuid();
         var activityGuid = Guid.NewGuid();
         var timestamp = new DateTime(2022, 02, 21, 10, 30, 0, DateTimeKind.Utc);
 
@@ -105,6 +117,7 @@ public sealed partial class AlpacaTradingClientTest
                 new JProperty("side", OrderSide.Sell),
                 new JProperty("net_amount", amount),
                 new JProperty("leaves_qty", Price),
+                new JProperty("order_id", orderId),
                 new JProperty("date", timestamp),
                 new JProperty("Symbol", Stock),
                 new JProperty("qty", quantity),
@@ -121,6 +134,7 @@ public sealed partial class AlpacaTradingClientTest
 
         var activity = activities.Single();
 
+        Assert.Equal(orderId, activity.OrderId);
         Assert.Equal(activityGuid, activity.ActivityGuid);
         Assert.Equal(timestamp.Date, activity.ActivityDateTimeUtc.Date);
         Assert.Equal(DateOnly.FromDateTime(timestamp.Date), activity.ActivityDate!.Value);
@@ -210,6 +224,7 @@ public sealed partial class AlpacaTradingClientTest
             // ReSharper disable once StringLiteralTypo
             new JProperty("dtbp_check", DayTradeMarginCallProtection.Both),
             new JProperty("trade_confirm_email", TradeConfirmEmail.All),
+            new JProperty("ptp_no_exception_entry", false),
             new JProperty("suspend_trade", false),
             new JProperty("no_shorting", true));
 

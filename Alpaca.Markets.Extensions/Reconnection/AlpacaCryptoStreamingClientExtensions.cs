@@ -10,6 +10,7 @@ public static partial class AlpacaCryptoStreamingClientExtensions
         ClientWithSubscriptionReconnectBase<IAlpacaCryptoStreamingClient>,
         IAlpacaCryptoStreamingClient
     {
+        [ExcludeFromCodeCoverage]
         public ClientWithReconnection(
             IAlpacaCryptoStreamingClient client,
             ReconnectionParameters reconnectionParameters)
@@ -66,6 +67,7 @@ public static partial class AlpacaCryptoStreamingClientExtensions
     /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     public static IAlpacaCryptoStreamingClient WithReconnect(
         this IAlpacaCryptoStreamingClient client) =>
         WithReconnect(client.EnsureNotNull(), ReconnectionParameters.Default);
@@ -82,6 +84,7 @@ public static partial class AlpacaCryptoStreamingClientExtensions
     /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     public static IAlpacaCryptoStreamingClient WithReconnect(
         this IAlpacaCryptoStreamingClient client,
         ReconnectionParameters parameters) =>

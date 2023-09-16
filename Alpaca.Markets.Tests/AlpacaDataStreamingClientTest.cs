@@ -38,6 +38,28 @@ public sealed class AlpacaDataStreamingClientTest
     }
 
     [Fact]
+    public async Task ConnectAndSubscribeAllQuotesWorks()
+    {
+        using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock(Environments.Paper);
+
+        await client.AddAuthenticationAsync();
+
+        Assert.Equal(AuthStatus.Authorized,
+            await client.Client.ConnectAndAuthenticateAsync());
+
+        await using (var helper = await SubscriptionHelper<IQuote>.Create(
+                         client.Client, quote => quote.Validate(Stock),
+                         streamingClient => streamingClient.GetQuoteSubscription()))
+        {
+            await client.AddMessageAsync(
+                new JArray(Stock.CreateStreamingQuote()));
+            Assert.True(helper.WaitAll());
+        }
+
+        await client.Client.DisconnectAsync();
+    }
+
+    [Fact]
     public async Task ConnectAndSubscribeTradesWorks()
     {
         using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock();

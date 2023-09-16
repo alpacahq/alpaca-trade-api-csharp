@@ -29,6 +29,7 @@ public sealed partial class AlpacaTradingClientTest
 
         var assets = await mock.Client.ListAssetsAsync(new AssetsRequest
         {
+            Attributes = { AssetAttributes.PtpNoException },
             AssetStatus = AssetStatus.Active,
             AssetClass = AssetClass.UsEquity,
             Exchange = Exchange.Arca
@@ -41,6 +42,7 @@ public sealed partial class AlpacaTradingClientTest
         Guid assetId,
         String symbol) =>
         new(
+            new JProperty("attributes", new JArray(AssetAttributes.PtpNoException)),
             new JProperty("maintenance_margin_requirement", 100),
             new JProperty("status", AssetStatus.Active),
             new JProperty("class", AssetClass.UsEquity),
@@ -79,5 +81,8 @@ public sealed partial class AlpacaTradingClientTest
         Assert.NotNull(asset.PriceIncrement);
         Assert.NotNull(asset.MinTradeIncrement);
         Assert.NotNull(asset.MaintenanceMarginRequirement);
+
+        Assert.Single(asset.Attributes);
+        Assert.Equal(AssetAttributes.PtpNoException, asset.Attributes.First());
     }
 }

@@ -10,6 +10,7 @@ public static partial class AlpacaDataStreamingClientExtensions
         ClientWithSubscriptionReconnectBase<IAlpacaDataStreamingClient>,
         IAlpacaDataStreamingClient
     {
+        [ExcludeFromCodeCoverage]
         public ClientWithReconnection(
             IAlpacaDataStreamingClient client,
             ReconnectionParameters reconnectionParameters)
@@ -77,6 +78,7 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     public static IAlpacaDataStreamingClient WithReconnect(
         this IAlpacaDataStreamingClient client) =>
         WithReconnect(client.EnsureNotNull(), ReconnectionParameters.Default);
@@ -93,6 +95,7 @@ public static partial class AlpacaDataStreamingClientExtensions
     /// <returns>Wrapped version of the <paramref name="client"/> object with reconnect.</returns>
     [UsedImplicitly]
     [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
     public static IAlpacaDataStreamingClient WithReconnect(
         this IAlpacaDataStreamingClient client,
         ReconnectionParameters parameters) =>

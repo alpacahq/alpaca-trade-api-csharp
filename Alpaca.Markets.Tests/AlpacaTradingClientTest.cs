@@ -98,4 +98,45 @@ public sealed partial class AlpacaTradingClientTest
 
         Assert.NotNull(JsonConvert.SerializeObject(clock));
     }
+
+    [Fact]
+    public async Task GetRateLimitValuesWorks()
+    {
+        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+
+        var oldLimits = mock.Client.GetRateLimitValues();
+
+        Assert.Equal(0, oldLimits.Limit);
+        Assert.Equal(0, oldLimits.Remaining);
+        Assert.Equal(new DateTime(), oldLimits.ResetTimeUtc);
+
+        var resetTime = DateTimeOffset.FromUnixTimeSeconds(
+            new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds());
+
+        mock.AddGet("/v2/clock", new JObject(
+            new JProperty("next_close", DateTime.Today.AddDays(2)),
+            new JProperty("next_open", DateTime.Today.AddDays(1)),
+            new JProperty("timestamp", DateTime.UtcNow),
+            new JProperty("is_open", true)).ToString(),
+            HttpStatusCode.OK, GetHeaders().ToArray());
+
+        await mock.Client.GetClockAsync();
+
+        var newLimits = mock.Client.GetRateLimitValues();
+
+        Assert.Equal(100, newLimits.Limit);
+        Assert.Equal(99, newLimits.Remaining);
+        Assert.Equal(resetTime.UtcDateTime, newLimits.ResetTimeUtc);
+
+        return;
+
+        IEnumerable<KeyValuePair<String, String>> GetHeaders() =>
+            new KeyValuePair<String, String>[]
+            {
+                new ("X-Ratelimit-Limit", "100"),
+                new ("X-Ratelimit-Remaining", "99"),
+                new ("X-Ratelimit-Reset",
+                    resetTime.ToUnixTimeSeconds().ToString(CultureInfo.InvariantCulture))
+            };
+    }
 }
