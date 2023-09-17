@@ -19,6 +19,7 @@ public static class IntervalExtensions
     /// </summary>
     /// <param name="interval">Input date interval for converting.</param>
     /// <returns>Inclusive time interval initialized with data from the original date interval.</returns>
+    [UsedImplicitly]
     public static Interval<DateTime> AsTimeInterval(
         this Interval<DateOnly> interval) =>
         new(interval.From.AsDateTime(), interval.Into.AsDateTime());

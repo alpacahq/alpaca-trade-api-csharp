@@ -25,6 +25,7 @@ public interface IAlpacaScreenerClient
     /// .NET Core and .NET 5 and later only: The request failed due to timeout.
     /// </exception>
     /// <returns>Read-only market movers collections.</returns>
+    [UsedImplicitly]
     Task<IMarketMovers> GetTopMarketMoversAsync(
         Int32? numberOfLosersAndGainersInResponse = default,
         CancellationToken cancellationToken = default);

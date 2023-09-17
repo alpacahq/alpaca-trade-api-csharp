@@ -37,47 +37,10 @@ public sealed class AnnouncementsRequest : Validation.IRequest
     }
 
     /// <summary>
-    /// Creates new instance of <see cref="AnnouncementsRequest"/> object.
-    /// </summary>
-    /// <param name="corporateActionType">Single corporate action type for filtering.</param>
-    /// <param name="timeInterval">Date range when searching corporate action announcements.</param>
-    [ExcludeFromCodeCoverage]
-    [Obsolete("This constructor will be removed in the next major release. Use overload that takes Interval<DateOnly> argument.", true)]
-    public AnnouncementsRequest(
-        CorporateActionType corporateActionType,
-        IInclusiveTimeInterval timeInterval)
-        : this (corporateActionType, timeInterval.EnsureNotNull().AsDateOnlyInterval())
-    {
-    }
-
-    /// <summary>
-    /// Creates new instance of <see cref="AnnouncementsRequest"/> object.
-    /// </summary>
-    /// <param name="corporateActionTypes">List of the corporate action types for filtering.</param>
-    /// <param name="timeInterval">Date range when searching corporate action announcements.</param>
-    [ExcludeFromCodeCoverage]
-    [Obsolete("This constructor will be removed in the next major release. Use overload that takes Interval<DateOnly> argument.", true)]
-    public AnnouncementsRequest(
-        IEnumerable<CorporateActionType> corporateActionTypes,
-        IInclusiveTimeInterval timeInterval)
-        : this (corporateActionTypes, timeInterval.EnsureNotNull().AsDateOnlyInterval())
-    {
-    }
-
-    /// <summary>
     /// Gets the list of the corporate action types for filtering.
     /// </summary>
     [UsedImplicitly]
     public IReadOnlyCollection<CorporateActionType> CorporateActionTypes => _corporateActionTypes;
-
-    /// <summary>
-    /// Gets the date range when searching corporate action announcements.
-    /// </summary>
-    [UsedImplicitly]
-    [ExcludeFromCodeCoverage]
-    [Obsolete("This property will be removed in the next major release. Use the DateInterval property instead.", true)]
-    public IInclusiveTimeInterval TimeInterval =>
-        throw new InvalidOperationException("Use the DateInterval property instead.");
 
     /// <summary>
     /// Gets the date range when searching corporate action announcements.

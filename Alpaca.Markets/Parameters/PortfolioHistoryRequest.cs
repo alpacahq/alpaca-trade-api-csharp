@@ -10,14 +10,6 @@ public sealed class PortfolioHistoryRequest
     /// Gets inclusive date interval for filtering items in response.
     /// </summary>
     [UsedImplicitly]
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use the DateInterval property instead of this one.", true)]
-    public Interval<DateTime> TimeInterval => DateInterval.AsTimeInterval();
-
-    /// <summary>
-    /// Gets inclusive date interval for filtering items in response.
-    /// </summary>
-    [UsedImplicitly]
     public Interval<DateOnly> DateInterval { get; private set; }
 
     /// <summary>
@@ -54,22 +46,6 @@ public sealed class PortfolioHistoryRequest
                 .AddParameter("extended_hours", ExtendedHours)
                 .AsStringAsync().ConfigureAwait(false)
         };
-
-    /// <summary>
-    /// Sets time interval for filtering data returned by this request.
-    /// /// </summary>
-    /// <param name="value">New filtering interval.</param>
-    /// <returns>Request with applied filtering.</returns>
-    [UsedImplicitly]
-    [ExcludeFromCodeCoverage]
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [Obsolete("Use the override that gets Interval<DateOnly> instead of this one.", true)]
-    public PortfolioHistoryRequest WithInterval(
-        Interval<DateTime> value)
-    {
-        DateInterval = value.AsDateInterval();
-        return this;
-    }
 
     /// <summary>
     /// Sets time interval for filtering data returned by this request.

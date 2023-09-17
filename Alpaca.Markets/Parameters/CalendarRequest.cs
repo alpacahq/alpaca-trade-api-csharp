@@ -1,7 +1,7 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListCalendarAsync(CalendarRequest,CancellationToken)"/> call.
+/// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListIntervalCalendarAsync(CalendarRequest,CancellationToken)"/> call.
 /// </summary>
 public sealed class CalendarRequest
  {
@@ -31,36 +31,16 @@ public sealed class CalendarRequest
      public CalendarRequest(
          Interval<DateOnly> dateInterval) =>
          DateInterval = dateInterval;
-     
-    /// <summary>
-    /// Creates new instance of <see cref="CalendarRequest"/> object with the
-    /// <see cref="TimeInterval"/> property configured for the single day.
-    /// </summary>
-    /// <param name="date"></param>
-    /// <returns></returns>
-    [UsedImplicitly]
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use another method overload that takes the DateOnly argument.", true)]
-    public static CalendarRequest GetForSingleDay(DateTime date) =>
-        GetForSingleDay(DateOnly.FromDateTime(date));
 
     /// <summary>
     /// Creates new instance of <see cref="CalendarRequest"/> object with the
-    /// <see cref="TimeInterval"/> property configured for the single day.
+    /// <see cref="DateInterval"/> property configured for the single day.
     /// </summary>
     /// <param name="date"></param>
     /// <returns></returns>
     [UsedImplicitly]
     public static CalendarRequest GetForSingleDay(DateOnly date) =>
         new(new Interval<DateOnly>(date));
-
-    /// <summary>
-    /// Gets inclusive date interval for filtering items in response.
-    /// </summary>
-    [UsedImplicitly]
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use the DateInterval property instead of this one.", true)]
-    public Interval<DateTime> TimeInterval => DateInterval.AsTimeInterval();
 
     /// <summary>
     /// Gets inclusive date interval for filtering items in response.

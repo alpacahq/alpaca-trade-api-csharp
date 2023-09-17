@@ -10,7 +10,7 @@ public sealed class LatestOrderBooksRequest : Validation.IRequest
     private readonly HashSet<CryptoExchange> _exchanges = new();
 
     /// <summary>
-    /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
+    /// Creates new instance of <see cref="LatestOrderBooksRequest"/> object.
     /// </summary>
     /// <param name="symbols">Asset symbols list for data retrieval.</param>
     /// <param name="exchanges">Crypto exchanges list for data retrieval.</param>
@@ -24,7 +24,7 @@ public sealed class LatestOrderBooksRequest : Validation.IRequest
         _exchanges.UnionWith(exchanges.EnsureNotNull());
 
     /// <summary>
-    /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
+    /// Creates new instance of <see cref="LatestOrderBooksRequest"/> object.
     /// </summary>
     /// <param name="symbols">Asset symbols list for data retrieval.</param>
     /// <param name="exchange">Crypto exchange for data retrieval.</param>
@@ -39,7 +39,7 @@ public sealed class LatestOrderBooksRequest : Validation.IRequest
         _exchanges.Add(exchange);
 
     /// <summary>
-    /// Creates new instance of <see cref="LatestBestBidOfferListRequest"/> object.
+    /// Creates new instance of <see cref="LatestOrderBooksRequest"/> object.
     /// </summary>
     /// <param name="symbols">Asset symbols list for data retrieval.</param>
     /// <exception cref="ArgumentNullException">

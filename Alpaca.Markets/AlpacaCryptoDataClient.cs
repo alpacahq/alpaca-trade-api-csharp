@@ -10,31 +10,11 @@ internal sealed class AlpacaCryptoDataClient :
     {
     }
 
-    [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release of SDK. Use the ListLatestBarsAsync method instead.", false)]
-    public async Task<IBar> GetLatestBarAsync(
-        LatestDataRequest request,
-        CancellationToken cancellationToken = default) =>
-        await HttpClient.GetAsync<IBar, JsonLatestBar>(
-            await request.EnsureNotNull().Validate()
-                .GetUriBuilderAsync(HttpClient, "bars").ConfigureAwait(false),
-            RateLimitHandler, cancellationToken).ConfigureAwait(false);
-
     public Task<IReadOnlyDictionary<String, IBar>> ListLatestBarsAsync(
         LatestDataListRequest request,
         CancellationToken cancellationToken = default) =>
         getLatestAsync<IBar, JsonHistoricalBar>(
             request, "bars", data => data.Bars, cancellationToken);
-
-    [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release of SDK. Use the ListLatestTradesAsync method instead.", false)]
-    public async Task<ITrade> GetLatestTradeAsync(
-        LatestDataRequest request,
-        CancellationToken cancellationToken = default) =>
-        await HttpClient.GetAsync<ITrade, JsonLatestTrade>(
-            await request.EnsureNotNull().Validate()
-                .GetUriBuilderAsync(HttpClient, "trades").ConfigureAwait(false),
-            RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IReadOnlyDictionary<String, ITrade>> ListLatestTradesAsync(
         LatestDataListRequest request,
@@ -42,51 +22,11 @@ internal sealed class AlpacaCryptoDataClient :
         getLatestAsync<ITrade, JsonHistoricalTrade>(
             request, "trades", data => data.Trades, cancellationToken);
 
-    [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release of SDK. Use the ListLatestQuotesAsync method instead.", false)]
-    public async Task<IQuote> GetLatestQuoteAsync(
-        LatestDataRequest request,
-        CancellationToken cancellationToken = default) =>
-        await HttpClient.GetAsync<IQuote, JsonLatestQuote<JsonHistoricalCryptoQuote>>(
-            await request.EnsureNotNull().Validate()
-                .GetUriBuilderAsync(HttpClient, "quotes").ConfigureAwait(false),
-            RateLimitHandler, cancellationToken).ConfigureAwait(false);
-
     public Task<IReadOnlyDictionary<String, IQuote>> ListLatestQuotesAsync(
         LatestDataListRequest request,
         CancellationToken cancellationToken = default) =>
         getLatestAsync<IQuote, JsonHistoricalCryptoQuote>(
             request, "quotes", data => data.Quotes, cancellationToken);
-
-    [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release of SDK.", true)]
-    public async Task<IQuote> GetLatestBestBidOfferAsync(
-        LatestBestBidOfferRequest request,
-        CancellationToken cancellationToken = default) =>
-        await HttpClient.GetAsync<IQuote, JsonLatestBestBidOffer>(
-            await request.EnsureNotNull().Validate()
-                .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
-            RateLimitHandler, cancellationToken).ConfigureAwait(false);
-
-    [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release of SDK.", true)]
-    public async Task<IReadOnlyDictionary<String, IQuote>> ListLatestBestBidOffersAsync(
-        LatestBestBidOfferListRequest request,
-        CancellationToken cancellationToken = default) =>
-        await getLatestAsync<IQuote, JsonHistoricalCryptoQuote>(
-            await request.EnsureNotNull().Validate()
-                .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
-            data => data.LatestBestBidOffers, cancellationToken).ConfigureAwait(false);
-
-    [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release of SDK. Use the ListSnapshotsAsync method instead.", true)]
-    public async Task<ISnapshot> GetSnapshotAsync(
-        SnapshotDataRequest request,
-        CancellationToken cancellationToken = default) =>
-        await HttpClient.GetAsync<ISnapshot, JsonCryptoSnapshot>(
-            await request.EnsureNotNull().Validate()
-                .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
-            RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public async Task<IReadOnlyDictionary<String, ISnapshot>> ListSnapshotsAsync(
         SnapshotDataListRequest request,

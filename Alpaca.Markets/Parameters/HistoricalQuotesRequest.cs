@@ -99,40 +99,6 @@ public sealed class HistoricalQuotesRequest : HistoricalRequestBase, IHistorical
     }
 
     /// <summary>
-    /// Creates new instance of <see cref="HistoricalQuotesRequest"/> object.
-    /// </summary>
-    /// <param name="symbol">Asset symbol for data retrieval.</param>
-    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
-    /// <exception cref="ArgumentNullException">
-    /// The <paramref name="symbol"/> argument is <c>null</c>.
-    /// </exception>
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
-    public HistoricalQuotesRequest(
-        String symbol,
-        IInclusiveTimeInterval timeInterval)
-        : this(new[] { symbol.EnsureNotNull() }, timeInterval)
-    {
-    }
-
-    /// <summary>
-    /// Creates new instance of <see cref="HistoricalQuotesRequest"/> object.
-    /// </summary>
-    /// <param name="symbols">Asset symbols for data retrieval.</param>
-    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
-    /// <exception cref="ArgumentNullException">
-    /// The <paramref name="symbols"/> argument is <c>null</c>.
-    /// </exception>
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
-    public HistoricalQuotesRequest(
-        IEnumerable<String> symbols,
-        IInclusiveTimeInterval timeInterval)
-        : base(symbols.EnsureNotNull(), timeInterval)
-    {
-    }
-
-    /// <summary>
     /// Gets or sets the feed to pull market data from. The <see cref="MarketDataFeed.Sip"/> and
     /// <see cref="MarketDataFeed.Otc"/> are only available to those with a subscription. Default is
     /// <see cref="MarketDataFeed.Iex"/> for free plans and <see cref="MarketDataFeed.Sip"/> for paid.

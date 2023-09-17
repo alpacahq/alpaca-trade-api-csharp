@@ -86,13 +86,6 @@ internal sealed partial class AlpacaTradingClient
         _httpClient.GetAsync<IClock, JsonClock>(
             "v2/clock", _rateLimitHandler, cancellationToken);
 
-    [Obsolete("This method is now obsolete, use ListIntervalCalendarAsync method instead.", true)]
-    [ExcludeFromCodeCoverage]
-    public Task<IReadOnlyList<ICalendar>> ListCalendarAsync(
-        CalendarRequest request,
-        CancellationToken cancellationToken = default) =>
-        throw new InvalidOperationException("Use ListIntervalCalendarAsync method instead.");
-
     public async Task<IReadOnlyList<IIntervalCalendar>> ListIntervalCalendarAsync(
         CalendarRequest request,
         CancellationToken cancellationToken = default) =>
