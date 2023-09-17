@@ -7,10 +7,10 @@
 internal sealed class JsonMarketMovers : IMarketMovers
 {
     [JsonProperty(PropertyName = "losers", Required = Required.Always)]
-    public List<JsonMarketMover> LosersList { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public List<JsonMarketMover> LosersList { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "gainers", Required = Required.Always)]
-    public List<JsonMarketMover> GainersList { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public List<JsonMarketMover> GainersList { get; [ExcludeFromCodeCoverage] set; } = new();
 
     public IReadOnlyList<IMarketMover> Losers =>
         LosersList.EmptyIfNull<IMarketMover>();

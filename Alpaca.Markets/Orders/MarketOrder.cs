@@ -29,7 +29,7 @@ public sealed class MarketOrder : SimpleOrderBase
     public static MarketOrder Buy(
         String symbol,
         OrderQuantity quantity) =>
-        new (symbol.EnsureNotNull(), quantity, OrderSide.Buy);
+        new(symbol.EnsureNotNull(), quantity, OrderSide.Buy);
 
     /// <summary>
     /// Creates new sell market order using specified symbol and quantity.
@@ -44,5 +44,5 @@ public sealed class MarketOrder : SimpleOrderBase
     public static MarketOrder Sell(
         String symbol,
         OrderQuantity quantity) =>
-        new (symbol.EnsureNotNull(), quantity, OrderSide.Sell);
+        new(symbol.EnsureNotNull(), quantity, OrderSide.Sell);
 }

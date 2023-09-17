@@ -2,7 +2,7 @@
 
 internal sealed partial class AlpacaTradingClient : IAlpacaTradingClient
 {
-    private readonly RateLimitHandler _rateLimitHandler = new ();
+    private readonly RateLimitHandler _rateLimitHandler = new();
 
     private readonly HttpClient _httpClient;
 

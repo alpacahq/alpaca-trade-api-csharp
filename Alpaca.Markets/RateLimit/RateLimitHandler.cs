@@ -5,7 +5,7 @@ namespace Alpaca.Markets;
 
 internal sealed class RateLimitHandler : IDisposable
 {
-    private readonly ReaderWriterLockSlim _lock = new (LockRecursionPolicy.NoRecursion);
+    private readonly ReaderWriterLockSlim _lock = new(LockRecursionPolicy.NoRecursion);
 
     private RateLimitValues _current;
 

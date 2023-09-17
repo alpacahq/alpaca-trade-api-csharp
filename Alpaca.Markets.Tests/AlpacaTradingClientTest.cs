@@ -133,9 +133,9 @@ public sealed partial class AlpacaTradingClientTest
         IEnumerable<KeyValuePair<String, String>> GetHeaders() =>
             new KeyValuePair<String, String>[]
             {
-                new ("X-Ratelimit-Limit", "100"),
-                new ("X-Ratelimit-Remaining", "99"),
-                new ("X-Ratelimit-Reset",
+                new("X-Ratelimit-Limit", "100"),
+                new("X-Ratelimit-Remaining", "99"),
+                new("X-Ratelimit-Reset",
                     resetTime.ToUnixTimeSeconds().ToString(CultureInfo.InvariantCulture))
             };
     }

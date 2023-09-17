@@ -18,7 +18,7 @@ internal sealed class JsonLatestData<TQuote>
     public Dictionary<String, JsonCryptoSnapshot> Snapshots { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "orderbooks", Required = Required.Default)]
-    public Dictionary<String, JsonHistoricalOrderBook> OrderBooks { get; [ExcludeFromCodeCoverage] set; } = new ();
+    public Dictionary<String, JsonHistoricalOrderBook> OrderBooks { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [Obsolete]
     [ExcludeFromCodeCoverage]

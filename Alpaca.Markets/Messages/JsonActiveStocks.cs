@@ -6,5 +6,5 @@
 internal sealed class JsonActiveStocks
 {
     [JsonProperty(PropertyName = "most_actives", Required = Required.Always)]
-    public List<JsonActiveStock> MostActives { get; } = new ();
+    public List<JsonActiveStock> MostActives { get; } = new();
 }
