@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alpaca.Markets.Tests;
 
 [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Global")]
+[SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Local")]
 internal static class HistoricalDataHelpers
 {
     private static readonly String _condition = Guid.NewGuid().ToString("D");
