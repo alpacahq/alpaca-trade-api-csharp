@@ -45,7 +45,7 @@ public sealed class LatestDataListRequest : Validation.IRequest
     /// </summary>
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
-    [Obsolete("This query parameter doesn't support anymore, the property will be removed in the next major release of SDK.", false)]
+    [Obsolete("This query parameter doesn't support anymore, the property will be removed in the next minor release of SDK.", true)]
     public CryptoExchange Exchange { get; }
 
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(

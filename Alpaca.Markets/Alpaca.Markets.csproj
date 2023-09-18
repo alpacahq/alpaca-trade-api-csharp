@@ -19,7 +19,7 @@
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Fix all discrepancies with the latest 6.2.x release and prepare for the final code cleanup.
+- Added the new 'IErrorInformation` interface and the `ErrorInformation` property into the `RestClientException` class.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>

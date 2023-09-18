@@ -11,7 +11,7 @@ internal sealed class AlpacaCryptoDataClient :
     }
 
     [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release of SDK. Use the ListLatestBarsAsync method instead.", false)]
+    [Obsolete("This method will be removed in the next minor release of SDK. Use the ListLatestBarsAsync method instead.", true)]
     public async Task<IBar> GetLatestBarAsync(
         LatestDataRequest request,
         CancellationToken cancellationToken = default) =>
@@ -27,7 +27,7 @@ internal sealed class AlpacaCryptoDataClient :
             request, "bars", data => data.Bars, cancellationToken);
 
     [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release of SDK. Use the ListLatestTradesAsync method instead.", false)]
+    [Obsolete("This method will be removed in the next minor release of SDK. Use the ListLatestTradesAsync method instead.", true)]
     public async Task<ITrade> GetLatestTradeAsync(
         LatestDataRequest request,
         CancellationToken cancellationToken = default) =>
@@ -43,7 +43,7 @@ internal sealed class AlpacaCryptoDataClient :
             request, "trades", data => data.Trades, cancellationToken);
 
     [ExcludeFromCodeCoverage]
-    [Obsolete("This method will be removed in the next major release of SDK. Use the ListLatestQuotesAsync method instead.", false)]
+    [Obsolete("This method will be removed in the next minor release of SDK. Use the ListLatestQuotesAsync method instead.", true)]
     public async Task<IQuote> GetLatestQuoteAsync(
         LatestDataRequest request,
         CancellationToken cancellationToken = default) =>
