@@ -7,7 +7,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddMultiQuotesPageExpectation(PathPrefixV2, _symbols);
+        mock.AddMultiQuotesPageExpectation(PathPrefix, _symbols);
 
 #pragma warning disable CS0618
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
@@ -26,7 +26,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddMultiQuotesPageExpectation(PathPrefixV2, _symbol);
+        mock.AddMultiQuotesPageExpectation(PathPrefix, _symbol);
 
 #pragma warning disable CS0618
         var quotes = await mock.Client.GetHistoricalQuotesAsync(
@@ -44,7 +44,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddMultiQuotesPageExpectation(PathPrefixV2, _symbol);
+        mock.AddMultiQuotesPageExpectation(PathPrefix, _symbol);
 
 #pragma warning disable CS0618
         var quotes = await mock.Client.ListHistoricalQuotesAsync(
@@ -63,7 +63,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
-        mock.AddMultiQuotesPageExpectation(PathPrefixV2, _symbols);
+        mock.AddMultiQuotesPageExpectation(PathPrefix, _symbols);
 
 #pragma warning disable CS0618
         var quotes = await mock.Client.ListHistoricalQuotesAsync(

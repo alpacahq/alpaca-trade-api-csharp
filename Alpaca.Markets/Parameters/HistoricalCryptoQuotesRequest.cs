@@ -177,7 +177,7 @@ public sealed class HistoricalCryptoQuotesRequest : HistoricalCryptoRequestBase,
     internal override Boolean HasSingleSymbol => false;
 
     /// <inheritdoc />
-    protected override String LastPathSegment => "../../../v1beta2/crypto/quotes";
+    protected override String LastPathSegment => "quotes";
 
     HistoricalCryptoQuotesRequest IHistoricalRequest<HistoricalCryptoQuotesRequest, IQuote>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalCryptoQuotesRequest(Symbols, TimeInterval)
