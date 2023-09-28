@@ -18,5 +18,12 @@ public enum AssetAttributes
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "ptp_with_exception")]
-    PtpWithException
+    PtpWithException,
+
+    /// <summary>
+    /// IPO asset, only limit orders are allowed prior to an IPO being traded on secondary market
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "ipo")]
+    IPO
 }
