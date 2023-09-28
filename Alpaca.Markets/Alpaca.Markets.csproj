@@ -12,14 +12,15 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.0.0.7</AssemblyVersion>
-    <FileVersion>7.0.0.7</FileVersion>
-    <Version>7.0.0-rc1</Version>
+    <AssemblyVersion>7.0.0.8</AssemblyVersion>
+    <FileVersion>7.0.0.8</FileVersion>
+    <Version>7.0.0-rc2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
 - Added the new 'IErrorInformation` interface and the `ErrorInformation` property into the `RestClientException` class.
+- Added the new `IPO` enumeration member into the `AssetAttributes` enumeration. Thanks to @hiohiohio for help!
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
