@@ -525,6 +525,7 @@ public interface IAlpacaDataClient :
     /// .NET Core and .NET 5 and later only: The request failed due to timeout.
     /// </exception>
     /// <returns>Read-only list of most active stocks ranked by volume.</returns>
+    [UsedImplicitly]
     Task<IReadOnlyList<IActiveStock>> ListMostActiveStocksByVolumeAsync(
         Int32? numberOfTopMostActiveStocks = default,
         CancellationToken cancellationToken = default);
@@ -549,6 +550,7 @@ public interface IAlpacaDataClient :
     /// .NET Core and .NET 5 and later only: The request failed due to timeout.
     /// </exception>
     /// <returns>Read-only list of most active stocks ranked by trade count.</returns>
+    [UsedImplicitly]
     Task<IReadOnlyList<IActiveStock>> ListMostActiveStocksByTradeCountAsync(
         Int32? numberOfTopMostActiveStocks = default,
         CancellationToken cancellationToken = default);

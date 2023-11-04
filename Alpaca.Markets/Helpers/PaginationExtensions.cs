@@ -17,7 +17,7 @@ internal static class PaginationExtensions
         where TPage : IPageMutable<TItem>, ISymbolMutable, new() =>
         new TPage
         {
-            Items = new List<TItem>(response.Items.SelectMany(_ => _.Value)),
+            Items = new List<TItem>(response.Items.SelectMany(pair => pair.Value)),
             NextPageToken = response.NextPageToken
         }.withSymbol(response.Items);
 

@@ -18,7 +18,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public async Task WithReconnectWorks()
     {
         var client = createMockClient(
-            _ => _.GetTradeSubscription(It.IsAny<String>()));
+            client => client.GetTradeSubscription(It.IsAny<String>()));
 
         using var wrapped = client.Object.WithReconnect();
         var result = await wrapped.ConnectAndAuthenticateAsync();

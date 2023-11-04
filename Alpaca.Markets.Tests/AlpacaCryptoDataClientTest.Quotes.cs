@@ -74,7 +74,7 @@ public sealed partial class AlpacaCryptoDataClientTest
         Assert.NotEmpty(quotes.Items);
         Assert.Equal(String.Empty, quotes.Symbol);
 
-        quotes.Items.Where(_ => _.Symbol == Crypto).Validate(Crypto);
-        quotes.Items.Where(_ => _.Symbol != Crypto).Validate( Other);
+        quotes.Items.Where(quote => quote.Symbol == Crypto).Validate(Crypto);
+        quotes.Items.Where(quote => quote.Symbol != Crypto).Validate( Other);
     }
 }

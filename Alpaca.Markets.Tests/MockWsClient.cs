@@ -25,10 +25,10 @@ public sealed class MockWsClient<TConfiguration, TClient> : IDisposable
         Client = factory(configuration);
 
         _webSocket
-            .Setup(_ => _.ConnectAsync(It.IsAny<Uri>(), It.IsAny<CancellationToken>()))
+            .Setup(socket => socket.ConnectAsync(It.IsAny<Uri>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
         _webSocket
-            .Setup(_ => _.ReceiveAsync(It.IsAny<Memory<Byte>>()))
+            .Setup(socket => socket.ReceiveAsync(It.IsAny<Memory<Byte>>()))
             .Returns<Memory<Byte>>(readResponseAsync);
     }
 
@@ -42,7 +42,7 @@ public sealed class MockWsClient<TConfiguration, TClient> : IDisposable
 
         _webSocket
             .When(() => _requests.TryPeek(out var item) && item.Equals(request) && _requests.TryDequeue(out _))
-            .Setup(_ => _.SendAsync(It.IsAny<ReadOnlySequence<Byte>>()))
+            .Setup(socket => socket.SendAsync(It.IsAny<ReadOnlySequence<Byte>>()))
             .Returns(() => AddMessageAsync(response));
     }
 

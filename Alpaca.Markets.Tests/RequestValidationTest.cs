@@ -157,8 +157,8 @@ public sealed class RequestValidationTest
     private static void forceValidation<TRequest>(TRequest request)
     {
         var method = typeof(TRequest).GetInterfaces()
-            .SelectMany(_ => _.GetMethods())
-            .Single(_ => _.Name == "GetExceptions");
+            .SelectMany(type => type.GetMethods())
+            .Single(info => info.Name == "GetExceptions");
 
         if (method.Invoke(request, null) is not
             IEnumerable<RequestValidationException?> exceptions)

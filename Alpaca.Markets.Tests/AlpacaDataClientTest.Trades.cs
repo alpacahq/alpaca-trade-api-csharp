@@ -66,7 +66,7 @@ public sealed partial class AlpacaDataClientTest
         Assert.NotEmpty(trades.Items);
         Assert.Equal(String.Empty, trades.Symbol);
 
-        trades.Items.Where(_ => _.Symbol == Stock).Validate(Stock);
-        trades.Items.Where(_ => _.Symbol != Stock).Validate(Other);
+        trades.Items.Where(trade => trade.Symbol == Stock).Validate(Stock);
+        trades.Items.Where(trade => trade.Symbol != Stock).Validate(Other);
     }
 }

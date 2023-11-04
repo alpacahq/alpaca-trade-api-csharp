@@ -22,5 +22,5 @@ internal static class ActiveStocksExtensions
                 .AddParameter("by", orderByField)
                 .AddParameter("top", top)
                 .AsStringAsync().ConfigureAwait(false)
-        }.WithPath($"v1beta1/screener/stocks/most-actives");
+        }.WithPath("v1beta1/screener/stocks/most-actives");
 }

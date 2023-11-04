@@ -22,9 +22,9 @@ public sealed class AlpacaCryptoStreamingClientTest
             await client.Client.ConnectAndAuthenticateAsync());
 
         await using (var helper = await SubscriptionHelper<IBar>.Create(
-                         client.Client, _ => _.Validate(Crypto),
-                         _ => _.GetMinuteBarSubscription(Crypto),
-                         _ => _.GetMinuteBarSubscription()))
+                         client.Client, bar => bar.Validate(Crypto),
+                         streamingClient => streamingClient.GetMinuteBarSubscription(Crypto),
+                         streamingClient => streamingClient.GetMinuteBarSubscription()))
         {
             await client.AddMessageAsync(
                 new JArray(Crypto.CreateStreamingBar("b")));
@@ -47,9 +47,9 @@ public sealed class AlpacaCryptoStreamingClientTest
             await client.Client.ConnectAndAuthenticateAsync());
 
         await using (var helper = await SubscriptionHelper<IBar>.Create(
-                         client.Client, _ => _.Validate(Crypto),
-                         _ => _.GetDailyBarSubscription(Crypto),
-                         _ => _.GetUpdatedBarSubscription(Crypto)))
+                         client.Client, bar => bar.Validate(Crypto),
+                         streamingClient => streamingClient.GetDailyBarSubscription(Crypto),
+                         streamingClient => streamingClient.GetUpdatedBarSubscription(Crypto)))
         {
             await client.AddMessageAsync(
                 new JArray(Crypto.CreateStreamingBar("d")));
@@ -75,8 +75,8 @@ public sealed class AlpacaCryptoStreamingClientTest
             await client.Client.ConnectAndAuthenticateAsync());
 
         await using (var helper = await SubscriptionHelper<IQuote>.Create(
-                         client.Client, _ => _.Validate(Crypto),
-                         _ => _.GetQuoteSubscription(Crypto)))
+                         client.Client, quote => quote.Validate(Crypto),
+                         streamingClient => streamingClient.GetQuoteSubscription(Crypto)))
         {
             await client.AddMessageAsync(
                 new JArray(Crypto.CreateStreamingQuote()));
@@ -99,8 +99,8 @@ public sealed class AlpacaCryptoStreamingClientTest
             await client.Client.ConnectAndAuthenticateAsync());
 
         await using (var helper = await SubscriptionHelper<ITrade>.Create(
-                         client.Client, _ => _.Validate(Crypto),
-                         _ => _.GetTradeSubscription(Crypto)))
+                         client.Client, trade => trade.Validate(Crypto),
+                         streamingClient => streamingClient.GetTradeSubscription(Crypto)))
         {
             await client.AddMessageAsync(
                 new JArray(Crypto.CreateStreamingTrade("t")));
@@ -121,8 +121,8 @@ public sealed class AlpacaCryptoStreamingClientTest
             await client.Client.ConnectAndAuthenticateAsync());
 
         await using (var helper = await SubscriptionHelper<IOrderBook>.Create(
-                         client.Client, _ => MessageDataHelpers.Validate(_, Crypto),
-                         _ => _.GetOrderBookSubscription(Crypto)))
+                         client.Client, orderBook => MessageDataHelpers.Validate(orderBook, Crypto),
+                         streamingClient => streamingClient.GetOrderBookSubscription(Crypto)))
         {
             await client.AddMessageAsync(
                 new JArray(Crypto.CreateOrderBook()));

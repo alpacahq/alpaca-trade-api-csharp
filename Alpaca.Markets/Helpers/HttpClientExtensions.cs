@@ -85,7 +85,8 @@ internal static partial class HttpClientExtensions
         CancellationToken cancellationToken)
         where TJson : TApi
     {
-        using var request = new HttpRequestMessage(method, endpointUri) { Content = toStringContent(content) };
+        using var request = new HttpRequestMessage(method, endpointUri);
+        request.Content = toStringContent(content);
         return await callAndDeserializeAsync<TApi, TJson>(
             httpClient, request, cancellationToken)
             .ConfigureAwait(false);

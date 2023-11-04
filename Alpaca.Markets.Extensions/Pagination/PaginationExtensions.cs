@@ -29,13 +29,13 @@ internal static class PaginationExtensions
     {
         var channelsBySymbols =
             singlePageOfItemsRequestWithEmptyPageToken.Symbols
-                .ToDictionary(_ => _, _ => Channel.CreateUnbounded<TItem>(),
+                .ToDictionary(symbol => symbol, _ => Channel.CreateUnbounded<TItem>(),
                     StringComparer.Ordinal);
 
         Task.Run(GetResponsesByItemsImpl, cancellationToken);
 
         return channelsBySymbols.ToDictionary(
-            _ => _.Key, _ => ReadAllAsync(_.Value.Reader, cancellationToken),
+            pair => pair.Key, pair => ReadAllAsync(pair.Value.Reader, cancellationToken),
             StringComparer.Ordinal);
 
         async Task GetResponsesByItemsImpl()

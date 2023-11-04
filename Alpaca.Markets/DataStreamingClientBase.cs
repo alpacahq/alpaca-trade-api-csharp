@@ -246,7 +246,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
     public ValueTask SubscribeAsync(
         IEnumerable<IAlpacaDataSubscription> subscriptions,
         CancellationToken cancellationToken) =>
-        subscribeAsync(subscriptions.SelectMany(_ => _.Streams), cancellationToken);
+        subscribeAsync(subscriptions.SelectMany(subscription => subscription.Streams), cancellationToken);
 
     public ValueTask UnsubscribeAsync(
         IAlpacaDataSubscription subscription) =>
@@ -264,7 +264,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
     public ValueTask UnsubscribeAsync(
         IEnumerable<IAlpacaDataSubscription> subscriptions,
         CancellationToken cancellationToken) =>
-        unsubscribeAsync(subscriptions.SelectMany(_ => _.Streams), cancellationToken);
+        unsubscribeAsync(subscriptions.SelectMany(subscription => subscription.Streams), cancellationToken);
 
     protected IAlpacaDataSubscription<TApi> GetSubscription<TApi, TJson>(
         String channelName,
@@ -401,7 +401,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
             var channel = token["T"]?.ToString() ?? String.Empty;
             var symbols = token["symbols"]?.Values<String>() ?? Enumerable.Empty<String>();
 
-            foreach (var symbol in symbols.Where(_ => !String.IsNullOrEmpty(_)))
+            foreach (var symbol in symbols.Where(smb => !String.IsNullOrEmpty(smb)))
             {
                 _subscriptions.OnReceived(getStreamName(channel, symbol!), token);
             }
@@ -518,7 +518,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
     private static IEnumerable<String> getStreams(
         IEnumerable<String> symbols,
         String channelName) =>
-        symbols.Select(_ => getStreamName(channelName, _));
+        symbols.Select(symbol => getStreamName(channelName, symbol));
 
     private static String getStreamName(
         String channelName,
@@ -529,6 +529,6 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         ILookup<String, String> streamsByChannels,
         String stream) =>
         streamsByChannels[stream]
-            .Where(_ => !String.IsNullOrEmpty(_))
+            .Where(symbol => !String.IsNullOrEmpty(symbol))
             .ToList().NullIfEmpty();
 }

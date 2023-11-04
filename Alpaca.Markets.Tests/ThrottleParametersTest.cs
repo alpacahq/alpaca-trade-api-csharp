@@ -46,6 +46,7 @@ public sealed class ThrottleParametersTest
         Assert.Equal(Message,exception.Message);
         Assert.Equal(ErrorCode, exception.ErrorCode);
         Assert.Equal(HttpStatusCode.ServiceUnavailable, exception.HttpStatusCode);
+        return;
 
         KeyValuePair<String, String> AsHeader(
             RetryConditionHeaderValue value) =>
@@ -67,6 +68,7 @@ public sealed class ThrottleParametersTest
         var exception = await Assert.ThrowsAsync<SocketException>(
             () => mock.Client.GetClockAsync());
         Assert.Equal(SocketError.NotConnected, exception.SocketErrorCode);
+        return;
 
         SocketException AsException(
             SocketError socketError) =>

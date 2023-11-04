@@ -25,5 +25,6 @@ public enum AssetAttributes
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "ipo")]
+    // ReSharper disable once InconsistentNaming
     IPO
 }

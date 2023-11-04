@@ -12,15 +12,15 @@ public sealed class MockClientsFactoryFixture
 
     public MockClient<AlpacaDataClientConfiguration, IAlpacaDataClient> GetAlpacaDataClientMock(
         AlpacaDataClientConfiguration? configuration = null) =>
-        new (configuration ?? Environments.Paper.GetAlpacaDataClientConfiguration(_secretKey), _ => _.GetClient());
+        new (configuration ?? Environments.Paper.GetAlpacaDataClientConfiguration(_secretKey), config => config.GetClient());
 
     public MockClient<AlpacaTradingClientConfiguration, IAlpacaTradingClient> GetAlpacaTradingClientMock(
         AlpacaTradingClientConfiguration? configuration = null) =>
-        new (configuration ?? Environments.Paper.GetAlpacaTradingClientConfiguration(_oauthKey), _ => _.GetClient());
+        new (configuration ?? Environments.Paper.GetAlpacaTradingClientConfiguration(_oauthKey), config => config.GetClient());
 
     public MockClient<AlpacaCryptoDataClientConfiguration, IAlpacaCryptoDataClient> GetAlpacaCryptoDataClientMock(
         AlpacaCryptoDataClientConfiguration? configuration = null) =>
-        new (configuration ?? Environments.Paper.GetAlpacaCryptoDataClientConfiguration(_secretKey), _ => _.GetClient());
+        new (configuration ?? Environments.Paper.GetAlpacaCryptoDataClientConfiguration(_secretKey), config => config.GetClient());
 }
 
 [CollectionDefinition("MockEnvironment")]

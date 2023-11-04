@@ -6,7 +6,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public void GetQuoteSubscriptionWorks()
     {
         var client = createMockClient(
-            _ => _.GetQuoteSubscription(It.IsAny<String>()));
+            client => client.GetQuoteSubscription(It.IsAny<String>()));
 
         var subscriptionOne = client.Object.GetQuoteSubscription(_symbols);
         var subscriptionTwo = client.Object.GetQuoteSubscription(Stock, Other);
@@ -21,7 +21,7 @@ public sealed partial class AlpacaDataStreamingClientTest
     public async Task SubscribeQuoteAsyncWorks()
     {
         var client = createMockClient(
-            _ => _.GetQuoteSubscription(It.IsAny<String>()));
+            client => client.GetQuoteSubscription(It.IsAny<String>()));
 
         await using var subscription = await client.Object.SubscribeQuoteAsync(Stock);
         await using var subscriptionOne = await client.Object.SubscribeQuoteAsync(_symbols);

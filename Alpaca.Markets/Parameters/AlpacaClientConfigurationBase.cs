@@ -6,7 +6,8 @@
 [SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
 public abstract class AlpacaClientConfigurationBase
 {
-    private static readonly Func<HttpMessageHandler, HttpMessageHandler> _defaultHttpMessageHandlerFactory = _ => _;
+    private static readonly Func<HttpMessageHandler, HttpMessageHandler>
+        _defaultHttpMessageHandlerFactory = handler => handler;
 
     /// <summary>
     /// Creates new instance of <see cref="AlpacaClientConfigurationBase"/> class.

@@ -27,9 +27,9 @@ public sealed class AlpacaNewsStreamingClientTest
         client.AddSubscription(NewsChannelName, new JArray(Stock, "*"));
 
         await using (var helper = await SubscriptionHelper<INewsArticle>.Create(
-                         client.Client, _ => _.Validate(Stock),
-                         _ => _.GetNewsSubscription(Stock),
-                         _ => _.GetNewsSubscription()))
+                         client.Client, article => article.Validate(Stock),
+                         streamingClient => streamingClient.GetNewsSubscription(Stock),
+                         streamingClient => streamingClient.GetNewsSubscription()))
         {
             await client.AddMessageAsync(
                 new JArray(Stock.CreateStreamingNewsArticle()));
@@ -71,8 +71,8 @@ public sealed class AlpacaNewsStreamingClientTest
         await client.AddErrorMessageAsync(HttpStatusCode.InternalServerError);
 
         await using (var helper = await SubscriptionHelper<INewsArticle>.Create(
-                         client.Client, _ => _.Validate(Stock),
-                         _ => _.GetNewsSubscription(Stock)))
+                         client.Client, article => article.Validate(Stock),
+                         streamingClient => streamingClient.GetNewsSubscription(Stock)))
         {
             helper.Subscribe(HandleArticle);
 
@@ -88,6 +88,7 @@ public sealed class AlpacaNewsStreamingClientTest
         tracker.WaitAllEvents();
 
         await client.Client.DisconnectAsync();
+        return;
 
         void HandleArticle(INewsArticle _) =>
             throw new InvalidOperationException(); // Should be reported via OnError event

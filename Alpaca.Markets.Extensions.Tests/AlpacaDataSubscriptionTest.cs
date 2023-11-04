@@ -14,8 +14,8 @@ public sealed class AlpacaDataSubscriptionTest
         var cts = new CancellationTokenSource();
         var subscription = new Mock<IAlpacaDataSubscription<IBar>>();
 
-        subscription.SetupAdd(_ => _.Received += It.IsAny<Action<IBar>>());
-        subscription.SetupRemove(_ => _.Received -= It.IsAny<Action<IBar>>());
+        subscription.SetupAdd(dataSubscription => dataSubscription.Received += It.IsAny<Action<IBar>>());
+        subscription.SetupRemove(dataSubscription => dataSubscription.Received -= It.IsAny<Action<IBar>>());
 
         // ReSharper disable once MethodSupportsCancellation
         var eventRaisingTask = Task.Run(async () =>
@@ -24,7 +24,9 @@ public sealed class AlpacaDataSubscriptionTest
             {
                 // ReSharper disable once MethodSupportsCancellation
                 await Task.Delay(_delay);
-                subscription.Raise(_ => _.Received += null, new Mock<IBar>().Object);
+                // ReSharper disable once MethodHasAsyncOverload
+                subscription.Raise(
+                    dataSubscription => dataSubscription.Received += null, new Mock<IBar>().Object);
             }
 
             // ReSharper disable once MethodSupportsCancellation
@@ -32,7 +34,9 @@ public sealed class AlpacaDataSubscriptionTest
             cts.Cancel(false);
 
             // We raise event after cancellation for pushing the async enumerator
-            subscription.Raise(_ => _.Received += null, new Mock<IBar>().Object);
+            // ReSharper disable once MethodHasAsyncOverload
+            subscription.Raise(
+                dataSubscription => dataSubscription.Received += null, new Mock<IBar>().Object);
         });
 
         var count = 0;

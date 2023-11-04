@@ -14,7 +14,7 @@ internal static class ListExtensions
     public static List<T>? SetSymbol<T>(this List<T>? list, String symbol) 
         where T : ISymbolMutable
     {
-        list?.ForEach(_ => _.SetSymbol(symbol));
+        list?.ForEach(item => item.SetSymbol(symbol));
         return list;
     }
 }

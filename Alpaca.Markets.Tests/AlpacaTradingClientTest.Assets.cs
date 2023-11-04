@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Alpaca.Markets.Tests;
 
 public sealed partial class AlpacaTradingClientTest
@@ -55,6 +57,7 @@ public sealed partial class AlpacaTradingClientTest
             new JProperty("name", symbol),
             new JProperty("id", assetId));
 
+    [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Local")]
     private static void validateAsset(
         IAsset asset,
         Guid assetId,

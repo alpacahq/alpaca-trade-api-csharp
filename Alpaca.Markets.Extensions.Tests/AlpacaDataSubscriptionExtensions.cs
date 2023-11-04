@@ -72,6 +72,7 @@ internal static class AlpacaDataSubscriptionExtensions
         subscription.Received -= HandleReceived;
 
         Assert.Equal(expectedNumberOfEvents, count);
+        return;
 
         void HandleReceived(TItem _) => ++count;
         void HandleChanged() => ++count;

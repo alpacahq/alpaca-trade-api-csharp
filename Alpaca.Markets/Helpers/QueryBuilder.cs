@@ -23,7 +23,7 @@ internal sealed class QueryBuilder
     public QueryBuilder AddParameter(
         String name,
         Boolean? value) =>
-        addParameter(name, value, _ => _.ToString(CultureInfo.InvariantCulture));
+        addParameter(name, value, x => x.ToString(CultureInfo.InvariantCulture));
 
     public QueryBuilder AddParameter<TValue>(
         String name,
@@ -70,13 +70,13 @@ internal sealed class QueryBuilder
         String name,
         Int64? value) =>
         addParameter(name, value,
-            _ => _.ToString("D", CultureInfo.InvariantCulture));
+            x => x.ToString("D", CultureInfo.InvariantCulture));
 
     public QueryBuilder AddParameter(
         String name,
         Decimal? value) =>
         addParameter(name, value,
-            _ => _.ToString("F9", CultureInfo.InvariantCulture));
+            x => x.ToString("F9", CultureInfo.InvariantCulture));
 
     public async ValueTask<String> AsStringAsync()
     {

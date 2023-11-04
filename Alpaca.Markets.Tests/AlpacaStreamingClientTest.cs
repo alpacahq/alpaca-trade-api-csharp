@@ -51,6 +51,7 @@ public sealed class AlpacaStreamingClientTest
         client.Client.OnTradeUpdate -= HandleTradeUpdate;
 
         await client.Client.DisconnectAsync();
+        return;
 
         void HandleTradeUpdate(
             ITradeUpdate tradeUpdate)
@@ -140,6 +141,7 @@ public sealed class AlpacaStreamingClientTest
         client.Client.OnTradeUpdate -= HandleTradeUpdate;
 
         await client.Client.DisconnectAsync();
+        return;
 
         void HandleTradeUpdate(
             ITradeUpdate _) =>
