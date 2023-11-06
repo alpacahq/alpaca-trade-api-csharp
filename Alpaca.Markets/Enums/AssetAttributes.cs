@@ -25,5 +25,5 @@ public enum AssetAttributes
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "ipo")]
-    IPO
+    Ipo
 }
