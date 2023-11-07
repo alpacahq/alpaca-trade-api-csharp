@@ -117,7 +117,7 @@ Alpaca.Markets.AnnouncementsRequest.Symbol.set -> void
 Alpaca.Markets.AssetAttributes
 Alpaca.Markets.AssetAttributes.PtpNoException = 0 -> Alpaca.Markets.AssetAttributes
 Alpaca.Markets.AssetAttributes.PtpWithException = 1 -> Alpaca.Markets.AssetAttributes
-Alpaca.Markets.AssetAttributes.IPO = 2 -> Alpaca.Markets.AssetAttributes
+Alpaca.Markets.AssetAttributes.Ipo = 2 -> Alpaca.Markets.AssetAttributes
 Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetClass.Crypto = 1 -> Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetClass.UsEquity = 0 -> Alpaca.Markets.AssetClass
