@@ -3,9 +3,16 @@
 /// <summary>
 /// Unique asset characteristics for Alpaca REST API.
 /// </summary>
-[JsonConverter(typeof(StringEnumConverter))]
+[JsonConverter(typeof(AssetAttributesEnumConverter))]
 public enum AssetAttributes
 {
+    /// <summary>
+    /// Unknown asset attribute.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "-")]
+    Unknown,
+
     /// <summary>
     /// PTP asset accepting orders without exception.
     /// </summary>
