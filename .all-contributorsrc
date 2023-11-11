@@ -888,6 +888,26 @@
         "bug",
         "userTesting"
       ]
+    },
+    {
+      "login": "AntoineDubois",
+      "name": "Antoine Dubois",
+      "avatar_url": "https://avatars.githubusercontent.com/u/77892842?v=4",
+      "profile": "https://github.com/AntoineDubois",
+      "contributions": [
+        "bug",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "hiohiohio",
+      "name": "hiohiohio",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2696532?v=4",
+      "profile": "https://github.com/hiohiohio",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
