@@ -898,6 +898,16 @@
         "bug",
         "userTesting"
       ]
+    },
+    {
+      "login": "hiohiohio",
+      "name": "hiohiohio",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2696532?v=4",
+      "profile": "https://github.com/hiohiohio",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
