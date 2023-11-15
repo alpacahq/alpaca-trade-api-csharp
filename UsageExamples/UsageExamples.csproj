@@ -26,7 +26,7 @@
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="7.0.0" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
