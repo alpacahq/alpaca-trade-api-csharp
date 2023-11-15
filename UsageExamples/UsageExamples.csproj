@@ -18,7 +18,7 @@
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     <PackageReference Include="OoplesFinance.StockIndicators" Version="1.0.53" />
     <PackageReference Include="Portable.System.DateTimeOnly" Version="8.0.0-rc1" />
-    <PackageReference Include="System.Threading.Channels" Version="7.0.0" />
+    <PackageReference Include="System.Threading.Channels" Version="8.0.0" />
     <PackageReference Include="System.IO.Pipelines" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Polly" Version="8.1.0" />

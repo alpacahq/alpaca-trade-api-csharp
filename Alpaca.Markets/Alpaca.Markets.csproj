@@ -103,7 +103,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Threading.Channels" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Threading.Channels" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.IO.Pipelines" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Polly" Version="8.1.0" PrivateAssets="compile;contentfiles;build;analyzers" />
