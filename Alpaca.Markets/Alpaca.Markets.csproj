@@ -12,14 +12,22 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.0.0.9</AssemblyVersion>
-    <FileVersion>7.0.0.9</FileVersion>
-    <Version>7.0.0-rc3</Version>
+    <AssemblyVersion>7.0.0.10</AssemblyVersion>
+    <FileVersion>7.0.0.10</FileVersion>
+    <Version>7.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
+- Added the new `IErrorInformation` interface and the `ErrorInformation` property into the `RestClientException` class.
+- Added support for requesting the most active (by volume or trade count) stocks for the current trading session.
+- Added support for requesting the top market movers (gainers and losers) for both stocks and crypto instruments.
 - Added the new `Unknown` enumeration member into the `AssetAttributes` enumeration as fallback option.
+- Added sorting support into all (quotes, trades, bars, etc.) stock/crypto historical data requests.
+- Added the `IRateLimitProvider` interface implementation for all HTTP-based clients in SDK.
+- The obsolete attribute was removed from historical crypto quotes requesting methods.
+- Added the new `Ipo` enumeration member into the `AssetAttributes` enumeration.
+- Fixed problem with announcement object deserialization.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
@@ -116,7 +124,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="!$(TargetFramework.StartsWith('net6'))">
-    <PackageReference Include="Portable.System.DateTimeOnly" Version="8.0.0-rc1" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />
