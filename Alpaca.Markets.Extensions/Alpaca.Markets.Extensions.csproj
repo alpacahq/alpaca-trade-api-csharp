@@ -12,14 +12,16 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.0.0.3</AssemblyVersion>
-    <FileVersion>7.0.0.3</FileVersion>
-    <Version>7.0.0-rc1</Version>
+    <AssemblyVersion>7.0.0.4</AssemblyVersion>
+    <FileVersion>7.0.0.4</FileVersion>
+    <Version>7.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Fix all discrepancies with the latest 6.2.x release and prepare for the final code cleanup.
+= Added sorting support into all (quotes, trades, bars, etc.) stock/crypto historical data requests.
+- The obsolete attribute was removed from historical crypto quotes requesting methods.
+- Fixed problem with announcement object deserialization.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
@@ -98,7 +100,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Threading.Channels" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Linq.Async" Version="6.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="Alpaca.Markets" Version="7.0.0-alpha4" PrivateAssets="compile;contentfiles;build;analyzers;" />
+    <PackageReference Include="Alpaca.Markets" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers;" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
