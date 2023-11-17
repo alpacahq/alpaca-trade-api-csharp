@@ -6,8 +6,11 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <TrimmerDefaultAction>link</TrimmerDefaultAction>
     <ImplicitUsings>enable</ImplicitUsings>
-    <PublishTrimmed>true</PublishTrimmed>
     <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="!$(TargetFramework.StartsWith('net4'))">
+    <PublishTrimmed>true</PublishTrimmed>
   </PropertyGroup>
 
   <ItemGroup>
