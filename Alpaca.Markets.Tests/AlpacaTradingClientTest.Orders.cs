@@ -144,11 +144,11 @@ public sealed partial class AlpacaTradingClientTest
     }
 
     [Fact]
-    public void NewOrderRequestValidationWorks()
+    public async Task NewOrderRequestValidationWorks()
     {
         using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
 
-        Assert.ThrowsAsync<AggregateException>(() => mock.Client.PostOrderAsync(
+        await Assert.ThrowsAsync<AggregateException>(() => mock.Client.PostOrderAsync(
             MarketOrder.Buy(String.Empty, OrderQuantity.Fractional(-FractionalQuantity))));
     }
 
