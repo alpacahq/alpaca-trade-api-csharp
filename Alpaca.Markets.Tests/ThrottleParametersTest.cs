@@ -132,10 +132,10 @@ public sealed class ThrottleParametersTest
     }
 
     [Fact]
-    public void DefaultThrottleParametersWorks()
+    public async Task DefaultThrottleParametersWorks()
     {
         using var client = Environments.Paper.GetAlpacaTradingClient(
             new SecretKey(Guid.NewGuid().ToString("N"), Guid.NewGuid().ToString("N")));
-        Assert.ThrowsAsync<RestClientErrorException>(() => client.GetClockAsync());
+        await Assert.ThrowsAsync<RestClientErrorException>(() => client.GetClockAsync());
     }
 }

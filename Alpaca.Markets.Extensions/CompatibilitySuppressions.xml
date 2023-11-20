@@ -1,8 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://learn.microsoft.com/en-us/dotnet/fundamentals/package-validation/diagnostic-ids -->
 <Suppressions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Suppression>
-    <DiagnosticId>CP0001</DiagnosticId>
-    <Target>T:Alpaca.Markets.Extensions.ConfigurationExtensions</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaCryptoDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.AlpacaCryptoDataClientConfiguration)</Target>
+    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaCryptoDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.IEnvironment,Alpaca.Markets.SecurityKey)</Target>
+    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.AlpacaDataClientConfiguration)</Target>
+    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.IEnvironment,Alpaca.Markets.SecurityKey)</Target>
+    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.AlpacaTradingClientConfiguration)</Target>
+    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.IEnvironment,Alpaca.Markets.SecurityKey)</Target>
     <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
     <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -50,8 +86,43 @@
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0001</DiagnosticId>
-    <Target>T:Alpaca.Markets.Extensions.ConfigurationExtensions</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaCryptoDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.AlpacaCryptoDataClientConfiguration)</Target>
+    <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaCryptoDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.IEnvironment,Alpaca.Markets.SecurityKey)</Target>
+    <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.AlpacaDataClientConfiguration)</Target>
+    <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.IEnvironment,Alpaca.Markets.SecurityKey)</Target>
+    <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.AlpacaTradingClientConfiguration)</Target>
+    <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.IEnvironment,Alpaca.Markets.SecurityKey)</Target>
     <Left>lib/net5.0/Alpaca.Markets.Extensions.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -99,8 +170,43 @@
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0001</DiagnosticId>
-    <Target>T:Alpaca.Markets.Extensions.ConfigurationExtensions</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaCryptoDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.AlpacaCryptoDataClientConfiguration)</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaCryptoDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.IEnvironment,Alpaca.Markets.SecurityKey)</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.AlpacaDataClientConfiguration)</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.IEnvironment,Alpaca.Markets.SecurityKey)</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.AlpacaTradingClientConfiguration)</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.IEnvironment,Alpaca.Markets.SecurityKey)</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -148,8 +254,43 @@
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0001</DiagnosticId>
-    <Target>T:Alpaca.Markets.Extensions.ConfigurationExtensions</Target>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaCryptoDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.AlpacaCryptoDataClientConfiguration)</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaCryptoDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.IEnvironment,Alpaca.Markets.SecurityKey)</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.AlpacaDataClientConfiguration)</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.IEnvironment,Alpaca.Markets.SecurityKey)</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.AlpacaTradingClientConfiguration)</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Alpaca.Markets.IEnvironment,Alpaca.Markets.SecurityKey)</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
