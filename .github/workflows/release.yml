@@ -37,7 +37,7 @@ jobs:
       run: dotnet build -c Release
       
     - name: Save SDK Packages
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: sdk-packages
         path: |
@@ -45,7 +45,7 @@ jobs:
           Alpaca.Markets/bin/Release/*.snupkg
           
     - name: Save Extensions Packages
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ext-packages
         path: |
