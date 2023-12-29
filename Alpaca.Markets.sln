@@ -22,12 +22,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alpaca.Markets.Extensions.T
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Portable.Helpers", "Portable.Helpers\Portable.Helpers.shproj", "{B628BF16-AB9C-4A2C-B13F-3FCC491D15D7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{7447D0EC-8468-4527-8223-6A27A674448B}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\codeql-analysis.yml = .github\workflows\codeql-analysis.yml
+		.github\workflows\documentation.yml = .github\workflows\documentation.yml
+		.github\workflows\lockfiles.yml = .github\workflows\lockfiles.yml
+		.github\workflows\release.yml = .github\workflows\release.yml
+	EndProjectSection
+EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Portable.Helpers\Portable.Helpers.projitems*{4cce5c4a-688a-40da-befd-12e6803b41d3}*SharedItemsImports = 5
-		Portable.Helpers\Portable.Helpers.projitems*{b628bf16-ab9c-4a2c-b13f-3fcc491d15d7}*SharedItemsImports = 13
-		Portable.Helpers\Portable.Helpers.projitems*{f339d73b-347f-47d4-9bfb-ebea010fc6f7}*SharedItemsImports = 5
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Documentation|Any CPU = Documentation|Any CPU
@@ -69,5 +72,10 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7748A3F4-1EFB-47D1-AFC7-C558CCBA9FCE}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Portable.Helpers\Portable.Helpers.projitems*{4cce5c4a-688a-40da-befd-12e6803b41d3}*SharedItemsImports = 5
+		Portable.Helpers\Portable.Helpers.projitems*{b628bf16-ab9c-4a2c-b13f-3fcc491d15d7}*SharedItemsImports = 13
+		Portable.Helpers\Portable.Helpers.projitems*{f339d73b-347f-47d4-9bfb-ebea010fc6f7}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
