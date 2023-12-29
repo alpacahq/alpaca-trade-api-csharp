@@ -6,18 +6,14 @@
 /// </summary>
 public static partial class AlpacaCryptoStreamingClientExtensions
 {
-    private sealed class ClientWithReconnection :
-        ClientWithSubscriptionReconnectBase<IAlpacaCryptoStreamingClient>,
+    [method: ExcludeFromCodeCoverage]
+    private sealed class ClientWithReconnection(
+        IAlpacaCryptoStreamingClient client,
+        ReconnectionParameters reconnectionParameters) :
+        ClientWithSubscriptionReconnectBase<IAlpacaCryptoStreamingClient>(
+            client, reconnectionParameters),
         IAlpacaCryptoStreamingClient
     {
-        [ExcludeFromCodeCoverage]
-        public ClientWithReconnection(
-            IAlpacaCryptoStreamingClient client,
-            ReconnectionParameters reconnectionParameters)
-            : base(client, reconnectionParameters)
-        {
-        }
-
         [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<ITrade> GetTradeSubscription() =>
             Client.GetTradeSubscription();

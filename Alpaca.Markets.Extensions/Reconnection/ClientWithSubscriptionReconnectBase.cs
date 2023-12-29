@@ -2,19 +2,15 @@
 
 namespace Alpaca.Markets.Extensions;
 
-internal abstract class ClientWithSubscriptionReconnectBase<TClient> :
-    ClientWithReconnectBase<TClient>
+internal abstract class ClientWithSubscriptionReconnectBase<TClient>(
+    TClient client,
+    ReconnectionParameters reconnectionParameters) :
+    ClientWithReconnectBase<TClient>(
+        client, reconnectionParameters)
     where TClient : class, IStreamingClient, ISubscriptionHandler
 {
     private readonly ConcurrentDictionary<String, IAlpacaDataSubscription> _subscriptions =
         new(StringComparer.Ordinal);
-
-    protected ClientWithSubscriptionReconnectBase(
-        TClient client,
-        ReconnectionParameters reconnectionParameters)
-        : base(client, reconnectionParameters)
-    {
-    }
 
     public ValueTask SubscribeAsync(
         IAlpacaDataSubscription subscription) =>

@@ -6,7 +6,9 @@ internal sealed class AlpacaDataClient :
 {
     internal AlpacaDataClient(
         AlpacaDataClientConfiguration configuration)
+#pragma warning disable CA2000
         : base(configuration.EnsureNotNull().GetConfiguredHttpClient())
+#pragma warning restore CA2000
     {
     }
 

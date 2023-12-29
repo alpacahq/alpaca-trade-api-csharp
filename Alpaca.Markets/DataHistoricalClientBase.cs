@@ -1,7 +1,7 @@
 ﻿namespace Alpaca.Markets;
 
-internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistoricalQuotesRequest, THistoricalQuote, THistoricalTradesRequest>
-    : IRateLimitProvider, IDisposable
+internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistoricalQuotesRequest, THistoricalQuote,
+    THistoricalTradesRequest>(HttpClient httpClient) : IRateLimitProvider, IDisposable
     where THistoricalQuotesRequest : HistoricalRequestBase, Validation.IRequest
     where THistoricalTradesRequest : HistoricalRequestBase, Validation.IRequest
     where THistoricalBarsRequest : HistoricalRequestBase, Validation.IRequest
@@ -9,11 +9,7 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
 {
     protected readonly RateLimitHandler RateLimitHandler = new();
 
-    protected readonly HttpClient HttpClient;
-
-    protected DataHistoricalClientBase(
-        HttpClient httpClient) =>
-        HttpClient = httpClient;
+    protected readonly HttpClient HttpClient = httpClient;
 
     public void Dispose()
     {

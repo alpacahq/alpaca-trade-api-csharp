@@ -6,17 +6,13 @@
 /// </summary>
 public static partial class AlpacaNewsStreamingClientExtensions
 {
-    private sealed class ClientWithReconnection :
-        ClientWithSubscriptionReconnectBase<IAlpacaNewsStreamingClient>,
+    private sealed class ClientWithReconnection(
+        IAlpacaNewsStreamingClient client,
+        ReconnectionParameters reconnectionParameters) :
+        ClientWithSubscriptionReconnectBase<IAlpacaNewsStreamingClient>(
+            client, reconnectionParameters),
         IAlpacaNewsStreamingClient
     {
-        public ClientWithReconnection(
-            IAlpacaNewsStreamingClient client,
-            ReconnectionParameters reconnectionParameters)
-            : base (client, reconnectionParameters)
-        {
-        }
-
         [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<INewsArticle> GetNewsSubscription() =>
             Client.GetNewsSubscription();

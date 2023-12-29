@@ -6,17 +6,13 @@
 /// </summary>
 public static class AlpacaStreamingClientExtensions
 {
-    private sealed class ClientWithReconnection :
-        ClientWithReconnectBase<IAlpacaStreamingClient>,
+    private sealed class ClientWithReconnection(
+        IAlpacaStreamingClient client,
+        ReconnectionParameters reconnectionParameters) :
+        ClientWithReconnectBase<IAlpacaStreamingClient>(
+            client, reconnectionParameters),
         IAlpacaStreamingClient
     {
-        public ClientWithReconnection(
-            IAlpacaStreamingClient client,
-            ReconnectionParameters reconnectionParameters)
-            : base(client, reconnectionParameters)
-        {
-        }
-
         /// <inheritdoc cref="IAlpacaStreamingClient.OnTradeUpdate"/>
         public event Action<ITradeUpdate>? OnTradeUpdate
         {
