@@ -4,7 +4,7 @@ namespace Alpaca.Markets.Extensions.Tests;
 
 public sealed class AlpacaCryptoStreamingClientTest
 {
-    private static readonly List<String> _symbols = new() { Crypto, Other };
+    private static readonly List<String> _symbols = [ Crypto, Other ];
 
     private const Int32 ExpectedNumberOfEventsForAllSymbols = 4;
 

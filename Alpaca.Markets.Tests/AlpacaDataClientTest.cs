@@ -8,7 +8,7 @@ public sealed partial class AlpacaDataClientTest(
 
     private static DateTime Yesterday => _timeInterval.From!.Value;
 
-    private static readonly String[] _symbols = { Stock, Other };
+    private static readonly String[] _symbols = [ Stock, Other ];
 
     private static DateTime Today => _timeInterval.Into!.Value;
 
