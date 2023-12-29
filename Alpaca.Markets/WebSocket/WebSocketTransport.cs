@@ -5,7 +5,9 @@ using System.Text;
 
 namespace Alpaca.Markets;
 
-internal sealed class WebSocketsTransport : IDisposable
+internal sealed class WebSocketsTransport(
+    Func<IWebSocket> webSocketFactory,
+    Uri url) : IDisposable
 {
     private sealed class DuplexPipe : IDuplexPipe
     {
@@ -19,7 +21,9 @@ internal sealed class WebSocketsTransport : IDisposable
 
         public PipeWriter Output { get; }
 
-        public static DuplexPipePair CreateConnectionPair(PipeOptions inputOptions, PipeOptions outputOptions)
+        public static DuplexPipePair CreateConnectionPair(
+            PipeOptions inputOptions,
+            PipeOptions outputOptions)
         {
             var input = new Pipe(inputOptions);
             var output = new Pipe(outputOptions);
@@ -31,26 +35,13 @@ internal sealed class WebSocketsTransport : IDisposable
         }
 
         // This class exists to work around issues with value tuple on .NET Framework
-        public readonly struct DuplexPipePair
-        {
-            public IDuplexPipe Transport { get; }
-            public IDuplexPipe Application { get; }
-
-            public DuplexPipePair(IDuplexPipe transport, IDuplexPipe application)
-            {
-                Transport = transport;
-                Application = application;
-            }
-        }
+        public readonly record struct DuplexPipePair(
+            IDuplexPipe Transport, IDuplexPipe Application);
     }
 
     private Task _running = Task.CompletedTask;
 
     private SpinLock _sendLock = new(false);
-
-    private readonly Func<IWebSocket> _webSocketFactory;
-
-    private readonly Uri _resolvedUrl;
 
     private volatile Boolean _aborted;
 
@@ -59,14 +50,6 @@ internal sealed class WebSocketsTransport : IDisposable
     private IDuplexPipe? _transport;
 
     private IWebSocket? _webSocket;
-
-    public WebSocketsTransport(
-        Func<IWebSocket> webSocketFactory,
-        Uri url)
-    {
-        _webSocketFactory = webSocketFactory;
-        _resolvedUrl = url;
-    }
 
     public event Action? Opened;
 
@@ -86,7 +69,7 @@ internal sealed class WebSocketsTransport : IDisposable
     {
         try
         {
-            _webSocket = _webSocketFactory();
+            _webSocket = webSocketFactory();
             if (_webSocket is null)
             {
                 Error?.Invoke(new InvalidOperationException(
@@ -103,7 +86,7 @@ internal sealed class WebSocketsTransport : IDisposable
             _transport = pair.Transport;
             _application = pair.Application;
 
-            await _webSocket.ConnectAsync(_resolvedUrl, cancellationToken)
+            await _webSocket.ConnectAsync(url, cancellationToken)
                 .ConfigureAwait(false);
         }
         catch (Exception ex)
