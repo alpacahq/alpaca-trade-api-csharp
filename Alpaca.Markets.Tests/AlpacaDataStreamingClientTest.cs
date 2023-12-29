@@ -1,24 +1,19 @@
 ﻿namespace Alpaca.Markets.Tests;
 
 [Collection("MockEnvironment")]
-public sealed class AlpacaDataStreamingClientTest
+public sealed class AlpacaDataStreamingClientTest(
+    MockClientsFactoryFixture mockClientsFactory)
 {
-    private readonly MockClientsFactoryFixture _mockClientsFactory;
-
     private const Decimal DownPrice = 100M;
 
     private const Decimal UpPrice = 200M;
 
     private const String Stock = "AAPL";
 
-    public AlpacaDataStreamingClientTest(
-        MockClientsFactoryFixture mockClientsFactory) =>
-        _mockClientsFactory = mockClientsFactory;
-
     [Fact]
     public async Task ConnectAndSubscribeQuotesWorks()
     {
-        using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock(Environments.Paper);
+        using var client = mockClientsFactory.GetAlpacaDataStreamingClientMock(Environments.Paper);
 
         await client.AddAuthenticationAsync();
 
@@ -40,7 +35,7 @@ public sealed class AlpacaDataStreamingClientTest
     [Fact]
     public async Task ConnectAndSubscribeAllQuotesWorks()
     {
-        using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock(Environments.Paper);
+        using var client = mockClientsFactory.GetAlpacaDataStreamingClientMock(Environments.Paper);
 
         await client.AddAuthenticationAsync();
 
@@ -62,7 +57,7 @@ public sealed class AlpacaDataStreamingClientTest
     [Fact]
     public async Task ConnectAndSubscribeTradesWorks()
     {
-        using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock();
+        using var client = mockClientsFactory.GetAlpacaDataStreamingClientMock();
 
         await client.AddAuthenticationAsync();
 
@@ -87,7 +82,7 @@ public sealed class AlpacaDataStreamingClientTest
     [Fact]
     public async Task ConnectAndSubscribeStatusesWorks()
     {
-        using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock();
+        using var client = mockClientsFactory.GetAlpacaDataStreamingClientMock();
 
         await client.AddAuthenticationAsync();
 
@@ -108,7 +103,7 @@ public sealed class AlpacaDataStreamingClientTest
     [Fact]
     public async Task ConnectAndSubscribeLimitUpLimitDownsWorks()
     {
-        using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock();
+        using var client = mockClientsFactory.GetAlpacaDataStreamingClientMock();
 
         await client.AddAuthenticationAsync();
 
@@ -131,7 +126,7 @@ public sealed class AlpacaDataStreamingClientTest
     {
         const String channel = "trades";
 
-        using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock();
+        using var client = mockClientsFactory.GetAlpacaDataStreamingClientMock();
 
         await client.AddAuthenticationAsync();
 
@@ -164,7 +159,7 @@ public sealed class AlpacaDataStreamingClientTest
         var expectedWarnings = (0, 0);
         var expectedErrors = (3, 4);
 
-        using var client = _mockClientsFactory.GetAlpacaDataStreamingClientMock();
+        using var client = mockClientsFactory.GetAlpacaDataStreamingClientMock();
         using var tracker = new ErrorsAndWarningsTracker(
             client.Client, expectedWarnings, expectedErrors);
 

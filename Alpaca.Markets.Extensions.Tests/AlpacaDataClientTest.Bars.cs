@@ -5,7 +5,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetAverageDailyTradeVolumeAsyncWithDatesWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addSingleBarsPageExpectation);
 
@@ -20,7 +20,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetAverageDailyTradeVolumeAsyncWithIntervalWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addSingleBarsPageExpectation);
 
@@ -34,7 +34,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetSimpleMovingAverageAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addSingleBarsPageExpectation);
 
@@ -48,7 +48,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetSimpleMovingAverageAsyncZeroWindowWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         var counter = await validateList(
             mock.Client.GetSimpleMovingAverageAsync(
@@ -60,7 +60,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalBarsAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addSingleBarsPageExpectation);
 
@@ -74,7 +74,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalBarsDictionaryOfAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addMultiBarsPageExpectation);
 
@@ -88,7 +88,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalBarsPagesAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addSingleBarsPageExpectation);
 
@@ -102,7 +102,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalBarsMultiPagesAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addMultiBarsPageExpectation);
 

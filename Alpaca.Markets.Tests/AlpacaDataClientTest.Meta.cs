@@ -7,7 +7,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListExchangesAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddGet("/v2/stocks/meta/exchanges", createDictionary());
 
@@ -17,7 +17,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListTradeConditionsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddGet("/v2/stocks/meta/conditions/trade", createDictionary());
 
@@ -27,7 +27,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListQuoteConditionsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddGet("/v2/stocks/meta/conditions/quote", createDictionary());
 

@@ -1,20 +1,15 @@
 namespace Alpaca.Markets.Extensions.Tests;
 
 [Collection("MockEnvironment")]
-public sealed class AlpacaTradingClientTest
+public sealed class AlpacaTradingClientTest(
+    MockClientsFactoryFixture mockClientsFactory)
 {
-    private readonly MockClientsFactoryFixture _mockClientsFactory;
-
     private const Int32 Items = 5;
-
-    public AlpacaTradingClientTest(
-        MockClientsFactoryFixture mockClientsFactory) =>
-        _mockClientsFactory = mockClientsFactory;
 
     [Fact]
     public async Task GetCalendarForSingleDayAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         var today = DateOnly.FromDateTime(DateTime.Now);
         mock.AddGet("/v2/calendar", new JArray(
@@ -34,7 +29,7 @@ public sealed class AlpacaTradingClientTest
     [Fact]
     public async Task GetNewsArticlesAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         addSinglePageExpectation(mock, Items);
         addSinglePageExpectation(mock);
@@ -49,7 +44,7 @@ public sealed class AlpacaTradingClientTest
     [Fact]
     public async Task IsMarketOpenAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         var tomorrow = DateTime.Today.AddDays(1);
         var dayAfterTomorrow = tomorrow.AddDays(1);

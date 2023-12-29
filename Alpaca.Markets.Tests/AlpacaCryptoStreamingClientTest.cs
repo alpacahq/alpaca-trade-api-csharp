@@ -1,20 +1,15 @@
 ﻿namespace Alpaca.Markets.Tests;
 
 [Collection("MockEnvironment")]
-public sealed class AlpacaCryptoStreamingClientTest
+public sealed class AlpacaCryptoStreamingClientTest(
+    MockClientsFactoryFixture mockClientsFactory)
 {
-    private readonly MockClientsFactoryFixture _mockClientsFactory;
-
     private const String Crypto = "BTCUSD";
-
-    public AlpacaCryptoStreamingClientTest(
-        MockClientsFactoryFixture mockClientsFactory) =>
-        _mockClientsFactory = mockClientsFactory;
 
     [Fact]
     public async Task ConnectAndSubscribeMinuteBarsWorks()
     {
-        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock(Environments.Paper);
+        using var client = mockClientsFactory.GetAlpacaCryptoStreamingClientMock(Environments.Paper);
 
         await client.AddAuthenticationAsync();
 
@@ -37,7 +32,7 @@ public sealed class AlpacaCryptoStreamingClientTest
     [Fact]
     public async Task ConnectAndSubscribeDailyBarsWorks()
     {
-        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock(
+        using var client = mockClientsFactory.GetAlpacaCryptoStreamingClientMock(
             configuration: new AlpacaCryptoStreamingClientConfiguration()
                 .WithExchanges(CryptoExchange.Cbse));
 
@@ -67,7 +62,7 @@ public sealed class AlpacaCryptoStreamingClientTest
         var configuration = new AlpacaCryptoStreamingClientConfiguration()
             .WithExchanges(Enum.GetValues<CryptoExchange>().AsEnumerable());
 
-        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock(configuration: configuration);
+        using var client = mockClientsFactory.GetAlpacaCryptoStreamingClientMock(configuration: configuration);
 
         await client.AddAuthenticationAsync();
 
@@ -94,7 +89,7 @@ public sealed class AlpacaCryptoStreamingClientTest
         var configuration = new AlpacaCryptoStreamingClientConfiguration()
             .WithExchanges(Enum.GetValues<CryptoExchange>().AsEnumerable());
 
-        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock(configuration: configuration);
+        using var client = mockClientsFactory.GetAlpacaCryptoStreamingClientMock(configuration: configuration);
 
         await client.AddAuthenticationAsync();
 
@@ -118,7 +113,7 @@ public sealed class AlpacaCryptoStreamingClientTest
     [Fact]
     public async Task ConnectAndSubscribeTradesWorks()
     {
-        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock();
+        using var client = mockClientsFactory.GetAlpacaCryptoStreamingClientMock();
 
         await client.AddAuthenticationAsync();
 
@@ -140,7 +135,7 @@ public sealed class AlpacaCryptoStreamingClientTest
     [Fact]
     public async Task ConnectAndSubscribeOrderBookWorks()
     {
-        using var client = _mockClientsFactory.GetAlpacaCryptoStreamingClientMock();
+        using var client = mockClientsFactory.GetAlpacaCryptoStreamingClientMock();
 
         await client.AddAuthenticationAsync();
 

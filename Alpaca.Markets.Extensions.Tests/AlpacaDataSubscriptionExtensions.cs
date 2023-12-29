@@ -5,18 +5,13 @@ namespace Alpaca.Markets.Extensions.Tests;
 
 internal static class AlpacaDataSubscriptionExtensions
 {
-    private sealed class Subscription<TItem> : IAlpacaDataSubscription<TItem>
+    private sealed class Subscription<TItem>(
+        String stream) : IAlpacaDataSubscription<TItem>
         where TItem : class
     {
-        private readonly String _stream;
-
-        public Subscription(
-            String stream) =>
-            _stream = stream;
-
         public IEnumerable<String> Streams
         {
-            get { yield return _stream; }
+            get { yield return stream; }
         }
 
         public Boolean Subscribed

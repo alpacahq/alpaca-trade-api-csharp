@@ -5,7 +5,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalTradesAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addSingleTradesPageExpectation);
 
@@ -19,7 +19,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalTradesDictionaryOfAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addMultiTradesPageExpectation);
 
@@ -33,7 +33,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalTradesPagesAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addSingleTradesPageExpectation);
 
@@ -47,7 +47,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalTradesMultiPagesAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addMultiTradesPageExpectation);
 

@@ -5,7 +5,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalQuotesAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addSingleQuotesPageExpectation);
 
@@ -19,7 +19,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalQuotesDictionaryOfAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addMultiQuotesPageExpectation);
 
@@ -33,7 +33,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalQuotesPagesAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addSingleQuotesPageExpectation);
 
@@ -47,7 +47,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalQuotesMultiPagesAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addMultiQuotesPageExpectation);
 

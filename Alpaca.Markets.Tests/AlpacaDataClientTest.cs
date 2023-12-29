@@ -1,11 +1,10 @@
 ﻿namespace Alpaca.Markets.Tests;
 
 [Collection("MockEnvironment")]
-public sealed partial class AlpacaDataClientTest
+public sealed partial class AlpacaDataClientTest(
+    MockClientsFactoryFixture mockClientsFactory)
 {
     private static readonly Interval<DateTime> _timeInterval = getTimeInterval();
-
-    private readonly MockClientsFactoryFixture _mockClientsFactory;
 
     private static DateTime Yesterday => _timeInterval.From!.Value;
 
@@ -21,10 +20,6 @@ public sealed partial class AlpacaDataClientTest
 
     private const String Other = "MSFT";
 
-    public AlpacaDataClientTest(
-        MockClientsFactoryFixture mockClientsFactory) =>
-        _mockClientsFactory = mockClientsFactory;
-
     [Fact]
     public void AlpacaDataClientConfigurationValidationWorks()
     {
@@ -32,25 +27,25 @@ public sealed partial class AlpacaDataClientTest
         var nullSecurityId = new AlpacaDataClientConfiguration { SecurityId = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(() =>
-            _mockClientsFactory.GetAlpacaDataClientMock(Environments.Paper, nullSecurityId));
+            mockClientsFactory.GetAlpacaDataClientMock(Environments.Paper, nullSecurityId));
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         var nullApiEndpoint = new AlpacaDataClientConfiguration { ApiEndpoint = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(() =>
-            _mockClientsFactory.GetAlpacaDataClientMock(Environments.Paper, nullApiEndpoint));
+            mockClientsFactory.GetAlpacaDataClientMock(Environments.Paper, nullApiEndpoint));
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         var nullThrottleParameters = new AlpacaDataClientConfiguration { ThrottleParameters = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(() =>
-            _mockClientsFactory.GetAlpacaDataClientMock(Environments.Paper, nullThrottleParameters));
+            mockClientsFactory.GetAlpacaDataClientMock(Environments.Paper, nullThrottleParameters));
     }
 
     [Fact]
     public async Task ListNewsArticlesAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock(Environments.Paper);
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock(Environments.Paper);
 
         mock.AddGet("/v1beta1/news", new JObject(
             new JProperty("news", new JArray(Stock.CreateNewsArticle()))));

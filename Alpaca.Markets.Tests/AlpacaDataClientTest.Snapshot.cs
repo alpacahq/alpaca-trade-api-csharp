@@ -5,7 +5,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetSnapshotAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddSnapshotExpectation(PathPrefix, Stock);
 
@@ -21,7 +21,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListSnapshotsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddSnapshotsExpectation(PathPrefix, _symbols);
 

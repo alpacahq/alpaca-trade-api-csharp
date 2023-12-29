@@ -7,7 +7,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     {
         const Int32 numberOfLosersAndGainers = 5;
 
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddGet("/v1beta1/screener/crypto/movers", new JObject(
             new JProperty("gainers", new JArray(Enumerable.Repeat(

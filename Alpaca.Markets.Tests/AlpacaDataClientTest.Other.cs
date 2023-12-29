@@ -11,7 +11,7 @@ public sealed partial class AlpacaDataClientTest
     {
         const Int32 numberOfLosersAndGainers = 5;
 
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddGet("/v1beta1/screener/stocks/movers", new JObject(
             new JProperty("gainers", new JArray(Enumerable.Repeat(
@@ -34,7 +34,7 @@ public sealed partial class AlpacaDataClientTest
     {
         const Int32 numberOfTopMostActiveStocks = 5;
 
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddGet("/v1beta1/screener/stocks/most-actives", new JObject(
             new JProperty("most_actives", new JArray(Enumerable.Repeat(
@@ -52,7 +52,7 @@ public sealed partial class AlpacaDataClientTest
     {
         const Int32 numberOfTopMostActiveStocks = 5;
 
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddGet("/v1beta1/screener/stocks/most-actives", new JObject(
             new JProperty("most_actives", new JArray(Enumerable.Repeat(

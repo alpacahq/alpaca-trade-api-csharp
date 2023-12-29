@@ -7,7 +7,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task GetAssetAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         var assetId = Guid.NewGuid();
 
@@ -21,7 +21,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task ListAssetsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         var assetId = Guid.NewGuid();
 

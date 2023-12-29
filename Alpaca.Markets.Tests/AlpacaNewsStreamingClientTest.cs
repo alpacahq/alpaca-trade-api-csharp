@@ -1,23 +1,18 @@
 ﻿namespace Alpaca.Markets.Tests;
 
 [Collection("MockEnvironment")]
-public sealed class AlpacaNewsStreamingClientTest
+public sealed class AlpacaNewsStreamingClientTest(
+    MockClientsFactoryFixture mockClientsFactory)
 {
-    private readonly MockClientsFactoryFixture _mockClientsFactory;
-
     private const String NewsChannelName = "news";
 
     private const String Stock = "AAPL";
-
-    public AlpacaNewsStreamingClientTest(
-        MockClientsFactoryFixture mockClientsFactory) =>
-        _mockClientsFactory = mockClientsFactory;
 
     [Theory]
     [ClassData(typeof(EnvironmentTestData))]
     public async Task ConnectAndSubscribeWorks(IEnvironment environment)
     {
-        using var client = _mockClientsFactory.GetAlpacaNewsStreamingClientMock(environment);
+        using var client = mockClientsFactory.GetAlpacaNewsStreamingClientMock(environment);
 
         await client.AddAuthenticationAsync();
 
@@ -47,7 +42,7 @@ public sealed class AlpacaNewsStreamingClientTest
         var expectedWarnings = (3, 3);
         var expectedErrors = (3, 4);
 
-        using var client = _mockClientsFactory.GetAlpacaNewsStreamingClientMock();
+        using var client = mockClientsFactory.GetAlpacaNewsStreamingClientMock();
         using var tracker = new ErrorsAndWarningsTracker(
             client.Client, expectedWarnings, expectedErrors);
 

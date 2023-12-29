@@ -17,7 +17,7 @@ public sealed partial class AlpacaTradingClientTest
         const Int32 multiplier = 4;
         const UInt64 count = 2UL;
 
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet("/v2/account", new JObject(
             new JProperty("account_number", Guid.NewGuid().ToString("D")),
@@ -100,7 +100,7 @@ public sealed partial class AlpacaTradingClientTest
 
         const Decimal amount = 42M;
 
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         var orderId = Guid.NewGuid();
         var activityGuid = Guid.NewGuid();
@@ -156,7 +156,7 @@ public sealed partial class AlpacaTradingClientTest
         const Decimal profitLoss = 10M;
         const Decimal equity = 20M;
 
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         var today = DateTime.UtcNow.Date;
         var todayDateOnly = DateOnly.FromDateTime(today);
@@ -196,7 +196,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task GetAccountConfigurationAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet("/v2/account/configurations", createConfiguration());
 
@@ -208,7 +208,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task PatchAccountConfigurationAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet("/v2/account/configurations", createConfiguration());
         mock.AddPatch("/v2/account/configurations",createConfiguration());

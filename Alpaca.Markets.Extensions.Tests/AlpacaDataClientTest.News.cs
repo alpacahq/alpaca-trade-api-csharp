@@ -5,7 +5,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetNewsArticlesAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addSingleNewsPageExpectation);
 
@@ -19,7 +19,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetNewsArticlesPagesAsAsyncEnumerable()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addSingleNewsPageExpectation);
 

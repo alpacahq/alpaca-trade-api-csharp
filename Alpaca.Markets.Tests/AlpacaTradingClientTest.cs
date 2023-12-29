@@ -3,17 +3,12 @@ using System.Globalization;
 namespace Alpaca.Markets.Tests;
 
 [Collection("MockEnvironment")]
-public sealed partial class AlpacaTradingClientTest
+public sealed partial class AlpacaTradingClientTest(
+    MockClientsFactoryFixture mockClientsFactory)
 {
     private const String Crypto = "BTCUSD";
 
     private const String Stock = "AAPL";
-
-    private readonly MockClientsFactoryFixture _mockClientsFactory;
-
-    public AlpacaTradingClientTest(
-        MockClientsFactoryFixture mockClientsFactory) =>
-        _mockClientsFactory = mockClientsFactory;
 
     [Fact]
     public void AlpacaTradingClientConfigurationValidationWorks()
@@ -22,25 +17,25 @@ public sealed partial class AlpacaTradingClientTest
         var nullSecurityId = new AlpacaTradingClientConfiguration { SecurityId = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(() =>
-            _mockClientsFactory.GetAlpacaTradingClientMock(Environments.Paper, nullSecurityId));
+            mockClientsFactory.GetAlpacaTradingClientMock(Environments.Paper, nullSecurityId));
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         var nullApiEndpoint = new AlpacaTradingClientConfiguration { ApiEndpoint = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(() =>
-            _mockClientsFactory.GetAlpacaTradingClientMock(Environments.Paper, nullApiEndpoint));
+            mockClientsFactory.GetAlpacaTradingClientMock(Environments.Paper, nullApiEndpoint));
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         var nullThrottleParameters = new AlpacaTradingClientConfiguration { ThrottleParameters = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(() =>
-            _mockClientsFactory.GetAlpacaTradingClientMock(Environments.Paper, nullThrottleParameters));
+            mockClientsFactory.GetAlpacaTradingClientMock(Environments.Paper, nullThrottleParameters));
     }
 
     [Fact]
     public async Task ListIntervalCalendarAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock(Environments.Paper);
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock(Environments.Paper);
 
         var today = DateOnly.FromDateTime(DateTime.Today);
 
@@ -82,7 +77,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task GetClockAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet("/v2/clock", new JObject(
             new JProperty("next_close", DateTime.Today.AddDays(2)),
@@ -102,7 +97,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task GetRateLimitValuesWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         var oldLimits = mock.Client.GetRateLimitValues();
 

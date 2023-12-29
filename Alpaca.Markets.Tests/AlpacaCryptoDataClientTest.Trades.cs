@@ -5,7 +5,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task GetHistoricalTradesAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddMultiTradesPageExpectation(PathPrefix, _symbols);
 
@@ -22,7 +22,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task GetHistoricalTradesAsyncForSingleWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddMultiTradesPageExpectation(PathPrefix, _symbol);
 
@@ -38,7 +38,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task ListHistoricalTradesAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddMultiTradesPageExpectation(PathPrefix, _symbol);
 
@@ -55,7 +55,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task ListHistoricalTradesAsyncForManyWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddMultiTradesPageExpectation(PathPrefix, _symbols);
 
@@ -73,7 +73,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task ListHistoricalTradesAsyncWithoutIntervalWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddMultiTradesPageExpectation(PathPrefix, _symbol);
 

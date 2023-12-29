@@ -5,7 +5,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task ListSnapshotsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddCryptoSnapshotsExpectation(PathPrefix, _symbols);
 
@@ -22,7 +22,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task ListLatestOrderBooksAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddOrderBooksExpectation(PathPrefix, _symbols);
 
