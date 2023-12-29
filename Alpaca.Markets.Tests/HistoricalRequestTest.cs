@@ -5,9 +5,9 @@ namespace Alpaca.Markets.Tests;
 [SuppressMessage("ReSharper", "StringLiteralTypo")]
 public sealed class HistoricalRequestTest
 {
-    private static readonly String[] _crypto = { "ETHUSD", "BTCUSD" };
+    private static readonly String[] _crypto = [ "ETHUSD", "BTCUSD" ];
 
-    private static readonly String[] _stocks = { "AAPL", "MSFT" };
+    private static readonly String[] _stocks = [ "AAPL", "MSFT" ];
 
     private static readonly Interval<DateTime> _timeInterval =
         new(DateTime.Today.AddDays(-1), DateTime.Today);

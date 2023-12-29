@@ -6,7 +6,7 @@ namespace Alpaca.Markets.Extensions.Tests;
 
 public sealed class AlpacaNewsStreamingClientTest
 {
-    private static readonly List<String> _symbols = new() { Stock, Other };
+    private static readonly List<String> _symbols = [ Stock, Other ];
 
     private const Int32 ExpectedNumberOfEventsForAllSymbols = 4;
 

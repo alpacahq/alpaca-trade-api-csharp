@@ -56,8 +56,8 @@ public sealed class EnvironmentTestData : IEnumerable<Object[]>
 {
     public IEnumerator<Object[]> GetEnumerator()
     {
-        yield return new Object[] { Environments.Paper };
-        yield return new Object[] { Environments.Live };
+        yield return [ Environments.Paper ];
+        yield return [ Environments.Live ];
     }
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

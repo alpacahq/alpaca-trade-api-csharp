@@ -6,7 +6,7 @@ public sealed partial class AlpacaDataClientTest(
 {
     private static readonly Interval<DateTime> _timeInterval = getTimeInterval();
 
-    private static readonly String[] _symbols = { Stock, Other };
+    private static readonly String[] _symbols = [ Stock, Other ];
 
     private const Decimal Volume = 1_000M;
 
