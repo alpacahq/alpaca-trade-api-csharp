@@ -2,31 +2,9 @@
 
 namespace System;
 
-internal readonly struct Range : IEquatable<Range>
+internal readonly record struct Range(
+    Index Start, Index End)
 {
-    [UsedImplicitly]
-    public Index Start { get; }
-
-    [UsedImplicitly]
-    public Index End { get; }
-
-    public Range(
-        Index start,
-        Index end)
-    {
-        Start = start;
-        End = end;
-    }
-
-    public override Boolean Equals(Object? value) =>
-        value is Range r &&
-        r.Start.Equals(Start) &&
-        r.End.Equals(End);
-
-    public Boolean Equals(Range other) => other.Start.Equals(Start) && other.End.Equals(End);
-
-    public override Int32 GetHashCode() => Start.GetHashCode() * 31 + End.GetHashCode();
-
     public override String ToString() => Start + ".." + End;
 
     [UsedImplicitly]
