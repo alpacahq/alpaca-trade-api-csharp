@@ -13,10 +13,10 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    - name: Setup .NET 7.0.x
+    - name: Setup .NET 8.0.x
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '7.0.x'
+        dotnet-version: '8.0.x'
 
     - name: Cache NuGet Packages
       uses: actions/cache@v3
@@ -39,6 +39,8 @@ jobs:
     - name: Save SDK Packages
       uses: actions/upload-artifact@v4
       with:
+        retention-days: 1
+        compression-level: 0
         name: sdk-packages
         path: |
           Alpaca.Markets/bin/Release/*.nupkg
@@ -47,6 +49,8 @@ jobs:
     - name: Save Extensions Packages
       uses: actions/upload-artifact@v4
       with:
+        retention-days: 1
+        compression-level: 0
         name: ext-packages
         path: |
           Alpaca.Markets.Extensions/bin/Release/*.nupkg
