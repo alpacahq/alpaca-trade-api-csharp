@@ -26,7 +26,7 @@ internal sealed class JsonHistoricalTrade : ITrade, ISymbolMutable
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "c", Required = Required.Default)]
-    public List<String> ConditionsList { get; } = new();
+    public List<String> ConditionsList { get; } = [];
 
     [JsonProperty(PropertyName = "tks", Required = Required.Default)]
     public TakerSide TakerSide { get; [ExcludeFromCodeCoverage] set; } = TakerSide.Unknown;

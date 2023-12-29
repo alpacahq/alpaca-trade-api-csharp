@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class AccountActivitiesRequest
 {
-    private readonly HashSet<AccountActivityType> _accountActivityTypes = new();
+    private readonly HashSet<AccountActivityType> _accountActivityTypes = [];
 
     /// <summary>
     /// Creates new instance of <see cref="AccountActivitiesRequest"/> object for all activity types.

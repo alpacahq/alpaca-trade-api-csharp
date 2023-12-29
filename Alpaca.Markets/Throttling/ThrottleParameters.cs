@@ -92,13 +92,13 @@ public sealed class ThrottleParameters
     };
 
     private static readonly SocketError[] _defaultSocketErrorCodes =
-    {
+    [
         SocketError.TryAgain,
         SocketError.TimedOut,
         SocketError.WouldBlock,
         SocketError.NotConnected,
         SocketError.HostNotFound
-    };
+    ];
    
     private readonly HashSet<HttpStatusCode> _retryHttpStatuses;
 

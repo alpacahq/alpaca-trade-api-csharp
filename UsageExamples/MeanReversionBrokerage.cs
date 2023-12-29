@@ -34,7 +34,7 @@ internal sealed class MeanReversionBrokerage : IDisposable
 
     private Boolean lastTradeOpen;
 
-    private readonly List<Decimal> closingPrices = new();
+    private readonly List<Decimal> closingPrices = [];
 
     private Boolean isAssetShortable;
 

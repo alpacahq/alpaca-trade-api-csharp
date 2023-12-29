@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class AssetsRequest
 {
-    private readonly HashSet<AssetAttributes> _attributes = new();
+    private readonly HashSet<AssetAttributes> _attributes = [];
 
     /// <summary>
     /// Gets or sets asset status for filtering.

@@ -7,7 +7,7 @@ public sealed class LatestOrderBooksRequest : Validation.IRequest
 {
     private readonly HashSet<String> _symbols = new(StringComparer.Ordinal);
 
-    private readonly HashSet<CryptoExchange> _exchanges = new();
+    private readonly HashSet<CryptoExchange> _exchanges = [];
 
     /// <summary>
     /// Creates new instance of <see cref="LatestOrderBooksRequest"/> object.

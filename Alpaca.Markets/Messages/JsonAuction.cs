@@ -13,12 +13,12 @@ internal sealed class JsonAuction : IAuction, ISymbolMutable
     [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "o", Required = Required.Always)]
-    internal List<JsonAuctionEntry> OpeningsList { get; set; } = new();
+    internal List<JsonAuctionEntry> OpeningsList { get; set; } = [];
 
     [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "c", Required = Required.Always)]
-    internal List<JsonAuctionEntry> ClosingsList { get; set; } = new();
+    internal List<JsonAuctionEntry> ClosingsList { get; set; } = [];
 
     [JsonIgnore]
     public String Symbol { get; private set; } = String.Empty;

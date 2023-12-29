@@ -24,7 +24,7 @@ internal sealed class JsonPortfolioHistory : IPortfolioHistory
             $"{nameof(IPortfolioHistoryItem)} {{ Time = {TimestampUtc:O}, Equity = {Equity}, ProfitLoss = {ProfitLoss} }}";
     }
 
-    private readonly List<IPortfolioHistoryItem> _items = new();
+    private readonly List<IPortfolioHistoryItem> _items = [];
 
     [JsonProperty(PropertyName = "equity", Required = Required.Always)]
     public List<Decimal?>? EquityList { get; set; }

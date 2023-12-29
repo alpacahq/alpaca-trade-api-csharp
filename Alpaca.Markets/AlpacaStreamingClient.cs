@@ -99,7 +99,7 @@ internal sealed class AlpacaStreamingClient :
                 Action = JsonAction.Listen,
                 Data = new JsonListenRequest.JsonData
                 {
-                    Streams = new List<String> { TradeUpdates }
+                    Streams = [ TradeUpdates ]
                 }
             };
 

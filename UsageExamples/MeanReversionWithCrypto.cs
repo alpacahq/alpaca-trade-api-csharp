@@ -34,7 +34,7 @@ internal sealed class MeanReversionWithCrypto : IDisposable
 
     private Boolean lastTradeOpen;
 
-    private readonly List<Decimal> closingPrices = new();
+    private readonly List<Decimal> closingPrices = [];
 
     private Boolean isAssetShortable;
 

@@ -26,7 +26,7 @@ internal sealed class JsonHistoricalQuote : IQuote, ISymbolMutable
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "c", Required = Required.Default)]
-    public List<String> ConditionsList { get; [ExcludeFromCodeCoverage] set; } = new();
+    public List<String> ConditionsList { get; [ExcludeFromCodeCoverage] set; } = [];
 
     [JsonProperty(PropertyName = "z", Required = Required.Default)]
     public String Tape { get; set; } = String.Empty;

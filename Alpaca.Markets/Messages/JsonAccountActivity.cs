@@ -9,7 +9,7 @@ namespace Alpaca.Markets;
 internal sealed class JsonAccountActivity : IAccountActivity
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private static readonly Char[] _activityIdSeparator = { ':' };
+    private static readonly Char[] _activityIdSeparator = [ ':' ];
 
     [JsonProperty(PropertyName = "activity_type", Required = Required.Always)]
     public AccountActivityType ActivityType { get; set; }

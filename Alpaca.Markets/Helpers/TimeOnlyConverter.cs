@@ -7,7 +7,7 @@ namespace Alpaca.Markets;
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
 internal sealed class TimeOnlyConverter : JsonConverter
 {
-    private static readonly String[] _timeFormats = { "HH:mm", "HHmm" };
+    private static readonly String[] _timeFormats = [ "HH:mm", "HHmm" ];
 
     public override void WriteJson(
         JsonWriter writer,

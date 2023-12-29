@@ -2,7 +2,7 @@
 
 internal static class EnumExtensions
 {
-    private static readonly Char[] _doubleQuotes = { '"' };
+    private static readonly Char[] _doubleQuotes = [ '"' ];
 
     public static String ToEnumString<T>(
         this T enumValue)

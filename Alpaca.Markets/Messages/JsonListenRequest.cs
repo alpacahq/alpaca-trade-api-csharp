@@ -5,7 +5,7 @@ internal sealed class JsonListenRequest
     internal sealed class JsonData
     {
         [JsonProperty(PropertyName = "streams", Required = Required.Always)]
-        public List<String> Streams { get; set; } = new();
+        public List<String> Streams { get; set; } = [];
     }
 
     [JsonProperty(PropertyName = "action", Required = Required.Always)]

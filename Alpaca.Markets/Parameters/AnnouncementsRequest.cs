@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class AnnouncementsRequest : Validation.IRequest
 {
-    private readonly HashSet<CorporateActionType> _corporateActionTypes = new();
+    private readonly HashSet<CorporateActionType> _corporateActionTypes = [];
 
     /// <summary>
     /// Creates new instance of <see cref="AnnouncementsRequest"/> object.
