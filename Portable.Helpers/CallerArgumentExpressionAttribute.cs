@@ -3,14 +3,11 @@
 namespace System.Runtime.CompilerServices;
 
 [AttributeUsage(AttributeTargets.Parameter)]
-internal sealed class CallerArgumentExpressionAttribute : Attribute
+internal sealed class CallerArgumentExpressionAttribute(
+    String parameterName) : Attribute
 {
-    public CallerArgumentExpressionAttribute(
-        String parameterName) =>
-        ParameterName = parameterName;
-
     [UsedImplicitly]
-    public String ParameterName { get; }
+    public String ParameterName { get; } = parameterName;
 }
 
 #endif
