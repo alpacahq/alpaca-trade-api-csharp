@@ -5,7 +5,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalQuotesAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddMultiQuotesPageExpectation(PathPrefix, _symbols);
 
@@ -22,7 +22,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalQuotesAsyncForSingleWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddSingleQuotesPageExpectation(PathPrefix, Stock);
 
@@ -38,7 +38,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListHistoricalQuotesAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddSingleQuotesPageExpectation(PathPrefix, Stock);
 
@@ -55,7 +55,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListHistoricalQuotesAsyncForManyWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddMultiQuotesPageExpectation(PathPrefix, _symbols);
 
@@ -73,7 +73,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListHistoricalQuotesAsyncWithoutIntervalWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddSingleQuotesPageExpectation(PathPrefix, Stock);
 

@@ -4,10 +4,9 @@ using System.Net.Sockets;
 namespace Alpaca.Markets.Tests;
 
 [Collection("MockEnvironment")]
-public sealed class ThrottleParametersTest
+public sealed class ThrottleParametersTest(
+    MockClientsFactoryFixture mockClientsFactory)
 {
-    private readonly MockClientsFactoryFixture _mockClientsFactory;
-
     private const String OrdersUrl = "/v2/orders/**";
 
     private const String ClockUrl = "/v2/clock";
@@ -16,10 +15,6 @@ public sealed class ThrottleParametersTest
 
     private const Int32 ErrorCode = 451;
 
-    public ThrottleParametersTest(
-        MockClientsFactoryFixture mockClientsFactory) =>
-        _mockClientsFactory = mockClientsFactory;
-
     [Fact]
     public async Task ThrottlingWithErrorMessageWorks()
     {
@@ -27,7 +22,7 @@ public sealed class ThrottleParametersTest
         const Decimal money = 1_000M;
         const Int32 orders = 10;
 
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         var errorMessage = new JObject(
             new JProperty("day_trading_buying_power", money),
@@ -74,7 +69,7 @@ public sealed class ThrottleParametersTest
     [Fact]
     public async Task ThrottlingWithSocketErrorsWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet(ClockUrl, AsException(SocketError.TryAgain));
         mock.AddGet(ClockUrl, AsException(SocketError.TimedOut));
@@ -96,7 +91,7 @@ public sealed class ThrottleParametersTest
     [Fact]
     public async Task ThrottlingWithoutErrorMessageWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         const String errorMessage = "<html><body>HTTP 500: Unknown server error.</body></html>";
 
@@ -114,7 +109,7 @@ public sealed class ThrottleParametersTest
     [Fact]
     public async Task ThrottlingWithInvalidErrorMessageWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         var errorMessage = new JObject(
             new JProperty("msg", Message),

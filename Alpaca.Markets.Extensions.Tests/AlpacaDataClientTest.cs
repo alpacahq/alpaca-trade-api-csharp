@@ -1,11 +1,10 @@
 namespace Alpaca.Markets.Extensions.Tests;
 
 [Collection("MockEnvironment")]
-public sealed partial class AlpacaDataClientTest
+public sealed partial class AlpacaDataClientTest(
+    MockClientsFactoryFixture mockClientsFactory)
 {
     private static readonly Interval<DateTime> _timeInterval = getTimeInterval();
-
-    private readonly MockClientsFactoryFixture _mockClientsFactory;
 
     private static readonly String[] _symbols = { Stock, Other };
 
@@ -20,10 +19,6 @@ public sealed partial class AlpacaDataClientTest
     private const Decimal Size = 10M;
 
     private const Int32 Pages = 5;
-
-    public AlpacaDataClientTest(
-        MockClientsFactoryFixture mockClientsFactory) =>
-        _mockClientsFactory = mockClientsFactory;
 
     private static void addPaginatedResponses<TConfiguration, TClient>(
         MockClient<TConfiguration, TClient> mock,

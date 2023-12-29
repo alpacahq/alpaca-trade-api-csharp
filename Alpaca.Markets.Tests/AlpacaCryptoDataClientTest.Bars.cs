@@ -5,7 +5,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task GetHistoricalBarsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddMultiBarsPageExpectation(PathPrefix, _symbols);
 
@@ -22,7 +22,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task GetHistoricalBarsAsyncForSingleWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddMultiBarsPageExpectation(PathPrefix, _symbol);
 
@@ -38,7 +38,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task ListHistoricalBarsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddMultiBarsPageExpectation(PathPrefix, _symbol);
 
@@ -55,7 +55,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task ListHistoricalBarsAsyncForManyWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddMultiBarsPageExpectation(PathPrefix, _symbols);
 
@@ -73,7 +73,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task ListHistoricalBarsAsyncWithoutIntervalWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddMultiBarsPageExpectation(PathPrefix, _symbol);
 

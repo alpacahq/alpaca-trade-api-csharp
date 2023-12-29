@@ -5,7 +5,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetLatestBarAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddLatestBarExpectation(PathPrefix, Stock);
 
@@ -17,7 +17,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListLatestBarsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddLatestBarsExpectation(PathPrefix, _symbols);
 
@@ -34,7 +34,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetLatestQuoteAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddLatestQuoteExpectation(PathPrefix, Stock);
 
@@ -46,7 +46,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListLatestQuotesAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddLatestQuotesExpectation(PathPrefix, _symbols);
 
@@ -63,7 +63,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetLatestTradeAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddLatestTradeExpectation(PathPrefix, Stock);
 
@@ -75,7 +75,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListLatestTradesAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddLatestTradesExpectation(PathPrefix, _symbols);
 

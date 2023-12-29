@@ -7,7 +7,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task ListAnnouncementsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         var into = DateOnly.FromDateTime(DateTime.Today);
         var from = into.AddMonths(-1);
@@ -47,7 +47,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task GetAnnouncementAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet("/v2/corporate_actions/announcements/**", 
             createAnnouncement(DateOnly.FromDateTime(DateTime.Today)));

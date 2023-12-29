@@ -1,11 +1,10 @@
 namespace Alpaca.Markets.Extensions.Tests;
 
 [Collection("MockEnvironment")]
-public sealed class AlpacaCryptoDataClientTest
+public sealed class AlpacaCryptoDataClientTest(
+    MockClientsFactoryFixture mockClientsFactory)
 {
     private static readonly Interval<DateTime> _timeInterval = getTimeInterval();
-
-    private readonly MockClientsFactoryFixture _mockClientsFactory;
 
     private const String Crypto = "BTC/USD";
 
@@ -15,14 +14,10 @@ public sealed class AlpacaCryptoDataClientTest
 
     private const Int32 Pages = 5;
 
-    public AlpacaCryptoDataClientTest(
-        MockClientsFactoryFixture mockClientsFactory) =>
-        _mockClientsFactory = mockClientsFactory;
-
     [Fact]
     public async Task GetAverageDailyTradeVolumeAsyncWithIntervalWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         addPaginatedResponses(mock, addMultiBarsPageExpectation);
 

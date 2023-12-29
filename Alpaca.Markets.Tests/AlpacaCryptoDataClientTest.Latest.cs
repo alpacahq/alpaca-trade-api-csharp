@@ -5,7 +5,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task ListLatestBarsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddLatestCryptoBarsExpectation(PathPrefix, _symbols);
 
@@ -22,7 +22,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task ListLatestQuotesAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddLatestCryptoQuotesExpectation(PathPrefix, _symbols);
 
@@ -39,7 +39,7 @@ public sealed partial class AlpacaCryptoDataClientTest
     [Fact]
     public async Task ListLatestTradesAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaCryptoDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaCryptoDataClientMock();
 
         mock.AddLatestCryptoTradesExpectation(PathPrefix, _symbols);
 

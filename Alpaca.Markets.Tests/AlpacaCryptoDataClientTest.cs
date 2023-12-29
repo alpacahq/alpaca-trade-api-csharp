@@ -1,11 +1,10 @@
 ﻿namespace Alpaca.Markets.Tests;
 
 [Collection("MockEnvironment")]
-public sealed partial class AlpacaCryptoDataClientTest
+public sealed partial class AlpacaCryptoDataClientTest(
+    MockClientsFactoryFixture mockClientsFactory)
 {
     private static readonly Interval<DateTime> _timeInterval = getTimeInterval();
-
-    private readonly MockClientsFactoryFixture _mockClientsFactory;
 
     private static readonly String[] _symbols = { Crypto, Other };
 
@@ -24,10 +23,6 @@ public sealed partial class AlpacaCryptoDataClientTest
 
     private const String Other = "ETH/USD";
 
-    public AlpacaCryptoDataClientTest(
-        MockClientsFactoryFixture mockClientsFactory) =>
-        _mockClientsFactory = mockClientsFactory;
-
     [Fact]
     public void AlpacaCryptoDataClientConfigurationValidationWorks()
     {
@@ -35,19 +30,19 @@ public sealed partial class AlpacaCryptoDataClientTest
         var nullSecurityId = new AlpacaCryptoDataClientConfiguration { SecurityId = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(
-            () => _mockClientsFactory.GetAlpacaCryptoDataClientMock(Environments.Paper, nullSecurityId));
+            () => mockClientsFactory.GetAlpacaCryptoDataClientMock(Environments.Paper, nullSecurityId));
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         var nullApiEndpoint = new AlpacaCryptoDataClientConfiguration { ApiEndpoint = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(
-            () => _mockClientsFactory.GetAlpacaCryptoDataClientMock(Environments.Paper, nullApiEndpoint));
+            () => mockClientsFactory.GetAlpacaCryptoDataClientMock(Environments.Paper, nullApiEndpoint));
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         var nullThrottleParameters = new AlpacaCryptoDataClientConfiguration { ThrottleParameters = null };
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<InvalidOperationException>(
-            () => _mockClientsFactory.GetAlpacaCryptoDataClientMock(Environments.Paper, nullThrottleParameters));
+            () => mockClientsFactory.GetAlpacaCryptoDataClientMock(Environments.Paper, nullThrottleParameters));
     }
 
     private static Interval<DateTime> getTimeInterval()

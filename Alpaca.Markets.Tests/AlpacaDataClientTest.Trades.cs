@@ -5,7 +5,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalTradesAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddMultiTradesPageExpectation(PathPrefix, _symbols);
 
@@ -22,7 +22,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalTradesAsyncForSingleWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddSingleTradesPageExpectation(PathPrefix, Stock);
 
@@ -38,7 +38,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListHistoricalTradesAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddSingleTradesPageExpectation(PathPrefix, Stock);
 
@@ -55,7 +55,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListHistoricalTradesAsyncForManyWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddMultiTradesPageExpectation(PathPrefix, _symbols);
 
@@ -73,7 +73,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListHistoricalTradesAsyncWithoutIntervalWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddSingleTradesPageExpectation(PathPrefix, Stock);
 

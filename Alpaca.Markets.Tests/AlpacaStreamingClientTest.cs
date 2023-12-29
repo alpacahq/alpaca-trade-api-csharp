@@ -4,7 +4,8 @@ using System.Net.Sockets;
 namespace Alpaca.Markets.Tests;
 
 [Collection("MockEnvironment")]
-public sealed class AlpacaStreamingClientTest
+public sealed class AlpacaStreamingClientTest(
+    MockClientsFactoryFixture mockClientsFactory)
 {
     private readonly record struct FakeEnvironment : IEnvironment
     {
@@ -21,8 +22,6 @@ public sealed class AlpacaStreamingClientTest
         public Uri AlpacaNewsStreamingApi => Environments.Paper.AlpacaTradingApi;
     }
 
-    private readonly MockClientsFactoryFixture _mockClientsFactory;
-
     private const String TradeUpdates = "trade_updates";
 
     private const String Authorization = "authorization";
@@ -37,17 +36,13 @@ public sealed class AlpacaStreamingClientTest
 
     private const String Stock = "AAPL";
 
-    public AlpacaStreamingClientTest(
-        MockClientsFactoryFixture mockClientsFactory) =>
-        _mockClientsFactory = mockClientsFactory;
-
     [Theory]
     [ClassData(typeof(EnvironmentTestData))]
     public async Task ConnectAndSubscribeWorks(IEnvironment environment)
     {
         Assert.NotNull(environment);
 
-        using var client = _mockClientsFactory.GetAlpacaStreamingClientMock(environment,
+        using var client = mockClientsFactory.GetAlpacaStreamingClientMock(environment,
             environment.GetAlpacaStreamingClientConfiguration(new SecretKey(
                 Guid.NewGuid().ToString("N"), Guid.NewGuid().ToString("N"))));
 
@@ -101,7 +96,7 @@ public sealed class AlpacaStreamingClientTest
         const Int32 expectedWarnings = 3;
         const Int32 expectedErrors = 2;
 
-        using var client = _mockClientsFactory.GetAlpacaStreamingClientMock();
+        using var client = mockClientsFactory.GetAlpacaStreamingClientMock();
         using var tracker = new ErrorsAndWarningsTracker(
             client.Client, expectedWarnings, expectedErrors);
 
@@ -134,7 +129,7 @@ public sealed class AlpacaStreamingClientTest
         const Int32 expectedWarnings = 1;
         const Int32 expectedErrors = 1;
 
-        using var client = _mockClientsFactory.GetAlpacaStreamingClientMock();
+        using var client = mockClientsFactory.GetAlpacaStreamingClientMock();
         using var tracker = new ErrorsAndWarningsTracker(
             client.Client, expectedWarnings, expectedErrors);
 
@@ -177,7 +172,7 @@ public sealed class AlpacaStreamingClientTest
         const Int32 expectedWarnings = 0;
         const Int32 expectedErrors = 1;
 
-        using var client = _mockClientsFactory.GetAlpacaStreamingClientMock(new FakeEnvironment());
+        using var client = mockClientsFactory.GetAlpacaStreamingClientMock(new FakeEnvironment());
         using var tracker = new ErrorsAndWarningsTracker(
             client.Client, expectedWarnings, expectedErrors);
 

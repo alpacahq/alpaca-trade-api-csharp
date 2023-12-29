@@ -5,7 +5,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalAuctionsAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addSingleAuctionsPageExpectation);
 
@@ -19,7 +19,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalAuctionsDictionaryOfAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addMultiAuctionsPageExpectation);
 
@@ -33,7 +33,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalAuctionsPagesAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addSingleAuctionsPageExpectation);
 
@@ -47,7 +47,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalAuctionsMultiPagesAsAsyncEnumerableWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         addPaginatedResponses(mock, addMultiAuctionsPageExpectation);
 

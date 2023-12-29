@@ -5,7 +5,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalBarsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddMultiBarsPageExpectation(PathPrefix, _symbols);
 
@@ -25,7 +25,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task GetHistoricalBarsAsyncForSingleWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddSingleBarsPageExpectation(PathPrefix, Stock);
 
@@ -44,7 +44,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListHistoricalBarsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddSingleBarsPageExpectation(PathPrefix, Stock);
 
@@ -64,7 +64,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListHistoricalBarsAsyncForManyWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddMultiBarsPageExpectation(PathPrefix, _symbols);
 
@@ -85,7 +85,7 @@ public sealed partial class AlpacaDataClientTest
     [Fact]
     public async Task ListHistoricalBarsAsyncWithoutIntervalWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaDataClientMock();
+        using var mock = mockClientsFactory.GetAlpacaDataClientMock();
 
         mock.AddSingleBarsPageExpectation(PathPrefix, Stock);
 

@@ -11,7 +11,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task ListWatchListsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet(WatchlistsUrl, new JArray(createWatchList()));
 
@@ -26,7 +26,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task GetWatchListByIdAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet(WatchListsWildcardUrl, createWatchList());
 
@@ -38,7 +38,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task GetWatchListByNameAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet(WatchlistsByNameUrl, createWatchList());
 
@@ -50,7 +50,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task CreateWatchListAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddPost(WatchlistsUrl, createWatchList());
 
@@ -63,7 +63,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task UpdateWatchListByIdAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddPut(WatchListsWildcardUrl, createWatchList());
 
@@ -76,7 +76,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task AddAssetIntoWatchListByIdAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddPost(WatchListsWildcardUrl, createWatchList());
 
@@ -89,7 +89,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task AddAssetIntoWatchListByNameAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddPost(WatchlistsByNameUrl, createWatchList());
 
@@ -102,7 +102,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task DeleteAssetFromWatchListByIdAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddDelete(WatchListsWildcardUrl, createWatchList());
 
@@ -115,7 +115,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task DeleteAssetFromWatchListByNameAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddDelete($"{WatchlistsByNameUrl}/**", createWatchList());
 
@@ -127,7 +127,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task DeleteWatchListByIdAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddDelete(WatchListsWildcardUrl, createWatchList());
 
@@ -137,7 +137,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task DeleteWatchListByNameAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddDelete(WatchlistsByNameUrl, createWatchList());
 

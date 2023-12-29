@@ -19,7 +19,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task ListPositionsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet("/v2/positions", new JArray(createPosition()));
 
@@ -31,7 +31,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task GetPositionAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet("/v2/positions/**", createPosition());
 
@@ -43,7 +43,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task DeletePositionAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddDelete("/v2/positions/**", createOrder());
 
@@ -59,7 +59,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task DeleteAllPositionsAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddDelete("/v2/positions", getDeletePositionsResponse());
 
@@ -78,7 +78,7 @@ public sealed partial class AlpacaTradingClientTest
     [Fact]
     public async Task DeleteAllPositionsWithOrdersAsyncWorks()
     {
-        using var mock = _mockClientsFactory.GetAlpacaTradingClientMock();
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddDelete("/v2/positions", getDeletePositionsResponse());
 
