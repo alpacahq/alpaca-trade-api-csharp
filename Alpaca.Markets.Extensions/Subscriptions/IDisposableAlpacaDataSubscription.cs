@@ -6,6 +6,4 @@
 /// </summary>
 /// <typeparam name="TItem"></typeparam>
 public interface IDisposableAlpacaDataSubscription<out TItem>
-    : IAlpacaDataSubscription<TItem>, IAsyncDisposable, IDisposable
-{
-}
+    : IAlpacaDataSubscription<TItem>, IAsyncDisposable, IDisposable;

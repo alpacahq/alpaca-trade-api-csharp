@@ -65,6 +65,4 @@ public sealed class EnvironmentTestData : IEnumerable<Object[]>
 
 [CollectionDefinition("MockEnvironment")]
 public sealed class MockClientsFactoryCollection
-    : ICollectionFixture<MockClientsFactoryFixture>
-{
-}
+    : ICollectionFixture<MockClientsFactoryFixture>;
