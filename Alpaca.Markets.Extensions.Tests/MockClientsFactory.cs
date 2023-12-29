@@ -25,6 +25,4 @@ public sealed class MockClientsFactoryFixture
 
 [CollectionDefinition("MockEnvironment")]
 public sealed class MockClientsFactoryCollection
-    : ICollectionFixture<MockClientsFactoryFixture>
-{
-}
+    : ICollectionFixture<MockClientsFactoryFixture>;
