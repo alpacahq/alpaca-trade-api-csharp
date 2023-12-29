@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class NewWatchListRequest : Validation.IRequest
 {
-    private readonly List<String> _assets = new();
+    private readonly List<String> _assets = [];
 
     /// <summary>
     /// Creates new instance of <see cref="NewWatchListRequest"/> object.

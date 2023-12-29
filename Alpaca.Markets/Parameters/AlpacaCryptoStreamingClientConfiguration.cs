@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class AlpacaCryptoStreamingClientConfiguration : StreamingClientConfiguration
 {
-    private readonly HashSet<CryptoExchange> _exchanges = new();
+    private readonly HashSet<CryptoExchange> _exchanges = [];
 
     /// <summary>
     /// Creates new instance of <see cref="AlpacaCryptoStreamingClientConfiguration"/> class.

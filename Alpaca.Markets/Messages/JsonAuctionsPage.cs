@@ -5,7 +5,7 @@ internal sealed class JsonAuctionsPage : IPageMutable<IAuction>, ISymbolMutable
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "auctions", Required = Required.Default)]
-    public List<JsonAuction> ItemsList { get; [ExcludeFromCodeCoverage] set; } = new();
+    public List<JsonAuction> ItemsList { get; [ExcludeFromCodeCoverage] set; } = [];
 
     [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
     public String Symbol { get; set; } = String.Empty;

@@ -8,10 +8,10 @@ namespace Alpaca.Markets.Extensions;
 public sealed class ReconnectionParameters
 {
     private static readonly WebSocketError[] _defaultWebSocketErrorCodes =
-    {
+    [
         WebSocketError.ConnectionClosedPrematurely,
         WebSocketError.NotAWebSocket
-    };
+    ];
 
     /// <summary>
     /// Gets or sets the maximum number of reconnection attempts in case of a connection closing.

@@ -22,7 +22,7 @@ internal sealed class JsonRealTimeTrade : JsonRealTimeBase, ITrade
     public Decimal Size { get; set; }
 
     [JsonProperty(PropertyName = "c", Required = Required.Default)]
-    public List<String> ConditionsList { get; set; } = new();
+    public List<String> ConditionsList { get; set; } = [];
 
     [JsonProperty(PropertyName = "tks", Required = Required.Default)]
     public TakerSide TakerSide { get; set; } = TakerSide.Unknown;

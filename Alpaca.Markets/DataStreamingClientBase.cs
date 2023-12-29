@@ -174,7 +174,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
     private const Int32 SubscriptionChunkSize = 100;
 
     // ReSharper disable once StaticMemberInGenericType
-    private static readonly Char[] _channelSeparator = { '.' };
+    private static readonly Char[] _channelSeparator = [ '.' ];
 
     // ReSharper disable once StaticMemberInGenericType
     private static readonly SortedSet<String> _implicitChannels = new(StringComparer.Ordinal)

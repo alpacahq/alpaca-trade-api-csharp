@@ -5,7 +5,7 @@ internal sealed class JsonBarsPage : IPageMutable<IBar>, ISymbolMutable
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "bars", Required = Required.Default)]
-    public List<JsonHistoricalBar> ItemsList { get; [ExcludeFromCodeCoverage] set; } = new();
+    public List<JsonHistoricalBar> ItemsList { get; [ExcludeFromCodeCoverage] set; } = [];
 
     [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
     public String Symbol { get; set; } = String.Empty;

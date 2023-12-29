@@ -22,7 +22,7 @@ internal sealed class JsonRealTimeCryptoQuote : JsonRealTimeBase, IQuote
     public Decimal AskSize { get; set; }
 
     [JsonProperty(PropertyName = "c", Required = Required.Default)]
-    public List<String> ConditionsList { get; } = new();
+    public List<String> ConditionsList { get; } = [];
 
     [JsonProperty(PropertyName = "z", Required = Required.Default)]
     public String Tape { get; set; } = String.Empty;
