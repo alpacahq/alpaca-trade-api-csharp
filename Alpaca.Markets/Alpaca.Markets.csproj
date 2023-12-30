@@ -12,15 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>6.2.5.1</AssemblyVersion>
-    <FileVersion>6.2.5.1</FileVersion>
-    <Version>6.2.5</Version>
+    <AssemblyVersion>6.2.6.0</AssemblyVersion>
+    <FileVersion>6.2.6.0</FileVersion>
+    <Version>6.2.6</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Added the new `IPO` enumeration member into the `AssetAttributes` enumeration. Thanks to @hiohiohio for help!
-- The historical crypto quotes is now requested from the latest version URL (beta 1 version 3).
+- Dependencies upgrade. This is the last 6.2.x release, please, upgrade to the 7.0.x version of the package.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
