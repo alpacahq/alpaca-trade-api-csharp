@@ -38,8 +38,8 @@ jobs:
       
     - name: Save SDK Packages
       uses: actions/upload-artifact@v4
+      if: github.repository == 'alpacahq/alpaca-trade-api-csharp' && startsWith(github.ref, 'refs/tags/sdk')
       with:
-        retention-days: 1
         compression-level: 0
         name: sdk-packages
         path: |
@@ -48,8 +48,8 @@ jobs:
           
     - name: Save Extensions Packages
       uses: actions/upload-artifact@v4
+      if: github.repository == 'alpacahq/alpaca-trade-api-csharp' && startsWith(github.ref, 'refs/tags/ext')
       with:
-        retention-days: 1
         compression-level: 0
         name: ext-packages
         path: |
