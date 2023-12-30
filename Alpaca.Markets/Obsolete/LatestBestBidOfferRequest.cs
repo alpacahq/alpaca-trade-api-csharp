@@ -7,7 +7,7 @@
 [Obsolete("This class will be removed in the next major release of SDK.", true)]
 public sealed class LatestBestBidOfferRequest : Validation.IRequest
 {
-    private readonly HashSet<CryptoExchange> _exchanges = new();
+    private readonly HashSet<CryptoExchange> _exchanges = [];
 
     /// <summary>
     /// Creates new instance of <see cref="LatestBestBidOfferRequest"/> object.
