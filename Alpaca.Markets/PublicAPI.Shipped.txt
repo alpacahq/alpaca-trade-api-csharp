@@ -120,6 +120,7 @@ Alpaca.Markets.AnnouncementsRequest.Symbol.get -> string?
 Alpaca.Markets.AnnouncementsRequest.Symbol.set -> void
 Alpaca.Markets.AnnouncementsRequest.TimeInterval.get -> Alpaca.Markets.IInclusiveTimeInterval!
 Alpaca.Markets.AssetAttributes
+Alpaca.Markets.AssetAttributes.OptionsEnabled = 4 -> Alpaca.Markets.AssetAttributes
 Alpaca.Markets.AssetAttributes.PtpNoException = 1 -> Alpaca.Markets.AssetAttributes
 Alpaca.Markets.AssetAttributes.PtpWithException = 2 -> Alpaca.Markets.AssetAttributes
 Alpaca.Markets.AssetAttributes.Ipo = 3 -> Alpaca.Markets.AssetAttributes

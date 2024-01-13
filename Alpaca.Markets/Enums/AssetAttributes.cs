@@ -32,5 +32,12 @@ public enum AssetAttributes
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "ipo")]
-    Ipo
+    Ipo,
+
+    /// <summary>
+    /// Asset supports options trading.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "options_enabled")]
+    OptionsEnabled
 }
