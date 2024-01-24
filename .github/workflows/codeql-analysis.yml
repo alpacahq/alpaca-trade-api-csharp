@@ -36,7 +36,7 @@ jobs:
         languages: ${{ matrix.language }}
 
     - name: Cache NuGet Packages
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
