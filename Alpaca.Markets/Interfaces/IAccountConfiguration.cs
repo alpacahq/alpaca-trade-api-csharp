@@ -34,4 +34,10 @@ public interface IAccountConfiguration
     /// </summary>
     [UsedImplicitly]
     public Boolean IsPtpNoExceptionEntry { get; set; }
+
+    /// <summary>
+    /// Gets the desired maximum option trading level.
+    /// </summary>
+    [UsedImplicitly]
+    OptionTradingLevel? MaxOptionTradingLevel { get; }
 }

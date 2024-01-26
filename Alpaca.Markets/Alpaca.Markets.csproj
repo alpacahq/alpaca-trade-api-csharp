@@ -19,7 +19,10 @@
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Added the new `OptionsEnabled` enumeration member into the `AssetAttributes` enumeration.
+- Added the new `IAccount.OptionApprovedLevel` and `IAccount.OptionTradingLevel` properties
+- Added the new `IAccountConfiguration.MaxOptionTradingLevel` property.
+- Added the new 'AssetType.UsOption` enumeration member.
+- Added the new 'OptionTradingLevel` enumeration.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
@@ -49,7 +52,7 @@
   <PropertyGroup>
     <EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
     <!--<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>-->
-    <PackageValidationBaselineVersion>6.2.4</PackageValidationBaselineVersion>
+    <PackageValidationBaselineVersion>7.0.0</PackageValidationBaselineVersion>
     <EnableStrictModeForCompatibleTfms>true</EnableStrictModeForCompatibleTfms>
     <EnablePackageValidation>true</EnablePackageValidation>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>

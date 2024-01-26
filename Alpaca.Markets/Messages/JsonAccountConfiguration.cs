@@ -22,6 +22,9 @@ internal sealed class JsonAccountConfiguration : IAccountConfiguration
     [JsonProperty(PropertyName = "ptp_no_exception_entry", Required = Required.Default)]
     public Boolean IsPtpNoExceptionEntry { get; set; }
 
+    [JsonProperty(PropertyName = "max_option_trading_level", Required = Required.Default)]
+    public OptionTradingLevel? MaxOptionTradingLevel { get; set; }
+
     [ExcludeFromCodeCoverage]
     public override String ToString() =>
         JsonConvert.SerializeObject(this);

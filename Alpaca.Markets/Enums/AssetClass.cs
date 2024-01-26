@@ -14,9 +14,16 @@ public enum AssetClass
     UsEquity,
 
     /// <summary>
-    /// Crypto currency asset class.
+    /// Cryptocurrency asset class.
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "crypto")]
-    Crypto
+    Crypto,
+
+    /// <summary>
+    /// US option asset class.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "us_option")]
+    UsOption
 }

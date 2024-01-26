@@ -21,6 +21,8 @@ public sealed partial class AlpacaTradingClientTest
 
         mock.AddGet("/v2/account", new JObject(
             new JProperty("account_number", Guid.NewGuid().ToString("D")),
+            new JProperty("option_approved_level", OptionTradingLevel.Disabled),
+            new JProperty("option_trading_level", OptionTradingLevel.Disabled),
             new JProperty("crypto_status", AccountStatus.Active),
             new JProperty("non_maginable_buying_power", Price),
             new JProperty("daytrading_buying_power", Price),
@@ -74,6 +76,8 @@ public sealed partial class AlpacaTradingClientTest
         Assert.NotNull(account.NonMarginableBuyingPower);
         Assert.NotNull(account.DayTradingBuyingPower);
         Assert.NotNull(account.RegulationBuyingPower);
+        Assert.NotNull(account.OptionApprovedLevel);
+        Assert.NotNull(account.OptionTradingLevel);
         Assert.NotNull(account.ShortMarketValue);
         Assert.NotNull(account.LongMarketValue);
         Assert.NotNull(account.InitialMargin);
@@ -222,6 +226,7 @@ public sealed partial class AlpacaTradingClientTest
     private static JObject createConfiguration() =>
         new(
             // ReSharper disable once StringLiteralTypo
+            new JProperty("max_option_trading_level", OptionTradingLevel.LongCallPut),
             new JProperty("dtbp_check", DayTradeMarginCallProtection.Both),
             new JProperty("trade_confirm_email", TradeConfirmEmail.All),
             new JProperty("ptp_no_exception_entry", false),
