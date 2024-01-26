@@ -107,4 +107,24 @@ internal sealed partial class AlpacaTradingClient
             await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             _rateLimitHandler, cancellationToken).ConfigureAwait(false);
+
+    public async Task<IReadOnlyList<IOptionContract>> ListOptionContractsAsync(
+        OptionContractsRequest request,
+        CancellationToken cancellationToken = default) =>
+        (await _httpClient.GetAsync<JsonOptionContractsPage, JsonOptionContractsPage>(
+            await request.EnsureNotNull().Validate()
+                .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false)).Contracts;
+
+    public Task<IOptionContract> GetOptionContractByIdAsync(
+        Guid contractId,
+        CancellationToken cancellationToken = default) =>
+        _httpClient.GetAsync<IOptionContract, JsonOptionContract>(
+            $"v2/options/contracts/{contractId:D}", _rateLimitHandler, cancellationToken);
+
+    public Task<IOptionContract> GetOptionContractBySymbolAsync(
+        String symbol,
+        CancellationToken cancellationToken = default) =>
+        _httpClient.GetAsync<IOptionContract, JsonOptionContract>(
+            $"v2/options/contracts/{symbol.EnsureNotNull()}", _rateLimitHandler, cancellationToken);
 }

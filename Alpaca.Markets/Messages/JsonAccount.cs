@@ -98,6 +98,15 @@ internal sealed class JsonAccount : IAccount
     [JsonProperty(PropertyName = "pending_transfer_out", Required = Required.Default)]
     public Decimal? PendingTransferOut { get; set; }
 
+    [JsonProperty(PropertyName = "options_trading_level", Required = Required.Default)]
+    public OptionsTradingLevel? OptionsTradingLevel { get; set; }
+
+    [JsonProperty(PropertyName = "options_approved_level", Required = Required.Default)]
+    public OptionsTradingLevel? OptionsApprovedLevel { get; set; }
+
+    [JsonProperty(PropertyName = "options_buying_power", Required = Required.Default)]
+    public Decimal? OptionsBuyingPower { get; set; }
+
     [OnDeserialized]
     [UsedImplicitly]
     internal void OnDeserializedMethod(

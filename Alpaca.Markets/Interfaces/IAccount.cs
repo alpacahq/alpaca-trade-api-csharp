@@ -185,4 +185,23 @@ public interface IAccount
     /// </summary>
     [UsedImplicitly]
     Decimal? PendingTransferOut { get; }
+
+    /// <summary>
+    /// Gets the effective options trading level of the account. This is the minimum between the
+    /// <see cref="OptionsApprovedLevel"/> and the <see cref="IAccountConfiguration.MaxOptionsTradingLevel"/>.
+    /// </summary>
+    [UsedImplicitly]
+    OptionsTradingLevel? OptionsTradingLevel { get; }
+
+    /// <summary>
+    /// Gets the options trading level that was approved for this account.
+    /// </summary>
+    [UsedImplicitly]
+    OptionsTradingLevel? OptionsApprovedLevel { get; }
+
+    /// <summary>
+    /// Gets the option buying power that was approved for this account.
+    /// </summary>
+    [UsedImplicitly]
+    Decimal? OptionsBuyingPower { get; }
 }

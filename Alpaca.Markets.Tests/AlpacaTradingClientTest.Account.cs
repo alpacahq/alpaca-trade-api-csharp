@@ -21,6 +21,8 @@ public sealed partial class AlpacaTradingClientTest
 
         mock.AddGet("/v2/account", new JObject(
             new JProperty("account_number", Guid.NewGuid().ToString("D")),
+            new JProperty("options_approved_level", OptionsTradingLevel.Disabled),
+            new JProperty("options_trading_level", OptionsTradingLevel.Disabled),
             new JProperty("crypto_status", AccountStatus.Active),
             new JProperty("non_maginable_buying_power", Price),
             new JProperty("daytrading_buying_power", Price),
@@ -30,6 +32,7 @@ public sealed partial class AlpacaTradingClientTest
             new JProperty("trade_suspended_by_user", true),
             new JProperty("status", AccountStatus.Active),
             new JProperty("created_at", DateTime.UtcNow),
+            new JProperty("options_buying_power", cash),
             new JProperty("short_market_value", Price),
             new JProperty("maintenance_margin", Price),
             new JProperty("pattern_day_trader", false),
@@ -62,6 +65,7 @@ public sealed partial class AlpacaTradingClientTest
         Assert.Equal(transfer, account.PendingTransferOut);
         Assert.Equal(transfer, account.PendingTransferIn);
         Assert.Equal(transfer, account.AccruedFees);
+        Assert.Equal(cash, account.OptionsBuyingPower);
 
         Assert.True(account.LastMaintenanceMargin != 0M);
         Assert.True(account.MaintenanceMargin != 0M);
@@ -74,6 +78,8 @@ public sealed partial class AlpacaTradingClientTest
         Assert.NotNull(account.NonMarginableBuyingPower);
         Assert.NotNull(account.DayTradingBuyingPower);
         Assert.NotNull(account.RegulationBuyingPower);
+        Assert.NotNull(account.OptionsApprovedLevel);
+        Assert.NotNull(account.OptionsTradingLevel);
         Assert.NotNull(account.ShortMarketValue);
         Assert.NotNull(account.LongMarketValue);
         Assert.NotNull(account.InitialMargin);
@@ -222,6 +228,7 @@ public sealed partial class AlpacaTradingClientTest
     private static JObject createConfiguration() =>
         new(
             // ReSharper disable once StringLiteralTypo
+            new JProperty("max_option_trading_level", OptionsTradingLevel.LongCallPut),
             new JProperty("dtbp_check", DayTradeMarginCallProtection.Both),
             new JProperty("trade_confirm_email", TradeConfirmEmail.All),
             new JProperty("ptp_no_exception_entry", false),

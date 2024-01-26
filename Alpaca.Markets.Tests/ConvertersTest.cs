@@ -42,4 +42,16 @@ public sealed class ConvertersTest
         Assert.NotEqual(original.Item, converted.Item);
         Assert.Equal(CryptoExchange.Unknown, converted.Item);
     }
+
+    [Fact]
+    public void AssetAttributesEnumConverterWorks()
+    {
+        var original = new EnumWrapper<AssetAttributes> { Item = (AssetAttributes)42 };
+        var json = JsonConvert.SerializeObject(original)
+            .Replace("42", "\"VerySpecificAsset\"");
+        var converted = JsonConvert.DeserializeObject<EnumWrapper<AssetAttributes>>(json);
+
+        Assert.NotEqual(original.Item, converted.Item);
+        Assert.Equal(AssetAttributes.Unknown, converted.Item);
+    }
 }
