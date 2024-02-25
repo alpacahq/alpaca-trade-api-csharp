@@ -3,7 +3,7 @@
 /// <summary>
 /// Options trading level for Alpaca REST API.
 /// </summary>
-public enum OptionTradingLevel
+public enum OptionsTradingLevel
 {
     /// <summary>
     /// US options trading completely disabled.

@@ -1,9 +1,10 @@
 ﻿#nullable enable
 Alpaca.Markets.AssetClass.UsOption = 2 -> Alpaca.Markets.AssetClass
-Alpaca.Markets.IAccount.OptionApprovedLevel.get -> Alpaca.Markets.OptionTradingLevel?
-Alpaca.Markets.IAccount.OptionTradingLevel.get -> Alpaca.Markets.OptionTradingLevel?
-Alpaca.Markets.IAccountConfiguration.MaxOptionTradingLevel.get -> Alpaca.Markets.OptionTradingLevel?
-Alpaca.Markets.OptionTradingLevel
-Alpaca.Markets.OptionTradingLevel.CoveredCallCashSecuredPut = 1 -> Alpaca.Markets.OptionTradingLevel
-Alpaca.Markets.OptionTradingLevel.Disabled = 0 -> Alpaca.Markets.OptionTradingLevel
-Alpaca.Markets.OptionTradingLevel.LongCallPut = 2 -> Alpaca.Markets.OptionTradingLevel
+Alpaca.Markets.IAccount.OptionsApprovedLevel.get -> Alpaca.Markets.OptionsTradingLevel?
+Alpaca.Markets.IAccount.OptionsBuyingPower.get -> decimal?
+Alpaca.Markets.IAccount.OptionsTradingLevel.get -> Alpaca.Markets.OptionsTradingLevel?
+Alpaca.Markets.IAccountConfiguration.MaxOptionsTradingLevel.get -> Alpaca.Markets.OptionsTradingLevel?
+Alpaca.Markets.OptionsTradingLevel
+Alpaca.Markets.OptionsTradingLevel.CoveredCallCashSecuredPut = 1 -> Alpaca.Markets.OptionsTradingLevel
+Alpaca.Markets.OptionsTradingLevel.Disabled = 0 -> Alpaca.Markets.OptionsTradingLevel
+Alpaca.Markets.OptionsTradingLevel.LongCallPut = 2 -> Alpaca.Markets.OptionsTradingLevel
