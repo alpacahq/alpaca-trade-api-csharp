@@ -26,7 +26,6 @@ public interface IAlpacaTradingClient : IRateLimitProvider, IDisposable
     [UsedImplicitly]
     Task<IReadOnlyList<IWatchList>> ListWatchListsAsync(
         CancellationToken cancellationToken = default);
-
     /// <summary>
     /// Add new watch list object into Alpaca REST API endpoint.
     /// </summary>
@@ -928,5 +927,80 @@ public interface IAlpacaTradingClient : IRateLimitProvider, IDisposable
     [UsedImplicitly]
     Task<IReadOnlyList<IAnnouncement>> ListAnnouncementsAsync(
         AnnouncementsRequest request,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets list of active option contracts from Alpaca REST API endpoint. By default, only active contracts that expire before the upcoming weekend are returned.
+    /// </summary>
+    /// <param name="request">Option contracts request parameters.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="request"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>Read-only list of corporate action information objects.</returns>
+    [UsedImplicitly]
+    Task<IReadOnlyList<IOptionContract>> ListOptionContractsAsync(
+        OptionContractsRequest request,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets option contract from Alpaca REST API endpoint using contract identifier.
+    /// </summary>
+    /// <param name="contractId">Option contract unique identifier.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <returns>Read-only list of corporate action information objects.</returns>
+    [UsedImplicitly]
+    Task<IOptionContract> GetOptionContractByIdAsync(
+        Guid contractId,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets option contract from Alpaca REST API endpoint using contract symbol name.
+    /// </summary>
+    /// <param name="symbol">Option contract unique symbol name.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <returns>Read-only list of corporate action information objects.</returns>
+    [UsedImplicitly]
+    Task<IOptionContract> GetOptionContractBySymbolAsync(
+        String symbol,
         CancellationToken cancellationToken = default);
 }

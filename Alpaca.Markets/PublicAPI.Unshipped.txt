@@ -4,7 +4,59 @@ Alpaca.Markets.IAccount.OptionsApprovedLevel.get -> Alpaca.Markets.OptionsTradin
 Alpaca.Markets.IAccount.OptionsBuyingPower.get -> decimal?
 Alpaca.Markets.IAccount.OptionsTradingLevel.get -> Alpaca.Markets.OptionsTradingLevel?
 Alpaca.Markets.IAccountConfiguration.MaxOptionsTradingLevel.get -> Alpaca.Markets.OptionsTradingLevel?
+Alpaca.Markets.IAlpacaTradingClient.GetOptionContractByIdAsync(System.Guid contractId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOptionContract!>!
+Alpaca.Markets.IAlpacaTradingClient.GetOptionContractBySymbolAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOptionContract!>!
+Alpaca.Markets.IAlpacaTradingClient.ListOptionContractsAsync(Alpaca.Markets.OptionContractsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOptionContract!>!>!
+Alpaca.Markets.IOptionContract
+Alpaca.Markets.IOptionContract.ClosePrice.get -> decimal?
+Alpaca.Markets.IOptionContract.ClosePriceDate.get -> System.DateOnly?
+Alpaca.Markets.IOptionContract.ContractId.get -> System.Guid
+Alpaca.Markets.IOptionContract.ExpirationDate.get -> System.DateOnly
+Alpaca.Markets.IOptionContract.IsTradable.get -> bool
+Alpaca.Markets.IOptionContract.Name.get -> string!
+Alpaca.Markets.IOptionContract.OpenInterest.get -> decimal?
+Alpaca.Markets.IOptionContract.OpenInterestDate.get -> System.DateOnly?
+Alpaca.Markets.IOptionContract.OptionStyle.get -> Alpaca.Markets.OptionStyle
+Alpaca.Markets.IOptionContract.OptionType.get -> Alpaca.Markets.OptionType
+Alpaca.Markets.IOptionContract.RootSymbol.get -> string!
+Alpaca.Markets.IOptionContract.Size.get -> decimal
+Alpaca.Markets.IOptionContract.Status.get -> Alpaca.Markets.AssetStatus
+Alpaca.Markets.IOptionContract.StrikePrice.get -> decimal
+Alpaca.Markets.IOptionContract.Symbol.get -> string!
+Alpaca.Markets.IOptionContract.UnderlyingAssetId.get -> System.Guid
+Alpaca.Markets.IOptionContract.UnderlyingSymbol.get -> string!
+Alpaca.Markets.OptionContractsRequest
+Alpaca.Markets.OptionContractsRequest.AssetStatus.get -> Alpaca.Markets.AssetStatus?
+Alpaca.Markets.OptionContractsRequest.AssetStatus.set -> void
+Alpaca.Markets.OptionContractsRequest.ExpirationDateEqualTo.get -> System.DateOnly?
+Alpaca.Markets.OptionContractsRequest.ExpirationDateEqualTo.set -> void
+Alpaca.Markets.OptionContractsRequest.ExpirationDateGreaterThanOrEqualTo.get -> System.DateOnly?
+Alpaca.Markets.OptionContractsRequest.ExpirationDateGreaterThanOrEqualTo.set -> void
+Alpaca.Markets.OptionContractsRequest.ExpirationDateLessThanOrEqualTo.get -> System.DateOnly?
+Alpaca.Markets.OptionContractsRequest.ExpirationDateLessThanOrEqualTo.set -> void
+Alpaca.Markets.OptionContractsRequest.OptionContractsRequest(string! underlyingSymbol) -> void
+Alpaca.Markets.OptionContractsRequest.OptionStyle.get -> Alpaca.Markets.OptionStyle?
+Alpaca.Markets.OptionContractsRequest.OptionStyle.set -> void
+Alpaca.Markets.OptionContractsRequest.OptionType.get -> Alpaca.Markets.OptionType?
+Alpaca.Markets.OptionContractsRequest.OptionType.set -> void
+Alpaca.Markets.OptionContractsRequest.PageNumber.get -> uint?
+Alpaca.Markets.OptionContractsRequest.PageNumber.set -> void
+Alpaca.Markets.OptionContractsRequest.PageSize.get -> uint?
+Alpaca.Markets.OptionContractsRequest.PageSize.set -> void
+Alpaca.Markets.OptionContractsRequest.RootSymbol.get -> string?
+Alpaca.Markets.OptionContractsRequest.RootSymbol.set -> void
+Alpaca.Markets.OptionContractsRequest.StrikePriceGreaterThanOrEqualTo.get -> decimal?
+Alpaca.Markets.OptionContractsRequest.StrikePriceGreaterThanOrEqualTo.set -> void
+Alpaca.Markets.OptionContractsRequest.StrikePriceLessThanOrEqualTo.get -> decimal?
+Alpaca.Markets.OptionContractsRequest.StrikePriceLessThanOrEqualTo.set -> void
+Alpaca.Markets.OptionContractsRequest.UnderlyingSymbol.get -> string!
 Alpaca.Markets.OptionsTradingLevel
 Alpaca.Markets.OptionsTradingLevel.CoveredCallCashSecuredPut = 1 -> Alpaca.Markets.OptionsTradingLevel
 Alpaca.Markets.OptionsTradingLevel.Disabled = 0 -> Alpaca.Markets.OptionsTradingLevel
 Alpaca.Markets.OptionsTradingLevel.LongCallPut = 2 -> Alpaca.Markets.OptionsTradingLevel
+Alpaca.Markets.OptionStyle
+Alpaca.Markets.OptionStyle.American = 0 -> Alpaca.Markets.OptionStyle
+Alpaca.Markets.OptionStyle.European = 1 -> Alpaca.Markets.OptionStyle
+Alpaca.Markets.OptionType
+Alpaca.Markets.OptionType.Call = 0 -> Alpaca.Markets.OptionType
+Alpaca.Markets.OptionType.Put = 1 -> Alpaca.Markets.OptionType

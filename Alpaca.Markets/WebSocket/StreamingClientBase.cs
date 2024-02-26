@@ -89,7 +89,7 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
 
     protected virtual void OnOpened() => SocketOpened?.Invoke();
 
-    [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
+    // ReSharper disable once VirtualMemberNeverOverridden.Global
     protected virtual void OnClosed() => SocketClosed?.Invoke();
 
     [ExcludeFromCodeCoverage]
@@ -98,7 +98,7 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
     {
     }
 
-    [SuppressMessage("ReSharper", "VirtualMemberNeverOverridden.Global")]
+    // ReSharper disable once VirtualMemberNeverOverridden.Global
     protected virtual void Dispose(
         Boolean disposing)
     {
@@ -175,7 +175,9 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
         return _webSocket.SendAsync(textWriter.ToString(), cancellationToken);
     }
 
+#pragma warning disable IDE1006 // Naming Styles
     private void onDataReceived(
+#pragma warning restore IDE1006 // Naming Styles
         Byte[] binaryData) =>
         OnMessageReceived(Encoding.UTF8.GetString(binaryData));
 }
