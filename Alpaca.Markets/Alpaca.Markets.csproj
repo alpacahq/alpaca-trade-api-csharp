@@ -20,6 +20,7 @@
   <PropertyGroup>
     <PackageReleaseNotes>
 - The logic for converting JSON strings to enum values with fallback improved and now is exception-free mostly.
+- Added the new `FractionalAtExtended` enumeration member into the `AssetAttributes` enumeration.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
