@@ -5,7 +5,7 @@
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
 internal sealed class AssetAttributesEnumConverter : StringEnumConverter
 {
-    public override Object? ReadJson(
+    public override Object ReadJson(
         JsonReader reader,
         Type objectType,
         Object? existingValue,
@@ -13,7 +13,7 @@ internal sealed class AssetAttributesEnumConverter : StringEnumConverter
     {
         try
         {
-            return base.ReadJson(reader, objectType, existingValue, serializer);
+            return AssetAttributes.Unknown.FromEnumString(reader);
         }
         catch (JsonSerializationException)
         {
