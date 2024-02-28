@@ -4,6 +4,13 @@ namespace Alpaca.Markets.Tests;
 
 public sealed partial class AlpacaTradingClientTest
 {
+    private static readonly Char[] _doubleQuotes = [ '"' ];
+
+    private static String toEnumString<T>(
+        T enumValue)
+        where T : struct, Enum =>
+        JsonConvert.SerializeObject(enumValue).Trim(_doubleQuotes);
+
     [Fact]
     public async Task GetAssetAsyncWorks()
     {
@@ -42,7 +49,8 @@ public sealed partial class AlpacaTradingClientTest
         Guid assetId,
         String symbol) =>
         new(
-            new JProperty("attributes", new JArray(AssetAttributes.PtpNoException)),
+            new JProperty("attributes", new JArray(
+                toEnumString(AssetAttributes.PtpNoException))),
             new JProperty("maintenance_margin_requirement", 100),
             new JProperty("status", AssetStatus.Active),
             new JProperty("class", AssetClass.UsEquity),

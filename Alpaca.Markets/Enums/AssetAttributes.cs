@@ -39,5 +39,12 @@ public enum AssetAttributes
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "options_enabled")]
-    OptionsEnabled
+    OptionsEnabled,
+
+    /// <summary>
+    /// Asset supports fractional trading at extended hours.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "fractional_eh_enabled")]
+    FractionalAtExtended
 }

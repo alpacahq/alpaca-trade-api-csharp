@@ -115,6 +115,7 @@ Alpaca.Markets.AnnouncementsRequest.DateType.set -> void
 Alpaca.Markets.AnnouncementsRequest.Symbol.get -> string?
 Alpaca.Markets.AnnouncementsRequest.Symbol.set -> void
 Alpaca.Markets.AssetAttributes
+Alpaca.Markets.AssetAttributes.FractionalAtExtended = 5 -> Alpaca.Markets.AssetAttributes
 Alpaca.Markets.AssetAttributes.OptionsEnabled = 4 -> Alpaca.Markets.AssetAttributes
 Alpaca.Markets.AssetAttributes.PtpNoException = 1 -> Alpaca.Markets.AssetAttributes
 Alpaca.Markets.AssetAttributes.PtpWithException = 2 -> Alpaca.Markets.AssetAttributes
