@@ -10,4 +10,11 @@ internal static class DictionaryExtensions
             pair => pair.Value.SetSymbol(pair.Key).EmptyIfNull<TInto, TFrom>(),
             StringComparer.Ordinal)
         ?? new Dictionary<String, IReadOnlyList<TInto>>(StringComparer.Ordinal);
+
+#if NETFRAMEWORK || NETSTANDARD2_0
+    public static TValue GetValueOrDefault<TKey, TValue>(
+        this IReadOnlyDictionary<TKey, TValue> dictionary,
+        TKey key, TValue defaultValue) =>
+        dictionary.TryGetValue(key, out var value) ? value : defaultValue;
+#endif
 }
