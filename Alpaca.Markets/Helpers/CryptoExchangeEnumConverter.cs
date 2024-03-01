@@ -9,15 +9,6 @@ internal sealed class CryptoExchangeEnumConverter : StringEnumConverter
         JsonReader reader,
         Type objectType,
         Object? existingValue,
-        JsonSerializer serializer)
-    {
-        try
-        {
-            return CryptoExchange.Unknown.FromEnumString(reader);
-        }
-        catch (JsonSerializationException)
-        {
-            return CryptoExchange.Unknown;
-        }
-    }
+        JsonSerializer serializer) =>
+        reader.ReadEnumString(CryptoExchange.Unknown);
 }

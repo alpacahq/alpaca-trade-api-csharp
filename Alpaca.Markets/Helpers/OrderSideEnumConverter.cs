@@ -9,15 +9,6 @@ internal sealed class OrderSideEnumConverter : StringEnumConverter
         JsonReader reader,
         Type objectType,
         Object? existingValue,
-        JsonSerializer serializer)
-    {
-        try
-        {
-            return OrderSide.Sell.FromEnumString(reader);
-        }
-        catch (JsonSerializationException)
-        {
-            return OrderSide.Sell; // Treat all unknown order types as sell orders
-        }
-    }
+        JsonSerializer serializer) =>
+        reader.ReadEnumString(OrderSide.Sell); // Treat all unknown order types as sell orders
 }

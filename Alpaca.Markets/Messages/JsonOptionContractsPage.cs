@@ -6,5 +6,5 @@
 internal sealed class JsonOptionContractsPage
 {
     [JsonProperty(PropertyName = "option_contracts", Required = Required.Always)]
-    public List<JsonOptionContract> Contracts { get; set; } = [];
+    public List<JsonOptionContract> Contracts { get; [ExcludeFromCodeCoverage] set; } = [];
 }
