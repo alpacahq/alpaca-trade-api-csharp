@@ -111,6 +111,12 @@ internal static class HistoricalDataHelpers
             new JProperty("snapshots", new JObject(
                 symbols.Select(name => new JProperty(name, createSnapshot()))))));
 
+    internal static void AddOptionChainExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
+        mock.AddGet($"{pathPrefix}/snapshots/*", new JObject(
+            new JProperty("snapshots", new JObject(
+                symbols.Select(name => new JProperty(name, createSnapshot()))))));
+
     internal static void AddOrderBooksExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
         mock.addLatestCryptoExpectation(pathPrefix, symbols, "orderbooks", createOrderBook);
@@ -202,12 +208,20 @@ internal static class HistoricalDataHelpers
 
         Assert.Equal(String.Empty, trade.Update);
         Assert.Equal(_exchange, trade.Exchange);
-        Assert.Equal(_tape, trade.Tape);
 
         Assert.Equal(TakerSide.Unknown, trade.TakerSide);
-        Assert.Equal(TradeId, trade.TradeId);
         Assert.Equal(MidPrice, trade.Price);
         Assert.Equal(Size, trade.Size);
+
+        if (trade.TradeId != 0)
+        {
+            Assert.Equal(TradeId, trade.TradeId);
+            Assert.Equal(_tape, trade.Tape);
+        }
+        else
+        {
+            Assert.Equal(String.Empty, trade.Tape);
+        }
 
         return true;
     }
@@ -219,10 +233,17 @@ internal static class HistoricalDataHelpers
         Assert.True(quote.TimestampUtc <= DateTime.UtcNow);
         Assert.Equal(symbol, quote.Symbol);
 
-        if (String.IsNullOrEmpty(quote.Tape)) // Crypto quote
+        if (String.IsNullOrEmpty(quote.Tape)) // Crypto or option quote
         {
             Assert.Equal(String.Empty, quote.Tape);
-            Assert.Empty(quote.Conditions);
+            if (quote.Conditions.Any()) // Option quote
+            {
+                Assert.Equal(_condition, quote.Conditions.Single());
+            }
+            else
+            {
+                Assert.Empty(quote.Conditions);
+            }
         }
         else
         {

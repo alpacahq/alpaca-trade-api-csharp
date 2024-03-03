@@ -85,3 +85,4 @@ Alpaca.Markets.OptionType.Call = 0 -> Alpaca.Markets.OptionType
 Alpaca.Markets.OptionType.Put = 1 -> Alpaca.Markets.OptionType
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaOptionsDataClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaOptionsDataClient!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaOptionsDataClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaOptionsDataClientConfiguration!
+static Alpaca.Markets.Extensions.ConfigurationExtensions.GetClient(this Alpaca.Markets.AlpacaOptionsDataClientConfiguration! configuration) -> Alpaca.Markets.IAlpacaOptionsDataClient!

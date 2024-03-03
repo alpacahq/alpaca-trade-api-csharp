@@ -80,6 +80,28 @@ public sealed class AlpacaDataStreamingClientTest(
     }
 
     [Fact]
+    public async Task ConnectAndSubscribeAllTradesWorks()
+    {
+        using var client = mockClientsFactory.GetAlpacaDataStreamingClientMock();
+
+        await client.AddAuthenticationAsync();
+
+        Assert.Equal(AuthStatus.Authorized,
+            await client.Client.ConnectAndAuthenticateAsync());
+
+        await using (var helper = await SubscriptionHelper<ITrade>.Create(
+                         client.Client, trade => trade.Validate(Stock),
+                         streamingClient => streamingClient.GetTradeSubscription()))
+        {
+            await client.AddMessageAsync(
+                new JArray(Stock.CreateStreamingTrade("t")));
+            Assert.True(helper.WaitAll());
+        }
+
+        await client.Client.DisconnectAsync();
+    }
+
+    [Fact]
     public async Task ConnectAndSubscribeStatusesWorks()
     {
         using var client = mockClientsFactory.GetAlpacaDataStreamingClientMock();

@@ -27,6 +27,11 @@ public sealed class MockClientsFactoryFixture
         AlpacaCryptoDataClientConfiguration? configuration = null) =>
         new(configuration ?? getEnvironment(environment).GetAlpacaCryptoDataClientConfiguration(_secretKey),clientConfiguration => clientConfiguration.GetClient());
 
+    internal MockHttpClient<AlpacaOptionsDataClientConfiguration, IAlpacaOptionsDataClient> GetAlpacaOptionsDataClientMock(
+        IEnvironment? environment = null,
+        AlpacaOptionsDataClientConfiguration? configuration = null) =>
+        new(configuration ?? getEnvironment(environment).GetAlpacaOptionsDataClientConfiguration(_secretKey), clientConfiguration => clientConfiguration.GetClient());
+
     internal MockWsClient<AlpacaStreamingClientConfiguration, IAlpacaStreamingClient> GetAlpacaStreamingClientMock(
         IEnvironment? environment = null,
         AlpacaStreamingClientConfiguration? configuration = null) =>

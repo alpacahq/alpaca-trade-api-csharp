@@ -69,6 +69,21 @@ public static class ConfigurationExtensions
         new AlpacaDataClient(configuration.EnsureNotNull());
 
     /// <summary>
+    /// Creates a new instance of <see cref="IAlpacaOptionsDataClient"/> interface
+    /// implementation using the <paramref name="configuration"/> argument.
+    /// </summary>
+    /// <param name="configuration">Client configuration parameters.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="configuration"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>A new instance of <see cref="IAlpacaOptionsDataClient"/> interface implementation.</returns>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    public static IAlpacaOptionsDataClient GetClient(
+        this AlpacaOptionsDataClientConfiguration configuration) =>
+        new AlpacaOptionsDataClient(configuration.EnsureNotNull());
+
+    /// <summary>
     /// Creates a new instance of <see cref="IAlpacaDataStreamingClient"/> interface
     /// implementation using the <paramref name="configuration"/> argument.
     /// </summary>

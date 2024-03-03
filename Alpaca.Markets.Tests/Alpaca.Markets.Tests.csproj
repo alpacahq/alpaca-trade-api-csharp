@@ -38,6 +38,9 @@
     <Compile Update="AlpacaCryptoDataClientTest.*.cs">
       <DependentUpon>AlpacaCryptoDataClientTest.cs</DependentUpon>
     </Compile>
+    <Compile Update="AlpacaOptionsDataClientTest.*.cs">
+      <DependentUpon>AlpacaOptionsDataClientTest.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>
