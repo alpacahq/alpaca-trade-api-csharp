@@ -1,11 +1,15 @@
 ﻿namespace Alpaca.Markets;
 
-internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistoricalQuotesRequest, THistoricalQuote,
-    THistoricalTradesRequest>(HttpClient httpClient) : IRateLimitProvider, IDisposable
+internal abstract class DataHistoricalClientBase<
+    THistoricalBarsRequest,
+    THistoricalQuotesRequest, THistoricalQuote,
+    THistoricalTradesRequest, THistoricalTrade>
+    (HttpClient httpClient) : IRateLimitProvider, IDisposable
     where THistoricalQuotesRequest : HistoricalRequestBase, Validation.IRequest
     where THistoricalTradesRequest : HistoricalRequestBase, Validation.IRequest
     where THistoricalBarsRequest : HistoricalRequestBase, Validation.IRequest
     where THistoricalQuote : IQuote, ISymbolMutable
+    where THistoricalTrade : ITrade, ISymbolMutable
 {
     protected readonly RateLimitHandler RateLimitHandler = new();
 
@@ -54,13 +58,15 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
         CancellationToken cancellationToken = default) =>
         request.HasSingleSymbol
             ? listHistoricalTradesAsync(request, cancellationToken)
-            : getHistoricalTradesAsync(request, cancellationToken).AsPageAsync<ITrade, JsonTradesPage>();
+            : getHistoricalTradesAsync(request, cancellationToken)
+                .AsPageAsync<ITrade, JsonTradesPage<THistoricalTrade>>();
 
     public Task<IMultiPage<ITrade>> GetHistoricalTradesAsync(
         THistoricalTradesRequest request,
         CancellationToken cancellationToken = default) =>
         request.HasSingleSymbol
-            ? listHistoricalTradesAsync(request, cancellationToken).AsMultiPageAsync<ITrade, JsonMultiTradesPage>()
+            ? listHistoricalTradesAsync(request, cancellationToken)
+                .AsMultiPageAsync<ITrade, JsonMultiTradesPage<THistoricalTrade>>()
             : getHistoricalTradesAsync(request, cancellationToken);
 
     public Task<IPage<IAuction>> ListHistoricalAuctionsAsync(
@@ -112,7 +118,7 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
     private async Task<IPage<ITrade>> listHistoricalTradesAsync(
         THistoricalTradesRequest request,
         CancellationToken cancellationToken = default) =>
-        await HttpClient.GetAsync<IPage<ITrade>, JsonTradesPage>(
+        await HttpClient.GetAsync<IPage<ITrade>, JsonTradesPage<THistoricalTrade>>(
             await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             RateLimitHandler, cancellationToken).ConfigureAwait(false);
@@ -120,7 +126,7 @@ internal abstract class DataHistoricalClientBase<THistoricalBarsRequest, THistor
     private async Task<IMultiPage<ITrade>> getHistoricalTradesAsync(
         THistoricalTradesRequest request,
         CancellationToken cancellationToken = default) =>
-        await HttpClient.GetAsync<IMultiPage<ITrade>, JsonMultiTradesPage>(
+        await HttpClient.GetAsync<IMultiPage<ITrade>, JsonMultiTradesPage<THistoricalTrade>>(
             await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             RateLimitHandler, cancellationToken).ConfigureAwait(false);

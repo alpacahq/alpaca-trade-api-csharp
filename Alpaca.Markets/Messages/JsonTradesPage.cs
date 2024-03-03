@@ -1,11 +1,12 @@
 ﻿namespace Alpaca.Markets;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IPage<ITrade>) + "<" + nameof(ITrade) + ">")]
-internal sealed class JsonTradesPage : IPageMutable<ITrade>, ISymbolMutable
+internal sealed class JsonTradesPage<TTrade> : IPageMutable<ITrade>, ISymbolMutable
+    where TTrade : ITrade, ISymbolMutable
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "trades", Required = Required.Default)]
-    public List<JsonHistoricalTrade> ItemsList { get; [ExcludeFromCodeCoverage] set; } = [];
+    public List<TTrade> ItemsList { get; [ExcludeFromCodeCoverage] set; } = [];
 
     [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
     public String Symbol { get; set; } = String.Empty;
@@ -22,7 +23,7 @@ internal sealed class JsonTradesPage : IPageMutable<ITrade>, ISymbolMutable
     [UsedImplicitly]
     internal void OnDeserializedMethod(
         StreamingContext _) =>
-        Items = ItemsList.SetSymbol(Symbol).EmptyIfNull();
+        Items = ItemsList.SetSymbol(Symbol).EmptyIfNull<ITrade, TTrade>();
 
     [ExcludeFromCodeCoverage]
     public override String ToString() =>

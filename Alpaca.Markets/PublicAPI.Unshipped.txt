@@ -2,6 +2,21 @@
 Alpaca.Markets.AlpacaOptionsDataClientConfiguration
 Alpaca.Markets.AlpacaOptionsDataClientConfiguration.AlpacaOptionsDataClientConfiguration() -> void
 Alpaca.Markets.AssetClass.UsOption = 2 -> Alpaca.Markets.AssetClass
+Alpaca.Markets.HistoricalOptionBarsRequest
+Alpaca.Markets.HistoricalOptionBarsRequest.HistoricalOptionBarsRequest(string! symbol, Alpaca.Markets.BarTimeFrame timeFrame) -> void
+Alpaca.Markets.HistoricalOptionBarsRequest.HistoricalOptionBarsRequest(string! symbol, Alpaca.Markets.BarTimeFrame timeFrame, Alpaca.Markets.Interval<System.DateTime> timeInterval) -> void
+Alpaca.Markets.HistoricalOptionBarsRequest.HistoricalOptionBarsRequest(string! symbol, System.DateTime from, System.DateTime into, Alpaca.Markets.BarTimeFrame timeFrame) -> void
+Alpaca.Markets.HistoricalOptionBarsRequest.HistoricalOptionBarsRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.BarTimeFrame timeFrame) -> void
+Alpaca.Markets.HistoricalOptionBarsRequest.HistoricalOptionBarsRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.Interval<System.DateTime> timeInterval, Alpaca.Markets.BarTimeFrame timeFrame) -> void
+Alpaca.Markets.HistoricalOptionBarsRequest.HistoricalOptionBarsRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into, Alpaca.Markets.BarTimeFrame timeFrame) -> void
+Alpaca.Markets.HistoricalOptionBarsRequest.TimeFrame.get -> Alpaca.Markets.BarTimeFrame
+Alpaca.Markets.HistoricalOptionTradesRequest
+Alpaca.Markets.HistoricalOptionTradesRequest.HistoricalOptionTradesRequest(string! symbol) -> void
+Alpaca.Markets.HistoricalOptionTradesRequest.HistoricalOptionTradesRequest(string! symbol, Alpaca.Markets.Interval<System.DateTime> timeInterval) -> void
+Alpaca.Markets.HistoricalOptionTradesRequest.HistoricalOptionTradesRequest(string! symbol, System.DateTime from, System.DateTime into) -> void
+Alpaca.Markets.HistoricalOptionTradesRequest.HistoricalOptionTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
+Alpaca.Markets.HistoricalOptionTradesRequest.HistoricalOptionTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.Interval<System.DateTime> timeInterval) -> void
+Alpaca.Markets.HistoricalOptionTradesRequest.HistoricalOptionTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.IAccount.OptionsApprovedLevel.get -> Alpaca.Markets.OptionsTradingLevel?
 Alpaca.Markets.IAccount.OptionsBuyingPower.get -> decimal?
 Alpaca.Markets.IAccount.OptionsTradingLevel.get -> Alpaca.Markets.OptionsTradingLevel?

@@ -3,7 +3,10 @@
 using JsonLatestData = JsonLatestData<JsonHistoricalQuote, JsonHistoricalTrade, JsonCryptoSnapshot>;
 
 internal sealed class AlpacaDataClient :
-    DataHistoricalClientBase<HistoricalBarsRequest, HistoricalQuotesRequest, JsonHistoricalQuote, HistoricalTradesRequest>,
+    DataHistoricalClientBase<
+        HistoricalBarsRequest,
+        HistoricalQuotesRequest, JsonHistoricalQuote,
+        HistoricalTradesRequest, JsonHistoricalTrade>,
     IAlpacaDataClient
 {
     internal AlpacaDataClient(

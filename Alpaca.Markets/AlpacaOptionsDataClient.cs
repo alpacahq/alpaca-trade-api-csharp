@@ -2,31 +2,25 @@
 
 using JsonLatestData=JsonLatestData<JsonOptionQuote, JsonOptionTrade, JsonOptionSnapshot>;
 
-internal sealed class AlpacaOptionsDataClient : IAlpacaOptionsDataClient
-    //where THistoricalQuotesRequest : HistoricalRequestBase, Validation.IRequest
-    //where THistoricalTradesRequest : HistoricalRequestBase, Validation.IRequest
-    //where THistoricalBarsRequest : HistoricalRequestBase, Validation.IRequest
-    //where THistoricalQuote : IQuote, ISymbolMutable
+internal sealed class AlpacaOptionsDataClient : 
+    DataHistoricalClientBase<
+        HistoricalOptionBarsRequest,
+        HistoricalQuotesRequest, JsonHistoricalQuote,
+        HistoricalOptionTradesRequest, JsonOptionTrade>,
+    IAlpacaOptionsDataClient
 {
-    private readonly RateLimitHandler _rateLimitHandler = new();
-
-    private readonly HttpClient _httpClient;
-
     internal AlpacaOptionsDataClient(
-        AlpacaOptionsDataClientConfiguration configuration) =>
-        _httpClient = configuration.EnsureNotNull().GetConfiguredHttpClient();
-
-    public void Dispose()
+        AlpacaOptionsDataClientConfiguration configuration)
+#pragma warning disable CA2000
+        : base(configuration.EnsureNotNull().GetConfiguredHttpClient())
+#pragma warning restore CA2000
     {
-        _httpClient.Dispose();
-        _rateLimitHandler.Dispose();
     }
 
-    public IRateLimitValues GetRateLimitValues() => _rateLimitHandler.GetCurrent();
     public Task<IReadOnlyDictionary<String, String>> ListExchangesAsync(
         CancellationToken cancellationToken = default) =>
-        _httpClient.GetAsync<IReadOnlyDictionary<String, String>, Dictionary<String, String>>(
-            "meta/exchanges", _rateLimitHandler, cancellationToken);
+        HttpClient.GetAsync<IReadOnlyDictionary<String, String>, Dictionary<String, String>>(
+            "meta/exchanges", RateLimitHandler, cancellationToken);
 
     public Task<IReadOnlyDictionary<String, IQuote>> ListLatestQuotesAsync(
         IEnumerable<String> symbols,
@@ -58,15 +52,15 @@ internal sealed class AlpacaOptionsDataClient : IAlpacaOptionsDataClient
         Func<JsonLatestData, Dictionary<String, TJson>> itemsSelector,
         CancellationToken cancellationToken)
         where TJson : TApi, ISymbolMutable =>
-        await _httpClient.GetAsync(
+        await HttpClient.GetAsync(
             await getUriBuilderAsync(symbols, lastPathSegment).ConfigureAwait(false),
             itemsSelector, withSymbol<TApi, TJson>,
-            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
+            RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     private async ValueTask<UriBuilder> getUriBuilderAsync(
         IEnumerable<String> symbols,
         String lastPathSegment) =>
-        new UriBuilder(_httpClient.BaseAddress!)
+        new UriBuilder(HttpClient.BaseAddress!)
         {
             Query = await new QueryBuilder()
                 .AddParameter("symbols", symbols.ToList())

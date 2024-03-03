@@ -5,9 +5,8 @@
 /// </summary>
 [CLSCompliant(false)]
 public interface IAlpacaOptionsDataClient :
-    //IHistoricalQuotesClient<HistoricalQuotesRequest>,
-    //IHistoricalTradesClient<HistoricalTradesRequest>,
-    //IHistoricalBarsClient<HistoricalBarsRequest>,
+    IHistoricalTradesClient<HistoricalOptionTradesRequest>,
+    IHistoricalBarsClient<HistoricalOptionBarsRequest>,
     IRateLimitProvider,
     IDisposable
 {
