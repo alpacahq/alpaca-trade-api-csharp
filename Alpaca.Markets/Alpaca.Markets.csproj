@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.0.0.7</AssemblyVersion>
-    <FileVersion>7.0.0.7</FileVersion>
-    <Version>7.0.0-rc1</Version>
+    <AssemblyVersion>8.0.0.0</AssemblyVersion>
+    <FileVersion>8.0.0.0</FileVersion>
+    <Version>8.0.0-alpha1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Fix all discrepancies with the latest 6.2.x release and prepare for the final code cleanup.
+- Obsolete members cleanup - remove fully obsolete and convert warnings into errors.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>

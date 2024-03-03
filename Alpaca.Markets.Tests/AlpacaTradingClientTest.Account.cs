@@ -228,7 +228,7 @@ public sealed partial class AlpacaTradingClientTest
     private static JObject createConfiguration() =>
         new(
             // ReSharper disable once StringLiteralTypo
-            new JProperty("max_option_trading_level", OptionsTradingLevel.LongCallPut),
+            new JProperty("max_options_trading_level", OptionsTradingLevel.LongCallPut),
             new JProperty("dtbp_check", DayTradeMarginCallProtection.Both),
             new JProperty("trade_confirm_email", TradeConfirmEmail.All),
             new JProperty("ptp_no_exception_entry", false),

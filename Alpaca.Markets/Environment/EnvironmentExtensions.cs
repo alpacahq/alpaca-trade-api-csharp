@@ -270,4 +270,42 @@ public static class EnvironmentExtensions
             ApiEndpoint = environment.EnsureNotNull().AlpacaNewsStreamingApi,
             SecurityId = securityKey.EnsureNotNull()
         };
+
+    /// <summary>
+    /// Creates the new instance of <see cref="IAlpacaOptionsDataClient"/> interface
+    /// implementation for specific environment provided as <paramref name="environment"/> argument.
+    /// </summary>
+    /// <param name="environment">Target environment for new object.</param>
+    /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>The new instance of <see cref="IAlpacaOptionsDataClient"/> interface implementation.</returns>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
+    public static IAlpacaOptionsDataClient GetAlpacaOptionsDataClient(
+        this IEnvironment environment,
+        SecurityKey securityKey) =>
+        new AlpacaOptionsDataClient(environment.GetAlpacaOptionsDataClientConfiguration(securityKey));
+
+    /// <summary>
+    /// Creates new instance of <see cref="AlpacaOptionsDataClientConfiguration"/> for specific
+    /// environment provided as <paramref name="environment"/> argument.
+    /// </summary>
+    /// <param name="environment">Target environment for new object.</param>
+    /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>New instance of <see cref="AlpacaOptionsDataClientConfiguration"/> object.</returns>
+    [UsedImplicitly]
+    public static AlpacaOptionsDataClientConfiguration GetAlpacaOptionsDataClientConfiguration(
+        this IEnvironment environment,
+        SecurityKey securityKey) =>
+        new()
+        {
+            ApiEndpoint = environment.EnsureNotNull().AlpacaDataApi,
+            SecurityId = securityKey.EnsureNotNull()
+        };
 }

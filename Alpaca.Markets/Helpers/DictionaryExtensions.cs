@@ -1,7 +1,19 @@
-﻿namespace Alpaca.Markets;
+﻿using Newtonsoft.Json.Linq;
+
+namespace Alpaca.Markets;
 
 internal static class DictionaryExtensions
 {
+    private static IEnumerable<String> getConditions(
+        Object? conditions) =>
+        conditions switch
+        {
+            JArray jArray => jArray.SelectMany(getConditions),
+            JValue jValue => getConditions(jValue.Value),
+            String value => Enumerable.Repeat(value, 1),
+            _ => []
+        };
+
     public static IReadOnlyDictionary<String, IReadOnlyList<TInto>> SetSymbol<TInto, TFrom>(
         this Dictionary<String, List<TFrom>?>? dictionary)
         where TFrom : TInto, ISymbolMutable =>
@@ -17,4 +29,9 @@ internal static class DictionaryExtensions
         TKey key, TValue defaultValue) =>
         dictionary.TryGetValue(key, out var value) ? value : defaultValue;
 #endif
+
+    public static IEnumerable<String> GetConditions(
+        this IReadOnlyDictionary<String, Object> extensionData) =>
+        extensionData.TryGetValue("c", out var conditions)
+            ? getConditions(conditions) : [];
 }

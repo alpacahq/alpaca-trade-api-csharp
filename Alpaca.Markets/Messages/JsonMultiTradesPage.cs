@@ -1,11 +1,12 @@
 ﻿namespace Alpaca.Markets;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IPage<ITrade>) + "<" + nameof(ITrade) + ">")]
-internal sealed class JsonMultiTradesPage : IMultiPageMutable<ITrade>
+internal sealed class JsonMultiTradesPage<TTrade> : IMultiPageMutable<ITrade>
+    where TTrade : ITrade, ISymbolMutable
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "trades", Required = Required.Default)]
-    public Dictionary<String, List<JsonHistoricalTrade>?> ItemsDictionary { get; [ExcludeFromCodeCoverage] set; } = new();
+    public Dictionary<String, List<TTrade>?> ItemsDictionary { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonProperty(PropertyName = "next_page_token", Required = Required.Default)]
     public String? NextPageToken { get; set; }
@@ -18,7 +19,7 @@ internal sealed class JsonMultiTradesPage : IMultiPageMutable<ITrade>
     [UsedImplicitly]
     internal void OnDeserializedMethod(
         StreamingContext _) =>
-        Items = ItemsDictionary.SetSymbol<ITrade, JsonHistoricalTrade>();
+        Items = ItemsDictionary.SetSymbol<ITrade, TTrade>();
 
     [ExcludeFromCodeCoverage]
     public override String ToString() =>
