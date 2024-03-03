@@ -1,9 +1,17 @@
 ﻿#nullable enable
+Alpaca.Markets.AlpacaOptionsDataClientConfiguration
+Alpaca.Markets.AlpacaOptionsDataClientConfiguration.AlpacaOptionsDataClientConfiguration() -> void
 Alpaca.Markets.AssetClass.UsOption = 2 -> Alpaca.Markets.AssetClass
 Alpaca.Markets.IAccount.OptionsApprovedLevel.get -> Alpaca.Markets.OptionsTradingLevel?
 Alpaca.Markets.IAccount.OptionsBuyingPower.get -> decimal?
 Alpaca.Markets.IAccount.OptionsTradingLevel.get -> Alpaca.Markets.OptionsTradingLevel?
 Alpaca.Markets.IAccountConfiguration.MaxOptionsTradingLevel.get -> Alpaca.Markets.OptionsTradingLevel?
+Alpaca.Markets.IAlpacaOptionsDataClient
+Alpaca.Markets.IAlpacaOptionsDataClient.GetOptionChainAsync(string! underlyingSymbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.ISnapshot!>!>!
+Alpaca.Markets.IAlpacaOptionsDataClient.ListExchangesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, string!>!>!
+Alpaca.Markets.IAlpacaOptionsDataClient.ListLatestQuotesAsync(System.Collections.Generic.IEnumerable<string!>! symbols, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.IQuote!>!>!
+Alpaca.Markets.IAlpacaOptionsDataClient.ListLatestTradesAsync(System.Collections.Generic.IEnumerable<string!>! symbols, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.ITrade!>!>!
+Alpaca.Markets.IAlpacaOptionsDataClient.ListSnapshotsAsync(System.Collections.Generic.IEnumerable<string!>! symbols, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.ISnapshot!>!>!
 Alpaca.Markets.IAlpacaTradingClient.GetOptionContractByIdAsync(System.Guid contractId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOptionContract!>!
 Alpaca.Markets.IAlpacaTradingClient.GetOptionContractBySymbolAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IOptionContract!>!
 Alpaca.Markets.IAlpacaTradingClient.ListOptionContractsAsync(Alpaca.Markets.OptionContractsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOptionContract!>!>!
@@ -60,3 +68,5 @@ Alpaca.Markets.OptionStyle.European = 1 -> Alpaca.Markets.OptionStyle
 Alpaca.Markets.OptionType
 Alpaca.Markets.OptionType.Call = 0 -> Alpaca.Markets.OptionType
 Alpaca.Markets.OptionType.Put = 1 -> Alpaca.Markets.OptionType
+static Alpaca.Markets.EnvironmentExtensions.GetAlpacaOptionsDataClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaOptionsDataClient!
+static Alpaca.Markets.EnvironmentExtensions.GetAlpacaOptionsDataClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaOptionsDataClientConfiguration!

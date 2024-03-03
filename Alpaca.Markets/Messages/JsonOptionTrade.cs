@@ -1,8 +1,13 @@
 ﻿namespace Alpaca.Markets;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(ITrade))]
-internal sealed class JsonHistoricalTrade : ITrade, ISymbolMutable
+[SuppressMessage(
+    "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
+internal sealed class JsonOptionTrade : ITrade, ISymbolMutable
 {
+    private readonly List<String> _conditionsList = [];
+
     [JsonProperty(PropertyName = "t", Required = Required.Always)]
     public DateTime TimestampUtc { get; set; }
 
@@ -15,28 +20,32 @@ internal sealed class JsonHistoricalTrade : ITrade, ISymbolMutable
     [JsonProperty(PropertyName = "s", Required = Required.Always)]
     public Decimal Size { get; set; }
 
-    [JsonProperty(PropertyName = "i", Required = Required.Default)]
-    public UInt64 TradeId { get; set; }
-
-    [JsonProperty(PropertyName = "z", Required = Required.Default)]
-    public String Tape { get; set; } = String.Empty;
-
-    [JsonProperty(PropertyName = "u", Required = Required.Default)]
-    public String Update { get; set; } = String.Empty;
-
-    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    [JsonProperty(PropertyName = "c", Required = Required.Default)]
-    public List<String> ConditionsList { get; [ExcludeFromCodeCoverage] set; } = [];
-
-    [JsonProperty(PropertyName = "tks", Required = Required.Default)]
-    public TakerSide TakerSide { get; [ExcludeFromCodeCoverage] set; } = TakerSide.Unknown;
-
     [JsonIgnore]
     public String Symbol { get; private set; } = String.Empty;
 
     [JsonIgnore]
-    public IReadOnlyList<String> Conditions =>
-        ConditionsList.EmptyIfNull();
+    public TakerSide TakerSide => TakerSide.Unknown;
+
+    [JsonIgnore]
+    public String Update => String.Empty;
+
+    [JsonIgnore]
+    public String Tape => String.Empty;
+
+    [JsonIgnore]
+    public UInt64 TradeId => 0;
+
+    [JsonIgnore]
+    public IReadOnlyList<String> Conditions => _conditionsList;
+    
+    [UsedImplicitly]
+    [JsonExtensionData]
+    public Dictionary<String, Object> ExtensionData { get; set; } = [];
+
+    [OnDeserialized]
+    internal void OnDeserializedMethod(
+        StreamingContext context) =>
+        _conditionsList.AddRange(ExtensionData.GetConditions());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void SetSymbol(String symbol) => Symbol = symbol;

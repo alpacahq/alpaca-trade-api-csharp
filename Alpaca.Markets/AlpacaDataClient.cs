@@ -1,5 +1,7 @@
 ﻿namespace Alpaca.Markets;
 
+using JsonLatestData = JsonLatestData<JsonHistoricalQuote, JsonHistoricalTrade, JsonCryptoSnapshot>;
+
 internal sealed class AlpacaDataClient :
     DataHistoricalClientBase<HistoricalBarsRequest, HistoricalQuotesRequest, JsonHistoricalQuote, HistoricalTradesRequest>,
     IAlpacaDataClient
@@ -123,7 +125,7 @@ internal sealed class AlpacaDataClient :
     private async Task<IReadOnlyDictionary<String, TApi>> getLatestAsync<TApi, TJson>(
         LatestMarketDataListRequest request,
         String lastPathSegment,
-        Func<JsonLatestData<JsonHistoricalQuote>, Dictionary<String, TJson>> itemsSelector,
+        Func<JsonLatestData, Dictionary<String, TJson>> itemsSelector,
         CancellationToken cancellationToken)
         where TJson : TApi, ISymbolMutable =>
         await HttpClient.GetAsync(
