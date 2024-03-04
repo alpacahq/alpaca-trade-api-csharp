@@ -9,7 +9,9 @@ public sealed partial class AlpacaTradingClientTest
     private const Decimal Price = 1234.56M;
 
     [Fact]
+#pragma warning disable IDE0079 // Remove unnecessary suppression
     [SuppressMessage("ReSharper", "StringLiteralTypo")]
+#pragma warning restore IDE0079 // Remove unnecessary suppression
     public async Task GetAccountAsyncWorks()
     {
         const Decimal cash = 10_000M;
@@ -67,11 +69,11 @@ public sealed partial class AlpacaTradingClientTest
         Assert.Equal(transfer, account.AccruedFees);
         Assert.Equal(cash, account.OptionsBuyingPower);
 
-        Assert.True(account.LastMaintenanceMargin != 0M);
-        Assert.True(account.MaintenanceMargin != 0M);
-        Assert.True(account.TradableCash != 0M);
-        Assert.True(account.LastEquity != 0M);
-        Assert.True(account.Sma != 0M);
+        Assert.NotEqual(0M, account.LastMaintenanceMargin);
+        Assert.NotEqual(0M, account.MaintenanceMargin);
+        Assert.NotEqual(0M, account.TradableCash);
+        Assert.NotEqual(0M, account.LastEquity);
+        Assert.NotEqual(0M, account.Sma);
 
         Assert.NotNull(account.AccountNumber);
 

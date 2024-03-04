@@ -67,7 +67,9 @@ public sealed partial class AlpacaTradingClientTest
             new JProperty("name", symbol),
             new JProperty("id", assetId));
 
+#pragma warning disable IDE0079
     [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Local")]
+#pragma warning restore IDE0079
     private static void validateAsset(
         IAsset asset,
         Guid assetId,
@@ -91,6 +93,6 @@ public sealed partial class AlpacaTradingClientTest
         Assert.NotNull(asset.MaintenanceMarginRequirement);
 
         Assert.Single(asset.Attributes);
-        Assert.Equal(AssetAttributes.PtpNoException, asset.Attributes.First());
+        Assert.Equal(AssetAttributes.PtpNoException, asset.Attributes[0]);
     }
 }

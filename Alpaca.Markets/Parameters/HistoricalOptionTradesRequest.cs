@@ -107,7 +107,7 @@ public sealed class HistoricalOptionTradesRequest : HistoricalRequestBase, IHist
     HistoricalOptionTradesRequest IHistoricalRequest<HistoricalOptionTradesRequest, ITrade>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalOptionTradesRequest(Symbols, TimeInterval)
             {
-                SortDirection = SortDirection,
+                SortDirection = SortDirection
             }
             .WithPageSize(this.GetPageSize());
 }

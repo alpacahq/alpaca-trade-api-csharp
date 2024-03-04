@@ -2,8 +2,10 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets.Tests;
 
+#pragma warning disable IDE0079 // Remove unnecessary suppression
 [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Global")]
 [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Local")]
+#pragma warning restore IDE0079 // Remove unnecessary suppression
 internal static class HistoricalDataHelpers
 {
     private static readonly String _condition = Guid.NewGuid().ToString("D");
@@ -189,9 +191,9 @@ internal static class HistoricalDataHelpers
         Assert.InRange(bar.Open, bar.Low, bar.High);
 
         Assert.True(bar.TimeUtc <= DateTime.UtcNow);
-        Assert.True(bar.TradeCount != 0);
-        Assert.True(bar.Volume != 0M);
-        Assert.True(bar.Vwap != 0M);
+        Assert.NotEqual(0UL, bar.TradeCount);
+        Assert.NotEqual(0M, bar.Volume);
+        Assert.NotEqual(0M, bar.Vwap);
 
         return true;
     }
