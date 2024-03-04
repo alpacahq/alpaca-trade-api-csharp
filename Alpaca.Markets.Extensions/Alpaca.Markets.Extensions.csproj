@@ -12,16 +12,15 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.0.0.4</AssemblyVersion>
-    <FileVersion>7.0.0.4</FileVersion>
-    <Version>7.0.0</Version>
+    <AssemblyVersion>7.1.0.0</AssemblyVersion>
+    <FileVersion>7.1.0.0</FileVersion>
+    <Version>7.1.0-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-= Added sorting support into all (quotes, trades, bars, etc.) stock/crypto historical data requests.
-- The obsolete attribute was removed from historical crypto quotes requesting methods.
-- Fixed problem with announcement object deserialization.
+- Added factory methods for creating the strongly typed `IAlpacaOptionsDataClient` instance in dependency injection environments.
+- Added the new extension method `ListOptionContractsAsAsyncEnumerable` for the `IAlpacaTradingClient` interface.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
@@ -100,7 +99,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Threading.Channels" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Linq.Async" Version="6.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="Alpaca.Markets" Version="7.0.0" PrivateAssets="compile;contentfiles;build;analyzers;" />
+    <PackageReference Include="Alpaca.Markets" Version="7.1.0-beta1" PrivateAssets="compile;contentfiles;build;analyzers;" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
