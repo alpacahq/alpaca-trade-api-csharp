@@ -169,32 +169,4 @@
     <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0003</DiagnosticId>
-    <Target>Alpaca.Markets.Extensions, Version=7.0.0.3, Culture=neutral, PublicKeyToken=16fb7a27ac3b9689</Target>
-    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0003</DiagnosticId>
-    <Target>Alpaca.Markets.Extensions, Version=7.0.0.3, Culture=neutral, PublicKeyToken=16fb7a27ac3b9689</Target>
-    <Left>lib/net6.0/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0003</DiagnosticId>
-    <Target>Alpaca.Markets.Extensions, Version=7.0.0.3, Culture=neutral, PublicKeyToken=16fb7a27ac3b9689</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0003</DiagnosticId>
-    <Target>Alpaca.Markets.Extensions, Version=7.0.0.3, Culture=neutral, PublicKeyToken=16fb7a27ac3b9689</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
 </Suppressions>

@@ -125,6 +125,45 @@ public static class AlpacaServiceCollectionExtensions
                 .withFactoryCreatedHttpClient(httpClient).GetClient())
             .withConfiguredPrimaryHttpMessageHandler(configuration.EnsureNotNull());
 
+    /// <summary>
+    /// Registers the concrete implementation of the <see cref="IAlpacaOptionsDataClient"/>
+    /// interface in the services catalog and make it available in constructors.
+    /// </summary>
+    /// <param name="services">Registered services collection.</param>
+    /// <param name="environment">Alpaca environment data.</param>
+    /// <param name="securityKey">Alpaca security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="services"/>, <paramref name="environment"/>, or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>The <see cref="IHttpClientBuilder"/> interface for further HTTP client customization.</returns>
+    [UsedImplicitly]
+    public static IHttpClientBuilder AddAlpacaOptionsDataClient(
+        this IServiceCollection services,
+        IEnvironment environment,
+        SecurityKey securityKey) =>
+        services.EnsureNotNull().AddAlpacaOptionsDataClient(environment.EnsureNotNull()
+            .GetAlpacaOptionsDataClientConfiguration(securityKey.EnsureNotNull()));
+
+    /// <summary>
+    /// Registers the concrete implementation of the <see cref="IAlpacaOptionsDataClient"/>
+    /// interface in the services catalog and make it available in constructors.
+    /// </summary>
+    /// <param name="services">Registered services collection.</param>
+    /// <param name="configuration">Alpaca data client configuration.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="services"/> or <paramref name="configuration"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>The <see cref="IHttpClientBuilder"/> interface for further HTTP client customization.</returns>
+    [UsedImplicitly]
+    public static IHttpClientBuilder AddAlpacaOptionsDataClient(
+        this IServiceCollection services,
+        AlpacaOptionsDataClientConfiguration configuration) =>
+        services.EnsureNotNull()
+            .AddHttpClient<IAlpacaOptionsDataClient>()
+            .AddTypedClient(httpClient => configuration.EnsureNotNull()
+                .withFactoryCreatedHttpClient(httpClient).GetClient())
+            .withConfiguredPrimaryHttpMessageHandler(configuration.EnsureNotNull());
+
     private static TConfiguration withFactoryCreatedHttpClient<TConfiguration>(
         this TConfiguration configuration,
         HttpClient httpClient)
