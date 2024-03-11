@@ -79,16 +79,15 @@ public sealed partial class AlpacaOptionsDataClientTest
     {
         using var mock = mockClientsFactory.GetAlpacaOptionsDataClientMock();
 
-        var symbol = _symbols.Take(1).ToList();
-        mock.AddMultiBarsPageExpectation(PathPrefix, symbol);
+        mock.AddMultiBarsPageExpectation(PathPrefix, [ Symbol ]);
 
         var bars = await mock.Client.ListHistoricalBarsAsync(
-            new HistoricalOptionBarsRequest(symbol, BarTimeFrame.Hour));
+            new HistoricalOptionBarsRequest(Symbol, BarTimeFrame.Hour));
 
         Assert.NotNull(bars);
         Assert.NotEmpty(bars.Items);
-        Assert.Equal(symbol.Single(), bars.Symbol);
+        Assert.Equal(Symbol, bars.Symbol);
 
-        bars.Items.Validate(symbol.Single());
+        bars.Items.Validate(Symbol);
     }
 }

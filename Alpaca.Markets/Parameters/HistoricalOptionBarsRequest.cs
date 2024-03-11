@@ -22,7 +22,7 @@ public sealed class HistoricalOptionBarsRequest : HistoricalRequestBase, IHistor
         DateTime from,
         DateTime into,
         BarTimeFrame timeFrame)
-        : this(new[] { symbol.EnsureNotNull() }, from, into, timeFrame)
+        : this([ symbol.EnsureNotNull() ], from, into, timeFrame)
     {
     }
 
@@ -54,7 +54,7 @@ public sealed class HistoricalOptionBarsRequest : HistoricalRequestBase, IHistor
     public HistoricalOptionBarsRequest(
         String symbol,
         BarTimeFrame timeFrame)
-        : this(new[] { symbol.EnsureNotNull() }, timeFrame)
+        : this([ symbol.EnsureNotNull() ], timeFrame)
     {
     }
 

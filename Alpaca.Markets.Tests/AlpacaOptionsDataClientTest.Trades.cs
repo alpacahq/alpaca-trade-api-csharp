@@ -42,17 +42,16 @@ public sealed partial class AlpacaOptionsDataClientTest
     {
         using var mock = mockClientsFactory.GetAlpacaOptionsDataClientMock();
 
-        var symbol = _symbols.Take(1).ToList();
-        mock.AddMultiTradesPageExpectation(PathPrefix, symbol);
+        mock.AddMultiTradesPageExpectation(PathPrefix, [ Symbol ]);
 
         var trades = await mock.Client.ListHistoricalTradesAsync(
-            new HistoricalOptionTradesRequest(symbol, Yesterday, Today));
+            new HistoricalOptionTradesRequest(Symbol, Yesterday, Today));
 
         Assert.NotNull(trades);
         Assert.NotEmpty(trades.Items);
-        Assert.Equal(symbol.Single(), trades.Symbol);
+        Assert.Equal(Symbol, trades.Symbol);
 
-        trades.Items.Validate(symbol.Single());
+        trades.Items.Validate(Symbol);
     }
 
     [Fact]
