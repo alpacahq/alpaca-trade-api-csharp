@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IQuote))]
 [SuppressMessage(

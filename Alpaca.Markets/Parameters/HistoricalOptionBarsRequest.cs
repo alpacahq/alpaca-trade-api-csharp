@@ -22,7 +22,7 @@ public sealed class HistoricalOptionBarsRequest : HistoricalRequestBase, IHistor
         DateTime from,
         DateTime into,
         BarTimeFrame timeFrame)
-        : this(new[] { symbol.EnsureNotNull() }, from, into, timeFrame)
+        : this([ symbol.EnsureNotNull() ], from, into, timeFrame)
     {
     }
 
@@ -39,7 +39,7 @@ public sealed class HistoricalOptionBarsRequest : HistoricalRequestBase, IHistor
         String symbol,
         BarTimeFrame timeFrame,
         Interval<DateTime> timeInterval)
-        : this(new[] { symbol.EnsureNotNull() }, timeInterval, timeFrame)
+        : this([ symbol.EnsureNotNull() ], timeInterval, timeFrame)
     {
     }
 
@@ -54,7 +54,7 @@ public sealed class HistoricalOptionBarsRequest : HistoricalRequestBase, IHistor
     public HistoricalOptionBarsRequest(
         String symbol,
         BarTimeFrame timeFrame)
-        : this(new[] { symbol.EnsureNotNull() }, timeFrame)
+        : this([ symbol.EnsureNotNull() ], timeFrame)
     {
     }
 
@@ -127,7 +127,7 @@ public sealed class HistoricalOptionBarsRequest : HistoricalRequestBase, IHistor
     HistoricalOptionBarsRequest IHistoricalRequest<HistoricalOptionBarsRequest, IBar>.GetValidatedRequestWithoutPageToken() =>
         new HistoricalOptionBarsRequest(Symbols, TimeInterval, TimeFrame)
             {
-                SortDirection = SortDirection,
+                SortDirection = SortDirection
             }
             .WithPageSize(this.GetPageSize());
 }

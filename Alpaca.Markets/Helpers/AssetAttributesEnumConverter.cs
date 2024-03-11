@@ -9,15 +9,6 @@ internal sealed class AssetAttributesEnumConverter : StringEnumConverter
         JsonReader reader,
         Type objectType,
         Object? existingValue,
-        JsonSerializer serializer)
-    {
-        try
-        {
-            return AssetAttributes.Unknown.FromEnumString(reader);
-        }
-        catch (JsonSerializationException)
-        {
-            return AssetAttributes.Unknown;
-        }
-    }
+        JsonSerializer serializer) =>
+        AssetAttributes.Unknown.FromEnumString(reader);
 }
