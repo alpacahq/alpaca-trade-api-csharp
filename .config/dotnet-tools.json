@@ -3,7 +3,7 @@
   "isRoot": true,
   "tools": {
     "jetbrains.dotcover.globaltool": {
-      "version": "2023.2.3",
+      "version": "2023.2.4",
       "commands": [
         "dotnet-dotcover"
       ]
