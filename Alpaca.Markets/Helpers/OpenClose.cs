@@ -20,7 +20,7 @@ public readonly record struct OpenClose
     /// <param name="date">Session date</param>
     /// <param name="open">Open time in EST time zone.</param>
     /// <param name="close">Close time in EST time zone.</param>
-    internal OpenClose(
+    public OpenClose(
         DateOnly date,
         TimeOnly open,
         TimeOnly close)
