@@ -32,12 +32,12 @@ public readonly record struct OpenClose
     /// <summary>
     /// Gets open time in EST time zone.
     /// </summary>
-    public DateTimeOffset OpenEst { get; }
+    public DateTimeOffset OpenEst { get; init; }
 
     /// <summary>
     /// Gets close time in EST time zone.
     /// </summary>
-    public DateTimeOffset CloseEst { get; }
+    public DateTimeOffset CloseEst { get; init; }
 
     /// <summary>
     /// Gets session open and close time as <see cref="Interval{DateTime}"/> instance with UTC times.
