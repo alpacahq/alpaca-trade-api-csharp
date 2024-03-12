@@ -940,8 +940,10 @@ Alpaca.Markets.OneCancelsOtherOrder.StopLoss.get -> Alpaca.Markets.IStopLoss!
 Alpaca.Markets.OneCancelsOtherOrder.TakeProfit.get -> Alpaca.Markets.ITakeProfit!
 Alpaca.Markets.OpenClose
 Alpaca.Markets.OpenClose.CloseEst.get -> System.DateTimeOffset
+Alpaca.Markets.OpenClose.CloseEst.init -> void
 Alpaca.Markets.OpenClose.OpenClose() -> void
 Alpaca.Markets.OpenClose.OpenEst.get -> System.DateTimeOffset
+Alpaca.Markets.OpenClose.OpenEst.init -> void
 Alpaca.Markets.OpenClose.ToInterval() -> Alpaca.Markets.Interval<System.DateTime>
 Alpaca.Markets.OptionContractsRequest
 Alpaca.Markets.OptionContractsRequest.AssetStatus.get -> Alpaca.Markets.AssetStatus?
