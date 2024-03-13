@@ -108,13 +108,13 @@ internal sealed partial class AlpacaTradingClient
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
-    public async Task<IReadOnlyList<IOptionContract>> ListOptionContractsAsync(
+    public async Task<IPage<IOptionContract>> ListOptionContractsAsync(
         OptionContractsRequest request,
         CancellationToken cancellationToken = default) =>
-        (await _httpClient.GetAsync<JsonOptionContractsPage, JsonOptionContractsPage>(
+        await _httpClient.GetAsync<IPage<IOptionContract>, JsonOptionContractsPage>(
             await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
-            _rateLimitHandler, cancellationToken).ConfigureAwait(false)).Contracts;
+            _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IOptionContract> GetOptionContractByIdAsync(
         Guid contractId,

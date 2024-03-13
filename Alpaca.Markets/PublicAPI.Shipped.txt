@@ -493,7 +493,7 @@ Alpaca.Markets.IAlpacaTradingClient.ListAccountActivitiesAsync(Alpaca.Markets.Ac
 Alpaca.Markets.IAlpacaTradingClient.ListAnnouncementsAsync(Alpaca.Markets.AnnouncementsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IAnnouncement!>!>!
 Alpaca.Markets.IAlpacaTradingClient.ListAssetsAsync(Alpaca.Markets.AssetsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IAsset!>!>!
 Alpaca.Markets.IAlpacaTradingClient.ListIntervalCalendarAsync(Alpaca.Markets.CalendarRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IIntervalCalendar!>!>!
-Alpaca.Markets.IAlpacaTradingClient.ListOptionContractsAsync(Alpaca.Markets.OptionContractsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOptionContract!>!>!
+Alpaca.Markets.IAlpacaTradingClient.ListOptionContractsAsync(Alpaca.Markets.OptionContractsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.IOptionContract!>!>!
 Alpaca.Markets.IAlpacaTradingClient.ListOrdersAsync(Alpaca.Markets.ListOrdersRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IOrder!>!>!
 Alpaca.Markets.IAlpacaTradingClient.ListPositionsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IPosition!>!>!
 Alpaca.Markets.IAlpacaTradingClient.ListWatchListsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IWatchList!>!>!
@@ -959,10 +959,7 @@ Alpaca.Markets.OptionContractsRequest.OptionStyle.get -> Alpaca.Markets.OptionSt
 Alpaca.Markets.OptionContractsRequest.OptionStyle.set -> void
 Alpaca.Markets.OptionContractsRequest.OptionType.get -> Alpaca.Markets.OptionType?
 Alpaca.Markets.OptionContractsRequest.OptionType.set -> void
-Alpaca.Markets.OptionContractsRequest.PageNumber.get -> uint?
-Alpaca.Markets.OptionContractsRequest.PageNumber.set -> void
-Alpaca.Markets.OptionContractsRequest.PageSize.get -> uint?
-Alpaca.Markets.OptionContractsRequest.PageSize.set -> void
+Alpaca.Markets.OptionContractsRequest.Pagination.get -> Alpaca.Markets.Pagination!
 Alpaca.Markets.OptionContractsRequest.RootSymbol.get -> string?
 Alpaca.Markets.OptionContractsRequest.RootSymbol.set -> void
 Alpaca.Markets.OptionContractsRequest.StrikePriceGreaterThanOrEqualTo.get -> decimal?

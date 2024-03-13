@@ -74,25 +74,17 @@ public sealed class OptionContractsRequest : Validation.IRequest
     public Decimal? StrikePriceLessThanOrEqualTo { get; set; }
 
     /// <summary>
-    /// Gets or sets the desired page number. The <c>null</c> treated as 1st page.
+    /// Gets the pagination parameters for the request (page size and token).
     /// </summary>
     [UsedImplicitly]
-    [CLSCompliant(false)]
-    public UInt32? PageNumber { get; set; }
-
-    /// <summary>
-    /// Gets or sets the number of contracts to limit per page (default = 10000).
-    /// </summary>
-    [UsedImplicitly]
-    [CLSCompliant(false)]
-    public UInt32? PageSize { get; set; }
+    public Pagination Pagination { get; } = new();
 
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
         HttpClient httpClient) =>
         new(httpClient.BaseAddress!)
         {
             Path = "v2/options/contracts",
-            Query = await new QueryBuilder()
+            Query = await Pagination.QueryBuilder
                 .AddParameter("underlying_symbol", UnderlyingSymbol)
                 .AddParameter("status", AssetStatus)
                 .AddParameter("expiration_date", ExpirationDateEqualTo)
@@ -103,14 +95,13 @@ public sealed class OptionContractsRequest : Validation.IRequest
                 .AddParameter("type", OptionType)
                 .AddParameter("strike_price_gte", StrikePriceGreaterThanOrEqualTo)
                 .AddParameter("strike_price_lte", StrikePriceLessThanOrEqualTo)
-                .AddParameter("page", PageNumber)
-                .AddParameter("limit", PageSize)
                 .AsStringAsync().ConfigureAwait(false)
         };
 
     /// <inheritdoc />
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
+        yield return Pagination.TryValidatePageSize(Pagination.MaxPageSize);
         yield return UnderlyingSymbol.TryValidateSymbolName();
         yield return RootSymbol?.TryValidateSymbolName();
 
@@ -120,18 +111,6 @@ public sealed class OptionContractsRequest : Validation.IRequest
         {
             yield return new RequestValidationException(nameof(ExpirationDateEqualTo),
                 "Inconsistent expiration date filters combination.");
-        }
-
-        if (PageNumber is 0)
-        {
-            yield return new RequestValidationException(nameof(PageNumber),
-                "Page number should be greater than or equal to 1.");
-        }
-
-        if (PageSize is 0 or > 10_000)
-        {
-            yield return new RequestValidationException(nameof(PageSize),
-                "Page size value should be between 1 and 10 0000.");
         }
     }
 }

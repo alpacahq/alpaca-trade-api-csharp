@@ -927,7 +927,7 @@ public interface IAlpacaTradingClient : IRateLimitProvider, IDisposable
     /// </exception>
     /// <returns>Read-only list of corporate action information objects.</returns>
     [UsedImplicitly]
-    Task<IReadOnlyList<IOptionContract>> ListOptionContractsAsync(
+    Task<IPage<IOptionContract>> ListOptionContractsAsync(
         OptionContractsRequest request,
         CancellationToken cancellationToken = default);
 
