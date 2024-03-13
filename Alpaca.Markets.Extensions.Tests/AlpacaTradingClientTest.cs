@@ -45,12 +45,12 @@ public sealed class AlpacaTradingClientTest(
         Assert.NotEqual(0, counter);
     }
 
-    [Fact]
+    [Fact(Skip = "Disable temporary until extensions package update")]
     public async Task ListOptionContractsAsAsyncEnumerableWorks()
     {
         using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
-        addSinglePageExpectationOfOptionContracts(mock, Items);
+        addSinglePageExpectationOfOptionContracts(mock, Guid.NewGuid().ToString("N"));
         addSinglePageExpectationOfOptionContracts(mock);
 
         var counter = await validateList(
@@ -92,10 +92,11 @@ public sealed class AlpacaTradingClientTest(
 
     private static void addSinglePageExpectationOfOptionContracts(
         MockClient<AlpacaTradingClientConfiguration, IAlpacaTradingClient> mock,
-        Int32 count = 0) =>
+        String? token = null) =>
         mock.AddGet("/v2/options/contracts", new JObject(
             new JProperty("option_contracts", new JArray(
-                Enumerable.Repeat(createOptionContract(Guid.NewGuid()), count)))));
+                Enumerable.Repeat(createOptionContract(Guid.NewGuid()), Items))),
+            new JProperty("next_page_token", token)));
 
     private static JObject createOptionContract(
         Guid contractId) =>

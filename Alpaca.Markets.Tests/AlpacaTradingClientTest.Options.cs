@@ -53,12 +53,13 @@ public sealed partial class AlpacaTradingClientTest
                 OptionStyle = OptionStyle.American,
                 AssetStatus = AssetStatus.Active,
                 OptionType = OptionType.Call,
-                RootSymbol = Stock,
-                PageNumber = 1,
-                PageSize = 100
+                RootSymbol = Stock
             });
 
-        validateOptionContract(optionContracts.Single(), contractId, Stock);
+        Assert.NotNull(optionContracts.Items);
+        Assert.NotEmpty(optionContracts.Items);
+
+        validateOptionContract(optionContracts.Items.Single(), contractId, Stock);
     }
 
     private static JObject createOptionContractsList(
