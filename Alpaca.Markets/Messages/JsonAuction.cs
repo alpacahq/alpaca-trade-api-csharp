@@ -12,12 +12,12 @@ internal sealed class JsonAuction : IAuction, ISymbolMutable
 
     [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    [JsonProperty(PropertyName = "o", Required = Required.Always)]
+    [JsonProperty(PropertyName = "o", Required = Required.Default)]
     internal List<JsonAuctionEntry> OpeningsList { get; set; } = [];
 
     [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    [JsonProperty(PropertyName = "c", Required = Required.Always)]
+    [JsonProperty(PropertyName = "c", Required = Required.Default)]
     internal List<JsonAuctionEntry> ClosingsList { get; set; } = [];
 
     [JsonIgnore]
