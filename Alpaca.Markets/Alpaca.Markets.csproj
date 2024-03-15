@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.0.3.0</AssemblyVersion>
-    <FileVersion>7.0.3.0</FileVersion>
-    <Version>7.0.3</Version>
+    <AssemblyVersion>7.0.4.0</AssemblyVersion>
+    <FileVersion>7.0.4.0</FileVersion>
+    <Version>7.0.4</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Added the public init setters for the `OpenEst` and `CloseEst` properties of the `OpenClose` structure.
+= The implementation of the `IAuction.Closings` and `IAuction.Openings` properties were marked as optional.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
