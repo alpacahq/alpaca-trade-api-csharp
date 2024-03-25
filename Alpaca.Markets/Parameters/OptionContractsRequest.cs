@@ -5,19 +5,36 @@
 /// </summary>
 public sealed class OptionContractsRequest : Validation.IRequest
 {
+    private readonly HashSet<String> _underlyingSymbols = new(StringComparer.Ordinal);
+
+    /// <summary>
+    /// Creates new instance of <see cref="OptionContractsRequest"/> object.
+    /// </summary>
+    public OptionContractsRequest()
+    {
+    }
+
     /// <summary>
     /// Creates new instance of <see cref="OptionContractsRequest"/> object.
     /// </summary>
     /// <param name="underlyingSymbol">The symbol of the underlying asset for filtering.</param>
     public OptionContractsRequest(
         String underlyingSymbol) =>
-        UnderlyingSymbol = underlyingSymbol.EnsureNotNull();
-    
+        _underlyingSymbols.Add(underlyingSymbol.EnsureNotNull());
+
     /// <summary>
-    /// Gets the symbol of the underlying asset for filtering.
+    /// Creates new instance of <see cref="OptionContractsRequest"/> object.
+    /// </summary>
+    /// <param name="underlyingSymbols">The symbols list of the underlying asset for filtering.</param>
+    public OptionContractsRequest(
+        IEnumerable<String> underlyingSymbols) =>
+        _underlyingSymbols.UnionWith(underlyingSymbols.EnsureNotNull());
+
+    /// <summary>
+    /// Gets the symbols list of the underlying asset for filtering.
     /// </summary>
     [UsedImplicitly]
-    public String UnderlyingSymbol { get; }
+    public IReadOnlyCollection<String> UnderlyingSymbols => _underlyingSymbols;
 
     /// <summary>
     /// Gets or sets filter by the asset status. By default, only active contracts are returned.
@@ -85,7 +102,7 @@ public sealed class OptionContractsRequest : Validation.IRequest
         {
             Path = "v2/options/contracts",
             Query = await Pagination.QueryBuilder
-                .AddParameter("underlying_symbol", UnderlyingSymbol)
+                .AddParameter("underlying_symbols", UnderlyingSymbols)
                 .AddParameter("status", AssetStatus)
                 .AddParameter("expiration_date", ExpirationDateEqualTo)
                 .AddParameter("expiration_date_gte", ExpirationDateGreaterThanOrEqualTo)
@@ -102,7 +119,7 @@ public sealed class OptionContractsRequest : Validation.IRequest
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
         yield return Pagination.TryValidatePageSize(Pagination.MaxPageSize);
-        yield return UnderlyingSymbol.TryValidateSymbolName();
+        yield return UnderlyingSymbols.TryValidateSymbolName();
         yield return RootSymbol?.TryValidateSymbolName();
 
         if (ExpirationDateEqualTo.HasValue && (

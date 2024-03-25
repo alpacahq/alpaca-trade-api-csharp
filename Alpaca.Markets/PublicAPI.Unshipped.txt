@@ -1,1 +1,4 @@
 ﻿#nullable enable
+Alpaca.Markets.OptionContractsRequest.OptionContractsRequest() -> void
+Alpaca.Markets.OptionContractsRequest.OptionContractsRequest(System.Collections.Generic.IEnumerable<string!>! underlyingSymbols) -> void
+Alpaca.Markets.OptionContractsRequest.UnderlyingSymbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
