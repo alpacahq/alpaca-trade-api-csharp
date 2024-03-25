@@ -1036,7 +1036,6 @@ Alpaca.Markets.OptionContractsRequest.StrikePriceGreaterThanOrEqualTo.get -> dec
 Alpaca.Markets.OptionContractsRequest.StrikePriceGreaterThanOrEqualTo.set -> void
 Alpaca.Markets.OptionContractsRequest.StrikePriceLessThanOrEqualTo.get -> decimal?
 Alpaca.Markets.OptionContractsRequest.StrikePriceLessThanOrEqualTo.set -> void
-Alpaca.Markets.OptionContractsRequest.UnderlyingSymbol.get -> string!
 Alpaca.Markets.OptionsTradingLevel
 Alpaca.Markets.OptionsTradingLevel.CoveredCallCashSecuredPut = 1 -> Alpaca.Markets.OptionsTradingLevel
 Alpaca.Markets.OptionsTradingLevel.Disabled = 0 -> Alpaca.Markets.OptionsTradingLevel
