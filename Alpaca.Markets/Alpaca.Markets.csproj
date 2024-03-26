@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.0.4.0</AssemblyVersion>
-    <FileVersion>7.0.4.0</FileVersion>
-    <Version>7.0.4</Version>
+    <AssemblyVersion>7.0.5.0</AssemblyVersion>
+    <FileVersion>7.0.5.0</FileVersion>
+    <Version>7.0.5</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-= The implementation of the `IAuction.Closings` and `IAuction.Openings` properties were marked as optional.
+- The new enum value `AssetClass.UsOption` was added for supporting option contracts in the assets response.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>

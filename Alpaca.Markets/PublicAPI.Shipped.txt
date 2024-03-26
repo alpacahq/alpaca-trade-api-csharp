@@ -129,6 +129,7 @@ Alpaca.Markets.AssetAttributes.Unknown = 0 -> Alpaca.Markets.AssetAttributes
 Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetClass.Crypto = 1 -> Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetClass.UsEquity = 0 -> Alpaca.Markets.AssetClass
+Alpaca.Markets.AssetClass.UsOption = 2 -> Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetsRequest
 Alpaca.Markets.AssetsRequest.Attributes.get -> System.Collections.Generic.ISet<Alpaca.Markets.AssetAttributes>!
 Alpaca.Markets.AssetsRequest.AssetClass.get -> Alpaca.Markets.AssetClass?
