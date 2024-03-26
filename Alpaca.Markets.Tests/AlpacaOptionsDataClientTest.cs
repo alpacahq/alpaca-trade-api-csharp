@@ -57,7 +57,8 @@ public sealed partial class AlpacaOptionsDataClientTest(
 
         mock.AddLatestQuotesExpectation(PathPrefix, _symbols);
 
-        var quotes = await mock.Client.ListLatestQuotesAsync(_symbols);
+        var quotes = await mock.Client.ListLatestQuotesAsync(
+            new LatestOptionsDataRequest(_symbols));
 
         Assert.NotNull(quotes);
         Assert.NotEmpty(quotes);
@@ -77,7 +78,8 @@ public sealed partial class AlpacaOptionsDataClientTest(
 
         mock.AddLatestTradesExpectation(PathPrefix, _symbols);
 
-        var trades = await mock.Client.ListLatestTradesAsync(_symbols);
+        var trades = await mock.Client.ListLatestTradesAsync(
+            new LatestOptionsDataRequest(_symbols));
 
         Assert.NotNull(trades);
         Assert.NotEmpty(trades);
