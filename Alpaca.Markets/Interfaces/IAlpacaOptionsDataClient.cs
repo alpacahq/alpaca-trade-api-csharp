@@ -34,8 +34,11 @@ public interface IAlpacaOptionsDataClient :
     /// <summary>
     /// Gets most recent quotes for several option contracts from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbols">Option contracts symbol names list.</param>
+    /// <param name="request">Option contracts latest data request.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
     /// <exception cref="HttpRequestException">
     /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
     /// </exception>
@@ -49,19 +52,22 @@ public interface IAlpacaOptionsDataClient :
     /// .NET Core and .NET 5 and later only: The request failed due to timeout.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// The <paramref name="request"/> argument is <c>null</c>.
     /// </exception>
     /// <returns>Read-only dictionary with the latest quotes information.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, IQuote>> ListLatestQuotesAsync(
-        IEnumerable<String> symbols,
+        LatestOptionsDataRequest request,
         CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Gets most recent trades for several option contracts from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbols">Option contracts symbol names list.</param>
+    /// <param name="request">Option contracts latest data request.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
     /// <exception cref="HttpRequestException">
     /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
     /// </exception>
@@ -75,19 +81,22 @@ public interface IAlpacaOptionsDataClient :
     /// .NET Core and .NET 5 and later only: The request failed due to timeout.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// The <paramref name="request"/> argument is <c>null</c>.
     /// </exception>
     /// <returns>Read-only dictionary with the latest trades information.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, ITrade>> ListLatestTradesAsync(
-        IEnumerable<String> symbols,
+        LatestOptionsDataRequest request,
         CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Gets current snapshot (latest trade/quote) for several option contracts from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="symbols">Option contracts symbol names list.</param>
+    /// <param name="request">Option contracts latest data request.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
     /// <exception cref="HttpRequestException">
     /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
     /// </exception>
@@ -101,19 +110,22 @@ public interface IAlpacaOptionsDataClient :
     /// .NET Core and .NET 5 and later only: The request failed due to timeout.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// The <paramref name="symbols"/> argument is <c>null</c>.
+    /// The <paramref name="request"/> argument is <c>null</c>.
     /// </exception>
     /// <returns>Read-only dictionary with the current snapshot information.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, ISnapshot>> ListSnapshotsAsync(
-        IEnumerable<String> symbols,
+        LatestOptionsDataRequest request,
         CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Gets option chain (snapshots list) for option contracts with same underlying symbol from Alpaca REST API endpoint.
     /// </summary>
-    /// <param name="underlyingSymbol">The financial instrument on which returned option contracts are based or derived.</param>
+    /// <param name="request">Option contracts latest data request.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
     /// <exception cref="HttpRequestException">
     /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
     /// </exception>
@@ -127,11 +139,11 @@ public interface IAlpacaOptionsDataClient :
     /// .NET Core and .NET 5 and later only: The request failed due to timeout.
     /// </exception>
     /// <exception cref="ArgumentNullException">
-    /// The <paramref name="underlyingSymbol"/> argument is <c>null</c>.
+    /// The <paramref name="request"/> argument is <c>null</c>.
     /// </exception>
     /// <returns>Read-only dictionary with the current snapshot information.</returns>
     [UsedImplicitly]
     Task<IReadOnlyDictionary<String, ISnapshot>> GetOptionChainAsync(
-        String underlyingSymbol,
+        OptionChainRequest request,
         CancellationToken cancellationToken = default);
 }

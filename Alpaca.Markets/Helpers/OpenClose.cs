@@ -32,11 +32,13 @@ public readonly record struct OpenClose
     /// <summary>
     /// Gets open time in EST time zone.
     /// </summary>
+    // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
     public DateTimeOffset OpenEst { get; init; }
 
     /// <summary>
     /// Gets close time in EST time zone.
     /// </summary>
+    // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
     public DateTimeOffset CloseEst { get; init; }
 
     /// <summary>

@@ -9,7 +9,8 @@ public sealed partial class AlpacaOptionsDataClientTest
 
         mock.AddCryptoSnapshotsExpectation(PathPrefix, _symbols);
 
-        var snapshots = await mock.Client.ListSnapshotsAsync(_symbols);
+        var snapshots = await mock.Client.ListSnapshotsAsync(
+            new LatestOptionsDataRequest(_symbols));
 
         Assert.NotNull(snapshots);
         Assert.NotEmpty(snapshots);
@@ -28,7 +29,8 @@ public sealed partial class AlpacaOptionsDataClientTest
 
         mock.AddOptionChainExpectation(PathPrefix, _symbols);
 
-        var snapshots = await mock.Client.GetOptionChainAsync("AAPL");
+        var snapshots = await mock.Client.GetOptionChainAsync(
+            new OptionChainRequest("AAPL"));
 
         Assert.NotNull(snapshots);
         Assert.NotEmpty(snapshots);
