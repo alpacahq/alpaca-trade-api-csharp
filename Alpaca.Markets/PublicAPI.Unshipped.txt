@@ -1,4 +1,6 @@
 ﻿#nullable enable
+Alpaca.Markets.IAlpacaTradingClient.ExerciseOptionsPositionByIdAsync(System.Guid contractId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
+Alpaca.Markets.IAlpacaTradingClient.ExerciseOptionsPositionBySymbolAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
 Alpaca.Markets.LatestOptionsDataRequest
 Alpaca.Markets.LatestOptionsDataRequest.LatestOptionsDataRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
 Alpaca.Markets.LatestOptionsDataRequest.OptionsFeed.get -> Alpaca.Markets.OptionsFeed?

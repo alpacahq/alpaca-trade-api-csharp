@@ -976,4 +976,47 @@ public interface IAlpacaTradingClient : IRateLimitProvider, IDisposable
     Task<IOptionContract> GetOptionContractBySymbolAsync(
         String symbol,
         CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Exercises a held option contract, converting it into the underlying asset based on the specified terms.
+    /// </summary>
+    /// <param name="contractId">Option contract unique identifier.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <returns>Returns <c>true</c> if operation completed successfully.</returns>
+    [UsedImplicitly]
+    Task<Boolean> ExerciseOptionsPositionByIdAsync(
+        Guid contractId,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Exercises a held option contract, converting it into the underlying asset based on the specified terms.
+    /// </summary>
+    /// <param name="symbol">Option contract unique symbol name.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>Returns <c>true</c> if operation completed successfully.</returns>
+    [UsedImplicitly]
+    Task<Boolean> ExerciseOptionsPositionBySymbolAsync(
+        String symbol,
+        CancellationToken cancellationToken = default);
 }
