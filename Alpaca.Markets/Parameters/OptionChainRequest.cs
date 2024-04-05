@@ -6,7 +6,7 @@
 public sealed class OptionChainRequest : Validation.IRequest
 {
     /// <summary>
-    /// Creates new instance of <see cref="LatestOptionsDataRequest"/> object.
+    /// Creates new instance of <see cref="OptionChainRequest"/> object.
     /// </summary>
     /// <param name="underlyingSymbol">Option underlying symbol for data retrieval.</param>
     /// <exception cref="ArgumentNullException">

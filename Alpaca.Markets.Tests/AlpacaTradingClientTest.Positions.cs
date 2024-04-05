@@ -93,6 +93,26 @@ public sealed partial class AlpacaTradingClientTest
         Assert.NotEmpty(statuses);
     }
 
+    [Fact]
+    public async Task ExerciseOptionsPositionByIdAsyncWorks()
+    {
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
+
+        mock.AddPost("/v2/positions/*/exercise", new JObject());
+
+        Assert.True(await mock.Client.ExerciseOptionsPositionByIdAsync(Guid.NewGuid()));
+    }
+
+    [Fact]
+    public async Task ExerciseOptionsPositionBySymbolAsyncWorks()
+    {
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
+
+        mock.AddPost("/v2/positions/*/exercise", new JObject());
+
+        Assert.True(await mock.Client.ExerciseOptionsPositionBySymbolAsync(Stock));
+    }
+
     [SuppressMessage("ReSharper", "StringLiteralTypo")]
     private static JObject createPosition() =>
         new(

@@ -2,6 +2,22 @@
 
 internal static partial class HttpClientExtensions
 {
+    public static Task<Boolean> TryPostAsync(
+        this HttpClient httpClient,
+        UriBuilder uriBuilder,
+        RateLimitHandler rateLimitHandler,
+        CancellationToken cancellationToken) =>
+        callAndReturnSuccessCodeAsync(
+            httpClient, HttpMethod.Post, uriBuilder.Uri, rateLimitHandler, cancellationToken);
+
+    public static Task<Boolean> TryPostAsync(
+        this HttpClient httpClient,
+        String endpointUri,
+        RateLimitHandler rateLimitHandler,
+        CancellationToken cancellationToken) =>
+        callAndReturnSuccessCodeAsync(
+            httpClient, HttpMethod.Post, asUri(endpointUri), rateLimitHandler, cancellationToken);
+
     public static Task<TApi> PostAsync<TApi, TJson, TRequest>(
         this HttpClient httpClient,
         String endpointUri,

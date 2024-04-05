@@ -62,4 +62,16 @@ internal sealed partial class AlpacaTradingClient
         CancellationToken cancellationToken = default) =>
         _httpClient.DeleteAsync<IReadOnlyList<IOrderActionStatus>, List<JsonOrderActionStatus>>(
             "v2/orders", _rateLimitHandler, cancellationToken);
+
+    public Task<Boolean> ExerciseOptionsPositionByIdAsync(
+        Guid contractId,
+        CancellationToken cancellationToken = default) =>
+        _httpClient.TryPostAsync(
+            $"v2/positions/{contractId:D}/exercise", _rateLimitHandler, cancellationToken);
+
+    public Task<Boolean> ExerciseOptionsPositionBySymbolAsync(
+        String symbol,
+        CancellationToken cancellationToken = default) =>
+        _httpClient.TryPostAsync(
+            $"v2/positions/{symbol.EnsureNotNull()}/exercise", _rateLimitHandler, cancellationToken);
 }
