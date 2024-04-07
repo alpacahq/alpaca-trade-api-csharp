@@ -172,19 +172,18 @@ public static partial class AlpacaTradingClientExtensions
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private static OptionContractsRequest getRequestForFirstPage(
         OptionContractsRequest request) =>
-        new(request.UnderlyingSymbol)
+        new(request.UnderlyingSymbols)
         {
             ExpirationDateGreaterThanOrEqualTo = request.ExpirationDateGreaterThanOrEqualTo,
             ExpirationDateLessThanOrEqualTo = request.ExpirationDateLessThanOrEqualTo,
             StrikePriceGreaterThanOrEqualTo = request.StrikePriceGreaterThanOrEqualTo,
             StrikePriceLessThanOrEqualTo = request.StrikePriceLessThanOrEqualTo,
             ExpirationDateEqualTo = request.ExpirationDateEqualTo,
+            Pagination = { Size = Pagination.MaxPageSize },
             AssetStatus = request.AssetStatus,
             OptionStyle = request.OptionStyle,
             OptionType = request.OptionType,
-            RootSymbol = request.RootSymbol,
-            PageSize = request.PageSize,
-            PageNumber = 1 // Explicitly set this to 1
+            RootSymbol = request.RootSymbol
         };
 
     private static async IAsyncEnumerable<IOptionContract> getAllOptionContractsPages(
@@ -197,17 +196,12 @@ public static partial class AlpacaTradingClientExtensions
             var contracts = await client
                 .ListOptionContractsAsync(request, cancellationToken).ConfigureAwait(false);
 
-            if (contracts.Count == 0)
-            {
-                break; // The only way to check if paging completed
-            }
-
-            foreach (var item in contracts)
+            foreach (var item in contracts.Items)
             {
                 yield return item;
             }
 
-            ++request.PageNumber;
-        } while (request.PageNumber < UInt32.MaxValue);
+            request.Pagination.Token = contracts.NextPageToken ?? String.Empty;
+        } while (!String.IsNullOrEmpty(request.Pagination.Token));
     }
 }

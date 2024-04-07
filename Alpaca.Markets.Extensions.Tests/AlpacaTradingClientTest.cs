@@ -45,7 +45,7 @@ public sealed class AlpacaTradingClientTest(
         Assert.NotEqual(0, counter);
     }
 
-    [Fact(Skip = "Disable temporary until extensions package update")]
+    [Fact]
     public async Task ListOptionContractsAsAsyncEnumerableWorks()
     {
         using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
@@ -54,8 +54,7 @@ public sealed class AlpacaTradingClientTest(
         addSinglePageExpectationOfOptionContracts(mock);
 
         var counter = await validateList(
-            mock.Client.ListOptionContractsAsAsyncEnumerable(
-                new OptionContractsRequest(Symbol)));
+            mock.Client.ListOptionContractsAsAsyncEnumerable(new OptionContractsRequest()));
 
         Assert.NotEqual(0, counter);
     }
