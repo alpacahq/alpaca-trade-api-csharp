@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.0.5.0</AssemblyVersion>
-    <FileVersion>7.0.5.0</FileVersion>
-    <Version>7.0.5</Version>
+    <AssemblyVersion>7.0.6.0</AssemblyVersion>
+    <FileVersion>7.0.6.0</FileVersion>
+    <Version>7.0.6</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- The new enum value `AssetClass.UsOption` was added for supporting option contracts in the assets response.
+- Added the `PositionIntent` enum and related properties into the `NewOrderRequest` and `OrderBase` classes.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
