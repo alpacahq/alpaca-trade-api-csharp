@@ -12,19 +12,18 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.1.0.0</AssemblyVersion>
-    <FileVersion>7.1.0.0</FileVersion>
-    <Version>7.1.0-beta1</Version>
+    <AssemblyVersion>7.1.0.1</AssemblyVersion>
+    <FileVersion>7.1.0.1</FileVersion>
+    <Version>7.1.0-beta2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Added factory methods for creating the strongly typed `IAlpacaOptionsDataClient` instance in dependency injection environments.
-- Added the new extension method `ListOptionContractsAsAsyncEnumerable` for the `IAlpacaTradingClient` interface.
+- The `ListOptionContractsAsAsyncEnumerable` extensions method uses page token now.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
-    <Copyright>© 2018-2023 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <Copyright>© 2018-2024 Alpaca Securities LLC. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
     <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
@@ -95,7 +94,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="8.0.2" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="8.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Threading.Channels" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Linq.Async" Version="6.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
