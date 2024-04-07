@@ -11,6 +11,8 @@ internal sealed class JsonOptionContractsPage : IPage<IOptionContract>
     [JsonProperty(PropertyName = "next_page_token", Required = Required.Default)]
     public String? NextPageToken { get; set; }
 
+    [JsonIgnore]
+    [ExcludeFromCodeCoverage]
     public String Symbol => String.Empty;
 
     public IReadOnlyList<IOptionContract> Items => Contracts.EmptyIfNull();

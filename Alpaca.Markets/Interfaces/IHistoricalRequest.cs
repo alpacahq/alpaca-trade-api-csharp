@@ -1,5 +1,7 @@
 ﻿namespace Alpaca.Markets;
 
+// TODO: olegra - rename this interface into IRequestWithPagination
+
 /// <summary>
 /// Provides unified type-safe access to the historical data request parameters.
 /// </summary>

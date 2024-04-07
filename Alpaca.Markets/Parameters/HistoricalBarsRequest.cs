@@ -39,7 +39,7 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
         String symbol,
         BarTimeFrame timeFrame,
         Interval<DateTime> timeInterval)
-        : this(new[] { symbol.EnsureNotNull() }, timeInterval, timeFrame)
+        : this([ symbol.EnsureNotNull() ], timeInterval, timeFrame)
     {
     }
 
@@ -54,7 +54,7 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
     public HistoricalBarsRequest(
         String symbol,
         BarTimeFrame timeFrame)
-        : this(new[] { symbol.EnsureNotNull() }, timeFrame)
+        : this([ symbol.EnsureNotNull() ], timeFrame)
     {
     }
 
