@@ -65,4 +65,24 @@ public static class OrderBaseExtensions
         order.EnsureNotNull().ExtendedHours = extendedHours;
         return order;
     }
+
+    /// <summary>
+    /// Sets the new value for the <see cref="OrderBase.PositionIntent"/> property of the target order.
+    /// </summary>
+    /// <param name="order">Target order for changing <see cref="OrderBase.PositionIntent"/> property.</param>
+    /// <param name="positionIntent">The new <see cref="OrderBase.PositionIntent"/> property value.</param>
+    /// <typeparam name="TOrder">Type of target order for altering.</typeparam>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="order"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>Fluent interface - returns the <paramref name="order"/> object.</returns>
+    [UsedImplicitly]
+    public static TOrder WithPositionIntent<TOrder>(
+        this TOrder order,
+        PositionIntent positionIntent)
+        where TOrder : OrderBase
+    {
+        order.EnsureNotNull().PositionIntent = positionIntent;
+        return order;
+    }
 }

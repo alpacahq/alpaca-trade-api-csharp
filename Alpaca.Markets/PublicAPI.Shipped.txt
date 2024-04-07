@@ -976,6 +976,8 @@ Alpaca.Markets.NewOrderRequest.LimitPrice.set -> void
 Alpaca.Markets.NewOrderRequest.NewOrderRequest(string! symbol, Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.OrderSide side, Alpaca.Markets.OrderType type, Alpaca.Markets.TimeInForce duration) -> void
 Alpaca.Markets.NewOrderRequest.OrderClass.get -> Alpaca.Markets.OrderClass?
 Alpaca.Markets.NewOrderRequest.OrderClass.set -> void
+Alpaca.Markets.NewOrderRequest.PositionIntent.get -> Alpaca.Markets.PositionIntent?
+Alpaca.Markets.NewOrderRequest.PositionIntent.set -> void
 Alpaca.Markets.NewOrderRequest.Quantity.get -> Alpaca.Markets.OrderQuantity
 Alpaca.Markets.NewOrderRequest.Side.get -> Alpaca.Markets.OrderSide
 Alpaca.Markets.NewOrderRequest.StopLossLimitPrice.get -> decimal?
@@ -1073,6 +1075,8 @@ Alpaca.Markets.OrderBase.ExtendedHours.get -> bool?
 Alpaca.Markets.OrderBase.ExtendedHours.set -> void
 Alpaca.Markets.OrderBase.OrderBase(Alpaca.Markets.OrderBase! baseOrder) -> void
 Alpaca.Markets.OrderBase.OrderBase(string! symbol, Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.OrderSide side, Alpaca.Markets.OrderType type) -> void
+Alpaca.Markets.OrderBase.PositionIntent.get -> Alpaca.Markets.PositionIntent?
+Alpaca.Markets.OrderBase.PositionIntent.set -> void
 Alpaca.Markets.OrderBase.Quantity.get -> Alpaca.Markets.OrderQuantity
 Alpaca.Markets.OrderBase.Side.get -> Alpaca.Markets.OrderSide
 Alpaca.Markets.OrderBase.Symbol.get -> string!
@@ -1141,6 +1145,11 @@ Alpaca.Markets.PortfolioHistoryRequest.TimeFrame.set -> void
 Alpaca.Markets.PortfolioHistoryRequest.TimeInterval.get -> Alpaca.Markets.Interval<System.DateTime>
 Alpaca.Markets.PortfolioHistoryRequest.WithInterval(Alpaca.Markets.Interval<System.DateOnly> value) -> Alpaca.Markets.PortfolioHistoryRequest!
 Alpaca.Markets.PortfolioHistoryRequest.WithInterval(Alpaca.Markets.Interval<System.DateTime> value) -> Alpaca.Markets.PortfolioHistoryRequest!
+Alpaca.Markets.PositionIntent
+Alpaca.Markets.PositionIntent.BuyToClose = 1 -> Alpaca.Markets.PositionIntent
+Alpaca.Markets.PositionIntent.BuyToOpen = 0 -> Alpaca.Markets.PositionIntent
+Alpaca.Markets.PositionIntent.SellToClose = 3 -> Alpaca.Markets.PositionIntent
+Alpaca.Markets.PositionIntent.SellToOpen = 2 -> Alpaca.Markets.PositionIntent
 Alpaca.Markets.PositionSide
 Alpaca.Markets.PositionSide.Long = 0 -> Alpaca.Markets.PositionSide
 Alpaca.Markets.PositionSide.Short = 1 -> Alpaca.Markets.PositionSide
@@ -1347,6 +1356,7 @@ static Alpaca.Markets.OpenClose.implicit operator Alpaca.Markets.Interval<System
 static Alpaca.Markets.OrderBaseExtensions.WithClientOrderId<TOrder>(this TOrder! order, string! clientOrderId) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithDuration<TOrder>(this TOrder! order, Alpaca.Markets.TimeInForce duration) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithExtendedHours<TOrder>(this TOrder! order, bool extendedHours) -> TOrder!
+static Alpaca.Markets.OrderBaseExtensions.WithPositionIntent<TOrder>(this TOrder! order, Alpaca.Markets.PositionIntent positionIntent) -> TOrder!
 static Alpaca.Markets.OrderExtensions.GetOrderQuantity(this Alpaca.Markets.IOrder! order) -> Alpaca.Markets.OrderQuantity
 static Alpaca.Markets.OrderSideExtensions.Limit(this Alpaca.Markets.OrderSide orderSide, string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
 static Alpaca.Markets.OrderSideExtensions.Market(this Alpaca.Markets.OrderSide orderSide, string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!

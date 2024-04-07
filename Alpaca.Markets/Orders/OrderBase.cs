@@ -85,6 +85,12 @@ public abstract class OrderBase : Validation.IRequest
     /// Gets or sets flag indicating that order should be allowed to execute during extended hours trading.
     /// </summary>
     public Boolean? ExtendedHours { get; set; }
+    
+    /// <summary>
+    /// Gets or sets the optional position intent for order placement.
+    /// </summary>
+    [UsedImplicitly]
+    public PositionIntent? PositionIntent { get; set; }
 
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
@@ -106,6 +112,7 @@ public abstract class OrderBase : Validation.IRequest
             TimeInForce = Duration,
             ExtendedHours = ExtendedHours,
             ClientOrderId = ClientOrderId,
+            PositionIntent = PositionIntent,
             Notional = Quantity.AsNotional(),
             Quantity = Quantity.AsFractional()
         };
