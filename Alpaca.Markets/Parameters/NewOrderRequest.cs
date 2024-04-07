@@ -121,6 +121,12 @@ public sealed class NewOrderRequest : Validation.IRequest
     [UsedImplicitly]
     public Decimal? StopLossLimitPrice { get; set; }
 
+    /// <summary>
+    /// Gets or sets the optional position intent for order placement.
+    /// </summary>
+    [UsedImplicitly]
+    public PositionIntent? PositionIntent { get; set; }
+
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
         ClientOrderId = ClientOrderId?.TrimClientOrderId();
@@ -139,6 +145,7 @@ public sealed class NewOrderRequest : Validation.IRequest
             OrderClass = OrderClass,
             ClientOrderId = ClientOrderId,
             ExtendedHours = ExtendedHours,
+            PositionIntent = PositionIntent,
             Notional = Quantity.AsNotional(),
             Quantity = Quantity.AsFractional(),
             TrailOffsetInDollars = TrailOffsetInDollars,

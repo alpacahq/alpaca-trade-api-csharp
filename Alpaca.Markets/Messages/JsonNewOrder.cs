@@ -46,4 +46,7 @@ internal sealed class JsonNewOrder
 
     [JsonProperty(PropertyName = "stop_loss", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
     public JsonNewOrderAdvancedAttributes? StopLoss { get; set; }
+
+    [JsonProperty(PropertyName = "position_intent", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+    public PositionIntent? PositionIntent { get; set; }
 }

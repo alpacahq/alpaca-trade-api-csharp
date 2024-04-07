@@ -33,6 +33,7 @@ public abstract class AdvancedOrderBase : OrderBase
 
     internal override JsonNewOrder GetJsonRequest()
     {
+        BaseOrder.PositionIntent = PositionIntent;
         BaseOrder.ClientOrderId = ClientOrderId;
         BaseOrder.ExtendedHours = ExtendedHours;
         BaseOrder.Duration = Duration;
