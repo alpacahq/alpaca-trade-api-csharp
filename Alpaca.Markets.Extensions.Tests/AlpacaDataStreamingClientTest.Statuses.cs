@@ -31,7 +31,6 @@ public sealed partial class AlpacaDataStreamingClientTest
         verifySubscriptions(subscriptionOne, subscriptionTwo);
         verifySubscriptionEvents(subscription, ExpectedNumberOfEventsForOneSymbol);
 
-        await subscriptionOne.DisposeAsync();
         client.VerifyAll();
     }
 }

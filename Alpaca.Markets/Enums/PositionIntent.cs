@@ -32,5 +32,5 @@ public enum PositionIntent
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "sell_to_close")]
-    SellToClose,
+    SellToClose
 }

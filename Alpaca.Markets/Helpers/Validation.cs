@@ -55,28 +55,28 @@ internal static class Validation
 
     public static RequestValidationException? TryValidateSymbolName(
         this String symbolName,
-        [CallerArgumentExpression("symbolName")] String propertyName = "") =>
+        [CallerArgumentExpression(nameof(symbolName))] String propertyName = "") =>
         String.IsNullOrWhiteSpace(symbolName)
             ? new RequestValidationException(SymbolShouldNotBeEmptyMessage, propertyName)
             : null;
 
     public static RequestValidationException? TryValidateSymbolName(
         this IEnumerable<String> symbolNames,
-        [CallerArgumentExpression("symbolNames")] String propertyName = "") =>
+        [CallerArgumentExpression(nameof(symbolNames))] String propertyName = "") =>
         symbolNames.Any(String.IsNullOrWhiteSpace)
             ? new RequestValidationException(SymbolShouldNotBeEmptyMessage, propertyName)
             : null;
 
     public static RequestValidationException? TryValidateQuantity(
         this OrderQuantity quantity,
-        [CallerArgumentExpression("quantity")] String propertyName = "") =>
+        [CallerArgumentExpression(nameof(quantity))] String propertyName = "") =>
         quantity.Value <= 0M
             ? new RequestValidationException(OrderQuantityShouldBePositiveMessage, propertyName)
             : null;
 
     public static RequestValidationException? TryValidateQuantity(
         this Int64? quantity,
-        [CallerArgumentExpression("quantity")] String propertyName = "") =>
+        [CallerArgumentExpression(nameof(quantity))] String propertyName = "") =>
         quantity <= 0M
             ? new RequestValidationException(OrderQuantityShouldBePositiveMessage, propertyName)
             : null;
@@ -84,42 +84,42 @@ internal static class Validation
     public static RequestValidationException? TryValidatePageSize(
         this Pagination pagination,
         UInt32 maxPageSize,
-        [CallerArgumentExpression("pagination")] String propertyName = "") =>
+        [CallerArgumentExpression(nameof(pagination))] String propertyName = "") =>
         pagination.Size < Pagination.MinPageSize || pagination.Size > maxPageSize
             ? new RequestValidationException(RequestPageSizeTooBigOrTooSmallMessage, propertyName)
             : null;
 
     public static RequestValidationException? TryValidateSymbolsList(
         this IReadOnlyCollection<String> symbolNames,
-        [CallerArgumentExpression("symbolNames")] String propertyName = "") =>
+        [CallerArgumentExpression(nameof(symbolNames))] String propertyName = "") =>
         symbolNames.Count == 0
             ? new RequestValidationException(ListShouldContainsAtLeastOneItemMessage, propertyName)
             : null;
 
     public static RequestValidationException? TryValidateWatchListName(
         this String? watchListName,
-        [CallerArgumentExpression("watchListName")] String propertyName = "") =>
+        [CallerArgumentExpression(nameof(watchListName))] String propertyName = "") =>
         isWatchListNameInvalid(watchListName)
             ? new RequestValidationException(WatchListNameShouldBe64CharactersLengthMessage, propertyName)
             : null;
 
     public static RequestValidationException? TryValidateWatchListName<TKey>(
         this TKey watchListName,
-        [CallerArgumentExpression("watchListName")] String propertyName = "") =>
+        [CallerArgumentExpression(nameof(watchListName))] String propertyName = "") =>
         watchListName is String stringKey && isWatchListNameInvalid(stringKey)
             ? new RequestValidationException(WatchListNameShouldBe64CharactersLengthMessage, propertyName)
             : null;
 
     public static RequestValidationException? TryValidateCollection<TItem>(
         this IReadOnlyCollection<TItem> collection,
-        [CallerArgumentExpression("collection")] String propertyName = "") =>
+        [CallerArgumentExpression(nameof(collection))] String propertyName = "") =>
         collection.Count == 0
             ? new RequestValidationException(CollectionShouldNotBeEmptyMessage, propertyName)
             : null;
 
     public static RequestValidationException? TryValidateInterval<TItem>(
         this Interval<TItem> interval,
-        [CallerArgumentExpression("interval")] String propertyName = "")
+        [CallerArgumentExpression(nameof(interval))] String propertyName = "")
         where TItem : struct, IComparable<TItem> =>
         interval.IsOpen()
             ? new RequestValidationException(IntervalShouldNotBeOpenMessage, propertyName)
@@ -127,7 +127,7 @@ internal static class Validation
 
     public static String? ValidateWatchListName(
         this String? watchListName,
-        [CallerArgumentExpression("watchListName")] String propertyName = "") =>
+        [CallerArgumentExpression(nameof(watchListName))] String propertyName = "") =>
         isWatchListNameInvalid(watchListName)
             ? throw new ArgumentException(WatchListNameShouldBe64CharactersLengthMessage, propertyName)
             : watchListName;
