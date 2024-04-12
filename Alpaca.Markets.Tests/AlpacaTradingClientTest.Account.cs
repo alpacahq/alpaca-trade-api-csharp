@@ -181,7 +181,6 @@ public sealed partial class AlpacaTradingClientTest
         var history = await mock.Client.GetPortfolioHistoryAsync(
             new PortfolioHistoryRequest
             {
-                Period = new HistoryPeriod(5, HistoryPeriodUnit.Day),
                 TimeFrame = TimeFrame.FifteenMinutes
             }.WithInterval(new Interval<DateTime>(today, today)));
 

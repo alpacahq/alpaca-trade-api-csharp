@@ -142,7 +142,6 @@ public sealed class AlpacaNewsStreamingClientTest
         _symbols.VerifySubscriptionsStreams(subscriptionOne, subscriptionTwo);
         subscription.VerifySubscriptionEventsNumber(ExpectedNumberOfEventsForOneSymbol);
 
-        await subscriptionOne.DisposeAsync();
         client.VerifyAll();
     }
 
