@@ -17,3 +17,4 @@ Alpaca.Markets.OptionContractsRequest.UnderlyingSymbols.get -> System.Collection
 Alpaca.Markets.OptionsFeed
 Alpaca.Markets.OptionsFeed.Indicative = 1 -> Alpaca.Markets.OptionsFeed
 Alpaca.Markets.OptionsFeed.Opra = 0 -> Alpaca.Markets.OptionsFeed
+Alpaca.Markets.PortfolioHistoryRequest.WithInterval(Alpaca.Markets.Interval<System.DateTime> value) -> Alpaca.Markets.PortfolioHistoryRequest!

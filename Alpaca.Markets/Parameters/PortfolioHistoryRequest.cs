@@ -4,13 +4,21 @@
 /// Encapsulates request parameters for <see cref="IAlpacaTradingClient.GetPortfolioHistoryAsync(PortfolioHistoryRequest,CancellationToken)"/> call.
 /// </summary>
 [UsedImplicitly]
-public sealed class PortfolioHistoryRequest
+public sealed class PortfolioHistoryRequest : Validation.IRequest
 {
     /// <summary>
     /// Gets inclusive date interval for filtering items in response.
     /// </summary>
     [UsedImplicitly]
-    public Interval<DateOnly> DateInterval { get; private set; }
+    [ExcludeFromCodeCoverage]
+    [Obsolete("Use the Interval property instead of this one.", true)]
+    public Interval<DateOnly> DateInterval => Interval.AsDateInterval();
+
+    /// <summary>
+    /// Gets inclusive date interval for filtering items in response.
+    /// </summary>
+    [UsedImplicitly]
+    public Interval<DateTime> Interval { get; private set; }
 
     /// <summary>
     /// Gets or sets the time frame value for desired history. Default value (if <c>null</c>) is 1 minute
@@ -26,10 +34,23 @@ public sealed class PortfolioHistoryRequest
     public HistoryPeriod? Period { get; set; }
 
     /// <summary>
+    /// Gets or sets intraday reporting style. Make sense only if <see cref="TimeFrame"/> are equal to <see cref="TimeFrame.Day"/>.
+    /// </summary>
+    [UsedImplicitly]
+    public IntradayReporting? IntradayReporting { get; set; }
+
+    /// <summary>
+    /// Gets or sets intraday profit/loss reset. Make sense only if <see cref="TimeFrame"/> are equal to <see cref="TimeFrame.Day"/>.
+    /// </summary>
+    [UsedImplicitly]
+    public IntradayProfitLoss? IntradayProfitLoss { get; set; }
+
+    /// <summary>
     /// Gets or sets flags, indicating that include extended hours included in the result.
     /// This is effective only for time frame less than 1 day.
     /// </summary>
     [UsedImplicitly]
+    [Obsolete("Use the DateInterval property instead of this one.", false)]
     public Boolean? ExtendedHours { get; set; }
 
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
@@ -38,12 +59,13 @@ public sealed class PortfolioHistoryRequest
         {
             Path = "v2/account/portfolio/history",
             Query = await new QueryBuilder()
-                .AddParameter("start_date", DateInterval.From)
-                .AddParameter("end_date", DateInterval.Into)
+                .AddParameter("intraday_reporting", IntradayReporting)
                 .AddParameter("period", Period?.ToString())
+                .AddParameter("start", Interval.From, "O")
+                .AddParameter("end", Interval.Into, "O")
+                .AddParameter("pnl_reset", IntradayProfitLoss)
                 // ReSharper disable once StringLiteralTypo
                 .AddParameter("timeframe", TimeFrame)
-                .AddParameter("extended_hours", ExtendedHours)
                 .AsStringAsync().ConfigureAwait(false)
         };
 
@@ -55,9 +77,34 @@ public sealed class PortfolioHistoryRequest
     [UsedImplicitly]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public PortfolioHistoryRequest WithInterval(
+        Interval<DateTime> value)
+    {
+        Interval = value;
+        return this;
+    }
+
+    /// <summary>
+    /// Sets time interval for filtering data returned by this request.
+    /// /// </summary>
+    /// <param name="value">New filtering interval.</param>
+    /// <returns>Request with applied filtering.</returns>
+    [UsedImplicitly]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [Obsolete("Use the override that gets Interval<DateTime> instead of this one.", true)]
+    public PortfolioHistoryRequest WithInterval(
         Interval<DateOnly> value)
     {
-        DateInterval = value;
+        Interval = value.AsTimeInterval();
         return this;
+    }
+
+    IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
+    {
+        yield return Interval.TryValidateInterval();
+        if (Period.HasValue && !Interval.IsEmpty())
+        {
+            yield return new RequestValidationException(
+                "Both `Period` and `Interval` are set.", nameof(Period));
+        }
     }
 }

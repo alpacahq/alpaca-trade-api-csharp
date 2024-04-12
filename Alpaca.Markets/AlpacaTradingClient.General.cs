@@ -31,7 +31,7 @@ internal sealed partial class AlpacaTradingClient
         PortfolioHistoryRequest request,
         CancellationToken cancellationToken = default) =>
         await _httpClient.GetAsync<IPortfolioHistory, JsonPortfolioHistory>(
-            await request.EnsureNotNull()
+            await request.EnsureNotNull().Validate()
                 .GetUriBuilderAsync(_httpClient).ConfigureAwait(false),
             _rateLimitHandler, cancellationToken).ConfigureAwait(false);
 

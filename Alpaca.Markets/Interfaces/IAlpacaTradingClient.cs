@@ -607,6 +607,9 @@ public interface IAlpacaTradingClient : IRateLimitProvider, IDisposable
     /// </summary>
     /// <param name="request">Portfolio history request parameters.</param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
     /// <exception cref="HttpRequestException">
     /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
     /// </exception>

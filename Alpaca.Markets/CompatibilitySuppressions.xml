@@ -577,13 +577,6 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.PortfolioHistoryRequest.WithInterval(Alpaca.Markets.Interval{System.DateTime})</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
     <Target>F:Alpaca.Markets.AccountActivityType.RefTafFee</Target>
     <Left>lib/net6.0/Alpaca.Markets.dll</Left>
     <Right>lib/net6.0/Alpaca.Markets.dll</Right>
@@ -872,13 +865,6 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.PortfolioHistoryRequest.get_TimeInterval</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/net6.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.PortfolioHistoryRequest.WithInterval(Alpaca.Markets.Interval{System.DateTime})</Target>
     <Left>lib/net6.0/Alpaca.Markets.dll</Left>
     <Right>lib/net6.0/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -1179,13 +1165,6 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.PortfolioHistoryRequest.WithInterval(Alpaca.Markets.Interval{System.DateTime})</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
     <Target>F:Alpaca.Markets.AccountActivityType.RefTafFee</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
@@ -1474,13 +1453,6 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.PortfolioHistoryRequest.get_TimeInterval</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0002</DiagnosticId>
-    <Target>M:Alpaca.Markets.PortfolioHistoryRequest.WithInterval(Alpaca.Markets.Interval{System.DateTime})</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
