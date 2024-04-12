@@ -683,6 +683,13 @@ Alpaca.Markets.INewsArticle.Summary.get -> string!
 Alpaca.Markets.INewsArticle.Symbols.get -> System.Collections.Generic.IReadOnlyList<string!>!
 Alpaca.Markets.INewsArticle.ThumbImageUrl.get -> System.Uri?
 Alpaca.Markets.INewsArticle.UpdatedAtUtc.get -> System.DateTime
+Alpaca.Markets.IntradayProfitLoss
+Alpaca.Markets.IntradayProfitLoss.NoReset = 0 -> Alpaca.Markets.IntradayProfitLoss
+Alpaca.Markets.IntradayProfitLoss.PerDay = 1 -> Alpaca.Markets.IntradayProfitLoss
+Alpaca.Markets.IntradayReporting
+Alpaca.Markets.IntradayReporting.Continuous = 2 -> Alpaca.Markets.IntradayReporting
+Alpaca.Markets.IntradayReporting.ExtendedHours = 1 -> Alpaca.Markets.IntradayReporting
+Alpaca.Markets.IntradayReporting.MarketHours = 0 -> Alpaca.Markets.IntradayReporting
 Alpaca.Markets.IOptionContract
 Alpaca.Markets.IOptionContract.ClosePrice.get -> decimal?
 Alpaca.Markets.IOptionContract.ClosePriceDate.get -> System.DateOnly?
@@ -1137,6 +1144,11 @@ Alpaca.Markets.PortfolioHistoryRequest
 Alpaca.Markets.PortfolioHistoryRequest.ExtendedHours.get -> bool?
 Alpaca.Markets.PortfolioHistoryRequest.ExtendedHours.set -> void
 Alpaca.Markets.PortfolioHistoryRequest.DateInterval.get -> Alpaca.Markets.Interval<System.DateOnly>
+Alpaca.Markets.PortfolioHistoryRequest.Interval.get -> Alpaca.Markets.Interval<System.DateTime>
+Alpaca.Markets.PortfolioHistoryRequest.IntradayProfitLoss.get -> Alpaca.Markets.IntradayProfitLoss?
+Alpaca.Markets.PortfolioHistoryRequest.IntradayProfitLoss.set -> void
+Alpaca.Markets.PortfolioHistoryRequest.IntradayReporting.get -> Alpaca.Markets.IntradayReporting?
+Alpaca.Markets.PortfolioHistoryRequest.IntradayReporting.set -> void
 Alpaca.Markets.PortfolioHistoryRequest.Period.get -> Alpaca.Markets.HistoryPeriod?
 Alpaca.Markets.PortfolioHistoryRequest.Period.set -> void
 Alpaca.Markets.PortfolioHistoryRequest.PortfolioHistoryRequest() -> void
