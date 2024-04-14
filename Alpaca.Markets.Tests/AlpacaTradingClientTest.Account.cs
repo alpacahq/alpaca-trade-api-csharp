@@ -181,8 +181,11 @@ public sealed partial class AlpacaTradingClientTest
         var history = await mock.Client.GetPortfolioHistoryAsync(
             new PortfolioHistoryRequest
             {
+                Period = new HistoryPeriod(1, HistoryPeriodUnit.Week),
+                IntradayReporting = IntradayReporting.Continuous,
+                IntradayProfitLoss = IntradayProfitLoss.PerDay,
                 TimeFrame = TimeFrame.FifteenMinutes
-            }.WithInterval(new Interval<DateTime>(today, today)));
+            });
 
         Assert.Equal(Price, history.BaseValue);
 
