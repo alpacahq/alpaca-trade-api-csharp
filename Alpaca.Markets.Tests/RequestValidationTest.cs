@@ -92,6 +92,14 @@ public sealed class RequestValidationTest
         validate(new ListOrdersRequest().WithSymbol(String.Empty));
 
     [Fact]
+    public void PortfolioHistoryRequestEmptySymbolValidationWorks() =>
+        validate(new PortfolioHistoryRequest
+            {
+                Period = new HistoryPeriod(1, HistoryPeriodUnit.Week)
+            }
+            .WithInterval(new Interval<DateTime>(DateTime.Today, DateTime.Today)));
+
+    [Fact]
     public void CalendarRequestConstructorWorks()
     {
         var today = DateOnly.FromDateTime(DateTime.Today);

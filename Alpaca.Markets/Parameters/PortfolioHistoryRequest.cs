@@ -50,6 +50,7 @@ public sealed class PortfolioHistoryRequest : Validation.IRequest
     /// This is effective only for time frame less than 1 day.
     /// </summary>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [Obsolete("Use the DateInterval property instead of this one.", false)]
     public Boolean? ExtendedHours { get; set; }
 
@@ -89,6 +90,7 @@ public sealed class PortfolioHistoryRequest : Validation.IRequest
     /// <param name="value">New filtering interval.</param>
     /// <returns>Request with applied filtering.</returns>
     [UsedImplicitly]
+    [ExcludeFromCodeCoverage]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [Obsolete("Use the override that gets Interval<DateTime> instead of this one.", true)]
     public PortfolioHistoryRequest WithInterval(
