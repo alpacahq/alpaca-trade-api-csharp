@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-100-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-101-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -140,6 +140,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/homer14"><img src="https://avatars.githubusercontent.com/u/146207223?v=4?s=100" width="100px;" alt="homer14"/><br /><sub><b>homer14</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Ahomer14" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/IvoTops"><img src="https://avatars.githubusercontent.com/u/3900366?v=4?s=100" width="100px;" alt="Ivo Tops"/><br /><sub><b>Ivo Tops</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3AIvoTops" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://indemos.com"><img src="https://avatars.githubusercontent.com/u/5140879?v=4?s=100" width="100px;" alt="Anonymous"/><br /><sub><b>Anonymous</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Aartemiusgreat" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
