@@ -448,7 +448,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/10700224?v=4",
       "profile": "https://github.com/rudeGit",
       "contributions": [
-        "bug"
+        "bug",
+        "question"
       ]
     },
     {
@@ -926,7 +927,7 @@
       "contributions": [
         "question",
         "bug"
-        ]
+      ]
     },
     {
       "login": "homer14",
