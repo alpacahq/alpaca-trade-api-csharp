@@ -937,6 +937,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "IvoTops",
+      "name": "Ivo Tops",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3900366?v=4",
+      "profile": "https://github.com/IvoTops",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
