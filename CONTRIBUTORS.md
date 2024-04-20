@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-96-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-97-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -134,6 +134,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/KevinDeBeer"><img src="https://avatars.githubusercontent.com/u/61558522?v=4?s=100" width="100px;" alt="Kevin de Beer"/><br /><sub><b>Kevin de Beer</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3AKevinDeBeer" title="Bug reports">🐛</a> <a href="#userTesting-KevinDeBeer" title="User Testing">📓</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/AntoineDubois"><img src="https://avatars.githubusercontent.com/u/77892842?v=4?s=100" width="100px;" alt="Antoine Dubois"/><br /><sub><b>Antoine Dubois</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3AAntoineDubois" title="Bug reports">🐛</a> <a href="#userTesting-AntoineDubois" title="User Testing">📓</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/hiohiohio"><img src="https://avatars.githubusercontent.com/u/2696532?v=4?s=100" width="100px;" alt="hiohiohio"/><br /><sub><b>hiohiohio</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Ahiohiohio" title="Bug reports">🐛</a> <a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=hiohiohio" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://thedevprocess.com"><img src="https://avatars.githubusercontent.com/u/1851767?v=4?s=100" width="100px;" alt="bobrot"/><br /><sub><b>bobrot</b></sub></a><br /><a href="#question-bobrot" title="Answering Questions">💬</a></td>
     </tr>
   </tbody>
 </table>

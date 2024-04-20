@@ -908,6 +908,15 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "bobrot",
+      "name": "bobrot",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1851767?v=4",
+      "profile": "http://thedevprocess.com",
+      "contributions": [
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 7,
