@@ -34,17 +34,17 @@ internal sealed class AlpacaOptionsDataClient :
         getLatestAsync<ITrade, JsonOptionTrade>(
             request.EnsureNotNull().Validate(), "trades/latest", data => data.Trades, cancellationToken);
 
-    public async Task<IDictionaryPage<ISnapshot>> ListSnapshotsAsync(
+    public async Task<IDictionaryPage<IOptionSnapshot>> ListSnapshotsAsync(
         OptionSnapshotRequest request,
         CancellationToken cancellationToken = default) =>
-        await HttpClient.GetAsync<IDictionaryPage<ISnapshot>, JsonOptionsSnapshotData>(
+        await HttpClient.GetAsync<IDictionaryPage<IOptionSnapshot>, JsonOptionsSnapshotData>(
             await request.GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
-    public async Task<IDictionaryPage<ISnapshot>> GetOptionChainAsync(
+    public async Task<IDictionaryPage<IOptionSnapshot>> GetOptionChainAsync(
         OptionChainRequest request,
         CancellationToken cancellationToken = default) =>
-        await HttpClient.GetAsync<IDictionaryPage<ISnapshot>, JsonOptionsSnapshotData>(
+        await HttpClient.GetAsync<IDictionaryPage<IOptionSnapshot>, JsonOptionsSnapshotData>(
             await request.GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             RateLimitHandler, cancellationToken).ConfigureAwait(false);
 

@@ -30,4 +30,8 @@ internal static class DebuggerDisplayExtensions
     internal static String ToDebuggerDisplayString(
         this ISnapshot snapshot) =>
         $"{nameof(ISnapshot)} {{ Symbol = \"{snapshot.Symbol}\", {snapshot.Quote?.ToDebuggerDisplayString()}, {snapshot.Trade?.ToDebuggerDisplayString()} }}";
+
+    internal static String ToDebuggerDisplayString(
+        this IOptionSnapshot snapshot) =>
+        $"{nameof(IOptionSnapshot)} {{ Symbol = \"{snapshot.Symbol}\", {snapshot.Quote?.ToDebuggerDisplayString()}, {snapshot.Trade?.ToDebuggerDisplayString()} }}";
 }

@@ -3,8 +3,8 @@
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IDictionaryPage<ISnapshot>) + "<" + nameof(ISnapshot) + ">")]
-internal sealed class JsonOptionsSnapshotData : IDictionaryPage<ISnapshot>
+[DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IDictionaryPage<IOptionSnapshot>) + "<" + nameof(IOptionSnapshot) + ">")]
+internal sealed class JsonOptionsSnapshotData : IDictionaryPage<IOptionSnapshot>
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "snapshots", Required = Required.Default)]
@@ -14,16 +14,16 @@ internal sealed class JsonOptionsSnapshotData : IDictionaryPage<ISnapshot>
     public String? NextPageToken { get; set; }
 
     [JsonIgnore]
-    public IReadOnlyDictionary<String, ISnapshot> Items { get; [ExcludeFromCodeCoverage] private set; }
-        = new Dictionary<String, ISnapshot>();
+    public IReadOnlyDictionary<String, IOptionSnapshot> Items { get; [ExcludeFromCodeCoverage] private set; }
+        = new Dictionary<String, IOptionSnapshot>();
 
     [OnDeserialized]
     [UsedImplicitly]
     internal void OnDeserializedMethod(
         StreamingContext _) =>
-        Items = (ItemsList ?? []).ToDictionary(
+        Items = ItemsList.ToDictionary(
             kvp => kvp.Key,
-            withSymbol<ISnapshot, JsonOptionSnapshot>,
+            withSymbol<IOptionSnapshot, JsonOptionSnapshot>,
             StringComparer.Ordinal);
 
     [ExcludeFromCodeCoverage]
