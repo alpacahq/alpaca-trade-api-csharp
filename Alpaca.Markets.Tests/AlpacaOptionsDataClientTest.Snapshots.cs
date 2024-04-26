@@ -7,6 +7,7 @@ public sealed partial class AlpacaOptionsDataClientTest
     {
         using var mock = mockClientsFactory.GetAlpacaOptionsDataClientMock();
 
+        // TODO: olegra - create special method for option snapshots
         mock.AddCryptoSnapshotsExpectation(PathPrefix, _symbols);
 
         var snapshots = await mock.Client.ListSnapshotsAsync(
@@ -28,6 +29,7 @@ public sealed partial class AlpacaOptionsDataClientTest
     {
         using var mock = mockClientsFactory.GetAlpacaOptionsDataClientMock();
 
+        // TODO: olegra - create special method for option snapshots
         mock.AddOptionChainExpectation(PathPrefix, _symbols);
 
         var snapshots = await mock.Client.GetOptionChainAsync(
@@ -45,19 +47,17 @@ public sealed partial class AlpacaOptionsDataClientTest
     }
 
     private static void validate(
-        ISnapshot snapshot,
+        IOptionSnapshot snapshot,
         String symbol)
     {
         Assert.Equal(symbol, snapshot.Symbol);
-
-        Assert.Null(snapshot.PreviousDailyBar);
-        Assert.Null(snapshot.CurrentDailyBar);
-        Assert.Null(snapshot.MinuteBar);
 
         Assert.NotNull(snapshot.Trade);
         Assert.NotNull(snapshot.Quote);
 
         Assert.True(snapshot.Trade.Validate(symbol));
         Assert.True(snapshot.Quote.Validate(symbol));
+
+        // TODO: add validation for greeks and IV
     }
 }

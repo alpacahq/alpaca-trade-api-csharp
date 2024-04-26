@@ -114,7 +114,7 @@ public interface IAlpacaOptionsDataClient :
     /// </exception>
     /// <returns>Read-only dictionary with the current snapshot information.</returns>
     [UsedImplicitly]
-    Task<IDictionaryPage<ISnapshot>> ListSnapshotsAsync(
+    Task<IDictionaryPage<IOptionSnapshot>> ListSnapshotsAsync(
         OptionSnapshotRequest request,
         CancellationToken cancellationToken = default);
 
@@ -143,7 +143,7 @@ public interface IAlpacaOptionsDataClient :
     /// </exception>
     /// <returns>Read-only dictionary with the current snapshot information.</returns>
     [UsedImplicitly]
-    Task<IDictionaryPage<ISnapshot>> GetOptionChainAsync(
+    Task<IDictionaryPage<IOptionSnapshot>> GetOptionChainAsync(
         OptionChainRequest request,
         CancellationToken cancellationToken = default);
 }
