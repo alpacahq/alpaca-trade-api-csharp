@@ -11,6 +11,10 @@ internal static class DebuggerDisplayExtensions
         this IMultiPage<TItem> page) =>
         $"{nameof(IPage<TItem>)}<{typeof(TItem).Name}> {{ Count = {page.Items.Count}, NextPageToken = \"{page.NextPageToken}\" }}";
 
+    internal static String ToDebuggerDisplayString<TItem>(
+        this IDictionaryPage<TItem> page) =>
+        $"{nameof(IDictionaryPage<TItem>)}<{typeof(TItem).Name}> {{ Count = {page.Items.Count}, NextPageToken = \"{page.NextPageToken}\" }}";
+
     internal static String ToDebuggerDisplayString(
         this IBar bar) =>
         $"{nameof(IBar)} {{ TimeUtc = {bar.TimeUtc:O}, Symbol = \"{bar.Symbol}\", Open = {bar.Open}, High = {bar.High}, Low = {bar.Low}, Close = {bar.Close} }}";

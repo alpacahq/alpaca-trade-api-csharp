@@ -1,4 +1,9 @@
 ﻿#nullable enable
+Alpaca.Markets.IAlpacaOptionsDataClient.GetOptionChainAsync(Alpaca.Markets.OptionChainRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IDictionaryPage<Alpaca.Markets.ISnapshot!>!>!
+Alpaca.Markets.IAlpacaOptionsDataClient.ListSnapshotsAsync(Alpaca.Markets.OptionSnapshotRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IDictionaryPage<Alpaca.Markets.ISnapshot!>!>!
+Alpaca.Markets.IDictionaryPage<TItem>
+Alpaca.Markets.IDictionaryPage<TItem>.Items.get -> System.Collections.Generic.IReadOnlyDictionary<string!, TItem>!
+Alpaca.Markets.IDictionaryPage<TItem>.NextPageToken.get -> string?
 Alpaca.Markets.OptionChainRequest.ExpirationDateEqualTo.get -> System.DateOnly?
 Alpaca.Markets.OptionChainRequest.ExpirationDateEqualTo.set -> void
 Alpaca.Markets.OptionChainRequest.ExpirationDateGreaterThanOrEqualTo.get -> System.DateOnly?
@@ -14,3 +19,8 @@ Alpaca.Markets.OptionChainRequest.StrikePriceGreaterThanOrEqualTo.get -> decimal
 Alpaca.Markets.OptionChainRequest.StrikePriceGreaterThanOrEqualTo.set -> void
 Alpaca.Markets.OptionChainRequest.StrikePriceLessThanOrEqualTo.get -> decimal?
 Alpaca.Markets.OptionChainRequest.StrikePriceLessThanOrEqualTo.set -> void
+Alpaca.Markets.OptionSnapshotRequest
+Alpaca.Markets.OptionSnapshotRequest.OptionsFeed.get -> Alpaca.Markets.OptionsFeed?
+Alpaca.Markets.OptionSnapshotRequest.OptionsFeed.set -> void
+Alpaca.Markets.OptionSnapshotRequest.OptionSnapshotRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
+Alpaca.Markets.OptionSnapshotRequest.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!

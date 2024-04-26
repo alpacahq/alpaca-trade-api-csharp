@@ -10,14 +10,15 @@ public sealed partial class AlpacaOptionsDataClientTest
         mock.AddCryptoSnapshotsExpectation(PathPrefix, _symbols);
 
         var snapshots = await mock.Client.ListSnapshotsAsync(
-            new LatestOptionsDataRequest(_symbols));
+            new OptionSnapshotRequest(_symbols));
 
         Assert.NotNull(snapshots);
-        Assert.NotEmpty(snapshots);
+        Assert.NotNull(snapshots.Items);
+        Assert.NotEmpty(snapshots.Items);
 
         foreach (var symbol in _symbols)
         {
-            var snapshot = snapshots[symbol];
+            var snapshot = snapshots.Items[symbol];
             validate(snapshot, symbol);
         }
     }
@@ -33,11 +34,12 @@ public sealed partial class AlpacaOptionsDataClientTest
             new OptionChainRequest("AAPL"));
 
         Assert.NotNull(snapshots);
-        Assert.NotEmpty(snapshots);
+        Assert.NotNull(snapshots.Items);
+        Assert.NotEmpty(snapshots.Items);
 
         foreach (var symbol in _symbols)
         {
-            var snapshot = snapshots[symbol];
+            var snapshot = snapshots.Items[symbol];
             validate(snapshot, symbol);
         }
     }
