@@ -12,17 +12,17 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.1.0.1</AssemblyVersion>
-    <FileVersion>7.1.0.1</FileVersion>
-    <Version>7.1.0-beta2</Version>
+    <AssemblyVersion>7.1.0.2</AssemblyVersion>
+    <FileVersion>7.1.0.2</FileVersion>
+    <Version>7.1.0-beta3</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- The `OptionsContractRequest.UnderlyingSymbol` mandatory property was replaced with the `OptionsContractRequest.UnderlyingSymbols` optional property.
-- The `IAlpacaTradingClient` interface was extended with the `ExerciseOptionsContractByIdAsync` and `ExerciseOptionsContractBySymbolAsync` methods.
-- The `IAlpacaTradingClient.ListOptionContractAsync` method now uses a same pagination logic as historical data.
-- The `OptionFeed` enum added and now it can be specified for latest/snapshot requests.
+- Added support for the new portfolio history endpoint using the existing `IAlpacaTradingClient.GetPortfolioHistoryAsync` method.
+- The `OptionChainRequest` class extended with new (optional) filtering properties and initial client-side validation.
+- The new `OptionSnapshotRequest` class added and used for the `ListSnapshotsAsync` method (breaking change).
+- The new `IOptionSnapshot` interface with Greeks and IV added and used instead of `ISnapshot` for options.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
