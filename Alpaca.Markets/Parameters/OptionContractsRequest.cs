@@ -102,16 +102,16 @@ public sealed class OptionContractsRequest : Validation.IRequest
         {
             Path = "v2/options/contracts",
             Query = await Pagination.QueryBuilder
-                .AddParameter("underlying_symbols", UnderlyingSymbols)
-                .AddParameter("status", AssetStatus)
-                .AddParameter("expiration_date", ExpirationDateEqualTo)
                 .AddParameter("expiration_date_gte", ExpirationDateGreaterThanOrEqualTo)
                 .AddParameter("expiration_date_lte", ExpirationDateLessThanOrEqualTo)
-                .AddParameter("root_symbol", RootSymbol)
-                .AddParameter("style", OptionStyle)
-                .AddParameter("type", OptionType)
                 .AddParameter("strike_price_gte", StrikePriceGreaterThanOrEqualTo)
                 .AddParameter("strike_price_lte", StrikePriceLessThanOrEqualTo)
+                .AddParameter("expiration_date", ExpirationDateEqualTo)
+                .AddParameter("underlying_symbols", UnderlyingSymbols)
+                .AddParameter("root_symbol", RootSymbol)
+                .AddParameter("status", AssetStatus)
+                .AddParameter("style", OptionStyle)
+                .AddParameter("type", OptionType)
                 .AsStringAsync().ConfigureAwait(false)
         };
 
@@ -120,7 +120,6 @@ public sealed class OptionContractsRequest : Validation.IRequest
     {
         yield return Pagination.TryValidatePageSize(Pagination.MaxPageSize);
         yield return UnderlyingSymbols.TryValidateSymbolName();
-        yield return RootSymbol?.TryValidateSymbolName();
 
         if (ExpirationDateEqualTo.HasValue && (
                 ExpirationDateGreaterThanOrEqualTo.HasValue ||
