@@ -1,6 +1,11 @@
 ﻿#nullable enable
+Alpaca.Markets.IAlpacaOptionsDataClient.GetOptionChainAsync(Alpaca.Markets.OptionChainRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IDictionaryPage<Alpaca.Markets.ISnapshot!>!>!
+Alpaca.Markets.IAlpacaOptionsDataClient.ListSnapshotsAsync(Alpaca.Markets.OptionSnapshotRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IDictionaryPage<Alpaca.Markets.ISnapshot!>!>!
 Alpaca.Markets.IAlpacaTradingClient.ExerciseOptionsPositionByIdAsync(System.Guid contractId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
 Alpaca.Markets.IAlpacaTradingClient.ExerciseOptionsPositionBySymbolAsync(string! symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
+Alpaca.Markets.IDictionaryPage<TItem>
+Alpaca.Markets.IDictionaryPage<TItem>.Items.get -> System.Collections.Generic.IReadOnlyDictionary<string!, TItem>!
+Alpaca.Markets.IDictionaryPage<TItem>.NextPageToken.get -> string?
 Alpaca.Markets.LatestOptionsDataRequest
 Alpaca.Markets.LatestOptionsDataRequest.LatestOptionsDataRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
 Alpaca.Markets.LatestOptionsDataRequest.OptionsFeed.get -> Alpaca.Markets.OptionsFeed?
@@ -32,4 +37,9 @@ Alpaca.Markets.OptionContractsRequest.UnderlyingSymbols.get -> System.Collection
 Alpaca.Markets.OptionsFeed
 Alpaca.Markets.OptionsFeed.Indicative = 1 -> Alpaca.Markets.OptionsFeed
 Alpaca.Markets.OptionsFeed.Opra = 0 -> Alpaca.Markets.OptionsFeed
+Alpaca.Markets.OptionSnapshotRequest
+Alpaca.Markets.OptionSnapshotRequest.OptionsFeed.get -> Alpaca.Markets.OptionsFeed?
+Alpaca.Markets.OptionSnapshotRequest.OptionsFeed.set -> void
+Alpaca.Markets.OptionSnapshotRequest.OptionSnapshotRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
+Alpaca.Markets.OptionSnapshotRequest.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
 Alpaca.Markets.PortfolioHistoryRequest.WithInterval(Alpaca.Markets.Interval<System.DateTime> value) -> Alpaca.Markets.PortfolioHistoryRequest!

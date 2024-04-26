@@ -454,11 +454,9 @@ Alpaca.Markets.IAlpacaNewsStreamingClient
 Alpaca.Markets.IAlpacaNewsStreamingClient.GetNewsSubscription() -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.INewsArticle!>!
 Alpaca.Markets.IAlpacaNewsStreamingClient.GetNewsSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.INewsArticle!>!
 Alpaca.Markets.IAlpacaOptionsDataClient
-Alpaca.Markets.IAlpacaOptionsDataClient.GetOptionChainAsync(Alpaca.Markets.OptionChainRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.ISnapshot!>!>!
 Alpaca.Markets.IAlpacaOptionsDataClient.ListExchangesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, string!>!>!
 Alpaca.Markets.IAlpacaOptionsDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestOptionsDataRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.IQuote!>!>!
 Alpaca.Markets.IAlpacaOptionsDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestOptionsDataRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.ITrade!>!>!
-Alpaca.Markets.IAlpacaOptionsDataClient.ListSnapshotsAsync(Alpaca.Markets.LatestOptionsDataRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.ISnapshot!>!>!
 Alpaca.Markets.IAlpacaScreenerClient
 Alpaca.Markets.IAlpacaScreenerClient.GetTopMarketMoversAsync(int? numberOfLosersAndGainersInResponse = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IMarketMovers!>!
 Alpaca.Markets.IAlpacaStreamingClient

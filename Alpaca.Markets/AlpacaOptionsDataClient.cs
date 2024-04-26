@@ -34,17 +34,19 @@ internal sealed class AlpacaOptionsDataClient :
         getLatestAsync<ITrade, JsonOptionTrade>(
             request.EnsureNotNull().Validate(), "trades/latest", data => data.Trades, cancellationToken);
 
-    public Task<IReadOnlyDictionary<String, ISnapshot>> ListSnapshotsAsync(
-        LatestOptionsDataRequest request,
+    public async Task<IDictionaryPage<ISnapshot>> ListSnapshotsAsync(
+        OptionSnapshotRequest request,
         CancellationToken cancellationToken = default) =>
-        getLatestAsync<ISnapshot, JsonOptionSnapshot>(
-            request.EnsureNotNull().Validate(), "snapshots", data => data.Snapshots, cancellationToken);
+        await HttpClient.GetAsync<IDictionaryPage<ISnapshot>, JsonOptionsSnapshotData>(
+            await request.GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
+            RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
-    public Task<IReadOnlyDictionary<String, ISnapshot>> GetOptionChainAsync(
+    public async Task<IDictionaryPage<ISnapshot>> GetOptionChainAsync(
         OptionChainRequest request,
         CancellationToken cancellationToken = default) =>
-        getLatestAsync<ISnapshot, JsonOptionSnapshot>(
-            request.EnsureNotNull().Validate(), data => data.Snapshots, cancellationToken);
+        await HttpClient.GetAsync<IDictionaryPage<ISnapshot>, JsonOptionsSnapshotData>(
+            await request.GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
+            RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     private async Task<IReadOnlyDictionary<String, TApi>> getLatestAsync<TApi, TJson>(
         LatestOptionsDataRequest request,
@@ -54,15 +56,6 @@ internal sealed class AlpacaOptionsDataClient :
         where TJson : TApi, ISymbolMutable =>
         await HttpClient.GetAsync(
             await request.GetUriBuilderAsync(HttpClient, lastPathSegment).ConfigureAwait(false),
-            itemsSelector, withSymbol<TApi, TJson>, RateLimitHandler, cancellationToken).ConfigureAwait(false);
-
-    private async Task<IReadOnlyDictionary<String, TApi>> getLatestAsync<TApi, TJson>(
-        OptionChainRequest request,
-        Func<JsonLatestData, Dictionary<String, TJson>> itemsSelector,
-        CancellationToken cancellationToken)
-        where TJson : TApi, ISymbolMutable =>
-        await HttpClient.GetAsync(
-            await request.GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             itemsSelector, withSymbol<TApi, TJson>, RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     private static TApi withSymbol<TApi, TJson>(
