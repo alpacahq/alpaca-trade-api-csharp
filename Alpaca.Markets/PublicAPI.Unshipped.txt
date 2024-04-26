@@ -7,9 +7,24 @@ Alpaca.Markets.LatestOptionsDataRequest.OptionsFeed.get -> Alpaca.Markets.Option
 Alpaca.Markets.LatestOptionsDataRequest.OptionsFeed.set -> void
 Alpaca.Markets.LatestOptionsDataRequest.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
 Alpaca.Markets.OptionChainRequest
+Alpaca.Markets.OptionChainRequest.ExpirationDateEqualTo.get -> System.DateOnly?
+Alpaca.Markets.OptionChainRequest.ExpirationDateEqualTo.set -> void
+Alpaca.Markets.OptionChainRequest.ExpirationDateGreaterThanOrEqualTo.get -> System.DateOnly?
+Alpaca.Markets.OptionChainRequest.ExpirationDateGreaterThanOrEqualTo.set -> void
+Alpaca.Markets.OptionChainRequest.ExpirationDateLessThanOrEqualTo.get -> System.DateOnly?
+Alpaca.Markets.OptionChainRequest.ExpirationDateLessThanOrEqualTo.set -> void
 Alpaca.Markets.OptionChainRequest.OptionChainRequest(string! underlyingSymbol) -> void
 Alpaca.Markets.OptionChainRequest.OptionsFeed.get -> Alpaca.Markets.OptionsFeed?
 Alpaca.Markets.OptionChainRequest.OptionsFeed.set -> void
+Alpaca.Markets.OptionChainRequest.OptionType.get -> Alpaca.Markets.OptionType?
+Alpaca.Markets.OptionChainRequest.OptionType.set -> void
+Alpaca.Markets.OptionChainRequest.Pagination.get -> Alpaca.Markets.Pagination!
+Alpaca.Markets.OptionChainRequest.RootSymbol.get -> string?
+Alpaca.Markets.OptionChainRequest.RootSymbol.set -> void
+Alpaca.Markets.OptionChainRequest.StrikePriceGreaterThanOrEqualTo.get -> decimal?
+Alpaca.Markets.OptionChainRequest.StrikePriceGreaterThanOrEqualTo.set -> void
+Alpaca.Markets.OptionChainRequest.StrikePriceLessThanOrEqualTo.get -> decimal?
+Alpaca.Markets.OptionChainRequest.StrikePriceLessThanOrEqualTo.set -> void
 Alpaca.Markets.OptionChainRequest.UnderlyingSymbol.get -> string!
 Alpaca.Markets.OptionContractsRequest.OptionContractsRequest() -> void
 Alpaca.Markets.OptionContractsRequest.OptionContractsRequest(System.Collections.Generic.IEnumerable<string!>! underlyingSymbols) -> void
