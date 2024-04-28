@@ -97,6 +97,7 @@ public sealed partial class AlpacaTradingClientTest
         var order = await mock.Client.PostOrderAsync(
             MarketOrder.Buy(Stock, OrderQuantity.Fractional(FractionalQuantity))
                 .WithClientOrderId(Guid.NewGuid().ToString("D"))
+                .WithPositionIntent(PositionIntent.BuyToOpen)
                 .WithDuration(TimeInForce.Gtc)
                 .WithExtendedHours(true));
 

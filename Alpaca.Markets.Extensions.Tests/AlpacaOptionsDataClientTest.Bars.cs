@@ -85,5 +85,4 @@ public sealed partial class AlpacaOptionsDataClientTest
         new JProperty("h", Price),
         new JProperty("c", Price),
         new JProperty("v", Volume));
-
 }
