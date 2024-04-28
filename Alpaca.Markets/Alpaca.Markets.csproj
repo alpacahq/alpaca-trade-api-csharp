@@ -12,17 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.1.0.2</AssemblyVersion>
-    <FileVersion>7.1.0.2</FileVersion>
-    <Version>7.1.0-beta3</Version>
+    <AssemblyVersion>7.1.0.3</AssemblyVersion>
+    <FileVersion>7.1.0.3</FileVersion>
+    <Version>7.1.0-beta4</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Added support for the new portfolio history endpoint using the existing `IAlpacaTradingClient.GetPortfolioHistoryAsync` method.
-- The `OptionChainRequest` class extended with new (optional) filtering properties and initial client-side validation.
-- The new `OptionSnapshotRequest` class added and used for the `ListSnapshotsAsync` method (breaking change).
-- The new `IOptionSnapshot` interface with Greeks and IV added and used instead of `ISnapshot` for options.
+- The `OptionSnapshotRequest` class now has a proper pagination support logic.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
