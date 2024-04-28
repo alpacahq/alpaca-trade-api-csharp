@@ -105,7 +105,7 @@ public sealed class RequestValidationTest
         {
             ExpirationDateGreaterThanOrEqualTo = DateOnly.FromDateTime(DateTime.Today),
             ExpirationDateLessThanOrEqualTo = DateOnly.FromDateTime(DateTime.Today),
-            ExpirationDateEqualTo = DateOnly.FromDateTime(DateTime.Today),
+            ExpirationDateEqualTo = DateOnly.FromDateTime(DateTime.Today)
         });
 
     [Fact]
@@ -114,7 +114,7 @@ public sealed class RequestValidationTest
         {
             ExpirationDateGreaterThanOrEqualTo = DateOnly.FromDateTime(DateTime.Today),
             ExpirationDateLessThanOrEqualTo = DateOnly.FromDateTime(DateTime.Today),
-            ExpirationDateEqualTo = DateOnly.FromDateTime(DateTime.Today),
+            ExpirationDateEqualTo = DateOnly.FromDateTime(DateTime.Today)
         });
 
     [Fact]

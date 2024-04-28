@@ -4,6 +4,7 @@ Alpaca.Markets.Extensions.AlpacaDataClientExtensions
 Alpaca.Markets.Extensions.AlpacaDataStreamingClientExtensions
 Alpaca.Markets.Extensions.AlpacaDataSubscriptionExtensions
 Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions
+Alpaca.Markets.Extensions.AlpacaOptionsDataClientExtensions
 Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions
 Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions
 Alpaca.Markets.Extensions.AlpacaTradingClientExtensions
@@ -80,6 +81,10 @@ static Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.SubscribeNe
 static Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.SubscribeNewsAsync(this Alpaca.Markets.IAlpacaNewsStreamingClient! client, System.Collections.Generic.IEnumerable<string!>! symbols) -> System.Threading.Tasks.ValueTask<Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<Alpaca.Markets.INewsArticle!>!>
 static Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaNewsStreamingClient! client) -> Alpaca.Markets.IAlpacaNewsStreamingClient!
 static Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaNewsStreamingClient! client, Alpaca.Markets.Extensions.ReconnectionParameters! parameters) -> Alpaca.Markets.IAlpacaNewsStreamingClient!
+static Alpaca.Markets.Extensions.AlpacaOptionsDataClientExtensions.GetOptionChainAsyncAsAsyncEnumerable(this Alpaca.Markets.IAlpacaOptionsDataClient! client, Alpaca.Markets.OptionChainRequest! request) -> System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IOptionSnapshot!>!
+static Alpaca.Markets.Extensions.AlpacaOptionsDataClientExtensions.GetOptionChainAsyncAsAsyncEnumerable(this Alpaca.Markets.IAlpacaOptionsDataClient! client, Alpaca.Markets.OptionChainRequest! request, System.Threading.CancellationToken cancellationToken) -> System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IOptionSnapshot!>!
+static Alpaca.Markets.Extensions.AlpacaOptionsDataClientExtensions.ListSnapshotsAsAsyncEnumerable(this Alpaca.Markets.IAlpacaOptionsDataClient! client, Alpaca.Markets.OptionSnapshotRequest! request) -> System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IOptionSnapshot!>!
+static Alpaca.Markets.Extensions.AlpacaOptionsDataClientExtensions.ListSnapshotsAsAsyncEnumerable(this Alpaca.Markets.IAlpacaOptionsDataClient! client, Alpaca.Markets.OptionSnapshotRequest! request, System.Threading.CancellationToken cancellationToken) -> System.Collections.Generic.IAsyncEnumerable<Alpaca.Markets.IOptionSnapshot!>!
 static Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetCalendarForSingleDayAsync(this Alpaca.Markets.IAlpacaTradingClient! client, System.DateOnly date, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IIntervalCalendar?>!
 static Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync(this Alpaca.Markets.IAlpacaTradingClient! client) -> System.Threading.Tasks.ValueTask<Alpaca.Markets.IClock!>
 static Alpaca.Markets.Extensions.AlpacaTradingClientExtensions.GetClockCachedAsync(this Alpaca.Markets.IAlpacaTradingClient! client, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask<Alpaca.Markets.IClock!>
