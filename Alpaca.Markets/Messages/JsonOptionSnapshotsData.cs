@@ -8,7 +8,7 @@ internal sealed class JsonOptionsSnapshotData : IDictionaryPage<IOptionSnapshot>
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [JsonProperty(PropertyName = "snapshots", Required = Required.Default)]
-    public Dictionary<String, JsonOptionSnapshot> ItemsList { get; [ExcludeFromCodeCoverage] set; } = new();
+    public Dictionary<String, JsonOptionSnapshot> ItemsList { get; [ExcludeFromCodeCoverage] set; } = [];
 
     [JsonProperty(PropertyName = "next_page_token", Required = Required.Default)]
     public String? NextPageToken { get; set; }

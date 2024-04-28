@@ -140,7 +140,7 @@ public static class AlpacaOptionsDataClientExtensions
         OptionSnapshotRequest request) =>
         new(request.Symbols)
         {
-            //Pagination = { Size = Pagination.MaxPageSize },
+            Pagination = { Size = request.Pagination.Size },
             OptionsFeed = request.OptionsFeed
         };
 
@@ -172,7 +172,7 @@ public static class AlpacaOptionsDataClientExtensions
             StrikePriceGreaterThanOrEqualTo = request.StrikePriceGreaterThanOrEqualTo,
             StrikePriceLessThanOrEqualTo = request.StrikePriceLessThanOrEqualTo,
             ExpirationDateEqualTo = request.ExpirationDateEqualTo,
-            Pagination = { Size = Pagination.MaxPageSize },
+            Pagination = { Size = request.Pagination.Size },
             OptionType = request.OptionType,
             RootSymbol = request.RootSymbol
         };

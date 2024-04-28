@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.1.0.1</AssemblyVersion>
-    <FileVersion>7.1.0.1</FileVersion>
-    <Version>7.1.0-beta2</Version>
+    <AssemblyVersion>7.1.0.2</AssemblyVersion>
+    <FileVersion>7.1.0.2</FileVersion>
+    <Version>7.1.0-beta3</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- The `ListOptionContractsAsAsyncEnumerable` extensions method uses page token now.
+- Added new methods `GetOptionChainAsyncAsAsyncEnumerable` and `ListSnapshotsAsAsyncEnumerable` into the Extensions package.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
