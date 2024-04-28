@@ -100,6 +100,24 @@ public sealed class RequestValidationTest
             .WithInterval(new Interval<DateTime>(DateTime.Today, DateTime.Today)));
 
     [Fact]
+    public void OptionContactsRequestExpirationDateValidationWorks() =>
+        validate(new OptionContractsRequest
+        {
+            ExpirationDateGreaterThanOrEqualTo = DateOnly.FromDateTime(DateTime.Today),
+            ExpirationDateLessThanOrEqualTo = DateOnly.FromDateTime(DateTime.Today),
+            ExpirationDateEqualTo = DateOnly.FromDateTime(DateTime.Today),
+        });
+
+    [Fact]
+    public void OptionChainRequestExpirationDateValidationWorks() =>
+        validate(new OptionChainRequest(Symbol)
+        {
+            ExpirationDateGreaterThanOrEqualTo = DateOnly.FromDateTime(DateTime.Today),
+            ExpirationDateLessThanOrEqualTo = DateOnly.FromDateTime(DateTime.Today),
+            ExpirationDateEqualTo = DateOnly.FromDateTime(DateTime.Today),
+        });
+
+    [Fact]
     public void CalendarRequestConstructorWorks()
     {
         var today = DateOnly.FromDateTime(DateTime.Today);
@@ -134,7 +152,7 @@ public sealed class RequestValidationTest
         Assert.NotNull(request.Symbols);
         Assert.Empty(request.Symbols);
 
-        request.WithSymbols(new[] { Symbol });
+        request.WithSymbols([Symbol]);
 
         Assert.NotNull(request.Symbols);
         Assert.NotEmpty(request.Symbols);

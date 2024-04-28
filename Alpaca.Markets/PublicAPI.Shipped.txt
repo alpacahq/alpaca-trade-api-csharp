@@ -1101,6 +1101,7 @@ Alpaca.Markets.OptionSnapshotRequest
 Alpaca.Markets.OptionSnapshotRequest.OptionsFeed.get -> Alpaca.Markets.OptionsFeed?
 Alpaca.Markets.OptionSnapshotRequest.OptionsFeed.set -> void
 Alpaca.Markets.OptionSnapshotRequest.OptionSnapshotRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
+Alpaca.Markets.OptionSnapshotRequest.Pagination.get -> Alpaca.Markets.Pagination!
 Alpaca.Markets.OptionSnapshotRequest.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
 Alpaca.Markets.OptionStyle
 Alpaca.Markets.OptionStyle.American = 0 -> Alpaca.Markets.OptionStyle
