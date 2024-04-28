@@ -4,6 +4,8 @@ namespace Alpaca.Markets.Tests;
 
 [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Global")]
 [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Local")]
+#pragma warning restore IDE0079 // Remove unnecessary suppression
+[SuppressMessage("Usage", "xUnit1047:Avoid using TheoryDataRow arguments that might not be serializable")]
 internal static class HistoricalDataHelpers
 {
     private static readonly String _condition = Guid.NewGuid().ToString("D");
@@ -31,6 +33,8 @@ internal static class HistoricalDataHelpers
     private const Decimal BidPrice = 200M;
 
     private const Decimal Volume = 1_000M;
+
+    private const Decimal Greeks = 0.01M;
 
     private const String Bars = "bars";
 
@@ -111,11 +115,17 @@ internal static class HistoricalDataHelpers
             new JProperty("snapshots", new JObject(
                 symbols.Select(name => new JProperty(name, createSnapshot()))))));
 
+    internal static void AddOptionSnapshotsExpectation(
+        this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
+        mock.AddGet($"{pathPrefix}/snapshots", new JObject(
+            new JProperty("snapshots", new JObject(
+                symbols.Select(name => new JProperty(name, createOptionSnapshot()))))));
+
     internal static void AddOptionChainExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
         mock.AddGet($"{pathPrefix}/snapshots/*", new JObject(
             new JProperty("snapshots", new JObject(
-                symbols.Select(name => new JProperty(name, createSnapshot()))))));
+                symbols.Select(name => new JProperty(name, createOptionSnapshot()))))));
 
     internal static void AddOrderBooksExpectation(
         this IMock mock, String pathPrefix, IEnumerable<String> symbols) =>
@@ -437,4 +447,20 @@ internal static class HistoricalDataHelpers
             new JProperty("minuteBar", CreateBar()),
             new JProperty("dailyBar", CreateBar()),
             new JProperty("symbol", symbol));
+
+    private static JObject createOptionSnapshot() =>
+        new(
+            new JProperty("latestQuote", CreateQuote()),
+            new JProperty("latestTrade", CreateTrade()),
+            new JProperty("impliedVolatility", Volume),
+            new JProperty("greeks", createGreeks()),
+            new JProperty("symbol", String.Empty));
+
+    private static JObject createGreeks() =>
+        new(
+            new JProperty("delta", Greeks),
+            new JProperty("gamma", Greeks),
+            new JProperty("theta", Greeks),
+            new JProperty("vega", Greeks),
+            new JProperty("rho", Greeks));
 }

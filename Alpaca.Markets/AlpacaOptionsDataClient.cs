@@ -38,14 +38,14 @@ internal sealed class AlpacaOptionsDataClient :
         OptionSnapshotRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IDictionaryPage<IOptionSnapshot>, JsonOptionsSnapshotData>(
-            await request.GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
+            await request.EnsureNotNull().Validate().GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public async Task<IDictionaryPage<IOptionSnapshot>> GetOptionChainAsync(
         OptionChainRequest request,
         CancellationToken cancellationToken = default) =>
         await HttpClient.GetAsync<IDictionaryPage<IOptionSnapshot>, JsonOptionsSnapshotData>(
-            await request.GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
+            await request.EnsureNotNull().Validate().GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
             RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     private async Task<IReadOnlyDictionary<String, TApi>> getLatestAsync<TApi, TJson>(

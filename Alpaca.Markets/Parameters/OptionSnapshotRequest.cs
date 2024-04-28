@@ -31,11 +31,17 @@ public sealed class OptionSnapshotRequest : Validation.IRequest
     [ExcludeFromCodeCoverage]
     public OptionsFeed? OptionsFeed { get; set; }
 
+    /// <summary>
+    /// Gets the pagination parameters for the request (page size and token).
+    /// </summary>
+    [UsedImplicitly]
+    public Pagination Pagination { get; } = new();
+
     internal async ValueTask<UriBuilder> GetUriBuilderAsync(
         HttpClient httpClient) =>
         new UriBuilder(httpClient.BaseAddress!)
         {
-            Query = await new QueryBuilder()
+            Query = await Pagination.QueryBuilder
                 .AddParameter("symbols", Symbols.ToList())
                 .AddParameter("feed", OptionsFeed)
                 .AsStringAsync().ConfigureAwait(false)
