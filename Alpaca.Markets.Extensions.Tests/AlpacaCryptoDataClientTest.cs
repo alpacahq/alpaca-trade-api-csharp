@@ -25,7 +25,7 @@ public sealed class AlpacaCryptoDataClientTest(
             Crypto, _timeInterval.AsDateInterval());
 
         Assert.Equal(Volume, adtv);
-        Assert.True(count != 0);
+        Assert.NotEqual(0u, count);
     }
 
     private static void addPaginatedResponses<TConfiguration, TClient>(
