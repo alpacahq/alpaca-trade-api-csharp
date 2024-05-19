@@ -1,7 +1,8 @@
 name: Update NuGet Lock Files
 
 on:
-  workflow_dispatch:
+  pull_request:
+    branches: [ develop ]
 
 permissions:
   contents: write
@@ -10,6 +11,7 @@ jobs:
   lockfiles:
     name: Update and Commit
     runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
 
     steps:
     - name: Checkout Code
@@ -26,4 +28,4 @@ jobs:
     - name: Auto-commit changed files
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        commit_message: Update NuGet lock files for latest .NET SDK
+        commit_message: Update NuGet lock files after Dependabot dependency update.
