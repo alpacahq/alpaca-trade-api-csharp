@@ -279,7 +279,9 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         where TJson : class, TApi =>
         _subscriptions.GetOrAdd<TApi, TJson>(getStreamName(channelName, symbol), parent);
 
+#pragma warning disable IDE0079
     [SuppressMessage(
+#pragma warning restore IDE0079
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
     protected sealed override void OnMessageReceived(
@@ -306,7 +308,9 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         }
     }
 
+#pragma warning disable IDE0079
     [SuppressMessage(
+#pragma warning restore IDE0079
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
     private async void handleConnectionSuccess(
@@ -340,7 +344,9 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         }
     }
 
+#pragma warning disable IDE0079
     [SuppressMessage(
+#pragma warning restore IDE0079
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
     private void handleSubscriptionUpdates(
@@ -370,7 +376,9 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         }
     }
 
+#pragma warning disable IDE0079
     [SuppressMessage(
+#pragma warning restore IDE0079
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
     private void handleRealtimeDataUpdate(
@@ -390,7 +398,9 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         }
     }
 
+#pragma warning disable IDE0079
     [SuppressMessage(
+#pragma warning restore IDE0079
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
     private void handleRealtimeNewsUpdate(
@@ -399,7 +409,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         try
         {
             var channel = token["T"]?.ToString() ?? String.Empty;
-            var symbols = token["symbols"]?.Values<String>() ?? Enumerable.Empty<String>();
+            var symbols = token["symbols"]?.Values<String>() ?? [];
 
             foreach (var symbol in symbols.Where(value => !String.IsNullOrEmpty(value)))
             {
@@ -414,7 +424,9 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         }
     }
 
+#pragma warning disable IDE0079
     [SuppressMessage(
+#pragma warning restore IDE0079
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
     private async void handleErrorMessages(

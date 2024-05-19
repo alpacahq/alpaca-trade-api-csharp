@@ -47,11 +47,11 @@
       },
       "Polly": {
         "type": "Direct",
-        "requested": "[8.3.1, )",
-        "resolved": "8.3.1",
-        "contentHash": "xN9AxOudus8u4a//Tfu6Wxd5Oj7S4pjh/651S6FfIiVrbxQ8TeM+ieZC8c0y7Qto70zKBM5g8rBTqbAJnbetOA==",
+        "requested": "[8.4.0, )",
+        "resolved": "8.4.0",
+        "contentHash": "z2EeUutuy49jBQyZ5s2FUuTCGx3GCzJ0cJ2HbjWwks94TsC6bKTtAHKBkMZOa/DyYRl5yIX7MshvMTWl1J6RNg==",
         "dependencies": {
-          "Polly.Core": "8.3.1"
+          "Polly.Core": "8.4.0"
         }
       },
       "Portable.System.DateTimeOnly": {
@@ -127,8 +127,8 @@
       },
       "Polly.Core": {
         "type": "Transitive",
-        "resolved": "8.3.1",
-        "contentHash": "b9mMAjqXuCXFCtf/RtRPwFUkAm/sz37s7G+taDvS5EqfkJsLiWfO2xO2cSISjIgIY+88oIZTGguP6UrRGRlqzg==",
+        "resolved": "8.4.0",
+        "contentHash": "3AZxuP//pxOeBo9tQs7/tz4Z5TTbu4BYfjpaXZD0JYKJo98ngN9TMUz1nybh4k0ykWkMBpGZALV/AmVIE3ew7A==",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
           "Microsoft.Bcl.TimeProvider": "8.0.0",
@@ -227,11 +227,11 @@
       },
       "Polly": {
         "type": "Direct",
-        "requested": "[8.3.1, )",
-        "resolved": "8.3.1",
-        "contentHash": "xN9AxOudus8u4a//Tfu6Wxd5Oj7S4pjh/651S6FfIiVrbxQ8TeM+ieZC8c0y7Qto70zKBM5g8rBTqbAJnbetOA==",
+        "requested": "[8.4.0, )",
+        "resolved": "8.4.0",
+        "contentHash": "z2EeUutuy49jBQyZ5s2FUuTCGx3GCzJ0cJ2HbjWwks94TsC6bKTtAHKBkMZOa/DyYRl5yIX7MshvMTWl1J6RNg==",
         "dependencies": {
-          "Polly.Core": "8.3.1"
+          "Polly.Core": "8.4.0"
         }
       },
       "Portable.System.DateTimeOnly": {
@@ -296,8 +296,8 @@
       },
       "Polly.Core": {
         "type": "Transitive",
-        "resolved": "8.3.1",
-        "contentHash": "b9mMAjqXuCXFCtf/RtRPwFUkAm/sz37s7G+taDvS5EqfkJsLiWfO2xO2cSISjIgIY+88oIZTGguP6UrRGRlqzg==",
+        "resolved": "8.4.0",
+        "contentHash": "3AZxuP//pxOeBo9tQs7/tz4Z5TTbu4BYfjpaXZD0JYKJo98ngN9TMUz1nybh4k0ykWkMBpGZALV/AmVIE3ew7A==",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
           "Microsoft.Bcl.TimeProvider": "8.0.0",
@@ -381,11 +381,11 @@
       },
       "Polly": {
         "type": "Direct",
-        "requested": "[8.3.1, )",
-        "resolved": "8.3.1",
-        "contentHash": "xN9AxOudus8u4a//Tfu6Wxd5Oj7S4pjh/651S6FfIiVrbxQ8TeM+ieZC8c0y7Qto70zKBM5g8rBTqbAJnbetOA==",
+        "requested": "[8.4.0, )",
+        "resolved": "8.4.0",
+        "contentHash": "z2EeUutuy49jBQyZ5s2FUuTCGx3GCzJ0cJ2HbjWwks94TsC6bKTtAHKBkMZOa/DyYRl5yIX7MshvMTWl1J6RNg==",
         "dependencies": {
-          "Polly.Core": "8.3.1"
+          "Polly.Core": "8.4.0"
         }
       },
       "Portable.System.DateTimeOnly": {
@@ -436,8 +436,8 @@
       },
       "Polly.Core": {
         "type": "Transitive",
-        "resolved": "8.3.1",
-        "contentHash": "b9mMAjqXuCXFCtf/RtRPwFUkAm/sz37s7G+taDvS5EqfkJsLiWfO2xO2cSISjIgIY+88oIZTGguP6UrRGRlqzg==",
+        "resolved": "8.4.0",
+        "contentHash": "3AZxuP//pxOeBo9tQs7/tz4Z5TTbu4BYfjpaXZD0JYKJo98ngN9TMUz1nybh4k0ykWkMBpGZALV/AmVIE3ew7A==",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
           "Microsoft.Bcl.TimeProvider": "8.0.0",
@@ -533,11 +533,11 @@
       },
       "Polly": {
         "type": "Direct",
-        "requested": "[8.3.1, )",
-        "resolved": "8.3.1",
-        "contentHash": "xN9AxOudus8u4a//Tfu6Wxd5Oj7S4pjh/651S6FfIiVrbxQ8TeM+ieZC8c0y7Qto70zKBM5g8rBTqbAJnbetOA==",
+        "requested": "[8.4.0, )",
+        "resolved": "8.4.0",
+        "contentHash": "z2EeUutuy49jBQyZ5s2FUuTCGx3GCzJ0cJ2HbjWwks94TsC6bKTtAHKBkMZOa/DyYRl5yIX7MshvMTWl1J6RNg==",
         "dependencies": {
-          "Polly.Core": "8.3.1"
+          "Polly.Core": "8.4.0"
         }
       },
       "System.IO.Pipelines": {
@@ -577,8 +577,8 @@
       },
       "Polly.Core": {
         "type": "Transitive",
-        "resolved": "8.3.1",
-        "contentHash": "b9mMAjqXuCXFCtf/RtRPwFUkAm/sz37s7G+taDvS5EqfkJsLiWfO2xO2cSISjIgIY+88oIZTGguP6UrRGRlqzg==",
+        "resolved": "8.4.0",
+        "contentHash": "3AZxuP//pxOeBo9tQs7/tz4Z5TTbu4BYfjpaXZD0JYKJo98ngN9TMUz1nybh4k0ykWkMBpGZALV/AmVIE3ew7A==",
         "dependencies": {
           "Microsoft.Bcl.TimeProvider": "8.0.0"
         }
