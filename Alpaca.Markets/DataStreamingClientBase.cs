@@ -399,7 +399,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         try
         {
             var channel = token["T"]?.ToString() ?? String.Empty;
-            var symbols = token["symbols"]?.Values<String>() ?? Enumerable.Empty<String>();
+            var symbols = token["symbols"]?.Values<String>() ?? [];
 
             foreach (var symbol in symbols.Where(value => !String.IsNullOrEmpty(value)))
             {
