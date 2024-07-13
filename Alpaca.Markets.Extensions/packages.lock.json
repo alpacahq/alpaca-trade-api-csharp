@@ -35,9 +35,9 @@
       },
       "Microsoft.Extensions.Http.Polly": {
         "type": "Direct",
-        "requested": "[8.0.6, )",
-        "resolved": "8.0.6",
-        "contentHash": "vehhL2uDlr2ovIFMuYcQwXgOCu7QECXnjcRD37luN40Fjqm0C4PDiN0t0dHoyfJp6OgJ+sOYDev5jVMGz4lJnQ==",
+        "requested": "[8.0.7, )",
+        "resolved": "8.0.7",
+        "contentHash": "Sdsed6CqGrHNbjRAu3ECppuzLaleudsyJsJuo8HB3CTUvaPw32aS/YyqgKOfUccY5uVfoICnYaC7vhzVvOQR3w==",
         "dependencies": {
           "Microsoft.Extensions.Http": "8.0.0",
           "Polly": "7.2.4",
@@ -266,8 +266,8 @@
       },
       "System.Net.Http.WinHttpHandler": {
         "type": "Transitive",
-        "resolved": "8.0.0",
-        "contentHash": "dAtcyQzDpi34VdR1BeEV8yCOeXVEyekYYK6lJZIzG/N5aqEGgT6AB2DsbiidMp8cB6Y7DqqcmQFZaSGUdoubvQ==",
+        "resolved": "8.0.1",
+        "contentHash": "xftE9w7kEH2GuOJV+X8zjAzsRE7NZgGy5i8ayGJZia2b69ymYq3tbGhoxnZJO8rsu7ERwtv3TmKdiglk9wTn9A==",
         "dependencies": {
           "System.Buffers": "4.5.1",
           "System.Memory": "4.5.5"
@@ -303,7 +303,7 @@
           "Polly": "[8.4.1, )",
           "Portable.System.DateTimeOnly": "[8.0.1, )",
           "System.IO.Pipelines": "[8.0.0, )",
-          "System.Net.Http.WinHttpHandler": "[8.0.0, )",
+          "System.Net.Http.WinHttpHandler": "[8.0.1, )",
           "System.Threading.Channels": "[8.0.0, )"
         }
       }
@@ -342,9 +342,9 @@
       },
       "Microsoft.Extensions.Http.Polly": {
         "type": "Direct",
-        "requested": "[8.0.6, )",
-        "resolved": "8.0.6",
-        "contentHash": "vehhL2uDlr2ovIFMuYcQwXgOCu7QECXnjcRD37luN40Fjqm0C4PDiN0t0dHoyfJp6OgJ+sOYDev5jVMGz4lJnQ==",
+        "requested": "[8.0.7, )",
+        "resolved": "8.0.7",
+        "contentHash": "Sdsed6CqGrHNbjRAu3ECppuzLaleudsyJsJuo8HB3CTUvaPw32aS/YyqgKOfUccY5uVfoICnYaC7vhzVvOQR3w==",
         "dependencies": {
           "Microsoft.Extensions.Http": "8.0.0",
           "Polly": "7.2.4",
@@ -630,9 +630,9 @@
       },
       "Microsoft.Extensions.Http.Polly": {
         "type": "Direct",
-        "requested": "[8.0.6, )",
-        "resolved": "8.0.6",
-        "contentHash": "vehhL2uDlr2ovIFMuYcQwXgOCu7QECXnjcRD37luN40Fjqm0C4PDiN0t0dHoyfJp6OgJ+sOYDev5jVMGz4lJnQ==",
+        "requested": "[8.0.7, )",
+        "resolved": "8.0.7",
+        "contentHash": "Sdsed6CqGrHNbjRAu3ECppuzLaleudsyJsJuo8HB3CTUvaPw32aS/YyqgKOfUccY5uVfoICnYaC7vhzVvOQR3w==",
         "dependencies": {
           "Microsoft.Extensions.Http": "8.0.0",
           "Polly": "7.2.4",
@@ -885,9 +885,9 @@
       },
       "Microsoft.Extensions.Http.Polly": {
         "type": "Direct",
-        "requested": "[8.0.6, )",
-        "resolved": "8.0.6",
-        "contentHash": "vehhL2uDlr2ovIFMuYcQwXgOCu7QECXnjcRD37luN40Fjqm0C4PDiN0t0dHoyfJp6OgJ+sOYDev5jVMGz4lJnQ==",
+        "requested": "[8.0.7, )",
+        "resolved": "8.0.7",
+        "contentHash": "Sdsed6CqGrHNbjRAu3ECppuzLaleudsyJsJuo8HB3CTUvaPw32aS/YyqgKOfUccY5uVfoICnYaC7vhzVvOQR3w==",
         "dependencies": {
           "Microsoft.Extensions.Http": "8.0.0",
           "Polly": "7.2.4",
