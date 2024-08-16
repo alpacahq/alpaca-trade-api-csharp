@@ -1,7 +1,11 @@
-﻿namespace Alpaca.Markets;
+﻿using MessagePack;
+using MessagePack.Formatters;
+
+namespace Alpaca.Markets;
 
 [JsonConverter(typeof(StringEnumConverter))]
-internal enum JsonAction
+[MessagePackFormatter(typeof(EnumAsStringFormatter<JsonAction>))]
+public enum JsonAction
 {
     [EnumMember(Value = "authenticate")]
     Authenticate,

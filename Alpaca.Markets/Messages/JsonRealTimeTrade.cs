@@ -1,27 +1,35 @@
-﻿namespace Alpaca.Markets;
+﻿using MessagePack;
 
+namespace Alpaca.Markets;
+
+[MessagePackObject]
 [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(ITrade))]
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-internal sealed class JsonRealTimeTrade : JsonRealTimeBase, ITrade
+public sealed class JsonRealTimeTrade : JsonRealTimeBase, ITrade
 {
     [JsonProperty(PropertyName = "i", Required = Required.Default)]
     public UInt64 TradeId { get; set; }
 
+    [Key("x")]
     [JsonProperty(PropertyName = "x", Required = Required.Default)]
     public String Exchange { get; set; } = String.Empty;
 
     [JsonProperty(PropertyName = "z", Required = Required.Default)]
     public String Tape { get; set; } = String.Empty;
 
+    [Key("p")]
     [JsonProperty(PropertyName = "p", Required = Required.Always)]
     public Decimal Price { get; set; }
 
+    [Key("s")]
     [JsonProperty(PropertyName = "s", Required = Required.Always)]
     public Decimal Size { get; set; }
 
+    [Key("c")]
     [JsonProperty(PropertyName = "c", Required = Required.Default)]
+    [JsonConverter(typeof(SafeListJsonConverter))]
     public List<String> ConditionsList { get; set; } = [];
 
     [JsonProperty(PropertyName = "tks", Required = Required.Default)]

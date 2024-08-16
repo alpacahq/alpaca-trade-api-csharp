@@ -1,9 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net6.0</TargetFrameworks>
+    <TargetFrameworks>net6.0</TargetFrameworks>
     <AssemblyOriginatorKeyFile>..\Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
     <SignAssembly>true</SignAssembly>
@@ -124,6 +123,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MessagePack" Version="2.5.172" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Threading.Channels" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.IO.Pipelines" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />

@@ -1,5 +1,6 @@
-﻿using System.Collections.Concurrent;
+﻿using MessagePack;
 using Newtonsoft.Json.Linq;
+using System.Collections.Concurrent;
 
 namespace Alpaca.Markets;
 
@@ -282,11 +283,17 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
     [SuppressMessage(
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
-    protected sealed override void OnMessageReceived(
-        String message)
+    protected override void OnMessageReceived(
+        String message, Byte[] bytes)
     {
         try
         {
+            if (IsMessagePack)
+            {
+                // convert back into json
+                message = MessagePackSerializer.ConvertToJson(bytes);
+            }
+
             foreach (var token in JArray.Parse(message))
             {
                 var messageType = token["T"];

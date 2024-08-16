@@ -47,7 +47,7 @@ internal sealed class AlpacaStreamingClient :
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
     protected override void OnMessageReceived(
-        String message)
+        String message, Byte[] bytes)
     {
         try
         {

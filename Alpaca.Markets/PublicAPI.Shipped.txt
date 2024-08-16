@@ -102,6 +102,8 @@ Alpaca.Markets.AlpacaNewsStreamingClientConfiguration
 Alpaca.Markets.AlpacaNewsStreamingClientConfiguration.AlpacaNewsStreamingClientConfiguration() -> void
 Alpaca.Markets.AlpacaOptionsDataClientConfiguration
 Alpaca.Markets.AlpacaOptionsDataClientConfiguration.AlpacaOptionsDataClientConfiguration() -> void
+Alpaca.Markets.AlpacaOptionsStreamingClientConfiguration
+Alpaca.Markets.AlpacaOptionsStreamingClientConfiguration.AlpacaOptionsStreamingClientConfiguration() -> void
 Alpaca.Markets.AlpacaStreamingClientConfiguration
 Alpaca.Markets.AlpacaStreamingClientConfiguration.AlpacaStreamingClientConfiguration() -> void
 Alpaca.Markets.AlpacaTradingClientConfiguration
@@ -616,6 +618,7 @@ Alpaca.Markets.IEnvironment.AlpacaCryptoStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaDataApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaDataStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaNewsStreamingApi.get -> System.Uri!
+Alpaca.Markets.IEnvironment.AlpacaOptionsStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaStreamingApi.get -> System.Uri!
 Alpaca.Markets.IEnvironment.AlpacaTradingApi.get -> System.Uri!
 Alpaca.Markets.IErrorInformation
@@ -1366,6 +1369,8 @@ static Alpaca.Markets.EnvironmentExtensions.GetAlpacaNewsStreamingClient(this Al
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaNewsStreamingClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaNewsStreamingClientConfiguration!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaOptionsDataClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaOptionsDataClient!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaOptionsDataClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaOptionsDataClientConfiguration!
+static Alpaca.Markets.EnvironmentExtensions.GetAlpacaOptionsStreamingClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IStreamingDataClient!
+static Alpaca.Markets.EnvironmentExtensions.GetAlpacaOptionsStreamingClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaOptionsStreamingClientConfiguration!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaStreamingClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaStreamingClient!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaStreamingClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.AlpacaStreamingClientConfiguration!
 static Alpaca.Markets.EnvironmentExtensions.GetAlpacaTradingClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Alpaca.Markets.IAlpacaTradingClient!

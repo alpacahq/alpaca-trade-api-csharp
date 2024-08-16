@@ -1,13 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!-- https://learn.microsoft.com/en-us/dotnet/fundamentals/package-validation/diagnostic-ids -->
-<Suppressions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Suppression>
-    <DiagnosticId>CP0001</DiagnosticId>
-    <Target>T:Alpaca.Markets.Extensions.ConfigurationExtensions</Target>
-    <Left>lib/net462/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
+<Suppressions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Suppression>
     <DiagnosticId>CP0001</DiagnosticId>
     <Target>T:Alpaca.Markets.Extensions.ConfigurationExtensions</Target>
@@ -16,17 +9,15 @@
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0001</DiagnosticId>
-    <Target>T:Alpaca.Markets.Extensions.ConfigurationExtensions</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
+    <DiagnosticId>PKV006</DiagnosticId>
+    <Target>.NETFramework,Version=v4.6.2</Target>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0001</DiagnosticId>
-    <Target>T:Alpaca.Markets.Extensions.ConfigurationExtensions</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.Extensions.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
+    <DiagnosticId>PKV006</DiagnosticId>
+    <Target>.NETStandard,Version=v2.0</Target>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>PKV006</DiagnosticId>
+    <Target>.NETStandard,Version=v2.1</Target>
   </Suppression>
 </Suppressions>

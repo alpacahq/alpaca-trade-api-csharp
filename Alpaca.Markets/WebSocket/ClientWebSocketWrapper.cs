@@ -17,6 +17,10 @@ internal sealed class ClientWebSocketWrapper : IWebSocket
         Uri uri, CancellationToken cancellationToken) =>
         _client.ConnectAsync(uri, cancellationToken);
 
+    public void SetContentType(string contentType)
+    {
+        _client.Options.SetRequestHeader("Content-Type", contentType);
+    }
     public ValueTask SendAsync(
         ReadOnlySequence<Byte> buffer)
     {

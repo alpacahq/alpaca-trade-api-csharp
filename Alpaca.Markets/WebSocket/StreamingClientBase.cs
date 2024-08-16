@@ -1,4 +1,6 @@
 ﻿using System.Text;
+using MessagePack;
+using MessagePack.Resolvers;
 using Newtonsoft.Json.Linq;
 
 namespace Alpaca.Markets;
@@ -7,14 +9,24 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
     where TConfiguration : StreamingClientConfiguration
 {
     // ReSharper disable once StaticMemberInGenericType
-    private static readonly Func<IWebSocket> _webSocketFactory =
-        () => new ClientWebSocketWrapper();
+    private Func<IWebSocket> _webSocketFactory =>
+    () => {
+        var result = new ClientWebSocketWrapper();
+        if (IsMessagePack)
+        {
+            OnWarning?.Invoke($"{this.GetType().Name} set content type to: application/msgpack");
+            result.SetContentType("application/msgpack");
+        }
+        return result;
+    };
 
     private readonly SynchronizationQueue _queue = new();
 
     internal readonly TConfiguration Configuration;
 
     private readonly WebSocketsTransport _webSocket;
+
+    protected virtual bool IsMessagePack => false;
 
     private protected StreamingClientBase(
         TConfiguration configuration)
@@ -94,7 +106,7 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
 
     [ExcludeFromCodeCoverage]
     protected virtual void OnMessageReceived(
-        String message)
+        String message, Byte[] bytes)
     {
     }
 
@@ -168,6 +180,20 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
         Object value,
         CancellationToken cancellationToken = default)
     {
+        if (IsMessagePack)
+        {
+            try
+            {
+                var bin = MessagePackSerializer.Serialize(value, cancellationToken: cancellationToken);
+                return _webSocket.SendAsync(bin, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                OnWarning?.Invoke($"exception '{ex.Message}' serializing: {JsonConvert.SerializeObject(value)}");
+                throw;
+            }
+        }
+
         using var textWriter = new StringWriter();
 
         var serializer = new JsonSerializer();
@@ -179,5 +205,5 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
     private void onDataReceived(
 #pragma warning restore IDE1006 // Naming Styles
         Byte[] binaryData) =>
-        OnMessageReceived(Encoding.UTF8.GetString(binaryData));
+        OnMessageReceived(IsMessagePack ? MessagePackSerializer.ConvertToJson(binaryData) : Encoding.UTF8.GetString(binaryData), binaryData);
 }

@@ -55,7 +55,7 @@ internal sealed class WebSocketsTransport(
 
     public event Action? Closed;
 
-    public event Action<String>? MessageReceived;
+    public event Action<String, Byte[]>? MessageReceived;
 
     public event Action<Byte[]>? DataReceived;
 
@@ -137,6 +137,13 @@ internal sealed class WebSocketsTransport(
         String message,
         CancellationToken cancellationToken)
     {
+        await SendAsync(Encoding.UTF8.GetBytes(message), cancellationToken).ConfigureAwait(false);
+    }
+
+    public async ValueTask SendAsync(
+        Byte[] message,
+        CancellationToken cancellationToken)
+    {
         if (_transport is null)
         {
             return;
@@ -153,7 +160,7 @@ internal sealed class WebSocketsTransport(
         try
         {
             await _transport.Output
-                .WriteAsync(Encoding.UTF8.GetBytes(message), cancellationToken)
+                .WriteAsync(message, cancellationToken)
                 .ConfigureAwait(false);
             await _transport.Output.FlushAsync(cancellationToken).ConfigureAwait(false);
         }
@@ -301,7 +308,8 @@ internal sealed class WebSocketsTransport(
         }
         else if (webSocketMessageType == WebSocketMessageType.Text)
         {
-            MessageReceived?.Invoke(Encoding.UTF8.GetString(readResult.Buffer.ToArray()));
+            var bytes = readResult.Buffer.ToArray();
+            MessageReceived?.Invoke(Encoding.UTF8.GetString(bytes), bytes);
         }
         else
         {

@@ -12,5 +12,7 @@ internal sealed class LiveEnvironment : IEnvironment
 
     public Uri AlpacaCryptoStreamingApi => new("wss://stream.data.alpaca.markets/v1beta3/crypto/us");
 
+    public Uri AlpacaOptionsStreamingApi => new("wss://stream.data.alpaca.markets/v1beta1/opra");
+
     public Uri AlpacaNewsStreamingApi => new("wss://stream.data.alpaca.markets/v1beta1/news");
 }

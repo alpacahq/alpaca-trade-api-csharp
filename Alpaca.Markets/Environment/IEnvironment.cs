@@ -31,6 +31,11 @@ public interface IEnvironment
     Uri AlpacaCryptoStreamingApi { get; }
 
     /// <summary>
+    /// Gets Alpaca crypto streaming API base URL for this environment.
+    /// </summary>
+    Uri AlpacaOptionsStreamingApi { get; }
+
+    /// <summary>
     /// Gets Alpaca news streaming API base URL for this environment.
     /// </summary>
     Uri AlpacaNewsStreamingApi { get; }

@@ -234,6 +234,44 @@ public static class EnvironmentExtensions
         };
 
     /// <summary>
+    /// Creates the new instance of <see cref="IStreamingDataClient"/> interface
+    /// implementation for specific environment provided as <paramref name="environment"/> argument.
+    /// </summary>
+    /// <param name="environment">Target environment for new object.</param>
+    /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>The new instance of <see cref="IStreamingDataClient"/> interface implementation.</returns>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
+    public static IStreamingDataClient GetAlpacaOptionsStreamingClient(
+        this IEnvironment environment,
+        SecurityKey securityKey) =>
+        new AlpacaOptionsStreamingClient(environment.GetAlpacaOptionsStreamingClientConfiguration(securityKey));
+
+    /// <summary>
+    /// Creates new instance of <see cref="AlpacaOptionsStreamingClientConfiguration"/> for specific
+    /// environment provided as <paramref name="environment"/> argument.
+    /// </summary>
+    /// <param name="environment">Target environment for new object.</param>
+    /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>New instance of <see cref="AlpacaOptionsStreamingClientConfiguration"/> object.</returns>
+    [UsedImplicitly]
+    public static AlpacaOptionsStreamingClientConfiguration GetAlpacaOptionsStreamingClientConfiguration(
+        this IEnvironment environment,
+        SecurityKey securityKey) =>
+        new()
+        {
+            ApiEndpoint = environment.EnsureNotNull().AlpacaOptionsStreamingApi,
+            SecurityId = securityKey.EnsureNotNull()
+        };
+
+    /// <summary>
     /// Creates the new instance of <see cref="IAlpacaNewsStreamingClient"/> interface
     /// implementation for specific environment provided as <paramref name="environment"/> argument.
     /// </summary>
