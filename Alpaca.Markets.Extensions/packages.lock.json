@@ -266,8 +266,8 @@
       },
       "System.Net.Http.WinHttpHandler": {
         "type": "Transitive",
-        "resolved": "8.0.1",
-        "contentHash": "xftE9w7kEH2GuOJV+X8zjAzsRE7NZgGy5i8ayGJZia2b69ymYq3tbGhoxnZJO8rsu7ERwtv3TmKdiglk9wTn9A==",
+        "resolved": "8.0.2",
+        "contentHash": "PNtuWFl55FSigmCWX+Rj3h/1C5igGw3G4+cvnEe2kkwMDSWX08L/GuBw5S5Fc8R9PvOj+CRUHMY9w/Va8MKWHQ==",
         "dependencies": {
           "System.Buffers": "4.5.1",
           "System.Memory": "4.5.5"
@@ -303,7 +303,7 @@
           "Polly": "[8.4.1, )",
           "Portable.System.DateTimeOnly": "[8.0.1, )",
           "System.IO.Pipelines": "[8.0.0, )",
-          "System.Net.Http.WinHttpHandler": "[8.0.1, )",
+          "System.Net.Http.WinHttpHandler": "[8.0.2, )",
           "System.Threading.Channels": "[8.0.0, )"
         }
       }
