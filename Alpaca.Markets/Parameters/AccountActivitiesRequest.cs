@@ -99,13 +99,13 @@ public sealed class AccountActivitiesRequest
         {
             Path = "v2/account/activities",
             Query = await new QueryBuilder()
-                .AddParameter("activity_types", ActivityTypes)
+                .AddParameter("activity_type", ActivityTypes)
                 .AddParameter("date", Date)
                 .AddParameter("until", TimeInterval.Into, "O")
                 .AddParameter("after", TimeInterval.From, "O")
                 .AddParameter("direction", Direction)
-                .AddParameter("pageSize", PageSize)
-                .AddParameter("pageToken", PageToken)
+                .AddParameter("page_size", PageSize)
+                .AddParameter("page_token", PageToken)
                 .AsStringAsync().ConfigureAwait(false)
         };
 
