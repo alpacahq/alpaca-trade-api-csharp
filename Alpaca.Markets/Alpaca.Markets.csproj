@@ -12,35 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.1.0.4</AssemblyVersion>
-    <FileVersion>7.1.0.4</FileVersion>
-    <Version>7.1.0</Version>
+    <AssemblyVersion>7.1.1.0</AssemblyVersion>
+    <FileVersion>7.1.1.0</FileVersion>
+    <Version>7.1.1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- The `OptionsContractRequest.UnderlyingSymbol` mandatory property was replaced with the `OptionsContractRequest.UnderlyingSymbols` optional property.
-- The `IAlpacaTradingClient` interface was extended with the `ExerciseOptionsContractByIdAsync` and `ExerciseOptionsContractBySymbolAsync` methods.
-- Added the new `IAlpacaTradingClient.GetOptionContractByIdAsync` and `IAlpacaTradingClient.GetOptionContractBySymbolAsync` methods.
-- Added support for the new portfolio history endpoint using the existing `IAlpacaTradingClient.GetPortfolioHistoryAsync` method.
-- The `IAlpacaOptionDataClient` interface extended with the `IHistoricalTradesClient` and `IHistoricalBarsClient` interfaces.
-- Added the new `IAlpacaOptionDataClient.ListLatestQuotesAsync` and `IAlpacaOptionDataClient.ListLatestTradesAsync` methods.
-- Added the new `IAlpacaOptionDataClient.ListSnapshotsAsync` and `IAlpacaOptionDataClient.GetOptionChainAsync` methods.
-- The `OptionChainRequest` class extended with new (optional) filtering properties and initial client-side validation.
-- Added the new `IAlpacaTradingClient.ListOptionContractsAsync` method and related `OptionContractsRequest` class.
-- The `IAlpacaTradingClient.ListOptionContractAsync` method now uses a same pagination logic as historical data.
-- The new `OptionSnapshotRequest` class added and used for the `ListSnapshotsAsync` method (breaking change).
-- The new `IOptionSnapshot` interface with Greeks and IV added and used instead of `ISnapshot` for options.
-- Added the new `IAlpacaOptionDataClient` interface and related factory methods and configuration class.
-- Added the new `IOptionContract` interface and two related enums: `OptionType` and `OptionStyle`.
-- The new `HistoricalOptionTradesRequest` and `HistoricalOptionBarsRequest` classes were added.
-- Added the new `IAlpacaOptionDataClient.ListExchangesAsync` method for metadata requesting.
-- Added the new `IAccount.OptionApprovedLevel` and `IAccount.OptionTradingLevel` properties.
-- The `OptionFeed` enum added and now it can be specified for latest/snapshot requests.
-- The `OptionSnapshotRequest` class now has a proper pagination support logic.
-- Added the new `IAccountConfiguration.MaxOptionTradingLevel` property.
-- Added the new 'AssetType.UsOption` enumeration member.
-- Added the new 'OptionTradingLevel` enumeration.
+- The `AccountActivitiesRequest` class has been updated and now provides the correct URL query parameters for the API endpoint. Thanks, @ooples, for this contribution.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
