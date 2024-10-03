@@ -25,7 +25,7 @@ internal sealed class JsonOptionContract : IOptionContract
     public Decimal Size { get; set; }
 
     [JsonProperty(PropertyName = "type", Required = Required.Always)]
-    public OptionType OptionType { get; }
+    public OptionType OptionType { get; set; }
 
     [JsonProperty(PropertyName = "strike_price", Required = Required.Always)]
     public Decimal StrikePrice { get; set; }
