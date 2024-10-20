@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.1.1.0</AssemblyVersion>
-    <FileVersion>7.1.1.0</FileVersion>
-    <Version>7.1.1</Version>
+    <AssemblyVersion>7.1.2.0</AssemblyVersion>
+    <FileVersion>7.1.2.0</FileVersion>
+    <Version>7.1.2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- The `AccountActivitiesRequest` class has been updated and now provides the correct URL query parameters for the API endpoint. Thanks, @ooples, for this contribution.
+- The `OptionType` property in the `IOptionContract` deserialization is fixed. Thanks, @uranio-235, for this contribution.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
