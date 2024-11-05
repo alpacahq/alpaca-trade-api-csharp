@@ -245,6 +245,13 @@ public enum AccountActivityType
     OptionExercise,
 
     /// <summary>
+    /// Option trade
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "OPTRD")]
+    OptionTrade,
+
+    /// <summary>
     /// Fee denominated in USD
     /// </summary>
     [UsedImplicitly]
