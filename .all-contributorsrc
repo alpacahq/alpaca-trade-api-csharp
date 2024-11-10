@@ -1021,6 +1021,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "uranio-235",
+      "name": "Lázaro Armando",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2146818?v=4",
+      "profile": "https://github.com/uranio-235",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
