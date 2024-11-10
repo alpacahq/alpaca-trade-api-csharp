@@ -965,6 +965,16 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "ushahx",
+      "name": "ushahx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13063345?v=4",
+      "profile": "https://github.com/ushahx",
+      "contributions": [
+        "bug",
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 7,
