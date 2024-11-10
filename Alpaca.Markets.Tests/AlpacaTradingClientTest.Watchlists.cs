@@ -55,7 +55,7 @@ public sealed partial class AlpacaTradingClientTest
         mock.AddPost(WatchlistsUrl, createWatchList());
 
         var watchList = await mock.Client.CreateWatchListAsync(new NewWatchListRequest(
-            Guid.NewGuid().ToString("D"), new [] { Stock, Crypto }));
+            Guid.NewGuid().ToString("D"), [Stock, Crypto]));
 
         validateWatchList(watchList);
     }
@@ -68,7 +68,7 @@ public sealed partial class AlpacaTradingClientTest
         mock.AddPut(WatchListsWildcardUrl, createWatchList());
 
         var watchList = await mock.Client.UpdateWatchListByIdAsync(new UpdateWatchListRequest(
-            Guid.NewGuid(), Guid.NewGuid().ToString("D"), new [] { Stock, Crypto }));
+            Guid.NewGuid(), Guid.NewGuid().ToString("D"), [Stock, Crypto]));
 
         validateWatchList(watchList);
     }

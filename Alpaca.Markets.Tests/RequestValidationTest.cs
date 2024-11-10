@@ -16,7 +16,7 @@ public sealed class RequestValidationTest
 
     [Fact]
     public void HistoricalRequestBaseEmptySymbolValidationWorks() =>
-        validate(new HistoricalCryptoBarsRequest(new [] { String.Empty }, _interval, BarTimeFrame.Day));
+        validate(new HistoricalCryptoBarsRequest([String.Empty], _interval, BarTimeFrame.Day));
 
     [Fact]
     public void HistoricalRequestBaseEmptyPageValidationWorks() =>
@@ -25,7 +25,7 @@ public sealed class RequestValidationTest
 
     [Fact]
     public void NewsArticlesRequestEmptySymbolValidationWorks() =>
-        validate(new NewsArticlesRequest(new [] { String.Empty }));
+        validate(new NewsArticlesRequest([String.Empty]));
 
     [Fact]
     public void NewsArticlesRequestBigPageValidationWorks() =>
@@ -46,7 +46,7 @@ public sealed class RequestValidationTest
 
     [Fact]
     public void NewWatchListRequestEmptySymbolValidationWorks() =>
-        validate(new NewWatchListRequest(Guid.NewGuid().ToString("D"), new [] { String.Empty}));
+        validate(new NewWatchListRequest(Guid.NewGuid().ToString("D"), [String.Empty]));
 
     [Fact]
     public void UpdateWatchListRequestEmptyNameValidationWorks() =>
@@ -55,7 +55,7 @@ public sealed class RequestValidationTest
     [Fact]
     public void UpdateWatchListRequestEmptySymbolValidationWorks() =>
         validate(new UpdateWatchListRequest(Guid.NewGuid(),
-            Guid.NewGuid().ToString("D"), new [] { String.Empty}));
+            Guid.NewGuid().ToString("D"), [String.Empty]));
 
     [Fact]
     public void ChangeWatchListRequestEmptyNameValidationWorks() =>

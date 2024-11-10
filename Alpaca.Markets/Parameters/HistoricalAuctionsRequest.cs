@@ -21,7 +21,7 @@ public sealed class HistoricalAuctionsRequest : HistoricalRequestBase, IHistoric
         String symbol,
         DateTime from,
         DateTime into)
-        : this(new[] { symbol.EnsureNotNull() }, from, into)
+        : this([symbol.EnsureNotNull()], from, into)
     {
     }
 
@@ -36,7 +36,7 @@ public sealed class HistoricalAuctionsRequest : HistoricalRequestBase, IHistoric
     public HistoricalAuctionsRequest(
         String symbol,
         Interval<DateTime> timeInterval)
-        : this(new[] { symbol.EnsureNotNull() }, timeInterval)
+        : this([symbol.EnsureNotNull()], timeInterval)
     {
     }
 
@@ -49,7 +49,7 @@ public sealed class HistoricalAuctionsRequest : HistoricalRequestBase, IHistoric
     /// </exception>
     public HistoricalAuctionsRequest(
         String symbol)
-        : this(new[] { symbol.EnsureNotNull() })
+        : this([symbol.EnsureNotNull()])
     {
     }
 
@@ -111,7 +111,7 @@ public sealed class HistoricalAuctionsRequest : HistoricalRequestBase, IHistoric
     public HistoricalAuctionsRequest(
         String symbol,
         IInclusiveTimeInterval timeInterval)
-        : this(new[] { symbol.EnsureNotNull() }, timeInterval)
+        : this([symbol.EnsureNotNull()], timeInterval)
     {
     }
 

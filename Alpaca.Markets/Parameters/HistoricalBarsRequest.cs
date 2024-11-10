@@ -22,7 +22,7 @@ public sealed class HistoricalBarsRequest : HistoricalRequestBase, IHistoricalRe
         DateTime from,
         DateTime into,
         BarTimeFrame timeFrame)
-        : this(new[] { symbol.EnsureNotNull() }, from, into, timeFrame)
+        : this([symbol.EnsureNotNull()], from, into, timeFrame)
     {
     }
 
