@@ -87,7 +87,7 @@ public sealed class AccountActivitiesRequest
         {
             Path = "v2/account/activities",
             Query = await new QueryBuilder()
-                .AddParameter("activity_type", ActivityTypes)
+                .AddParameter("activity_types", ActivityTypes)
                 .AddParameter("date", Date)
                 .AddParameter("until", TimeInterval.Into, "O")
                 .AddParameter("after", TimeInterval.From, "O")
