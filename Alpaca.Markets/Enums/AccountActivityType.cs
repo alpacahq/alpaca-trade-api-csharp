@@ -8,6 +8,8 @@
 [SuppressMessage("ReSharper", "IdentifierTypo")]
 [SuppressMessage("ReSharper", "StringLiteralTypo")]
 [SuppressMessage("ReSharper", "InconsistentNaming")]
+[SuppressMessage("Design", "CA1027:Mark enums with FlagsAttribute",
+    Justification = "This enum is not flags-based so we shouldn't mark it with this attribute.")]
 public enum AccountActivityType
 {
     /// <summary>
@@ -249,6 +251,13 @@ public enum AccountActivityType
     [UsedImplicitly]
     [EnumMember(Value = "OPXRC")]
     OptionExercise,
+
+    /// <summary>
+    /// Option trade
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "OPTRD")]
+    OptionTrade,
 
     /// <summary>
     /// Fee denominated in USD
