@@ -1,7 +1,5 @@
 ﻿namespace Alpaca.Markets;
 
-#pragma warning disable CA1027
-
 /// <summary>
 /// Types of account activities
 /// </summary>
@@ -10,6 +8,8 @@
 [SuppressMessage("ReSharper", "IdentifierTypo")]
 [SuppressMessage("ReSharper", "StringLiteralTypo")]
 [SuppressMessage("ReSharper", "InconsistentNaming")]
+[SuppressMessage("Design", "CA1027:Mark enums with FlagsAttribute",
+    Justification = "This enum is not flags-based so we shouldn't mark it with this attribute.")]
 public enum AccountActivityType
 {
     /// <summary>
@@ -265,5 +265,3 @@ public enum AccountActivityType
     [EnumMember(Value = "CFEE")]
     CryptoFee
 }
-
-#pragma warning restore CA1027

@@ -49,7 +49,7 @@
   <PropertyGroup>
     <EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
     <!--<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>-->
-    <PackageValidationBaselineVersion>7.0.0</PackageValidationBaselineVersion>
+    <PackageValidationBaselineVersion>7.1.0</PackageValidationBaselineVersion>
     <EnableStrictModeForCompatibleTfms>true</EnableStrictModeForCompatibleTfms>
     <EnablePackageValidation>true</EnablePackageValidation>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
