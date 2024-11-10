@@ -1031,6 +1031,16 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "michaelnero",
+      "name": "Michael Nero",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1127408?v=4",
+      "profile": "https://github.com/michaelnero",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

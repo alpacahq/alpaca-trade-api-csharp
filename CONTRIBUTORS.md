@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-109-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-110-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors
@@ -151,6 +151,7 @@ Thanks goes to these wonderful people who helps to make this SDK better:
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/rshahrabani"><img src="https://avatars.githubusercontent.com/u/37419900?v=4?s=100" width="100px;" alt="rshahrabani"/><br /><sub><b>rshahrabani</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Arshahrabani" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/leveltensoftware"><img src="https://avatars.githubusercontent.com/u/108337260?v=4?s=100" width="100px;" alt="leveltensoftware"/><br /><sub><b>leveltensoftware</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Aleveltensoftware" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/uranio-235"><img src="https://avatars.githubusercontent.com/u/2146818?v=4?s=100" width="100px;" alt="Lázaro Armando"/><br /><sub><b>Lázaro Armando</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Auranio-235" title="Bug reports">🐛</a> <a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=uranio-235" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/michaelnero"><img src="https://avatars.githubusercontent.com/u/1127408?v=4?s=100" width="100px;" alt="Michael Nero"/><br /><sub><b>Michael Nero</b></sub></a><br /><a href="https://github.com/OlegRa/Alpaca.Markets/issues?q=author%3Amichaelnero" title="Bug reports">🐛</a> <a href="https://github.com/OlegRa/Alpaca.Markets/commits?author=michaelnero" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
