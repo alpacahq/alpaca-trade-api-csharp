@@ -3,7 +3,7 @@
 /// <summary>
 /// Types of account activities
 /// </summary>
-[JsonConverter(typeof(StringEnumConverter))]
+[JsonConverter(typeof(AccountActivityTypeEnumConverter))]
 [SuppressMessage("ReSharper", "CommentTypo")]
 [SuppressMessage("ReSharper", "IdentifierTypo")]
 [SuppressMessage("ReSharper", "StringLiteralTypo")]
@@ -271,5 +271,12 @@ public enum AccountActivityType
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "CFEE")]
-    CryptoFee
+    CryptoFee,
+
+    /// <summary>
+    /// Unknown account activity type (i.e. one not supported by this version of SDK).
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "UNKNOWN")]
+    Unknown
 }
