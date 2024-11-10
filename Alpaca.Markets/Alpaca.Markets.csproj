@@ -12,14 +12,16 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.1.2.0</AssemblyVersion>
-    <FileVersion>7.1.2.0</FileVersion>
-    <Version>7.1.2</Version>
+    <AssemblyVersion>7.1.3.0</AssemblyVersion>
+    <FileVersion>7.1.3.0</FileVersion>
+    <Version>7.1.3</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- The `OptionType` property in the `IOptionContract` deserialization is fixed. Thanks, @uranio-235, for this contribution.
+- The `OptionTrade` item was added to the `AccountActivityType` enum. Thanks, @Chacoon3, for this contribution.
+- Changes from PR #755 were partially rolled back. The `ListAccountActivitiesAsync` should work fine again.
+- The custom string-to-enum converter was added for the `AccountActivityType` enum with a fallback value.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
