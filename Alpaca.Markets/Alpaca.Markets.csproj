@@ -53,6 +53,7 @@
     <!--<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>-->
     <PackageValidationBaselineVersion>7.1.0</PackageValidationBaselineVersion>
     <EnableStrictModeForCompatibleTfms>true</EnableStrictModeForCompatibleTfms>
+    <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
     <EnablePackageValidation>true</EnablePackageValidation>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
@@ -105,20 +106,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Threading.Channels" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="System.IO.Pipelines" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Threading.Channels" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.IO.Pipelines" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="Polly" Version="8.4.2" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Polly" Version="8.5.0" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="8.0.2" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
   <ItemGroup Condition="!$(TargetFramework.StartsWith('net6'))">
-    <PackageReference Include="Portable.System.DateTimeOnly" Version="8.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="8.0.2" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />
