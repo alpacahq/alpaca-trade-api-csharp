@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net8.0</TargetFrameworks>
     <AssemblyOriginatorKeyFile>..\Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -54,6 +54,9 @@
     <EnablePackageValidation>true</EnablePackageValidation>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="($(TargetFramework.StartsWith('net8')))">
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
     <IsTrimmable>true</IsTrimmable>
   </PropertyGroup>
@@ -103,20 +106,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Threading.Channels" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="System.IO.Pipelines" Version="8.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Threading.Channels" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.IO.Pipelines" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="Polly" Version="8.4.2" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Polly" Version="8.5.0" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="8.0.2" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
-  <ItemGroup Condition="!$(TargetFramework.StartsWith('net6'))">
-    <PackageReference Include="Portable.System.DateTimeOnly" Version="8.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('net8'))">
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="8.0.2" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />

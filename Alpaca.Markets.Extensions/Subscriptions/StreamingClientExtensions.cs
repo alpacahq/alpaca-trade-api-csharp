@@ -610,33 +610,33 @@ public static class StreamingClientExtensions
             client.EnsureNotNull().GetUpdatedBarSubscription(symbols.EnsureNotNull()),
             client.EnsureNotNull());
 
-    private static IAlpacaDataSubscription<ITrade> getTradeSubscription(
+    private static AlpacaDataSubscriptionContainer<ITrade> getTradeSubscription(
         IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         getSubscription(client.GetTradeSubscription, symbols);
 
-    private static IAlpacaDataSubscription<IQuote> getQuoteSubscription(
+    private static AlpacaDataSubscriptionContainer<IQuote> getQuoteSubscription(
         IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         getSubscription(client.GetQuoteSubscription, symbols);
 
-    private static IAlpacaDataSubscription<IBar> getMinuteBarSubscription(
+    private static AlpacaDataSubscriptionContainer<IBar> getMinuteBarSubscription(
         IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         getSubscription(client.GetMinuteBarSubscription, symbols);
 
-    private static IAlpacaDataSubscription<IBar> getDailyBarSubscription(
+    private static AlpacaDataSubscriptionContainer<IBar> getDailyBarSubscription(
         IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         getSubscription(client.GetDailyBarSubscription, symbols);
 
-    private static IAlpacaDataSubscription<IBar> getUpdatedBarSubscription(
+    private static AlpacaDataSubscriptionContainer<IBar> getUpdatedBarSubscription(
         IStreamingDataClient client,
         IEnumerable<String> symbols) =>
         getSubscription(client.GetUpdatedBarSubscription, symbols);
 
-    private static IAlpacaDataSubscription<TItem> getSubscription<TItem>(
+    private static AlpacaDataSubscriptionContainer<TItem> getSubscription<TItem>(
         Func<String, IAlpacaDataSubscription<TItem>> selector,
         IEnumerable<String> symbols) =>
-        new AlpacaDataSubscriptionContainer<TItem>(symbols.Select(selector));
+        new(symbols.Select(selector));
 }

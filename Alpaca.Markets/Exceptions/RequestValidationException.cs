@@ -3,7 +3,6 @@
 /// <summary>
 /// Represents exception information for request input data validation errors.
 /// </summary>
-[Serializable]
 public sealed class RequestValidationException : Exception
 {
     /// <summary>
@@ -50,14 +49,6 @@ public sealed class RequestValidationException : Exception
         : base(message)
     {
         PropertyName = propertyName;
-    }
-
-    [ExcludeFromCodeCoverage]
-    private RequestValidationException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(info, context)
-    {
     }
 
     /// <summary>

@@ -6,8 +6,7 @@ internal sealed class QueryBuilder
 {
     private const String ListSeparator = ",";
 
-    private readonly IDictionary<String, String> _queryParameters =
-        new Dictionary<String, String>();
+    private readonly Dictionary<String, String> _queryParameters = new();
 
     public QueryBuilder AddParameter(
         String name,

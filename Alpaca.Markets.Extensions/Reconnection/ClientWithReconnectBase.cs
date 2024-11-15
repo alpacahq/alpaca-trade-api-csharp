@@ -56,13 +56,18 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
         CancellationToken cancellationToken = default) =>
         runWithReconnection(() => Client.ConnectAndAuthenticateAsync(cancellationToken));
 
-    public Task DisconnectAsync(
+    public async Task DisconnectAsync(
         CancellationToken cancellationToken = default)
     {
         Client.SocketClosed -= handleSocketClosed;
-        _cancellationTokenSource.Cancel();
 
-        return Client.DisconnectAsync(cancellationToken);
+#if NET8_0_OR_GREATER
+        await _cancellationTokenSource.CancelAsync().ConfigureAwait(false);
+#else
+        _cancellationTokenSource.Cancel();
+#endif
+
+        await Client.DisconnectAsync(cancellationToken).ConfigureAwait(false);
     }
 
     public event Action<AuthStatus>? Connected

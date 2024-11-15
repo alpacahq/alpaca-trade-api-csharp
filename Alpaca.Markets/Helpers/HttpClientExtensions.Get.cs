@@ -51,7 +51,7 @@ internal static partial class HttpClientExtensions
                     uriBuilder, rateLimitHandler, cancellationToken)
                 .ConfigureAwait(false)), elementSelector, StringComparer.Ordinal);
 
-    private static IReadOnlyDictionary<TKeyApi, TValueApi> getReadOnlyDictionary<TKeyApi, TValueApi, TKeyJson, TValueJson>(
+    private static Dictionary<TKeyApi, TValueApi> getReadOnlyDictionary<TKeyApi, TValueApi, TKeyJson, TValueJson>(
         Dictionary<TKeyJson, TValueJson> response, 
         Func<KeyValuePair<TKeyJson, TValueJson>, TValueApi> elementSelector,
         IEqualityComparer<TKeyApi> comparer)

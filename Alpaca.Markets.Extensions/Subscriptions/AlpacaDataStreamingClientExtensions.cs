@@ -489,28 +489,28 @@ public static partial class AlpacaDataStreamingClientExtensions
             client.EnsureNotNull().GetLimitUpLimitDownSubscription(symbols.EnsureNotNull()),
             client.EnsureNotNull());
 
-    private static IAlpacaDataSubscription<IStatus> getStatusSubscription(
+    private static AlpacaDataSubscriptionContainer<IStatus> getStatusSubscription(
         IAlpacaDataStreamingClient client,
         IEnumerable<String> symbols) =>
         getSubscription(client.GetStatusSubscription, symbols);
 
-    private static IAlpacaDataSubscription<ILimitUpLimitDown> getLimitUpLimitDownSubscription(
+    private static AlpacaDataSubscriptionContainer<ILimitUpLimitDown> getLimitUpLimitDownSubscription(
         IAlpacaDataStreamingClient client,
         IEnumerable<String> symbols) =>
         getSubscription(client.GetLimitUpLimitDownSubscription, symbols);
 
-    private static IAlpacaDataSubscription<ITrade> getCancellationSubscription(
+    private static AlpacaDataSubscriptionContainer<ITrade> getCancellationSubscription(
         IAlpacaDataStreamingClient client,
         IEnumerable<String> symbols) =>
         getSubscription(client.GetCancellationSubscription, symbols);
 
-    private static IAlpacaDataSubscription<ICorrection> getCorrectionSubscription(
+    private static AlpacaDataSubscriptionContainer<ICorrection> getCorrectionSubscription(
         IAlpacaDataStreamingClient client,
         IEnumerable<String> symbols) =>
         getSubscription(client.GetCorrectionSubscription, symbols);
 
-    private static IAlpacaDataSubscription<TItem> getSubscription<TItem>(
+    private static AlpacaDataSubscriptionContainer<TItem> getSubscription<TItem>(
         Func<String, IAlpacaDataSubscription<TItem>> selector,
         IEnumerable<String> symbols) =>
-        new AlpacaDataSubscriptionContainer<TItem>(symbols.Select(selector));
+        new(symbols.Select(selector));
 }

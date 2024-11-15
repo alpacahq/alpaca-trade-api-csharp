@@ -120,7 +120,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         }
 
         public void OnUpdate(
-            ICollection<String> streams)
+            HashSet<String> streams)
         {
             foreach (var (stream, subscription) in _subscriptions)
             {
