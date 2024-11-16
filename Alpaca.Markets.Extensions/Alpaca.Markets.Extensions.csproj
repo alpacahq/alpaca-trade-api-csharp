@@ -12,17 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.1.0.3</AssemblyVersion>
-    <FileVersion>7.1.0.3</FileVersion>
-    <Version>7.1.0</Version>
+    <AssemblyVersion>7.1.1.0</AssemblyVersion>
+    <FileVersion>7.1.1.0</FileVersion>
+    <Version>7.1.1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Added factory methods for creating the strongly typed `IAlpacaOptionsDataClient` instance in dependency injection environments.
-- Added new methods `GetOptionChainAsyncAsAsyncEnumerable` and `ListSnapshotsAsAsyncEnumerable` into the Extensions package.
-- Added the new extension method `ListOptionContractsAsAsyncEnumerable` for the `IAlpacaTradingClient` interface.
-- The `ListOptionContractsAsAsyncEnumerable` extensions method uses page token now.
+- Service release - the dependencies upgraded to be more up-to-date with the latest fixes.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
