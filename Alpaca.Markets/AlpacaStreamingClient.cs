@@ -31,16 +31,27 @@ internal sealed class AlpacaStreamingClient :
     /// <inheritdoc cref="IAlpacaStreamingClient.OnTradeUpdate"/>
     public event Action<ITradeUpdate>? OnTradeUpdate;
 
+
+    [SuppressMessage(
+        "Design", "CA1031:Do not catch general exception types",
+        Justification = "Expected behavior - we report exceptions via OnError event.")]
     protected override async void OnOpened()
     {
-        await SendAsJsonStringAsync(new JsonAuthRequest
+        try
         {
-            Action = JsonAction.Authenticate,
-            Data = Configuration.SecurityId
-                .GetAuthenticationData()
-        }).ConfigureAwait(false);
+            await SendAsJsonStringAsync(new JsonAuthRequest
+            {
+                Action = JsonAction.Authenticate,
+                Data = Configuration.SecurityId
+                    .GetAuthenticationData()
+            }).ConfigureAwait(false);
 
-        base.OnOpened();
+            base.OnOpened();
+        }
+        catch (Exception exception)
+        {
+            HandleError(exception);
+        }
     }
 
     [SuppressMessage(

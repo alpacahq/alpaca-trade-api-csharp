@@ -1,4 +1,6 @@
-﻿namespace Alpaca.Markets.Extensions;
+﻿using System.Diagnostics;
+
+namespace Alpaca.Markets.Extensions;
 
 internal sealed class DisposableAlpacaDataSubscription<TItem> :
     IDisposableAlpacaDataSubscription<TItem>
@@ -39,8 +41,20 @@ internal sealed class DisposableAlpacaDataSubscription<TItem> :
         remove => _subscription.Received -= value;
     }
 
-    public async void Dispose() =>
-        await DisposeAsync().ConfigureAwait(false);
+    [SuppressMessage(
+        "Design", "CA1031:Do not catch general exception types",
+        Justification = "Expected behavior - we report exceptions via OnError event.")]
+    public async void Dispose()
+    {
+        try
+        {
+            await DisposeAsync().ConfigureAwait(false);
+        }
+        catch (Exception exception)
+        {
+            Trace.TraceInformation(exception.Message);
+        }
+    }
 
     public async ValueTask DisposeAsync()
     {
