@@ -12,18 +12,18 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.1.4.0</AssemblyVersion>
-    <FileVersion>7.1.4.0</FileVersion>
-    <Version>7.1.4</Version>
+    <AssemblyVersion>7.2.0.0</AssemblyVersion>
+    <FileVersion>7.2.0.0</FileVersion>
+    <Version>7.2.0-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Service release - the dependencies upgraded to be more up-to-date with the latest fixes.
+- The `IAlpdaDataClient.ListCorporateActionsAsync` function was added to support historical corporate actions request/response.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
-    <Copyright>© 2018-2024 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <Copyright>© 2018-2025 Alpaca Securities LLC. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
