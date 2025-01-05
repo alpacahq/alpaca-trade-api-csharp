@@ -195,6 +195,33 @@ Alpaca.Markets.CorporateActionDateType.DeclarationDate = 0 -> Alpaca.Markets.Cor
 Alpaca.Markets.CorporateActionDateType.ExecutionDate = 1 -> Alpaca.Markets.CorporateActionDateType
 Alpaca.Markets.CorporateActionDateType.PayableDate = 3 -> Alpaca.Markets.CorporateActionDateType
 Alpaca.Markets.CorporateActionDateType.RecordDate = 2 -> Alpaca.Markets.CorporateActionDateType
+Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionFilterType.CashDividend = 3 -> Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionFilterType.CashMerger = 6 -> Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionFilterType.ForwardSplit = 1 -> Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionFilterType.NameChange = 10 -> Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionFilterType.Redemption = 9 -> Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionFilterType.ReverseSplit = 0 -> Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionFilterType.RightsDistribution = 12 -> Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionFilterType.SpinOff = 5 -> Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionFilterType.StockAndCashMerger = 8 -> Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionFilterType.StockDividend = 4 -> Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionFilterType.StockMerger = 7 -> Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionFilterType.UnitSplit = 2 -> Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionFilterType.WorthlessRemoval = 11 -> Alpaca.Markets.CorporateActionFilterType
+Alpaca.Markets.CorporateActionsRequest
+Alpaca.Markets.CorporateActionsRequest.CorporateActionsRequest() -> void
+Alpaca.Markets.CorporateActionsRequest.DateInterval.get -> Alpaca.Markets.Interval<System.DateOnly>
+Alpaca.Markets.CorporateActionsRequest.Pagination.get -> Alpaca.Markets.Pagination!
+Alpaca.Markets.CorporateActionsRequest.SortDirection.get -> Alpaca.Markets.SortDirection?
+Alpaca.Markets.CorporateActionsRequest.SortDirection.set -> void
+Alpaca.Markets.CorporateActionsRequest.Symbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
+Alpaca.Markets.CorporateActionsRequest.Types.get -> System.Collections.Generic.IReadOnlyCollection<Alpaca.Markets.CorporateActionFilterType>!
+Alpaca.Markets.CorporateActionsRequest.WithDateInterval(Alpaca.Markets.Interval<System.DateOnly> dateInterval) -> Alpaca.Markets.CorporateActionsRequest!
+Alpaca.Markets.CorporateActionsRequest.WithSymbol(string! symbol) -> Alpaca.Markets.CorporateActionsRequest!
+Alpaca.Markets.CorporateActionsRequest.WithSymbols(System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.CorporateActionsRequest!
+Alpaca.Markets.CorporateActionsRequest.WithType(Alpaca.Markets.CorporateActionFilterType type) -> Alpaca.Markets.CorporateActionsRequest!
+Alpaca.Markets.CorporateActionsRequest.WithTypes(System.Collections.Generic.IEnumerable<Alpaca.Markets.CorporateActionFilterType>! types) -> Alpaca.Markets.CorporateActionsRequest!
 Alpaca.Markets.CorporateActionSubType
 Alpaca.Markets.CorporateActionSubType.DividendCash = 0 -> Alpaca.Markets.CorporateActionSubType
 Alpaca.Markets.CorporateActionSubType.DividendStock = 1 -> Alpaca.Markets.CorporateActionSubType
@@ -467,6 +494,7 @@ Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(Alpaca.Markets.LatestMarketDa
 Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(Alpaca.Markets.LatestMarketDataRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IQuote!>!
 Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(Alpaca.Markets.LatestMarketDataRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ITrade!>!
 Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(Alpaca.Markets.LatestMarketDataRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ISnapshot!>!
+Alpaca.Markets.IAlpacaDataClient.ListCorporateActionsAsync(Alpaca.Markets.CorporateActionsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.ICorporateActionsResponse!>!
 Alpaca.Markets.IAlpacaDataClient.ListExchangesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, string!>!>!
 Alpaca.Markets.IAlpacaDataClient.ListHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.IAuction!>!>!
 Alpaca.Markets.IAlpacaDataClient.ListNewsArticlesAsync(Alpaca.Markets.NewsArticlesRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IPage<Alpaca.Markets.INewsArticle!>!>!
@@ -602,11 +630,44 @@ Alpaca.Markets.ICalendar.TradingDateEst.get -> System.DateTime
 Alpaca.Markets.ICalendar.TradingDateUtc.get -> System.DateTime
 Alpaca.Markets.ICalendar.TradingOpenTimeEst.get -> System.DateTime
 Alpaca.Markets.ICalendar.TradingOpenTimeUtc.get -> System.DateTime
+Alpaca.Markets.ICashDividend
+Alpaca.Markets.ICashDividend.DueBillOffDate.get -> System.DateOnly?
+Alpaca.Markets.ICashDividend.DueBillOnDate.get -> System.DateOnly?
+Alpaca.Markets.ICashDividend.ExecutionDate.get -> System.DateOnly
+Alpaca.Markets.ICashDividend.IsForeign.get -> bool
+Alpaca.Markets.ICashDividend.IsSpecial.get -> bool
+Alpaca.Markets.ICashDividend.PayableDate.get -> System.DateOnly?
+Alpaca.Markets.ICashDividend.ProcessDate.get -> System.DateOnly
+Alpaca.Markets.ICashDividend.Rate.get -> decimal
+Alpaca.Markets.ICashDividend.RecordDate.get -> System.DateOnly?
+Alpaca.Markets.ICashDividend.Symbol.get -> string!
+Alpaca.Markets.ICashMerger
+Alpaca.Markets.ICashMerger.AcquireeSymbol.get -> string!
+Alpaca.Markets.ICashMerger.AcquirerSymbol.get -> string?
+Alpaca.Markets.ICashMerger.EffectiveDate.get -> System.DateOnly
+Alpaca.Markets.ICashMerger.PayableDate.get -> System.DateOnly?
+Alpaca.Markets.ICashMerger.ProcessDate.get -> System.DateOnly
+Alpaca.Markets.ICashMerger.Rate.get -> decimal
 Alpaca.Markets.IClock
 Alpaca.Markets.IClock.IsOpen.get -> bool
 Alpaca.Markets.IClock.NextCloseUtc.get -> System.DateTime
 Alpaca.Markets.IClock.NextOpenUtc.get -> System.DateTime
 Alpaca.Markets.IClock.TimestampUtc.get -> System.DateTime
+Alpaca.Markets.ICorporateActionsResponse
+Alpaca.Markets.ICorporateActionsResponse.CashDividends.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.ICashDividend!>!
+Alpaca.Markets.ICorporateActionsResponse.CashMergers.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.ICashMerger!>!
+Alpaca.Markets.ICorporateActionsResponse.ForwardSplits.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IForwardSplit!>!
+Alpaca.Markets.ICorporateActionsResponse.NameChanges.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.INameChange!>!
+Alpaca.Markets.ICorporateActionsResponse.NextPageToken.get -> string?
+Alpaca.Markets.ICorporateActionsResponse.Redemptions.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IRedemption!>!
+Alpaca.Markets.ICorporateActionsResponse.ReverseSplits.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IReverseSplit!>!
+Alpaca.Markets.ICorporateActionsResponse.RightsDistributions.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IRightsDistribution!>!
+Alpaca.Markets.ICorporateActionsResponse.SpinOffs.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.ISpinOff!>!
+Alpaca.Markets.ICorporateActionsResponse.StockAndCashMergers.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IStockAndCashMerger!>!
+Alpaca.Markets.ICorporateActionsResponse.StockDividends.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IStockDividend!>!
+Alpaca.Markets.ICorporateActionsResponse.StockMergers.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IStockMerger!>!
+Alpaca.Markets.ICorporateActionsResponse.UnitSplits.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IUnitSplit!>!
+Alpaca.Markets.ICorporateActionsResponse.WorthlessRemovals.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IWorthlessRemoval!>!
 Alpaca.Markets.ICorrection
 Alpaca.Markets.ICorrection.CorrectedTrade.get -> Alpaca.Markets.ITrade!
 Alpaca.Markets.ICorrection.OriginalTrade.get -> Alpaca.Markets.ITrade!
@@ -628,6 +689,15 @@ Alpaca.Markets.IErrorInformation.OpenOrdersCount.get -> int?
 Alpaca.Markets.IErrorInformation.Symbol.get -> string!
 Alpaca.Markets.IExclusiveTimeInterval
 Alpaca.Markets.IInclusiveTimeInterval
+Alpaca.Markets.IForwardSplit
+Alpaca.Markets.IForwardSplit.DueBillRedemptionDate.get -> System.DateOnly?
+Alpaca.Markets.IForwardSplit.ExecutionDate.get -> System.DateOnly
+Alpaca.Markets.IForwardSplit.NewRate.get -> decimal
+Alpaca.Markets.IForwardSplit.OldRate.get -> decimal
+Alpaca.Markets.IForwardSplit.PayableDate.get -> System.DateOnly?
+Alpaca.Markets.IForwardSplit.ProcessDate.get -> System.DateOnly
+Alpaca.Markets.IForwardSplit.RecordDate.get -> System.DateOnly?
+Alpaca.Markets.IForwardSplit.Symbol.get -> string!
 Alpaca.Markets.IGreeks
 Alpaca.Markets.IGreeks.Delta.get -> decimal?
 Alpaca.Markets.IGreeks.Gamma.get -> decimal?
@@ -680,6 +750,10 @@ Alpaca.Markets.Interval<TItem>.WithFrom(TItem from) -> Alpaca.Markets.Interval<T
 Alpaca.Markets.Interval<TItem>.WithInto(TItem into) -> Alpaca.Markets.Interval<TItem>
 Alpaca.Markets.IntervalCalenderExtensions
 Alpaca.Markets.IntervalExtensions
+Alpaca.Markets.INameChange
+Alpaca.Markets.INameChange.NewSymbol.get -> string!
+Alpaca.Markets.INameChange.OldSymbol.get -> string!
+Alpaca.Markets.INameChange.ProcessDate.get -> System.DateOnly
 Alpaca.Markets.INewsArticle
 Alpaca.Markets.INewsArticle.ArticleUrl.get -> System.Uri?
 Alpaca.Markets.INewsArticle.Author.get -> string!
@@ -813,8 +887,30 @@ Alpaca.Markets.IRateLimitValues
 Alpaca.Markets.IRateLimitValues.Limit.get -> int
 Alpaca.Markets.IRateLimitValues.Remaining.get -> int
 Alpaca.Markets.IRateLimitValues.ResetTimeUtc.get -> System.DateTime
+Alpaca.Markets.IRedemption
+Alpaca.Markets.IRedemption.PayableDate.get -> System.DateOnly?
+Alpaca.Markets.IRedemption.ProcessDate.get -> System.DateOnly
+Alpaca.Markets.IRedemption.Rate.get -> decimal
+Alpaca.Markets.IRedemption.Symbol.get -> string!
 Alpaca.Markets.IRequestWithTimeInterval<TInterval>
 Alpaca.Markets.IRequestWithTimeInterval<TInterval>.SetInterval(TInterval value) -> void
+Alpaca.Markets.IReverseSplit
+Alpaca.Markets.IReverseSplit.ExecutionDate.get -> System.DateOnly
+Alpaca.Markets.IReverseSplit.NewRate.get -> decimal
+Alpaca.Markets.IReverseSplit.OldRate.get -> decimal
+Alpaca.Markets.IReverseSplit.PayableDate.get -> System.DateOnly?
+Alpaca.Markets.IReverseSplit.ProcessDate.get -> System.DateOnly
+Alpaca.Markets.IReverseSplit.RecordDate.get -> System.DateOnly?
+Alpaca.Markets.IReverseSplit.Symbol.get -> string!
+Alpaca.Markets.IRightsDistribution
+Alpaca.Markets.IRightsDistribution.ExecutionDate.get -> System.DateOnly
+Alpaca.Markets.IRightsDistribution.ExpirationDate.get -> System.DateOnly?
+Alpaca.Markets.IRightsDistribution.NewSymbol.get -> string!
+Alpaca.Markets.IRightsDistribution.PayableDate.get -> System.DateOnly?
+Alpaca.Markets.IRightsDistribution.ProcessDate.get -> System.DateOnly
+Alpaca.Markets.IRightsDistribution.Rate.get -> decimal
+Alpaca.Markets.IRightsDistribution.RecordDate.get -> System.DateOnly?
+Alpaca.Markets.IRightsDistribution.SourceSymbol.get -> string!
 Alpaca.Markets.ITimeInterval
 Alpaca.Markets.ITimeInterval.From.get -> System.DateTime?
 Alpaca.Markets.ITimeInterval.Into.get -> System.DateTime?
@@ -836,6 +932,16 @@ Alpaca.Markets.ISnapshot.PreviousDailyBar.get -> Alpaca.Markets.IBar?
 Alpaca.Markets.ISnapshot.Quote.get -> Alpaca.Markets.IQuote?
 Alpaca.Markets.ISnapshot.Symbol.get -> string!
 Alpaca.Markets.ISnapshot.Trade.get -> Alpaca.Markets.ITrade?
+Alpaca.Markets.ISpinOff
+Alpaca.Markets.ISpinOff.DueBillRedemptionDate.get -> System.DateOnly?
+Alpaca.Markets.ISpinOff.ExecutionDate.get -> System.DateOnly
+Alpaca.Markets.ISpinOff.NewRate.get -> decimal
+Alpaca.Markets.ISpinOff.NewSymbol.get -> string!
+Alpaca.Markets.ISpinOff.PayableDate.get -> System.DateOnly?
+Alpaca.Markets.ISpinOff.ProcessDate.get -> System.DateOnly
+Alpaca.Markets.ISpinOff.RecordDate.get -> System.DateOnly?
+Alpaca.Markets.ISpinOff.SourceRate.get -> decimal
+Alpaca.Markets.ISpinOff.SourceSymbol.get -> string!
 Alpaca.Markets.IStatus
 Alpaca.Markets.IStatus.ReasonCode.get -> string!
 Alpaca.Markets.IStatus.ReasonMessage.get -> string!
@@ -844,6 +950,30 @@ Alpaca.Markets.IStatus.StatusMessage.get -> string!
 Alpaca.Markets.IStatus.Symbol.get -> string!
 Alpaca.Markets.IStatus.Tape.get -> string!
 Alpaca.Markets.IStatus.TimestampUtc.get -> System.DateTime
+Alpaca.Markets.IStockAndCashMerger
+Alpaca.Markets.IStockAndCashMerger.AcquireeRate.get -> decimal
+Alpaca.Markets.IStockAndCashMerger.AcquireeSymbol.get -> string!
+Alpaca.Markets.IStockAndCashMerger.AcquirerRate.get -> decimal
+Alpaca.Markets.IStockAndCashMerger.AcquirerSymbol.get -> string!
+Alpaca.Markets.IStockAndCashMerger.CashRate.get -> decimal
+Alpaca.Markets.IStockAndCashMerger.EffectiveDate.get -> System.DateOnly
+Alpaca.Markets.IStockAndCashMerger.PayableDate.get -> System.DateOnly?
+Alpaca.Markets.IStockAndCashMerger.ProcessDate.get -> System.DateOnly
+Alpaca.Markets.IStockDividend
+Alpaca.Markets.IStockDividend.ExecutionDate.get -> System.DateOnly
+Alpaca.Markets.IStockDividend.PayableDate.get -> System.DateOnly?
+Alpaca.Markets.IStockDividend.ProcessDate.get -> System.DateOnly
+Alpaca.Markets.IStockDividend.Rate.get -> decimal
+Alpaca.Markets.IStockDividend.RecordDate.get -> System.DateOnly?
+Alpaca.Markets.IStockDividend.Symbol.get -> string!
+Alpaca.Markets.IStockMerger
+Alpaca.Markets.IStockMerger.AcquireeRate.get -> decimal
+Alpaca.Markets.IStockMerger.AcquireeSymbol.get -> string!
+Alpaca.Markets.IStockMerger.AcquirerRate.get -> decimal
+Alpaca.Markets.IStockMerger.AcquirerSymbol.get -> string!
+Alpaca.Markets.IStockMerger.EffectiveDate.get -> System.DateOnly
+Alpaca.Markets.IStockMerger.PayableDate.get -> System.DateOnly?
+Alpaca.Markets.IStockMerger.ProcessDate.get -> System.DateOnly
 Alpaca.Markets.IStopLoss
 Alpaca.Markets.IStopLoss.LimitPrice.get -> decimal?
 Alpaca.Markets.IStopLoss.StopPrice.get -> decimal
@@ -897,6 +1027,16 @@ Alpaca.Markets.ITradeUpdate.PositionQuantity.get -> decimal?
 Alpaca.Markets.ITradeUpdate.TimestampUtc.get -> System.DateTime?
 Alpaca.Markets.ITradeUpdate.TradeIntegerQuantity.get -> long?
 Alpaca.Markets.ITradeUpdate.TradeQuantity.get -> decimal?
+Alpaca.Markets.IUnitSplit
+Alpaca.Markets.IUnitSplit.AlternateRate.get -> decimal
+Alpaca.Markets.IUnitSplit.AlternateSymbol.get -> string!
+Alpaca.Markets.IUnitSplit.EffectiveDate.get -> System.DateOnly
+Alpaca.Markets.IUnitSplit.NewRate.get -> decimal
+Alpaca.Markets.IUnitSplit.NewSymbol.get -> string!
+Alpaca.Markets.IUnitSplit.OldRate.get -> decimal
+Alpaca.Markets.IUnitSplit.OldSymbol.get -> string!
+Alpaca.Markets.IUnitSplit.PayableDate.get -> System.DateOnly?
+Alpaca.Markets.IUnitSplit.ProcessDate.get -> System.DateOnly
 Alpaca.Markets.IWatchList
 Alpaca.Markets.IWatchList.AccountId.get -> System.Guid
 Alpaca.Markets.IWatchList.Assets.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IAsset!>!
@@ -912,6 +1052,9 @@ Alpaca.Markets.IWebSocket.ConnectAsync(System.Uri! uri, System.Threading.Cancell
 Alpaca.Markets.IWebSocket.ReceiveAsync(System.Memory<byte> buffer) -> System.Threading.Tasks.ValueTask<Alpaca.Markets.ReceiveResult>
 Alpaca.Markets.IWebSocket.SendAsync(System.Buffers.ReadOnlySequence<byte> buffer) -> System.Threading.Tasks.ValueTask
 Alpaca.Markets.IWebSocket.State.get -> System.Net.WebSockets.WebSocketState
+Alpaca.Markets.IWorthlessRemoval
+Alpaca.Markets.IWorthlessRemoval.ProcessDate.get -> System.DateOnly
+Alpaca.Markets.IWorthlessRemoval.Symbol.get -> string!
 Alpaca.Markets.LatestBestBidOfferListRequest
 Alpaca.Markets.LatestBestBidOfferListRequest.Exchanges.get -> System.Collections.Generic.IReadOnlyCollection<Alpaca.Markets.CryptoExchange>!
 Alpaca.Markets.LatestBestBidOfferListRequest.LatestBestBidOfferListRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
