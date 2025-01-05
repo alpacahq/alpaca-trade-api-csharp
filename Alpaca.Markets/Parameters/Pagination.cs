@@ -19,6 +19,11 @@ public sealed class Pagination
     internal static UInt32 MaxNewsPageSize => 50;
 
     /// <summary>
+    /// Gets the maximum valid page size for corporate actions requests supported by Alpaca Data API v2.
+    /// </summary>
+    internal static UInt32 MaxCorporateActionsPageSize => 1_000;
+
+    /// <summary>
     /// Gets and sets the request page size. If equals to <c>null</c> default size will be used.
     /// </summary>
     [CLSCompliant(false)]

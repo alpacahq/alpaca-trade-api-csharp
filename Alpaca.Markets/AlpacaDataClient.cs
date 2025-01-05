@@ -112,6 +112,14 @@ internal sealed class AlpacaDataClient :
         HttpClient.ListMostActiveStocksAsync(RateLimitHandler,
             "trades", numberOfTopMostActiveStocks, cancellationToken);
 
+    public async Task<ICorporateActionsResponse> ListCorporateActionsAsync(
+        CorporateActionsRequest request,
+        CancellationToken cancellationToken = default) =>
+        await HttpClient.GetAsync<ICorporateActionsResponse, JsonCorporateActionsResponse>(
+            await request.EnsureNotNull().Validate()
+                .GetUriBuilderAsync(HttpClient).ConfigureAwait(false),
+            RateLimitHandler, cancellationToken).ConfigureAwait(false);
+        
     private async Task<IReadOnlyDictionary<String, String>> listConditionsAsync(
         Tape tape,
         String tickType,

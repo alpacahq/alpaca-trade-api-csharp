@@ -1,7 +1,7 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListAssetsAsync(AssetsRequest,CancellationToken)"/> call.
+/// Encapsulates request parameters for <see cref="IAlpacaTradingClient.ListAnnouncementsAsync(AnnouncementsRequest,CancellationToken)"/> call.
 /// </summary>
 public sealed class AnnouncementsRequest : Validation.IRequest
 {
