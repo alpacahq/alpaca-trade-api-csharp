@@ -423,6 +423,75 @@ public static class AlpacaDataClientExtensions
         getValidatedRequestWithoutPageToken(request.EnsureNotNull())
             .GetResponsesByPages(client.EnsureNotNull().GetHistoricalAuctionsAsync, cancellationToken);
 
+    /// <summary>
+    /// Gets all items provided by <see cref="IAlpacaDataClient.ListCorporateActionsAsync"/> in pagination
+    /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{ICorporateActionsResponse}"/> interface) so they
+    /// can be consumed by the <c>await foreach</c> statement on the caller side.
+    /// </summary>
+    /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
+    /// <param name="request">Original historical minute bars request (with empty next page token).</param>
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="request"/> argument is <c>null</c>.
+    /// </exception>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    public static IAsyncEnumerable<ICorporateActionsResponse> ListCorporateActionsAsAsyncEnumerable(
+        this IAlpacaDataClient client,
+        CorporateActionsRequest request) =>
+        ListCorporateActionsAsAsyncEnumerable(client, request, CancellationToken.None);
+
+    /// <summary>
+    /// Gets all items provided by <see cref="IAlpacaDataClient.ListCorporateActionsAsync"/> in pagination
+    /// mode as single stream of items (in form of <see cref="IAsyncEnumerable{ICorporateActionsResponse}"/> interface) so they
+    /// can be consumed by the <c>await foreach</c> statement on the caller side.
+    /// </summary>
+    /// <param name="client">Target instance of the <see cref="IAlpacaDataClient"/> interface.</param>
+    /// <param name="request">Original historical minute bars request (with empty next page token).</param>
+    /// <param name="cancellationToken">
+    /// A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+    /// <exception cref="RequestValidationException">
+    /// The <paramref name="request"/> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    /// </exception>
+    /// <exception cref="HttpRequestException">
+    /// The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+    /// </exception>
+    /// <exception cref="RestClientErrorException">
+    /// The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    /// </exception>
+    /// <exception cref="SocketException">
+    /// The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+    /// </exception>
+    /// <exception cref="TaskCanceledException">
+    /// .NET Core and .NET 5 and later only: The request failed due to timeout.
+    /// </exception>
+    /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="client"/> or <paramref name="request"/> argument is <c>null</c>.
+    /// </exception>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    public static IAsyncEnumerable<ICorporateActionsResponse> ListCorporateActionsAsAsyncEnumerable(
+        this IAlpacaDataClient client,
+        CorporateActionsRequest request,
+        CancellationToken cancellationToken) =>
+        getAllCorporateActionsPages(
+            client.EnsureNotNull(), getValidatedRequestWithoutPageToken(request.EnsureNotNull()), cancellationToken);
+
     private static NewsArticlesRequest getValidatedRequestWithoutPageToken(
         IHistoricalRequest<NewsArticlesRequest, INewsArticle> request) =>
         request.GetValidatedRequestWithoutPageToken();
@@ -430,4 +499,24 @@ public static class AlpacaDataClientExtensions
     private static HistoricalAuctionsRequest getValidatedRequestWithoutPageToken(
         IHistoricalRequest<HistoricalAuctionsRequest, IAuction> request) =>
         request.GetValidatedRequestWithoutPageToken();
+
+    private static CorporateActionsRequest getValidatedRequestWithoutPageToken(
+        IHistoricalRequest<CorporateActionsRequest, ICorporateActionsResponse> request) =>
+        request.GetValidatedRequestWithoutPageToken();
+
+    private static async IAsyncEnumerable<ICorporateActionsResponse> getAllCorporateActionsPages(
+        IAlpacaDataClient client,
+        CorporateActionsRequest request,
+        [EnumeratorCancellation] CancellationToken cancellationToken)
+    {
+        do
+        {
+            var page = await client.ListCorporateActionsAsync(
+                request, cancellationToken).ConfigureAwait(false);
+
+            yield return page;
+
+            request.Pagination.Token = page.NextPageToken ?? String.Empty;
+        } while (!String.IsNullOrEmpty(request.Pagination.Token));
+    }
 }
