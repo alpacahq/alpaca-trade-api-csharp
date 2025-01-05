@@ -12,18 +12,18 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.1.1.0</AssemblyVersion>
-    <FileVersion>7.1.1.0</FileVersion>
-    <Version>7.1.1</Version>
+    <AssemblyVersion>7.2.0.0</AssemblyVersion>
+    <FileVersion>7.2.0.0</FileVersion>
+    <Version>7.2.0-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Service release - the dependencies upgraded to be more up-to-date with the latest fixes.
+- The `AlpacaDataClientExtensions.ListCorporateActionsAsAsyncEnumerable` helper method was added to simplify corporate actions pagination handling.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
-    <Copyright>© 2018-2024 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <Copyright>© 2018-2025 Alpaca Securities LLC. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
     <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
@@ -99,7 +99,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Threading.Channels" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Linq.Async" Version="6.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="Alpaca.Markets" Version="7.1.0" PrivateAssets="compile;contentfiles;build;analyzers;" />
+    <PackageReference Include="Alpaca.Markets" Version="7.2.0-beta1" PrivateAssets="compile;contentfiles;build;analyzers;" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
