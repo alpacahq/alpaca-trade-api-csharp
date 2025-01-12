@@ -6,7 +6,7 @@ internal static class ActiveStocksExtensions
         this HttpClient httpClient,
         RateLimitHandler rateLimitHandler,
         String orderByFieldForRankingMostActive,
-        Int32? numberOfTopMostActiveStocks = default,
+        Int32? numberOfTopMostActiveStocks = null,
         CancellationToken cancellationToken = default) =>
         (await httpClient.GetAsync<JsonActiveStocks, JsonActiveStocks>(
             await getUriBuilderAsync(httpClient, orderByFieldForRankingMostActive, numberOfTopMostActiveStocks).ConfigureAwait(false),
@@ -16,7 +16,7 @@ internal static class ActiveStocksExtensions
     private static async ValueTask<UriBuilder> getUriBuilderAsync(
         HttpClient httpClient,
         String orderByField,
-        Int32? top = default) =>
+        Int32? top = null) =>
         new UriBuilder(httpClient.BaseAddress!)
         {
             Query = await new QueryBuilder()

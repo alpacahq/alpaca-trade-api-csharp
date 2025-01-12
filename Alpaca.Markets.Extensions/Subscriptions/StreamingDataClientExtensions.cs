@@ -18,7 +18,7 @@ public static class StreamingDataClientExtensions
     public static AlpacaValueTask SubscribeAsync(
         this IStreamingDataClient client,
         params IAlpacaDataSubscription[] subscriptions) =>
-        new(token => client.SubscribeAsync(subscriptions.EnsureNotNull(), token), default);
+        new(token => client.SubscribeAsync(subscriptions.EnsureNotNull(), token), CancellationToken.None);
 
     /// <summary>
     /// Unsubscribes several <paramref name="subscriptions"/> objects for receiving data from the server.
@@ -33,5 +33,5 @@ public static class StreamingDataClientExtensions
     public static AlpacaValueTask UnsubscribeAsync(
         this IStreamingDataClient client,
         params IAlpacaDataSubscription[] subscriptions) =>
-        new(token => client.UnsubscribeAsync(subscriptions.EnsureNotNull(), token), default);
+        new(token => client.UnsubscribeAsync(subscriptions.EnsureNotNull(), token), CancellationToken.None);
 }

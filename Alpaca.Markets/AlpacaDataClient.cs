@@ -95,19 +95,19 @@ internal sealed class AlpacaDataClient :
             RateLimitHandler, cancellationToken).ConfigureAwait(false);
 
     public Task<IMarketMovers> GetTopMarketMoversAsync(
-        Int32? numberOfLosersAndGainersInResponse = default,
+        Int32? numberOfLosersAndGainersInResponse = null,
         CancellationToken cancellationToken = default) =>
         HttpClient.GetTopMarketMoversAsync(RateLimitHandler,
             "stocks", numberOfLosersAndGainersInResponse, cancellationToken);
 
     public Task<IReadOnlyList<IActiveStock>> ListMostActiveStocksByVolumeAsync(
-        Int32? numberOfTopMostActiveStocks = default,
+        Int32? numberOfTopMostActiveStocks = null,
         CancellationToken cancellationToken = default) =>
         HttpClient.ListMostActiveStocksAsync(RateLimitHandler,
             "volume", numberOfTopMostActiveStocks, cancellationToken);
 
     public Task<IReadOnlyList<IActiveStock>> ListMostActiveStocksByTradeCountAsync(
-        Int32? numberOfTopMostActiveStocks = default,
+        Int32? numberOfTopMostActiveStocks = null,
         CancellationToken cancellationToken = default) =>
         HttpClient.ListMostActiveStocksAsync(RateLimitHandler,
             "trades", numberOfTopMostActiveStocks, cancellationToken);
