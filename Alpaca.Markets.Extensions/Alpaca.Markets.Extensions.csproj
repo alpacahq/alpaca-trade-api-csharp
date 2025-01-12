@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.2.0.0</AssemblyVersion>
-    <FileVersion>7.2.0.0</FileVersion>
-    <Version>7.2.0-beta1</Version>
+    <AssemblyVersion>7.2.0.1</AssemblyVersion>
+    <FileVersion>7.2.0.1</FileVersion>
+    <Version>7.2.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -99,7 +99,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Threading.Channels" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Linq.Async" Version="6.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="Alpaca.Markets" Version="7.2.0-beta1" PrivateAssets="compile;contentfiles;build;analyzers;" />
+    <PackageReference Include="Alpaca.Markets" Version="7.2.0" PrivateAssets="compile;contentfiles;build;analyzers;" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
