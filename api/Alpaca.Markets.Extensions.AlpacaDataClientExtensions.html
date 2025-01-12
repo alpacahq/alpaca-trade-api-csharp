@@ -1073,6 +1073,162 @@ The initial TPC socket connection failed due to an underlying low-level network 
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_ListCorporateActionsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_CorporateActionsRequest_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.ListCorporateActionsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.CorporateActionsRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L451">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_ListCorporateActionsAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.ListCorporateActionsAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_ListCorporateActionsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_CorporateActionsRequest_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.ListCorporateActionsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.CorporateActionsRequest)">ListCorporateActionsAsAsyncEnumerable(IAlpacaDataClient, CorporateActionsRequest)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <span class="xref">Alpaca.Markets.IAlpacaDataClient.ListCorporateActionsAsync(Alpaca.Markets.CorporateActionsRequest,System.Threading.CancellationToken)</span> in pagination
+mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;ICorporateActionsResponse>"></see> interface) so they
+can be consumed by the <code>await foreach</code> statement on the caller side.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;ICorporateActionsResponse&gt; ListCorporateActionsAsAsyncEnumerable(this IAlpacaDataClient client, CorporateActionsRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.CorporateActionsRequest.html">CorporateActionsRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Original historical minute bars request (with empty next page token).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.ICorporateActionsResponse.html">ICorporateActionsResponse</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaDataClientExtensions_ListCorporateActionsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_CorporateActionsRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaDataClientExtensions.ListCorporateActionsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient%2CAlpaca.Markets.CorporateActionsRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Pagination/AlpacaDataClientExtensions.cs/#L486">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_ListCorporateActionsAsAsyncEnumerable_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.ListCorporateActionsAsAsyncEnumerable*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaDataClientExtensions_ListCorporateActionsAsAsyncEnumerable_Alpaca_Markets_IAlpacaDataClient_Alpaca_Markets_CorporateActionsRequest_CancellationToken_" data-uid="Alpaca.Markets.Extensions.AlpacaDataClientExtensions.ListCorporateActionsAsAsyncEnumerable(Alpaca.Markets.IAlpacaDataClient,Alpaca.Markets.CorporateActionsRequest,CancellationToken)">ListCorporateActionsAsAsyncEnumerable(IAlpacaDataClient, CorporateActionsRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets all items provided by <span class="xref">Alpaca.Markets.IAlpacaDataClient.ListCorporateActionsAsync(Alpaca.Markets.CorporateActionsRequest,System.Threading.CancellationToken)</span> in pagination
+mode as single stream of items (in form of <see cref="!:IAsyncEnumerable&lt;ICorporateActionsResponse>"></see> interface) so they
+can be consumed by the <code>await foreach</code> statement on the caller side.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAsyncEnumerable&lt;ICorporateActionsResponse&gt; ListCorporateActionsAsAsyncEnumerable(this IAlpacaDataClient client, CorporateActionsRequest request, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a></td>
+        <td><span class="parametername">client</span></td>
+        <td><p>Target instance of the <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html">IAlpacaDataClient</a> interface.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.CorporateActionsRequest.html">CorporateActionsRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Original historical minute bars request (with empty next page token).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+<a class="xref" href="Alpaca.Markets.RequestValidationException.html">
+    The request argument contains invalid data or some required data is missing, unable to create a valid HTTP request.
+    </a>
+<exception cref="!:HttpRequestException">
+The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout.
+</exception>
+<a class="xref" href="Alpaca.Markets.RestClientErrorException.html">
+    The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.
+    </a>
+<exception cref="!:SocketException">
+The initial TPC socket connection failed due to an underlying low-level network connectivity issue.
+</exception>
+<exception cref="!:TaskCanceledException">
+.NET Core and .NET 5 and later only: The request failed due to timeout.
+</exception></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IAsyncEnumerable</span>&lt;<a class="xref" href="Alpaca.Markets.ICorporateActionsResponse.html">ICorporateActionsResponse</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           

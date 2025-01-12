@@ -1,0 +1,569 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class HistoricalOptionBarsRequest
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class HistoricalOptionBarsRequest
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest">
+  
+  
+  <h1 id="Alpaca_Markets_HistoricalOptionBarsRequest" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest" class="text-break">Class HistoricalOptionBarsRequest
+  </h1>
+  <div class="markdown level0 summary"><p>Encapsulates request parameters for
+<a class="xref" href="Alpaca.Markets.IHistoricalBarsClient-1.html#Alpaca_Markets_IHistoricalBarsClient_1_ListHistoricalBarsAsync__0_CancellationToken_">ListHistoricalBarsAsync(TRequest, CancellationToken)</a> and
+<a class="xref" href="Alpaca.Markets.IHistoricalBarsClient-1.html#Alpaca_Markets_IHistoricalBarsClient_1_GetHistoricalBarsAsync__0_CancellationToken_">GetHistoricalBarsAsync(TRequest, CancellationToken)</a> calls.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Alpaca.Markets.HistoricalRequestBase.html">HistoricalRequestBase</a></div>
+    <div class="level2"><span class="xref">HistoricalOptionBarsRequest</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Alpaca.Markets.IHistoricalRequest-2.html">IHistoricalRequest</a>&lt;<a class="xref" href="Alpaca.Markets.HistoricalOptionBarsRequest.html">HistoricalOptionBarsRequest</a>, <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</div>
+    <div><a class="xref" href="Alpaca.Markets.IHistoricalRequest.html">IHistoricalRequest</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Alpaca.Markets.HistoricalRequestBase.html#Alpaca_Markets_HistoricalRequestBase_Symbol">HistoricalRequestBase.Symbol</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.HistoricalRequestBase.html#Alpaca_Markets_HistoricalRequestBase_Symbols">HistoricalRequestBase.Symbols</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.HistoricalRequestBase.html#Alpaca_Markets_HistoricalRequestBase_TimeInterval">HistoricalRequestBase.TimeInterval</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.HistoricalRequestBase.html#Alpaca_Markets_HistoricalRequestBase_Pagination">HistoricalRequestBase.Pagination</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.HistoricalRequestBase.html#Alpaca_Markets_HistoricalRequestBase_SortDirection">HistoricalRequestBase.SortDirection</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
+  <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
+  <h5 id="Alpaca_Markets_HistoricalOptionBarsRequest_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class HistoricalOptionBarsRequest : HistoricalRequestBase, IHistoricalRequest&lt;HistoricalOptionBarsRequest, IBar&gt;, IHistoricalRequest</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_HistoricalOptionBarsRequest__ctor_IEnumerable_String__Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalOptionBarsRequest.%23ctor(IEnumerable%7BString%7D%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/HistoricalOptionBarsRequest.cs/#L103">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_HistoricalOptionBarsRequest__ctor_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.#ctor*"></a>
+  <h4 id="Alpaca_Markets_HistoricalOptionBarsRequest__ctor_IEnumerable_String__Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.#ctor(IEnumerable{String},Alpaca.Markets.BarTimeFrame)">HistoricalOptionBarsRequest(IEnumerable&lt;String&gt;, BarTimeFrame)</h4>
+  <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.HistoricalOptionBarsRequest.html">HistoricalOptionBarsRequest</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HistoricalOptionBarsRequest(IEnumerable&lt;String&gt; symbols, BarTimeFrame timeFrame)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
+        <td><span class="parametername">symbols</span></td>
+        <td><p>Asset symbols for data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Alpaca.Markets.BarTimeFrame</span></td>
+        <td><span class="parametername">timeFrame</span></td>
+        <td><p>Type of time bars for retrieval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_HistoricalOptionBarsRequest__ctor_IEnumerable_String__Alpaca_Markets_Interval_DateTime__Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalOptionBarsRequest.%23ctor(IEnumerable%7BString%7D%2CAlpaca.Markets.Interval%7BDateTime%7D%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/HistoricalOptionBarsRequest.cs/#L88">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_HistoricalOptionBarsRequest__ctor_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.#ctor*"></a>
+  <h4 id="Alpaca_Markets_HistoricalOptionBarsRequest__ctor_IEnumerable_String__Alpaca_Markets_Interval_DateTime__Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.#ctor(IEnumerable{String},Alpaca.Markets.Interval{DateTime},Alpaca.Markets.BarTimeFrame)">HistoricalOptionBarsRequest(IEnumerable&lt;String&gt;, Interval&lt;DateTime&gt;, BarTimeFrame)</h4>
+  <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.HistoricalOptionBarsRequest.html">HistoricalOptionBarsRequest</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HistoricalOptionBarsRequest(IEnumerable&lt;String&gt; symbols, Interval&lt;DateTime&gt; timeInterval, BarTimeFrame timeFrame)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
+        <td><span class="parametername">symbols</span></td>
+        <td><p>Asset symbols for data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Alpaca.Markets.Interval</span>&lt;<span class="xref">DateTime</span>&gt;</td>
+        <td><span class="parametername">timeInterval</span></td>
+        <td><p>Inclusive time interval for filtering items in response.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Alpaca.Markets.BarTimeFrame</span></td>
+        <td><span class="parametername">timeFrame</span></td>
+        <td><p>Type of time bars for retrieval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_HistoricalOptionBarsRequest__ctor_IEnumerable_String__DateTime_DateTime_Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalOptionBarsRequest.%23ctor(IEnumerable%7BString%7D%2CDateTime%2CDateTime%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/HistoricalOptionBarsRequest.cs/#L71">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_HistoricalOptionBarsRequest__ctor_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.#ctor*"></a>
+  <h4 id="Alpaca_Markets_HistoricalOptionBarsRequest__ctor_IEnumerable_String__DateTime_DateTime_Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.#ctor(IEnumerable{String},DateTime,DateTime,Alpaca.Markets.BarTimeFrame)">HistoricalOptionBarsRequest(IEnumerable&lt;String&gt;, DateTime, DateTime, BarTimeFrame)</h4>
+  <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.HistoricalOptionBarsRequest.html">HistoricalOptionBarsRequest</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HistoricalOptionBarsRequest(IEnumerable&lt;String&gt; symbols, DateTime from, DateTime into, BarTimeFrame timeFrame)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
+        <td><span class="parametername">symbols</span></td>
+        <td><p>Asset symbols for data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DateTime</span></td>
+        <td><span class="parametername">from</span></td>
+        <td><p>Filter data equal to or after this time.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DateTime</span></td>
+        <td><span class="parametername">into</span></td>
+        <td><p>Filter data equal to or before this time.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Alpaca.Markets.BarTimeFrame</span></td>
+        <td><span class="parametername">timeFrame</span></td>
+        <td><p>Type of time bars for retrieval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_HistoricalOptionBarsRequest__ctor_String_Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalOptionBarsRequest.%23ctor(String%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/HistoricalOptionBarsRequest.cs/#L54">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_HistoricalOptionBarsRequest__ctor_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.#ctor*"></a>
+  <h4 id="Alpaca_Markets_HistoricalOptionBarsRequest__ctor_String_Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.#ctor(String,Alpaca.Markets.BarTimeFrame)">HistoricalOptionBarsRequest(String, BarTimeFrame)</h4>
+  <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.HistoricalOptionBarsRequest.html">HistoricalOptionBarsRequest</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HistoricalOptionBarsRequest(String symbol, BarTimeFrame timeFrame)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Asset symbol for data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Alpaca.Markets.BarTimeFrame</span></td>
+        <td><span class="parametername">timeFrame</span></td>
+        <td><p>Type of time bars for retrieval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_HistoricalOptionBarsRequest__ctor_String_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_Interval_DateTime__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalOptionBarsRequest.%23ctor(String%2CAlpaca.Markets.BarTimeFrame%2CAlpaca.Markets.Interval%7BDateTime%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/HistoricalOptionBarsRequest.cs/#L38">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_HistoricalOptionBarsRequest__ctor_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.#ctor*"></a>
+  <h4 id="Alpaca_Markets_HistoricalOptionBarsRequest__ctor_String_Alpaca_Markets_BarTimeFrame_Alpaca_Markets_Interval_DateTime__" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.#ctor(String,Alpaca.Markets.BarTimeFrame,Alpaca.Markets.Interval{DateTime})">HistoricalOptionBarsRequest(String, BarTimeFrame, Interval&lt;DateTime&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.HistoricalOptionBarsRequest.html">HistoricalOptionBarsRequest</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HistoricalOptionBarsRequest(String symbol, BarTimeFrame timeFrame, Interval&lt;DateTime&gt; timeInterval)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Asset symbol for data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Alpaca.Markets.BarTimeFrame</span></td>
+        <td><span class="parametername">timeFrame</span></td>
+        <td><p>Type of time bars for retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Alpaca.Markets.Interval</span>&lt;<span class="xref">DateTime</span>&gt;</td>
+        <td><span class="parametername">timeInterval</span></td>
+        <td><p>Inclusive time interval for filtering items in response.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_HistoricalOptionBarsRequest__ctor_String_DateTime_DateTime_Alpaca_Markets_BarTimeFrame_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalOptionBarsRequest.%23ctor(String%2CDateTime%2CDateTime%2CAlpaca.Markets.BarTimeFrame)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/HistoricalOptionBarsRequest.cs/#L20">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_HistoricalOptionBarsRequest__ctor_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.#ctor*"></a>
+  <h4 id="Alpaca_Markets_HistoricalOptionBarsRequest__ctor_String_DateTime_DateTime_Alpaca_Markets_BarTimeFrame_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.#ctor(String,DateTime,DateTime,Alpaca.Markets.BarTimeFrame)">HistoricalOptionBarsRequest(String, DateTime, DateTime, BarTimeFrame)</h4>
+  <div class="markdown level1 summary"><p>Creates new instance of <a class="xref" href="Alpaca.Markets.HistoricalOptionBarsRequest.html">HistoricalOptionBarsRequest</a> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HistoricalOptionBarsRequest(String symbol, DateTime from, DateTime into, BarTimeFrame timeFrame)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td><p>Asset symbol for data retrieval.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DateTime</span></td>
+        <td><span class="parametername">from</span></td>
+        <td><p>Filter data equal to or after this time.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">DateTime</span></td>
+        <td><span class="parametername">into</span></td>
+        <td><p>Filter data equal to or before this time.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Alpaca.Markets.BarTimeFrame</span></td>
+        <td><span class="parametername">timeFrame</span></td>
+        <td><p>Type of time bars for retrieval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_HistoricalOptionBarsRequest_LastPathSegment.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalOptionBarsRequest.LastPathSegment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/HistoricalOptionBarsRequest.cs/#L116">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_HistoricalOptionBarsRequest_LastPathSegment_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.LastPathSegment*"></a>
+  <h4 id="Alpaca_Markets_HistoricalOptionBarsRequest_LastPathSegment" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.LastPathSegment">LastPathSegment</h4>
+  <div class="markdown level1 summary"><p>Gets the last part of the full REST endpoint URL path.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override String LastPathSegment { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Alpaca.Markets.HistoricalRequestBase.html#Alpaca_Markets_HistoricalRequestBase_LastPathSegment">HistoricalRequestBase.LastPathSegment</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_HistoricalOptionBarsRequest_TimeFrame.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalOptionBarsRequest.TimeFrame%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/HistoricalOptionBarsRequest.cs/#L112">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_HistoricalOptionBarsRequest_TimeFrame_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.TimeFrame*"></a>
+  <h4 id="Alpaca_Markets_HistoricalOptionBarsRequest_TimeFrame" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.TimeFrame">TimeFrame</h4>
+  <div class="markdown level1 summary"><p>Gets type of time bars for retrieval.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BarTimeFrame TimeFrame { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Alpaca.Markets.BarTimeFrame</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_HistoricalOptionBarsRequest_Alpaca_Markets_IHistoricalRequest_Alpaca_Markets_HistoricalOptionBarsRequest_Alpaca_Markets_IBar__GetValidatedRequestWithoutPageToken.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalOptionBarsRequest.Alpaca%23Markets%23IHistoricalRequest%7BAlpaca%23Markets%23HistoricalOptionBarsRequest%2CAlpaca%23Markets%23IBar%7D%23GetValidatedRequestWithoutPageToken%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/HistoricalOptionBarsRequest.cs/#L127">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_HistoricalOptionBarsRequest_Alpaca_Markets_IHistoricalRequest_Alpaca_Markets_HistoricalOptionBarsRequest_Alpaca_Markets_IBar__GetValidatedRequestWithoutPageToken_" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.Alpaca#Markets#IHistoricalRequest{Alpaca#Markets#HistoricalOptionBarsRequest,Alpaca#Markets#IBar}#GetValidatedRequestWithoutPageToken*"></a>
+  <h4 id="Alpaca_Markets_HistoricalOptionBarsRequest_Alpaca_Markets_IHistoricalRequest_Alpaca_Markets_HistoricalOptionBarsRequest_Alpaca_Markets_IBar__GetValidatedRequestWithoutPageToken" data-uid="Alpaca.Markets.HistoricalOptionBarsRequest.Alpaca#Markets#IHistoricalRequest{Alpaca#Markets#HistoricalOptionBarsRequest,Alpaca#Markets#IBar}#GetValidatedRequestWithoutPageToken">IHistoricalRequest&lt;HistoricalOptionBarsRequest, IBar&gt;.GetValidatedRequestWithoutPageToken()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">HistoricalOptionBarsRequest IHistoricalRequest&lt;HistoricalOptionBarsRequest, IBar&gt;.GetValidatedRequestWithoutPageToken()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.HistoricalOptionBarsRequest.html">HistoricalOptionBarsRequest</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Alpaca.Markets.IHistoricalRequest-2.html">IHistoricalRequest&lt;TRequest, TItem&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="Alpaca.Markets.IHistoricalRequest.html">IHistoricalRequest</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Alpaca.Markets.HistoricalRequestBaseExtensions.html#Alpaca_Markets_HistoricalRequestBaseExtensions_WithPageSize__1___0_UInt32_">HistoricalRequestBaseExtensions.WithPageSize&lt;TRequest&gt;(TRequest, UInt32)</a>
+  </div>
+  <div>
+      <a class="xref" href="Alpaca.Markets.HistoricalRequestBaseExtensions.html#Alpaca_Markets_HistoricalRequestBaseExtensions_WithPageToken__1___0_String_">HistoricalRequestBaseExtensions.WithPageToken&lt;TRequest&gt;(TRequest, String)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_HistoricalOptionBarsRequest.md&amp;value=---%0Auid%3A%20Alpaca.Markets.HistoricalOptionBarsRequest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Parameters/HistoricalOptionBarsRequest.cs/#L8" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

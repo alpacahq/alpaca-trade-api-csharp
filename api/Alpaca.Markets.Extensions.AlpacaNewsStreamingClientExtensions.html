@@ -116,6 +116,36 @@ implementation with automatic reconnection (with configurable delay and number o
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaNewsStreamingClientExtensions_GetNewsSubscription.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.GetNewsSubscription%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Reconnection/AlpacaNewsStreamingClientExtensions.cs/#L16">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaNewsStreamingClientExtensions_GetNewsSubscription_" data-uid="Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.GetNewsSubscription*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaNewsStreamingClientExtensions_GetNewsSubscription" data-uid="Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.GetNewsSubscription">GetNewsSubscription()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IAlpacaDataSubscription&lt;INewsArticle&gt; GetNewsSubscription()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.INewsArticle.html">INewsArticle</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaNewsStreamingClientExtensions_GetNewsSubscription_Alpaca_Markets_IAlpacaNewsStreamingClient_IEnumerable_String__.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.GetNewsSubscription(Alpaca.Markets.IAlpacaNewsStreamingClient%2CIEnumerable%7BString%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -223,6 +253,53 @@ implementation with automatic reconnection (with configurable delay and number o
         <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.INewsArticle.html">INewsArticle</a>&gt;</td>
         <td><p>Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaNewsStreamingClientExtensions_GetNewsSubscription_String_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.GetNewsSubscription(String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Reconnection/AlpacaNewsStreamingClientExtensions.cs/#L20">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_Extensions_AlpacaNewsStreamingClientExtensions_GetNewsSubscription_" data-uid="Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.GetNewsSubscription*"></a>
+  <h4 id="Alpaca_Markets_Extensions_AlpacaNewsStreamingClientExtensions_GetNewsSubscription_String_" data-uid="Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.GetNewsSubscription(String)">GetNewsSubscription(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IAlpacaDataSubscription&lt;INewsArticle&gt; GetNewsSubscription(String symbol)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">String</span></td>
+        <td><span class="parametername">symbol</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.INewsArticle.html">INewsArticle</a>&gt;</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -396,114 +473,6 @@ so you can use it inside the <code>using</code> or <code>await using</code> stat
       <tr>
         <td><span class="xref">ValueTask</span>&lt;<a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription</a>&lt;<a class="xref" href="Alpaca.Markets.INewsArticle.html">INewsArticle</a>&gt;&gt;</td>
         <td><p>Subscription object for tracking updates via the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html#Alpaca_Markets_IAlpacaDataSubscription_1_Received">Received</a> event.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaNewsStreamingClientExtensions_WithReconnect_Alpaca_Markets_IAlpacaNewsStreamingClient_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.WithReconnect(Alpaca.Markets.IAlpacaNewsStreamingClient)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Reconnection/AlpacaNewsStreamingClientExtensions.cs/#L38">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_Extensions_AlpacaNewsStreamingClientExtensions_WithReconnect_" data-uid="Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.WithReconnect*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaNewsStreamingClientExtensions_WithReconnect_Alpaca_Markets_IAlpacaNewsStreamingClient_" data-uid="Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.WithReconnect(Alpaca.Markets.IAlpacaNewsStreamingClient)">WithReconnect(IAlpacaNewsStreamingClient)</h4>
-  <div class="markdown level1 summary"><p>Wraps instance of <a class="xref" href="Alpaca.Markets.IAlpacaNewsStreamingClient.html">IAlpacaNewsStreamingClient</a> into the helper class
-with automatic reconnection support and provide optional reconnection parameters.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaNewsStreamingClient WithReconnect(this IAlpacaNewsStreamingClient client)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Alpaca.Markets.IAlpacaNewsStreamingClient.html">IAlpacaNewsStreamingClient</a></td>
-        <td><span class="parametername">client</span></td>
-        <td><p>Original streaming client for wrapping.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Alpaca.Markets.IAlpacaNewsStreamingClient.html">IAlpacaNewsStreamingClient</a></td>
-        <td><p>Wrapped version of the <code data-dev-comment-type="paramref" class="paramref">client</code> object with reconnect.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_Extensions_AlpacaNewsStreamingClientExtensions_WithReconnect_Alpaca_Markets_IAlpacaNewsStreamingClient_Alpaca_Markets_Extensions_ReconnectionParameters_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.WithReconnect(Alpaca.Markets.IAlpacaNewsStreamingClient%2CAlpaca.Markets.Extensions.ReconnectionParameters)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets.Extensions/Reconnection/AlpacaNewsStreamingClientExtensions.cs/#L54">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_Extensions_AlpacaNewsStreamingClientExtensions_WithReconnect_" data-uid="Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.WithReconnect*"></a>
-  <h4 id="Alpaca_Markets_Extensions_AlpacaNewsStreamingClientExtensions_WithReconnect_Alpaca_Markets_IAlpacaNewsStreamingClient_Alpaca_Markets_Extensions_ReconnectionParameters_" data-uid="Alpaca.Markets.Extensions.AlpacaNewsStreamingClientExtensions.WithReconnect(Alpaca.Markets.IAlpacaNewsStreamingClient,Alpaca.Markets.Extensions.ReconnectionParameters)">WithReconnect(IAlpacaNewsStreamingClient, ReconnectionParameters)</h4>
-  <div class="markdown level1 summary"><p>Wraps instance of <a class="xref" href="Alpaca.Markets.IAlpacaDataStreamingClient.html">IAlpacaDataStreamingClient</a> into the helper class
-with automatic reconnection support with the default reconnection parameters.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAlpacaNewsStreamingClient WithReconnect(this IAlpacaNewsStreamingClient client, ReconnectionParameters parameters)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Alpaca.Markets.IAlpacaNewsStreamingClient.html">IAlpacaNewsStreamingClient</a></td>
-        <td><span class="parametername">client</span></td>
-        <td><p>Original streaming client for wrapping.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Alpaca.Markets.Extensions.ReconnectionParameters.html">ReconnectionParameters</a></td>
-        <td><span class="parametername">parameters</span></td>
-        <td><p>Reconnection parameters.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Alpaca.Markets.IAlpacaNewsStreamingClient.html">IAlpacaNewsStreamingClient</a></td>
-        <td><p>Wrapped version of the <code data-dev-comment-type="paramref" class="paramref">client</code> object with reconnect.</p>
 </td>
       </tr>
     </tbody>

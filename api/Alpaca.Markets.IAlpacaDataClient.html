@@ -96,12 +96,18 @@
     <div>
       <a class="xref" href="Alpaca.Markets.IHistoricalBarsClient-1.html#Alpaca_Markets_IHistoricalBarsClient_1_GetHistoricalBarsAsync__0_CancellationToken_">IHistoricalBarsClient&lt;HistoricalBarsRequest&gt;.GetHistoricalBarsAsync(HistoricalBarsRequest, CancellationToken)</a>
     </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.IAlpacaScreenerClient.html#Alpaca_Markets_IAlpacaScreenerClient_GetTopMarketMoversAsync_System_Nullable_Int32__CancellationToken_">IAlpacaScreenerClient.GetTopMarketMoversAsync(Nullable&lt;Int32&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Alpaca.Markets.IRateLimitProvider.html#Alpaca_Markets_IRateLimitProvider_GetRateLimitValues">IRateLimitProvider.GetRateLimitValues()</a>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Alpaca.Markets.html">Alpaca.Markets</a></h6>
   <h6><strong>Assembly</strong>: Alpaca.Markets.dll</h6>
   <h5 id="Alpaca_Markets_IAlpacaDataClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IAlpacaDataClient : IHistoricalQuotesClient&lt;HistoricalQuotesRequest&gt;, IHistoricalTradesClient&lt;HistoricalTradesRequest&gt;, IHistoricalBarsClient&lt;HistoricalBarsRequest&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IAlpacaDataClient : IHistoricalQuotesClient&lt;HistoricalQuotesRequest&gt;, IHistoricalTradesClient&lt;HistoricalTradesRequest&gt;, IHistoricalBarsClient&lt;HistoricalBarsRequest&gt;, IAlpacaScreenerClient, IRateLimitProvider</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
@@ -110,7 +116,7 @@
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_GetHistoricalAuctionsAsync_Alpaca_Markets_HistoricalAuctionsRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.GetHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L502">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L396">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_GetHistoricalAuctionsAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetHistoricalAuctionsAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_GetHistoricalAuctionsAsync_Alpaca_Markets_HistoricalAuctionsRequest_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,CancellationToken)">GetHistoricalAuctionsAsync(HistoricalAuctionsRequest, CancellationToken)</h4>
@@ -187,7 +193,7 @@
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_GetLatestBarAsync_Alpaca_Markets_LatestMarketDataRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(Alpaca.Markets.LatestMarketDataRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L49">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L39">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_GetLatestBarAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_GetLatestBarAsync_Alpaca_Markets_LatestMarketDataRequest_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(Alpaca.Markets.LatestMarketDataRequest,CancellationToken)">GetLatestBarAsync(LatestMarketDataRequest, CancellationToken)</h4>
@@ -261,66 +267,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_GetLatestBarAsync_String_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(String%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L19">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_IAlpacaDataClient_GetLatestBarAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync*"></a>
-  <h4 id="Alpaca_Markets_IAlpacaDataClient_GetLatestBarAsync_String_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetLatestBarAsync(String,CancellationToken)">GetLatestBarAsync(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets most recent bar for single asset from Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IBar&gt; GetLatestBarAsync(String symbol, CancellationToken cancellationToken = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">String</span></td>
-        <td><span class="parametername">symbol</span></td>
-        <td><p>Asset symbol for data retrieval.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;</td>
-        <td><p>Read-only latest bar information.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_GetLatestQuoteAsync_Alpaca_Markets_LatestMarketDataRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(Alpaca.Markets.LatestMarketDataRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L213">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L155">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_GetLatestQuoteAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_GetLatestQuoteAsync_Alpaca_Markets_LatestMarketDataRequest_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(Alpaca.Markets.LatestMarketDataRequest,CancellationToken)">GetLatestQuoteAsync(LatestMarketDataRequest, CancellationToken)</h4>
@@ -394,66 +344,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_GetLatestQuoteAsync_String_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(String%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L183">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_IAlpacaDataClient_GetLatestQuoteAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync*"></a>
-  <h4 id="Alpaca_Markets_IAlpacaDataClient_GetLatestQuoteAsync_String_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetLatestQuoteAsync(String,CancellationToken)">GetLatestQuoteAsync(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets most recent quote for singe asset from Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IQuote&gt; GetLatestQuoteAsync(String symbol, CancellationToken cancellationToken = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">String</span></td>
-        <td><span class="parametername">symbol</span></td>
-        <td><p>Asset symbol for data retrieval.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Alpaca.Markets.IQuote.html">IQuote</a>&gt;</td>
-        <td><p>Read-only latest quote information.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_GetLatestTradeAsync_Alpaca_Markets_LatestMarketDataRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(Alpaca.Markets.LatestMarketDataRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L131">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L97">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_GetLatestTradeAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_GetLatestTradeAsync_Alpaca_Markets_LatestMarketDataRequest_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(Alpaca.Markets.LatestMarketDataRequest,CancellationToken)">GetLatestTradeAsync(LatestMarketDataRequest, CancellationToken)</h4>
@@ -527,66 +421,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_GetLatestTradeAsync_String_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(String%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L101">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_IAlpacaDataClient_GetLatestTradeAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync*"></a>
-  <h4 id="Alpaca_Markets_IAlpacaDataClient_GetLatestTradeAsync_String_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetLatestTradeAsync(String,CancellationToken)">GetLatestTradeAsync(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets most recent trade for singe asset from Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;ITrade&gt; GetLatestTradeAsync(String symbol, CancellationToken cancellationToken = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">String</span></td>
-        <td><span class="parametername">symbol</span></td>
-        <td><p>Asset symbol for data retrieval.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Alpaca.Markets.ITrade.html">ITrade</a>&gt;</td>
-        <td><p>Read-only latest trade information.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_GetSnapshotAsync_Alpaca_Markets_LatestMarketDataRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(Alpaca.Markets.LatestMarketDataRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L295">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L213">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_GetSnapshotAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_GetSnapshotAsync_Alpaca_Markets_LatestMarketDataRequest_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(Alpaca.Markets.LatestMarketDataRequest,CancellationToken)">GetSnapshotAsync(LatestMarketDataRequest, CancellationToken)</h4>
@@ -660,19 +498,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_GetSnapshotAsync_String_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(String%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListCorporateActionsAsync_Alpaca_Markets_CorporateActionsRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListCorporateActionsAsync(Alpaca.Markets.CorporateActionsRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L265">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L475">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IAlpacaDataClient_GetSnapshotAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync*"></a>
-  <h4 id="Alpaca_Markets_IAlpacaDataClient_GetSnapshotAsync_String_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetSnapshotAsync(String,CancellationToken)">GetSnapshotAsync(String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets current snapshot (latest trade/quote and minute/days bars) for singe asset from Alpaca REST API endpoint.</p>
+  <a id="Alpaca_Markets_IAlpacaDataClient_ListCorporateActionsAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListCorporateActionsAsync*"></a>
+  <h4 id="Alpaca_Markets_IAlpacaDataClient_ListCorporateActionsAsync_Alpaca_Markets_CorporateActionsRequest_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListCorporateActionsAsync(Alpaca.Markets.CorporateActionsRequest,CancellationToken)">ListCorporateActionsAsync(CorporateActionsRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Returns the historical corporate actions for the current trading session according to request parameters.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;ISnapshot&gt; GetSnapshotAsync(String symbol, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;ICorporateActionsResponse&gt; ListCorporateActionsAsync(CorporateActionsRequest request, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -685,9 +523,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span></td>
-        <td><span class="parametername">symbol</span></td>
-        <td><p>Asset symbols for data retrieval.</p>
+        <td><a class="xref" href="Alpaca.Markets.CorporateActionsRequest.html">CorporateActionsRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Historical auctions request parameters.</p>
 </td>
       </tr>
       <tr>
@@ -708,64 +546,29 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Alpaca.Markets.ISnapshot.html">ISnapshot</a>&gt;</td>
-        <td><p>Read-only current snapshot information.</p>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Alpaca.Markets.ICorporateActionsResponse.html">ICorporateActionsResponse</a>&gt;</td>
+        <td><p>Read-only list of most active stocks ranked by trade count.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_GetSnapshotsAsync_IEnumerable_String__CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.GetSnapshotsAsync(IEnumerable%7BString%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L347">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_IAlpacaDataClient_GetSnapshotsAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetSnapshotsAsync*"></a>
-  <h4 id="Alpaca_Markets_IAlpacaDataClient_GetSnapshotsAsync_IEnumerable_String__CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.GetSnapshotsAsync(IEnumerable{String},CancellationToken)">GetSnapshotsAsync(IEnumerable&lt;String&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets current snapshot (latest trade/quote and minute/days bars) for several assets from Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IReadOnlyDictionary&lt;String, ISnapshot&gt;&gt; GetSnapshotsAsync(IEnumerable&lt;String&gt; symbols, CancellationToken cancellationToken = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="exceptions">Exceptions</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
+        <th>Condition</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
-        <td><span class="parametername">symbols</span></td>
-        <td><p>List of asset names for data retrieval.</p>
+        <td><a class="xref" href="Alpaca.Markets.RequestValidationException.html">RequestValidationException</a></td>
+        <td><p>The <code data-dev-comment-type="paramref" class="paramref">request</code> argument contains invalid data or some required data is missing, unable to create a valid HTTP request.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IReadOnlyDictionary</span>&lt;<span class="xref">String</span>, <a class="xref" href="Alpaca.Markets.ISnapshot.html">ISnapshot</a>&gt;&gt;</td>
-        <td><p>Read-only dictionary with the current snapshot information.</p>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
 </td>
       </tr>
     </tbody>
@@ -775,7 +578,7 @@
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListExchangesAsync_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListExchangesAsync(CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L370">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L264">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_ListExchangesAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListExchangesAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_ListExchangesAsync_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListExchangesAsync(CancellationToken)">ListExchangesAsync(CancellationToken)</h4>
@@ -841,7 +644,7 @@
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListHistoricalAuctionsAsync_Alpaca_Markets_HistoricalAuctionsRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L473">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L367">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_ListHistoricalAuctionsAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListHistoricalAuctionsAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_ListHistoricalAuctionsAsync_Alpaca_Markets_HistoricalAuctionsRequest_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListHistoricalAuctionsAsync(Alpaca.Markets.HistoricalAuctionsRequest,CancellationToken)">ListHistoricalAuctionsAsync(HistoricalAuctionsRequest, CancellationToken)</h4>
@@ -918,7 +721,7 @@
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListLatestBarsAsync_Alpaca_Markets_LatestMarketDataListRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestMarketDataListRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L90">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L68">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_ListLatestBarsAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_ListLatestBarsAsync_Alpaca_Markets_LatestMarketDataListRequest_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestMarketDataListRequest,CancellationToken)">ListLatestBarsAsync(LatestMarketDataListRequest, CancellationToken)</h4>
@@ -992,66 +795,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListLatestBarsAsync_IEnumerable_String__CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(IEnumerable%7BString%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L60">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_IAlpacaDataClient_ListLatestBarsAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync*"></a>
-  <h4 id="Alpaca_Markets_IAlpacaDataClient_ListLatestBarsAsync_IEnumerable_String__CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListLatestBarsAsync(IEnumerable{String},CancellationToken)">ListLatestBarsAsync(IEnumerable&lt;String&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets most recent bars for several assets from Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IReadOnlyDictionary&lt;String, IBar&gt;&gt; ListLatestBarsAsync(IEnumerable&lt;String&gt; symbols, CancellationToken cancellationToken = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
-        <td><span class="parametername">symbols</span></td>
-        <td><p>List of asset symbols for data retrieval.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IReadOnlyDictionary</span>&lt;<span class="xref">String</span>, <a class="xref" href="Alpaca.Markets.IBar.html">IBar</a>&gt;&gt;</td>
-        <td><p>Read-only dictionary with the latest bars information.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListLatestQuotesAsync_Alpaca_Markets_LatestMarketDataListRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestMarketDataListRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L254">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L184">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_ListLatestQuotesAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_ListLatestQuotesAsync_Alpaca_Markets_LatestMarketDataListRequest_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestMarketDataListRequest,CancellationToken)">ListLatestQuotesAsync(LatestMarketDataListRequest, CancellationToken)</h4>
@@ -1125,66 +872,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListLatestQuotesAsync_IEnumerable_String__CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(IEnumerable%7BString%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L224">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_IAlpacaDataClient_ListLatestQuotesAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync*"></a>
-  <h4 id="Alpaca_Markets_IAlpacaDataClient_ListLatestQuotesAsync_IEnumerable_String__CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListLatestQuotesAsync(IEnumerable{String},CancellationToken)">ListLatestQuotesAsync(IEnumerable&lt;String&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets most recent quotes for several assets from Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IReadOnlyDictionary&lt;String, IQuote&gt;&gt; ListLatestQuotesAsync(IEnumerable&lt;String&gt; symbols, CancellationToken cancellationToken = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
-        <td><span class="parametername">symbols</span></td>
-        <td><p>List of asset symbols for data retrieval.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IReadOnlyDictionary</span>&lt;<span class="xref">String</span>, <a class="xref" href="Alpaca.Markets.IQuote.html">IQuote</a>&gt;&gt;</td>
-        <td><p>Read-only dictionary with the latest quotes information.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListLatestTradesAsync_Alpaca_Markets_LatestMarketDataListRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestMarketDataListRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L172">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L126">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_ListLatestTradesAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_ListLatestTradesAsync_Alpaca_Markets_LatestMarketDataListRequest_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestMarketDataListRequest,CancellationToken)">ListLatestTradesAsync(LatestMarketDataListRequest, CancellationToken)</h4>
@@ -1258,19 +949,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListLatestTradesAsync_IEnumerable_String__CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(IEnumerable%7BString%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListMostActiveStocksByTradeCountAsync_System_Nullable_Int32__CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByTradeCountAsync(System.Nullable%7BInt32%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L142">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L446">View Source</a>
   </span>
-  <a id="Alpaca_Markets_IAlpacaDataClient_ListLatestTradesAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync*"></a>
-  <h4 id="Alpaca_Markets_IAlpacaDataClient_ListLatestTradesAsync_IEnumerable_String__CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListLatestTradesAsync(IEnumerable{String},CancellationToken)">ListLatestTradesAsync(IEnumerable&lt;String&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets most recent trades for several assets from Alpaca REST API endpoint.</p>
+  <a id="Alpaca_Markets_IAlpacaDataClient_ListMostActiveStocksByTradeCountAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByTradeCountAsync*"></a>
+  <h4 id="Alpaca_Markets_IAlpacaDataClient_ListMostActiveStocksByTradeCountAsync_System_Nullable_Int32__CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByTradeCountAsync(System.Nullable{Int32},CancellationToken)">ListMostActiveStocksByTradeCountAsync(Nullable&lt;Int32&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Returns the most active stocks by trade count for the current trading session.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IReadOnlyDictionary&lt;String, ITrade&gt;&gt; ListLatestTradesAsync(IEnumerable&lt;String&gt; symbols, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IReadOnlyList&lt;IActiveStock&gt;&gt; ListMostActiveStocksByTradeCountAsync(Int32? numberOfTopMostActiveStocks = null, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1283,9 +974,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
-        <td><span class="parametername">symbols</span></td>
-        <td><p>List of asset symbols for data retrieval.</p>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Int32</span>&gt;</td>
+        <td><span class="parametername">numberOfTopMostActiveStocks</span></td>
+        <td><p>Number of top most active stocks to fetch per day.</p>
 </td>
       </tr>
       <tr>
@@ -1306,8 +997,96 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IReadOnlyDictionary</span>&lt;<span class="xref">String</span>, <a class="xref" href="Alpaca.Markets.ITrade.html">ITrade</a>&gt;&gt;</td>
-        <td><p>Read-only dictionary with the latest trades information.</p>
+        <td><span class="xref">Task</span>&lt;<span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IActiveStock.html">IActiveStock</a>&gt;&gt;</td>
+        <td><p>Read-only list of most active stocks ranked by trade count.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListMostActiveStocksByVolumeAsync_System_Nullable_Int32__CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByVolumeAsync(System.Nullable%7BInt32%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L421">View Source</a>
+  </span>
+  <a id="Alpaca_Markets_IAlpacaDataClient_ListMostActiveStocksByVolumeAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByVolumeAsync*"></a>
+  <h4 id="Alpaca_Markets_IAlpacaDataClient_ListMostActiveStocksByVolumeAsync_System_Nullable_Int32__CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListMostActiveStocksByVolumeAsync(System.Nullable{Int32},CancellationToken)">ListMostActiveStocksByVolumeAsync(Nullable&lt;Int32&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Returns the most active stocks by volume for the current trading session.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IReadOnlyList&lt;IActiveStock&gt;&gt; ListMostActiveStocksByVolumeAsync(Int32? numberOfTopMostActiveStocks = null, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Int32</span>&gt;</td>
+        <td><span class="parametername">numberOfTopMostActiveStocks</span></td>
+        <td><p>Number of top most active stocks to fetch per day.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">IReadOnlyList</span>&lt;<a class="xref" href="Alpaca.Markets.IActiveStock.html">IActiveStock</a>&gt;&gt;</td>
+        <td><p>Read-only list of most active stocks ranked by volume.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Alpaca.Markets.RestClientErrorException.html">RestClientErrorException</a></td>
+        <td><p>The response contains an error message or the received response cannot be deserialized properly due to JSON schema mismatch.</p>
 </td>
       </tr>
     </tbody>
@@ -1317,7 +1096,7 @@
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListNewsArticlesAsync_Alpaca_Markets_NewsArticlesRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListNewsArticlesAsync(Alpaca.Markets.NewsArticlesRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L444">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L338">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_ListNewsArticlesAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListNewsArticlesAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_ListNewsArticlesAsync_Alpaca_Markets_NewsArticlesRequest_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListNewsArticlesAsync(Alpaca.Markets.NewsArticlesRequest,CancellationToken)">ListNewsArticlesAsync(NewsArticlesRequest, CancellationToken)</h4>
@@ -1394,7 +1173,7 @@
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListQuoteConditionsAsync_Alpaca_Markets_Tape_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListQuoteConditionsAsync(Alpaca.Markets.Tape%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L415">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L309">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_ListQuoteConditionsAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListQuoteConditionsAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_ListQuoteConditionsAsync_Alpaca_Markets_Tape_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListQuoteConditionsAsync(Alpaca.Markets.Tape,CancellationToken)">ListQuoteConditionsAsync(Tape, CancellationToken)</h4>
@@ -1466,7 +1245,7 @@
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListSnapshotsAsync_Alpaca_Markets_LatestMarketDataListRequest_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(Alpaca.Markets.LatestMarketDataListRequest%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L336">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L242">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_ListSnapshotsAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_ListSnapshotsAsync_Alpaca_Markets_LatestMarketDataListRequest_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(Alpaca.Markets.LatestMarketDataListRequest,CancellationToken)">ListSnapshotsAsync(LatestMarketDataListRequest, CancellationToken)</h4>
@@ -1540,66 +1319,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListSnapshotsAsync_IEnumerable_String__CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(IEnumerable%7BString%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L306">View Source</a>
-  </span>
-  <a id="Alpaca_Markets_IAlpacaDataClient_ListSnapshotsAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync*"></a>
-  <h4 id="Alpaca_Markets_IAlpacaDataClient_ListSnapshotsAsync_IEnumerable_String__CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListSnapshotsAsync(IEnumerable{String},CancellationToken)">ListSnapshotsAsync(IEnumerable&lt;String&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets current snapshot (latest trade/quote and minute/days bars) for several assets from Alpaca REST API endpoint.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IReadOnlyDictionary&lt;String, ISnapshot&gt;&gt; ListSnapshotsAsync(IEnumerable&lt;String&gt; symbols, CancellationToken cancellationToken = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">String</span>&gt;</td>
-        <td><span class="parametername">symbols</span></td>
-        <td><p>List of asset symbols for data retrieval.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IReadOnlyDictionary</span>&lt;<span class="xref">String</span>, <a class="xref" href="Alpaca.Markets.ISnapshot.html">ISnapshot</a>&gt;&gt;</td>
-        <td><p>Read-only dictionary with the current snapshot information.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/OlegRa/Alpaca.Markets/new/master/apiSpec/new?filename=Alpaca_Markets_IAlpacaDataClient_ListTradeConditionsAsync_Alpaca_Markets_Tape_CancellationToken_.md&amp;value=---%0Auid%3A%20Alpaca.Markets.IAlpacaDataClient.ListTradeConditionsAsync(Alpaca.Markets.Tape%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L392">View Source</a>
+    <a href="https://github.com/OlegRa/Alpaca.Markets/blob/master/Alpaca.Markets/Interfaces/IAlpacaDataClient.cs/#L286">View Source</a>
   </span>
   <a id="Alpaca_Markets_IAlpacaDataClient_ListTradeConditionsAsync_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListTradeConditionsAsync*"></a>
   <h4 id="Alpaca_Markets_IAlpacaDataClient_ListTradeConditionsAsync_Alpaca_Markets_Tape_CancellationToken_" data-uid="Alpaca.Markets.IAlpacaDataClient.ListTradeConditionsAsync(Alpaca.Markets.Tape,CancellationToken)">ListTradeConditionsAsync(Tape, CancellationToken)</h4>
