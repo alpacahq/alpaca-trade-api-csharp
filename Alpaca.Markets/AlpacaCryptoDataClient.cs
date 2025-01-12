@@ -52,7 +52,7 @@ internal sealed class AlpacaCryptoDataClient :
             data => data.OrderBooks, cancellationToken).ConfigureAwait(false);
 
     public Task<IMarketMovers> GetTopMarketMoversAsync(
-        Int32? numberOfLosersAndGainersInResponse = default,
+        Int32? numberOfLosersAndGainersInResponse = null,
         CancellationToken cancellationToken = default) =>
         HttpClient.GetTopMarketMoversAsync(RateLimitHandler,
             "crypto", numberOfLosersAndGainersInResponse, cancellationToken);

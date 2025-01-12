@@ -27,6 +27,6 @@ public interface IAlpacaScreenerClient
     /// <returns>Read-only market movers collections.</returns>
     [UsedImplicitly]
     Task<IMarketMovers> GetTopMarketMoversAsync(
-        Int32? numberOfLosersAndGainersInResponse = default,
+        Int32? numberOfLosersAndGainersInResponse = null,
         CancellationToken cancellationToken = default);
 }

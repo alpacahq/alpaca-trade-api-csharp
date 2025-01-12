@@ -49,7 +49,7 @@ internal sealed class JsonCorporateActionsResponse : ICorporateActionsResponse
     }
 
     [JsonProperty(PropertyName = "corporate_actions", Required = Required.Default)]
-    public JsonCorporateActionsDictionary Nested { get; set; } = new();
+    public JsonCorporateActionsDictionary Nested { get; [ExcludeFromCodeCoverage] set; } = new();
 
     [JsonIgnore]
     public IReadOnlyList<IStockAndCashMerger> StockAndCashMergers => Nested.StockAndCashMergersList;
@@ -91,7 +91,7 @@ internal sealed class JsonCorporateActionsResponse : ICorporateActionsResponse
     public IReadOnlyList<ISpinOff> SpinOffs => Nested.SpinOffsList;
 
     [JsonProperty(PropertyName = "next_page_token", Required = Required.Default)]
-    public String? NextPageToken { get; set;  }
+    public String? NextPageToken { get; [ExcludeFromCodeCoverage] set;  }
 
     [ExcludeFromCodeCoverage]
     public override String ToString() =>

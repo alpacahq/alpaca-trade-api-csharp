@@ -6,7 +6,7 @@ internal static class AlpacaScreenerClientExtensions
         this HttpClient httpClient,
         RateLimitHandler rateLimitHandler,
         String marketType,
-        Int32? numberOfLosersAndGainersInResponse = default,
+        Int32? numberOfLosersAndGainersInResponse = null,
         CancellationToken cancellationToken = default) =>
         await httpClient.GetAsync<IMarketMovers, JsonMarketMovers>(
             await getUriBuilderAsync(httpClient, marketType, numberOfLosersAndGainersInResponse).ConfigureAwait(false),
@@ -15,7 +15,7 @@ internal static class AlpacaScreenerClientExtensions
     private static async ValueTask<UriBuilder> getUriBuilderAsync(
         HttpClient httpClient,
         String marketType,
-        Int32? top = default) =>
+        Int32? top = null) =>
         new UriBuilder(httpClient.BaseAddress!)
         {
             Query = await new QueryBuilder()

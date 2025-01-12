@@ -420,7 +420,7 @@ public interface IAlpacaDataClient :
     /// <returns>Read-only list of most active stocks ranked by volume.</returns>
     [UsedImplicitly]
     Task<IReadOnlyList<IActiveStock>> ListMostActiveStocksByVolumeAsync(
-        Int32? numberOfTopMostActiveStocks = default,
+        Int32? numberOfTopMostActiveStocks = null,
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -445,7 +445,7 @@ public interface IAlpacaDataClient :
     /// <returns>Read-only list of most active stocks ranked by trade count.</returns>
     [UsedImplicitly]
     Task<IReadOnlyList<IActiveStock>> ListMostActiveStocksByTradeCountAsync(
-        Int32? numberOfTopMostActiveStocks = default,
+        Int32? numberOfTopMostActiveStocks = null,
         CancellationToken cancellationToken = default);
 
     /// <summary>
