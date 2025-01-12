@@ -104,6 +104,9 @@
       <h4><a class="xref" href="Alpaca.Markets.AlpacaNewsStreamingClientConfiguration.html">AlpacaNewsStreamingClientConfiguration</a></h4>
       <section><p>Configuration parameters object for <a class="xref" href="Alpaca.Markets.IAlpacaNewsStreamingClient.html">IAlpacaNewsStreamingClient</a> implementation.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.AlpacaOptionsDataClientConfiguration.html">AlpacaOptionsDataClientConfiguration</a></h4>
+      <section><p>Configuration parameters object for <a class="xref" href="Alpaca.Markets.IAlpacaOptionsDataClient.html">IAlpacaOptionsDataClient</a> instance.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.AlpacaStreamingClientConfiguration.html">AlpacaStreamingClientConfiguration</a></h4>
       <section><p>Configuration parameters object for <a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a> instance.</p>
 </section>
@@ -114,7 +117,7 @@
       <section><p>Set of extensions methods for the <a class="xref" href="Alpaca.Markets.IAnnouncement.html">IAnnouncement</a> interface.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.AnnouncementsRequest.html">AnnouncementsRequest</a></h4>
-      <section><p>Encapsulates request parameters for <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_ListAssetsAsync_Alpaca_Markets_AssetsRequest_CancellationToken_">ListAssetsAsync(AssetsRequest, CancellationToken)</a> call.</p>
+      <section><p>Encapsulates request parameters for <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_ListAnnouncementsAsync_Alpaca_Markets_AnnouncementsRequest_CancellationToken_">ListAnnouncementsAsync(AnnouncementsRequest, CancellationToken)</a> call.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.AssetsRequest.html">AssetsRequest</a></h4>
       <section><p>Encapsulates request parameters for <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_ListAssetsAsync_Alpaca_Markets_AssetsRequest_CancellationToken_">ListAssetsAsync(AssetsRequest, CancellationToken)</a> call.</p>
@@ -136,6 +139,9 @@ It is a common use case of an OTOCO (One Triggers OCO {One Cancels Other}) order
 <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_DeleteAssetFromWatchListByIdAsync_Alpaca_Markets_ChangeWatchListRequest_Guid__CancellationToken_">DeleteAssetFromWatchListByIdAsync(ChangeWatchListRequest&lt;Guid&gt;, CancellationToken)</a>, and
 <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_DeleteAssetFromWatchListByNameAsync_Alpaca_Markets_ChangeWatchListRequest_String__CancellationToken_">DeleteAssetFromWatchListByNameAsync(ChangeWatchListRequest&lt;String&gt;, CancellationToken)</a>
 calls.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.CorporateActionsRequest.html">CorporateActionsRequest</a></h4>
+      <section><p>Encapsulates request parameters for <a class="xref" href="Alpaca.Markets.IAlpacaDataClient.html#Alpaca_Markets_IAlpacaDataClient_ListCorporateActionsAsync_Alpaca_Markets_CorporateActionsRequest_CancellationToken_">ListCorporateActionsAsync(CorporateActionsRequest, CancellationToken)</a> call.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.DeleteAllPositionsRequest.html">DeleteAllPositionsRequest</a></h4>
       <section><p>Encapsulates request parameters for <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_DeleteAllPositionsAsync_Alpaca_Markets_DeleteAllPositionsRequest_CancellationToken_">DeleteAllPositionsAsync(DeleteAllPositionsRequest, CancellationToken)</a> call.</p>
@@ -169,10 +175,17 @@ calls.</p>
 <a class="xref" href="Alpaca.Markets.IHistoricalQuotesClient-1.html#Alpaca_Markets_IHistoricalQuotesClient_1_ListHistoricalQuotesAsync__0_CancellationToken_">ListHistoricalQuotesAsync(TRequest, CancellationToken)</a> and
 <a class="xref" href="Alpaca.Markets.IHistoricalQuotesClient-1.html#Alpaca_Markets_IHistoricalQuotesClient_1_GetHistoricalQuotesAsync__0_CancellationToken_">GetHistoricalQuotesAsync(TRequest, CancellationToken)</a> calls.</p>
 </section>
-      <h4><a class="xref" href="Alpaca.Markets.HistoricalCryptoRequestBase.html">HistoricalCryptoRequestBase</a></h4>
-      <section><p>Encapsulates base logic for all historical crypto data requests on Alpaca Data API v2.</p>
-</section>
       <h4><a class="xref" href="Alpaca.Markets.HistoricalCryptoTradesRequest.html">HistoricalCryptoTradesRequest</a></h4>
+      <section><p>Encapsulates request parameters for
+<a class="xref" href="Alpaca.Markets.IHistoricalTradesClient-1.html#Alpaca_Markets_IHistoricalTradesClient_1_ListHistoricalTradesAsync__0_CancellationToken_">ListHistoricalTradesAsync(TRequest, CancellationToken)</a> and
+<a class="xref" href="Alpaca.Markets.IHistoricalTradesClient-1.html#Alpaca_Markets_IHistoricalTradesClient_1_GetHistoricalTradesAsync__0_CancellationToken_">GetHistoricalTradesAsync(TRequest, CancellationToken)</a> calls.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.HistoricalOptionBarsRequest.html">HistoricalOptionBarsRequest</a></h4>
+      <section><p>Encapsulates request parameters for
+<a class="xref" href="Alpaca.Markets.IHistoricalBarsClient-1.html#Alpaca_Markets_IHistoricalBarsClient_1_ListHistoricalBarsAsync__0_CancellationToken_">ListHistoricalBarsAsync(TRequest, CancellationToken)</a> and
+<a class="xref" href="Alpaca.Markets.IHistoricalBarsClient-1.html#Alpaca_Markets_IHistoricalBarsClient_1_GetHistoricalBarsAsync__0_CancellationToken_">GetHistoricalBarsAsync(TRequest, CancellationToken)</a> calls.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.HistoricalOptionTradesRequest.html">HistoricalOptionTradesRequest</a></h4>
       <section><p>Encapsulates request parameters for
 <a class="xref" href="Alpaca.Markets.IHistoricalTradesClient-1.html#Alpaca_Markets_IHistoricalTradesClient_1_ListHistoricalTradesAsync__0_CancellationToken_">ListHistoricalTradesAsync(TRequest, CancellationToken)</a> and
 <a class="xref" href="Alpaca.Markets.IHistoricalTradesClient-1.html#Alpaca_Markets_IHistoricalTradesClient_1_GetHistoricalTradesAsync__0_CancellationToken_">GetHistoricalTradesAsync(TRequest, CancellationToken)</a> calls.</p>
@@ -217,6 +230,9 @@ calls.</p>
       <h4><a class="xref" href="Alpaca.Markets.LatestMarketDataRequest.html">LatestMarketDataRequest</a></h4>
       <section><p>Encapsulates data for latest stock data requests on Alpaca Data API v2.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.LatestOptionsDataRequest.html">LatestOptionsDataRequest</a></h4>
+      <section><p>Encapsulates data for latest options data requests on Alpaca Data API v2.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.LatestOrderBooksRequest.html">LatestOrderBooksRequest</a></h4>
       <section><p>Encapsulates data for latest crypto XBBO request on Alpaca Data API v2.</p>
 </section>
@@ -246,6 +262,15 @@ calls.</p>
 This is a set of two orders with the same side (buy/buy or sell/sell) and currently only exit order is supported.
 In other words, this is the second part of the bracket orders where the entry order is already filled,
 and you can submit the take-profit and stop-loss in one order submission.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.OptionChainRequest.html">OptionChainRequest</a></h4>
+      <section><p>Encapsulates data for latest options data requests on Alpaca Data API v2.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.OptionContractsRequest.html">OptionContractsRequest</a></h4>
+      <section><p>Encapsulates request parameters for <a class="xref" href="Alpaca.Markets.IAlpacaTradingClient.html#Alpaca_Markets_IAlpacaTradingClient_ListOptionContractsAsync_Alpaca_Markets_OptionContractsRequest_CancellationToken_">ListOptionContractsAsync(OptionContractsRequest, CancellationToken)</a> call.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.OptionSnapshotRequest.html">OptionSnapshotRequest</a></h4>
+      <section><p>Encapsulates data for latest options data requests on Alpaca Data API v2.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.OrderBase.html">OrderBase</a></h4>
       <section><p>Encapsulates base data for any order types, never used directly by any code.</p>
@@ -330,6 +355,9 @@ ensuring a higher probability of achieving a predetermined entry or exit price.<
       <h4><a class="xref" href="Alpaca.Markets.IAccountConfiguration.html">IAccountConfiguration</a></h4>
       <section><p>Encapsulates account configuration settings from Alpaca REST API.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.IActiveStock.html">IActiveStock</a></h4>
+      <section><p>Encapsulates the single active stock information from Alpaca APIs.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.IAlpacaCryptoDataClient.html">IAlpacaCryptoDataClient</a></h4>
       <section><p>Provides unified type-safe access for Alpaca Crypto Data API via HTTP/REST.</p>
 </section>
@@ -350,6 +378,12 @@ ensuring a higher probability of achieving a predetermined entry or exit price.<
 </section>
       <h4><a class="xref" href="Alpaca.Markets.IAlpacaNewsStreamingClient.html">IAlpacaNewsStreamingClient</a></h4>
       <section><p>Provides unified type-safe access for Alpaca data streaming API via websockets.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IAlpacaOptionsDataClient.html">IAlpacaOptionsDataClient</a></h4>
+      <section><p>Provides unified type-safe access for Alpaca Options Data API via HTTP/REST.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IAlpacaScreenerClient.html">IAlpacaScreenerClient</a></h4>
+      <section><p>Provides unified type-safe access for Alpaca Screener API via HTTP/REST.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.IAlpacaStreamingClient.html">IAlpacaStreamingClient</a></h4>
       <section><p>Provides unified type-safe access for Alpaca streaming API.</p>
@@ -375,17 +409,38 @@ ensuring a higher probability of achieving a predetermined entry or exit price.<
       <h4><a class="xref" href="Alpaca.Markets.ICalendar.html">ICalendar</a></h4>
       <section><p>Encapsulates single trading day information from Alpaca REST API.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.ICashDividend.html">ICashDividend</a></h4>
+      <section><p>Encapsulates the cash dividend information from Alpaca APIs.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.ICashMerger.html">ICashMerger</a></h4>
+      <section><p>Encapsulates the cash merger information from Alpaca APIs.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.IClock.html">IClock</a></h4>
       <section><p>Encapsulates current trading date information from Alpaca REST API.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.ICorporateActionsResponse.html">ICorporateActionsResponse</a></h4>
+      <section><p>Encapsulates the historical corporate action response page with different corporate action types inside.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.ICorrection.html">ICorrection</a></h4>
       <section><p>Encapsulates trade correction information from Alpaca APIs.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.IDictionaryPage-1.html">IDictionaryPage&lt;TItem&gt;</a></h4>
+      <section><p>Encapsulates single page response in Alpaca Data API v2.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.IEnvironment.html">IEnvironment</a></h4>
       <section><p>Provides URLs for different APIs available for this SDK on specific environment.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.IErrorInformation.html">IErrorInformation</a></h4>
+      <section><p>Encapsulates extended error information from Alpaca error REST response.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.IExclusiveTimeInterval.html">IExclusiveTimeInterval</a></h4>
-      <section><p>Represents the exclusive version of the <a class="xref" href="Alpaca.Markets.ITimeInterval.html">ITimeInterval</a> interface.</p>
+      <section><p>Represents the exclusive version of the <see cref="!:ITimeInterval"></see> interface.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IForwardSplit.html">IForwardSplit</a></h4>
+      <section><p>Encapsulates the forward split information from Alpaca APIs.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IGreeks.html">IGreeks</a></h4>
+      <section><p>Options Greeks are a set of risk measures that are used in the options market to evaluate the risk and reward of an option.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.IHistoricalBarsClient-1.html">IHistoricalBarsClient&lt;TRequest&gt;</a></h4>
       <section><p>Provides unified type-safe access for Alpaca Crypto Data API via HTTP/REST.</p>
@@ -411,11 +466,25 @@ ensuring a higher probability of achieving a predetermined entry or exit price.<
       <h4><a class="xref" href="Alpaca.Markets.ILimitUpLimitDown.html">ILimitUpLimitDown</a></h4>
       <section><p>Encapsulates the basic LULD update information from Alpaca APIs.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.IMarketMover.html">IMarketMover</a></h4>
+      <section><p>Encapsulates the single market mover information from Alpaca APIs.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IMarketMovers.html">IMarketMovers</a></h4>
+      <section><p>Encapsulates two lists of market movers from Alpaca APIs.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.IMultiPage-1.html">IMultiPage&lt;TItems&gt;</a></h4>
       <section><p>Encapsulates single page response in Alpaca Data API v2.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.INameChange.html">INameChange</a></h4>
+      <section><p>Encapsulates the name change information from Alpaca APIs.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.INewsArticle.html">INewsArticle</a></h4>
       <section><p>Encapsulates the basic news article information from Alpaca APIs.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IOptionContract.html">IOptionContract</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Alpaca.Markets.IOptionSnapshot.html">IOptionSnapshot</a></h4>
+      <section><p>Encapsulates option snapshot information from the Alpaca REST API.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.IOrder.html">IOrder</a></h4>
       <section><p>Encapsulates order information from Alpaca REST API.</p>
@@ -447,14 +516,41 @@ ensuring a higher probability of achieving a predetermined entry or exit price.<
       <h4><a class="xref" href="Alpaca.Markets.IQuote.html">IQuote</a></h4>
       <section><p>Encapsulates the basic quote information from Alpaca APIs.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.IRateLimitProvider.html">IRateLimitProvider</a></h4>
+      <section><p>Encapsulates access to the latest available rate limit information for this client.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IRateLimitValues.html">IRateLimitValues</a></h4>
+      <section><p>Provides information about client-specific rate limit values.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IRedemption.html">IRedemption</a></h4>
+      <section><p>Encapsulates the redemption information from Alpaca APIs.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.IRequestWithTimeInterval-1.html">IRequestWithTimeInterval&lt;TInterval&gt;</a></h4>
       <section><p>Encapsulates access point for setting time interval filtering on request instance.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IReverseSplit.html">IReverseSplit</a></h4>
+      <section><p>Encapsulates the reverse split information from Alpaca APIs.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IRightsDistribution.html">IRightsDistribution</a></h4>
+      <section><p>Encapsulates the right distribution information from Alpaca APIs.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.ISnapshot.html">ISnapshot</a></h4>
       <section><p>Encapsulates snapshot information from the Alpaca REST API.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.ISpinOff.html">ISpinOff</a></h4>
+      <section><p>Encapsulates the spin-off information from Alpaca APIs.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.IStatus.html">IStatus</a></h4>
       <section><p>Encapsulates the basic trading status update information from Alpaca APIs.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IStockAndCashMerger.html">IStockAndCashMerger</a></h4>
+      <section><p>Encapsulates the stock and cash merger information from Alpaca APIs.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IStockDividend.html">IStockDividend</a></h4>
+      <section><p>Encapsulates the stock dividend information from Alpaca APIs.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IStockMerger.html">IStockMerger</a></h4>
+      <section><p>Encapsulates the stock merger information from Alpaca APIs.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.IStopLoss.html">IStopLoss</a></h4>
       <section><p>Encapsulates the price information about the stop loss order.</p>
@@ -480,11 +576,17 @@ ensuring a higher probability of achieving a predetermined entry or exit price.<
       <h4><a class="xref" href="Alpaca.Markets.ITradeUpdate.html">ITradeUpdate</a></h4>
       <section><p>Encapsulates trade update information from Alpaca streaming API.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.IUnitSplit.html">IUnitSplit</a></h4>
+      <section><p>Encapsulates the unit split information from Alpaca APIs.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.IWatchList.html">IWatchList</a></h4>
       <section><p>Encapsulates watch list information from Alpaca REST API.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.IWebSocket.html">IWebSocket</a></h4>
       <section><p>Encapsulates asynchronous interface of web socket client.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IWorthlessRemoval.html">IWorthlessRemoval</a></h4>
+      <section><p>Encapsulates the worthless removal information from Alpaca APIs.</p>
 </section>
     <h3 id="enums">Enums
   </h3>
@@ -515,6 +617,9 @@ ensuring a higher probability of achieving a predetermined entry or exit price.<
       <h4><a class="xref" href="Alpaca.Markets.CorporateActionDateType.html">CorporateActionDateType</a></h4>
       <section><p>Corporate action type in Alpaca REST API.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.CorporateActionFilterType.html">CorporateActionFilterType</a></h4>
+      <section><p>Supported bar corporate action adjustment types for Alpaca Data API.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.CorporateActionSubType.html">CorporateActionSubType</a></h4>
       <section><p>Corporate action sub type in Alpaca REST API.</p>
 </section>
@@ -534,11 +639,29 @@ ensuring a higher probability of achieving a predetermined entry or exit price.<
       <h4><a class="xref" href="Alpaca.Markets.HistoryPeriodUnit.html">HistoryPeriodUnit</a></h4>
       <section><p>Period units for portfolio history in the Alpaca REST API.</p>
 </section>
-      <h4><a class="xref" href="Alpaca.Markets.MarkedDataFeed.html">MarkedDataFeed</a></h4>
+      <h4><a class="xref" href="Alpaca.Markets.IntradayProfitLoss.html">IntradayProfitLoss</a></h4>
+      <section><p>Intraday profit/loss calculation for portfolio history in the Alpaca REST API.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.IntradayReporting.html">IntradayReporting</a></h4>
+      <section><p>Intraday reporting styles for portfolio history in the Alpaca REST API.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.MarketDataFeed.html">MarketDataFeed</a></h4>
       <section><p>Supported market feed data types for Alpaca Data API.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.Multiplier.html">Multiplier</a></h4>
       <section><p>Account multiplier value (enum values can be cast to related integer values).</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.OptionsFeed.html">OptionsFeed</a></h4>
+      <section><p>Supported options feed for Alpaca REST API.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.OptionsTradingLevel.html">OptionsTradingLevel</a></h4>
+      <section><p>Options trading level for Alpaca REST API.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.OptionStyle.html">OptionStyle</a></h4>
+      <section><p>Supported option contract styles for Alpaca REST API.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.OptionType.html">OptionType</a></h4>
+      <section><p>Supported option contract types for Alpaca REST API.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.OrderClass.html">OrderClass</a></h4>
       <section><p>Order class for advanced orders in the Alpaca REST API.</p>
@@ -554,6 +677,9 @@ ensuring a higher probability of achieving a predetermined entry or exit price.<
 </section>
       <h4><a class="xref" href="Alpaca.Markets.OrderType.html">OrderType</a></h4>
       <section><p>Supported order types in Alpaca REST API.</p>
+</section>
+      <h4><a class="xref" href="Alpaca.Markets.PositionIntent.html">PositionIntent</a></h4>
+      <section><p>Position intent for order placement in Alpaca REST API.</p>
 </section>
       <h4><a class="xref" href="Alpaca.Markets.PositionSide.html">PositionSide</a></h4>
       <section><p>Position side in Alpaca REST API.</p>

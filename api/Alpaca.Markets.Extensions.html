@@ -98,6 +98,9 @@ implementation with automatic reconnection (with configurable delay and number o
       <section><p>Helper extension method for creating special version of the <a class="xref" href="Alpaca.Markets.IAlpacaNewsStreamingClient.html">IAlpacaNewsStreamingClient</a>
 implementation with automatic reconnection (with configurable delay and number of attempts) support.</p>
 </section>
+      <h4><a class="xref" href="Alpaca.Markets.Extensions.AlpacaOptionsDataClientExtensions.html">AlpacaOptionsDataClientExtensions</a></h4>
+      <section><p>Set of extension methods for the <a class="xref" href="Alpaca.Markets.IAlpacaOptionsDataClient.html">IAlpacaOptionsDataClient</a> interface.</p>
+</section>
       <h4><a class="xref" href="Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.html">AlpacaServiceCollectionExtensions</a></h4>
       <section><p>Set of extensions methods for registering the strongly-typed Alpaca REST API clients
 in the default Microsoft dependency injection container used by most .NET hosts.</p>
@@ -150,7 +153,7 @@ WebSocket URL obtained from environment variables.</p>
     <h3 id="interfaces">Interfaces
   </h3>
       <h4><a class="xref" href="Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription-1.html">IDisposableAlpacaDataSubscription&lt;TItem&gt;</a></h4>
-      <section><p>Extends the <a class="xref" href="Alpaca.Markets.IAlpacaDataSubscription-1.html">IAlpacaDataSubscription&lt;TApi&gt;</a> interface with disposing support
+      <section><p>Extends the <see cref="!:IAlpacaDataSubscription&lt;TItem>"></see> interface with disposing support
 so caller can use instance of this interface in <code>using</code> and <code>await using</code> statements.</p>
 </section>
 </article>
