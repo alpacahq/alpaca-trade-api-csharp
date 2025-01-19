@@ -96,8 +96,21 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
         CancellationToken cancellationToken) =>
         new(); // DO nothing by default for auto-resubscribed clients.
 
-    private async void handleSocketClosed() => 
-        await handleSocketClosedAsync().ConfigureAwait(false);
+
+    [SuppressMessage(
+        "Design", "CA1031:Do not catch general exception types",
+        Justification = "Expected behavior - we report exceptions via OnError event.")]
+    private async void handleSocketClosed()
+    {
+        try
+        {
+            await handleSocketClosedAsync().ConfigureAwait(false);
+        }
+        catch (Exception exception)
+        {
+            handleOnError(exception);
+        }
+    }
 
     [SuppressMessage(
         "Design", "CA1031:Do not catch general exception types",
@@ -178,6 +191,7 @@ internal abstract class ClientWithReconnectBase<TClient> : IStreamingClient
     [SuppressMessage(
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
+    // ReSharper disable once AsyncVoidMethod
     private async void handleOnError(
         Exception exception)
     {

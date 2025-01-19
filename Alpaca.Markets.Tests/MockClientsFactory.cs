@@ -4,7 +4,9 @@ using Alpaca.Markets.Extensions;
 
 namespace Alpaca.Markets.Tests;
 
+#pragma warning disable IDE0079 // Remove unnecessary suppression
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
+#pragma warning restore IDE0079 // Remove unnecessary suppression
 public sealed class MockClientsFactoryFixture
 {
     private readonly SecurityKey _secretKey = new SecretKey(

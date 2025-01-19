@@ -1458,27 +1458,6 @@
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListCorporateActionsAsync(Alpaca.Markets.CorporateActionsRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListCorporateActionsAsync(Alpaca.Markets.CorporateActionsRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0006</DiagnosticId>
-    <Target>M:Alpaca.Markets.IAlpacaDataClient.ListCorporateActionsAsync(Alpaca.Markets.CorporateActionsRequest,System.Threading.CancellationToken)</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
     <DiagnosticId>CP0008</DiagnosticId>
     <Target>T:Alpaca.Markets.AccountActivityType</Target>
     <Left>lib/net6.0/Alpaca.Markets.dll</Left>
@@ -1537,6 +1516,13 @@
   <Suppression>
     <DiagnosticId>CP0008</DiagnosticId>
     <Target>T:Alpaca.Markets.CorporateActionDateType</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0008</DiagnosticId>
+    <Target>T:Alpaca.Markets.CorporateActionFilterType</Target>
     <Left>lib/net6.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -1976,61 +1962,5 @@
     <Target>T:Alpaca.Markets.TradeEvent</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
     <Right>lib/net8.0/Alpaca.Markets.dll</Right>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0011</DiagnosticId>
-    <Target>F:Alpaca.Markets.AccountActivityType.CryptoFee</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0011</DiagnosticId>
-    <Target>F:Alpaca.Markets.AccountActivityType.FeeInUsd</Target>
-    <Left>lib/net462/Alpaca.Markets.dll</Left>
-    <Right>lib/net462/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0011</DiagnosticId>
-    <Target>F:Alpaca.Markets.AccountActivityType.CryptoFee</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0011</DiagnosticId>
-    <Target>F:Alpaca.Markets.AccountActivityType.FeeInUsd</Target>
-    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0011</DiagnosticId>
-    <Target>F:Alpaca.Markets.AccountActivityType.CryptoFee</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0011</DiagnosticId>
-    <Target>F:Alpaca.Markets.AccountActivityType.FeeInUsd</Target>
-    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0011</DiagnosticId>
-    <Target>F:Alpaca.Markets.AccountActivityType.CryptoFee</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
-  </Suppression>
-  <Suppression>
-    <DiagnosticId>CP0011</DiagnosticId>
-    <Target>F:Alpaca.Markets.AccountActivityType.FeeInUsd</Target>
-    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
-    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
-    <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
 </Suppressions>

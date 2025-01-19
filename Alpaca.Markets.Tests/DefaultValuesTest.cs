@@ -98,4 +98,24 @@ public sealed class DefaultValuesTest
         Assert.Equal(message, withInnerException.Message);
         Assert.Equal(defaultValue, withInnerException.InnerException);
     }
+
+    [Fact]
+    public void RequestValidationExceptionWorks()
+    {
+        var defaultValue = new RequestValidationException();
+
+        Assert.NotNull(defaultValue.Message);
+        Assert.Null(defaultValue.InnerException);
+
+        var message = Guid.NewGuid().ToString("N");
+        var withMessage = new RequestValidationException(message);
+
+        Assert.Equal(message, withMessage.Message);
+        Assert.Null(withMessage.InnerException);
+
+        var withInnerException = new RequestValidationException(message, defaultValue);
+
+        Assert.Equal(message, withInnerException.Message);
+        Assert.Equal(defaultValue, withInnerException.InnerException);
+    }
 }

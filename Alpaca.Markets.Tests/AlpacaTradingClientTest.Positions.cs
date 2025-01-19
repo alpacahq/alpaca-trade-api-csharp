@@ -113,7 +113,9 @@ public sealed partial class AlpacaTradingClientTest
         Assert.True(await mock.Client.ExerciseOptionsPositionBySymbolAsync(Stock));
     }
 
+#pragma warning disable IDE0079 // Remove unnecessary suppression
     [SuppressMessage("ReSharper", "StringLiteralTypo")]
+#pragma warning restore IDE0079 // Remove unnecessary suppression
     private static JObject createPosition() =>
         new(
             new JProperty("unrealized_intraday_plpc", ProfitLossPercent),
@@ -145,17 +147,17 @@ public sealed partial class AlpacaTradingClientTest
 
         Assert.NotEqual(Guid.Empty, position.AssetId);
 
-        Assert.True(position.AssetChangePercent != 0M);
-        Assert.True(position.AverageEntryPrice != 0M);
-        Assert.True(position.AssetCurrentPrice!= 0M);
-        Assert.True(position.AssetLastPrice != 0M);
-        Assert.True(position.MarketValue != 0M);
-        Assert.True(position.CostBasis != 0M);
+        Assert.NotEqual(0M, position.AssetChangePercent);
+        Assert.NotEqual(0M, position.AverageEntryPrice);
+        Assert.NotEqual(0M, position.AssetCurrentPrice);
+        Assert.NotEqual(0M, position.AssetLastPrice);
+        Assert.NotEqual(0M, position.MarketValue);
+        Assert.NotEqual(0M, position.CostBasis);
 
-        Assert.True(position.UnrealizedProfitLoss != 0M);
-        Assert.True(position.UnrealizedProfitLossPercent != 0M);
-        Assert.True(position.IntradayUnrealizedProfitLoss != 0M);
-        Assert.True(position.IntradayUnrealizedProfitLossPercent != 0M);
+        Assert.NotEqual(0M, position.UnrealizedProfitLoss);
+        Assert.NotEqual(0M, position.UnrealizedProfitLossPercent);
+        Assert.NotEqual(0M, position.IntradayUnrealizedProfitLoss);
+        Assert.NotEqual(0M, position.IntradayUnrealizedProfitLossPercent);
     }
 
     private static JArray getDeletePositionsResponse() =>

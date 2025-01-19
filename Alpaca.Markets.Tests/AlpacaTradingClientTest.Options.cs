@@ -89,7 +89,9 @@ public sealed partial class AlpacaTradingClientTest
             new JProperty("name", symbol),
             new JProperty("size", 100));
 
+#pragma warning disable IDE0079
     [SuppressMessage("ReSharper", "ParameterOnlyUsedForPreconditionCheck.Local")]
+#pragma warning restore IDE0079
     private static void validateOptionContract(
         IOptionContract optionContract,
         Guid contractId,

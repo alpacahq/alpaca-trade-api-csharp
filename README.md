@@ -67,7 +67,7 @@ Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method fo
 
 ### Build instructions
 
-1.  Install the latest version of the [.NET 8.0 SDK](https://dotnet.microsoft.com/download) for your OS.
+1.  Install the latest version of the [.NET 9.0 SDK](https://dotnet.microsoft.com/download) for your OS.
 2.  Clone the local version of this repository or your fork (if you want to make changes).
 3.  Build the packages using the `dotnet build` command running in the root directory of the cloned repo.
 

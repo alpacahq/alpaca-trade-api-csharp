@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net48;net8.0</TargetFrameworks>
+    <TargetFrameworks>net4.8;net8.0</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <TrimmerDefaultAction>link</TrimmerDefaultAction>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="!$(TargetFramework.StartsWith('net4'))">
+    <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
     <PublishTrimmed>true</PublishTrimmed>
   </PropertyGroup>
 

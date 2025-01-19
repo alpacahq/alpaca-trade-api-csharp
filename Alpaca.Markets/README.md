@@ -12,7 +12,7 @@ This package contains C#/.NET SDK for [Alpaca Trade API](https://docs.alpaca.mar
 
 1.  Create a new console application in a new, empty folder by running `dotnet new console`.
 2.  Add a reference for Alpaca .NET SDK with `dotnet add package Alpaca.Markets`.
-3.  Replace content of the auto-generated `Programm.cs` file with this code snippet:
+3.  Replace content of the auto-generated `Program.cs` file with this code snippet:
 ```cs
 using System;
 using Alpaca.Markets;

@@ -128,12 +128,16 @@ public sealed class ThrottleParameters
         IEnumerable<HttpStatusCode> retryHttpStatuses)
     {
         MaxRetryAttempts = maxRetryAttempts;
-        _retrySocketErrorCodes = new HashSet<SocketError>(
+        _retrySocketErrorCodes =
+        [
             // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
-            retrySocketErrorCodes ?? _defaultSocketErrorCodes);
-        _retryHttpStatuses = new HashSet<HttpStatusCode>(
+            ..retrySocketErrorCodes ?? _defaultSocketErrorCodes
+        ];
+        _retryHttpStatuses =
+        [
             // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
-            retryHttpStatuses ?? _defaultHttpStatuses);
+            ..retryHttpStatuses ?? _defaultHttpStatuses
+        ];
     }
 
     /// <summary>

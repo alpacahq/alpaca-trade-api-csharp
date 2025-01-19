@@ -179,7 +179,7 @@ public static partial class AlpacaTradingClientExtensions
             StrikePriceGreaterThanOrEqualTo = request.StrikePriceGreaterThanOrEqualTo,
             StrikePriceLessThanOrEqualTo = request.StrikePriceLessThanOrEqualTo,
             ExpirationDateEqualTo = request.ExpirationDateEqualTo,
-            Pagination = { Size = Pagination.MaxPageSize },
+            Pagination = { Size = request.Pagination.Size },
             AssetStatus = request.AssetStatus,
             OptionStyle = request.OptionStyle,
             OptionType = request.OptionType,

@@ -21,7 +21,7 @@ public sealed class HistoricalTradesRequest : HistoricalRequestBase, IHistorical
         String symbol,
         DateTime from,
         DateTime into)
-        : this(new[] { symbol.EnsureNotNull() }, from, into)
+        : this([symbol.EnsureNotNull()], from, into)
     {
     }
 
@@ -36,7 +36,7 @@ public sealed class HistoricalTradesRequest : HistoricalRequestBase, IHistorical
     public HistoricalTradesRequest(
         String symbol,
         Interval<DateTime> timeInterval)
-        : this(new[] { symbol.EnsureNotNull() }, timeInterval)
+        : this([symbol.EnsureNotNull()], timeInterval)
     {
     }
 
@@ -49,7 +49,7 @@ public sealed class HistoricalTradesRequest : HistoricalRequestBase, IHistorical
     /// </exception>
     public HistoricalTradesRequest(
         String symbol)
-        : this(new[] { symbol.EnsureNotNull() })
+        : this([symbol.EnsureNotNull()])
     {
     }
 
