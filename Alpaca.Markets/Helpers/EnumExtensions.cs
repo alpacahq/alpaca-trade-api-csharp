@@ -27,13 +27,13 @@ internal static class EnumExtensions
         where T : struct, Enum =>
         JsonConvert.SerializeObject(enumValue).Trim(_doubleQuotes);
 
-    public static T ReadEnumString<
+    public static T FromEnumString<
 #if NET6_0_OR_GREATER
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]
 #endif
         T>(
-        this JsonReader reader,
-        T fallbackEnumValue)
+        this T fallbackEnumValue,
+        JsonReader reader)
         where T : struct, Enum =>
         reader.TokenType == JsonToken.String
             ? NamesHelper<T>.ValuesByNames.GetValueOrDefault(

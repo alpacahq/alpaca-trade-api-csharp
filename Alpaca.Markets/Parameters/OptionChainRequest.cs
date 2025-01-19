@@ -20,7 +20,6 @@ public sealed class OptionChainRequest : Validation.IRequest
     /// Gets options symbols list for data retrieval.
     /// </summary>
     [UsedImplicitly]
-
     public String UnderlyingSymbol { get; }
 
     /// <summary>

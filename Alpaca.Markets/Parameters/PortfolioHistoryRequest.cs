@@ -12,14 +12,6 @@ public sealed class PortfolioHistoryRequest : Validation.IRequest
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
     [Obsolete("Use the Interval property instead of this one.", true)]
-    public Interval<DateTime> TimeInterval => Interval;
-
-    /// <summary>
-    /// Gets inclusive date interval for filtering items in response.
-    /// </summary>
-    [UsedImplicitly]
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use the Interval property instead of this one.", false)]
     public Interval<DateOnly> DateInterval => Interval.AsDateInterval();
 
     /// <summary>
@@ -100,7 +92,7 @@ public sealed class PortfolioHistoryRequest : Validation.IRequest
     [UsedImplicitly]
     [ExcludeFromCodeCoverage]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [Obsolete("Use the override that gets Interval<DateTime> instead of this one.", false)]
+    [Obsolete("Use the override that gets Interval<DateTime> instead of this one.", true)]
     public PortfolioHistoryRequest WithInterval(
         Interval<DateOnly> value)
     {

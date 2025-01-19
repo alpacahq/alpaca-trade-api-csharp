@@ -73,18 +73,6 @@ public sealed class AccountActivitiesRequest
     /// <param name="date">Target date for filtering activities.</param>
     /// <returns>Fluent interface method return same <see cref="AccountActivitiesRequest"/> instance.</returns>
     [UsedImplicitly]
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use another method overload that takes the DateOnly argument.", true)]
-    public AccountActivitiesRequest SetSingleDate(
-        DateTime date) =>
-        SetSingleDate(DateOnly.FromDateTime(date));
-
-    /// <summary>
-    /// Sets filtering for single <paramref name="date"/> activities.
-    /// </summary>
-    /// <param name="date">Target date for filtering activities.</param>
-    /// <returns>Fluent interface method return same <see cref="AccountActivitiesRequest"/> instance.</returns>
-    [UsedImplicitly]
     public AccountActivitiesRequest SetSingleDate(
         DateOnly date)
     {

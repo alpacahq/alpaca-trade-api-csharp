@@ -1,8 +1,9 @@
 ﻿// This file is used by Code Analysis to maintain SuppressMessage attributes that are applied to this project.
 
-global using JetBrains.Annotations;
 global using System.Diagnostics.CodeAnalysis;
 global using System.Runtime.CompilerServices;
+global using JetBrains.Annotations;
+global using System.Diagnostics;
 global using System.Net.Sockets;
 
 [assembly: CLSCompliant(true)]

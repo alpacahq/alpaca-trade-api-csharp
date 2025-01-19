@@ -4,7 +4,7 @@
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-internal class JsonStockAndCashMerger : IStockAndCashMerger
+internal sealed class JsonStockAndCashMerger : IStockAndCashMerger
 {
     [JsonProperty(PropertyName = "acquirer_symbol", Required = Required.Always)]
     public String AcquirerSymbol { get; set; } = String.Empty;

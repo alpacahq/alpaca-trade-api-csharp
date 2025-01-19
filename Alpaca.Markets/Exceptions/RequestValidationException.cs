@@ -3,13 +3,11 @@
 /// <summary>
 /// Represents exception information for request input data validation errors.
 /// </summary>
-[Serializable]
 public sealed class RequestValidationException : Exception
 {
     /// <summary>
     /// Creates new instance of <see cref="RequestValidationException"/> class.
     /// </summary>
-    [ExcludeFromCodeCoverage]
     public RequestValidationException()
     {
     }
@@ -18,7 +16,6 @@ public sealed class RequestValidationException : Exception
     /// Creates new instance of <see cref="RequestValidationException"/> class with specified error message.
     /// </summary>
     /// <param name="message">The message that describes the error.</param>
-    [ExcludeFromCodeCoverage]
     public RequestValidationException(
         String message)
         : base(message)
@@ -31,7 +28,6 @@ public sealed class RequestValidationException : Exception
     /// </summary>
     /// <param name="message">The message that describes the error.</param>
     /// <param name="inner">The exception that is the cause of this exception.</param>
-    [ExcludeFromCodeCoverage]
     public RequestValidationException(
         String message,
         Exception inner)
@@ -50,14 +46,6 @@ public sealed class RequestValidationException : Exception
         : base(message)
     {
         PropertyName = propertyName;
-    }
-
-    [ExcludeFromCodeCoverage]
-    private RequestValidationException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(info, context)
-    {
     }
 
     /// <summary>

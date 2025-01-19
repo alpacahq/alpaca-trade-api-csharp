@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net8.0</TargetFrameworks>
     <AssemblyOriginatorKeyFile>..\Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.2.0.1</AssemblyVersion>
-    <FileVersion>7.2.0.1</FileVersion>
-    <Version>7.2.0</Version>
+    <AssemblyVersion>8.0.0.0</AssemblyVersion>
+    <FileVersion>8.0.0.0</FileVersion>
+    <Version>8.0.0-alpha1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- The `IAlpdaDataClient.ListCorporateActionsAsync` function was added to support historical corporate actions request/response.
+- Obsolete members cleanup - remove fully obsolete and convert warnings into errors.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
@@ -49,12 +49,15 @@
   <PropertyGroup>
     <EnableStrictModeForCompatibleFrameworksInPackage>true</EnableStrictModeForCompatibleFrameworksInPackage>
     <!--<GenerateCompatibilitySuppressionFile>true</GenerateCompatibilitySuppressionFile>-->
-    <PackageValidationBaselineVersion>7.1.0</PackageValidationBaselineVersion>
+    <PackageValidationBaselineVersion>7.2.0</PackageValidationBaselineVersion>
     <EnableStrictModeForCompatibleTfms>true</EnableStrictModeForCompatibleTfms>
     <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
     <EnablePackageValidation>true</EnablePackageValidation>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="($(TargetFramework.StartsWith('net8')))">
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
     <IsTrimmable>true</IsTrimmable>
   </PropertyGroup>
@@ -111,12 +114,12 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
     <PackageReference Include="System.Net.Http.WinHttpHandler" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
-  <ItemGroup Condition="!$(TargetFramework.StartsWith('net6'))">
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('net8'))">
     <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 

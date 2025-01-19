@@ -126,13 +126,13 @@ public static partial class AlpacaCryptoStreamingClientExtensions
             client.EnsureNotNull().GetOrderBookSubscription(symbols.EnsureNotNull()),
             client);
 
-    private static IAlpacaDataSubscription<IOrderBook> getOrderBookSubscription(
+    private static AlpacaDataSubscriptionContainer<IOrderBook> getOrderBookSubscription(
         IAlpacaCryptoStreamingClient client,
         IEnumerable<String> symbols) =>
         getSubscription(client.GetOrderBookSubscription, symbols);
 
-    private static IAlpacaDataSubscription<TItem> getSubscription<TItem>(
+    private static AlpacaDataSubscriptionContainer<TItem> getSubscription<TItem>(
         Func<String, IAlpacaDataSubscription<TItem>> selector,
         IEnumerable<String> symbols) =>
-        new AlpacaDataSubscriptionContainer<TItem>(symbols.Select(selector));
+        new(symbols.Select(selector));
 }

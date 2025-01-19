@@ -10,5 +10,5 @@ internal sealed class AssetAttributesEnumConverter : StringEnumConverter
         Type objectType,
         Object? existingValue,
         JsonSerializer serializer) =>
-        reader.ReadEnumString(AssetAttributes.Unknown);
+        AssetAttributes.Unknown.FromEnumString(reader);
 }

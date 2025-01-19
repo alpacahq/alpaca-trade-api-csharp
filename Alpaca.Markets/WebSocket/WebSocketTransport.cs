@@ -205,7 +205,11 @@ internal sealed class WebSocketsTransport(
                 else
                 {
                     // Cancel the timeout
+#if NET8_0_OR_GREATER
+                    await delayCts.CancelAsync().ConfigureAwait(false);
+#else
                     delayCts.Cancel();
+#endif
                 }
             }
             else

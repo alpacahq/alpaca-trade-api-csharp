@@ -224,19 +224,11 @@ public enum AccountActivityType
     StockSplit,
 
     /// <summary>
-    /// REG/TAF fees
-    /// </summary>
-    [UsedImplicitly]
-    [EnumMember(Value = "REGTAFFEE")]
-    [Obsolete("This member will be removed in the upcoming release, use the FeeInUsd member instead.", true)]
-    RefTafFee,
-
-    /// <summary>
     /// Option assignment
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "OPASN")]
-    OptionAssignment,
+    OptionAssignment = 31,
 
     /// <summary>
     /// Option expiration

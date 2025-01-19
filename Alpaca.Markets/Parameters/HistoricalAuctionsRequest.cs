@@ -99,40 +99,6 @@ public sealed class HistoricalAuctionsRequest : HistoricalRequestBase, IHistoric
     }
 
     /// <summary>
-    /// Creates new instance of <see cref="HistoricalAuctionsRequest"/> object.
-    /// </summary>
-    /// <param name="symbol">Asset symbol for data retrieval.</param>
-    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
-    /// <exception cref="ArgumentNullException">
-    /// The <paramref name="symbol"/> argument is <c>null</c>.
-    /// </exception>
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
-    public HistoricalAuctionsRequest(
-        String symbol,
-        IInclusiveTimeInterval timeInterval)
-        : this([symbol.EnsureNotNull()], timeInterval)
-    {
-    }
-
-    /// <summary>
-    /// Creates new instance of <see cref="HistoricalAuctionsRequest"/> object.
-    /// </summary>
-    /// <param name="symbols">Asset symbols for data retrieval.</param>
-    /// <param name="timeInterval">Inclusive time interval for filtering items in response.</param>
-    /// <exception cref="ArgumentNullException">
-    /// The <paramref name="symbols"/> argument is <c>null</c>.
-    /// </exception>
-    [ExcludeFromCodeCoverage]
-    [Obsolete("Use constructor with Interval<DateTime> argument instead of this one.", true)]
-    public HistoricalAuctionsRequest(
-        IEnumerable<String> symbols,
-        IInclusiveTimeInterval timeInterval)
-        : base(symbols.EnsureNotNull(), timeInterval)
-    {
-    }
-
-    /// <summary>
     /// Gets or sets the optional parameter for mapping symbol to contract by a specific date.
     /// </summary>
     [UsedImplicitly]

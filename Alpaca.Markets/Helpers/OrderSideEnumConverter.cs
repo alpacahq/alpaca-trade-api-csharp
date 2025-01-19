@@ -10,5 +10,5 @@ internal sealed class OrderSideEnumConverter : StringEnumConverter
         Type objectType,
         Object? existingValue,
         JsonSerializer serializer) =>
-        reader.ReadEnumString(OrderSide.Sell); // Treat all unknown order types as sell orders
+        OrderSide.Sell.FromEnumString(reader);
 }

@@ -5,7 +5,6 @@ namespace Alpaca.Markets;
 /// <summary>
 /// Represents Alpaca REST and Streaming API specific error information.
 /// </summary>
-[Serializable]
 public sealed class RestClientErrorException : Exception
 {
     /// <summary>
@@ -36,14 +35,6 @@ public sealed class RestClientErrorException : Exception
         String message,
         Exception inner)
         : base(message, inner)
-    {
-    }
-
-    [ExcludeFromCodeCoverage]
-    private RestClientErrorException(
-        SerializationInfo info,
-        StreamingContext context)
-        : base(info, context)
     {
     }
 

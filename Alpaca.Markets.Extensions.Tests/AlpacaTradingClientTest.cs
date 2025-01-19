@@ -1,9 +1,6 @@
-using System.Diagnostics.CodeAnalysis;
-
 namespace Alpaca.Markets.Extensions.Tests;
 
 [Collection("MockEnvironment")]
-[SuppressMessage("Usage", "xUnit1047:Avoid using TheoryDataRow arguments that might not be serializable")]
 public sealed class AlpacaTradingClientTest(
     MockClientsFactoryFixture mockClientsFactory)
 {

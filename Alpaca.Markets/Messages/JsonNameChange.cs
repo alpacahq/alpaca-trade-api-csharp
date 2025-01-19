@@ -4,7 +4,7 @@
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
-internal class JsonNameChange : INameChange
+internal sealed class JsonNameChange : INameChange
 {
     [JsonProperty(PropertyName = "old_symbol", Required = Required.Always)]
     public String OldSymbol { get; set; } = String.Empty;

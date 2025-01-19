@@ -10,5 +10,5 @@ internal sealed class AccountActivityTypeEnumConverter : StringEnumConverter
         Type objectType,
         Object? existingValue,
         JsonSerializer serializer) =>
-        reader.ReadEnumString(AccountActivityType.Unknown);
+        AccountActivityType.Unknown.FromEnumString(reader);
 }

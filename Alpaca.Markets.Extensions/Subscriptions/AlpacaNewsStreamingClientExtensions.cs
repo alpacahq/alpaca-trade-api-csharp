@@ -126,13 +126,13 @@ public static partial class AlpacaNewsStreamingClientExtensions
             client.EnsureNotNull().GetNewsSubscription(symbols.EnsureNotNull()),
             client.EnsureNotNull());
 
-    private static IAlpacaDataSubscription<INewsArticle> getNewsSubscription(
+    private static AlpacaDataSubscriptionContainer<INewsArticle> getNewsSubscription(
         IAlpacaNewsStreamingClient client,
         IEnumerable<String> symbols) =>
         getSubscription(client.GetNewsSubscription, symbols);
 
-    private static IAlpacaDataSubscription<TItem> getSubscription<TItem>(
+    private static AlpacaDataSubscriptionContainer<TItem> getSubscription<TItem>(
         Func<String, IAlpacaDataSubscription<TItem>> selector,
         IEnumerable<String> symbols) =>
-        new AlpacaDataSubscriptionContainer<TItem>(symbols.Select(selector));
+        new(symbols.Select(selector));
 }

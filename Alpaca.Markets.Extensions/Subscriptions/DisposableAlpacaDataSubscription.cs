@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace Alpaca.Markets.Extensions;
+﻿namespace Alpaca.Markets.Extensions;
 
 internal sealed class DisposableAlpacaDataSubscription<TItem> :
     IDisposableAlpacaDataSubscription<TItem>

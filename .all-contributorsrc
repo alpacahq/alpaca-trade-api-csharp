@@ -448,7 +448,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/10700224?v=4",
       "profile": "https://github.com/rudeGit",
       "contributions": [
-        "bug"
+        "bug",
+        "question"
       ]
     },
     {
@@ -848,7 +849,8 @@
       "profile": "https://github.com/Slacquer",
       "contributions": [
         "bug",
-        "question"
+        "question",
+        "ideas"
       ]
     },
     {
@@ -887,6 +889,157 @@
       "contributions": [
         "bug",
         "userTesting"
+      ]
+    },
+    {
+      "login": "AntoineDubois",
+      "name": "Antoine Dubois",
+      "avatar_url": "https://avatars.githubusercontent.com/u/77892842?v=4",
+      "profile": "https://github.com/AntoineDubois",
+      "contributions": [
+        "bug",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "hiohiohio",
+      "name": "hiohiohio",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2696532?v=4",
+      "profile": "https://github.com/hiohiohio",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "bobrot",
+      "name": "bobrot",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1851767?v=4",
+      "profile": "http://thedevprocess.com",
+      "contributions": [
+        "question"
+      ]
+    },
+    {
+      "login": "Chacoon3",
+      "name": "Chaconn3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92221220?v=4",
+      "profile": "https://github.com/Chacoon3",
+      "contributions": [
+        "question",
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "homer14",
+      "name": "homer14",
+      "avatar_url": "https://avatars.githubusercontent.com/u/146207223?v=4",
+      "profile": "https://github.com/homer14",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "IvoTops",
+      "name": "Ivo Tops",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3900366?v=4",
+      "profile": "https://github.com/IvoTops",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "artemiusgreat",
+      "name": "Anonymous",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5140879?v=4",
+      "profile": "http://indemos.com",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "cdeMonkey",
+      "name": "Abdi Ahmed",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29919316?v=4",
+      "profile": "http://aabdiahmed.com",
+      "contributions": [
+        "question"
+      ]
+    },
+    {
+      "login": "ushahx",
+      "name": "ushahx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13063345?v=4",
+      "profile": "https://github.com/ushahx",
+      "contributions": [
+        "bug",
+        "question"
+      ]
+    },
+    {
+      "login": "myrabyte",
+      "name": "myrabyte",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44659656?v=4",
+      "profile": "https://github.com/myrabyte",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "sunilvarghese",
+      "name": "sunilvarghese",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38252112?v=4",
+      "profile": "https://github.com/sunilvarghese",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "hoangvu07s",
+      "name": "hoangvu07s",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12878060?v=4",
+      "profile": "https://github.com/hoangvu07s",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "rshahrabani",
+      "name": "rshahrabani",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37419900?v=4",
+      "profile": "https://github.com/rshahrabani",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "leveltensoftware",
+      "name": "leveltensoftware",
+      "avatar_url": "https://avatars.githubusercontent.com/u/108337260?v=4",
+      "profile": "https://github.com/leveltensoftware",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "uranio-235",
+      "name": "Lázaro Armando",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2146818?v=4",
+      "profile": "https://github.com/uranio-235",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "michaelnero",
+      "name": "Michael Nero",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1127408?v=4",
+      "profile": "https://github.com/michaelnero",
+      "contributions": [
+        "bug",
+        "code"
       ]
     }
   ],
