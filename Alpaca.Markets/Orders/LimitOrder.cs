@@ -59,7 +59,7 @@ public sealed class LimitOrder : SimpleOrderBase
     /// Creates a new instance of the <see cref="OneCancelsOtherOrder"/> order from the current order.
     /// </summary>
     /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
-    /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
+    /// <returns>New advanced order representing a pair of original order and stop loss order.</returns>
     [UsedImplicitly]
     public OneCancelsOtherOrder OneCancelsOther(
         Decimal stopLossStopPrice) =>
@@ -70,7 +70,7 @@ public sealed class LimitOrder : SimpleOrderBase
     /// </summary>
     /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
     /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
-    /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
+    /// <returns>New advanced order representing a pair of original order and stop loss order.</returns>
     [UsedImplicitly]
     public OneCancelsOtherOrder OneCancelsOther(
         Decimal stopLossStopPrice,
