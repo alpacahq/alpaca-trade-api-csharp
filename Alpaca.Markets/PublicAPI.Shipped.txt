@@ -753,8 +753,8 @@ Alpaca.Markets.IOptionSnapshot.Quote.get -> Alpaca.Markets.IQuote?
 Alpaca.Markets.IOptionSnapshot.Symbol.get -> string!
 Alpaca.Markets.IOptionSnapshot.Trade.get -> Alpaca.Markets.ITrade?
 Alpaca.Markets.IOrder
-Alpaca.Markets.IOrder.AssetClass.get -> Alpaca.Markets.AssetClass
-Alpaca.Markets.IOrder.AssetId.get -> System.Guid
+Alpaca.Markets.IOrder.AssetClass.get -> Alpaca.Markets.AssetClass?
+Alpaca.Markets.IOrder.AssetId.get -> System.Guid?
 Alpaca.Markets.IOrder.AverageFillPrice.get -> decimal?
 Alpaca.Markets.IOrder.CancelledAtUtc.get -> System.DateTime?
 Alpaca.Markets.IOrder.ClientOrderId.get -> string?
@@ -770,7 +770,7 @@ Alpaca.Markets.IOrder.Legs.get -> System.Collections.Generic.IReadOnlyList<Alpac
 Alpaca.Markets.IOrder.LimitPrice.get -> decimal?
 Alpaca.Markets.IOrder.OrderClass.get -> Alpaca.Markets.OrderClass
 Alpaca.Markets.IOrder.OrderId.get -> System.Guid
-Alpaca.Markets.IOrder.OrderSide.get -> Alpaca.Markets.OrderSide
+Alpaca.Markets.IOrder.OrderSide.get -> Alpaca.Markets.OrderSide?
 Alpaca.Markets.IOrder.OrderStatus.get -> Alpaca.Markets.OrderStatus
 Alpaca.Markets.IOrder.OrderType.get -> Alpaca.Markets.OrderType
 Alpaca.Markets.IOrder.ReplacedAtUtc.get -> System.DateTime?
@@ -780,7 +780,7 @@ Alpaca.Markets.IOrder.Quantity.get -> decimal?
 Alpaca.Markets.IOrder.Notional.get -> decimal?
 Alpaca.Markets.IOrder.StopPrice.get -> decimal?
 Alpaca.Markets.IOrder.SubmittedAtUtc.get -> System.DateTime?
-Alpaca.Markets.IOrder.Symbol.get -> string!
+Alpaca.Markets.IOrder.Symbol.get -> string?
 Alpaca.Markets.IOrder.TimeInForce.get -> Alpaca.Markets.TimeInForce
 Alpaca.Markets.IOrder.TrailOffsetInDollars.get -> decimal?
 Alpaca.Markets.IOrder.TrailOffsetInPercent.get -> decimal?

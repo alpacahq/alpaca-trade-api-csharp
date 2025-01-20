@@ -70,19 +70,19 @@ public interface IOrder
     /// Gets unique asset identifier.
     /// </summary>
     [UsedImplicitly]
-    Guid AssetId { get; }
+    Guid? AssetId { get; }
 
     /// <summary>
     /// Gets asset symbol.
     /// </summary>
     [UsedImplicitly]
-    String Symbol { get; }
+    String? Symbol { get; }
 
     /// <summary>
     /// Gets asset class.
     /// </summary>
     [UsedImplicitly]
-    AssetClass AssetClass { get; }
+    AssetClass? AssetClass { get; }
 
     /// <summary>
     /// Gets original notional order quantity (with the fractional part).
@@ -128,7 +128,7 @@ public interface IOrder
     /// Gets order side (buy or sell).
     /// </summary>
     [UsedImplicitly]
-    OrderSide OrderSide { get; }
+    OrderSide? OrderSide { get; }
 
     /// <summary>
     /// Gets order duration.
