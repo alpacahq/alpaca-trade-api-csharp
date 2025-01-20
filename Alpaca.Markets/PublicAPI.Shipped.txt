@@ -1076,14 +1076,14 @@ Alpaca.Markets.NewOrderRequest.OrderClass.set -> void
 Alpaca.Markets.NewOrderRequest.PositionIntent.get -> Alpaca.Markets.PositionIntent?
 Alpaca.Markets.NewOrderRequest.PositionIntent.set -> void
 Alpaca.Markets.NewOrderRequest.Quantity.get -> Alpaca.Markets.OrderQuantity
-Alpaca.Markets.NewOrderRequest.Side.get -> Alpaca.Markets.OrderSide
+Alpaca.Markets.NewOrderRequest.Side.get -> Alpaca.Markets.OrderSide?
 Alpaca.Markets.NewOrderRequest.StopLossLimitPrice.get -> decimal?
 Alpaca.Markets.NewOrderRequest.StopLossLimitPrice.set -> void
 Alpaca.Markets.NewOrderRequest.StopLossStopPrice.get -> decimal?
 Alpaca.Markets.NewOrderRequest.StopLossStopPrice.set -> void
 Alpaca.Markets.NewOrderRequest.StopPrice.get -> decimal?
 Alpaca.Markets.NewOrderRequest.StopPrice.set -> void
-Alpaca.Markets.NewOrderRequest.Symbol.get -> string!
+Alpaca.Markets.NewOrderRequest.Symbol.get -> string?
 Alpaca.Markets.NewOrderRequest.TakeProfitLimitPrice.get -> decimal?
 Alpaca.Markets.NewOrderRequest.TakeProfitLimitPrice.set -> void
 Alpaca.Markets.NewOrderRequest.TrailOffsetInDollars.get -> decimal?

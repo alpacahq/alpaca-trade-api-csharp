@@ -6,6 +6,8 @@
 [UsedImplicitly]
 public sealed class NewOrderRequest : Validation.IRequest
 {
+    private readonly List<OptionLegRequest> _legs = [];
+
     /// <summary>
     /// Creates new instance of <see cref="NewOrderRequest"/> object.
     /// </summary>
@@ -26,16 +28,32 @@ public sealed class NewOrderRequest : Validation.IRequest
     {
         Symbol = symbol.EnsureNotNull();
         Quantity = quantity;
+        Duration = duration;
         Side = side;
         Type = type;
+    }
+
+    /// <summary>
+    /// Creates new instance of <see cref="NewOrderRequest"/> object.
+    /// </summary>
+    /// <param name="quantity">Order quantity.</param>
+    /// <param name="duration">Order duration.</param>
+    /// <param name="type">Order type.</param>
+    public NewOrderRequest(
+        OrderQuantity quantity,
+        OrderType type,
+        TimeInForce duration)
+    {
+        Quantity = quantity;
         Duration = duration;
+        Type = type;
     }
 
     /// <summary>
     /// Gets the new order asset symbol.
     /// </summary>
     [UsedImplicitly]
-    public String Symbol { get; }
+    public String? Symbol { get; }
 
     /// <summary>
     /// Gets the new order quantity.
@@ -47,7 +65,7 @@ public sealed class NewOrderRequest : Validation.IRequest
     /// Gets the new order side (buy or sell).
     /// </summary>
     [UsedImplicitly]
-    public OrderSide Side { get; }
+    public OrderSide? Side { get; }
 
     /// <summary>
     /// Gets the new order type.
@@ -127,12 +145,36 @@ public sealed class NewOrderRequest : Validation.IRequest
     [UsedImplicitly]
     public PositionIntent? PositionIntent { get; set; }
 
+    /// <summary>
+    /// Gets the list of order legs for option multi-legs order.
+    /// </summary>
+    [UsedImplicitly]
+    public IReadOnlyList<OptionLegRequest> Legs => _legs;
+
+    /// <summary>
+    /// Adds the option multi-leg into the <see cref="Legs"/> collection.
+    /// </summary>
+    /// <param name="leg">The option multi-leg order leg information.</param>
+    /// <returns>Original order request object with new leg.</returns>
+    public NewOrderRequest With(
+        OptionLegRequest leg)
+    {
+        _legs.Add(leg);
+        return this;
+    }
+
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
         ClientOrderId = ClientOrderId?.TrimClientOrderId();
-        yield return Symbol.TryValidateSymbolName();
+        yield return Symbol?.TryValidateSymbolName();
         yield return Quantity.TryValidateQuantity();
+
+        foreach (var exception in Legs.GetExceptions())
+        {
+            yield return exception;
+        }
     }
+
     internal JsonNewOrder GetJsonRequest() =>
         new()
         {
@@ -163,6 +205,9 @@ public sealed class NewOrderRequest : Validation.IRequest
                     StopPrice = StopLossStopPrice,
                     LimitPrice = StopLossLimitPrice
                 }
+                : null,
+            Legs = Legs.Count != 0
+                ? Legs.Select(leg => leg.GetJsonRequest()).ToList()
                 : null
         };
 }

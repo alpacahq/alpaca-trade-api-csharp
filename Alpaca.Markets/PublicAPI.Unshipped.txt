@@ -1,1 +1,13 @@
 ﻿#nullable enable
+Alpaca.Markets.NewOrderRequest.Legs.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.OptionLegRequest!>!
+Alpaca.Markets.NewOrderRequest.NewOrderRequest(Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.OrderType type, Alpaca.Markets.TimeInForce duration) -> void
+Alpaca.Markets.NewOrderRequest.With(Alpaca.Markets.OptionLegRequest! leg) -> Alpaca.Markets.NewOrderRequest!
+Alpaca.Markets.OptionLegRequest
+Alpaca.Markets.OptionLegRequest.OptionLegRequest(string! symbol, decimal ratioQuantity, Alpaca.Markets.OrderSide side) -> void
+Alpaca.Markets.OptionLegRequest.OptionLegRequest(string! symbol, decimal ratioQuantity, Alpaca.Markets.OrderSide side, Alpaca.Markets.PositionIntent positionIntent) -> void
+Alpaca.Markets.OptionLegRequest.OptionLegRequest(string! symbol, decimal ratioQuantity, Alpaca.Markets.PositionIntent positionIntent) -> void
+Alpaca.Markets.OptionLegRequest.PositionIntent.get -> Alpaca.Markets.PositionIntent?
+Alpaca.Markets.OptionLegRequest.RatioQuantity.get -> decimal
+Alpaca.Markets.OptionLegRequest.Side.get -> Alpaca.Markets.OrderSide?
+Alpaca.Markets.OptionLegRequest.Symbol.get -> string!
+Alpaca.Markets.OrderClass.MultiLegOptions = 4 -> Alpaca.Markets.OrderClass
