@@ -107,14 +107,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Threading.Channels" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="System.IO.Pipelines" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Threading.Channels" Version="9.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.IO.Pipelines" Version="9.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="Polly" Version="8.5.0" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Polly" Version="8.5.1" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="9.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
