@@ -2,7 +2,7 @@
 
 internal sealed class JsonNewOrder
 {
-    [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
+    [JsonProperty(PropertyName = "symbol", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
     public String? Symbol { get; set; }
 
     [JsonProperty(PropertyName = "qty", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
@@ -14,8 +14,8 @@ internal sealed class JsonNewOrder
     [JsonProperty(PropertyName = "side", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
     public OrderSide? OrderSide { get; set; }
 
-    [JsonProperty(PropertyName = "type", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-    public OrderType? OrderType { get; set; }
+    [JsonProperty(PropertyName = "type", Required = Required.Always)]
+    public OrderType OrderType { get; set; }
 
     [JsonProperty(PropertyName = "time_in_force", Required = Required.Always)]
     public TimeInForce TimeInForce { get; set; }

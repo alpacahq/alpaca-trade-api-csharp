@@ -125,6 +125,41 @@ public  sealed class OrderTypeTest
                 .StopLoss(stopLossStopPrice, stopLossLimitPrice));
     }
 
+    [Fact]
+    public void MultiLegOrderCreationWorks()
+    {
+        const Decimal limitPrice = 100M;
+        const Decimal ratioQuantity = 0.25M;
+
+        var legs = getOrderLegs()
+            .Select(tuple => new OrderLeg(Stock, ratioQuantity, tuple.Item1, tuple.Item2))
+            .ToList();
+
+        var marketOrder1 = MultiLegOrder.Market(Quantity, legs[0], legs[1]);
+        var marketOrder2 = MultiLegOrder.Market(Quantity, legs[0], legs[1], legs[2]);
+        var marketOrder3 = MultiLegOrder.Market(Quantity, legs[0], legs[1], legs[2], legs[3]);
+
+        var limitOrder1 = MultiLegOrder.Limit(Quantity, limitPrice, legs[0], legs[1]);
+        var limitOrder2 = MultiLegOrder.Limit(Quantity, limitPrice, legs[0], legs[1], legs[2]);
+        var limitOrder3 = MultiLegOrder.Limit(Quantity, limitPrice, legs[0], legs[1], legs[2], legs[3]);
+
+        assertOrdersAreEqual(marketOrder1, marketOrder1);
+        assertOrdersAreEqual(marketOrder2, marketOrder2);
+        assertOrdersAreEqual(marketOrder3, marketOrder3);
+
+        assertOrdersAreEqual(limitOrder1, limitOrder1);
+        assertOrdersAreEqual(limitOrder2, limitOrder2);
+        assertOrdersAreEqual(limitOrder3, limitOrder3);
+    }
+
+    private static IEnumerable<(PositionIntent, OrderSide)> getOrderLegs()
+    {
+        yield return (PositionIntent.BuyToClose, OrderSide.Buy);
+        yield return (PositionIntent.SellToClose, OrderSide.Sell);
+        yield return (PositionIntent.BuyToOpen, OrderSide.Buy);
+        yield return (PositionIntent.SellToOpen, OrderSide.Sell);
+    }
+
     private static void assertOrdersAreEqual(
         OrderBase lhs,
         OrderBase rhs)
@@ -225,6 +260,14 @@ public  sealed class OrderTypeTest
         Assert.Equal(lhs.Symbol, rhs.Symbol);
         Assert.Equal(lhs.Side, rhs.Side);
         Assert.Equal(lhs.Type, rhs.Type);
+    }
+
+    private static void assertOrdersAreEqual(
+        MultiLegOrder lhs,
+        MultiLegOrder rhs)
+    {
+        assertOrderBasePropertiesAreEqual(lhs, rhs);
+        assertJsonSerializedOrdersAreEqual(lhs, rhs);
     }
 
     private static void assertJsonSerializedOrdersAreEqual(

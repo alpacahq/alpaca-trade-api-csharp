@@ -156,6 +156,7 @@ public sealed class NewOrderRequest : Validation.IRequest
     /// </summary>
     /// <param name="leg">The option multi-leg order leg information.</param>
     /// <returns>Original order request object with new leg.</returns>
+    [UsedImplicitly]
     public NewOrderRequest With(
         OptionLegRequest leg)
     {
