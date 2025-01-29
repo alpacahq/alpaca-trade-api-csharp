@@ -99,4 +99,73 @@ public static class OrderSideExtensions
         OrderQuantity quantity,
         TrailOffset trailOffset) =>
         new(symbol, quantity, orderSide, trailOffset);
-}
+
+    /// <summary>
+    /// Creates new leg for the options multi-leg order.
+    /// </summary>
+    /// <param name="orderSide">Order side (buy or sell).</param>
+    /// <param name="symbol">Order asset symbol.</param>
+    /// <param name="ratioQuantity">Order quantity.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>The new <see cref="OrderLeg"/> object instance.</returns>
+    [UsedImplicitly]
+    public static OrderLeg Leg(
+        this OrderSide orderSide,
+        String symbol,
+        Decimal ratioQuantity) =>
+        new (symbol, ratioQuantity, orderSide);
+
+    /// <summary>
+    /// Creates new leg for the options multi-leg order.
+    /// </summary>
+    /// <param name="orderSide">Order side (buy or sell).</param>
+    /// <param name="symbol">Order asset symbol.</param>
+    /// <param name="ratioQuantity">Order quantity.</param>
+    /// <param name="positionIntent">Order position intent.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>The new <see cref="OrderLeg"/> object instance.</returns>
+    public static OrderLeg Leg(
+        this OrderSide orderSide,
+        String symbol,
+        Decimal ratioQuantity,
+        PositionIntent positionIntent) =>
+        new (symbol, ratioQuantity, positionIntent, orderSide);
+
+    /// <summary>
+    /// Creates new leg for the options multi-leg order.
+    /// </summary>
+    /// <param name="positionIntent">Order position intent.</param>
+    /// <param name="symbol">Order asset symbol.</param>
+    /// <param name="ratioQuantity">Order quantity.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>The new <see cref="OrderLeg"/> object instance.</returns>
+    [UsedImplicitly]
+    public static OrderLeg Leg(
+        this PositionIntent positionIntent,
+        String symbol,
+        Decimal ratioQuantity) =>
+        new (symbol, ratioQuantity, positionIntent);
+
+    /// <summary>
+    /// Creates new leg for the options multi-leg order.
+    /// </summary>
+    /// <param name="positionIntent">Order position intent.</param>
+    /// <param name="symbol">Order asset symbol.</param>
+    /// <param name="ratioQuantity">Order quantity.</param>
+    /// <param name="orderSide">Order side (buy or sell).</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>The new <see cref="OrderLeg"/> object instance.</returns>
+    public static OrderLeg Leg(
+        this PositionIntent positionIntent,
+        String symbol,
+        Decimal ratioQuantity,
+        OrderSide orderSide) =>
+        new (symbol, ratioQuantity, positionIntent, orderSide);}

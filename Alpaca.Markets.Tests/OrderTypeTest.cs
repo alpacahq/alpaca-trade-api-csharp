@@ -131,28 +131,35 @@ public  sealed class OrderTypeTest
         const Decimal limitPrice = 100M;
         const Decimal ratioQuantity = 0.25M;
 
-        var legs = getOrderLegs()
-            .Select(tuple => new OrderLeg(Stock, ratioQuantity, tuple.Item1, tuple.Item2))
+        var lfi = getOrderLegCreationInfo()
+            .Select(info => info.Intent.Leg(Stock, ratioQuantity, info.Side))
+            .ToList();
+        var lfs = getOrderLegCreationInfo()
+            .Select(info => info.Side.Leg(Stock, ratioQuantity, info.Intent))
             .ToList();
 
-        var marketOrder1 = MultiLegOrder.Market(Quantity, legs[0], legs[1]);
-        var marketOrder2 = MultiLegOrder.Market(Quantity, legs[0], legs[1], legs[2]);
-        var marketOrder3 = MultiLegOrder.Market(Quantity, legs[0], legs[1], legs[2], legs[3]);
+        assertOrdersAreEqual(
+            MultiLegOrder.Market(Quantity, lfi[0], lfi[1]),
+            MultiLegOrder.Market(Quantity, lfs[0], lfs[1]));
+        assertOrdersAreEqual(
+            MultiLegOrder.Market(Quantity, lfi[0], lfi[1], lfi[2]),
+            MultiLegOrder.Market(Quantity, lfs[0], lfs[1], lfs[2]));
+        assertOrdersAreEqual(
+            MultiLegOrder.Market(Quantity, lfi[0], lfi[1], lfi[2], lfi[3]),
+            MultiLegOrder.Market(Quantity, lfs[0], lfs[1], lfs[2], lfs[3]));
 
-        var limitOrder1 = MultiLegOrder.Limit(Quantity, limitPrice, legs[0], legs[1]);
-        var limitOrder2 = MultiLegOrder.Limit(Quantity, limitPrice, legs[0], legs[1], legs[2]);
-        var limitOrder3 = MultiLegOrder.Limit(Quantity, limitPrice, legs[0], legs[1], legs[2], legs[3]);
-
-        assertOrdersAreEqual(marketOrder1, marketOrder1);
-        assertOrdersAreEqual(marketOrder2, marketOrder2);
-        assertOrdersAreEqual(marketOrder3, marketOrder3);
-
-        assertOrdersAreEqual(limitOrder1, limitOrder1);
-        assertOrdersAreEqual(limitOrder2, limitOrder2);
-        assertOrdersAreEqual(limitOrder3, limitOrder3);
+        assertOrdersAreEqual(
+            MultiLegOrder.Limit(Quantity, limitPrice, lfi[0], lfi[1]),
+            MultiLegOrder.Limit(Quantity, limitPrice, lfs[0], lfs[1]));
+        assertOrdersAreEqual(
+            MultiLegOrder.Limit(Quantity, limitPrice, lfi[0], lfi[1], lfi[2]),
+            MultiLegOrder.Limit(Quantity, limitPrice, lfs[0], lfs[1], lfs[2]));
+        assertOrdersAreEqual(
+            MultiLegOrder.Limit(Quantity, limitPrice, lfi[0], lfi[1], lfi[2], lfi[3]),
+            MultiLegOrder.Limit(Quantity, limitPrice, lfs[0], lfs[1], lfs[2], lfs[3]));
     }
 
-    private static IEnumerable<(PositionIntent, OrderSide)> getOrderLegs()
+    private static IEnumerable<(PositionIntent Intent, OrderSide Side)> getOrderLegCreationInfo()
     {
         yield return (PositionIntent.BuyToClose, OrderSide.Buy);
         yield return (PositionIntent.SellToClose, OrderSide.Sell);
