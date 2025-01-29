@@ -12,15 +12,15 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>8.0.0.1</AssemblyVersion>
-    <FileVersion>8.0.0.1</FileVersion>
-    <Version>8.0.0-beta1</Version>
+    <AssemblyVersion>8.0.0.2</AssemblyVersion>
+    <FileVersion>8.0.0.2</FileVersion>
+    <Version>8.0.0-beta2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Obsolete members cleanup - remove fully obsolete and convert warnings into errors.
-- Initial support for the options multi-legs orders were added in experimental mode.
+- The options multi-legs orders support was expanded and covered with tests.
+- The `DelayedSip` member was added to the `MarketDataFeed` enumeration.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
