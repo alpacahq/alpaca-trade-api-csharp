@@ -1053,6 +1053,7 @@ Alpaca.Markets.ListOrdersRequest.WithInterval(Alpaca.Markets.Interval<System.Dat
 Alpaca.Markets.ListOrdersRequest.WithSymbol(string! symbol) -> Alpaca.Markets.ListOrdersRequest!
 Alpaca.Markets.ListOrdersRequest.WithSymbols(System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.ListOrdersRequest!
 Alpaca.Markets.MarketDataFeed
+Alpaca.Markets.MarketDataFeed.DelayedSip = 3 -> Alpaca.Markets.MarketDataFeed
 Alpaca.Markets.MarketDataFeed.Iex = 0 -> Alpaca.Markets.MarketDataFeed
 Alpaca.Markets.MarketDataFeed.Otc = 2 -> Alpaca.Markets.MarketDataFeed
 Alpaca.Markets.MarketDataFeed.Sip = 1 -> Alpaca.Markets.MarketDataFeed

@@ -25,5 +25,14 @@ public enum MarketDataFeed
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "otc")]
-    Otc
+    Otc,
+
+    /// <summary>
+    /// DelayedSIP feed - 15-minute delayed <see cref="Sip"/>. It can only be used
+    /// in the latest endpoints and on the stream. For historical endpoints you can
+    /// simply use <see cref="Sip"/> and set the end parameter to 15 minutes ago.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "delayed_sip")]
+    DelayedSip
 }
