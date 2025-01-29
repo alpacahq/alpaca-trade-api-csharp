@@ -2,8 +2,8 @@
 
 internal sealed class JsonNewOrder
 {
-    [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
-    public String Symbol { get; set; } = String.Empty;
+    [JsonProperty(PropertyName = "symbol", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+    public String? Symbol { get; set; }
 
     [JsonProperty(PropertyName = "qty", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
     public Decimal? Quantity { get; set; }
@@ -11,8 +11,8 @@ internal sealed class JsonNewOrder
     [JsonProperty(PropertyName = "notional", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
     public Decimal? Notional { get; set; }
 
-    [JsonProperty(PropertyName = "side", Required = Required.Always)]
-    public OrderSide OrderSide { get; set; }
+    [JsonProperty(PropertyName = "side", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+    public OrderSide? OrderSide { get; set; }
 
     [JsonProperty(PropertyName = "type", Required = Required.Always)]
     public OrderType OrderType { get; set; }
@@ -49,4 +49,7 @@ internal sealed class JsonNewOrder
 
     [JsonProperty(PropertyName = "position_intent", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
     public PositionIntent? PositionIntent { get; set; }
+
+    [JsonProperty(PropertyName = "legs", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+    public List<JsonOrderLeg>? Legs { get; set; }
 }

@@ -44,14 +44,14 @@ internal sealed class JsonOrder : IOrder
     [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
     public DateTime? ReplacedAtUtc { get; [ExcludeFromCodeCoverage] set; }
 
-    [JsonProperty(PropertyName = "asset_id", Required = Required.Always)]
-    public Guid AssetId { get; set; }
+    [JsonProperty(PropertyName = "asset_id", Required = Required.Default)]
+    public Guid? AssetId { get; set; }
 
-    [JsonProperty(PropertyName = "symbol", Required = Required.Always)]
-    public String Symbol { get; set; } = String.Empty;
+    [JsonProperty(PropertyName = "symbol", Required = Required.Default)]
+    public String? Symbol { get; set; }
 
-    [JsonProperty(PropertyName = "asset_class", Required = Required.Always)]
-    public AssetClass AssetClass { get; set; }
+    [JsonProperty(PropertyName = "asset_class", Required = Required.Default)]
+    public AssetClass? AssetClass { get; set; }
 
     [JsonProperty(PropertyName = "notional", Required = Required.Default)]
     public Decimal? Notional { get; [ExcludeFromCodeCoverage] set; }
@@ -74,8 +74,8 @@ internal sealed class JsonOrder : IOrder
     [JsonProperty(PropertyName = "order_class", Required = Required.Always)]
     public OrderClass OrderClass { get; }
 
-    [JsonProperty(PropertyName = "side", Required = Required.Always)]
-    public OrderSide OrderSide { get; set; }
+    [JsonProperty(PropertyName = "side", Required = Required.Default)]
+    public OrderSide? OrderSide { get; set; }
 
     [JsonProperty(PropertyName = "time_in_force", Required = Required.Always)]
     public TimeInForce TimeInForce { get; set; }

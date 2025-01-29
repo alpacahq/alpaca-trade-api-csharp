@@ -9,6 +9,20 @@ internal static class JsonNewOrderExtensions
         return order;
     }
 
+    public static JsonNewOrder WithoutOrderSide(
+        this JsonNewOrder order)
+    {
+        order.OrderSide = null;
+        return order;
+    }
+
+    public static JsonNewOrder WithoutSymbol(
+        this JsonNewOrder order)
+    {
+        order.Symbol = null;
+        return order;
+    }
+
     public static JsonNewOrder WithStopPrice(
         this JsonNewOrder order,
         Decimal stopPrice)
@@ -68,6 +82,14 @@ internal static class JsonNewOrderExtensions
             StopPrice = stopLoss.StopPrice,
             LimitPrice = stopLoss.LimitPrice
         };
+        return order;
+    }
+
+    public static JsonNewOrder WithOrderLegs(
+        this JsonNewOrder order,
+        IEnumerable<JsonOrderLeg> legs)
+    {
+        (order.Legs ??= []).AddRange(legs);
         return order;
     }
 }

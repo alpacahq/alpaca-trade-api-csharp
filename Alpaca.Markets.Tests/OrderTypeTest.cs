@@ -125,6 +125,48 @@ public  sealed class OrderTypeTest
                 .StopLoss(stopLossStopPrice, stopLossLimitPrice));
     }
 
+    [Fact]
+    public void MultiLegOrderCreationWorks()
+    {
+        const Decimal limitPrice = 100M;
+        const Decimal ratioQuantity = 0.25M;
+
+        var lfi = getOrderLegCreationInfo()
+            .Select(info => info.Intent.Leg(Stock, ratioQuantity, info.Side))
+            .ToList();
+        var lfs = getOrderLegCreationInfo()
+            .Select(info => info.Side.Leg(Stock, ratioQuantity, info.Intent))
+            .ToList();
+
+        assertOrdersAreEqual(
+            MultiLegOrder.Market(Quantity, lfi[0], lfi[1]),
+            MultiLegOrder.Market(Quantity, lfs[0], lfs[1]));
+        assertOrdersAreEqual(
+            MultiLegOrder.Market(Quantity, lfi[0], lfi[1], lfi[2]),
+            MultiLegOrder.Market(Quantity, lfs[0], lfs[1], lfs[2]));
+        assertOrdersAreEqual(
+            MultiLegOrder.Market(Quantity, lfi[0], lfi[1], lfi[2], lfi[3]),
+            MultiLegOrder.Market(Quantity, lfs[0], lfs[1], lfs[2], lfs[3]));
+
+        assertOrdersAreEqual(
+            MultiLegOrder.Limit(Quantity, limitPrice, lfi[0], lfi[1]),
+            MultiLegOrder.Limit(Quantity, limitPrice, lfs[0], lfs[1]));
+        assertOrdersAreEqual(
+            MultiLegOrder.Limit(Quantity, limitPrice, lfi[0], lfi[1], lfi[2]),
+            MultiLegOrder.Limit(Quantity, limitPrice, lfs[0], lfs[1], lfs[2]));
+        assertOrdersAreEqual(
+            MultiLegOrder.Limit(Quantity, limitPrice, lfi[0], lfi[1], lfi[2], lfi[3]),
+            MultiLegOrder.Limit(Quantity, limitPrice, lfs[0], lfs[1], lfs[2], lfs[3]));
+    }
+
+    private static IEnumerable<(PositionIntent Intent, OrderSide Side)> getOrderLegCreationInfo()
+    {
+        yield return (PositionIntent.BuyToClose, OrderSide.Buy);
+        yield return (PositionIntent.SellToClose, OrderSide.Sell);
+        yield return (PositionIntent.BuyToOpen, OrderSide.Buy);
+        yield return (PositionIntent.SellToOpen, OrderSide.Sell);
+    }
+
     private static void assertOrdersAreEqual(
         OrderBase lhs,
         OrderBase rhs)
@@ -225,6 +267,14 @@ public  sealed class OrderTypeTest
         Assert.Equal(lhs.Symbol, rhs.Symbol);
         Assert.Equal(lhs.Side, rhs.Side);
         Assert.Equal(lhs.Type, rhs.Type);
+    }
+
+    private static void assertOrdersAreEqual(
+        MultiLegOrder lhs,
+        MultiLegOrder rhs)
+    {
+        assertOrderBasePropertiesAreEqual(lhs, rhs);
+        assertJsonSerializedOrdersAreEqual(lhs, rhs);
     }
 
     private static void assertJsonSerializedOrdersAreEqual(

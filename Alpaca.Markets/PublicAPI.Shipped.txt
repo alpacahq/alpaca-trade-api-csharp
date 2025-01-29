@@ -753,8 +753,8 @@ Alpaca.Markets.IOptionSnapshot.Quote.get -> Alpaca.Markets.IQuote?
 Alpaca.Markets.IOptionSnapshot.Symbol.get -> string!
 Alpaca.Markets.IOptionSnapshot.Trade.get -> Alpaca.Markets.ITrade?
 Alpaca.Markets.IOrder
-Alpaca.Markets.IOrder.AssetClass.get -> Alpaca.Markets.AssetClass
-Alpaca.Markets.IOrder.AssetId.get -> System.Guid
+Alpaca.Markets.IOrder.AssetClass.get -> Alpaca.Markets.AssetClass?
+Alpaca.Markets.IOrder.AssetId.get -> System.Guid?
 Alpaca.Markets.IOrder.AverageFillPrice.get -> decimal?
 Alpaca.Markets.IOrder.CancelledAtUtc.get -> System.DateTime?
 Alpaca.Markets.IOrder.ClientOrderId.get -> string?
@@ -770,7 +770,7 @@ Alpaca.Markets.IOrder.Legs.get -> System.Collections.Generic.IReadOnlyList<Alpac
 Alpaca.Markets.IOrder.LimitPrice.get -> decimal?
 Alpaca.Markets.IOrder.OrderClass.get -> Alpaca.Markets.OrderClass
 Alpaca.Markets.IOrder.OrderId.get -> System.Guid
-Alpaca.Markets.IOrder.OrderSide.get -> Alpaca.Markets.OrderSide
+Alpaca.Markets.IOrder.OrderSide.get -> Alpaca.Markets.OrderSide?
 Alpaca.Markets.IOrder.OrderStatus.get -> Alpaca.Markets.OrderStatus
 Alpaca.Markets.IOrder.OrderType.get -> Alpaca.Markets.OrderType
 Alpaca.Markets.IOrder.ReplacedAtUtc.get -> System.DateTime?
@@ -780,7 +780,7 @@ Alpaca.Markets.IOrder.Quantity.get -> decimal?
 Alpaca.Markets.IOrder.Notional.get -> decimal?
 Alpaca.Markets.IOrder.StopPrice.get -> decimal?
 Alpaca.Markets.IOrder.SubmittedAtUtc.get -> System.DateTime?
-Alpaca.Markets.IOrder.Symbol.get -> string!
+Alpaca.Markets.IOrder.Symbol.get -> string?
 Alpaca.Markets.IOrder.TimeInForce.get -> Alpaca.Markets.TimeInForce
 Alpaca.Markets.IOrder.TrailOffsetInDollars.get -> decimal?
 Alpaca.Markets.IOrder.TrailOffsetInPercent.get -> decimal?
@@ -1058,6 +1058,7 @@ Alpaca.Markets.MarketDataFeed.Iex = 0 -> Alpaca.Markets.MarketDataFeed
 Alpaca.Markets.MarketDataFeed.Otc = 2 -> Alpaca.Markets.MarketDataFeed
 Alpaca.Markets.MarketDataFeed.Sip = 1 -> Alpaca.Markets.MarketDataFeed
 Alpaca.Markets.MarketOrder
+Alpaca.Markets.MultiLegOrder
 Alpaca.Markets.Multiplier
 Alpaca.Markets.Multiplier.Double = 2 -> Alpaca.Markets.Multiplier
 Alpaca.Markets.Multiplier.None = 0 -> Alpaca.Markets.Multiplier
@@ -1069,22 +1070,24 @@ Alpaca.Markets.NewOrderRequest.ClientOrderId.set -> void
 Alpaca.Markets.NewOrderRequest.Duration.get -> Alpaca.Markets.TimeInForce
 Alpaca.Markets.NewOrderRequest.ExtendedHours.get -> bool?
 Alpaca.Markets.NewOrderRequest.ExtendedHours.set -> void
+Alpaca.Markets.NewOrderRequest.Legs.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.OptionLegRequest!>!
 Alpaca.Markets.NewOrderRequest.LimitPrice.get -> decimal?
 Alpaca.Markets.NewOrderRequest.LimitPrice.set -> void
 Alpaca.Markets.NewOrderRequest.NewOrderRequest(string! symbol, Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.OrderSide side, Alpaca.Markets.OrderType type, Alpaca.Markets.TimeInForce duration) -> void
+Alpaca.Markets.NewOrderRequest.NewOrderRequest(Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.OrderType type, Alpaca.Markets.TimeInForce duration) -> void
 Alpaca.Markets.NewOrderRequest.OrderClass.get -> Alpaca.Markets.OrderClass?
 Alpaca.Markets.NewOrderRequest.OrderClass.set -> void
 Alpaca.Markets.NewOrderRequest.PositionIntent.get -> Alpaca.Markets.PositionIntent?
 Alpaca.Markets.NewOrderRequest.PositionIntent.set -> void
 Alpaca.Markets.NewOrderRequest.Quantity.get -> Alpaca.Markets.OrderQuantity
-Alpaca.Markets.NewOrderRequest.Side.get -> Alpaca.Markets.OrderSide
+Alpaca.Markets.NewOrderRequest.Side.get -> Alpaca.Markets.OrderSide?
 Alpaca.Markets.NewOrderRequest.StopLossLimitPrice.get -> decimal?
 Alpaca.Markets.NewOrderRequest.StopLossLimitPrice.set -> void
 Alpaca.Markets.NewOrderRequest.StopLossStopPrice.get -> decimal?
 Alpaca.Markets.NewOrderRequest.StopLossStopPrice.set -> void
 Alpaca.Markets.NewOrderRequest.StopPrice.get -> decimal?
 Alpaca.Markets.NewOrderRequest.StopPrice.set -> void
-Alpaca.Markets.NewOrderRequest.Symbol.get -> string!
+Alpaca.Markets.NewOrderRequest.Symbol.get -> string?
 Alpaca.Markets.NewOrderRequest.TakeProfitLimitPrice.get -> decimal?
 Alpaca.Markets.NewOrderRequest.TakeProfitLimitPrice.set -> void
 Alpaca.Markets.NewOrderRequest.TrailOffsetInDollars.get -> decimal?
@@ -1092,6 +1095,7 @@ Alpaca.Markets.NewOrderRequest.TrailOffsetInDollars.set -> void
 Alpaca.Markets.NewOrderRequest.TrailOffsetInPercent.get -> decimal?
 Alpaca.Markets.NewOrderRequest.TrailOffsetInPercent.set -> void
 Alpaca.Markets.NewOrderRequest.Type.get -> Alpaca.Markets.OrderType
+Alpaca.Markets.NewOrderRequest.With(Alpaca.Markets.OptionLegRequest! leg) -> Alpaca.Markets.NewOrderRequest!
 Alpaca.Markets.NewsArticlesRequest
 Alpaca.Markets.NewsArticlesRequest.ExcludeItemsWithoutContent.get -> bool?
 Alpaca.Markets.NewsArticlesRequest.ExcludeItemsWithoutContent.set -> void
@@ -1166,6 +1170,14 @@ Alpaca.Markets.OptionContractsRequest.StrikePriceGreaterThanOrEqualTo.set -> voi
 Alpaca.Markets.OptionContractsRequest.StrikePriceLessThanOrEqualTo.get -> decimal?
 Alpaca.Markets.OptionContractsRequest.StrikePriceLessThanOrEqualTo.set -> void
 Alpaca.Markets.OptionContractsRequest.UnderlyingSymbols.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
+Alpaca.Markets.OptionLegRequest
+Alpaca.Markets.OptionLegRequest.OptionLegRequest(string! symbol, decimal ratioQuantity, Alpaca.Markets.OrderSide side) -> void
+Alpaca.Markets.OptionLegRequest.OptionLegRequest(string! symbol, decimal ratioQuantity, Alpaca.Markets.OrderSide side, Alpaca.Markets.PositionIntent positionIntent) -> void
+Alpaca.Markets.OptionLegRequest.OptionLegRequest(string! symbol, decimal ratioQuantity, Alpaca.Markets.PositionIntent positionIntent) -> void
+Alpaca.Markets.OptionLegRequest.PositionIntent.get -> Alpaca.Markets.PositionIntent?
+Alpaca.Markets.OptionLegRequest.RatioQuantity.get -> decimal
+Alpaca.Markets.OptionLegRequest.Side.get -> Alpaca.Markets.OrderSide?
+Alpaca.Markets.OptionLegRequest.Symbol.get -> string!
 Alpaca.Markets.OptionsFeed
 Alpaca.Markets.OptionsFeed.Indicative = 1 -> Alpaca.Markets.OptionsFeed
 Alpaca.Markets.OptionsFeed.Opra = 0 -> Alpaca.Markets.OptionsFeed
@@ -1203,10 +1215,19 @@ Alpaca.Markets.OrderBase.Type.get -> Alpaca.Markets.OrderType
 Alpaca.Markets.OrderBaseExtensions
 Alpaca.Markets.OrderClass
 Alpaca.Markets.OrderClass.Bracket = 1 -> Alpaca.Markets.OrderClass
+Alpaca.Markets.OrderClass.MultiLegOptions = 4 -> Alpaca.Markets.OrderClass
 Alpaca.Markets.OrderClass.OneCancelsOther = 2 -> Alpaca.Markets.OrderClass
 Alpaca.Markets.OrderClass.OneTriggersOther = 3 -> Alpaca.Markets.OrderClass
 Alpaca.Markets.OrderClass.Simple = 0 -> Alpaca.Markets.OrderClass
 Alpaca.Markets.OrderExtensions
+Alpaca.Markets.OrderLeg
+Alpaca.Markets.OrderLeg.OrderLeg(string! symbol, decimal ratioQuantity, Alpaca.Markets.OrderSide side) -> void
+Alpaca.Markets.OrderLeg.OrderLeg(string! symbol, decimal ratioQuantity, Alpaca.Markets.PositionIntent positionIntent) -> void
+Alpaca.Markets.OrderLeg.OrderLeg(string! symbol, decimal ratioQuantity, Alpaca.Markets.PositionIntent positionIntent, Alpaca.Markets.OrderSide side) -> void
+Alpaca.Markets.OrderLeg.PositionIntent.get -> Alpaca.Markets.PositionIntent?
+Alpaca.Markets.OrderLeg.RatioQuantity.get -> decimal
+Alpaca.Markets.OrderLeg.Side.get -> Alpaca.Markets.OrderSide?
+Alpaca.Markets.OrderLeg.Symbol.get -> string!
 Alpaca.Markets.OrderSide
 Alpaca.Markets.OrderSide.Buy = 0 -> Alpaca.Markets.OrderSide
 Alpaca.Markets.OrderSide.Sell = 1 -> Alpaca.Markets.OrderSide
@@ -1469,12 +1490,22 @@ static Alpaca.Markets.LimitOrder.Buy(string! symbol, Alpaca.Markets.OrderQuantit
 static Alpaca.Markets.LimitOrder.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
 static Alpaca.Markets.MarketOrder.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
 static Alpaca.Markets.MarketOrder.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
+static Alpaca.Markets.MultiLegOrder.Limit(Alpaca.Markets.OrderQuantity quantity, decimal limitPrice, Alpaca.Markets.OrderLeg! orderLeg1, Alpaca.Markets.OrderLeg! orderLeg2) -> Alpaca.Markets.MultiLegOrder!
+static Alpaca.Markets.MultiLegOrder.Limit(Alpaca.Markets.OrderQuantity quantity, decimal limitPrice, Alpaca.Markets.OrderLeg! orderLeg1, Alpaca.Markets.OrderLeg! orderLeg2, Alpaca.Markets.OrderLeg! orderLeg3) -> Alpaca.Markets.MultiLegOrder!
+static Alpaca.Markets.MultiLegOrder.Limit(Alpaca.Markets.OrderQuantity quantity, decimal limitPrice, Alpaca.Markets.OrderLeg! orderLeg1, Alpaca.Markets.OrderLeg! orderLeg2, Alpaca.Markets.OrderLeg! orderLeg3, Alpaca.Markets.OrderLeg! orderLeg4) -> Alpaca.Markets.MultiLegOrder!
+static Alpaca.Markets.MultiLegOrder.Market(Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.OrderLeg! orderLeg1, Alpaca.Markets.OrderLeg! orderLeg2) -> Alpaca.Markets.MultiLegOrder!
+static Alpaca.Markets.MultiLegOrder.Market(Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.OrderLeg! orderLeg1, Alpaca.Markets.OrderLeg! orderLeg2, Alpaca.Markets.OrderLeg! orderLeg3) -> Alpaca.Markets.MultiLegOrder!
+static Alpaca.Markets.MultiLegOrder.Market(Alpaca.Markets.OrderQuantity quantity, Alpaca.Markets.OrderLeg! orderLeg1, Alpaca.Markets.OrderLeg! orderLeg2, Alpaca.Markets.OrderLeg! orderLeg3, Alpaca.Markets.OrderLeg! orderLeg4) -> Alpaca.Markets.MultiLegOrder!
 static Alpaca.Markets.OpenClose.implicit operator Alpaca.Markets.Interval<System.DateTime>(Alpaca.Markets.OpenClose openClose) -> Alpaca.Markets.Interval<System.DateTime>
 static Alpaca.Markets.OrderBaseExtensions.WithClientOrderId<TOrder>(this TOrder! order, string! clientOrderId) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithDuration<TOrder>(this TOrder! order, Alpaca.Markets.TimeInForce duration) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithExtendedHours<TOrder>(this TOrder! order, bool extendedHours) -> TOrder!
 static Alpaca.Markets.OrderBaseExtensions.WithPositionIntent<TOrder>(this TOrder! order, Alpaca.Markets.PositionIntent positionIntent) -> TOrder!
 static Alpaca.Markets.OrderExtensions.GetOrderQuantity(this Alpaca.Markets.IOrder! order) -> Alpaca.Markets.OrderQuantity
+static Alpaca.Markets.OrderSideExtensions.Leg(this Alpaca.Markets.OrderSide orderSide, string! symbol, decimal ratioQuantity) -> Alpaca.Markets.OrderLeg!
+static Alpaca.Markets.OrderSideExtensions.Leg(this Alpaca.Markets.OrderSide orderSide, string! symbol, decimal ratioQuantity, Alpaca.Markets.PositionIntent positionIntent) -> Alpaca.Markets.OrderLeg!
+static Alpaca.Markets.OrderSideExtensions.Leg(this Alpaca.Markets.PositionIntent positionIntent, string! symbol, decimal ratioQuantity) -> Alpaca.Markets.OrderLeg!
+static Alpaca.Markets.OrderSideExtensions.Leg(this Alpaca.Markets.PositionIntent positionIntent, string! symbol, decimal ratioQuantity, Alpaca.Markets.OrderSide orderSide) -> Alpaca.Markets.OrderLeg!
 static Alpaca.Markets.OrderSideExtensions.Limit(this Alpaca.Markets.OrderSide orderSide, string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal limitPrice) -> Alpaca.Markets.LimitOrder!
 static Alpaca.Markets.OrderSideExtensions.Market(this Alpaca.Markets.OrderSide orderSide, string! symbol, Alpaca.Markets.OrderQuantity quantity) -> Alpaca.Markets.MarketOrder!
 static Alpaca.Markets.OrderSideExtensions.Stop(this Alpaca.Markets.OrderSide orderSide, string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal stopPrice) -> Alpaca.Markets.StopOrder!

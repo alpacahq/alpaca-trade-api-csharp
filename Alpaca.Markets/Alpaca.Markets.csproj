@@ -12,14 +12,15 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>8.0.0.0</AssemblyVersion>
-    <FileVersion>8.0.0.0</FileVersion>
-    <Version>8.0.0-alpha1</Version>
+    <AssemblyVersion>8.0.0.1</AssemblyVersion>
+    <FileVersion>8.0.0.1</FileVersion>
+    <Version>8.0.0-beta1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
 - Obsolete members cleanup - remove fully obsolete and convert warnings into errors.
+- Initial support for the options multi-legs orders were added in experimental mode.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>

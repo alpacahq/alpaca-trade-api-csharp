@@ -4,6 +4,7 @@ namespace Alpaca.Markets;
 /// Order class for advanced orders in the Alpaca REST API.
 /// </summary>
 [JsonConverter(typeof(StringEnumConverter))]
+[SuppressMessage("ReSharper", "StringLiteralTypo")]
 public enum OrderClass
 {
     /// <summary>
@@ -29,5 +30,11 @@ public enum OrderClass
     /// One Triggers Other order
     /// </summary>
     [EnumMember(Value = "oto")]
-    OneTriggersOther
+    OneTriggersOther,
+
+    /// <summary>
+    /// Multi-leg options order
+    /// </summary>
+    [EnumMember(Value = "mleg")]
+    MultiLegOptions
 }

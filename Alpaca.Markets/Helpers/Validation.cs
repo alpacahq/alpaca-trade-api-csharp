@@ -53,6 +53,10 @@ internal static class Validation
         return request;
     }
 
+    public static IEnumerable<RequestValidationException?> GetExceptions<T>(
+        this IEnumerable<T> items) =>
+        items.OfType<IRequest>().SelectMany(request => request.GetExceptions());
+
     public static RequestValidationException? TryValidateSymbolName(
         this String symbolName,
         [CallerArgumentExpression(nameof(symbolName))] String propertyName = "") =>
