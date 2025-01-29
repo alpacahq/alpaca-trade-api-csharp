@@ -28,7 +28,7 @@ public sealed partial class AlpacaDataClientTest
         var snapshots = await mock.Client
             .ListSnapshotsAsync(new LatestMarketDataListRequest(_symbols)
             {
-                Feed = MarketDataFeed.Otc,
+                Feed = MarketDataFeed.DelayedSip,
                 Currency = Currency
             });
 
