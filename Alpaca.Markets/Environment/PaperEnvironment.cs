@@ -2,7 +2,7 @@
 
 internal sealed class PaperEnvironment : IEnvironment
 {
-    public Uri AlpacaTradingApi => new("https://paper-api.alpaca.markets");
+    public Uri AlpacaTradingApi => new("https://paper-api.alpaca.markets/v2");
 
     public Uri AlpacaDataApi => Environments.Live.AlpacaDataApi;
 
