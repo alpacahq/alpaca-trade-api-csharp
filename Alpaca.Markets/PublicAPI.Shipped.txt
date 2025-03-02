@@ -157,6 +157,8 @@ Alpaca.Markets.BarTimeFrameUnit.Hour = 1 -> Alpaca.Markets.BarTimeFrameUnit
 Alpaca.Markets.BarTimeFrameUnit.Minute = 0 -> Alpaca.Markets.BarTimeFrameUnit
 Alpaca.Markets.BarTimeFrameUnit.Month = 4 -> Alpaca.Markets.BarTimeFrameUnit
 Alpaca.Markets.BarTimeFrameUnit.Week = 3 -> Alpaca.Markets.BarTimeFrameUnit
+Alpaca.Markets.BasicKey
+Alpaca.Markets.BasicKey.BasicKey(System.Net.NetworkCredential! credential) -> void
 Alpaca.Markets.BracketOrder
 Alpaca.Markets.BracketOrder.StopLoss.get -> Alpaca.Markets.IStopLoss!
 Alpaca.Markets.BracketOrder.TakeProfit.get -> Alpaca.Markets.ITakeProfit!
