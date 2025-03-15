@@ -168,4 +168,5 @@ public static class OrderSideExtensions
         String symbol,
         Decimal ratioQuantity,
         OrderSide orderSide) =>
-        new (symbol, ratioQuantity, positionIntent, orderSide);}
+        new (symbol, ratioQuantity, positionIntent, orderSide);
+}

@@ -7,7 +7,6 @@ public sealed partial class AlpacaOptionsDataClientTest
     {
         using var mock = mockClientsFactory.GetAlpacaOptionsDataClientMock();
 
-        // TODO: olegra - create special method for option snapshots
         mock.AddOptionSnapshotsExpectation(PathPrefix, _symbols);
 
         var snapshots = await mock.Client.ListSnapshotsAsync(
@@ -29,7 +28,6 @@ public sealed partial class AlpacaOptionsDataClientTest
     {
         using var mock = mockClientsFactory.GetAlpacaOptionsDataClientMock();
 
-        // TODO: olegra - create special method for option snapshots
         mock.AddOptionChainExpectation(PathPrefix, _symbols);
 
         var snapshots = await mock.Client.GetOptionChainAsync(
