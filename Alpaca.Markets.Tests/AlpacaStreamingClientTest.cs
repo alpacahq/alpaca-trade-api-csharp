@@ -20,6 +20,8 @@ public sealed class AlpacaStreamingClientTest(
         public Uri AlpacaCryptoStreamingApi => Environments.Paper.AlpacaTradingApi;
 
         public Uri AlpacaNewsStreamingApi => Environments.Paper.AlpacaTradingApi;
+
+        public Uri AlpacaOptionsStreamingApi => Environments.Paper.AlpacaTradingApi;
     }
 
     private const String TradeUpdates = "trade_updates";

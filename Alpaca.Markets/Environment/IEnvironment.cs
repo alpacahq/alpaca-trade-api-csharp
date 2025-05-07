@@ -34,4 +34,9 @@ public interface IEnvironment
     /// Gets Alpaca news streaming API base URL for this environment.
     /// </summary>
     Uri AlpacaNewsStreamingApi { get; }
+
+    /// <summary>
+    /// Gets Alpaca options streaming API base URL for this environment.
+    /// </summary>
+    Uri AlpacaOptionsStreamingApi { get; }
 }

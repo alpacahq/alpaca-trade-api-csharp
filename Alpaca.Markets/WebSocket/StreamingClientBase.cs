@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Newtonsoft.Json.Linq;
+using MessagePack;
 
 namespace Alpaca.Markets;
 
@@ -98,6 +99,12 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
     {
     }
 
+    [ExcludeFromCodeCoverage]
+    protected virtual void OnMessageReceived(
+        byte[] binaryData)
+    {
+    }
+
     // ReSharper disable once VirtualMemberNeverOverridden.Global
     protected virtual void Dispose(
         Boolean disposing)
@@ -161,10 +168,10 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
     }
 
     protected void HandleWarning(
-        String message) => 
+        String message) =>
         OnWarning?.Invoke(message);
 
-    protected ValueTask SendAsJsonStringAsync(
+    protected ValueTask SendAsync(
         Object value,
         CancellationToken cancellationToken = default)
     {
@@ -172,12 +179,31 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
 
         var serializer = new JsonSerializer();
         serializer.Serialize(textWriter, value);
-        return _webSocket.SendAsync(textWriter.ToString(), cancellationToken);
+
+        var jsonString = textWriter.ToString();
+        
+        if (Configuration.UseMessagePack)
+        {
+            return _webSocket.SendAsync(MessagePackSerializer.ConvertFromJson(jsonString, cancellationToken: cancellationToken), cancellationToken);
+        }
+        else
+        {
+            return _webSocket.SendAsync(jsonString, cancellationToken);
+        }
     }
 
 #pragma warning disable IDE1006 // Naming Styles
     private void onDataReceived(
 #pragma warning restore IDE1006 // Naming Styles
-        Byte[] binaryData) =>
-        OnMessageReceived(Encoding.UTF8.GetString(binaryData));
+        Byte[] binaryData)
+    {
+        if (Configuration.UseMessagePack)
+        {
+            OnMessageReceived(binaryData);
+        }
+        else
+        {
+            OnMessageReceived(Encoding.UTF8.GetString(binaryData));
+        }
+    }
 }

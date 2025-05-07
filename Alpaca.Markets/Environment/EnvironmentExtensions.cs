@@ -1,4 +1,6 @@
-﻿namespace Alpaca.Markets;
+﻿using System;
+
+namespace Alpaca.Markets;
 
 /// <summary>
 /// Collection of helper extension methods for <see cref="IEnvironment"/> interface.
@@ -307,5 +309,26 @@ public static class EnvironmentExtensions
         {
             ApiEndpoint = environment.EnsureNotNull().AlpacaDataApi,
             SecurityId = securityKey.EnsureNotNull()
+        };
+
+    /// <summary>
+    /// Creates new instance of <see cref="AlpacaDataStreamingClientConfiguration"/> pre-configured for options for
+    /// specific environment provided as <paramref name="environment"/> argument.
+    /// </summary>
+    /// <param name="environment">Target environment for new object.</param>
+    /// <param name="securityKey">Alpaca API security key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>New instance of <see cref="AlpacaDataStreamingClientConfiguration"/> object.</returns>
+    [UsedImplicitly]
+    public static AlpacaDataStreamingClientConfiguration GetAlpacaOptionsStreamingClientConfiguration(
+        this IEnvironment environment,
+        SecurityKey securityKey) =>
+        new()
+        {
+            ApiEndpoint = environment.EnsureNotNull().AlpacaOptionsStreamingApi,
+            SecurityId = securityKey.EnsureNotNull(),
+            UseMessagePack = true
         };
 }

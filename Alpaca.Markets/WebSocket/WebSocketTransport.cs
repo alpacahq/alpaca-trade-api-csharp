@@ -163,6 +163,36 @@ internal sealed class WebSocketsTransport(
         }
     }
 
+    public async ValueTask SendAsync(
+        byte[] binaryData,
+        CancellationToken cancellationToken)
+    {
+        if (_transport is null)
+        {
+            return;
+
+        }
+
+        var lockTaken = false;
+        _sendLock.TryEnter(ref lockTaken);
+        if (!lockTaken)
+        {
+            return;
+        }
+
+        try
+        {
+            await _transport.Output
+                .WriteAsync(binaryData, cancellationToken)
+                .ConfigureAwait(false);
+            await _transport.Output.FlushAsync(cancellationToken).ConfigureAwait(false);
+        }
+        finally
+        {
+            _sendLock.Exit(false);
+        }
+    }
+
     public void Dispose() => _webSocket?.Dispose();
 
     private async Task processSocketAsync(
