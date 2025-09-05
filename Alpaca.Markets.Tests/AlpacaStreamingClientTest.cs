@@ -47,7 +47,7 @@ public sealed class AlpacaStreamingClientTest(
                 Guid.NewGuid().ToString("N"), Guid.NewGuid().ToString("N"))));
 
         client.AddResponse(getMessage(Authorization, new JObject(
-            new JProperty("status", AuthStatus.Authorized.ToString()))));
+            new JProperty("status", nameof(AuthStatus.Authorized)))));
 
         client.AddResponse(getMessage(Listening, new JObject()));
 
@@ -101,7 +101,7 @@ public sealed class AlpacaStreamingClientTest(
             client.Client, expectedWarnings, expectedErrors);
 
         client.AddResponse(getMessage(Authorization, new JObject(
-            new JProperty("status", AuthStatus.Unauthorized.ToString()),
+            new JProperty("status", nameof(AuthStatus.Unauthorized)),
             new JProperty("message", Guid.NewGuid().ToString("N")))));
 
         Assert.Equal(AuthStatus.Unauthorized,
@@ -134,7 +134,7 @@ public sealed class AlpacaStreamingClientTest(
             client.Client, expectedWarnings, expectedErrors);
 
         client.AddResponse(getMessage(Authorization, new JObject(
-            new JProperty("status", AuthStatus.Unauthorized.ToString()),
+            new JProperty("status", nameof(AuthStatus.Unauthorized)),
             new JProperty("message", Guid.NewGuid().ToString("N")))));
 
         Assert.Equal(AuthStatus.Unauthorized,

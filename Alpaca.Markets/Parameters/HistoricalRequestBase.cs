@@ -67,8 +67,7 @@ public abstract class HistoricalRequestBase : Validation.IRequest
         new UriBuilder(httpClient.BaseAddress!)
         {
             Query = await AddParameters(Pagination.QueryBuilder
-                    .AddParameter("symbols",
-                        HasSingleSymbol ? Array.Empty<String>() : Symbols)
+                    .AddParameter("symbols", HasSingleSymbol ? [] : Symbols)
                     .AddParameter("start", TimeInterval.From, "O")
                     .AddParameter("end", TimeInterval.Into, "O"))
                     .AddParameter("sort", SortDirection)

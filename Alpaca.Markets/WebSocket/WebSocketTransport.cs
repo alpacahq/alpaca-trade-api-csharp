@@ -325,12 +325,9 @@ internal sealed class WebSocketsTransport(
             return false;
         }
 
-        if (closeStatus != WebSocketCloseStatus.NormalClosure)
-        {
-            throw new InvalidOperationException($"Websocket closed with error: {closeStatus}.");
-        }
-
-        return true;
+        return closeStatus != WebSocketCloseStatus.NormalClosure
+            ? throw new InvalidOperationException($"Websocket closed with error: {closeStatus}.")
+            : true;
     }
 
     [SuppressMessage(

@@ -11,7 +11,7 @@ internal static class MessageDataHelpers
 
     private static readonly DateOnly _today = DateOnly.FromDateTime(DateTime.Today);
 
-    private static readonly String _exchange = CryptoExchange.Cbse.ToString();
+    private const String Exchange = nameof(CryptoExchange.Cbse);
 
     public const String StreamingMessageTypeTag = "T";
 
@@ -204,7 +204,7 @@ internal static class MessageDataHelpers
             new JProperty("b", new JArray(createOrderBookEntry())),
             new JProperty(StreamingMessageTypeTag, "o"),
             new JProperty("t", DateTime.UtcNow),
-            new JProperty("x", _exchange),
+            new JProperty("x", Exchange),
             new JProperty("S", symbol),
             new JProperty("r", true));
 
@@ -520,7 +520,7 @@ internal static class MessageDataHelpers
         Assert.NotNull(orderBook);
         Assert.True(orderBook.IsReset);
         Assert.Equal(symbol, orderBook.Symbol);
-        Assert.Equal(_exchange, orderBook.Exchange);
+        Assert.Equal(Exchange, orderBook.Exchange);
 
         Assert.NotNull(orderBook.Asks);
         Assert.NotNull(orderBook.Bids);
