@@ -1,7 +1,7 @@
 namespace Alpaca.Markets;
 
 /// <summary>
-/// Represents the trailing stop order offset in dollars or as percent of HWM (High Water Mark).
+/// Represents the trailing stop order offset in dollars or as percent of HWM (High Watermark).
 /// </summary>
 public readonly record struct TrailOffset
 {

@@ -12,7 +12,7 @@ public sealed class RequestValidationTest
 
     [Fact]
     public void HistoricalRequestBaseNoSymbolsValidationWorks() =>
-        validate(new HistoricalCryptoBarsRequest(Array.Empty<String>(), _interval, BarTimeFrame.Day));
+        validate(new HistoricalCryptoBarsRequest([], _interval, BarTimeFrame.Day));
 
     [Fact]
     public void HistoricalRequestBaseEmptySymbolValidationWorks() =>
@@ -42,7 +42,7 @@ public sealed class RequestValidationTest
 
     [Fact]
     public void NewWatchListRequestEmptyNameValidationWorks() =>
-        validate(new NewWatchListRequest(String.Empty, Array.Empty<String>()));
+        validate(new NewWatchListRequest(String.Empty, []));
 
     [Fact]
     public void NewWatchListRequestEmptySymbolValidationWorks() =>
@@ -50,7 +50,7 @@ public sealed class RequestValidationTest
 
     [Fact]
     public void UpdateWatchListRequestEmptyNameValidationWorks() =>
-        validate(new UpdateWatchListRequest(Guid.NewGuid(), String.Empty, Array.Empty<String>()));
+        validate(new UpdateWatchListRequest(Guid.NewGuid(), String.Empty, []));
 
     [Fact]
     public void UpdateWatchListRequestEmptySymbolValidationWorks() =>

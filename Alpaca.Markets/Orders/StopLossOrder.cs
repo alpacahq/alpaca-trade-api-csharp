@@ -27,7 +27,7 @@ public sealed class StopLossOrder : AdvancedOrderBase, IStopLoss
     /// Creates a new instance of the <see cref="BracketOrder"/> order from the current order.
     /// </summary>
     /// <param name="takeProfitLimitPrice">Take profit order limit price.</param>
-    /// <returns>New advanced order representing pair of original order and take profit order.</returns>
+    /// <returns>New advanced order representing a pair of original order and take profit order.</returns>
     [UsedImplicitly]
     public BracketOrder TakeProfit(
         Decimal takeProfitLimitPrice) =>

@@ -11,9 +11,9 @@ internal static class HistoricalDataHelpers
 {
     private static readonly String _condition = Guid.NewGuid().ToString("D");
 
-    private static readonly String _exchange = CryptoExchange.Ersx.ToString();
-
     private static readonly String _tape = Guid.NewGuid().ToString("D");
+
+    private const String Exchange = nameof(CryptoExchange.Ersx);
 
     private const Decimal MidPrice = (AskPrice + BidPrice) / 2;
 
@@ -218,7 +218,7 @@ internal static class HistoricalDataHelpers
         Assert.Equal(_condition, trade.Conditions.Single());
 
         Assert.Equal(String.Empty, trade.Update);
-        Assert.Equal(_exchange, trade.Exchange);
+        Assert.Equal(Exchange, trade.Exchange);
 
         Assert.Equal(TakerSide.Unknown, trade.TakerSide);
         Assert.Equal(MidPrice, trade.Price);
@@ -262,8 +262,8 @@ internal static class HistoricalDataHelpers
             Assert.Equal(_tape, quote.Tape);
         }
 
-        Assert.Equal(_exchange, quote.AskExchange);
-        Assert.Equal(_exchange, quote.BidExchange);
+        Assert.Equal(Exchange, quote.AskExchange);
+        Assert.Equal(Exchange, quote.BidExchange);
 
         Assert.Equal(AskPrice, quote.AskPrice);
         Assert.Equal(BidPrice, quote.BidPrice);
@@ -322,7 +322,7 @@ internal static class HistoricalDataHelpers
             new JProperty("c", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
             new JProperty("u", String.Empty),
-            new JProperty("x", _exchange),
+            new JProperty("x", Exchange),
             new JProperty("p", MidPrice),
             new JProperty("i", TradeId),
             new JProperty("z", _tape),
@@ -333,11 +333,11 @@ internal static class HistoricalDataHelpers
         new(
             new JProperty("c", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
-            new JProperty("ax", _exchange),
-            new JProperty("bx", _exchange),
+            new JProperty("ax", Exchange),
+            new JProperty("bx", Exchange),
             new JProperty("ap", AskPrice),
             new JProperty("bp", BidPrice),
-            new JProperty("x", _exchange),
+            new JProperty("x", Exchange),
             new JProperty("as", Size),
             new JProperty("bs", Size),
             new JProperty("z", _tape));
@@ -350,7 +350,7 @@ internal static class HistoricalDataHelpers
             new JProperty("cc", new JArray(_condition)),
             new JProperty("t", DateTime.UtcNow),
             new JProperty("u", String.Empty),
-            new JProperty("x", _exchange),
+            new JProperty("x", Exchange),
             new JProperty("op", MidPrice),
             new JProperty("cp", MidPrice),
             new JProperty("oi", TradeId),
@@ -388,7 +388,7 @@ internal static class HistoricalDataHelpers
         Assert.Equal(MidPrice, closing.Price);
         Assert.Equal(Size, opening.Size);
 
-        Assert.Equal(_exchange, opening.Exchange);
+        Assert.Equal(Exchange, opening.Exchange);
         Assert.Equal(_condition, closing.Condition);
 
         Assert.True(opening.TimestampUtc <= DateTime.UtcNow);
@@ -415,7 +415,7 @@ internal static class HistoricalDataHelpers
             new JProperty("a", new JArray(createOrderBookEntry())),
             new JProperty("b", new JArray(createOrderBookEntry())),
             new JProperty("t", DateTime.UtcNow),
-            new JProperty("x", _exchange));
+            new JProperty("x", Exchange));
     
     private static JObject createOrderBookEntry() =>
         new(
@@ -432,7 +432,7 @@ internal static class HistoricalDataHelpers
         new(
             new JProperty("t", DateTime.UtcNow),
             new JProperty("c", _condition),
-            new JProperty("x", _exchange),
+            new JProperty("x", Exchange),
             new JProperty("p", MidPrice),
             new JProperty("s", Size));
 

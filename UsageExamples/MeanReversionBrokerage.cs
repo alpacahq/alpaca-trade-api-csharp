@@ -293,7 +293,7 @@ internal sealed class MeanReversionBrokerage : IDisposable
     }
 
     // Update our information about the last order we placed.
-    // This is done so that we know whether or not we need to submit a cancel for
+    // This is done so that we know whether we need to submit a cancel for
     // that order before we place another.
     private void HandleTradeUpdate(ITradeUpdate trade)
     {

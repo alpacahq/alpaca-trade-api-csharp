@@ -36,7 +36,7 @@ public interface INewsArticle
     public String Author { get; }
 
     /// <summary>
-    /// Gets summary text for the article (may be first sentence of content).
+    /// Gets summary text for the article (maybe first sentence of content).
     /// </summary>
     [UsedImplicitly]
     public String Summary { get; }

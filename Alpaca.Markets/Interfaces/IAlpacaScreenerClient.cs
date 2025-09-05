@@ -9,7 +9,7 @@ public interface IAlpacaScreenerClient
     /// Returns top market movers (gainers and losers) and corresponding price change values.
     /// </summary>
     /// <param name="numberOfLosersAndGainersInResponse">
-    /// Number of top market movers to fetch (gainers and losers). Will return number top for each. By default 10 gainers and 10 losers.
+    /// Number of top market movers to fetch (gainers and losers). Will return number top for each. By default, 10 gainers and 10 losers.
     /// </param>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <exception cref="HttpRequestException">

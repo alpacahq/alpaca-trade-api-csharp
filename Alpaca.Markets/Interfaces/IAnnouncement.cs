@@ -25,7 +25,7 @@ public interface IAnnouncement
     CorporateActionType Type { get; }
 
     /// <summary>
-    /// Gets corporate action sub-type.
+    /// Gets corporate action subtype.
     /// </summary>
     CorporateActionSubType SubType { get; }
 

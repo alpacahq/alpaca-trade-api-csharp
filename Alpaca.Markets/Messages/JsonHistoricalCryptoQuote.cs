@@ -28,7 +28,7 @@ internal sealed class JsonHistoricalCryptoQuote : IQuote, ISymbolMutable
     public String Symbol { get; private set; } = String.Empty;
 
     [JsonIgnore]
-    public IReadOnlyList<String> Conditions => Array.Empty<String>();
+    public IReadOnlyList<String> Conditions => [];
 
     [JsonIgnore]
     public String BidExchange => AskExchange;

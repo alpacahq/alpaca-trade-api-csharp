@@ -9,7 +9,7 @@ jobs:
     
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Setup .NET 9.0.x
       uses: actions/setup-dotnet@v4
@@ -42,7 +42,7 @@ jobs:
 
     steps:
     - name: Checkout Branch
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         ref: gh-pages
 
@@ -57,7 +57,7 @@ jobs:
         git rm ** -f
 
     - name: Load Documentation
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v5
       with:
         name: documentation
 

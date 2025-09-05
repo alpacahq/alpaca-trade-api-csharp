@@ -42,10 +42,10 @@ public interface IStreamingClient : IDisposable
     /// </summary>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <exception cref="SocketException">
-    /// The underlying TPC socket connection failed due to an low-level network connectivity issue.
+    /// The underlying TPC socket connection failed due to a low-level network connectivity issue.
     /// </exception>
     /// <exception cref="WebSocketException">
-    /// The WebSocket connection failed due to an high-level protocol or connection issue.
+    /// The WebSocket connection failed due to a high-level protocol or connection issue.
     /// </exception>
     /// <returns>Awaitable task object for handling action completion in asynchronous mode.</returns>
     [UsedImplicitly]
@@ -57,10 +57,10 @@ public interface IStreamingClient : IDisposable
     /// </summary>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <exception cref="SocketException">
-    /// The underlying TPC socket connection failed due to an low-level network connectivity issue.
+    /// The underlying TPC socket connection failed due to a low-level network connectivity issue.
     /// </exception>
     /// <exception cref="WebSocketException">
-    /// The WebSocket connection failed due to an high-level protocol or connection issue.
+    /// The WebSocket connection failed due to a high-level protocol or connection issue.
     /// </exception>
     /// <returns>Awaitable task object for handling client authentication event in asynchronous mode.</returns>
     [UsedImplicitly]
@@ -72,10 +72,10 @@ public interface IStreamingClient : IDisposable
     /// </summary>
     /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <exception cref="SocketException">
-    /// The underlying TPC socket connection failed due to an low-level network connectivity issue.
+    /// The underlying TPC socket connection failed due to a low-level network connectivity issue.
     /// </exception>
     /// <exception cref="WebSocketException">
-    /// The WebSocket connection failed due to an high-level protocol or connection issue.
+    /// The WebSocket connection failed due to a high-level protocol or connection issue.
     /// </exception>
     /// <returns>Awaitable task object for handling action completion in asynchronous mode.</returns>
     [UsedImplicitly]

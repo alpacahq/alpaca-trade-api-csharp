@@ -161,7 +161,7 @@ public interface IOrder
     public Decimal? TrailOffsetInPercent { get; }
 
     /// <summary>
-    /// Gets the current high water mark price for trailing stop orders.
+    /// Gets the current high watermark price for trailing stop orders.
     /// </summary>
     [UsedImplicitly]
     public Decimal? HighWaterMark { get; }

@@ -10,6 +10,7 @@ Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions
 Alpaca.Markets.Extensions.AlpacaTradingClientExtensions
 Alpaca.Markets.Extensions.AlpacaValueTask
 Alpaca.Markets.Extensions.AlpacaValueTask.AlpacaValueTask() -> void
+Alpaca.Markets.Extensions.AlpacaValueTask.Equals(Alpaca.Markets.Extensions.AlpacaValueTask other) -> bool
 Alpaca.Markets.Extensions.AlpacaValueTask.GetAwaiter() -> System.Runtime.CompilerServices.ValueTaskAwaiter
 Alpaca.Markets.Extensions.AlpacaValueTask.WithCancellation(System.Threading.CancellationToken cancellationToken) -> Alpaca.Markets.Extensions.AlpacaValueTask
 Alpaca.Markets.Extensions.Bracket
@@ -31,6 +32,7 @@ Alpaca.Markets.Extensions.ReconnectionParameters.ReconnectionParameters() -> voi
 Alpaca.Markets.Extensions.ReconnectionParameters.RetryWebSocketErrorCodes.get -> System.Collections.Generic.ISet<System.Net.WebSockets.WebSocketError>!
 Alpaca.Markets.Extensions.StreamingClientExtensions
 Alpaca.Markets.Extensions.StreamingDataClientExtensions
+override Alpaca.Markets.Extensions.AlpacaValueTask.GetHashCode() -> int
 static Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(this Alpaca.Markets.IAlpacaCryptoStreamingClient! client, params string![]! symbols) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IOrderBook!>!
 static Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.GetOrderBookSubscription(this Alpaca.Markets.IAlpacaCryptoStreamingClient! client, System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IOrderBook!>!
 static Alpaca.Markets.Extensions.AlpacaCryptoStreamingClientExtensions.SubscribeOrderBookAsync(this Alpaca.Markets.IAlpacaCryptoStreamingClient! client, params string![]! symbols) -> System.Threading.Tasks.ValueTask<Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<Alpaca.Markets.IOrderBook!>!>
@@ -106,6 +108,8 @@ static Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTrad
 static Alpaca.Markets.Extensions.AlpacaServiceCollectionExtensions.AddAlpacaTradingClient(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey) -> Microsoft.Extensions.DependencyInjection.IHttpClientBuilder!
 static Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaStreamingClient! client) -> Alpaca.Markets.IAlpacaStreamingClient!
 static Alpaca.Markets.Extensions.AlpacaStreamingClientExtensions.WithReconnect(this Alpaca.Markets.IAlpacaStreamingClient! client, Alpaca.Markets.Extensions.ReconnectionParameters! parameters) -> Alpaca.Markets.IAlpacaStreamingClient!
+static Alpaca.Markets.Extensions.AlpacaValueTask.operator !=(Alpaca.Markets.Extensions.AlpacaValueTask left, Alpaca.Markets.Extensions.AlpacaValueTask right) -> bool
+static Alpaca.Markets.Extensions.AlpacaValueTask.operator ==(Alpaca.Markets.Extensions.AlpacaValueTask left, Alpaca.Markets.Extensions.AlpacaValueTask right) -> bool
 static Alpaca.Markets.Extensions.Bracket.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice) -> Alpaca.Markets.BracketOrder!
 static Alpaca.Markets.Extensions.Bracket.Buy(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice, decimal stopLossLimitPrice) -> Alpaca.Markets.BracketOrder!
 static Alpaca.Markets.Extensions.Bracket.Sell(string! symbol, Alpaca.Markets.OrderQuantity quantity, decimal takeProfitLimitPrice, decimal stopLossStopPrice) -> Alpaca.Markets.BracketOrder!
@@ -178,3 +182,5 @@ static Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAs
 static Alpaca.Markets.Extensions.StreamingClientExtensions.SubscribeUpdatedBarAsync(this Alpaca.Markets.IStreamingDataClient! client, System.Collections.Generic.IEnumerable<string!>! symbols) -> System.Threading.Tasks.ValueTask<Alpaca.Markets.Extensions.IDisposableAlpacaDataSubscription<Alpaca.Markets.IBar!>!>
 static Alpaca.Markets.Extensions.StreamingDataClientExtensions.SubscribeAsync(this Alpaca.Markets.IStreamingDataClient! client, params Alpaca.Markets.IAlpacaDataSubscription![]! subscriptions) -> Alpaca.Markets.Extensions.AlpacaValueTask
 static Alpaca.Markets.Extensions.StreamingDataClientExtensions.UnsubscribeAsync(this Alpaca.Markets.IStreamingDataClient! client, params Alpaca.Markets.IAlpacaDataSubscription![]! subscriptions) -> Alpaca.Markets.Extensions.AlpacaValueTask
+~override Alpaca.Markets.Extensions.AlpacaValueTask.Equals(object obj) -> bool
+~override Alpaca.Markets.Extensions.AlpacaValueTask.ToString() -> string

@@ -46,7 +46,7 @@ internal sealed class IndicatorLibraryExample : IDisposable
 
         stockData.SignalsList.Clear();
         stockData.CustomValuesList.Clear();
-        // can also create indicators out of any other indicators such as a MACD of a RSI
+        // can also create indicators out of any other indicators such as a MACD of an RSI
         UseRelativeStrengthIndexMacd(stockData);
     }
 

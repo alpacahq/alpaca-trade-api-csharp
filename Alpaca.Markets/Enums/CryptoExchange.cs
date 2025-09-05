@@ -1,7 +1,7 @@
 ﻿namespace Alpaca.Markets;
 
 /// <summary>
-/// Crypto currency exchanges supported by Alpaca REST API.
+/// Cryptocurrency exchanges supported by Alpaca REST API.
 /// </summary>
 [JsonConverter(typeof(CryptoExchangeEnumConverter))]
 [SuppressMessage("ReSharper", "IdentifierTypo")]

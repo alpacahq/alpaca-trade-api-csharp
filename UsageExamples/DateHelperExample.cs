@@ -97,7 +97,7 @@ internal sealed class DateHelper
 
     public static async Task Run()
     {
-        // api method of finding market status which is time consuming and takes up an api call
+        // api method of finding market status which is time-consuming and takes up an api call
         // my tests took an average of 4000 milliseconds for this task
         var apiWatch = Stopwatch.StartNew();
         var apiStatus = await GetAlpacaMarketStatus(DateTime.UtcNow).ConfigureAwait(false);
