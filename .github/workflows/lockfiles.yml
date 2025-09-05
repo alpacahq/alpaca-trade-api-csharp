@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Setup .NET 9.0.x
       uses: actions/setup-dotnet@v4
@@ -26,6 +26,6 @@ jobs:
       run: dotnet restore --force-evaluate
 
     - name: Auto-commit changed files
-      uses: stefanzweifel/git-auto-commit-action@v5
+      uses: stefanzweifel/git-auto-commit-action@v6
       with:
         commit_message: Update NuGet lock files after Dependabot dependency update.
