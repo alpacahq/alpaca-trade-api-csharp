@@ -8,7 +8,7 @@
 public enum TimeInForce
 {
     /// <summary>
-    /// The order is good for the day and it will be canceled automatically at the end of market hours.
+    /// The order is good for the day, and it will be canceled automatically at the end of market hours.
     /// </summary>
     [EnumMember(Value = "day")]
     Day,
@@ -31,14 +31,14 @@ public enum TimeInForce
     Opg,
 
     /// <summary>
-    /// The order is immediately filled or canceled after being placed (may partial fill).
+    /// The order is immediately filled or canceled after being placed (may partially fill).
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "ioc")]
     Ioc,
 
     /// <summary>
-    /// The order is immediately filled or canceled after being placed (may not partial fill).
+    /// The order is immediately filled or canceled after being placed (may not partially fill).
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "fok")]

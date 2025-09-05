@@ -13,7 +13,7 @@
 public enum AccountActivityType
 {
     /// <summary>
-    /// Order fills (both partial and full fills)
+    /// Order fills (both partial and complete fills)
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "FILL")]
@@ -182,14 +182,14 @@ public enum AccountActivityType
     NameChange,
 
     /// <summary>
-    /// Pass Thru Charge
+    /// Pass-through charge
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "PTC")]
     PassThruCharge,
 
     /// <summary>
-    /// Pass Thru Rebate
+    /// Pass-through rebate
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "PTR")]

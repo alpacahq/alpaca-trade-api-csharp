@@ -219,7 +219,7 @@ internal sealed class WebSocketsTransport(
                 // 2. Waiting on a flush to complete (back pressure being applied)
                 _aborted = true;
 
-                // Abort the websocket if we're stuck in a pending receive from the client
+                // Abort the websocket if we're stuck in a pending reception from the client
                 socket.Abort();
 
                 // Cancel any pending flush so that we can quit

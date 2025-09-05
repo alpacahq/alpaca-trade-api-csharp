@@ -20,7 +20,7 @@ public sealed class TakeProfitOrder : AdvancedOrderBase, ITakeProfit
     /// Creates a new instance of the <see cref="BracketOrder"/> order from the current order.
     /// </summary>
     /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
-    /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
+    /// <returns>New advanced order representing a pair of original order and stop loss order.</returns>
     [UsedImplicitly]
     public BracketOrder StopLoss(
         Decimal stopLossStopPrice) =>
@@ -31,7 +31,7 @@ public sealed class TakeProfitOrder : AdvancedOrderBase, ITakeProfit
     /// </summary>
     /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
     /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
-    /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
+    /// <returns>New advanced order representing a pair of original order and stop loss order.</returns>
     [UsedImplicitly]
     public BracketOrder StopLoss(
         Decimal stopLossStopPrice,

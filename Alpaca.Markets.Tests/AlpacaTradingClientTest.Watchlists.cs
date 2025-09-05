@@ -2,18 +2,18 @@ namespace Alpaca.Markets.Tests;
 
 public sealed partial class AlpacaTradingClientTest
 {
-    private const String WatchListsWildcardUrl = $"{WatchlistsUrl}/**";
+    private const String WatchListsWildcardUrl = $"{WatchListsUrl}/**";
 
-    private const String WatchlistsByNameUrl = $"{WatchlistsUrl}:by_name";
+    private const String WatchListsByNameUrl = $"{WatchListsUrl}:by_name";
 
-    private const String WatchlistsUrl = "/v2/watchlists";
+    private const String WatchListsUrl = "/v2/watchlists";
 
     [Fact]
     public async Task ListWatchListsAsyncWorks()
     {
         using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddGet(WatchlistsUrl, new JArray(createWatchList()));
+        mock.AddGet(WatchListsUrl, new JArray(createWatchList()));
 
         var watchLists = await mock.Client.ListWatchListsAsync();
 
@@ -40,7 +40,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddGet(WatchlistsByNameUrl, createWatchList());
+        mock.AddGet(WatchListsByNameUrl, createWatchList());
 
         var watchList = await mock.Client.GetWatchListByNameAsync(Guid.NewGuid().ToString("D"));
 
@@ -52,7 +52,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddPost(WatchlistsUrl, createWatchList());
+        mock.AddPost(WatchListsUrl, createWatchList());
 
         var watchList = await mock.Client.CreateWatchListAsync(new NewWatchListRequest(
             Guid.NewGuid().ToString("D"), [Stock, Crypto]));
@@ -91,7 +91,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddPost(WatchlistsByNameUrl, createWatchList());
+        mock.AddPost(WatchListsByNameUrl, createWatchList());
 
         var watchList = await mock.Client.AddAssetIntoWatchListByNameAsync(
             new ChangeWatchListRequest<String>(Guid.NewGuid().ToString("D"), Stock));
@@ -117,7 +117,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddDelete($"{WatchlistsByNameUrl}/**", createWatchList());
+        mock.AddDelete($"{WatchListsByNameUrl}/**", createWatchList());
 
         var watchList = await mock.Client.DeleteAssetFromWatchListByNameAsync(
             new ChangeWatchListRequest<String>(Guid.NewGuid().ToString("D"), Stock));
@@ -139,7 +139,7 @@ public sealed partial class AlpacaTradingClientTest
     {
         using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
-        mock.AddDelete(WatchlistsByNameUrl, createWatchList());
+        mock.AddDelete(WatchListsByNameUrl, createWatchList());
 
         Assert.True(await mock.Client.DeleteWatchListByNameAsync(Guid.NewGuid().ToString("D")));
     }

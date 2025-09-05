@@ -90,7 +90,7 @@ internal sealed class MeanReversionPaperOnly : IDisposable
 
             if (diff <= 0)
             {
-                // Above the 20 minute average - exit any existing long position.
+                // Above the 20-minute average - exit any existing long position.
                 if (positionQuantity > 0)
                 {
                     Console.WriteLine("Setting position to zero.");

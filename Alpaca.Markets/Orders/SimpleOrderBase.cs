@@ -32,7 +32,7 @@ public abstract class SimpleOrderBase : OrderBase
     /// Creates a new instance of the <see cref="TakeProfitOrder"/> order from the current order.
     /// </summary>
     /// <param name="takeProfitLimitPrice">Take profit order limit price.</param>
-    /// <returns>New advanced order representing pair of original order and take profit order.</returns>
+    /// <returns>New advanced order representing a pair of original order and take profit order.</returns>
     public TakeProfitOrder TakeProfit(
         Decimal takeProfitLimitPrice) =>
         new(
@@ -43,7 +43,7 @@ public abstract class SimpleOrderBase : OrderBase
     /// Creates a new instance of the <see cref="StopLossOrder"/> order from the current order.
     /// </summary>
     /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
-    /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
+    /// <returns>New advanced order representing a pair of original order and stop loss order.</returns>
     public StopLossOrder StopLoss(
         Decimal stopLossStopPrice) =>
         new(
@@ -56,7 +56,7 @@ public abstract class SimpleOrderBase : OrderBase
     /// </summary>
     /// <param name="stopLossStopPrice">Stop loss order stop price.</param>
     /// <param name="stopLossLimitPrice">Stop loss order limit price.</param>
-    /// <returns>New advanced order representing pair of original order and stop loss order.</returns>
+    /// <returns>New advanced order representing a pair of original order and stop loss order.</returns>
     public StopLossOrder StopLoss(
         Decimal stopLossStopPrice,
         Decimal stopLossLimitPrice) =>

@@ -73,7 +73,7 @@ public interface IAccount
     Boolean TradeSuspendedByUser { get; }
 
     /// <summary>
-    /// Flag to denote whether or not the account is permitted to short.
+    /// Flag to denote whether the account is permitted to short.
     /// </summary>
     [UsedImplicitly]
     Boolean ShortingEnabled { get; }
