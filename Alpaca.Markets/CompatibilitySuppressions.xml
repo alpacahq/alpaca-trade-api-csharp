@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!-- https://learn.microsoft.com/dotnet/fundamentals/package-validation/diagnostic-ids -->
-<Suppressions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Suppressions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Suppression>
     <DiagnosticId>CP0001</DiagnosticId>
     <Target>T:Alpaca.Markets.ICalendar</Target>
@@ -1566,6 +1566,13 @@
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:Alpaca.Markets.PortfolioHistoryRequest.get_TimeInterval</Target>
     <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IEnvironment.AlpacaOptionsStreamingApi</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
@@ -1592,6 +1599,13 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IEnvironment.AlpacaOptionsStreamingApi</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
     <Target>P:Alpaca.Markets.IOrder.AssetClass</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
@@ -1609,6 +1623,13 @@
     <Target>P:Alpaca.Markets.IOrder.OrderSide</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IEnvironment.AlpacaOptionsStreamingApi</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>

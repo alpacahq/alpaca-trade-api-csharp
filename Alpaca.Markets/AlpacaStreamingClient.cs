@@ -39,7 +39,7 @@ internal sealed class AlpacaStreamingClient :
     {
         try
         {
-            await SendAsJsonStringAsync(new JsonAuthRequest
+            await SendAsync(new JsonAuthRequest
             {
                 Action = JsonAction.Authenticate,
                 Data = Configuration.SecurityId
@@ -114,7 +114,7 @@ internal sealed class AlpacaStreamingClient :
                 }
             };
 
-            await SendAsJsonStringAsync(listenRequest).ConfigureAwait(false);
+            await SendAsync(listenRequest).ConfigureAwait(false);
         }
         catch (Exception exception)
         {

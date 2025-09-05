@@ -33,6 +33,8 @@ public static class EnvironmentExtensions
         public Uri AlpacaDataApi => _environment.AlpacaDataApi;
 
         public Uri AlpacaStreamingApi => _environment.AlpacaStreamingApi;
+
+        public Uri AlpacaOptionsStreamingApi => _environment.AlpacaOptionsStreamingApi;
     }
 
     /// <summary>
