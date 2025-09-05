@@ -182,14 +182,10 @@ internal abstract class StreamingClientBase<TConfiguration> : IStreamingClient
 
         var jsonString = textWriter.ToString();
         
-        if (Configuration.UseMessagePack)
-        {
-            return _webSocket.SendAsync(MessagePackSerializer.ConvertFromJson(jsonString, cancellationToken: cancellationToken), cancellationToken);
-        }
-        else
-        {
-            return _webSocket.SendAsync(jsonString, cancellationToken);
-        }
+        return Configuration.UseMessagePack
+            ? _webSocket.SendAsync(MessagePackSerializer.ConvertFromJson(
+                jsonString, cancellationToken: cancellationToken), cancellationToken)
+            : _webSocket.SendAsync(jsonString, cancellationToken);
     }
 
 #pragma warning disable IDE1006 // Naming Styles

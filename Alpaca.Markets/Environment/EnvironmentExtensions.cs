@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Alpaca.Markets;
+﻿namespace Alpaca.Markets;
 
 /// <summary>
 /// Collection of helper extension methods for <see cref="IEnvironment"/> interface.
