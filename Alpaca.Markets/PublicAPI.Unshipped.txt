@@ -1,3 +1,7 @@
 ﻿#nullable enable
+Alpaca.Markets.AssetClass.CryptoPerpetual = 3 -> Alpaca.Markets.AssetClass
+Alpaca.Markets.Exchange.Ascx = 11 -> Alpaca.Markets.Exchange
 Alpaca.Markets.IAsset.MarginRequirementLong.get -> decimal?
 Alpaca.Markets.IAsset.MarginRequirementShort.get -> decimal?
+Alpaca.Markets.MarketDataFeed.Boats = 4 -> Alpaca.Markets.MarketDataFeed
+Alpaca.Markets.MarketDataFeed.Overnight = 5 -> Alpaca.Markets.MarketDataFeed
