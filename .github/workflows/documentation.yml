@@ -24,8 +24,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-nuget-
 
-    - name: Dotnet Build
-      run: dotnet build -c Documentation
+    - name: Restore .NET Tools
+      run: dotnet tool restore
+
+    - name: Build Documentation
+      run: dotnet docfx Documentation/docfx.json
 
     - name: Save Documentation
       uses: actions/upload-artifact@v4
