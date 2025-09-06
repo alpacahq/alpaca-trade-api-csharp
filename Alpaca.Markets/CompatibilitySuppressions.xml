@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- https://learn.microsoft.com/dotnet/fundamentals/package-validation/diagnostic-ids -->
 <Suppressions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Suppression>
@@ -1571,6 +1571,20 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAsset.MarginRequirementLong</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAsset.MarginRequirementShort</Target>
+    <Left>lib/net6.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
     <Target>P:Alpaca.Markets.IEnvironment.AlpacaOptionsStreamingApi</Target>
     <Left>lib/net6.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
@@ -1599,6 +1613,20 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAsset.MarginRequirementLong</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAsset.MarginRequirementShort</Target>
+    <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
     <Target>P:Alpaca.Markets.IEnvironment.AlpacaOptionsStreamingApi</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
@@ -1623,6 +1651,20 @@
     <Target>P:Alpaca.Markets.IOrder.OrderSide</Target>
     <Left>lib/netstandard2.0/Alpaca.Markets.dll</Left>
     <Right>lib/netstandard2.0/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAsset.MarginRequirementLong</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0006</DiagnosticId>
+    <Target>P:Alpaca.Markets.IAsset.MarginRequirementShort</Target>
+    <Left>lib/netstandard2.1/Alpaca.Markets.dll</Left>
+    <Right>lib/netstandard2.1/Alpaca.Markets.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
   </Suppression>
   <Suppression>
