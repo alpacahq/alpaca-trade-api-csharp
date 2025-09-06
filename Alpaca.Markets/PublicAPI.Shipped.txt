@@ -809,7 +809,7 @@ Alpaca.Markets.IPage<TItems>.Items.get -> System.Collections.Generic.IReadOnlyLi
 Alpaca.Markets.IPage<TItems>.NextPageToken.get -> string?
 Alpaca.Markets.IPage<TItems>.Symbol.get -> string!
 Alpaca.Markets.IPortfolioHistory
-Alpaca.Markets.IPortfolioHistory.BaseValue.get -> decimal
+Alpaca.Markets.IPortfolioHistory.BaseValue.get -> decimal?
 Alpaca.Markets.IPortfolioHistory.Items.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IPortfolioHistoryItem!>!
 Alpaca.Markets.IPortfolioHistory.TimeFrame.get -> Alpaca.Markets.TimeFrame
 Alpaca.Markets.IPortfolioHistoryItem

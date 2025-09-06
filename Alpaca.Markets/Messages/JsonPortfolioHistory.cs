@@ -45,8 +45,8 @@ internal sealed class JsonPortfolioHistory : IPortfolioHistory
     [JsonProperty(PropertyName = "timeframe", Required = Required.Always)]
     public TimeFrame TimeFrame { get; set; }
 
-    [JsonProperty(PropertyName = "base_value", Required = Required.Always)]
-    public Decimal BaseValue { get; set; }
+    [JsonProperty(PropertyName = "base_value", Required = Required.Default)]
+    public Decimal? BaseValue { get; set; }
 
     [OnDeserialized]
     [UsedImplicitly]
