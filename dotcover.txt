@@ -1,0 +1,5 @@
+--xml-report-output Alpaca.Markets.Coverage.xml
+--exclude-assemblies UsageExamples
+--exclude-assemblies *.Tests
+--target-working-directory .
+--target-arguments test
