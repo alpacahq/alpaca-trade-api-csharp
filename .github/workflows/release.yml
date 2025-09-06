@@ -28,10 +28,9 @@ jobs:
 
     - name: Restore .NET Tools
       run: dotnet tool restore
-      working-directory: ./Alpaca.Markets.Tests
 
     - name: Dotnet Test (Debug)
-      run: dotnet dotcover test --dcXML=Configuration.xml
+      run: dotnet dotcover dotnet Configuration.xml -- test
 
     - name: Dotnet Build (Release)
       run: dotnet build -c Release
