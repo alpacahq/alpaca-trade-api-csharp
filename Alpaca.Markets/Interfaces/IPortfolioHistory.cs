@@ -21,5 +21,5 @@ public interface IPortfolioHistory
     /// Gets base value for this historical view.
     /// </summary>
     [UsedImplicitly]
-    Decimal BaseValue { get; }
+    Decimal? BaseValue { get; }
 }
