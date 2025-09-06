@@ -51,7 +51,8 @@ public sealed partial class AlpacaTradingClientTest
         new(
             new JProperty("attributes", new JArray(
                 toEnumString(AssetAttributes.PtpNoException))),
-            new JProperty("maintenance_margin_requirement", 100),
+            new JProperty("margin_requirement_short", 100),
+            new JProperty("margin_requirement_long", 100),
             new JProperty("status", AssetStatus.Active),
             new JProperty("class", AssetClass.UsEquity),
             new JProperty("exchange", Exchange.Amex),
@@ -90,7 +91,8 @@ public sealed partial class AlpacaTradingClientTest
         Assert.NotNull(asset.MinOrderSize);
         Assert.NotNull(asset.PriceIncrement);
         Assert.NotNull(asset.MinTradeIncrement);
-        Assert.NotNull(asset.MaintenanceMarginRequirement);
+        Assert.NotNull(asset.MarginRequirementLong);
+        Assert.NotNull(asset.MarginRequirementShort);
 
         Assert.Single(asset.Attributes);
         Assert.Equal(AssetAttributes.PtpNoException, asset.Attributes[0]);

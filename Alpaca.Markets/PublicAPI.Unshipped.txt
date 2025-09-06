@@ -1,1 +1,3 @@
 ﻿#nullable enable
+Alpaca.Markets.IAsset.MarginRequirementLong.get -> decimal?
+Alpaca.Markets.IAsset.MarginRequirementShort.get -> decimal?
