@@ -6,7 +6,15 @@
       "version": "2023.2.5",
       "commands": [
         "dotnet-dotcover"
-      ]
+      ],
+      "rollForward": false
+    },
+    "docfx": {
+      "version": "2.78.3",
+      "commands": [
+        "docfx"
+      ],
+      "rollForward": false
     }
   }
 }
