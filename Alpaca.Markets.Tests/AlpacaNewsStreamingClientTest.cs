@@ -85,7 +85,7 @@ public sealed class AlpacaNewsStreamingClientTest(
         await client.Client.DisconnectAsync();
         return;
 
-        void HandleArticle(INewsArticle _) =>
+        static void HandleArticle(INewsArticle _) =>
             throw new InvalidOperationException(); // Should be reported via OnError event
     }
 }

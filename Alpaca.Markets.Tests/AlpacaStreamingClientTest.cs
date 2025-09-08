@@ -159,11 +159,11 @@ public sealed class AlpacaStreamingClientTest(
         await client.Client.DisconnectAsync();
         return;
 
-        void HandleTradeUpdate(
+        static void HandleTradeUpdate(
             ITradeUpdate _) =>
             throw new SocketException((Int32)SocketError.IsConnected);
 
-        void HandleWarning(
+        static void HandleWarning(
             String _) =>
             throw new SocketException((Int32)SocketError.IsConnected);
     }

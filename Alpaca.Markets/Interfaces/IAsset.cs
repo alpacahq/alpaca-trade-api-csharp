@@ -95,6 +95,7 @@ public interface IAsset
     /// <summary>
     /// Gets the % margin requirement for the asset. This property is valid only for equity assets.
     /// </summary>
+    [UsedImplicitly]
     [Obsolete("This property is obsolete and will be removed in the next major SDK release. Please use MarginRequirementLong and/or MarginRequirementShort properties instead.", false)]
     Decimal? MaintenanceMarginRequirement { get; }
 

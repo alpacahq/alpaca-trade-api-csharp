@@ -182,8 +182,8 @@ public sealed class AlpacaNewsStreamingClientTest
         Assert.Equal(AuthStatus.Authorized, result);
         return;
 
-        void HandleError(Exception _) => throw new TException();
-        void HandleClosed() => throw new TException();
+        static void HandleError(Exception _) => throw new TException();
+        static void HandleClosed() => throw new TException();
     }
 
     private static Mock<IAlpacaNewsStreamingClient> createMockClient<TItem>(

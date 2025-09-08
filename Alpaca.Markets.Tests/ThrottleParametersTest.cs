@@ -61,7 +61,7 @@ public sealed class ThrottleParametersTest(
         Assert.Equal(money, info.MaxDayTradingBuyingPowerUsedSoFar);
         return;
 
-        KeyValuePair<String, String> AsHeader(
+        static KeyValuePair<String, String> AsHeader(
             RetryConditionHeaderValue value) =>
             new("Retry-After", value.ToString());
     }
@@ -83,7 +83,7 @@ public sealed class ThrottleParametersTest(
         Assert.Equal(SocketError.NotConnected, exception.SocketErrorCode);
         return;
 
-        SocketException AsException(
+        static SocketException AsException(
             SocketError socketError) =>
             new((Int32)socketError);
     }

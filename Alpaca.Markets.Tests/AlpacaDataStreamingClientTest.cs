@@ -217,15 +217,15 @@ public sealed class AlpacaDataStreamingClientTest(
         await client.Client.DisconnectAsync();
         return;
 
-        void HandleConnected(AuthStatus status)
+        static void HandleConnected(AuthStatus status)
         {
             if (status == AuthStatus.Authorized)
             {
                 throw new InvalidOperationException(); // Should be reported via OnError event
             }
-        } 
+        }
 
-        void HandleCorrection(ICorrection _) =>
+        static void HandleCorrection(ICorrection _) =>
             throw new InvalidOperationException(); // Should be reported via OnError event
     }
 

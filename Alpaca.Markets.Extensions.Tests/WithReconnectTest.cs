@@ -105,7 +105,7 @@ public sealed class WithReconnectTest
         client.Verify();
         return;
 
-        IAlpacaDataSubscription<INewsArticle> GetSubscription(String symbol)
+        static IAlpacaDataSubscription<INewsArticle> GetSubscription(String symbol)
         {
             var mock = new Mock<IAlpacaDataSubscription<INewsArticle>>();
             mock.Setup(s => s.Streams).Returns(Enumerable.Repeat(symbol, 1));
