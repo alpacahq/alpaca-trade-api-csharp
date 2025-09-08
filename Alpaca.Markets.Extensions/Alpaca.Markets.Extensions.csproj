@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>8.0.0.1</AssemblyVersion>
-    <FileVersion>8.0.0.1</FileVersion>
-    <Version>8.0.0-beta1</Version>
+    <AssemblyVersion>8.0.0.2</AssemblyVersion>
+    <FileVersion>8.0.0.2</FileVersion>
+    <Version>8.0.0-beta2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Obsolete members cleanup - remove fully obsolete and convert warnings into errors.
+- All dependencies were updated to the latest stable versions.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
@@ -113,7 +113,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="!($(TargetFramework.StartsWith('net8')))">
-    <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />

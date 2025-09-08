@@ -12,14 +12,20 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>8.0.0.3</AssemblyVersion>
-    <FileVersion>8.0.0.3</FileVersion>
-    <Version>8.0.0-beta3</Version>
+    <AssemblyVersion>8.0.0.4</AssemblyVersion>
+    <FileVersion>8.0.0.4</FileVersion>
+    <Version>8.0.0-beta4</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
-- Basic authentication was added to connect Broker API.
+- The new `MarginRequirementLong` and `MarginRequirementShort` properties were added to the `IAsset` interface.
+- The old `MaintenanceMarginRequirement` property of the `IAsset` interface is marked as obsolete.
+- The new `Boats` and `Overnight` values were added to the `MarketDataFeed` enumeration.
+- The `BaseValue` property in `IPortfolioHistory` was changed to be nullable.
+- The new `CryptoPerpetual` value was added to the `AssetClass` enumeration.
+- The new `Ascx` value was added to the `Exchange` enumeration.
+- All dependencies were updated to the latest stable versions.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
@@ -99,7 +105,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>compile; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MessagePack" Version="3.1.3" />
+    <PackageReference Include="MessagePack" Version="3.1.4" />
     <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="4.14.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -121,7 +127,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="!$(TargetFramework.StartsWith('net8'))">
-    <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />
