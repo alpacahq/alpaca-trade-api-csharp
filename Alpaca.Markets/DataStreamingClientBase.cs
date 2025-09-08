@@ -1,5 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using Newtonsoft.Json.Linq;
+using MessagePack;
+using System.Buffers;
 
 namespace Alpaca.Markets;
 
@@ -138,7 +140,82 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
             }
         }
     }
+    
+    private static class MessagePackToJTokenDeserializer
+    {
+        public static JToken Deserialize(byte[] msgPackBytes, Action<string> onWarning)
+        {
+            var reader = new MessagePackReader(new ReadOnlySequence<byte>(msgPackBytes));
+            return toJToken(ref reader, onWarning);
+        }
 
+        // Only the data types used by Alpaca real-time data are covered here
+        private static JToken toJToken(ref MessagePackReader reader, Action<string> onWarning)
+        {
+            var type = reader.NextMessagePackType;
+
+            // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
+            switch (type)
+            {
+                case MessagePackType.Map:
+                    var size = reader.ReadMapHeader();
+                    var obj = new JObject();
+                    for (var i = 0; i < size; ++i)
+                    {
+                        var key = reader.ReadString();
+                        if (key is not null)
+                        {
+                            obj[key] = toJToken(ref reader, onWarning);
+                        }
+                        else
+                        {
+                            reader.Skip();
+                        }
+                    }
+                    return obj;
+
+                case MessagePackType.Array:
+                    var length = reader.ReadArrayHeader();
+                    var arr = new JArray();
+                    for (var i = 0; i < length; ++i)
+                    {
+                        arr.Add(toJToken(ref reader, onWarning));
+                    }
+                    return arr;
+
+                case MessagePackType.String:
+                    return new JValue(reader.ReadString());
+
+                case MessagePackType.Integer:
+                    return new JValue(reader.ReadInt64());
+
+                case MessagePackType.Float:
+                    return reader.NextCode == MessagePackCode.Float32
+                        ? new JValue(reader.ReadSingle())
+                        : new JValue(reader.ReadDouble());
+
+                case MessagePackType.Boolean:
+                    return new JValue(reader.ReadBoolean());
+
+                case MessagePackType.Extension:
+                    var extHeader = reader.ReadExtensionFormatHeader();
+                    if (extHeader.TypeCode == ReservedMessagePackExtensionTypeCode.DateTime)
+                    {
+                        return new JValue(reader.ReadDateTime(extHeader));
+                    }
+                    onWarning.Invoke($"Ignored MessagePack data type Extension:{extHeader.TypeCode}");
+                    break;
+
+                default:
+                    onWarning.Invoke($"Ignored MessagePack data type {Enum.GetName(typeof(MessagePackType), type)}");
+                    break;
+            }
+
+            reader.Skip();
+            return JValue.CreateNull();
+        }
+    }
+    
     // Available Alpaca data streaming message types
 
     private const String ErrorInfo = "error";
@@ -313,6 +390,51 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
 #pragma warning restore IDE0079
         "Design", "CA1031:Do not catch general exception types",
         Justification = "Expected behavior - we report exceptions via OnError event.")]
+    protected sealed override void OnMessageReceived(
+        byte[] binaryData)
+    {
+        try
+        {
+            foreach (var token in MessagePackToJTokenDeserializer.Deserialize(binaryData, HandleWarning))
+            {
+                var messageType = token["T"];
+                if (messageType is null)
+                {
+                    HandleWarning("Incoming message missing message type.");
+                }
+                else
+                {
+                    var conditions = token["c"];
+
+                    if (conditions is not null)
+                    {
+                        if (JTokenType.String == conditions.Type)
+                        {
+                            var conditionsString = conditions.Value<string>();
+
+                            if (conditionsString is not null)
+                            {
+                                token["c"] = new JArray(conditionsString
+                                    .Select(c => c.ToString()).ToArray<Object>());
+                            }
+                        }
+                    }
+
+                    HandleMessage(_handlers, messageType.ToString(), token);
+                }
+            }
+        }
+        catch (Exception exception)
+        {
+            HandleError(exception);
+        }
+    }
+
+#pragma warning disable IDE0079
+    [SuppressMessage(
+#pragma warning restore IDE0079
+        "Design", "CA1031:Do not catch general exception types",
+        Justification = "Expected behavior - we report exceptions via OnError event.")]
     private async void handleConnectionSuccess(
         JToken token)
     {
@@ -325,7 +447,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
             switch (connectionSuccess.Status)
             {
                 case ConnectionStatus.Connected:
-                    await SendAsJsonStringAsync(Configuration.SecurityId.GetAuthentication())
+                    await SendAsync(Configuration.SecurityId.GetAuthentication())
                         .ConfigureAwait(false);
                     break;
 
@@ -444,7 +566,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
             switch (error.Code)
             {
                 case notAuthenticated:
-                    await SendAsJsonStringAsync(Configuration.SecurityId.GetAuthentication())
+                    await SendAsync(Configuration.SecurityId.GetAuthentication())
                         .ConfigureAwait(false);
                     break;
 
@@ -500,7 +622,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
         ILookup<String, String> streamsByChannels,
         CancellationToken cancellationToken) =>
         streamsByChannels.Count != 0
-            ? SendAsJsonStringAsync(new JsonSubscriptionUpdate
+            ? SendAsync(new JsonSubscriptionUpdate
             {
                 Action = action,
                 News = getSymbols(streamsByChannels, NewsChannel),

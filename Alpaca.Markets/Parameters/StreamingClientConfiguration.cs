@@ -13,6 +13,7 @@ public abstract class StreamingClientConfiguration
     {
         SecurityId = new SecretKey(String.Empty, String.Empty);
         ApiEndpoint = apiEndpoint;
+        UseMessagePack = false;
     }
 
     /// <summary>
@@ -29,6 +30,13 @@ public abstract class StreamingClientConfiguration
     /// Gets or sets factory for obtaining web socket client.
     /// </summary>
     public Func<IWebSocket>? WebSocketFactory { get; [UsedImplicitly] set; }
+
+    /// <summary>
+    /// Gets or sets the flag indicating that MessagePack format should be used.
+    /// Limited the set accessor accessibility level to internal because specifying the message format using
+    /// Content-Type header is not supported by the existing WebSocket implementation used.
+    /// </summary>
+    public bool UseMessagePack { get; internal set; }
 
     internal virtual Uri GetApiEndpoint() => ApiEndpoint;
 
