@@ -34,5 +34,19 @@ public enum MarketDataFeed
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "delayed_sip")]
-    DelayedSip
+    DelayedSip,
+
+    /// <summary>
+    /// BOATS feed - Blue Ocean, overnight US trading data.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "boats")]
+    Boats,
+
+    /// <summary>
+    /// Overnight feed - derived overnight US trading data.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "overnight")]
+    Overnight
 }

@@ -82,5 +82,12 @@ public enum Exchange
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "FTXU")]
-    Crypto
+    Crypto,
+
+    /// <summary>
+    /// Alpaca crypto Exchange.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "ASCX")]
+    Ascx
 }

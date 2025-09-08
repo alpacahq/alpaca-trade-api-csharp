@@ -25,5 +25,12 @@ public enum AssetClass
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "us_option")]
-    UsOption
+    UsOption,
+
+    /// <summary>
+    /// Perpetual cryptocurrency asset class.
+    /// </summary>
+    [UsedImplicitly]
+    [EnumMember(Value = "crypto_perp")]
+    CryptoPerpetual
 }

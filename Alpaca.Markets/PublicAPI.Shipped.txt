@@ -127,7 +127,9 @@ Alpaca.Markets.AssetAttributes.Ipo = 3 -> Alpaca.Markets.AssetAttributes
 Alpaca.Markets.AssetAttributes.Unknown = 0 -> Alpaca.Markets.AssetAttributes
 Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetClass.Crypto = 1 -> Alpaca.Markets.AssetClass
+Alpaca.Markets.AssetClass.CryptoPerpetual = 3 -> Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetClass.UsEquity = 0 -> Alpaca.Markets.AssetClass
+Alpaca.Markets.AssetClass.UsOption = 2 -> Alpaca.Markets.AssetClass
 Alpaca.Markets.AssetsRequest
 Alpaca.Markets.AssetsRequest.Attributes.get -> System.Collections.Generic.ISet<Alpaca.Markets.AssetAttributes>!
 Alpaca.Markets.AssetsRequest.AssetClass.get -> Alpaca.Markets.AssetClass?
@@ -145,7 +147,6 @@ Alpaca.Markets.AuthStatus
 Alpaca.Markets.AuthStatus.Authorized = 0 -> Alpaca.Markets.AuthStatus
 Alpaca.Markets.AuthStatus.TooManyConnections = 2 -> Alpaca.Markets.AuthStatus
 Alpaca.Markets.AuthStatus.Unauthorized = 1 -> Alpaca.Markets.AuthStatus
-Alpaca.Markets.AssetClass.UsOption = 2 -> Alpaca.Markets.AssetClass
 Alpaca.Markets.BarTimeFrame
 Alpaca.Markets.BarTimeFrame.BarTimeFrame() -> void
 Alpaca.Markets.BarTimeFrame.BarTimeFrame(int value, Alpaca.Markets.BarTimeFrameUnit unit) -> void
@@ -259,6 +260,7 @@ Alpaca.Markets.Environments
 Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.Amex = 6 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.Arca = 7 -> Alpaca.Markets.Exchange
+Alpaca.Markets.Exchange.Ascx = 11 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.Bats = 5 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.Crypto = 10 -> Alpaca.Markets.Exchange
 Alpaca.Markets.Exchange.Iex = 8 -> Alpaca.Markets.Exchange
@@ -561,6 +563,8 @@ Alpaca.Markets.IAsset.Fractionable.get -> bool
 Alpaca.Markets.IAsset.IsTradable.get -> bool
 Alpaca.Markets.IAsset.MaintenanceMarginRequirement.get -> decimal?
 Alpaca.Markets.IAsset.Marginable.get -> bool
+Alpaca.Markets.IAsset.MarginRequirementLong.get -> decimal?
+Alpaca.Markets.IAsset.MarginRequirementShort.get -> decimal?
 Alpaca.Markets.IAsset.MinOrderSize.get -> decimal?
 Alpaca.Markets.IAsset.MinTradeIncrement.get -> decimal?
 Alpaca.Markets.IAsset.Name.get -> string!
@@ -809,7 +813,7 @@ Alpaca.Markets.IPage<TItems>.Items.get -> System.Collections.Generic.IReadOnlyLi
 Alpaca.Markets.IPage<TItems>.NextPageToken.get -> string?
 Alpaca.Markets.IPage<TItems>.Symbol.get -> string!
 Alpaca.Markets.IPortfolioHistory
-Alpaca.Markets.IPortfolioHistory.BaseValue.get -> decimal
+Alpaca.Markets.IPortfolioHistory.BaseValue.get -> decimal?
 Alpaca.Markets.IPortfolioHistory.Items.get -> System.Collections.Generic.IReadOnlyList<Alpaca.Markets.IPortfolioHistoryItem!>!
 Alpaca.Markets.IPortfolioHistory.TimeFrame.get -> Alpaca.Markets.TimeFrame
 Alpaca.Markets.IPortfolioHistoryItem
@@ -1059,9 +1063,11 @@ Alpaca.Markets.ListOrdersRequest.WithInterval(Alpaca.Markets.Interval<System.Dat
 Alpaca.Markets.ListOrdersRequest.WithSymbol(string! symbol) -> Alpaca.Markets.ListOrdersRequest!
 Alpaca.Markets.ListOrdersRequest.WithSymbols(System.Collections.Generic.IEnumerable<string!>! symbols) -> Alpaca.Markets.ListOrdersRequest!
 Alpaca.Markets.MarketDataFeed
+Alpaca.Markets.MarketDataFeed.Boats = 4 -> Alpaca.Markets.MarketDataFeed
 Alpaca.Markets.MarketDataFeed.DelayedSip = 3 -> Alpaca.Markets.MarketDataFeed
 Alpaca.Markets.MarketDataFeed.Iex = 0 -> Alpaca.Markets.MarketDataFeed
 Alpaca.Markets.MarketDataFeed.Otc = 2 -> Alpaca.Markets.MarketDataFeed
+Alpaca.Markets.MarketDataFeed.Overnight = 5 -> Alpaca.Markets.MarketDataFeed
 Alpaca.Markets.MarketDataFeed.Sip = 1 -> Alpaca.Markets.MarketDataFeed
 Alpaca.Markets.MarketOrder
 Alpaca.Markets.MultiLegOrder
