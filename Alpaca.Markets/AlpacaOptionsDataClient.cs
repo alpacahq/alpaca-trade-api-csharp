@@ -2,10 +2,10 @@
 
 using JsonLatestData=JsonLatestData<JsonOptionQuote, JsonOptionTrade, JsonOptionSnapshot>;
 
-internal sealed class AlpacaOptionsDataClient : 
+internal sealed class AlpacaOptionsDataClient :
     DataHistoricalClientBase<
         HistoricalOptionBarsRequest,
-        HistoricalQuotesRequest, JsonHistoricalQuote,
+        HistoricalOptionQuotesRequest, JsonOptionQuote,
         HistoricalOptionTradesRequest, JsonOptionTrade>,
     IAlpacaOptionsDataClient
 {
@@ -33,6 +33,12 @@ internal sealed class AlpacaOptionsDataClient :
         CancellationToken cancellationToken = default) =>
         getLatestAsync<ITrade, JsonOptionTrade>(
             request.EnsureNotNull().Validate(), "trades/latest", data => data.Trades, cancellationToken);
+
+    public Task<IReadOnlyDictionary<String, IBar>> ListLatestBarsAsync(
+        LatestOptionsDataRequest request,
+        CancellationToken cancellationToken = default) =>
+        getLatestAsync<IBar, JsonHistoricalBar>(
+            request.EnsureNotNull().Validate(), "bars/latest", data => data.Bars, cancellationToken);
 
     public async Task<IDictionaryPage<IOptionSnapshot>> ListSnapshotsAsync(
         OptionSnapshotRequest request,

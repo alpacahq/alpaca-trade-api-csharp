@@ -118,3 +118,37 @@ The SDK follows a client pattern with multiple specialized clients:
 - GitHub Actions workflow handles build, test, and publishing of NuGet packages
 - Automatic NuGet publishing on tagged releases (`sdk/*` and `ext/*` tags)
 - Documentation auto-deployment to GitHub Pages using a dedicated workflow
+
+## API Compatibility and Breaking Changes
+
+When adding new public APIs to existing interfaces or classes, the .NET API compatibility analyzer will detect breaking changes and fail the build. This is expected behavior for maintaining backward compatibility.
+
+### Problem: API Compatibility Build Errors
+
+When you add new public methods to existing interfaces (like `IAlpacaOptionsDataClient`), you'll see build errors like:
+```
+error CP0006: Cannot add interface member 'Method.Name' to lib/netstandard2.1/Alpaca.Markets.dll because it does not exist on [Baseline] lib/net6.0/Alpaca.Markets.dll
+```
+
+### Solution: Auto-Generate Suppression File
+
+**Command to fix API compatibility errors:**
+```bash
+dotnet build --property ApiCompatGenerateSuppressionFile=true
+```
+
+**What this does:**
+- Builds the project successfully and automatically generates/updates `CompatibilitySuppressions.xml` file
+- Adds suppression entries for all new public APIs so future builds will use these suppressions to allow the new APIs
+
+**Important Notes:**
+- This is the correct approach for adding new APIs in major/minor version increments
+- The suppression file should be committed to version control (it will be used by CI/CD)
+- Only use this for intentional API additions, not accidental breaking changes
+- Review the generated suppressions to ensure they match your intended changes
+
+**Files Generated:**
+- `Alpaca.Markets/CompatibilitySuppressions.xml` - Main SDK suppressions
+- `Alpaca.Markets.Extensions/CompatibilitySuppressions.xml` - Extensions suppressions
+
+This process ensures proper API versioning while allowing controlled expansion of the public API surface.
