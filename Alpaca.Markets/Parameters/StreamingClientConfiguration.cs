@@ -13,7 +13,6 @@ public abstract class StreamingClientConfiguration
     {
         SecurityId = new SecretKey(String.Empty, String.Empty);
         ApiEndpoint = apiEndpoint;
-        UseMessagePack = false;
     }
 
     /// <summary>
@@ -36,7 +35,7 @@ public abstract class StreamingClientConfiguration
     /// Limited the set accessor accessibility level to internal because specifying the message format using
     /// Content-Type header is not supported by the existing WebSocket implementation used.
     /// </summary>
-    public bool UseMessagePack { get; internal set; }
+    internal bool UseMessagePack { get; set; }
 
     internal virtual Uri GetApiEndpoint() => ApiEndpoint;
 

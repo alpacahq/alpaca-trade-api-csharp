@@ -310,23 +310,44 @@ public static class EnvironmentExtensions
         };
 
     /// <summary>
-    /// Creates new instance of <see cref="AlpacaDataStreamingClientConfiguration"/> pre-configured for options for
-    /// specific environment provided as <paramref name="environment"/> argument.
+    /// Creates the new instance of <see cref="IAlpacaOptionsStreamingClient"/> interface
+    /// implementation for specific environment provided as <paramref name="environment"/> argument.
     /// </summary>
     /// <param name="environment">Target environment for new object.</param>
     /// <param name="securityKey">Alpaca API security key.</param>
+    /// <param name="feed">Options data feed selection (Indicative or OPRA).</param>
     /// <exception cref="ArgumentNullException">
     /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
     /// </exception>
-    /// <returns>New instance of <see cref="AlpacaDataStreamingClientConfiguration"/> object.</returns>
+    /// <returns>The new instance of <see cref="IAlpacaOptionsStreamingClient"/> interface implementation.</returns>
     [UsedImplicitly]
-    public static AlpacaDataStreamingClientConfiguration GetAlpacaOptionsStreamingClientConfiguration(
+    [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
+    public static IAlpacaOptionsStreamingClient GetAlpacaOptionsStreamingClient(
         this IEnvironment environment,
-        SecurityKey securityKey) =>
-        new()
+        SecurityKey securityKey,
+        OptionsFeed feed = OptionsFeed.Indicative) =>
+        new AlpacaOptionsStreamingClient(environment.GetAlpacaOptionsStreamingClientConfiguration(securityKey, feed));
+
+    /// <summary>
+    /// Creates new instance of <see cref="AlpacaOptionsStreamingClientConfiguration"/> for specific
+    /// environment provided as <paramref name="environment"/> argument.
+    /// </summary>
+    /// <param name="environment">Target environment for new object.</param>
+    /// <param name="securityKey">Alpaca API security key.</param>
+    /// <param name="feed">Options data feed selection (Indicative or OPRA).</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>New instance of <see cref="AlpacaOptionsStreamingClientConfiguration"/> object.</returns>
+    [UsedImplicitly]
+    public static AlpacaOptionsStreamingClientConfiguration GetAlpacaOptionsStreamingClientConfiguration(
+        this IEnvironment environment,
+        SecurityKey securityKey,
+        OptionsFeed feed = OptionsFeed.Indicative) =>
+        new(feed)
         {
             ApiEndpoint = environment.EnsureNotNull().AlpacaOptionsStreamingApi,
-            SecurityId = securityKey.EnsureNotNull(),
-            UseMessagePack = true
+            SecurityId = securityKey.EnsureNotNull()
         };
 }
