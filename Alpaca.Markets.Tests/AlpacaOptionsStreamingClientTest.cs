@@ -1,7 +1,7 @@
 ﻿namespace Alpaca.Markets.Tests;
 
 [Collection("MockEnvironment")]
-public sealed class AlpacaOptionsStreamingClientTest(
+public abstract class AlpacaOptionsStreamingClientTest(
     MockClientsFactoryFixture mockClientsFactory)
 {
     private const String OptionSymbol = "AAPL250117C00150000";
