@@ -333,6 +333,13 @@ Alpaca.Markets.HistoricalOptionTradesRequest.HistoricalOptionTradesRequest(strin
 Alpaca.Markets.HistoricalOptionTradesRequest.HistoricalOptionTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
 Alpaca.Markets.HistoricalOptionTradesRequest.HistoricalOptionTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.Interval<System.DateTime> timeInterval) -> void
 Alpaca.Markets.HistoricalOptionTradesRequest.HistoricalOptionTradesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into) -> void
+Alpaca.Markets.HistoricalOptionQuotesRequest
+Alpaca.Markets.HistoricalOptionQuotesRequest.HistoricalOptionQuotesRequest(string! symbol) -> void
+Alpaca.Markets.HistoricalOptionQuotesRequest.HistoricalOptionQuotesRequest(string! symbol, Alpaca.Markets.Interval<System.DateTime> timeInterval) -> void
+Alpaca.Markets.HistoricalOptionQuotesRequest.HistoricalOptionQuotesRequest(string! symbol, System.DateTime from, System.DateTime into) -> void
+Alpaca.Markets.HistoricalOptionQuotesRequest.HistoricalOptionQuotesRequest(System.Collections.Generic.IEnumerable<string!>! symbols) -> void
+Alpaca.Markets.HistoricalOptionQuotesRequest.HistoricalOptionQuotesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, Alpaca.Markets.Interval<System.DateTime> timeInterval) -> void
+Alpaca.Markets.HistoricalOptionQuotesRequest.HistoricalOptionQuotesRequest(System.Collections.Generic.IEnumerable<string!>! symbols, System.DateTime from, System.DateTime into) -> void
 Alpaca.Markets.HistoricalQuotesRequest
 Alpaca.Markets.HistoricalQuotesRequest.Currency.get -> string?
 Alpaca.Markets.HistoricalQuotesRequest.Currency.set -> void
@@ -494,6 +501,7 @@ Alpaca.Markets.IAlpacaOptionsDataClient.GetOptionChainAsync(Alpaca.Markets.Optio
 Alpaca.Markets.IAlpacaOptionsDataClient.ListExchangesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, string!>!>!
 Alpaca.Markets.IAlpacaOptionsDataClient.ListLatestQuotesAsync(Alpaca.Markets.LatestOptionsDataRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.IQuote!>!>!
 Alpaca.Markets.IAlpacaOptionsDataClient.ListLatestTradesAsync(Alpaca.Markets.LatestOptionsDataRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.ITrade!>!>!
+Alpaca.Markets.IAlpacaOptionsDataClient.ListLatestBarsAsync(Alpaca.Markets.LatestOptionsDataRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyDictionary<string!, Alpaca.Markets.IBar!>!>!
 Alpaca.Markets.IAlpacaOptionsDataClient.ListSnapshotsAsync(Alpaca.Markets.OptionSnapshotRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IDictionaryPage<Alpaca.Markets.IOptionSnapshot!>!>!
 Alpaca.Markets.IAlpacaScreenerClient
 Alpaca.Markets.IAlpacaScreenerClient.GetTopMarketMoversAsync(int? numberOfLosersAndGainersInResponse = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Alpaca.Markets.IMarketMovers!>!
