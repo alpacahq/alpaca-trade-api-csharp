@@ -39,6 +39,21 @@ public static class ConfigurationExtensions
         new AlpacaCryptoStreamingClient(configuration.EnsureNotNull());
 
     /// <summary>
+    /// Creates a new instance of <see cref="IAlpacaOptionsStreamingClient"/> interface
+    /// implementation using the <paramref name="configuration"/> argument.
+    /// </summary>
+    /// <param name="configuration">Client configuration parameters.</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="configuration"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>A new instance of <see cref="IAlpacaOptionsStreamingClient"/> interface implementation.</returns>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    public static IAlpacaOptionsStreamingClient GetClient(
+        this AlpacaOptionsStreamingClientConfiguration configuration) =>
+        new AlpacaOptionsStreamingClient(configuration.EnsureNotNull());
+
+    /// <summary>
     /// Creates a new instance of <see cref="IAlpacaNewsStreamingClient"/> interface
     /// implementation using the <paramref name="configuration"/> argument.
     /// </summary>

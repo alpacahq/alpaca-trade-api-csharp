@@ -24,6 +24,32 @@ This SDK has also GitHub WiKi which contains some useful information: https://gi
 - Use locked package restore mode with `packages.lock.json`
 - Write code using SOLID, KISS, and DRY principles
 
+## Code Duplication and Inheritance Guidelines
+
+**Before implementing new classes that extend base classes:**
+- ALWAYS analyze the base class inheritance hierarchy first
+- Identify what methods are already provided by base classes
+- Only implement methods that are genuinely missing or need different behavior
+- Never use `new` keyword to hide base class methods unless absolutely necessary
+
+**Data Model Reuse:**
+- ALWAYS check for existing data models before creating new ones
+- Reuse existing JSON message types if the data structure is identical
+- Only create new data models when the structure genuinely differs
+- Consider the difference between data source and data structure
+
+**Configuration Best Practices:**
+- ALWAYS verify protocol-specific settings (UseMessagePack, API endpoints, etc.)
+- Ensure all constructors properly configure required settings
+- Follow established patterns from similar client configurations
+- Test configuration with actual protocol requirements
+
+**C# Language Features:**
+- Prefer composition over inheritance when appropriate
+- Avoid unnecessary use of `new` keyword for method hiding
+- Use `override` for virtual methods, `new` only for intentional hiding
+- Leverage existing base class functionality rather than reimplementing
+
 ## Framework Support
 
 - Keep in mind .NET targets list: .NET Standard 2.0, .NET Standard 2.1, .NET Framework 4.6.2, .NET 8.0

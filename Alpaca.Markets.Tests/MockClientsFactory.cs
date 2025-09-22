@@ -54,6 +54,11 @@ public sealed class MockClientsFactoryFixture
         AlpacaCryptoStreamingClientConfiguration? configuration = null) =>
         new(configuration ?? getEnvironment(environment).GetAlpacaCryptoStreamingClientConfiguration(_secretKey), clientConfiguration => clientConfiguration.GetClient());
 
+    internal MockWsClient<AlpacaOptionsStreamingClientConfiguration, IAlpacaOptionsStreamingClient> GetAlpacaOptionsStreamingClientMock(
+        IEnvironment? environment = null,
+        AlpacaOptionsStreamingClientConfiguration? configuration = null) =>
+        new(configuration ?? getEnvironment(environment).GetAlpacaOptionsStreamingClientConfiguration(_secretKey), clientConfiguration => clientConfiguration.GetClient());
+
     private static IEnvironment getEnvironment(
         IEnvironment? environment) =>
         environment ?? Environments.Live;
