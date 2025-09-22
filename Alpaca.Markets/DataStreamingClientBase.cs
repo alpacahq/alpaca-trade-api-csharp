@@ -246,6 +246,8 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
 
     protected const String CancellationsChannel = "x";
 
+    protected const String ImbalancesChannel = "i";
+
     protected const String WildcardSymbolString = "*";
 
     private const Int32 SubscriptionChunkSize = 100;
@@ -272,6 +274,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                 { CancellationsChannel, handleRealtimeDataUpdate },
                 { CorrectionsChannel, handleRealtimeDataUpdate },
                 { LimitUpDownChannel, handleRealtimeDataUpdate },
+                { ImbalancesChannel, handleRealtimeDataUpdate },
                 { UpdatedBarsChannel, handleRealtimeDataUpdate },
                 { MinuteBarsChannel, handleRealtimeDataUpdate },
                 { OrderBooksChannel, handleRealtimeDataUpdate },
@@ -484,6 +487,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                     .Concat(getStreams(subscriptionUpdate.Quotes.EmptyIfNull(), QuotesChannel))
                     .Concat(getStreams(subscriptionUpdate.Statuses.EmptyIfNull(), StatusesChannel))
                     .Concat(getStreams(subscriptionUpdate.Lulds.EmptyIfNull(), LimitUpDownChannel))
+                    .Concat(getStreams(subscriptionUpdate.Imbalances.EmptyIfNull(), ImbalancesChannel))
                     .Concat(getStreams(subscriptionUpdate.DailyBars.EmptyIfNull(), DailyBarsChannel))
                     .Concat(getStreams(subscriptionUpdate.OrderBooks.EmptyIfNull(), OrderBooksChannel))
                     .Concat(getStreams(subscriptionUpdate.MinuteBars.EmptyIfNull(), MinuteBarsChannel))
@@ -630,6 +634,7 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                 Quotes = getSymbols(streamsByChannels, QuotesChannel),
                 Statuses = getSymbols(streamsByChannels, StatusesChannel),
                 Lulds = getSymbols(streamsByChannels, LimitUpDownChannel),
+                Imbalances = getSymbols(streamsByChannels, ImbalancesChannel),
                 DailyBars = getSymbols(streamsByChannels, DailyBarsChannel),
                 MinuteBars = getSymbols(streamsByChannels, MinuteBarsChannel),
                 OrderBooks = getSymbols(streamsByChannels, OrderBooksChannel),

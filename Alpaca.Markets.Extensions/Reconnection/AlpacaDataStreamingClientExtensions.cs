@@ -59,6 +59,10 @@ public static partial class AlpacaDataStreamingClientExtensions
             Client.GetLimitUpLimitDownSubscription(symbol);
 
         [ExcludeFromCodeCoverage]
+        public IAlpacaDataSubscription<IOrderImbalance> GetOrderImbalanceSubscription(String symbol) =>
+            Client.GetOrderImbalanceSubscription(symbol);
+
+        [ExcludeFromCodeCoverage]
         public IAlpacaDataSubscription<IBar> GetUpdatedBarSubscription(String symbol) =>
             Client.GetUpdatedBarSubscription(symbol);
     }

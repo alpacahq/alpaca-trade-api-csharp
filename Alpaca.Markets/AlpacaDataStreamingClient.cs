@@ -34,4 +34,8 @@ internal sealed class AlpacaDataStreamingClient :
     public IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(
         String symbol) =>
         GetSubscription<ILimitUpLimitDown, JsonLimitUpLimitDown>(LimitUpDownChannel, symbol.EnsureNotNull());
+
+    public IAlpacaDataSubscription<IOrderImbalance> GetOrderImbalanceSubscription(
+        String symbol) =>
+        GetSubscription<IOrderImbalance, JsonOrderImbalance>(ImbalancesChannel, symbol.EnsureNotNull());
 }
