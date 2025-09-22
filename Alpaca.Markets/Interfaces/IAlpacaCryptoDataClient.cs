@@ -2,6 +2,8 @@
 
 /// <summary>
 /// Provides unified type-safe access for Alpaca Crypto Data API via HTTP/REST.
+/// Supports spot cryptocurrency trading only (e.g., BTC/USD, ETH/USD).
+/// NOTE: Crypto perpetual futures are not currently supported by Alpaca Markets.
 /// </summary>
 [CLSCompliant(false)]
 public interface IAlpacaCryptoDataClient :

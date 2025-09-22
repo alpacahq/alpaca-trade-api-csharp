@@ -29,6 +29,9 @@ public enum AssetClass
 
     /// <summary>
     /// Perpetual cryptocurrency asset class.
+    /// NOTE: This is preparatory infrastructure. Alpaca Markets does not currently
+    /// offer crypto perpetual futures trading. This enum value is reserved for
+    /// potential future functionality.
     /// </summary>
     [UsedImplicitly]
     [EnumMember(Value = "crypto_perp")]

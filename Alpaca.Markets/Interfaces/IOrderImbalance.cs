@@ -18,7 +18,7 @@ public interface IOrderImbalance
     DateTime TimestampUtc { get; }
 
     /// <summary>
-    /// Gets the reference price for the imbalance. Typically NYSE Last Sale,
+    /// Gets the reference price for the imbalance. Typically, NYSE Last Sale,
     /// or bid/offer if last sale is outside spread.
     /// </summary>
     [UsedImplicitly]
@@ -37,7 +37,7 @@ public interface IOrderImbalance
     Int64 ImbalanceShares { get; }
 
     /// <summary>
-    /// Gets the side of the imbalance: "B" for buy side, "S" for sell side.
+    /// Gets the side of the imbalance: "B" for buy side, "S" for sale side.
     /// </summary>
     [UsedImplicitly]
     String ImbalanceSide { get; }

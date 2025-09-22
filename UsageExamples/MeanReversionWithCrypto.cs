@@ -18,6 +18,7 @@ internal sealed class MeanReversionWithCrypto : IDisposable
 
     private const String API_SECRET = "REPLACEME";
 
+    // Crypto spot trading symbol (perpetual futures not currently supported by Alpaca Markets)
     private const String symbol = "BTCUSD";
 
     private const Decimal scale = 200;
