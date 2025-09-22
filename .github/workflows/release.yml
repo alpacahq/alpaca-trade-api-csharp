@@ -31,7 +31,8 @@ jobs:
       working-directory: ./Alpaca.Markets.Tests
 
     - name: Dotnet Test (Debug)
-      run: dotnet dotcover test --dcXML=Configuration.xml
+      # run: dotnet dotcover test --dcXML=Configuration.xml
+      run: dotnet test # temporary without coverage
 
     - name: Dotnet Build (Release)
       run: dotnet build -c Release
@@ -62,7 +63,7 @@ jobs:
       if: "${{env.CODACY_PROJECT_TOKEN != ''}}"
       env:
         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-      run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r Alpaca.Markets.Coverage.xml
+      run: # bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r Alpaca.Markets.Coverage.xml
 
   publish-sdk:
     name: Publish SDK Binaries
