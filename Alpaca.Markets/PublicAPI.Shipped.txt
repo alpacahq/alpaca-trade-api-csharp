@@ -1607,3 +1607,13 @@ static Alpaca.Markets.ThrottleParameters.Default.get -> Alpaca.Markets.ThrottleP
 ~override Alpaca.Markets.ReceiveResult.ToString() -> string
 ~override Alpaca.Markets.TrailOffset.Equals(object obj) -> bool
 ~override Alpaca.Markets.TrailOffset.ToString() -> string
+Alpaca.Markets.IOrderImbalance
+Alpaca.Markets.IOrderImbalance.AuctionType.get -> string!
+Alpaca.Markets.IOrderImbalance.ImbalanceShares.get -> long
+Alpaca.Markets.IOrderImbalance.ImbalanceSide.get -> string!
+Alpaca.Markets.IOrderImbalance.PairedShares.get -> long
+Alpaca.Markets.IOrderImbalance.ReferencePrice.get -> decimal
+Alpaca.Markets.IOrderImbalance.Symbol.get -> string!
+Alpaca.Markets.IOrderImbalance.Tape.get -> string!
+Alpaca.Markets.IOrderImbalance.TimestampUtc.get -> System.DateTime
+Alpaca.Markets.IAlpacaDataStreamingClient.GetOrderImbalanceSubscription(string! symbol) -> Alpaca.Markets.IAlpacaDataSubscription<Alpaca.Markets.IOrderImbalance!>!

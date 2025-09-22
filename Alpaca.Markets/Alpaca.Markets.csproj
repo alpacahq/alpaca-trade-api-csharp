@@ -23,7 +23,8 @@
 - The old `MaintenanceMarginRequirement` property of the `IAsset` interface is marked as obsolete.
 - The new `Boats` and `Overnight` values were added to the `MarketDataFeed` enumeration.
 - The `BaseValue` property in `IPortfolioHistory` was changed to be nullable.
-- The new `CryptoPerpetual` value was added to the `AssetClass` enumeration.
+- The new `CryptoPerpetual` value was added to the `AssetClass` enumeration (preparatory - not currently functional).
+- Clarified crypto perpetual futures documentation: Alpaca Markets currently supports spot crypto trading only.
 - The new `Ascx` value was added to the `Exchange` enumeration.
 - All dependencies were updated to the latest stable versions.
     </PackageReleaseNotes>

@@ -23,6 +23,9 @@ internal sealed class JsonSubscriptionUpdate
     [JsonProperty(PropertyName = "lulds", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
     public List<String>? Lulds { get; set; }
 
+    [JsonProperty(PropertyName = "imbalances", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+    public List<String>? Imbalances { get; set; }
+
     [JsonProperty(PropertyName = "news", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
     public List<String>? News { get; set; }
 

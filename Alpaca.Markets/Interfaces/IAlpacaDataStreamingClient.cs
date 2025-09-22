@@ -61,4 +61,23 @@ public interface IAlpacaDataStreamingClient : IStreamingDataClient
     [UsedImplicitly]
     IAlpacaDataSubscription<ILimitUpLimitDown> GetLimitUpLimitDownSubscription(
         String symbol);
+
+    /// <summary>
+    /// Gets the order imbalance subscription for the <paramref name="symbol"/> asset.
+    /// Order imbalance data is available during pre-market opening and closing auctions,
+    /// providing information about paired shares, imbalance volume, and reference pricing.
+    /// </summary>
+    /// <param name="symbol">Alpaca asset symbol.</param>
+    /// <exception cref="OverflowException">
+    /// The underlying subscriptions dictionary contains too many elements.
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="symbol"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>
+    /// Subscription object for tracking updates via the <see cref="IAlpacaDataSubscription{TApi}.Received"/> event.
+    /// </returns>
+    [UsedImplicitly]
+    IAlpacaDataSubscription<IOrderImbalance> GetOrderImbalanceSubscription(
+        String symbol);
 }

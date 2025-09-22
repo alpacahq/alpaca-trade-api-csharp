@@ -2,6 +2,8 @@
 
 /// <summary>
 /// Provides unified type-safe access for Alpaca crypto data streaming API via websockets.
+/// Supports spot cryptocurrency streaming only (e.g., BTC/USD, ETH/USD).
+/// NOTE: Crypto perpetual futures are not currently supported by Alpaca Markets.
 /// </summary>
 [CLSCompliant(false)]
 public interface IAlpacaCryptoStreamingClient : IStreamingDataClient
