@@ -60,6 +60,6 @@ public sealed class AlpacaOptionsStreamingClientConfiguration : StreamingClientC
         // Options streaming API uses format: wss://stream.data.alpaca.markets/v1beta1/{feed}
         // where {feed} is either "indicative" or "opra"
         var feedValue = Feed == OptionsFeed.Opra ? "opra" : "indicative";
-        return new Uri(baseUrl, $"v1beta1/{feedValue}");
+        return new Uri(baseUrl, feedValue);
     }
 }
