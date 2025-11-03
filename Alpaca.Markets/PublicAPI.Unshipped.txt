@@ -1,3 +1,6 @@
 ﻿#nullable enable
 *REMOVED*Alpaca.Markets.IAccount.DayTradeCount.get -> ulong
 *REMOVED*Alpaca.Markets.IAccount.IsDayPatternTrader.get -> bool
+Alpaca.Markets.ChangeOrderRequest.TrailOffset.get -> Alpaca.Markets.TrailOffset?
+Alpaca.Markets.ChangeOrderRequest.TrailOffset.set -> void
+Alpaca.Markets.ChangeOrderRequest.TrailValue.get -> decimal?
