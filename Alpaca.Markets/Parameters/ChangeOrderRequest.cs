@@ -50,6 +50,22 @@ public sealed class ChangeOrderRequest : Validation.IRequest
     [JsonProperty(PropertyName = "client_order_id", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
     public String? ClientOrderId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the trailing offset details used to calculate <see cref="TrailValue"/>.
+    /// This property is ignored during JSON serialization and is used only to derive the <c>trail</c> payload.
+    /// </summary>
+    [JsonIgnore]
+    [UsedImplicitly]
+    public TrailOffset? TrailOffset { get; set; }
+
+    /// <summary>
+    /// Gets the trailing value that will be sent in the request payload (either <c>trail_price</c> or <c>trail_percent</c>).
+    /// This update applies only to orders of type <c>trailing_stop</c> and only before the stop price is triggered.
+    /// Note: you cannot switch between price-based and percent-based trailing types in a single update.
+    /// </summary>
+    [JsonProperty(PropertyName = "trail", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+    public decimal? TrailValue { get => TrailOffset?.Value; }
+
     internal String GetEndpointUri() => $"v2/orders/{OrderId:D}";
 
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
