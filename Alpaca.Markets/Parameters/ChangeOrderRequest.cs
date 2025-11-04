@@ -64,7 +64,7 @@ public sealed class ChangeOrderRequest : Validation.IRequest
     /// Note: you cannot switch between price-based and percent-based trailing types in a single update.
     /// </summary>
     [JsonProperty(PropertyName = "trail", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-    public decimal? TrailValue { get => TrailOffset?.Value; }
+    public Decimal? TrailValue { get => TrailOffset?.Value; }
 
     internal String GetEndpointUri() => $"v2/orders/{OrderId:D}";
 
