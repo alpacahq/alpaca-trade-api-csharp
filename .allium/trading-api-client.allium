@@ -1,0 +1,598 @@
+-- allium: 3
+-- trading-api-client.allium
+
+-- Scope: Alpaca Markets .NET SDK — trading operations and market data
+-- Includes: Account, Asset, Order lifecycle, Position, WatchList,
+--           PortfolioHistory, TradeUpdate, AccountActivity,
+--           OptionContract, Bar, Quote, Clock, IntervalCalendar
+-- Excludes:
+--   - Generated PublicAPI surface snapshot files (api analyzer snapshots)
+--   - HTTP/WebSocket transport implementation details
+--   - Streaming subscription management (connection, subscription registry)
+
+------------------------------------------------------------
+-- Enumerations
+------------------------------------------------------------
+
+enum OrderStatus {
+    accepted | pending_new | new | partially_filled | filled |
+    done_for_day | canceled | pending_cancel | stopped | rejected |
+    suspended | expired | replaced | pending_replace | replace_rejected |
+    calculated | accepted_for_bidding | held
+}
+
+enum OrderSide { buy | sell }
+
+enum OrderType { market | limit | stop | stop_limit | trailing_stop }
+
+enum TimeInForce { day | gtc | opg | ioc | fok | cls }
+
+enum OrderClass { simple | bracket | oco | oto | multi_leg_options }
+
+enum PositionSide { long | short }
+
+enum AssetStatus { active | inactive | delisted }
+
+enum AssetClass { us_equity | crypto | us_option | crypto_perpetual }
+
+enum AccountStatus {
+    onboarding | submission_failed | submitted | account_updated |
+    approval_pending | active | rejected | disabled | disable_pending |
+    approved | inactive | edited | action_required | account_closed | paper_only
+}
+
+enum TradeEventType {
+    new | partial_fill | fill | done_for_day | canceled | pending_cancel |
+    stopped | rejected | suspended | pending_new | calculated | expired |
+    order_cancel_rejected | replaced | pending_replace | replace_rejected |
+    partially_filled | accepted | held | pending_review
+}
+
+enum AccountActivityType {
+    fill | cash_deposit | cash_withdrawal | dividend | dividend_tax |
+    merger_acquisition | name_change | symbol_change | stock_spinoff |
+    stock_split | option_assignment | option_expiration | option_exercise |
+    option_trade | fee | crypto_fee | acats | journal_entry | interest |
+    miscellaneous | pass_thru_charge | pass_thru_rebate | unknown
+}
+
+enum OptionType { call | put }
+
+enum OptionStyle { american | european }
+
+enum OptionsTradingLevel { disabled | covered_call_cash_secured_put | long_call_put }
+
+enum BarTimeFrameUnit { minute | hour | day | week | month }
+
+------------------------------------------------------------
+-- Value Types
+------------------------------------------------------------
+
+value OrderQuantity {
+    is_notional: Boolean
+    amount: Decimal
+}
+
+value BarTimeFrame {
+    amount: Integer
+    unit: BarTimeFrameUnit
+}
+
+-- One interval's snapshot within a PortfolioHistory response
+value PortfolioHistoryItem {
+    timestamp: Timestamp
+    equity: Decimal?
+    profit_loss: Decimal?
+    profit_loss_percentage: Decimal?
+}
+
+------------------------------------------------------------
+-- Entities and Variants
+------------------------------------------------------------
+
+entity Asset {
+    asset_id: String
+    symbol: String
+    name: String
+    asset_class: AssetClass
+    exchange: String
+    status: AssetStatus
+    is_tradable: Boolean
+    marginable: Boolean
+    shortable: Boolean
+    easy_to_borrow: Boolean
+    fractionable: Boolean
+    min_order_size: Decimal?
+    min_trade_increment: Decimal?
+    price_increment: Decimal?
+    margin_requirement_long: Decimal?
+    margin_requirement_short: Decimal?
+}
+
+entity Account {
+    account_id: String
+    account_number: String
+    status: AccountStatus
+    created_at: Timestamp
+    tradable_cash: Decimal
+    equity: Decimal
+    last_equity: Decimal
+    buying_power: Decimal
+    day_trading_buying_power: Decimal
+    regulation_buying_power: Decimal
+    non_marginable_buying_power: Decimal
+    options_buying_power: Decimal?
+    long_market_value: Decimal
+    short_market_value: Decimal
+    cost_basis: Decimal
+    initial_margin: Decimal
+    maintenance_margin: Decimal
+    last_maintenance_margin: Decimal
+    sma: Decimal
+    is_day_pattern_trader: Boolean
+    shorting_enabled: Boolean
+    trade_suspended_by_user: Boolean
+    is_trading_blocked: Boolean
+    is_transfers_blocked: Boolean
+    options_trading_level: OptionsTradingLevel?
+    options_approved_level: OptionsTradingLevel?
+    day_trade_count: Integer
+    multiplier: Integer
+    accrued_fees: Decimal
+    pending_transfer_in: Decimal?
+    pending_transfer_out: Decimal?
+}
+
+entity AccountConfiguration {
+    account: Account
+    dtbp_check: String
+    no_shorting: Boolean
+    suspend_trade: Boolean
+    trade_confirm_email: String
+    fractional_trading: Boolean?
+    max_margin_multiplier: Integer?
+}
+
+entity Order {
+    account: Account
+    order_id: String
+    client_order_id: String?
+    status: OrderStatus
+    asset: Asset
+    side: OrderSide
+    order_type: OrderType
+    time_in_force: TimeInForce
+    order_class: OrderClass
+    quantity: OrderQuantity?
+    filled_quantity: Decimal
+    average_fill_price: Decimal?
+    limit_price: Decimal?
+    stop_price: Decimal?
+    trail_offset_dollars: Decimal?
+    trail_offset_percent: Decimal?
+    high_water_mark: Decimal?
+    extended_hours: Boolean
+    created_at: Timestamp
+    submitted_at: Timestamp?
+    filled_at: Timestamp?
+    cancelled_at: Timestamp?
+    expired_at: Timestamp?
+    failed_at: Timestamp?
+    replaced_at: Timestamp?
+    replaced_by: Order?
+    replaces: Order?
+    legs: List<Order>
+
+    is_open: status in {accepted, pending_new, new, partially_filled, held, pending_cancel, pending_replace}
+    is_terminal: status in {filled, canceled, rejected, replaced, expired, done_for_day, stopped, suspended, replace_rejected}
+}
+
+entity Position {
+    account: Account
+    asset: Asset
+    side: PositionSide
+    quantity: Decimal
+    available_quantity: Decimal
+    average_entry_price: Decimal
+    cost_basis: Decimal
+    market_value: Decimal
+    current_price: Decimal
+    last_price: Decimal
+    asset_change_percent: Decimal
+    unrealized_profit_loss: Decimal
+    unrealized_profit_loss_percent: Decimal
+    intraday_unrealized_profit_loss: Decimal
+
+    invariant QuantityPositive {
+        quantity > 0
+    }
+
+    invariant AvailableWithinTotal {
+        available_quantity <= quantity
+    }
+}
+
+entity WatchList {
+    account: Account
+    watch_list_id: String
+    name: String
+    created_at: Timestamp
+    updated_at: Timestamp
+    assets: Set<Asset>
+}
+
+entity TradeUpdate {
+    event_type: TradeEventType
+    execution_id: String?
+    order: Order
+    price: Decimal?
+    trade_quantity: Decimal?
+    position_quantity: Decimal?
+    timestamp: Timestamp
+}
+
+entity AccountActivity {
+    activity_id: String
+    activity_type: AccountActivityType
+    activity_at: Timestamp
+    symbol: String?
+    net_amount: Decimal?
+    per_share_amount: Decimal?
+    quantity: Decimal?
+    cumulative_quantity: Decimal?
+    leaves_quantity: Decimal?
+    price: Decimal?
+    side: OrderSide?
+    transaction_time: Timestamp?
+    trade_event: TradeEventType?
+    order_id: String?
+}
+
+entity PortfolioHistory {
+    -- One item per time interval; equity and P&L may be absent for illiquid periods
+    items: List<PortfolioHistoryItem>
+    base_value: Decimal?
+    time_frame: BarTimeFrame
+}
+
+entity OptionContract {
+    contract_id: String
+    symbol: String
+    underlying: Asset
+    expiration_date: Timestamp
+    option_type: OptionType
+    option_style: OptionStyle
+    strike_price: Decimal
+    status: active | expired
+    multiplier: Decimal
+}
+
+entity Bar {
+    symbol: String
+    time: Timestamp
+    open: Decimal
+    high: Decimal
+    low: Decimal
+    close: Decimal
+    volume: Decimal
+    vwap: Decimal
+    trade_count: Integer
+}
+
+entity Quote {
+    symbol: String
+    timestamp: Timestamp
+    bid_price: Decimal
+    ask_price: Decimal
+    bid_size: Decimal
+    ask_size: Decimal
+    bid_exchange: String?
+    ask_exchange: String?
+}
+
+entity Clock {
+    timestamp: Timestamp
+    is_open: Boolean
+    next_open: Timestamp
+    next_close: Timestamp
+}
+
+entity IntervalCalendar {
+    date: Timestamp
+    session_open: Timestamp
+    session_close: Timestamp
+}
+
+------------------------------------------------------------
+-- Rules
+------------------------------------------------------------
+
+-- Order Placement
+
+rule PlaceOrder {
+    when: PlaceOrder(account, asset, side, order_type, time_in_force, quantity?, order_class?, extended_hours?)
+
+    requires: account.status = active
+    requires: not account.is_trading_blocked
+    requires: asset.status = active
+    requires: asset.is_tradable
+    requires: side = sell implies asset.shortable
+
+    ensures: Order.created(
+        account: account,
+        status: accepted,
+        asset: asset,
+        side: side,
+        order_type: order_type,
+        time_in_force: time_in_force,
+        quantity: quantity,
+        filled_quantity: 0,
+        order_class: order_class ?? simple,
+        extended_hours: extended_hours ?? false,
+        created_at: now
+    )
+}
+
+-- Order Cancellation
+
+rule RequestOrderCancellation {
+    when: RequestOrderCancellation(order)
+
+    requires: order.is_open
+
+    ensures: order.status = pending_cancel
+}
+
+rule OrderCancelConfirmed {
+    when: OrderCancelConfirmed(order)
+
+    requires: order.status = pending_cancel
+
+    ensures: order.status = canceled
+    ensures: order.cancelled_at = now
+    ensures: TradeUpdate.created(
+        event_type: canceled,
+        order: order,
+        timestamp: now
+    )
+}
+
+rule OrderCancelRejected {
+    when: OrderCancelRejected(order)
+
+    requires: order.status = pending_cancel
+
+    ensures: order.status = new
+    ensures: TradeUpdate.created(
+        event_type: order_cancel_rejected,
+        order: order,
+        timestamp: now
+    )
+}
+
+rule CancelAllOrders {
+    when: CancelAllOrders(target_account)
+
+    requires: target_account.status = active
+    for order in Orders where account = target_account and is_open:
+        ensures: order.status = pending_cancel
+}
+
+-- Order Replacement
+
+rule RequestOrderReplacement {
+    when: RequestOrderReplacement(order, new_quantity?, new_limit_price?, new_stop_price?, new_time_in_force?)
+
+    requires: order.status in {new, partially_filled, pending_new, accepted, held}
+
+    ensures: order.status = pending_replace
+}
+
+rule OrderReplaceConfirmed {
+    when: OrderReplaceConfirmed(original_order, replacement)
+
+    requires: original_order.status = pending_replace
+
+    ensures: original_order.status = replaced
+    ensures: original_order.replaced_at = now
+    ensures: original_order.replaced_by = replacement
+    ensures: replacement.replaces = original_order
+    ensures: TradeUpdate.created(
+        event_type: replaced,
+        order: original_order,
+        timestamp: now
+    )
+}
+
+rule OrderReplaceRejected {
+    when: OrderReplaceRejected(order)
+
+    requires: order.status = pending_replace
+
+    ensures: order.status = new
+    ensures: TradeUpdate.created(
+        event_type: replace_rejected,
+        order: order,
+        timestamp: now
+    )
+}
+
+-- Order Fills
+
+rule OrderPartialFill {
+    when: OrderPartialFill(order, execution_id, fill_price, fill_quantity)
+
+    requires: order.status in {new, partially_filled, pending_new, accepted}
+
+    ensures: order.status = partially_filled
+    ensures: order.filled_quantity = order.filled_quantity + fill_quantity
+    ensures: order.average_fill_price = weighted_average_fill_price(order.average_fill_price, order.filled_quantity, fill_price, fill_quantity)
+    ensures: TradeUpdate.created(
+        event_type: partial_fill,
+        execution_id: execution_id,
+        order: order,
+        price: fill_price,
+        trade_quantity: fill_quantity,
+        timestamp: now
+    )
+}
+
+rule OrderFilled {
+    when: OrderFilled(order, execution_id, fill_price, fill_quantity)
+
+    requires: order.status in {new, partially_filled, pending_new, accepted}
+
+    ensures: order.status = filled
+    ensures: order.filled_quantity = order.filled_quantity + fill_quantity
+    ensures: order.filled_at = now
+    ensures: order.average_fill_price = weighted_average_fill_price(order.average_fill_price, order.filled_quantity, fill_price, fill_quantity)
+    ensures: TradeUpdate.created(
+        event_type: fill,
+        execution_id: execution_id,
+        order: order,
+        price: fill_price,
+        trade_quantity: fill_quantity,
+        timestamp: now
+    )
+}
+
+-- Market Session Expiration
+
+rule DayOrdersExpiredAtClose {
+    when: MarketClosed()
+    for order in Orders where time_in_force = day and is_open:
+        ensures:
+            order.status = done_for_day
+            TradeUpdate.created(
+                event_type: done_for_day,
+                order: order,
+                timestamp: now
+            )
+}
+
+-- Watch Lists
+
+rule CreateWatchList {
+    when: CreateWatchList(account, name, initial_assets?)
+
+    ensures: WatchList.created(
+        account: account,
+        name: name,
+        created_at: now,
+        updated_at: now,
+        assets: initial_assets ?? {}
+    )
+}
+
+rule AddAssetToWatchList {
+    when: AddAssetToWatchList(watch_list, asset)
+
+    requires: asset not in watch_list.assets
+    requires: asset.status = active
+
+    ensures: watch_list.assets.add(asset)
+    ensures: watch_list.updated_at = now
+}
+
+rule RemoveAssetFromWatchList {
+    when: RemoveAssetFromWatchList(watch_list, asset)
+
+    requires: asset in watch_list.assets
+
+    ensures: watch_list.assets.remove(asset)
+    ensures: watch_list.updated_at = now
+}
+
+rule DeleteWatchList {
+    when: DeleteWatchList(watch_list)
+
+    ensures: not exists watch_list
+}
+
+-- Positions
+
+rule LiquidatePosition {
+    when: LiquidatePosition(account, asset, percentage?)
+
+    requires: account.status = active
+    requires: not account.is_trading_blocked
+    let position = Position{account, asset}
+    requires: exists position
+
+    ensures: Order.created(
+        account: account,
+        status: accepted,
+        asset: asset,
+        side: sell,
+        order_type: market,
+        order_class: simple,
+        time_in_force: day,
+        filled_quantity: 0,
+        extended_hours: false,
+        created_at: now
+    )
+}
+
+rule LiquidateAllPositions {
+    when: LiquidateAllPositions(target_account)
+
+    requires: target_account.status = active
+    requires: not target_account.is_trading_blocked
+    for position in Positions where account = target_account:
+        ensures: Order.created(
+            account: target_account,
+            status: accepted,
+            asset: position.asset,
+            side: sell,
+            order_type: market,
+            order_class: simple,
+            time_in_force: day,
+            filled_quantity: 0,
+            extended_hours: false,
+            created_at: now
+        )
+}
+
+-- Options Exercise
+
+rule ExerciseOptionPosition {
+    when: ExerciseOptionPosition(account, contract)
+
+    requires: account.status = active
+    requires: contract.option_style = american
+    requires: contract.status = active
+
+    ensures: AccountActivity.created(
+        activity_type: option_exercise,
+        activity_at: now,
+        symbol: contract.symbol,
+        net_amount: contract.strike_price * contract.multiplier,
+        quantity: contract.multiplier
+    )
+}
+
+-- Account Configuration
+
+rule UpdateAccountConfiguration {
+    when: UpdateAccountConfiguration(account, no_shorting, suspend_trade, trade_confirm_email)
+
+    requires: account.status = active
+    let config = AccountConfiguration{account}
+    requires: exists config
+
+    ensures:
+        config.no_shorting = no_shorting
+        config.suspend_trade = suspend_trade
+        config.trade_confirm_email = trade_confirm_email
+}
+
+------------------------------------------------------------
+-- Invariants
+------------------------------------------------------------
+
+invariant UniqueClientOrderId {
+    for a in Orders:
+        for b in Orders:
+            a != b and a.client_order_id != null and b.client_order_id != null
+                implies a.client_order_id != b.client_order_id
+}
