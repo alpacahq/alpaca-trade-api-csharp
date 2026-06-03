@@ -196,6 +196,46 @@ public static class EnvironmentExtensions
         };
 
     /// <summary>
+    /// Creates the new instance of <see cref="IAlpacaDataStreamingClient"/> interface
+    /// implementation for specific environment provided as <paramref name="environment"/> argument
+    /// using the explicitly selected real-time market data <paramref name="feed"/>.
+    /// </summary>
+    /// <param name="environment">Target environment for new object.</param>
+    /// <param name="securityKey">Alpaca API security key.</param>
+    /// <param name="feed">Real-time market data feed selection (IEX, SIP, etc.).</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>The new instance of <see cref="IAlpacaDataStreamingClient"/> interface implementation.</returns>
+    [UsedImplicitly]
+    [CLSCompliant(false)]
+    [ExcludeFromCodeCoverage]
+    public static IAlpacaDataStreamingClient GetAlpacaDataStreamingClient(
+        this IEnvironment environment,
+        SecurityKey securityKey,
+        MarketDataFeed feed) =>
+        new AlpacaDataStreamingClient(environment.GetAlpacaDataStreamingClientConfiguration(securityKey, feed));
+
+    /// <summary>
+    /// Creates new instance of <see cref="AlpacaDataStreamingClientConfiguration"/> for specific
+    /// environment provided as <paramref name="environment"/> argument using the explicitly
+    /// selected real-time market data <paramref name="feed"/>.
+    /// </summary>
+    /// <param name="environment">Target environment for new object.</param>
+    /// <param name="securityKey">Alpaca API security key.</param>
+    /// <param name="feed">Real-time market data feed selection (IEX, SIP, etc.).</param>
+    /// <exception cref="ArgumentNullException">
+    /// The <paramref name="environment"/> or <paramref name="securityKey"/> argument is <c>null</c>.
+    /// </exception>
+    /// <returns>New instance of <see cref="AlpacaDataStreamingClientConfiguration"/> object.</returns>
+    [UsedImplicitly]
+    public static AlpacaDataStreamingClientConfiguration GetAlpacaDataStreamingClientConfiguration(
+        this IEnvironment environment,
+        SecurityKey securityKey,
+        MarketDataFeed feed) =>
+        environment.GetAlpacaDataStreamingClientConfiguration(securityKey).WithFeed(feed);
+
+    /// <summary>
     /// Creates the new instance of <see cref="IAlpacaCryptoStreamingClient"/> interface
     /// implementation for specific environment provided as <paramref name="environment"/> argument.
     /// </summary>

@@ -1,1 +1,5 @@
 ﻿#nullable enable
+Alpaca.Markets.AlpacaDataStreamingClientConfiguration.Feed.get -> Alpaca.Markets.MarketDataFeed?
+Alpaca.Markets.AlpacaDataStreamingClientConfiguration.WithFeed(Alpaca.Markets.MarketDataFeed feed) -> Alpaca.Markets.AlpacaDataStreamingClientConfiguration!
+static Alpaca.Markets.EnvironmentExtensions.GetAlpacaDataStreamingClient(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey, Alpaca.Markets.MarketDataFeed feed) -> Alpaca.Markets.IAlpacaDataStreamingClient!
+static Alpaca.Markets.EnvironmentExtensions.GetAlpacaDataStreamingClientConfiguration(this Alpaca.Markets.IEnvironment! environment, Alpaca.Markets.SecurityKey! securityKey, Alpaca.Markets.MarketDataFeed feed) -> Alpaca.Markets.AlpacaDataStreamingClientConfiguration!
