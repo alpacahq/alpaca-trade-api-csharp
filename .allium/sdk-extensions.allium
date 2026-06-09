@@ -1,0 +1,311 @@
+-- allium: 3
+-- sdk-extensions.allium
+-- Optional companion package: pagination helpers, streaming reconnection,
+-- portfolio statistics, market clock caching, and bracket order utilities.
+
+use "github.com/alpacahq/alpaca-allium-lib@d5d38e0fe969061525b6fabbf7c66e0aa66c40e2/MarketClock" as marketclock
+
+------------------------------------------------------------
+-- External Entities
+------------------------------------------------------------
+
+external entity Bar {
+    open: Decimal
+    high: Decimal
+    low: Decimal
+    close: Decimal
+    volume: Decimal
+    timestamp: Timestamp
+}
+
+external entity HistoricalRequest {}
+
+external entity AlpacaClient {}
+
+external entity StreamingClient {}
+
+------------------------------------------------------------
+-- Value Types
+------------------------------------------------------------
+
+value ReconnectionParameters {
+    max_attempts: Integer
+    min_delay: Duration
+    max_delay: Duration
+}
+
+------------------------------------------------------------
+-- Enumerations
+------------------------------------------------------------
+
+enum OrderSide { buy | sell }
+
+------------------------------------------------------------
+-- Entities and Variants
+------------------------------------------------------------
+
+entity AverageDailyVolumeResult {
+    symbol: String
+    average_volume: Decimal
+    bar_count: Integer
+}
+
+entity MovingAverageBar {
+    symbol: String
+    open: Decimal
+    high: Decimal
+    low: Decimal
+    close: Decimal
+    volume: Decimal
+    timestamp: Timestamp
+    window_size: Integer
+}
+
+entity BracketOrder {
+    side: OrderSide
+    symbol: String
+    quantity: Decimal
+    take_profit_price: Decimal
+    stop_loss_price: Decimal
+    stop_loss_limit_price: Decimal?
+    status: pending | submitted | filled | cancelled | rejected
+
+    transitions status {
+        pending -> submitted
+        submitted -> filled
+        submitted -> cancelled
+        submitted -> rejected
+        terminal: filled, cancelled, rejected
+    }
+}
+
+entity StreamingSession {
+    status: connecting | connected | reconnecting | failed
+    attempt_count: Integer
+    parameters: ReconnectionParameters
+
+    transitions status {
+        connecting -> connected
+        connected -> reconnecting
+        reconnecting -> connecting
+        reconnecting -> failed
+        terminal: failed
+    }
+}
+
+entity DataSubscription {
+    symbols: Set<String>
+    kind: trade | quote | minute_bar | daily_bar | updated_bar | order_book | news
+    status: inactive | active
+
+    transitions status {
+        inactive -> active
+        active -> inactive
+    }
+}
+
+------------------------------------------------------------
+-- Config
+------------------------------------------------------------
+
+config {
+    default_max_reconnection_attempts: Integer = 5
+    default_min_reconnection_delay: Duration = 1.seconds
+    default_max_reconnection_delay: Duration = 5.seconds
+}
+
+------------------------------------------------------------
+-- Rules
+------------------------------------------------------------
+
+-- Pagination
+
+rule PaginatedItemsRequested {
+    when: PaginatedItemsRequested(client, request)
+    ensures: PaginatedItemsStreamed(client: client, request: request)
+}
+
+rule PaginatedPagesRequested {
+    when: PaginatedPagesRequested(client, request)
+    ensures: PaginatedPagesStreamed(client: client, request: request)
+}
+
+-- Reconnection
+
+rule StreamingReconnectionConfigured {
+    when: StreamingReconnectionConfigured(client, parameters)
+    ensures: StreamingSession.created(
+        status: connecting,
+        attempt_count: 0,
+        parameters: parameters
+    )
+}
+
+rule StreamingConnectionConfirmed {
+    when: StreamingConnectionEstablished(session)
+    requires: session.status = connecting
+    ensures:
+        session.status = connected
+        session.attempt_count = 0
+}
+
+rule StreamingConnectionLost {
+    when: StreamingConnectionLost(session)
+    requires: session.status = connected
+    ensures: session.status = reconnecting
+}
+
+rule StreamingReconnectionAttempted {
+    when: StreamingReconnectionAttempted(session)
+    requires:
+        session.status = reconnecting
+        session.attempt_count < session.parameters.max_attempts
+    ensures:
+        session.status = connecting
+        session.attempt_count = session.attempt_count + 1
+}
+
+rule StreamingReconnectionExhausted {
+    when: StreamingReconnectionAttempted(session)
+    requires:
+        session.status = reconnecting
+        session.attempt_count >= session.parameters.max_attempts
+    ensures: session.status = failed
+}
+
+rule SubscriptionsRestoredAfterReconnect {
+    when: StreamingConnectionEstablished(session)
+    requires: session.status = connecting
+    for subscription in DataSubscriptions where status = active:
+        ensures: SubscriptionReactivated(subscription: subscription)
+}
+
+-- Statistics
+
+rule AverageDailyVolumeRequested {
+    when: AverageDailyVolumeRequested(bars, symbol)
+    ensures: AverageDailyVolumeResult.created(
+        symbol: symbol,
+        average_volume: average_daily_volume(bars),
+        bar_count: bars.count
+    )
+}
+
+rule SimpleMovingAverageRequested {
+    when: SimpleMovingAverageRequested(request_bars, symbol, window_size)
+    ensures:
+        for bar in smoothed_bars(request_bars, window_size):
+            MovingAverageBar.created(
+                symbol: symbol,
+                open: bar.open,
+                high: bar.high,
+                low: bar.low,
+                close: bar.close,
+                volume: bar.volume,
+                timestamp: bar.timestamp,
+                window_size: window_size
+            )
+
+    @guidance
+        -- smoothed_bars returns one Bar per input bar starting at index window_size - 1,
+        -- replacing OHLCV values with their rolling mean over the preceding window_size bars.
+}
+
+-- Market Clock Cache
+
+rule MarketClockRequested {
+    when: MarketClockRequested(client)
+    requires: marketclock/MarketClocks.count = 0
+    let fetched = market_clock(client)
+    ensures: marketclock/MarketClock.created(
+        is_open: fetched.is_open,
+        next_open_at: fetched.next_open_at,
+        next_close_at: fetched.next_close_at,
+        cached_until: if fetched.is_open: fetched.next_close_at else: fetched.next_open_at
+    )
+}
+
+rule MarketClockExpired {
+    when: clock: marketclock/MarketClock.cached_until <= now
+    ensures: not exists clock
+}
+
+-- Bracket Orders
+
+rule BracketOrderPlaced {
+    when: BracketOrderPlaced(side, symbol, quantity, take_profit_price, stop_loss_price, stop_loss_limit_price?)
+    ensures: BracketOrder.created(
+        side: side,
+        symbol: symbol,
+        quantity: quantity,
+        take_profit_price: take_profit_price,
+        stop_loss_price: stop_loss_price,
+        stop_loss_limit_price: stop_loss_limit_price,
+        status: pending
+    )
+}
+
+rule BracketOrderSubmitted {
+    when: bracket: BracketOrder.created
+    requires: bracket.status = pending
+    ensures: bracket.status = submitted
+}
+
+rule BracketOrderFilled {
+    when: BracketOrderFilled(order)
+    requires: order.status = submitted
+    ensures: order.status = filled
+}
+
+rule BracketOrderCancelled {
+    when: BracketOrderCancelled(order)
+    requires: order.status = submitted
+    ensures: order.status = cancelled
+}
+
+rule BracketOrderRejected {
+    when: BracketOrderRejected(order)
+    requires: order.status = submitted
+    ensures: order.status = rejected
+}
+
+-- Subscriptions
+
+rule DataSubscriptionRequested {
+    when: DataSubscriptionRequested(symbols, kind)
+    ensures: DataSubscription.created(
+        symbols: symbols,
+        kind: kind,
+        status: inactive
+    )
+}
+
+rule DataSubscriptionActivated {
+    when: subscription: DataSubscription.created
+    requires: subscription.status = inactive
+    ensures: subscription.status = active
+}
+
+rule DataSubscriptionDisposed {
+    when: DataSubscriptionDisposed(subscription)
+    requires: subscription.status = active
+    ensures:
+        subscription.status = inactive
+        not exists subscription
+}
+
+------------------------------------------------------------
+-- Invariants
+------------------------------------------------------------
+
+invariant ReconnectionAttemptsWithinBounds {
+    for s in StreamingSessions:
+        s.attempt_count <= s.parameters.max_attempts
+}
+
+------------------------------------------------------------
+-- Open Questions
+------------------------------------------------------------
+
+open question "Should DataSubscription track the StreamingSession it belongs to, to scope reactivation to the correct session?"
+open question "Should SMA results be modelled as a transient derived view rather than persisted MovingAverageBar entities?"
