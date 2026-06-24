@@ -209,6 +209,7 @@ rule SimpleMovingAverageRequested {
     @guidance
         -- smoothed_bars returns one Bar per input bar starting at index window_size - 1,
         -- replacing OHLCV values with their rolling mean over the preceding window_size bars.
+        -- When window_size < 1, smoothed_bars yields no bars and no MovingAverageBar is created.
 }
 
 -- Market Clock Cache
@@ -301,6 +302,16 @@ rule DataSubscriptionDisposed {
 invariant ReconnectionAttemptsWithinBounds {
     for s in StreamingSessions:
         s.attempt_count <= s.parameters.max_attempts
+}
+
+invariant SMAWindowSizePositive {
+    for bar in MovingAverageBars:
+        bar.window_size >= 1
+}
+
+invariant EmptyBarSetYieldsZeroVolume {
+    for r in AverageDailyVolumeResults:
+        r.bar_count = 0 implies r.average_volume = 0
 }
 
 ------------------------------------------------------------
