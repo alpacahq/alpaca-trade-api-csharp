@@ -25,7 +25,7 @@ internal sealed class JsonAccount : IAccount
     [JsonProperty(PropertyName = "cash", Required = Required.Always)]
     public Decimal TradableCash { get; set; }
 
-    [JsonProperty(PropertyName = "pattern_day_trader", Required = Required.Always)]
+    [JsonProperty(PropertyName = "pattern_day_trader", Required = Required.Default)]
     public Boolean IsDayPatternTrader { get; set; }
 
     [JsonProperty(PropertyName = "trading_blocked", Required = Required.Always)]
