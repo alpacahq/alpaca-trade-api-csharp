@@ -26,7 +26,7 @@ public sealed partial class AlpacaTradingClientTest
             new JProperty("options_approved_level", OptionsTradingLevel.Disabled),
             new JProperty("options_trading_level", OptionsTradingLevel.Disabled),
             new JProperty("crypto_status", AccountStatus.Active),
-            new JProperty("non_maginable_buying_power", Price),
+            new JProperty("non_marginable_buying_power", Price),
             new JProperty("daytrading_buying_power", Price),
             new JProperty("last_maintenance_margin", Price),
             new JProperty("pending_transfer_out", transfer),
@@ -95,6 +95,31 @@ public sealed partial class AlpacaTradingClientTest
         Assert.False(account.IsTransfersBlocked);
         Assert.False(account.IsTradingBlocked);
         Assert.False(account.IsAccountBlocked);
+    }
+
+    [Fact]
+    public async Task GetAccountAsyncWorksWithoutRemovedFields()
+    {
+        // The Alpaca Trading API stopped returning the "pattern_day_trader" and
+        // "daytrade_count" fields. Deserialization must not fail because of that,
+        // and the corresponding properties should fall back to their defaults.
+        const Decimal cash = 10_000M;
+
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
+
+        mock.AddGet("/v2/account", new JObject(
+            new JProperty("status", AccountStatus.Active),
+            new JProperty("created_at", DateTime.UtcNow),
+            new JProperty("trading_blocked", false),
+            new JProperty("transfers_blocked", false),
+            new JProperty("account_blocked", false),
+            new JProperty("id", Guid.NewGuid()),
+            new JProperty("cash", cash)));
+
+        var account = await mock.Client.GetAccountAsync();
+
+        Assert.False(account.IsDayPatternTrader);
+        Assert.Equal(0UL, account.DayTradeCount);
     }
 
     [Fact]

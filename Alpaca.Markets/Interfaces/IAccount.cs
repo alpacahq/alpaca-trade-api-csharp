@@ -51,6 +51,10 @@ public interface IAccount
     /// <summary>
     /// Returns <c>true</c> if account is linked to pattern day trader.
     /// </summary>
+    /// <remarks>
+    /// The Alpaca Trading API no longer returns this field. This property always
+    /// returns <c>false</c> and is kept only for backward binary/source compatibility.
+    /// </remarks>
     [UsedImplicitly]
     Boolean IsDayPatternTrader { get; }
 
@@ -153,6 +157,10 @@ public interface IAccount
     /// <summary>
     /// the current number of day trades that have been made in the last 5 trading days (inclusive of today).
     /// </summary>
+    /// <remarks>
+    /// The Alpaca Trading API no longer returns this field. This property always
+    /// returns <c>0</c> and is kept only for backward binary/source compatibility.
+    /// </remarks>
     [UsedImplicitly]
     UInt64 DayTradeCount { get; }
 

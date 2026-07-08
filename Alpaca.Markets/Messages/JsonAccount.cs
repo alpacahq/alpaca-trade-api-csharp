@@ -25,7 +25,10 @@ internal sealed class JsonAccount : IAccount
     [JsonProperty(PropertyName = "cash", Required = Required.Always)]
     public Decimal TradableCash { get; set; }
 
-    [JsonProperty(PropertyName = "pattern_day_trader", Required = Required.Always)]
+    // The "pattern_day_trader" field is no longer returned by the Alpaca Trading API.
+    // Required is relaxed to Default (from Always) so deserialization does not fail
+    // when the field is absent; the property now always defaults to false.
+    [JsonProperty(PropertyName = "pattern_day_trader", Required = Required.Default)]
     public Boolean IsDayPatternTrader { get; set; }
 
     [JsonProperty(PropertyName = "trading_blocked", Required = Required.Always)]
@@ -52,7 +55,7 @@ internal sealed class JsonAccount : IAccount
     [JsonProperty(PropertyName = "daytrading_buying_power", Required = Required.Default)]
     public Decimal? DayTradingBuyingPower { get; set; }
 
-    [JsonProperty(PropertyName = "non_maginable_buying_power", Required = Required.Default)]
+    [JsonProperty(PropertyName = "non_marginable_buying_power", Required = Required.Default)]
     public Decimal? NonMarginableBuyingPower { get; set; }
 
     [JsonProperty(PropertyName = "regt_buying_power", Required = Required.Default)]
