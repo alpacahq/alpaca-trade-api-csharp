@@ -49,12 +49,6 @@ public interface IAccount
     String? AccountNumber { get; }
 
     /// <summary>
-    /// Returns <c>true</c> if account is linked to pattern day trader.
-    /// </summary>
-    [UsedImplicitly]
-    Boolean IsDayPatternTrader { get; }
-
-    /// <summary>
     /// Returns <c>true</c> if account trading functions are blocked.
     /// </summary>
     [UsedImplicitly]
@@ -149,12 +143,6 @@ public interface IAccount
     /// </summary>
     [UsedImplicitly]
     Decimal LastMaintenanceMargin { get; }
-
-    /// <summary>
-    /// the current number of day trades that have been made in the last 5 trading days (inclusive of today).
-    /// </summary>
-    [UsedImplicitly]
-    UInt64 DayTradeCount { get; }
 
     /// <summary>
     /// Value of special memorandum account.
