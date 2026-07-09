@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>7.2.1.0</AssemblyVersion>
-    <FileVersion>7.2.1.0</FileVersion>
-    <Version>7.2.1</Version>
+    <AssemblyVersion>7.2.2.0</AssemblyVersion>
+    <FileVersion>7.2.2.0</FileVersion>
+    <Version>7.2.2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -22,6 +22,7 @@
 - Fixed a bug where `IAccount.NonMarginableBuyingPower` was never populated due to a JSON property name typo (`non_maginable_buying_power` instead of `non_marginable_buying_power`).
 - Fixed a bug where `GetAccountAsync` threw a deserialization exception because the `pattern_day_trader` field is no longer returned by the Alpaca Trading API. The `IAccount.IsDayPatternTrader` and `IAccount.DayTradeCount` properties are deprecated in behavior (they always return their default values now) but remain in the interface for backward compatibility.
 - The `IAlpdaDataClient.ListCorporateActionsAsync` function was added to support historical corporate actions request/response.
+- Fixed a bug where `GetAccountConfigurationAsync` threw a deserialization exception because the `dtbp_check` field is not always returned by the Alpaca Trading API. The `dtbp_check` JSON property is now optional instead of required.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
