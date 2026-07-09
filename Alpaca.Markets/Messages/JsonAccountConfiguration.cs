@@ -7,7 +7,7 @@
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
 internal sealed class JsonAccountConfiguration : IAccountConfiguration
 {
-    [JsonProperty(PropertyName = "dtbp_check", Required = Required.Always)]
+    [JsonProperty(PropertyName = "dtbp_check", Required = Required.Default)]
     public DayTradeMarginCallProtection DayTradeMarginCallProtection { get; set; }
 
     [JsonProperty(PropertyName = "trade_confirm_email", Required = Required.Always)]
