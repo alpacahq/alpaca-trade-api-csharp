@@ -25,9 +25,6 @@ internal sealed class JsonAccount : IAccount
     [JsonProperty(PropertyName = "cash", Required = Required.Always)]
     public Decimal TradableCash { get; set; }
 
-    [JsonProperty(PropertyName = "pattern_day_trader", Required = Required.Always)]
-    public Boolean IsDayPatternTrader { get; set; }
-
     [JsonProperty(PropertyName = "trading_blocked", Required = Required.Always)]
     public Boolean IsTradingBlocked { get; set; }
 
@@ -52,7 +49,7 @@ internal sealed class JsonAccount : IAccount
     [JsonProperty(PropertyName = "daytrading_buying_power", Required = Required.Default)]
     public Decimal? DayTradingBuyingPower { get; set; }
 
-    [JsonProperty(PropertyName = "non_maginable_buying_power", Required = Required.Default)]
+    [JsonProperty(PropertyName = "non_marginable_buying_power", Required = Required.Default)]
     public Decimal? NonMarginableBuyingPower { get; set; }
 
     [JsonProperty(PropertyName = "regt_buying_power", Required = Required.Default)]
@@ -78,9 +75,6 @@ internal sealed class JsonAccount : IAccount
 
     [JsonProperty(PropertyName = "last_maintenance_margin", Required = Required.Default)]
     public Decimal LastMaintenanceMargin { get; set; }
-
-    [JsonProperty(PropertyName = "daytrade_count", Required = Required.Default)]
-    public UInt64 DayTradeCount { get; set; }
 
     [JsonProperty(PropertyName = "sma", Required = Required.Default)]
     public Decimal Sma { get; set; }
