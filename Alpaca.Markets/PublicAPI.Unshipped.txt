@@ -1,4 +1,3 @@
 ﻿#nullable enable
-Alpaca.Markets.ChangeOrderRequest.TrailOffset.get -> Alpaca.Markets.TrailOffset?
+Alpaca.Markets.ChangeOrderRequest.TrailOffset.get -> decimal?
 Alpaca.Markets.ChangeOrderRequest.TrailOffset.set -> void
-Alpaca.Markets.ChangeOrderRequest.TrailValue.get -> decimal?
