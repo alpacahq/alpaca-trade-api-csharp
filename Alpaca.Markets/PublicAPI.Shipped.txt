@@ -394,12 +394,10 @@ Alpaca.Markets.IAccount.BuyingPower.get -> decimal?
 Alpaca.Markets.IAccount.CreatedAtUtc.get -> System.DateTime
 Alpaca.Markets.IAccount.CryptoStatus.get -> Alpaca.Markets.AccountStatus
 Alpaca.Markets.IAccount.Currency.get -> string?
-Alpaca.Markets.IAccount.DayTradeCount.get -> ulong
 Alpaca.Markets.IAccount.DayTradingBuyingPower.get -> decimal?
 Alpaca.Markets.IAccount.Equity.get -> decimal?
 Alpaca.Markets.IAccount.InitialMargin.get -> decimal?
 Alpaca.Markets.IAccount.IsAccountBlocked.get -> bool
-Alpaca.Markets.IAccount.IsDayPatternTrader.get -> bool
 Alpaca.Markets.IAccount.IsTradingBlocked.get -> bool
 Alpaca.Markets.IAccount.IsTransfersBlocked.get -> bool
 Alpaca.Markets.IAccount.LastEquity.get -> decimal
