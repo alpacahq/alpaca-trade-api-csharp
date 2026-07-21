@@ -56,10 +56,10 @@ public sealed class AlpacaOptionsStreamingClientConfiguration : StreamingClientC
 
     internal override Uri GetApiEndpoint()
     {
-        var baseUrl = base.GetApiEndpoint();
-        // Options streaming API uses format: wss://stream.data.alpaca.markets/v1beta1/{feed}
-        // where {feed} is either "indicative" or "opra"
         var feedValue = Feed == OptionsFeed.Opra ? "opra" : "indicative";
-        return new Uri(baseUrl, feedValue);
+        return new UriBuilder(base.GetApiEndpoint())
+        {
+            Path = $"v1beta1/{feedValue}"
+        }.Uri;
     }
 }
