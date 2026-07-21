@@ -13,7 +13,6 @@ public sealed class AlpacaOptionsStreamingClientConfigurationTest
 
         Assert.Equal("wss://stream.data.alpaca.markets/v1beta1/indicative", endpoint.AbsoluteUri);
         Assert.Equal("/v1beta1/indicative", endpoint.AbsolutePath);
-        Assert.DoesNotContain("/v1beta1/v1beta1/", endpoint.AbsolutePath);
     }
 
     [Fact]
@@ -41,6 +40,8 @@ public sealed class AlpacaOptionsStreamingClientConfigurationTest
 
     private static Uri InvokeGetApiEndpoint(AlpacaOptionsStreamingClientConfiguration configuration)
     {
+        // Use reflection to invoke the internal GetApiEndpoint() method for unit testing.
+        // This allows testing the endpoint construction logic without exposing it publicly.
         var method = typeof(AlpacaOptionsStreamingClientConfiguration)
             .GetMethod("GetApiEndpoint", BindingFlags.Instance | BindingFlags.NonPublic);
 

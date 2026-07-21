@@ -57,9 +57,11 @@ public sealed class AlpacaOptionsStreamingClientConfiguration : StreamingClientC
     internal override Uri GetApiEndpoint()
     {
         var feedValue = Feed == OptionsFeed.Opra ? "opra" : "indicative";
-        return new UriBuilder(base.GetApiEndpoint())
-        {
-            Path = $"v1beta1/{feedValue}"
-        }.Uri;
+        // Construct the endpoint by treating the feed name as a relative URI.
+        // When baseUrl ends in /v1beta1/opra or /v1beta1/indicative, the relative
+        // path "opra" or "indicative" replaces the last segment, which correctly
+        // switches between feeds without duplicating the /v1beta1 prefix.
+        // This approach works for the designed environments (Live and Paper).
+        return new Uri(base.GetApiEndpoint(), feedValue);
     }
 }
