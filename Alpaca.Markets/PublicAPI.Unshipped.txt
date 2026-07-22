@@ -1,1 +1,3 @@
 ﻿#nullable enable
+*REMOVED*Alpaca.Markets.IAccount.DayTradeCount.get -> ulong
+*REMOVED*Alpaca.Markets.IAccount.IsDayPatternTrader.get -> bool
