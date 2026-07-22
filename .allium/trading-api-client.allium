@@ -17,7 +17,7 @@
 enum OrderStatus {
     accepted | pending_new | new | partially_filled | filled |
     done_for_day | canceled | pending_cancel | stopped | rejected |
-    suspended | expired | replaced | pending_replace | replace_rejected |
+    suspended | expired | replaced | pending_replace |
     calculated | accepted_for_bidding | held
 }
 
@@ -49,11 +49,12 @@ enum TradeEventType {
 }
 
 enum AccountActivityType {
-    fill | cash_deposit | cash_withdrawal | dividend | dividend_tax |
+    fill | cash_deposit | cash_withdrawal | dividend |
     merger_acquisition | name_change | symbol_change | stock_spinoff |
     stock_split | option_assignment | option_expiration | option_exercise |
-    option_trade | fee | crypto_fee | acats | journal_entry | interest |
-    miscellaneous | pass_thru_charge | pass_thru_rebate | unknown
+    option_trade | fee_in_usd | crypto_fee | acat_cash | acat_securities |
+    journal_entry | interest | miscellaneous | pass_thru_charge |
+    pass_thru_rebate | unknown
 }
 
 enum OptionType { call | put }
@@ -124,19 +125,16 @@ entity Account {
     options_buying_power: Decimal?
     long_market_value: Decimal
     short_market_value: Decimal
-    cost_basis: Decimal
     initial_margin: Decimal
     maintenance_margin: Decimal
     last_maintenance_margin: Decimal
     sma: Decimal
-    is_day_pattern_trader: Boolean
     shorting_enabled: Boolean
     trade_suspended_by_user: Boolean
     is_trading_blocked: Boolean
     is_transfers_blocked: Boolean
     options_trading_level: OptionsTradingLevel?
     options_approved_level: OptionsTradingLevel?
-    day_trade_count: Integer
     multiplier: Integer
     accrued_fees: Decimal
     pending_transfer_in: Decimal?
@@ -149,8 +147,7 @@ entity AccountConfiguration {
     no_shorting: Boolean
     suspend_trade: Boolean
     trade_confirm_email: String
-    fractional_trading: Boolean?
-    max_margin_multiplier: Integer?
+    max_options_trading_level: OptionsTradingLevel?
 }
 
 entity Order {
@@ -184,7 +181,7 @@ entity Order {
     legs: List<Order>
 
     is_open: status in {accepted, pending_new, new, partially_filled, held, pending_cancel, pending_replace}
-    is_terminal: status in {filled, canceled, rejected, replaced, expired, done_for_day, stopped, suspended, replace_rejected}
+    is_terminal: status in {filled, canceled, rejected, replaced, expired, done_for_day, stopped, suspended}
 }
 
 entity Position {
@@ -203,12 +200,13 @@ entity Position {
     unrealized_profit_loss_percent: Decimal
     intraday_unrealized_profit_loss: Decimal
 
-    invariant QuantityPositive {
-        quantity > 0
+    -- Quantities are signed: short positions carry negative quantity
+    invariant QuantitySignMatchesSide {
+        (side = long implies quantity > 0) and (side = short implies quantity < 0)
     }
 
     invariant AvailableWithinTotal {
-        available_quantity <= quantity
+        (side = long implies available_quantity <= quantity) and (side = short implies available_quantity >= quantity)
     }
 }
 
@@ -263,8 +261,8 @@ entity OptionContract {
     option_type: OptionType
     option_style: OptionStyle
     strike_price: Decimal
-    status: active | expired
-    multiplier: Decimal
+    status: AssetStatus
+    size: Decimal
 }
 
 entity Bar {
@@ -435,6 +433,12 @@ rule OrderPartialFill {
         trade_quantity: fill_quantity,
         timestamp: now
     )
+
+    @guidance
+        -- weighted_average_fill_price is a black-box computation: the
+        -- quantity-weighted average of all execution prices so far, i.e. the
+        -- prior average_fill_price weighted by the previously filled quantity
+        -- combined with fill_price weighted by fill_quantity.
 }
 
 rule OrderFilled {
@@ -454,6 +458,11 @@ rule OrderFilled {
         trade_quantity: fill_quantity,
         timestamp: now
     )
+
+    @guidance
+        -- weighted_average_fill_price is the same black-box computation as in
+        -- OrderPartialFill: the quantity-weighted average of all execution
+        -- prices across every partial fill plus this final fill.
 }
 
 -- Market Session Expiration
@@ -566,8 +575,8 @@ rule ExerciseOptionPosition {
         activity_type: option_exercise,
         activity_at: now,
         symbol: contract.symbol,
-        net_amount: contract.strike_price * contract.multiplier,
-        quantity: contract.multiplier
+        net_amount: contract.strike_price * contract.size,
+        quantity: contract.size
     )
 }
 
@@ -577,13 +586,13 @@ rule UpdateAccountConfiguration {
     when: UpdateAccountConfiguration(account, no_shorting, suspend_trade, trade_confirm_email)
 
     requires: account.status = active
-    let config = AccountConfiguration{account}
-    requires: exists config
+    let account_config = AccountConfiguration{account}
+    requires: exists account_config
 
     ensures:
-        config.no_shorting = no_shorting
-        config.suspend_trade = suspend_trade
-        config.trade_confirm_email = trade_confirm_email
+        account_config.no_shorting = no_shorting
+        account_config.suspend_trade = suspend_trade
+        account_config.trade_confirm_email = trade_confirm_email
 }
 
 ------------------------------------------------------------
