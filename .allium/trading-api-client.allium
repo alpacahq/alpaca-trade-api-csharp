@@ -20,7 +20,7 @@ use "github.com/alpacahq/alpaca-allium-lib@d5d38e0fe969061525b6fabbf7c66e0aa66c4
 enum OrderStatus {
     accepted | pending_new | new | partially_filled | filled |
     done_for_day | canceled | pending_cancel | stopped | rejected |
-    suspended | expired | replaced | pending_replace | replace_rejected |
+    suspended | expired | replaced | pending_replace |
     calculated | accepted_for_bidding | held
 }
 
@@ -127,19 +127,16 @@ entity Account {
     options_buying_power: Decimal?
     long_market_value: Decimal
     short_market_value: Decimal
-    cost_basis: Decimal
     initial_margin: Decimal
     maintenance_margin: Decimal
     last_maintenance_margin: Decimal
     sma: Decimal
-    is_day_pattern_trader: Boolean
     shorting_enabled: Boolean
     trade_suspended_by_user: Boolean
     is_trading_blocked: Boolean
     is_transfers_blocked: Boolean
     options_trading_level: OptionsTradingLevel?
     options_approved_level: OptionsTradingLevel?
-    day_trade_count: Integer
     multiplier: Integer
     accrued_fees: Decimal
     pending_transfer_in: Decimal?
@@ -152,8 +149,6 @@ entity AccountConfiguration {
     no_shorting: Boolean
     suspend_trade: Boolean
     trade_confirm_email: String
-    fractional_trading: Boolean?
-    max_margin_multiplier: Integer?
 }
 
 entity Order {
@@ -187,7 +182,7 @@ entity Order {
     legs: List<Order>
 
     is_open: status in {accepted, pending_new, new, partially_filled, held, pending_cancel, pending_replace}
-    is_terminal: status in {filled, canceled, rejected, replaced, expired, done_for_day, stopped, suspended, replace_rejected}
+    is_terminal: status in {filled, canceled, rejected, replaced, expired, done_for_day, stopped, suspended}
 }
 
 entity Position {
@@ -562,13 +557,13 @@ rule UpdateAccountConfiguration {
     when: UpdateAccountConfiguration(account, no_shorting, suspend_trade, trade_confirm_email)
 
     requires: account.status = active
-    let config = AccountConfiguration{account}
-    requires: exists config
+    let account_configuration = AccountConfiguration{account}
+    requires: exists account_configuration
 
     ensures:
-        config.no_shorting = no_shorting
-        config.suspend_trade = suspend_trade
-        config.trade_confirm_email = trade_confirm_email
+        account_configuration.no_shorting = no_shorting
+        account_configuration.suspend_trade = suspend_trade
+        account_configuration.trade_confirm_email = trade_confirm_email
 }
 
 ------------------------------------------------------------
