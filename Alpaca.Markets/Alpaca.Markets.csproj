@@ -19,6 +19,8 @@
 
   <PropertyGroup>
     <PackageReleaseNotes>
+- BREAKING: The `IsDayPatternTrader` and `DayTradeCount` properties were removed from the `IAccount` interface because the corresponding `pattern_day_trader` and `daytrade_count` fields no longer exist in the Alpaca Trading API `Account` response.
+- Fixed a bug where the `NonMarginableBuyingPower` property of the `IAccount` interface was never populated due to a JSON property name typo (`non_maginable_buying_power` instead of `non_marginable_buying_power`).
 - The new `MarginRequirementLong` and `MarginRequirementShort` properties were added to the `IAsset` interface.
 - The old `MaintenanceMarginRequirement` property of the `IAsset` interface is marked as obsolete.
 - The new `Boats` and `Overnight` values were added to the `MarketDataFeed` enumeration.
@@ -106,7 +108,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>compile; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MessagePack" Version="3.1.4" />
+    <PackageReference Include="MessagePack" Version="3.1.7" />
     <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="4.14.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
