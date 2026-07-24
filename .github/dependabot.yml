@@ -9,7 +9,8 @@ updates:
       time: "04:00"
     open-pull-requests-limit: 10
     assignees:
-      - OlegRa
+      - carlostasada
+
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
@@ -18,4 +19,5 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 10
     assignees:
-      - OlegRa
+      - carlostasada
+
