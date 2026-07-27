@@ -37,7 +37,7 @@ jobs:
       run: dotnet build -c Release
       
     - name: Save SDK Packages
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       if: github.repository == 'alpacahq/alpaca-trade-api-csharp' && startsWith(github.ref, 'refs/tags/sdk')
       with:
         retention-days: 1
@@ -48,7 +48,7 @@ jobs:
           Alpaca.Markets/bin/Release/*.snupkg
           
     - name: Save Extensions Packages
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       if: github.repository == 'alpacahq/alpaca-trade-api-csharp' && startsWith(github.ref, 'refs/tags/ext')
       with:
         retention-days: 1
