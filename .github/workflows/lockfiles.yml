@@ -26,6 +26,6 @@ jobs:
       run: dotnet restore --force-evaluate
 
     - name: Auto-commit changed files
-      uses: stefanzweifel/git-auto-commit-action@v6
+      uses: stefanzweifel/git-auto-commit-action@v7
       with:
         commit_message: Update NuGet lock files after Dependabot dependency update.
