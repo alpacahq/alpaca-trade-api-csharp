@@ -9,8 +9,8 @@
 
 | Package | Stable | Pre-release |
 | ------- | ------ | ----------- |
-| [Alpaca.Markets](https://olegra.github.io/Alpaca.Markets/api/Alpaca.Markets.html) | [![Nuget](https://img.shields.io/nuget/v/Alpaca.Markets?logo=NuGet)](https://www.nuget.org/packages/Alpaca.Markets) | [![Nuget](https://img.shields.io/nuget/vpre/Alpaca.Markets?logo=NuGet)](https://www.nuget.org/packages/Alpaca.Markets/absoluteLatest) |
-| [Alpaca.Markets.Extensions](https://olegra.github.io/Alpaca.Markets/api/Alpaca.Markets.Extensions.html) | [![Nuget](https://img.shields.io/nuget/v/Alpaca.Markets.Extensions?logo=NuGet)](https://www.nuget.org/packages/Alpaca.Markets.Extensions) | [![Nuget](https://img.shields.io/nuget/vpre/Alpaca.Markets.Extensions?logo=NuGet)](https://www.nuget.org/packages/Alpaca.Markets.Extensions/absoluteLatest) |
+| [Alpaca.Markets](https://alpacahq.github.io/alpaca-trade-api-csharp/api/Alpaca.Markets.html) | [![Nuget](https://img.shields.io/nuget/v/Alpaca.Markets?logo=NuGet)](https://www.nuget.org/packages/Alpaca.Markets) | [![Nuget](https://img.shields.io/nuget/vpre/Alpaca.Markets?logo=NuGet)](https://www.nuget.org/packages/Alpaca.Markets/absoluteLatest) |
+| [Alpaca.Markets.Extensions](https://alpacahq.github.io/alpaca-trade-api-csharp/api/Alpaca.Markets.Extensions.html) | [![Nuget](https://img.shields.io/nuget/v/Alpaca.Markets.Extensions?logo=NuGet)](https://www.nuget.org/packages/Alpaca.Markets.Extensions) | [![Nuget](https://img.shields.io/nuget/vpre/Alpaca.Markets.Extensions?logo=NuGet)](https://www.nuget.org/packages/Alpaca.Markets.Extensions/absoluteLatest) |
 
 ## .NET Core Usage Example
 
@@ -63,6 +63,27 @@ Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method to
 1.  Install your OS's latest version of the [.NET 9.0 SDK](https://dotnet.microsoft.com/download).
 2.  Clone the local version of this repository or your fork (if you want to make changes).
 3.  Build the packages using the `dotnet build` command running in the root directory of the cloned repo.
+
+### Preview the documentation locally
+
+The preview helper restores the pinned DocFX tool, builds the documentation,
+and starts DocFX's local server.
+
+On macOS or Linux:
+
+```bash
+./Documentation/serve.sh
+```
+
+On Windows:
+
+```cmd
+Documentation\serve.cmd
+```
+
+Open the local URL printed by DocFX, usually
+[`http://localhost:8080`](http://localhost:8080). Stop the server with
+<kbd>Ctrl</kbd>+<kbd>C</kbd>.
 
 ## Contributors
 

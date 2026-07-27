@@ -4,7 +4,7 @@
 
 # .NET SDK for Alpaca Markets API
 
-This package contains C#/.NET SDK for [Alpaca Trade API](https://docs.alpaca.markets/). See complete online documentation [here](https://olegra.github.io/Alpaca.Markets/api/Alpaca.Markets.html).
+This package contains C#/.NET SDK for [Alpaca Trade API](https://docs.alpaca.markets/). See complete online documentation [here](https://alpacahq.github.io/alpaca-trade-api-csharp/api/Alpaca.Markets.html).
 
 ## .NET Core Usage Example
 
