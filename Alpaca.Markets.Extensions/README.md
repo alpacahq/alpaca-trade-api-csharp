@@ -6,7 +6,7 @@ utm_source=website&utm_medium=github&utm_campaign=open_source)
 # .NET SDK for Alpaca Markets API
 
 This package contains helper extensions methods for the [C#/.NET SDK](https://github.com/alpacahq/alpaca-trade-api-csharp) for [Alpaca Trade API](https://docs.alpaca.markets/).
-See complete online documentation [here](https://olegra.github.io/Alpaca.Markets/api/Alpaca.Markets.Extensions.html).
+See complete online documentation [here](https://alpacahq.github.io/alpaca-trade-api-csharp/api/Alpaca.Markets.Extensions.html).
 
 ## .NET Core Usage Example
 
