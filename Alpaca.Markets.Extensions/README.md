@@ -2,7 +2,6 @@
 [![Codacy](https://img.shields.io/codacy/grade/7659cd4379964ef190a1088aa879350a?logo=codacy)](https://app.codacy.com/gh/OlegRa/Alpaca.Markets/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Coverage](https://app.codacy.com/project/badge/Coverage/7659cd4379964ef190a1088aa879350a)](https://app.codacy.com/gh/OlegRa/Alpaca.Markets/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 utm_source=website&utm_medium=github&utm_campaign=open_source)
-[![Sponsors](https://img.shields.io/github/sponsors/OlegRa?logo=github)](https://github.com/sponsors/OlegRa)
 
 # .NET SDK for Alpaca Markets API
 
