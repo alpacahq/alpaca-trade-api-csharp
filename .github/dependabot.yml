@@ -11,6 +11,13 @@ updates:
     assignees:
       - carlostasada
 
+  # Maintain the .NET SDK version in global.json
+  - package-ecosystem: "dotnet-sdk"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    assignees:
+      - carlostasada
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
