@@ -76,6 +76,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="Alpaca.Markets.Tests, PublicKey=002400000480000094000000060200000024000052534131000400000100010075944e93a9e5981863853b33c605d0e67449ad9a0d90bbca7229ee052bb8d6f8136322bc7ca252ab472172a4a12e50d532c19fb0fe258c07a60820eff7c61753ff12993a0a0ce8cabe9a793c98be1f794e741ba776ce4b8df3873a6e7d6774e0c577eb3198b1930bc41ef82a829bf20b5edef2563a65213a04b49e7ae17e52b9" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\Icon.png" Pack="true" PackagePath="icon.png" />
     <None Include="README.md" Pack="true" PackagePath="\" />
     <None Remove="Alpaca.Markets.csproj.DotSettings" />
@@ -116,6 +120,8 @@
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
     <PackageReference Include="System.Net.Http.WinHttpHandler" Version="9.0.0" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <!-- Needed for RuntimeInformation.FrameworkDescription; main gets this via MessagePack. -->
+    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" PrivateAssets="compile;contentfiles;build;analyzers" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 

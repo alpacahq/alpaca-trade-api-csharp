@@ -84,6 +84,12 @@
           "System.Memory": "4.5.5"
         }
       },
+      "System.Runtime.InteropServices.RuntimeInformation": {
+        "type": "Direct",
+        "requested": "[4.3.0, )",
+        "resolved": "4.3.0",
+        "contentHash": "cbz4YJMqRDR7oLeMRbdYv7mYzc++17lNhScCX0goO2XpGWdvAt60CGN+FHdePUEHCe/Jy9jUlvNAiNdM+7jsOw=="
+      },
       "System.Threading.Channels": {
         "type": "Direct",
         "requested": "[9.0.0, )",
