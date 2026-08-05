@@ -166,7 +166,8 @@ public sealed partial class AlpacaTradingClientTest
                 Duration = TimeInForce.Day,
                 Quantity = IntegerQuantity,
                 LimitPrice = BigPrice,
-                StopPrice = SmallPrice
+                StopPrice = SmallPrice,
+                TrailOffset = SmallPrice
             });
 
         validateOrder(order);
