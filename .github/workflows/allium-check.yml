@@ -54,28 +54,71 @@ jobs:
         run: cargo install --locked --version ${{ env.ALLIUM_VERSION }} allium-cli
 
       - name: Run allium check
-        # `-e` is GHA's default, but `allium check` exits non-zero on any
-        # warning — we only want to fail CI on actual errors. Disable
-        # errexit and gate on the parsed summary line.
+        # Gate on DIAGNOSTIC SEVERITY, not on the process exit code and not on
+        # a grepped summary line.
+        #
+        #  * `allium check --help` documents exit 1 as "One or more errors OR
+        #    WARNINGS were reported", so the exit code cannot express
+        #    "errors only". Specs carry unavoidable warnings
+        #    (externalEntity.missingSourceHint, use.unresolvedPath), so gating
+        #    on it would keep this job red for content-free reasons.
+        #  * The previous gate grepped for an "N error(s)" summary. allium
+        #    3.5.0 and 3.5.3 emit JSON and never print that string, so the job
+        #    failed unconditionally, independent of spec content.
+        #  * allium emits ONE JSON DOCUMENT PER SPEC FILE, concatenated, so the
+        #    stream must be slurped (`jq -s`), not parsed as a single object.
+        #
+        # Older binaries printed a human summary instead of JSON and runner
+        # caches are not uniform, so the legacy format is still accepted. If
+        # NEITHER parses, the job fails loudly: a gate that cannot read its own
+        # input must never report green.
         shell: bash
         run: |
-          set +e
           set -uo pipefail
           FILES=$(find . -type f -name "*.allium" -not -path "./.git/*" | sort)
           if [ -z "$FILES" ]; then
             echo "No .allium files found; nothing to check."
             exit 0
           fi
-          echo "Checking:"
-          echo "$FILES" | sed 's/^/  /'
-          allium check $FILES 2>&1 | tee allium.log
-          ERRORS=$(grep -oE '[0-9]+ error\(s\)' allium.log | tail -1 | awk '{print $1}')
-          if [ -z "$ERRORS" ]; then
-            echo "::error::could not parse allium check summary"
+          echo "Checking:"; echo "$FILES" | sed 's/^/  /'
+          allium --version || true
+
+          set +e
+          allium check $FILES >allium.out 2>allium.err
+          RC=$?
+          set -e
+
+          if [ "$RC" -eq 2 ]; then
+            echo "::error::allium check could not resolve inputs (exit 2)"
+            cat allium.err || true
             exit 1
           fi
+
+          ERRORS=""
+          WARNINGS=""
+          if jq -e -s 'length > 0' allium.out >/dev/null 2>&1; then
+            ERRORS=$(jq -s '[.[].diagnostics[]? | select(.severity=="error")] | length' allium.out)
+            WARNINGS=$(jq -s '[.[].diagnostics[]? | select(.severity=="warning")] | length' allium.out)
+            jq -s -r '.[] | .spec_file as $f | .diagnostics[]?
+                      | select(.severity=="error")
+                      | "::error file=\($f),line=\(.location.line // 0)::\(.code): \(.message)"' \
+                      allium.out || true
+          else
+            ERRORS=$(grep -oE '[0-9]+ error\(s\)' allium.out | tail -1 | awk '{print $1}')
+            WARNINGS=$(grep -oE '[0-9]+ warning\(s\)' allium.out | tail -1 | awk '{print $1}')
+            [ -n "$ERRORS" ] && echo "note: parsed legacy text summary (binary predates JSON output)"
+          fi
+
+          if [ -z "$ERRORS" ]; then
+            echo "::error::allium check output matched neither JSON nor the legacy summary (exit $RC)"
+            head -20 allium.out || true
+            cat allium.err || true
+            exit 1
+          fi
+
+          echo "errors: $ERRORS, warnings: ${WARNINGS:-0} (warnings do not gate)"
           if [ "$ERRORS" -gt 0 ]; then
             echo "::error::allium check reported $ERRORS error(s)"
             exit 1
           fi
-          echo "OK — 0 errors."
+          echo "OK - 0 errors."
