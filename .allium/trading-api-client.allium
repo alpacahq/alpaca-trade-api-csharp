@@ -10,6 +10,9 @@
 --   - HTTP/WebSocket transport implementation details
 --   - Streaming subscription management (connection, subscription registry)
 
+use "github.com/alpacahq/alpaca-allium-lib@d5d38e0fe969061525b6fabbf7c66e0aa66c40e2/Quote" as quote
+use "github.com/alpacahq/alpaca-allium-lib@d5d38e0fe969061525b6fabbf7c66e0aa66c40e2/MarketClock" as marketclock
+
 ------------------------------------------------------------
 -- Enumerations
 ------------------------------------------------------------
@@ -275,24 +278,6 @@ entity Bar {
     volume: Decimal
     vwap: Decimal
     trade_count: Integer
-}
-
-entity Quote {
-    symbol: String
-    timestamp: Timestamp
-    bid_price: Decimal
-    ask_price: Decimal
-    bid_size: Decimal
-    ask_size: Decimal
-    bid_exchange: String?
-    ask_exchange: String?
-}
-
-entity Clock {
-    timestamp: Timestamp
-    is_open: Boolean
-    next_open: Timestamp
-    next_close: Timestamp
 }
 
 entity IntervalCalendar {
@@ -586,13 +571,13 @@ rule UpdateAccountConfiguration {
     when: UpdateAccountConfiguration(account, no_shorting, suspend_trade, trade_confirm_email)
 
     requires: account.status = active
-    let account_config = AccountConfiguration{account}
-    requires: exists account_config
+    let account_configuration = AccountConfiguration{account}
+    requires: exists account_configuration
 
     ensures:
-        account_config.no_shorting = no_shorting
-        account_config.suspend_trade = suspend_trade
-        account_config.trade_confirm_email = trade_confirm_email
+        account_configuration.no_shorting = no_shorting
+        account_configuration.suspend_trade = suspend_trade
+        account_configuration.trade_confirm_email = trade_confirm_email
 }
 
 ------------------------------------------------------------
