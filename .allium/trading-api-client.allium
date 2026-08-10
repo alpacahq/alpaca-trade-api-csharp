@@ -581,6 +581,36 @@ rule UpdateAccountConfiguration {
 }
 
 ------------------------------------------------------------
+-- Surfaces
+------------------------------------------------------------
+
+-- Read-only DTO surface of the REST clients: these entities are returned
+-- to the SDK consumer by IAlpacaTradingClient (GetPortfolioHistoryAsync,
+-- ListOptionContractsAsync, ListIntervalCalendarAsync) and by
+-- IAlpacaDataClient (historical bars).
+surface client_read_api {
+    facing portfolio_history: PortfolioHistory
+    facing option_contract: OptionContract
+    facing bar: Bar
+    facing calendar: IntervalCalendar
+    exposes:
+        portfolio_history.items
+        portfolio_history.base_value
+        portfolio_history.time_frame
+        option_contract.symbol
+        option_contract.expiration_date
+        option_contract.strike_price
+        bar.open
+        bar.high
+        bar.low
+        bar.close
+        bar.volume
+        calendar.date
+        calendar.session_open
+        calendar.session_close
+}
+
+------------------------------------------------------------
 -- Invariants
 ------------------------------------------------------------
 

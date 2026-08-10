@@ -4,19 +4,11 @@
 -- portfolio statistics, market clock caching, and bracket order utilities.
 
 use "github.com/alpacahq/alpaca-allium-lib@d5d38e0fe969061525b6fabbf7c66e0aa66c40e2/MarketClock" as marketclock
+use "./trading-api-client.allium" as trading
 
 ------------------------------------------------------------
 -- External Entities
 ------------------------------------------------------------
-
-external entity Bar {
-    open: Decimal
-    high: Decimal
-    low: Decimal
-    close: Decimal
-    volume: Decimal
-    timestamp: Timestamp
-}
 
 external entity HistoricalRequest {}
 
@@ -95,7 +87,8 @@ entity StreamingSession {
 
 entity DataSubscription {
     symbols: Set<String>
-    kind: trade | quote | minute_bar | daily_bar | updated_bar | order_book | news
+    kind: trade | quote | minute_bar | daily_bar | updated_bar | order_book | news |
+          status | cancellation | correction | limit_up_limit_down | order_imbalance
     status: inactive | active
 
     transitions status {
@@ -293,6 +286,29 @@ rule DataSubscriptionDisposed {
     ensures:
         subscription.status = inactive
         not exists subscription
+}
+
+------------------------------------------------------------
+-- Surfaces
+------------------------------------------------------------
+
+-- Extension-method surface: the package's entry points are extension
+-- methods on the SDK clients — pagination (GetXxxAsAsyncEnumerable over
+-- a historical request), streaming reconnection (WithReconnect), and
+-- statistics over historical bars (IBar from the main SDK).
+surface extension_api {
+    facing client: AlpacaClient
+    facing streaming: StreamingClient
+    facing request: HistoricalRequest
+    facing bar: trading/Bar
+    provides:
+        PaginatedItemsRequested(client, request)
+        PaginatedPagesRequested(client, request)
+        StreamingReconnectionConfigured(streaming, parameters)
+    exposes:
+        bar.open
+        bar.close
+        bar.volume
 }
 
 ------------------------------------------------------------

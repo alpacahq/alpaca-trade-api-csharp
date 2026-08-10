@@ -3,7 +3,7 @@ name: Allium Check
 # Runs `allium check` on every `.allium` file in the repo.
 #
 # Local install:
-#     cargo install --locked --version 3.5.0 allium-cli
+#     cargo install --locked --version 3.5.3 allium-cli
 #
 # Toolchain note: allium-cli is a Rust binary and is not bootstrapped through
 # the Makefile's `bin/<name>-<version>` convention (where one exists). The
@@ -24,7 +24,7 @@ permissions:
   contents: read
 
 env:
-  ALLIUM_VERSION: "3.5.0"
+  ALLIUM_VERSION: "3.5.3"
   # Opt in to Node 24 runtime for actions; Node 20 will be removed 2026-09-16.
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
