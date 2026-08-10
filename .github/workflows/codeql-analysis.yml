@@ -23,20 +23,20 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v5
+      uses: actions/checkout@v7
 
-    - name: Setup .NET 9.0.x
-      uses: actions/setup-dotnet@v5
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v6
       with:
-        dotnet-version: '9.0.x'
+        global-json-file: global.json
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
+      uses: github/codeql-action/init@v4.37.3
       with:
         languages: ${{ matrix.language }}
 
     - name: Cache NuGet Packages
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
@@ -47,4 +47,4 @@ jobs:
       run: dotnet build -c Release
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+      uses: github/codeql-action/analyze@v4.37.3

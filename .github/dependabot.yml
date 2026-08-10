@@ -9,7 +9,15 @@ updates:
       time: "04:00"
     open-pull-requests-limit: 10
     assignees:
-      - OlegRa
+      - carlostasada
+
+  # Maintain the .NET SDK version in global.json
+  - package-ecosystem: "dotnet-sdk"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    assignees:
+      - carlostasada
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
@@ -18,4 +26,5 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 10
     assignees:
-      - OlegRa
+      - carlostasada
+

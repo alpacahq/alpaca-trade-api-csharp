@@ -11,15 +11,15 @@ jobs:
     
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v5
+      uses: actions/checkout@v7
 
-    - name: Setup .NET 9.0.x
-      uses: actions/setup-dotnet@v5
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v6
       with:
-        dotnet-version: '9.0.x'
+        global-json-file: global.json
 
     - name: Cache NuGet Packages
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
@@ -37,7 +37,7 @@ jobs:
       run: dotnet build -c Release
       
     - name: Save SDK Packages
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       if: github.repository == 'alpacahq/alpaca-trade-api-csharp' && startsWith(github.ref, 'refs/tags/sdk')
       with:
         retention-days: 1
@@ -48,7 +48,7 @@ jobs:
           Alpaca.Markets/bin/Release/*.snupkg
           
     - name: Save Extensions Packages
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       if: github.repository == 'alpacahq/alpaca-trade-api-csharp' && startsWith(github.ref, 'refs/tags/ext')
       with:
         retention-days: 1
@@ -72,7 +72,7 @@ jobs:
 
     steps:
     - name: Load SDK Packages
-      uses: actions/download-artifact@v5
+      uses: actions/download-artifact@v8
       with:
         name: sdk-packages
 
@@ -80,7 +80,7 @@ jobs:
       run: dotnet nuget push **.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
 
     - name: Create GitHub Release
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v3
       with:
         name: SDK ${{ github.ref }}
         draft: true
@@ -93,7 +93,7 @@ jobs:
 
     steps:
     - name: Load Extensions Packages
-      uses: actions/download-artifact@v5
+      uses: actions/download-artifact@v8
       with:
         name: ext-packages
 
@@ -101,7 +101,7 @@ jobs:
       run: dotnet nuget push **.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
 
     - name: Create GitHub Release
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v3
       with:
         name: Extensions ${{ github.ref }}
         draft: true

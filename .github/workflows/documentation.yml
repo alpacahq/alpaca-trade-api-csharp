@@ -2,6 +2,9 @@ name: Update Documentation
 
 on: [workflow_dispatch]
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Create Documentation
@@ -9,15 +12,15 @@ jobs:
     
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v5
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-    - name: Setup .NET 9.0.x
-      uses: actions/setup-dotnet@v5
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6
       with:
-        dotnet-version: '9.0.x'
+        global-json-file: global.json
 
     - name: Cache NuGet Packages
-      uses: actions/cache@v4
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
@@ -27,45 +30,29 @@ jobs:
     - name: Restore .NET Tools
       run: dotnet tool restore
 
+    - name: Configure GitHub Pages
+      uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
     - name: Build Documentation
       run: dotnet docfx Documentation/docfx.json
 
-    - name: Save Documentation
-      uses: actions/upload-artifact@v4
+    - name: Upload GitHub Pages Artifact
+      uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
       with:
-        retention-days: 1
-        compression-level: 0
-        name: documentation
         path: Documentation/_site/
 
-  publish:
+  deploy:
     name: Publish Documentation
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
 
     steps:
-    - name: Checkout Branch
-      uses: actions/checkout@v5
-      with:
-        ref: gh-pages
-
-    - name: Set Git Identity
-      run: |
-        git config user.name "GitHub Actions"
-        git config user.email "github-actions@github.com"
-
-    - name: Delete Documenation
-      run: |
-        rm -rfv ./*
-        git rm ** -f
-
-    - name: Load Documentation
-      uses: actions/download-artifact@v5
-      with:
-        name: documentation
-
-    - name: Commit and Push
-      run: |
-        git add ** -f
-        git commit -m "Update content of .NET SDK documentation on GitHub Pages web site."
-        git push origin gh-pages
+    - name: Deploy GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
