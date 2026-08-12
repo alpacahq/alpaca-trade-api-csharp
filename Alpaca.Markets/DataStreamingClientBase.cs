@@ -207,7 +207,11 @@ internal abstract class DataStreamingClientBase<TConfiguration> :
                     break;
 
                 default:
+#if NET8_0_OR_GREATER
+                    onWarning.Invoke($"Ignored MessagePack data type {Enum.GetName(type)}");
+#else
                     onWarning.Invoke($"Ignored MessagePack data type {Enum.GetName(typeof(MessagePackType), type)}");
+#endif
                     break;
             }
 

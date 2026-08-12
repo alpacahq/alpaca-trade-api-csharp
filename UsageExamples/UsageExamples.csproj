@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net4.8;net8.0</TargetFrameworks>
+    <TargetFrameworks>net4.8;net10.0</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <TrimmerDefaultAction>link</TrimmerDefaultAction>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -21,9 +21,6 @@
     </PackageReference>
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.3" />
     <PackageReference Include="OoplesFinance.StockIndicators" Version="1.0.53" />
-    <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.1" />
-    <PackageReference Include="System.Threading.Channels" Version="9.0.8" />
-    <PackageReference Include="System.IO.Pipelines" Version="9.0.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Polly" Version="8.6.3" />
   </ItemGroup>
@@ -31,6 +28,9 @@
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
     <PackageReference Include="System.Net.Http.WinHttpHandler" Version="9.0.8" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.1" />
+    <PackageReference Include="System.Threading.Channels" Version="9.0.8" />
+    <PackageReference Include="System.IO.Pipelines" Version="9.0.8" />
   </ItemGroup>
 
   <ItemGroup>

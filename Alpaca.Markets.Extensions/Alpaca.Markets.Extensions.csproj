@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net8.0;net10.0</TargetFrameworks>
     <AssemblyOriginatorKeyFile>..\Alpaca.Markets.snk</AssemblyOriginatorKeyFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -57,7 +57,7 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
-  <PropertyGroup Condition="($(TargetFramework.StartsWith('net8')))">
+  <PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
     <IsTrimmable>true</IsTrimmable>
   </PropertyGroup>
@@ -101,7 +101,18 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="all" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0'))">
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="10.0.11" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.11" PrivateAssets="compile;contentfiles;build;analyzers" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0')) And !$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0'))">
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Linq.Async" Version="6.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Threading.Channels" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
@@ -112,7 +123,7 @@
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
   </ItemGroup>
 
-  <ItemGroup Condition="!($(TargetFramework.StartsWith('net8')))">
+  <ItemGroup Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">
     <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 

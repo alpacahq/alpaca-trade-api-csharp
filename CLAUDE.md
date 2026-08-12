@@ -52,7 +52,7 @@ This SDK has also GitHub WiKi which contains some useful information: https://gi
 
 ## Framework Support
 
-- Keep in mind .NET targets list: .NET Standard 2.0, .NET Standard 2.1, .NET Framework 4.6.2, .NET 8.0
+- Keep in mind .NET targets list: .NET Standard 2.0, .NET Standard 2.1, .NET Framework 4.6.2, .NET 8.0, .NET 10.0
 - Use common denominator types as much as possible and conditional compilation as a last resort
 - Uses latest available C# features provided by the latest .NET SDK compatible with targets
 

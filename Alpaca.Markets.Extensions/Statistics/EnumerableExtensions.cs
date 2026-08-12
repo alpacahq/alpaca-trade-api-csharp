@@ -214,5 +214,28 @@ public static class EnumerableExtensions
     public static IEnumerable<IBar> GetSimpleMovingAverage(
         this IEnumerable<IBar> bars,
         Int32 window) =>
+#if NET10_0_OR_GREATER
+        toEnumerable(GetSimpleMovingAverageAsync(bars.EnsureNotNull().ToAsyncEnumerable(), window));
+#else
         GetSimpleMovingAverageAsync(bars.EnsureNotNull().ToAsyncEnumerable(), window).ToEnumerable();
+#endif
+
+#if NET10_0_OR_GREATER
+    // .NET 10's System.Linq.AsyncEnumerable intentionally omits sync-over-async ToEnumerable.
+    private static IEnumerable<T> toEnumerable<T>(IAsyncEnumerable<T> source)
+    {
+        var enumerator = source.GetAsyncEnumerator();
+        try
+        {
+            while (enumerator.MoveNextAsync().AsTask().GetAwaiter().GetResult())
+            {
+                yield return enumerator.Current;
+            }
+        }
+        finally
+        {
+            enumerator.DisposeAsync().AsTask().GetAwaiter().GetResult();
+        }
+    }
+#endif
 }
