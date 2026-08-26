@@ -649,7 +649,7 @@
         "type": "Direct",
         "requested": "[10.0.11, )",
         "resolved": "10.0.11",
-        "contentHash": "B7ClIZRv1IyPQV3XQO8UbGg9iGm1hggC/WR7kXV8dRu3KAfphANlMoYqZRciLiDpPmwUZac7orR9EKOMvVCYgg=="
+        "contentHash": "hMVB326ViZa64sqR9bxmf4oB41LMuaTrGRfihXZw3dylFRFfZPutLwJrKZmdisSvBcNM6kfuY7vtj9vdR9IbuA=="
       },
       "Microsoft.SourceLink.GitHub": {
         "type": "Direct",
@@ -741,7 +741,7 @@
         "type": "Direct",
         "requested": "[8.0.30, )",
         "resolved": "8.0.30",
-        "contentHash": "SfmwuZjUPBTEoBMAsXZ/hWkaEK9oL+Y/UtAx7N6RyWHfcMt9J0ExrNPuOgTyPbCXIyiTBFsxFNrPLEZNPmJcvA=="
+        "contentHash": "q8cwD52JNMGzYXGT3KLES6Aoi77QM8DfgGoDeHeJAhmsXcWxyMb0m4ultGeU0QeG7pO4meD9pr/M7ieUF7Il+w=="
       },
       "Microsoft.SourceLink.GitHub": {
         "type": "Direct",
