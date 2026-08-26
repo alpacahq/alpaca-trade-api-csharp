@@ -63,9 +63,11 @@ Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method to
 
 ### Build instructions
 
-1.  Install your OS's latest version of the [.NET 9.0 SDK](https://dotnet.microsoft.com/download).
+1.  Install your OS's latest version of the [.NET 10.0 SDK](https://dotnet.microsoft.com/download).
 2.  Clone the local version of this repository or your fork (if you want to make changes).
 3.  Build the packages using the `dotnet build` command running in the root directory of the cloned repo.
+
+The NuGet packages multi-target .NET Standard 2.0/2.1, .NET Framework 4.6.2, .NET 8.0, and .NET 10.0 — consumers do not need the .NET 10 SDK unless they are building this repository.
 
 ### Preview the documentation locally
 

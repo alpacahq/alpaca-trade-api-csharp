@@ -17,6 +17,9 @@ jobs:
       uses: actions/setup-dotnet@v6
       with:
         global-json-file: global.json
+        dotnet-version: |
+          8.0.x
+          10.0.x
 
     - name: Cache NuGet Packages
       uses: actions/cache@v6

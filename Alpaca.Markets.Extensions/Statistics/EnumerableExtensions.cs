@@ -214,5 +214,10 @@ public static class EnumerableExtensions
     public static IEnumerable<IBar> GetSimpleMovingAverage(
         this IEnumerable<IBar> bars,
         Int32 window) =>
+#if NET10_0_OR_GREATER
+        GetSimpleMovingAverageAsync(bars.EnsureNotNull().ToAsyncEnumerable(), window)
+            .ToBlockingEnumerable();
+#else
         GetSimpleMovingAverageAsync(bars.EnsureNotNull().ToAsyncEnumerable(), window).ToEnumerable();
+#endif
 }

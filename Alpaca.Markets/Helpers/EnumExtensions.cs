@@ -11,12 +11,22 @@ internal static class EnumExtensions
         T> where T : struct, Enum
     {
         public static readonly IReadOnlyDictionary<String, T> ValuesByNames =
+#if NET8_0_OR_GREATER
+            Enum.GetValues<T>()
+#else
             Enum.GetValues(typeof(T)).OfType<T>()
+#endif
                 .ToDictionary(getJsonName, value => value);
 
         private static string getJsonName(
             T value) =>
-            typeof(T).GetField(Enum.GetName(typeof(T), value) ?? value.ToString())?
+            typeof(T).GetField(
+#if NET8_0_OR_GREATER
+                    Enum.GetName(value)
+#else
+                    Enum.GetName(typeof(T), value)
+#endif
+                    ?? value.ToString())?
                 .GetCustomAttribute<EnumMemberAttribute>()?.Value ?? value.ToString();
     }
 
