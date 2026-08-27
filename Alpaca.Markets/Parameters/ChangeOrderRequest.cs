@@ -51,10 +51,10 @@ public sealed class ChangeOrderRequest : Validation.IRequest
     public String? ClientOrderId { get; set; }
 
     /// <summary>
-    /// Gets or sets updated trail offset value or <c>null</c> if trail offset is not changed.
-    /// Alpaca reads this value in the same units (dollars or percent) as the original order:
-    /// an update cannot switch between price-based and percent-based trailing.
-    /// Works only for orders of type <c>trailing_stop</c> and only before the stop price is hit.
+    /// Gets or sets the new trail amount, or <c>null</c> if unchanged.
+    /// Uses the same unit as the original order (dollars or percent).
+    /// Only valid for trailing-stop orders that have not yet triggered.
+    /// You cannot switch between price-based and percent-based trailing.
     /// </summary>
     [JsonProperty(PropertyName = "trail", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
     public Decimal? Trail { get; set; }
