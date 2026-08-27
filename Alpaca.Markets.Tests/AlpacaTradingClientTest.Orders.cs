@@ -1,4 +1,4 @@
-﻿namespace Alpaca.Markets.Tests;
+namespace Alpaca.Markets.Tests;
 
 public sealed partial class AlpacaTradingClientTest
 {
