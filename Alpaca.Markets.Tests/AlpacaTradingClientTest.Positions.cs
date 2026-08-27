@@ -1,4 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Alpaca.Markets.Tests;
 
@@ -9,6 +9,8 @@ public sealed partial class AlpacaTradingClientTest
     private const Int64 IntegerQuantity = 123L;
 
     private const Decimal SmallPrice = 123.45M;
+
+    private const Decimal Trail = 123.45M;
 
     private const Decimal BigPrice = 234.56M;
 

@@ -1,4 +1,4 @@
-namespace Alpaca.Markets.Tests;
+﻿namespace Alpaca.Markets.Tests;
 
 public sealed partial class AlpacaTradingClientTest
 {
@@ -167,10 +167,31 @@ public sealed partial class AlpacaTradingClientTest
                 Quantity = IntegerQuantity,
                 LimitPrice = BigPrice,
                 StopPrice = SmallPrice,
-                Trail = SmallPrice
+                Trail = Trail
             });
 
         validateOrder(order);
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task PatchOrderAsyncWithTrailWorks(
+        Boolean isInDollars)
+    {
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
+
+        var trailingStopOrder = (JObject)createOrder();
+        trailingStopOrder.Add(isInDollars ? "trail_price" : "trail_percent", Trail);
+
+        mock.AddPatch(OrdersWildcardUrl, trailingStopOrder,
+            new JObject(new JProperty("trail", Trail)).ToString(Formatting.None));
+
+        var order = await mock.Client.PatchOrderAsync(
+            new ChangeOrderRequest(Guid.NewGuid()) { Trail = Trail });
+
+        Assert.Equal(Trail, isInDollars ? order.TrailOffsetInDollars : order.TrailOffsetInPercent);
+        Assert.Null(isInDollars ? order.TrailOffsetInPercent : order.TrailOffsetInDollars);
     }
 
     [Fact]
