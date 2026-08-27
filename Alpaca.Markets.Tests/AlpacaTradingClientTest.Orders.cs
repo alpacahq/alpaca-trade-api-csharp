@@ -167,7 +167,7 @@ public sealed partial class AlpacaTradingClientTest
                 Quantity = IntegerQuantity,
                 LimitPrice = BigPrice,
                 StopPrice = SmallPrice,
-                TrailOffset = SmallPrice
+                Trail = SmallPrice
             });
 
         validateOrder(order);

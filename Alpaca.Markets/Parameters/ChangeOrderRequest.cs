@@ -57,7 +57,7 @@ public sealed class ChangeOrderRequest : Validation.IRequest
     /// Works only for orders of type <c>trailing_stop</c> and only before the stop price is hit.
     /// </summary>
     [JsonProperty(PropertyName = "trail", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-    public Decimal? TrailOffset { get; set; }
+    public Decimal? Trail { get; set; }
 
     internal String GetEndpointUri() => $"v2/orders/{OrderId:D}";
 
