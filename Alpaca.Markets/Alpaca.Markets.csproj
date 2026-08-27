@@ -12,15 +12,23 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>8.0.0.4</AssemblyVersion>
-    <FileVersion>8.0.0.4</FileVersion>
-    <Version>8.0.0-beta4</Version>
+    <AssemblyVersion>8.0.0.5</AssemblyVersion>
+    <FileVersion>8.0.0.5</FileVersion>
+    <Version>8.0.0-beta5</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
+- The new `Trail` property was added to the `ChangeOrderRequest` class for updating trailing-stop orders (same unit as the original order).
+- Added a `net10.0` target; existing target frameworks are unchanged.
+- The new `IAlpacaOptionsStreamingClient` interface provides real-time options market data streaming.
+- The `IAlpacaOptionsDataClient` interface now supports historical option quotes and latest option bars.
+- The new `IOrderImbalance` interface and `GetOrderImbalanceSubscription` method were added to `IAlpacaDataStreamingClient`.
 - BREAKING: The `IsDayPatternTrader` and `DayTradeCount` properties were removed from the `IAccount` interface because the corresponding `pattern_day_trader` and `daytrade_count` fields no longer exist in the Alpaca Trading API `Account` response.
+- BREAKING: The public `UseMessagePack` getter was removed from `StreamingClientConfiguration`.
 - Fixed a bug where the `NonMarginableBuyingPower` property of the `IAccount` interface was never populated due to a JSON property name typo (`non_maginable_buying_power` instead of `non_marginable_buying_power`).
+- Fixed options streaming endpoint construction so the `v1beta1` path is not duplicated.
+- The HTTP User-Agent header now follows the cross-SDK `APCA-DOTNET/&lt;sdk-version&gt; .NET/&lt;runtime-version&gt;` format.
 - The new `MarginRequirementLong` and `MarginRequirementShort` properties were added to the `IAsset` interface.
 - The old `MaintenanceMarginRequirement` property of the `IAsset` interface is marked as obsolete.
 - The new `Boats` and `Overnight` values were added to the `MarketDataFeed` enumeration.
