@@ -50,6 +50,13 @@ internal sealed class MockHttpClient<TConfiguration, TClient> : IMock, IDisposab
         JToken response) =>
         addExpectRespond(HttpMethod.Patch, request, response);
 
+    public void AddPatch(
+        String request,
+        JToken response,
+        String expectedContent) =>
+        _handler.Expect(HttpMethod.Patch, request).WithContent(expectedContent)
+            .Respond("application/json", response.ToString());
+
     public void AddDelete(
         String request,
         JToken response) =>

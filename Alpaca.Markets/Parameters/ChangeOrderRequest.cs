@@ -50,6 +50,15 @@ public sealed class ChangeOrderRequest : Validation.IRequest
     [JsonProperty(PropertyName = "client_order_id", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
     public String? ClientOrderId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the new trail amount, or <c>null</c> if unchanged.
+    /// Uses the same unit as the original order (dollars or percent).
+    /// Only valid for trailing-stop orders that have not yet triggered.
+    /// You cannot switch between price-based and percent-based trailing.
+    /// </summary>
+    [JsonProperty(PropertyName = "trail", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+    public Decimal? Trail { get; set; }
+
     internal String GetEndpointUri() => $"v2/orders/{OrderId:D}";
 
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
