@@ -1,5 +1,11 @@
 ﻿#nullable enable
+*REMOVED*Alpaca.Markets.DayTradeMarginCallProtection
+*REMOVED*Alpaca.Markets.DayTradeMarginCallProtection.Both = 2 -> Alpaca.Markets.DayTradeMarginCallProtection
+*REMOVED*Alpaca.Markets.DayTradeMarginCallProtection.Entry = 0 -> Alpaca.Markets.DayTradeMarginCallProtection
+*REMOVED*Alpaca.Markets.DayTradeMarginCallProtection.Exit = 1 -> Alpaca.Markets.DayTradeMarginCallProtection
 *REMOVED*Alpaca.Markets.IAccount.DayTradeCount.get -> ulong
 *REMOVED*Alpaca.Markets.IAccount.IsDayPatternTrader.get -> bool
+*REMOVED*Alpaca.Markets.IAccountConfiguration.DayTradeMarginCallProtection.get -> Alpaca.Markets.DayTradeMarginCallProtection
+*REMOVED*Alpaca.Markets.IAccountConfiguration.DayTradeMarginCallProtection.set -> void
 Alpaca.Markets.ChangeOrderRequest.Trail.get -> decimal?
 Alpaca.Markets.ChangeOrderRequest.Trail.set -> void

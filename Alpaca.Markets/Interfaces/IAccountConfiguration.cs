@@ -6,12 +6,6 @@
 public interface IAccountConfiguration
 {
     /// <summary>
-    /// Gets or sets day trade margin call protection mode for account.
-    /// </summary>
-    [UsedImplicitly]
-    DayTradeMarginCallProtection DayTradeMarginCallProtection { get; set; }
-
-    /// <summary>
     /// Gets or sets notification level for order fill emails.
     /// </summary>
     [UsedImplicitly]

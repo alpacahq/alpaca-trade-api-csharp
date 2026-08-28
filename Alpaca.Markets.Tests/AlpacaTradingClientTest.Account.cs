@@ -209,12 +209,24 @@ public sealed partial class AlpacaTradingClientTest
     }
 
     [Fact]
+    public async Task GetAccountConfigurationAsyncIgnoresLegacyDtbpCheck()
+    {
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
+
+        mock.AddGet("/v2/account/configurations", createConfigurationWithLegacyDtbpCheck());
+
+        var configuration = await mock.Client.GetAccountConfigurationAsync();
+
+        validateConfiguration(configuration);
+    }
+
+    [Fact]
     public async Task PatchAccountConfigurationAsyncWorks()
     {
         using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         mock.AddGet("/v2/account/configurations", createConfiguration());
-        mock.AddPatch("/v2/account/configurations",createConfiguration());
+        mock.AddPatch("/v2/account/configurations", createConfiguration());
 
         var configuration = await mock.Client.PatchAccountConfigurationAsync(
             await mock.Client.GetAccountConfigurationAsync());
@@ -224,20 +236,30 @@ public sealed partial class AlpacaTradingClientTest
 
     private static JObject createConfiguration() =>
         new(
-            // ReSharper disable once StringLiteralTypo
+            new JProperty("disable_overnight_trading", false),
+            new JProperty("fractional_trading", true),
+            new JProperty("max_margin_multiplier", "4"),
             new JProperty("max_options_trading_level", OptionsTradingLevel.LongCallPut),
-            new JProperty("dtbp_check", DayTradeMarginCallProtection.Both),
             new JProperty("trade_confirm_email", TradeConfirmEmail.All),
             new JProperty("ptp_no_exception_entry", false),
             new JProperty("suspend_trade", false),
             new JProperty("no_shorting", true));
 
+    private static JObject createConfigurationWithLegacyDtbpCheck()
+    {
+        var configuration = createConfiguration();
+        // ReSharper disable once StringLiteralTypo
+        configuration.Add("dtbp_check", "both");
+        return configuration;
+    }
+
     private static void validateConfiguration(
         IAccountConfiguration configuration)
     {
-        Assert.Equal(DayTradeMarginCallProtection.Both, configuration.DayTradeMarginCallProtection);
         Assert.Equal(TradeConfirmEmail.All, configuration.TradeConfirmEmail);
         Assert.False(configuration.IsSuspendTrade);
         Assert.True(configuration.IsNoShorting);
+        Assert.False(configuration.IsPtpNoExceptionEntry);
+        Assert.Equal(OptionsTradingLevel.LongCallPut, configuration.MaxOptionsTradingLevel);
     }
 }
