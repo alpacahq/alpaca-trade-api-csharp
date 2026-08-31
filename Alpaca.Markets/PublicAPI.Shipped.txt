@@ -240,10 +240,6 @@ Alpaca.Markets.CryptoExchange.Cbse = 3 -> Alpaca.Markets.CryptoExchange
 Alpaca.Markets.CryptoExchange.Ersx = 1 -> Alpaca.Markets.CryptoExchange
 Alpaca.Markets.CryptoExchange.Ftx = 2 -> Alpaca.Markets.CryptoExchange
 Alpaca.Markets.CryptoExchange.Unknown = 0 -> Alpaca.Markets.CryptoExchange
-Alpaca.Markets.DayTradeMarginCallProtection
-Alpaca.Markets.DayTradeMarginCallProtection.Both = 2 -> Alpaca.Markets.DayTradeMarginCallProtection
-Alpaca.Markets.DayTradeMarginCallProtection.Entry = 0 -> Alpaca.Markets.DayTradeMarginCallProtection
-Alpaca.Markets.DayTradeMarginCallProtection.Exit = 1 -> Alpaca.Markets.DayTradeMarginCallProtection
 Alpaca.Markets.DeleteAllPositionsRequest
 Alpaca.Markets.DeleteAllPositionsRequest.CancelOrders.get -> bool?
 Alpaca.Markets.DeleteAllPositionsRequest.CancelOrders.set -> void
@@ -439,8 +435,6 @@ Alpaca.Markets.IAccountActivity.Symbol.get -> string?
 Alpaca.Markets.IAccountActivity.TransactionTimeUtc.get -> System.DateTime?
 Alpaca.Markets.IAccountActivity.Type.get -> Alpaca.Markets.TradeEvent?
 Alpaca.Markets.IAccountConfiguration
-Alpaca.Markets.IAccountConfiguration.DayTradeMarginCallProtection.get -> Alpaca.Markets.DayTradeMarginCallProtection
-Alpaca.Markets.IAccountConfiguration.DayTradeMarginCallProtection.set -> void
 Alpaca.Markets.IAccountConfiguration.IsNoShorting.get -> bool
 Alpaca.Markets.IAccountConfiguration.IsNoShorting.set -> void
 Alpaca.Markets.IAccountConfiguration.IsPtpNoExceptionEntry.get -> bool

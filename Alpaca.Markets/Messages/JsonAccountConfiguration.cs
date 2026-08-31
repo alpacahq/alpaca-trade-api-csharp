@@ -1,15 +1,11 @@
 ﻿namespace Alpaca.Markets;
 
-[SuppressMessage("ReSharper", "StringLiteralTypo")]
 [DebuggerDisplay("{DebuggerDisplay,nq}", Type = nameof(IAccountConfiguration))]
 [SuppressMessage(
     "Microsoft.Performance", "CA1812:Avoid uninstantiated internal classes",
     Justification = "Object instances of this class will be created by Newtonsoft.JSON library.")]
 internal sealed class JsonAccountConfiguration : IAccountConfiguration
 {
-    [JsonProperty(PropertyName = "dtbp_check", Required = Required.Always)]
-    public DayTradeMarginCallProtection DayTradeMarginCallProtection { get; set; }
-
     [JsonProperty(PropertyName = "trade_confirm_email", Required = Required.Always)]
     public TradeConfirmEmail TradeConfirmEmail { get; set; }
 
@@ -32,5 +28,5 @@ internal sealed class JsonAccountConfiguration : IAccountConfiguration
     [ExcludeFromCodeCoverage]
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private String DebuggerDisplay =>
-        $"{nameof(IAccountConfiguration)} {{ DTMCP = {DayTradeMarginCallProtection}, IsSuspendTrade = {IsSuspendTrade}, IsNoShorting = {IsNoShorting} }}";
+        $"{nameof(IAccountConfiguration)} {{ IsSuspendTrade = {IsSuspendTrade}, IsNoShorting = {IsNoShorting} }}";
 }
