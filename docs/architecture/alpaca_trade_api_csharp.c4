@@ -1,0 +1,196 @@
+// docs/architecture/alpaca_trade_api_csharp.c4
+// generated_by: claude-opus-5 / layered-docs 2026-09
+// source_commit: 91bb999551c7be3a998ad66b145fdba8f9a6c6dc   source_branch: docs/layered-2026-09
+// generated_at: 2026-09-12T00:00:00+00:00
+// confidence: medium   review_status: draft-needs-review
+model {
+
+  alpaca_trade_api_csharp = system '.NET SDK for Alpaca Markets API' {
+    #generated
+    description '
+      Client-side C#/.NET SDK distributed as the Alpaca.Markets and Alpaca.Markets.Extensions
+      NuGet packages. Evidence: README.md, Alpaca.Markets.sln,
+      Alpaca.Markets/Alpaca.Markets.csproj. Purpose and capabilities: docs/okf/system.md.
+    '
+    technology 'C# / .NET (netstandard2.0, netstandard2.1, net462, net8.0, net10.0)'
+    link https://github.com/alpacahq/alpaca-trade-api-csharp 'Repository'
+    metadata {
+      okf 'docs/okf/system.md'
+      allium 'none: no accepted spec'
+      evidence 'README.md, Alpaca.Markets.sln, global.json, Alpaca.Markets/Alpaca.Markets.csproj, .github/workflows/release.yml'
+    }
+
+    sdk = container 'Alpaca.Markets (core SDK)' {
+      #generated #entrypoint
+      description '
+        Core C# class library, published as the Alpaca.Markets NuGet package. Evidence:
+        Alpaca.Markets/Alpaca.Markets.csproj, Alpaca.Markets/AlpacaTradingClient.cs,
+        Alpaca.Markets/AlpacaTradingClient.General.cs, Alpaca.Markets/Environment/Environments.cs,
+        Alpaca.Markets/WebSocket/, Alpaca.Markets/Authentication/, Alpaca.Markets/RateLimit/
+      '
+      technology 'C# class library; Newtonsoft.Json, Polly, MessagePack'
+      metadata {
+        okf 'docs/okf/system.md'
+        allium 'none: no accepted spec'
+        evidence 'Alpaca.Markets/Alpaca.Markets.csproj, Alpaca.Markets/AlpacaTradingClient.General.cs, Alpaca.Markets/Environment/LiveEnvironment.cs, Alpaca.Markets/Environment/PaperEnvironment.cs, Alpaca.Markets/WebSocket/WebSocketTransport.cs, Alpaca.Markets/packages.lock.json'
+      }
+    }
+
+    extensions = container 'Alpaca.Markets.Extensions' {
+      #generated #entrypoint
+      description '
+        Optional helper class library taking a ProjectReference on the core project and published as
+        a separately versioned NuGet package. Evidence:
+        Alpaca.Markets.Extensions/Alpaca.Markets.Extensions.csproj,
+        Alpaca.Markets.Extensions/README.md
+      '
+      technology 'C# class library; Microsoft.Extensions.Http(.Polly), System.Linq.Async'
+      metadata {
+        okf 'docs/okf/system.md'
+        allium 'none: no accepted spec'
+        evidence 'Alpaca.Markets.Extensions/Alpaca.Markets.Extensions.csproj, Alpaca.Markets.Extensions/README.md, Alpaca.Markets.Extensions/packages.lock.json'
+      }
+    }
+
+    portable_helpers = container 'Portable.Helpers (shared sources)' {
+      #generated #internal
+      description '
+        Shared MSBuild source project imported into both packages. Evidence:
+        Portable.Helpers/Portable.Helpers.projitems, Portable.Helpers/Index.cs,
+        Alpaca.Markets/Alpaca.Markets.csproj Import element.
+      '
+      technology 'C# shared project (.shproj / .projitems)'
+      metadata {
+        okf 'docs/okf/system.md'
+        allium 'none: no accepted spec'
+        evidence 'Portable.Helpers/Portable.Helpers.projitems, Portable.Helpers/Portable.Helpers.shproj'
+      }
+    }
+
+    tests = container 'Test suites' {
+      #generated #internal
+      description '
+        Models both xUnit test projects as one element; they are two separate .sln projects with
+        distinct ProjectReference sets (Alpaca.Markets.Tests references the core only;
+        Alpaca.Markets.Extensions.Tests references both). Evidence: Alpaca.Markets.sln,
+        Alpaca.Markets.Tests/Alpaca.Markets.Tests.csproj,
+        Alpaca.Markets.Extensions.Tests/Alpaca.Markets.Extensions.Tests.csproj, Configuration.xml
+      '
+      technology 'xUnit, Moq, RichardSzalay.MockHttp, dotCover'
+      metadata {
+        okf 'docs/okf/system.md'
+        allium 'none: no accepted spec'
+        evidence 'Alpaca.Markets.sln, Alpaca.Markets.Tests/Alpaca.Markets.Tests.csproj, Alpaca.Markets.Extensions.Tests/Alpaca.Markets.Extensions.Tests.csproj, Configuration.xml'
+      }
+    }
+
+    usage_examples = container 'UsageExamples (sample console app)' {
+      #generated
+      description '
+        Console application consuming both packages by project reference; not published. Evidence:
+        UsageExamples/UsageExamples.csproj, UsageExamples/README.md, UsageExamples/Program.cs
+      '
+      technology 'C# console app (net4.8, net10.0)'
+      metadata {
+        okf 'docs/okf/system.md'
+        allium 'none: no accepted spec'
+        evidence 'UsageExamples/UsageExamples.csproj, UsageExamples/README.md'
+      }
+    }
+
+    documentation = container 'API documentation site' {
+      #generated
+      description '
+        DocFX configuration that generates API metadata from the two package project sources and
+        builds a static site. Evidence: Documentation/docfx.json, Documentation/serve.sh
+      '
+      technology 'DocFX'
+      metadata {
+        okf 'docs/okf/system.md'
+        allium 'none: no accepted spec'
+        evidence 'Documentation/docfx.json, Documentation/serve.sh'
+      }
+    }
+
+    ci = container 'Build & release automation' {
+      #generated #internal
+      description '
+        The GitHub Actions workflows and the Dependabot configuration. These, not the library
+        projects, perform the package push, the Pages deploy and the coverage upload. Evidence:
+        .github/workflows/release.yml, .github/workflows/documentation.yml,
+        .github/workflows/codeql-analysis.yml, .github/workflows/lockfiles.yml,
+        .github/dependabot.yml
+      '
+      technology 'GitHub Actions; Dependabot'
+      metadata {
+        okf 'docs/okf/system.md'
+        allium 'none: no accepted spec'
+        evidence '.github/workflows/release.yml, .github/workflows/documentation.yml, .github/workflows/codeql-analysis.yml, .github/workflows/lockfiles.yml, .github/dependabot.yml'
+      }
+    }
+
+    extensions -[uses]-> sdk 'ProjectReference to Alpaca.Markets. Evidence: Alpaca.Markets.Extensions/Alpaca.Markets.Extensions.csproj'
+    sdk -[uses]-> portable_helpers 'MSBuild Import of the shared projitems. Evidence: Alpaca.Markets/Alpaca.Markets.csproj'
+    extensions -[uses]-> portable_helpers 'MSBuild Import of the shared projitems. Evidence: Alpaca.Markets.Extensions/Alpaca.Markets.Extensions.csproj'
+    tests -[uses]-> sdk 'ProjectReference. Evidence: Alpaca.Markets.Tests/Alpaca.Markets.Tests.csproj'
+    tests -[uses]-> extensions 'ProjectReference. Evidence: Alpaca.Markets.Extensions.Tests/Alpaca.Markets.Extensions.Tests.csproj'
+    usage_examples -[uses]-> sdk 'ProjectReference. Evidence: UsageExamples/UsageExamples.csproj'
+    usage_examples -[uses]-> extensions 'ProjectReference. Evidence: UsageExamples/UsageExamples.csproj'
+    documentation -[reads]-> sdk 'DocFX generates API metadata from the project sources. Evidence: Documentation/docfx.json metadata.src ../Alpaca.Markets'
+    documentation -[reads]-> extensions 'DocFX generates API metadata from the project sources. Evidence: Documentation/docfx.json metadata.src ../Alpaca.Markets.Extensions'
+    ci -[reads]-> sdk 'Builds and packs the core project. Evidence: .github/workflows/release.yml'
+    ci -[reads]-> extensions 'Builds and packs the extensions project. Evidence: .github/workflows/release.yml'
+    ci -[reads]-> tests 'Runs the test suites with dotCover coverage. Evidence: .github/workflows/release.yml, Configuration.xml'
+    ci -[reads]-> documentation 'Builds the DocFX site before deploying it. Evidence: .github/workflows/documentation.yml, Documentation/docfx.json'
+  }
+
+  ext_alpaca_api = external 'Alpaca Markets platform APIs' {
+    #generated #external
+    description '
+      Trading REST API, Market Data REST API and the account, market-data, crypto, options and news
+      WebSocket streams, in both Live and Paper flavours. Evidence:
+      Alpaca.Markets/Environment/LiveEnvironment.cs, Alpaca.Markets/Environment/PaperEnvironment.cs
+    '
+  }
+
+  ext_nuget = external 'NuGet.org package registry' {
+    #generated #external
+    description 'Publication target for both packages and the locked restore source for their dependencies. Evidence: .github/workflows/release.yml, Alpaca.Markets/packages.lock.json'
+  }
+
+  ext_github = external 'GitHub' {
+    #generated #external
+    description 'Actions CI, Releases, Pages hosting and SourceLink source indexing. Evidence: .github/workflows/release.yml, .github/workflows/documentation.yml, .github/workflows/codeql-analysis.yml'
+  }
+
+  ext_codacy = external 'Codacy' {
+    #generated #external
+    description 'Static analysis grade and coverage reporting from CI. Evidence: .github/workflows/release.yml, README.md badges'
+  }
+
+  alpaca_trade_api_csharp.sdk -[calls]-> ext_alpaca_api 'REST requests and WebSocket subscriptions against the Live or Paper endpoints. Evidence: Alpaca.Markets/Environment/LiveEnvironment.cs, Alpaca.Markets/Environment/PaperEnvironment.cs'
+  alpaca_trade_api_csharp.sdk -[uses]-> ext_nuget 'Locked NuGet restore of pinned dependencies. Evidence: Alpaca.Markets/packages.lock.json, Alpaca.Markets/Alpaca.Markets.csproj RestoreLockedMode'
+  alpaca_trade_api_csharp.extensions -[uses]-> ext_nuget 'Locked NuGet restore of pinned dependencies. Evidence: Alpaca.Markets.Extensions/packages.lock.json, Alpaca.Markets.Extensions/Alpaca.Markets.Extensions.csproj'
+  alpaca_trade_api_csharp.ci -[publishes]-> ext_nuget 'dotnet nuget push of both packages, gated on sdk*/ext* tags. Evidence: .github/workflows/release.yml publish-sdk and publish-ext jobs'
+  alpaca_trade_api_csharp.ci -[deploys]-> ext_github 'Deploys the built DocFX site to GitHub Pages and drafts Releases. Evidence: .github/workflows/documentation.yml, .github/workflows/release.yml'
+  alpaca_trade_api_csharp.ci -[uses]-> ext_codacy 'Send Coverage to Codacy step in the build job. Evidence: .github/workflows/release.yml'
+
+  dotnet_developer = person '.NET application developer' {
+    description 'Adds the NuGet package to a .NET project and calls the trading and data clients with their own API key. Evidence: README.md usage example, UsageExamples/README.md'
+  }
+  dotnet_developer -[uses]-> alpaca_trade_api_csharp.sdk 'References the NuGet package and constructs clients from Environments.Live or Environments.Paper'
+  dotnet_developer -[uses]-> alpaca_trade_api_csharp.extensions 'Optionally adds the helper package for DI and pagination helpers'
+}
+
+views {
+  view alpaca_trade_api_csharp_context {
+    title '.NET SDK for Alpaca Markets API — context'
+    include alpaca_trade_api_csharp, ext_alpaca_api, ext_nuget, ext_github, ext_codacy, dotnet_developer
+    autoLayout TopBottom
+  }
+  view alpaca_trade_api_csharp_containers of alpaca_trade_api_csharp {
+    title '.NET SDK for Alpaca Markets API — containers'
+    include *
+    autoLayout LeftRight
+  }
+}
