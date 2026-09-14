@@ -30,7 +30,7 @@ jobs:
         global-json-file: global.json
 
     - name: Restore Dependencies
-      run: dotnet restore --force-evaluate
+      run: dotnet restore --force-evaluate /p:RestoreLockedMode=false
 
     - name: Auto-commit changed files
       uses: stefanzweifel/git-auto-commit-action@v7
