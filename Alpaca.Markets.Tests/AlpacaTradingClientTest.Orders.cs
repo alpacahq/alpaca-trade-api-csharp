@@ -34,6 +34,25 @@ public sealed partial class AlpacaTradingClientTest
         validateOrder(orders.Single());
     }
 
+    [Theory]
+    [InlineData("mleg", OrderClass.MultiLegOptions)]
+    [InlineData("simple", OrderClass.Simple)]
+    [InlineData("", OrderClass.Simple)]
+    public async Task ListOrdersAsyncReadsOrderClass(
+        String orderClass,
+        OrderClass expectedOrderClass)
+    {
+        using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
+
+        var order = createOrder();
+        order["order_class"] = orderClass;
+        mock.AddGet(OrdersUrlPrefix, new JArray(order));
+
+        var orders = await mock.Client.ListOrdersAsync(new ListOrdersRequest());
+
+        Assert.Equal(expectedOrderClass, orders.Single().OrderClass);
+    }
+
     [Fact]
     public async Task GetOrderByClientOrderIdAsyncWorks()
     {
