@@ -14,16 +14,39 @@
   <PropertyGroup>
     <AssemblyVersion>8.0.0.6</AssemblyVersion>
     <FileVersion>8.0.0.6</FileVersion>
-    <Version>8.0.0-beta6</Version>
+    <Version>8.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
+- BREAKING: The `ICalendar`, `ITimeInterval`, `IInclusiveTimeInterval`, `IExclusiveTimeInterval`, `TimeInterval`, and `IRequestWithTimeInterval&lt;T&gt;` types were removed. Use `IIntervalCalendar` with `ListIntervalCalendarAsync`, and pass `Interval&lt;DateTime&gt;` or `DateOnly` ranges on historical, calendar, and announcement requests.
+- BREAKING: Crypto latest/snapshot APIs that used `LatestDataRequest`, `LatestBestBidOfferRequest`, `SnapshotDataRequest`, or `LatestBestBidOfferListRequest` were removed. Use the list-based `LatestDataListRequest` methods on `IAlpacaCryptoDataClient`. Exchange filters were removed from historical crypto request types.
+- BREAKING: The `IOrder.AssetId`, `IOrder.Symbol`, `IOrder.AssetClass`, and `IOrder.OrderSide` properties are now nullable.
+- BREAKING: The `IsDayPatternTrader` and `DayTradeCount` properties were removed from the `IAccount` interface because the corresponding `pattern_day_trader` and `daytrade_count` fields no longer exist in the Alpaca Trading API `Account` response.
 - BREAKING: The `DayTradeMarginCallProtection` property was removed from the `IAccountConfiguration` interface, and the `DayTradeMarginCallProtection` enumeration was removed, because the Trading API no longer returns `dtbp_check` on `/v2/account/configurations`.
+- BREAKING: The public `UseMessagePack` getter was removed from `StreamingClientConfiguration`.
+- BREAKING: The `BaseValue` property in `IPortfolioHistory` is now nullable.
+- BREAKING: Remaining fully obsolete members were removed, and obsolete usage is treated as an error.
+- Target frameworks are now `netstandard2.0`, `netstandard2.1`, `net462`, `net8.0`, and `net10.0` (`net6.0` was removed).
+- Options multi-leg orders are supported.
+- The new `IAlpacaOptionsStreamingClient` interface provides real-time options market data streaming.
+- The `IAlpacaOptionsDataClient` interface now supports historical option quotes and latest option bars.
+- The new `IOrderImbalance` interface and `GetOrderImbalanceSubscription` method were added to `IAlpacaDataStreamingClient`.
+- The new `Trail` property was added to the `ChangeOrderRequest` class for updating trailing-stop orders (same unit as the original order).
+- The new `MarginRequirementLong` and `MarginRequirementShort` properties were added to the `IAsset` interface. The old `MaintenanceMarginRequirement` property is marked as obsolete.
+- The new `DelayedSip`, `Boats`, and `Overnight` values were added to the `MarketDataFeed` enumeration.
+- The new `CryptoPerpetual` value was added to the `AssetClass` enumeration (preparatory — Alpaca currently supports spot crypto trading only).
+- The new `Ascx` value was added to the `Exchange` enumeration.
+- Basic authentication was added to connect Broker API.
+- The HTTP User-Agent header now follows the cross-SDK `APCA-DOTNET/&lt;sdk-version&gt; .NET/&lt;runtime-version&gt;` format.
+- Fixed `IOrder.OrderClass` so REST orders and trade updates report the real class (`mleg`, `bracket`, and others) instead of always `Simple`. An empty `order_class` from the API maps to `OrderClass.Simple`.
+- Fixed a bug where the `NonMarginableBuyingPower` property of the `IAccount` interface was never populated due to a JSON property name typo (`non_maginable_buying_power` instead of `non_marginable_buying_power`).
+- Fixed options streaming endpoint construction so the `v1beta1` path is not duplicated.
+- All dependencies were updated to the latest stable versions.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
-    <Copyright>© 2018-2025 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <Copyright>© 2018-2026 Alpaca Securities LLC. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
