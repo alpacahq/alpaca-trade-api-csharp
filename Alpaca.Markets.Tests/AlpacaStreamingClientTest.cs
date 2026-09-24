@@ -92,6 +92,80 @@ public sealed class AlpacaStreamingClientTest(
         }
     }
 
+    [Theory]
+    [InlineData("simple")]
+    [InlineData("")]
+    public async Task OnTradeUpdateReadsSimpleOrderClass(
+        String orderClass)
+    {
+        using var client = mockClientsFactory.GetAlpacaStreamingClientMock();
+
+        client.AddResponse(getMessage(Authorization, new JObject(
+            new JProperty("status", nameof(AuthStatus.Authorized)))));
+
+        client.AddResponse(getMessage(Listening, new JObject()));
+
+        Assert.Equal(AuthStatus.Authorized,
+            await client.Client.ConnectAndAuthenticateAsync());
+
+        var tradeUpdates = new AutoResetEvent(false);
+        client.Client.OnTradeUpdate += HandleTradeUpdate;
+
+        await client.AddMessageAsync(getTradeUpdate(orderClass));
+
+        Assert.True(tradeUpdates.WaitOne(TimeSpan.FromSeconds(1)));
+
+        client.Client.OnTradeUpdate -= HandleTradeUpdate;
+
+        await client.Client.DisconnectAsync();
+        return;
+
+        void HandleTradeUpdate(
+            ITradeUpdate tradeUpdate)
+        {
+            Assert.Equal(OrderClass.Simple, tradeUpdate.Order.OrderClass);
+            Assert.Empty(tradeUpdate.Order.Legs);
+
+            tradeUpdates.Set();
+        }
+    }
+
+    [Fact]
+    public async Task OnTradeUpdateReadsMultiLegOrderClass()
+    {
+        using var client = mockClientsFactory.GetAlpacaStreamingClientMock();
+
+        client.AddResponse(getMessage(Authorization, new JObject(
+            new JProperty("status", nameof(AuthStatus.Authorized)))));
+
+        client.AddResponse(getMessage(Listening, new JObject()));
+
+        Assert.Equal(AuthStatus.Authorized,
+            await client.Client.ConnectAndAuthenticateAsync());
+
+        var tradeUpdates = new AutoResetEvent(false);
+        client.Client.OnTradeUpdate += HandleTradeUpdate;
+
+        await client.AddMessageAsync(getMultiLegTradeUpdate());
+
+        Assert.True(tradeUpdates.WaitOne(TimeSpan.FromSeconds(1)));
+
+        client.Client.OnTradeUpdate -= HandleTradeUpdate;
+
+        await client.Client.DisconnectAsync();
+        return;
+
+        void HandleTradeUpdate(
+            ITradeUpdate tradeUpdate)
+        {
+            Assert.Equal(OrderClass.MultiLegOptions, tradeUpdate.Order.OrderClass);
+            Assert.Equal(2, tradeUpdate.Order.Legs.Count);
+            Assert.All(tradeUpdate.Order.Legs, leg => Assert.Equal(OrderClass.MultiLegOptions, leg.OrderClass));
+
+            tradeUpdates.Set();
+        }
+    }
+
     [Fact]
     public async Task ErrorsAndWarningWorks()
     {
@@ -194,15 +268,33 @@ public sealed class AlpacaStreamingClientTest(
         client.Client.Dispose(); // Double dispose should be safe
     }
 
-    private static JObject getTradeUpdate() =>
+    private static JObject getTradeUpdate(
+        OrderClass orderClass = OrderClass.Simple) =>
         getMessage(TradeUpdates, new JObject(
-            new JProperty("order", Stock.CreateMarketOrder()),
+            new JProperty("order", Stock.CreateMarketOrder(orderClass)),
             new JProperty("execution_id", Guid.NewGuid()),
             new JProperty("event", TradeEvent.PendingNew),
             new JProperty("timestamp", DateTime.UtcNow),
             new JProperty("position_qty", Quantity),
             new JProperty("qty", Quantity),
             new JProperty("price", Price)));
+
+    private static JObject getTradeUpdate(
+        String orderClass)
+    {
+        var tradeUpdate = getTradeUpdate();
+        tradeUpdate["data"]!["order"]!["order_class"] = orderClass;
+        return tradeUpdate;
+    }
+
+    private static JObject getMultiLegTradeUpdate()
+    {
+        var tradeUpdate = getTradeUpdate(OrderClass.MultiLegOptions);
+        tradeUpdate["data"]!["order"]!["legs"] = new JArray(
+            "AAPL261218C00250000".CreateMarketOrder(OrderClass.MultiLegOptions),
+            "AAPL261218C00260000".CreateMarketOrder(OrderClass.MultiLegOptions));
+        return tradeUpdate;
+    }
 
     private static JObject getMessage(
         String stream,

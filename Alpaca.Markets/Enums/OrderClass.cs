@@ -3,7 +3,7 @@ namespace Alpaca.Markets;
 /// <summary>
 /// Order class for advanced orders in the Alpaca REST API.
 /// </summary>
-[JsonConverter(typeof(StringEnumConverter))]
+[JsonConverter(typeof(OrderClassEnumConverter))]
 [SuppressMessage("ReSharper", "StringLiteralTypo")]
 public enum OrderClass
 {

@@ -72,7 +72,7 @@ internal sealed class JsonOrder : IOrder
     public OrderType OrderType { get; set; }
 
     [JsonProperty(PropertyName = "order_class", Required = Required.Always)]
-    public OrderClass OrderClass { get; }
+    public OrderClass OrderClass { get; set; }
 
     [JsonProperty(PropertyName = "side", Required = Required.Default)]
     public OrderSide? OrderSide { get; set; }

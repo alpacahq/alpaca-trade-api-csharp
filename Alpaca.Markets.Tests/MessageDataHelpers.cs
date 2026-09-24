@@ -24,12 +24,13 @@ internal static class MessageDataHelpers
     private const Decimal Size = 10M;
 
     public static JToken CreateMarketOrder(
-        this String symbol) =>
+        this String symbol,
+        OrderClass orderClass = OrderClass.Simple) =>
         new JObject(
             new JProperty("status", OrderStatus.PartiallyFilled),
             new JProperty("asset_class", AssetClass.UsEquity),
             new JProperty("time_in_force", TimeInForce.Day),
-            new JProperty("order_class", OrderClass.Simple),
+            new JProperty("order_class", orderClass.ToEnumString()),
             new JProperty("asset_id", Guid.NewGuid()),
             new JProperty("type", OrderType.Market),
             new JProperty("side", OrderSide.Sell),
