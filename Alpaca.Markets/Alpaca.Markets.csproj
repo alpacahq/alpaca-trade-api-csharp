@@ -20,7 +20,7 @@
   <PropertyGroup>
     <PackageReleaseNotes>
 - BREAKING: The `ICalendar`, `ITimeInterval`, `IInclusiveTimeInterval`, `IExclusiveTimeInterval`, `TimeInterval`, and `IRequestWithTimeInterval&lt;T&gt;` types were removed. Use `IIntervalCalendar` with `ListIntervalCalendarAsync`, and pass `Interval&lt;DateTime&gt;` or `DateOnly` ranges on historical, calendar, and announcement requests.
-- BREAKING: Crypto latest/snapshot APIs that used `LatestDataRequest`, `LatestBestBidOfferRequest`, `SnapshotDataRequest`, or `LatestBestBidOfferListRequest` were removed. Use the list-based `LatestDataListRequest` methods on `IAlpacaCryptoDataClient`. Exchange filters were removed from historical crypto request types.
+- BREAKING: Crypto latest/snapshot APIs that used `LatestDataRequest`, `LatestBestBidOfferRequest`, `SnapshotDataRequest`, or `LatestBestBidOfferListRequest` were removed. Use the list-based `LatestDataListRequest` methods for latest bars, trades, and quotes on `IAlpacaCryptoDataClient`; use `SnapshotDataListRequest` with `ListSnapshotsAsync` for snapshots. Exchange filters were removed from historical crypto request types.
 - BREAKING: The `IOrder.AssetId`, `IOrder.Symbol`, `IOrder.AssetClass`, and `IOrder.OrderSide` properties are now nullable.
 - BREAKING: The `IsDayPatternTrader` and `DayTradeCount` properties were removed from the `IAccount` interface because the corresponding `pattern_day_trader` and `daytrade_count` fields no longer exist in the Alpaca Trading API `Account` response.
 - BREAKING: The `DayTradeMarginCallProtection` property was removed from the `IAccountConfiguration` interface, and the `DayTradeMarginCallProtection` enumeration was removed, because the Trading API no longer returns `dtbp_check` on `/v2/account/configurations`.
@@ -37,7 +37,6 @@
 - The new `DelayedSip`, `Boats`, and `Overnight` values were added to the `MarketDataFeed` enumeration.
 - The new `CryptoPerpetual` value was added to the `AssetClass` enumeration (preparatory — Alpaca currently supports spot crypto trading only).
 - The new `Ascx` value was added to the `Exchange` enumeration.
-- Basic authentication was added to connect Broker API.
 - The HTTP User-Agent header now follows the cross-SDK `APCA-DOTNET/&lt;sdk-version&gt; .NET/&lt;runtime-version&gt;` format.
 - Fixed `IOrder.OrderClass` so REST orders and trade updates report the real class (`mleg`, `bracket`, and others) instead of always `Simple`. An empty `order_class` from the API maps to `OrderClass.Simple`.
 - Fixed a bug where the `NonMarginableBuyingPower` property of the `IAccount` interface was never populated due to a JSON property name typo (`non_maginable_buying_power` instead of `non_marginable_buying_power`).
