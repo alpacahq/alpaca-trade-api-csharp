@@ -184,6 +184,8 @@ Alpaca.Markets.ChangeOrderRequest.Quantity.get -> long?
 Alpaca.Markets.ChangeOrderRequest.Quantity.set -> void
 Alpaca.Markets.ChangeOrderRequest.StopPrice.get -> decimal?
 Alpaca.Markets.ChangeOrderRequest.StopPrice.set -> void
+Alpaca.Markets.ChangeOrderRequest.Trail.get -> decimal?
+Alpaca.Markets.ChangeOrderRequest.Trail.set -> void
 Alpaca.Markets.ChangeWatchListRequest<TKey>
 Alpaca.Markets.ChangeWatchListRequest<TKey>.Asset.get -> string!
 Alpaca.Markets.ChangeWatchListRequest<TKey>.ChangeWatchListRequest(TKey key, string! asset) -> void

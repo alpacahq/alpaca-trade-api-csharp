@@ -12,20 +12,24 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyVersion>8.0.0.3</AssemblyVersion>
-    <FileVersion>8.0.0.3</FileVersion>
-    <Version>8.0.0-beta3</Version>
+    <AssemblyVersion>8.0.0.4</AssemblyVersion>
+    <FileVersion>8.0.0.4</FileVersion>
+    <Version>8.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageReleaseNotes>
+- Requires `Alpaca.Markets` 8.0.0.
+- BREAKING: The `CalendarExtensions` type was removed (`AsExclusiveTimeIntervalUtc`, `AsInclusiveTimeIntervalUtc`, `AsIntervalUtc`). Use `IIntervalCalendar` from the core SDK.
+- BREAKING: `GetCalendarForSingleDayAsync` now takes `DateOnly` and returns `IIntervalCalendar?` instead of `DateTime` / `ICalendar?`.
+- BREAKING: `GetAverageDailyTradeVolumeAsync` overloads that took `DateTime` or `IInclusiveTimeInterval` were removed. Use the `DateOnly` / `Interval&lt;DateOnly&gt;` overloads.
+- Target frameworks are now `netstandard2.0`, `netstandard2.1`, `net462`, `net8.0`, and `net10.0` (`net6.0` was removed).
 - Added `GetOrderImbalanceSubscription` and `SubscribeOrderImbalanceAsync` helpers on `IAlpacaDataStreamingClient`.
-- Added a `net10.0` target; existing target frameworks are unchanged.
 - All dependencies were updated to the latest stable versions.
     </PackageReleaseNotes>
     <Description>C# SDK for Alpaca Trade API https://docs.alpaca.markets/</Description>
     <RepositoryUrl>https://github.com/alpacahq/alpaca-trade-api-csharp</RepositoryUrl>
-    <Copyright>© 2018-2025 Alpaca Securities LLC. All rights reserved.</Copyright>
+    <Copyright>© 2018-2026 Alpaca Securities LLC. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Aplaca API SDK REST WebSocket trading</PackageTags>
     <Product>Extansions for .NET SDK for Alpaca Trade API</Product>
