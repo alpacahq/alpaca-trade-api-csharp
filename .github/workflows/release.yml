@@ -1,6 +1,11 @@
 name: Build and Release
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
 permissions:
   contents: write
 
@@ -28,6 +33,19 @@ jobs:
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
         restore-keys: |
           ${{ runner.os }}-nuget-
+
+    - name: Report Vulnerable Packages
+      continue-on-error: true
+      run: |
+        dotnet restore --locked-mode /p:NuGetAudit=false
+        {
+          echo '## Vulnerable NuGet Packages'
+          echo '```text'
+          for project in $(git ls-files '*.csproj'); do
+            dotnet list "$project" package --vulnerable --include-transitive --no-restore
+          done
+          echo '```'
+        } >> "$GITHUB_STEP_SUMMARY"
 
     - name: Restore Dependencies
       run: dotnet restore --locked-mode
