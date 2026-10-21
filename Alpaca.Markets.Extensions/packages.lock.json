@@ -66,9 +66,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[9.0.1, )",
-        "resolved": "9.0.1",
-        "contentHash": "DRzBx/EL1vE9U8Thucwu/oLxpVNH4UXLarAyQbTLOyr4x/X6RT5pEpTZtYAbqLjbrbB99e3YYJW+4pV4DkEn4g==",
+        "requested": "[9.0.2, )",
+        "resolved": "9.0.2",
+        "contentHash": "m6Lxaydjt710cFHsZkDdbu4hgr4ngk5SeI0OYCvIzXO88oTr2tMMOondn/8oCuEjoteViD6EV6obxP5n1C2iqQ==",
         "dependencies": {
           "System.Memory": "4.6.3"
         }
@@ -342,7 +342,7 @@
           "MessagePack": "[3.1.12, )",
           "Newtonsoft.Json": "[13.0.3, )",
           "Polly": "[8.6.3, )",
-          "Portable.System.DateTimeOnly": "[9.0.1, )",
+          "Portable.System.DateTimeOnly": "[9.0.2, )",
           "System.IO.Pipelines": "[10.0.13, )",
           "System.Net.Http.WinHttpHandler": "[9.0.8, )",
           "System.Threading.Channels": "[9.0.8, )"
@@ -414,9 +414,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[9.0.1, )",
-        "resolved": "9.0.1",
-        "contentHash": "DRzBx/EL1vE9U8Thucwu/oLxpVNH4UXLarAyQbTLOyr4x/X6RT5pEpTZtYAbqLjbrbB99e3YYJW+4pV4DkEn4g==",
+        "requested": "[9.0.2, )",
+        "resolved": "9.0.2",
+        "contentHash": "m6Lxaydjt710cFHsZkDdbu4hgr4ngk5SeI0OYCvIzXO88oTr2tMMOondn/8oCuEjoteViD6EV6obxP5n1C2iqQ==",
         "dependencies": {
           "System.Memory": "4.6.3"
         }
@@ -681,7 +681,7 @@
           "MessagePack": "[3.1.12, )",
           "Newtonsoft.Json": "[13.0.3, )",
           "Polly": "[8.6.3, )",
-          "Portable.System.DateTimeOnly": "[9.0.1, )",
+          "Portable.System.DateTimeOnly": "[9.0.2, )",
           "System.IO.Pipelines": "[10.0.13, )",
           "System.Threading.Channels": "[9.0.8, )"
         }
@@ -741,9 +741,9 @@
       },
       "Portable.System.DateTimeOnly": {
         "type": "Direct",
-        "requested": "[9.0.1, )",
-        "resolved": "9.0.1",
-        "contentHash": "DRzBx/EL1vE9U8Thucwu/oLxpVNH4UXLarAyQbTLOyr4x/X6RT5pEpTZtYAbqLjbrbB99e3YYJW+4pV4DkEn4g=="
+        "requested": "[9.0.2, )",
+        "resolved": "9.0.2",
+        "contentHash": "m6Lxaydjt710cFHsZkDdbu4hgr4ngk5SeI0OYCvIzXO88oTr2tMMOondn/8oCuEjoteViD6EV6obxP5n1C2iqQ=="
       },
       "System.Linq.Async": {
         "type": "Direct",
@@ -918,7 +918,7 @@
           "MessagePack": "[3.1.12, )",
           "Newtonsoft.Json": "[13.0.3, )",
           "Polly": "[8.6.3, )",
-          "Portable.System.DateTimeOnly": "[9.0.1, )",
+          "Portable.System.DateTimeOnly": "[9.0.2, )",
           "System.IO.Pipelines": "[10.0.13, )",
           "System.Threading.Channels": "[9.0.8, )"
         }
