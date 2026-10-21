@@ -133,7 +133,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="Polly" Version="8.6.3" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Polly" Version="8.8.0" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0'))">
