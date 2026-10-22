@@ -293,12 +293,12 @@
       },
       "System.IO.Pipelines": {
         "type": "Transitive",
-        "resolved": "9.0.8",
-        "contentHash": "6vPmJt73mgUo1gzc/OcXlJvClz/2jxZ4TQPRfriVaLoGRH2mye530D9WHJYbFQRNMxF3PWCoeofsFdCyN7fLzA==",
+        "resolved": "10.0.13",
+        "contentHash": "KyPO1f2rgg2GK211d0khYeqWtVsV8Veu/3dvl9V+vml9uLVc9AkxfQg7ay3fi0Nfznf6LNltPSe06VefT+hLVA==",
         "dependencies": {
-          "System.Buffers": "4.5.1",
-          "System.Memory": "4.5.5",
-          "System.Threading.Tasks.Extensions": "4.5.4"
+          "System.Buffers": "4.6.1",
+          "System.Memory": "4.6.3",
+          "System.Threading.Tasks.Extensions": "4.6.3"
         }
       },
       "System.Linq.AsyncEnumerable": {
@@ -372,7 +372,7 @@
           "Newtonsoft.Json": "[13.0.3, )",
           "Polly": "[8.6.3, )",
           "Portable.System.DateTimeOnly": "[9.0.1, )",
-          "System.IO.Pipelines": "[9.0.8, )",
+          "System.IO.Pipelines": "[10.0.13, )",
           "System.Net.Http.WinHttpHandler": "[9.0.8, )",
           "System.Threading.Channels": "[9.0.8, )"
         }
@@ -664,12 +664,12 @@
       },
       "System.IO.Pipelines": {
         "type": "Transitive",
-        "resolved": "9.0.8",
-        "contentHash": "6vPmJt73mgUo1gzc/OcXlJvClz/2jxZ4TQPRfriVaLoGRH2mye530D9WHJYbFQRNMxF3PWCoeofsFdCyN7fLzA==",
+        "resolved": "10.0.13",
+        "contentHash": "KyPO1f2rgg2GK211d0khYeqWtVsV8Veu/3dvl9V+vml9uLVc9AkxfQg7ay3fi0Nfznf6LNltPSe06VefT+hLVA==",
         "dependencies": {
-          "System.Buffers": "4.5.1",
-          "System.Memory": "4.5.5",
-          "System.Threading.Tasks.Extensions": "4.5.4"
+          "System.Buffers": "4.6.1",
+          "System.Memory": "4.6.3",
+          "System.Threading.Tasks.Extensions": "4.6.3"
         }
       },
       "System.Linq.AsyncEnumerable": {
@@ -738,7 +738,7 @@
           "Newtonsoft.Json": "[13.0.3, )",
           "Polly": "[8.6.3, )",
           "Portable.System.DateTimeOnly": "[9.0.1, )",
-          "System.IO.Pipelines": "[9.0.8, )",
+          "System.IO.Pipelines": "[10.0.13, )",
           "System.Threading.Channels": "[9.0.8, )"
         }
       }
@@ -979,8 +979,8 @@
       },
       "System.IO.Pipelines": {
         "type": "Transitive",
-        "resolved": "9.0.8",
-        "contentHash": "6vPmJt73mgUo1gzc/OcXlJvClz/2jxZ4TQPRfriVaLoGRH2mye530D9WHJYbFQRNMxF3PWCoeofsFdCyN7fLzA=="
+        "resolved": "10.0.13",
+        "contentHash": "KyPO1f2rgg2GK211d0khYeqWtVsV8Veu/3dvl9V+vml9uLVc9AkxfQg7ay3fi0Nfznf6LNltPSe06VefT+hLVA=="
       },
       "System.Linq.AsyncEnumerable": {
         "type": "Transitive",
@@ -1003,7 +1003,7 @@
           "Newtonsoft.Json": "[13.0.3, )",
           "Polly": "[8.6.3, )",
           "Portable.System.DateTimeOnly": "[9.0.1, )",
-          "System.IO.Pipelines": "[9.0.8, )",
+          "System.IO.Pipelines": "[10.0.13, )",
           "System.Threading.Channels": "[9.0.8, )"
         }
       }
@@ -1449,8 +1449,8 @@
       },
       "System.IO.Pipelines": {
         "type": "Transitive",
-        "resolved": "9.0.8",
-        "contentHash": "6vPmJt73mgUo1gzc/OcXlJvClz/2jxZ4TQPRfriVaLoGRH2mye530D9WHJYbFQRNMxF3PWCoeofsFdCyN7fLzA=="
+        "resolved": "10.0.13",
+        "contentHash": "KyPO1f2rgg2GK211d0khYeqWtVsV8Veu/3dvl9V+vml9uLVc9AkxfQg7ay3fi0Nfznf6LNltPSe06VefT+hLVA=="
       },
       "System.Linq.AsyncEnumerable": {
         "type": "Transitive",
@@ -1468,7 +1468,7 @@
           "MessagePack": "[3.1.12, )",
           "Newtonsoft.Json": "[13.0.3, )",
           "Polly": "[8.6.3, )",
-          "System.IO.Pipelines": "[9.0.8, )",
+          "System.IO.Pipelines": "[10.0.13, )",
           "System.Threading.Channels": "[9.0.8, )"
         }
       }

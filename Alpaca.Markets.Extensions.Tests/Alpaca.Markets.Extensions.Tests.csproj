@@ -23,7 +23,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.8" />
     <PackageReference Include="System.Linq.Async" Version="7.0.1" />
     <PackageReference Include="System.Threading.Channels" Version="9.0.8" />
-    <PackageReference Include="System.IO.Pipelines" Version="9.0.8" />
+    <PackageReference Include="System.IO.Pipelines" Version="10.0.13" />
   </ItemGroup>
 
   <ItemGroup>

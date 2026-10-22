@@ -138,7 +138,7 @@
 
   <ItemGroup Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0'))">
     <PackageReference Include="System.Threading.Channels" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="System.IO.Pipelines" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.IO.Pipelines" Version="10.0.13" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
