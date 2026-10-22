@@ -225,8 +225,8 @@
       },
       "Newtonsoft.Json": {
         "type": "Transitive",
-        "resolved": "13.0.4",
-        "contentHash": "pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A=="
+        "resolved": "13.0.3",
+        "contentHash": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ=="
       },
       "Polly": {
         "type": "Transitive",
@@ -370,7 +370,7 @@
         "type": "Project",
         "dependencies": {
           "MessagePack": "[3.1.12, )",
-          "Newtonsoft.Json": "[13.0.4, )",
+          "Newtonsoft.Json": "[13.0.3, )",
           "Polly": "[8.6.3, )",
           "Portable.System.DateTimeOnly": "[9.0.1, )",
           "System.IO.Pipelines": "[10.0.13, )",
@@ -598,8 +598,8 @@
       },
       "Newtonsoft.Json": {
         "type": "Transitive",
-        "resolved": "13.0.4",
-        "contentHash": "pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A=="
+        "resolved": "13.0.3",
+        "contentHash": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ=="
       },
       "Polly": {
         "type": "Transitive",
@@ -737,7 +737,7 @@
         "type": "Project",
         "dependencies": {
           "MessagePack": "[3.1.12, )",
-          "Newtonsoft.Json": "[13.0.4, )",
+          "Newtonsoft.Json": "[13.0.3, )",
           "Polly": "[8.6.3, )",
           "Portable.System.DateTimeOnly": "[9.0.1, )",
           "System.IO.Pipelines": "[10.0.13, )",
@@ -922,8 +922,8 @@
       },
       "Newtonsoft.Json": {
         "type": "Transitive",
-        "resolved": "13.0.4",
-        "contentHash": "pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A=="
+        "resolved": "13.0.3",
+        "contentHash": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ=="
       },
       "Polly": {
         "type": "Transitive",
@@ -1003,7 +1003,7 @@
         "type": "Project",
         "dependencies": {
           "MessagePack": "[3.1.12, )",
-          "Newtonsoft.Json": "[13.0.4, )",
+          "Newtonsoft.Json": "[13.0.3, )",
           "Polly": "[8.6.3, )",
           "Portable.System.DateTimeOnly": "[9.0.1, )",
           "System.IO.Pipelines": "[10.0.13, )",
@@ -1190,8 +1190,8 @@
       },
       "Newtonsoft.Json": {
         "type": "Transitive",
-        "resolved": "13.0.4",
-        "contentHash": "pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A=="
+        "resolved": "13.0.3",
+        "contentHash": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ=="
       },
       "Polly": {
         "type": "Transitive",
@@ -1218,7 +1218,7 @@
         "type": "Project",
         "dependencies": {
           "MessagePack": "[3.1.12, )",
-          "Newtonsoft.Json": "[13.0.4, )",
+          "Newtonsoft.Json": "[13.0.3, )",
           "Polly": "[8.6.3, )"
         }
       }
@@ -1413,8 +1413,8 @@
       },
       "Newtonsoft.Json": {
         "type": "Transitive",
-        "resolved": "13.0.4",
-        "contentHash": "pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A=="
+        "resolved": "13.0.3",
+        "contentHash": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ=="
       },
       "Polly": {
         "type": "Transitive",
@@ -1469,7 +1469,7 @@
         "type": "Project",
         "dependencies": {
           "MessagePack": "[3.1.12, )",
-          "Newtonsoft.Json": "[13.0.4, )",
+          "Newtonsoft.Json": "[13.0.3, )",
           "Polly": "[8.6.3, )",
           "System.IO.Pipelines": "[10.0.13, )",
           "System.Threading.Channels": "[9.0.8, )"
