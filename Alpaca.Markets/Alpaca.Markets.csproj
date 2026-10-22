@@ -120,25 +120,25 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="JetBrains.Annotations" Version="2025.2.2">
+    <PackageReference Include="JetBrains.Annotations" Version="2026.2.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>compile; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="MessagePack" Version="3.1.12" />
-    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="4.14.0">
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="5.6.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Polly" Version="8.6.3" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0'))">
     <PackageReference Include="System.Threading.Channels" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="System.IO.Pipelines" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.IO.Pipelines" Version="10.0.13" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">

@@ -95,11 +95,11 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-    <PackageReference Include="JetBrains.Annotations" Version="2025.2.2">
+    <PackageReference Include="JetBrains.Annotations" Version="2026.2.0">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>compile; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="4.14.0">
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="5.6.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -113,14 +113,14 @@
   <ItemGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0')) And !$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0'))">
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="System.Linq.Async" Version="6.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Linq.Async" Version="7.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Threading.Channels" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="System.Linq.Async" Version="6.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Linq.Async" Version="7.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
