@@ -21,7 +21,7 @@
     </PackageReference>
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.3" />
     <PackageReference Include="OoplesFinance.StockIndicators" Version="1.0.53" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Polly" Version="8.6.3" />
   </ItemGroup>
 
