@@ -151,10 +151,10 @@ public  sealed class OrderTypeTest
                 .Bracket(takeProfitPrice, stopLossPrice).WithPositionIntent(intent));
 
         assertOrdersAreEqual(
-            LimitOrder.Sell(Stock, Quantity, takeProfitPrice).WithPositionIntent(intent)
+            LimitOrder.Sell(Stock, Quantity, takeProfitPrice).WithPositionIntent(PositionIntent.SellToClose)
                 .OneCancelsOther(stopLossPrice),
             LimitOrder.Sell(Stock, Quantity, takeProfitPrice)
-                .OneCancelsOther(stopLossPrice).WithPositionIntent(intent));
+                .OneCancelsOther(stopLossPrice).WithPositionIntent(PositionIntent.SellToClose));
     }
 
     [Fact]
