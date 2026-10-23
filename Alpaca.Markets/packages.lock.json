@@ -84,13 +84,13 @@
       },
       "System.Net.Http.WinHttpHandler": {
         "type": "Direct",
-        "requested": "[9.0.8, )",
-        "resolved": "9.0.8",
-        "contentHash": "jYyt4ybIThInFRRtY6LiLwEGh681kMG8aLjlB87gZSFmz5n6hJgTTj8wRFxgF4AX6rAhASiIszHxVQG3/12OXQ==",
+        "requested": "[10.0.13, )",
+        "resolved": "10.0.13",
+        "contentHash": "DSzoKDhqdlyBumludHJcInb9HjO75rO4ioGiOieY1dj4k3c7wxQMpHnfAqpbpIrdI1h23OHHMiKOO8mOFX/DYw==",
         "dependencies": {
-          "Microsoft.Bcl.HashCode": "1.1.1",
-          "System.Buffers": "4.5.1",
-          "System.Memory": "4.5.5"
+          "Microsoft.Bcl.HashCode": "6.0.0",
+          "System.Buffers": "4.6.1",
+          "System.Memory": "4.6.3"
         }
       },
       "System.Threading.Channels": {
@@ -123,8 +123,8 @@
       },
       "Microsoft.Bcl.HashCode": {
         "type": "Transitive",
-        "resolved": "1.1.1",
-        "contentHash": "MalY0Y/uM/LjXtHfX/26l2VtN4LDNZ2OE3aumNOHDLsT4fNYy2hiHXI4CXCqKpNUNm7iJ2brrc4J89UdaL56FA=="
+        "resolved": "6.0.0",
+        "contentHash": "GI4jcoi6eC9ZhNOQylIBaWOQjyGaR8T6N3tC1u8p3EXfndLCVNNWa+Zp+ocjvvS3kNBN09Zma2HXL0ezO0dRfw=="
       },
       "Microsoft.Bcl.TimeProvider": {
         "type": "Transitive",
