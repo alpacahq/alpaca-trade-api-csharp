@@ -1,9 +1,7 @@
 using Alpaca.Markets;
 using System.Diagnostics.CodeAnalysis;
-using OoplesFinance.StockIndicators.Enums;
+using OoplesFinance.StockIndicators.Builder;
 using OoplesFinance.StockIndicators.Models;
-using OoplesFinance.StockIndicators.Interfaces;
-using static OoplesFinance.StockIndicators.Calculations;
 
 namespace UsageExamples;
 
@@ -29,67 +27,89 @@ internal sealed class IndicatorLibraryExample : IDisposable
 
         var page = await alpacaDataClient.ListHistoricalBarsAsync(
             new HistoricalBarsRequest(symbol, startDate, endDate, BarTimeFrame.Day)).ConfigureAwait(false);
-        var bars = page.Items;
+        var bars = page.Items.ToList();
+
+        var dates = bars.Select(x => x.TimeUtc).ToList();
 
         var stockData = new StockData(
             bars.Select(x => (Double)x.Open), bars.Select(x => (Double)x.High),
             bars.Select(x => (Double)x.Low), bars.Select(x => (Double)x.Close),
-            bars.Select(x => (Double)x.Volume), bars.Select(x => x.TimeUtc));
+            bars.Select(x => (Double)x.Volume), dates);
 
-        // can do typical indicators such as using typical bollinger band settings
-        UseDefaultBollingerBands(stockData);
+        var source = IndicatorDataSource.FromBatch(stockData);
 
-        stockData.SignalsList.Clear();
-        stockData.CustomValuesList.Clear();
-        // we can also do completely custom indicators with very little effort such as below
-        UseCustomBollingerBands(stockData);
+        SeriesHandle defaultUpper = default, defaultMiddle = default, defaultLower = default;
+        SeriesHandle customUpper = default, customMiddle = default, customLower = default;
+        SeriesHandle rsi = default;
+        SeriesHandle macdOfRsiPrimary = default, macdOfRsiSignal = default, macdOfRsiHistogram = default;
 
-        stockData.SignalsList.Clear();
-        stockData.CustomValuesList.Clear();
-        // can also create indicators out of any other indicators such as a MACD of an RSI
-        UseRelativeStrengthIndexMacd(stockData);
+        var builder = new StockIndicatorBuilder(source)
+            .ConfigureIndicators(indicators =>
+            {
+                // can do typical indicators such as using typical bollinger band settings
+                var defaultBollingerBands = indicators.BollingerBands();
+                defaultUpper = defaultBollingerBands.Upper;
+                defaultMiddle = defaultBollingerBands.Middle;
+                defaultLower = defaultBollingerBands.Lower;
+
+                // we can also do completely custom indicators with very little effort such as below
+                var customBollingerBands = indicators.BollingerBands(50, 3);
+                customUpper = customBollingerBands.Upper;
+                customMiddle = customBollingerBands.Middle;
+                customLower = customBollingerBands.Lower;
+
+                // can also create indicators out of any other indicators such as a MACD of an RSI
+                rsi = indicators.Rsi();
+                var macdOfRsi = indicators.Then(rsi).Macd();
+                macdOfRsiPrimary = macdOfRsi.Primary;
+                macdOfRsiSignal = macdOfRsi.Signal;
+                macdOfRsiHistogram = macdOfRsi.Histogram;
+            });
+
+        using var runtime = builder.Build();
+        runtime.Start();
+
+        PrintResults("Bollinger Bands (default)", dates,
+            ("Upper", runtime.GetSeries(defaultUpper)),
+            ("Middle", runtime.GetSeries(defaultMiddle)),
+            ("Lower", runtime.GetSeries(defaultLower)));
+
+        PrintResults("Bollinger Bands (length 50, 3 std dev)", dates,
+            ("Upper", runtime.GetSeries(customUpper)),
+            ("Middle", runtime.GetSeries(customMiddle)),
+            ("Lower", runtime.GetSeries(customLower)));
+
+        PrintResults("MACD of RSI", dates,
+            ("Rsi", runtime.GetSeries(rsi)),
+            ("Macd", runtime.GetSeries(macdOfRsiPrimary)),
+            ("Signal", runtime.GetSeries(macdOfRsiSignal)),
+            ("Histogram", runtime.GetSeries(macdOfRsiHistogram)));
     }
 
     public void Dispose() => alpacaDataClient?.Dispose();
 
-    private static void UseDefaultBollingerBands(StockData stockData) =>
-        PrintResults(stockData.CalculateBollingerBands());
-
-    private static void UseCustomBollingerBands(StockData stockData) =>
-        PrintResults(stockData.CalculateBollingerBands(
-            MovingAvgType.Ehlers3PoleSuperSmootherFilter, 50, 3));
-
-    private static void UseRelativeStrengthIndexMacd(StockData stockData) =>
-        PrintResults(stockData.CalculateRelativeStrengthIndex()
-            .CalculateMovingAverageConvergenceDivergence());
-
-    private static void PrintResults(IStockData stockData)
+    private static void PrintResults(
+        String title,
+        List<DateTime> dates,
+        params (String Name, IndicatorBuffer<Double> Values)[] series)
     {
-        var seriesCount = stockData.OutputValues.Count;
-        if (seriesCount <= 0)
+        if (series.Length == 0 || dates.Count == 0)
         {
             return;
         }
 
-        var rowsCount = stockData.OutputValues.First().Value.Count;
-        if (rowsCount <= 0)
-        {
-            return;
-        }
-
-        Console.WriteLine($"Printing {stockData.IndicatorName} results for {symbol}:");
+        Console.WriteLine($"Printing {title} results for {symbol}:");
         Console.WriteLine();
 
         Console.WriteLine("Date\t\t" + String.Join("\t",
-            stockData.OutputValues.Keys.Select(key => key.PadRight(8))));
+            series.Select(item => item.Name.PadRight(8))));
 
-        for (var row = 0; row < rowsCount; row++)
+        for (var row = 0; row < dates.Count; row++)
         {
-            var date = stockData.Dates[row].ToShortDateString();
-            var values = String.Join("\t\t", 
-                stockData.OutputValues.Values
-                    // ReSharper disable once AccessToModifiedClosure
-                    .Select(value => value[row].ToString("F2")));
+            var date = dates[row].ToShortDateString();
+            var values = String.Join("\t\t",
+                // ReSharper disable once AccessToModifiedClosure
+                series.Select(item => item.Values[row].ToString("F2")));
 
             Console.WriteLine($"{date}\t{values}");
         }
