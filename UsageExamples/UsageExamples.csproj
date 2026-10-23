@@ -27,7 +27,7 @@
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="9.0.8" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="10.0.13" />
     <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.2" />
     <PackageReference Include="System.Threading.Channels" Version="9.0.8" />
     <PackageReference Include="System.IO.Pipelines" Version="10.0.13" />
