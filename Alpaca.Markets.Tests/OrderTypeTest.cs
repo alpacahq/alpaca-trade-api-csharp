@@ -126,6 +126,38 @@ public  sealed class OrderTypeTest
     }
 
     [Fact]
+    public void AdvancedOrderKeepsBaseOrderPositionIntent()
+    {
+        const Decimal stopLossPrice = 100M;
+        const Decimal takeProfitPrice = 130M;
+        const PositionIntent intent = PositionIntent.BuyToOpen;
+
+        assertJsonSerializedOrdersAreEqual(
+            MarketOrder.Buy(Stock, Quantity).WithPositionIntent(intent)
+                .TakeProfit(takeProfitPrice),
+            MarketOrder.Buy(Stock, Quantity)
+                .TakeProfit(takeProfitPrice).WithPositionIntent(intent));
+
+        assertJsonSerializedOrdersAreEqual(
+            MarketOrder.Buy(Stock, Quantity).WithPositionIntent(intent)
+                .StopLoss(stopLossPrice),
+            MarketOrder.Buy(Stock, Quantity)
+                .StopLoss(stopLossPrice).WithPositionIntent(intent));
+
+        assertOrdersAreEqual(
+            MarketOrder.Buy(Stock, Quantity).WithPositionIntent(intent)
+                .Bracket(takeProfitPrice, stopLossPrice),
+            MarketOrder.Buy(Stock, Quantity)
+                .Bracket(takeProfitPrice, stopLossPrice).WithPositionIntent(intent));
+
+        assertOrdersAreEqual(
+            LimitOrder.Sell(Stock, Quantity, takeProfitPrice).WithPositionIntent(PositionIntent.SellToClose)
+                .OneCancelsOther(stopLossPrice),
+            LimitOrder.Sell(Stock, Quantity, takeProfitPrice)
+                .OneCancelsOther(stopLossPrice).WithPositionIntent(PositionIntent.SellToClose));
+    }
+
+    [Fact]
     public void MultiLegOrderCreationWorks()
     {
         const Decimal limitPrice = 100M;

@@ -45,6 +45,7 @@ public abstract class OrderBase : Validation.IRequest
         Duration = baseOrder.Duration;
         ClientOrderId = baseOrder.ClientOrderId;
         ExtendedHours = baseOrder.ExtendedHours;
+        PositionIntent = baseOrder.PositionIntent;
     }
 
     /// <summary>
