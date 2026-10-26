@@ -15,12 +15,12 @@
 
   <ItemGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0'))">
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.11" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.11" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.14" />
   </ItemGroup>
 
   <ItemGroup Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0'))">
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.13" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.13" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.14" />
     <PackageReference Include="System.Linq.Async" Version="6.0.3" />
     <PackageReference Include="System.Threading.Channels" Version="10.0.13" />
     <PackageReference Include="System.IO.Pipelines" Version="10.0.13" />
