@@ -119,7 +119,7 @@
   <ItemGroup Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="9.0.8" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.13" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="System.Threading.Channels" Version="10.0.13" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Threading.Channels" Version="10.0.14" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Linq.Async" Version="6.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
