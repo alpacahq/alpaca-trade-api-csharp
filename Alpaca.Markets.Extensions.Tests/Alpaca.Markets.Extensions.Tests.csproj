@@ -36,7 +36,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="Polly" Version="8.8.1" />
+    <PackageReference Include="Polly" Version="8.9.0" />
   </ItemGroup>
 
   <ItemGroup>
