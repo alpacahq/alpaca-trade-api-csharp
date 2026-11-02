@@ -28,7 +28,7 @@ internal sealed class JsonOrder : IOrder
     [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
     public DateTime? FilledAtUtc { get; [ExcludeFromCodeCoverage] set; }
 
-    [JsonProperty(PropertyName = "expired_at ", Required = Required.Default)]
+    [JsonProperty(PropertyName = "expired_at", Required = Required.Default)]
     [JsonConverter(typeof(AssumeUtcIsoDateTimeConverter))]
     public DateTime? ExpiredAtUtc { get; [ExcludeFromCodeCoverage] set; }
 
