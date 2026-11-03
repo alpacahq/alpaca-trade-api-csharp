@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+This file contains maintainer and agent guidance. External contributors should start with [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
 ## General Information and References
 
 This .NET SDK covers Alpaca trading API surface and provides access for all features of this API. The Broker API should be explictitly excluded from any future analysis and processing.

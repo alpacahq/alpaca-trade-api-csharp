@@ -29,14 +29,15 @@ namespace AlpacaExample
 {
     internal static class Program
     {
-        private const String KEY_ID = "";
-
-        private const String SECRET_KEY = "";
-
         public static async Task Main()
         {
+            var keyId = Environment.GetEnvironmentVariable("APCA_API_KEY_ID")
+                ?? throw new InvalidOperationException("APCA_API_KEY_ID is required.");
+            var secretKey = Environment.GetEnvironmentVariable("APCA_API_SECRET_KEY")
+                ?? throw new InvalidOperationException("APCA_API_SECRET_KEY is required.");
+
             var client = Environments.Paper
-                .GetAlpacaTradingClient(new SecretKey(KEY_ID, SECRET_KEY));
+                .GetAlpacaTradingClient(new SecretKey(keyId, secretKey));
 
             var clock = await client.GetClockAsync();
 
@@ -50,10 +51,10 @@ namespace AlpacaExample
     }
 }
 ```
-4.  Replace the `KEY_ID` and `SECRET_KEY` values with your data from the Alpaca dashboard.
+4.  Set `APCA_API_KEY_ID` and `APCA_API_SECRET_KEY` to your paper-account credentials from the Alpaca dashboard. Never commit credentials to source control.
 5.  Run the sample application using the `dotnet run` command and check the output. You should see information about the current market timestamp and when the market will open and close next.
 
-See the [UsageExamples](../../tree/main/UsageExamples) project for near-to-real-world strategy implementation using this SDK and the [Alpaca.Markets.Tests](https://github.com/OlegRa/Alpaca.Markets.Tests) repository for SDK usage examples. The [Wiki](https://github.com/alpacahq/alpaca-trade-api-csharp/wiki) pages contain a lot of additional information about different aspects of this SDK (environments handling, authentication types, different order placement approaches, streaming client subscriptions handling, etc.).
+See the [UsageExamples](./UsageExamples) project for near-to-real-world strategy implementations and the [Alpaca.Markets.Tests](./Alpaca.Markets.Tests) and [Alpaca.Markets.Extensions.Tests](./Alpaca.Markets.Extensions.Tests) projects for SDK usage examples. The [Wiki](https://github.com/alpacahq/alpaca-trade-api-csharp/wiki) contains additional information about environment handling, authentication types, order placement approaches, streaming subscriptions, and other SDK features.
 
 ## Alpaca Data API subscription plans
 
@@ -63,16 +64,15 @@ Use the `Environments.Paper.GetAlpacaDataStreamingClient(...)` factory method to
 
 ### Build instructions
 
-1.  Install your OS's latest version of the [.NET 10.0 SDK](https://dotnet.microsoft.com/download).
+1.  Install the exact .NET SDK version pinned in [`global.json`](./global.json). SDK roll-forward is disabled.
 2.  Clone the local version of this repository or your fork (if you want to make changes).
 3.  Build the packages using the `dotnet build` command running in the root directory of the cloned repo.
 
-The NuGet packages multi-target .NET Standard 2.0/2.1, .NET Framework 4.6.2, .NET 8.0, and .NET 10.0 — consumers do not need the .NET 10 SDK unless they are building this repository.
+The NuGet packages multi-target .NET Standard 2.0/2.1, .NET Framework 4.6.2, .NET 8.0, and .NET 10.0. Consumers do not need the .NET 10 SDK unless they are building this repository.
 
 ### Preview the documentation locally
 
-The preview helper restores the pinned DocFX tool, builds the documentation,
-and starts DocFX's local server.
+The preview helper restores the pinned DocFX tool, builds the documentation, and starts DocFX's local server.
 
 On macOS or Linux:
 
@@ -86,17 +86,20 @@ On Windows:
 Documentation\serve.cmd
 ```
 
-Open the local URL printed by DocFX, usually
-[`http://localhost:8080`](http://localhost:8080). Stop the server with
-<kbd>Ctrl</kbd>+<kbd>C</kbd>.
+Open the local URL printed by DocFX, usually [`http://localhost:8080`](http://localhost:8080). Stop the server with <kbd>Ctrl</kbd>+<kbd>C</kbd>.
 
 ## Support
 
-- **Library / SDK issues:** Bugs, feature requests, or questions specific to this .NET library → [GitHub Issues](https://github.com/alpacahq/alpaca-trade-api-csharp/issues/new/choose).
+- **Library / SDK issues:** Bugs, feature requests, or questions specific to this SDK → [GitHub Issues](https://github.com/alpacahq/alpaca-trade-api-csharp/issues/new/choose).
+- **Security vulnerabilities:** Do not report them publicly. Follow our [Security Policy](./SECURITY.md).
 - **Alpaca API bugs:** Bugs in the Alpaca API itself, its OpenAPI specs, or its documentation → [alpacahq/alpaca-api](https://github.com/alpacahq/alpaca-api/issues/new/choose).
 - **Community:** API feature requests, general questions, and dashboard bugs → [Alpaca Community Forum](https://forum.alpaca.markets/) or [Slack](https://alpaca.markets/slack).
 - **Account help:** Questions about your account, funding, or orders → [Support request](https://alpaca.markets/support/request).
 - **Outages:** Service status and incident updates → [Status page](https://status.alpaca.markets/).
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup, contribution scope, API compatibility requirements, quality checks, and the pull-request workflow. Participation is governed by our [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Contributors
 

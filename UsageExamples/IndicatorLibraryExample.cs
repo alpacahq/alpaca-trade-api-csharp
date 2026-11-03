@@ -10,10 +10,6 @@ namespace UsageExamples;
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
 internal sealed class IndicatorLibraryExample : IDisposable
 {
-    private const String API_KEY = "REPLACEME";
-
-    private const String API_SECRET = "REPLACEME";
-
     private const String symbol = "AAPL";
 
     private IAlpacaDataClient alpacaDataClient;
@@ -23,7 +19,7 @@ internal sealed class IndicatorLibraryExample : IDisposable
         var startDate = new DateTime(2021, 01, 01);
         var endDate = new DateTime(2021, 12, 31);
 
-        alpacaDataClient = Environments.Paper.GetAlpacaDataClient(new SecretKey(API_KEY, API_SECRET));
+        alpacaDataClient = Environments.Paper.GetAlpacaDataClient(Credentials.GetPaperSecretKey());
 
         var page = await alpacaDataClient.ListHistoricalBarsAsync(
             new HistoricalBarsRequest(symbol, startDate, endDate, BarTimeFrame.Day)).ConfigureAwait(false);

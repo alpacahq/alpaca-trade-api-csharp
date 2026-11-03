@@ -4,9 +4,9 @@ using System.Diagnostics.CodeAnalysis;
 namespace UsageExamples;
 
 // This version of the mean reversion example algorithm utilizes Alpaca data that
-// is available to users who have a funded Alpaca brokerage account. By default, it
-// is configured to use the paper trading API, but you can change it to use the live
-// trading API by setting the API_URL.
+// is available to users who have a funded Alpaca brokerage account. All order
+// routing uses the paper trading API. The live environment below selects the SIP
+// market data stream and does not affect order routing.
 [SuppressMessage("ReSharper", "UnusedVariable")]
 [SuppressMessage("ReSharper", "UnusedType.Global")]
 [SuppressMessage("ReSharper", "InconsistentNaming")]
@@ -14,10 +14,6 @@ namespace UsageExamples;
 [SuppressMessage("ReSharper", "RedundantDefaultMemberInitializer")]
 internal sealed class MeanReversionBrokerage : IDisposable
 {
-    private const String API_KEY = "REPLACEME";
-
-    private const String API_SECRET = "REPLACEME";
-
     private const String symbol = "AAPL";
 
     private const Decimal scale = 200;
@@ -40,12 +36,14 @@ internal sealed class MeanReversionBrokerage : IDisposable
 
     public async Task Run()
     {
-        alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(new SecretKey(API_KEY, API_SECRET));
+        var secretKey = Credentials.GetPaperSecretKey();
 
-        alpacaDataClient = Environments.Paper.GetAlpacaDataClient(new SecretKey(API_KEY, API_SECRET));
+        alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(secretKey);
+
+        alpacaDataClient = Environments.Paper.GetAlpacaDataClient(secretKey);
 
         // Connect to Alpaca's websocket and listen for updates on our orders.
-        alpacaStreamingClient = Environments.Paper.GetAlpacaStreamingClient(new SecretKey(API_KEY, API_SECRET));
+        alpacaStreamingClient = Environments.Paper.GetAlpacaStreamingClient(secretKey);
 
         await alpacaStreamingClient.ConnectAndAuthenticateAsync();
 
@@ -89,7 +87,7 @@ internal sealed class MeanReversionBrokerage : IDisposable
         Console.WriteLine("Market opened.");
 
         // Connect to Alpaca's websocket and listen for price updates.
-        alpacaDataStreamingClient = Environments.Live.GetAlpacaDataStreamingClient(new SecretKey(API_KEY, API_SECRET));
+        alpacaDataStreamingClient = Environments.Live.GetAlpacaDataStreamingClient(secretKey);
 
         await alpacaDataStreamingClient.ConnectAndAuthenticateAsync();
         Console.WriteLine("Alpaca streaming client opened.");

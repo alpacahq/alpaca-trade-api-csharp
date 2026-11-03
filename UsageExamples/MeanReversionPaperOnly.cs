@@ -9,10 +9,6 @@ namespace UsageExamples;
 // ReSharper disable once UnusedType.Global
 internal sealed class MeanReversionPaperOnly : IDisposable
 {
-    private const String API_KEY = "REPLACEME";
-
-    private const String API_SECRET = "REPLACEME";
-
     private const String symbol = "SPY";
 
     private const Decimal scale = 200;
@@ -28,9 +24,11 @@ internal sealed class MeanReversionPaperOnly : IDisposable
     // ReSharper disable once UnusedMember.Global
     public async Task Run()
     {
-        alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(new SecretKey(API_KEY, API_SECRET));
+        var secretKey = Credentials.GetPaperSecretKey();
 
-        alpacaDataClient = Environments.Paper.GetAlpacaDataClient(new SecretKey(API_KEY, API_SECRET));
+        alpacaTradingClient = Environments.Paper.GetAlpacaTradingClient(secretKey);
+
+        alpacaDataClient = Environments.Paper.GetAlpacaDataClient(secretKey);
 
         var asset = await alpacaTradingClient.GetAssetAsync(symbol);
         isAssetShortable = asset.Shortable;

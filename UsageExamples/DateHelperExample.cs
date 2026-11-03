@@ -91,10 +91,6 @@ internal sealed class DateHelper
         PostMarket
     }
 
-    private const string ApiKey = "REPLACEME";
-    
-    private const string ApiSecret = "REPLACEME";
-
     public static async Task Run()
     {
         // api method of finding market status which is time-consuming and takes up an api call
@@ -121,7 +117,7 @@ internal sealed class DateHelper
     public static async Task<MarketStatus> GetAlpacaMarketStatus(DateTime dateTime)
     {
         // initialize secret key and alpaca clients
-        var key = new SecretKey(ApiKey, ApiSecret);
+        var key = Credentials.GetPaperSecretKey();
         using var tradingClient = Environments.Paper.GetAlpacaTradingClient(key);
 
         // get calendar for current day
