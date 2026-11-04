@@ -1,7 +1,7 @@
 blank_issues_enabled: false
 contact_links:
   - name: Alpaca API issue tracker
-    url: https://github.com/alpacahq/Alpaca-API/issues/new/choose
+    url: https://github.com/alpacahq/alpaca-api/issues/new/choose
     about: Report bugs in the Alpaca API, its OpenAPI specifications, or docs.alpaca.markets.
   - name: Alpaca Support
     url: https://alpaca.markets/support

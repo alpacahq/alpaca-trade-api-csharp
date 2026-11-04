@@ -1,6 +1,7 @@
 name: 📖 Documentation improvement
 description: Suggest an improvement to the Alpaca C#/.NET SDK documentation
 title: "[Docs]: "
+labels: [Documentation]
 assignees: []
 body:
   - type: markdown
