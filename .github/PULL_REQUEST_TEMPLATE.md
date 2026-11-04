@@ -1,37 +1,23 @@
-> Pull Request Template
->
-> Use this template to quickly create a well written pull request. Delete all quotes before creating the pull request.
+## Summary
 
-## Description
+<!-- What changed? -->
 
-> Please include a summary of the changes and which issue has been fixed. Please also include relevant motivation
-> and context. List any dependencies that are required for this change.
+## Motivation
 
-Fixes # (issue)
+<!-- Why is this change needed? Link the issue or prior discussion when applicable. -->
 
-> if no issue exists, please create an issue and ask the maintainers about this first
+## Verification
 
-## Type of change
+<!-- List the checks you ran and their results. -->
 
-> Please delete options that are not relevant.
+## Checklist
 
-- Bug fix (non-breaking change which fixes an issue)
-- New feature (non-breaking change which adds functionality)
-- Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- This change requires a documentation update
-
-## How Has This Been Tested?
-
-> Please describe the tests that you ran to verify your changes. Provide instructions, so we can reproduce.
-> Please also provide code samples if applicable to the PR.
-
-- Test A
-- Test B
-
-## Checklist:
-
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
+- [ ] The change is focused and follows the contribution policy.
+- [ ] Any substantial API, dependency, or third-party work was discussed with maintainers before implementation.
+- [ ] Public API files, compatibility suppressions, and NuGet lock files are unchanged unless this change intentionally requires an update.
+- [ ] New or changed behavior has focused tests when applicable.
+- [ ] Tests are deterministic and credential-free and cannot place live orders; trading examples default to paper trading and fixtures use synthetic data.
+- [ ] XML comments, documentation, and examples are updated when applicable.
+- [ ] Applicable locked restore, build, test, coverage, package-validation, and documentation checks pass without warnings.
+- [ ] No credentials, account data, request or trace IDs, or other secrets are included.
+- [ ] Any provider-specific integration or promotional contribution has written Alpaca approval confirmed by repository maintainers.
