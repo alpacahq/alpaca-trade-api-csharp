@@ -39,14 +39,21 @@ public sealed partial class AlpacaTradingClientTest
         validateOrder(order);
     }
 
-    [Fact]
-    public async Task MultiLegOrderValidationRejectsAnEmptyLegSymbol()
+    [Theory]
+    [InlineData("")]
+    [InlineData(" ")]
+    public async Task MultiLegOrderValidationRejectsAnEmptyLegSymbol(String legSymbol)
     {
         using var mock = mockClientsFactory.GetAlpacaTradingClientMock();
 
         await Assert.ThrowsAsync<RequestValidationException>(() => mock.Client.PostOrderAsync(
             MultiLegOrder.Limit(OrderQuantity.FromInt64(1), 1.00M,
                 OrderSide.Buy.Leg(SoldLegSymbol, 1M, PositionIntent.BuyToOpen),
-                OrderSide.Sell.Leg(String.Empty, 1M, PositionIntent.SellToOpen))));
+                OrderSide.Sell.Leg(legSymbol, 1M, PositionIntent.SellToOpen))));
     }
+
+    [Fact]
+    public void OrderLegRejectsANullSymbol() =>
+        Assert.Throws<ArgumentNullException>(() =>
+            OrderSide.Sell.Leg(null!, 1M, PositionIntent.SellToOpen));
 }
