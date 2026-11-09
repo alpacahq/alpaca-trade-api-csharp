@@ -96,9 +96,13 @@ public abstract class OrderBase : Validation.IRequest
     IEnumerable<RequestValidationException?> Validation.IRequest.GetExceptions()
     {
         ClientOrderId = ClientOrderId?.TrimClientOrderId();
-        yield return Symbol.TryValidateSymbolName();
+        yield return TryValidateSymbol();
         yield return TryValidateQuantity();
     }
+
+    // ReSharper disable once MemberCanBeProtected.Global
+    internal virtual RequestValidationException? TryValidateSymbol() =>
+        Symbol.TryValidateSymbolName();
 
     // ReSharper disable once MemberCanBeProtected.Global
     internal virtual RequestValidationException? TryValidateQuantity() =>
