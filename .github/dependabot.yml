@@ -10,6 +10,12 @@ updates:
     open-pull-requests-limit: 10
     assignees:
       - carlostasada
+    ignore:
+      # Odd majors are STS (.NET 11, 13, 15). Keep 10.0.x patches and the next LTS.
+      - dependency-name: "Microsoft.Extensions.*"
+        versions: ["11.*", "13.*", "15.*"]
+      - dependency-name: "System.*"
+        versions: ["11.*", "13.*", "15.*"]
 
   # Maintain the .NET SDK version in global.json
   - package-ecosystem: "dotnet-sdk"
@@ -18,6 +24,10 @@ updates:
       interval: "weekly"
     assignees:
       - carlostasada
+    ignore:
+      # Odd majors are STS (.NET 11, 13, 15). Keep 10.0.x patches and the next LTS.
+      - dependency-name: "*"
+        versions: ["11.*", "13.*", "15.*"]
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
