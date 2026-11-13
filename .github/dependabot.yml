@@ -12,10 +12,11 @@ updates:
       - carlostasada
     ignore:
       # Odd majors are STS (.NET 11, 13, 15). Keep 10.0.x patches and the next LTS.
+      # NuGet parses "11.*" as the exact version 11.0, which does not match 11.0.0.
       - dependency-name: "Microsoft.Extensions.*"
-        versions: ["11.*", "13.*", "15.*"]
+        versions: [">=11.0.0,<12.0.0", ">=13.0.0,<14.0.0", ">=15.0.0,<16.0.0"]
       - dependency-name: "System.*"
-        versions: ["11.*", "13.*", "15.*"]
+        versions: [">=11.0.0,<12.0.0", ">=13.0.0,<14.0.0", ">=15.0.0,<16.0.0"]
 
   # Maintain the .NET SDK version in global.json
   - package-ecosystem: "dotnet-sdk"
@@ -26,8 +27,9 @@ updates:
       - carlostasada
     ignore:
       # Odd majors are STS (.NET 11, 13, 15). Keep 10.0.x patches and the next LTS.
+      # The same ranges as NuGet, so an 11.0.x SDK is ignored and 12.0.x is not.
       - dependency-name: "*"
-        versions: ["11.*", "13.*", "15.*"]
+        versions: [">=11.0.0,<12.0.0", ">=13.0.0,<14.0.0", ">=15.0.0,<16.0.0"]
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
