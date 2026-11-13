@@ -1,9 +1,17 @@
 version: 2
 updates:
 
-  # Maintain dependencies for NuGet packages
+  # Maintain dependencies for NuGet packages.
+  # Each project pins versions in its own csproj. A single directory entry
+  # opens one pull request per project for the same bump. Listing the projects
+  # and grouping by dependency name updates every pin of a package together.
   - package-ecosystem: "nuget"
-    directory: "/"
+    directories:
+      - "/Alpaca.Markets"
+      - "/Alpaca.Markets.Extensions"
+      - "/Alpaca.Markets.Tests"
+      - "/Alpaca.Markets.Extensions.Tests"
+      - "/UsageExamples"
     schedule:
       interval: "daily"
       time: "04:00"
@@ -17,6 +25,28 @@ updates:
         versions: [">=11.0.0,<12.0.0", ">=13.0.0,<14.0.0", ">=15.0.0,<16.0.0"]
       - dependency-name: "System.*"
         versions: [">=11.0.0,<12.0.0", ">=13.0.0,<14.0.0", ">=15.0.0,<16.0.0"]
+    groups:
+      # First match wins. group-by opens one pull request per package name
+      # across the directories above. A System.* or Microsoft.Extensions.*
+      # update that falls outside these update-types is still grouped by the
+      # catch-all, so a minor or major does not split back into per-project PRs.
+      dotnet-system:
+        patterns:
+          - "System.*"
+        group-by: "dependency-name"
+        update-types:
+          - "patch"
+      dotnet-extensions:
+        patterns:
+          - "Microsoft.Extensions.*"
+        group-by: "dependency-name"
+        update-types:
+          - "patch"
+          - "minor"
+      nuget:
+        patterns:
+          - "*"
+        group-by: "dependency-name"
 
   # Maintain the .NET SDK version in global.json
   - package-ecosystem: "dotnet-sdk"
