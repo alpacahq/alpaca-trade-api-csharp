@@ -1,7 +1,10 @@
 version: 2
 updates:
 
-  # Maintain dependencies for NuGet packages
+  # Maintain dependencies for NuGet packages.
+  # Discovery from "/" follows Alpaca.Markets.sln, so every project in the
+  # solution is included. group-by then opens one pull request per package
+  # across those projects.
   - package-ecosystem: "nuget"
     directory: "/"
     schedule:
@@ -17,6 +20,29 @@ updates:
         versions: [">=11.0.0,<12.0.0", ">=13.0.0,<14.0.0", ">=15.0.0,<16.0.0"]
       - dependency-name: "System.*"
         versions: [">=11.0.0,<12.0.0", ">=13.0.0,<14.0.0", ">=15.0.0,<16.0.0"]
+    groups:
+      # First match wins. group-by opens one pull request per package name
+      # across the projects discovered above. A System.* or
+      # Microsoft.Extensions.* update that falls outside these update-types
+      # is still grouped by the catch-all, so a minor or major does not split
+      # back into per-project pull requests.
+      dotnet-system:
+        patterns:
+          - "System.*"
+        group-by: "dependency-name"
+        update-types:
+          - "patch"
+      dotnet-extensions:
+        patterns:
+          - "Microsoft.Extensions.*"
+        group-by: "dependency-name"
+        update-types:
+          - "patch"
+          - "minor"
+      nuget:
+        patterns:
+          - "*"
+        group-by: "dependency-name"
 
   # Maintain the .NET SDK version in global.json
   - package-ecosystem: "dotnet-sdk"
