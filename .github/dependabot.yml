@@ -2,9 +2,6 @@ version: 2
 updates:
 
   # Maintain dependencies for NuGet packages.
-  # Discovery from "/" follows Alpaca.Markets.sln, so every project in the
-  # solution is included. group-by then opens one pull request per package
-  # across those projects.
   - package-ecosystem: "nuget"
     directory: "/"
     schedule:
