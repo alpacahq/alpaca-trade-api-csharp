@@ -41,10 +41,10 @@ public sealed partial class AlpacaTradingClientTest(
 
         mock.AddGet("/v2/calendar", new JArray(
             new JObject(
-                new JProperty("session_close", new TimeOnly(20, 00).ToString("O", CultureInfo.InvariantCulture)),
-                new JProperty("session_open", new TimeOnly(08, 00).ToString("O", CultureInfo.InvariantCulture)),
-                new JProperty("close", new TimeOnly(18, 00).ToString("O", CultureInfo.InvariantCulture)),
-                new JProperty("open", new TimeOnly(10, 30).ToString("O", CultureInfo.InvariantCulture)),
+                new JProperty("session_close", new TimeOnly(20, 00).ToString("HH:mm", CultureInfo.InvariantCulture)),
+                new JProperty("session_open", new TimeOnly(08, 00).ToString("HH:mm", CultureInfo.InvariantCulture)),
+                new JProperty("close", new TimeOnly(18, 00).ToString("HH:mm", CultureInfo.InvariantCulture)),
+                new JProperty("open", new TimeOnly(10, 30).ToString("HH:mm", CultureInfo.InvariantCulture)),
                 new JProperty("date", today.ToString("O", CultureInfo.InvariantCulture)))));
 
         var calendars = await mock.Client

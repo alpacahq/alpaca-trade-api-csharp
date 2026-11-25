@@ -65,6 +65,8 @@
   <PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
     <IsTrimmable>true</IsTrimmable>
+    <!-- Newtonsoft.Json 13.0.4+ is annotated as trim-unsafe; the SDK has used it reflectively all along -->
+    <NoWarn>$(NoWarn);IL2026;IL2109</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
