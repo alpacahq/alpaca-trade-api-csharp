@@ -113,14 +113,14 @@
   <ItemGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0')) And !$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0'))">
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="10.0.15" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.15" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="System.Linq.Async" Version="6.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Linq.Async" Version="7.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="10.0.15" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.15" PrivateAssets="compile;contentfiles;build;analyzers" />
     <PackageReference Include="System.Threading.Channels" Version="10.0.15" PrivateAssets="compile;contentfiles;build;analyzers" />
-    <PackageReference Include="System.Linq.Async" Version="6.0.3" PrivateAssets="compile;contentfiles;build;analyzers" />
+    <PackageReference Include="System.Linq.Async" Version="7.0.1" PrivateAssets="compile;contentfiles;build;analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
@@ -133,5 +133,10 @@
   </ItemGroup>
 
   <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />
+
+  <ItemGroup Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0')) And '$(TargetFramework)' != 'netstandard2.1'">
+    <Compile Remove="..\Portable.Helpers\Index.cs" />
+    <Compile Remove="..\Portable.Helpers\Range.cs" />
+  </ItemGroup>
 
 </Project>
