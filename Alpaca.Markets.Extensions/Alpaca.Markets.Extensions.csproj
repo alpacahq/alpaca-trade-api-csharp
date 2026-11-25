@@ -134,4 +134,9 @@
 
   <Import Project="..\Portable.Helpers\Portable.Helpers.projitems" Label="Shared" />
 
+  <ItemGroup Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0')) And '$(TargetFramework)' != 'netstandard2.1'">
+    <Compile Remove="..\Portable.Helpers\Index.cs" />
+    <Compile Remove="..\Portable.Helpers\Range.cs" />
+  </ItemGroup>
+
 </Project>
