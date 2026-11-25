@@ -218,6 +218,24 @@ public static class EnumerableExtensions
         GetSimpleMovingAverageAsync(bars.EnsureNotNull().ToAsyncEnumerable(), window)
             .ToBlockingEnumerable();
 #else
-        GetSimpleMovingAverageAsync(bars.EnsureNotNull().ToAsyncEnumerable(), window).ToEnumerable();
+        ToBlockingEnumerable(
+            GetSimpleMovingAverageAsync(bars.EnsureNotNull().ToAsyncEnumerable(), window));
+
+    private static IEnumerable<T> ToBlockingEnumerable<T>(
+        IAsyncEnumerable<T> source)
+    {
+        var enumerator = source.GetAsyncEnumerator();
+        try
+        {
+            while (enumerator.MoveNextAsync().AsTask().GetAwaiter().GetResult())
+            {
+                yield return enumerator.Current;
+            }
+        }
+        finally
+        {
+            enumerator.DisposeAsync().AsTask().GetAwaiter().GetResult();
+        }
+    }
 #endif
 }
