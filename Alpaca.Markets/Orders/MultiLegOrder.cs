@@ -123,6 +123,10 @@ public sealed class MultiLegOrder : AdvancedOrderBase
         params IReadOnlyList<OrderLeg> legs) =>
         new(new MarketOrder(String.Empty, quantity, OrderSide.Buy), legs);
 
+    // The base order only carries a placeholder symbol that is never sent, so validate the legs' symbols instead.
+    internal override RequestValidationException? TryValidateSymbol() =>
+        _legs.Select(leg => leg.Symbol).TryValidateSymbolName(nameof(OrderLeg.Symbol));
+
     internal override JsonNewOrder GetJsonRequest() =>
         base.GetJsonRequest()
             .WithOrderLegs(_legs.Select(leg => leg.GetJsonRequest()))
